@@ -61,15 +61,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/web/fluent-theme', to: '#/controls/web/themes' },
     { from: '#/examples', to: '#/controls/web' },
   ],
-  messageBars: [
-    {
-      path: '#',
-      text: <span>Fluent UI React version 8 is now available.</span>,
-      linkText: 'Learn more',
-      linkUrl: 'https://github.com/microsoft/fluentui/wiki/Version-8-release-notes',
-      sessionStoragePrefix: 'FluentUI8',
-    },
-  ],
+  messageBars: [],
   // This is defined by loadSite() from @fluentui/public-docsite-setup
   versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };

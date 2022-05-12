@@ -88,8 +88,11 @@ import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
 import { createDOMRenderer } from '@griffel/react';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -120,6 +123,7 @@ import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelStyle } from '@griffel/react';
 import { Headline } from '@fluentui/react-text';
 import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
@@ -130,6 +134,12 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { Label } from '@fluentui/react-label';
+import { labelClassName } from '@fluentui/react-label';
+import { labelClassNames } from '@fluentui/react-label';
+import { LabelProps } from '@fluentui/react-label';
+import { LabelSlots } from '@fluentui/react-label';
+import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
 import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
@@ -258,6 +268,24 @@ import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { Radio } from '@fluentui/react-radio';
+import { radioClassName } from '@fluentui/react-radio';
+import { radioClassNames } from '@fluentui/react-radio';
+import { RadioGroup } from '@fluentui/react-radio';
+import { radioGroupClassName } from '@fluentui/react-radio';
+import { radioGroupClassNames } from '@fluentui/react-radio';
+import { RadioGroupContext } from '@fluentui/react-radio';
+import { RadioGroupContextValue } from '@fluentui/react-radio';
+import { RadioGroupContextValues } from '@fluentui/react-radio';
+import { RadioGroupOnChangeData } from '@fluentui/react-radio';
+import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupSlots } from '@fluentui/react-radio';
+import { RadioGroupState } from '@fluentui/react-radio';
+import { RadioOnChangeData } from '@fluentui/react-radio';
+import { RadioProps } from '@fluentui/react-radio';
+import { RadioSlots } from '@fluentui/react-radio';
+import { RadioState } from '@fluentui/react-radio';
+import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
@@ -270,6 +298,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
@@ -287,8 +316,12 @@ import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderPortal_unstable } from '@fluentui/react-portal';
+import { renderRadio_unstable } from '@fluentui/react-radio';
+import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderTab_unstable } from '@fluentui/react-tabs';
+import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
@@ -298,6 +331,9 @@ import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { SelectableHandler } from '@fluentui/react-menu';
+import { SelectTabData } from '@fluentui/react-tabs';
+import { SelectTabEvent } from '@fluentui/react-tabs';
+import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
@@ -323,6 +359,22 @@ import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { Tab } from '@fluentui/react-tabs';
+import { tabClassName } from '@fluentui/react-tabs';
+import { tabClassNames } from '@fluentui/react-tabs';
+import { TabList } from '@fluentui/react-tabs';
+import { tabListClassName } from '@fluentui/react-tabs';
+import { tabListClassNames } from '@fluentui/react-tabs';
+import { TabListContextValue } from '@fluentui/react-tabs';
+import { TabListContextValues } from '@fluentui/react-tabs';
+import { TabListProps } from '@fluentui/react-tabs';
+import { TabListSlots } from '@fluentui/react-tabs';
+import { TabListState } from '@fluentui/react-tabs';
+import { TabProps } from '@fluentui/react-tabs';
+import { TabRegisterData } from '@fluentui/react-tabs';
+import { TabSlots } from '@fluentui/react-tabs';
+import { TabState } from '@fluentui/react-tabs';
+import { TabValue } from '@fluentui/react-tabs';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -356,6 +408,7 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
@@ -398,6 +451,8 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
+import { useLabel_unstable } from '@fluentui/react-label';
+import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
@@ -440,12 +495,21 @@ import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
 import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
+import { useRadio_unstable } from '@fluentui/react-radio';
+import { useRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContextValues } from '@fluentui/react-radio';
+import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
+import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
+import { useTab_unstable } from '@fluentui/react-tabs';
+import { useTabList_unstable } from '@fluentui/react-tabs';
+import { useTabListStyles_unstable } from '@fluentui/react-tabs';
+import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName } from '@fluentui/react-shared-contexts';
@@ -627,9 +691,15 @@ export { CounterBadgeState }
 
 export { createCustomFocusIndicatorStyle }
 
+export { CreateCustomFocusIndicatorStyleOptions }
+
 export { createDarkTheme }
 
 export { createDOMRenderer }
+
+export { createFocusOutlineStyle }
+
+export { CreateFocusOutlineStyleOptions }
 
 export { createHighContrastTheme }
 
@@ -691,6 +761,8 @@ export { getPartitionedNativeProps }
 
 export { getSlots }
 
+export { GriffelStyle }
+
 export { Headline }
 
 export { headlineClassName }
@@ -710,6 +782,18 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { Label }
+
+export { labelClassName }
+
+export { labelClassNames }
+
+export { LabelProps }
+
+export { LabelSlots }
+
+export { LabelState }
 
 export { LargeTitle }
 
@@ -967,6 +1051,42 @@ export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
 
+export { Radio }
+
+export { radioClassName }
+
+export { radioClassNames }
+
+export { RadioGroup }
+
+export { radioGroupClassName }
+
+export { radioGroupClassNames }
+
+export { RadioGroupContext }
+
+export { RadioGroupContextValue }
+
+export { RadioGroupContextValues }
+
+export { RadioGroupOnChangeData }
+
+export { RadioGroupProps }
+
+export { RadioGroupSlots }
+
+export { RadioGroupState }
+
+export { RadioOnChangeData }
+
+export { RadioProps }
+
+export { RadioSlots }
+
+export { RadioState }
+
+export { RegisterTabEventHandler }
+
 export { renderAccordion_unstable }
 
 export { renderAccordionHeader_unstable }
@@ -990,6 +1110,8 @@ export { RendererProvider }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
@@ -1025,9 +1147,17 @@ export { renderPopoverTrigger_unstable }
 
 export { renderPortal_unstable }
 
+export { renderRadio_unstable }
+
+export { renderRadioGroup_unstable }
+
 export { renderSlider_unstable }
 
 export { renderSplitButton_unstable }
+
+export { renderTab_unstable }
+
+export { renderTabList_unstable }
 
 export { renderText_unstable }
 
@@ -1046,6 +1176,12 @@ export { ResolveShorthandFunction }
 export { ResolveShorthandOptions }
 
 export { SelectableHandler }
+
+export { SelectTabData }
+
+export { SelectTabEvent }
+
+export { SelectTabEventHandler }
 
 export { setVirtualParent }
 
@@ -1096,6 +1232,38 @@ export { Subheadline }
 export { subheadlineClassName }
 
 export { subheadlineClassNames }
+
+export { Tab }
+
+export { tabClassName }
+
+export { tabClassNames }
+
+export { TabList }
+
+export { tabListClassName }
+
+export { tabListClassNames }
+
+export { TabListContextValue }
+
+export { TabListContextValues }
+
+export { TabListProps }
+
+export { TabListSlots }
+
+export { TabListState }
+
+export { TabProps }
+
+export { TabRegisterData }
+
+export { TabSlots }
+
+export { TabState }
+
+export { TabValue }
 
 export { teamsDarkTheme }
 
@@ -1162,6 +1330,8 @@ export { TooltipSlots }
 export { TooltipState }
 
 export { TooltipTriggerProps }
+
+export { TypographyStyle }
 
 export { TypographyStyles }
 
@@ -1247,6 +1417,10 @@ export { useIsSSR }
 
 export { useKeyboardNavAttribute }
 
+export { useLabel_unstable }
+
+export { useLabelStyles_unstable }
+
 export { useLink_unstable }
 
 export { useLinkState_unstable }
@@ -1331,6 +1505,16 @@ export { usePortal_unstable }
 
 export { usePresenceBadge_unstable }
 
+export { useRadio_unstable }
+
+export { useRadioGroup_unstable }
+
+export { useRadioGroupContextValues }
+
+export { useRadioGroupStyles_unstable }
+
+export { useRadioStyles_unstable }
+
 export { useSlider_unstable }
 
 export { useSliderState_unstable }
@@ -1342,6 +1526,14 @@ export { useSplitButton_unstable }
 export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
+
+export { useTab_unstable }
+
+export { useTabList_unstable }
+
+export { useTabListStyles_unstable }
+
+export { useTabStyles_unstable }
 
 export { useText_unstable }
 

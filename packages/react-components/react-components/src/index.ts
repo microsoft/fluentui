@@ -9,6 +9,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
+export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -27,7 +28,38 @@ export type {
   FluentProviderState,
 } from '@fluentui/react-provider';
 export {
+  Radio,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioClassName,
+  radioClassNames,
+  RadioGroup,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioGroupClassName,
+  radioGroupClassNames,
+  RadioGroupContext,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
+export {
   createCustomFocusIndicatorStyle,
+  createFocusOutlineStyle,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
@@ -35,6 +67,8 @@ export {
   useModalAttributes,
 } from '@fluentui/react-tabster';
 export type {
+  CreateCustomFocusIndicatorStyleOptions,
+  CreateFocusOutlineStyleOptions,
   UseArrowNavigationGroupOptions,
   UseFocusableGroupOptions,
   UseModalAttributesOptions,
@@ -74,6 +108,7 @@ export type {
   DurationTokens,
   CurveTokens,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
@@ -280,6 +315,16 @@ export {
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
+  Label,
+  /* eslint-disable-next-line deprecation/deprecation */
+  labelClassName,
+  labelClassNames,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+export {
   Link,
   /* eslint-disable-next-line deprecation/deprecation */
   linkClassName,
@@ -470,6 +515,36 @@ export {
   renderSlider_unstable,
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
+export {
+  renderTab_unstable,
+  Tab,
+  tabClassName,
+  tabClassNames,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
+} from '@fluentui/react-tabs';
+export type {
+  TabProps,
+  TabSlots,
+  TabState,
+  TabValue,
+  TabRegisterData,
+  RegisterTabEventHandler,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListContextValue,
+  TabListContextValues,
+  TabListProps,
+  TabListSlots,
+  TabListState,
+} from '@fluentui/react-tabs';
 export {
   Body,
   Caption,

@@ -1,91 +1,68 @@
 import * as React from 'react';
-import { OptionProps } from '../components/Option/Option.types';
-import type { OptionCollectionState, OptionData, OptionValue } from './OptionCollection.types';
-
-/**
- * Takes React children and returns an array of Option keys in order, and a cloned set of processed children
- */
-function getValidOptions(children: React.ReactNode): { keys: string[]; children: React.ReactNode } {
-  const keys: string[] = [];
-
-  const clonedChildren = React.Children.map(children, (child, index) => {
-    if (React.isValidElement(child) && typeof child.type === 'object') {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { fluentComponentType } = child.type as any;
-
-      // if the child is an option, add its key to the array
-      if (fluentComponentType === 'Option') {
-        const optionKey = child.props.fluentKey || child.key || child.props.id || `${index}`;
-        keys.push(optionKey);
-
-        // add key prop to Option children
-        const overrideProps: Partial<OptionProps> = { fluentKey: optionKey };
-        return React.cloneElement(child, overrideProps);
-      }
-
-      // if the child is an option group, get its children
-      // comboboxes semantically only support one level of option groups
-      else if (fluentComponentType === 'OptionGroup' && child.props.children) {
-        const { keys: groupKeys, children: groupChildren } = getValidOptions(child.props.children);
-        keys.push(...groupKeys);
-        return React.cloneElement(child, {}, groupChildren);
-      } else {
-        return React.cloneElement(child);
-      }
-    }
-  });
-
-  return { keys, children: clonedChildren };
-}
+import type { OptionCollectionState, OptionValue } from './OptionCollection.types';
 
 /**
  * A hook for managing a collection of child Options
  */
-export const useOptionCollection = (children: React.ReactNode): OptionCollectionState => {
-  const optionData: React.MutableRefObject<OptionData> = React.useRef({});
+export const useOptionCollection = (): OptionCollectionState => {
+  const nodes = React.useRef<{ option: OptionValue; element: HTMLElement }[]>([]);
 
-  const { collectionData, processedChildren } = React.useMemo(() => {
-    const { keys: optionKeys, children: clonedChildren } = getValidOptions(children);
-
-    const getOptionAtIndex = (index: number) => {
-      const key = optionKeys[index];
-      return optionData.current[key];
-    };
-    const getIndexOfKey = (id: string) => optionKeys.indexOf(id);
-
-    const getOptionByKey = (key: string) => {
-      return optionData.current[key];
+  const collectionAPI = React.useMemo(() => {
+    const getCount = () => nodes.current.length;
+    const getOptionAtIndex = (index: number) => nodes.current[index]?.option;
+    const getIndexOfId = (id: string) => nodes.current.findIndex(node => node.option.id === id);
+    const getOptionById = (id: string) => {
+      const item = nodes.current.find(node => node.option.id === id);
+      return item?.option;
     };
 
     return {
-      collectionData: {
-        count: optionKeys.length,
-        getOptionAtIndex,
-        getIndexOfKey,
-        getOptionByKey,
-      },
-      processedChildren: clonedChildren,
+      getCount,
+      getOptionAtIndex,
+      getIndexOfId,
+      getOptionById,
     };
-  }, [children]);
+  }, []);
 
-  const registerOption = React.useMemo(() => {
-    const register = (option: OptionValue) => {
-      if (option && option.key) {
-        optionData.current[option.key] = option;
+  const registerOption = React.useCallback((option: OptionValue, element: HTMLElement) => {
+    const index = nodes.current.findIndex(node => {
+      if (!node.element || !element) {
+        return false;
       }
 
-      return (id: string) => {
-        delete optionData.current[id];
-      };
-    };
+      if (node.option.id === option.id) {
+        return true;
+      }
 
-    return register;
+      // use the DOM method compareDocumentPosition to order the current node against registered nodes
+      // eslint-disable-next-line no-bitwise
+      return node.element.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_PRECEDING;
+    });
+
+    // do not register the option if it already exists
+    if (nodes.current[index]?.option.id !== option.id) {
+      const newItem = {
+        element,
+        option,
+      };
+
+      // If an index is not found we will push the element to the end.
+      if (index === -1) {
+        nodes.current = [...nodes.current, newItem];
+      } else {
+        nodes.current.splice(index, 0, newItem);
+      }
+    }
+
+    // return the unregister function
+    return () => {
+      nodes.current = nodes.current.filter(node => node.option.id !== option.id);
+    };
   }, []);
 
   return {
-    children: processedChildren,
-    collectionData: collectionData,
-    options: optionData.current,
+    ...collectionAPI,
+    options: nodes.current.map(node => node.option),
     registerOption,
   };
 };

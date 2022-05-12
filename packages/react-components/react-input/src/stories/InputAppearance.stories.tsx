@@ -41,22 +41,22 @@ export const Appearance = () => {
   return (
     <div className={styles.root}>
       <div>
-        <Label htmlFor={outlineId}>Outline (default)</Label>
+        <Label htmlFor={outlineId}>Outline Input Appearance (default)</Label>
         <Input appearance="outline" id={outlineId} />
       </div>
 
       <div>
-        <Label htmlFor={underlineId}>Underline</Label>
+        <Label htmlFor={underlineId}>Underline Input Appearance </Label>
         <Input appearance="underline" id={underlineId} />
       </div>
 
       <div className={styles.filledLighter}>
-        <Label htmlFor={filledLighterId}>Filled lighter</Label>
+        <Label htmlFor={filledLighterId}>Filled Lighter Input Appearance </Label>
         <Input appearance="filledLighter" id={filledLighterId} />
       </div>
 
       <div className={styles.filledDarker}>
-        <Label htmlFor={filledDarkerId}>Filled darker</Label>
+        <Label htmlFor={filledDarkerId}>Filled Darker Input Appearance </Label>
         <Input appearance="filledDarker" id={filledDarkerId} />
       </div>
     </div>

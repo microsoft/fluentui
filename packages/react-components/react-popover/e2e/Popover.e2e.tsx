@@ -71,6 +71,30 @@ describe('Popover', () => {
         cy.get(popoverTriggerSelector).click().realPress('Escape');
         cy.get(popoverContentSelector).should('not.exist');
       });
+
+      it('should keep open state on scroll outside', () => {
+        cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
+        cy.get('body').trigger('wheel').get(popoverContentSelector).should('be.visible');
+      });
+    });
+  });
+
+  describe('Open on hover', () => {
+    beforeEach(() => {
+      mount(
+        <Popover openOnHover>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>This is a popover</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('body').click('bottomRight');
+    });
+
+    it('should open on hover, and keep open on mouse move to content', () => {
+      cy.get(popoverTriggerSelector).trigger('mouseover').get(popoverContentSelector).should('be.visible');
+      cy.get(popoverContentSelector).trigger('mouseover').get(popoverContentSelector).should('be.visible');
     });
   });
 
@@ -93,6 +117,52 @@ describe('Popover', () => {
         </Popover>,
       );
       cy.get(popoverTriggerSelector).get('body').click('bottomRight').get(popoverContentSelector).should('not.exist');
+    });
+  });
+
+  describe('Context popover', () => {
+    beforeEach(() => {
+      mount(
+        <Popover openOnContext>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>This is a popover</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('body').click('bottomRight');
+    });
+
+    it('should open when right clicked', () => {
+      cy.get(popoverTriggerSelector).rightclick().get(popoverContentSelector).should('be.visible');
+    });
+
+    it('should dismiss on scroll outside', () => {
+      cy.get(popoverTriggerSelector)
+        .rightclick()
+        .get('body')
+        .trigger('wheel')
+        .get(popoverContentSelector)
+        .should('not.exist');
+    });
+  });
+
+  describe('popover with closeOnScroll', () => {
+    beforeEach(() => {
+      mount(
+        <Popover closeOnScroll>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>This is a popover</PopoverSurface>
+        </Popover>,
+      );
+      cy.get('body').click('bottomRight');
+    });
+
+    it('should dismiss on scroll outside', () => {
+      cy.get(popoverTriggerSelector).click().get(popoverContentSelector).should('be.visible');
+      cy.get('body').trigger('wheel').get(popoverContentSelector).should('not.exist');
     });
   });
 
@@ -254,6 +324,35 @@ describe('Popover', () => {
         })
         .get(popoverContentSelector)
         .should('exist');
+    });
+  });
+
+  describe('with inline prop', () => {
+    it('should render PopoverSurface in DOM order', () => {
+      mount(
+        <>
+          <div>
+            <Popover inline>
+              <PopoverTrigger>
+                <button>Popover trigger</button>
+              </PopoverTrigger>
+
+              <PopoverSurface>This is a Popover</PopoverSurface>
+            </Popover>
+          </div>
+          <div>Outside content</div>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get(popoverContentSelector)
+        .prev()
+        .then(popoverSurfacePrev => {
+          cy.get(popoverTriggerSelector).then(popoverTrigger => {
+            expect(popoverTrigger[0]).eq(popoverSurfacePrev[0]);
+          });
+        });
     });
   });
 });

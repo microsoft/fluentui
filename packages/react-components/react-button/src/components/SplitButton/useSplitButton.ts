@@ -14,7 +14,7 @@ export const useSplitButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): SplitButtonState => {
   const {
-    appearance,
+    appearance = 'secondary',
     // eslint-disable-next-line deprecation/deprecation
     block = false,
     children,

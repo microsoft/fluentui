@@ -32,6 +32,8 @@ const useStyles = makeStyles({
     },
   },
   container: {
+    // without a width, this div grows wider than its parent
+    width: '200px',
     flexGrow: 1,
   },
 });
