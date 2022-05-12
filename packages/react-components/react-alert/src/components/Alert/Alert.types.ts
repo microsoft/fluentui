@@ -40,4 +40,4 @@ export type AlertProps = ComponentProps<AlertSlots> &
 /**
  * State used in rendering Alert
  */
-export type AlertState = ComponentState<AlertSlots> & AlertCommons;
+export type AlertState = ComponentState<AlertSlots>;
