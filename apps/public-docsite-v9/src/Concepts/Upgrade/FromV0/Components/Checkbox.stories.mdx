@@ -15,7 +15,7 @@ The main difference between v0 and v9 `Checkbox` is that v9 offers a circular va
 Basic usage of `Checkbox` v0
 
 ```tsx
-import React from 'react';
+import * as React from 'react';
 import { Checkbox } from '@fluentui/react-northstar';
 
 const CheckboxV0BasicExample = () => {
@@ -60,11 +60,11 @@ This table maps `Checkbox` v0 props to the `Checkbox` v9 equivalent.
 | `design`         | n/a              |                                                             |
 | `disabled`       | `disabled`       |                                                             |
 | `indicator`      | `indicator`      |                                                             |
-| `key`            | `key`            |                                                             |
+| `key`            | `key`            | v9 uses the intrinsic React prop                            |
 | `label`          | `label`          |                                                             |
 | `labelPosition`  | `labelPosition`  |                                                             |
 | `onChange`       | `onChange`       |                                                             |
-| `onClick`        | `key`            | v9 uses the intrinsic React prop                            |
+| `onClick`        | `onClick`        |                                                             |
 | `ref`            | `ref`            |                                                             |
 | `styles`         | `className`      |                                                             |
 | `toggle`         | n/a              | Refer to the `Switch` component in `@fluentui/react-switch` |
