@@ -28,20 +28,8 @@ module.exports = {
         },
       ],
     });
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [
-        {
-          loader: require.resolve('svg-inline-loader'),
-          options: {
-            removeSVGTagAttrs: false,
-          },
-        },
-      ],
-    });
     config.resolve.extensions.push('.ts');
     config.resolve.extensions.push('.js');
-    config.resolve.extensions.push('.svg');
     config.plugins.push(
       new CircularDependencyPlugin({
         exclude: /node_modules/,

@@ -47,7 +47,6 @@
     "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
-    "@fluentui/svg-icons": "^1.1.167",
     "@storybook/html": "6.4.19",
     "@types/chai": "^4.2.11",
     "@types/chai-spies": "^1.0.1",
@@ -82,7 +81,6 @@
     "rollup-plugin-typescript2": "^0.27.0",
     "source-map": "^0.7.3",
     "source-map-loader": "^0.2.4",
-    "svg-inline-loader": "^0.8.2",
     "ts-loader": "^7.0.2",
     "ts-node": "^8.0.0",
     "webpack": "^4.43.0"
