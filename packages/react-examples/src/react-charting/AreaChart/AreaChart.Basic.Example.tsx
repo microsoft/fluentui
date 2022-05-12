@@ -163,6 +163,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           max={1000}
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
         <label htmlFor="changeHeight_Basic">change Height:</label>
         <input
@@ -172,6 +173,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           max={1000}
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <div style={rootStyle}>

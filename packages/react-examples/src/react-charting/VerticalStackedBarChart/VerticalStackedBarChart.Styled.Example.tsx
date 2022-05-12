@@ -109,6 +109,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={1000}
             id="ChangeWidth_Styled"
             onChange={e => this.setState({ width: +e.target.value })}
+            aria-valuetext={`ChangeWidthSlider${this.state.width}`}
           />
           <label htmlFor="changeHeight_Styled">Height:</label>
           <input
@@ -118,6 +119,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={1000}
             id="changeHeight_Styled"
             onChange={e => this.setState({ height: +e.target.value })}
+            aria-valuetext={`ChangeHeightslider${this.state.height}`}
           />
         </div>
         <div>
@@ -129,6 +131,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={10}
             id="changeBarGapMax_Styled"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
+            aria-valuetext={`ChangebarGapMaxslider${this.state.barGapMax}`}
           />
           <label htmlFor="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
           <input
@@ -138,6 +141,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={10}
             id="ChangeBarCornerRadius_condition"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
+            aria-valuetext={`ChangeBarCornerRadiusSlider${this.state.barCornerRadius}`}
           />
           <label htmlFor="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
           <input
@@ -147,6 +151,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={10}
             id="ChangeBarMinimumHeight_condition"
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
+            aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
           <ChoiceGroup
             options={options}
