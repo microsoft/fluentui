@@ -29,9 +29,9 @@ const trackWidth = 40;
 
 const useRootStyles = makeStyles({
   base: {
+    alignItems: 'flex-start',
     boxSizing: 'border-box',
     display: 'inline-flex',
-    alignItems: 'flex-start',
     ...shorthands.padding(`${spacingS}px`),
     position: 'relative',
 
