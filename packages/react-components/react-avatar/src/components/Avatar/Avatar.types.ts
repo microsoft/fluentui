@@ -24,7 +24,7 @@ export type AvatarSlots = {
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
-   * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
+   * @default `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
   icon?: Slot<'span'>;
 
@@ -84,14 +84,14 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    * * inactive: the avatar will be reduced in size and partially transparent
    * * unset: normal display
    *
-   * @defaultvalue unset
+   * @default unset
    */
   active?: 'active' | 'inactive' | 'unset';
 
   /**
    * The appearance when `active="active"`
    *
-   * @defaultvalue ring
+   * @default ring
    */
   activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
 
@@ -102,7 +102,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
    * * [AvatarNamedColor]: a specific color from the theme
    *
-   * @defaultvalue neutral
+   * @default neutral
    */
   color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
 
@@ -122,7 +122,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 
   /**
    * The avatar can have a circular or square shape.
-   * @defaultvalue circular
+   * @default circular
    */
   shape?: 'circular' | 'square';
 
@@ -138,7 +138,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    * For example, to set the avatar to 45px in size:
    * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
    *
-   * @defaultvalue 32
+   * @default 32
    */
   size?: AvatarSizes;
 };
@@ -151,5 +151,5 @@ export type AvatarState = ComponentState<AvatarSlots> &
     /**
      * The Avatar's color, it matches props.color but with `'colorful'` resolved to a named color
      */
-    color: 'neutral' | 'brand' | AvatarNamedColor;
+    color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
   };

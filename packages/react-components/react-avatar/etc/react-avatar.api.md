@@ -79,7 +79,7 @@ export type AvatarSlots = {
 
 // @public
 export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
-    color: 'neutral' | 'brand' | AvatarNamedColor;
+    color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
 };
 
 // @public
