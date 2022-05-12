@@ -29,14 +29,12 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
-    columnGap: spacingHorizontalM,
     ...shorthands.padding(spacingHorizontalS),
   },
 
   vertical: {
     flexDirection: 'column',
     alignItems: 'center',
-    rowGap: spacingHorizontalM,
   },
 
   focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
@@ -158,7 +156,11 @@ const useLabelStyles = makeStyles({
     ...shorthands.margin(`calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`, 0),
   },
 
+  after: {
+    marginLeft: spacingHorizontalM,
+  },
   below: {
+    marginTop: spacingHorizontalM,
     textAlign: 'center',
   },
 });
@@ -187,7 +189,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     state.label.className = mergeClasses(
       radioClassNames.label,
       labelStyles.base,
-      state.labelPosition === 'below' && labelStyles.below,
+      labelStyles[state.labelPosition],
       state.label.className,
     );
   }
