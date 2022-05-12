@@ -1,60 +1,20 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState } from '@fluentui/react-utilities';
-import { usePopperMouseTarget, PositioningShorthand } from '@fluentui/react-positioning';
-import { MenuListCommons } from '../MenuList/MenuList.types';
-import { MenuContextValue } from '../../contexts/menuContext';
-
-type MenuCommons = MenuListCommons & {
-  /**
-   * Whether the popup is open
-   */
-  open: boolean;
-
-  /**
-   * Call back when the component requests to change value
-   * The `open` value is used as a hint when directly controlling the component
-   */
-  onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
-
-  /**
-   * Whether the popup is open by default
-   */
-  defaultOpen?: boolean;
-
-  /*
-   * Opens the menu on hover
-   */
-  openOnHover: boolean;
-
-  /**
-   * Opens the menu on right click (context menu), removes all other menu open interactions
-   */
-  openOnContext?: boolean;
-
-  /**
-   * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
-   * This option is disregarded for submenus
-   */
-  inline?: boolean;
-
-  /**
-   * Do not dismiss the menu when a menu item is clicked
-   */
-  persistOnItemClick?: boolean;
-
-  /**
-   * Sets the delay for mouse open/close for the popover one mouse enter/leave
-   */
-  hoverDelay?: number;
-};
+import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { MenuContextValue } from '../../contexts/menuContext';
+import type { MenuListProps } from '../MenuList/MenuList.types';
 
 export type MenuSlots = {};
 
 /**
  * Extends and drills down Menulist props to simplify API
  */
-export type MenuProps = Partial<MenuCommons> &
-  ComponentProps<MenuSlots> & {
+export type MenuProps = ComponentProps<MenuSlots> &
+  Pick<
+    MenuListProps,
+    'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'
+  > & {
     /**
      * Can contain two children including {@link MenuTrigger} and {@link MenuPopover}.
      * Alternatively can only contain {@link MenuPopover} if using a custom `target`.
@@ -62,42 +22,81 @@ export type MenuProps = Partial<MenuCommons> &
     children: [JSX.Element, JSX.Element] | JSX.Element;
 
     /**
+     * Whether the popup is open by default
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
+
+    /**
+     * Sets the delay for mouse open/close for the popover one mouse enter/leave
+     */
+    hoverDelay?: number;
+
+    /**
+     * Root menus are rendered out of DOM order on `document.body`, use this to render the menu in DOM order
+     * This option is disregarded for submenus
+     *
+     * @default false
+     */
+    inline?: boolean;
+
+    /**
+     * Call back when the component requests to change value
+     * The `open` value is used as a hint when directly controlling the component
+     */
+    onOpenChange?: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+
+    /**
+     * Whether the popup is open
+     *
+     * @default false
+     */
+    open?: boolean;
+
+    /**
+     * Opens the menu on right click (context menu), removes all other menu open interactions
+     *
+     * @default false
+     */
+    openOnContext?: boolean;
+
+    /**
+     * Opens the menu on hover
+     *
+     * @default false
+     */
+    openOnHover?: boolean;
+
+    /**
+     * Do not dismiss the menu when a menu item is clicked
+     *
+     * @default false
+     */
+    persistOnItemClick?: boolean;
+
+    /**
      * Configures the positioned menu
      */
     positioning?: PositioningShorthand;
   };
 
-export type MenuState = MenuCommons &
-  ComponentState<MenuSlots> & {
+export type MenuState = ComponentState<MenuSlots> &
+  Pick<
+    MenuProps,
+    | 'defaultCheckedValues'
+    | 'hasCheckmarks'
+    | 'hasIcons'
+    | 'inline'
+    | 'onOpenChange'
+    | 'openOnContext'
+    | 'persistOnItemClick'
+  > &
+  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover'>> & {
     /**
-     * Callback to open/close the popup
+     * Anchors the popper to the mouse click for context events
      */
-    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
-
-    /**
-     * Internal react node that just simplifies handling children
-     */
-    menuPopover: React.ReactNode;
-
-    /**
-     * Internal react node that just simplifies handling children
-     */
-    menuTrigger: React.ReactNode;
-
-    /**
-     * The ref for the popup
-     */
-    menuPopoverRef: React.MutableRefObject<HTMLElement>;
-
-    /**
-     * The ref for the MenuTrigger, used for popup positioning
-     */
-    triggerRef: React.MutableRefObject<HTMLElement>;
-
-    /**
-     * Id for the MenuTrigger element for aria relationship
-     */
-    triggerId: string;
+    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
 
     /**
      * Whether this menu is a submenu
@@ -105,29 +104,54 @@ export type MenuState = MenuCommons &
     isSubmenu: boolean;
 
     /**
-     * Anchors the popper to the mouse click for context events
+     * Internal react node that just simplifies handling children
      */
-    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+    menuPopover: React.ReactNode;
+
+    /**
+     * The ref for the popup
+     */
+    menuPopoverRef: React.MutableRefObject<HTMLElement>;
+
+    /**
+     * Internal react node that just simplifies handling children
+     */
+    menuTrigger: React.ReactNode;
 
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
     setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+
+    /**
+     * Callback to open/close the popup
+     */
+    setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
+
+    /**
+     * Id for the MenuTrigger element for aria relationship
+     */
+    triggerId: string;
+
+    /**
+     * The ref for the MenuTrigger, used for popup positioning
+     */
+    triggerRef: React.MutableRefObject<HTMLElement>;
   };
 
 /**
  * Data attached to open/close events
  */
 export type MenuOpenChangeData = {
-  open: boolean;
-  /**
-   * Indicates whether the change of state was a keyboard interaction
-   */
-  keyboard?: boolean;
   /**
    * indicates whether the request for the open state was bubbled from a nested menu
    */
   bubble?: boolean;
+  /**
+   * Indicates whether the change of state was a keyboard interaction
+   */
+  keyboard?: boolean;
+  open: boolean;
 };
 
 export type MenuContextValues = {
@@ -140,6 +164,6 @@ export type MenuContextValues = {
 export type MenuOpenEvents =
   | MouseEvent
   | TouchEvent
-  | React.MouseEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+  | React.MouseEvent<HTMLElement>;

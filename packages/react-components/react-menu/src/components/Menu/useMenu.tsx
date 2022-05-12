@@ -109,7 +109,7 @@ const useMenuSelectableState = (
 };
 
 const useMenuOpenState = (
-  state: Pick<MenuState, 'onOpenChange' | 'setContextTarget' | 'triggerRef' | 'menuPopoverRef' | 'isSubmenu'> &
+  state: Pick<MenuState, 'isSubmenu' | 'menuPopoverRef' | 'onOpenChange' | 'setContextTarget' | 'triggerRef'> &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
   const { targetDocument } = useFluent();

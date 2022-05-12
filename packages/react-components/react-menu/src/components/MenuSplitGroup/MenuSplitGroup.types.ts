@@ -4,14 +4,12 @@ export type MenuSplitGroupSlots = {
   root: Slot<'div'>;
 };
 
-type MenuSplitGroupCommons = {};
-
 /**
  * MenuSplitGroup Props
  */
-export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+export type MenuSplitGroupProps = ComponentProps<MenuSplitGroupSlots>;
 
 /**
  * State used in rendering MenuSplitGroup
  */
-export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots> & MenuSplitGroupCommons;
+export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
