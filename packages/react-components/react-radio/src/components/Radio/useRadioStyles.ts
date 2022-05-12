@@ -29,14 +29,12 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
-    columnGap: spacingHorizontalM,
     ...shorthands.padding(spacingHorizontalS),
   },
 
   vertical: {
     flexDirection: 'column',
     alignItems: 'center',
-    rowGap: spacingHorizontalM,
   },
 
   focusIndicator: createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
@@ -152,13 +150,19 @@ const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
     userSelect: 'none',
+  },
+
+  after: {
+    marginLeft: spacingHorizontalM,
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
-    ...shorthands.margin(`calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`, 0),
+    marginTop: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSize} - ${tokens.lineHeightBase300}) / 2)`,
   },
 
   below: {
+    marginTop: spacingHorizontalM,
     textAlign: 'center',
   },
 });
@@ -187,7 +191,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     state.label.className = mergeClasses(
       radioClassNames.label,
       labelStyles.base,
-      state.labelPosition === 'below' && labelStyles.below,
+      labelStyles[state.labelPosition],
       state.label.className,
     );
   }
