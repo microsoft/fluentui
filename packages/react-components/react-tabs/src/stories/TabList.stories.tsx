@@ -16,7 +16,7 @@ export { WithOverflow } from './TabListWithOverflow.stories';
 export { WithPanels } from './TabListWithPanels.stories';
 
 export default {
-  title: 'Preview Components/TabList',
+  title: 'Components/TabList',
   component: TabList,
   parameters: {
     docs: {
