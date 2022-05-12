@@ -4,16 +4,13 @@ export type DialogSlots = {
   root: Slot<'div'>;
 };
 
-type DialogCommons = {
-  // TODO Add things shared between props and state here
-};
-
 /**
  * Dialog Props
  */
-export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
+export type DialogProps = ComponentProps<DialogSlots>;
 
 /**
  * State used in rendering Dialog
  */
-export type DialogState = ComponentState<DialogSlots> & DialogCommons;
+// TODO: Replace never below with union of props to pick from DialogProps above.
+export type DialogState = ComponentState<DialogSlots> & Required<Pick<DialogProps, never>>;
