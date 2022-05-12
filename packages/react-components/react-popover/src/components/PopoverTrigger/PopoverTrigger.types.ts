@@ -20,5 +20,5 @@ export type PopoverTriggerChildProps = {
   ref?: React.Ref<never>;
 } & Pick<
   React.HTMLAttributes<HTMLElement>,
-  'aria-haspopup' | 'onClick' | 'onMouseEnter' | 'onKeyDown' | 'onMouseLeave' | 'onContextMenu'
+  'aria-haspopup' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
 >;

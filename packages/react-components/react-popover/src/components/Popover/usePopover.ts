@@ -1,19 +1,19 @@
 import * as React from 'react';
+import { elementContains } from '@fluentui/react-portal';
+import {
+  mergeArrowOffset,
+  resolvePositioningShorthand,
+  usePopper,
+  usePopperMouseTarget,
+} from '@fluentui/react-positioning';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import {
   useControllableState,
   useEventCallback,
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
-import {
-  usePopper,
-  resolvePositioningShorthand,
-  mergeArrowOffset,
-  usePopperMouseTarget,
-} from '@fluentui/react-positioning';
-import { elementContains } from '@fluentui/react-portal';
-import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 
