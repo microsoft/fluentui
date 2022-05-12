@@ -658,6 +658,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-theme-sass": {
+      "root": "packages/react-components/react-theme-sass",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-theme-sass/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-toolbar": {
       "root": "packages/react-components/react-toolbar",
       "projectType": "library",
