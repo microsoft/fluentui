@@ -6,7 +6,7 @@ import type { ImageProps, ImageState } from './Image.types';
  * Given user props, returns state and render function for an Image.
  */
 export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageElement>): ImageState => {
-  const { bordered = false, fit = 'none', block = false, shape = 'square', shadow = false } = props;
+  const { bordered = false, fit = 'default', block = false, shape = 'square', shadow = false } = props;
 
   const state: ImageState = {
     bordered,

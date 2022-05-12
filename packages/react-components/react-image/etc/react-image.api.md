@@ -25,7 +25,7 @@ export const imageClassNames: SlotClassNames<ImageSlots>;
 export type ImageProps = ComponentProps<ImageSlots> & {
     block?: boolean;
     bordered?: boolean;
-    fit?: 'none' | 'center' | 'contain' | 'cover';
+    fit?: 'none' | 'center' | 'contain' | 'cover' | 'default';
     shadow?: boolean;
     shape?: 'square' | 'circular' | 'rounded';
 };

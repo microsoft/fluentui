@@ -22,9 +22,9 @@ export type ImageProps = ComponentProps<ImageSlots> & {
   /**
    * An image can set how it should be resized to fit its container.
    *
-   * @default 'none'
+   * @default 'default'
    */
-  fit?: 'none' | 'center' | 'contain' | 'cover';
+  fit?: 'none' | 'center' | 'contain' | 'cover' | 'default';
 
   /**
    * An image can appear elevated with shadow.

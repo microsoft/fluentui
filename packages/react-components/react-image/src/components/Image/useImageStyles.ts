@@ -66,6 +66,9 @@ const useStyles = makeStyles({
     height: '100%',
     width: '100%',
   },
+  default: {
+    /* The default styles are exactly the same as the base styles. */
+  },
 
   // Block styles
   block: {
