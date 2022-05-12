@@ -158,10 +158,10 @@ See [Checkbox.types.ts](./src/components/Checkbox/Checkbox.types.ts)
 
 ```html
 <span class="fui-Checkbox">
+  <input type="checkbox" id="checkbox-1" class="fui-Checkbox__input" />
   <div aria-hidden="true" class="fui-Checkbox__indicator">
     <CheckmarkRegular />
   </div>
-  <input type="checkbox" id="checkbox-1" class="fui-Checkbox__input" />
   <label for="checkbox-1" className="fui-Checkbox__label">Example Checkbox</label>
 </span>
 ```
