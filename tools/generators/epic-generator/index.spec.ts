@@ -42,7 +42,7 @@ function setupTest(packages: Package[]) {
   // set mock CODEOWNERS response for readFileSync
   const codeownersContent = packages
     .map(pckg => {
-      const rootPath = pckg.projectType == 'application' ? 'apps' : 'packages';
+      const rootPath = pckg.projectType === 'application' ? 'apps' : 'packages';
 
       return `${rootPath}/${pckg.name} ${pckg.owners.join(' ')}`;
     })
