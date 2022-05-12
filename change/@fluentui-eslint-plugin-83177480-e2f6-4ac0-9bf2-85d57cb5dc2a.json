@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add new rules covering usage of Griffel",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
