@@ -12,5 +12,7 @@ export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {}
 /**
  * State used in rendering {{componentName}}
  */
- // TODO: Replace never below with union of props to pick from {{componentName}}Props above.
-export type {{componentName}}State = ComponentState<{{componentName}}Slots> & Required<Pick<{{componentName}}Props, never>>;
+export type {{componentName}}State = ComponentState<{{componentName}}Slots>;
+// TODO: Uncomment following section and provide union of props to pick from {{componentName}}Props.
+// & Required<Pick<{{componentName}}Props, 'propName'>>
+;
