@@ -1,25 +1,26 @@
 import * as React from 'react';
 
-type PortalCommons = {
+export type PortalProps = {
   /**
    * React children
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
+
   /**
    * Where the portal children are mounted on DOM
-   * @defaultValue a new element on document.body without any styling
+   *
+   * @default a new element on document.body without any styling
    */
-  mountNode: HTMLElement | null;
+  mountNode?: HTMLElement | null;
 };
 
-export type PortalProps = Partial<PortalCommons>;
+export type PortalState = Pick<PortalProps, 'children'> &
+  Required<Pick<PortalProps, 'mountNode'>> & {
+    /** Indicates if a Portal should be rendered. */
+    shouldRender: boolean;
 
-export type PortalState = PortalCommons & {
-  /** Indicates if a Portal should be rendered. */
-  shouldRender: boolean;
-
-  /**
-   * Ref to the root span element as virtual parent
-   */
-  virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
-};
+    /**
+     * Ref to the root span element as virtual parent
+     */
+    virtualParentRootRef: React.MutableRefObject<HTMLSpanElement | null>;
+  };
