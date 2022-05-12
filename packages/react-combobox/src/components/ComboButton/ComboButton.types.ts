@@ -12,7 +12,10 @@ export type ComboButtonSlots = {
   expandIcon: Slot<'span'>;
 };
 
-type ComboButtonCommons = {
+/**
+ * ComboButton Props
+ */
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & {
   /**
    * Controls the colors and borders of the combobox.
    * @default 'outline'
@@ -31,13 +34,6 @@ type ComboButtonCommons = {
 };
 
 /**
- * ComboButton Props
- */
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
-
-/**
  * State used in rendering ComboButton
  */
-export type ComboButtonState = ComponentState<ComboButtonSlots> &
-  ComboButtonCommons &
-  Pick<ComboboxState, 'appearance' | 'size'>;
+export type ComboButtonState = ComponentState<ComboButtonSlots> & Pick<ComboboxState, 'appearance' | 'size'>;

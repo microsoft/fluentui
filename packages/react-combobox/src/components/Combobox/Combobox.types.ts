@@ -18,49 +18,17 @@ export type ComboboxSlots = {
   trigger: NonNullable<Slot<typeof ComboButton>>;
 };
 
-type ComboboxCommons = {
-  /**
-   * Controls the colors and borders of the combobox.
-   * @default 'outline'
-   */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-
-  /**
-   * Render the combobox dropdown inline in the DOM.
-   * This has accessibility benefits, particularly for touch screen readers.
-   */
-  inline?: boolean;
-
-  /**
-   * Sets the open/closed state of the dropdown.
-   * Use together with onOpenChange to fully control the dropdown's visibility
-   */
-  open?: boolean;
-
-  /**
-   * If set, the placeholder will show when no value is selected
-   */
-  placeholder?: string;
-
-  /**
-   * Controls the size of the combobox faceplate
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
-
-  /**
-   * The value displayed by the Combobox.
-   * Use this with `onSelect` to directly control the displayed value string
-   */
-  value?: string;
-};
-
 /**
  * Combobox Props
  */
 export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
-  ComboboxCommons &
   SelectionProps & {
+    /**
+     * Controls the colors and borders of the combobox.
+     * @default 'outline'
+     */
+    appearance?: 'filledDarker' | 'filledLighter' | 'outline' | 'underline';
+
     /**
      * The default open state when open is uncontrolled
      */
@@ -72,9 +40,26 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
     defaultValue?: string;
 
     /**
+     * Render the combobox dropdown inline in the DOM.
+     * This has accessibility benefits, particularly for touch screen readers.
+     */
+    inline?: boolean;
+
+    /**
      * Callback when the open/closed state of the dropdown changes
      */
     onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
+
+    /**
+     * Sets the open/closed state of the dropdown.
+     * Use together with onOpenChange to fully control the dropdown's visibility
+     */
+    open?: boolean;
+
+    /**
+     * If set, the placeholder will show when no value is selected
+     */
+    placeholder?: string;
 
     /**
      * Configure the positioning of the combobox dropdown
@@ -82,14 +67,26 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
      * @defaultvalue below
      */
     positioning?: PositioningShorthand;
+
+    /**
+     * Controls the size of the combobox faceplate
+     * @default 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
+
+    /**
+     * The value displayed by the Combobox.
+     * Use this with `onSelect` to directly control the displayed value string
+     */
+    value?: string;
   };
 
 /**
  * State used in rendering Combobox
  */
 export type ComboboxState = ComponentState<ComboboxSlots> &
-  Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> &
-  Pick<ComboboxCommons, 'placeholder' | 'value'> &
+  Required<Pick<ComboboxProps, 'appearance' | 'inline' | 'open' | 'size'>> &
+  Pick<ComboboxProps, 'placeholder' | 'value'> &
   OptionCollectionState &
   SelectionState & {
     /* Option data for the currently highlighted option (not the selected option) */
@@ -112,6 +109,6 @@ export type ComboboxOpenChangeData = {
 
 /* Possible event types for onOpen */
 export type ComboboxOpenEvents =
-  | React.MouseEvent<HTMLElement>
+  | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
-  | React.FocusEvent<HTMLElement>;
+  | React.MouseEvent<HTMLElement>;
