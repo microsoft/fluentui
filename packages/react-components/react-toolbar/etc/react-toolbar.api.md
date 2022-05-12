@@ -90,10 +90,14 @@ export type ToolbarRadioGroupProps = RadioGroupProps;
 export type ToolbarRadioGroupState = RadioGroupState;
 
 // @public
-export type ToolbarRadioProps = RadioProps;
+export type ToolbarRadioProps = RadioProps & {
+    size?: 'small' | 'medium';
+};
 
 // @public
-export type ToolbarRadioState = RadioState;
+export type ToolbarRadioState = RadioState & {
+    size?: 'small' | 'medium';
+};
 
 // @public (undocumented)
 export type ToolbarSlots = {
