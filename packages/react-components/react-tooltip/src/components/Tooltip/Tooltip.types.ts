@@ -93,7 +93,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
      *
      * @default 250
      */
-    showDelay: number;
+    showDelay?: number;
 
     /**
      * Control the tooltip's visibility programatically.
