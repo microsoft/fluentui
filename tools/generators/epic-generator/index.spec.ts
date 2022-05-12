@@ -83,20 +83,26 @@ describe('epic-generator', () => {
     it('requires a title', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, {} as any)).toThrowError('Must provide a title for the issue');
+      expect(() => epicGenerator(tree, {} as any)).toThrowErrorMatchingInlineSnapshot(
+        `"Must provide a title for the issue"`,
+      );
     });
 
     it('requires a non-empty title', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: ' ' })).toThrowError('Must provide a title for the issue');
+      expect(() => epicGenerator(tree, { title: ' ' })).toThrowErrorMatchingInlineSnapshot(
+        `"Must provide a title for the issue"`,
+      );
     });
 
     it('requires a well formatted repository', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' })).toThrowError(
-        'Must provide a valid repository with the format {owner}/{repositoryName}',
+      expect(() =>
+        epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }),
+      ).toThrowErrorMatchingInlineSnapshot(
+        `"Must provide a valid repository with the format {owner}/{repositoryName}"`,
       );
     });
   });
@@ -108,17 +114,19 @@ describe('epic-generator', () => {
       });
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrow(
-        stripIndents`Error calling GitHub CLI (gh). Please make sure it's installed correctly.
-          command not found.`,
-      );
+      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowErrorMatchingInlineSnapshot(`
+        "Error calling GitHub CLI (gh). Please make sure it's installed correctly.
+        command not found."
+      `);
     });
 
     it('requires you to have logged in with gh', () => {
       execSyncMock.mockReturnValueOnce('You are not logged into any GitHub hosts. Run gh auth login to authenticate.');
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrow('You are not logged into GitHub CLI (gh).');
+      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowErrorMatchingInlineSnapshot(
+        `"You are not logged into GitHub CLI (gh)."`,
+      );
     });
   });
 
