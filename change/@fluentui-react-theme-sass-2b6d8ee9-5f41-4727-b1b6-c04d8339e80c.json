@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add SASS variables mapped to CSS variables provided by react-theme",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
