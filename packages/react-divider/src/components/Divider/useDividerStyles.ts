@@ -103,6 +103,8 @@ const useBaseStyles = makeStyles({
     },
   },
   subtle: {
+    color: tokens.colorNeutralForeground2,
+
     ':before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
@@ -112,6 +114,8 @@ const useBaseStyles = makeStyles({
     },
   },
   strong: {
+    color: tokens.colorNeutralForeground2,
+
     ':before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
