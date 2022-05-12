@@ -4,16 +4,13 @@ export type {{componentName}}Slots = {
   root: Slot<'div'>;
 };
 
-type {{componentName}}Commons = {
-  // TODO Add things shared between props and state here
-};
-
 /**
  * {{componentName}} Props
  */
-export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {{componentName}}Commons;
+export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {};
 
 /**
  * State used in rendering {{componentName}}
  */
-export type {{componentName}}State = ComponentState<{{componentName}}Slots> & {{componentName}}Commons;
+ // TODO: Replace never below with union of props to pick from {{componentName}}Props above.
+export type {{componentName}}State = ComponentState<{{componentName}}Slots> & Required<Pick<{{componentName}}Props, never>>;
