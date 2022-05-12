@@ -4,87 +4,91 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
  * Text slots
  */
 export type TextSlots = {
-  root: Slot<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
-};
-
-type TextCommons = {
-  /**
-   * Wraps the text content on white spaces.
-   *
-   * @defaultValue true
-   */
-  wrap: boolean;
-
-  /**
-   * Truncate overflowing text for block displays.
-   *
-   * @defaultValue false
-   */
-  truncate: boolean;
-
-  /**
-   * Applies a block display for the content.
-   *
-   * @defaultValue false
-   */
-  block: boolean;
-
-  /**
-   * Applies the italic font style to the content.
-   *
-   * @defaultValue false
-   */
-  italic: boolean;
-
-  /**
-   * Applies the underline text decoration to the content.
-   *
-   * @defaultValue false
-   */
-  underline: boolean;
-
-  /**
-   * Applies the strikethrough text decoration to the content.
-   *
-   * @defaultValue false
-   */
-  strikethrough: boolean;
-
-  /**
-   * Applies font size and line height based on the theme tokens.
-   *
-   * @defaultValue 300
-   */
-  size: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
-
-  /**
-   * Applies the font family to the content.
-   *
-   * @defaultValue base
-   */
-  font: 'base' | 'monospace' | 'numeric';
-
-  /**
-   * Applies font weight to the content.
-   *
-   * @defaultValue regular
-   */
-  weight: 'regular' | 'medium' | 'semibold';
-
-  /**
-   * Aligns text based on the parent container.
-   *
-   * @defaultValue start
-   */
-  align: 'start' | 'center' | 'end' | 'justify';
+  root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
 };
 
 /**
  * Text Props
  */
-export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
+export type TextProps = ComponentProps<TextSlots> & {
+  /**
+   * Aligns text based on the parent container.
+   *
+   * @default start
+   */
+  align?: 'start' | 'center' | 'end' | 'justify';
+
+  /**
+   * Applies a block display for the content.
+   *
+   * @default false
+   */
+  block?: boolean;
+
+  /**
+   * Applies the font family to the content.
+   *
+   * @default base
+   */
+  font?: 'base' | 'monospace' | 'numeric';
+
+  /**
+   * Applies the italic font style to the content.
+   *
+   * @default false
+   */
+  italic?: boolean;
+
+  /**
+   * Applies font size and line height based on the theme tokens.
+   *
+   * @default 300
+   */
+  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+
+  /**
+   * Applies the strikethrough text decoration to the content.
+   *
+   * @default false
+   */
+  strikethrough?: boolean;
+
+  /**
+   * Truncate overflowing text for block displays.
+   *
+   * @default false
+   */
+  truncate?: boolean;
+
+  /**
+   * Applies the underline text decoration to the content.
+   *
+   * @default false
+   */
+  underline?: boolean;
+
+  /**
+   * Applies font weight to the content.
+   *
+   * @default regular
+   */
+  weight?: 'regular' | 'medium' | 'semibold';
+
+  /**
+   * Wraps the text content on white spaces.
+   *
+   * @default true
+   */
+  wrap?: boolean;
+};
 
 /**
  * State used in rendering Text
  */
-export type TextState = ComponentState<TextSlots> & TextCommons;
+export type TextState = ComponentState<TextSlots> &
+  Required<
+    Pick<
+      TextProps,
+      'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'
+    >
+  >;
