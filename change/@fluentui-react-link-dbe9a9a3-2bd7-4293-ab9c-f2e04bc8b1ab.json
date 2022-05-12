@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing LinkCommon type.",
+  "packageName": "@fluentui/react-link",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
