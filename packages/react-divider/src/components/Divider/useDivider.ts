@@ -8,7 +8,7 @@ import type { DividerProps, DividerState } from './Divider.types';
  * @param ref - User-provided ref to be passed to the Divider component.
  */
 export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElement>): DividerState => {
-  const { alignContent = 'center', appearance, inset = false, vertical = false, wrapper } = props;
+  const { alignContent = 'center', appearance = 'default', inset = false, vertical = false, wrapper } = props;
   const dividerId = useId('divider-');
 
   return {
