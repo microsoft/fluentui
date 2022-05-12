@@ -12,7 +12,7 @@ function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSche
     `);
   }
 
-  if ((schema.title || '').trim() === '') {
+  if (schema.title.trim().length === 0) {
     throw new Error('Must provide a title for the issue');
   }
 
