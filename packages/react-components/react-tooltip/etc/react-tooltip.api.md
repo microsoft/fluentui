@@ -40,7 +40,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> & Pick<PortalProps, 'mou
     onVisibleChange?: (event: React_2.PointerEvent<HTMLElement> | React_2.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => void;
     positioning?: PositioningShorthand;
     relationship: 'label' | 'description' | 'inaccessible';
-    showDelay: number;
+    showDelay?: number;
     visible?: boolean;
     withArrow?: boolean;
 };

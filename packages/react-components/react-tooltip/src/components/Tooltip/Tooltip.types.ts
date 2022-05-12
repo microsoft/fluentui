@@ -103,7 +103,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
      * If not provided, the visibility will be controlled by the tooltip itself, based on hover and focus events on the
      * trigger (child) element.
      *
-     * @default visible
+     * @default false
      */
     visible?: boolean;
 
