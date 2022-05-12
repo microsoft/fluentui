@@ -1,9 +1,9 @@
 import { Alert } from '../index';
 
 import descriptionMd from './AlertDescription.md';
-import bestPracticesMd from './AlertBestPractices.md';
 
 export { Default } from './AlertDefault.stories';
+export { Intent } from './AlertIntent.stories';
 
 export default {
   title: 'Components/Alert',
@@ -11,7 +11,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

@@ -1,34 +1,25 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Avatar } from '@fluentui/react-avatar';
+// import { Avatar } from '@fluentui/react-avatar';
+import { Button } from '@fluentui/react-button';
 
 export type AlertSlots = {
   root: NonNullable<Slot<'div'>>;
-  icon: NonNullable<Slot<'span'>>;
+  icon?: Slot<'span'>;
   content: NonNullable<Slot<'span'>>;
-  action: NonNullable<Slot<'span'>>;
+  action?: Slot<typeof Button>;
 };
 
 type AlertCommons = {
   /**
    * The intent for the alert
    */
-  intent?: 'info' | 'success' | 'error' | 'warning' | 'infoAvatar';
+  // intent?: 'info' | 'success' | 'error' | 'warning' | 'infoAvatar';
+  intent?: 'info' | 'success' | 'error' | 'warning';
 
-  /**
-   * The text string to be displayed in the alert
-   */
-  content?: string;
-
-  /**
-   * Determines if the user can dimiss the alert using a close button
-   */
-  dismissible?: boolean;
-
-  /**
-   * TODO - Should we just accept a button here? Or create a button using this
-   * prop value?
-   */
-  action?: string;
+  // /**
+  //  * Determines if the user can dimiss the alert using a close button
+  //  */
+  // dismissible?: boolean;
 };
 
 /**
@@ -39,12 +30,11 @@ export type AlertProps = ComponentProps<AlertSlots> &
     /**
      * Callback for when the alert is shown/hidden
      */
-    onVisibleChange?: () => void;
-
+    // onVisibleChange?: () => void;
     /**
      * The avatar component to render when intent is infoAvatar
      */
-    avatar?: typeof Avatar;
+    // avatar?: typeof Avatar;
   };
 
 /**
