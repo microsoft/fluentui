@@ -6,7 +6,10 @@ import { isPackageConverged } from '../../utils';
 
 function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSchema> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
-    throw new Error('Must provide a valid repository with the format {owner}/{repositoryName}');
+    throw new Error(stripIndents`
+     You provided "${schema.repository}", which is an invalid repository name.
+     Please follow the format {owner}/{repositoryName}.
+    `);
   }
 
   if ((schema.title || '').trim() === '') {

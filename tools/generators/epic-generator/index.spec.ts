@@ -99,11 +99,11 @@ describe('epic-generator', () => {
     it('requires a well formatted repository', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() =>
-        epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }),
-      ).toThrowErrorMatchingInlineSnapshot(
-        `"Must provide a valid repository with the format {owner}/{repositoryName}"`,
-      );
+      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }))
+        .toThrowErrorMatchingInlineSnapshot(`
+        "You provided \\"invalid_repo\\", which is an invalid repository name.
+        Please follow the format {owner}/{repositoryName}."
+      `);
     });
   });
 
