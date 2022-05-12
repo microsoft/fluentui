@@ -12,51 +12,63 @@ export const imageClassNames: SlotClassNames<ImageSlots> = {
 };
 
 const useStyles = makeStyles({
-  root: {
+  base: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
 
     boxSizing: 'border-box',
     display: 'inline-block',
   },
-  rootBordered: {
+
+  // Bordered styles
+  bordered: {
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
   },
-  rootCircular: {
+
+  // Shape styles
+  circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
-  rootRounded: {
+  rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
-  rootShadow: {
+  square: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  },
+
+  // Shadow styles
+  shadow: {
     boxShadow: tokens.shadow4,
   },
-  rootFitNone: {
+
+  // Fit styles
+  none: {
     objectFit: 'none',
     objectPosition: 'left top',
     height: '100%',
     width: '100%',
   },
-  rootFitCenter: {
+  center: {
     objectFit: 'none',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  rootFitCover: {
+  cover: {
     objectFit: 'cover',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  rootFitContain: {
+  contain: {
     objectFit: 'contain',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  rootBlock: {
+
+  // Block styles
+  block: {
     width: '100%',
   },
 });
@@ -65,16 +77,12 @@ export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     imageClassNames.root,
-    styles.root,
-    state.bordered && styles.rootBordered,
-    state.shape === 'circular' && styles.rootCircular,
-    state.shape === 'rounded' && styles.rootRounded,
-    state.shadow && styles.rootShadow,
-    state.fit === 'none' && styles.rootFitNone,
-    state.fit === 'center' && styles.rootFitCenter,
-    state.fit === 'cover' && styles.rootFitCover,
-    state.fit === 'contain' && styles.rootFitContain,
-    state.block && styles.rootBlock,
+    styles.base,
+    styles[state.fit],
+    styles[state.shape],
+    state.block && styles.block,
+    state.bordered && styles.bordered,
+    state.shadow && styles.shadow,
     state.root.className,
   );
 };

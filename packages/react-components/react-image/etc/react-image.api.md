@@ -22,7 +22,13 @@ export const imageClassName = "fui-Image";
 export const imageClassNames: SlotClassNames<ImageSlots>;
 
 // @public (undocumented)
-export type ImageProps = ComponentProps<ImageSlots> & Partial<ImageCommons>;
+export type ImageProps = ComponentProps<ImageSlots> & {
+    block?: boolean;
+    bordered?: boolean;
+    fit?: 'none' | 'center' | 'contain' | 'cover';
+    shadow?: boolean;
+    shape?: 'square' | 'circular' | 'rounded';
+};
 
 // @public (undocumented)
 export type ImageSlots = {
@@ -30,7 +36,7 @@ export type ImageSlots = {
 };
 
 // @public (undocumented)
-export type ImageState = ComponentState<ImageSlots> & ImageCommons;
+export type ImageState = ComponentState<ImageSlots> & Required<Pick<ImageProps, 'block' | 'bordered' | 'fit' | 'shadow' | 'shape'>>;
 
 // @public
 export const renderImage_unstable: (state: ImageState) => JSX.Element;
