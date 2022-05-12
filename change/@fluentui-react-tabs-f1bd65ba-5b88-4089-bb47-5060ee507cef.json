@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export",
-  "packageName": "@fluentui/react-tabs",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

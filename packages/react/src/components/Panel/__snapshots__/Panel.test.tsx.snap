@@ -97,7 +97,6 @@ exports[`Panel renders Panel correctly 1`] = `
         class=
             ms-Panel-contentInner
             {
-              background: inherit;
               display: flex;
               flex-direction: column;
               flex-grow: 1;
@@ -108,7 +107,6 @@ exports[`Panel renders Panel correctly 1`] = `
           class=
               ms-Panel-scrollableContent
               {
-                background: inherit;
                 overflow-y: auto;
               }
           data-is-scrollable="true"
@@ -117,8 +115,7 @@ exports[`Panel renders Panel correctly 1`] = `
             class=
                 ms-Panel-commands
                 {
-                  background: inherit;
-                  margin-top: 18px;
+                  padding-top: 18px;
                 }
                 @media (min-height: 480px){& {
                   position: sticky;
@@ -222,7 +219,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       right: -2px;
                       top: -2px;
                     }
-                    &:active > * {
+                    &:active > span {
                       left: 0px;
                       position: relative;
                       top: 0px;

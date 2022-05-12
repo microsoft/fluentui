@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/index.d.ts"
+}

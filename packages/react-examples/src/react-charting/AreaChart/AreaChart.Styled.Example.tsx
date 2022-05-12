@@ -80,7 +80,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: '#0099BC',
         opacity: 0.7,
         lineOptions: {
           strokeWidth: 2,
@@ -90,7 +90,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
       {
         legend: 'legend2',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: '#77004D',
         opacity: 0.8,
         lineOptions: {
           strokeWidth: 5,
@@ -119,6 +119,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           id="changeWidth_Styled"
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+
         />
         <label htmlFor="changeHeight_Styled">change Height:</label>
         <input
@@ -129,6 +130,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
           id="changeHeight_Styled"
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
+
         />
         <div style={rootStyle}>
           <AreaChart

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moved react-tabs to stable and rc.1",
+  "packageName": "@fluentui/react-components",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

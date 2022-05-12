@@ -177,7 +177,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           max={1000}
           id="changeWidth_Custom"
           onChange={this._onWidthChange}
+
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+
         />
         <label htmlFor="changeHeight_Custom">change Height:</label>
         <input
@@ -187,7 +189,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           max={1000}
           id="changeHeight_Custom"
           onChange={this._onHeightChange}
+
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
+
         />
         <ChoiceGroup
           options={options}

@@ -7,15 +7,13 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
-  bodyFont,
   controlCornerRadius,
   designUnit,
   focusStrokeOuter,
   focusStrokeWidth,
   neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,
@@ -26,10 +24,7 @@ export const dataGridCellStyles: (
       padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
       color: ${neutralForegroundRest};
       box-sizing: border-box;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      font-weight: 400;
+      ${typeRampBase}
       border: transparent calc(${focusStrokeWidth} * 1px) solid;
       overflow: hidden;
       outline: none;

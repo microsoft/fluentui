@@ -23,7 +23,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="LineChart"
+        title="Line Chart"
         componentName="LineChartExample"
         exampleCards={
           <div>
@@ -52,6 +52,15 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>
+              Use a line graph to visualize data sets over a period of time for an individual or group of items. The
+              amount of lines (data sets) depend on the attributes selected during the report creation.
+            </p>
+            <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
+          </div>
+        }
       />
     );
   }

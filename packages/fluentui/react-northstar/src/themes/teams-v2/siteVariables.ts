@@ -1,3 +1,5 @@
+import { transparentColors } from '../teams/colors';
+
 export const colors = {
   black: '#000',
   white: '#fff',
@@ -6,6 +8,7 @@ export const colors = {
     50: '#f5f5f5',
     100: '#f0f0f0',
     150: '#ebebeb',
+    175: '#e6e6e6',
     200: '#e0e0e0',
     220: '#d6d6d6',
     230: '#d1d1d1',
@@ -19,8 +22,10 @@ export const colors = {
     440: '#666',
     450: '#616161',
     460: '#5c5c5c',
+    475: '#525252',
     500: '#424242',
     550: '#3d3d3d',
+    575: '#383838',
     600: '#333',
     650: '#2e2e2e',
     700: '#292929',
@@ -56,14 +61,17 @@ export const colorScheme = {
     foreground4: colors.white,
     foreground5: colors.grey['100'],
     foreground6: colors.grey['200'],
-    foreground7: colors.grey['750'],
+    foreground7: colors.grey['450'],
+    foreground8: colors.grey['750'],
 
     background: colors.white,
     background1: colors.grey['25'],
     background2: colors.grey['50'],
     background3: colors.grey['100'],
-    background4: colors.grey['150'],
+    background4: colors.grey['175'],
     background5: colors.grey['200'],
+    background6: colors.grey['150'],
+    background7: colors.grey['50'],
 
     border: colors.grey['230'],
     border1: colors.grey['100'],
@@ -84,17 +92,25 @@ export const colorScheme = {
 
     foregroundPressed: colors.grey['750'],
     backgroundPressed: colors.grey['200'],
+    backgroundPressed2: colors.grey['50'],
+    backgroundPressed3: colors.grey['200'],
 
     foregroundActive: colors.grey['750'],
     foregroundActive1: colors.white,
 
     backgroundActive: colors.grey['150'],
     backgroundActive1: colors.white,
+    backgroundActive2: colors.grey['150'],
 
     borderActive: colors.grey['270'],
 
     // foregroundFocus: not specified,
+    foregroundFocus1: colors.grey['500'],
+    foregroundFocus2: colors.grey['500'],
     // backgroundFocus: not specified,
+    backgroundFocus1: colors.grey['25'],
+    backgroundFocus2: colors.grey['50'],
+    backgroundFocus3: colors.grey['150'],
 
     borderFocus: colors.black,
     borderFocusWithin: colors.white,
@@ -116,7 +132,7 @@ export const colorScheme = {
     background5: colors.brand['100'],
 
     foreground: colors.brand['600'],
-    foreground1: colors.brand['600'],
+    foreground1: colors.brand['700'],
     foreground2: colors.brand['700'],
     foreground3: colors.brand['200'],
     foreground4: colors.white,
@@ -131,15 +147,16 @@ export const colorScheme = {
 
     borderHover: colors.brand['300'],
 
-    backgroundHover: colors.brand['600'],
+    backgroundHover: colors.brand['700'],
     backgroundHover1: colors.brand['50'],
+    backgroundHover3: colors.brand['600'],
 
     foregroundPressed: colors.brand['700'],
     foregroundPressed1: colors.white,
 
     backgroundPressed: colors.brand['800'],
 
-    borderPressed: colors.brand['300'],
+    borderPressed: transparentColors.onyx['700'],
 
     foregroundActive: colors.brand['600'],
     foregroundActive1: colors.brand['600'],
@@ -148,7 +165,7 @@ export const colorScheme = {
     backgroundActive: colors.brand['600'],
     backgroundActive1: colors.brand['600'],
 
-    borderActive: colors.grey['200'],
+    borderActive: colors.grey['270'],
     borderActive1: colors.brand['50'],
     borderActive2: colors.brand['300'],
 

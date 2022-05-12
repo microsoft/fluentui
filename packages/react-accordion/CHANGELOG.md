@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Fri, 04 Mar 2022 05:17:33 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.9)
+
+Thu, 05 May 2022 18:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.8..@fluentui/react-accordion_v9.0.0-rc.9)
+
+### Changes
+
+- Bump @fluentui/react-aria to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.8)
+
+Wed, 04 May 2022 13:26:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.7..@fluentui/react-accordion_v9.0.0-rc.8)
+
+### Changes
+
+- remove star exports ([PR #22682](https://github.com/microsoft/fluentui/pull/22682) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.7)
+
+Mon, 25 Apr 2022 09:32:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.6..@fluentui/react-accordion_v9.0.0-rc.7)
+
+### Changes
+
+- Adjusting accordion keyboard navigation. ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by marata@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.7 ([PR #22601](https://github.com/microsoft/fluentui/pull/22601) by beachball)
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.6)
+
+Tue, 19 Apr 2022 19:17:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.0-rc.5..@fluentui/react-accordion_v9.0.0-rc.6)
+
+### Changes
+
+- Add static classnames to Accordion ([PR #21960](https://github.com/microsoft/fluentui/pull/21960) by seanmonahan@microsoft.com)
+- add missing dependencies ([PR #21924](https://github.com/microsoft/fluentui/pull/21924) by martinhochel@microsoft.com)
+- update react-icons version to ^2.0.166-rc.3 from ^2.0.159-beta.10 ([PR #22512](https://github.com/microsoft/fluentui/pull/22512) by seanmonahan@microsoft.com)
+- chore: Update Griffel to latest version ([PR #21976](https://github.com/microsoft/fluentui/pull/21976) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.5 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.6 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4 ([PR #21995](https://github.com/microsoft/fluentui/pull/21995) by beachball)
 
 ## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.0-rc.5)
 

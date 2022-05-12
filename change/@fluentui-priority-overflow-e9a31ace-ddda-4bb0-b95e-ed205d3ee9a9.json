@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Initial beta release",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

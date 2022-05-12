@@ -1,373 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Facepile renders Facepile correctly 1`] = `
-<div
-  className=
-      ms-Facepile
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: auto;
-      }
->
+<div>
   <div
-    className=
-        ms-Facepile-itemContainer
+    class=
+        ms-Facepile
         {
-          display: flex;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: auto;
         }
   >
-    <ul
-      className=
-          ms-Facepile-members
+    <div
+      class=
+          ms-Facepile-itemContainer
           {
             display: flex;
-            list-style-type: none;
-            margin-bottom: -2px;
-            margin-left: -2px;
-            margin-right: -2px;
-            margin-top: -2px;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
           }
     >
-      <li
-        className=
-            ms-Facepile-member
+      <ul
+        class=
+            ms-Facepile-members
             {
-              display: inline-flex;
-              flex: 0 0 auto;
-              margin-bottom: 2px;
-              margin-left: 2px;
-              margin-right: 2px;
-              margin-top: 2px;
+              display: flex;
+              list-style-type: none;
+              margin-bottom: -2px;
+              margin-left: -2px;
+              margin-right: -2px;
+              margin-top: -2px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
             }
       >
-        <div
-          className=
-              ms-Facepile-itemButton
-              ms-Facepile-person
+        <li
+          class=
+              ms-Facepile-member
               {
-                background-color: transparent;
-                border-radius: 50%;
-                border: none;
-                display: inline;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                text-align: center;
-                vertical-align: top;
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
               }
-              &::-moz-focus-inner {
-                border: 0px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
-          data-is-focusable={true}
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          title="Annie Lindqvist"
         >
           <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
+            class=
+                ms-Facepile-itemButton
+                ms-Facepile-person
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
-            role="presentation"
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data-is-focusable="true"
+            title="Annie Lindqvist"
           >
             <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        object-fit: cover;
-                        opacity: 0;
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li
-        className=
-            ms-Facepile-member
-            {
-              display: inline-flex;
-              flex: 0 0 auto;
-              margin-bottom: 2px;
-              margin-left: 2px;
-              margin-right: 2px;
-              margin-top: 2px;
-            }
-      >
-        <div
-          className=
-              ms-Facepile-itemButton
-              ms-Facepile-person
-              {
-                background-color: transparent;
-                border-radius: 50%;
-                border: none;
-                display: inline;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                text-align: center;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
-          data-is-focusable={true}
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          title="Aaron Reid"
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-              role="presentation"
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        object-fit: cover;
-                        opacity: 0;
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li
-        className=
-            ms-Facepile-member
-            {
-              display: inline-flex;
-              flex: 0 0 auto;
-              margin-bottom: 2px;
-              margin-left: 2px;
-              margin-right: 2px;
-              margin-top: 2px;
-            }
-      >
-        <button
-          className=
-              ms-Button
-              ms-Facepile-itemButton
-              ms-Facepile-person
-              ms-Button--facepile
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 50%;
-                border: none;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: inline;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                outline: transparent;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
-                bottom: 2px;
-                content: "";
-                left: 2px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 2px;
-                top: 2px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseMove={[Function]}
-          onMouseOut={[Function]}
-          onMouseUp={[Function]}
-          title="Alex Lundberg"
-          type="button"
-        >
-          <span
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-            data-automationid="splitbuttonprimary"
-          >
-            <div
-              className=
+              class=
                   ms-Persona-coin
                   ms-Persona--size32
                   {
@@ -380,7 +90,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               role="presentation"
             >
               <div
-                className=
+                class=
                     ms-Persona-imageArea
                     {
                       flex: 0 0 auto;
@@ -392,40 +102,306 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 role="presentation"
               >
                 <div
-                  aria-hidden="true"
-                  className=
-                      ms-Persona-initials
+                  class=
+                      ms-Image
+                      ms-Persona-image
                       {
-                        background-color: #8E562E;
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
                         border-radius: 50%;
-                        color: #ffffff;
+                        border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
-                        font-weight: 600;
+                        font-weight: 400;
                         height: 32px;
-                        line-height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        -ms-high-contrast-adjust: none;
-                        background-color: Window !important;
-                        border: 1px solid WindowText;
-                        box-sizing: border-box;
-                        color: WindowText;
-                        forced-color-adjust: none;
-                      }
-                      & i {
-                        font-weight: 600;
-                      }
+                  style="width: 32px; height: 32px;"
                 >
-                  <span>
-                    AL
-                  </span>
+                  <img
+                    alt=""
+                    class=
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
+                        {
+                          display: block;
+                          height: 100%;
+                          object-fit: cover;
+                          opacity: 0;
+                          width: 100%;
+                        }
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
                 </div>
               </div>
             </div>
-          </span>
-        </button>
-      </li>
-    </ul>
+          </div>
+        </li>
+        <li
+          class=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
+            class=
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                {
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data-is-focusable="true"
+            title="Aaron Reid"
+          >
+            <div
+              class=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+              role="presentation"
+            >
+              <div
+                class=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+                role="presentation"
+              >
+                <div
+                  class=
+                      ms-Image
+                      ms-Persona-image
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        border-radius: 50%;
+                        border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
+                      }
+                  style="width: 32px; height: 32px;"
+                >
+                  <img
+                    alt=""
+                    class=
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
+                        {
+                          display: block;
+                          height: 100%;
+                          object-fit: cover;
+                          opacity: 0;
+                          width: 100%;
+                        }
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          class=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <button
+            class=
+                ms-Button
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                ms-Button--facepile
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: inline;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > span {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+            data-is-focusable="true"
+            title="Alex Lundberg"
+            type="button"
+          >
+            <span
+              class=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <div
+                class=
+                    ms-Persona-coin
+                    ms-Persona--size32
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                    }
+                role="presentation"
+              >
+                <div
+                  class=
+                      ms-Persona-imageArea
+                      {
+                        flex: 0 0 auto;
+                        height: 32px;
+                        position: relative;
+                        text-align: center;
+                        width: 32px;
+                      }
+                  role="presentation"
+                >
+                  <div
+                    aria-hidden="true"
+                    class=
+                        ms-Persona-initials
+                        {
+                          background-color: #8E562E;
+                          border-radius: 50%;
+                          color: #ffffff;
+                          font-size: 14px;
+                          font-weight: 600;
+                          height: 32px;
+                          line-height: 32px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          -ms-high-contrast-adjust: none;
+                          background-color: Window !important;
+                          border: 1px solid WindowText;
+                          box-sizing: border-box;
+                          color: WindowText;
+                          forced-color-adjust: none;
+                        }
+                        & i {
+                          font-weight: 600;
+                        }
+                  >
+                    <span>
+                      AL
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 `;
