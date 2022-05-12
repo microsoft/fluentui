@@ -51,11 +51,6 @@ export type ToolbarButtonState = ComponentState<Partial<ButtonSlots>> & ButtonSt
 export const toolbarClassNames: SlotClassNames<ToolbarSlots>;
 
 // @public (undocumented)
-export type ToolbarCommons = {
-    size?: 'small' | 'medium';
-};
-
-// @public (undocumented)
 export type ToolbarContextValue = {
     size: ToolbarProps['size'];
 };
@@ -75,7 +70,9 @@ export type ToolbarDividerProps = ComponentProps<Partial<DividerSlots>>;
 export type ToolbarDividerState = ComponentState<Partial<DividerSlots>> & DividerState;
 
 // @public
-export type ToolbarProps = ComponentProps<ToolbarSlots> & ToolbarCommons;
+export type ToolbarProps = ComponentProps<ToolbarSlots> & {
+    size?: 'small' | 'medium';
+};
 
 // @public
 export const ToolbarRadio: ForwardRefComponent<ToolbarRadioProps>;
@@ -105,7 +102,7 @@ export type ToolbarSlots = {
 };
 
 // @public
-export type ToolbarState = ComponentState<ToolbarSlots> & ToolbarCommons;
+export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarProps, 'size'>>;
 
 // @public
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;

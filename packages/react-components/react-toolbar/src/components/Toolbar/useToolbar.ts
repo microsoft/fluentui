@@ -18,7 +18,11 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     axis: 'horizontal',
   });
 
+  const { size = 'medium' } = props;
+
   return {
+    size,
+
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
