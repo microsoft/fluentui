@@ -532,8 +532,6 @@ export {
   /* eslint-disable-next-line deprecation/deprecation */
   caption1ClassName,
   /* eslint-disable-next-line deprecation/deprecation */
-  caption2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
   displayClassName,
   /* eslint-disable-next-line deprecation/deprecation */
   subtitle1ClassName,

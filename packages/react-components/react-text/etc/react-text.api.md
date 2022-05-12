@@ -33,9 +33,6 @@ export const caption1ClassNames: SlotClassNames<TextSlots>;
 // @public
 export const Caption2: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const caption2ClassName = "fui-Caption2";
-
 // @public (undocumented)
 export const caption2ClassNames: SlotClassNames<TextSlots>;
 

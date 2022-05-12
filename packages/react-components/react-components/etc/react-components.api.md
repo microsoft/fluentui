@@ -73,7 +73,6 @@ import { Caption1 } from '@fluentui/react-text';
 import { caption1ClassName } from '@fluentui/react-text';
 import { caption1ClassNames } from '@fluentui/react-text';
 import { Caption2 } from '@fluentui/react-text';
-import { caption2ClassName } from '@fluentui/react-text';
 import { caption2ClassNames } from '@fluentui/react-text';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
@@ -637,8 +636,6 @@ export { caption1ClassName }
 export { caption1ClassNames }
 
 export { Caption2 }
-
-export { caption2ClassName }
 
 export { caption2ClassNames }
 
