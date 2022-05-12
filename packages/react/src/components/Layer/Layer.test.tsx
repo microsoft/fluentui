@@ -5,8 +5,6 @@ import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
 import { render } from '@testing-library/react';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore "react-portal-compat-context" uses v9 configs via path aliases
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
