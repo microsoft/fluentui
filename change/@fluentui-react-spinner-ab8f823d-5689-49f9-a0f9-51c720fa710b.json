@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated to use tokens were possible",
+  "packageName": "@fluentui/react-spinner",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
