@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing PopoverCommons type.",
+  "packageName": "@fluentui/react-popover",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
