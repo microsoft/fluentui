@@ -17,5 +17,6 @@
       "description": "Message used in the body of the epic"
     }
   },
+  "additionalProperties": false,
   "required": ["title"]
 }
