@@ -83,7 +83,6 @@ export type {
   SpinButtonState,
   SpinButtonSpinState,
   SpinButtonBounds,
-  SpinButtonStrings,
 } from '@fluentui/react-spinbutton';
 
 export {

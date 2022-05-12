@@ -44,7 +44,6 @@ export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'inp
     size?: 'small' | 'medium';
     step?: number;
     stepPage?: number;
-    strings?: SpinButtonStrings;
     value?: number;
 };
 
@@ -63,12 +62,6 @@ export type SpinButtonSpinState = 'rest' | 'up' | 'down';
 export type SpinButtonState = ComponentState<SpinButtonSlots> & Required<Pick<SpinButtonProps, 'appearance' | 'size'>> & {
     spinState: SpinButtonSpinState;
     atBound: SpinButtonBounds;
-};
-
-// @public (undocumented)
-export type SpinButtonStrings = {
-    incrementButtonLabel: string;
-    decrementButtonLabel: string;
 };
 
 // @public
