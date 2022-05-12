@@ -27,7 +27,7 @@ const checkAuthentication = () => {
   let authStatus;
 
   try {
-    authStatus = execSync('ghz auth status', { stdio: [] }).toString();
+    authStatus = execSync('gh auth status', { stdio: [] }).toString();
   } catch (e) {
     throw new Error(`Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${e.message}`);
   }
