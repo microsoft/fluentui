@@ -79,9 +79,9 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     thumbnailColumn.onColumnClick = undefined;
 
     //indicate that all columns except thumbnail column can be sorted
-    columns.forEach((_column: IColumn, index: number) => {
-      if (columns[index].name) {
-        columns[index].isSortable = true;
+    columns.forEach((column: IColumn) => {
+      if (column.name) {
+        column.showSortIconWhenUnsorted = true;
       }
     });
 

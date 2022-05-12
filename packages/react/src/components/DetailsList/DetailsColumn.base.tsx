@@ -165,7 +165,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
                   {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {(column.isSorted || column.isSortable) && (
+                  {(column.isSorted || column.showSortIconWhenUnsorted) && (
                     <IconComponent
                       className={classNames.sortIcon}
                       iconName={column.isSorted ? (column.isSortedDescending ? 'SortDown' : 'SortUp') : 'Sort'}
@@ -309,8 +309,12 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
         hidden
       >
         {(column.isFiltered && column.filterAriaLabel) || null}
-        {(column.isSorted &&
-          (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) ||
+        {((column.isSorted || column.showSortIconWhenUnsorted) &&
+          (column.isSorted
+            ? column.isSortedDescending
+              ? column.sortDescendingAriaLabel
+              : column.sortAscendingAriaLabel
+            : column.sortableAriaLabel)) ||
           null}
         {(column.isGrouped && column.groupAriaLabel) || null}
       </label>

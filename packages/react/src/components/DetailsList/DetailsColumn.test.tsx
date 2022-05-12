@@ -262,7 +262,7 @@ describe('DetailsColumn', () => {
   });
 
   it('renders a sortable icon on an unsorted column is isSortable is set to true', () => {
-    const column: IColumn = { ...baseColumn, isSortable: true, sortableAriaLabel: 'Foo' };
+    const column: IColumn = { ...baseColumn, showSortIconWhenUnsorted: true, sortableAriaLabel: 'Foo' };
 
     const columns = [column];
     let component: any;

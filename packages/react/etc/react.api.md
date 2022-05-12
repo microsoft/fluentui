@@ -3640,7 +3640,6 @@ export interface IColumn {
     isPadded?: boolean;
     isResizable?: boolean;
     isRowHeader?: boolean;
-    isSortable?: boolean;
     isSorted?: boolean;
     isSortedDescending?: boolean;
     key: string;
@@ -3656,6 +3655,7 @@ export interface IColumn {
     onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
+    showSortIconWhenUnsorted?: boolean;
     sortableAriaLabel?: string;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
