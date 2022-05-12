@@ -28,18 +28,10 @@ const useStyles = makeStyles({
     },
   },
   filledLighter: {
-    // display: 'flex',
-    // flexDirection: 'column',
     backgroundColor: '#8a8a8a',
-    // ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    // ...shorthands.padding(tokens.spacingHorizontalMNudge),
   },
   filledDarker: {
-    // display: 'flex',
-    // flexDirection: 'column',
     backgroundColor: '#8a8a8a',
-    // ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    // ...shorthands.padding(tokens.spacingHorizontalMNudge),
   },
 });
 
@@ -84,7 +76,7 @@ export const Appearance = () => {
         <Text>
           The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
           filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
-          surrounding color to pass accessibility requirement.
+          surrounding color to pass accessibility requirements.
         </Text>
       </div>
     </div>
