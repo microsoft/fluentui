@@ -18,7 +18,7 @@ import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
 type InternalState = {
-  value: number;
+  value: number | null;
   spinState: SpinButtonSpinState;
   spinTime: number;
   spinDelay: number;
@@ -47,7 +47,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'size', 'min', 'max'],
+    excludedPropNames: ['onChange', 'size', 'min', 'max', 'value', 'defaultValue'],
   });
 
   const {
@@ -141,7 +141,10 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   React.useEffect(() => {
     let newTextValue;
-    if (value !== undefined) {
+    if (value === null || currentValue === null) {
+      newTextValue = displayValue ?? '';
+      internalState.current.value = null;
+    } else if (value !== undefined) {
       const roundedValue = precisionRound(value, precision);
       newTextValue = displayValue ?? String(roundedValue);
       internalState.current.value = roundedValue;
@@ -163,9 +166,15 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const stepValue = (e: SpinButtonChangeEvent, direction: 'up' | 'down' | 'upPage' | 'downPage') => {
+    const val = internalState.current.value;
+
+    if (val === null) {
+      commit(e, null);
+      return;
+    }
+
     const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
     const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
-    const val = internalState.current.value;
 
     let newValue = val + stepSize * dir;
     if (!Number.isNaN(newValue)) {
@@ -249,7 +258,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     setSpinState('rest');
   };
 
-  const commit = (e: SpinButtonChangeEvent, newValue?: number, newDisplayValue?: string) => {
+  const commit = (e: SpinButtonChangeEvent, newValue?: number | null, newDisplayValue?: string) => {
     const valueChanged = newValue !== undefined && currentValue !== newValue;
     const displayValueChanged =
       newDisplayValue !== undefined &&
@@ -266,13 +275,15 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
     if (valueChanged || displayValueChanged) {
       onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
+    } else if (!valueChanged && newValue === null) {
+      onChange?.(e, { value: null });
     }
   };
 
   state.input.value = textValue;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
-  state.input['aria-valuenow'] = currentValue;
+  state.input['aria-valuenow'] = currentValue === null ? undefined : currentValue;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
   state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);
