@@ -1,9 +1,6 @@
-import {
-    typeRampPlus1FontSize,
-    typeRampPlus1LineHeight,
-} from "@fluentui/web-components";
 import { css } from "@microsoft/fast-element";
 import { display } from "@microsoft/fast-foundation";
+import { typeRampPlus1FontSize, typeRampPlus1LineHeight } from "../../../../../index-rollup";
 
 export const controlPaneStyles = css`
     ${display("flex")} :host {

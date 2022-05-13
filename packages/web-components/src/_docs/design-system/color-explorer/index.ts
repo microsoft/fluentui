@@ -1,4 +1,4 @@
-import { allComponents as fluentComponents, provideFluentDesignSystem } from '@fluentui/web-components';
+import { allComponents as fluentComponents, provideFluentDesignSystem } from '../../../index-rollup';
 import { fastToolingColorPicker } from './components/color-picker';
 import { App } from './app';
 import { appComponents } from './custom-elements';

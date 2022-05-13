@@ -1,4 +1,6 @@
 import { parseColorHexRGB } from '@microsoft/fast-colors';
+import { attr, css, customElement, FASTElement, html, observable, ref, repeat, when } from '@microsoft/fast-element';
+import { DesignToken } from '@microsoft/fast-foundation';
 import {
   accentBaseColor,
   baseLayerLuminance,
@@ -14,9 +16,7 @@ import {
   StandardLuminance,
   Swatch,
   SwatchRGB,
-} from '@fluentui/web-components';
-import { attr, css, customElement, FASTElement, html, observable, ref, repeat, when } from '@microsoft/fast-element';
-import { DesignToken } from '@microsoft/fast-foundation';
+} from '../../../index-rollup';
 import { AppColorBlock } from './components/color-block';
 import { AppControlPane } from './components/control-pane';
 import { AppGradient } from './components/gradient';

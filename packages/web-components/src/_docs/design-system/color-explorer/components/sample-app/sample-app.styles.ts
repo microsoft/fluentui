@@ -1,18 +1,18 @@
 import { css } from "@microsoft/fast-element";
 import { display, forcedColorsStylesheetBehavior } from "@microsoft/fast-foundation";
-import { elevation } from "@fluentui/web-components/dist/esm/styles";
 import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
     bodyFont,
     controlCornerRadius,
     designUnit,
+    elevation,
     fillColor,
     neutralForegroundHint,
     neutralForegroundRest,
     typeRampMinus2FontSize,
     typeRampPlus3FontSize,
     typeRampPlus3LineHeight,
-} from "@fluentui/web-components";
+} from "../../../../../index-rollup";
 
 export const sampleAppStyles = css`
     ${display("flex")}

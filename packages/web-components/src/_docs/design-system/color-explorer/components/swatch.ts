@@ -1,8 +1,7 @@
 import { contrastRatio, parseColor } from '@microsoft/fast-colors';
 import { attr, css, customElement, html, observable } from '@microsoft/fast-element';
-import { fillColor, neutralForegroundHint, Swatch } from '@fluentui/web-components';
-import { elevation } from '@fluentui/web-components/dist/esm/styles/elevation.js';
 import { DesignToken, FoundationElement } from '@microsoft/fast-foundation';
+import { elevation, fillColor, neutralForegroundHint, Swatch } from '../../../../index-rollup';
 
 export enum SwatchTypes {
   fill = 'fill',

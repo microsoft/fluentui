@@ -1,6 +1,6 @@
 import { parseColor } from '@microsoft/fast-colors';
-import { isDark, SwatchRGB } from '@fluentui/web-components';
 import { html, repeat } from '@microsoft/fast-element';
+import { isDark, SwatchRGB } from '../../../../../index-rollup';
 import { Gradient } from './gradient';
 
 function getColor(background) {

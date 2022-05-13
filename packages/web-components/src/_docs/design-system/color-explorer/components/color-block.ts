@@ -1,3 +1,6 @@
+import { parseColorHexRGB } from '@microsoft/fast-colors';
+import { attr, css, customElement, DOM, FASTElement, html, when } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   accentFillActive,
   accentFillHover,
@@ -26,10 +29,7 @@ import {
   neutralStrokeHover,
   neutralStrokeRest,
   SwatchRGB,
-} from '@fluentui/web-components';
-import { parseColorHexRGB } from '@microsoft/fast-colors';
-import { attr, css, customElement, DOM, FASTElement, html, when } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+} from '../../../../index-rollup';
 import { ComponentTypes } from '../app';
 import { AppSwatch } from './swatch';
 

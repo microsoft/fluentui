@@ -1,3 +1,5 @@
+import { attr, css, html, nullableNumberConverter } from '@microsoft/fast-element';
+import { DesignToken, DesignTokenChangeRecord, display, FoundationElement } from '@microsoft/fast-foundation';
 import {
   baseLayerLuminance,
   fillColor,
@@ -8,9 +10,7 @@ import {
   neutralLayer4,
   neutralPalette,
   Swatch,
-} from '@fluentui/web-components';
-import { attr, css, html, nullableNumberConverter } from '@microsoft/fast-element';
-import { DesignToken, DesignTokenChangeRecord, display, FoundationElement } from '@microsoft/fast-foundation';
+} from '../../../../../index-rollup';
 
 export class LayerBackground extends FoundationElement {
   @attr({ attribute: 'base-layer-luminance', converter: nullableNumberConverter })
