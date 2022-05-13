@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add compatibility with components from @fluentui/react-components",
-  "packageName": "@fluentui/react",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

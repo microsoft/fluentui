@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 11 May 2022 07:42:47 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.202.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.31)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.202.30..@fluentui/react-cards_v0.202.31)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.0 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.7 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.19 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
 
 ## [0.202.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.202.30)
 

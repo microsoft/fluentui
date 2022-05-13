@@ -2,14 +2,16 @@ import * as React from 'react';
 import { Textarea, TextareaProps } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
-  container: {
+  base: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
-    '& > div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('10px'), ...shorthands.padding('10px') },
+    '& > label': {
+      marginBottom: tokens.spacingVerticalMNudge,
+    },
   },
 });
 
@@ -23,7 +25,7 @@ export const Uncontrolled = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.base}>
       <Label htmlFor={textareaId}>Uncontrolled Textarea.</Label>
       <Textarea id={textareaId} aria-describedby="desc" onChange={onChange} placeholder="type here..." />
       <span id="desc">Check console for new value.</span>
