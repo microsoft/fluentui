@@ -912,6 +912,9 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React_2.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
+export const CHECK_CELL_WIDTH = 48;
+
+// @public (undocumented)
 export const CheckBase: React_2.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
@@ -1225,6 +1228,9 @@ export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings;
 export { DelayedRender }
 
 export { Depths }
+
+// @public (undocumented)
+export const DetailsColumn: React_2.FunctionComponent<IDetailsColumnProps>;
 
 // @public
 export class DetailsColumnBase extends React_2.Component<IDetailsColumnProps> {
@@ -1685,6 +1691,12 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boo
 // @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
+// @public (undocumented)
+export const getCellStyles: (props: {
+    theme: ITheme;
+    cellStyleProps?: ICellStyleProps | undefined;
+}) => IStyle;
+
 export { getChildren }
 
 // @public
@@ -1702,6 +1714,18 @@ export function getContrastRatio(color1: IColor, color2: IColor): number;
 export { getDatePartHashValue }
 
 export { getDateRangeArray }
+
+// @public (undocumented)
+export const getDetailsColumnStyles: (props: IDetailsColumnStyleProps) => IDetailsColumnStyles;
+
+// @public (undocumented)
+export const getDetailsHeaderStyles: (props: IDetailsHeaderStyleProps) => IDetailsHeaderStyles;
+
+// @public (undocumented)
+export const getDetailsListStyles: (props: IDetailsListStyleProps) => IDetailsListStyles;
+
+// @public (undocumented)
+export const getDetailsRowCheckStyles: (props: IDetailsRowCheckStyleProps) => IDetailsRowCheckStyles;
 
 // @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
@@ -1827,6 +1851,9 @@ export { getScrollbarWidth }
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
+export const getShimmeredDetailsListStyles: (props: IShimmeredDetailsListStyleProps) => IShimmeredDetailsListStyles;
+
+// @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 export { getStartDateOfWeek }
@@ -1919,6 +1946,9 @@ export { hasHorizontalOverflow }
 export { hasOverflow }
 
 export { hasVerticalOverflow }
+
+// @public (undocumented)
+export const HEADER_HEIGHT = 42;
 
 // @public
 export const HEX_REGEX: RegExp;
