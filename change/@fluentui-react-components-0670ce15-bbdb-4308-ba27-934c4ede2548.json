@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moving react-textarea from unstable to stable.",
+  "packageName": "@fluentui/react-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
