@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Checkbox } from './index';
+import { tokens } from '@fluentui/react-theme';
 
 export { Default } from './CheckboxDefault.stories';
 export { Checked } from './CheckboxChecked.stories';
@@ -18,7 +19,9 @@ export default {
 
   decorators: [
     Story => (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: '12px' }}>
+      <div
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', padding: tokens.spacingHorizontalM }}
+      >
         <Story />
       </div>
     ),
