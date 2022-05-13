@@ -16,11 +16,6 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
-// TODO replace these spacing constants with theme values once they're on the theme.
-const spacingXS = 4;
-const spacingS = 8;
-const spacingM = 12;
-
 // Thumb and track sizes used by the component.
 const spaceBetweenThumbAndTrack = 2;
 const thumbSize = 14;
@@ -32,7 +27,7 @@ const useRootStyles = makeStyles({
     alignItems: 'flex-start',
     boxSizing: 'border-box',
     display: 'inline-flex',
-    ...shorthands.padding(`${spacingS}px`),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     position: 'relative',
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
@@ -40,7 +35,7 @@ const useRootStyles = makeStyles({
 
   vertical: {
     flexDirection: 'column',
-    paddingTop: `${spacingXS}px`,
+    paddingTop: tokens.spacingVerticalXS,
   },
 });
 
@@ -189,13 +184,13 @@ const useLabelStyles = makeStyles({
   },
 
   above: {
-    marginBottom: `${spacingXS}px`,
+    marginBottom: tokens.spacingVerticalXS,
   },
   after: {
-    marginLeft: `${spacingM}px`,
+    marginLeft: tokens.spacingHorizontalM,
   },
   before: {
-    marginRight: `${spacingM}px`,
+    marginRight: tokens.spacingHorizontalM,
   },
 });
 

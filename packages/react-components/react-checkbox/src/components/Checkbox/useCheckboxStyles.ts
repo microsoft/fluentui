@@ -15,10 +15,6 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   indicator: 'fui-Checkbox__indicator',
 };
 
-// TODO replace these spacing constants with theme values once they're on the theme
-const spacingHorizontalS = '8px';
-const spacingHorizontalM = '12px';
-
 // The indicator size is used by the indicator and label styles
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
@@ -27,7 +23,7 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
-    ...shorthands.padding(spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 });
@@ -196,10 +192,10 @@ const useLabelStyles = makeStyles({
   },
 
   before: {
-    marginRight: spacingHorizontalM,
+    marginRight: tokens.spacingHorizontalM,
   },
   after: {
-    marginLeft: spacingHorizontalM,
+    marginLeft: tokens.spacingHorizontalM,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
