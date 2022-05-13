@@ -48,9 +48,7 @@ task('screener:runner', cb => {
     affectedPackages = getAffectedPackages(previousMasterCommit);
   }
 
-  // debugging
-  console.log('affected package tree');
-  console.log(Array.from(affectedPackages.values()));
+  debugAffectedGraph(affectedPackages);
 
   if (!affectedPackages.has(docsPackageName)) {
     handlePromiseExit(cancelScreenerRun(screenerConfig, 'skipped'));
@@ -58,6 +56,15 @@ task('screener:runner', cb => {
     handlePromiseExit(screenerRunner(screenerConfig));
   }
 });
+
+/**
+ * Outputs debug output for the affected packages graph
+ * @param affectedPackages  - set of affected packages
+ */
+function debugAffectedGraph(affectedPackages: Set<string>) {
+  console.log('affected package tree');
+  console.log(Array.from(affectedPackages.values()));
+}
 
 // ----------------------------------------
 // Default
