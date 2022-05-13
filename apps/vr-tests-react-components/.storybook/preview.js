@@ -4,6 +4,15 @@ import { setAddon } from '@storybook/react';
 import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
+const configToPropsMap = {
+  includeDefault: { theme: webLightTheme, label: 'Web light' },
+  includeDarkMode: { theme: webDarkTheme, label: 'Web dark' },
+  includeHighContrast: { theme: webHighContrastTheme, label: 'Web high contrast' },
+  includeRtl: { theme: webLightTheme, dir: 'rtl', label: 'RTL' },
+};
+
+const configDefaults = { includeDefault: true };
+
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
  *
@@ -25,34 +34,22 @@ setAddon({
    * @this {import('../src/utilities/types').ExtendedStoryApi}
    */
   addStory(storyName, storyFn, config = {}) {
+    const modeConfig = { ...configDefaults, ...config };
     this.add(storyName, context => {
       return (
         <>
-          <h3>Web light</h3>
-          <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>
-          {config.includeDarkMode && (
-            <>
-              <hr />
-              <h3>Web dark</h3>
-              <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>
-            </>
-          )}
-          {config.includeHighContrast && (
-            <>
-              <hr />
-              <h3>Web high contrast</h3>
-              <FluentProvider theme={webHighContrastTheme}>{storyFn(context)}</FluentProvider>
-            </>
-          )}
-          {config.includeRtl && (
-            <>
-              <hr />
-              <h3>RTL</h3>
-              <FluentProvider theme={webLightTheme} dir="rtl">
-                {storyFn(context)}
-              </FluentProvider>
-            </>
-          )}
+          {Object.keys(modeConfig).map(configProp => {
+            const { label, ...providerConfig } = configToPropsMap[configProp];
+            return (
+              <React.Fragment key={configProp}>
+                <h3>{label}</h3>
+                <FluentProvider key={configProp} {...providerConfig}>
+                  {storyFn(context)}
+                </FluentProvider>
+                <hr />
+              </React.Fragment>
+            );
+          })}
         </>
       );
     });
