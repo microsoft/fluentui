@@ -1,5 +1,5 @@
 import { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { TabListSlots, TabListState } from './TabList.types';
 
 export const tabListClassNames: SlotClassNames<TabListSlots> = {
@@ -18,7 +18,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     flexShrink: 0,
     flexWrap: 'nowrap',
-    ...shorthands.overflow('hidden'),
     position: 'relative',
   },
   horizontal: {

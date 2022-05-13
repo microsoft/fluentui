@@ -20,7 +20,10 @@ export type SpinnerSlots = {
   label?: Slot<typeof Label>;
 };
 
-type SpinnerCommons = {
+/**
+ * Spinner Props
+ */
+export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
   /**
    * The appearance of the Spinner.
    * @default 'primary'
@@ -47,11 +50,7 @@ type SpinnerCommons = {
 };
 
 /**
- * Spinner Props
- */
-export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & Partial<SpinnerCommons>;
-
-/**
  * State used in rendering Spinner
  */
-export type SpinnerState = ComponentState<SpinnerSlots> & SpinnerCommons;
+export type SpinnerState = ComponentState<SpinnerSlots> &
+  Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size' | 'status'>>;

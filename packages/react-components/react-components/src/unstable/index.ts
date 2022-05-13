@@ -46,17 +46,6 @@ export type {
 } from '@fluentui/react-card';
 
 export {
-  Checkbox,
-  /* eslint-disable-next-line deprecation/deprecation */
-  checkboxClassName,
-  checkboxClassNames,
-  renderCheckbox_unstable,
-  useCheckbox_unstable,
-  useCheckboxStyles_unstable,
-} from '@fluentui/react-checkbox';
-export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
-
-export {
   Input,
   /* eslint-disable-next-line deprecation/deprecation */
   inputClassName,
@@ -83,7 +72,6 @@ export type {
   SpinButtonState,
   SpinButtonSpinState,
   SpinButtonBounds,
-  SpinButtonStrings,
 } from '@fluentui/react-spinbutton';
 
 export {
@@ -112,35 +100,3 @@ export {
   useTextareaStyles_unstable,
 } from '@fluentui/react-textarea';
 export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
-
-export type {
-  TabProps,
-  TabSlots,
-  TabState,
-  TabValue,
-  TabRegisterData,
-  RegisterTabEventHandler,
-  SelectTabData,
-  SelectTabEvent,
-  SelectTabEventHandler,
-  TabListContextValue,
-  TabListContextValues,
-  TabListProps,
-  TabListSlots,
-  TabListState,
-} from '@fluentui/react-tabs';
-
-export {
-  renderTab_unstable,
-  Tab,
-  tabClassName,
-  tabClassNames,
-  useTabStyles_unstable,
-  useTab_unstable,
-  renderTabList_unstable,
-  TabList,
-  tabListClassName,
-  tabListClassNames,
-  useTabListStyles_unstable,
-  useTabList_unstable,
-} from '@fluentui/react-tabs';

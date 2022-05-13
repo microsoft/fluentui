@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "move slider commons into props and pick into state",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

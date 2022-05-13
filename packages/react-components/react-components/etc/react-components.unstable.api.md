@@ -28,13 +28,6 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { checkboxClassName } from '@fluentui/react-checkbox';
-import { checkboxClassNames } from '@fluentui/react-checkbox';
-import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { CheckboxSlots } from '@fluentui/react-checkbox';
-import { CheckboxState } from '@fluentui/react-checkbox';
 import { Input } from '@fluentui/react-input';
 import { inputClassName } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
@@ -42,22 +35,15 @@ import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
 import { InputSlots } from '@fluentui/react-input';
 import { InputState } from '@fluentui/react-input';
-import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
-import { renderTab_unstable } from '@fluentui/react-tabs';
-import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
-import { SelectTabData } from '@fluentui/react-tabs';
-import { SelectTabEvent } from '@fluentui/react-tabs';
-import { SelectTabEventHandler } from '@fluentui/react-tabs';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
 import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
@@ -67,7 +53,6 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
-import { SpinButtonStrings } from '@fluentui/react-spinbutton';
 import { Spinner } from '@fluentui/react-spinner';
 import { spinnerClassNames } from '@fluentui/react-spinner';
 import { SpinnerProps } from '@fluentui/react-spinner';
@@ -79,22 +64,6 @@ import { SwitchOnChangeData } from '@fluentui/react-switch';
 import { SwitchProps } from '@fluentui/react-switch';
 import { SwitchSlots } from '@fluentui/react-switch';
 import { SwitchState } from '@fluentui/react-switch';
-import { Tab } from '@fluentui/react-tabs';
-import { tabClassName } from '@fluentui/react-tabs';
-import { tabClassNames } from '@fluentui/react-tabs';
-import { TabList } from '@fluentui/react-tabs';
-import { tabListClassName } from '@fluentui/react-tabs';
-import { tabListClassNames } from '@fluentui/react-tabs';
-import { TabListContextValue } from '@fluentui/react-tabs';
-import { TabListContextValues } from '@fluentui/react-tabs';
-import { TabListProps } from '@fluentui/react-tabs';
-import { TabListSlots } from '@fluentui/react-tabs';
-import { TabListState } from '@fluentui/react-tabs';
-import { TabProps } from '@fluentui/react-tabs';
-import { TabRegisterData } from '@fluentui/react-tabs';
-import { TabSlots } from '@fluentui/react-tabs';
-import { TabState } from '@fluentui/react-tabs';
-import { TabValue } from '@fluentui/react-tabs';
 import { Textarea } from '@fluentui/react-textarea';
 import { textareaClassNames } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
@@ -108,8 +77,6 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useCheckbox_unstable } from '@fluentui/react-checkbox';
-import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
@@ -118,10 +85,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
-import { useTab_unstable } from '@fluentui/react-tabs';
-import { useTabList_unstable } from '@fluentui/react-tabs';
-import { useTabListStyles_unstable } from '@fluentui/react-tabs';
-import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 
@@ -173,20 +136,6 @@ export { CardSlots }
 
 export { CardState }
 
-export { Checkbox }
-
-export { checkboxClassName }
-
-export { checkboxClassNames }
-
-export { CheckboxOnChangeData }
-
-export { CheckboxProps }
-
-export { CheckboxSlots }
-
-export { CheckboxState }
-
 export { Input }
 
 export { inputClassName }
@@ -201,8 +150,6 @@ export { InputSlots }
 
 export { InputState }
 
-export { RegisterTabEventHandler }
-
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -210,8 +157,6 @@ export { renderCardFooter_unstable }
 export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
-
-export { renderCheckbox_unstable }
 
 export { renderInput_unstable }
 
@@ -221,17 +166,7 @@ export { renderSpinner_unstable }
 
 export { renderSwitch_unstable }
 
-export { renderTab_unstable }
-
-export { renderTabList_unstable }
-
 export { renderTextarea_unstable }
-
-export { SelectTabData }
-
-export { SelectTabEvent }
-
-export { SelectTabEventHandler }
 
 export { SpinButton }
 
@@ -250,8 +185,6 @@ export { SpinButtonSlots }
 export { SpinButtonSpinState }
 
 export { SpinButtonState }
-
-export { SpinButtonStrings }
 
 export { Spinner }
 
@@ -274,38 +207,6 @@ export { SwitchProps }
 export { SwitchSlots }
 
 export { SwitchState }
-
-export { Tab }
-
-export { tabClassName }
-
-export { tabClassNames }
-
-export { TabList }
-
-export { tabListClassName }
-
-export { tabListClassNames }
-
-export { TabListContextValue }
-
-export { TabListContextValues }
-
-export { TabListProps }
-
-export { TabListSlots }
-
-export { TabListState }
-
-export { TabProps }
-
-export { TabRegisterData }
-
-export { TabSlots }
-
-export { TabState }
-
-export { TabValue }
 
 export { Textarea }
 
@@ -333,10 +234,6 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
-export { useCheckbox_unstable }
-
-export { useCheckboxStyles_unstable }
-
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
@@ -352,14 +249,6 @@ export { useSpinnerStyles_unstable }
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
-
-export { useTab_unstable }
-
-export { useTabList_unstable }
-
-export { useTabListStyles_unstable }
-
-export { useTabStyles_unstable }
 
 export { useTextarea_unstable }
 

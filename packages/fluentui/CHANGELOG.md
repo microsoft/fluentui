@@ -34,6 +34,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Align Avatar `font-weight` between v0 and v9 @annabratseiko ([#22822](https://github.com/microsoft/fluentui/pull/22822))
 - Fix `Pill` to be selectable by keyboard @chpalac ([#22839](https://github.com/microsoft/fluentui/pull/22839))
 
+### Features
+- Add compatibility with components from `@fluentui/react-components` in portals @layershifter ([#22541](https://github.com/microsoft/fluentui/pull/22541))
+
 ### Documentation
 - Use https for Embed and Video examples @Hirse ([#22738](https://github.com/microsoft/fluentui/pull/22738))
 

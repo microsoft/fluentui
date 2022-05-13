@@ -34,7 +34,10 @@ export type TabListSlots = {
   root: Slot<'div'>;
 };
 
-type TabListCommons = {
+/**
+ * TabList Props
+ */
+export type TabListProps = ComponentProps<TabListSlots> & {
   /**
    * A tab list can supports 'transparent' and 'subtle' appearance.
    *- 'subtle': Minimizes emphasis to blend into the background until hovered or focused.
@@ -44,6 +47,11 @@ type TabListCommons = {
    */
   appearance?: 'transparent' | 'subtle';
 
+  /**
+   * The value of the tab to be selected by default.
+   * Typically useful when the selectedValue is uncontrolled.
+   */
+  defaultSelectedValue?: TabValue;
   /**
    * A tab list can be set to disable interaction.
    * @default false
@@ -74,20 +82,8 @@ type TabListCommons = {
   vertical?: boolean;
 };
 
-/**
- * TabList Props
- */
-export type TabListProps = ComponentProps<TabListSlots> &
-  TabListCommons & {
-    /**
-     * The value of the tab to be selected by default.
-     * Typically useful when the selectedValue is uncontrolled.
-     */
-    defaultSelectedValue?: TabValue;
-  };
-
-export type TabListContextValue = Pick<TabListCommons, 'onTabSelect' | 'selectedValue'> &
-  Required<Pick<TabListCommons, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue'> &
+  Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     /** A callback to allow a tab to register itself with the tab list. */
     onRegister: RegisterTabEventHandler;
 
