@@ -13,7 +13,7 @@ export { Required } from './CheckboxRequired.stories';
 export { Circular } from './CheckboxCircular.stories';
 
 export default {
-  title: 'Preview Components/Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
 
   decorators: [

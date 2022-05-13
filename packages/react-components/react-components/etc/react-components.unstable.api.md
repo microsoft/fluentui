@@ -28,13 +28,6 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { checkboxClassName } from '@fluentui/react-checkbox';
-import { checkboxClassNames } from '@fluentui/react-checkbox';
-import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { CheckboxSlots } from '@fluentui/react-checkbox';
-import { CheckboxState } from '@fluentui/react-checkbox';
 import { Input } from '@fluentui/react-input';
 import { inputClassName } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
@@ -46,7 +39,6 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
@@ -85,8 +77,6 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useCheckbox_unstable } from '@fluentui/react-checkbox';
-import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
@@ -146,20 +136,6 @@ export { CardSlots }
 
 export { CardState }
 
-export { Checkbox }
-
-export { checkboxClassName }
-
-export { checkboxClassNames }
-
-export { CheckboxOnChangeData }
-
-export { CheckboxProps }
-
-export { CheckboxSlots }
-
-export { CheckboxState }
-
 export { Input }
 
 export { inputClassName }
@@ -181,8 +157,6 @@ export { renderCardFooter_unstable }
 export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
-
-export { renderCheckbox_unstable }
 
 export { renderInput_unstable }
 
@@ -259,10 +233,6 @@ export { useCardPreview_unstable }
 export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
-
-export { useCheckbox_unstable }
-
-export { useCheckboxStyles_unstable }
 
 export { useInput_unstable }
 
