@@ -148,10 +148,10 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
   disabled: {
