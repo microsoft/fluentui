@@ -209,7 +209,7 @@ export {
   useAvatar_unstable,
   useAvatarStyles_unstable,
 } from '@fluentui/react-avatar';
-export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
+export type { AvatarNamedColor, AvatarProps, AvatarSizes, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
 export {
   Badge,
   CounterBadge,
