@@ -104,6 +104,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
       // reset the active option when closing
       setActiveOption(undefined);
     }
+    // this should only be run in response to changes in the open state
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
