@@ -142,7 +142,7 @@ packages/react-components/react-dialog @microsoft/cxe-prg
 packages/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
-packages/react-components/react-input @microsoft/cxe-red
+packages/react-components/react-input @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
 packages/react-components/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
 packages/react-components/react-menu @microsoft/teams-prg
