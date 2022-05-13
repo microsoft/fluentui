@@ -11,7 +11,7 @@ const GlobalClassNames = {
   listCell: 'ms-List-cell',
 };
 
-export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
+export const getDetailsListStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
   const { theme, className, isHorizontalConstrained, compact, isFixed } = props;
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
