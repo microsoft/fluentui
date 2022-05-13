@@ -72,6 +72,13 @@ import { ButtonState } from '@fluentui/react-button';
 import { Caption } from '@fluentui/react-text';
 import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { checkboxClassName } from '@fluentui/react-checkbox';
+import { checkboxClassNames } from '@fluentui/react-checkbox';
+import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { CheckboxSlots } from '@fluentui/react-checkbox';
+import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ComponentProps } from '@fluentui/react-utilities';
@@ -293,6 +300,7 @@ import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
@@ -432,6 +440,8 @@ import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useCheckbox_unstable } from '@fluentui/react-checkbox';
+import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -658,6 +668,20 @@ export { Caption }
 export { captionClassName }
 
 export { captionClassNames }
+
+export { Checkbox }
+
+export { checkboxClassName }
+
+export { checkboxClassNames }
+
+export { CheckboxOnChangeData }
+
+export { CheckboxProps }
+
+export { CheckboxSlots }
+
+export { CheckboxState }
 
 export { ColorPaletteTokens }
 
@@ -1101,6 +1125,8 @@ export { renderBadge_unstable }
 
 export { renderButton_unstable }
 
+export { renderCheckbox_unstable }
+
 export { renderCompoundButton_unstable }
 
 export { renderDivider_unstable }
@@ -1378,6 +1404,10 @@ export { useBadgeStyles_unstable }
 export { useButton_unstable }
 
 export { useButtonStyles_unstable }
+
+export { useCheckbox_unstable }
+
+export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
 
