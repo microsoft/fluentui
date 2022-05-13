@@ -4,17 +4,24 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { Text } from '@fluentui/react-text';
 import { Textarea } from '../index';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('10px'),
+    '& > div': {
+      marginTop: tokens.spacingVerticalMNudge,
+    },
     '& > div > div': {
       display: 'flex',
       flexDirection: 'column',
-      ...shorthands.gap('10px'),
-      ...shorthands.padding('10px'),
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    },
+    '& > div > label': {
+      marginBottom: tokens.spacingHorizontalXXS,
+      marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
   filledLighter: {
