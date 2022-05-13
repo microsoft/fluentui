@@ -29,14 +29,20 @@ export type ComboboxOpenChangeData = {
 };
 
 // @public (undocumented)
-export type ComboboxOpenEvents = React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
+export type ComboboxOpenEvents = React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & ComboboxCommons & SelectionProps & {
+export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & SelectionProps & {
+    appearance?: 'filledDarker' | 'filledLighter' | 'outline' | 'underline';
     defaultOpen?: boolean;
     defaultValue?: string;
+    inline?: boolean;
     onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
+    open?: boolean;
+    placeholder?: string;
     positioning?: PositioningShorthand;
+    size?: 'small' | 'medium' | 'large';
+    value?: string;
 };
 
 // @public (undocumented)
@@ -47,7 +53,7 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxCommons, 'appearance' | 'open' | 'inline' | 'size'>> & Pick<ComboboxCommons, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
+export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxProps, 'appearance' | 'inline' | 'open' | 'size'>> & Pick<ComboboxProps, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
 };
@@ -59,7 +65,11 @@ export const ComboButton: ForwardRefComponent<ComboButtonProps>;
 export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
 // @public
-export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & ComboButtonCommons;
+export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & {
+    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    placeholder?: string;
+    value?: string;
+};
 
 // @public (undocumented)
 export type ComboButtonSlots = {
@@ -69,7 +79,7 @@ export type ComboButtonSlots = {
 };
 
 // @public
-export type ComboButtonState = ComponentState<ComboButtonSlots> & ComboButtonCommons & Pick<ComboboxState, 'appearance' | 'size'>;
+export type ComboButtonState = ComponentState<ComboButtonSlots> & Pick<ComboboxState, 'appearance' | 'size'>;
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -122,7 +132,8 @@ export type OptionGroupSlots = {
 export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
 // @public
-export type OptionProps = ComponentProps<Partial<OptionSlots>> & OptionCommons & {
+export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
+    disabled?: boolean;
     value?: string;
 };
 
@@ -133,7 +144,7 @@ export type OptionSlots = {
 };
 
 // @public
-export type OptionState = ComponentState<OptionSlots> & OptionCommons & {
+export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disabled'> & {
     active: boolean;
     multiselect?: boolean;
     selected: boolean;

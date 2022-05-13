@@ -8,31 +8,28 @@ export type OptionSlots = {
   checkIcon: Slot<'span'>;
 };
 
-type OptionCommons = {
+/**
+ * Option Props
+ */
+export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
   /**
    * Sets an option to the `disabled` state.
    * Disabled options cannot be selected, but are still keyboard navigable
    */
   disabled?: boolean;
-};
 
-/**
- * Option Props
- */
-export type OptionProps = ComponentProps<Partial<OptionSlots>> &
-  OptionCommons & {
-    /*
-     * Defines a string value for the option, used for the parent Combobox's value.
-     * Use this if the children are not a string, or you wish the value to differ from the displayed text.
-     */
-    value?: string;
-  };
+  /*
+   * Defines a string value for the option, used for the parent Combobox's value.
+   * Use this if the children are not a string, or you wish the value to differ from the displayed text.
+   */
+  value?: string;
+};
 
 /**
  * State used in rendering Option
  */
 export type OptionState = ComponentState<OptionSlots> &
-  OptionCommons & {
+  Pick<OptionProps, 'disabled'> & {
     /* If true, this is the currently highlighted option */
     active: boolean;
 

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-input: update appearance stories background contrast",
+  "packageName": "@fluentui/react-input",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
