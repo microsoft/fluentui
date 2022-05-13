@@ -3,13 +3,23 @@ import { useId } from '@fluentui/react-utilities';
 import { Textarea } from '../index';
 import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.gap('10px'),
-    '& > div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('10px'), ...shorthands.padding('10px') },
+  base: {
+    '& > div': {
+      marginTop: tokens.spacingVerticalMNudge,
+    },
+    '& > div > div': {
+      display: 'flex',
+      flexDirection: 'column',
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    },
+    '& > div > label': {
+      marginBottom: tokens.spacingHorizontalXXS,
+      marginLeft: tokens.spacingHorizontalMNudge,
+    },
   },
 });
 
@@ -21,22 +31,33 @@ export const Resize = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.base}>
       <div>
         <Label htmlFor={noneId}>Textarea with resize set to "none".</Label>
-        <Textarea id={noneId} resize="none" />
+        <div>
+          <Textarea id={noneId} resize="none" />
+        </div>
       </div>
+
       <div>
         <Label htmlFor={verticalId}>Textarea with resize set to "vertical".</Label>
-        <Textarea id={verticalId} resize="vertical" />
+        <div>
+          <Textarea id={verticalId} resize="vertical" />
+        </div>
       </div>
+
       <div>
         <Label htmlFor={horizontalId}>Textarea with resize set to "horizontal".</Label>
-        <Textarea id={horizontalId} resize="horizontal" />
+        <div>
+          <Textarea id={horizontalId} resize="horizontal" />
+        </div>
       </div>
+
       <div>
         <Label htmlFor={bothId}>Textarea with resize set to "both".</Label>
-        <Textarea id={bothId} resize="both" />
+        <div>
+          <Textarea id={bothId} resize="both" />
+        </div>
       </div>
     </div>
   );
