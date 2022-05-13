@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore "react-portal-compat-context" uses v9 configs via path aliases
+import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 import * as React from 'react';
 
 import { PortalContext } from 'src/components/Provider/portalContext';
@@ -77,6 +80,27 @@ describe('PortalInner', () => {
       expect(document.querySelector(`.${className}`)).not.toBeInTheDocument();
       expect(document.querySelector(`.${newClassName}`)).toBeInTheDocument();
       expect(document.querySelector(`.${newClassName} #sample`)).toBeInTheDocument();
+    });
+  });
+
+  describe('compat', () => {
+    it('calls "register" from "react-portal-compat"', () => {
+      const unregister = jest.fn();
+      const register = jest.fn().mockImplementation(() => unregister);
+
+      const wrapper = mountWithProvider(
+        <PortalCompatContextProvider value={register}>
+          <PortalInner>
+            <div id="sample" />
+          </PortalInner>
+        </PortalCompatContextProvider>,
+      );
+
+      expect(register).toHaveBeenCalledTimes(1);
+      expect(register).toHaveBeenCalledWith(expect.any(HTMLElement));
+
+      wrapper.unmount();
+      expect(unregister).toHaveBeenCalledTimes(1);
     });
   });
 });

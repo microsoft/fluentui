@@ -61,7 +61,6 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
-import { SpinButtonStrings } from '@fluentui/react-spinbutton';
 import { Spinner } from '@fluentui/react-spinner';
 import { spinnerClassNames } from '@fluentui/react-spinner';
 import { SpinnerProps } from '@fluentui/react-spinner';
@@ -212,8 +211,6 @@ export { SpinButtonSlots }
 export { SpinButtonSpinState }
 
 export { SpinButtonState }
-
-export { SpinButtonStrings }
 
 export { Spinner }
 

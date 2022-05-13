@@ -4,7 +4,7 @@
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.5",
+    "@fluentui/react-text": "9.0.0-rc.8",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {

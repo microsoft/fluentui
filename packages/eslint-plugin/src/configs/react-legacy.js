@@ -10,5 +10,6 @@ module.exports = {
   rules: {
     ...configHelpers.getNamingConventionRule(true /* prefixWithI */),
     'jsdoc/check-tag-names': 'off',
+    '@griffel/no-shorthands': 'off',
   },
 };
