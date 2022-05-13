@@ -26,27 +26,27 @@ setAddon({
    */
   addStory(storyName, storyFn, config = {}) {
     this.add(storyName, context => {
-      return <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
+      return (
+        <>
+          <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
+          {config.includeDarkMode && (
+            <FluentProvider theme={webDarkTheme} dir="rtl">
+              {storyFn(context)}
+            </FluentProvider>
+          )}
+          {config.includeHighContrast && (
+            <FluentProvider theme={webHighContrastTheme} dir="rtl">
+              {storyFn(context)}
+            </FluentProvider>
+          )}
+          {config.includeRtl && (
+            <FluentProvider theme={webLightTheme} dir="rtl">
+              {storyFn(context)}
+            </FluentProvider>
+          )}
+        </>
+      );
     });
-    if (config.includeRtl) {
-      this.add(storyName + ' - RTL', context => {
-        return (
-          <FluentProvider theme={webLightTheme} dir="rtl">
-            {storyFn(context)}
-          </FluentProvider>
-        );
-      });
-    }
-    if (config.includeDarkMode) {
-      this.add(storyName + ' - Dark Mode', context => {
-        return <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>;
-      });
-    }
-    if (config.includeHighContrast) {
-      this.add(storyName + ' - High Contrast', context => {
-        return <FluentProvider theme={webHighContrastTheme}>{storyFn(context)}</FluentProvider>;
-      });
-    }
 
     return this;
   },
