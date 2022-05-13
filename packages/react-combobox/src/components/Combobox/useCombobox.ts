@@ -86,17 +86,29 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     return selectedOptions[0];
   }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
 
+  // update active option based on change in open state
+  React.useEffect(() => {
+    if (open) {
+      // if there is a selection, start at the most recently selected item
+      if (selectedOptions.length > 0) {
+        const lastSelectedOption = getOptionsMatchingValue(
+          v => v === selectedOptions[selectedOptions.length - 1],
+        ).pop();
+        lastSelectedOption && setActiveOption(lastSelectedOption);
+      }
+      // default to starting at the first option
+      else {
+        setActiveOption(getOptionAtIndex(0));
+      }
+    } else {
+      // reset the active option when closing
+      setActiveOption(undefined);
+    }
+  }, [open]);
+
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
-
-    // reset active option
-    if (newState && selectedOptions.length > 0) {
-      const lastSelectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
-      lastSelectedOption && setActiveOption(lastSelectedOption);
-    } else {
-      setActiveOption(undefined);
-    }
   };
 
   const onOptionClick = useEventCallback((event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
@@ -217,7 +229,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         !multiselect && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(event, activeOption.value);
+        activeOption && !activeOption.disabled && selectOption(event, activeOption.value);
         event.preventDefault();
         break;
       case 'Tab':

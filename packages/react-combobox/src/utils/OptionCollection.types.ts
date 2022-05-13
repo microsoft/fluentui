@@ -1,4 +1,7 @@
 export type OptionValue = {
+  /** The disabled state of the option. */
+  disabled?: boolean;
+
   /** The `id` attribute of the option. */
   id: string;
 
