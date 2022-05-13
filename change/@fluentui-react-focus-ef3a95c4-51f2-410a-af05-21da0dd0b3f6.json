@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update React support to 18.1.0",
+  "comment": "Update React support to <18.0.0",
   "packageName": "@fluentui/react-focus",
   "email": "tmichon@microsoft.com",
   "dependentChangeType": "patch"
