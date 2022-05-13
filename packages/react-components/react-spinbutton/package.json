@@ -30,10 +30,11 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.5",
     "@fluentui/react-label": "9.0.0-rc.1",
+    "@fluentui/react-text": "9.0.0-rc.8",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.3",
+    "@griffel/react": "1.0.4",
     "@fluentui/keyboard-keys": "9.0.0-rc.6",
     "@fluentui/react-icons": "^2.0.166-rc.3",
     "@fluentui/react-input": "9.0.0-beta.9",
