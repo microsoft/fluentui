@@ -37,7 +37,7 @@ const iconMap = (
   }
 };
 
-export const DEFAULT_STRINGS = {
+const DEFAULT_STRINGS = {
   busy: 'busy',
   outOfOffice: 'out of office',
   away: 'away',
