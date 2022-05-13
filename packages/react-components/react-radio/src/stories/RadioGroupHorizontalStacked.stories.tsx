@@ -7,7 +7,7 @@ export const HorizontalStacked = () => {
   const labelId = useId('label');
 
   return (
-    <div style={{ display: 'grid', gap: '8px' }}>
+    <div style={{ display: 'grid', gridGap: '8px' }}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup layout="horizontalStacked" aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />

@@ -7,7 +7,7 @@ export const ControlledValue = () => {
   const [value, setValue] = React.useState('banana');
   const labelId = useId('label');
   return (
-    <div style={{ display: 'grid', gap: '8px' }}>
+    <div style={{ display: 'grid', gridGap: '8px' }}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup value={value} onChange={(_, data) => setValue(data.value)} aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />

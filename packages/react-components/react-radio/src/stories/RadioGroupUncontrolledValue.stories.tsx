@@ -6,7 +6,7 @@ import { Radio, RadioGroup } from '../index';
 export const UncontrolledValue = () => {
   const labelId = useId('label');
   return (
-    <div style={{ display: 'grid', gap: '8px' }}>
+    <div style={{ display: 'grid', gridGap: '8px' }}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup defaultValue="pear" aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
