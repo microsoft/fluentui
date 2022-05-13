@@ -6,7 +6,7 @@ import { Radio, RadioGroup } from '../index';
 export const Horizontal = () => {
   const labelId = useId('label');
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gap: '8px' }}>
       <Label id={labelId}>Favorite Fruit</Label>
       <RadioGroup layout="horizontal" aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />

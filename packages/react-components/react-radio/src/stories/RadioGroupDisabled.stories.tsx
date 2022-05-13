@@ -7,7 +7,7 @@ export const Disabled = () => {
   const labelId = useId('label');
   <Label id={labelId}>Favorite Fruit</Label>;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gap: '8px' }}>
       <RadioGroup defaultValue="apple" disabled aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />

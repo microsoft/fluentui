@@ -8,9 +8,9 @@ export const LabelSubtext = () => {
   const labelId = useId('label');
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gap: '8px' }}>
       <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup>
+      <RadioGroup aria-labelledby={labelId}>
         <Radio
           value="A"
           label={

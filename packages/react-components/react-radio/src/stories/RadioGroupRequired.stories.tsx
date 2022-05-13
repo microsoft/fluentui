@@ -6,7 +6,7 @@ import { Radio, RadioGroup } from '../index';
 export const Required = () => {
   const labelId = useId('label-');
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gap: '8px' }}>
       <Label id={labelId} required>
         Favorite Fruit
       </Label>
