@@ -29,15 +29,9 @@ setAddon({
       return (
         <>
           <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
-          {config.includeDarkMode && (
-            <FluentProvider theme={webDarkTheme} dir="rtl">
-              {storyFn(context)}
-            </FluentProvider>
-          )}
+          {config.includeDarkMode && <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>}
           {config.includeHighContrast && (
-            <FluentProvider theme={webHighContrastTheme} dir="rtl">
-              {storyFn(context)}
-            </FluentProvider>
+            <FluentProvider theme={webHighContrastTheme}>{storyFn(context)}</FluentProvider>
           )}
           {config.includeRtl && (
             <FluentProvider theme={webLightTheme} dir="rtl">
