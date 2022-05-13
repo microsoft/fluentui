@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { Combobox, ComboboxProps, Option } from '../index';
 
@@ -11,23 +10,17 @@ const useStyles = makeStyles({
     ...shorthands.gap('20px'),
     maxWidth: '400px',
     '> div': {
-      // Stack the label above the field (with 2px gap per the design system)
       display: 'flex',
       flexDirection: 'column',
-      ...shorthands.gap('2px'),
-      // Align the examples horizontally to all match the extra padding on filled examples (below)
-      paddingLeft: '20px',
-      paddingRight: '20px',
+      ...shorthands.gap('5px'),
+      ...shorthands.borderRadius('10px'),
+      // need padding to see the background color for filled variants
+      ...shorthands.padding('5px', '20px', '10px'),
     },
   },
   // filledLighter and filledDarker appearances depend on particular background colors
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.borderRadius('20px'),
-    ...shorthands.padding('20px'),
-  },
-  // By default this will match the example background, so don't add padding above
-  filledDarker: { backgroundColor: tokens.colorNeutralBackground1, paddingBottom: '20px' },
+  filledLighter: { backgroundColor: '#8a8a8a' },
+  filledDarker: { backgroundColor: '#8a8a8a' },
 });
 
 export const Appearance = (props: Partial<ComboboxProps>) => {
@@ -60,7 +53,9 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
       </div>
 
       <div className={styles.filledDarker}>
-        <label id={`${comboId}-filledDarker`}>Filled Darker</label>
+        <label id={`${comboId}-filledDarker`} className={styles.label}>
+          Filled Darker
+        </label>
         <Combobox
           aria-labelledby={`${comboId}-filledDarker`}
           placeholder="Select a color"

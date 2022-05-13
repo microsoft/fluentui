@@ -26,3 +26,11 @@ export const Grouped = (props: Partial<ComboboxProps>) => {
     </>
   );
 };
+
+Grouped.parameters = {
+  docs: {
+    description: {
+      story: 'Combobox options can be semantically grouped with the `OptionGroup` element, with an optional label.',
+    },
+  },
+};
