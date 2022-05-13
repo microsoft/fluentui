@@ -46,17 +46,6 @@ export type {
 } from '@fluentui/react-card';
 
 export {
-  Checkbox,
-  /* eslint-disable-next-line deprecation/deprecation */
-  checkboxClassName,
-  checkboxClassNames,
-  renderCheckbox_unstable,
-  useCheckbox_unstable,
-  useCheckboxStyles_unstable,
-} from '@fluentui/react-checkbox';
-export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
-
-export {
   Input,
   /* eslint-disable-next-line deprecation/deprecation */
   inputClassName,
