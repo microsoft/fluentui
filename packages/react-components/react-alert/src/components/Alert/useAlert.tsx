@@ -10,6 +10,7 @@ import {
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 
 import type { AlertProps, AlertState } from './Alert.types';
+
 /**
  * Create the state required to render Alert.
  *
@@ -57,6 +58,9 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
       required: true,
     }),
     content: resolveShorthand(props.content, {
+      defaultProps: {
+        children: props.children,
+      },
       required: true,
     }),
     // todo - fix types here

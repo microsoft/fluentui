@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Alert } from '../index';
 
 export const Intent = () => (
-  <>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <Alert
       intent="success"
       content="Success text"
@@ -12,7 +12,6 @@ export const Intent = () => (
         children: 'Undo',
       }}
     />
-    <br />
     <Alert
       intent="error"
       content="Error text"
@@ -21,7 +20,6 @@ export const Intent = () => (
         children: 'Retry',
       }}
     />
-    <br />
     <Alert
       intent="warning"
       content="Warning text"
@@ -30,7 +28,6 @@ export const Intent = () => (
         children: 'Review',
       }}
     />
-    <br />
     <Alert
       intent="info"
       content="Info text"
@@ -39,14 +36,14 @@ export const Intent = () => (
         children: 'Dismiss',
       }}
     />
-  </>
+  </div>
 );
 
 Intent.storyName = 'Intent';
 Intent.parameters = {
   docs: {
     description: {
-      story: 'The intent is used to render a pre-configured Alert component with matching styles',
+      story: 'The intent is used to render a pre-configured Alert component with matching styles.',
     },
   },
 };

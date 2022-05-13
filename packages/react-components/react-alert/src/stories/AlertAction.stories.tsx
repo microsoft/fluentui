@@ -5,7 +5,7 @@ import { ArrowUndo16Filled } from '@fluentui/react-icons';
 import { Alert } from '../index';
 
 export const Action = () => (
-  <>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <Alert
       intent="success"
       content="Message sent"
@@ -14,7 +14,6 @@ export const Action = () => (
         children: 'Undo',
       }}
     />
-    <br />
     <Alert
       intent="error"
       content="Save failed"
@@ -23,14 +22,14 @@ export const Action = () => (
         icon: <ArrowUndo16Filled />,
       }}
     />
-  </>
+  </div>
 );
 
 Action.storyName = 'Action';
 Action.parameters = {
   docs: {
     description: {
-      story: 'An alert can render any button as an action button',
+      story: 'An alert can have an action button to prompt the user to act on it.',
     },
   },
 };

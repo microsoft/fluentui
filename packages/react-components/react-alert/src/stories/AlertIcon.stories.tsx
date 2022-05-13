@@ -18,7 +18,7 @@ Icon.storyName = 'Icon';
 Icon.parameters = {
   docs: {
     description: {
-      story: 'An alert can render any icon with a message',
+      story: 'An alert can render a custom icon if provided.',
     },
   },
 };

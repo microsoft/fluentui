@@ -1,27 +1,38 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 
-export type AlertSlots = {
-  root: NonNullable<Slot<'div'>>;
-  icon?: Slot<'span'>;
-  content: NonNullable<Slot<'span'>>;
-  action?: Slot<typeof Button>;
-};
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-type AlertCommons = {
+export type AlertSlots = {
   /**
-   * The intent for the alert
+   * The root slot is the container for the alert component
    */
-  // intent?: 'info' | 'success' | 'error' | 'warning' | 'infoAvatar';
-  intent?: 'info' | 'success' | 'error' | 'warning';
+  root: NonNullable<Slot<'div'>>;
+  /**
+   * The icon slot renders the icon determined by the `icon` or `intent` prop
+   */
+  icon?: Slot<'span'>;
+  /**
+   * The content slot renders the text message in the alert component
+   */
+  content: NonNullable<Slot<'span'>>;
+  /**
+   * The action slot renders a button that prompts the user to take action on the alert
+   */
+  action?: Slot<typeof Button>;
 };
 
 /**
  * Alert Props
  */
-export type AlertProps = ComponentProps<AlertSlots> & AlertCommons;
+export type AlertProps = ComponentProps<AlertSlots> & {
+  /**
+   * The intent prop, if present, determines the icon to be rendered in the icon slot. It
+   * overrides the value of the icon prop
+   */
+  intent?: 'info' | 'success' | 'error' | 'warning';
+};
 
 /**
  * State used in rendering Alert
  */
-export type AlertState = ComponentState<AlertSlots> & AlertCommons;
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>;

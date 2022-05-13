@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import { getSlots } from '@fluentui/react-utilities';
+
 import type { AlertState, AlertSlots } from './Alert.types';
 
 export const renderAlert_unstable = (state: AlertState) => {
@@ -8,7 +10,7 @@ export const renderAlert_unstable = (state: AlertState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.icon && <slots.icon {...slotProps.icon} />}
-      {slots.content && <slots.content {...slotProps.content} />}
+      {<slots.content {...slotProps.content} />}
       {slots.action && <slots.action {...slotProps.action} />}
     </slots.root>
   );
