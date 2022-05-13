@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 07:45:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.8.0)
+
+Fri, 13 May 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.7.0..@fluentui/eslint-plugin_v1.8.0)
+
+### Minor changes
+
+- feat: add new rules covering usage of Griffel ([PR #22961](https://github.com/microsoft/fluentui/pull/22961) by olfedias@microsoft.com)
 
 ## [1.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.7.0)
 
