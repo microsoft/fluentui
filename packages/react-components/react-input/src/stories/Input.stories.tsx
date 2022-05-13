@@ -2,6 +2,8 @@ import { Meta } from '@storybook/react';
 import { Input } from '../index';
 
 import descriptionMd from './InputDescription.md';
+import bestPracticesMd from './InputBestPractices.md';
+
 export { Default } from './InputDefault.stories';
 export { Appearance } from './InputAppearance.stories';
 export { ContentBeforeAfter } from './InputContentBeforeAfter.stories';
@@ -19,7 +21,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: descriptionMd,
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

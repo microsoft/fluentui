@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/Checkbox Upgrade" />
+
+# Checkbox Upgrade
+
+Fluent UI v8 provides the `Checkbox` control to give people a way to select one or more items from a group, or switch between two mutually exclusive options. Fluent UI v9 provides a `Checkbox` control, but has a different API.
+
+The main difference between v8 and v9 `Checkbox` is that v9 offers a circular variant. v9 handles checked and indeterminate differently from v8, v9 combines both into the `checked` and `defaultChecked` props.
+
+## Examples
+
+### Basic Upgrade
+
+Basic usage of `Checkbox` v8
+
+```tsx
+import React from 'react';
+import { Checkbox } from '@fluentui/react';
+
+const CheckboxV8BasicExample = () => {
+  return (
+    <>
+      <Checkbox checked label="Checked" />
+      <Checkbox disabled label="Disabled" />
+      <Checkbox indeterminate={true} label="Indeterminate" />
+    </>
+  );
+};
+```
+
+An equivalent `Checkbox` in v9 is
+
+```tsx
+import * as React from 'react';
+import { Checkbox } from '@fluentui/react-components';
+
+const CheckboxV9BasicExample = () => {
+  return (
+    <>
+      <Checkbox checked label="Checked" />
+      <Checkbox disabled label="Disabled" />
+      <Checkbox checked="mixed" label="Mixed" />
+    </>
+  );
+};
+```
+
+## Prop Mapping
+
+This table maps `Checkbox` v8 props to the `Checkbox` v9 equivalent.
+
+| v8                     | v9                 | Notes                                    |
+| ---------------------- | ------------------ | ---------------------------------------- |
+| `ariaDescribedBy`      | `aria-describedby` |                                          |
+| `ariaLabel`            | `aria-label`       |                                          |
+| `ariaLabelledBy`       | `aria-labelledby`  |                                          |
+| `ariaPositionInSet`    | `aria-posinset`    |                                          |
+| `ariaSetSize`          | `aria-setsize`     |                                          |
+| `boxSide`              | `labelPosition`    |                                          |
+| `checked`              | `checked`          | Mutually exclusive with `defaultChecked` |
+| `checkmarkIconProps`   | `indicator`        |                                          |
+| `className`            | `className`        |                                          |
+| `componentRef`         | `ref`              |                                          |
+| `defaultChecked`       | `defaultChecked`   | Mutually exclusive with `checked`        |
+| `defaultIndeterminate` | `defaultChecked`   |                                          |
+| `disabled`             | `disabled`         |                                          |
+| `id`                   | `id`               |                                          |
+| `indeterminate`        | `checked`          |                                          |
+| `inputProps`           | n/a                | Props go directly to the `input` slot    |
+| `label`                | `label`            |                                          |
+| `name`                 | `name`             |                                          |
+| `onChange`             | `onChange`         |                                          |
+| `onRenderLabel`        | n/a                |                                          |
+| `required`             | `required`         |                                          |
+| `styles`               | `className`        |                                          |
+| `theme`                | n/a                | Use `FluentProvider` to customize themes |
+| `title`                | n/a                |                                          |

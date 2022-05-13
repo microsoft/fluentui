@@ -17,12 +17,12 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@fluentui/example-data": "^8.4.0",
-    "@fluentui/font-icons-mdl2": "^8.3.2",
-    "@fluentui/react": "^8.67.4",
-    "@fluentui/react-experiments": "^8.8.16",
-    "@fluentui/react-hooks": "^8.5.4",
-    "@fluentui/react-icons-mdl2": "^1.3.8",
+    "@fluentui/example-data": "^8.4.1",
+    "@fluentui/font-icons-mdl2": "^8.3.3",
+    "@fluentui/react": "^8.68.0",
+    "@fluentui/react-experiments": "^8.8.17",
+    "@fluentui/react-hooks": "^8.5.5",
+    "@fluentui/react-icons-mdl2": "^1.3.9",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
     "react": "16.14.0",
