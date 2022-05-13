@@ -43,7 +43,6 @@ import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
-import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
 import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
@@ -64,11 +63,6 @@ import { SwitchOnChangeData } from '@fluentui/react-switch';
 import { SwitchProps } from '@fluentui/react-switch';
 import { SwitchSlots } from '@fluentui/react-switch';
 import { SwitchState } from '@fluentui/react-switch';
-import { Textarea } from '@fluentui/react-textarea';
-import { textareaClassNames } from '@fluentui/react-textarea';
-import { TextareaProps } from '@fluentui/react-textarea';
-import { TextareaSlots } from '@fluentui/react-textarea';
-import { TextareaState } from '@fluentui/react-textarea';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -85,8 +79,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
-import { useTextarea_unstable } from '@fluentui/react-textarea';
-import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 
 export { Card }
 
@@ -166,8 +158,6 @@ export { renderSpinner_unstable }
 
 export { renderSwitch_unstable }
 
-export { renderTextarea_unstable }
-
 export { SpinButton }
 
 export { SpinButtonBounds }
@@ -208,16 +198,6 @@ export { SwitchSlots }
 
 export { SwitchState }
 
-export { Textarea }
-
-export { textareaClassNames }
-
-export { TextareaProps }
-
-export { TextareaSlots }
-
-export { TextareaState }
-
 export { useCard_unstable }
 
 export { useCardFooter_unstable }
@@ -249,10 +229,6 @@ export { useSpinnerStyles_unstable }
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
-
-export { useTextarea_unstable }
-
-export { useTextareaStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 
