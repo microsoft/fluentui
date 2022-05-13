@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove commons from Card",
+  "packageName": "@fluentui/react-card",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

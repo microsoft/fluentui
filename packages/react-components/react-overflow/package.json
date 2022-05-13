@@ -1,11 +1,10 @@
 {
   "name": "@fluentui/react-overflow",
-  "version": "9.0.0-alpha.0",
-  "private": true,
+  "version": "9.0.0-beta.0",
   "description": "React bindings for @fluentui/priority-overflow",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",

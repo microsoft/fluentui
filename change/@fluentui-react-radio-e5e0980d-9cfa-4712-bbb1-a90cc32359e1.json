@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Refactor styles to remove usage of flex gap",
+  "packageName": "@fluentui/react-radio",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

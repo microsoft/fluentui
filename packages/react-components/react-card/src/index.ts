@@ -8,7 +8,7 @@ export {
   useCardStyles_unstable,
   useCard_unstable,
 } from './Card';
-export type { CardCommons, CardProps, CardSlots, CardState } from './Card';
+export type { CardProps, CardSlots, CardState } from './Card';
 export {
   CardFooter,
   cardFooterClassName,

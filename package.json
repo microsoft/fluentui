@@ -84,6 +84,7 @@
     "@cypress/webpack-dev-server": "1.8.3",
     "@fluentui/react-icons": "^2.0.166-rc.3",
     "@griffel/babel-preset": "1.3.0",
+    "@griffel/eslint-plugin": "1.0.0",
     "@griffel/jest-serializer": "1.0.4",
     "@griffel/react": "1.0.4",
     "@griffel/webpack-loader": "2.0.4",

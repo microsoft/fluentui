@@ -28,10 +28,14 @@ export interface CheckboxOnChangeData {
 }
 
 // @public
-export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'size' | 'checked' | 'defaultChecked' | 'onChange'> & Partial<CheckboxCommons> & {
+export type CheckboxProps = Omit<ComponentProps<Partial<CheckboxSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange' | 'size'> & {
+    checked?: 'mixed' | boolean;
     children?: never;
-    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
     defaultChecked?: 'mixed' | boolean;
+    labelPosition?: 'before' | 'after';
+    onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
+    shape?: 'square' | 'circular';
+    size?: 'medium' | 'large';
 };
 
 // @public (undocumented)
@@ -43,7 +47,7 @@ export type CheckboxSlots = {
 };
 
 // @public
-export type CheckboxState = ComponentState<CheckboxSlots> & CheckboxCommons;
+export type CheckboxState = ComponentState<CheckboxSlots> & Required<Pick<CheckboxProps, 'checked' | 'labelPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export const renderCheckbox_unstable: (state: CheckboxState) => JSX.Element;

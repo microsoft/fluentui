@@ -20,13 +20,12 @@ export const useCounterBadge_unstable = (props: CounterBadgeProps, ref: React.Re
     shape,
     appearance,
     showZero,
-    overflowCount,
     count,
     dot,
   };
 
   if (!state.dot && !state.root.children) {
-    state.root.children = state.count > state.overflowCount ? `${state.overflowCount}+` : `${state.count}`;
+    state.root.children = state.count > overflowCount ? `${overflowCount}+` : `${state.count}`;
   }
 
   return state;

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed flexgap from useTabStyles",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

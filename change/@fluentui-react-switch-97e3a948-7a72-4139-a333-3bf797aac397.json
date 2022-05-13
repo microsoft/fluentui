@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing SwitchCommons type in @fluentui/react-switch.",
+  "packageName": "@fluentui/react-switch",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

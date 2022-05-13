@@ -2,6 +2,36 @@
   "name": "@fluentui/ssr-tests",
   "entries": [
     {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.68.0",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 May 2022 07:42:47 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.67.4",
+            "commit": "c2e1a598fae230d33d0c4fc0b9fe0300984c775b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 May 2022 07:37:42 GMT",
       "tag": "@fluentui/ssr-tests_v1.0.0",
       "version": "1.0.0",

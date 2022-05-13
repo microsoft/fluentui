@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/azure-themes",
-  "version": "8.2.29",
+  "version": "8.2.31",
   "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,8 +27,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.67.3",
-    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/react": "^8.68.0",
+    "@fluentui/set-version": "^8.2.1",
     "tslib": "^2.1.0"
   }
 }

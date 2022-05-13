@@ -31,11 +31,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
 
   const {
-    appearance,
+    appearance = 'normal',
     children,
     content,
-    withArrow,
-    positioning,
+    withArrow = false,
+    positioning = 'above',
     onVisibleChange,
     relationship,
     showDelay = 250,

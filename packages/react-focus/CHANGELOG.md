@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 15 Apr 2022 07:42:48 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.5.8)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.5.7..@fluentui/react-focus_v8.5.8)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.4.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/merge-styles to v8.5.2 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/style-utilities to v8.6.7 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/utilities to v8.8.3 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/test-utilities to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.19 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
 
 ## [8.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.5.7)
 

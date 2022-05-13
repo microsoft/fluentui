@@ -22,7 +22,15 @@ export const buttonClassName: string;
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
-export type ButtonProps = ComponentProps<ButtonSlots> & Partial<ButtonCommons>;
+export type ButtonProps = ComponentProps<ButtonSlots> & {
+    appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
+    block?: boolean;
+    disabledFocusable?: boolean;
+    disabled?: boolean;
+    iconPosition?: 'before' | 'after';
+    shape?: 'rounded' | 'circular' | 'square';
+    size?: 'small' | 'medium' | 'large';
+};
 
 // @public (undocumented)
 export type ButtonSlots = {
@@ -31,7 +39,7 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & ButtonCommons & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     iconOnly: boolean;
 };
 
@@ -45,7 +53,7 @@ export const compoundButtonClassName: string;
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
@@ -66,7 +74,7 @@ export const menuButtonClassName: string;
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Partial<Omit<ButtonCommons, 'iconPosition'>>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {

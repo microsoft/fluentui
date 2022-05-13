@@ -15,17 +15,12 @@ const spinButtonExtraClassNames = {
   buttonActive: 'fui-SpinButton__button_active',
 };
 
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xs: '4px',
-};
-
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
     gridTemplateColumns: `1fr 24px`,
     gridTemplateRows: '1fr 1fr',
-    columnGap: horizontalSpacing.xs,
+    columnGap: tokens.spacingHorizontalXS,
     rowGap: 0,
     paddingRight: 0,
     position: 'relative',

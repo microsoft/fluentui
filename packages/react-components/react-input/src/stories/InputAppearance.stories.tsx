@@ -4,31 +4,35 @@ import { useId } from '@fluentui/react-utilities';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Input } from '../index';
+import { Text } from '@fluentui/react-text';
 
 const useStyles = makeStyles({
-  root: {
+  base: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.gap('20px'),
     maxWidth: '400px',
     '> div': {
-      // Stack the label above the field (with 2px gap per the design system)
       display: 'flex',
       flexDirection: 'column',
-      ...shorthands.gap('2px'),
-      // Align the examples horizontally to all match the extra padding on filled examples (below)
-      paddingLeft: '20px',
-      paddingRight: '20px',
+      marginBottom: tokens.spacingVerticalMNudge,
+    },
+    '> div div': {
+      display: 'flex',
+      flexDirection: 'column',
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    },
+    '> div label': {
+      marginBottom: tokens.spacingVerticalXXS,
+      marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
-  // filledLighter and filledDarker appearances depend on particular background colors
   filledLighter: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    ...shorthands.borderRadius('20px'),
-    ...shorthands.padding('20px'),
+    backgroundColor: '#8a8a8a',
   },
-  // By default this will match the example background, so don't add padding above
-  filledDarker: { backgroundColor: tokens.colorNeutralBackground1, paddingBottom: '20px' },
+  filledDarker: {
+    backgroundColor: '#8a8a8a',
+  },
 });
 
 export const Appearance = () => {
@@ -39,25 +43,41 @@ export const Appearance = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
+    <div className={styles.base}>
       <div>
         <Label htmlFor={outlineId}>Outline Input Appearance (default)</Label>
-        <Input appearance="outline" id={outlineId} />
+        <div>
+          <Input appearance="outline" id={outlineId} />
+        </div>
       </div>
 
       <div>
         <Label htmlFor={underlineId}>Underline Input Appearance </Label>
-        <Input appearance="underline" id={underlineId} />
+        <div>
+          <Input appearance="underline" id={underlineId} />
+        </div>
       </div>
 
-      <div className={styles.filledLighter}>
+      <div>
         <Label htmlFor={filledLighterId}>Filled Lighter Input Appearance </Label>
-        <Input appearance="filledLighter" id={filledLighterId} />
+        <div className={styles.filledLighter}>
+          <Input appearance="filledLighter" id={filledLighterId} />
+        </div>
       </div>
 
-      <div className={styles.filledDarker}>
+      <div>
         <Label htmlFor={filledDarkerId}>Filled Darker Input Appearance </Label>
-        <Input appearance="filledDarker" id={filledDarkerId} />
+        <div className={styles.filledDarker}>
+          <Input appearance="filledDarker" id={filledDarkerId} />
+        </div>
+      </div>
+
+      <div>
+        <Text>
+          The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
+          filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
+          surrounding color to pass accessibility requirements.
+        </Text>
       </div>
     </div>
   );
