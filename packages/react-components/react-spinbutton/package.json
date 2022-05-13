@@ -30,6 +30,7 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.5",
     "@fluentui/react-label": "9.0.0-rc.1",
+    "@fluentui/react-text": "9.0.0-rc.8",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-spinbutton: update appearance stories",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

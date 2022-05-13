@@ -2,27 +2,36 @@ import * as React from 'react';
 import { SpinButton } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@griffel/react';
+import { Text } from '@fluentui/react-text';
+import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
-  root: {
+  base: {
     display: 'flex',
     flexDirection: 'column',
+    maxWidth: '500px',
 
-    [`> * + *`]: {
-      marginTop: '10px',
-    },
-
-    [`> div`]: {
+    '> div': {
       display: 'flex',
       flexDirection: 'column',
-      rowGap: '2px',
+      marginTop: tokens.spacingVerticalMNudge,
+    },
+
+    '> div div': {
+      display: 'flex',
+      flexDirection: 'column',
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    },
+    '> div label': {
+      marginBottom: tokens.spacingVerticalXXS,
+      marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
-  // ideally should match doc site, #faf9f8
-  filledLighter: { backgroundColor: tokens.colorNeutralBackground2 },
-  filledDarker: { backgroundColor: tokens.colorNeutralBackground1 },
+
+  filledLighter: { backgroundColor: '#8a8a8a' },
+  filledDarker: { backgroundColor: '#8a8a8a' },
 });
 
 export const Appearance = () => {
@@ -34,25 +43,41 @@ export const Appearance = () => {
   const filledDarkerId = useId('filledDarker-id');
 
   return (
-    <div className={styles.root}>
+    <div className={styles.base}>
       <div>
         <Label htmlFor={outlineId}>Outline (default)</Label>
-        <SpinButton id={outlineId} />
+        <div>
+          <SpinButton id={outlineId} />
+        </div>
       </div>
 
       <div>
         <Label htmlFor={underlineId}>Underline</Label>
-        <SpinButton appearance="underline" id={underlineId} />
+        <div>
+          <SpinButton appearance="underline" id={underlineId} />
+        </div>
       </div>
 
-      <div className={styles.filledLighter}>
+      <div>
         <Label htmlFor={filledLighterId}>Filled Lighter</Label>
-        <SpinButton appearance="filledLighter" id={filledLighterId} />
+        <div className={styles.filledLighter}>
+          <SpinButton appearance="filledLighter" id={filledLighterId} />
+        </div>
       </div>
 
-      <div className={styles.filledDarker}>
+      <div>
         <Label htmlFor={filledDarkerId}>Filled Darker</Label>
-        <SpinButton appearance="filledDarker" id={filledDarkerId} />
+        <div className={styles.filledDarker}>
+          <SpinButton appearance="filledDarker" id={filledDarkerId} />
+        </div>
+      </div>
+
+      <div>
+        <Text>
+          The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with
+          filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate
+          surrounding color to pass accessibility requirements.
+        </Text>
       </div>
     </div>
   );
