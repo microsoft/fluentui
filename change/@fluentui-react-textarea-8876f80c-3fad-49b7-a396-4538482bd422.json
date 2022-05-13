@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update appearance stories and add best practices.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
