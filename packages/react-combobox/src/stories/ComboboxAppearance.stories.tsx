@@ -53,9 +53,7 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
       </div>
 
       <div className={styles.filledDarker}>
-        <label id={`${comboId}-filledDarker`} className={styles.label}>
-          Filled Darker
-        </label>
+        <label id={`${comboId}-filledDarker`}>Filled Darker</label>
         <Combobox
           aria-labelledby={`${comboId}-filledDarker`}
           placeholder="Select a color"
