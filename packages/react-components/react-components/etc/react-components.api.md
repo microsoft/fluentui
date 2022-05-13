@@ -50,6 +50,7 @@ import { avatarClassName } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
 import { Badge } from '@fluentui/react-badge';
@@ -624,6 +625,8 @@ export { avatarClassNames }
 export { AvatarNamedColor }
 
 export { AvatarProps }
+
+export { AvatarSizes }
 
 export { AvatarSlots }
 
