@@ -7,12 +7,13 @@ import { Alert } from '../index';
 export const Icon = () => (
   <Alert
     icon={<Delete16Filled primaryFill="red" />}
-    content="Chat deleted"
     action={{
       appearance: 'transparent',
       children: 'Undo',
     }}
-  />
+  >
+    Chat deleted
+  </Alert>
 );
 
 Icon.storyName = 'Icon';

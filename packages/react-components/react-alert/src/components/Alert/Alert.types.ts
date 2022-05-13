@@ -4,17 +4,13 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type AlertSlots = {
   /**
-   * The root slot is the container for the alert component
+   * The root slot is the top level container for the alert component
    */
   root: NonNullable<Slot<'div'>>;
   /**
    * The icon slot renders the icon determined by the `icon` or `intent` prop
    */
   icon?: Slot<'span'>;
-  /**
-   * The content slot renders the text message in the alert component
-   */
-  content: NonNullable<Slot<'span'>>;
   /**
    * The action slot renders a button that prompts the user to take action on the alert
    */
@@ -26,8 +22,8 @@ export type AlertSlots = {
  */
 export type AlertProps = ComponentProps<AlertSlots> & {
   /**
-   * The intent prop, if present, determines the icon to be rendered in the icon slot. It
-   * overrides the value of the icon prop
+   * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
+   * overrides the intent prop
    */
   intent?: 'info' | 'success' | 'error' | 'warning';
 };
@@ -35,4 +31,7 @@ export type AlertProps = ComponentProps<AlertSlots> & {
 /**
  * State used in rendering Alert
  */
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>;
+export type AlertState = ComponentState<AlertSlots> &
+  Pick<AlertProps, 'intent'> & {
+    isIntentIcon: boolean;
+  };

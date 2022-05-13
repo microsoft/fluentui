@@ -8,45 +8,50 @@ export const Intent = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <Alert
       intent="success"
-      content="Success text"
       action={{
         appearance: 'transparent',
         children: 'Undo',
       }}
-    />
+    >
+      Success text
+    </Alert>
     <Alert
       intent="error"
-      content="Error text"
       action={{
         appearance: 'transparent',
         children: 'Retry',
       }}
-    />
+    >
+      Error text
+    </Alert>
     <Alert
       intent="warning"
-      content="Warning text"
       action={{
         appearance: 'transparent',
         children: 'Review',
       }}
-    />
+    >
+      Warning text
+    </Alert>
     <Alert
       intent="info"
-      content="Info text"
       action={{
         appearance: 'transparent',
         children: 'Dismiss',
       }}
-    />
+    >
+      Info text
+    </Alert>
     <Alert
       intent="success"
-      content="Success intent overrides the Delete icon prop"
       icon={<Delete16Filled primaryFill="red" />}
       action={{
         appearance: 'transparent',
         children: 'Dismiss',
       }}
-    />
+    >
+      Delete icon overrides the success intent prop
+    </Alert>
   </div>
 );
 

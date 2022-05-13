@@ -10,7 +10,7 @@ export const renderAlert_unstable = (state: AlertState) => {
   return (
     <slots.root {...slotProps.root}>
       {slots.icon && <slots.icon {...slotProps.icon} />}
-      {<slots.content {...slotProps.content} />}
+      {slotProps.root.children}
       {slots.action && <slots.action {...slotProps.action} />}
     </slots.root>
   );

@@ -99,11 +99,24 @@ _Explain how the component will behave in use, including:_
   - _Touch_
   - _Screen readers_
 
+```
 TODO - What goes here?
+
+Here go interaction considerations for the component, for example:
+
+- Does it change styling when hovered?
+- Where does focus go when tabbing to it?
+
+Among similar things for touch and state changes.
+```
 
 ## Accessibility
 
+```
 TODO - What goes here?
+
+> Here goes any accessibility considerations you have to have for the component given the ARIA specifications.
+```
 
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 

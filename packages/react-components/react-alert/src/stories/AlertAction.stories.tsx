@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ArrowUndo16Filled } from '@fluentui/react-icons';
+import { DismissCircleRegular } from '@fluentui/react-icons';
 
 import { Alert } from '../index';
 
@@ -8,20 +8,22 @@ export const Action = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <Alert
       intent="success"
-      content="Message sent"
       action={{
         appearance: 'transparent',
         children: 'Undo',
       }}
-    />
+    >
+      Message sent
+    </Alert>
     <Alert
       intent="error"
-      content="Save failed"
       action={{
         appearance: 'transparent',
-        icon: <ArrowUndo16Filled />,
+        icon: <DismissCircleRegular fontSize="16px" />,
       }}
-    />
+    >
+      Save failed
+    </Alert>
   </div>
 );
 

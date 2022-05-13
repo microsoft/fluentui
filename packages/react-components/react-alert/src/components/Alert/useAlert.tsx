@@ -23,9 +23,7 @@ import type { AlertProps, AlertState } from './Alert.types';
 export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>): AlertState => {
   const { intent } = props;
 
-  // todo - how to init icon state to pass in icon prop & ensure intent if present, will
-  // override the icon prop?
-
+  /** Determine the icon to render based on the intent */
   let iconToUse;
   switch (intent) {
     case 'success':
@@ -53,26 +51,16 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     components: {
       root: 'div',
       icon: 'span',
-      content: 'span',
       action: Button,
     },
     root: getNativeElementProps('div', {
       ref,
+      children: props.children,
       ...props,
     }),
     icon: icon,
-    content: resolveShorthand(props.content, {
-      defaultProps: {
-        children: props.children,
-      },
-      required: true,
-    }),
-    // todo - fix types here
-    action:
-      props.action &&
-      resolveShorthand(props.action, {
-        required: true,
-      }),
+    action: resolveShorthand(props.action),
     intent,
+    isIntentIcon: !!props.intent && !props.icon,
   };
 };
