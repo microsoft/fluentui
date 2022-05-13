@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import { Alert } from '../index';
 import { Delete16Filled } from '@fluentui/react-icons';
+
+import { Alert } from '../index';
 
 export const Icon = () => (
   <Alert

@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { Delete16Filled } from '@fluentui/react-icons';
+
 import { Alert } from '../index';
 
 export const Intent = () => (
@@ -31,6 +33,15 @@ export const Intent = () => (
     <Alert
       intent="info"
       content="Info text"
+      action={{
+        appearance: 'transparent',
+        children: 'Dismiss',
+      }}
+    />
+    <Alert
+      intent="success"
+      content="Success intent overrides the Delete icon prop"
+      icon={<Delete16Filled primaryFill="red" />}
       action={{
         appearance: 'transparent',
         children: 'Dismiss',
