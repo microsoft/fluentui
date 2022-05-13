@@ -27,10 +27,10 @@
     "@types/react-custom-scrollbars": "^4.0.5"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.1.0",
-    "@types/react-dom": ">=16.8.0 <18.1.0",
-    "react": ">=16.8.0 <18.1.0",
-    "react-dom": ">=16.8.0 <18.1.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   },
   "dependencies": {
     "@fluentui/react": "^8.67.3",
