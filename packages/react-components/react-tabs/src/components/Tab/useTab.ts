@@ -52,6 +52,9 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     root: getNativeElementProps('button', {
       ref: useMergedRefs(ref, innerRef),
       role: 'tab',
+      // aria-selected undefined indicates it is not selectable
+      // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
+      'aria-selected': disabled ? undefined : `${selected}`,
       ...props,
       disabled,
       onClick,

@@ -1,5 +1,4 @@
 import { mergeClasses, makeStyles } from '@griffel/react';
-import { ButtonState } from '../Button/Button.types';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MenuButtonSlots, MenuButtonState } from './MenuButton.types';
@@ -51,7 +50,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     );
   }
 
-  useButtonStyles_unstable(state as ButtonState);
+  useButtonStyles_unstable({ ...state, iconPosition: 'before' });
 
   return state;
 };

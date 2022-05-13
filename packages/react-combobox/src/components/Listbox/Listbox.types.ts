@@ -23,9 +23,6 @@ export type ListboxState = ComponentState<ListboxSlots> &
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
-    /* Unique id string that can be used as a base for default option ids */
-    idBase: string;
-
     /* Callback when an option is clicked, for internal use */
     onOptionClick(event: React.MouseEvent, option: OptionValue): void;
   };

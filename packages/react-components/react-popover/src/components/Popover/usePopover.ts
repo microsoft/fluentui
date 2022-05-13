@@ -1,19 +1,19 @@
 import * as React from 'react';
+import { elementContains } from '@fluentui/react-portal';
+import {
+  mergeArrowOffset,
+  resolvePositioningShorthand,
+  usePopper,
+  usePopperMouseTarget,
+} from '@fluentui/react-positioning';
+import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import {
   useControllableState,
   useEventCallback,
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
-import {
-  usePopper,
-  resolvePositioningShorthand,
-  mergeArrowOffset,
-  usePopperMouseTarget,
-} from '@fluentui/react-positioning';
-import { elementContains } from '@fluentui/react-portal';
-import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
 
@@ -57,7 +57,37 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     popoverSurface = children[0];
   }
 
-  const [open, setOpen] = useOpenState(initialState);
+  const [open, setOpenState] = useOpenState(initialState);
+
+  const setOpenTimeoutRef = React.useRef(0);
+
+  const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
+    clearTimeout(setOpenTimeoutRef.current);
+    if (!(e instanceof Event) && e.persist) {
+      // < React 17 still uses pooled synthetic events
+      e.persist();
+    }
+
+    if (e.type === 'mouseleave') {
+      // FIXME leaking Node timeout type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      setOpenTimeoutRef.current = setTimeout(() => {
+        setOpenState(e, shouldOpen);
+      }, props.mouseLeaveDelay ?? 500);
+    } else {
+      setOpenState(e, shouldOpen);
+    }
+  });
+
+  // Clear timeout on unmount
+  // Setting state after a component unmounts can cause memory leaks
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(setOpenTimeoutRef.current);
+    };
+  }, []);
+
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
     e => {
       setOpen(e, !open);
@@ -75,12 +105,15 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     refs: [popperRefs.triggerRef, popperRefs.contentRef],
     disabled: !open,
   });
+
+  // only close on scroll for context, or when closeOnScroll is specified
+  const closeOnScroll = initialState.openOnContext || initialState.closeOnScroll;
   useOnScrollOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [popperRefs.triggerRef, popperRefs.contentRef],
-    disabled: !open || !initialState.openOnContext, // only close on scroll for context
+    disabled: !open || !closeOnScroll,
   });
 
   const { findFirstFocusable } = useFocusFinders();
@@ -102,6 +135,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
     toggleOpen,
     setContextTarget,
     contextTarget,
+    inline: props.inline ?? false,
   };
 };
 

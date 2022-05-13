@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export type SelectedOption = {
   /** The `key` prop of the option. */
-  key: string;
+  id: string;
 
   /** The desired display value of the options */
   value: string;

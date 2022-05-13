@@ -1,9 +1,4 @@
-import * as React from 'react';
-
 export type OptionValue = {
-  /** The `key` prop of the option. */
-  key: string;
-
   /** The `id` attribute of the option. */
   id: string;
 
@@ -11,34 +6,22 @@ export type OptionValue = {
   value: string;
 };
 
-export type OptionCollectionValue = {
+export type OptionCollectionState = {
   /** The total number of options in the collection. */
-  count: number;
-
-  /** Returns the option data for the nth option. */
-  getOptionAtIndex(index: number): OptionValue;
+  getCount: () => number;
 
   /** Returns the index of an option by key. */
-  getIndexOfKey(key: string): number;
+  getIndexOfId(id: string): number;
+
+  /** Returns the option data for the nth option. */
+  getOptionAtIndex(index: number): OptionValue | undefined;
 
   /** Returns the option data by key. */
-  getOptionByKey(key: string): OptionValue;
-};
-
-export type OptionData = {
-  [key: string]: OptionValue;
-};
-
-export type OptionCollectionState = {
-  /** The processed children of the option collection. */
-  children: React.ReactNode;
-
-  /** A set collection utilties for accessing options by index or key. */
-  collectionData: OptionCollectionValue;
+  getOptionById(id: string): OptionValue | undefined;
 
   /** The unordered option data. */
-  options: OptionData;
+  options: OptionValue[];
 
   /* A function that child options call to register their values. Returns a function to unregister the option. */
-  registerOption: (option: OptionValue) => void;
+  registerOption: (option: OptionValue, element: HTMLElement) => () => void;
 };

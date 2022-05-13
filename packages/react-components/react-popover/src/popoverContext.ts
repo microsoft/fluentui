@@ -12,6 +12,7 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   openOnHover: false,
   size: 'medium',
   trapFocus: false,
+  inline: false,
 });
 
 /**
@@ -31,6 +32,7 @@ export type PopoverContextValue = Pick<
   | 'size'
   | 'appearance'
   | 'trapFocus'
+  | 'inline'
 >;
 
 export const usePopoverContext_unstable = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>

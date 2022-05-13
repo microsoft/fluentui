@@ -21,7 +21,12 @@ export const dividerClassName = "fui-Divider";
 export const dividerClassNames: SlotClassNames<DividerSlots>;
 
 // @public (undocumented)
-export type DividerProps = ComponentProps<Partial<DividerSlots>> & Partial<DividerCommons>;
+export type DividerProps = ComponentProps<Partial<DividerSlots>> & {
+    alignContent?: 'start' | 'center' | 'end';
+    appearance?: 'brand' | 'default' | 'strong' | 'subtle';
+    inset?: boolean;
+    vertical?: boolean;
+};
 
 // @public (undocumented)
 export type DividerSlots = {
@@ -30,7 +35,7 @@ export type DividerSlots = {
 };
 
 // @public (undocumented)
-export type DividerState = ComponentState<DividerSlots> & DividerCommons;
+export type DividerState = ComponentState<DividerSlots> & Required<Pick<DividerProps, 'alignContent' | 'appearance' | 'inset' | 'vertical'>>;
 
 // @public
 export const renderDivider_unstable: (state: DividerState) => JSX.Element;

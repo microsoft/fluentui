@@ -23,7 +23,7 @@ export const Disabled = () => {
   return (
     <div className={styles.root}>
       <Label disabled htmlFor={inputId}>
-        Disabled input
+        Disabled Input
       </Label>
       <Input disabled id={inputId} defaultValue="disabled value" />
     </div>

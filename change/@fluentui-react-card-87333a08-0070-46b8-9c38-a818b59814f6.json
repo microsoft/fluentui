@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "CardPreview now expands properly, all the way to the Card's edges",
+  "packageName": "@fluentui/react-card",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

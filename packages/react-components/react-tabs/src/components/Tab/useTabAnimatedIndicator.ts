@@ -2,10 +2,10 @@ import * as React from 'react';
 import type { TabState, TabValue } from './Tab.types';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { pendingAnimationDurationTokens, pendingAnimationEasingTokens } from '../../tab.constants';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { TabListContext } from '../TabList/TabListContext';
 import { TabRegisterData } from '../TabList/TabList.types';
+import { tokens } from '@fluentui/react-theme';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const tabIndicatorCssVars_unstable = {
@@ -21,8 +21,8 @@ const useActiveIndicatorStyles = makeStyles({
   animated: {
     ':after': {
       transitionProperty: 'transform',
-      transitionDuration: `${pendingAnimationDurationTokens.slow}`,
-      transitionTimingFunction: `${pendingAnimationEasingTokens.declerateMax}`,
+      transitionDuration: `${tokens.durationSlow}`,
+      transitionTimingFunction: `${tokens.curveDecelerateMax}`,
     },
     '@media (prefers-reduced-motion: reduce)': {
       ':after': {
@@ -63,7 +63,8 @@ const calculateTabRect = (element: HTMLElement) => {
 };
 
 const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, value?: TabValue) => {
-  const element = value ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
+  const element =
+    value !== undefined && value !== null ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
   return element ? calculateTabRect(element) : undefined;
 };
 

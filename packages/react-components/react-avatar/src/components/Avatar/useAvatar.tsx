@@ -98,12 +98,10 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
 
   return {
     size,
-    name,
     shape,
     active,
     activeAppearance,
     color,
-    idForColor,
 
     components: {
       root: 'span',

@@ -16,7 +16,7 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
 
     // toggle selected state of the option for multiselect
     if (multiselect) {
-      const selectedIndex = selectedOptions.findIndex(o => o.key === option.key);
+      const selectedIndex = selectedOptions.findIndex(o => o.id === option.id);
       if (selectedIndex > -1) {
         // deselect option
         newSelection = [...selectedOptions.slice(0, selectedIndex), ...selectedOptions.slice(selectedIndex + 1)];

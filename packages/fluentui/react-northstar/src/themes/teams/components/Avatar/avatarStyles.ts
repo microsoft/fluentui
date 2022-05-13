@@ -5,11 +5,12 @@ import { getSizeStyles, sizeToPxValue } from './avatarSizes';
 import { AvatarVariables } from './avatarVariables';
 
 export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
-  root: ({ props: { size } }): ICSSInJSStyle => ({
+  root: ({ props: { size }, variables: { initialsFontWeight } }): ICSSInJSStyle => ({
     position: 'relative',
     backgroundColor: 'inherit',
     display: 'inline-block',
     verticalAlign: 'middle',
+    fontWeight: initialsFontWeight,
     ...getSizeStyles(sizeToPxValue[size]),
   }),
 };

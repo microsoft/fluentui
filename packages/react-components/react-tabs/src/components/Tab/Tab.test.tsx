@@ -92,4 +92,20 @@ describe('Tab', () => {
 
     expect(result.container).toMatchSnapshot();
   });
+
+  it('renders correctly when disabled', () => {
+    const contextValues = {
+      tabList: { ...defaultContext },
+    };
+
+    const result = render(
+      <TabListContext.Provider value={contextValues.tabList}>
+        <Tab value="1" disabled>
+          Default Tab
+        </Tab>
+      </TabListContext.Provider>,
+    );
+
+    expect(result.container).toMatchSnapshot();
+  });
 });
