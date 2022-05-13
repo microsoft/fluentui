@@ -37,13 +37,17 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
   const previousCssRule = usePrevious(cssRule);
 
   if (styleTag && previousCssRule !== cssRule) {
-    const sheet = styleTag.sheet as CSSStyleSheet;
+    const sheet = styleTag.sheet;
 
-    if (sheet.cssRules.length > 0) {
-      sheet.deleteRule(0);
+    if (sheet) {
+      if (sheet.cssRules.length > 0) {
+        sheet.deleteRule(0);
+      }
+      sheet.insertRule(cssRule, 0);
+    } else if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.error('FluentProvider: No sheet available on styleTag, styles will not be inserted into DOM.');
     }
-
-    sheet.insertRule(cssRule, 0);
   }
 
   // Removes the style tag from the targetDocument on unmount or change

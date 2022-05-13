@@ -14,7 +14,7 @@ const sizeToPxValue: Record<SizeValue, number> = {
 };
 
 export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
-  root: ({ props: { size } }): ICSSInJSStyle => {
+  root: ({ props: { size }, variables: v }): ICSSInJSStyle => {
     const sizeInRem = pxToRem(sizeToPxValue[size]);
 
     return {
@@ -24,6 +24,7 @@ export const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, Avatar
       verticalAlign: 'middle',
       height: sizeInRem,
       width: sizeInRem,
+      fontWeight: v.initialsFontWeight,
     };
   },
 };

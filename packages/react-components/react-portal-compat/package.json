@@ -1,0 +1,49 @@
+{
+  "name": "@fluentui/react-portal-compat",
+  "version": "9.0.0-rc.2",
+  "description": "A package that contains compatibility layer for React Portals",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "yarn storybook",
+    "test": "jest --passWithNoTests",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-portal-compat/src && yarn docs",
+    "storybook": "node ../../../scripts/storybook/runner",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-components": "^9.0.0-rc.10",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.7",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/react-portal-compat-context": "^9.0.0-rc.1",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@fluentui/react-components": "^9.0.0-rc.10",
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}

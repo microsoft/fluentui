@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-spinbutton: add aria-valuetext override",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

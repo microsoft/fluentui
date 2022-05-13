@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated to add missing exports",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

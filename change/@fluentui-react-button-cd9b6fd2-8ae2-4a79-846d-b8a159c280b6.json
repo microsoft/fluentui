@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing Common types from all button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "humberto_makoto@hotmail.com",
+  "dependentChangeType": "patch"
+}

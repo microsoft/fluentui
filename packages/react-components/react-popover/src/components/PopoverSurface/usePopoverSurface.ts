@@ -26,9 +26,11 @@ export const usePopoverSurface_unstable = (
   const noArrow = usePopoverContext_unstable(context => context.noArrow);
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
+  const inline = usePopoverContext_unstable(context => context.inline);
   const { modalAttributes } = useModalAttributes({ trapFocus });
 
   const state: PopoverSurfaceState = {
+    inline,
     appearance,
     noArrow,
     size,

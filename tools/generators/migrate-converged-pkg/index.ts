@@ -12,7 +12,6 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
-  generateFiles,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -100,7 +99,7 @@ function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]
   });
 }
 
-function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: UserLog) {
+function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   if (options.owner) {
@@ -118,15 +117,17 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
   }
 
   // 1. update TsConfigs
-  updatedLocalTsConfig(tree, options);
+  const { configs } = updatedLocalTsConfig(tree, options);
   updatedBaseTsConfig(tree, options);
 
   // 2. update Jest
   updateLocalJestConfig(tree, options);
 
+  const optionsWithTsConfigs = { ...options, tsconfigs: configs };
+
   // update package npm scripts
-  updatePackageJson(tree, options);
-  updateApiExtractorForLocalBuilds(tree, options);
+  updatePackageJson(tree, optionsWithTsConfigs);
+  updateApiExtractorForLocalBuilds(tree, optionsWithTsConfigs);
 
   // setup storybook
   setupStorybook(tree, options);
@@ -142,17 +143,29 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, userLog: User
 // ==== helpers ====
 
 const templates = {
-  apiExtractorLocal: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: './api-extractor.json',
-    mainEntryPointFilePath: '<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts',
+  apiExtractor: (options: { tsconfig: TsConfig }) => {
+    const { tsconfig } = options;
+    if (!tsconfig.compilerOptions.declarationDir) {
+      throw new Error(`Provided TS config is missing declarationDir.`);
+    }
+
+    /* eslint-disable @fluentui/max-len */
+    return {
+      main: {
+        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+        extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
+        // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
+        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/index.d.ts`,
+      },
+      local: {
+        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
+        extends: './api-extractor.json',
+        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/packages/react-components/<unscopedPackageName>/src/index.d.ts`,
+      },
+      /* eslint-enable @fluentui/max-len */
+    };
   },
-  apiExtractor: {
-    $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-    extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-    // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
-    mainEntryPointFilePath: '<projectFolder>/dist/types/index.d.ts',
-  },
+
   tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
     return {
       main: () => {
@@ -525,11 +538,15 @@ function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updatePackageJson(tree: Tree, options: NormalizedSchema) {
+interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
+  tsconfigs: ReturnType<typeof updatedLocalTsConfig>['configs'];
+}
+
+function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   /* eslint-disable @fluentui/max-len */
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./${options.tsconfigs.lib.compilerOptions.declarationDir}/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
     storybook: 'node ../../../scripts/storybook/runner',
     start: 'yarn storybook',
     test: 'jest --passWithNoTests',
@@ -558,18 +575,15 @@ function updatePackageJson(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchema) {
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), templates.apiExtractorLocal);
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), templates.apiExtractor);
+function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
+  const apiExtractor = templates.apiExtractor({ tsconfig: options.tsconfigs.lib });
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), apiExtractor.local);
+  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   return tree;
 }
 
 function setupStorybook(tree: Tree, options: NormalizedSchema) {
-  function transformRelativePath(_path: string) {
-    return joinPathFragments('..', _path);
-  }
-
   const sbAction = shouldSetupStorybook(tree, options);
 
   const template = {
@@ -723,9 +737,6 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   writeJson<TsConfig>(tree, options.paths.e2e.tsconfig, templates.e2e.tsconfig);
 
-  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-  generateFiles(tree, joinPathFragments(__dirname, 'files', 'e2e'), options.paths.e2e.rootFolder, { tmpl: '' });
-
   updateJson(tree, options.paths.tsconfig.main, (json: TsConfig) => {
     json.references?.push({
       path: `./${path.basename(options.paths.e2e.rootFolder)}/${path.basename(options.paths.e2e.tsconfig)}`,
@@ -778,11 +789,11 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedLocalTsConfig(tree: Tree, options: NormalizedSchema) {
-  createTsSolutionConfig(tree, options);
+  const { configs } = createTsSolutionConfig(tree, options);
 
   updateTsGlobalTypes(tree, options);
 
-  return tree;
+  return { tree, configs };
 }
 
 function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
@@ -791,11 +802,14 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
   const hasConformance = hasConformanceSetup(tree, options);
 
   const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
-  writeJson(tree, options.paths.tsconfig.main, tsConfigs.main());
-  writeJson(tree, options.paths.tsconfig.lib, tsConfigs.lib());
-  writeJson(tree, options.paths.tsconfig.test, tsConfigs.test());
+  const main = tsConfigs.main();
+  const lib = tsConfigs.lib();
+  const test = tsConfigs.test();
+  writeJson(tree, options.paths.tsconfig.main, main);
+  writeJson(tree, options.paths.tsconfig.lib, lib);
+  writeJson(tree, options.paths.tsconfig.test, test);
 
-  return tree;
+  return { tree, configs: { main, lib, test } };
 }
 
 function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {

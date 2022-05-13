@@ -16,6 +16,7 @@ export const mockPopoverContext = (options: Partial<PopoverContextValue> = {}) =
     openOnContext: false,
     openOnHover: false,
     size: 'medium',
+    inline: false,
     ...options,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

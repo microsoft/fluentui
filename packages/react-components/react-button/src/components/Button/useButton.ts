@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useARIAButton } from '@fluentui/react-aria';
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
@@ -14,7 +14,7 @@ export const useButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ButtonState => {
   const {
-    appearance,
+    appearance = 'secondary',
     as,
     // eslint-disable-next-line deprecation/deprecation
     block = false,

@@ -2,7 +2,7 @@
   "description": "Separate entrypoint for unstable Fluent UI components",
   "main": "../lib-commonjs/unstable/index.js",
   "module": "../lib/unstable/index.js",
-  "typings": "../lib/unstable/index.d.ts",
+  "typings": "../dist/unstable.d.ts",
   "sideEffects": false,
   "license": "MIT",
   "exports": {

@@ -20,11 +20,6 @@ export const cardClassName = "fui-Card";
 // @public (undocumented)
 export const cardClassNames: SlotClassNames<CardSlots>;
 
-// @public (undocumented)
-export type CardCommons = {
-    appearance: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
-};
-
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
@@ -93,7 +88,10 @@ export type CardPreviewSlots = {
 export type CardPreviewState = ComponentState<CardPreviewSlots>;
 
 // @public
-export type CardProps = ComponentProps<CardSlots> & Partial<CardCommons>;
+export type CardProps = ComponentProps<CardSlots> & {
+    appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
+    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+};
 
 // @public (undocumented)
 export type CardSlots = {
@@ -101,7 +99,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & CardCommons;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;
