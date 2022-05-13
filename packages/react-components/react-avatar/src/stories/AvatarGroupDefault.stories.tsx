@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupProps } from '../index';
+import { AvatarGroup } from '../AvatarGroup';
+import type { AvatarGroupProps } from '../AvatarGroup';
 import { Avatar } from '../Avatar';
 import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
@@ -19,7 +20,7 @@ export const Default = (props: Partial<AvatarGroupProps>) => {
 
   return (
     <div className={styles.container}>
-      <Label htmlFor={avatarGroupId}>Default AvatarGroup.</Label>
+      <Label htmlFor={avatarGroupId}>Default AvatarGroup</Label>
       <AvatarGroup id={avatarGroupId} {...props}>
         <Avatar name="Katri Athokas" />
         <Avatar name="Elvia Atkins" />

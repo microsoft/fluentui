@@ -94,15 +94,11 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   }
 
   if (state.popoverTrigger) {
-    const popoverTriggerClassNames = [popoverTriggerStyles.base, sizeStyles[size]];
-
-    if (layout === 'pie') {
-      popoverTriggerClassNames.push(popoverTriggerStyles.pie);
-    }
-
     state.popoverTrigger.className = mergeClasses(
       avatarGroupClassNames.popoverTrigger,
-      ...popoverTriggerClassNames,
+      popoverTriggerStyles.base,
+      sizeStyles[size],
+      layout === 'pie' && popoverTriggerStyles.pie,
       state.popoverTrigger.className,
     );
   }

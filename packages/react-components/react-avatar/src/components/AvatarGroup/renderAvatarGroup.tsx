@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import type { AvatarGroupState, AvatarGroupSlots } from './AvatarGroup.types';
 import { Popover, PopoverTrigger } from '@fluentui/react-popover';
 import { Tooltip } from '@fluentui/react-tooltip';
+import { getSlots } from '@fluentui/react-utilities';
+import type { AvatarGroupState, AvatarGroupSlots } from './AvatarGroup.types';
 
 /**
  * Render the final JSX of AvatarGroup

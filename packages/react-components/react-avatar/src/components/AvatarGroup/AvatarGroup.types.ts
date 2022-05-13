@@ -1,11 +1,11 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { PopoverSurface } from '@fluentui/react-popover';
 import { AvatarSizes } from '../Avatar/Avatar.types';
 import { Button } from '@fluentui/react-button';
+import { PopoverSurface } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Popover trigger slot that can be used to change the overflow indicator.
@@ -37,7 +37,7 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
 
   /**
    * Whether the overflow indicator should render an icon instead of the number of overflowed avatars.
-   * @default false
+   * @default number-overflowed
    */
   overflowIndicator?: 'number-overflowed' | 'icon';
 
@@ -54,20 +54,13 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
   Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
     /**
-     * Tooltip content for the overflow indicator.
-     */
-    tooltipContent: TooltipProps['content'];
-
-    /**
      * Whether there are more Avatars than `maxAvatars`.
      * @default false
      */
     hasOverflow: boolean;
-  };
 
-export type AvatarGroupStrings = {
-  /**
-   * Text applied to the overflow indicator's tooltip.
-   */
-  tooltipContent: string;
-};
+    /**
+     * Tooltip content for the overflow indicator.
+     */
+    tooltipContent: TooltipProps['content'];
+  };

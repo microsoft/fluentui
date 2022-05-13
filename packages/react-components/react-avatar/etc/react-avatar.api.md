@@ -24,7 +24,7 @@ export const avatarClassName = "fui-Avatar";
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
-// @public (undocumented)
+// @public
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
@@ -40,15 +40,15 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     popoverTrigger: NonNullable<Slot<typeof Button>>;
     popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
-    tooltipContent: TooltipProps['content'];
     hasOverflow: boolean;
+    tooltipContent: TooltipProps['content'];
 };
 
 // @public

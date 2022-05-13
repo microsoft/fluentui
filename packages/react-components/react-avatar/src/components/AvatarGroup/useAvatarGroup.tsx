@@ -1,14 +1,13 @@
 import * as React from 'react';
-import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { PopoverSurface } from '@fluentui/react-popover';
 import { Button } from '@fluentui/react-button';
-import { MoreHorizontalRegular } from '@fluentui/react-icons';
-import { avatarGroupDefaultStrings } from './AvatarGroup.strings';
-import { useId } from '@fluentui/react-utilities';
-import { getInitials } from '../../utils/getInitials';
 import { extraAvatarGroupClassNames } from './useAvatarGroupStyles';
+import { getInitials } from '../../utils/getInitials';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
+import { MoreHorizontalRegular } from '@fluentui/react-icons';
+import { PopoverSurface } from '@fluentui/react-popover';
+import { useId } from '@fluentui/react-utilities';
+import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
 /**
  * Create the state required to render AvatarGroup.
@@ -24,8 +23,8 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     children,
     layout = 'spread',
     maxAvatars = 5,
-    size = 32,
     overflowIndicator = 'number-overflowed',
+    size = 32,
     ...rest
   } = props;
   const id = useId('avatarGroup-', props.id);
@@ -101,7 +100,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     maxAvatars: numOfAvatarsToShow,
     overflowIndicator,
     size,
-    tooltipContent: avatarGroupDefaultStrings.tooltipContent,
+    tooltipContent: 'View more people.',
 
     components: {
       root: 'div',
