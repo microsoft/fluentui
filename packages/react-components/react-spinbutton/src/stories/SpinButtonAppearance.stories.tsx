@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     display: 'grid',
     gridRowGap: tokens.spacingVerticalXXS,
     marginTop: tokens.spacingVerticalMNudge,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.padding(tokens.spacingHorizontalMNudge),
   },
 
