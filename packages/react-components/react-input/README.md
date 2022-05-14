@@ -17,8 +17,8 @@ import { Input } from '@fluentui/react-input';
 #### Examples
 
 ```jsx
-<Input defaultValue="Hello, World!"/>
-<Input value={value} onChange={onInputChange}/>
+<Input defaultValue="Hello, World!" />
+<Input value={value} onChange={onInputChange} />
 ```
 
 See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
