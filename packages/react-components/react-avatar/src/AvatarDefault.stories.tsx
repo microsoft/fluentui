@@ -18,7 +18,7 @@ const argTypes: ArgTypes = {
   size: {
     control: {
       type: 'select',
-      options: [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
+      options: [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
     },
   },
   name: {

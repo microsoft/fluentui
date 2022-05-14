@@ -66,7 +66,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 };
 
 // @public
-export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarSlots = {
