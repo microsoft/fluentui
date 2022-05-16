@@ -1,5 +1,3 @@
-// Add a comment to test screener VR test scoping
-
 export * from './ActivityItem';
 export * from './Autofill';
 export * from './Announced';
