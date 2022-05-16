@@ -44,7 +44,7 @@ With a defined browser matrix, the Fluent team will now have better guidance on 
 
 ### Browser Support Going Forward
 
-With an eye towards being a modern library, Fluent will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing consumers with performance and bundlesize improvements. Due to the nature of how Safari browser updates are tied to MacOS versions, Safari will be the browser that ultimately holds the library back from fully adopting modern browser versions across the board. Because of this, the proposed timeframe for when these audits occur should be whenever a Safari major release occurs. These tend to happen annually during the month of September so Fluent can target an annual audit around that time.
+With an eye towards being a modern library, Fluent will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing consumers with performance and bundlesize improvements. The proposed yearly audit gives Fluent a reasonable timeframe to evaluate, decide and give notice if browser matrix changes are to be made.
 
 ## Out of Scope
 
