@@ -7,17 +7,7 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Radio Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('rest', { cropTo: '.testWrapper' })
-        .hover('input')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('input')
-        .snapshot('active', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
+    <Screener steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('unchecked', () => <Radio label="Unchecked" />, {
     includeDarkMode: true,

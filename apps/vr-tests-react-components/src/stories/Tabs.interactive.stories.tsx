@@ -5,7 +5,17 @@ import { TabList, Tab } from '@fluentui/react-tabs';
 
 storiesOf('TabList and Tab Converged', module)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <Screener
+      steps={new Screener.Steps()
+        .hover('.mouse-target')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.mouse-target')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.mouse-target')
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory(
     'Default',

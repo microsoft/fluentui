@@ -7,7 +7,17 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Textarea Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <Screener
+      steps={new Steps()
+        .hover('textarea')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('textarea')
+        .wait(250) // needed for bottom focus border animation
+        .snapshot('focused', { cropTo: '.textWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory('Appearance: outline (default)', () => <Textarea placeholder="Placeholder" />)
   .addStory('Appearance: filledDarker', () => <Textarea appearance="filledDarker" placeholder="Placeholder" />)
@@ -17,7 +27,4 @@ storiesOf('Textarea Converged', module)
     </div>
   ))
   .addStory('Disabled', () => <Textarea disabled />)
-  .addStory('With value', () => <Textarea defaultValue="Value" />)
-  .addStory('Size: small', () => <Textarea size="small" placeholder="Placeholder" />)
-  .addStory('Size: medium', () => <Textarea size="medium" placeholder="Placeholder" />)
-  .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />);
+  .addStory('With value', () => <Textarea defaultValue="Value" />);

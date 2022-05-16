@@ -8,7 +8,17 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+    <Screener
+      steps={new Steps()
+        .hover('input')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
   .addStory('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)

@@ -11,7 +11,6 @@ storiesOf('SpinButton Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
-        .snapshot('rest', { cropTo })
         .hover('input')
         .snapshot('hoverInput', { cropTo })
 
@@ -118,7 +117,37 @@ storiesOf('SpinButton Converged', module)
 // The order of increment/decrement mouse down matters for min bound
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => <Screener steps={new Steps().snapshot('rest', { cropTo }).end()}>{story()}</Screener>)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('rest', { cropTo })
+        .hover('input')
+        .snapshot('hoverInput', { cropTo })
+
+        .hover(`.${spinButtonClassNames.incrementButton}`)
+        .snapshot('hoverIncrement', { cropTo })
+
+        .hover(`.${spinButtonClassNames.decrementButton}`)
+        .snapshot('hoverDecrement', { cropTo })
+
+        .mouseDown(`.${spinButtonClassNames.decrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownDecrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.decrementButton}`)
+
+        .mouseDown(`.${spinButtonClassNames.incrementButton}`)
+        .wait(250)
+        .snapshot('mouseDownIncrement', { cropTo })
+        .mouseUp(`.${spinButtonClassNames.incrementButton}`)
+
+        .click('input')
+        .wait(250) // let focus border animation finish
+        .snapshot('focused', { cropTo })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addStory('At Min Bound', () => <SpinButton value={10} min={10} />, {
     includeRtl: true,
     includeHighContrast: true,
