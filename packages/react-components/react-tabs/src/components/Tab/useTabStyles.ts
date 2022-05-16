@@ -26,9 +26,11 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.borderWidth(0),
     cursor: 'pointer',
-    display: 'flex',
-    flexDirection: 'row',
+    display: 'grid',
     flexShrink: 0,
+    gridAutoFlow: 'column',
+    gridTemplateColumns: 'auto',
+    gridTemplateRows: 'auto',
     fontFamily: tokens.fontFamilyBase,
     lineHeight: tokens.lineHeightBase300,
     outlineStyle: 'none',
@@ -36,16 +38,19 @@ const useRootStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     textTransform: 'none',
   },
+  horizontal: {
+    justifyContent: 'center',
+  },
+  vertical: {
+    justifyContent: 'start',
+  },
   mediumHorizontal: {
     columnGap: tokens.spacingHorizontalSNudge,
-    justifyContent: 'center',
     ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalMNudge),
   },
   mediumVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
     columnGap: tokens.spacingHorizontalSNudge,
-    justifyContent: 'flex-start',
-    minWidth: '120px',
     ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalMNudge),
   },
   smallHorizontal: {
@@ -357,6 +362,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   state.root.className = mergeClasses(
     tabClassNames.root,
     rootStyles.base,
+    vertical ? rootStyles.vertical : rootStyles.horizontal,
     size !== 'small' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     focusStyles.base,

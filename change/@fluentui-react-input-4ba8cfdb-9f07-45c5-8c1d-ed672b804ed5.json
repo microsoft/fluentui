@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "write readme",
+  "packageName": "@fluentui/react-input",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

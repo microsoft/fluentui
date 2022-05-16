@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Re-exporting AvatarSizes from react-avatar.",
+  "packageName": "@fluentui/react-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Update Griffel to latest version",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

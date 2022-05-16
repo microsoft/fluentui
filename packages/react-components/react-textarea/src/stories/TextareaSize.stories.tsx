@@ -3,13 +3,23 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import { Textarea } from '../Textarea';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.gap('10px'),
-    '& > div': { display: 'flex', flexDirection: 'column', ...shorthands.gap('10px'), ...shorthands.padding('10px') },
+  base: {
+    '& > div': {
+      marginTop: tokens.spacingVerticalMNudge,
+    },
+    '& > div > div': {
+      display: 'flex',
+      flexDirection: 'column',
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      ...shorthands.padding(tokens.spacingHorizontalMNudge),
+    },
+    '& > div > label': {
+      marginBottom: tokens.spacingHorizontalXXS,
+      marginLeft: tokens.spacingHorizontalMNudge,
+    },
   },
 });
 
@@ -20,18 +30,26 @@ export const Size = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.base}>
       <div>
         <Label htmlFor={smallId}>Small Textarea.</Label>
-        <Textarea id={smallId} size="small" />
+        <div>
+          <Textarea id={smallId} size="small" />
+        </div>
       </div>
+
       <div>
         <Label htmlFor={mediumId}>Medium Textarea.</Label>
-        <Textarea id={mediumId} size="medium" />
+        <div>
+          <Textarea id={mediumId} size="medium" />
+        </div>
       </div>
+
       <div>
         <Label htmlFor={largeId}>Large Textarea.</Label>
-        <Textarea id={largeId} size="large" />
+        <div>
+          <Textarea id={largeId} size="large" />
+        </div>
       </div>
     </div>
   );

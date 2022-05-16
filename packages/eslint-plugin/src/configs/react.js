@@ -7,6 +7,7 @@ const config = {
   extends: [
     // Provides both rules and some parser options and other settings
     'airbnb',
+    'plugin:@griffel/recommended',
     // add typescript support for import plugin - https://github.com/import-js/eslint-plugin-import/blob/main/config/typescript.js
     'plugin:import/typescript',
     // Extended configs are applied in order, so these configs that turn other rules off should come last
@@ -16,6 +17,7 @@ const config = {
   plugins: [
     'import',
     '@fluentui',
+    '@griffel',
     '@rnx-kit',
     '@typescript-eslint',
     'deprecation',
