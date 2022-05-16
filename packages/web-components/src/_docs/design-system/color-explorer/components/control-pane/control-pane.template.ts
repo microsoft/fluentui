@@ -1,7 +1,7 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { Checkbox, RadioGroup } from '@microsoft/fast-foundation';
+import { ComponentTypes } from '../../component-types';
 import { ColorPicker } from '../color-picker/color-picker';
-import { ComponentTypes } from '../../app';
 import { ControlPane } from './control-pane';
 
 function titleCase(str: string): string {

@@ -30,7 +30,7 @@ import {
   neutralStrokeRest,
   SwatchRGB,
 } from '../../../../index-rollup';
-import { ComponentTypes } from '../app';
+import { ComponentTypes } from '../component-types';
 import { AppSwatch } from './swatch';
 
 AppSwatch;

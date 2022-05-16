@@ -17,6 +17,7 @@ import {
   Swatch,
   SwatchRGB,
 } from '../../../index-rollup';
+import { ComponentTypes } from './component-types';
 import { AppColorBlock } from './components/color-block';
 import { AppControlPane } from './components/control-pane';
 import { AppGradient } from './components/gradient';
@@ -26,13 +27,6 @@ AppColorBlock;
 AppControlPane;
 AppGradient;
 AppSampleApp;
-
-export enum ComponentTypes {
-  backplate = 'backplate',
-  text = 'text',
-  form = 'form',
-  sample = 'sample',
-}
 
 const sampleTemplate = html<App>`
   <fluent-design-system-provider
