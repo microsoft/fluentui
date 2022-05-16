@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Update window to use iconBaseUrl to prevent collision",
   "packageName": "@fluentui/font-icons-mdl2",
   "email": "ololubek@microsoft.com",
