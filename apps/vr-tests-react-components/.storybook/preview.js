@@ -11,7 +11,7 @@ const configToPropsMap = {
   includeRtl: { theme: webLightTheme, dir: 'rtl', label: 'RTL' },
 };
 
-const configDefaults = { includeDefault: true };
+const defaultVariants = { includeDefault: true };
 
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
@@ -34,7 +34,8 @@ setAddon({
    * @this {import('../src/utilities/types').ExtendedStoryApi}
    */
   addStory(storyName, storyFn, config = {}) {
-    const modeConfig = { ...configDefaults, ...config };
+    const { ...variants } = config;
+    const modeConfig = { ...defaultVariants, ...variants };
     this.add(storyName, context => {
       return (
         <>
@@ -43,9 +44,7 @@ setAddon({
             return (
               <React.Fragment key={configProp}>
                 <h3>{label}</h3>
-                <FluentProvider key={configProp} {...providerConfig}>
-                  {storyFn(context)}
-                </FluentProvider>
+                <FluentProvider {...providerConfig}>{storyFn(context)}</FluentProvider>
                 <hr />
               </React.Fragment>
             );
