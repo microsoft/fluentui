@@ -1,16 +1,16 @@
 // const toObjectMap = <T extends string>(...items: (T[] | Record<T, number>)[]): Record<T, 1> => {
-function toObjectMap<T extends string>(arg1: T[] | Record<T, number>): Record<T, 1>;
+function toObjectMap<T extends string>(items: T[] | Record<T, number>): Record<T, 1>;
 function toObjectMap<T extends string, U extends string>(
-  arg1: T[] | Record<T, number>,
-  arg2: U[] | Record<U, number>,
+  items: T[] | Record<T, number>,
+  extensionItems: U[] | Record<U, number>,
 ): Record<T, 1> & Record<U, 1>;
 function toObjectMap(
-  arg1: string[] | Record<string, number>,
-  arg2?: string[] | Record<string, number>,
+  items: string[] | Record<string, number>,
+  extensionItems?: string[] | Record<string, number>,
 ): Record<string, 1> {
   const result: Record<string, 1> = {};
 
-  for (const item of [arg1, arg2]) {
+  for (const item of [items, extensionItems]) {
     const keys = Array.isArray(item) ? item : Object.keys(item ?? []);
 
     for (const key of keys) {
