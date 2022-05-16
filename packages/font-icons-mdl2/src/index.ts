@@ -28,7 +28,7 @@ declare global {
   interface Window {
     FabricConfig?: {
       /**
-       * @deprecated
+       * @deprecated - Use iconBaseUrl instead.
        */
       fontBaseUrl?: string;
       iconBaseUrl?: string;
