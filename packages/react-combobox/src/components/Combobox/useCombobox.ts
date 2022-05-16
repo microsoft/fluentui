@@ -37,7 +37,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     positioning,
     size = 'medium',
   } = props;
-  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById } = optionCollection;
+  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -80,11 +80,33 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     }
 
     if (multiselect) {
-      return selectedOptions.map(option => option.value).join(', ');
+      return selectedOptions.join(', ');
     }
 
-    return selectedOptions[0]?.value;
+    return selectedOptions[0];
   }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
+
+  // update active option based on change in open state
+  React.useEffect(() => {
+    if (open) {
+      // if there is a selection, start at the most recently selected item
+      if (selectedOptions.length > 0) {
+        const lastSelectedOption = getOptionsMatchingValue(
+          v => v === selectedOptions[selectedOptions.length - 1],
+        ).pop();
+        lastSelectedOption && setActiveOption(lastSelectedOption);
+      }
+      // default to starting at the first option
+      else {
+        setActiveOption(getOptionAtIndex(0));
+      }
+    } else {
+      // reset the active option when closing
+      setActiveOption(undefined);
+    }
+    // this should only be run in response to changes in the open state
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
@@ -99,7 +121,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectOption(event, option);
+    selectOption(event, option.value);
   });
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -209,11 +231,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         !multiselect && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(event, activeOption);
+        activeOption && !activeOption.disabled && selectOption(event, activeOption.value);
         event.preventDefault();
         break;
       case 'Tab':
-        activeOption && selectOption(event, activeOption);
+        activeOption && selectOption(event, activeOption.value);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);

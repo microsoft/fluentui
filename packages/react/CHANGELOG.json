@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 16 May 2022 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.68.1",
+      "version": "8.68.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f43f5fa45ce881e096177e26f54072a7a2a562d5",
+            "comment": "Updated to add missing exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:34 GMT",
       "tag": "@fluentui/react_v8.68.0",
       "version": "8.68.0",

@@ -41,7 +41,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const selected = useContextSelector(ListboxContext, ctx => {
     const selectedOptions = ctx.selectedOptions;
 
-    return !!optionValue && !!selectedOptions.find(option => option.value === optionValue);
+    return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
 
   // use the id if provided, otherwise use a generated id
@@ -67,16 +67,16 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(event, { id, value: optionValue });
+    onOptionClick(event, { id, disabled, value: optionValue });
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
     if (id && optionRef.current) {
-      return registerOption({ id, value: optionValue }, optionRef.current);
+      return registerOption({ id, disabled, value: optionValue }, optionRef.current);
     }
-  }, [registerOption, id, optionValue]);
+  }, [registerOption, id, disabled, optionValue]);
 
   return {
     components: {
