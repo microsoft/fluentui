@@ -10,7 +10,7 @@ storiesOf('Menu Converged - basic', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>
@@ -36,7 +36,7 @@ storiesOf('Menu Converged - secondary content', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>
@@ -65,7 +65,7 @@ storiesOf('Menu Converged - nested submenus', module)
     // https://github.com/microsoft/fluentui/issues/19782
     <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('all open').end()}>{story()}</Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>
@@ -103,7 +103,7 @@ storiesOf('Menu Converged - split item', module)
     // https://github.com/microsoft/fluentui/issues/19782
     <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>
@@ -189,7 +189,7 @@ storiesOf('Menu nested within a MenuTrigger', module)
     // https://github.com/microsoft/fluentui/issues/19782
     <Screener steps={new Screener.Steps().click('#nestedTrigger').snapshot('submenu open').end()}>{story()}</Screener>
   ))
-  .addStory('default', () => (
+  .addStoryInteractive('default', () => (
     <Menu openOnContext>
       <MenuTrigger>
         <ContextMenuArea />
@@ -213,7 +213,7 @@ storiesOf('Menu Converged - icon slotted content', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>
@@ -248,7 +248,7 @@ storiesOf('Menu Converged - submenuIndicator slotted content', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'default',
     () => (
       <Menu open>

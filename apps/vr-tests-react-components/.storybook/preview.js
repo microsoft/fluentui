@@ -33,8 +33,23 @@ setAddon({
    * @type {import('../src/utilities/types').ExtendedStoryApi['addStory']}
    * @this {import('../src/utilities/types').ExtendedStoryApi}
    */
+  addStoryInteractive(storyName, storyFn, config = {}) {
+    const { interactive, ...variants } = config;
+    const modeConfig = { ...defaultVariants, ...variants };
+    Object.keys(modeConfig).forEach(configProp => {
+      const { label, ...providerConfig } = configToPropsMap[configProp];
+      this.add(`${storyName} ${label}`, context => {
+        return <FluentProvider {...providerConfig}>{storyFn(context)}</FluentProvider>;
+      });
+    });
+    return this;
+  },
+  /**
+   * @type {import('../src/utilities/types').ExtendedStoryApi['addStory']}
+   * @this {import('../src/utilities/types').ExtendedStoryApi}
+   */
   addStory(storyName, storyFn, config = {}) {
-    const { ...variants } = config;
+    const { interactive, ...variants } = config;
     const modeConfig = { ...defaultVariants, ...variants };
     this.add(storyName, context => {
       return (
@@ -52,7 +67,6 @@ setAddon({
         </>
       );
     });
-
     return this;
   },
 });

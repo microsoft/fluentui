@@ -18,7 +18,7 @@ storiesOf('Checkbox Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('unchecked', () => <Checkbox label="Unchecked" />)
-  .addStory('checked', () => <Checkbox checked label="Checked" />)
-  .addStory('mixed', () => <Checkbox checked="mixed" label="Mixed" />)
-  .addStory('disabled', () => <Checkbox disabled label="Disabled" />);
+  .addStoryInteractive('unchecked', () => <Checkbox label="Unchecked" />)
+  .addStoryInteractive('checked', () => <Checkbox checked label="Checked" />)
+  .addStoryInteractive('mixed', () => <Checkbox checked="mixed" label="Mixed" />)
+  .addStoryInteractive('disabled', () => <Checkbox disabled label="Disabled" />);

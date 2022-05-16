@@ -20,17 +20,17 @@ storiesOf('Input Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
-  .addStory('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)
-  .addStory('Appearance: filledDarker', () => <Input appearance="filledDarker" placeholder="Placeholder" />)
-  .addStory('Appearance: filledLighter', () => (
+  .addStoryInteractive('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
+  .addStoryInteractive('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)
+  .addStoryInteractive('Appearance: filledDarker', () => <Input appearance="filledDarker" placeholder="Placeholder" />)
+  .addStoryInteractive('Appearance: filledLighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Input appearance="filledLighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Input disabled />)
-  .addStory('With value', () => <Input defaultValue="Value!" />);
+  .addStoryInteractive('Disabled', () => <Input disabled />)
+  .addStoryInteractive('With value', () => <Input defaultValue="Value!" />);
 
 // Non-interactive stories
 storiesOf('Input Converged', module)
@@ -39,19 +39,19 @@ storiesOf('Input Converged', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Size: small', () => <Input size="small" placeholder="Placeholder" />)
-  .addStory('Size: large', () => <Input size="large" placeholder="Placeholder" />)
-  .addStory('Inline', () => (
+  .addStoryInteractive('Size: small', () => <Input size="small" placeholder="Placeholder" />)
+  .addStoryInteractive('Size: large', () => <Input size="large" placeholder="Placeholder" />)
+  .addStoryInteractive('Inline', () => (
     <p>
       Some text with <Input placeholder="hello" style={{ width: '75px' }} /> inline input
     </p>
   ))
-  .addStory(
+  .addStoryInteractive(
     'contentBefore',
     () => <Input contentBefore={<SearchRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
   )
-  .addStory(
+  .addStoryInteractive(
     'contentAfter',
     () => <Input contentAfter={<DismissRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },

@@ -27,12 +27,12 @@ storiesOf('Link Converged - Rendered as anchor', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, {
+  .addStoryInteractive('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory(
+  .addStoryInteractive(
     'Stand-alone Disabled Focusable',
     () => (
       <AnchorLink disabled disabledFocusable>
@@ -41,7 +41,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
     ),
     { includeHighContrast: true, includeDarkMode: true },
   )
-  .addStory(
+  .addStoryInteractive(
     'Inline',
     () => (
       <div>
@@ -50,7 +50,7 @@ storiesOf('Link Converged - Rendered as anchor', module)
     ),
     { includeRtl: true },
   )
-  .addStory('Inline Disabled Focusable', () => (
+  .addStoryInteractive('Inline Disabled Focusable', () => (
     <div>
       This is{' '}
       <AnchorLink inline disabled disabledFocusable>
@@ -75,8 +75,8 @@ storiesOf('Link Converged - Rendered as anchor', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone Disabled', () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>)
-  .addStory('Inline Disabled', () => (
+  .addStoryInteractive('Stand-alone Disabled', () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>)
+  .addStoryInteractive('Inline Disabled', () => (
     <div>
       This is{' '}
       <AnchorLink inline disabled>
@@ -107,13 +107,13 @@ storiesOf('Link Converged - Rendered as button', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
-  .addStory('Stand-alone Disabled Focusable', () => (
+  .addStoryInteractive('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
+  .addStoryInteractive('Stand-alone Disabled Focusable', () => (
     <ButtonLink disabled disabledFocusable>
       Stand-alone disabled focusable link
     </ButtonLink>
   ))
-  .addStory(
+  .addStoryInteractive(
     'Inline',
     () => (
       <div>
@@ -122,7 +122,7 @@ storiesOf('Link Converged - Rendered as button', module)
     ),
     { includeRtl: true },
   )
-  .addStory('Inline Disabled Focusable', () => (
+  .addStoryInteractive('Inline Disabled Focusable', () => (
     <div>
       This is{' '}
       <ButtonLink inline disabled disabledFocusable>
@@ -147,8 +147,8 @@ storiesOf('Link Converged - Rendered as button', module)
       {story()}
     </Screener>
   ))
-  .addStory('Stand-alone Disabled', () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>)
-  .addStory('Inline Disabled', () => (
+  .addStoryInteractive('Stand-alone Disabled', () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>)
+  .addStoryInteractive('Inline Disabled', () => (
     <div>
       This is{' '}
       <ButtonLink inline disabled>

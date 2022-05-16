@@ -38,22 +38,22 @@ storiesOf('SpinButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Appearance: outline (default)', () => <SpinButton value={10} />, {
+  .addStoryInteractive('Appearance: outline (default)', () => <SpinButton value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Appearance: underline', () => <SpinButton appearance="underline" value={10} />, {
+  .addStoryInteractive('Appearance: underline', () => <SpinButton appearance="underline" value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Appearance: filledDarker', () => <SpinButton appearance="filledDarker" value={10} />, {
+  .addStoryInteractive('Appearance: filledDarker', () => <SpinButton appearance="filledDarker" value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory(
+  .addStoryInteractive(
     'Appearance: filledLighter',
     () => (
       // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
@@ -63,12 +63,12 @@ storiesOf('SpinButton Converged', module)
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
-  .addStory('Display Value', () => <SpinButton value={10} displayValue="$10.00" />, {
+  .addStoryInteractive('Display Value', () => <SpinButton value={10} displayValue="$10.00" />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Disabled', () => <SpinButton disabled value={10} />, {
+  .addStoryInteractive('Disabled', () => <SpinButton disabled value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
@@ -108,7 +108,7 @@ storiesOf('SpinButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('At Max Bound', () => <SpinButton value={10} max={10} />, {
+  .addStoryInteractive('At Max Bound', () => <SpinButton value={10} max={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
@@ -148,7 +148,7 @@ storiesOf('SpinButton Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('At Min Bound', () => <SpinButton value={10} min={10} />, {
+  .addStoryInteractive('At Min Bound', () => <SpinButton value={10} min={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
@@ -157,9 +157,9 @@ storiesOf('SpinButton Converged', module)
 storiesOf('SpinButton Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo }).end()}>{story()}</Screener>)
-  .addStory('Size: small', () => <SpinButton size="small" value={10} />, {
+  .addStoryInteractive('Size: small', () => <SpinButton size="small" value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Size: medium (default)', () => <SpinButton value={10} />, { includeRtl: true });
+  .addStoryInteractive('Size: medium (default)', () => <SpinButton value={10} />, { includeRtl: true });

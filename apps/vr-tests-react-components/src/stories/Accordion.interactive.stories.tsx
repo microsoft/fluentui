@@ -19,7 +19,7 @@ storiesOf('Accordion Converged', module)
     </Screener>
   ))
 
-  .addStory(
+  .addStoryInteractive(
     'visibility+focus',
     () => (
       <Accordion openItems={[0]}>

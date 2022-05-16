@@ -49,7 +49,7 @@ storiesOf('Card Converged', module)
       </div>
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'appearance interactive - Filled',
     () => (
       <Card onClick={action('filled card clicked')} appearance="filled">
@@ -62,7 +62,7 @@ storiesOf('Card Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'appearance interactive - Filled Alternative',
     () => (
       <Card onClick={action('filled alternative card clicked')} appearance="filled-alternative">
@@ -75,7 +75,7 @@ storiesOf('Card Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'appearance interactive - Outline',
     () => (
       <Card onClick={action('outline card clicked')} appearance="outline">
@@ -88,7 +88,7 @@ storiesOf('Card Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'appearance interactive - Subtle',
     () => (
       <Card onClick={action('subtle card clicked')} appearance="subtle">

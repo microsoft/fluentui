@@ -17,7 +17,7 @@ storiesOf('TabList and Tab Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory(
+  .addStoryInteractive(
     'Default',
     () => (
       <TabList>
@@ -34,7 +34,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory('Vertical', () => (
+  .addStoryInteractive('Vertical', () => (
     <TabList vertical>
       <Tab value="1">First</Tab>
       <Tab className="mouse-target" value="2">
@@ -43,7 +43,7 @@ storiesOf('TabList and Tab Converged', module)
       <Tab value="3">Third</Tab>
     </TabList>
   ))
-  .addStory(
+  .addStoryInteractive(
     'Subtle appearance',
     () => (
       <TabList appearance="subtle">
@@ -59,7 +59,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'Small size',
     () => (
       <TabList size="small">
@@ -75,7 +75,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'Vertical and small size',
     () => (
       <TabList size="small" vertical>
@@ -91,7 +91,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'Tab Selected (default)',
     () => (
       <TabList defaultSelectedValue="2">
@@ -107,7 +107,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'Tab Selected',
     () => (
       <TabList selectedValue="2">
@@ -123,7 +123,7 @@ storiesOf('TabList and Tab Converged', module)
       includeDarkMode: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'With icon',
     () => (
       <TabList>
@@ -142,7 +142,7 @@ storiesOf('TabList and Tab Converged', module)
       includeRtl: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'With icon and vertical',
     () => (
       <TabList vertical>
@@ -161,7 +161,7 @@ storiesOf('TabList and Tab Converged', module)
       includeRtl: true,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'With icon only',
     () => (
       <TabList>
@@ -174,7 +174,7 @@ storiesOf('TabList and Tab Converged', module)
       includeRtl: false,
     },
   )
-  .addStory(
+  .addStoryInteractive(
     'With icon only and vertical',
     () => (
       <TabList vertical>

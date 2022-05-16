@@ -9,6 +9,8 @@ export interface AddStoryConfig {
   includeHighContrast?: boolean;
   /** Whether to include a dark theme version of the story (converged only) */
   includeDarkMode?: boolean;
+  /** Interactive variants are rendered in separate stories */
+  interactive?: boolean;
 }
 
 export type ExtendedStoryFnReturnType = React.ReactElement<unknown>;
@@ -17,6 +19,7 @@ export type ExtendedStoryFn = LegacyStoryFn<ExtendedStoryFnReturnType>;
 
 export interface ExtendedStoryApi extends StoryApi<ExtendedStoryFnReturnType> {
   addStory: (storyName: StoryName, storyFn: ExtendedStoryFn, config?: AddStoryConfig) => ExtendedStoryApi;
+  addStoryInteractive: (storyName: StoryName, storyFn: ExtendedStoryFn, config?: AddStoryConfig) => ExtendedStoryApi;
 
   add: ClientApiReturnFn<ExtendedStoryFnReturnType>;
 }

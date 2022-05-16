@@ -19,12 +19,14 @@ storiesOf('Textarea Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('Appearance: outline (default)', () => <Textarea placeholder="Placeholder" />)
-  .addStory('Appearance: filledDarker', () => <Textarea appearance="filledDarker" placeholder="Placeholder" />)
-  .addStory('Appearance: filledLighter', () => (
+  .addStoryInteractive('Appearance: outline (default)', () => <Textarea placeholder="Placeholder" />)
+  .addStoryInteractive('Appearance: filledDarker', () => (
+    <Textarea appearance="filledDarker" placeholder="Placeholder" />
+  ))
+  .addStoryInteractive('Appearance: filledLighter', () => (
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Textarea appearance="filledLighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Textarea disabled />)
-  .addStory('With value', () => <Textarea defaultValue="Value" />);
+  .addStoryInteractive('Disabled', () => <Textarea disabled />)
+  .addStoryInteractive('With value', () => <Textarea defaultValue="Value" />);
