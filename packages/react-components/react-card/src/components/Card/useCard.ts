@@ -26,7 +26,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     tabBehavior: focusMap[focusMode],
   });
 
-  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : {};
+  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
 
   return {
     appearance,
