@@ -1,21 +1,21 @@
-import { CopyToClipboard, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
-import { Menu, menuAsToolbarBehavior, Tooltip, Loader, MenuProps, MenuItem } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { imports } from '../../Playground/renderConfig';
-import { ComponentSourceManagerLanguage } from '../ComponentSourceManager';
-
+import { CodeSandboxExporter, CodeSandboxState, CopyToClipboard } from '@fluentui/docs-components';
 import {
-  EditIcon,
-  FilesCodeIcon,
+  AcceptIcon,
   CircleIcon,
+  EditIcon,
+  IndentIcon,
   LinkIcon,
   OpenOutsideIcon,
-  AcceptIcon,
-  IndentIcon,
 } from '@fluentui/react-icons-northstar';
+import { Loader, Menu, menuAsToolbarBehavior, MenuItem, MenuProps, Tooltip } from '@fluentui/react-northstar';
+
+import { CodeSandboxIcon } from '../../Icons/CodeSandboxIcon';
+import { imports } from '../../Playground/renderConfig';
+import { ComponentSourceManagerLanguage } from '../ComponentSourceManager';
 import CodeSnippetIcon from './CodeSnippetIcon';
 
 type ComponentControlsProps = {
@@ -71,16 +71,16 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
 
         const codeSandboxIcon =
           state === CodeSandboxState.Default ? (
-            <FilesCodeIcon style={{ width: '20px', height: '20px' }} />
+            <CodeSandboxIcon />
           ) : state === CodeSandboxState.Loading ? (
-            <Loader size="small" style={{ width: '20px', height: '20px' }} />
+            <Loader size="small" />
           ) : (
-            <AcceptIcon style={{ width: '20px', height: '20px' }} />
+            <AcceptIcon />
           );
 
         const items: MenuProps['items'] = [
           {
-            icon: <CodeSnippetIcon style={{ width: '20px', height: '20px' }} />,
+            icon: <CodeSnippetIcon />,
             onClick: onShowCode,
             active: showCode,
             children: (Component: typeof MenuItem, props) => (
@@ -89,7 +89,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
           },
 
           {
-            icon: <EditIcon style={{ width: '20px', height: '20px' }} />,
+            icon: <EditIcon />,
             onClick: onShowVariables,
             active: showVariables,
             children: (Component: typeof MenuItem, props) => (
@@ -102,7 +102,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             kind: 'divider',
           },
           {
-            icon: <CircleIcon outline style={{ width: '20px', height: '20px' }} />,
+            icon: <CircleIcon outline />,
             onClick: onShowTransparent,
             active: showTransparent,
             children: (Component: typeof MenuItem, props) => (
@@ -110,7 +110,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             ),
           },
           {
-            icon: <IndentIcon rotate={180} style={{ width: '20px', height: '20px' }} />,
+            icon: <IndentIcon rotate={180} />,
             onClick: onShowRtl,
             active: showRtl,
             children: (Component: typeof MenuItem, props) => (
@@ -119,7 +119,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
           },
 
           {
-            icon: <OpenOutsideIcon style={{ width: '20px', height: '20px' }} />,
+            icon: <OpenOutsideIcon />,
             children: (Component: typeof MenuItem, props) => (
               <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
             ),
@@ -141,7 +141,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             ),
           },
           {
-            icon: <LinkIcon style={{ width: '20px', height: '20px' }} />,
+            icon: <LinkIcon />,
             children: (Component: typeof MenuItem, props) => (
               <CopyToClipboard key="copy-link" value={anchorName}>
                 {(active, onClick) => (
