@@ -1,29 +1,31 @@
+import * as _ from 'lodash';
+import * as React from 'react';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
+
+import { getCode } from '@fluentui/accessibility';
+import { CopyToClipboard } from '@fluentui/docs-components';
+import { EditIcon, FilesTxtIcon, SearchIcon } from '@fluentui/react-icons-northstar';
 import {
   Box,
   Flex,
   ICSSInJSStyle,
   Input,
   Segment,
-  Text,
   ShorthandValue,
-  Image,
+  Text,
   Tree,
-  TreeProps,
   TreeItemProps,
+  TreeProps,
   TreeTitleProps,
 } from '@fluentui/react-northstar';
-import { CopyToClipboard } from '@fluentui/docs-components';
-import Logo from '../Logo/Logo';
-import { VersionDropdown } from './VersionDropdown';
-import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/accessibility';
-import * as _ from 'lodash';
-import * as React from 'react';
-import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
-import { SearchIcon, FilesTxtIcon, EditIcon } from '@fluentui/react-icons-northstar';
-import { renderSidebarTitle } from './SidebarTitle';
+
 import config from '../../config';
+import { getComponentPathname } from '../../utils';
 import componentInfoContext from '../../utils/componentInfoContext';
+import { GitHubIcon } from '../Icons/GitHubIcon';
+import Logo from '../Logo/Logo';
+import { renderSidebarTitle } from './SidebarTitle';
+import { VersionDropdown } from './VersionDropdown';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -426,8 +428,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   const topItemTheme = {
     ...props.treeItemStyle,
     padding: undefined,
-    margin: '0.5em 0em 0.5em 1em',
-    width: `${0.9 * props.width}px`,
+    margin: '0.5rem 1rem',
   };
 
   const sidebarStyles: ICSSInJSStyle = {
@@ -464,14 +465,13 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           aria-level={1}
           styles={{
             fontSize: '1.25rem',
-            color: 'white',
             fontWeight: 600,
-            textAlign: 'center',
+            marginBottom: '10px',
           }}
         >
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
-        <VersionDropdown width={props.width} />
+        <VersionDropdown />
         {process.env.NIGHTLYRELEASEDATE ? null : (
           <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
             {(active, onClick) => (
@@ -503,12 +503,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
           <Box>
             GitHub
-            <Image
-              src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
-              width="20px"
-              height="20px"
-              styles={{ float: 'right' }}
-            />
+            <GitHubIcon styles={{ float: 'right' }} />
           </Box>
         </a>
         <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>
@@ -525,7 +520,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           </Box>
         </a>
         <Input
-          styles={topItemTheme}
+          styles={{ ...topItemTheme, width: 'auto' }}
           inverted
           fluid
           clearable
