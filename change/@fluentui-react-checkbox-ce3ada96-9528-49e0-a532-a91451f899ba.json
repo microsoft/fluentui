@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use vertical and horizontal spacing tokens for padding",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

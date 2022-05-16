@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: focus no longer being managed when using `focusMode=\"off\"`",
+  "packageName": "@fluentui/react-card",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

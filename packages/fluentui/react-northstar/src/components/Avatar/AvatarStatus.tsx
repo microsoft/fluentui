@@ -14,6 +14,7 @@ import * as PropTypes from 'prop-types';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Accessibility, statusBehavior as avatarStatusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
 import { AvatarStatusIcon, AvatarStatusIconProps } from './AvatarStatusIcon';
+import { AvatarStatusImage, AvatarStatusImageProps } from './AvatarStatusImage';
 import { statusClassName } from '../Status/Status';
 
 export interface AvatarStatusProps extends UIComponentProps {
@@ -25,6 +26,9 @@ export interface AvatarStatusProps extends UIComponentProps {
 
   /** Shorthand for the icon, to provide customizing status */
   icon?: ShorthandValue<AvatarStatusIconProps>;
+
+  /** Shorthand for the image. */
+  image?: ShorthandValue<AvatarStatusImageProps>;
 
   /** Size multiplier */
   size?: SizeValue;
@@ -45,7 +49,7 @@ export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps
   const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
   setStart();
 
-  const { className, color, icon, size, state, design, styles, variables } = props;
+  const { className, color, design, icon, image, size, state, styles, variables } = props;
   const { classes } = useStyles<AvatarStatusStylesProps>(AvatarStatus.displayName, {
     className: avatarStatusClassName,
     mapPropsToStyles: () => ({
@@ -73,14 +77,22 @@ export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps
     icon as ShorthandValue<AvatarStatusIconProps & { as: 'span' }>,
     {
       defaultProps: () => ({
+        size,
         state,
       }),
     },
   );
 
+  const imageElement = createShorthand(AvatarStatusImage, image, {
+    defaultProps: () =>
+      getA11Props('image', {
+        size,
+      }),
+  });
+
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
-      {iconElement}
+      {imageElement || iconElement}
     </ElementType>
   );
   setEnd();
@@ -96,6 +108,7 @@ AvatarStatus.propTypes = {
   }),
   color: PropTypes.string,
   icon: customPropTypes.shorthandAllowingChildren,
+  image: customPropTypes.itemShorthandWithoutJSX,
   size: customPropTypes.size,
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };
