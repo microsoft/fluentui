@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Text } from '@fluentui/react-text';
 import { Textarea } from '../index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -10,25 +9,28 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    '& > div': {
-      marginTop: tokens.spacingVerticalMNudge,
-    },
-    '& > div > div': {
+    '> div': {
       display: 'flex',
       flexDirection: 'column',
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      marginTop: tokens.spacingVerticalMNudge,
       ...shorthands.padding(tokens.spacingHorizontalMNudge),
     },
-    '& > div > label': {
+    '> div > label': {
       marginBottom: tokens.spacingHorizontalXXS,
       marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
   filledLighter: {
     backgroundColor: '#8a8a8a',
+    '> label': {
+      color: '#ffffff',
+    },
   },
   filledDarker: {
     backgroundColor: '#8a8a8a',
+    '> label': {
+      color: '#ffffff',
+    },
   },
 });
 
@@ -42,32 +44,30 @@ export const Appearance = () => {
     <div className={styles.base}>
       <div>
         <Label htmlFor={outlineId}>Textarea with Outline appearance.</Label>
-        <div>
-          <Textarea id={outlineId} appearance="outline" placeholder="type here..." resize="both" />
-        </div>
+        <Textarea id={outlineId} appearance="outline" placeholder="type here..." resize="both" />
       </div>
 
-      <div>
+      <div className={styles.filledDarker}>
         <Label htmlFor={filledDarkerId}>Textarea with Filled Darker appearance.</Label>
-        <div className={styles.filledDarker}>
-          <Textarea id={filledDarkerId} appearance="filledDarker" placeholder="type here..." resize="both" />
-        </div>
+        <Textarea id={filledDarkerId} appearance="filledDarker" placeholder="type here..." resize="both" />
       </div>
 
-      <div>
+      <div className={styles.filledLighter}>
         <Label htmlFor={filledLighterId}>Textarea with Filled Lighter appearance.</Label>
-        <div className={styles.filledLighter}>
-          <Textarea id={filledLighterId} appearance="filledLighter" placeholder="type here..." resize="both" />
-        </div>
-      </div>
-
-      <div>
-        <Text>
-          The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with
-          filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate
-          surrounding color to pass accessibility requirement.
-        </Text>
+        <Textarea id={filledLighterId} appearance="filledLighter" placeholder="type here..." resize="both" />
       </div>
     </div>
   );
+};
+
+Appearance.parameters = {
+  docs: {
+    description: {
+      story:
+        `Textarea can have different appearances.\n` +
+        `The colors adjacent to the Textarea should have a sufficient contrast. Particularly, the color of input with
+      filled darker and lighter styles needs to provide a contrast ratio greater than 3 to 1 against the immediate
+      surrounding color to pass accessibility requirement.`,
+    },
+  },
 };
