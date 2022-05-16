@@ -15,12 +15,16 @@ export const useOptionCollection = (): OptionCollectionState => {
       const item = nodes.current.find(node => node.option.id === id);
       return item?.option;
     };
+    const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
+      return nodes.current.filter(node => matcher(node.option.value)).map(node => node.option);
+    };
 
     return {
       getCount,
       getOptionAtIndex,
       getIndexOfId,
       getOptionById,
+      getOptionsMatchingValue,
     };
   }, []);
 
