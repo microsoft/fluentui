@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: make dictionaries and getNativeElementProps strict and get rid of unused generics to improve DX and type safety",
+  "packageName": "@fluentui/react-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
