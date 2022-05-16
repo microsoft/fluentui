@@ -23,6 +23,10 @@ import { registerIconAliases } from './iconAliases';
 import { getWindow } from '@fluentui/utilities';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
+/*
+ * The Window variable has the iconBaseUrl prop in order to allow for users to redirect icon font downloads to a new URL.
+ * The config can be burned on the page to ensure there are no race conditions which might load resources on script load.
+ */
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
