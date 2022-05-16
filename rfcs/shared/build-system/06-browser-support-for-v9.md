@@ -16,9 +16,17 @@ As it stands, Fluent v9 does not currently adhere to a specific browser support 
 
 The proposed browser support matrix will be loosely based off the [Resize Observer](https://caniuse.com/mdn-api_resizeobserver) support matrix . This decision was driven by the current usage of the `ResizeObserver` in Fluent v9 as well as the current business goals of our partner teams. Along with that, being able to maintain our current ES2019 target and eventually move to ES2020 without the need to transpile down was also a factor. As it stands, the lack of adequate polyfill capabilities for CSS features in tandem with the goals of our partners is the biggest detriment to the support matrix not being higher.
 
-| Edge | Firefox | Chrome | Safari | Opera | Safari on IOS | Chrome for Android | Samsung | Internet Explorer |
-| ---- | ------- | ------ | ------ | ----- | ------------- | ------------------ | ------- | ----------------- |
-| >=80 | >=74    | >=80   | >=14   | >=67  | >=14          | >=101              | >=16    | Not Supported     |
+**Desktop Browsers:**
+
+| Edge | Firefox | Chrome | Safari | Opera | Internet Explorer |
+| ---- | ------- | ------ | ------ | ----- | ----------------- |
+| >=80 | >=74    | >=80   | >=14   | >=67  | Not Supported     |
+
+**Mobile Browsers:**
+
+| Safari on IOS | Chrome for Android | Samsung |
+| ------------- | ------------------ | ------- |
+| >=14          | >=80               | >=16    |
 
 This browser support matrix will be available through all relevant public docsite and/or wikis for maximum visibility.
 
