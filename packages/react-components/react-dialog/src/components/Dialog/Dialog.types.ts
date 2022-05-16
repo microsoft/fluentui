@@ -12,5 +12,6 @@ export type DialogProps = ComponentProps<DialogSlots>;
 /**
  * State used in rendering Dialog
  */
-// TODO: Replace never below with union of props to pick from DialogProps above.
-export type DialogState = ComponentState<DialogSlots> & Required<Pick<DialogProps, never>>;
+// TODO: Add union of props to pick from DialogProps once they're implemented.
+// i.e. Required<Pick<DialogProps, 'property1' | 'property2'>>;
+export type DialogState = ComponentState<DialogSlots> & Required<DialogProps>>;
