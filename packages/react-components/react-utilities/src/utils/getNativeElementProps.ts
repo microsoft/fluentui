@@ -26,7 +26,7 @@ import {
   timeProperties,
 } from './properties';
 
-const nativeElementMap: Record<string, Record<string, number>> = {
+const nativeElementMap = {
   label: labelProperties,
   audio: audioProperties,
   video: videoProperties,
@@ -58,13 +58,16 @@ const nativeElementMap: Record<string, Record<string, number>> = {
  * @param props - Props object
  * @param excludedPropNames - List of props to disallow
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
-  tagName: string,
-  props: {},
+export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements>(
+  tagName: Tag,
+  // eslint-disable-next-line @fluentui/max-len
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- our component hooks use invalid type for ref thus we need to use `any` to turn of generic type checking
+  props: Omit<JSX.IntrinsicElements[Tag], 'ref'> & { ref?: React.Ref<any> },
   excludedPropNames?: string[],
-): TAttributes {
-  const allowedPropNames = (tagName && nativeElementMap[tagName]) || htmlElementProperties;
+) {
+  const allowedPropNames = nativeElementMap[tagName as keyof typeof nativeElementMap] || htmlElementProperties;
+
+  // @ts-expect-error - TODO: no idea what's purpose of this, but after typings have been fixed it produces error
   allowedPropNames.as = 1;
 
   return getNativeProps(props, allowedPropNames, excludedPropNames);
@@ -97,10 +100,6 @@ export const getPartitionedNativeProps = <
 }) => {
   return {
     root: { style: props.style, className: props.className },
-    primary: getNativeElementProps<Omit<Props, ExcludedPropKeys>>(primarySlotTagName, props, [
-      ...(excludedPropNames || []),
-      'style',
-      'className',
-    ]),
+    primary: getNativeElementProps(primarySlotTagName, props, [...(excludedPropNames || []), 'style', 'className']),
   };
 };

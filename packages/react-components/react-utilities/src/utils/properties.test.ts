@@ -3,7 +3,7 @@ import { getNativeProps, divProperties } from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
-    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
+    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement> & { 'data-automation-id': number }>(
       {
         'data-automation-id': 1,
       },
@@ -16,15 +16,16 @@ describe('getNativeProps', () => {
   it('can pass through aria tags', () => {
     const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
-        'aria-label': 1,
+        'aria-label': '1',
       },
       divProperties,
     );
 
-    expect(result['aria-label']).toEqual(1);
+    expect(result['aria-label']).toEqual('1');
   });
 
   it('can pass through basic div properties and events', () => {
+    //
     const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
         className: 'foo',
@@ -46,6 +47,7 @@ describe('getNativeProps', () => {
   it('can remove unexpected properties', () => {
     const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
+        // @ts-expect-error - invalid HTML prop - will be removed in runtime
         foobar: 1,
         className: 'hi',
       },
