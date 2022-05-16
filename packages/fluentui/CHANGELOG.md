@@ -21,6 +21,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### BREAKING CHANGES
 - Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
 
+### Features
+- Adding the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
+
 ### Fixes
 - Export types for `ChatMessageDetails`, `ChatMessageHeader`, and `ChatMessageReadStatus` styles props @Hirse ([#22491](https://github.com/microsoft/fluentui/pull/22491))
 - Align `ChatMessageReadStatus` position with `ChatMessage` @Hirse ([#22494](https://github.com/microsoft/fluentui/pull/22494))
