@@ -27,14 +27,14 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
     FabricConfig?: {
-      fontBaseUrl?: string;
+      iconBaseUrl?: string;
     };
   }
 }
 
 const win = getWindow();
 export function initializeIcons(
-  baseUrl: string = win?.FabricConfig?.fontBaseUrl ?? DEFAULT_BASE_URL,
+  baseUrl: string = win?.FabricConfig?.iconBaseUrl ?? DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
   [
