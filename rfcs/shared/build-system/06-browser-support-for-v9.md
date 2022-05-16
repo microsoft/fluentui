@@ -4,7 +4,7 @@ Contributors: Fluent UI React Build team, @TristanWatanabe
 
 ## Summary
 
-Fluent v9 is currently lacking a defined browser support matrix so this RFC proposes a set of major browser versions compatible with the library to act as the source of truth. As mentioned below, Fluent developers are expected to conform to these browsers and ensure no incompatible syntax, browser APIs or CSS features are introduced to the library. Consumers who require older browser support that aren't covered in this matrix are responsible for performing downlevel transpilations and/or using polyfills themselves.
+Fluent v9 is currently lacking a defined browser support matrix so this RFC proposes a set of major browser versions compatible with the library to act as the source of truth. As mentioned below, Fluent developers are expected to conform to these browsers and ensure no incompatible syntax, browser APIs or CSS features are introduced to the library. Also, Fluent will not be providing polyfills for features that we expect our browser matrix to already support (i.e. ResizeObserver, ES2019 features, etc.) so consumers who need to support older browsers are expected to handle that case themselves.
 
 ## Problem Statement
 
@@ -32,7 +32,7 @@ This browser support matrix will be available through all relevant public docsit
 
 ### ECMAScript Syntax & Expectations
 
-Fluent v9 currently targets ES2019 thus the browser matrix above ensures that no features need to be transpiled down; that way, consumers on modern browsers get the added benefit of reduced bundle size that the latest ECMAScript (ES) standards provide. The proposed browser matrix also keeps the option of moving to ES2020 open since all ES2020 features are already supported by these browsers. This means that Fluent v9's target will firmly be ES2019/2020 so consumers who require older browser environments are responsible for transpiling down and/or polyfilling themselves. Utilizing standard polyfill libraries such as `core-js` should alleviate some of the consumer pain of having to support new ES features on old browsers.
+Fluent v9 currently makes use of ES2019 syntax thus the browser matrix above ensures that no features need to be transpiled down; that way, consumers on modern browsers get the added benefit of reduced bundle size that the latest ECMAScript (ES) standards provide. The proposed browser matrix also keeps the option of moving to ES2020 open since all ES2020 features are already supported by these browsers. This means that consumers who need to support older browsers (such as those that only support up to ES6) are responsible for transpiling down and/or polyfilling themselves. Utilizing standard polyfill libraries such as `core-js` should alleviate some of the consumer pain of having to support new ES features on old browsers.
 
 ### Browser APIs & Expectations
 
