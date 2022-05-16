@@ -4,7 +4,6 @@ import descriptionMd from './CardDescription.md';
 export { Default } from './CardDefault.stories';
 export { Appearance } from './CardAppearance.stories';
 export { FocusMode } from './CardFocusMode.stories';
-export { Test } from './Test.stories';
 
 export default {
   title: 'Preview Components/Card',
