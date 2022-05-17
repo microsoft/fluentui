@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moving react-textarea to RC.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

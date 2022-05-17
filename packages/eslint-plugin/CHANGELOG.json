@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 13 May 2022 07:45:34 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.8.0",
+      "version": "1.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4b1c0d17aee44ce9cf3630d9c2001d2863e6388b",
+            "comment": "feat: add new rules covering usage of Griffel"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Apr 2022 07:35:26 GMT",
       "tag": "@fluentui/eslint-plugin_v1.7.0",
       "version": "1.7.0",

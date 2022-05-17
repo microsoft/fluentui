@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
+import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { Radio, RadioGroup } from '../index';
 
 export const Required = () => {
   const labelId = useId('label-');
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
       <Label id={labelId} required>
         Favorite Fruit
       </Label>

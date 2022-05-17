@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/date-time-utilities",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "description": "Date-time utilities",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/set-version": "^8.2.1",
     "tslib": "^2.1.0"
   },
   "exports": {

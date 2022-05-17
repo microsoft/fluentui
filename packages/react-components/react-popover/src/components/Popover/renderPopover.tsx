@@ -7,37 +7,37 @@ import type { PopoverState } from './Popover.types';
  */
 export const renderPopover_unstable = (state: PopoverState) => {
   const {
-    setOpen,
-    toggleOpen,
-    triggerRef,
+    appearance,
+    arrowRef,
     contentRef,
+    inline,
+    mountNode,
+    noArrow,
     openOnContext,
     openOnHover,
-    mountNode,
-    arrowRef,
+    setOpen,
     size,
-    noArrow,
-    appearance,
+    toggleOpen,
     trapFocus,
-    inline,
+    triggerRef,
   } = state;
 
   return (
     <PopoverContext.Provider
       value={{
+        appearance,
+        arrowRef,
+        contentRef,
+        inline,
+        mountNode,
+        noArrow,
+        openOnContext,
+        openOnHover,
         setOpen,
         toggleOpen,
         triggerRef,
-        contentRef,
-        openOnHover,
-        openOnContext,
-        mountNode,
-        arrowRef,
         size,
-        noArrow,
-        appearance,
         trapFocus,
-        inline,
       }}
     >
       {state.popoverTrigger}

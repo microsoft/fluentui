@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Replace hardcoded padding with spacing tokens",
+  "packageName": "@fluentui/react-radio",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

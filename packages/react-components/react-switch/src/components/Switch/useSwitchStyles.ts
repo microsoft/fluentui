@@ -16,11 +16,6 @@ export const switchClassNames: SlotClassNames<SwitchSlots> = {
  */
 export const switchClassName = switchClassNames.root;
 
-// TODO replace these spacing constants with theme values once they're on the theme.
-const spacingXS = 4;
-const spacingS = 8;
-const spacingM = 12;
-
 // Thumb and track sizes used by the component.
 const spaceBetweenThumbAndTrack = 2;
 const thumbSize = 14;
@@ -29,30 +24,18 @@ const trackWidth = 40;
 
 const useRootStyles = makeStyles({
   base: {
+    alignItems: 'flex-start',
     boxSizing: 'border-box',
-    columnGap: `${spacingM}px`,
     display: 'inline-flex',
-    ...shorthands.padding(`${spacingS}px`),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     position: 'relative',
 
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 
-  // Label position variations
-  above: {
+  vertical: {
     flexDirection: 'column',
-    paddingTop: `${spacingXS}px`,
-    rowGap: `${spacingXS}px`,
-  },
-  after: {
-    alignItems: 'flex-start',
-    columnGap: `${spacingM}px`,
-    flexDirection: 'row',
-  },
-  before: {
-    alignItems: 'flex-start',
-    columnGap: `${spacingM}px`,
-    flexDirection: 'row',
+    paddingTop: tokens.spacingVerticalXS,
   },
 });
 
@@ -199,6 +182,16 @@ const useLabelStyles = makeStyles({
   base: {
     userSelect: 'none',
   },
+
+  above: {
+    marginBottom: tokens.spacingVerticalXS,
+  },
+  after: {
+    marginLeft: tokens.spacingHorizontalM,
+  },
+  before: {
+    marginRight: tokens.spacingHorizontalM,
+  },
 });
 
 /**
@@ -215,7 +208,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   state.root.className = mergeClasses(
     switchClassNames.root,
     rootStyles.base,
-    rootStyles[labelPosition],
+    labelPosition === 'above' && rootStyles.vertical,
     state.root.className,
   );
 
@@ -229,7 +222,12 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   );
 
   if (state.label) {
-    state.label.className = mergeClasses(switchClassNames.label, labelStyles.base, state.label.className);
+    state.label.className = mergeClasses(
+      switchClassNames.label,
+      labelStyles.base,
+      labelStyles[labelPosition],
+      state.label.className,
+    );
   }
 
   return state;

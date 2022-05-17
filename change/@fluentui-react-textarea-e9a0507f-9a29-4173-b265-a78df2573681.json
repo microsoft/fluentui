@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updating Textarea styles to use font tokens.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
