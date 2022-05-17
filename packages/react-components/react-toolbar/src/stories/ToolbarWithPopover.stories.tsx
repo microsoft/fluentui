@@ -24,6 +24,5 @@ export const WithPopover = (props: Partial<ToolbarProps>) => (
         <div>Popover content</div>
       </PopoverSurface>
     </Popover>
-    <ToolbarDivider />
   </Toolbar>
 );
