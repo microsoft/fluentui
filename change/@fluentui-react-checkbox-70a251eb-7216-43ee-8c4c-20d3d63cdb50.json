@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing commons from checkbox.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

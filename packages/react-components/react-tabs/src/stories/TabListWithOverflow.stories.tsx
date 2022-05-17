@@ -156,6 +156,7 @@ const useExampleStyles = makeStyles({
   example: {
     backgroundColor: tokens.colorNeutralBackground2,
     ...shorthands.overflow('hidden'),
+    ...shorthands.padding('5px'),
     zIndex: 0, //stop the browser resize handle from piercing the overflow menu
   },
   horizontal: {

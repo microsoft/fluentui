@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove commons type from avatar and avatargroup",
+  "packageName": "@fluentui/react-avatar",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "none"
+}

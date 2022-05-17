@@ -4,7 +4,7 @@
   "description": "Fluent UI React Switch component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
     "@fluentui/react-tabster": "9.0.0-rc.9",
     "@fluentui/react-theme": "9.0.0-rc.7",
     "@fluentui/react-utilities": "9.0.0-rc.8",
-    "@griffel/react": "1.0.3",
+    "@griffel/react": "1.0.4",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

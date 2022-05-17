@@ -18,31 +18,34 @@ export type AvatarGroupSlots = {
   popoverSurface?: Slot<typeof PopoverSurface>;
 };
 
-type AvatarGroupCommons = {
+/**
+ * AvatarGroup Props
+ */
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
   /**
    * Layout the Avatars should be displayed as.
    * @default spread
    */
-  layout: 'spread' | 'stack' | 'pie';
+  layout?: 'spread' | 'stack' | 'pie';
 
   /**
    * Maximum number of Avatars to be displayed before overflowing.
    * NOTE: if pie layout is used, `maxAvatars` will be ignored.
    * @default 5
    */
-  maxAvatars: number;
-
-  /**
-   * Size of the avatars.
-   * @default 32
-   */
-  size: AvatarSizes;
+  maxAvatars?: number;
 
   /**
    * Whether the overflow indicator should render an icon instead of the number of overflowed avatars.
    * @default false
    */
-  overflowIndicator: 'number-overflowed' | 'icon';
+  overflowIndicator?: 'number-overflowed' | 'icon';
+
+  /**
+   * Size of the avatars.
+   * @default 32
+   */
+  size?: AvatarSizes;
 
   /**
    * Strings for localizing text in the tooltip.
@@ -51,17 +54,11 @@ type AvatarGroupCommons = {
 };
 
 /**
- * AvatarGroup Props
- */
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & Partial<AvatarGroupCommons>;
-
-/**
  * State used in rendering AvatarGroup
  */
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
-  AvatarGroupCommons & {
-    tooltipContent: TooltipProps['content'];
-  };
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
+  tooltipContent: TooltipProps['content'];
+};
 
 export type AvatarGroupStrings = {
   /**

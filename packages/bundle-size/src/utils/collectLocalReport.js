@@ -46,7 +46,7 @@ async function readReportForPackage(reportFile) {
  */
 async function collectLocalReport() {
   /** @type {string[]} */
-  const reportFiles = glob.sync('packages/*/dist/bundle-size/bundle-size.json', {
+  const reportFiles = glob.sync('packages/**/dist/bundle-size/bundle-size.json', {
     cwd: /** @type {string} */ (findGitRoot(process.cwd())),
   });
 

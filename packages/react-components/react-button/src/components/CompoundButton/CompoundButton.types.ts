@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ButtonCommons, ButtonSlots, ButtonState } from '../Button/Button.types';
+import type { ButtonProps, ButtonSlots, ButtonState } from '../Button/Button.types';
 
 export type CompoundButtonSlots = ButtonSlots & {
   /**
@@ -13,7 +13,8 @@ export type CompoundButtonSlots = ButtonSlots & {
   contentContainer: NonNullable<Slot<'span'>>;
 };
 
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Partial<ButtonCommons>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> &
+  Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
   Omit<ButtonState, keyof ButtonSlots | 'components'>;

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-spinbutton: remove \"strings\" prop",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

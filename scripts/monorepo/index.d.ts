@@ -48,3 +48,11 @@ export declare function isConvergedPackage(packagePathOrJson?: string | PackageJ
  * @returns Set of packages that are changed
  */
 export declare function getAffectedPackages(since?: string): Set<string>;
+
+/**
+ * Returns SHA for the nth commit from a reference descending from the latest commit
+ * @param n - nth commit from latest
+ * @param ref - The github ref/branch the filter
+ * @returns - A git commit SHA
+ */
+export declare function getNthCommit(n = 1, ref = 'HEAD'): string;

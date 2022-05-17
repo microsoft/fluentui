@@ -14,7 +14,6 @@ export { Size } from './SpinButtonSize.stories';
 export { Appearance } from './SpinButtonAppearance.stories';
 export { RTL } from './SpinButtonRTL.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
-export { Strings } from './SpinButtonStrings.stories';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 

@@ -4,6 +4,8 @@ import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
+import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
 
@@ -259,5 +261,26 @@ describe('Layer', () => {
 
     // The 1 time is for when it was mounted
     expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+  });
+
+  describe('compat', () => {
+    it('calls "register" from "react-portal-compat"', () => {
+      const unregister = jest.fn();
+      const register = jest.fn().mockImplementation(() => unregister);
+
+      const { unmount } = render(
+        <PortalCompatContextProvider value={register}>
+          <Layer>
+            <div id="sample" />
+          </Layer>
+        </PortalCompatContextProvider>,
+      );
+
+      expect(register).toHaveBeenCalledTimes(1);
+      expect(register).toHaveBeenCalledWith(expect.any(HTMLElement));
+
+      unmount();
+      expect(unregister).toHaveBeenCalledTimes(1);
+    });
   });
 });

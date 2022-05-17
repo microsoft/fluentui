@@ -4,7 +4,7 @@ exports[`TabList renders tabs when disabled 1`] = `
 <div>
   <div
     class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
   >
     <button
@@ -51,7 +51,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
 <div>
   <div
     class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
   >
     <button
@@ -101,7 +101,7 @@ exports[`TabList renders with no tabs 1`] = `
 <div>
   <div
     class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
   />
 </div>
@@ -111,7 +111,7 @@ exports[`TabList renders with tabs 1`] = `
 <div>
   <div
     class="fui-TabList"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
   >
     <button

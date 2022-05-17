@@ -570,9 +570,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-shared-contexts": {
-      "root": "packages/react-shared-contexts",
+      "root": "packages/react-components/react-shared-contexts",
       "projectType": "library",
-      "sourceRoot": "packages/react-shared-contexts/src",
+      "sourceRoot": "packages/react-components/react-shared-contexts/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },

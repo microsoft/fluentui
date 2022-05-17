@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing TooltipCommons type.",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
