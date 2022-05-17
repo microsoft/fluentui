@@ -59,7 +59,6 @@ declare global {
 const win = getWindow();
 
 export function initializeIcons(
-  // eslint-disable-next-line deprecation/deprecation
   baseUrl: string = win?.FabricConfig?.iconBaseUrl || win?.FabricConfig?.fontBaseUrl || DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
