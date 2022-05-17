@@ -5,10 +5,6 @@ import { MenuItemSlots } from '../index';
 import { useMenuItemStyles_unstable } from '../MenuItem/useMenuItemStyles';
 import type { MenuItemCheckboxState } from './MenuItemCheckbox.types';
 
-/**
- * @deprecated Use `menuItemCheckboxClassNames.root` instead.
- */
-export const menuItemCheckboxClassName = 'fui-MenuItemCheckbox';
 export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>> = {
   root: 'fui-MenuItemCheckbox',
   icon: 'fui-MenuItemCheckbox__icon',

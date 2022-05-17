@@ -5,10 +5,6 @@ import { arrowHeight } from './private/constants';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `tooltipClassNames.root` instead.
- */
-export const tooltipClassName = 'fui-Tooltip';
 export const tooltipClassNames: SlotClassNames<TooltipSlots> = {
   content: 'fui-Tooltip__content',
 };

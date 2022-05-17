@@ -2,10 +2,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import type { MenuListSlots, MenuListState } from './MenuList.types';
 
-/**
- * @deprecated Use `menuListClassNames.root` instead.
- */
-export const menuListClassName = 'fui-MenuList';
 export const menuListClassNames: SlotClassNames<MenuListSlots> = {
   root: 'fui-MenuList',
 };

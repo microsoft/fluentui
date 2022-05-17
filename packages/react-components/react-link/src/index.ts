@@ -1,7 +1,5 @@
 export {
   Link,
-  // eslint-disable-next-line deprecation/deprecation
-  linkClassName,
   linkClassNames,
   renderLink_unstable,
   useLinkState_unstable,

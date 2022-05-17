@@ -3,10 +3,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `inputClassNames.root` instead.
- */
-export const inputClassName = 'fui-Input';
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',
   input: 'fui-Input__input',
