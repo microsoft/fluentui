@@ -24,18 +24,19 @@ import { getWindow } from '@fluentui/utilities';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
 /*
- * The Window variable has the iconBaseUrl prop in order to allow for users to redirect icon font downloads to a new URL.
- * The config can be burned on the page to ensure there are no race conditions which might load resources on script load.
+ * The Window variable has the iconBaseUrl prop in order to allow for users to redirect icon font downloads to a new
+ * URL. The config can be burned on the page to ensure there are no race conditions which might load resources on
+ * script load.
  */
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
-  /**
-   * The FabricConfig options can be burned on the page prior to script load to provide
-   * alternative defaults at script load time. This helps avoid race conditions by calling
-   * `initializeIcons` too late, or in cases where you can't control the `initializeIcons` call,
-   * such as using the pre-created Fluent bundle.
-   */
+    /**
+     * The FabricConfig options can be burned on the page prior to script load to provide
+     * alternative defaults at script load time. This helps avoid race conditions by calling
+     * `initializeIcons` too late, or in cases where you can't control the `initializeIcons` call,
+     * such as using the pre-created Fluent bundle.
+     */
     FabricConfig?: {
       /**
        * Controls the base url of the font files. This is useful for scenarios where the fonts
