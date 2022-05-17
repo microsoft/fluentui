@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix Pivot a11y issue: aria-selected not allowed on menuitems",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
