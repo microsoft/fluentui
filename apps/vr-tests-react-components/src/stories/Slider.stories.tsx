@@ -7,24 +7,57 @@ storiesOf('Slider Converged', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Root', () => <Slider className="test-class" defaultValue={30} />, {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Vertical', () => <Slider className="test-class" vertical defaultValue={30} />, {
-    includeRtl: true,
-  })
-  .addStory('Disabled', () => <Slider className="test-class" disabled defaultValue={30} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Disabled Vertical', () => <Slider className="test-class" disabled vertical defaultValue={30} />)
-  .addStory('Origin', () => <Slider className="test-class" origin={30} />, { includeRtl: true })
-  .addStory('Origin Vertical', () => <Slider className="test-class" vertical origin={30} />, {
-    includeRtl: true,
-  })
-  .addStory('Origin (min)', () => <Slider className="test-class" min={0} origin={0} />)
-  .addStory('Origin Vertical (min)', () => <Slider className="test-class" min={0} vertical origin={0} />)
-  .addStory('Origin (max)', () => <Slider className="test-class" max={10} origin={10} />)
-  .addStory('Origin Vertical (max)', () => <Slider className="test-class" min={10} vertical origin={10} />);
+  .addStory(
+    'Horizontal',
+    () => (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 5, padding: 15, width: 400 }}>
+        <h5>Default</h5>
+        <Slider className="test-class" defaultValue={30} />
+        <h5>Disabled</h5>
+        <Slider className="test-class" disabled defaultValue={30} />
+        <h5>Origin</h5>
+        <Slider className="test-class" origin={30} />
+        <h5>Origin (min)</h5>
+        <Slider className="test-class" min={0} origin={0} />
+        <h5>Origin (max)</h5>
+        <Slider className="test-class" max={10} origin={10} />
+      </div>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Vertical',
+    () => (
+      <div style={{ display: 'flex', gap: 50 }}>
+        <div>
+          <h5>Default</h5>
+          <Slider vertical className="test-class" defaultValue={30} />
+        </div>
+        <div>
+          <h5>Disabled</h5>
+          <Slider vertical className="test-class" disabled defaultValue={30} />
+        </div>
+        <div>
+          <h5>Origin</h5>
+          <Slider vertical className="test-class" origin={30} />
+        </div>
+        <div>
+          <h5>Origin (min)</h5>
+          <Slider vertical className="test-class" min={0} origin={0} />
+        </div>
+        <div>
+          <h5>Origin (max)</h5>
+          <Slider vertical className="test-class" max={10} origin={10} />
+        </div>
+      </div>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );

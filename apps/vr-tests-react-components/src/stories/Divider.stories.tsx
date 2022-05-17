@@ -1,58 +1,73 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Divider } from '@fluentui/react-divider';
-import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
+import { Divider, DividerProps } from '@fluentui/react-divider';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 
 storiesOf('Divider Converged - Horizontal', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('without content', () => <Divider />, { includeRtl: true })
-  .addStory('with content', () => <Divider>Today</Divider>, {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Start Aligned', () => <Divider alignContent="start">Today</Divider>, {
-    includeRtl: true,
-  })
-  .addStory('End Aligned', () => <Divider alignContent="end">Today</Divider>, { includeRtl: true })
-  .addStory('Appearance subtle', () => <Divider appearance="subtle">Today</Divider>, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Appearance strong', () => <Divider appearance="strong">Today</Divider>, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Appearance brand', () => <Divider appearance="brand">Today</Divider>, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Inset', () => <Divider inset>Today</Divider>);
+  .addStory(
+    'Align content',
+    () => (
+      <>
+        <h3>Horizontal</h3>
+        <Divider alignContent="start">Start</Divider>
+        <Divider alignContent="center">Center</Divider>
+        <Divider alignContent="end">End</Divider>
+        <h3>Vertical</h3>
+        <div style={{ display: 'flex', height: 150 }}>
+          <Divider vertical alignContent="start">
+            Start
+          </Divider>
+          <Divider vertical alignContent="center">
+            Center
+          </Divider>
+          <Divider vertical alignContent="end">
+            End
+          </Divider>
+        </div>
+      </>
+    ),
+    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
+  )
+  .addStory(
+    'Appearance',
+    () => {
+      const appearances: DividerProps['appearance'][] = ['subtle', 'strong', 'brand'];
+      const horizontal = appearances.map(appearance => (
+        <Divider key={appearance} appearance={appearance}>
+          Divider
+        </Divider>
+      ));
+      const vertical = appearances.map(appearance => (
+        <Divider vertical key={appearance} appearance={appearance}>
+          Divider
+        </Divider>
+      ));
 
-storiesOf('Divider Converged - Vertical', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <div style={{ height: '200px' }}>
-      <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-    </div>
-  ))
-  .addStory('Center Aligned', () => <Divider vertical>Today</Divider>)
-  .addStory('Start Aligned', () => (
-    <Divider vertical alignContent="start">
-      Today
-    </Divider>
-  ))
-  .addStory('End Aligned', () => (
-    <Divider vertical alignContent="end">
-      Today
-    </Divider>
-  ))
-  .addStory('inset', () => (
-    <Divider inset vertical>
-      Today
-    </Divider>
+      return (
+        <>
+          <h3>Horizontal</h3>
+          <div style={{ gap: 10, display: 'flex', flexDirection: 'column' }}>{horizontal}</div>
+          <h3>Vertical</h3>
+          <div style={{ gap: 10, display: 'flex', height: 150 }}>{vertical}</div>
+        </>
+      );
+    },
+    { includeDarkMode: true, includeHighContrast: true, includeRtl: true },
+  )
+  .addStory('Inset', () => (
+    <>
+      <div style={{ border: '1px dashed gray', padding: 20 }}>
+        <Divider inset>Horizontal</Divider>
+      </div>
+      <div style={{ border: '1px dashed gray', height: 150, padding: 20, display: 'flex' }}>
+        <Divider vertical inset>
+          Vertical
+        </Divider>
+      </div>
+    </>
   ));

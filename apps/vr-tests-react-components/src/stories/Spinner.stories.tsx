@@ -1,80 +1,56 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner, SpinnerProps } from '@fluentui/react-spinner';
 import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
 
 storiesOf('Spinner converged', module)
   .addDecorator(TestWrapperDecoratorNoAnimation)
-  .addStory('Primary', () => <Spinner className="test-class" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Label', () => <Spinner className="test-class" label="Loading" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
   .addStory(
-    'Primary with Label Before',
-    () => <Spinner className="test-class" labelPosition="before" label="Loading" />,
+    'Label',
+    () => {
+      const positions: SpinnerProps['labelPosition'][] = ['before', 'after', 'above', 'below'];
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 10 }}>
+          <h4>Primary</h4>
+          {positions.map(position => (
+            <Spinner key={position} labelPosition={position} label={`Label ${position}`} />
+          ))}
+          <h4>Inverted</h4>
+          {positions.map(position => (
+            <Spinner appearance="inverted" key={position} labelPosition={position} label={`Label ${position}`} />
+          ))}
+        </div>
+      );
+    },
     {
-      includeHighContrast: true,
-      includeDarkMode: true,
       includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
     },
   )
   .addStory(
-    'Primary with Label After',
-    () => <Spinner className="test-class" labelPosition="after" label="Loading" />,
+    'size',
+    () => {
+      const sizes: SpinnerProps['size'][] = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large', 'huge'];
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', gap: 10 }}>
+          <h4>Primary</h4>
+          {sizes.map(size => (
+            <Spinner key={size} size={size} label={size} />
+          ))}
+          <h4>Inverted</h4>
+          {sizes.map(size => (
+            <Spinner appearance="inverted" key={size} size={size} label={size} />
+          ))}
+        </div>
+      );
+    },
     {
-      includeHighContrast: true,
-      includeDarkMode: true,
       includeRtl: true,
-    },
-  )
-  .addStory(
-    'Primary with Label Above',
-    () => <Spinner className="test-class" labelPosition="above" label="Loading" />,
-    {
       includeHighContrast: true,
       includeDarkMode: true,
     },
   )
-  .addStory(
-    'Primary with Label Below',
-    () => <Spinner className="test-class" labelPosition="below" label="Loading" />,
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory('Primary with Size Tiny', () => <Spinner className="test-class" size="tiny" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Small', () => <Spinner className="test-class" size="extra-small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Small', () => <Spinner className="test-class" size="small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Medium', () => <Spinner className="test-class" size="medium" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Large', () => <Spinner className="test-class" size="large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Large', () => <Spinner className="test-class" size="extra-large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Huge', () => <Spinner className="test-class" size="huge" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
   .addStory('Inverted', () => <Spinner className="test-class" appearance="inverted" />, {
     includeHighContrast: true,
     includeDarkMode: true,

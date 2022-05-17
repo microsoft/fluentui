@@ -9,58 +9,60 @@ storiesOf('Checkbox Converged', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('unchecked', () => <Checkbox label="Unchecked" />)
-  .addStory('checked', () => <Checkbox checked label="Checked" />)
-  .addStory('mixed', () => <Checkbox checked="mixed" label="Mixed" />)
-  .addStory('disabled', () => <Checkbox disabled label="Disabled" />);
-
-storiesOf('Checkbox Converged', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
+  .addStory('Disabled', () => (
+    <>
+      <Checkbox disabled label="Disabled" />
+      <Checkbox disabled checked label="Disabled checked" />
+      <Checkbox disabled checked="mixed" label="Disabled mixed" />
+      <Checkbox size="large" disabled label="Disabled - large" />
+      <Checkbox size="large" disabled checked label="Disabled checked - large" />
+      <Checkbox size="large" disabled checked="mixed" label="Disabled mixed - large" />
+    </>
   ))
-  .addStory('disabled+checked', () => <Checkbox disabled checked label="Disabled checked" />)
-  .addStory('disabled+mixed', () => <Checkbox disabled checked="mixed" label="Disabled mixed" />)
-  .addStory('no-label', () => <Checkbox />)
-  .addStory('label-before', () => <Checkbox labelPosition="before" label="Label before" />)
-  .addStory('label-wrapping', () => (
-    <Checkbox
-      label={
-        <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua
-        </>
-      }
-    />
+  .addStory('Circular', () => (
+    <>
+      <Checkbox shape="circular" label="Circular" />
+      <Checkbox shape="circular" checked label="Circular checked" />
+      <Checkbox shape="circular" checked="mixed" label="Circular mixed" />
+      <Checkbox size="large" shape="circular" label="Circular- large" />
+      <Checkbox size="large" shape="circular" checked label="Circular checked- large" />
+      <Checkbox size="large" shape="circular" checked="mixed" label="Circular mixed - large" />
+    </>
   ))
-  .addStory('required', () => <Checkbox required label="Required" />)
-  .addStory('required+label-before', () => (
-    <Checkbox required labelPosition="before" label="Required with label before" />
+  .addStory('Required', () => (
+    <>
+      <Checkbox required label="Required" />
+      <Checkbox required labelPosition="before" label="Required with label before" />
+      <Checkbox size="large" required label="Required - large" />
+      <Checkbox size="large" required labelPosition="before" label="Required with label before - large" />
+    </>
   ))
-  .addStory('circular', () => <Checkbox shape="circular" label="Circular" />)
-  .addStory('circular+checked', () => <Checkbox shape="circular" checked label="Circular checked" />)
-  .addStory('circular+mixed', () => <Checkbox shape="circular" checked="mixed" label="Circular mixed" />)
-  //
-  // large variants
-  //
-  .addStory('large', () => <Checkbox size="large" label="Large" />)
-  .addStory('large+checked', () => <Checkbox size="large" checked label="Large checked" />)
-  .addStory('large+mixed', () => <Checkbox size="large" checked="mixed" label="Large mixed" />)
-  .addStory('large+circular', () => <Checkbox size="large" shape="circular" label="Large circular" />)
-  .addStory('large+circular+checked', () => (
-    <Checkbox size="large" shape="circular" checked label="Large circular checked" />
-  ))
-  .addStory('large+circular+mixed', () => (
-    <Checkbox size="large" shape="circular" checked="mixed" label="Large circular mixed" />
-  ))
-  .addStory('large+label-wrapping', () => (
-    <Checkbox
-      size="large"
-      label={
-        <>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua
-        </>
-      }
-    />
+  .addStory('Default', () => (
+    <>
+      <Checkbox label="Unchecked" />
+      <Checkbox checked label="Checked" />
+      <Checkbox checked="mixed" label="Mixed" />
+      <Checkbox labelPosition="before" label="Label before" />
+      <Checkbox
+        label={
+          <>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua
+          </>
+        }
+      />
+      <Checkbox size="large" label="Unchecked - large" />
+      <Checkbox size="large" checked label="Checked - large" />
+      <Checkbox size="large" checked="mixed" label="Mixed - large" />
+      <Checkbox size="large" labelPosition="before" label="Label before - large" />
+      <Checkbox
+        size="large"
+        label={
+          <>
+            large - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua
+          </>
+        }
+      />
+    </>
   ));

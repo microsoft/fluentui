@@ -2,104 +2,81 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link {...props} href="https://www.bing.com" />;
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
 
-storiesOf('Link Converged - Rendered as anchor', module)
+storiesOf('Link Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('Stand-alone', () => <AnchorLink>Stand-alone link</AnchorLink>, {
-    includeRtl: true,
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
   .addStory(
-    'Stand-alone Disabled Focusable',
+    'As anchor',
     () => (
-      <AnchorLink disabled disabledFocusable>
-        Stand-alone disabled focusable link
-      </AnchorLink>
-    ),
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Inline',
-    () => (
-      <div>
-        This is <AnchorLink inline>a link</AnchorLink> used alongside other text content.
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <AnchorLink>Stand-alone link</AnchorLink>
+        <AnchorLink disabled>Stand-alone link disabled</AnchorLink>
+        <AnchorLink disabled disabledFocusable>
+          Stand-alone link disabled focusable
+        </AnchorLink>
+        <div>
+          This is <AnchorLink inline>an inline link</AnchorLink> used alongside other text
+        </div>
+        <div>
+          This is{' '}
+          <AnchorLink inline disabled>
+            a disabled link
+          </AnchorLink>{' '}
+          used alongside other text content.
+        </div>
+        <div>
+          This is{' '}
+          <AnchorLink inline disabled disabledFocusable>
+            a disabled focusable link
+          </AnchorLink>{' '}
+          used alongside other text content.
+        </div>
       </div>
     ),
-    { includeRtl: true },
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
   )
-  .addStory('Inline Disabled Focusable', () => (
-    <div>
-      This is{' '}
-      <AnchorLink inline disabled disabledFocusable>
-        a disabled focusable link
-      </AnchorLink>{' '}
-      used alongside other text content.
-    </div>
-  ));
-
-// We put the disabled stories separately so they do not error on the focused step.
-storiesOf('Link Converged - Rendered as anchor', module)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('Stand-alone Disabled', () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>)
-  .addStory('Inline Disabled', () => (
-    <div>
-      This is{' '}
-      <AnchorLink inline disabled>
-        a disabled link
-      </AnchorLink>{' '}
-      used alongside other text content.
-    </div>
-  ));
-
-storiesOf('Link Converged - Rendered as button', module)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('Stand-alone', () => <ButtonLink>Stand-alone link</ButtonLink>, { includeRtl: true })
-  .addStory('Stand-alone Disabled Focusable', () => (
-    <ButtonLink disabled disabledFocusable>
-      Stand-alone disabled focusable link
-    </ButtonLink>
-  ))
   .addStory(
-    'Inline',
+    'As button',
     () => (
-      <div>
-        This is <ButtonLink inline>a link</ButtonLink> used alongside other text content.
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <ButtonLink>Stand-alone link</ButtonLink>
+        <ButtonLink disabled>Stand-alone link disabled</ButtonLink>
+        <ButtonLink disabled disabledFocusable>
+          Stand-alone link disabled focusable
+        </ButtonLink>
+        <div>
+          This is <ButtonLink inline>an inline link</ButtonLink> used alongside other text
+        </div>
+        <div>
+          This is
+          <ButtonLink inline disabled>
+            a disabled link
+          </ButtonLink>
+          used alongside other text content.
+        </div>
+        <div>
+          This is{' '}
+          <ButtonLink inline disabled disabledFocusable>
+            a disabled focusable link
+          </ButtonLink>{' '}
+          used alongside other text content.
+        </div>
       </div>
     ),
-    { includeRtl: true },
-  )
-  .addStory('Inline Disabled Focusable', () => (
-    <div>
-      This is{' '}
-      <ButtonLink inline disabled disabledFocusable>
-        a disabled focusable link
-      </ButtonLink>{' '}
-      used alongside other text content.
-    </div>
-  ));
-
-// We put the disabled stories separately so they do not error on the focused step.
-storiesOf('Link Converged - Rendered as button', module)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('Stand-alone Disabled', () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>)
-  .addStory('Inline Disabled', () => (
-    <div>
-      This is{' '}
-      <ButtonLink inline disabled>
-        a disabled link
-      </ButtonLink>{' '}
-      used alongside other text content.
-    </div>
-  ));
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );
