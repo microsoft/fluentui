@@ -34,7 +34,7 @@ export type SpinButtonSlots = {
  */
 export type SpinButtonProps = Omit<
   ComponentProps<Partial<SpinButtonSlots>, 'input'>,
-  'onChange' | 'size' | 'value' | 'defaultValue'
+  'defaultValue' | 'onChange' | 'size' | 'value'
 > & {
   /**
    * Controls the colors and borders of the input.
