@@ -16,7 +16,7 @@ Default Alert
 ```
 import { Alert } from '@fluentui/react-alert'
 
-const AlertExample = () => <Alert content="This is a default alert" />
+const AlertExample = () => <Alert>This is a default alert</Alert>
 ```
 
 Success Alert
@@ -24,20 +24,8 @@ Success Alert
 ```
 import { Alert } from '@fluentui/react-alert'
 
-const AlertExample = () => <Alert intent="success" content="This is a success alert" />
+const AlertExample = () =><Alert intent="success">This is a success alert</Alert>
 ```
-
-<!-- InfoAvatar Alert
-
-```
-import { Alert, Avatar } from '@fluentui/react-alert'
-
-<Alert
-    intent="infoAvatar"
-    content="This is an avatar alert"
-    avatar={<Avatar name="John Doe" />
-  />
-``` -->
 
 ## API
 
@@ -45,23 +33,16 @@ See [Alert.types.ts](./src/components/Alert/Alert.types.ts)
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
-
-TODO - Not sure what goes here
-
 ### Slots
 
 - `root`: The outermost `<div>` that contains the rest of the slots
 - `icon`: (optional) A `<span>` that renders an icon and is inferred by the `intent` prop or passed in via the `icon` prop
-- `content`: A `<span>` that renders the text message in the alert
 - `action`: (optional) A `<button>` that prompts users to act on it
 
 ### **Public**
 
 ```jsx
-<Alert content="This is a default alert" />
+<Alert>This is a default alert</Alert>
 ```
 
 ### **Internal**
@@ -69,7 +50,7 @@ TODO - Not sure what goes here
 ```tsx
 <slots.root {...slotProps.root}>
   {slots.icon && <slots.icon {...slotProps.icon} />}
-  {slots.content && <slots.content {...slotProps.content} />}
+  {slotProps.root.children}
   {slots.action && <slots.action {...slotProps.action} />}
 </slots.root>
 ```
@@ -78,8 +59,8 @@ TODO - Not sure what goes here
 
 ```html
 <div class="fui-Alert">
-  <span class="fui-Alert__icon"><CheckmarkCircle16Filled /></span>
-  <span class="fui-Alert__content">Success text</span>
+  <span class="fui-Alert__icon">DeletedFilled</span>
+  Chat deleted
   <button type="button" class="fui-Button fui-Alert__action">Undo</button>
 </div>
 ```
@@ -99,24 +80,7 @@ _Explain how the component will behave in use, including:_
   - _Touch_
   - _Screen readers_
 
-```
-TODO - What goes here?
-
-Here go interaction considerations for the component, for example:
-
-- Does it change styling when hovered?
-- Where does focus go when tabbing to it?
-
-Among similar things for touch and state changes.
-```
-
 ## Accessibility
-
-```
-TODO - What goes here?
-
-> Here goes any accessibility considerations you have to have for the component given the ARIA specifications.
-```
 
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 

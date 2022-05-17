@@ -1,12 +1,7 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
-import {
-  CheckmarkCircle16Filled,
-  DismissCircle16Filled,
-  ErrorCircle16Filled,
-  Warning16Filled,
-} from '@fluentui/react-icons';
+import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 
 import type { AlertProps, AlertState } from './Alert.types';
@@ -24,25 +19,25 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
   const { intent } = props;
 
   /** Determine the icon to render based on the intent */
-  let iconToUse;
+  let defaultIcon;
   switch (intent) {
     case 'success':
-      iconToUse = <CheckmarkCircle16Filled />;
+      defaultIcon = <CheckmarkCircleFilled />;
       break;
     case 'error':
-      iconToUse = <DismissCircle16Filled />;
+      defaultIcon = <DismissCircleFilled />;
       break;
     case 'warning':
-      iconToUse = <Warning16Filled />;
+      defaultIcon = <WarningFilled />;
       break;
     case 'info':
-      iconToUse = <ErrorCircle16Filled />;
+      defaultIcon = <InfoFilled />;
       break;
   }
 
   const icon = resolveShorthand(props.icon, {
     defaultProps: {
-      children: iconToUse,
+      children: defaultIcon,
     },
     required: true,
   });
@@ -58,7 +53,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
       children: props.children,
       ...props,
     }),
-    icon: icon,
+    icon,
     action: resolveShorthand(props.action),
     intent,
     isIntentIcon: !!props.intent && !props.icon,

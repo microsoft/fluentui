@@ -29,8 +29,9 @@ const useStyles = makeStyles({
     ...shorthands.padding('0', '8px', '0', '12px'),
   },
   action: {
-    ...shorthands.padding('12px'),
+    ...shorthands.padding('0'),
     minWidth: 0,
+    marginRight: '12px',
     marginLeft: 'auto',
     color: tokens.colorBrandForeground2, // todo - foreground3 doesn't exist
   },
@@ -64,7 +65,8 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
     state.icon.className = mergeClasses(
       alertClassNames.icon,
       styles.icon,
-      state.intent && intentIconStyles[state.intent],
+      // apply intent styles only when icon is rendered due to the intent prop
+      state.intent && state.isIntentIcon && intentIconStyles[state.intent],
       state.isIntentIcon && intentClassName,
       state.icon.className,
     );

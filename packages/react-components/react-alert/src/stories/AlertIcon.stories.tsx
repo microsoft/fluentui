@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { Delete16Filled } from '@fluentui/react-icons';
+import { DeleteRegular } from '@fluentui/react-icons';
 
 import { Alert } from '../index';
 
 export const Icon = () => (
   <Alert
-    icon={<Delete16Filled primaryFill="red" />}
+    icon={<DeleteRegular />}
     action={{
       appearance: 'transparent',
       children: 'Undo',

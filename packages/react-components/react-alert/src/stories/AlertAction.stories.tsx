@@ -19,7 +19,7 @@ export const Action = () => (
       intent="error"
       action={{
         appearance: 'transparent',
-        icon: <DismissCircleRegular fontSize="16px" />,
+        icon: <DismissCircleRegular />,
       }}
     >
       Save failed
