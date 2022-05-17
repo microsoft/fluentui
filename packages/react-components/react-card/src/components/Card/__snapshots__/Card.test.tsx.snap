@@ -4,7 +4,6 @@ exports[`Card renders a default state 1`] = `
 <div>
   <div
     class="fui-Card"
-    data-tabster="{\\"groupper\\":{}}"
     role="group"
   >
     Default Card

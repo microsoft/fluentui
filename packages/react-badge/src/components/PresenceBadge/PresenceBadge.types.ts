@@ -10,7 +10,7 @@ export type PresenceBadgeStatus =
   | 'doNotDisturb'
   | 'unknown';
 
-export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root'>>, 'color'> &
+export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> &
   Pick<BadgeProps, 'size'> & {
     /**
      * Represents several status

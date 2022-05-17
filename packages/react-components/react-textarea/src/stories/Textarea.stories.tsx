@@ -1,6 +1,7 @@
 import { Textarea } from '../index';
 
 import descriptionMd from './TextareaDescription.md';
+import bestPracticesMd from './TextareaBestPractices.md';
 
 export { Default } from './TextareaDefault.stories';
 export { Appearance } from './TextareaAppearance.stories';
@@ -17,7 +18,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove commons types from accordion, remove unused state props",
+  "packageName": "@fluentui/react-accordion",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 13 May 2022 07:45:34 GMT and should not be manually modified.
+This log was last generated on Tue, 17 May 2022 07:45:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.2)
+
+Tue, 17 May 2022 07:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.1..@fluentui/react_v8.68.2)
+
+### Patches
+
+- fix Pivot a11y issue: aria-selected not allowed on menuitems ([PR #23022](https://github.com/microsoft/fluentui/pull/23022) by sarah.higley@microsoft.com)
+
+## [8.68.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.1)
+
+Mon, 16 May 2022 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.0..@fluentui/react_v8.68.1)
+
+### Patches
+
+- Updated to add missing exports ([PR #22990](https://github.com/microsoft/fluentui/pull/22990) by gcox@microsoft.com)
 
 ## [8.68.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.0)
 

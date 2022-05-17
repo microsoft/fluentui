@@ -526,6 +526,14 @@ export {
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
 export {
+  Spinner,
+  spinnerClassNames,
+  renderSpinner_unstable,
+  useSpinner_unstable,
+  useSpinnerStyles_unstable,
+} from '@fluentui/react-spinner';
+export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+export {
   renderTab_unstable,
   Tab,
   tabClassName,
