@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: create core base for react/node/legacy lint configs",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
