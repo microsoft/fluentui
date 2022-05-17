@@ -602,6 +602,14 @@ export {
 } from '@fluentui/react-text';
 export type { TextProps, TextSlots, TextState } from '@fluentui/react-text';
 export {
+  Textarea,
+  textareaClassNames,
+  renderTextarea_unstable,
+  useTextarea_unstable,
+  useTextareaStyles_unstable,
+} from '@fluentui/react-textarea';
+export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
+export {
   Tooltip,
   renderTooltip_unstable,
   /* eslint-disable-next-line deprecation/deprecation */

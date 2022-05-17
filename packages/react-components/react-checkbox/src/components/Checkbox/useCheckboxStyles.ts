@@ -23,7 +23,7 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 });

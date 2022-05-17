@@ -35,3 +35,11 @@ export const CustomOptions = (props: Partial<ComboboxProps>) => {
     </>
   );
 };
+
+CustomOptions.parameters = {
+  docs: {
+    description: {
+      story: 'Options and OptionGroups can be extended and customized.',
+    },
+  },
+};

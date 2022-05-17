@@ -91,12 +91,3 @@ export {
   useSwitchStyles_unstable,
 } from '@fluentui/react-switch';
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
-
-export {
-  Textarea,
-  textareaClassNames,
-  renderTextarea_unstable,
-  useTextarea_unstable,
-  useTextareaStyles_unstable,
-} from '@fluentui/react-textarea';
-export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';

@@ -332,6 +332,7 @@ import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
+import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
@@ -388,6 +389,11 @@ import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
+import { Textarea } from '@fluentui/react-textarea';
+import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaProps } from '@fluentui/react-textarea';
+import { TextareaSlots } from '@fluentui/react-textarea';
+import { TextareaState } from '@fluentui/react-textarea';
 import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
@@ -522,6 +528,8 @@ import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
+import { useTextarea_unstable } from '@fluentui/react-textarea';
+import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
@@ -1190,6 +1198,8 @@ export { renderTabList_unstable }
 
 export { renderText_unstable }
 
+export { renderTextarea_unstable }
+
 export { renderToggleButton_unstable }
 
 export { renderTooltip_unstable }
@@ -1301,6 +1311,16 @@ export { teamsHighContrastTheme }
 export { teamsLightTheme }
 
 export { Text_2 as Text }
+
+export { Textarea }
+
+export { textareaClassNames }
+
+export { TextareaProps }
+
+export { TextareaSlots }
+
+export { TextareaState }
 
 export { textClassName }
 
@@ -1569,6 +1589,10 @@ export { useTabListStyles_unstable }
 export { useTabStyles_unstable }
 
 export { useText_unstable }
+
+export { useTextarea_unstable }
+
+export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 

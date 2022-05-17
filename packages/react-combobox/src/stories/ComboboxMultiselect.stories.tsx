@@ -18,3 +18,11 @@ export const Multiselect = (props: Partial<ComboboxProps>) => {
     </>
   );
 };
+
+Multiselect.parameters = {
+  docs: {
+    description: {
+      story: 'Combobox supports multiselect, and options within a multiselect will display checkbox icons.',
+    },
+  },
+};

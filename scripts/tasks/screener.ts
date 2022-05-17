@@ -31,8 +31,10 @@ export async function screener() {
     affectedPackages = getAffectedPackages(previousMasterCommit);
   }
 
+  debugAffectedGraph(affectedPackages);
+
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
       await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
       await screenerRunner(screenerConfig);
@@ -78,6 +80,15 @@ async function getScreenerStates(screenerConfig: ScreenerRunnerConfig): Promise<
   await startStorybook(screenerConfig, {});
 
   return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, screenerConfig.baseUrl);
+}
+
+/**
+ * Outputs debug output for the affected packages graph
+ * @param affectedPackages  - set of affected packages
+ */
+function debugAffectedGraph(affectedPackages: Set<string>) {
+  console.log('affected package tree');
+  console.log(Array.from(affectedPackages.values()));
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };
