@@ -1,6 +1,8 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { cardPreviewClassNames } from '../CardPreview/index';
+import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
+import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
+import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -17,7 +19,6 @@ export const cardCSSVars = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'column',
     position: 'relative',
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
@@ -37,6 +38,29 @@ const useStyles = makeStyles({
 
     ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
     ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+
+    [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
+      flexShrink: 0,
+    },
+    [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
+      flexGrow: 1,
+    },
+  },
+
+  orientationHorizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    [`> .${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardSizeVar}) * -1)`,
+      marginBottom: `calc(var(${cardSizeVar}) * -1)`,
+    },
+    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+      marginLeft: `calc(var(${cardSizeVar}) * -1)`,
+    },
+  },
+  orientationVertical: {
+    flexDirection: 'column',
 
     [`> .${cardPreviewClassNames.root}`]: {
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
@@ -183,6 +207,11 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
+  const orientationMap = {
+    horizontal: styles.orientationHorizontal,
+    vertical: styles.orientationVertical,
+  } as const;
+
   const sizeMap = {
     small: styles.sizeSmall,
     medium: styles.sizeMedium,
@@ -201,6 +230,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
+    orientationMap[state.orientation],
     sizeMap[state.size],
     state.appearance === 'filled' && styles.filled,
     state.appearance === 'filled-alternative' && styles.filledAlternative,
