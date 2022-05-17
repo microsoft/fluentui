@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
+- Do not pass deprecated `.styles` to slots in `Avatar` @layershifter ([#23034](https://github.com/microsoft/fluentui/pull/23034))
 
 ### Features
 - Adding the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
