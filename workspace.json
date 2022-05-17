@@ -373,9 +373,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-divider": {
-      "root": "packages/react-divider",
+      "root": "packages/react-components/react-divider",
       "projectType": "library",
-      "sourceRoot": "packages/react-divider/src",
+      "sourceRoot": "packages/react-components/react-divider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
