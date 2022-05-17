@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Migrate react-spinner to rc",
+  "packageName": "@fluentui/react-spinner",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
