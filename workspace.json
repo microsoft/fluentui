@@ -238,9 +238,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "root": "packages/react-accordion",
+      "root": "packages/react-components/react-accordion",
       "projectType": "library",
-      "sourceRoot": "packages/react-accordion/src",
+      "sourceRoot": "packages/react-components/react-accordion/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
