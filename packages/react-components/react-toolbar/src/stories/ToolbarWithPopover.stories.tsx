@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Toolbar, ToolbarProps } from '../index';
 import { ToolbarButton } from '../ToolbarButton';
 import { ToolbarDivider } from '../ToolbarDivider';
-import { ToolbarToggleButton } from '../ToolbarToggleButton';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -19,7 +18,7 @@ export const WithPopover = (props: Partial<ToolbarProps>) => (
     <ToolbarDivider />
     <Popover>
       <PopoverTrigger>
-        <ToolbarToggleButton icon={<CalendarMonthRegular />} />
+        <ToolbarButton icon={<CalendarMonthRegular />} />
       </PopoverTrigger>
       <PopoverSurface>
         <div>Popover content</div>
