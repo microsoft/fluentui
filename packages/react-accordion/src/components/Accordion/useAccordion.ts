@@ -31,16 +31,10 @@ export const useAccordion_unstable = (props: AccordionProps, ref: React.Ref<HTML
 
   const requestToggle = useEventCallback((event: AccordionToggleEvent, data: AccordionToggleData) => {
     onToggle?.(event, data);
-    setOpenItems(previousOpenItems =>
-      updateOpenItems(data.value, previousOpenItems, {
-        collapsible,
-        multiple,
-      }),
-    );
+    setOpenItems(previousOpenItems => updateOpenItems(data.value, previousOpenItems, multiple, collapsible));
   });
 
   return {
-    multiple,
     collapsible,
     navigation,
     openItems,
@@ -76,12 +70,14 @@ function initializeUncontrolledOpenItems({
  * Updates the list of open indexes based on an index that changes
  * @param value - the index that will change
  * @param previousOpenItems - list of current open indexes
- * @param param2 - {multiple, collapsible}
+ * @param multiple - if Accordion support multiple Panels opened at the same time
+ * @param collapsible - if Accordion support multiple Panels closed at the same time
  */
 function updateOpenItems(
   value: AccordionItemValue,
   previousOpenItems: AccordionItemValue[],
-  { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
+  multiple: boolean,
+  collapsible: boolean,
 ) {
   if (multiple) {
     if (previousOpenItems.includes(value)) {
