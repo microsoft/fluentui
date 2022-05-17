@@ -242,6 +242,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       setSpinState('up');
     } else if (e.key === Keys.Enter) {
       commit(e, currentValue, textValue);
+      internalState.current.previousTextValue = undefined;
       setSpinState('rest');
     } else if (e.key === Keys.Escape) {
       if (internalState.current.previousTextValue) {
@@ -267,6 +268,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
     let roundedValue;
     if (valueChanged) {
+      // TODO: What happens when newValueis null?
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
       internalState.current.value = roundedValue;
@@ -275,8 +277,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
     if (valueChanged || displayValueChanged) {
       onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
-    } else if (!valueChanged && newValue === null) {
-      onChange?.(e, { value: null });
     }
   };
 

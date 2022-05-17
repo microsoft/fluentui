@@ -276,19 +276,19 @@ describe('SpinButton', () => {
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
   });
 
-  it('calls on change when defaultValue is `null` when uncontrolled', () => {
+  it('does not call on change when defaultValue is `null` when uncontrolled', () => {
     const onChange = jest.fn();
     const { getAllByRole } = render(<SpinButton defaultValue={null} onChange={onChange} />);
 
     const [incrementButton, decrementButton] = getAllByRole('button');
     userEvent.click(incrementButton);
 
-    expect(onChange.mock.calls[0][1]).toEqual({ value: null, displayValue: undefined });
+    expect(onChange).not.toHaveBeenCalled();
     expect(getSpinButtonInput().value).toBe('');
 
     userEvent.click(decrementButton);
 
-    expect(onChange.mock.calls[1][1]).toEqual({ value: null, displayValue: undefined });
+    expect(onChange).not.toHaveBeenCalled();
     expect(getSpinButtonInput().value).toBe('');
   });
 
@@ -299,13 +299,13 @@ describe('SpinButton', () => {
     const [incrementButton, decrementButton] = getAllByRole('button');
     userEvent.click(incrementButton);
 
-    expect(onChange.mock.calls[0][1]).toEqual({ value: null, displayValue: undefined });
+    expect(onChange).not.toHaveBeenCalled();
     expect(getSpinButtonInput().value).toBe('');
 
     rerender(<SpinButton value={null} onChange={onChange} />);
     userEvent.click(decrementButton);
 
-    expect(onChange.mock.calls[1][1]).toEqual({ value: null, displayValue: undefined });
+    expect(onChange).not.toHaveBeenCalled();
     expect(getSpinButtonInput().value).toBe('');
   });
 
