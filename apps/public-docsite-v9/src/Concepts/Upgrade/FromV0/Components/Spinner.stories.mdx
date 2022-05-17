@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Concepts/Upgrading/from v0/Components/Loader Upgrade" />
+<Meta title="Concepts/Upgrading/from v0/Components/Loader to Spinner Upgrade" />
 
 # Loader Upgrade
 
@@ -22,7 +22,7 @@ const LoaderV0BasicExample = () => <Loader />;
 export default LoaderV0BasicExample;
 ```
 
-An equivalent `Loader` in v9 is
+An equivalent `Spinner` in v9 is
 
 ```tsx
 import * as React from 'react';
@@ -44,10 +44,10 @@ This table maps `Loader` v0 props to the `Spinner` v9 equivalent.
 | `className`     | `className`     |                                          |
 | `delay`         | n/a             |                                          |
 | `design`        | n/a             |                                          |
-| `indicator      | n/a             |                                          |
+| `indicator`     | n/a             |                                          |
 | `inline`        | n/a             |                                          |
 | `label`         | `label`         |                                          |
-| `labelPosition` | `labelPosition` | The default value changes to 'after'     |
+| `labelPosition` | `labelPosition` | Default changes from `below` to 'after'  |
 | `size`          | `size`          |                                          |
 | `styles`        | `className`     |                                          |
 | `svg`           | n/a             |                                          |
