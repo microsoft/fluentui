@@ -3,6 +3,7 @@ const getAffectedPackages = require('./getAffectedPackages');
 const packagesToCheck = process.argv.filter(pkg => pkg.startsWith('--')).map(pkg => pkg.substring(2));
 
 const isPackageAffected = packagesToCheck => {
+  console.log('##vso[task.complete result=Failed;]DONE');
   const affectedPackages = getAffectedPackages();
 
   for (const pkg of packagesToCheck) {
