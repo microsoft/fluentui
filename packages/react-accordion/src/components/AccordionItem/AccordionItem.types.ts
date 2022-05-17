@@ -1,9 +1,9 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type AccordionItemContextValue = Omit<AccordionItemCommons, 'value'> & {
-  open: boolean;
+export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
   onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
+  open: boolean;
 };
 
 export type AccordionItemContextValues = {
@@ -14,21 +14,17 @@ export type AccordionItemSlots = {
   root: Slot<'div'>;
 };
 
-type AccordionItemCommons = {
+export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
   /**
    * Disables opening/closing of panel
    */
-  disabled: boolean;
+  disabled?: boolean;
   /**
    * required value that identifies this item inside an Accordion component
    */
   value: AccordionItemValue;
 };
 
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> &
-  Partial<AccordionItemCommons> &
-  Pick<AccordionItemCommons, 'value'>;
-
 export type AccordionItemValue = unknown;
 
-export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemCommons & AccordionItemContextValue;
+export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemContextValue;

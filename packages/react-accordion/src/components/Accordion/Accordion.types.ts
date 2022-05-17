@@ -8,33 +8,18 @@ export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.
 
 export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
 
-type AccordionCommons = {
-  /**
-   * Indicates if keyboard navigation is available and gives two options,
-   * linear or circular navigation
-   */
-  navigation?: 'linear' | 'circular';
-  /**
-   * Indicates if Accordion support multiple Panels opened at the same time
-   */
-  multiple: boolean;
-  /**
-   * Indicates if Accordion support multiple Panels closed at the same time
-   */
-  collapsible: boolean;
-};
-
-export type AccordionContextValue = Omit<AccordionCommons, 'multiple'> & {
-  /**
-   * The list of opened panels by index
-   */
-  openItems: AccordionItemValue[];
-  /**
-   * Callback used by AccordionItem to request a change on it's own opened state
-   * Should be used to toggle AccordionItem
-   */
-  requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-};
+export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> &
+  Pick<AccordionProps, 'navigation'> & {
+    /**
+     * The list of opened panels by index
+     */
+    openItems: AccordionItemValue[];
+    /**
+     * Callback used by AccordionItem to request a change on it's own opened state
+     * Should be used to toggle AccordionItem
+     */
+    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
+  };
 
 export type AccordionContextValues = {
   accordion: AccordionContextValue;
@@ -48,17 +33,34 @@ export type AccordionToggleData = {
   value: AccordionItemValue;
 };
 
-export type AccordionProps = ComponentProps<AccordionSlots> &
-  Partial<AccordionCommons> & {
-    /**
-     * Controls the state of the panel
-     */
-    openItems?: AccordionItemValue | AccordionItemValue[];
-    /**
-     * Default value for the uncontrolled state of the panel
-     */
-    defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
-    onToggle?: AccordionToggleEventHandler;
-  };
+export type AccordionProps = ComponentProps<AccordionSlots> & {
+  /**
+   * Default value for the uncontrolled state of the panel
+   */
+  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
 
-export type AccordionState = ComponentState<AccordionSlots> & AccordionCommons & AccordionContextValue;
+  /**
+   * Indicates if Accordion support multiple Panels closed at the same time
+   */
+  collapsible?: boolean;
+
+  /**
+   * Indicates if Accordion support multiple Panels opened at the same time
+   */
+  multiple?: boolean;
+
+  /**
+   * Indicates if keyboard navigation is available and gives two options,
+   * linear or circular navigation
+   */
+  navigation?: 'linear' | 'circular';
+
+  onToggle?: AccordionToggleEventHandler;
+
+  /**
+   * Controls the state of the panel
+   */
+  openItems?: AccordionItemValue | AccordionItemValue[];
+};
+
+export type AccordionState = ComponentState<AccordionSlots> & AccordionContextValue;
