@@ -152,6 +152,7 @@ describe('SpinButton', () => {
     const onChange = jest.fn();
     const { getAllByRole } = render(<SpinButton defaultValue={100} min={0} max={10} onChange={onChange} />);
 
+    expect(getSpinButtonInput().value).toEqual('100');
     const [incrementButton] = getAllByRole('button');
 
     userEvent.click(incrementButton);
@@ -163,6 +164,7 @@ describe('SpinButton', () => {
     const onChange = jest.fn();
     const { getAllByRole, rerender } = render(<SpinButton value={100} min={0} max={10} onChange={onChange} />);
 
+    expect(getSpinButtonInput().value).toEqual('100');
     const [incrementButton, decrementButton] = getAllByRole('button');
 
     userEvent.click(incrementButton);
