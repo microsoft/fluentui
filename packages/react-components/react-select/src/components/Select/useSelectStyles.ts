@@ -137,7 +137,7 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     position: 'absolute',
-    right: '0',
+    right: tokens.spacingHorizontalMNudge,
     pointerEvents: 'none',
 
     // the SVG must have display: block for accurate positioning
