@@ -45,9 +45,6 @@ export type MenuContextValues = {
 // @public
 export const MenuDivider: ForwardRefComponent<MenuDividerProps>;
 
-// @public @deprecated (undocumented)
-export const menuDividerClassName = "fui-MenuDivider";
-
 // @public (undocumented)
 export const menuDividerClassNames: SlotClassNames<MenuDividerSlots>;
 
@@ -64,9 +61,6 @@ export type MenuDividerState = ComponentState<MenuDividerSlots>;
 
 // @public
 export const MenuGroup: ForwardRefComponent<MenuGroupProps>;
-
-// @public @deprecated (undocumented)
-export const menuGroupClassName = "fui-MenuGroup";
 
 // @public (undocumented)
 export const menuGroupClassNames: SlotClassNames<MenuGroupSlots>;
@@ -86,9 +80,6 @@ export type MenuGroupContextValues = {
 
 // @public
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps>;
-
-// @public @deprecated (undocumented)
-export const menuGroupHeaderClassName = "fui-MenuGroupHeader";
 
 // @public (undocumented)
 export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots>;
@@ -123,9 +114,6 @@ export const MenuItem: ForwardRefComponent<MenuItemProps>;
 // @public
 export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps>;
 
-// @public @deprecated (undocumented)
-export const menuItemCheckboxClassName = "fui-MenuItemCheckbox";
-
 // @public (undocumented)
 export const menuItemCheckboxClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
 
@@ -135,9 +123,6 @@ export type MenuItemCheckboxProps = MenuItemProps & MenuItemSelectableProps;
 // @public (undocumented)
 export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 
-// @public @deprecated (undocumented)
-export const menuItemClassName = "fui-MenuItem";
-
 // @public (undocumented)
 export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 
@@ -146,9 +131,6 @@ export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCom
 
 // @public
 export const MenuItemRadio: ForwardRefComponent<MenuItemRadioProps>;
-
-// @public @deprecated (undocumented)
-export const menuItemRadioClassName = "fui-MenuItemRadio";
 
 // @public (undocumented)
 export const menuItemRadioClassNames: SlotClassNames<Omit<MenuItemSlots, 'submenuIndicator'>>;
@@ -187,9 +169,6 @@ export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
 
 // @public
 export const MenuList: ForwardRefComponent<MenuListProps>;
-
-// @public @deprecated (undocumented)
-export const menuListClassName = "fui-MenuList";
 
 // @public (undocumented)
 export const menuListClassNames: SlotClassNames<MenuListSlots>;
@@ -240,9 +219,6 @@ export type MenuOpenEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLEl
 // @public
 export const MenuPopover: ForwardRefComponent<MenuPopoverProps>;
 
-// @public @deprecated (undocumented)
-export const menuPopoverClassName = "fui-MenuPopover";
-
 // @public (undocumented)
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots>;
 
@@ -273,9 +249,6 @@ export type MenuSlots = {};
 
 // @public
 export const MenuSplitGroup: ForwardRefComponent<MenuSplitGroupProps>;
-
-// @public @deprecated (undocumented)
-export const menuSplitGroupClassName = "fui-MenuSplitGroup";
 
 // @public (undocumented)
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots>;

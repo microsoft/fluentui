@@ -20,9 +20,6 @@ import { useTheme } from '@fluentui/react-shared-contexts';
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
 
-// @public @deprecated (undocumented)
-export const fluentProviderClassName = "fui-FluentProvider";
-
 // @public (undocumented)
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 

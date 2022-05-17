@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
-// @public @deprecated (undocumented)
-export const badgeClassName = "fui-Badge";
-
 // @public (undocumented)
 export const badgeClassNames: SlotClassNames<BadgeSlots>;
 
@@ -41,9 +38,6 @@ export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
-// @public @deprecated (undocumented)
-export const counterBadgeClassName = "fui-CounterBadge";
-
 // @public (undocumented)
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
 
@@ -63,9 +57,6 @@ export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape
 
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
-
-// @public @deprecated (undocumented)
-export const presenceBadgeClassName = "fui-PresenceBadge";
 
 // @public (undocumented)
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;

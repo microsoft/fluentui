@@ -78,9 +78,6 @@ export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noAr
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
 
-// @public @deprecated (undocumented)
-export const popoverSurfaceClassName = "fui-PopoverSurface";
-
 // @public (undocumented)
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
 

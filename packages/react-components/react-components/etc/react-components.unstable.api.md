@@ -5,22 +5,18 @@
 ```ts
 
 import { Card } from '@fluentui/react-card';
-import { cardClassName } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
-import { cardFooterClassName } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
 import { CardFooterSlots } from '@fluentui/react-card';
 import { CardFooterState } from '@fluentui/react-card';
 import { CardHeader } from '@fluentui/react-card';
-import { cardHeaderClassName } from '@fluentui/react-card';
 import { cardHeaderClassNames } from '@fluentui/react-card';
 import { CardHeaderProps } from '@fluentui/react-card';
 import { CardHeaderSlots } from '@fluentui/react-card';
 import { CardHeaderState } from '@fluentui/react-card';
 import { CardPreview } from '@fluentui/react-card';
-import { cardPreviewClassName } from '@fluentui/react-card';
 import { cardPreviewClassNames } from '@fluentui/react-card';
 import { CardPreviewProps } from '@fluentui/react-card';
 import { CardPreviewSlots } from '@fluentui/react-card';
@@ -29,7 +25,6 @@ import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
 import { Input } from '@fluentui/react-input';
-import { inputClassName } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
@@ -82,13 +77,9 @@ import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 
 export { Card }
 
-export { cardClassName }
-
 export { cardClassNames }
 
 export { CardFooter }
-
-export { cardFooterClassName }
 
 export { cardFooterClassNames }
 
@@ -100,8 +91,6 @@ export { CardFooterState }
 
 export { CardHeader }
 
-export { cardHeaderClassName }
-
 export { cardHeaderClassNames }
 
 export { CardHeaderProps }
@@ -111,8 +100,6 @@ export { CardHeaderSlots }
 export { CardHeaderState }
 
 export { CardPreview }
-
-export { cardPreviewClassName }
 
 export { cardPreviewClassNames }
 
@@ -129,8 +116,6 @@ export { CardSlots }
 export { CardState }
 
 export { Input }
-
-export { inputClassName }
 
 export { inputClassNames }
 
