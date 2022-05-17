@@ -31,11 +31,25 @@ const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_2
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
+    /**
+     * The FabricConfig options can be burned on the page prior to script load to provide
+     * alternative defaults at script load time. This helps avoid race conditions by calling
+     * `initializeIcons` too late, or in cases where you can't control the `initializeIcons` call,
+     * such as using the pre-created Fluent bundle.
+     */
     FabricConfig?: {
       /**
-       * @deprecated - Use iconBaseUrl instead.
+       * Controls the base url of the font files. This is useful for scenarios where the fonts
+       * are stored on a private CDN other than the default SharePoint CDN.
        */
       fontBaseUrl?: string;
+      /**
+       * Controls the base url of the icon font files. This is useful for scenarios where the icons
+       * are stored on a private CDN other than the default SharePoint CDN. Note that in prior
+       * iterations, `fontBaseUrl` was used to control both font and icon base urls. While you can
+       * still use `fontBaseUrl` to provide a single base url for both, the `iconBaseUrl` will be
+       * used first if available.
+       */
       iconBaseUrl?: string;
     };
   }
@@ -43,7 +57,6 @@ declare global {
 
 const win = getWindow();
 export function initializeIcons(
-  // eslint-disable-next-line deprecation/deprecation
   baseUrl: string = win?.FabricConfig?.iconBaseUrl || win?.FabricConfig?.fontBaseUrl || DEFAULT_BASE_URL,
   options?: IIconOptions,
 ): void {
