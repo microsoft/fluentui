@@ -83,7 +83,10 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
 };
 
 // @public
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
+    allowPhoneInitials?: boolean;
+    firstInitialOnly?: boolean;
+}): string;
 
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;

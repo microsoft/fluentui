@@ -31,17 +31,14 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     /* excludedPropNames: */ ['name'],
   );
 
-  let generatedInitials = getInitials(name, dir === 'rtl');
-  if (generatedInitials && size <= 16) {
-    // At size 16, only the first letter of the initials is displayed
-    generatedInitials = generatedInitials[0];
-  }
-
   // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
-      children: generatedInitials,
+      children: getInitials(name, dir === 'rtl', {
+        // At size 16, only the first letter of the initials is displayed
+        firstInitialOnly: size <= 16,
+      }),
       'aria-hidden': true,
     },
   });
