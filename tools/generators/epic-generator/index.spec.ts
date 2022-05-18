@@ -5,12 +5,10 @@ import epicGenerator from './index';
 import { readFileSync } from 'fs';
 
 jest.mock('child_process');
-// @ts-ignore
-const execSyncMock = <jest.Mock<string>>execSync;
+const execSyncMock = (execSync as unknown) as jest.Mock<string>;
 
 jest.mock('fs');
-// @ts-ignore
-const readFileSyncMock = <jest.Mock<string>>readFileSync;
+const readFileSyncMock = (readFileSync as unknown) as jest.Mock<string>;
 
 type Package = {
   name: string;
