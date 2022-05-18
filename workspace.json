@@ -238,9 +238,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "root": "packages/react-accordion",
+      "root": "packages/react-components/react-accordion",
       "projectType": "library",
-      "sourceRoot": "packages/react-accordion/src",
+      "sourceRoot": "packages/react-components/react-accordion/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -373,9 +373,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-divider": {
-      "root": "packages/react-divider",
+      "root": "packages/react-components/react-divider",
       "projectType": "library",
-      "sourceRoot": "packages/react-divider/src",
+      "sourceRoot": "packages/react-components/react-divider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
