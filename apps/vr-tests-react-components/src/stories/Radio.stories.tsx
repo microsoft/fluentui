@@ -9,90 +9,53 @@ storiesOf('Radio Converged', module)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
-  .addStory('unchecked', () => <Radio label="Unchecked" />, {
-    includeDarkMode: true,
-    includeHighContrast: true,
-  })
-  .addStory('checked', () => <Radio checked label="Checked" />, {
-    includeDarkMode: true,
-    includeHighContrast: true,
-  })
-  .addStory('disabled', () => <Radio disabled label="Disabled" />, {
-    includeDarkMode: true,
-    includeHighContrast: true,
-  });
-
-storiesOf('Radio Converged', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('disabled+checked', () => <Radio disabled checked label="Disabled checked" />, {
-    includeDarkMode: true,
-    includeHighContrast: true,
-  })
-  .addStory('no-label', () => <Radio />, { includeRtl: true })
-  .addStory('label-after', () => <Radio labelPosition="after" label="Label after" />, { includeRtl: true })
-  .addStory('label-below', () => <Radio labelPosition="below" label="Label below" />, { includeRtl: true })
   .addStory(
-    'label-wrapping',
+    'Radio',
     () => (
-      <Radio
-        label={
-          <>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua
-          </>
-        }
-      />
+      <>
+        <Radio label="Unchecked" />
+        <Radio label="Checked" checked />
+        <Radio label="Required" required />
+        <Radio label="Disabled" disabled />
+        <Radio label="Disabled checked" disabled checked />
+        <Radio label="Disabled checked" disabled checked />
+        <Radio label="Label after" labelPosition="after" />
+        <Radio label="Label below" labelPosition="below" />
+        <Radio
+          label={
+            <>
+              Label wrapping - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              ut labore et dolore magna aliqua
+            </>
+          }
+        />
+      </>
     ),
-    { includeRtl: true },
+    {
+      includeDarkMode: true,
+      includeHighContrast: true,
+      includeRtl: true,
+    },
   )
-  .addStory('required', () => <Radio required label="Required" />, { includeRtl: true })
-  //
-  // RadioGroup
-  //
-  .addStory(
-    'group-vertical',
-    () => (
-      <RadioGroup defaultValue="A">
-        <Radio value="A" label="Option A" />
-        <Radio value="B" label="Option B" />
-        <Radio value="C" label="Option C" />
-      </RadioGroup>
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'group-horizontal',
-    () => (
+  .addStory('Radio Group', () => (
+    <>
+      <h3>Horizontal</h3>
       <RadioGroup value="A" layout="horizontal">
         <Radio value="A" label="Option A" />
         <Radio value="B" label="Option B" />
         <Radio value="C" label="Option C" />
       </RadioGroup>
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'group-horizontalStacked',
-    () => (
+      <h3>Horizontal stacked</h3>
       <RadioGroup layout="horizontalStacked">
         <Radio value="A" label="Option A" defaultChecked />
         <Radio value="B" label="Option B" />
         <Radio value="C" label="Option C" />
       </RadioGroup>
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'group-disabled',
-    () => (
+      <h3>Disabled</h3>
       <RadioGroup disabled value="A">
         <Radio value="A" label="Option A" />
         <Radio value="B" label="Option B" />
         <Radio value="C" label="Option C" />
       </RadioGroup>
-    ),
-    { includeRtl: true },
-  );
+    </>
+  ));
