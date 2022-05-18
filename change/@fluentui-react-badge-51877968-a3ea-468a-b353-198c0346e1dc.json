@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-badge: ship rolluped only dts.",
+  "packageName": "@fluentui/react-badge",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
