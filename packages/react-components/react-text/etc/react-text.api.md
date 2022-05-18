@@ -15,17 +15,11 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Body1: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const body1ClassName = "fui-Body1";
-
 // @public (undocumented)
 export const body1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Caption1: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const caption1ClassName = "fui-Caption1";
 
 // @public (undocumented)
 export const caption1ClassNames: SlotClassNames<TextSlots>;
@@ -39,17 +33,11 @@ export const caption2ClassNames: SlotClassNames<TextSlots>;
 // @public
 export const Display: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const displayClassName = "fui-Display";
-
 // @public (undocumented)
 export const displayClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const LargeTitle: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const largeTitleClassName = "fui-LargeTitle";
 
 // @public (undocumented)
 export const largeTitleClassNames: SlotClassNames<TextSlots>;
@@ -60,17 +48,11 @@ export const renderText_unstable: (state: TextState) => JSX.Element;
 // @public
 export const Subtitle1: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const subtitle1ClassName = "fui-Subtitle1";
-
 // @public (undocumented)
 export const subtitle1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Subtitle2: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const subtitle2ClassName = "fui-Subtitle2";
 
 // @public (undocumented)
 export const subtitle2ClassNames: SlotClassNames<TextSlots>;
@@ -78,9 +60,6 @@ export const subtitle2ClassNames: SlotClassNames<TextSlots>;
 // @public
 const Text_2: ForwardRefComponent<TextProps>;
 export { Text_2 as Text }
-
-// @public @deprecated (undocumented)
-export const textClassName = "fui-Text";
 
 // @public (undocumented)
 export const textClassNames: SlotClassNames<TextSlots>;
@@ -99,26 +78,17 @@ export type TextState = ComponentState<TextSlots> & TextCommons;
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const title1ClassName = "fui-Title1";
-
 // @public (undocumented)
 export const title1ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Title2: FunctionComponent<TextWrapperProps>;
 
-// @public @deprecated (undocumented)
-export const title2ClassName = "fui-Title2";
-
 // @public (undocumented)
 export const title2ClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export const Title3: FunctionComponent<TextWrapperProps>;
-
-// @public @deprecated (undocumented)
-export const title3ClassName = "fui-Title3";
 
 // @public (undocumented)
 export const title3ClassNames: SlotClassNames<TextSlots>;

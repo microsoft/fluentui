@@ -5,10 +5,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
-/**
- * @deprecated Use `body1ClassNames.root` instead.
- */
-export const body1ClassName = 'fui-Body1';
 export const body1ClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Body1',
 };

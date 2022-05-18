@@ -60,7 +60,6 @@ import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
 import { Body1 } from '@fluentui/react-text';
-import { body1ClassName } from '@fluentui/react-text';
 import { body1ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
@@ -71,7 +70,6 @@ import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { Caption1 } from '@fluentui/react-text';
-import { caption1ClassName } from '@fluentui/react-text';
 import { caption1ClassNames } from '@fluentui/react-text';
 import { Caption2 } from '@fluentui/react-text';
 import { caption2ClassNames } from '@fluentui/react-text';
@@ -108,7 +106,6 @@ import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { Display } from '@fluentui/react-text';
-import { displayClassName } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
 import { dividerClassName } from '@fluentui/react-divider';
@@ -148,7 +145,6 @@ import { LabelProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
-import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -366,10 +362,8 @@ import { SplitButtonState } from '@fluentui/react-button';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subtitle1 } from '@fluentui/react-text';
-import { subtitle1ClassName } from '@fluentui/react-text';
 import { subtitle1ClassNames } from '@fluentui/react-text';
 import { Subtitle2 } from '@fluentui/react-text';
-import { subtitle2ClassName } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Tab } from '@fluentui/react-tabs';
 import { tabClassName } from '@fluentui/react-tabs';
@@ -396,7 +390,6 @@ import { textareaClassNames } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
-import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
@@ -404,13 +397,10 @@ import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
 import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
-import { title1ClassName } from '@fluentui/react-text';
 import { title1ClassNames } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
-import { title2ClassName } from '@fluentui/react-text';
 import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
-import { title3ClassName } from '@fluentui/react-text';
 import { title3ClassNames } from '@fluentui/react-text';
 import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassName } from '@fluentui/react-button';
@@ -656,8 +646,6 @@ export { BadgeState }
 
 export { Body1 }
 
-export { body1ClassName }
-
 export { body1ClassNames }
 
 export { BorderRadiusTokens }
@@ -677,8 +665,6 @@ export { ButtonSlots }
 export { ButtonState }
 
 export { Caption1 }
-
-export { caption1ClassName }
 
 export { caption1ClassNames }
 
@@ -751,8 +737,6 @@ export { createTeamsDarkTheme }
 export { CurveTokens }
 
 export { Display }
-
-export { displayClassName }
 
 export { displayClassNames }
 
@@ -831,8 +815,6 @@ export { LabelSlots }
 export { LabelState }
 
 export { LargeTitle }
-
-export { largeTitleClassName }
 
 export { largeTitleClassNames }
 
@@ -1268,13 +1250,9 @@ export { StrokeWidthTokens }
 
 export { Subtitle1 }
 
-export { subtitle1ClassName }
-
 export { subtitle1ClassNames }
 
 export { Subtitle2 }
-
-export { subtitle2ClassName }
 
 export { subtitle2ClassNames }
 
@@ -1328,8 +1306,6 @@ export { TextareaSlots }
 
 export { TextareaState }
 
-export { textClassName }
-
 export { textClassNames }
 
 export { TextProps }
@@ -1344,19 +1320,13 @@ export { themeToTokensObject }
 
 export { Title1 }
 
-export { title1ClassName }
-
 export { title1ClassNames }
 
 export { Title2 }
 
-export { title2ClassName }
-
 export { title2ClassNames }
 
 export { Title3 }
-
-export { title3ClassName }
 
 export { title3ClassNames }
 

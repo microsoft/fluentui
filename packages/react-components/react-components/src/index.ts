@@ -567,16 +567,6 @@ export {
   Title1,
   Title2,
   Title3,
-  /* eslint-disable-next-line deprecation/deprecation */
-  body1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  caption1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  displayClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  subtitle1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  largeTitleClassName,
   body1ClassNames,
   caption1ClassNames,
   caption2ClassNames,
@@ -584,16 +574,6 @@ export {
   subtitle1ClassNames,
   largeTitleClassNames,
   renderText_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  subtitle2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  textClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title3ClassName,
   subtitle2ClassNames,
   textClassNames,
   title1ClassNames,
