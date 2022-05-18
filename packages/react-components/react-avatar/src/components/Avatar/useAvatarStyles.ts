@@ -207,6 +207,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('inherit'),
   },
 
+  icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
   icon20: { fontSize: '20px' },
   icon24: { fontSize: '24px' },
@@ -216,6 +217,7 @@ const useStyles = makeStyles({
 });
 
 const useSizeStyles = makeStyles({
+  16: { width: '16px', height: '16px' },
   20: { width: '20px', height: '20px' },
   24: { width: '24px', height: '24px' },
   28: { width: '28px', height: '28px' },
@@ -451,7 +453,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
   if (state.icon) {
     let iconSizeClass;
-    if (size <= 24) {
+    if (size <= 16) {
+      iconSizeClass = styles.icon12;
+    } else if (size <= 24) {
       iconSizeClass = styles.icon16;
     } else if (size <= 40) {
       iconSizeClass = styles.icon20;

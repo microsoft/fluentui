@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Moving Avatar stories to stories folder.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

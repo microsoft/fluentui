@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "style: fix lint errors",
-  "packageName": "@fluentui/codemods",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
