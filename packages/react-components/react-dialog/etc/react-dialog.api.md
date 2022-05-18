@@ -29,7 +29,7 @@ export type DialogSlots = {
 };
 
 // @public
-export type DialogState = ComponentState<DialogSlots> & Required<DialogProps>;
+export type DialogState = ComponentState<DialogSlots>;
 
 // @public
 export const renderDialog_unstable: (state: DialogState) => JSX.Element;
