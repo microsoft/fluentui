@@ -132,7 +132,7 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 // @public (undocumented)
 export type ToggleButtonProps = ButtonProps & {
     defaultChecked?: boolean;
-    checked: boolean;
+    checked?: boolean;
 };
 
 // @public (undocumented)
