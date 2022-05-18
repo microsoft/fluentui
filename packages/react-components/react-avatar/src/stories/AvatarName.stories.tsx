@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from './index';
+import { Avatar } from '../index';
 
 export const Name = () => <Avatar name="Ashley McCarthy" />;
 

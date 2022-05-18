@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from './index';
+import { Avatar } from '../index';
 
 export const ColorBrand = () => <Avatar color="brand" initials="BR" name="brand color avatar" />;
 
