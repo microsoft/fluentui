@@ -20,7 +20,7 @@ import { useTheme } from '@fluentui/react-shared-contexts';
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
     dir?: "ltr" | "rtl" | undefined;
-    targetDocument: Document | undefined;
+    targetDocument?: Document | undefined;
     theme?: Partial<Theme> | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
@@ -41,7 +41,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
 // @public (undocumented)
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
     dir?: 'ltr' | 'rtl';
-    targetDocument: Document | undefined;
+    targetDocument?: Document;
     theme?: PartialTheme;
 };
 
@@ -51,7 +51,7 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export type FluentProviderState = ComponentState<FluentProviderSlots> & Required<Pick<FluentProviderProps, 'dir' | 'targetDocument'>> & {
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
     theme: Theme | Partial<Theme> | undefined;
     themeClassName: string;
 };
