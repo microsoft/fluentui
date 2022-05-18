@@ -6,7 +6,7 @@ describe(`main utils`, () => {
     it(`should generate storybook stories string array of glob based on package.json#dependencies field`, () => {
       const actual = utils.getVnextStories();
       const expected = [
-        expect.stringContaining('../../../react-'),
+        expect.stringContaining('../../react-'),
         expect.stringContaining('/src/**/*.stories.@(ts|tsx|mdx)'),
       ];
 
