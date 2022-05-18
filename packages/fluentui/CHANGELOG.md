@@ -44,6 +44,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Features
 - Add compatibility with components from `@fluentui/react-components` in portals @layershifter ([#22541](https://github.com/microsoft/fluentui/pull/22541))
 - Add `AvatarStatusImage` to use images as `Avatar` status @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Copy utilities from `@fluentui/utilities` to avoid extra dependency on v8 @ling1726 ([#23054](https://github.com/microsoft/fluentui/pull/23054))
 
 ### Documentation
 - Use https for Embed and Video examples @Hirse ([#22738](https://github.com/microsoft/fluentui/pull/22738))
