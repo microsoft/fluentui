@@ -390,10 +390,10 @@
         "dependencies": [
           "@fluentui/a11y-testing",
           "@fluentui/dom-utilities",
-          "@fluentui/utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-conformance",
+          "@fluentui/utilities",
           "stylis"
         ]
       },
