@@ -1,10 +1,10 @@
 import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
-import { EpicGeneratorSchema } from './schema';
+import { EpicGenerator } from './schema';
 import { isPackageConverged } from '../../utils';
 
-function validateSchema(schema: EpicGeneratorSchema): Required<EpicGeneratorSchema> {
+function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
     throw new Error(stripIndents`
      You provided "${schema.repository}", which is an invalid repository name.
@@ -175,7 +175,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
   execSync(command);
 };
 
-export default function (tree: Tree, schema: EpicGeneratorSchema) {
+export default function (tree: Tree, schema: EpicGenerator) {
   const { title, message, repository } = validateSchema(schema);
 
   checkAuthentication();

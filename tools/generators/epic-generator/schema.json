@@ -14,7 +14,7 @@
     },
     "message": {
       "type": "string",
-      "description": "Message used in the body of the epic"
+      "description": "Message used in the body of the epic\nShould only be skipped in favour or manually adding the message."
     }
   },
   "additionalProperties": false,
