@@ -10,28 +10,25 @@ export type FluentProviderSlots = {
   root: Slot<'div'>;
 };
 
-interface FluentProviderCommons {
+export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
   /** Sets the direction of text & generated styles. */
-  dir: 'ltr' | 'rtl';
+  dir?: 'ltr' | 'rtl';
 
   /** Provides the document, can be undefined during SSR render. */
   targetDocument: Document | undefined;
-}
 
-export interface FluentProviderProps
-  extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>,
-    Partial<FluentProviderCommons> {
   theme?: PartialTheme;
-}
+};
 
-export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
-  theme: Theme | Partial<Theme> | undefined;
-  themeClassName: string;
-}
+export type FluentProviderState = ComponentState<FluentProviderSlots> &
+  Required<Pick<FluentProviderProps, 'dir' | 'targetDocument'>> & {
+    theme: Theme | Partial<Theme> | undefined;
+    themeClassName: string;
+  };
 
-export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
   tooltip: TooltipContextType;
-}
+};
