@@ -19,17 +19,10 @@ function getVnextStories() {
 
   return Object.keys({ ...dependencies, '@fluentui/react-components': '' })
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(pkgName => {
-      const name = pkgName.replace('@fluentui/', '');
-      const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
-
-      //TODO: simplify once all v9 packages have been moved to the new react-components subfolder.
-      if (fs.existsSync(`../../packages/${name}/package.json`)) {
-        return `../../../packages/${name}${storiesGlob}`;
-      } else {
-        return `../../../packages/react-components/${name}${storiesGlob}`;
-      }
-    });
+    .map(
+      pkgName =>
+        '../../../packages/react-components/' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)',
+    );
 }
 
 exports.getVnextStories = getVnextStories;
