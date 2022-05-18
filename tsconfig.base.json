@@ -24,7 +24,7 @@
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
       "@fluentui/react-card": ["packages/react-components/react-card/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
-      "@fluentui/react-combobox": ["packages/react-combobox/src/index.ts"],
+      "@fluentui/react-combobox": ["packages/react-components/react-combobox/src/index.ts"],
       "@fluentui/react-components": ["packages/react-components/react-components/src/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
