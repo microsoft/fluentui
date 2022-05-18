@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 18 May 2022 07:41:14 GMT",
+      "tag": "@fluentui/codemods_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "8d6c673ca9d07fd329c26f16b4c69ea32d284dd4",
+            "comment": "style: fix lint errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Mar 2022 07:35:07 GMT",
       "tag": "@fluentui/codemods_v8.4.0",
       "version": "8.4.0",
