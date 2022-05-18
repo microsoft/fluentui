@@ -33,8 +33,6 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 // @public (undocumented)
 export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
     color?: AvatarProps['color'];
-    rootChildren?: (React_2.ReactChild | React_2.ReactPortal | React_2.ReactFragment)[];
-    popoverChildren?: (React_2.ReactChild | React_2.ReactPortal | React_2.ReactFragment)[];
 };
 
 // @public (undocumented)

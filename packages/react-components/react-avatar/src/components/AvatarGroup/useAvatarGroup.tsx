@@ -22,9 +22,9 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   const { children, layout = 'spread', maxAvatars = 5, overflowIndicator = 'count', size = 32 } = props;
   const id = useId('avatarGroup-', props.id);
   const childrenCount = React.Children.count(children);
+  const childrenArray = React.Children.toArray(children);
   const numOfAvatarsToShow = layout === 'pie' ? 3 : maxAvatars;
   const hasOverflow = childrenCount > numOfAvatarsToShow;
-  const childrenArray = React.Children.toArray(children);
 
   const rootChildren = childrenArray.slice(0, numOfAvatarsToShow);
   const root = getNativeElementProps(
@@ -42,7 +42,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   const popoverTriggerChildren =
     layout === 'pie' || overflowIndicator === 'icon' ? null : `+${childrenCount - numOfAvatarsToShow}`;
   const popoverTriggerIcon = layout !== 'pie' && overflowIndicator === 'icon' ? <MoreHorizontalRegular /> : undefined;
-
   const popoverTrigger = resolveShorthand(props.popoverTrigger, {
     required: true,
     defaultProps: {
@@ -53,23 +52,25 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
-  const popoverChildren = childrenArray.slice(numOfAvatarsToShow).map((child, k) => {
-    if (React.isValidElement(child)) {
-      // Avatars inside PopoverSurface must be size 24
-      return (
-        <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
-          {React.cloneElement(child, { size: 24 })}
-          <Label size="medium">{child.props.name}</Label>
-        </li>
-      );
-    }
-    return child;
-  });
+  const popoverChildren =
+    hasOverflow &&
+    childrenArray.slice(numOfAvatarsToShow).map((child, k) => {
+      if (React.isValidElement(child)) {
+        return (
+          <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
+            {child}
+            <Label size="medium">{child.props.name}</Label>
+          </li>
+        );
+      }
+      return child;
+    });
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {
+      // Avatars inside PopoverSurface must be size 24
       children: (
-        <AvatarGroupContext.Provider value={{ color: 'colorful', layout, size: 24 }}>
+        <AvatarGroupContext.Provider value={{ color: 'colorful', layout: undefined, size: 24 }}>
           <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer}>{popoverChildren}</ul>
         </AvatarGroupContext.Provider>
       ),
