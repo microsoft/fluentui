@@ -46,7 +46,7 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
 import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
-import { format } from '@uifabric/utilities';
+import { format } from '@fluentui/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
