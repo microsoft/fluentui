@@ -6,6 +6,7 @@
   "properties": {
     "repository": {
       "type": "string",
+      "default": "microsoft/fluentui",
       "description": "Repository to create issues at."
     },
     "title": {
@@ -14,9 +15,10 @@
     },
     "message": {
       "type": "string",
+      "default": "*Description to be added*",
       "description": "Message used in the body of the epic\nShould only be skipped in favour or manually adding the message."
     }
   },
   "additionalProperties": false,
-  "required": ["title"]
+  "required": ["title", "repository", "message"]
 }

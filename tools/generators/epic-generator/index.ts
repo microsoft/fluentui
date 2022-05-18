@@ -17,9 +17,9 @@ function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   }
 
   return {
-    repository: schema.repository || 'microsoft/fluentui',
+    repository: schema.repository,
     title: schema.title,
-    message: schema.message || '*Description to be added*',
+    message: schema.message,
   };
 }
 

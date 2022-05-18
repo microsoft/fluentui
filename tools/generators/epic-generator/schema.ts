@@ -2,7 +2,7 @@ export interface EpicGenerator {
   /**
    * Repository to create issues at.
    */
-  repository?: string;
+  repository: string;
   /**
    * Title used in the creation of the epic
    */
@@ -11,5 +11,5 @@ export interface EpicGenerator {
    * Message used in the body of the epic
    * Should only be skipped in favour or manually adding the message.
    */
-  message?: string;
+  message: string;
 }
