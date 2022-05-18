@@ -14,7 +14,7 @@ import {
   SpinButtonChangeEvent,
   SpinButtonBounds,
 } from './SpinButton.types';
-import { calculatePrecision, precisionRound, getBound, clampWhenInRange } from '../../utils/index';
+import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils/index';
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
 type InternalState = {
@@ -169,7 +169,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
     let newValue = val + stepSize * dir;
     if (!Number.isNaN(newValue)) {
-      newValue = clampWhenInRange(val, newValue, min, max);
+      newValue = clamp(newValue, min, max);
     }
 
     commit(e, newValue);

@@ -148,34 +148,32 @@ describe('SpinButton', () => {
     expect(getSpinButtonInput().value).toEqual('100');
   });
 
-  it('does not clamp the value when outside the bounds when uncontrolled', () => {
+  it('clamps the value when outside the bounds when uncontrolled', () => {
     const onChange = jest.fn();
     const { getAllByRole } = render(<SpinButton defaultValue={100} min={0} max={10} onChange={onChange} />);
 
-    const [incrementButton, decrementButton] = getAllByRole('button');
+    expect(getSpinButtonInput().value).toEqual('100');
+    const [incrementButton] = getAllByRole('button');
 
     userEvent.click(incrementButton);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 101, displayValue: undefined });
-    expect(getSpinButtonInput().value).toEqual('101');
-
-    userEvent.click(decrementButton);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 100, displayValue: undefined });
-    expect(getSpinButtonInput().value).toEqual('100');
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 10, displayValue: undefined });
+    expect(getSpinButtonInput().value).toEqual('10');
   });
 
-  it('does not clamp the value when outside the bounds when controlled', () => {
+  it('clamps the value when outside the bounds when controlled', () => {
     const onChange = jest.fn();
     const { getAllByRole, rerender } = render(<SpinButton value={100} min={0} max={10} onChange={onChange} />);
 
+    expect(getSpinButtonInput().value).toEqual('100');
     const [incrementButton, decrementButton] = getAllByRole('button');
 
     userEvent.click(incrementButton);
-    expect(onChange.mock.calls[0][1]).toEqual({ value: 101, displayValue: undefined });
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 10, displayValue: undefined });
 
-    rerender(<SpinButton value={101} min={0} max={10} onChange={onChange} />);
+    rerender(<SpinButton value={-1} min={0} max={10} onChange={onChange} />);
 
     userEvent.click(decrementButton);
-    expect(onChange.mock.calls[1][1]).toEqual({ value: 100, displayValue: undefined });
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 0, displayValue: undefined });
   });
 
   it('does not update the value when `defaultValue` changes', () => {
