@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: ship rolluped only dts",
+  "packageName": "@fluentui/react-portal-compat-context",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

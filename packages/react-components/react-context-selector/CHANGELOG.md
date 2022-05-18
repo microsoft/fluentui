@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Tue, 19 Apr 2022 19:17:22 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.8)
+
+Thu, 05 May 2022 18:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-rc.7..@fluentui/react-context-selector_v9.0.0-rc.8)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- Removing star exports. ([PR #22801](https://github.com/microsoft/fluentui/pull/22801) by humberto_makoto@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.7)
+
+Wed, 04 May 2022 13:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.0.0-rc.6..@fluentui/react-context-selector_v9.0.0-rc.7)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.0.0-rc.6)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Added aria-selected",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated react-label package version to RC.",
+  "packageName": "@fluentui/react-slider",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -60,9 +60,6 @@ export interface DropdownVariables {
   listItemHeaderColor: string;
   listItemContentFontSize: string;
   listItemContentColor: string;
-  headerMessageBackgroundColor: string;
-  noResultsMessageBackgroundColor: string;
-  loadingMessageBackgroundColor: string;
 }
 
 export const dropdownVariables = (siteVars): DropdownVariables => ({
@@ -129,7 +126,4 @@ export const dropdownVariables = (siteVars): DropdownVariables => ({
   listItemHeaderColor: siteVars.colorScheme.default.foreground1,
   listItemContentFontSize: siteVars.fontSizes.small,
   listItemContentColor: siteVars.colorScheme.default.foreground2,
-  headerMessageBackgroundColor: siteVars.colors.white,
-  noResultsMessageBackgroundColor: 'transparent',
-  loadingMessageBackgroundColor: 'transparent',
 });

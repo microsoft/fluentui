@@ -6,6 +6,8 @@ exports[`Listbox renders a default state 1`] = `
     class="fui-Listbox"
     role="listbox"
     tabindex="0"
-  />
+  >
+    Default Listbox
+  </div>
 </div>
 `;

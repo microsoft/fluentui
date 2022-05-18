@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-avatar: Move to new common folder.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

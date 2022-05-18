@@ -875,7 +875,7 @@ export type TextAlignments = {
   justify: TextAlignment;
 };
 
-type TypographyStyle = {
+export type TypographyStyle = {
   fontFamily: string;
   fontSize: string;
   fontWeight: string;

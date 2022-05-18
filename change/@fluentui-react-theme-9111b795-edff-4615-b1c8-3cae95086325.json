@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed line-height in title2",
-  "packageName": "@fluentui/react-theme",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

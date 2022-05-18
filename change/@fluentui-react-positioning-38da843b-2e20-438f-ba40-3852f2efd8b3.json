@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-positioning: Move to new common folder.",
-  "packageName": "@fluentui/react-positioning",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
