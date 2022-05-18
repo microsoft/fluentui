@@ -23,13 +23,13 @@ const useStyles = makeStyles({
   filledLighter: {
     backgroundColor: '#8a8a8a',
     '> label': {
-      color: '#ffffff',
+      color: '#000000',
     },
   },
   filledDarker: {
     backgroundColor: '#8a8a8a',
     '> label': {
-      color: '#ffffff',
+      color: '#000000',
     },
   },
 });
