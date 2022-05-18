@@ -80,14 +80,6 @@ function setupTest(packages: Package[]) {
 
 describe('epic-generator', () => {
   describe('validation', () => {
-    it('requires a title', () => {
-      const tree = createTreeWithEmptyWorkspace();
-
-      expect(() => epicGenerator(tree, {} as any)).toThrowErrorMatchingInlineSnapshot(
-        `"Must provide a title for the issue"`,
-      );
-    });
-
     it('requires a non-empty title', () => {
       const tree = createTreeWithEmptyWorkspace();
 
