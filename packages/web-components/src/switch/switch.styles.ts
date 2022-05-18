@@ -236,9 +236,13 @@ export const switchStyles: (context: ElementDefinitionContext, definition: Switc
         :host(.disabled) {
           opacity: 1;
         }
-        :host(.disabled) slot[name='switch'] {
+        :host(.disabled) slot[name='switch'],
+        :host(.disabled) .label,
+        :host(.disabled) ::slotted([slot="checked-message"]),
+        :host(.disabled) ::slotted([slot="unchecked-message"]) {
           forced-color-adjust: none;
-          fill: ${SystemColors.GrayText};
+          color: ${SystemColors.GrayText};
+          fill: currentcolor;
         }
         :host(.disabled) .switch {
           background: ${SystemColors.Field};

@@ -27,11 +27,4 @@ export const dataGridRowStyles: (
       position: sticky;
       top: 0;
     }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        :host {
-        }
-      `,
-    ),
-  );
+  `;

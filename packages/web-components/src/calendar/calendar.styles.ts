@@ -2,6 +2,7 @@ import { css, ElementStyles } from "@microsoft/fast-element";
 import {
   display,
   ElementDefinitionContext,
+  focusVisible,
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition
 } from '@microsoft/fast-foundation';
@@ -13,6 +14,7 @@ import {
   density,
   designUnit,
   fillColor,
+  focusStrokeWidth,
   foregroundOnAccentRest,
   neutralForegroundHint,
   neutralForegroundRest,
@@ -148,14 +150,59 @@ ${display("inline-block")} :host {
 `.withBehaviors(
   forcedColorsStylesheetBehavior(
       css`
-          .day.selected {
-              color: ${SystemColors.Highlight};
-          }
-
-          .today .date {
-              background: ${SystemColors.Highlight};
-              color: ${SystemColors.HighlightText};
-          }
+        :host {
+          forced-color-adjust: auto;
+          background: ${SystemColors.ButtonFace};
+          outline: 1px solid ${SystemColors.CanvasText};
+        }
+        .day,
+        .interact .day,
+        .week-day {
+            background: ${SystemColors.Canvas};
+            color: ${SystemColors.CanvasText};
+            fill: currentcolor;
+        }
+        .interact .day:not(.disabled, .inactive):hover {
+            background: ${SystemColors.ButtonFace};
+            color: ${SystemColors.ButtonText};
+            outline: 1px solid ${SystemColors.Highlight};
+        }
+        .week-day:${focusVisible},
+        .interact .day:not(.disabled, .inactive):${focusVisible} {
+            forced-color-adjust: none;
+            background: :${SystemColors.ButtonFace};
+            border-color: transparent;
+            box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) ${SystemColors.Highlight} inset;
+            outline: none;
+        }
+        .day.disabled,
+        .day.inactive {
+            color: ${SystemColors.GrayText};
+            opacity:1;
+            outline: none;
+        }
+        .day.inactive:${focusVisible} {
+            outline: calc(${focusStrokeWidth} * 1px) solid ${SystemColors.GrayText};
+            box-shadow: none;
+        }
+        .day.selected,
+        .day.selected:not(.disabled, .inactive):hover {
+            color: ${SystemColors.Highlight};
+            outline: 1px solid ${SystemColors.Highlight}
+        }
+        .interact .today,
+        .today,
+        .today .date ,
+        .interact .today:not(.disabled, .inactive):hover {
+            forced-color-adjust: none;
+            background: ${SystemColors.Highlight};
+            color: ${SystemColors.HighlightText};
+            fill: currentcolor;
+        }
+        .interact .today:not(.disabled, .inactive):${focusVisible} {
+            box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${SystemColors.Highlight} inset,
+                0 0 0 calc(((${focusStrokeWidth} * 2) - ${strokeWidth}) * 1px) ${SystemColors.HighlightText} inset ;
+        }
       `
   ),
   new DirectionalStyleSheetBehavior(ltrStyles, rtlStyles)

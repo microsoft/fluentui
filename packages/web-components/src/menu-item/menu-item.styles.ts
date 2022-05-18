@@ -251,24 +251,25 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
           border-color: ${SystemColors.HighlightText};
         }
         :host(:hover) .expanded-toggle,
-            :host(:hover) .checkbox,
-            :host(:hover) .radio,
-            :host(:${focusVisible}) .expanded-toggle,
-            :host(:${focusVisible}) .checkbox,
-            :host(:${focusVisible}) .radio,
-            :host([checked]:hover) .checkbox,
-            :host([checked]:hover) .radio,
-            :host([checked]:${focusVisible}) .checkbox,
-            :host([checked]:${focusVisible}) .radio {
+        :host(:hover) .checkbox,
+        :host(:hover) .radio,
+        :host(:${focusVisible}) .expanded-toggle,
+        :host(:${focusVisible}) .checkbox,
+        :host(:${focusVisible}) .radio,
+        :host([checked]:hover) .checkbox,
+        :host([checked]:hover) .radio,
+        :host([checked]:${focusVisible}) .checkbox,
+        :host([checked]:${focusVisible}) .radio {
           border-color: ${SystemColors.HighlightText};
         }
         :host([aria-checked='true']) {
           background: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
-        :host([aria-checked='true']) .checkbox-indicator,
-        :host([aria-checked='true']) ::slotted([slot='checkbox-indicator']),
-        :host([aria-checked='true']) ::slotted([slot='radio-indicator']) {
+        :host([aria-checked="true"]) .checkbox-indicator,
+        :host([aria-checked="true"]) .radio-indicator,
+        :host([aria-checked="true"]) slot[name="checkbox-indicator"],
+        :host([aria-checked="true"]) slot[name="radio-indicator"] {
           fill: ${SystemColors.Highlight};
         }
         :host([aria-checked='true']) .radio-indicator {

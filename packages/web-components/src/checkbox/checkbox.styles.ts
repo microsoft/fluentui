@@ -191,6 +191,9 @@ export const checkboxStyles: (context: ElementDefinitionContext, definition: Che
         :host(.checked.disabled:hover) .control slot[name='indeterminate-indicator'] {
           fill: ${SystemColors.GrayText};
         }
+        :host(.disabled) .label {
+          color: ${SystemColors.GrayText};
+        }
       `,
     ),
   );
