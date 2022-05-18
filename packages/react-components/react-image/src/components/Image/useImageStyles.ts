@@ -12,66 +12,51 @@ export const imageClassNames: SlotClassNames<ImageSlots> = {
 };
 
 const useStyles = makeStyles({
-  base: {
+  root: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
 
     boxSizing: 'border-box',
     display: 'inline-block',
   },
-
-  // Bordered styles
-  bordered: {
+  rootBordered: {
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
   },
-
-  // Shape styles
-  circular: {
+  rootCircular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
-  rounded: {
+  rootRounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
-  square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-  },
-
-  // Shadow styles
-  shadow: {
+  rootShadow: {
     boxShadow: tokens.shadow4,
   },
-
-  // Fit styles
-  none: {
+  rootFitNone: {
     objectFit: 'none',
     objectPosition: 'left top',
     height: '100%',
     width: '100%',
   },
-  center: {
+  rootFitCenter: {
     objectFit: 'none',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  cover: {
+  rootFitCover: {
     objectFit: 'cover',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  contain: {
+  rootFitContain: {
     objectFit: 'contain',
     objectPosition: 'center',
     height: '100%',
     width: '100%',
   },
-  default: {
-    /* The default styles are exactly the same as the base styles. */
-  },
-
-  // Block styles
-  block: {
+  rootBlock: {
     width: '100%',
   },
 });
@@ -80,12 +65,16 @@ export const useImageStyles_unstable = (state: ImageState) => {
   const styles = useStyles();
   state.root.className = mergeClasses(
     imageClassNames.root,
-    styles.base,
-    styles[state.fit],
-    styles[state.shape],
-    state.block && styles.block,
-    state.bordered && styles.bordered,
-    state.shadow && styles.shadow,
+    styles.root,
+    state.bordered && styles.rootBordered,
+    state.shape === 'circular' && styles.rootCircular,
+    state.shape === 'rounded' && styles.rootRounded,
+    state.shadow && styles.rootShadow,
+    state.fit === 'none' && styles.rootFitNone,
+    state.fit === 'center' && styles.rootFitCenter,
+    state.fit === 'cover' && styles.rootFitCover,
+    state.fit === 'contain' && styles.rootFitContain,
+    state.block && styles.rootBlock,
     state.root.className,
   );
 };
