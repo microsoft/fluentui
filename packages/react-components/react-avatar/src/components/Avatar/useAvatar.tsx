@@ -50,7 +50,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
-      children: generatedInitials,
+      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
       'aria-hidden': true,
     },
   });

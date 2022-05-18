@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing TextCommons type.",
+  "packageName": "@fluentui/react-text",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
