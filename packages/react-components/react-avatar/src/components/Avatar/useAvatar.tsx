@@ -4,13 +4,22 @@ import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
 import { PresenceBadge } from '@fluentui/react-badge';
+import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { name, size = 32, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
-  let { color = 'neutral' } = props;
+  // TODO: Check if this is okay
+  // props.color has to be first to allow an Avatar to override the general AvatarGroup color
+  const contextColor = useContextSelector(AvatarGroupContext, ctx => ctx.color);
+  let color = props.color ?? contextColor ?? 'neutral';
+
+  // TODO: cleanup
+  const size = useContextSelector(AvatarGroupContext, ctx => ctx.size) ?? props.size ?? 32;
+
+  const { name, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
 
   // Resolve 'colorful' to a specific color name
   if (color === 'colorful') {
@@ -31,11 +40,17 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     /* excludedPropNames: */ ['name'],
   );
 
+  let generatedInitials = getInitials(name, dir === 'rtl');
+  if (generatedInitials && size <= 16) {
+    // At size 16, only the first letter of the initials is displayed
+    generatedInitials = generatedInitials[0];
+  }
+
   // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
-      children: getInitials(name, dir === 'rtl'),
+      children: generatedInitials,
       'aria-hidden': true,
     },
   });

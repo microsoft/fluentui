@@ -30,11 +30,23 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 // @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
+// @public (undocumented)
+export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
+    color?: AvatarProps['color'];
+    rootChildren?: (React_2.ReactChild | React_2.ReactPortal | React_2.ReactFragment)[];
+    popoverChildren?: (React_2.ReactChild | React_2.ReactPortal | React_2.ReactFragment)[];
+};
+
+// @public (undocumented)
+export type AvatarGroupContextValues = {
+    avatarGroup: AvatarGroupContextValue;
+};
+
 // @public
 export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
-    overflowIndicator?: 'number-overflowed' | 'icon';
+    overflowIndicator?: 'count' | 'icon';
     size?: AvatarSizes;
 };
 
@@ -89,7 +101,7 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;

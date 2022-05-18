@@ -16,4 +16,10 @@ export {
   useAvatarGroupStyles_unstable,
   useAvatarGroup_unstable,
 } from './AvatarGroup';
-export type { AvatarGroupProps, AvatarGroupSlots, AvatarGroupState } from './AvatarGroup';
+export type {
+  AvatarGroupContextValue,
+  AvatarGroupContextValues,
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+} from './AvatarGroup';

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
-  const avatarGroupId = useId('textarea');
+  const avatarGroupId = useId('avatarGroup');
   const styles = useStyles();
 
   return (
