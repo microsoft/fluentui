@@ -1,4 +1,4 @@
-import { addProjectConfiguration, ProjectType, serializeJson, stripIndents } from '@nrwl/devkit';
+import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { execSync } from 'child_process';
 import epicGenerator from './index';
@@ -22,13 +22,10 @@ function setupTest(packages: Package[]) {
   // Initialize NX package structure
   packages.forEach(pckg => {
     // package.json initialization
-    tree.write(
-      `packages/${pckg.name}/package.json`,
-      serializeJson({
-        name: pckg.name,
-        version: pckg.version,
-      }),
-    );
+    writeJson(tree, `packages/${pckg.name}/package.json`, {
+      name: pckg.name,
+      version: pckg.version,
+    });
 
     // workspace.json initialization
     addProjectConfiguration(tree, pckg.name, {
