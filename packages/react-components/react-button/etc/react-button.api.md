@@ -130,12 +130,13 @@ export const toggleButtonClassName: string;
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
-export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
+export type ToggleButtonProps = ButtonProps & {
     defaultChecked?: boolean;
+    checked?: boolean;
 };
 
 // @public (undocumented)
-export type ToggleButtonState = ButtonState & ToggleButtonCommons;
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
