@@ -510,25 +510,35 @@ export {
   Title1,
   Title2,
   Title3,
+  // eslint-disable-next-line deprecation/deprecation
   bodyClassName,
   bodyClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   captionClassName,
   captionClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   displayClassName,
   displayClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   headlineClassName,
   headlineClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   largeTitleClassName,
   largeTitleClassNames,
   renderText_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   subheadlineClassName,
   subheadlineClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   textClassName,
   textClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   title1ClassName,
   title1ClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   title2ClassName,
   title2ClassNames,
+  // eslint-disable-next-line deprecation/deprecation
   title3ClassName,
   title3ClassNames,
   useText_unstable,
