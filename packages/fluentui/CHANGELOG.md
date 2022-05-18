@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.63.0 ]------------------------------- -->
+## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.62.0..@fluentui/react-northstar_v0.63.0)
+
 ### BREAKING CHANGES
 - Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
 - Do not pass deprecated `.styles` to slots in `Avatar` @layershifter ([#23034](https://github.com/microsoft/fluentui/pull/23034))
