@@ -28,13 +28,6 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { checkboxClassName } from '@fluentui/react-checkbox';
-import { checkboxClassNames } from '@fluentui/react-checkbox';
-import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { CheckboxSlots } from '@fluentui/react-checkbox';
-import { CheckboxState } from '@fluentui/react-checkbox';
 import { Input } from '@fluentui/react-input';
 import { inputClassName } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
@@ -46,12 +39,9 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
-import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
 import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
@@ -61,23 +51,12 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
-import { SpinButtonStrings } from '@fluentui/react-spinbutton';
-import { Spinner } from '@fluentui/react-spinner';
-import { spinnerClassNames } from '@fluentui/react-spinner';
-import { SpinnerProps } from '@fluentui/react-spinner';
-import { SpinnerSlots } from '@fluentui/react-spinner';
-import { SpinnerState } from '@fluentui/react-spinner';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
 import { SwitchProps } from '@fluentui/react-switch';
 import { SwitchSlots } from '@fluentui/react-switch';
 import { SwitchState } from '@fluentui/react-switch';
-import { Textarea } from '@fluentui/react-textarea';
-import { textareaClassNames } from '@fluentui/react-textarea';
-import { TextareaProps } from '@fluentui/react-textarea';
-import { TextareaSlots } from '@fluentui/react-textarea';
-import { TextareaState } from '@fluentui/react-textarea';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -86,18 +65,12 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useCheckbox_unstable } from '@fluentui/react-checkbox';
-import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
-import { useSpinner_unstable } from '@fluentui/react-spinner';
-import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
-import { useTextarea_unstable } from '@fluentui/react-textarea';
-import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 
 export { Card }
 
@@ -147,20 +120,6 @@ export { CardSlots }
 
 export { CardState }
 
-export { Checkbox }
-
-export { checkboxClassName }
-
-export { checkboxClassNames }
-
-export { CheckboxOnChangeData }
-
-export { CheckboxProps }
-
-export { CheckboxSlots }
-
-export { CheckboxState }
-
 export { Input }
 
 export { inputClassName }
@@ -183,17 +142,11 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
-export { renderCheckbox_unstable }
-
 export { renderInput_unstable }
 
 export { renderSpinButton_unstable }
 
-export { renderSpinner_unstable }
-
 export { renderSwitch_unstable }
-
-export { renderTextarea_unstable }
 
 export { SpinButton }
 
@@ -213,18 +166,6 @@ export { SpinButtonSpinState }
 
 export { SpinButtonState }
 
-export { SpinButtonStrings }
-
-export { Spinner }
-
-export { spinnerClassNames }
-
-export { SpinnerProps }
-
-export { SpinnerSlots }
-
-export { SpinnerState }
-
 export { Switch }
 
 export { switchClassNames }
@@ -236,16 +177,6 @@ export { SwitchProps }
 export { SwitchSlots }
 
 export { SwitchState }
-
-export { Textarea }
-
-export { textareaClassNames }
-
-export { TextareaProps }
-
-export { TextareaSlots }
-
-export { TextareaState }
 
 export { useCard_unstable }
 
@@ -263,10 +194,6 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
-export { useCheckbox_unstable }
-
-export { useCheckboxStyles_unstable }
-
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
@@ -275,17 +202,9 @@ export { useSpinButton_unstable }
 
 export { useSpinButtonStyles_unstable }
 
-export { useSpinner_unstable }
-
-export { useSpinnerStyles_unstable }
-
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
-
-export { useTextarea_unstable }
-
-export { useTextareaStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

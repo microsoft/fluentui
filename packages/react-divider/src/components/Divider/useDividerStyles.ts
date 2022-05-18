@@ -33,20 +33,16 @@ const useBaseStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
     textAlign: 'center',
 
-    color: tokens.colorNeutralForeground2,
-
     ':before': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
     ':after': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
-      ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
   },
 
@@ -95,7 +91,20 @@ const useBaseStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
   },
+  default: {
+    color: tokens.colorNeutralForeground2,
+
+    ':before': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
+    },
+
+    ':after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke2),
+    },
+  },
   subtle: {
+    color: tokens.colorNeutralForeground2,
+
     ':before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
@@ -105,6 +114,8 @@ const useBaseStyles = makeStyles({
     },
   },
   strong: {
+    color: tokens.colorNeutralForeground2,
+
     ':before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },

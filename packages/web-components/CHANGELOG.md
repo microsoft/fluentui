@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 06 May 2022 07:36:53 GMT and should not be manually modified.
+This log was last generated on Tue, 17 May 2022 07:45:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.1)
+
+Tue, 17 May 2022 07:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.0..@fluentui/web-components_v2.5.1)
+
+### Patches
+
+- Added the Color Explorer as a web components Storybook page ([PR #22918](https://github.com/microsoft/fluentui/pull/22918) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.0)
 

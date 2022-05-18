@@ -1,8 +1,17 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Fri, 15 Apr 2022 07:42:46 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.2)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.1..@fluentui/merge-styles_v8.5.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
 
 ## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.1)
 

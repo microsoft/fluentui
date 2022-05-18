@@ -50,6 +50,7 @@ import { avatarClassName } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
+import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
 import { Badge } from '@fluentui/react-badge';
@@ -72,6 +73,13 @@ import { ButtonState } from '@fluentui/react-button';
 import { Caption } from '@fluentui/react-text';
 import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
+import { Checkbox } from '@fluentui/react-checkbox';
+import { checkboxClassName } from '@fluentui/react-checkbox';
+import { checkboxClassNames } from '@fluentui/react-checkbox';
+import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { CheckboxSlots } from '@fluentui/react-checkbox';
+import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ComponentProps } from '@fluentui/react-utilities';
@@ -293,6 +301,7 @@ import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
 import { renderButton_unstable } from '@fluentui/react-button';
+import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
@@ -319,10 +328,12 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
+import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToggleButton_unstable } from '@fluentui/react-button';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
@@ -348,6 +359,11 @@ import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
+import { Spinner } from '@fluentui/react-spinner';
+import { spinnerClassNames } from '@fluentui/react-spinner';
+import { SpinnerProps } from '@fluentui/react-spinner';
+import { SpinnerSlots } from '@fluentui/react-spinner';
+import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
@@ -379,6 +395,11 @@ import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
+import { Textarea } from '@fluentui/react-textarea';
+import { textareaClassNames } from '@fluentui/react-textarea';
+import { TextareaProps } from '@fluentui/react-textarea';
+import { TextareaSlots } from '@fluentui/react-textarea';
+import { TextareaState } from '@fluentui/react-textarea';
 import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
@@ -432,6 +453,8 @@ import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useCheckbox_unstable } from '@fluentui/react-checkbox';
+import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -503,6 +526,8 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinner_unstable } from '@fluentui/react-spinner';
+import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
@@ -511,6 +536,8 @@ import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useText_unstable } from '@fluentui/react-text';
+import { useTextarea_unstable } from '@fluentui/react-textarea';
+import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
@@ -615,6 +642,8 @@ export { AvatarNamedColor }
 
 export { AvatarProps }
 
+export { AvatarSizes }
+
 export { AvatarSlots }
 
 export { AvatarState }
@@ -658,6 +687,20 @@ export { Caption }
 export { captionClassName }
 
 export { captionClassNames }
+
+export { Checkbox }
+
+export { checkboxClassName }
+
+export { checkboxClassNames }
+
+export { CheckboxOnChangeData }
+
+export { CheckboxProps }
+
+export { CheckboxSlots }
+
+export { CheckboxState }
 
 export { ColorPaletteTokens }
 
@@ -1101,6 +1144,8 @@ export { renderBadge_unstable }
 
 export { renderButton_unstable }
 
+export { renderCheckbox_unstable }
+
 export { renderCompoundButton_unstable }
 
 export { renderDivider_unstable }
@@ -1153,6 +1198,8 @@ export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
+export { renderSpinner_unstable }
+
 export { renderSplitButton_unstable }
 
 export { renderTab_unstable }
@@ -1160,6 +1207,8 @@ export { renderTab_unstable }
 export { renderTabList_unstable }
 
 export { renderText_unstable }
+
+export { renderTextarea_unstable }
 
 export { renderToggleButton_unstable }
 
@@ -1210,6 +1259,16 @@ export { SlotClassNames }
 export { SlotPropsRecord }
 
 export { SpacingTokens }
+
+export { Spinner }
+
+export { spinnerClassNames }
+
+export { SpinnerProps }
+
+export { SpinnerSlots }
+
+export { SpinnerState }
 
 export { SplitButton }
 
@@ -1272,6 +1331,16 @@ export { teamsHighContrastTheme }
 export { teamsLightTheme }
 
 export { Text_2 as Text }
+
+export { Textarea }
+
+export { textareaClassNames }
+
+export { TextareaProps }
+
+export { TextareaSlots }
+
+export { TextareaState }
 
 export { textClassName }
 
@@ -1378,6 +1447,10 @@ export { useBadgeStyles_unstable }
 export { useButton_unstable }
 
 export { useButtonStyles_unstable }
+
+export { useCheckbox_unstable }
+
+export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
 
@@ -1521,6 +1594,10 @@ export { useSliderState_unstable }
 
 export { useSliderStyles_unstable }
 
+export { useSpinner_unstable }
+
+export { useSpinnerStyles_unstable }
+
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
@@ -1536,6 +1613,10 @@ export { useTabListStyles_unstable }
 export { useTabStyles_unstable }
 
 export { useText_unstable }
+
+export { useTextarea_unstable }
+
+export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 

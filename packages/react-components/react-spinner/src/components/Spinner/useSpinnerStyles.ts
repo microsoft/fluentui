@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -39,16 +39,6 @@ const spinnnerSizes = {
 
 /*
  * TODO: Update with proper tokens when added
- * Stroke widths for the Spinner
- */
-const spinnerStrokeWidth = {
-  sWidth: '2px',
-  mWidth: '3px',
-  lWidth: '4px',
-};
-
-/*
- * TODO: Update with proper tokens when added
  * Animation for Spinner
  */
 const spinnerAnimation = {
@@ -57,27 +47,6 @@ const spinnerAnimation = {
     animationIterationCount: 'infinite',
     animationTimingFunction: 'linear',
     backgroundColor: 'transparent',
-  },
-};
-
-/*
- * TODO: Update with proper tokens when added
- * Label sizes for the Spinner
- */
-const labelSizeTokens = {
-  body1: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-  },
-
-  subtitle2: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-  },
-
-  subtitle1: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
   },
 };
 
@@ -127,7 +96,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.tiny,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.sWidth,
+      strokeWidth: tokens.strokeWidthThick,
       r: rValues.tiny,
     },
   },
@@ -138,7 +107,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.extraSmall,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.sWidth,
+      strokeWidth: tokens.strokeWidthThick,
       r: rValues.extraSmall,
     },
   },
@@ -149,7 +118,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.small,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.sWidth,
+      strokeWidth: tokens.strokeWidthThick,
       r: rValues.small,
     },
   },
@@ -160,7 +129,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.medium,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.mWidth,
+      strokeWidth: tokens.strokeWidthThicker,
       r: rValues.medium,
     },
   },
@@ -171,7 +140,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.large,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.mWidth,
+      strokeWidth: tokens.strokeWidthThicker,
       r: rValues.large,
     },
   },
@@ -182,7 +151,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.extraLarge,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.mWidth,
+      strokeWidth: tokens.strokeWidthThicker,
       r: rValues.extraLarge,
     },
   },
@@ -193,7 +162,7 @@ const useLoaderStyles = makeStyles({
       width: spinnnerSizes.huge,
     },
     ['& > svg > circle']: {
-      strokeWidth: spinnerStrokeWidth.lWidth,
+      strokeWidth: tokens.strokeWidthThickest,
       r: rValues.huge,
     },
   },
@@ -273,31 +242,31 @@ const useLabelStyles = makeStyles({
   // style for label
 
   tiny: {
-    ...labelSizeTokens.body1,
+    ...typographyStyles.body1,
   },
 
   extraSmall: {
-    ...labelSizeTokens.body1,
+    ...typographyStyles.body1,
   },
 
   small: {
-    ...labelSizeTokens.body1,
+    ...typographyStyles.body1,
   },
 
   medium: {
-    ...labelSizeTokens.subtitle2,
+    ...typographyStyles.subtitle2,
   },
 
   large: {
-    ...labelSizeTokens.subtitle2,
+    ...typographyStyles.subtitle2,
   },
 
   extraLarge: {
-    ...labelSizeTokens.subtitle2,
+    ...typographyStyles.subtitle2,
   },
 
   huge: {
-    ...labelSizeTokens.subtitle1,
+    ...typographyStyles.subtitle1,
   },
 });
 

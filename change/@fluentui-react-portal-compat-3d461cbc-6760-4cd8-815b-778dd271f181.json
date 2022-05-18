@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: use range for \"@fluentui/react-portal-compat-context\" dependency",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

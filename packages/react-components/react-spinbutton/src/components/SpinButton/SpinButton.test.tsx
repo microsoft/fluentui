@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import { SpinButton } from './SpinButton';
 import { isConformant } from '../../common/isConformant';
 import * as Keys from '@fluentui/keyboard-keys';
-import { SpinButtonStrings } from './SpinButton.types';
 
 const getSpinButtonInput = (): HTMLInputElement => {
   return screen.getByRole('spinbutton') as HTMLInputElement;
@@ -29,8 +28,8 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
 
     const [incrementButton, decrementButton] = getAllByRole('button');
-    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
-    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment value');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement value');
   });
 
   it('renders a default controlled state', () => {
@@ -44,8 +43,8 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
 
     const [incrementButton, decrementButton] = getAllByRole('button');
-    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment by 1');
-    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement by 1');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment value');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement value');
   });
 
   it('does not render `displayValue` when uncontrolled', () => {
@@ -451,31 +450,25 @@ describe('SpinButton', () => {
     expect(decrementButton.disabled).toEqual(true);
   });
 
-  it('applies custom strings', () => {
-    const strings: SpinButtonStrings = {
-      incrementButtonLabel: `Increment SpinButton by {step}`,
-      decrementButtonLabel: `Decrement It`,
-    };
-
-    const { getAllByRole } = render(<SpinButton strings={strings} defaultValue={0} />);
+  it('has labels for buttons', () => {
+    const { getAllByRole } = render(<SpinButton defaultValue={0} />);
 
     const [incrementButton, decrementButton] = getAllByRole('button');
-    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment SpinButton by 1');
-    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
+    expect(incrementButton.getAttribute('aria-label')).toEqual('Increment value');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement value');
   });
 
-  it('overrides custom strings with slot props', () => {
-    const strings: SpinButtonStrings = {
-      incrementButtonLabel: `Increment SpinButton by {step}`,
-      decrementButtonLabel: `Decrement It`,
-    };
-
+  it('overrides overrides labels for buttons', () => {
     const { getAllByRole } = render(
-      <SpinButton strings={strings} defaultValue={0} incrementButton={{ 'aria-label': 'Increment Override' }} />,
+      <SpinButton
+        defaultValue={0}
+        incrementButton={{ 'aria-label': 'Increment Override' }}
+        decrementButton={{ 'aria-label': 'Decrement Override' }}
+      />,
     );
 
     const [incrementButton, decrementButton] = getAllByRole('button');
     expect(incrementButton.getAttribute('aria-label')).toEqual('Increment Override');
-    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement It');
+    expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement Override');
   });
 });
