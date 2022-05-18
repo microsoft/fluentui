@@ -294,6 +294,7 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
@@ -324,6 +325,11 @@ import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
+import { Spinner } from '@fluentui/react-spinner';
+import { spinnerClassNames } from '@fluentui/react-spinner';
+import { SpinnerProps } from '@fluentui/react-spinner';
+import { SpinnerSlots } from '@fluentui/react-spinner';
+import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
@@ -478,6 +484,8 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinner_unstable } from '@fluentui/react-spinner';
+import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
@@ -1080,6 +1088,8 @@ export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
+export { renderSpinner_unstable }
+
 export { renderSplitButton_unstable }
 
 export { renderTab_unstable }
@@ -1139,6 +1149,16 @@ export { SlotClassNames }
 export { SlotPropsRecord }
 
 export { SpacingTokens }
+
+export { Spinner }
+
+export { spinnerClassNames }
+
+export { SpinnerProps }
+
+export { SpinnerSlots }
+
+export { SpinnerState }
 
 export { SplitButton }
 
@@ -1447,6 +1467,10 @@ export { useSlider_unstable }
 export { useSliderState_unstable }
 
 export { useSliderStyles_unstable }
+
+export { useSpinner_unstable }
+
+export { useSpinnerStyles_unstable }
 
 export { useSplitButton_unstable }
 

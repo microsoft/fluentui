@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 17 May 2022 07:45:01 GMT",
+      "tag": "@fluentui/react_v8.68.2",
+      "version": "8.68.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7c0a80dcf869429a96f053ea49e470808e0a814d",
+            "comment": "fix Pivot a11y issue: aria-selected not allowed on menuitems"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 16 May 2022 07:36:55 GMT",
       "tag": "@fluentui/react_v8.68.1",
       "version": "8.68.1",
