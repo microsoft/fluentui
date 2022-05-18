@@ -6,7 +6,7 @@ This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be m
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Thu, 05 May 2022 18:26:30 GMT 
+Thu, 05 May 2022 18:26:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
@@ -21,7 +21,7 @@ Thu, 05 May 2022 18:26:30 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Wed, 04 May 2022 13:26:54 GMT 
+Wed, 04 May 2022 13:26:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
@@ -35,7 +35,7 @@ Wed, 04 May 2022 13:26:54 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Mon, 25 Apr 2022 09:32:19 GMT 
+Mon, 25 Apr 2022 09:32:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
@@ -44,7 +44,7 @@ Mon, 25 Apr 2022 09:32:19 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Tue, 19 Apr 2022 19:17:29 GMT 
+Tue, 19 Apr 2022 19:17:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
@@ -58,7 +58,7 @@ Tue, 19 Apr 2022 19:17:29 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Fri, 04 Mar 2022 05:17:40 GMT 
+Fri, 04 Mar 2022 05:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
@@ -71,7 +71,7 @@ Fri, 04 Mar 2022 05:17:40 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.3)
 
-Tue, 01 Mar 2022 02:17:40 GMT 
+Tue, 01 Mar 2022 02:17:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.3..@fluentui/react-combobox_v9.0.0-beta.3)
 
 ### Changes
