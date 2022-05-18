@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "address high contrast issues for calendar, checkbox, data-grid-row, menu-item, and switch",
+  "packageName": "@fluentui/web-components",
+  "email": "khamu@microsoft.com",
+  "dependentChangeType": "patch"
+}
