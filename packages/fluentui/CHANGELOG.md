@@ -23,7 +23,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not pass deprecated `.styles` to slots in `Avatar` @layershifter ([#23034](https://github.com/microsoft/fluentui/pull/23034))
 
 ### Features
-- Adding the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
+- Add the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
 
 ### Fixes
 - Export types for `ChatMessageDetails`, `ChatMessageHeader`, and `ChatMessageReadStatus` styles props @Hirse ([#22491](https://github.com/microsoft/fluentui/pull/22491))
@@ -40,6 +40,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Dialog` to keep it open when press click on content and release outside @yuanboxue-amber ([#22849](https://github.com/microsoft/fluentui/pull/22849))
 - Align Avatar `font-weight` between v0 and v9 @annabratseiko ([#22822](https://github.com/microsoft/fluentui/pull/22822))
 - Fix `Pill` to be selectable by keyboard @chpalac ([#22839](https://github.com/microsoft/fluentui/pull/22839))
+- Fix the `MicPulseOff` outline path to be what's in the Figma file, it is currently the value of the filled icon @sfilipi ([#23021](https://github.com/microsoft/fluentui/pull/23021))
 
 ### Features
 - Add compatibility with components from `@fluentui/react-components` in portals @layershifter ([#22541](https://github.com/microsoft/fluentui/pull/22541))
