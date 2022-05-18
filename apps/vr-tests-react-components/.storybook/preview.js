@@ -5,10 +5,10 @@ import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/rea
 import { FluentProvider } from '@fluentui/react-provider';
 
 const configToPropsMap = {
-  includeDefault: { theme: webLightTheme, label: 'Web light' },
-  includeDarkMode: { theme: webDarkTheme, label: 'Web dark' },
-  includeHighContrast: { theme: webHighContrastTheme, label: 'Web high contrast' },
-  includeRtl: { theme: webLightTheme, dir: 'rtl', label: 'RTL' },
+  includeDefault: { theme: webLightTheme, label: '' },
+  includeDarkMode: { theme: webDarkTheme, label: '- Dark Mode' },
+  includeHighContrast: { theme: webHighContrastTheme, label: '- High Contrast' },
+  includeRtl: { theme: webLightTheme, dir: 'rtl', label: '- RTL' },
 };
 
 const defaultVariants = { includeDefault: true };
