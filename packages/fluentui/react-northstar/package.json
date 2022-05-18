@@ -18,7 +18,6 @@
     "@fluentui/react-proptypes": "^0.62.0",
     "@fluentui/state": "^0.62.0",
     "@fluentui/styles": "^0.62.0",
-    "@fluentui/utilities": "^8.8.2",
     "@popperjs/core": "~2.4.3",
     "body-scroll-lock": "^3.1.5",
     "classnames": "^2.2.6",
