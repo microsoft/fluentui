@@ -5,6 +5,10 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
+/**
+ * @deprecated Use `captionClassNames.root` instead.
+ */
+export const captionClassName = 'fui-Caption';
 export const captionClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Caption',
 };

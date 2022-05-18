@@ -54,6 +54,7 @@ import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
 import { Body as Body_2 } from '@fluentui/react-text';
+import { bodyClassName } from '@fluentui/react-text';
 import { bodyClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
@@ -63,6 +64,7 @@ import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { Caption } from '@fluentui/react-text';
+import { captionClassName } from '@fluentui/react-text';
 import { captionClassNames } from '@fluentui/react-text';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
@@ -94,6 +96,7 @@ import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { Display } from '@fluentui/react-text';
+import { displayClassName } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
 import { dividerClassNames } from '@fluentui/react-divider';
@@ -118,6 +121,7 @@ import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
 import { Headline } from '@fluentui/react-text';
+import { headlineClassName } from '@fluentui/react-text';
 import { headlineClassNames } from '@fluentui/react-text';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
@@ -131,6 +135,7 @@ import { LabelProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
+import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
@@ -338,12 +343,11 @@ import { SplitButtonState } from '@fluentui/react-button';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
+import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
 import { Tab } from '@fluentui/react-tabs';
-import { tabClassName } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
 import { TabList } from '@fluentui/react-tabs';
-import { tabListClassName } from '@fluentui/react-tabs';
 import { tabListClassNames } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
@@ -364,6 +368,7 @@ import { textareaClassNames } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
+import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
@@ -371,10 +376,13 @@ import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
 import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
+import { title1ClassName } from '@fluentui/react-text';
 import { title1ClassNames } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
+import { title2ClassName } from '@fluentui/react-text';
 import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
+import { title3ClassName } from '@fluentui/react-text';
 import { title3ClassNames } from '@fluentui/react-text';
 import { ToggleButton } from '@fluentui/react-button';
 import { toggleButtonClassNames } from '@fluentui/react-button';
@@ -608,6 +616,8 @@ export { BadgeState }
 
 export { Body_2 as Body }
 
+export { bodyClassName }
+
 export { bodyClassNames }
 
 export { BorderRadiusTokens }
@@ -625,6 +635,8 @@ export { ButtonSlots }
 export { ButtonState }
 
 export { Caption }
+
+export { captionClassName }
 
 export { captionClassNames }
 
@@ -688,6 +700,8 @@ export { CurveTokens }
 
 export { Display }
 
+export { displayClassName }
+
 export { displayClassNames }
 
 export { Divider }
@@ -736,6 +750,8 @@ export { GriffelStyle }
 
 export { Headline }
 
+export { headlineClassName }
+
 export { headlineClassNames }
 
 export { HorizontalSpacingTokens }
@@ -761,6 +777,8 @@ export { LabelSlots }
 export { LabelState }
 
 export { LargeTitle }
+
+export { largeTitleClassName }
 
 export { largeTitleClassNames }
 
@@ -1176,17 +1194,15 @@ export { StrokeWidthTokens }
 
 export { Subheadline }
 
+export { subheadlineClassName }
+
 export { subheadlineClassNames }
 
 export { Tab }
 
-export { tabClassName }
-
 export { tabClassNames }
 
 export { TabList }
-
-export { tabListClassName }
 
 export { tabListClassNames }
 
@@ -1228,6 +1244,8 @@ export { TextareaSlots }
 
 export { TextareaState }
 
+export { textClassName }
+
 export { textClassNames }
 
 export { TextProps }
@@ -1242,13 +1260,19 @@ export { themeToTokensObject }
 
 export { Title1 }
 
+export { title1ClassName }
+
 export { title1ClassNames }
 
 export { Title2 }
 
+export { title2ClassName }
+
 export { title2ClassNames }
 
 export { Title3 }
+
+export { title3ClassName }
 
 export { title3ClassNames }
 

@@ -8,6 +8,7 @@ describe('CounterBadge', () => {
   isConformant({
     Component: CounterBadge,
     displayName: 'CounterBadge',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

@@ -17,9 +17,6 @@ export const renderSelect_unstable: (state: SelectState) => JSX.Element;
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
 
-// @public @deprecated (undocumented)
-export const selectClassName = "fui-Select";
-
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
 

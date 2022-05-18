@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Divider: ForwardRefComponent<DividerProps>;
 
-// @public @deprecated (undocumented)
-export const dividerClassName = "fui-Divider";
-
 // @public (undocumented)
 export const dividerClassNames: SlotClassNames<DividerSlots>;
 

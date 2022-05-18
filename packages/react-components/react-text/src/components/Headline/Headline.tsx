@@ -5,6 +5,10 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
+/**
+ * @deprecated Use `headlineClassNames.root` instead.
+ */
+export const headlineClassName = 'fui-Headline';
 export const headlineClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Headline',
 };

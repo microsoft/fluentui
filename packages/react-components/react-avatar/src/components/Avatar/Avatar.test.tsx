@@ -8,6 +8,7 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

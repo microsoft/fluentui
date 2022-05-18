@@ -5,6 +5,10 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
+/**
+ * @deprecated Use `largeTitleClassNames.root` instead.
+ */
+export const largeTitleClassName = 'fui-LargeTitle';
 export const largeTitleClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-LargeTitle',
 };
