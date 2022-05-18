@@ -2,6 +2,41 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:24 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "700e11e12b3e06cb10a0196e91e64b5ee4867405",
+            "comment": "Updating spec, fixing typos in types, and adding descriptions in stories."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.7",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.8",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 May 2022 13:26:43 GMT",
       "tag": "@fluentui/react-label_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

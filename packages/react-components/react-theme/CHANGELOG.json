@@ -2,6 +2,41 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:27 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "cb0b4bd7ac79ccf27539a12104f651f5d330e464",
+            "comment": "Export TypographyStyle type"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "975977d075e01a9091fcf2b9b84c14f829135fa7",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "d325a31bcd5d144e2a40ee4bf085e8ef6b3f5d73",
+            "comment": "Added ms suffix to durations"
+          }
+        ],
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "00a4a1dd582f5695b7cb9bba48fb8537534bbec0",
+            "comment": "Generate theme tokens using token pipeline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 May 2022 13:26:33 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",

@@ -1,5 +1,5 @@
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
@@ -77,6 +77,9 @@ const useRootStyles = makeStyles({
         color: tokens.colorNeutralForegroundOnBrand,
       },
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     [`& .${compoundButtonClassNames.secondaryContent}`]: {

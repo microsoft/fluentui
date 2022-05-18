@@ -1,8 +1,20 @@
 # Change Log - @fluentui/perf-test-react-components
 
-This log was last generated on Wed, 04 May 2022 13:26:54 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+Thu, 05 May 2022 18:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/perf-test-react-components_v9.0.0-rc.0..@fluentui/perf-test-react-components_v9.0.0-rc.0)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-button to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-provider to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
 
 ## [9.0.0-rc.0](https://github.com/microsoft/fluentui/tree/@fluentui/perf-test-react-components_v9.0.0-rc.0)
 

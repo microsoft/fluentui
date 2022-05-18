@@ -23,6 +23,7 @@ import {
   imgProperties,
   htmlElementProperties,
   getNativeProps,
+  timeProperties,
 } from './properties';
 
 const nativeElementMap: Record<string, Record<string, number>> = {
@@ -47,6 +48,7 @@ const nativeElementMap: Record<string, Record<string, number>> = {
   form: formProperties,
   iframe: iframeProperties,
   img: imgProperties,
+  time: timeProperties,
 };
 
 /**

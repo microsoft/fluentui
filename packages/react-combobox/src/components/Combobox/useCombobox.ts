@@ -4,8 +4,8 @@ import {
   getPartitionedNativeProps,
   resolveShorthand,
   useControllableState,
+  useEventCallback,
   useFirstMount,
-  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
@@ -26,7 +26,7 @@ import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobo
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
-  const optionCollection = useOptionCollection(props.children);
+  const optionCollection = useOptionCollection();
 
   const {
     appearance = 'outline',
@@ -37,11 +37,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     positioning,
     size = 'medium',
   } = props;
-  const {
-    options,
-    collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
-  } = optionCollection;
-  const idBase = useId('combobox');
+  const { getCount, getOptionAtIndex, getIndexOfId, getOptionById, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -84,27 +80,49 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     }
 
     if (multiselect) {
-      return selectedOptions.map(option => option.value).join(', ');
+      return selectedOptions.join(', ');
     }
 
-    return selectedOptions[0]?.value;
+    return selectedOptions[0];
   }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
+
+  // update active option based on change in open state
+  React.useEffect(() => {
+    if (open) {
+      // if there is a selection, start at the most recently selected item
+      if (selectedOptions.length > 0) {
+        const lastSelectedOption = getOptionsMatchingValue(
+          v => v === selectedOptions[selectedOptions.length - 1],
+        ).pop();
+        lastSelectedOption && setActiveOption(lastSelectedOption);
+      }
+      // default to starting at the first option
+      else {
+        setActiveOption(getOptionAtIndex(0));
+      }
+    } else {
+      // reset the active option when closing
+      setActiveOption(undefined);
+    }
+    // this should only be run in response to changes in the open state
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
   };
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
+  const onOptionClick = useEventCallback((event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
     // clicked option should always become active option
-    setActiveOption(getOptionByKey(option.key));
+    setActiveOption(getOptionById(option.id));
 
     // close on option click for single-select
     !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectOption(event, option);
-  };
+    selectOption(event, option.value);
+  });
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -147,11 +165,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     ...optionCollection,
     activeOption,
     appearance,
-    idBase,
     inline,
     onOptionClick,
     open,
-    options,
     selectedOptions,
     size,
     value,
@@ -196,8 +212,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   // handle combobox keyboard interaction
   state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
-    const maxIndex = count - 1;
-    const activeIndex = activeOption ? getIndexOfKey(activeOption.key) : -1;
+    const maxIndex = getCount() - 1;
+    const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
     let newIndex = activeIndex;
 
     switch (action) {
@@ -215,11 +231,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         !multiselect && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(event, activeOption);
+        activeOption && !activeOption.disabled && selectOption(event, activeOption.value);
         event.preventDefault();
         break;
       case 'Tab':
-        activeOption && selectOption(event, activeOption);
+        activeOption && selectOption(event, activeOption.value);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);

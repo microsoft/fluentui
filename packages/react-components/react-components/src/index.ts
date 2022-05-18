@@ -9,6 +9,7 @@ export {
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
+export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -26,6 +27,36 @@ export type {
   FluentProviderSlots,
   FluentProviderState,
 } from '@fluentui/react-provider';
+export {
+  Radio,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioClassName,
+  radioClassNames,
+  RadioGroup,
+  /* eslint-disable-next-line deprecation/deprecation */
+  radioGroupClassName,
+  radioGroupClassNames,
+  RadioGroupContext,
+  renderRadio_unstable,
+  renderRadioGroup_unstable,
+  useRadio_unstable,
+  useRadioGroupContextValues,
+  useRadioGroup_unstable,
+  useRadioGroupStyles_unstable,
+  useRadioStyles_unstable,
+} from '@fluentui/react-radio';
+export type {
+  RadioGroupContextValue,
+  RadioGroupContextValues,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+  RadioGroupSlots,
+  RadioGroupState,
+  RadioOnChangeData,
+  RadioProps,
+  RadioSlots,
+  RadioState,
+} from '@fluentui/react-radio';
 export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
@@ -77,6 +108,7 @@ export type {
   DurationTokens,
   CurveTokens,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
@@ -177,7 +209,7 @@ export {
   useAvatar_unstable,
   useAvatarStyles_unstable,
 } from '@fluentui/react-avatar';
-export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
+export type { AvatarNamedColor, AvatarProps, AvatarSizes, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
 export {
   Badge,
   CounterBadge,
@@ -263,6 +295,16 @@ export type {
   ToggleButtonState,
 } from '@fluentui/react-button';
 export {
+  Checkbox,
+  /* eslint-disable-next-line deprecation/deprecation */
+  checkboxClassName,
+  checkboxClassNames,
+  renderCheckbox_unstable,
+  useCheckbox_unstable,
+  useCheckboxStyles_unstable,
+} from '@fluentui/react-checkbox';
+export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
+export {
   Divider,
   /* eslint-disable-next-line deprecation/deprecation */
   dividerClassName,
@@ -282,6 +324,16 @@ export {
   useImageStyles_unstable,
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
+export {
+  Label,
+  /* eslint-disable-next-line deprecation/deprecation */
+  labelClassName,
+  labelClassNames,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export {
   Link,
   /* eslint-disable-next-line deprecation/deprecation */
@@ -474,6 +526,44 @@ export {
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
 export {
+  Spinner,
+  spinnerClassNames,
+  renderSpinner_unstable,
+  useSpinner_unstable,
+  useSpinnerStyles_unstable,
+} from '@fluentui/react-spinner';
+export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+export {
+  renderTab_unstable,
+  Tab,
+  tabClassName,
+  tabClassNames,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassName,
+  tabListClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
+} from '@fluentui/react-tabs';
+export type {
+  TabProps,
+  TabSlots,
+  TabState,
+  TabValue,
+  TabRegisterData,
+  RegisterTabEventHandler,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListContextValue,
+  TabListContextValues,
+  TabListProps,
+  TabListSlots,
+  TabListState,
+} from '@fluentui/react-tabs';
+export {
   Body,
   Caption,
   Display,
@@ -519,6 +609,14 @@ export {
   useTextStyles_unstable,
 } from '@fluentui/react-text';
 export type { TextProps, TextSlots, TextState } from '@fluentui/react-text';
+export {
+  Textarea,
+  textareaClassNames,
+  renderTextarea_unstable,
+  useTextarea_unstable,
+  useTextareaStyles_unstable,
+} from '@fluentui/react-textarea';
+export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
 export {
   Tooltip,
   renderTooltip_unstable,

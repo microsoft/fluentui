@@ -86,6 +86,9 @@ export const useCheckedStyles = makeStyles({
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
+  },
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
@@ -156,6 +159,9 @@ export const useDisabledStyles = makeStyles({
     ':hover:active': {
       ...shorthands.borderColor('transparent'),
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: 'transparent',

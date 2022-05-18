@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Used background rather than border",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

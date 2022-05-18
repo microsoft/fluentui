@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 04 May 2022 13:26:43 GMT and should not be manually modified.
+This log was last generated on Thu, 05 May 2022 18:26:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.9)
+
+Thu, 05 May 2022 18:26:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-beta.8..@fluentui/react-input_v9.0.0-beta.9)
+
+### Changes
+
+- Updated to use new theme tokens ([PR #22836](https://github.com/microsoft/fluentui/pull/22836) by gcox@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-beta.8)
 
