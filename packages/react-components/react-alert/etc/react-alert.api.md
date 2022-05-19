@@ -39,9 +39,6 @@ export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>
 };
 
 // @public (undocumented)
-export const intentClassName = "fui-Alert__intent";
-
-// @public (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;
 
 // @public

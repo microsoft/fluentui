@@ -2,7 +2,6 @@ export {
   Alert,
   alertClassName,
   alertClassNames,
-  intentClassName,
   renderAlert_unstable,
   useAlertStyles_unstable,
   useAlert_unstable,
