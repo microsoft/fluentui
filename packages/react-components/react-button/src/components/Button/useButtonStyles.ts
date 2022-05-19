@@ -173,8 +173,8 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.gap('4px'),
-    ...shorthands.padding('0', '8px'),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
+    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalS),
 
     height: '24px',
     minWidth: '64px',
@@ -186,8 +186,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '12px'),
+    ...shorthands.gap(tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalM),
 
     height: '32px',
     minWidth: '96px',
@@ -199,8 +199,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '16px'),
+    ...shorthands.gap(tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalL),
 
     height: '40px',
     minWidth: '96px',
@@ -332,19 +332,10 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
-  // used by the outline pseudo-element. Need to introduce a text container for children and set
-  // overflow there so that default focus outline can work
-  //
-  // base: createFocusOutlineStyle(),
-  // circular: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.circular } }),
-  // primary: createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
-  // square: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.none } }),
-
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineColor: 'transparent',
-    outlineWidth: '2px',
+    outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
       ${tokens.shadow4},
@@ -381,19 +372,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '28px',
     maxWidth: '28px',
   },
   medium: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding('6px'),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
 
     minWidth: '40px',
     maxWidth: '40px',

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Using spacing tokens for button components.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
