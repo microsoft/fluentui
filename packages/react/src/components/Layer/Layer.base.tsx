@@ -51,7 +51,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (document: Document): Node | null => {
+    const getHost = (doc: Document): Node | null => {
       if (hostId) {
         const layerHost = getLayerHost(hostId);
 
@@ -59,17 +59,17 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
           return layerHost.rootRef.current ?? null;
         }
 
-        return document.getElementById(hostId) ?? null;
+        return doc.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
 
         // Find the host.
-        let host: Node | null = defaultHostSelector ? (document.querySelector(defaultHostSelector) as Node) : null;
+        let host: Node | null = defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : null;
 
         // If no host is available, create a container for injecting layers in.
         // Having a container scopes layout computation.
         if (!host) {
-          host = createDefaultLayerHost(document);
+          host = createDefaultLayerHost(doc);
         }
 
         return host;
