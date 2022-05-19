@@ -5,7 +5,7 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '.
 import { Button } from '@fluentui/react-button';
 
 export const Default = (props: Partial<MenuProps>) => (
-  <Menu {...props}>
+  <Menu {...props} openOnContext>
     <MenuTrigger>
       <Button>Toggle menu</Button>
     </MenuTrigger>
