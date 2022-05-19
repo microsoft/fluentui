@@ -38,8 +38,8 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
       ...focusAttributes,
       ...props,
     }),
-    hasIcons: menuContext.hasIcons,
-    hasCheckmarks: menuContext.hasCheckmarks,
+    hasIcons: menuContext.hasIcons || false,
+    hasCheckmarks: menuContext.hasCheckmarks || false,
     ...(hasMenuContext && menuContext),
     ...props,
   };

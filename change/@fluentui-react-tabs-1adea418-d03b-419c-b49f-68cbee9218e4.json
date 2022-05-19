@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removed TabListCommons and TabCommons types",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

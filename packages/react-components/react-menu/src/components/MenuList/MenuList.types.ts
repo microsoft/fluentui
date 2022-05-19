@@ -6,25 +6,21 @@ import type { SelectableHandler } from '../../selectable/index';
 export type MenuCheckedValueChangeEvent = React.MouseEvent | React.KeyboardEvent;
 
 export type MenuCheckedValueChangeData = {
-  /** The name of the value */
-  name: string;
   /** The items for this value that are checked */
   checkedItems: string[];
+  /** The name of the value */
+  name: string;
 };
 
-export type MenuListCommons = {
-  /**
-   * Callback when checked items change for value with a name
-   *
-   * @param event - React's original SyntheticEvent
-   * @param data - A data object with relevant information
-   */
-  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+export type MenuListSlots = {
+  root: Slot<'div'>;
+};
 
+export type MenuListProps = ComponentProps<MenuListSlots> & {
   /**
    * Map of all checked values
    */
-  checkedValues: Record<string, string[]>;
+  checkedValues?: Record<string, string[]>;
 
   /**
    * Default values to be checked on mount
@@ -32,24 +28,32 @@ export type MenuListCommons = {
   defaultCheckedValues?: Record<string, string[]>;
 
   /**
+   * States that menu items can contain selectable items and reserve slots for item alignment
+   */
+  hasCheckmarks?: boolean;
+
+  /**
    * States that menu items can contain icons and reserve slots for item alignment
    */
   hasIcons?: boolean;
 
   /**
-   * States that menu items can contain selectable items and reserve slots for item alignment
+   * Callback when checked items change for value with a name
+   *
+   * @param event - React's original SyntheticEvent
+   * @param data - A data object with relevant information
    */
-  hasCheckmarks?: boolean;
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
-
-export type MenuListSlots = {
-  root: Slot<'div'>;
-};
-
-export type MenuListProps = ComponentProps<MenuListSlots> & Partial<MenuListCommons>;
 
 export type MenuListState = ComponentState<MenuListSlots> &
-  MenuListCommons & {
+  Pick<MenuListProps, 'defaultCheckedValues' | 'onCheckedValueChange'> &
+  Required<Pick<MenuListProps, 'checkedValues' | 'hasCheckmarks' | 'hasIcons'>> & {
+    /**
+     * Selects a radio item, will de-select the currently selected ratio item
+     */
+    selectRadio: SelectableHandler;
+
     /**
      * Callback to set focus on the next menu item by first character
      */
@@ -59,11 +63,6 @@ export type MenuListState = ComponentState<MenuListSlots> &
      * Toggles the state of a checkbox item
      */
     toggleCheckbox: SelectableHandler;
-
-    /**
-     * Selects a radio item, will de-select the currently selected ratio item
-     */
-    selectRadio: SelectableHandler;
   };
 
 export type MenuListContextValues = {
@@ -72,6 +71,6 @@ export type MenuListContextValues = {
 
 export type UninitializedMenuListState = Omit<
   MenuListState,
-  'setFocusByFirstCharacter' | 'toggleCheckbox' | 'selectRadio' | 'checkedValues'
+  'checkedValues' | 'selectRadio' | 'setFocusByFirstCharacter' | 'toggleCheckbox'
 > &
   Partial<Pick<MenuListState, 'checkedValues'>>;

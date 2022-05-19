@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update stepper clamping behavior",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

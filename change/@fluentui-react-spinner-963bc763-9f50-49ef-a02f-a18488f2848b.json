@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing SpinnerCommons type.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

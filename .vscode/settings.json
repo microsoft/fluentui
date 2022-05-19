@@ -47,7 +47,8 @@
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
   "files.associations": {
     "**/package.json.hbs": "json",
-    "**/*.json.hbs": "jsonc"
+    "**/*.json.hbs": "jsonc",
+    "CODEOWNERS": "ini"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
