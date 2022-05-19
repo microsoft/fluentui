@@ -109,6 +109,16 @@ storiesOf('Card Converged', module)
         <SampleCardContent />
       </Card>
     </div>
+  ))
+  .addStory('orientation', () => (
+    <div style={{ display: 'flex', width: '600px', flexDirection: 'column', gap: '16px' }}>
+      <Card orientation="vertical">
+        <SampleCardContent />
+      </Card>
+      <Card orientation="horizontal">
+        <SampleCardContent />
+      </Card>
+    </div>
   ));
 
 storiesOf('Card Converged', module)
