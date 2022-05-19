@@ -4,9 +4,11 @@
 
 ```ts
 
+import { Boundary as Boundary_2 } from '@floating-ui/dom';
 import type { GriffelStyle } from '@griffel/react';
-import * as PopperJs from '@popperjs/core';
 import * as React_2 from 'react';
+import { Rect } from '@floating-ui/dom';
+import { VirtualElement } from '@floating-ui/dom';
 
 // @public (undocumented)
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -15,7 +17,7 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
 
 // @public (undocumented)
-export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+export type Boundary = Boundary_2 | 'scrollParent' | 'window';
 
 // @public
 export function createArrowHeightStyles(arrowHeight: number): {
@@ -27,63 +29,59 @@ export function createArrowHeightStyles(arrowHeight: number): {
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
 
 // @public
-export type CreateArrowStylesOptions = {
-    arrowHeight: number | undefined;
-    borderWidth?: GriffelStyle['borderBottomWidth'];
-    borderStyle?: GriffelStyle['borderBottomStyle'];
-    borderColor?: GriffelStyle['borderBottomColor'];
-};
-
-// @public
-export function createVirtualElementFromClick(nativeEvent: MouseEvent): PopperVirtualElement;
-
-// @public
-export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
+export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
 // @public (undocumented)
-export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
-
-// @public (undocumented)
-export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
-
-// @public (undocumented)
-export type OffsetFunctionParam = {
-    popper: PopperJs.Rect;
-    reference: PopperJs.Rect;
-    placement: PopperJs.Placement;
-};
-
-// @public (undocumented)
-export interface PopperOptions {
+export interface FloatingUIOptions {
     align?: Alignment;
     arrowPadding?: number;
     autoSize?: AutoSize;
     coverTarget?: boolean;
-    flipBoundary?: Boundary;
+    flipBoundary?: Boundary | null;
     offset?: Offset;
-    overflowBoundary?: Boundary;
+    overflowBoundary?: Boundary | null;
     pinned?: boolean;
     position?: Position;
     positionFixed?: boolean;
     unstable_disableTether?: boolean | 'all';
 }
 
+// @public
+export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
+
 // @public (undocumented)
-export type PopperRefHandle = {
-    updatePosition: () => void;
-    setTarget: (target: HTMLElement | PopperVirtualElement) => void;
+export type Offset = OffsetFunction | OffsetObject | number;
+
+// @public (undocumented)
+export type OffsetFunction = (param: OffsetFunctionParam) => OffsetObject | number;
+
+// @public (undocumented)
+export type OffsetFunctionParam = {
+    positioned: Rect;
+    target: Rect;
+    position: Position;
+    alignment?: Alignment;
 };
 
 // @public (undocumented)
-export type PopperVirtualElement = PopperJs.VirtualElement;
+export type OffsetObject = {
+    mainAxis?: number;
+    crossAxis?: number;
+};
 
 // @public (undocumented)
 export type Position = 'above' | 'below' | 'before' | 'after';
 
 // @public (undocumented)
-export interface PositioningProps extends Omit<PopperOptions, 'positionFixed' | 'unstable_disableTether'> {
-    popperRef?: React_2.Ref<PopperRefHandle>;
-    target?: HTMLElement | PopperVirtualElement | null;
+export type PositioningImperativeRef = {
+    updatePosition: () => void;
+    setTarget: (target: HTMLElement | PositioningVirtualElement) => void;
+};
+
+// @public (undocumented)
+export interface PositioningProps extends Omit<FloatingUIOptions, 'positionFixed' | 'unstable_disableTether'> {
+    imperativeRef?: React_2.Ref<PositioningImperativeRef>;
+    target?: HTMLElement | PositioningVirtualElement | null;
 }
 
 // @public (undocumented)
@@ -93,17 +91,20 @@ export type PositioningShorthand = PositioningProps | PositioningShorthandValue;
 export type PositioningShorthandValue = 'above' | 'above-start' | 'above-end' | 'below' | 'below-start' | 'below-end' | 'before' | 'before-top' | 'before-bottom' | 'after' | 'after-top' | 'after-bottom';
 
 // @public (undocumented)
+export type PositioningVirtualElement = VirtualElement;
+
+// @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
 // @public
-export function usePopper(options?: UsePopperOptions): {
+export const useMouseTarget: (initialState?: VirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
+
+// @public (undocumented)
+export function usePositioning(options: UseFloatingUIOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;
 };
-
-// @public
-export const usePopperMouseTarget: (initialState?: PopperJs.VirtualElement | (() => PopperJs.VirtualElement) | undefined) => readonly [PopperJs.VirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // (No @packageDocumentation comment for this package)
 
