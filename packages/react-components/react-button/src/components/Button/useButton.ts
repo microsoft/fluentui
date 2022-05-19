@@ -45,7 +45,6 @@ export const useButton_unstable = (
       root: 'button',
       icon: 'span',
     },
-
     root: getNativeElementProps(
       as || 'button',
       useARIAButton<ARIAButtonSlotProps>(props, {
@@ -56,7 +55,7 @@ export const useButton_unstable = (
           type: 'button', // This is added because the default for type is 'submit'
         },
       }),
-    ),
+    ) as ButtonState['root'],
     icon: iconShorthand,
   };
 };

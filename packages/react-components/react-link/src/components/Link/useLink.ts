@@ -31,7 +31,7 @@ export const useLink_unstable = (
       ref,
       ...props,
       as,
-    }),
+    }) as LinkState['root'],
   };
 
   useLinkState_unstable(state);

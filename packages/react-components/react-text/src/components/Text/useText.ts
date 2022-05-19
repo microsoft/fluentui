@@ -33,7 +33,7 @@ export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>):
       ref,
       ...props,
       as,
-    }),
+    }) as TextState['root'],
   };
 
   return state;

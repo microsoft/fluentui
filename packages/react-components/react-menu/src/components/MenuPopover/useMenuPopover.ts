@@ -62,7 +62,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
 
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
 
-  rootProps.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  rootProps.onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(e, { open: true, keyboard: false });
     }
@@ -70,7 +70,7 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
     onMouseEnterOriginal?.(e);
   });
 
-  rootProps.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLElement>) => {
+  rootProps.onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     const key = e.key;
 
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
