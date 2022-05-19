@@ -3,11 +3,11 @@ import type { BadgeProps, BadgeState, BadgeSlots } from '../Badge/Badge.types';
 
 export type PresenceBadgeStatus =
   | 'busy'
-  | 'outOfOffice'
+  | 'out-of-office'
   | 'away'
   | 'available'
   | 'offline'
-  | 'doNotDisturb'
+  | 'do-not-disturb'
   | 'unknown';
 
 export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | 'icon'>>, 'color'> &

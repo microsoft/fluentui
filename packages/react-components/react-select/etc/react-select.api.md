@@ -21,8 +21,8 @@ export const Select: ForwardRefComponent<SelectProps>;
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
 // @public (undocumented)
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+export interface SelectCommons {
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     inline?: boolean;
     size?: 'small' | 'medium' | 'large';
 };

@@ -38,7 +38,7 @@ export type AvatarSlots = {
  * A specific named color for the Avatar
  */
 export type AvatarNamedColor =
-  | 'darkRed'
+  | 'dark-red'
   | 'cranberry'
   | 'red'
   | 'pumpkin'
@@ -49,12 +49,12 @@ export type AvatarNamedColor =
   | 'brown'
   | 'forest'
   | 'seafoam'
-  | 'darkGreen'
-  | 'lightTeal'
+  | 'dark-green'
+  | 'light-teal'
   | 'teal'
   | 'steel'
   | 'blue'
-  | 'royalBlue'
+  | 'royal-blue'
   | 'cornflower'
   | 'navy'
   | 'lavender'

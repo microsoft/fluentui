@@ -71,7 +71,7 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | '
 export type PresenceBadgeState = ComponentState<BadgeSlots> & BadgeState & Required<Pick<PresenceBadgeProps, 'status' | 'outOfOffice'>>;
 
 // @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb' | 'unknown';
+export type PresenceBadgeStatus = 'busy' | 'out-of-office' | 'away' | 'available' | 'offline' | 'do-not-disturb' | 'unknown';
 
 // @public (undocumented)
 export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
