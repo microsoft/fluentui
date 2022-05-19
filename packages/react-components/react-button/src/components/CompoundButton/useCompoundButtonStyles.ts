@@ -117,19 +117,24 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding('8px', '8px', '10px', '8px'),
+    ...shorthands.padding(
+      tokens.spacingHorizontalS,
+      tokens.spacingHorizontalS,
+      tokens.spacingHorizontalMNudge,
+      tokens.spacingHorizontalS,
+    ),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding('14px', '12px', '16px', '12px'),
+    ...shorthands.padding('14px', tokens.spacingHorizontalM, tokens.spacingHorizontalL, tokens.spacingHorizontalM),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding('18px', '16px', '20px', '16px'),
+    ...shorthands.padding('18px', tokens.spacingHorizontalL, tokens.spacingHorizontalXL, tokens.spacingHorizontalL),
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -179,19 +184,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding('6px'),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
 
     maxWidth: '56px',
     minWidth: '56px',
