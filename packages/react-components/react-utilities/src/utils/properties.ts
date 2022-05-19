@@ -433,34 +433,35 @@ export const divProperties = htmlElementProperties;
  * @param allowedPropsNames - The array or record of allowed prop names.
  * @returns The filtered props
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getNativeProps<Props extends Record<string, any>>(
-  props: Props,
-  allowedPropNames: string[] | Record<string, number>,
-  excludedPropNames?: string[],
-) {
+export function getNativeProps<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Props extends Record<string, any>,
+  E extends Extract<keyof Props, string> = never
+>(props: Props, allowedPropNames: Array<string> | Record<string, 1>, excludedPropNames?: E[]): Omit<Props, E> {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
   // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
   // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
   // return native props.
   // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
 
-  const isArray = Array.isArray(allowedPropNames);
   const result: Record<string, unknown> = {};
   const keys = Object.keys(props);
 
   for (const key of keys) {
-    const isNativeProp = Boolean(
-      (!isArray && (allowedPropNames as Record<string, number>)[key]) ||
-        (isArray && (allowedPropNames as string[]).indexOf(key) >= 0) ||
-        key.indexOf('data-') === 0 ||
-        key.indexOf('aria-') === 0,
-    );
+    const isNative = isNativeProp(key, allowedPropNames);
 
-    if (isNativeProp && (!excludedPropNames || excludedPropNames?.indexOf(key) === -1)) {
+    if (isNative && (!excludedPropNames || excludedPropNames.indexOf(key as E) === -1)) {
       result[key] = props[key];
     }
   }
 
-  return result as Props;
+  return result as Omit<Props, E>;
+}
+
+function isNativeProp(propName: string, nativeProps: string[] | Record<string, 1>) {
+  if (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0) {
+    return true;
+  }
+
+  return Array.isArray(nativeProps) ? nativeProps.indexOf(propName) !== -1 : Boolean(nativeProps[propName]);
 }

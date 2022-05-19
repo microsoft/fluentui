@@ -69,7 +69,9 @@ type EmptyIntrisicElements =
  * * Removes legacy string ref.
  * * Disallows children for empty tags like 'img'.
  */
-type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<JSX.IntrinsicElements[Type]> &
+export type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.PropsWithRef<
+  JSX.IntrinsicElements[Type]
+> &
   (Type extends EmptyIntrisicElements ? { children?: never } : {});
 
 /**

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import type { IntrisicElementProps } from '../compose';
+
 import {
   labelProperties,
   audioProperties,
@@ -50,6 +52,14 @@ const nativeElementMap = {
   img: imgProperties,
   time: timeProperties,
 };
+type NativeElementMap = typeof nativeElementMap;
+
+/**
+ * AsTagNames - can single string or union of strings
+ */
+type NativeElemProps<AsTagNames extends keyof JSX.IntrinsicElements> = {
+  [As in AsTagNames]: { as?: As } & IntrisicElementProps<As>;
+}[AsTagNames];
 
 /**
  * Given an element tagname and user props, filters the props to only allowed props for the given
@@ -58,19 +68,21 @@ const nativeElementMap = {
  * @param props - Props object
  * @param excludedPropNames - List of props to disallow
  */
-export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements>(
-  tagName: Tag,
-  // eslint-disable-next-line @fluentui/max-len
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- our component hooks use invalid type for ref thus we need to use `any` to turn of generic type checking
-  props: Omit<JSX.IntrinsicElements[Tag], 'ref'> & { ref?: React.Ref<any> },
-  excludedPropNames?: string[],
-) {
-  const allowedPropNames = nativeElementMap[tagName as keyof typeof nativeElementMap] || htmlElementProperties;
+export function getNativeElementProps<
+  Tag extends keyof JSX.IntrinsicElements,
+  Props extends Record<string, unknown>,
+  ExcludedPropKeys extends Extract<keyof Props, string> = never
+>(tagName: Tag, props: Props, excludedPropNames?: ExcludedPropKeys[]): Omit<NativeElemProps<Tag>, ExcludedPropKeys> {
+  const allowedPropNames = nativeElementMap[tagName as keyof NativeElementMap] || htmlElementProperties;
 
-  // @ts-expect-error - TODO: no idea what's purpose of this, but after typings have been fixed it produces error
-  allowedPropNames.as = 1;
+  /**
+   * extends object dictionary with `as` to avoid adding it to nativeElementMap and htmlElementProperties
+   */
+  type ExtendedAllowedPropNames = typeof allowedPropNames & { as: 1 };
 
-  return getNativeProps(props, allowedPropNames, excludedPropNames);
+  (allowedPropNames as ExtendedAllowedPropNames).as = 1;
+
+  return getNativeProps(props, allowedPropNames, excludedPropNames) as Omit<NativeElemProps<Tag>, ExcludedPropKeys>;
 }
 
 /**
@@ -82,7 +94,8 @@ export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements>(
  * @returns An object containing the native props for the `root` and primary slots.
  */
 export const getPartitionedNativeProps = <
-  Props extends Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>,
+  Tag extends keyof JSX.IntrinsicElements,
+  Props extends Record<string, unknown> & Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>,
   ExcludedPropKeys extends Extract<keyof Props, string> = never
 >({
   primarySlotTagName,
@@ -90,7 +103,7 @@ export const getPartitionedNativeProps = <
   excludedPropNames,
 }: {
   /** The primary slot's element type (e.g. 'div') */
-  primarySlotTagName: keyof JSX.IntrinsicElements;
+  primarySlotTagName: Tag;
 
   /** The component's props object */
   props: Props;
@@ -100,6 +113,10 @@ export const getPartitionedNativeProps = <
 }) => {
   return {
     root: { style: props.style, className: props.className },
-    primary: getNativeElementProps(primarySlotTagName, props, [...(excludedPropNames || []), 'style', 'className']),
+    primary: getNativeElementProps(primarySlotTagName, props, [
+      ...(excludedPropNames || []),
+      'style',
+      'className',
+    ] as ExcludedPropKeys[]),
   };
 };

@@ -3,14 +3,14 @@ import { getNativeProps, divProperties } from './properties';
 
 describe('getNativeProps', () => {
   it('can pass through data tags', () => {
-    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement> & { 'data-automation-id': number }>(
+    const result = getNativeProps(
       {
         'data-automation-id': 1,
       },
       divProperties,
     );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect((result as any)['data-automation-id']).toEqual(1);
+
+    expect(result['data-automation-id']).toEqual(1);
   });
 
   it('can pass through aria tags', () => {
@@ -45,9 +45,8 @@ describe('getNativeProps', () => {
   });
 
   it('can remove unexpected properties', () => {
-    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
+    const result = getNativeProps(
       {
-        // @ts-expect-error - invalid HTML prop - will be removed in runtime
         foobar: 1,
         className: 'hi',
       },
@@ -55,14 +54,14 @@ describe('getNativeProps', () => {
     );
 
     expect(result.className).toEqual('hi');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect((result as any).foobar).toEqual(undefined);
+    expect(result.foobar).toEqual(undefined);
   });
 
   it('can exclude properties', () => {
-    const result = getNativeProps<{ a: number; b: number }>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
+    const result = getNativeProps({ a: 1, b: 2 }, ['a', 'b'], ['b']);
 
     expect(result.a).toBeDefined();
+    // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
     expect(result.b).toBeUndefined();
   });
 });
