@@ -1,9 +1,9 @@
-export { MenuContext, MenuProvider, useMenuContext_unstable } from './contexts/menuContext';
+export { MenuProvider, useMenuContext_unstable } from './contexts/menuContext';
 export type { MenuContextValue } from './contexts/menuContext';
 export { MenuTriggerContextProvider, useMenuTriggerContext_unstable } from './contexts/menuTriggerContext';
 export { MenuGroupContextProvider, useMenuGroupContext_unstable } from './contexts/menuGroupContext';
 export type { MenuGroupContextValue } from './contexts/menuGroupContext';
-export { MenuListContext, MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
+export { MenuListProvider, useMenuListContext_unstable } from './contexts/menuListContext';
 export type { MenuListContextValue } from './contexts/menuListContext';
 
 export { Menu, renderMenu_unstable, useMenuContextValues_unstable, useMenu_unstable } from './Menu';
