@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add support for size={16} to Avatar",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

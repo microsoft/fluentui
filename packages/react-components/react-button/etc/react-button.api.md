@@ -21,7 +21,6 @@ export const buttonClassNames: SlotClassNames<ButtonSlots>;
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & {
     appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
-    block?: boolean;
     disabledFocusable?: boolean;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
@@ -36,7 +35,7 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     iconOnly: boolean;
 };
 
@@ -47,7 +46,7 @@ export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
@@ -65,7 +64,7 @@ export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
@@ -115,12 +114,13 @@ export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
-export type ToggleButtonProps = ButtonProps & Partial<ToggleButtonCommons> & {
+export type ToggleButtonProps = ButtonProps & {
     defaultChecked?: boolean;
+    checked?: boolean;
 };
 
 // @public (undocumented)
-export type ToggleButtonState = ButtonState & ToggleButtonCommons;
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;

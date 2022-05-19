@@ -83,12 +83,6 @@ const useRootStyles = makeStyles({
     },
   },
 
-  // Block styles
-  block: {
-    maxWidth: '100%',
-    width: '100%',
-  },
-
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -429,16 +423,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-    iconOnly,
-    shape,
-    size,
-  } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -446,7 +431,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // Root styles
     rootStyles.base,
     rootStyles.highContrast,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     rootStyles[size],
     rootStyles[shape],

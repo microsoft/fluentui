@@ -3,6 +3,7 @@ import { Avatar } from '../index';
 
 export const Size = () => (
   <>
+    <Avatar initials="16" size={16} />
     <Avatar initials="20" size={20} />
     <Avatar initials="24" size={24} />
     <Avatar initials="28" size={28} />
@@ -22,7 +23,7 @@ export const Size = () => (
 Size.parameters = {
   docs: {
     description: {
-      story: 'An avatar supports a range of sizes from 20 to 128. The default is 32.',
+      story: 'An avatar supports a range of sizes from 16 to 128. The default is 32.',
     },
   },
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Body, Caption } from '@fluentui/react-text';
+import { Body1, Caption1 } from '@fluentui/react-text';
 
 import { Button } from '@fluentui/react-button';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
@@ -17,11 +17,11 @@ export const Default = () => {
       <CardHeader
         image={<img src={avatarElviaURL} alt="Face of a person" />}
         header={
-          <Body>
+          <Body1>
             <b>Elvia Atkins</b> mentioned you
-          </Body>
+          </Body1>
         }
-        description={<Caption>5h ago · About us - Overview</Caption>}
+        description={<Caption1>5h ago · About us - Overview</Caption1>}
       />
 
       <CardPreview logo={<img src={wordLogoURL} alt="Microsoft Word logo" />}>
