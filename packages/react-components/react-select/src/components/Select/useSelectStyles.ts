@@ -119,10 +119,10 @@ const useSelectStyles = makeStyles({
     ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     ...shorthands.borderRadius(0),
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
 });

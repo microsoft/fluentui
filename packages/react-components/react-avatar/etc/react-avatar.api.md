@@ -49,7 +49,7 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
 };
 
 // @public
-export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
+export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
