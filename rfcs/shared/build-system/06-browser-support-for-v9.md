@@ -20,7 +20,7 @@ The proposed browser support matrix will be loosely based off the [Resize Observ
 
 | Edge | Firefox | Chrome | Safari | Opera | Internet Explorer |
 | ---- | ------- | ------ | ------ | ----- | ----------------- |
-| >=80 | >=74    | >=80   | >=14   | >=67  | Not Supported     |
+| >=80 | >=75    | >=80   | >=14   | >=67  | Not Supported     |
 
 **Mobile Browsers:**
 
