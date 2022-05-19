@@ -28,18 +28,10 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
-import { Input } from '@fluentui/react-input';
-import { inputClassName } from '@fluentui/react-input';
-import { inputClassNames } from '@fluentui/react-input';
-import { InputOnChangeData } from '@fluentui/react-input';
-import { InputProps } from '@fluentui/react-input';
-import { InputSlots } from '@fluentui/react-input';
-import { InputState } from '@fluentui/react-input';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
-import { renderInput_unstable } from '@fluentui/react-input';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { SpinButton } from '@fluentui/react-spinbutton';
@@ -65,8 +57,6 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
-import { useInput_unstable } from '@fluentui/react-input';
-import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useSwitch_unstable } from '@fluentui/react-switch';
@@ -120,20 +110,6 @@ export { CardSlots }
 
 export { CardState }
 
-export { Input }
-
-export { inputClassName }
-
-export { inputClassNames }
-
-export { InputOnChangeData }
-
-export { InputProps }
-
-export { InputSlots }
-
-export { InputState }
-
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -141,8 +117,6 @@ export { renderCardFooter_unstable }
 export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
-
-export { renderInput_unstable }
 
 export { renderSpinButton_unstable }
 
@@ -193,10 +167,6 @@ export { useCardPreview_unstable }
 export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
-
-export { useInput_unstable }
-
-export { useInputStyles_unstable }
 
 export { useSpinButton_unstable }
 
