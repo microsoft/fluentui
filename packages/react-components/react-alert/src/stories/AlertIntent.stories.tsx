@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { DeleteRegular } from '@fluentui/react-icons';
-
 import { Alert } from '../index';
 
 export const Intent = () => (
@@ -41,16 +39,6 @@ export const Intent = () => (
       }}
     >
       Info text
-    </Alert>
-    <Alert
-      intent="success"
-      icon={<DeleteRegular />}
-      action={{
-        appearance: 'transparent',
-        children: 'Dismiss',
-      }}
-    >
-      Delete icon overrides the success intent prop
     </Alert>
   </div>
 );

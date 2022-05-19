@@ -34,9 +34,7 @@ export type AlertSlots = {
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & {
-    isIntentIcon: boolean;
-};
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>;
 
 // @public (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;

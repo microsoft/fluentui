@@ -26,6 +26,7 @@ const useStyles = makeStyles({
   },
   icon: {
     height: '16px',
+    fontSize: '16px',
     ...shorthands.padding('0', '8px', '0', '0'),
   },
   action: {
@@ -64,8 +65,7 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
     state.icon.className = mergeClasses(
       alertClassNames.icon,
       styles.icon,
-      // apply intent styles only when icon is rendered due to the intent prop
-      state.intent && state.isIntentIcon && intentIconStyles[state.intent],
+      state.intent && intentIconStyles[state.intent],
       state.icon.className,
     );
   }

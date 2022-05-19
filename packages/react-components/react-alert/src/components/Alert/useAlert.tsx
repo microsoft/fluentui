@@ -39,7 +39,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     defaultProps: {
       children: defaultIcon,
     },
-    required: !!(props.icon || props.intent),
+    required: !!props.intent,
   });
 
   return {
@@ -56,6 +56,5 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     icon,
     action: resolveShorthand(props.action),
     intent,
-    isIntentIcon: !!props.intent && !props.icon,
   };
 };
