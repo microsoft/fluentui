@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 18 May 2022 07:41:14 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8d6c673ca9d07fd329c26f16b4c69ea32d284dd4",
+            "comment": "feat: create core base for react/node/legacy lint configs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:34 GMT",
       "tag": "@fluentui/eslint-plugin_v1.8.0",
       "version": "1.8.0",

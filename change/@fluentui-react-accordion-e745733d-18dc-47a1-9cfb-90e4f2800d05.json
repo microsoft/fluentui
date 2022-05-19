@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-accordion: ship rolluped only dts.",
+  "packageName": "@fluentui/react-accordion",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

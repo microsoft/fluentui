@@ -2,6 +2,21 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Wed, 18 May 2022 07:41:14 GMT",
+      "tag": "@fluentui/api-docs_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/api-docs",
+            "commit": "8d6c673ca9d07fd329c26f16b4c69ea32d284dd4",
+            "comment": "style: fix lint errors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Oct 2021 07:31:50 GMT",
       "tag": "@fluentui/api-docs_v8.2.0",
       "version": "8.2.0",

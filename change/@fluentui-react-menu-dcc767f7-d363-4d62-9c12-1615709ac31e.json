@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing Common types from all Menu components.",
+  "packageName": "@fluentui/react-menu",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

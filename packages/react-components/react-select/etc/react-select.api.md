@@ -24,14 +24,11 @@ export const selectClassName = "fui-Select";
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
 // @public (undocumented)
-export interface SelectCommons {
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
     inline?: boolean;
     size?: 'small' | 'medium' | 'large';
-}
-
-// @public (undocumented)
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
+};
 
 // @public (undocumented)
 export type SelectSlots = {
@@ -41,7 +38,7 @@ export type SelectSlots = {
 };
 
 // @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & Required<SelectCommons>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
 
 // @public
 export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;
