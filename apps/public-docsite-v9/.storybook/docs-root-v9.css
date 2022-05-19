@@ -27,8 +27,10 @@
   border: none;
   box-shadow: none;
   position: relative;
+  width: auto;
   margin: 0 auto;
   max-width: 1200px;
+  padding-right: 15px;
 }
 
 /* remove loading overlay */

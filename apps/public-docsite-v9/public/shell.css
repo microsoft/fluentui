@@ -9,29 +9,32 @@
 }
 
 /* Add left side background color splash */
-#root > div:before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: -200px;
-  width: 400px;
-  height: 400px;
-  background: #c989e8;
-  opacity: 0.5;
-  filter: blur(150px);
-}
+/* colors become distracting in mobile layout so scoped to where sidebar is visible */
+@media (min-width: 600px) {
+  #root > div:before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 400px;
+    height: 400px;
+    background: #c989e8;
+    opacity: 0.5;
+    filter: blur(150px);
+  }
 
-/* Add right side background color splash */
-#root > div:after {
-  content: '';
-  position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 400px;
-  height: 400px;
-  background: #b3d4ff;
-  opacity: 0.5;
-  filter: blur(150px);
+  /* Add right side background color splash */
+  #root > div:after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 400px;
+    height: 400px;
+    background: #b3d4ff;
+    opacity: 0.5;
+    filter: blur(150px);
+  }
 }
 
 /* Give sidebar a transparent white background to match design */
