@@ -16,9 +16,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Accordion: ForwardRefComponent<AccordionProps>;
 
-// @public @deprecated (undocumented)
-export const accordionClassName = "fui-Accordion";
-
 // @public (undocumented)
 export const accordionClassNames: SlotClassNames<AccordionSlots>;
 
@@ -38,9 +35,6 @@ export type AccordionContextValues = {
 
 // @public
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps>;
-
-// @public @deprecated (undocumented)
-export const accordionHeaderClassName = "fui-AccordionHeader";
 
 // @public (undocumented)
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots>;
@@ -86,9 +80,6 @@ export type AccordionIndex = number | number[];
 // @public
 export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 
-// @public @deprecated (undocumented)
-export const accordionItemClassName = "fui-AccordionItem";
-
 // @public (undocumented)
 export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
@@ -125,9 +116,6 @@ export type AccordionItemValue = unknown;
 
 // @public
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
-
-// @public @deprecated (undocumented)
-export const accordionPanelClassName = "fui-AccordionPanel";
 
 // @public (undocumented)
 export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;

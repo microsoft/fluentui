@@ -12,6 +12,7 @@ describe('Divider', () => {
   isConformant({
     Component: Divider,
     displayName: 'Divider',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

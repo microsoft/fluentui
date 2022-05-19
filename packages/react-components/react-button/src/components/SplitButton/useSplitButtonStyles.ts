@@ -10,11 +10,6 @@ export const splitButtonClassNames: SlotClassNames<SplitButtonSlots> = {
   primaryActionButton: 'fui-SplitButton__primaryActionButton',
 };
 
-/**
- * @deprecated Use `splitButtonClassName.root` instead.
- */
-export const splitButtonClassName = splitButtonClassNames.root;
-
 const useFocusStyles = makeStyles({
   primaryActionButton: createCustomFocusIndicatorStyle({
     borderTopRightRadius: 0,

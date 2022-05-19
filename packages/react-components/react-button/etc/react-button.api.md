@@ -15,9 +15,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public @deprecated (undocumented)
-export const buttonClassName: string;
-
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
@@ -45,9 +42,6 @@ export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProp
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public @deprecated (undocumented)
-export const compoundButtonClassName: string;
-
 // @public (undocumented)
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
@@ -65,9 +59,6 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
-
-// @public @deprecated (undocumented)
-export const menuButtonClassName: string;
 
 // @public (undocumented)
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
@@ -100,9 +91,6 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Elemen
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
-// @public @deprecated (undocumented)
-export const splitButtonClassName: string;
-
 // @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
@@ -121,9 +109,6 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
-
-// @public @deprecated (undocumented)
-export const toggleButtonClassName: string;
 
 // @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;

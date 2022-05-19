@@ -15,9 +15,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 const Image_2: ForwardRefComponent<ImageProps>;
 export { Image_2 as Image }
 
-// @public @deprecated (undocumented)
-export const imageClassName = "fui-Image";
-
 // @public (undocumented)
 export const imageClassNames: SlotClassNames<ImageSlots>;
 

@@ -18,9 +18,6 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public @deprecated (undocumented)
-export const avatarClassName = "fui-Avatar";
-
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 

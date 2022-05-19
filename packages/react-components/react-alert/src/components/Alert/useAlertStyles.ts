@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const alertClassName = 'fui-Alert';
 export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
   // TODO: add class names for all slots on AlertSlots.
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(alertClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(alertClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

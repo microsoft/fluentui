@@ -6,6 +6,7 @@ import { isConformant } from '../../common/isConformant';
 describe('MenuDivider', () => {
   isConformant({
     Component: MenuDivider,
+    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuDivider',
   });
 
