@@ -1,10 +1,11 @@
 export {
   Accordion,
-  AccordionContext,
+  AccordionProvider,
   // eslint-disable-next-line deprecation/deprecation
   accordionClassName,
   accordionClassNames,
   renderAccordion_unstable,
+  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
@@ -22,7 +23,7 @@ export type {
 } from './Accordion';
 export {
   AccordionItem,
-  AccordionItemContext,
+  AccordionItemProvider,
   // eslint-disable-next-line deprecation/deprecation
   accordionItemClassName,
   accordionItemClassNames,

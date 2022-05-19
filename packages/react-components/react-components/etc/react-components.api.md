@@ -8,7 +8,6 @@ import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassName } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
-import { AccordionContext } from '@fluentui/react-accordion';
 import { AccordionContextValue } from '@fluentui/react-accordion';
 import { AccordionContextValues } from '@fluentui/react-accordion';
 import { AccordionHeader } from '@fluentui/react-accordion';
@@ -25,10 +24,10 @@ import { AccordionIndex } from '@fluentui/react-accordion';
 import { AccordionItem } from '@fluentui/react-accordion';
 import { accordionItemClassName } from '@fluentui/react-accordion';
 import { accordionItemClassNames } from '@fluentui/react-accordion';
-import { AccordionItemContext } from '@fluentui/react-accordion';
 import { AccordionItemContextValue } from '@fluentui/react-accordion';
 import { AccordionItemContextValues } from '@fluentui/react-accordion';
 import { AccordionItemProps } from '@fluentui/react-accordion';
+import { AccordionItemProvider } from '@fluentui/react-accordion';
 import { AccordionItemSlots } from '@fluentui/react-accordion';
 import { AccordionItemState } from '@fluentui/react-accordion';
 import { AccordionItemValue } from '@fluentui/react-accordion';
@@ -39,6 +38,7 @@ import { AccordionPanelProps } from '@fluentui/react-accordion';
 import { AccordionPanelSlots } from '@fluentui/react-accordion';
 import { AccordionPanelState } from '@fluentui/react-accordion';
 import { AccordionProps } from '@fluentui/react-accordion';
+import { AccordionProvider } from '@fluentui/react-accordion';
 import { AccordionSlots } from '@fluentui/react-accordion';
 import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
@@ -169,7 +169,6 @@ import { MenuButtonSlots } from '@fluentui/react-button';
 import { MenuButtonState } from '@fluentui/react-button';
 import { MenuCheckedValueChangeData } from '@fluentui/react-menu';
 import { MenuCheckedValueChangeEvent } from '@fluentui/react-menu';
-import { MenuContext } from '@fluentui/react-menu';
 import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuContextValues } from '@fluentui/react-menu';
 import { MenuDivider } from '@fluentui/react-menu';
@@ -214,7 +213,6 @@ import { MenuItemState } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassName } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
-import { MenuListContext } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
 import { MenuListContextValues } from '@fluentui/react-menu';
 import { MenuListProps } from '@fluentui/react-menu';
@@ -250,9 +248,9 @@ import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { PartialTheme } from '@fluentui/react-theme';
 import { Popover } from '@fluentui/react-popover';
-import { PopoverContext } from '@fluentui/react-popover';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { PopoverProps } from '@fluentui/react-popover';
+import { PopoverProvider } from '@fluentui/react-popover';
 import { PopoverSize } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
@@ -282,11 +280,11 @@ import { radioClassNames } from '@fluentui/react-radio';
 import { RadioGroup } from '@fluentui/react-radio';
 import { radioGroupClassName } from '@fluentui/react-radio';
 import { radioGroupClassNames } from '@fluentui/react-radio';
-import { RadioGroupContext } from '@fluentui/react-radio';
 import { RadioGroupContextValue } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
 import { RadioGroupOnChangeData } from '@fluentui/react-radio';
 import { RadioGroupProps } from '@fluentui/react-radio';
+import { RadioGroupProvider } from '@fluentui/react-radio';
 import { RadioGroupSlots } from '@fluentui/react-radio';
 import { RadioGroupState } from '@fluentui/react-radio';
 import { RadioOnChangeData } from '@fluentui/react-radio';
@@ -434,6 +432,7 @@ import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
 import { UninitializedMenuListState } from '@fluentui/react-menu';
 import { useAccordion_unstable } from '@fluentui/react-accordion';
+import { useAccordionContext_unstable } from '@fluentui/react-accordion';
 import { useAccordionContextValues_unstable } from '@fluentui/react-accordion';
 import { useAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { useAccordionHeaderContextValues_unstable } from '@fluentui/react-accordion';
@@ -520,6 +519,7 @@ import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
+import { useRadioGroupContext_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
@@ -558,8 +558,6 @@ export { accordionClassName }
 
 export { accordionClassNames }
 
-export { AccordionContext }
-
 export { AccordionContextValue }
 
 export { AccordionContextValues }
@@ -592,13 +590,13 @@ export { accordionItemClassName }
 
 export { accordionItemClassNames }
 
-export { AccordionItemContext }
-
 export { AccordionItemContextValue }
 
 export { AccordionItemContextValues }
 
 export { AccordionItemProps }
+
+export { AccordionItemProvider }
 
 export { AccordionItemSlots }
 
@@ -619,6 +617,8 @@ export { AccordionPanelSlots }
 export { AccordionPanelState }
 
 export { AccordionProps }
+
+export { AccordionProvider }
 
 export { AccordionSlots }
 
@@ -880,8 +880,6 @@ export { MenuCheckedValueChangeData }
 
 export { MenuCheckedValueChangeEvent }
 
-export { MenuContext }
-
 export { MenuContextValue }
 
 export { MenuContextValues }
@@ -970,8 +968,6 @@ export { menuListClassName }
 
 export { menuListClassNames }
 
-export { MenuListContext }
-
 export { MenuListContextValue }
 
 export { MenuListContextValues }
@@ -1042,11 +1038,11 @@ export { PartialTheme }
 
 export { Popover }
 
-export { PopoverContext }
-
 export { PopoverContextValue }
 
 export { PopoverProps }
+
+export { PopoverProvider }
 
 export { PopoverSize }
 
@@ -1106,8 +1102,6 @@ export { radioGroupClassName }
 
 export { radioGroupClassNames }
 
-export { RadioGroupContext }
-
 export { RadioGroupContextValue }
 
 export { RadioGroupContextValues }
@@ -1115,6 +1109,8 @@ export { RadioGroupContextValues }
 export { RadioGroupOnChangeData }
 
 export { RadioGroupProps }
+
+export { RadioGroupProvider }
 
 export { RadioGroupSlots }
 
@@ -1410,6 +1406,8 @@ export { UninitializedMenuListState }
 
 export { useAccordion_unstable }
 
+export { useAccordionContext_unstable }
+
 export { useAccordionContextValues_unstable }
 
 export { useAccordionHeader_unstable }
@@ -1581,6 +1579,8 @@ export { usePresenceBadge_unstable }
 export { useRadio_unstable }
 
 export { useRadioGroup_unstable }
+
+export { useRadioGroupContext_unstable }
 
 export { useRadioGroupContextValues }
 
