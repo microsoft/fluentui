@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import { Delete16Filled } from '@fluentui/react-icons';
 import { render, screen } from '@testing-library/react';
 
 import { isConformant } from '../../common/isConformant';
 import { Alert } from './Alert';
-import { intentClassName } from './useAlertStyles';
 
 describe('Alert', () => {
   isConformant({
@@ -37,13 +35,8 @@ describe('Alert', () => {
   });
 
   it('renders an icon', () => {
-    render(<Alert icon={<Delete16Filled data-testid="foo" />}>Test</Alert>);
+    render(<Alert icon={<div data-testid="foo" />}>Test</Alert>);
     expect(screen.getByTestId('foo')).toBeTruthy();
-  });
-
-  it('renders the expected icon for intent prop', () => {
-    const { container } = render(<Alert intent="success">Test</Alert>);
-    expect(container.querySelector(`.${intentClassName}`)).toBeTruthy();
   });
 
   it('renders a button', () => {
@@ -51,14 +44,12 @@ describe('Alert', () => {
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 
-  // it prioritizes icon over intent prop
   it('prioritizes icon over intent prop', () => {
-    const { container } = render(
-      <Alert intent="success" icon={<Delete16Filled data-testid="foo" />}>
+    render(
+      <Alert intent="success" icon={<div data-testid="foo" />}>
         Test
       </Alert>,
     );
     expect(screen.getByTestId('foo')).toBeTruthy();
-    expect(container.querySelector(`.${intentClassName}`)).toBeFalsy();
   });
 });

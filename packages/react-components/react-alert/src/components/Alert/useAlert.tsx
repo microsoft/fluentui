@@ -39,7 +39,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     defaultProps: {
       children: defaultIcon,
     },
-    required: true,
+    required: !!(props.icon || props.intent),
   });
 
   return {

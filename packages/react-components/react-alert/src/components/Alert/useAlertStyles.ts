@@ -10,13 +10,13 @@ export const alertClassNames: SlotClassNames<AlertSlots> = {
   icon: 'fui-Alert__icon',
   action: 'fui-Alert__action',
 };
-export const intentClassName = 'fui-Alert__intent';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
     minHeight: '44px',
+    ...shorthands.padding('0', '12px'),
     backgroundColor: tokens.colorNeutralBackground1, // todo - there is no bg10, used bg1
     ...shorthands.borderColor('transparent'),
     ...shorthands.borderRadius('4px'),
@@ -26,12 +26,11 @@ const useStyles = makeStyles({
   },
   icon: {
     height: '16px',
-    ...shorthands.padding('0', '8px', '0', '12px'),
+    ...shorthands.padding('0', '8px', '0', '0'),
   },
   action: {
     ...shorthands.padding('0'),
     minWidth: 0,
-    marginRight: '12px',
     marginLeft: 'auto',
     color: tokens.colorBrandForeground2, // todo - foreground3 doesn't exist
   },
@@ -67,7 +66,6 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
       styles.icon,
       // apply intent styles only when icon is rendered due to the intent prop
       state.intent && state.isIntentIcon && intentIconStyles[state.intent],
-      state.isIntentIcon && intentClassName,
       state.icon.className,
     );
   }
