@@ -175,7 +175,7 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
 
     height: '24px',
     minWidth: '64px',
@@ -187,7 +187,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalM),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
 
     height: '32px',
     minWidth: '96px',
@@ -199,7 +199,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalL),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
     height: '40px',
     minWidth: '96px',
