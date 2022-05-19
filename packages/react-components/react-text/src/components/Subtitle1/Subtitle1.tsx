@@ -5,22 +5,22 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { TextSlots } from '../Text/Text.types';
 import { typographyStyles } from '@fluentui/react-theme';
 
-export const largeTitleClassNames: SlotClassNames<TextSlots> = {
-  root: 'fui-LargeTitle',
+export const subtitle1ClassNames: SlotClassNames<TextSlots> = {
+  root: 'fui-Subtitle1',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: typographyStyles.largeTitle,
+  root: typographyStyles.subtitle1,
 });
 
 /**
- * Text wrapper component for the Large Title typography variant
+ * Text wrapper component for the Subtitle1 typography variant
  */
-export const LargeTitle: FunctionComponent<TextWrapperProps> = createWrapper({
+export const Subtitle1: FunctionComponent<TextWrapperProps> = createWrapper({
   useStyles,
-  className: largeTitleClassNames.root,
-  displayName: 'LargeTitle',
+  className: subtitle1ClassNames.root,
+  displayName: 'Subtitle1',
 });
