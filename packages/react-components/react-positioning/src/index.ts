@@ -3,4 +3,19 @@ export { createArrowStyles, createArrowHeightStyles } from './createArrowStyles'
 export { usePositioning } from './usePositioning';
 export { useMouseTarget } from './useMouseTarget';
 export { resolvePositioningShorthand, mergeArrowOffset } from './utils/index';
-export * from './types';
+export type {
+  Alignment,
+  AutoSize,
+  Boundary,
+  FloatingUIOptions,
+  Offset,
+  OffsetFunction,
+  OffsetFunctionParam,
+  OffsetObject,
+  Position,
+  PositioningImperativeRef,
+  PositioningProps,
+  PositioningShorthand,
+  PositioningShorthandValue,
+  PositioningVirtualElement,
+} from './types';
