@@ -19,10 +19,12 @@ function getVnextStories() {
 
   return Object.keys({ ...dependencies, '@fluentui/react-components': '' })
     .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(
-      pkgName =>
-        '../../../packages/react-components/' + pkgName.replace('@fluentui/', '') + '/src/**/*.stories.@(ts|tsx|mdx)',
-    );
+    .map(pkgName => {
+      const name = pkgName.replace('@fluentui/', '');
+      const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
+
+      return `../../../packages/react-components/${name}${storiesGlob}`;
+    });
 }
 
 exports.getVnextStories = getVnextStories;
