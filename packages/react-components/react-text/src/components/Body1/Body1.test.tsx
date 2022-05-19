@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Title2 } from './Title2';
+import { Body1 } from './Body1';
 import { isConformant } from '../../common/isConformant';
 
-describe('Title2', () => {
+describe('Body1', () => {
   isConformant({
-    Component: Title2,
-    displayName: 'Title2',
+    Component: Body1,
+    displayName: 'Body1',
     disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {
-    const result = render(<Title2>Default Title2</Title2>);
+    const result = render(<Body1>Default Body1</Body1>);
     expect(result.container).toMatchSnapshot();
   });
 });
