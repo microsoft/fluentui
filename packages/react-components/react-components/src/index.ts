@@ -86,7 +86,6 @@ export {
   tokens,
   typographyStyles,
   webDarkTheme,
-  webHighContrastTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
 export type {

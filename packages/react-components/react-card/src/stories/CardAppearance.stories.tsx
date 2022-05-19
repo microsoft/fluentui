@@ -4,7 +4,7 @@ import { Headline, Title3 } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@griffel/react';
 import { SampleCard } from './SampleCard.stories';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webDarkTheme, webHighContrastTheme, webLightTheme } from '@fluentui/react-theme';
+import { webDarkTheme, teamsHighContrastTheme, webLightTheme } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
   container: {
@@ -85,7 +85,7 @@ export const Appearance = () => {
       <FluentProvider theme={webDarkTheme}>
         <AppearanceExamples title="Dark theme" />
       </FluentProvider>
-      <FluentProvider theme={webHighContrastTheme}>
+      <FluentProvider theme={teamsHighContrastTheme}>
         <AppearanceExamples title="High contrast theme" />
       </FluentProvider>
     </div>

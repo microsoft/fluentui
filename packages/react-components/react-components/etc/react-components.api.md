@@ -547,7 +547,6 @@ import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
-import { webHighContrastTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
 
 export { __styles }
@@ -1635,8 +1634,6 @@ export { useTooltipStyles_unstable }
 export { VerticalSpacingTokens }
 
 export { webDarkTheme }
-
-export { webHighContrastTheme }
 
 export { webLightTheme }
 

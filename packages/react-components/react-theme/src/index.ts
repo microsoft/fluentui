@@ -1,11 +1,4 @@
-export {
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webDarkTheme,
-  webHighContrastTheme,
-  webLightTheme,
-} from './themes/index';
+export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
 export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
