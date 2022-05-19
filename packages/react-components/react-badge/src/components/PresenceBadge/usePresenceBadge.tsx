@@ -39,11 +39,11 @@ const iconMap = (
 
 const DEFAULT_STRINGS = {
   busy: 'busy',
-  outOfOffice: 'out of office',
+  'out-of-office': 'out of office',
   away: 'away',
   available: 'available',
   offline: 'offline',
-  doNotDisturb: 'do not disturb',
+  'do-not-disturb': 'do not disturb',
   unknown: 'unknown',
 };
 
