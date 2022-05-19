@@ -78,15 +78,15 @@ describe('epic-generator', () => {
     it('requires a non-empty title', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: ' ' })).toThrowErrorMatchingInlineSnapshot(
-        `"Must provide a title for the issue"`,
-      );
+      expect(() =>
+        epicGenerator(tree, { title: ' ', repository: 'microsoft/fluentui', message: 'cool message' }),
+      ).toThrowErrorMatchingInlineSnapshot(`"Must provide a title for the issue"`);
     });
 
     it('requires a well formatted repository', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }))
+      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo', message: 'cool message' }))
         .toThrowErrorMatchingInlineSnapshot(`
         "You provided \\"invalid_repo\\", which is an invalid repository name.
         Please follow the format {owner}/{repositoryName}."
@@ -101,7 +101,9 @@ describe('epic-generator', () => {
       });
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowErrorMatchingInlineSnapshot(`
+      expect(() =>
+        epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui', message: 'cool message' }),
+      ).toThrowErrorMatchingInlineSnapshot(`
         "Error calling GitHub CLI (gh). Please make sure it's installed correctly.
         command not found."
       `);
@@ -111,27 +113,13 @@ describe('epic-generator', () => {
       execSyncMock.mockReturnValueOnce('You are not logged into any GitHub hosts. Run gh auth login to authenticate.');
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title' })).toThrowErrorMatchingInlineSnapshot(
-        `"You are not logged into GitHub CLI (gh)."`,
-      );
+      expect(() =>
+        epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui', message: 'cool message' }),
+      ).toThrowErrorMatchingInlineSnapshot(`"You are not logged into GitHub CLI (gh)."`);
     });
   });
 
   describe('issue generation', () => {
-    it('uses defaults', () => {
-      const tree = setupTest([]);
-
-      const effectsCall = epicGenerator(tree, {
-        title: 'test title',
-      });
-      effectsCall();
-
-      expect(execSyncMock).nthCalledWith(
-        2,
-        'gh issue create --repo "microsoft/fluentui" --title "test title" --body "*Description to be added*"',
-      );
-    });
-
     it('handles a real life scenario', () => {
       const packages: Package[] = [
         {
@@ -200,6 +188,7 @@ describe('epic-generator', () => {
       const effectsCall = epicGenerator(tree, {
         title: 'test title',
         repository: 'cool-company/repository',
+        message: '*Description to be added*',
       });
       effectsCall();
 
