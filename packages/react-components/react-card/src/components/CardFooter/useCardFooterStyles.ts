@@ -2,10 +2,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
 
-/**
- * @deprecated Use `cardFooterClassNames.root` instead.
- */
-export const cardFooterClassName = 'fui-CardFooter';
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {
   root: 'fui-CardFooter',
   action: 'fui-CardFooter__action',

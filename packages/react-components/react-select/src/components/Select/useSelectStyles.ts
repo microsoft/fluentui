@@ -3,10 +3,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SelectSlots, SelectState } from './Select.types';
 
-/**
- * @deprecated Use `selectClassNames.root` instead.
- */
-export const selectClassName = 'fui-Select';
 export const selectClassNames: SlotClassNames<SelectSlots> = {
   root: 'fui-Select',
   select: 'fui-Select__select',

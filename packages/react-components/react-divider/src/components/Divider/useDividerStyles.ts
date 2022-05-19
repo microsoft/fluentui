@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import { DividerSlots, DividerState } from './Divider.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `dividerClassNames.root` instead.
- */
-export const dividerClassName = 'fui-Divider';
 export const dividerClassNames: SlotClassNames<DividerSlots> = {
   root: 'fui-Divider',
   wrapper: 'fui-Divider__wrapper',

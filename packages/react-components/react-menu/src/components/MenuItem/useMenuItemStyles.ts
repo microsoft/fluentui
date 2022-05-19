@@ -7,10 +7,6 @@ import { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuItemClassNames.root` instead.
- */
-export const menuItemClassName = 'fui-MenuItem';
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
   icon: 'fui-MenuItem__icon',

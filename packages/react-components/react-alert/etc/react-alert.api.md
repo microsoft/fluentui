@@ -16,9 +16,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Alert: ForwardRefComponent<AlertProps>;
 
 // @public (undocumented)
-export const alertClassName = "fui-Alert";
-
-// @public (undocumented)
 export const alertClassNames: SlotClassNames<AlertSlots>;
 
 // @public

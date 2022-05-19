@@ -4,7 +4,6 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const alertClassName = 'fui-Alert';
 export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
   icon: 'fui-Alert__icon',
