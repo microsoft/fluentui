@@ -1,0 +1,40 @@
+/* remove the docs wrapper bg to let page bg show through */
+/* remove unnecessary padding now that theme switcher is not taking up space */
+#docs-root .sbdocs-wrapper {
+  background: transparent !important;
+  padding-top: 0;
+}
+
+/* sb-show-main is missing during page transitions causing a page shift */
+/* todo: cleanup once we no longer inherit docs-root */
+.sb-show-main.sb-main-fullscreen,
+.sb-main-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* remove background from fluent provider to allow page bg to show through */
+#docs-root > .fui-FluentProvider {
+  background: transparent !important;
+}
+
+/* remove background from theme switcher */
+/* todo: remove override once we have a custom theme solution for website */
+#docs-root > .fui-FluentProvider > div {
+  background: none;
+  text-align: right;
+  border: none;
+  box-shadow: none;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* remove loading overlay */
+.sb-preparing-story,
+.sb-preparing-docs,
+.sb-nopreview,
+.sb-errordisplay {
+  display: none !important;
+}
