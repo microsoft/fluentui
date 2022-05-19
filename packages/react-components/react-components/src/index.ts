@@ -520,14 +520,8 @@ export {
   renderText_unstable,
   subtitle2ClassNames,
   textClassNames,
-  // eslint-disable-next-line deprecation/deprecation
-  title1ClassName,
   title1ClassNames,
-  // eslint-disable-next-line deprecation/deprecation
-  title2ClassName,
   title2ClassNames,
-  // eslint-disable-next-line deprecation/deprecation
-  title3ClassName,
   title3ClassNames,
   useText_unstable,
   useTextStyles_unstable,
