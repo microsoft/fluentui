@@ -14,25 +14,6 @@
   display: block;
 }
 
-/* remove background from fluent provider to allow page bg to show through */
-#docs-root > .fui-FluentProvider {
-  background: transparent !important;
-}
-
-/* remove background from theme switcher */
-/* todo: remove override once we have a custom theme solution for website */
-#docs-root > .fui-FluentProvider > div {
-  background: none;
-  text-align: right;
-  border: none;
-  box-shadow: none;
-  position: relative;
-  width: auto;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding-right: 15px;
-}
-
 /* remove loading overlay */
 .sb-preparing-story,
 .sb-preparing-docs,
