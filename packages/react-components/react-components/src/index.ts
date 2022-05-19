@@ -582,43 +582,25 @@ export type {
   TabListState,
 } from '@fluentui/react-tabs';
 export {
-  Body,
-  Caption,
+  Body1,
+  Caption1,
+  Caption2,
   Display,
-  Headline,
+  Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
   Title3,
-  /* eslint-disable-next-line deprecation/deprecation */
-  bodyClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  captionClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  displayClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  headlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  largeTitleClassName,
-  bodyClassNames,
-  captionClassNames,
+  body1ClassNames,
+  caption1ClassNames,
+  caption2ClassNames,
   displayClassNames,
-  headlineClassNames,
+  subtitle1ClassNames,
   largeTitleClassNames,
   renderText_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  subheadlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  textClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title3ClassName,
-  subheadlineClassNames,
+  subtitle2ClassNames,
   textClassNames,
   title1ClassNames,
   title2ClassNames,
