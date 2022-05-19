@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 17 May 2022 07:45:01 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 07:41:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.68.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.3)
+
+Thu, 19 May 2022 07:41:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.2..@fluentui/react_v8.68.3)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.4.0 ([PR #23069](https://github.com/microsoft/fluentui/pull/23069) by beachball)
 
 ## [8.68.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.2)
 

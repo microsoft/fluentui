@@ -66,7 +66,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 };
 
 // @public
-export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarSlots = {
@@ -83,7 +83,10 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
 };
 
 // @public
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
+    allowPhoneInitials?: boolean;
+    firstInitialOnly?: boolean;
+}): string;
 
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;

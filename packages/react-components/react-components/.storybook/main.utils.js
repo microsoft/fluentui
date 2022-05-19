@@ -17,14 +17,8 @@ function getVnextStories() {
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
       const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';
-      const pkgUnmigratedPath = `../../${name}`;
-      const pkgMigratedPath = `../${name}`;
-      //TODO: simplify once all v9 packages have been moved to the new react-components subfolder.
-      if (fs.existsSync(pkgUnmigratedPath + '/package.json')) {
-        return `../${pkgUnmigratedPath}${storiesGlob}`;
-      } else {
-        return `../${pkgMigratedPath}${storiesGlob}`;
-      }
+
+      return `../../${name}${storiesGlob}`;
     });
 }
 

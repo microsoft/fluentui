@@ -1,6 +1,8 @@
 import { Select } from '../Select';
 import selectDescription from '../SelectDescription.md';
 
+import bestPracticesMd from './SelectBestPractices.md';
+
 export { Default } from './SelectDefault.stories';
 export { Appearance } from './SelectAppearance.stories';
 export { Controlled } from './SelectControlled.stories';
@@ -15,7 +17,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [selectDescription].join('\n'),
+        component: [selectDescription, bestPracticesMd].join('\n'),
       },
     },
   },
