@@ -14,17 +14,11 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public @deprecated (undocumented)
-export const cardClassName = "fui-Card";
-
 // @public (undocumented)
 export const cardClassNames: SlotClassNames<CardSlots>;
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
-
-// @public @deprecated (undocumented)
-export const cardFooterClassName = "fui-CardFooter";
 
 // @public (undocumented)
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
@@ -43,9 +37,6 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
-
-// @public @deprecated (undocumented)
-export const cardHeaderClassName = "fui-CardHeader";
 
 // @public (undocumented)
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
@@ -68,9 +59,6 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
-
-// @public @deprecated (undocumented)
-export const cardPreviewClassName = "fui-CardPreview";
 
 // @public (undocumented)
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;

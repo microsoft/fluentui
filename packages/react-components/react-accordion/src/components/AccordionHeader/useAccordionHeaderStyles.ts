@@ -4,10 +4,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `accordionHeaderClassNames.root` instead.
- */
-export const accordionHeaderClassName = 'fui-AccordionHeader';
 export const accordionHeaderClassNames: SlotClassNames<AccordionHeaderSlots> = {
   root: 'fui-AccordionHeader',
   button: 'fui-AccordionHeader__button',

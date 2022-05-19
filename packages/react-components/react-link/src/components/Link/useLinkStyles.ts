@@ -4,10 +4,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `linkClassNames.root` instead.
- */
-export const linkClassName = 'fui-Link';
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };

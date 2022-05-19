@@ -9,10 +9,6 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-/**
- * @deprecated Use `buttonClassNames.root` instead.
- */
-export const buttonClassName = buttonClassNames.root;
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 

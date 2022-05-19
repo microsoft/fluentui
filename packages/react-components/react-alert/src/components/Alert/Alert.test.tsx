@@ -9,21 +9,7 @@ describe('Alert', () => {
   isConformant({
     Component: Alert,
     displayName: 'Alert',
-    // TODO - Follow up on the best option here
-    // testOptions: {
-    //   'has-static-classnames': [
-    //     {
-    //       props: {
-    //         action: { children: 'Test button ' },
-    //       },
-    //     },
-    //   ],
-    // },
-    disabledTests: [
-      // 'component-has-static-classname',
-      // 'component-has-static-classname-exported',
-      'component-has-static-classnames-object',
-    ],
+    disabledTests: ['component-has-static-classname-exported'],
   });
 
   // TODO - create visual regression tests in /apps/vr-tests

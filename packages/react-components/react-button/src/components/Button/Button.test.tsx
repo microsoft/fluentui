@@ -10,6 +10,7 @@ describe('Button', () => {
   isConformant({
     Component: Button as React.FunctionComponent<ButtonProps>,
     displayName: 'Button',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

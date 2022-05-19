@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `avatarClassNames.root` instead.
- */
-export const avatarClassName = 'fui-Avatar';
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
   image: 'fui-Avatar__image',
