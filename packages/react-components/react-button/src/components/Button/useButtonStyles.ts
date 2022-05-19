@@ -14,6 +14,8 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
  */
 export const buttonClassName = buttonClassNames.root;
 
+const iconSpacingVar = '--fui-Button__icon--spacing';
+
 const useRootStyles = makeStyles({
   // Base styles
   base: {
@@ -173,8 +175,7 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
 
     height: '24px',
     minWidth: '64px',
@@ -186,8 +187,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.gap(tokens.spacingHorizontalSNudge),
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalM),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
 
     height: '32px',
     minWidth: '96px',
@@ -199,8 +199,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.gap(tokens.spacingHorizontalSNudge),
-    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingHorizontalL),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
     height: '40px',
     minWidth: '96px',
@@ -404,16 +403,30 @@ const useIconStyles = makeStyles({
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalXS,
   },
   medium: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
   large: {
     fontSize: '24px',
     height: '24px',
     width: '24px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  },
+
+  // Icon position variations
+  before: {
+    marginRight: `var(${iconSpacingVar})`,
+  },
+  after: {
+    marginLeft: `var(${iconSpacingVar})`,
   },
 });
 
@@ -431,6 +444,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     disabled,
     disabledFocusable,
     iconOnly,
+    iconPosition,
     shape,
     size,
   } = state;
@@ -465,7 +479,13 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(buttonClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      buttonClassNames.icon,
+      iconStyles.base,
+      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      iconStyles[size],
+      state.icon.className,
+    );
   }
 
   return state;

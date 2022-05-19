@@ -19,9 +19,8 @@ export const compoundButtonClassName = compoundButtonClassNames.root;
 const useRootStyles = makeStyles({
   // Base styles
   base: {
-    ...shorthands.gap(tokens.spacingHorizontalM),
-
     height: 'auto',
+    maxWidth: 'unset',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
@@ -211,6 +210,14 @@ const useIconStyles = makeStyles({
     height: '40px',
     width: '40px',
   },
+
+  // Icon position variations
+  before: {
+    marginRight: tokens.spacingHorizontalM,
+  },
+  after: {
+    marginLeft: tokens.spacingHorizontalM,
+  },
 });
 
 const useContentContainerStyles = makeStyles({
@@ -248,7 +255,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
 
   state.root.className = mergeClasses(
     compoundButtonClassNames.root,
@@ -277,7 +284,12 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(compoundButtonClassNames.icon, iconStyles.base, state.icon.className);
+    state.icon.className = mergeClasses(
+      compoundButtonClassNames.icon,
+      iconStyles.base,
+      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      state.icon.className,
+    );
   }
 
   if (state.secondaryContent) {
