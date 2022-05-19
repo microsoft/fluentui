@@ -238,7 +238,7 @@ const useColorStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted,
     backgroundColor: tokens.colorBrandBackgroundStatic,
   },
-  darkRed: {
+  'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
     backgroundColor: tokens.colorPaletteDarkRedBackground2,
   },
@@ -282,11 +282,11 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteSeafoamForeground2,
     backgroundColor: tokens.colorPaletteSeafoamBackground2,
   },
-  darkGreen: {
+  'dark-green': {
     color: tokens.colorPaletteDarkGreenForeground2,
     backgroundColor: tokens.colorPaletteDarkGreenBackground2,
   },
-  lightTeal: {
+  'light-teal': {
     color: tokens.colorPaletteLightTealForeground2,
     backgroundColor: tokens.colorPaletteLightTealBackground2,
   },
@@ -302,7 +302,7 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteBlueForeground2,
     backgroundColor: tokens.colorPaletteBlueBackground2,
   },
-  royalBlue: {
+  'royal-blue': {
     color: tokens.colorPaletteRoyalBlueForeground2,
     backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
   },
