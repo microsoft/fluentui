@@ -48,7 +48,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           data={this.state.dynamicData}
           colors={this.state.colors}
           hideLegend={true}
-          hideTooltip={false}
+          hideTooltip={true}
           yMaxValue={50}
           yAxisTickCount={5}
           height={400}
