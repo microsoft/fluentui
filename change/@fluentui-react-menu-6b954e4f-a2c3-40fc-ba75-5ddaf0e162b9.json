@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Fill icon on hover",
+  "comment": "feat: Fill icon on hover",
   "packageName": "@fluentui/react-menu",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
