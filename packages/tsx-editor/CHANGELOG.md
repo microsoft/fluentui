@@ -1,8 +1,17 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.16.26](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.26)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/tsx-editor_v0.16.25..@uifabric/tsx-editor_v0.16.26)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [0.16.25](https://github.com/microsoft/fluentui/tree/@uifabric/tsx-editor_v0.16.25)
 

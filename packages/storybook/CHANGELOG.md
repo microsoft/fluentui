@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.27](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.27)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.8.26..@fluentui/storybook_v0.8.27)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [0.8.26](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.8.26)
 

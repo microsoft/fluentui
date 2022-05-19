@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.20.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.20.2)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.20.1..@uifabric/styling_v7.20.2)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.6 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [7.20.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.20.1)
 

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.117.29](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.117.29)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.117.28..@uifabric/react-cards_v0.117.29)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [0.117.28](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.117.28)
 

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.3](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.3)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.10.2..@uifabric/foundation_v7.10.3)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [7.10.2](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.2)
 

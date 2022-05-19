@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 19 May 2022 12:29:07 GMT",
+      "tag": "@uifabric/azure-themes_v7.9.27",
+      "version": "7.9.27",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v1.7.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "cfafa8b0de5d3d83307a2c091b9cf4a4d1909f2a",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 May 2022 12:26:39 GMT",
       "tag": "@uifabric/azure-themes_v7.9.26",
       "version": "7.9.26",

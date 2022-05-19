@@ -1,8 +1,17 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.26](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.6.26)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/mdl2-theme_v0.6.25..@uifabric/mdl2-theme_v0.6.26)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.6 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [0.6.25](https://github.com/microsoft/fluentui/tree/@uifabric/mdl2-theme_v0.6.25)
 

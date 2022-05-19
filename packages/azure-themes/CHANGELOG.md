@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.27](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.9.27)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.9.26..@uifabric/azure-themes_v7.9.27)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.6 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [7.9.26](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.9.26)
 

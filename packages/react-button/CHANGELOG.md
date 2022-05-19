@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 30 Mar 2022 12:25:54 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.3)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.20.2..@fluentui/react-button_v0.20.3)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [0.20.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.2)
 

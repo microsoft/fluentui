@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 19 May 2022 12:29:07 GMT",
+      "tag": "office-ui-fabric-react_v7.185.6",
+      "version": "7.185.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update React compatibility to support React <18.0.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "cfafa8b0de5d3d83307a2c091b9cf4a4d1909f2a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 May 2022 12:26:39 GMT",
       "tag": "office-ui-fabric-react_v7.185.5",
       "version": "7.185.5",

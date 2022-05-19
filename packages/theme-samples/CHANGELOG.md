@@ -1,8 +1,17 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Wed, 11 May 2022 12:26:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.26](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.4.26)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/theme-samples_v7.4.25..@uifabric/theme-samples_v7.4.26)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.6 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [7.4.25](https://github.com/microsoft/fluentui/tree/@uifabric/theme-samples_v7.4.25)
 

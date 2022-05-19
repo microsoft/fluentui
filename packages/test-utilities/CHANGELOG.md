@@ -1,8 +1,17 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Thu, 17 Sep 2020 23:15:07 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.3.2](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.2)
+
+Thu, 19 May 2022 12:29:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/test-utilities_v7.3.0..@uifabric/test-utilities_v7.3.2)
+
+### Patches
+
+- Update React compatibility to support React <18.0.0 ([PR #22921](https://github.com/microsoft/fluentui/pull/22921) by tmichon@microsoft.com)
 
 ## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/test-utilities_v7.3.0)
 
