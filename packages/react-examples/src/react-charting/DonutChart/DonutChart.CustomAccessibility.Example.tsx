@@ -35,7 +35,7 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
         innerRadius={55}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
-        hideLegend={true}
+        hideLegend={false}
         height={220}
         width={176}
         valueInsideDonut={39000}

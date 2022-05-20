@@ -19,9 +19,8 @@ export const compoundButtonClassName = compoundButtonClassNames.root;
 const useRootStyles = makeStyles({
   // Base styles
   base: {
-    ...shorthands.gap('12px'),
-
     height: 'auto',
+    maxWidth: 'unset',
 
     [`& .${compoundButtonClassNames.secondaryContent}`]: {
       color: tokens.colorNeutralForeground2,
@@ -118,19 +117,24 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding('8px', '8px', '10px', '8px'),
+    ...shorthands.padding(
+      tokens.spacingHorizontalS,
+      tokens.spacingHorizontalS,
+      tokens.spacingHorizontalMNudge,
+      tokens.spacingHorizontalS,
+    ),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding('14px', '12px', '16px', '12px'),
+    ...shorthands.padding('14px', tokens.spacingHorizontalM, tokens.spacingHorizontalL, tokens.spacingHorizontalM),
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding('18px', '16px', '20px', '16px'),
+    ...shorthands.padding('18px', tokens.spacingHorizontalL, tokens.spacingHorizontalXL, tokens.spacingHorizontalL),
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -180,19 +184,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding('6px'),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
 
     maxWidth: '56px',
     minWidth: '56px',
@@ -205,6 +209,14 @@ const useIconStyles = makeStyles({
     fontSize: '40px',
     height: '40px',
     width: '40px',
+  },
+
+  // Icon position variations
+  before: {
+    marginRight: tokens.spacingHorizontalM,
+  },
+  after: {
+    marginLeft: tokens.spacingHorizontalM,
   },
 });
 
@@ -243,7 +255,7 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   const contentContainerStyles = useContentContainerStyles();
   const secondaryContentStyles = useSecondaryContentStyles();
 
-  const { appearance, disabled, disabledFocusable, iconOnly, size } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, size } = state;
 
   state.root.className = mergeClasses(
     compoundButtonClassNames.root,
@@ -272,7 +284,12 @@ export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): Co
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(compoundButtonClassNames.icon, iconStyles.base, state.icon.className);
+    state.icon.className = mergeClasses(
+      compoundButtonClassNames.icon,
+      iconStyles.base,
+      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      state.icon.className,
+    );
   }
 
   if (state.secondaryContent) {

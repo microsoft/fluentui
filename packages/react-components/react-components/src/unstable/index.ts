@@ -46,17 +46,6 @@ export type {
 } from '@fluentui/react-card';
 
 export {
-  Input,
-  /* eslint-disable-next-line deprecation/deprecation */
-  inputClassName,
-  inputClassNames,
-  renderInput_unstable,
-  useInput_unstable,
-  useInputStyles_unstable,
-} from '@fluentui/react-input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
-
-export {
   SpinButton,
   renderSpinButton_unstable,
   spinButtonClassNames,
@@ -73,12 +62,3 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
-
-export {
-  Switch,
-  switchClassNames,
-  renderSwitch_unstable,
-  useSwitch_unstable,
-  useSwitchStyles_unstable,
-} from '@fluentui/react-switch';
-export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
