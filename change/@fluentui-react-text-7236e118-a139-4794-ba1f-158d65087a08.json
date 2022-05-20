@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fixing typo in Text best practices",
+  "packageName": "@fluentui/react-text",
+  "email": "t-emmajiang@microsoft.com",
+  "dependentChangeType": "none"
+}
