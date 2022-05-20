@@ -2,7 +2,7 @@ import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
 import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { EpicGenerator } from './schema';
-import { isPackageConverged } from '../../utils';
+import { isPackageConverged, workspacePaths } from '../../utils';
 
 function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
@@ -74,7 +74,7 @@ const getConvergedPackages = (tree: Tree) => {
 };
 
 const getCodeowners = (): Ownership[] => {
-  const codeownersContent = readFileSync('.github/CODEOWNERS', 'utf8');
+  const codeownersContent = readFileSync(workspacePaths.github.codeowners, 'utf8');
 
   return codeownersContent.split('\n').map(line => {
     const [path, ...owners] = line.split(' ');
