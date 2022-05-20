@@ -406,37 +406,69 @@ describe('SpinButton', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('does not call on change when defaultValue is `null` when uncontrolled', () => {
+  it('calls on change when defaultValue is `null` without min when uncontrolled', () => {
     const onChange = jest.fn();
     const { getAllByRole } = render(<SpinButton defaultValue={null} onChange={onChange} />);
 
     const [incrementButton, decrementButton] = getAllByRole('button');
     userEvent.click(incrementButton);
 
-    expect(onChange).not.toHaveBeenCalled();
-    expect(getSpinButtonInput().value).toBe('');
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(getSpinButtonInput().value).toBe('1');
 
     userEvent.click(decrementButton);
 
-    expect(onChange).not.toHaveBeenCalled();
-    expect(getSpinButtonInput().value).toBe('');
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(getSpinButtonInput().value).toBe('0');
   });
 
-  it('does not call on change when value is `null` when controlled', () => {
+  it('calls on change when value is `null` without min when controlled', () => {
     const onChange = jest.fn();
-    const { getAllByRole, rerender } = render(<SpinButton value={null} onChange={onChange} />);
+    const { getAllByRole } = render(<SpinButton value={null} onChange={onChange} />);
 
     const [incrementButton, decrementButton] = getAllByRole('button');
     userEvent.click(incrementButton);
 
-    expect(onChange).not.toHaveBeenCalled();
-    expect(getSpinButtonInput().value).toBe('');
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 1, displayValue: undefined });
 
-    rerender(<SpinButton value={null} onChange={onChange} />);
     userEvent.click(decrementButton);
 
-    expect(onChange).not.toHaveBeenCalled();
-    expect(getSpinButtonInput().value).toBe('');
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: -1, displayValue: undefined });
+  });
+
+  it('calls on change when defaultValue is `null` with min when uncontrolled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<SpinButton defaultValue={null} min={5} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(getSpinButtonInput().value).toBe('6');
+
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(getSpinButtonInput().value).toBe('5');
+  });
+
+  it('calls on change when value is `null` with min when controlled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole, rerender } = render(<SpinButton value={null} min={5} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 6, displayValue: undefined });
+
+    rerender(<SpinButton value={null} min={5} onChange={onChange} />);
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 5, displayValue: undefined });
   });
 
   it('removes the increment and decrement buttons from the tab order', () => {

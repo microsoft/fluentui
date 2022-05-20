@@ -144,14 +144,17 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (value === null || currentValue === null) {
       newTextValue = displayValue ?? '';
       internalState.current.value = null;
+      setAtBound('none');
     } else if (value !== undefined) {
       const roundedValue = precisionRound(value, precision);
       newTextValue = displayValue ?? String(roundedValue);
       internalState.current.value = roundedValue;
       setAtBound(getBound(roundedValue, min, max));
     } else {
-      newTextValue = String(precisionRound(currentValue, precision));
-      internalState.current.value = currentValue;
+      const roundedValue = precisionRound(currentValue, precision);
+      newTextValue = String(roundedValue);
+      internalState.current.value = roundedValue;
+      setAtBound(getBound(roundedValue, min, max));
     }
     setTextValue(newTextValue);
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
@@ -167,14 +170,15 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const stepValue = (e: SpinButtonChangeEvent, direction: 'up' | 'down' | 'upPage' | 'downPage') => {
     const val = internalState.current.value;
-
-    if (val === null) {
-      commit(e, null);
-      return;
-    }
-
     const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
     const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
+
+    if (val === null) {
+      const stepStart = min === undefined ? 0 : min;
+      const nullStep = clamp(stepStart + stepSize * dir, min, max);
+      commit(e, nullStep);
+      return;
+    }
 
     let newValue = val + stepSize * dir;
     if (!Number.isNaN(newValue)) {
@@ -268,11 +272,8 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
     let roundedValue;
     if (valueChanged) {
-      // TODO: What happens when newValueis null?
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
     }
 
     if (valueChanged || displayValueChanged) {
