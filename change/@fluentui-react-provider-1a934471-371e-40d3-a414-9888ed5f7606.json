@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing FluentProviderCommons type.",
+  "packageName": "@fluentui/react-provider",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

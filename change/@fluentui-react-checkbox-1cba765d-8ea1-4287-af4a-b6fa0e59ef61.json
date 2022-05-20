@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Replacing spacing constants with tokens.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

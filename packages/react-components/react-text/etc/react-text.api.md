@@ -81,15 +81,26 @@ export const textClassName = "fui-Text";
 export const textClassNames: SlotClassNames<TextSlots>;
 
 // @public
-export type TextProps = ComponentProps<TextSlots> & Partial<TextCommons>;
-
-// @public
-export type TextSlots = {
-    root: Slot<'span', 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'pre'>;
+export type TextProps = ComponentProps<TextSlots> & {
+    wrap?: boolean;
+    truncate?: boolean;
+    block?: boolean;
+    italic?: boolean;
+    underline?: boolean;
+    strikethrough?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    font?: 'base' | 'monospace' | 'numeric';
+    weight?: 'regular' | 'medium' | 'semibold';
+    align?: 'start' | 'center' | 'end' | 'justify';
 };
 
 // @public
-export type TextState = ComponentState<TextSlots> & TextCommons;
+export type TextSlots = {
+    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
+};
+
+// @public
+export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'>>;
 
 // @public
 export const Title1: FunctionComponent<TextWrapperProps>;

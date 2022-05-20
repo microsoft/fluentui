@@ -1,8 +1,44 @@
 # Change Log - @fluentui/ts-minbar-test-react
 
-This log was last generated on Wed, 11 May 2022 07:42:47 GMT and should not be manually modified.
+This log was last generated on Thu, 19 May 2022 07:41:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ts-minbar-test-react_v1.0.0)
+
+Thu, 19 May 2022 07:41:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ts-minbar-test-react_v1.0.0..@fluentui/ts-minbar-test-react_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.3 ([PR #23069](https://github.com/microsoft/fluentui/pull/23069) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ts-minbar-test-react_v1.0.0)
+
+Tue, 17 May 2022 07:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ts-minbar-test-react_v1.0.0..@fluentui/ts-minbar-test-react_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.2 ([PR #23024](https://github.com/microsoft/fluentui/pull/23024) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ts-minbar-test-react_v1.0.0)
+
+Mon, 16 May 2022 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ts-minbar-test-react_v1.0.0..@fluentui/ts-minbar-test-react_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.1 ([PR #23002](https://github.com/microsoft/fluentui/pull/23002) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ts-minbar-test-react_v1.0.0)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ts-minbar-test-react_v1.0.0..@fluentui/ts-minbar-test-react_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.0 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ts-minbar-test-react_v1.0.0)
 

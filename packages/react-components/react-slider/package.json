@@ -4,7 +4,7 @@
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.3",
+    "@griffel/react": "1.0.5",
     "@fluentui/react-shared-contexts": "9.0.0-rc.7",
     "@fluentui/react-tabster": "9.0.0-rc.9",
     "@fluentui/react-theme": "9.0.0-rc.7",

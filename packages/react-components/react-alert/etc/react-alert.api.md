@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -21,17 +22,21 @@ export const alertClassName = "fui-Alert";
 export const alertClassNames: SlotClassNames<AlertSlots>;
 
 // @public
-export type AlertProps = ComponentProps<AlertSlots>;
+export type AlertProps = ComponentProps<AlertSlots> & {
+    intent?: 'info' | 'success' | 'error' | 'warning';
+};
 
 // @public (undocumented)
 export type AlertSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    icon?: Slot<'span'>;
+    action?: Slot<typeof Button>;
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots>;
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'>;
 
-// @public
+// @public (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;
 
 // @public

@@ -1,0 +1,64 @@
+/* remove margin from sidebar logo  */
+.sidebar-header > div:first-of-type {
+  margin-right: 0;
+}
+
+/* remove sidebar shortcuts menu */
+.sidebar-header > div:last-child {
+  display: none;
+}
+
+/* Add left side background color splash */
+/* colors become distracting in mobile layout so scoped to where sidebar is visible */
+@media (min-width: 600px) {
+  #root > div:before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 400px;
+    height: 400px;
+    background: #c989e8;
+    opacity: 0.5;
+    filter: blur(150px);
+  }
+
+  /* Add right side background color splash */
+  #root > div:after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 400px;
+    height: 400px;
+    background: #b3d4ff;
+    opacity: 0.5;
+    filter: blur(150px);
+  }
+}
+
+/* Give sidebar a transparent white background to match design */
+.sidebar-container {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* remove background preventing color splash from showing */
+#storybook-preview-wrapper {
+  background: transparent;
+}
+
+/* remove box shadow style from storybooks wrapper div */
+[role='main'] > div {
+  box-shadow: none;
+}
+
+/* permanently hide toolbar so animation never appears on page load */
+[role='main'] .os-host {
+  display: none;
+}
+
+/* stop offset from changing page dimensions when 't' is pressed and toolbar opened */
+[role='main'] > div > div > div {
+  top: 0 !important;
+  height: 100% !important;
+}

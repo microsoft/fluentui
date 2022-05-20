@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update react-input to release candidate.",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

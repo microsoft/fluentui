@@ -72,7 +72,7 @@ export type AvatarNamedColor =
 /**
  * Sizes that can be used for the Avatar
  */
-export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * Properties for Avatar
@@ -131,6 +131,8 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    *
    * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
    * based on design guidelines for the Avatar control.
+   *
+   * Note: At size 16, if initials are displayed, only the first initial will be rendered.
    *
    * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
    * to override the rendered size.

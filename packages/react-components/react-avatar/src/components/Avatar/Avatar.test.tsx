@@ -73,6 +73,11 @@ describe('Avatar', () => {
     expect(screen.getByText('FL')).toBeTruthy();
   });
 
+  it('renders 1 initial at size 16', () => {
+    render(<Avatar name="First Middle Last" size={16} />);
+    expect(screen.getByText('F')).toBeTruthy();
+  });
+
   it('renders an icon if the name is not alphabetic', () => {
     const initialsRef = React.createRef<HTMLElement>();
     render(<Avatar name="(111)-555-1234" initials={{ ref: initialsRef }} icon={<img src="i.svg" alt="test-icon" />} />);

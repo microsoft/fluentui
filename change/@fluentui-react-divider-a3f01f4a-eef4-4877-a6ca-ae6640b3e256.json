@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "react-divider: ship rolluped only dts.",
+  "packageName": "@fluentui/react-divider",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

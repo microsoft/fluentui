@@ -4,21 +4,25 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import type { Theme } from '@fluentui/react-theme';
+import { Theme } from '@fluentui/react-theme';
 import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
 import type { TooltipContextType } from '@fluentui/react-shared-contexts';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useTheme } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
-export const FluentProvider: React_2.ForwardRefExoticComponent<FluentProviderProps & React_2.RefAttributes<HTMLElement>>;
+export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
+    dir?: "ltr" | "rtl" | undefined;
+    targetDocument?: Document | undefined;
+    theme?: Partial<Theme> | undefined;
+} & React_2.RefAttributes<HTMLElement>>;
 
 // @public @deprecated (undocumented)
 export const fluentProviderClassName = "fui-FluentProvider";
@@ -27,22 +31,19 @@ export const fluentProviderClassName = "fui-FluentProvider";
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 
 // @public (undocumented)
-export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
-    // (undocumented)
+export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
     provider: ProviderContextValue;
-    // (undocumented)
-    textDirection: 'ltr' | 'rtl';
-    // (undocumented)
     themeClassName: ThemeClassNameContextValue;
-    // (undocumented)
+    textDirection: 'ltr' | 'rtl';
     tooltip: TooltipContextType;
-}
+};
 
 // @public (undocumented)
-export interface FluentProviderProps extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>, Partial<FluentProviderCommons> {
-    // (undocumented)
+export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
+    dir?: 'ltr' | 'rtl';
+    targetDocument?: Document;
     theme?: PartialTheme;
-}
+};
 
 // @public (undocumented)
 export type FluentProviderSlots = {
@@ -50,12 +51,10 @@ export type FluentProviderSlots = {
 };
 
 // @public (undocumented)
-export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
-    // (undocumented)
+export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
     theme: Theme | Partial<Theme> | undefined;
-    // (undocumented)
     themeClassName: string;
-}
+};
 
 // @public
 export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;

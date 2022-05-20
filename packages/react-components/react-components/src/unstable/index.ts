@@ -46,28 +46,6 @@ export type {
 } from '@fluentui/react-card';
 
 export {
-  Checkbox,
-  /* eslint-disable-next-line deprecation/deprecation */
-  checkboxClassName,
-  checkboxClassNames,
-  renderCheckbox_unstable,
-  useCheckbox_unstable,
-  useCheckboxStyles_unstable,
-} from '@fluentui/react-checkbox';
-export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
-
-export {
-  Input,
-  /* eslint-disable-next-line deprecation/deprecation */
-  inputClassName,
-  inputClassNames,
-  renderInput_unstable,
-  useInput_unstable,
-  useInputStyles_unstable,
-} from '@fluentui/react-input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
-
-export {
   SpinButton,
   renderSpinButton_unstable,
   spinButtonClassNames,
@@ -84,30 +62,3 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
-
-export {
-  Spinner,
-  spinnerClassNames,
-  renderSpinner_unstable,
-  useSpinner_unstable,
-  useSpinnerStyles_unstable,
-} from '@fluentui/react-spinner';
-export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
-
-export {
-  Switch,
-  switchClassNames,
-  renderSwitch_unstable,
-  useSwitch_unstable,
-  useSwitchStyles_unstable,
-} from '@fluentui/react-switch';
-export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
-
-export {
-  Textarea,
-  textareaClassNames,
-  renderTextarea_unstable,
-  useTextarea_unstable,
-  useTextareaStyles_unstable,
-} from '@fluentui/react-textarea';
-export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
