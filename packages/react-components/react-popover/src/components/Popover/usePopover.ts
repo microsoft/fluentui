@@ -3,8 +3,8 @@ import { elementContains } from '@fluentui/react-portal';
 import {
   mergeArrowOffset,
   resolvePositioningShorthand,
-  usePopper,
-  usePopperMouseTarget,
+  usePositioning,
+  useMouseTarget,
 } from '@fluentui/react-positioning';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -26,7 +26,7 @@ import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.ty
  * @param props - props from this instance of Popover
  */
 export const usePopover_unstable = (props: PopoverProps): PopoverState => {
-  const [contextTarget, setContextTarget] = usePopperMouseTarget();
+  const [contextTarget, setContextTarget] = useMouseTarget();
   const initialState = {
     size: 'medium',
     contextTarget,
@@ -203,7 +203,7 @@ function usePopoverRefs(
     popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
   }
 
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePopper(popperOptions);
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(popperOptions);
 
   return {
     triggerRef,

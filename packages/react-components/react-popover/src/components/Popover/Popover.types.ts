@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement, PositioningShorthand, useMouseTarget } from '@fluentui/react-positioning';
 
 /**
  * Determines popover padding and arrow size
@@ -123,7 +123,7 @@ export type PopoverState = Pick<
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: PopperVirtualElement | undefined;
+    contextTarget: PositioningVirtualElement | undefined;
 
     popoverSurface: React.ReactElement | undefined;
 
@@ -132,7 +132,7 @@ export type PopoverState = Pick<
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof useMouseTarget>[1];
 
     /**
      * Callback to open/close the Popover
