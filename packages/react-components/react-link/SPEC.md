@@ -54,72 +54,7 @@ The `Link` can also be custom rendered as something entirely different by replac
 
 ### Props
 
-```ts
-export type LinkProps = ComponentProps &
-  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
-  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
-    /**
-     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
-     * overridden using `as`).
-     */
-    href?: string;
-
-    /**
-     * Click handler for the link.
-     */
-    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
-
-    /**
-     * Relationship to the linked URL (can be a space-separated list).
-     * Most common values are `noreferrer` and/or `noopener`.
-     * This prop is only applied if `href` is set.
-     */
-    rel?: string;
-
-    /**
-     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-     * `_self` (the current window/context), `_parent`, and `_top`.
-     * This prop is only applied if `href` is set.
-     */
-    target?: string;
-
-    /**
-     * Built-in HTML attribute with different behavior depending on how the link is rendered.
-     * If rendered as `<a>`, hints at the MIME type.
-     * If rendered as `<button>`, override the type of button (`button` is the default).
-     */
-    type?: string;
-
-    /**
-     * A link can appear either with its default style or subtle.
-     * If not specified, the link appears with its default styling.
-     */
-    appearance?: 'subtle';
-
-    /**
-     * Whether the link is disabled.
-     * @default false
-     */
-    disabled?: boolean;
-
-    /**
-     * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
-     * important to keep a consistent tab order for screen reader and keyboard users.
-     * @default false
-     */
-    disabledFocusable?: boolean;
-
-    /**
-     * If true, changes styling when the link is being used alongside other text content.
-     * @default false
-     */
-    inline?: boolean;
-  };
-```
-
-### Styling Tokens
-
-TBD once we decide on component tokens work.
+See API at [Link.types.ts](./src/components/Link/Link.types.ts).
 
 ## Structure
 
@@ -141,7 +76,7 @@ For `Links` rendering as anything other than `<a>` (the example below uses `<but
 
 ## Migration
 
-See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/react-link/MIGRATION.md).
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
