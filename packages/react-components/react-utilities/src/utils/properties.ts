@@ -1,16 +1,10 @@
-// const toObjectMap = <T extends string>(...items: (T[] | Record<T, number>)[]): Record<T, 1> => {
-function toObjectMap<T extends string>(items: T[] | Record<T, number>): Record<T, 1>;
-function toObjectMap<T extends string, U extends string>(
-  items: T[] | Record<T, number>,
-  extensionItems: U[] | Record<U, number>,
-): Record<T, 1> & Record<U, 1>;
-function toObjectMap(
-  items: string[] | Record<string, number>,
-  extensionItems?: string[] | Record<string, number>,
-): Record<string, 1> {
+type ObjectItem<T extends string> = Array<T> | Record<T, 1>;
+function toObjectMap<T extends string, U extends string = never>(
+  ...items: [ObjectItem<T>, ObjectItem<U>?]
+): Record<T, 1> & Record<U, 1> {
   const result: Record<string, 1> = {};
 
-  for (const item of [items, extensionItems]) {
+  for (const item of items) {
     const keys = Array.isArray(item) ? item : Object.keys(item ?? []);
 
     for (const key of keys) {
@@ -433,11 +427,12 @@ export const divProperties = htmlElementProperties;
  * @param allowedPropsNames - The array or record of allowed prop names.
  * @returns The filtered props
  */
-export function getNativeProps<
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Props extends Record<string, any>,
-  E extends Extract<keyof Props, string> = never
->(props: Props, allowedPropNames: Array<string> | Record<string, 1>, excludedPropNames?: E[]): Omit<Props, E> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getNativeProps<Props extends Record<string, any>, E extends Extract<keyof Props, string> = never>(
+  props: Props,
+  allowedPropNames: ObjectItem<string>,
+  excludedPropNames?: E[],
+): Omit<Props, E> {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
   // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
   // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
@@ -458,7 +453,7 @@ export function getNativeProps<
   return result as Omit<Props, E>;
 }
 
-function isNativeProp(propName: string, nativeProps: string[] | Record<string, 1>) {
+function isNativeProp(propName: string, nativeProps: ObjectItem<string>) {
   if (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0) {
     return true;
   }
