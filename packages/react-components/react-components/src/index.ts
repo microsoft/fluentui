@@ -566,4 +566,10 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export type { PositioningProps, PositioningShorthand, PositioningShorthandValue } from '@fluentui/react-positioning';
+export type {
+  PositioningProps,
+  PositioningShorthand,
+  PositioningShorthandValue,
+  PositioningImperativeRef,
+  PositioningVirtualElement,
+} from '@fluentui/react-positioning';
