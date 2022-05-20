@@ -217,7 +217,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
 
   /**
    * A callback method to determine if an input or textarea element should lose focus on arrow keys
-   *  @param inputElement - The input or textarea element which is to loose focus.
+   *  @param inputElement - The input or textarea element which is to lose focus.
    *  @returns True if input element should loose focus or false otherwise.
    */
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement | HTMLTextAreaElement) => boolean;
