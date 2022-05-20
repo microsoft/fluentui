@@ -150,11 +150,13 @@ export const colorScheme = {
     backgroundHover: colors.brand['700'],
     backgroundHover1: colors.brand['50'],
     backgroundHover3: colors.brand['600'],
+    backgroundHoverNEW: colors.brand['700'],
 
     foregroundPressed: colors.brand['700'],
     foregroundPressed1: colors.white,
 
     backgroundPressed: colors.brand['800'],
+    backgroundPressedNEW: colors.brand['800'],
 
     borderPressed: transparentColors.onyx['700'],
 

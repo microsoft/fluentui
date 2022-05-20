@@ -32,6 +32,7 @@ export type CheckboxVariables = {
   checkedBorderColor: string;
   checkboxCheckedColor: string;
   checkedBackgroundHover: string;
+  checkedBackgroundActive: string;
   checkedTextColor: string;
   checkedIndicatorColor: string;
   checkboxToggleCheckedColor: string;
@@ -90,7 +91,8 @@ export const checkboxVariables = (siteVars: any): CheckboxVariables => ({
 
   textColorHover: _.get(siteVars, 'colorScheme.default.foreground', defaultValue),
   borderColorHover: _.get(siteVars, 'colorScheme.default.foreground', defaultValue),
-  checkedBackgroundHover: _.get(siteVars, 'colorScheme.brand.backgroundHover', defaultValue),
+  checkedBackgroundHover: _.get(siteVars, 'colorScheme.brand.backgroundHoverNEW', defaultValue),
+  checkedBackgroundActive: _.get(siteVars, 'colorScheme.brand.backgroundPressedNEW', defaultValue),
 
   toggleBorderRadius: pxToRem(999),
   toggleIndicatorSize: pxToRem(14),
