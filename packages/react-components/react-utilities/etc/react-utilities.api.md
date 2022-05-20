@@ -80,13 +80,13 @@ export const formProperties: Record<"style" | "title" | "children" | "className"
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
 // @public
-export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown>, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: Tag, props: Props, excludedPropNames?: ExcludedPropKeys[]): Omit<NativeElemProps<Tag>, ExcludedPropKeys>;
+export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown>, ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never>(tagName: Tag, props: Props, excludedPropNames?: ExcludedPropKeys[]): Omit<NativeElemProps<Tag>, ExcludedPropKeys>;
 
 // @public
-export function getNativeProps<Props extends Record<string, any>, E extends Extract<keyof Props, string> = never>(props: Props, allowedPropNames: string[] | Record<string, 1>, excludedPropNames?: E[]): Omit<Props, E>;
+export function getNativeProps<Props extends Record<string, unknown>, A extends string, E extends Extract<keyof Props | A, string> = never>(props: Props, allowedPropNames: A[] | Record<A, 1>, excludedPropNames?: E[]): Omit<Props, E>;
 
 // @public
-export const getPartitionedNativeProps: <Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown> & Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
+export const getPartitionedNativeProps: <Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown> & Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: Tag;
     props: Props;
     excludedPropNames?: ExcludedPropKeys[] | undefined;
@@ -95,7 +95,7 @@ export const getPartitionedNativeProps: <Tag extends keyof JSX.IntrinsicElements
         style: React_2.CSSProperties | undefined;
         className: string | undefined;
     };
-    primary: Omit<NativeElemProps<Tag>, ExcludedPropKeys>;
+    primary: Omit<NativeElemProps<Tag>, "style" | "className" | ExcludedPropKeys>;
 };
 
 // @public
