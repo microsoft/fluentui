@@ -14,6 +14,8 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
  */
 export const buttonClassName = buttonClassNames.root;
 
+const iconSpacingVar = '--fui-Button__icon--spacing';
+
 const useRootStyles = makeStyles({
   // Base styles
   base: {
@@ -173,8 +175,7 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.gap('4px'),
-    ...shorthands.padding('0', '8px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalS),
 
     height: '24px',
     minWidth: '64px',
@@ -186,8 +187,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
   },
   medium: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '12px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
 
     height: '32px',
     minWidth: '96px',
@@ -199,8 +199,7 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.gap('6px'),
-    ...shorthands.padding('0', '16px'),
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
     height: '40px',
     minWidth: '96px',
@@ -332,19 +331,10 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useRootFocusStyles = makeStyles({
-  // TODO: `overflow: 'hidden'` on the root does not pay well with `position: absolute`
-  // used by the outline pseudo-element. Need to introduce a text container for children and set
-  // overflow there so that default focus outline can work
-  //
-  // base: createFocusOutlineStyle(),
-  // circular: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.circular } }),
-  // primary: createFocusOutlineStyle({ style: { outlineOffset: '2px' } }),
-  // square: createFocusOutlineStyle({ style: { outlineRadius: tokens.global.borderRadius.none } }),
-
   base: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineColor: 'transparent',
-    outlineWidth: '2px',
+    outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
     boxShadow: `
       ${tokens.shadow4},
@@ -381,19 +371,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '28px',
     maxWidth: '28px',
   },
   medium: {
-    ...shorthands.padding('4px'),
+    ...shorthands.padding(tokens.spacingHorizontalXS),
 
     minWidth: '32px',
     maxWidth: '32px',
   },
   large: {
-    ...shorthands.padding('6px'),
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
 
     minWidth: '40px',
     maxWidth: '40px',
@@ -413,16 +403,30 @@ const useIconStyles = makeStyles({
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalXS,
   },
   medium: {
     fontSize: '20px',
     height: '20px',
     width: '20px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
   },
   large: {
     fontSize: '24px',
     height: '24px',
     width: '24px',
+
+    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  },
+
+  // Icon position variations
+  before: {
+    marginRight: `var(${iconSpacingVar})`,
+  },
+  after: {
+    marginLeft: `var(${iconSpacingVar})`,
   },
 });
 
@@ -440,6 +444,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     disabled,
     disabledFocusable,
     iconOnly,
+    iconPosition,
     shape,
     size,
   } = state;
@@ -474,7 +479,13 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(buttonClassNames.icon, iconStyles.base, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      buttonClassNames.icon,
+      iconStyles.base,
+      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      iconStyles[size],
+      state.icon.className,
+    );
   }
 
   return state;
