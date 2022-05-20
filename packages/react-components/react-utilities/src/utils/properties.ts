@@ -1,7 +1,7 @@
 type ObjectItem<T extends string> = Array<T> | Record<T, 1>;
 function toObjectMap<T extends string, U extends string = never>(
   ...items: [ObjectItem<T>, ObjectItem<U>?]
-): Record<T, 1> & Record<U, 1> {
+): Record<T | U, 1> {
   const result: Record<string, 1> = {};
 
   for (const item of items) {
@@ -430,7 +430,7 @@ export const divProperties = htmlElementProperties;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeProps<Props extends Record<string, any>, E extends Extract<keyof Props, string> = never>(
   props: Props,
-  allowedPropNames: ObjectItem<string>,
+  allowedPropNames: string[] | Record<string, 1>,
   excludedPropNames?: E[],
 ): Omit<Props, E> {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
