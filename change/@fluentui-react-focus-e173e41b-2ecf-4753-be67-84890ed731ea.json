@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: allow arrow keys to move within textareas, similar to text inputs",
+  "packageName": "@fluentui/react-focus",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
