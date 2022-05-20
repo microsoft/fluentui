@@ -270,7 +270,9 @@ WithOverflow.parameters = {
   docs: {
     description: {
       story:
-        'A tab list can support overflow by using Overflow and OverflowItem. NOTE: when adding custom buttons to a tablist -- e.g. the overflow button in this example -- `role="tab"` must be manually added for screen reader accessibility.',
+        'A tab list can support overflow by using Overflow and OverflowItem.' +
+        'NOTE: when adding custom buttons to a tablist -- e.g. the overflow button in this example --' +
+        '`role="tab"` must be manually added for screen reader accessibility.',
     },
   },
 };
