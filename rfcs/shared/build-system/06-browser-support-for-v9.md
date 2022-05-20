@@ -14,7 +14,7 @@ As it stands, Fluent v9 does not currently adhere to a specific browser support 
 
 ### Browser Support Matrix
 
-The proposed browser support matrix will be loosely based off the [Resize Observer](https://caniuse.com/mdn-api_resizeobserver) support matrix . This decision was driven by the current usage of the `ResizeObserver` in Fluent v9 as well as the current business goals of our partner teams. Along with that, being able to maintain our current ES2019 target and eventually move to ES2020 without the need to transpile down was also a factor. As it stands, the lack of adequate polyfill capabilities for CSS features in tandem with the goals of our partners is the biggest detriment to the support matrix not being higher.
+The proposed browser support matrix will be based off the [Flex Gap](https://caniuse.com/flexbox-gap) support matrix. This decision was driven by the current usage of `flex gap` in Fluent v9 and it's the feature that requires the highest browser matrix support within the library. Along with that, being able to maintain our current ES2019 target and eventually move to ES2020 without the need to transpile down was also a factor.
 
 **Desktop Browsers:**
 
@@ -46,6 +46,8 @@ With a defined browser matrix, the Fluent team will now have better guidance on 
 
 With an eye towards being a modern library, Fluent will follow a yearly audit process to evaluate and update the current browser support matrix to keep pace with the ever evolving ecosystem of the web. This will allow the team to utilize modern tools and improve overall engineering efficiency while also providing consumers with performance and bundlesize improvements. The proposed yearly audit gives Fluent a reasonable timeframe to evaluate, decide and give notice if browser matrix changes are to be made.
 
+**Note**: As of now, the browser matrix is set to adhere to `flex gap`'s supported browsers but that may change in the future once ongoing conversations with partner teams regarding their own support matrices are resolved. If the conclusion results in Fluent having to lower the browser support matrix (such as dropping Edge/Chrome from 84 to 80), then the Fluent team will ensure that any features currently being used that isn't compatible with the updated matrix are removed and refactored.
+
 ## Out of Scope
 
 - The specifics on how to prevent the addition of ES syntax, browser APIs or CSS features that don't conform to this matrix.
@@ -60,7 +62,7 @@ With an eye towards being a modern library, Fluent will follow a yearly audit pr
 
 ### Cons
 
-- Incompatible CSS features (`flex gap` & `:focus-visible`) are already present in the library and will need to be removed and refactored.
+- Incompatible CSS features (`:focus-visible`) are already present in the library and will need to be removed and refactored.
 
 ## Open Issues
 
