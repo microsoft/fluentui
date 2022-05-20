@@ -2,6 +2,21 @@
   "name": "vr-tests",
   "entries": [
     {
+      "date": "Fri, 20 May 2022 12:22:01 GMT",
+      "tag": "vr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/experiments to v7.42.22",
+            "author": "ololubek@microsoft.com",
+            "commit": "67a9f8f777eea54fb2906c2cfd0c70071167fb6b",
+            "package": "vr-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "vr-tests_v7.0.0",
       "version": "7.0.0",

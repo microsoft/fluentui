@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update window variable to use iconBaseUrl to avoid collision",
-  "packageName": "@uifabric/icons",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

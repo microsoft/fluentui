@@ -1,8 +1,17 @@
 # Change Log - server-rendered-app
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Fri, 20 May 2022 12:22:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump @uifabric/icons to v7.7.2 ([PR #23008](https://github.com/microsoft/fluentui/pull/23008) by ololubek@microsoft.com)
 
 ## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
 

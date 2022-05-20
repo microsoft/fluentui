@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.117.30](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.117.30)
+
+Fri, 20 May 2022 12:22:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.117.29..@uifabric/react-cards_v0.117.30)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.9.28 ([PR #23008](https://github.com/microsoft/fluentui/pull/23008) by ololubek@microsoft.com)
 
 ## [0.117.29](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.117.29)
 
