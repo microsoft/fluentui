@@ -11,12 +11,18 @@ import { useMergedEventCallbacks } from '@fluentui/react-utilities';
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const contextColor = useContextSelector(AvatarGroupContext, ctx => ctx.color);
-  const avatarGroupLayout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const size = useContextSelector(AvatarGroupContext, ctx => ctx.size) ?? props.size ?? 32;
-
-  const { name, shape = 'circular', active = 'unset', activeAppearance = 'ring', idForColor } = props;
-  let color = props.color ?? contextColor ?? 'neutral';
+  const groupColor = useContextSelector(AvatarGroupContext, ctx => ctx.color);
+  const groupLayout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
+  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const {
+    name,
+    shape = 'circular',
+    size = groupSize || 32,
+    active = 'unset',
+    activeAppearance = 'ring',
+    idForColor,
+  } = props;
+  let { color = groupColor || 'neutral' } = props;
 
   // Resolve 'colorful' to a specific color name
   if (color === 'colorful') {
@@ -37,7 +43,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     /* excludedPropNames: */ ['name'],
   );
 
-  const firstInitialOnly = size <= 16 || (avatarGroupLayout === 'pie' && size < 40);
+  const firstInitialOnly = size <= 16 || (groupLayout === 'pie' && size < 40);
 
   // Resolve the initials slot, defaulted to getInitials.
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {

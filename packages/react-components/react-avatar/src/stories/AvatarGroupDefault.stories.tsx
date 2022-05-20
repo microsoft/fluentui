@@ -2,9 +2,7 @@ import * as React from 'react';
 import { AvatarGroup } from '../AvatarGroup';
 import type { AvatarGroupProps } from '../AvatarGroup';
 import { Avatar } from '../Avatar';
-import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
-import { useId } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   container: {
@@ -15,13 +13,11 @@ const useStyles = makeStyles({
 });
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
-  const avatarGroupId = useId('avatarGroup');
   const styles = useStyles();
 
   return (
     <div className={styles.container}>
-      <Label htmlFor={avatarGroupId}>Default AvatarGroup</Label>
-      <AvatarGroup id={avatarGroupId} {...props}>
+      <AvatarGroup {...props}>
         <Avatar name="Katri Athokas" />
         <Avatar name="Elvia Atkins" />
         <Avatar name="Cameron Evans" />
