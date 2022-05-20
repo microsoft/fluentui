@@ -935,4 +935,56 @@ describe('DetailsList', () => {
     const groupNameId = checkbox.getAttribute('aria-labelledby')?.split(' ')[1];
     expect(container.querySelector(`#${groupNameId} span`)!.textContent).toEqual('Group 0');
   });
+
+  it('correctly aligns nested groups', () => {
+    const items = [
+      { key: 'a', name: 'a', color: 'red' },
+      { key: 'b', name: 'b', color: 'red' },
+      { key: 'c', name: 'c', color: 'orange' },
+      { key: 'd', name: 'd', color: 'blue' },
+      { key: 'e', name: 'e', color: 'blue' },
+      { key: 'f', name: 'f', color: 'blue' },
+    ];
+
+    const groups = [
+      {
+        key: 'groupprimary',
+        name: 'Primary Colors',
+        count: 5,
+        startIndex: 0,
+        level: 0,
+        children: [
+          { key: 'groupred', name: 'Color: "red"', startIndex: 0, count: 2, level: 1 },
+          { key: 'groupgreen', name: 'Color: "green"', startIndex: 2, count: 0, level: 1 },
+          { key: 'groupblue', name: 'Color: "blue"', startIndex: 3, count: 3, level: 1 },
+        ],
+      },
+      {
+        key: 'groupnonprimary',
+        name: 'Non Primary Colors',
+        count: 1,
+        startIndex: 0,
+        level: 0,
+        children: [
+          {
+            key: 'groupedsecondary',
+            name: 'Secondary Colors',
+            count: 1,
+            startIndex: 0,
+            level: 1,
+            children: [{ key: 'grouporange', name: 'Color: "orange"', startIndex: 2, count: 1, level: 2 }],
+          },
+        ],
+      },
+    ];
+
+    const columns = [
+      { key: 'name', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'color', name: 'Color', fieldName: 'color', minWidth: 100, maxWidth: 200 },
+    ];
+
+    const component = renderer.create(<DetailsList items={items} groups={groups} columns={columns} />);
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

@@ -36,6 +36,7 @@ export interface IDetailsListGroupedExampleState {
   showItemIndexInView: boolean;
   isCompactMode: boolean;
 }
+const _primaryGroupIndex = 0;
 const _blueGroupIndex = 2;
 
 export class DetailsListGroupedExample extends React.Component<{}, IDetailsListGroupedExampleState> {
@@ -49,15 +50,42 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
       items: [
         { key: 'a', name: 'a', color: 'red' },
         { key: 'b', name: 'b', color: 'red' },
-        { key: 'c', name: 'c', color: 'blue' },
+        { key: 'c', name: 'c', color: 'orange' },
         { key: 'd', name: 'd', color: 'blue' },
         { key: 'e', name: 'e', color: 'blue' },
+        { key: 'f', name: 'f', color: 'blue' },
       ],
       // This is based on the definition of items
       groups: [
-        { key: 'groupred0', name: 'Color: "red"', startIndex: 0, count: 2, level: 0 },
-        { key: 'groupgreen2', name: 'Color: "green"', startIndex: 2, count: 0, level: 0 },
-        { key: 'groupblue2', name: 'Color: "blue"', startIndex: 2, count: 3, level: 0 },
+        {
+          key: 'groupprimary',
+          name: 'Primary Colors',
+          count: 5,
+          startIndex: 0,
+          level: 0,
+          children: [
+            { key: 'groupred', name: 'Color: "red"', startIndex: 0, count: 2, level: 1 },
+            { key: 'groupgreen', name: 'Color: "green"', startIndex: 2, count: 0, level: 1 },
+            { key: 'groupblue', name: 'Color: "blue"', startIndex: 3, count: 3, level: 1 },
+          ],
+        },
+        {
+          key: 'groupnonprimary',
+          name: 'Non Primary Colors',
+          count: 1,
+          startIndex: 0,
+          level: 0,
+          children: [
+            {
+              key: 'groupedsecondary',
+              name: 'Secondary Colors',
+              count: 1,
+              startIndex: 0,
+              level: 1,
+              children: [{ key: 'grouporange', name: 'Color: "orange"', startIndex: 2, count: 1, level: 2 }],
+            },
+          ],
+        },
       ],
       showItemIndexInView: false,
       isCompactMode: false,
@@ -121,7 +149,9 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
   private _addItem = (): void => {
     const items = this.state.items;
     const groups = [...this.state.groups];
-    groups[_blueGroupIndex].count++;
+    const primaryGroup = groups[_primaryGroupIndex];
+    primaryGroup.count++;
+    primaryGroup.children![_blueGroupIndex].count++;
 
     this.setState(
       {

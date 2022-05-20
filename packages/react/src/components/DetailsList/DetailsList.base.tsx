@@ -29,7 +29,7 @@ import { DragDropHelper } from '../../DragDrop';
 import { GroupedList } from '../../GroupedList';
 import { List, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
-import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
+import { GetGroupCount, getGroupNestingDepth } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
@@ -486,6 +486,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         compact,
         columns: adjustedColumns,
         groupNestingDepth: nestingDepth,
+        totalNestingDepth: groupNestingDepth,
         id: `${rowId}-${index}`,
         selectionMode,
         selection,
@@ -558,6 +559,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       rowWidth,
       role,
       groupedDetailsListIndexMap,
+      groupNestingDepth,
     ],
   );
 
@@ -1081,15 +1083,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   private _getGroupNestingDepth(): number {
     const { groups } = this.props;
-    let level = 0;
-    let groupsInLevel = groups;
-
-    while (groupsInLevel && groupsInLevel.length > 0) {
-      level++;
-      groupsInLevel = groupsInLevel[0].children;
-    }
-
-    return level;
+    return getGroupNestingDepth(groups);
   }
 
   private _onRowDidMount = (row: DetailsRowBase): void => {
@@ -1526,18 +1520,6 @@ function getPaddedWidth(column: IColumn, props: IDetailsListProps, paddingOnly?:
     cellStyleProps.cellRightPadding +
     (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
   );
-}
-
-function getGroupNestingDepth(groups: IDetailsListProps['groups']): number {
-  let level = 0;
-  let groupsInLevel = groups;
-
-  while (groupsInLevel && groupsInLevel.length > 0) {
-    level++;
-    groupsInLevel = groupsInLevel[0].children;
-  }
-
-  return level;
 }
 
 interface IGroupedDetailsListIndexMap {

@@ -34,6 +34,11 @@ export interface IDetailsItemProps {
   groupNestingDepth?: number;
 
   /**
+   * Total nesting depth.  For spacing
+   */
+  totalNestingDepth?: number;
+
+  /**
    * How much to indent
    */
   indentWidth?: number | undefined;

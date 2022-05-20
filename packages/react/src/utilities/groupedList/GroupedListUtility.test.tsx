@@ -1,4 +1,4 @@
-import { GetGroupCount } from './GroupedListUtility';
+import { GetGroupCount, getGroupNestingDepth } from './GroupedListUtility';
 import type { IGroup } from '../../components/GroupedList/GroupedList.types';
 
 const G = (children: IGroup[] = []): IGroup => {
@@ -51,6 +51,66 @@ describe('GroupedListUtility', () => {
         G(), // 1
       ];
       expect(GetGroupCount(groups)).toEqual(20);
+    });
+  });
+
+  describe('getGroupNestingDepth', () => {
+    it('should be 0 for undefined groups', () => {
+      expect(getGroupNestingDepth(undefined)).toBe(0);
+    });
+
+    it('should be 0 when no groups', () => {
+      expect(getGroupNestingDepth([])).toBe(0);
+    });
+
+    it('should be 1 when a single group with no children', () => {
+      const group: IGroup = {
+        key: 'group',
+        name: 'group',
+        startIndex: 0,
+        count: 0,
+      };
+      expect(getGroupNestingDepth([group])).toBe(1);
+    });
+
+    it('should be 2 when a group with a sub group', () => {
+      const subGroup: IGroup = {
+        key: 'subgroup',
+        name: 'subgroup',
+        startIndex: 0,
+        count: 0,
+      };
+      const group: IGroup = {
+        key: 'group',
+        name: 'group',
+        startIndex: 0,
+        count: 0,
+        children: [subGroup],
+      };
+      expect(getGroupNestingDepth([group])).toBe(2);
+    });
+
+    it('should take the depth from the deepest sub group', () => {
+      const group: IGroup = {
+        key: 'group',
+        name: 'group',
+        startIndex: 0,
+        count: 0,
+      };
+      const subGroup: IGroup = {
+        key: 'subgroup',
+        name: 'subgroup',
+        startIndex: 0,
+        count: 0,
+      };
+      const deepGroup: IGroup = {
+        key: 'deepgroup',
+        name: 'deepgroup',
+        startIndex: 0,
+        count: 0,
+        children: [subGroup],
+      };
+      expect(getGroupNestingDepth([group, deepGroup])).toBe(2);
     });
   });
 });
