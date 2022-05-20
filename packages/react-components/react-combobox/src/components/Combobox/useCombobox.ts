@@ -55,7 +55,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const popperOptions = {
     position: 'below' as const,
     align: 'start' as const,
-    offset: { crossAxis: 0, mainAxis: 2 },
+    offset: 2,
     ...resolvePositioningShorthand(positioning),
   };
 
