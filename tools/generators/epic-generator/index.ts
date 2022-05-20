@@ -134,14 +134,15 @@ const generateIssues = (repo: string, templateTitle: string, packages: Package[]
     const teamOwner = pkg.owners.find(owner => owner.startsWith('@microsoft/'));
     const key = teamOwner || 'ownerless';
 
-    if (key in acc) {
+    if (acc[key]) {
       acc[key].packages.push(pkg);
-    } else {
-      acc[key] = {
-        assignee: teamOwner,
-        packages: [pkg],
-      };
+      return acc;
     }
+
+    acc[key] = {
+      assignee: teamOwner,
+      packages: [pkg],
+    };
 
     return acc;
   }, {});
