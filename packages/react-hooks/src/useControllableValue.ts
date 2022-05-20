@@ -43,14 +43,16 @@ export function useControllableValue<
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
 ) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
-  const isControlled = useConst<boolean>(controlledValue !== undefined);
+  const isControlled = controlledValue !== undefined;
   const currentValue = isControlled ? controlledValue : value;
 
-  // Duplicate the current value and onChange in refs so they're accessible from
+  // Duplicate the controlled state, current value, and onChange in refs so they're accessible from
   // setValueOrCallOnChange without creating a new callback every time
+  const isControlledRef = React.useRef(isControlled);
   const valueRef = React.useRef(currentValue);
   const onChangeRef = React.useRef(onChange);
   React.useEffect(() => {
+    isControlledRef.current = isControlled;
     valueRef.current = currentValue;
     onChangeRef.current = onChange;
   });
@@ -66,7 +68,7 @@ export function useControllableValue<
       onChangeRef.current(ev!, newValue);
     }
 
-    if (!isControlled) {
+    if (!isControlledRef.current) {
       setValue(newValue);
     }
   });

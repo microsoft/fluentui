@@ -58,6 +58,23 @@ describe('useControllableValue', () => {
     expect(resultValue!).toBe(true);
   });
 
+  it('updates from uncontrolled to controlled when controlledValue is set', () => {
+    let resultValue: string | undefined;
+    const TestComponent: React.FunctionComponent<{ value?: string; defaultValue?: string }> = ({
+      value,
+      defaultValue,
+    }) => {
+      [resultValue] = useControllableValue(value, defaultValue);
+      return <div />;
+    };
+
+    const wrapper = mount(<TestComponent value={undefined} />);
+    expect(resultValue!).toBeUndefined();
+
+    wrapper.setProps({ value: 'A' });
+    expect(resultValue!).toBe('A');
+  });
+
   validateHookValueNotChanged('returns the same setter callback', () => {
     const [, setValue] = useControllableValue('hello', 'world');
     return [setValue];
