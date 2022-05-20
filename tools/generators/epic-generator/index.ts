@@ -1,5 +1,5 @@
 import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
-import { execSync } from 'child_process';
+import { execSync, spawnSync } from 'child_process';
 import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';
 
@@ -23,15 +23,17 @@ function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
 }
 
 const checkAuthentication = () => {
-  let authStatus;
+  // `gh auth status` output is split accross multiple lines
+  // so we use spawnSync to capture all lines and flatten the output
+  const result = spawnSync('gh', ['auth', 'status']);
 
-  try {
-    authStatus = execSync('gh auth status', { stdio: [] }).toString();
-  } catch (error) {
-    throw new Error(`Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${error.message}`);
+  if (result.error) {
+    throw new Error(
+      `Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${result.error.message}`,
+    );
   }
 
-  if (authStatus.includes('You are not logged into any GitHub hosts')) {
+  if (!result.output.join('').includes('Logged in to github.com')) {
     throw new Error('You are not logged into GitHub CLI (gh).');
   }
 };

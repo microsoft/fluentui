@@ -1,11 +1,12 @@
 import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { execSync } from 'child_process';
+import { execSync, spawnSync, SpawnSyncReturns } from 'child_process';
 import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
 
 jest.mock('child_process');
 const execSyncMock = (execSync as unknown) as jest.Mock<string>;
+const spawnSyncMock = (spawnSync as unknown) as jest.Mock<Partial<SpawnSyncReturns<string[]>>>;
 
 type Package = {
   name: string;
@@ -13,6 +14,7 @@ type Package = {
   projectType: ProjectType;
   owners: string[];
 };
+
 function setupTest(packages: Package[]) {
   const tree = createTreeWithEmptyWorkspace();
 
@@ -41,9 +43,13 @@ function setupTest(packages: Package[]) {
     .join('\n');
   tree.write(workspacePaths.github.codeowners, codeownersContent);
 
-  // set execSync mock calls
-  execSyncMock.mockReturnValueOnce('Logged in to github.com.'); // response to 'gh auth'
-  execSyncMock.mockReturnValueOnce('epicUrl'); // response to epic creation
+  // response to 'gh auth'
+  spawnSyncMock.mockReturnValueOnce({
+    output: ['Logged in to github.com'],
+  });
+
+  // response to epic creation
+  execSyncMock.mockReturnValueOnce('epicUrl');
 
   /**
    * Responses for each of the packages created
@@ -65,7 +71,8 @@ function setupTest(packages: Package[]) {
       execSyncMock.mockReturnValueOnce(`issueUrl-${owner}`);
     });
 
-  execSyncMock.mockReturnValueOnce('epicUrl'); // response to editing the epic
+  // response to editing the epic
+  execSyncMock.mockReturnValueOnce('epicUrl');
 
   return tree;
 }
@@ -93,8 +100,8 @@ describe('epic-generator', () => {
 
   describe('authentication', () => {
     it('requires gh to be installed', () => {
-      execSyncMock.mockImplementationOnce(() => {
-        throw new Error('command not found.');
+      spawnSyncMock.mockReturnValueOnce({
+        error: new Error('command not found.'),
       });
       const tree = createTreeWithEmptyWorkspace();
 
@@ -107,7 +114,10 @@ describe('epic-generator', () => {
     });
 
     it('requires you to have logged in with gh', () => {
-      execSyncMock.mockReturnValueOnce('You are not logged into any GitHub hosts. Run gh auth login to authenticate.');
+      spawnSyncMock.mockReturnValueOnce({
+        output: ['You are not logged into any GitHub hosts. Run gh auth login to authenticate.'],
+      });
+
       const tree = createTreeWithEmptyWorkspace();
 
       expect(() =>
@@ -189,9 +199,14 @@ describe('epic-generator', () => {
       });
       effectsCall();
 
+      expect(execSyncMock).nthCalledWith(
+        1,
+        stripIndents`gh issue create --repo "cool-company/repository" --title "test title" --body "*Description to be added*"`,
+      );
+
       // @microsoft/cxe-red issue creation
       expect(execSyncMock).nthCalledWith(
-        3,
+        2,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-red" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
         ### Packages to migrate:
@@ -200,7 +215,7 @@ describe('epic-generator', () => {
       );
       // @microsoft/cxe-prg issue creation
       expect(execSyncMock).nthCalledWith(
-        4,
+        3,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
         ### Packages to migrate:
@@ -208,7 +223,7 @@ describe('epic-generator', () => {
       );
       // @microsoft/teams-prg issue creation
       expect(execSyncMock).nthCalledWith(
-        5,
+        4,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/teams-prg" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
         ### Packages to migrate:
@@ -217,7 +232,7 @@ describe('epic-generator', () => {
       );
       // no owner issue creation
       expect(execSyncMock).nthCalledWith(
-        6,
+        5,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - ownerless" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
         ### Packages to migrate:
@@ -225,7 +240,7 @@ describe('epic-generator', () => {
       );
       // @microsoft/cxe-coastal issue creation
       expect(execSyncMock).nthCalledWith(
-        7,
+        6,
         stripIndents`gh issue create --repo "cool-company/repository" --title "test title - @microsoft/cxe-coastal" --body "🚧 This is an auto-generated issue to individually track migration progress.
 
         ### Packages to migrate:
@@ -234,7 +249,7 @@ describe('epic-generator', () => {
 
       // epic edit to add sub-issues
       expect(execSyncMock).nthCalledWith(
-        8,
+        7,
         stripIndents`gh issue edit epicUrl --body "*Description to be added*
 
         ### Packages that need migration:
