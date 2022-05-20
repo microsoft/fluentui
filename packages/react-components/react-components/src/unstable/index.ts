@@ -73,12 +73,3 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
-
-export {
-  Switch,
-  switchClassNames,
-  renderSwitch_unstable,
-  useSwitch_unstable,
-  useSwitchStyles_unstable,
-} from '@fluentui/react-switch';
-export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';

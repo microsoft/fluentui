@@ -330,6 +330,7 @@ import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
@@ -375,6 +376,12 @@ import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { Switch } from '@fluentui/react-switch';
+import { switchClassNames } from '@fluentui/react-switch';
+import { SwitchOnChangeData } from '@fluentui/react-switch';
+import { SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
+import { SwitchState } from '@fluentui/react-switch';
 import { Tab } from '@fluentui/react-tabs';
 import { tabClassName } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
@@ -531,6 +538,8 @@ import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
+import { useSwitch_unstable } from '@fluentui/react-switch';
+import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
 import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
@@ -1202,6 +1211,8 @@ export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
 
+export { renderSwitch_unstable }
+
 export { renderTab_unstable }
 
 export { renderTabList_unstable }
@@ -1291,6 +1302,18 @@ export { Subheadline }
 export { subheadlineClassName }
 
 export { subheadlineClassNames }
+
+export { Switch }
+
+export { switchClassNames }
+
+export { SwitchOnChangeData }
+
+export { SwitchProps }
+
+export { SwitchSlots }
+
+export { SwitchState }
 
 export { Tab }
 
@@ -1603,6 +1626,10 @@ export { useSplitButton_unstable }
 export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
+
+export { useSwitch_unstable }
+
+export { useSwitchStyles_unstable }
 
 export { useTab_unstable }
 

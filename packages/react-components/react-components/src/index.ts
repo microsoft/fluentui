@@ -534,6 +534,14 @@ export {
 } from '@fluentui/react-spinner';
 export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
 export {
+  Switch,
+  switchClassNames,
+  renderSwitch_unstable,
+  useSwitch_unstable,
+  useSwitchStyles_unstable,
+} from '@fluentui/react-switch';
+export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
+export {
   renderTab_unstable,
   Tab,
   tabClassName,
