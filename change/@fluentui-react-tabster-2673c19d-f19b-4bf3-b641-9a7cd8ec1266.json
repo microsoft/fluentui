@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update tabster dependency from ^1.3.3 to ^1.4.0",
+  "packageName": "@fluentui/react-tabster",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
