@@ -6,7 +6,9 @@ describe('getNativeProps', () => {
       {
         'data-automation-id': 1,
       },
-      divProperties,
+      divProperties as typeof divProperties & {
+        'data-automation-id': 1;
+      },
     );
 
     expect(result['data-automation-id']).toEqual(1);
@@ -17,7 +19,9 @@ describe('getNativeProps', () => {
       {
         'aria-label': '1',
       },
-      divProperties,
+      divProperties as typeof divProperties & {
+        'aria-label': 1;
+      },
     );
 
     expect(result['aria-label']).toEqual('1');
@@ -53,21 +57,24 @@ describe('getNativeProps', () => {
     );
 
     expect(result.className).toEqual('hi');
-    expect(result.foobar).toEqual(undefined);
+    // @ts-expect-error -- foobar props was removed
+    expect(result.foobar).toBeUndefined();
   });
 
   it('can exclude properties', () => {
     const result = getNativeProps({ a: 1, b: 2, c: 3 }, ['a', 'b'], ['b']);
 
     expect(result.a).toBeDefined();
-    expect(result.c).toBeDefined();
+    // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
+    expect(result.c).toBeUndefined();
     // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
     expect(result.b).toBeUndefined();
 
     const resultObj = getNativeProps({ a: 1, b: 2, c: 3 }, { a: 1, b: 1 }, ['b']);
 
     expect(resultObj.a).toBeDefined();
-    expect(resultObj.c).toBeDefined();
+    // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
+    expect(resultObj.c).toBeUndefined();
     // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
     expect(resultObj.b).toBeUndefined();
   });
