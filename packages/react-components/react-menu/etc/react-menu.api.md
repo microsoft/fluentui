@@ -14,7 +14,7 @@ import type { PositioningShorthand } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { usePopperMouseTarget } from '@fluentui/react-positioning';
+import { useMouseTarget } from '@fluentui/react-positioning';
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
@@ -284,12 +284,12 @@ export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
 
 // @public (undocumented)
 export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'inline' | 'onOpenChange' | 'openOnContext' | 'persistOnItemClick'> & Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover'>> & {
-    contextTarget: ReturnType<typeof usePopperMouseTarget>[0];
+    contextTarget: ReturnType<typeof useMouseTarget>[0];
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
     menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
     menuTrigger: React_2.ReactNode;
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof useMouseTarget>[1];
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;
     triggerRef: React_2.MutableRefObject<HTMLElement>;
