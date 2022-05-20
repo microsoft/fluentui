@@ -280,8 +280,6 @@ export {
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
 export {
   Input,
-  /* eslint-disable-next-line deprecation/deprecation */
-  inputClassName,
   inputClassNames,
   renderInput_unstable,
   useInput_unstable,
