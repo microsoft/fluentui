@@ -2,9 +2,13 @@ import { getNativeElementProps, getPartitionedNativeProps } from './getNativeEle
 
 describe('getNativeElementProps', () => {
   it('can filter native element properties', () => {
-    expect(getNativeElementProps('div', { id: '123', checked: true })).toEqual({
+    const divWithInvalidProps = getNativeElementProps('div', { id: '123', checked: true });
+    expect(divWithInvalidProps).toEqual({
       id: '123',
     });
+    // @ts-expect-error -- 'id' prop is not allowed `div` prop
+    expect(divWithInvalidProps.checked).toBeUndefined();
+
     expect(getNativeElementProps('input', { id: '123', checked: true })).toEqual({ id: '123', checked: true });
 
     const inputWithExclude = getNativeElementProps('input', { id: '123', checked: true }, ['id']);
@@ -30,11 +34,22 @@ describe('getPartitionedNativeProps', () => {
   it('creates modified root and primary and always removes className and styles prop from primary', () => {
     const actual = getPartitionedNativeProps({
       primarySlotTagName: 'div',
-      props: { className: 'hello', style: { width: '100px' }, id: '123', dir: 'ltr', defaultChecked: false },
+      props: {
+        className: 'hello',
+        style: { width: '100px' },
+        id: '123',
+        dir: 'ltr',
+        defaultChecked: true,
+      },
     });
 
     expect(actual.root).toEqual({ className: 'hello', style: { width: '100px' } });
-    expect(actual.primary).toEqual({ id: '123', dir: 'ltr', defaultChecked: false });
+    expect(actual.primary).toEqual({ id: '123', dir: 'ltr' });
+
+    // This should throw Type error - `defaultChecked` is not valid DIV prop
+    // Unfortunately react typings provide `React.HTMLAttributes` interface
+    // which assign lot of HTML invalid props to every intrinsic element, thus making this invalid by default
+    expect(actual.primary.defaultChecked).toBeUndefined();
 
     // @ts-expect-error -- `className` prop was excluded
     expect(actual.primary.className).toBeUndefined();
