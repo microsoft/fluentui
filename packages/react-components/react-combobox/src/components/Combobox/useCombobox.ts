@@ -52,7 +52,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const ignoreTriggerBlur = React.useRef(false);
 
   // popper
-  const popperOptions = {
+  const positioningOptions = {
     position: 'below' as const,
     align: 'start' as const,
     offset: 2,
@@ -65,7 +65,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   }: {
     targetRef: React.MutableRefObject<HTMLButtonElement>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePositioning(popperOptions);
+  } = usePositioning(positioningOptions);
 
   // update value based on selectedOptions
   const isFirstMount = useFirstMount();

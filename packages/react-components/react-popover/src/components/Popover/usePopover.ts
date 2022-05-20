@@ -187,7 +187,7 @@ function useOpenState(
 function usePopoverRefs(
   state: Pick<PopoverState, 'size' | 'contextTarget'> & Pick<PopoverProps, 'positioning' | 'openOnContext' | 'noArrow'>,
 ) {
-  const popperOptions = {
+  const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,
     target: state.openOnContext ? state.contextTarget : undefined,
@@ -195,15 +195,15 @@ function usePopoverRefs(
   };
 
   // no reason to render arrow when covering the target
-  if (popperOptions.coverTarget) {
+  if (positioningOptions.coverTarget) {
     state.noArrow = true;
   }
 
   if (!state.noArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeights[state.size]);
+    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeights[state.size]);
   }
 
-  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(popperOptions);
+  const { targetRef: triggerRef, containerRef: contentRef, arrowRef } = usePositioning(positioningOptions);
 
   return {
     triggerRef,

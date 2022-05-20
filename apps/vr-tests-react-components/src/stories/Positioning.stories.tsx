@@ -104,15 +104,15 @@ const Box = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement
 const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ positionFixed }) => {
   const styles = useStyles();
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
-    const popperOptions: PositioningProps = { position: cur[0], align: cur[1] };
+    const positioningOptions: PositioningProps = { position: cur[0], align: cur[1] };
     // positionFixed is not public yet
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    popperOptions.positionFixed = positionFixed;
+    positioningOptions.positionFixed = positionFixed;
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePositioning(popperOptions);
+    const positioningRefs = usePositioning(positioningOptions);
     acc.push(positioningRefs);
     return acc;
   }, []);

@@ -22,7 +22,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   const isSubmenu = useIsSubmenu();
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
 
-  const popperState = {
+  const positioningState = {
     position: isSubmenu ? ('after' as const) : ('below' as const),
     align: isSubmenu ? ('top' as const) : ('start' as const),
     target: props.openOnContext ? contextTarget : undefined,
@@ -51,7 +51,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
   } else if (children.length === 1) {
     menuPopover = children[0];
   }
-  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(popperState);
+  const { targetRef: triggerRef, containerRef: menuPopoverRef } = usePositioning(positioningState);
 
   const initialState = {
     hoverDelay: 500,

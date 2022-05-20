@@ -81,7 +81,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   state.content.id = useId('tooltip-', state.content.id);
 
-  const popperOptions = {
+  const positioningOptions = {
     enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
@@ -91,7 +91,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   };
 
   if (state.withArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeight);
   }
 
   const {
@@ -102,7 +102,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePositioning(popperOptions);
+  } = usePositioning(positioningOptions);
 
   state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;
@@ -216,7 +216,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...triggerAriaProps,
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: popperOptions.target === undefined ? childTargetRef : child?.ref,
+    ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
     onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
     onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
     onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
