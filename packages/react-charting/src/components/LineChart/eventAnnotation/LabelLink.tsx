@@ -56,12 +56,13 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   }
 
   let text: string;
-  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-  const fill: string | undefined = darkThemeMq.matches ? 'rgb(255,255,255)' : props.textColor;
+  let fill: string | undefined;
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
+    fill = props.textColor;
   } else {
     text = props.mergedLabel(props.labelDef.aggregatedIdx.length);
+    fill = props.textColor;
   }
 
   return (
