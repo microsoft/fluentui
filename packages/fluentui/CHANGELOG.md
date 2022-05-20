@@ -19,6 +19,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 <!--------------------------------[ v0.63.0 ]------------------------------- -->
+
+### Fixes
+
+- Remove unnecesary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
+
 ## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.62.0..@fluentui/react-northstar_v0.63.0)
 
@@ -44,7 +49,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Dialog` to keep it open when press click on content and release outside @yuanboxue-amber ([#22849](https://github.com/microsoft/fluentui/pull/22849))
 - Align Avatar `font-weight` between v0 and v9 @annabratseiko ([#22822](https://github.com/microsoft/fluentui/pull/22822))
 - Fix `Pill` to be selectable by keyboard @chpalac ([#22839](https://github.com/microsoft/fluentui/pull/22839))
-- Remove unnecesary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
 - Fix the `MicPulseOff` outline path to be what's in the Figma file, it is currently the value of the filled icon @sfilipi ([#23021](https://github.com/microsoft/fluentui/pull/23021))
 
 ### Features
