@@ -60,6 +60,7 @@ export const useCheckedStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
