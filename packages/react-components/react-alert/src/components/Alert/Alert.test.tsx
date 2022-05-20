@@ -4,12 +4,28 @@ import { render, screen } from '@testing-library/react';
 
 import { isConformant } from '../../common/isConformant';
 import { Alert } from './Alert';
+import { alertClassNames } from './useAlertStyles';
 
 describe('Alert', () => {
   isConformant({
     Component: Alert,
     displayName: 'Alert',
     disabledTests: ['component-has-static-classname-exported'],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            action: 'Test Action',
+          },
+          expectedClassNames: {
+            root: alertClassNames.root,
+            icon: alertClassNames.icon,
+            action: alertClassNames.action,
+          },
+        },
+      ],
+    },
   });
 
   // TODO - create visual regression tests in /apps/vr-tests
