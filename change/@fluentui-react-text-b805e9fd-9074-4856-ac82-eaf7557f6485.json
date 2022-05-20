@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Text: Ordering types alphabetically.",
+  "packageName": "@fluentui/react-text",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
