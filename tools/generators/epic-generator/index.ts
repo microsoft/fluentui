@@ -28,8 +28,8 @@ const checkAuthentication = () => {
 
   try {
     authStatus = execSync('gh auth status', { stdio: [] }).toString();
-  } catch (e) {
-    throw new Error(`Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${e.message}`);
+  } catch (error) {
+    throw new Error(`Error calling GitHub CLI (gh). Please make sure it's installed correctly.\n${error.message}`);
   }
 
   if (authStatus.includes('You are not logged into any GitHub hosts')) {
