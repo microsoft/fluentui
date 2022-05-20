@@ -18,9 +18,10 @@ function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   return {
     repository: schema.repository,
     title: schema.title,
-    message: schema.message,
   };
 }
+
+const placeholderMessage = '*Description to be added*';
 
 const checkAuthentication = () => {
   // `gh auth status` output is split accross multiple lines
@@ -106,8 +107,8 @@ const getPackages = (tree: Tree) => {
   return mapOwnerships(packages, ownerships);
 };
 
-const createEpic = (repo: string, title: string, message: string) => {
-  const issueUrl = execSync(`gh issue create --repo "${repo}" --title "${title}" --body "${message}"`)
+const createEpic = (repo: string, title: string) => {
+  const issueUrl = execSync(`gh issue create --repo "${repo}" --title "${title}" --body "${placeholderMessage}"`)
     .toString()
     .trim();
 
@@ -155,7 +156,7 @@ const generateIssues = (repo: string, templateTitle: string, packages: Package[]
   return migrationIssues;
 };
 
-const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, message: string) => {
+const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues) => {
   const packageList = Object.values(issueMap)
     .map(issue => {
       return stripIndents`
@@ -166,7 +167,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
     .join('\n');
 
   const updatedMessage = stripIndents`
-  ${message}
+  ${placeholderMessage}
 
   ### Packages that need migration:
   ${packageList}
@@ -178,19 +179,21 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues, messag
 };
 
 export default function (tree: Tree, schema: EpicGenerator) {
-  const { title, message, repository } = validateSchema(schema);
+  const { title, repository } = validateSchema(schema);
 
   checkAuthentication();
 
   const packages = getPackages(tree);
 
   return () => {
-    const epicUrl = createEpic(repository, title, message);
+    const epicUrl = createEpic(repository, title);
 
     const packagesWithIssue = generateIssues(repository, title, packages);
 
-    updateEpicWithIssues(epicUrl, packagesWithIssue, message);
+    updateEpicWithIssues(epicUrl, packagesWithIssue);
 
-    console.log(`Epic created on ${epicUrl}`);
+    console.log(stripIndents`Epic created on ${epicUrl}
+
+    Please make sure to replace the placeholder message with context for the other teams.`);
   };
 }

@@ -83,14 +83,14 @@ describe('epic-generator', () => {
       const tree = createTreeWithEmptyWorkspace();
 
       expect(() =>
-        epicGenerator(tree, { title: ' ', repository: 'microsoft/fluentui', message: 'cool message' }),
+        epicGenerator(tree, { title: ' ', repository: 'microsoft/fluentui' }),
       ).toThrowErrorMatchingInlineSnapshot(`"Must provide a title for the issue"`);
     });
 
     it('requires a well formatted repository', () => {
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo', message: 'cool message' }))
+      expect(() => epicGenerator(tree, { title: 'test title', repository: 'invalid_repo' }))
         .toThrowErrorMatchingInlineSnapshot(`
         "You provided \\"invalid_repo\\", which is an invalid repository name.
         Please follow the format {owner}/{repositoryName}."
@@ -105,9 +105,8 @@ describe('epic-generator', () => {
       });
       const tree = createTreeWithEmptyWorkspace();
 
-      expect(() =>
-        epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui', message: 'cool message' }),
-      ).toThrowErrorMatchingInlineSnapshot(`
+      expect(() => epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }))
+        .toThrowErrorMatchingInlineSnapshot(`
         "Error calling GitHub CLI (gh). Please make sure it's installed correctly.
         command not found."
       `);
@@ -121,7 +120,7 @@ describe('epic-generator', () => {
       const tree = createTreeWithEmptyWorkspace();
 
       expect(() =>
-        epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui', message: 'cool message' }),
+        epicGenerator(tree, { title: 'test title', repository: 'microsoft/fluentui' }),
       ).toThrowErrorMatchingInlineSnapshot(`"You are not logged into GitHub CLI (gh)."`);
     });
   });
@@ -195,7 +194,6 @@ describe('epic-generator', () => {
       const effectsCall = epicGenerator(tree, {
         title: 'test title',
         repository: 'cool-company/repository',
-        message: '*Description to be added*',
       });
       effectsCall();
 
