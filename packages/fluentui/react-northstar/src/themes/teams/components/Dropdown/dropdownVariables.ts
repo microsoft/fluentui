@@ -65,7 +65,7 @@ export interface DropdownVariables {
 export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover3,
-  invertedBackgroundColor: siteVars.colorScheme.default.background,
+  invertedBackgroundColor: siteVars.colorScheme.default.background2,
   invertedBackgroundColorHover: siteVars.colorScheme.default.backgroundHover4,
   borderColor: 'transparent',
   borderColorHover: 'transparent',
