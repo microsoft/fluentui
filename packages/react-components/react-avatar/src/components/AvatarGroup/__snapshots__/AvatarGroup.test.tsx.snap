@@ -4,82 +4,68 @@ exports[`AvatarGroup renders a default state 1`] = `
 <div>
   <div
     class="fui-AvatarGroup"
-    id="avatarGroup-7"
     role="group"
   >
     <span
-      aria-label="Katri Athokas"
+      aria-label="Allan Munger"
       class="fui-Avatar"
-      id="avatar-8"
+      id="avatar-1"
       role="img"
     >
       <span
         aria-hidden="true"
         class="fui-Avatar__initials"
       >
-        KA
+        AM
       </span>
     </span>
     <span
-      aria-label="Elvia Atkins"
+      aria-label="Daisy Phillips"
       class="fui-Avatar"
-      id="avatar-9"
+      id="avatar-2"
       role="img"
     >
       <span
         aria-hidden="true"
         class="fui-Avatar__initials"
       >
-        EA
+        DP
       </span>
     </span>
     <span
-      aria-label="Cameron Evans"
+      aria-label="Robert Tolbert"
       class="fui-Avatar"
-      id="avatar-10"
+      id="avatar-3"
       role="img"
     >
       <span
         aria-hidden="true"
         class="fui-Avatar__initials"
       >
-        CE
+        RT
       </span>
     </span>
     <span
-      aria-label="Wanda Howard"
+      aria-label="Kevin Sturgis"
       class="fui-Avatar"
-      id="avatar-11"
+      id="avatar-4"
       role="img"
     >
       <span
         aria-hidden="true"
         class="fui-Avatar__initials"
       >
-        WH
-      </span>
-    </span>
-    <span
-      aria-label="Mona Kane"
-      class="fui-Avatar"
-      id="avatar-12"
-      role="img"
-    >
-      <span
-        aria-hidden="true"
-        class="fui-Avatar__initials"
-      >
-        MK
+        KS
       </span>
     </span>
     <button
-      aria-describedby="tooltip-14"
+      aria-describedby="tooltip-6"
       aria-haspopup="dialog"
       class="fui-Button fui-AvatarGroup__popoverTrigger"
       data-tabster="{\\"deloser\\":{}}"
       type="button"
     >
-      +4
+      +5
     </button>
     <span
       hidden=""
