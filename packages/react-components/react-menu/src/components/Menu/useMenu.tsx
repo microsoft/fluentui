@@ -109,7 +109,10 @@ const useMenuSelectableState = (
 };
 
 const useMenuOpenState = (
-  state: Pick<MenuState, 'isSubmenu' | 'menuPopoverRef' | 'onOpenChange' | 'setContextTarget' | 'triggerRef'> &
+  state: Pick<
+    MenuState,
+    'isSubmenu' | 'menuPopoverRef' | 'onOpenChange' | 'setContextTarget' | 'triggerRef' | 'openOnContext'
+  > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
   const { targetDocument } = useFluent();
@@ -177,7 +180,9 @@ const useMenuOpenState = (
     contains: elementContains,
     disabled: !open,
     element: targetDocument,
-    refs: [state.menuPopoverRef, state.triggerRef],
+    refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
+      Boolean,
+    ) as React.MutableRefObject<HTMLElement>[],
     callback: e => setOpen(e, { open: false }),
   });
   useOnMenuMouseEnter({

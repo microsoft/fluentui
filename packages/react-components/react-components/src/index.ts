@@ -317,6 +317,16 @@ export {
 } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
 export {
+  Input,
+  /* eslint-disable-next-line deprecation/deprecation */
+  inputClassName,
+  inputClassNames,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+export {
   Image,
   /* eslint-disable-next-line deprecation/deprecation */
   imageClassName,
@@ -533,6 +543,14 @@ export {
   useSpinnerStyles_unstable,
 } from '@fluentui/react-spinner';
 export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+export {
+  Switch,
+  switchClassNames,
+  renderSwitch_unstable,
+  useSwitch_unstable,
+  useSwitchStyles_unstable,
+} from '@fluentui/react-switch';
+export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 export {
   renderTab_unstable,
   Tab,

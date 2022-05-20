@@ -45,6 +45,7 @@ const useRootStyles = makeStyles({
       borderLeftWidth: 0,
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
+      minWidth: 0,
     },
   },
 

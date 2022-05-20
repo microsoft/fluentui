@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Switch: Moving component out of unstable.",
+  "packageName": "@fluentui/react-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
