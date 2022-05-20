@@ -3,7 +3,9 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuItemCheckbox, MenuPopover } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { CutRegular as CutIcon } from '@fluentui/react-icons';
+import { CutRegular, CutFilled, bundleIcon } from '@fluentui/react-icons';
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
 
 export const AligningWithSelectableItems = () => (
   <Menu hasIcons hasCheckmarks>
