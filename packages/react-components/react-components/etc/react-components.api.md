@@ -126,7 +126,6 @@ import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
 import { Input } from '@fluentui/react-input';
-import { inputClassName } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
@@ -770,8 +769,6 @@ export { ImageSlots }
 export { ImageState }
 
 export { Input }
-
-export { inputClassName }
 
 export { inputClassNames }
 
