@@ -1,5 +1,4 @@
 import { getProjects, stripIndents, Tree } from '@nrwl/devkit';
-import { readFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';
@@ -73,8 +72,8 @@ const getConvergedPackages = (tree: Tree) => {
   return convergedPackages;
 };
 
-const getCodeowners = (): Ownership[] => {
-  const codeownersContent = readFileSync(workspacePaths.github.codeowners, 'utf8');
+const getCodeowners = (tree: Tree): Ownership[] => {
+  const codeownersContent = tree.read(workspacePaths.github.codeowners, 'utf8') || '';
 
   return codeownersContent.split('\n').map(line => {
     const [path, ...owners] = line.split(' ');
@@ -100,7 +99,7 @@ const mapOwnerships = (packages: Package[], ownerships: Ownership[]): Package[] 
 const getPackages = (tree: Tree) => {
   const packages = getConvergedPackages(tree);
 
-  const ownerships = getCodeowners();
+  const ownerships = getCodeowners(tree);
 
   return mapOwnerships(packages, ownerships);
 };

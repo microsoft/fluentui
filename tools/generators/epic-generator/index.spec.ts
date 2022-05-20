@@ -1,14 +1,11 @@
 import { addProjectConfiguration, ProjectType, stripIndents, writeJson } from '@nrwl/devkit';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { execSync } from 'child_process';
+import { workspacePaths } from '../../utils';
 import epicGenerator from './index';
-import { readFileSync } from 'fs';
 
 jest.mock('child_process');
 const execSyncMock = (execSync as unknown) as jest.Mock<string>;
-
-jest.mock('fs');
-const readFileSyncMock = (readFileSync as unknown) as jest.Mock<string>;
 
 type Package = {
   name: string;
@@ -34,7 +31,7 @@ function setupTest(packages: Package[]) {
     });
   });
 
-  // set mock CODEOWNERS response for readFileSync
+  // set mock CODEOWNERS file
   const codeownersContent = packages
     .map(pckg => {
       const rootPath = pckg.projectType === 'application' ? 'apps' : 'packages';
@@ -42,7 +39,7 @@ function setupTest(packages: Package[]) {
       return `${rootPath}/${pckg.name} ${pckg.owners.join(' ')}`;
     })
     .join('\n');
-  readFileSyncMock.mockReturnValueOnce(codeownersContent);
+  tree.write(workspacePaths.github.codeowners, codeownersContent);
 
   // set execSync mock calls
   execSyncMock.mockReturnValueOnce('Logged in to github.com.'); // response to 'gh auth'
