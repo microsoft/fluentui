@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "move from beta to release candidate",
+  "comment": "Move from beta to release candidate.",
   "packageName": "@fluentui/react-input",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"
