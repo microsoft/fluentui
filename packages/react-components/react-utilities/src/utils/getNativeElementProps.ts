@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IntrisicElementProps } from '../compose';
+import type { IntrisicElementProps } from '../compose/index';
 
 import {
   labelProperties,
