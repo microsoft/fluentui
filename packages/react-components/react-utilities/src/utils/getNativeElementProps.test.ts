@@ -6,7 +6,11 @@ describe('getNativeElementProps', () => {
       id: '123',
     });
     expect(getNativeElementProps('input', { id: '123', checked: true })).toEqual({ id: '123', checked: true });
-    expect(getNativeElementProps('input', { id: '123', checked: true }, ['id'])).toEqual({ checked: true });
+
+    const inputWithExclude = getNativeElementProps('input', { id: '123', checked: true }, ['id']);
+    expect(inputWithExclude).toEqual({ checked: true });
+    // @ts-expect-error -- 'id' prop was excluded
+    expect(inputWithExclude.id).toBeUndefined();
   });
 
   it('includes `as` as a native prop', () => {
@@ -16,7 +20,7 @@ describe('getNativeElementProps', () => {
   it('excludes props regardless of the allowed', () => {
     const actual = getNativeElementProps('div', { as: 'span' }, ['as']);
 
-    // @ts-expect-error -- `as` was removed from the object
+    // @ts-expect-error -- `as` prop was excluded
     expect(actual.as).toBeUndefined();
     expect(actual).toEqual({});
   });
@@ -32,9 +36,9 @@ describe('getPartitionedNativeProps', () => {
     expect(actual.root).toEqual({ className: 'hello', style: { width: '100px' } });
     expect(actual.primary).toEqual({ id: '123', dir: 'ltr', defaultChecked: false });
 
-    // @ts-expect-error -- `className` was removed from the object
+    // @ts-expect-error -- `className` prop was excluded
     expect(actual.primary.className).toBeUndefined();
-    // @ts-expect-error -- `style` was removed from the object
+    // @ts-expect-error -- `style` prop was excluded
     expect(actual.primary.style).toBeUndefined();
   });
 
@@ -48,9 +52,9 @@ describe('getPartitionedNativeProps', () => {
     expect(actual.primary).toEqual({ dir: 'ltr' });
 
     expect(actual.primary.dir).toBe('ltr');
-    // @ts-expect-error -- defaultChecked prop was excluded
+    // @ts-expect-error -- `defaultChecked` prop was excluded
     expect(actual.primary.defaultChecked).toBeUndefined();
-    // @ts-expect-error -- id prop was excluded
+    // @ts-expect-error -- `id `prop was excluded
     expect(actual.primary.id).toBeUndefined();
   });
 });
