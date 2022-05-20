@@ -46,17 +46,6 @@ export type {
 } from '@fluentui/react-card';
 
 export {
-  Input,
-  /* eslint-disable-next-line deprecation/deprecation */
-  inputClassName,
-  inputClassNames,
-  renderInput_unstable,
-  useInput_unstable,
-  useInputStyles_unstable,
-} from '@fluentui/react-input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
-
-export {
   SpinButton,
   renderSpinButton_unstable,
   spinButtonClassNames,

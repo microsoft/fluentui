@@ -16,7 +16,7 @@ export { Uncontrolled } from './InputUncontrolled.stories';
 export { Controlled } from './InputControlled.stories';
 
 const meta: Meta = {
-  title: 'Preview Components/Input',
+  title: 'Components/Input',
   component: Input,
   parameters: {
     docs: {

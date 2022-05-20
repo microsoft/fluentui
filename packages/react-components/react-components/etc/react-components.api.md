@@ -142,6 +142,13 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { Input } from '@fluentui/react-input';
+import { inputClassName } from '@fluentui/react-input';
+import { inputClassNames } from '@fluentui/react-input';
+import { InputOnChangeData } from '@fluentui/react-input';
+import { InputProps } from '@fluentui/react-input';
+import { InputSlots } from '@fluentui/react-input';
+import { InputState } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
 import { labelClassName } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -307,6 +314,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
@@ -479,6 +487,8 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInput_unstable } from '@fluentui/react-input';
+import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -835,6 +845,20 @@ export { ImageSlots }
 
 export { ImageState }
 
+export { Input }
+
+export { inputClassName }
+
+export { inputClassNames }
+
+export { InputOnChangeData }
+
+export { InputProps }
+
+export { InputSlots }
+
+export { InputState }
+
 export { Label }
 
 export { labelClassName }
@@ -1164,6 +1188,8 @@ export { RendererProvider }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderInput_unstable }
 
 export { renderLabel_unstable }
 
@@ -1508,6 +1534,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useInput_unstable }
+
+export { useInputStyles_unstable }
 
 export { useIsSSR }
 
