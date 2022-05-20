@@ -29,11 +29,12 @@ export {
   Radio,
   radioClassNames,
   RadioGroup,
+  RadioGroupProvider,
   radioGroupClassNames,
-  RadioGroupContext,
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
+  useRadioGroupContext_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -133,10 +134,10 @@ export type {
 // Components
 export {
   Accordion,
-  AccordionContext,
+  AccordionProvider,
   AccordionHeader,
   AccordionItem,
-  AccordionItemContext,
+  AccordionItemProvider,
   AccordionPanel,
   accordionClassNames,
   accordionHeaderClassNames,
@@ -147,6 +148,7 @@ export {
   renderAccordionItem_unstable,
   renderAccordionPanel_unstable,
   useAccordion_unstable,
+  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionHeader_unstable,
   useAccordionHeaderContextValues_unstable,
@@ -313,7 +315,6 @@ export {
 export type { LinkProps, LinkSlots, LinkState } from '@fluentui/react-link';
 export {
   Menu,
-  MenuContext,
   MenuDivider,
   MenuGroup,
   MenuGroupContextProvider,
@@ -322,7 +323,6 @@ export {
   MenuItemCheckbox,
   MenuItemRadio,
   MenuList,
-  MenuListContext,
   MenuListProvider,
   MenuPopover,
   MenuProvider,
@@ -427,8 +427,8 @@ export type {
 } from '@fluentui/react-menu';
 export {
   Popover,
-  PopoverContext,
   PopoverSurface,
+  PopoverProvider,
   PopoverTrigger,
   arrowHeights,
   popoverSurfaceClassNames,

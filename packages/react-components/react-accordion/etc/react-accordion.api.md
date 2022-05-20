@@ -7,8 +7,11 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -18,9 +21,6 @@ export const Accordion: ForwardRefComponent<AccordionProps>;
 
 // @public (undocumented)
 export const accordionClassNames: SlotClassNames<AccordionSlots>;
-
-// @public (undocumented)
-export const AccordionContext: Context<AccordionContextValue>;
 
 // @public (undocumented)
 export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> & Pick<AccordionProps, 'navigation'> & {
@@ -84,9 +84,6 @@ export const AccordionItem: ForwardRefComponent<AccordionItemProps>;
 export const accordionItemClassNames: SlotClassNames<AccordionItemSlots>;
 
 // @public (undocumented)
-export const AccordionItemContext: React_2.Context<AccordionItemContextValue>;
-
-// @public (undocumented)
 export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
     onHeaderClick(ev: React_2.MouseEvent | React_2.KeyboardEvent): void;
     open: boolean;
@@ -102,6 +99,9 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
     disabled?: boolean;
     value: AccordionItemValue;
 };
+
+// @public (undocumented)
+export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
@@ -144,6 +144,9 @@ export type AccordionProps = ComponentProps<AccordionSlots> & {
 };
 
 // @public (undocumented)
+export const AccordionProvider: Provider<AccordionContextValue> & FC<ProviderProps<AccordionContextValue>>;
+
+// @public (undocumented)
 export type AccordionSlots = {
     root: Slot<'div'>;
 };
@@ -176,6 +179,9 @@ export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.
 
 // @public
 export const useAccordion_unstable: (props: AccordionProps, ref: React_2.Ref<HTMLElement>) => AccordionState;
+
+// @public (undocumented)
+export const useAccordionContext_unstable: <T>(selector: ContextSelector<AccordionContextValue, T>) => T;
 
 // @public (undocumented)
 export function useAccordionContextValues_unstable(state: AccordionState): AccordionContextValues;

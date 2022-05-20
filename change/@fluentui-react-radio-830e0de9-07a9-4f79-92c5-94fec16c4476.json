@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: stop exporting RadioGroupContext",
+  "packageName": "@fluentui/react-radio",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
