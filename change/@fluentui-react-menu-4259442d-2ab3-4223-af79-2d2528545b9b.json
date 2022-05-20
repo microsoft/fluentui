@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: explicitly assert components getNativeElemProps calls that are incompatible with Slot api",
+  "packageName": "@fluentui/react-menu",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
