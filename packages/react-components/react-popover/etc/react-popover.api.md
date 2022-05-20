@@ -13,6 +13,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
