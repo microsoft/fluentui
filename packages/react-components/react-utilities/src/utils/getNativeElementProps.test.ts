@@ -23,19 +23,34 @@ describe('getNativeElementProps', () => {
 });
 
 describe('getPartitionedNativeProps', () => {
-  it('creates modified root and primary and remove excluded prop names from "primary"', () => {
+  it('creates modified root and primary and always removes className and styles prop from primary', () => {
     const actual = getPartitionedNativeProps({
       primarySlotTagName: 'div',
-      props: { className: 'hello', style: { width: '100px' }, id: '123', dir: 'ltr' },
-      excludedPropNames: ['id'],
+      props: { className: 'hello', style: { width: '100px' }, id: '123', dir: 'ltr', defaultChecked: false },
     });
 
     expect(actual.root).toEqual({ className: 'hello', style: { width: '100px' } });
-    expect(actual.primary).toEqual({ dir: 'ltr' });
+    expect(actual.primary).toEqual({ id: '123', dir: 'ltr', defaultChecked: false });
 
     // @ts-expect-error -- `className` was removed from the object
     expect(actual.primary.className).toBeUndefined();
     // @ts-expect-error -- `style` was removed from the object
     expect(actual.primary.style).toBeUndefined();
+  });
+
+  it('works with excluded prop names for "primary"', () => {
+    const actual = getPartitionedNativeProps({
+      primarySlotTagName: 'div',
+      props: { id: '123', dir: 'ltr', defaultChecked: false },
+      excludedPropNames: ['id', 'defaultChecked'],
+    });
+
+    expect(actual.primary).toEqual({ dir: 'ltr' });
+
+    expect(actual.primary.dir).toBe('ltr');
+    // @ts-expect-error -- defaultChecked prop was excluded
+    expect(actual.primary.defaultChecked).toBeUndefined();
+    // @ts-expect-error -- id prop was excluded
+    expect(actual.primary.id).toBeUndefined();
   });
 });

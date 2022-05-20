@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { getNativeProps, divProperties } from './properties';
 
 describe('getNativeProps', () => {
@@ -14,7 +13,7 @@ describe('getNativeProps', () => {
   });
 
   it('can pass through aria tags', () => {
-    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
+    const result = getNativeProps(
       {
         'aria-label': '1',
       },
@@ -26,7 +25,7 @@ describe('getNativeProps', () => {
 
   it('can pass through basic div properties and events', () => {
     //
-    const result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
+    const result = getNativeProps(
       {
         className: 'foo',
         onClick: () => {

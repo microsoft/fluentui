@@ -52,10 +52,14 @@ const nativeElementMap = {
   img: imgProperties,
   time: timeProperties,
 };
+type HtmlElementProperties = typeof htmlElementProperties;
 type NativeElementMap = typeof nativeElementMap;
+type GetAllowedPropNames<Tag, Props extends Record<string, unknown>> = Tag extends keyof NativeElementMap
+  ? keyof NativeElementMap[Tag] | 'as' | keyof Props
+  : keyof HtmlElementProperties | 'as' | keyof Props;
 
 /**
- * AsTagNames - can single string or union of strings
+ * AsTagNames - can be a single string or union of strings
  */
 type NativeElemProps<AsTagNames extends keyof JSX.IntrinsicElements> = {
   [As in AsTagNames]: { as?: As } & IntrisicElementProps<As>;
@@ -71,7 +75,7 @@ type NativeElemProps<AsTagNames extends keyof JSX.IntrinsicElements> = {
 export function getNativeElementProps<
   Tag extends keyof JSX.IntrinsicElements,
   Props extends Record<string, unknown>,
-  ExcludedPropKeys extends Extract<keyof Props, string> = never
+  ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never
 >(tagName: Tag, props: Props, excludedPropNames?: ExcludedPropKeys[]): Omit<NativeElemProps<Tag>, ExcludedPropKeys> {
   const allowedPropNames = nativeElementMap[tagName as keyof NativeElementMap] || htmlElementProperties;
 
@@ -96,7 +100,7 @@ export function getNativeElementProps<
 export const getPartitionedNativeProps = <
   Tag extends keyof JSX.IntrinsicElements,
   Props extends Record<string, unknown> & Pick<React.HTMLAttributes<HTMLElement>, 'style' | 'className'>,
-  ExcludedPropKeys extends Extract<keyof Props, string> = never
+  ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never
 >({
   primarySlotTagName,
   props,
@@ -111,12 +115,13 @@ export const getPartitionedNativeProps = <
   /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[];
 }) => {
+  const normalizedExcludedPropNames = [...(excludedPropNames || []), 'style', 'className'] as ExcludedPropKeys[];
+
   return {
     root: { style: props.style, className: props.className },
-    primary: getNativeElementProps(primarySlotTagName, props, [
-      ...(excludedPropNames || []),
-      'style',
-      'className',
-    ] as ExcludedPropKeys[]),
+    primary: getNativeElementProps(primarySlotTagName, props, normalizedExcludedPropNames) as Omit<
+      NativeElemProps<Tag>,
+      ExcludedPropKeys | 'style' | 'className'
+    >,
   };
 };

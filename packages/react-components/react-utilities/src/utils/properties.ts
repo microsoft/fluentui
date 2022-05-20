@@ -427,12 +427,12 @@ export const divProperties = htmlElementProperties;
  * @param allowedPropsNames - The array or record of allowed prop names.
  * @returns The filtered props
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getNativeProps<Props extends Record<string, any>, E extends Extract<keyof Props, string> = never>(
-  props: Props,
-  allowedPropNames: string[] | Record<string, 1>,
-  excludedPropNames?: E[],
-): Omit<Props, E> {
+
+export function getNativeProps<
+  Props extends Record<string, unknown>,
+  A extends string,
+  E extends Extract<keyof Props | A, string> = never
+>(props: Props, allowedPropNames: A[] | Record<A, 1>, excludedPropNames?: E[]): Omit<Props, E> {
   // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
   // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
   // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
