@@ -1,9 +1,5 @@
 # Button Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8
 
 ### Component renames
