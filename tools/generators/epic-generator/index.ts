@@ -3,6 +3,8 @@ import { execSync, spawnSync } from 'child_process';
 import { EpicGenerator } from './schema';
 import { isPackageConverged, workspacePaths } from '../../utils';
 
+const placeholderMessage = '*Description to be added*';
+
 function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   if (schema.repository !== undefined && !schema.repository.match(/[A-z-]+\/[A-z-]+/)) {
     throw new Error(stripIndents`
@@ -21,9 +23,7 @@ function validateSchema(schema: EpicGenerator): Required<EpicGenerator> {
   };
 }
 
-const placeholderMessage = '*Description to be added*';
-
-const checkAuthentication = () => {
+function checkAuthentication() {
   // `gh auth status` output is split accross multiple lines
   // so we use spawnSync to capture all lines and flatten the output
   const result = spawnSync('gh', ['auth', 'status']);
@@ -37,7 +37,7 @@ const checkAuthentication = () => {
   if (!result.output.join('').includes('Logged in to github.com')) {
     throw new Error('You are not logged into GitHub CLI (gh).');
   }
-};
+}
 
 interface Package {
   name: string;
@@ -58,7 +58,7 @@ interface MigrationIssue {
 
 type MigrationIssues = Record<string, MigrationIssue>;
 
-const getConvergedPackages = (tree: Tree) => {
+function getConvergedPackages(tree: Tree) {
   const projects = getProjects(tree);
 
   const convergedPackages: Package[] = [];
@@ -73,9 +73,9 @@ const getConvergedPackages = (tree: Tree) => {
   });
 
   return convergedPackages;
-};
+}
 
-const getCodeowners = (tree: Tree): Ownership[] => {
+function getCodeowners(tree: Tree): Ownership[] {
   const codeownersContent = tree.read(workspacePaths.github.codeowners, 'utf8') || '';
 
   return codeownersContent.split('\n').map(line => {
@@ -86,9 +86,9 @@ const getCodeowners = (tree: Tree): Ownership[] => {
       owners,
     };
   });
-};
+}
 
-const mapOwnerships = (packages: Package[], ownerships: Ownership[]): Package[] => {
+function mapOwnerships(packages: Package[], ownerships: Ownership[]): Package[] {
   return packages.map(pkg => {
     const owners = ownerships.find(ownership => ownership.path === pkg.folder)?.owners || [];
 
@@ -97,25 +97,25 @@ const mapOwnerships = (packages: Package[], ownerships: Ownership[]): Package[] 
       owners,
     };
   });
-};
+}
 
-const getPackages = (tree: Tree) => {
+function getPackages(tree: Tree) {
   const packages = getConvergedPackages(tree);
 
   const ownerships = getCodeowners(tree);
 
   return mapOwnerships(packages, ownerships);
-};
+}
 
-const createEpic = (repo: string, title: string) => {
+function createEpic(repo: string, title: string) {
   const issueUrl = execSync(`gh issue create --repo "${repo}" --title "${title}" --body "${placeholderMessage}"`)
     .toString()
     .trim();
 
   return issueUrl;
-};
+}
 
-const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string) => {
+function createIssue(repo: string, issue: MigrationIssue, templateTitle: string) {
   const title = `${templateTitle} - ${issue.assignee || 'ownerless'}`;
   const message = stripIndents`
     🚧 This is an auto-generated issue to individually track migration progress.
@@ -129,9 +129,9 @@ const createIssue = (repo: string, issue: MigrationIssue, templateTitle: string)
   const issueUrl = execSync(command).toString().trim();
 
   return issueUrl;
-};
+}
 
-const generateIssues = (repo: string, templateTitle: string, packages: Package[]) => {
+function generateIssues(repo: string, templateTitle: string, packages: Package[]) {
   const migrationIssues = packages.reduce<MigrationIssues>((acc, pkg) => {
     const teamOwner = pkg.owners.find(owner => owner.startsWith('@microsoft/'));
     const key = teamOwner || 'ownerless';
@@ -154,9 +154,9 @@ const generateIssues = (repo: string, templateTitle: string, packages: Package[]
   });
 
   return migrationIssues;
-};
+}
 
-const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues) => {
+function updateEpicWithIssues(epicUrl: string, issueMap: MigrationIssues) {
   const packageList = Object.values(issueMap)
     .map(issue => {
       return stripIndents`
@@ -176,7 +176,7 @@ const updateEpicWithIssues = (epicUrl: string, issueMap: MigrationIssues) => {
   const command = `gh issue edit ${epicUrl} --body "${updatedMessage}"`;
 
   execSync(command);
-};
+}
 
 export default function (tree: Tree, schema: EpicGenerator) {
   const { title, repository } = validateSchema(schema);
