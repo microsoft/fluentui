@@ -91,7 +91,7 @@ Alternatively, run Storybook locally with:
 
 ### Specification
 
-See [Spec.md](./src/components/Button/SPEC.md).
+See [SPEC.md](./src/components/Button/SPEC.md).
 
 ### Migration Guide
 
