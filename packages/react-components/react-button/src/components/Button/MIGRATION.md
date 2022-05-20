@@ -82,6 +82,8 @@ Common buttons now all map to `Button`:
 - `defaultRender`
 - `getClassNames`
 - `getSplitButtonClassNames`
+- `loader`
+- `loading`
 - `theme`
 - `uniqueId`
 
@@ -94,8 +96,6 @@ Common buttons now all map to `Button`:
 - `disabledFocusable`
 - `icon`
 - `iconPosition`
-- `loader`
-- `loading`
 - `size`
 
 ### Renamed props
@@ -152,8 +152,8 @@ Common buttons now all map to `Button`:
 | `iconProps`                        |                     |                        |
 |                                    | `inverted`          |                        |
 | `keytipProps`                      |                     |                        |
-|                                    | `loader`            | `loader`               |
-|                                    | `loading`           | `loading`              |
+|                                    | `loader`            |                        |
+|                                    | `loading`           |                        |
 | `menuAs`                           |                     |                        |
 | `menuIconProps`                    |                     |                        |
 | `menuProps`                        |                     |                        |
