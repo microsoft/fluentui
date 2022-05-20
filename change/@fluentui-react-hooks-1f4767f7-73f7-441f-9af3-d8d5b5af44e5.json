@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "useControllableValue should allow a controlled value to be set after the first call",
+  "packageName": "@fluentui/react-hooks",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
