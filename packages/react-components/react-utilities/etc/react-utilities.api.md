@@ -83,7 +83,7 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? 
 export function getNativeElementProps<Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown>, ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never>(tagName: Tag, props: Props, excludedPropNames?: ExcludedPropKeys[]): Omit<NativeElemProps<Tag>, ExcludedPropKeys>;
 
 // @public
-export function getNativeProps<Props extends Record<string, unknown>, A extends string, E extends Extract<keyof Props | A, string> = never>(props: Props, allowedPropNames: A[] | Record<A, 1>, excludedPropNames?: E[]): Omit<Props, E>;
+export function getNativeProps<Props extends Record<string, unknown>, A extends string, E extends Extract<keyof Props | A, string> = never>(props: Props, allowedPropNames: A[] | Record<A, 1>, excludedPropNames?: E[]): Omit<Pick<Props, A>, E>;
 
 // @public
 export const getPartitionedNativeProps: <Tag extends keyof JSX.IntrinsicElements, Props extends Record<string, unknown> & Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<GetAllowedPropNames<Tag, Props>, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
