@@ -17,7 +17,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   const focusMap = {
     off: undefined,
-    'no-tab': 'limitedTrapFocus',
+    'no-tab': 'limited-trap-focus',
     'tab-exit': 'limited',
     'tab-only': 'unlimited',
   } as const;

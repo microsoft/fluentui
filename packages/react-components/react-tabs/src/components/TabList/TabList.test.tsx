@@ -8,6 +8,7 @@ describe('TabList', () => {
   isConformant({
     Component: TabList,
     displayName: 'TabList',
+    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders with tabs', () => {

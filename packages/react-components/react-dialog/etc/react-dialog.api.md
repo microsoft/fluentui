@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Dialog: ForwardRefComponent<DialogProps>;
 
-// @public @deprecated (undocumented)
-export const dialogClassName = "fui-Dialog";
-
 // @public (undocumented)
 export const dialogClassNames: SlotClassNames<DialogSlots>;
 

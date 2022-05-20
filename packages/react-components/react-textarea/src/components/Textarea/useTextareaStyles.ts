@@ -89,12 +89,12 @@ const useRootStyles = makeStyles({
     },
   },
 
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },
 
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },

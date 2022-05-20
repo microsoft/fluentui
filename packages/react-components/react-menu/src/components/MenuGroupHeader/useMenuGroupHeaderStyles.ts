@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuGroupHeaderClassNames.root` instead.
- */
-export const menuGroupHeaderClassName = 'fui-MenuGroupHeader';
 export const menuGroupHeaderClassNames: SlotClassNames<MenuGroupHeaderSlots> = {
   root: 'fui-MenuGroupHeader',
 };
