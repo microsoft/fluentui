@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Move react-spinner from unstable to stable",
+  "packageName": "@fluentui/react-components",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

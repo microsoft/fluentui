@@ -1,0 +1,54 @@
+{
+  "name": "@fluentui/react-context-selector",
+  "version": "9.0.0-rc.8",
+  "description": "React useContextSelector hook in userland",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-context-selector/src && yarn docs",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/react-utilities": "9.0.0-rc.8",
+    "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0",
+    "scheduler": "^0.19.0 || ^0.20.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
+  }
+}

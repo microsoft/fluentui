@@ -110,10 +110,24 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Styled">change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Styled"
+          onChange={this._onWidthChange}
+        />
+        <label htmlFor="changeHeight_Styled">change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Styled"
+          onChange={this._onHeightChange}
+        />
         <div style={rootStyle}>
           <AreaChart
             showXAxisLablesTooltip

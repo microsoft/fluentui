@@ -55,7 +55,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         right: -2px;
         top: -2px;
       }
-      &:active > * {
+      &:active > span {
         left: 0px;
         position: relative;
         top: 0px;
@@ -374,42 +374,26 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               background-color: #f3f2f1;
                               color: #201f1e;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
+                            &:hover .ms-ContextualMenu-icon {
+                              color: #106ebe;
+                            }
+                            &:hover .ms-ContextualMenu-submenuIcon {
+                              color: #323130;
                             }
                             &:active {
                               background-color: #edebe9;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
+                            &:active .ms-ContextualMenu-icon {
+                              color: #005a9e;
+                            }
+                            &:active .ms-ContextualMenu-submenuIcon {
+                              color: #323130;
                             }
                             .ms-Fabric--isFocusVisible &:focus {
                               background-color: #ffffff;
                             }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
-                            }
                             .ms-Fabric--isFocusVisible &:focus:hover {
                               background-color: #ffffff;
-                            }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:hover {
-                              -ms-high-contrast-adjust: none;
-                              background-color: Highlight;
-                              border-color: Highlight;
-                              color: HighlightText;
-                              forced-color-adjust: none;
                             }
                             .ms-Fabric--isFocusVisible &:hover {
                               background: inherit;
@@ -478,9 +462,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                 }
                                 @media only screen and (min-width: 0px) and (max-width: 639px){& {
                                   font-size: 16px;
-                                }
-                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  color: HighlightText;
                                 }
                             data-icon-name="ChevronRight"
                           >

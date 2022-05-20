@@ -1,0 +1,3362 @@
+{
+  "name": "@fluentui/react-provider",
+  "entries": [
+    {
+      "date": "Thu, 05 May 2022 18:26:30 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.7",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.9",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.7",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.8",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:48 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5842ed56a87ffcd6aa607cd98d3c95087221f017",
+            "comment": "react-provider: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c45f4a6c3dd09c77ce5f5f5e2926ce9494169e99",
+            "comment": "check for styleTag.sheet before performing actions on the sheet"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 09:32:18 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6",
+            "comment": "feat: export useFluentProviderThemeStyleTag from @fluentui/react-provider"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:16:49 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Provider"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ],
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 05:17:39 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:40 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:50:43 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "d11a238f944b891c13b3bfa56a17ddace52f37d5",
+            "comment": "update stories to not use CSS shorthands in styles"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0fe5ae5d94918a8f8805ed3e587ed98acb17c4b2",
+            "comment": "add @types/react-test-renderer to devDependencies"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "839ec14849e112b85aa321d034739ec421199141",
+            "comment": "remove export of commons types"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0bc161458eae5ae8d387172430496ce9829b1bb1",
+            "comment": "Using ComponentSlotProps instead of ObjectShorthandProps."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "00a5d945904c896a0664de6ba72c145a255f0848",
+            "comment": "Updating use of tokens.fontWeight now that we don't need to use casting."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "706305303fcf03a82052c0a9e74d8aecb102885e",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ecfe4c4fdc306e9c484706f28457f440f55d3684",
+            "comment": "make the FluentProvider#theme TS API reflect runtime and add warning if there is a violation"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b22c4ef0eba0730286f2ed701e1b851d8a5c03b5",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "1dba2fca2365f1a748505896679ae160a6fec270",
+            "comment": "replace mergeThemes functionality from react-theme"
+          },
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c9a03954ffd5d1a85284fb36ef4cd103ed8aa927",
+            "comment": "Remove `themeToCSSVariables` function"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:16 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "14b1e35b8da2f04538c2183a9be6c6b76dad3cca",
+            "comment": "update tooling configs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.5",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:31 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "825ea92aae027295a94048368157c180358260f2",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.4",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ],
+        "none": [
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-provider",
+            "commit": "cdbe0769d2a6ee91a98a3e62c6ac9329a714355c",
+            "comment": "Docs update"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f32855d6039f4049b69b005fe6dde0686eed503c",
+            "comment": "Refactored stories"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 12:14:21 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-provider",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.3",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Oct 2021 19:45:58 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 12:47:58 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.90",
+      "version": "9.0.0-alpha.90",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.78",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.73",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.60",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.89",
+      "version": "9.0.0-alpha.89",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.77",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.72",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.56",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.59",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.88",
+      "version": "9.0.0-alpha.88",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.76",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.28",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.71",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.26",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.55",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.58",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.86",
+      "version": "9.0.0-alpha.86",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.69",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.85",
+      "version": "9.0.0-alpha.85",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.74",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.26",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.68",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.24",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.56",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.84",
+      "version": "9.0.0-alpha.84",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.73",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.67",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.53",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.55",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.83",
+      "version": "9.0.0-alpha.83",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.72",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.66",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.52",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.54",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.82",
+      "version": "9.0.0-alpha.82",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.71",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.65",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.51",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.53",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 10:10:07 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.81",
+      "version": "9.0.0-alpha.81",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.70",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.64",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.50",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.52",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.80",
+      "version": "9.0.0-alpha.80",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.69",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.25",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.63",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.23",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.51",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.79",
+      "version": "9.0.0-alpha.79",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.78",
+      "version": "9.0.0-alpha.78",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.77",
+      "version": "9.0.0-alpha.77",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "comment": "Fix typings in React.forwardRef",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.77"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.76",
+      "version": "9.0.0-alpha.76",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.76"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.75",
+      "version": "9.0.0-alpha.75",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "comment": "use simplified prop mergin",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.75"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.74",
+      "version": "9.0.0-alpha.74",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.45",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.73",
+      "version": "9.0.0-alpha.73",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.73",
+      "version": "9.0.0-alpha.73",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.44",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.72",
+      "version": "9.0.0-alpha.72",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "rework className handling",
+            "author": "olfedias@microsoft.com",
+            "commit": "64fb317e817a4069db12f0a63dcde2e3afcb9d72",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "enable makeStyles conformance tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "792bcc59f725f60496839f92ebcad630cf777754",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.71",
+      "version": "9.0.0-alpha.71",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.42",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.70",
+      "version": "9.0.0-alpha.70",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.54",
+            "author": "marata@microsoft.com",
+            "commit": "4a7f81f3d92f128a672717eda660af3ba50ee71b",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.69",
+      "version": "9.0.0-alpha.69",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.40",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.68",
+      "version": "9.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.67",
+      "version": "9.0.0-alpha.67",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix(react-provider): properly specify babel-make-styles dependency",
+            "author": "martinhochel@microsoft.com",
+            "commit": "5f6544c66befadbecb12b06d363a612eb326b57f",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.38",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.41",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.59",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.53",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.23",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.22",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4eec618fe480b129e08914b1f091a8509af60379",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.66",
+      "version": "9.0.0-alpha.66",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update .npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.40",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.58",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.52",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.22",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.21",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.65",
+      "version": "9.0.0-alpha.65",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.33",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.64",
+      "version": "9.0.0-alpha.64",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(FluentProvider): implement useContextValues() pattern",
+            "author": "olfedias@microsoft.com",
+            "commit": "284da7c9d57b33abce253aed5fc19b02898f6e0c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.63",
+      "version": "9.0.0-alpha.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix: export useTheme() hook",
+            "author": "olfedias@microsoft.com",
+            "commit": "457a8e6375eaecbad5de43740e91d6e4bc040388",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.62",
+      "version": "9.0.0-alpha.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.31",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8a09087b4215a36a50b6d3478cd2b74155c9c630",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Aug 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.30",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.61",
+      "version": "9.0.0-alpha.61",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.30",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.60",
+      "version": "9.0.0-alpha.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.59",
+      "version": "9.0.0-alpha.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.46",
+            "author": "olfedias@microsoft.com",
+            "commit": "19db6cb57a237073b0bb50d07eb921b1ce2e0c61",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.58",
+      "version": "9.0.0-alpha.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.27",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "5d812148593dc574a6f3a343a5657614b4d10456",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.57",
+      "version": "9.0.0-alpha.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.26",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "none": [
+          {
+            "comment": "add bundle size fixtures",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.25",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "b60234948eacb8c6fa9d08ab8e98d963f583d475",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.55",
+      "version": "9.0.0-alpha.55",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "12b74625dec55bd1919f6370513043d87705e5ea",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.54",
+      "version": "9.0.0-alpha.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.24",
+            "author": "behowell@microsoft.com",
+            "commit": "8e5969e291bcafac21df12c9fb591bdd5654c613",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.53",
+      "version": "9.0.0-alpha.53",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.23",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.52",
+      "version": "9.0.0-alpha.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.22",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.51",
+      "version": "9.0.0-alpha.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename typings and getSlots to have the Compat Suffix",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "c939e67b1840a9eb5f7706afcda8c14df8f18d33",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing bug in start script of converged packages.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "move theming capabilities from @fluentui/react-theme-provider",
+            "author": "olfedias@microsoft.com",
+            "commit": "76680e02208f2e8a479a60289ba9f6b9e27c9f5d",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Migrate to new DX",
+            "author": "olfedias@microsoft.com",
+            "commit": "35e244ed457284f24aab445da2cc556fa827a79a",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.46",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "804ca93da84e19cec0737729473be5034a2e4939",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.45",
+            "author": "olfedias@microsoft.com",
+            "commit": "073ea5f67e3088a92f68caeeca32ef96410aabc5",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.35",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4f907a837f3b85923178b611e4fbb0d9ac222dda",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.44",
+            "author": "olfedias@microsoft.com",
+            "commit": "bf6fd1290ea6c6861a5d80f704e0d6d0cadb71e0",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.44",
+            "author": "olfedias@microsoft.com",
+            "commit": "6aa065bafaa4a169b771706bc93c2faff9ac78a7",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 22 Jun 2021 07:35:11 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.44",
+            "author": "olfedias@microsoft.com",
+            "commit": "3fccf5c8a8ea30529b736b9189e294969242f886",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.43",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.34",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a224777cc0089bd715cc304282115a2cd9929889",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.45",
+      "version": "9.0.0-alpha.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.42",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.16",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1ca8c8f0c4eb633e6b34c0b6182c09103d4c7fcb",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.40",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.15",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.31",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Jun 2021 07:37:15 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.39",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "7f5734bd8a2a124969c6402534605fe0ee9df4af",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable Jest aliases",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Removes tabster dependency",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "5dab36e86b94508ff072af1fbea2bdc9e1ddfd94",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.38",
+            "author": "olfedias@microsoft.com",
+            "commit": "d2504c72ec7fba0cf4dcf1984c2e1a9322720225",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.25",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "6ffca36c9537a1852d8ec26478b8b7aeb059e17c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.27",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.13",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.37",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.14",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.39",
+      "version": "9.0.0-alpha.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.36",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "975140887c6ad2391f8db63003ed440239ec9c25",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "616b4b7c381c757871e8a590564d8eff7337834c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 07:34:38 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.34",
+            "author": "olfedias@microsoft.com",
+            "commit": "c845a5045c99d8d83b2584cee016b1701cd3de57",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.33",
+            "author": "olfedias@microsoft.com",
+            "commit": "fb53fd67729d8236e0681d74322717f6974c8b72",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Refactor Tooltip provider to be lightweight and not depend on the react-tooltip package",
+            "author": "behowell@microsoft.com",
+            "commit": "e0b7d62f54c1b6e7ff8847ec60307ebac692ff7e",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 05 May 2021 07:36:50 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.7",
+            "author": "olfedias@microsoft.com",
+            "commit": "427fcf0fffb899e5ffcac4dfa61fca5d22ee176c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 May 2021 07:36:35 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2aa0cde53c7bfda08651bc9e5bbe9a31d3a40b4f",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 May 2021 07:45:19 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.28",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5e6aa4df0c03051e59d686d24b35f01c721a3b4e",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Apr 2021 07:42:23 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Upgrade to ts 4.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "update snapshots",
+            "author": "olfedias@microsoft.com",
+            "commit": "2a95add2ed379f3e061339d86ae03199ef0d5080",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.2.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "joschect@microsoft.com",
+            "commit": "2b62c457bb860f6675fae4acae86ee6c0b06c279",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Apr 2021 07:32:59 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.20",
+            "author": "olfedias@microsoft.com",
+            "commit": "cabcb25b3329ad3e8536f798ceaabcd1ee93e1b4",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Apr 2021 07:34:03 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.5",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "fdb1af09ba60238bb1c3913af6a6a6fe98f49034",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Apr 2021 07:34:31 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.4",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "76e2027d772bc9d19d3d217c449c5965262f73c4",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Apr 2021 07:37:10 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove react-tabster dependency",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "e9ef2a1d7e2d57a5b52642dd35243cb6a8600237",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "7d1a9a8aee217022e55b8c39c723b1390b5d8095",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Apr 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "none": [
+          {
+            "comment": "Adds snapshot serializer to converged component",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.2",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "bf7ee8d466296bd5974bd5abf9aaa20868aa9add",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Apr 2021 07:31:50 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "c12557d08ab5673ec3d3ba9747cfec64f39309eb",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.17",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "64da065944467537d8f23a97ef4c19c3d60a529b",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Apr 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename internal document to targetDocument",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "01e2e2ce7b042308c503e642a1bb94ff371b7dd1",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Apr 2021 07:33:33 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unneeded react-app-polyfill devDependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "fdc32557d49e5d70ea7e4af8957102d415b44547",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 18:08:21 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use targetDocument for ThemeProvider",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "202f547fef3255f5c59ff4ad912c67b4978ef457",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Apr 2021 07:32:08 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add TooltipProvider to FluentProvider",
+            "author": "behowell@microsoft.com",
+            "commit": "cd0cdb18546e8f62d07a5807f77ccd6cc16c23d5",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Apr 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updates snapshot tests",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "1b2e9185653032fed3dce7d3a919f8d6e95550c7",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Apr 2021 07:33:06 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.8",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "25e841e469f1a7b33278f8a5dccd2f7865b3a557",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Apr 2021 20:13:37 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Change react-focus-management to react-tabster",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "dec60bc3ea87901ff8c2c52989301ae8f4229721",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Mar 2021 00:53:43 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "mergeProps was updated to improve type checking; use compat layer until type errors can be fixed",
+            "author": "behowell@microsoft.com",
+            "commit": "e45eeaba8deb93e825a9d3f72e87a9c4c9225ea1",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "d41b79242e6b682dfa58fcd76797ecfd9146d4cf",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Mar 2021 07:34:45 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Lift FluentProvider context to react-shared-contexts",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "0e497f76bceee79ee6f15524b9903a9eda653c44",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "chore: restore \"sideEffects\" to enable treeshaking",
+            "author": "olfedias@microsoft.com",
+            "commit": "8d6eb6f174660017e96d2c539a08e1d64ccdf4a3",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Mar 2021 07:32:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.11",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8b5295e082e07dbe428bff7b9548c80c338f07c8",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Mar 2021 07:33:24 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.10",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "31b7b0d625e40f818d33c5df0890b584caaf0e6c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Mar 2021 07:31:43 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.9",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc0d87258337229e59ec1c1fec87dc91193858f1",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Mar 2021 07:34:09 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.8",
+            "author": "martinhochel@microsoft.com",
+            "commit": "25c4ce7c54a2a65d3db4e5f2b13785468b669329",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Mar 2021 20:15:34 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "165259181dd79866dc7ae5fa57c10a0f209d668f",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Mar 2021 07:35:44 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.7",
+            "author": "olfedias@microsoft.com",
+            "commit": "51902da6d01f0e9a790ca686e32eb94b31ecf733",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Mar 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.11",
+            "author": "elcraig@microsoft.com",
+            "commit": "8bbe3d16c5c00716dfcbafa6d693437b8d090da3",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Mar 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version references",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove unneeded scripts",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b4dd6b9e941da11297cea43c5218a4da2d277d5",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.10",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.8",
+            "author": "elcraig@microsoft.com",
+            "commit": "b0bef818ea07833d9b9797ef26a4b24200ed0307",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Mar 2021 20:04:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Move `@types/node` and `@types/webpack-env` devDependencies to root, and remove unneeded references",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.9",
+            "author": "elcraig@microsoft.com",
+            "commit": "8789ee1074aad852bd0a95d0183dbdf2ee718e1d",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.6",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus-management to v9.0.0-alpha.5",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f7b97e9dc1cf0fec0201533042db4befb800cbd0",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.4",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.2",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use react-focus-management",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "eac75641c15f760208c0b01b379ac22a6ef4df2a",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-provider_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breaks dependency on react-hooks for convergence",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "68bc4c7d68b5c01022658fcc485342670d56df39",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-provider_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.14",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-provider_v0.1.5",
+      "version": "0.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-provider_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-provider_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5110956b421df4bc7542ca117935ae4c7919864",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-provider_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.23",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-provider_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-provider_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.22",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1-0",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-provider_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "e6a1c491a67b911cc285fcc9d89b6fca152aacd9",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-provider_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.0",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Feb 2021 01:27:42 GMT",
+      "tag": "@fluentui/react-provider_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish react-provider",
+            "author": "elcraig@microsoft.com",
+            "commit": "aede2e41a6c803a46bd9eb7538542ee6b86ccd8f",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    }
+  ]
+}

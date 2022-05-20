@@ -10,7 +10,9 @@ yarn.lock
 
 # generated folders
 node_modules
-lib
+# looks like prettier doesn't process this file as advertised
+**/lib/**
+!tools/**/lib/**
 lib-amd
 lib-esm
 lib-commonjs

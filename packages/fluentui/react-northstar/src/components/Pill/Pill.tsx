@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, AriaRole, pillBehavior, PillBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ContentComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps, ComponentEventHandler } from '../../types';
 import { BoxProps } from '../Box/Box';
@@ -103,16 +103,20 @@ export interface PillProps extends UIComponentProps, ContentComponentProps<Short
    * @param data - All props.
    */
   onSelectionChange?: ComponentEventHandler<PillProps>;
+
+  /**
+   * Role to be set in the pill root element
+   */
+  role?: AriaRole;
 }
 
 export type PillStylesProps = Required<
-  Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled' | 'selectable' | 'selected'>
+  Pick<PillProps, 'appearance' | 'size' | 'rectangular' | 'disabled' | 'selectable' | 'selected' | 'actionable'>
 >;
 
 export const pillClassName = 'ui-pill';
 
 /**
- * THIS COMPONENT IS UNSTABLE
  * Pills should be used when representing an input, as a way to filter content, or to represent an attribute.
  */
 export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) => {
@@ -139,6 +143,8 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
     icon,
     selectable,
     selectedIndicator,
+    role,
+    onDismiss,
   } = props;
 
   const [selected, setSelected] = useAutoControlled({
@@ -172,6 +178,8 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       actionable,
       selectable,
       selected,
+      role,
+      dismissible: Boolean(onDismiss),
     }),
     rtl: context.rtl,
   });
@@ -185,6 +193,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       disabled,
       selectable,
       selected,
+      actionable,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -212,7 +221,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
       {...getA11yProps('root', {
         className: classes.root,
         ref,
-        ...(actionable && { onClick: handleClick }),
+        ...((actionable || selectable) && { onClick: handleClick }),
         ...unhandledProps,
       })}
     >
@@ -236,7 +245,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
           actionable,
         }),
       })}
-      {actionable &&
+      {Boolean(onDismiss) &&
         createShorthand(PillAction, action || {}, {
           overrideProps: (prevProps: PillActionProps & { onClick: (e: React.MouseEvent) => void }) => ({
             onClick: e => {
@@ -255,6 +264,7 @@ export const Pill = (React.forwardRef<HTMLSpanElement, PillProps>((props, ref) =
 
 Pill.defaultProps = {
   as: 'span' as const,
+  accessibility: pillBehavior,
 };
 
 Pill.propTypes = {

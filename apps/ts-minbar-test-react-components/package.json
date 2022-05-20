@@ -1,11 +1,11 @@
 {
   "name": "@fluentui/ts-minbar-test-react-components",
-  "version": "1.0.0",
+  "version": "9.0.0-rc.0",
   "private": true,
   "description": "Testing Fluent UI React Components compatibility with Typescript 3.9",
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-components": "^9.0.0-rc.6"
+    "@fluentui/react-components": "^9.0.0-rc.10"
   },
   "scripts": {
     "build": "just-scripts build",

@@ -2,6 +2,81 @@
   "name": "@fluentui/ts-minbar-test-react-components",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:30 GMT",
+      "tag": "@fluentui/ts-minbar-test-react-components_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react-components",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.10",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:54 GMT",
+      "tag": "@fluentui/ts-minbar-test-react-components_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react-components",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.9",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 09:32:19 GMT",
+      "tag": "@fluentui/ts-minbar-test-react-components_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react-components",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.8",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Apr 2022 07:39:23 GMT",
+      "tag": "@fluentui/ts-minbar-test-react-components_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "undefined": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react-components",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.7",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/ts-minbar-test-react-components_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "undefined": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react-components",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.7",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Mar 2022 07:47:27 GMT",
       "tag": "@fluentui/ts-minbar-test-react-components_v1.0.0",
       "version": "1.0.0",

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Tue, 15 Mar 2022 07:45:54 GMT and should not be manually modified.
+This log was last generated on Fri, 13 May 2022 07:45:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.8)
+
+Fri, 13 May 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.7..@fluentui/react-file-type-icons_v8.6.8)
+
+### Patches
+
+- Added export of FileTypeIconMap ([PR #22841](https://github.com/microsoft/fluentui/pull/22841) by gcox@microsoft.com)
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/style-utilities to v8.6.7 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+
+## [8.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.7)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.6..@fluentui/react-file-type-icons_v8.6.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
 
 ## [8.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.6)
 

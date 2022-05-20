@@ -1,0 +1,3075 @@
+{
+  "name": "@fluentui/react-popover",
+  "entries": [
+    {
+      "date": "Thu, 05 May 2022 18:26:24 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ea944be958019f06cb83f1674546056619eead28",
+            "comment": "Removing star exports."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.8",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.9",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.8",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.7",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.9",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.7",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.8",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5",
+            "commit": "c5abb9c480ac94d12aa644d68d30773d77f2a159"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:45 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b77905b7980c966769584036828af6c1346aaf9d",
+            "comment": "feat: Add inline prop to Popover"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "773b889cd09d46934feeabdbbc389c678b80f7a0",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "262a1e7d36a615afb763409c8c99bfe432052939",
+            "comment": "feat: Adds prop `closeOnScroll` to close popover on scrolling outside"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd",
+            "comment": "feat: Adds prop `mouseLeaveDelay` to delay closing popover that opens on hover"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.8",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.6",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.7",
+            "commit": "65f94192ed3b2cde7e52b9c7e12d6f38b81965dd"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e74b180720cb9aec8df21753a55449849041af82",
+            "comment": "react-popover: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 09:32:19 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.7",
+      "version": "9.0.0-rc.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.7",
+            "commit": "02ca1d3c198452c1693067f5f18bd01b2ed5d6e6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:16:47 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add static classnames to Popover"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.5",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.6",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.4",
+            "commit": "f94b48c825ca8c8b2e3b6755bdd29fe15c7d435d"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "chore: Update e2e tests to use cypress component testing"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 05:17:38 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "17a19427f5465577427f5c1c4ed61578a063f990",
+            "comment": "refactor: PopoverSurface should be rendered from the Popover component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.4",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.5",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 02:17:37 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "084d7408855f3e52b67cbca172da1acef9dcb98f",
+            "comment": "fix: Add react-theme as dependency"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.4",
+            "commit": "0bc1e755543ed69443d5d03e1976c630583242f7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:33 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.3",
+            "commit": "3b9c1e931c23173da3d1af0c696cdc58516ce504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:50:36 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "6c32d0180e89674a46daf795de69e5dc6ca71ef7",
+            "comment": "Updating based on removal of functions from makeStyles."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b1446dead62e61c9a0f6101d6dfc5a2f780403b8",
+            "comment": "use Griffel packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "aa6cfd8ac825b5a280206808101de549a91094fc",
+            "comment": "standardize trigger implementation & cloning"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ec0e785df9c70a2202dc5cc3cb4001d1ee635124",
+            "comment": "update styles to not use CSS shorthands"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "3a5602460a0c05a2ba4e2cc0fad77e5ae0b8ce38",
+            "comment": "fix: Use role=complementary for Popovers without focus traps"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "BREAKING: Rename component hooks add the suffix _unstable, as their API has not been finalized yet"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e0b8e1fa6980077e7b311fd1c72c28d3e4305db0",
+            "comment": "Updating based on changes to composition types."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "38e8f42252c69b1c749c3ca7fca9315b49e6cf31",
+            "comment": "Replacing use of functions in makeStyles with direct use of tokens"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "7cc28ed8320b00f42d91c63882f10316db2205c5",
+            "comment": "Remove component's shorthandProps array"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "09804275c7f346db54c33d4ff347bffc33676014",
+            "comment": "Fix Popover arrow border in high contrast"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "53b01d71e335715fda91b33e3d7bbd9d471d5ed3",
+            "comment": "Refactor component Slot typings"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c2706cec4dc694762b1892a505db666d2fb324c1",
+            "comment": "fix: Set `aria-modal` on Popover if focus trap is enabled"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "839ec14849e112b85aa321d034739ec421199141",
+            "comment": "remove export of commons types"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.1",
+            "commit": "e6c855f6d9019d6c73668d15fc9bc3a13291a6c8"
+          }
+        ],
+        "none": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-popover",
+            "commit": "97752a0e494875c4dc22b268030d7d5e51b19211",
+            "comment": "Add workaround for cypress bug"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8dfa712156b70414205b87b5b6d099367b0c297d",
+            "comment": "chore: use storybook runner for all vNext packages"
+          },
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:15 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "58db204f28af1d68df7260ff580cf91f0adcfb66",
+            "comment": "Add transparent outline to arrow for HC"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-beta.5",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.5",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.4",
+            "commit": "48d236ac53a4950fabc3ddd52f91dac93ca0195b"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8a141d14f3a14de2e1c4691dad908622f310a9d1",
+            "comment": "Migrate package to use solution tsconfigs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:28 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "7fafe76eb2c09f9d17a03c11ba73729d91ef411e",
+            "comment": "update docs descriptions"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c9bd5b5a02ae94a8239ce1b56cac2f0d0dbd3586",
+            "comment": "Updated beta and RC components to ES2019"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "054822c82e40601815f6cd77733a761b72047e4b",
+            "comment": "fix(Popover): use `dialog` as value for `aria-haspopup` for focus trap"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ade4f5d3fa5a6b1c81097403f5c2f2afd859aa14",
+            "comment": "export static classes for components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-beta.4",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.4",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.3",
+            "commit": "742342e52c65066f779232e4e1302fedf0dd460d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Oct 2021 12:14:20 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "peter@draxler.ml",
+            "package": "@fluentui/react-popover",
+            "commit": "f6db7c8d6b7db0902775e7857b62b745be35b59a",
+            "comment": "added styling of documentation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "1efadb35b4fc630435968de2ee44fe80d539ba1a",
+            "comment": "Simplify type for OnOpenChangeData"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-beta.3",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.3",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.2",
+            "commit": "0f8f1ae7c2d908e51e29dd342d79e041f86fac08"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Oct 2021 19:45:58 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.2",
+            "commit": "bdd19e2bb827fc1d8eb329e6ed48cd0542048358"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-beta.1",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 12:47:58 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.56",
+      "version": "9.0.0-alpha.56",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.78",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.61",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.73",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.60",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.53",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.22",
+            "commit": "c41b8f8996acd5b970d894fc910cc4d661f8e3cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 09:28:07 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.55",
+      "version": "9.0.0-alpha.55",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Adds ForwardRefComponent to react-popover components declaration",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.39",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.77",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.60",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.65",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.72",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.56",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.59",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.52",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.21",
+            "commit": "3b16677a03035dcf03c1297268b85c6d4bd3f839"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.54",
+      "version": "9.0.0-alpha.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.38",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.76",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.59",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.64",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.28",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.71",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.55",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.58",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.51",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.20",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 09:44:56 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.52",
+      "version": "9.0.0-alpha.52",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "fix(Popover): documentation typos",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.57",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.69",
+            "commit": "0ebd18ceaba3d032748f76da4ce06fcf8942c6c5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 08:06:11 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.51",
+      "version": "9.0.0-alpha.51",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.74",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.56",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.62",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.26",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.68",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.56",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.49",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.18",
+            "commit": "ede1575b3a5c8f893124af9415c53968564fb923"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 08:06:00 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.50",
+      "version": "9.0.0-alpha.50",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "fix(Popover): Add accessible border for HC",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.36",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.73",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.55",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.61",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.67",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.53",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.55",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.48",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.17",
+            "commit": "0df6cb80c9181650bf5d6c5df233bd5e9e779a43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Sep 2021 09:17:17 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.49",
+      "version": "9.0.0-alpha.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "fix(Popover): Remove leftover defaultProps and fix trigger props merge",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Updated PopoverProps for consistency",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.35",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.72",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.54",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.60",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.66",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.52",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.54",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.47",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.16",
+            "commit": "0d26909912889432060fd4c87b2f4a45017e1532"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 08:21:34 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.48",
+      "version": "9.0.0-alpha.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.34",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.71",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.53",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.59",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.65",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.51",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.53",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.46",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.15",
+            "commit": "95682da34c48813f7658032ae490d21d2f363b90"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Sep 2021 10:10:07 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.47",
+      "version": "9.0.0-alpha.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.33",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.70",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.52",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.58",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.64",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.50",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.52",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.45",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.14",
+            "commit": "bc3f1ec72fc7784a558b0dd6598ee0662f4649c1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.46",
+      "version": "9.0.0-alpha.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Updating to types over interfaces",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.69",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.51",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.57",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.25",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.63",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.51",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.44",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.13",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.45",
+      "version": "9.0.0-alpha.45",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.44",
+      "version": "9.0.0-alpha.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Sep 2021 07:38:39 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.43",
+      "version": "9.0.0-alpha.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "comment": "Fix typings in React.forwardRef",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "fbe41e2877a20ce0f3c01b5188e17c12f941cc4c",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.42",
+      "version": "9.0.0-alpha.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bsunderhus@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 07:38:18 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.41",
+      "version": "9.0.0-alpha.41",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "refactor(Popover): Remove mergeProps and migrate to simple slots",
+            "commit": "fe05da92ddc2742135a689b7b990f8152bd752c3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 16:31:53 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.40",
+      "version": "9.0.0-alpha.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "comment": "chore(v9): Move all internal v9 dependencies from caret to fixed version",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "01a06f5b2aa14ae96a2fca056d34d99a5ad124e0",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-alpha.40"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Sep 2021 07:39:51 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.39",
+      "version": "9.0.0-alpha.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Popover): Implement Popover documentation",
+            "author": "lingfangao@hotmail.com",
+            "commit": "5df101a6f17dfa64c0effe134ac6718999145052",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.28",
+            "author": "behowell@microsoft.com",
+            "commit": "8700a515c7f2659761c5b53f55c32453bc3510b1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Sep 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.38",
+      "version": "9.0.0-alpha.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.50",
+            "author": "lingfangao@hotmail.com",
+            "commit": "21f67e9922763bc9b50c9be8e5cc690d0ee3dac1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Sep 2021 07:34:55 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-conformance-make-styles to v9.0.0-alpha.6",
+            "author": "olfedias@microsoft.com",
+            "commit": "37e0f35eb706d40c4537010de97db94a831022d3",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Sep 2021 07:34:53 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.37",
+      "version": "9.0.0-alpha.37",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.27",
+            "author": "lingfangao@hotmail.com",
+            "commit": "cd22a603bb20947e7d23a3357b9a535afdb5ee1d",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Sep 2021 07:36:46 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.36",
+      "version": "9.0.0-alpha.36",
+      "comments": {
+        "none": [
+          {
+            "comment": "enable makeStyles conformance tests",
+            "author": "olfedias@microsoft.com",
+            "commit": "b9762f72d53452b12d22fd2591fbc57376423048",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.43",
+            "author": "olfedias@microsoft.com",
+            "commit": "ff3225d408fa6a97628e3f08a5a11a196bef6934",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "8f887d05e8f2fed8433b147c6e175d8297455c51",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Sep 2021 07:39:56 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.35",
+      "version": "9.0.0-alpha.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.26",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "40254a1b07bd51affd276e51af0b1d517714b45c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Aug 2021 07:37:47 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.54",
+            "author": "marata@microsoft.com",
+            "commit": "4a7f81f3d92f128a672717eda660af3ba50ee71b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Aug 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.33",
+      "version": "9.0.0-alpha.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.40",
+            "author": "olfedias@microsoft.com",
+            "commit": "a59db5b49ed755bf1b64ac0ac051d626ec50ffd3",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Aug 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.32",
+      "version": "9.0.0-alpha.32",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.40",
+            "author": "martinhochel@microsoft.com",
+            "commit": "210a7de72f25eb379bb76f76867351b7cad36ccd",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.31",
+      "version": "9.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating TypeScript type-only imports/exports to use import/export syntax.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4eec618fe480b129e08914b1f091a8509af60379",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.38",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.40",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.41",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.24",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.59",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.53",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.46",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.23",
+            "author": "dzearing@hotmail.com",
+            "commit": "789a3733b128569190319fce3fe2b46900b24896",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.30",
+      "version": "9.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update .npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.38",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.34",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.39",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.40",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.24",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.58",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.52",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.45",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.22",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Aug 2021 07:41:35 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.29",
+      "version": "9.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.23",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "e467d64e7d3edb2512a81efdaeca5813269039b4",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Aug 2021 07:33:54 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.36",
+            "author": "martinhochel@microsoft.com",
+            "commit": "5dfa622011b10aaab3ab1fb3fc2e5f77c8a13166",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Aug 2021 07:36:39 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.28",
+      "version": "9.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Menu): replace align, position, coverTarget, offset props with single `positioning` shorthand prop",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9a29ba46e28735f7e10d06627a90931ec5a250c8",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Aug 2021 07:36:34 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.27",
+      "version": "9.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(PopoverTrigger): Retain original child ref",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe61d5e33c259da94b08e72c96d0a0963528e1fd",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Aug 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.26",
+      "version": "9.0.0-alpha.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.35",
+            "author": "olfedias@microsoft.com",
+            "commit": "954ba1d43684df75942a18c0ef05dc99187729ff",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Aug 2021 07:33:28 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.25",
+      "version": "9.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use PositioningProps type",
+            "author": "olfedias@microsoft.com",
+            "commit": "57a2bc1f8a6ec7859bf4a3509696681d39602561",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.34",
+            "author": "czearing@outlook.com",
+            "commit": "c8aa3a59fbe9a59ca90077418d7c82de9f31ee13",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Aug 2021 07:35:14 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.24",
+      "version": "9.0.0-alpha.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.34",
+            "author": "jspurlin@microsoft.com",
+            "commit": "8a09087b4215a36a50b6d3478cd2b74155c9c630",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Aug 2021 07:34:12 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.21",
+            "author": "czearing@outlook.com",
+            "commit": "109e85b19d8ee37a9c31ddf8e2083471bab64526",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.4",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.33",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Aug 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.22",
+      "version": "9.0.0-alpha.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.20",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "ab0e1bafdd9ace2974b3362cd2300fb32af466fb",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jul 2021 07:37:30 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add Babel plugins to build pipeline",
+            "author": "olfedias@microsoft.com",
+            "commit": "19db6cb57a237073b0bb50d07eb921b1ce2e0c61",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/babel-make-styles to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "8c249a1c1a8dcc4b0d9877e5d5e8e6d126063788",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Jul 2021 07:38:19 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "react-popver: fix Default story issue caused by storybook migration",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "5fcdb72150a4ab47e72e87be52cd7876e5d95ff1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Jul 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.19",
+      "version": "9.0.0-alpha.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.18",
+            "author": "behowell@microsoft.com",
+            "commit": "2e257154d0448b8d4fd64142f93fcc9a225995cc",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.30",
+            "author": "olfedias@microsoft.com",
+            "commit": "0723d064145b7f6be971187a5cf9b66859308e2f",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Jul 2021 07:36:18 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(react-popover): apply controls setup based on SB authoring RFC",
+            "author": "martinhochel@microsoft.com",
+            "commit": "521f16afc5e4d6da087f178052252fd8afca801b",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.17",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fce57b22cb51acd0b125421278655258b871c1b5",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 22:32:58 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "12b74625dec55bd1919f6370513043d87705e5ea",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Jul 2021 07:35:36 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.24",
+            "author": "behowell@microsoft.com",
+            "commit": "8e5969e291bcafac21df12c9fb591bdd5654c613",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Enable e2e tests in CI",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fd00f462735d6ea774d28c581079d5ad9e7e3945",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.23",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Jul 2021 07:32:49 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix(E2E): Revert popover e2e",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f945172f2b3904cf993a6a7f65a13bbe44f31fbe",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 23:15:55 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add E2E test for updating content in Popover",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "3812a10a4152a2e27ac89b16259e312f42469570",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.15",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "6c37a1cb5c312d4be8b239bfd9f6c9f28e9f0d24",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Jul 2021 07:37:06 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename typings and getSlots to have the Compat Suffix",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "c939e67b1840a9eb5f7706afcda8c14df8f18d33",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jul 2021 07:35:05 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing bug in start script of converged packages.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c7eff2580a6fe159bbb3c4e77e549925187f3150",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.13",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "5c06b5a9bd09cefc6ef3afc90f5575ca4663f665",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Jun 2021 07:38:35 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(Popover): apply styles correctly",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "75043ae9de6601410e1e8416593176e9d31a733b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Jun 2021 07:33:32 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.19",
+            "author": "olfedias@microsoft.com",
+            "commit": "073ea5f67e3088a92f68caeeca32ef96410aabc5",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.35",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4f907a837f3b85923178b611e4fbb0d9ac222dda",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.22",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "4f907a837f3b85923178b611e4fbb0d9ac222dda",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Jun 2021 07:35:16 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.18",
+            "author": "olfedias@microsoft.com",
+            "commit": "bf6fd1290ea6c6861a5d80f704e0d6d0cadb71e0",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Jun 2021 07:31:35 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(Popover): Migrate DX",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "2dd17f0984d2f6de976c3ade881c03e22e02a476",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Jun 2021 07:31:49 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.21",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "e4b6b9a9cbc90d5de498a85aeb793678b48f649b",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Jun 2021 07:34:33 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.18",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "7301e00ef64eefcbd9f20e4ac8fd45849b3f74f3",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Jun 2021 07:30:58 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "1817a5e193448ab6f456e3bd9445e537fd64348c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Jun 2021 07:34:11 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fc966e8121161aa0a2f339e5a44dc998e318c5c1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Jun 2021 07:34:24 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "823b75aaf95a5324a8ef0e504f65706c5769fb85",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Jun 2021 07:40:20 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.34",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "a224777cc0089bd715cc304282115a2cd9929889",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Jun 2021 07:33:38 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add spec",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "691dab1bc362d71fed674267db75d6e84eb7956c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Jun 2021 07:32:44 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "chore(Popover): Rename `PopoverContent`to `PopoverSurface`",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "387758e3f7dd28a06d0ade40d312340e4792cdf9",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Jun 2021 07:38:15 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.17",
+            "author": "martinhochel@microsoft.com",
+            "commit": "f856cb3f7fbc3edb3646204c0c7e435fc7678dd1",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Jun 2021 07:37:23 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.16",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1ca8c8f0c4eb633e6b34c0b6182c09103d4c7fcb",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Jun 2021 07:36:03 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove suffix from stories",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "aa1c32b4f1a4d15732c3bf3106fd8c50162d565c",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.31",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.39",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.15",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.10",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.25",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.18",
+            "author": "martinhochel@microsoft.com",
+            "commit": "01f798f6ac6b7b0e4c968e34a0c3f0e692aa3d43",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Jun 2021 07:37:15 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update react-popover tsconfig",
+            "author": "bsunderhus@microsoft.com",
+            "commit": "d5d06382a85e2ddcc59f00c85120e1b3fc7ffa40",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Jun 2021 07:31:58 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Revert \"chore: enable Jest aliases for converged packages (#18337)\"",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.14",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0237bcee52a6c24b3f3f975ad4dee9cc81f41815",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.30",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.10",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.38",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.16",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.24",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "olfedias@microsoft.com",
+            "commit": "b5f2a02b37c8ea394a65f7a22bff057de93370dd",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Publish package",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fa961304d6ba90927e57abe23359e0cf9eaf66a9",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 May 2021 07:33:15 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "203ccaf025da07d4064f8e4983298f0c1972c67d",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 May 2021 07:33:57 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.14",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "5379823a6f53bd36a936806153d228b9a0ef0543",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.26",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.24",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "53145c8f329f92f25d1ce2cd132e6dc4ee4ce43a",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 May 2021 07:35:43 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.14",
+            "author": "olfedias@microsoft.com",
+            "commit": "d2504c72ec7fba0cf4dcf1984c2e1a9322720225",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-alpha.10",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "6ffca36c9537a1852d8ec26478b8b7aeb059e17c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 May 2021 07:34:54 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-positioning to v9.0.0-alpha.22",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-alpha.27",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.37",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.14",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-portal to v9.0.0-alpha.15",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-alpha.12",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "3f78f90075ae78bfd28f7d498ae8f012f0221279",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 May 2021 07:41:54 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1e6ad173e2cfa18cfcae13311be7916f1b241432",
+            "package": "@fluentui/react-popover"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "630b71c415cd40ed0e36773eab99d62cd02a30fb",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 May 2021 07:34:20 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.12",
+            "author": "olfedias@microsoft.com",
+            "commit": "975140887c6ad2391f8db63003ed440239ec9c25",
+            "package": "@fluentui/react-popover"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.3.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "616b4b7c381c757871e8a590564d8eff7337834c",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 May 2021 07:34:38 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.11",
+            "author": "olfedias@microsoft.com",
+            "commit": "c845a5045c99d8d83b2584cee016b1701cd3de57",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 May 2021 07:36:55 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.10",
+            "author": "olfedias@microsoft.com",
+            "commit": "fb53fd67729d8236e0681d74322717f6974c8b72",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 May 2021 07:36:20 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-make-styles to v9.0.0-alpha.9",
+            "author": "olfedias@microsoft.com",
+            "commit": "894712616ee3271fcf06e5fb24ad01e326e30bb5",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 May 2021 07:36:07 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.31",
+            "author": "olfedias@microsoft.com",
+            "commit": "78c12235fcfebe43b7a77d36cbdfc67461ec32dc",
+            "package": "@fluentui/react-popover"
+          }
+        ]
+      }
+    }
+  ]
+}

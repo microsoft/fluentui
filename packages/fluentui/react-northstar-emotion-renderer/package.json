@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-northstar-emotion-renderer",
   "description": "A CSS-in-JS renderer based on Emotion for FluentUI React Northstar.",
-  "version": "0.61.0",
+  "version": "0.63.0",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
@@ -9,8 +9,8 @@
     "@emotion/serialize": "^1.0.2",
     "@emotion/sheet": "^1.0.1",
     "@emotion/utils": "^1.0.0",
-    "@fluentui/react-northstar-styles-renderer": "^0.61.0",
-    "@fluentui/styles": "^0.61.0",
+    "@fluentui/react-northstar-styles-renderer": "^0.63.0",
+    "@fluentui/styles": "^0.63.0",
     "stylis": "^4.0.6",
     "stylis-plugin-rtl": "^2.1.0"
   },

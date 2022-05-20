@@ -7930,6 +7930,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
+                                    flex-shrink: 0;
                                     font-size: 12px;
                                     height: 48px;
                                     justify-content: center;
@@ -7996,6 +7997,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   font-size: 16px;
                                   font-weight: 600;
                                   outline: 0px;
+                                  overflow: hidden;
                                   padding-left: 12px;
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
@@ -8795,6 +8797,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
+                                    flex-shrink: 0;
                                     font-size: 12px;
                                     height: 48px;
                                     justify-content: center;
@@ -8861,6 +8864,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   font-size: 16px;
                                   font-weight: 600;
                                   outline: 0px;
+                                  overflow: hidden;
                                   padding-left: 12px;
                                   text-overflow: ellipsis;
                                   white-space: nowrap;

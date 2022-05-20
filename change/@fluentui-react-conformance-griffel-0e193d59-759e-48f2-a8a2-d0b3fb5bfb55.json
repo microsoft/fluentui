@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix cleanup of overridesWin test",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -268,7 +268,7 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*') {
+    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*' && !e.altKey && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
       e.stopPropagation();
       const toFocusID = getToFocusIDByFirstCharacter(e, props.id);
