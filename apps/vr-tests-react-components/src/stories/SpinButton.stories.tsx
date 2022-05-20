@@ -49,17 +49,17 @@ storiesOf('SpinButton Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Appearance: filledDarker', () => <SpinButton appearance="filledDarker" value={10} />, {
+  .addStory('Appearance: filled-darker', () => <SpinButton appearance="filled-darker" value={10} />, {
     includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory(
-    'Appearance: filledLighter',
+    'Appearance: filled-lighter',
     () => (
       // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
       <div style={{ background: '#f5f5f5', padding: '10px' }}>
-        <SpinButton value={10} />
+        <SpinButton appearance="filled-lighter" value={10} />
       </div>
     ),
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },

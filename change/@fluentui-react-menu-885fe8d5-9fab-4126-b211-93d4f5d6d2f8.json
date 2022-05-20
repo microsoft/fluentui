@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Context menu closes when its trigger is left clicked",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

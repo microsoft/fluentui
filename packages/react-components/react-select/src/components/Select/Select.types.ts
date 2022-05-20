@@ -21,7 +21,7 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
    *
    * @default 'outline'
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * If true, the Select will have an inline `display`, allowing it to be inline with other content.

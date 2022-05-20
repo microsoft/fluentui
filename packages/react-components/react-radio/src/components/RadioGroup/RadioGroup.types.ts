@@ -40,7 +40,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
    *
    * @default vertical
    */
-  layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
+  layout?: 'vertical' | 'horizontal' | 'horizontal-stacked';
 
   /**
    * Disable all Radio items in this group.

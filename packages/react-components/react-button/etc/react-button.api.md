@@ -15,16 +15,12 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Button: ForwardRefComponent<ButtonProps>;
 
-// @public @deprecated (undocumented)
-export const buttonClassName: string;
-
 // @public (undocumented)
 export const buttonClassNames: SlotClassNames<ButtonSlots>;
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps<ButtonSlots> & {
     appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
-    block?: boolean;
     disabledFocusable?: boolean;
     disabled?: boolean;
     iconPosition?: 'before' | 'after';
@@ -39,21 +35,18 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     iconOnly: boolean;
 };
 
 // @public
 export const CompoundButton: ForwardRefComponent<CompoundButtonProps>;
 
-// @public @deprecated (undocumented)
-export const compoundButtonClassName: string;
-
 // @public (undocumented)
 export const compoundButtonClassNames: SlotClassNames<CompoundButtonSlots>;
 
 // @public (undocumented)
-export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
+export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type CompoundButtonSlots = ButtonSlots & {
@@ -67,14 +60,11 @@ export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<But
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
 
-// @public @deprecated (undocumented)
-export const menuButtonClassName: string;
-
 // @public (undocumented)
 export const menuButtonClassNames: SlotClassNames<MenuButtonSlots>;
 
 // @public (undocumented)
-export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
+export type MenuButtonProps = ComponentProps<MenuButtonSlots> & Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 // @public (undocumented)
 export type MenuButtonSlots = ButtonSlots & {
@@ -101,9 +91,6 @@ export const renderSplitButton_unstable: (state: SplitButtonState) => JSX.Elemen
 // @public
 export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 
-// @public @deprecated (undocumented)
-export const splitButtonClassName: string;
-
 // @public (undocumented)
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
@@ -122,9 +109,6 @@ export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonSta
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
-
-// @public @deprecated (undocumented)
-export const toggleButtonClassName: string;
 
 // @public (undocumented)
 export const toggleButtonClassNames: SlotClassNames<ButtonSlots>;

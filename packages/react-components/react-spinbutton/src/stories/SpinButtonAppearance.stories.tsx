@@ -55,12 +55,12 @@ export const Appearance = () => {
 
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
         <Label htmlFor={filledLighterId}>Filled Lighter</Label>
-        <SpinButton appearance="filledLighter" id={filledLighterId} />
+        <SpinButton appearance="filled-lighter" id={filledLighterId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={filledDarkerId}>Filled Darker</Label>
-        <SpinButton appearance="filledDarker" id={filledDarkerId} />
+        <SpinButton appearance="filled-darker" id={filledDarkerId} />
       </div>
     </div>
   );

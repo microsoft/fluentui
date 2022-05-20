@@ -3,7 +3,7 @@ import { Avatar } from '../index';
 
 export const ColorPalette = () => (
   <>
-    <Avatar initials="DR" color="darkRed" name="darkRed avatar" />
+    <Avatar initials="DR" color="dark-red" name="darkRed avatar" />
     <Avatar initials="CR" color="cranberry" name="cranberry avatar" />
     <Avatar initials="RE" color="red" name="red avatar" />
     <Avatar initials="PU" color="pumpkin" name="pumpkin avatar" />
@@ -14,12 +14,12 @@ export const ColorPalette = () => (
     <Avatar initials="BR" color="brown" name="brown avatar" />
     <Avatar initials="FO" color="forest" name="forest avatar" />
     <Avatar initials="SE" color="seafoam" name="seafoam avatar" />
-    <Avatar initials="DG" color="darkGreen" name="darkGreen avatar" />
-    <Avatar initials="LT" color="lightTeal" name="lightTeal avatar" />
+    <Avatar initials="DG" color="dark-green" name="darkGreen avatar" />
+    <Avatar initials="LT" color="light-teal" name="lightTeal avatar" />
     <Avatar initials="TE" color="teal" name="teal avatar" />
     <Avatar initials="ST" color="steel" name="steel avatar" />
     <Avatar initials="BL" color="blue" name="blue avatar" />
-    <Avatar initials="RB" color="royalBlue" name="royalBlue avatar" />
+    <Avatar initials="RB" color="royal-blue" name="royalBlue avatar" />
     <Avatar initials="CO" color="cornflower" name="cornflower avatar" />
     <Avatar initials="NA" color="navy" name="navy avatar" />
     <Avatar initials="LA" color="lavender" name="lavender avatar" />

@@ -136,7 +136,7 @@ const getBadgeSize = (size: AvatarState['size']) => {
 };
 
 const avatarColors: AvatarNamedColor[] = [
-  'darkRed',
+  'dark-red',
   'cranberry',
   'red',
   'pumpkin',
@@ -147,12 +147,12 @@ const avatarColors: AvatarNamedColor[] = [
   'brown',
   'forest',
   'seafoam',
-  'darkGreen',
-  'lightTeal',
+  'dark-green',
+  'light-teal',
   'teal',
   'steel',
   'blue',
-  'royalBlue',
+  'royal-blue',
   'cornflower',
   'navy',
   'lavender',

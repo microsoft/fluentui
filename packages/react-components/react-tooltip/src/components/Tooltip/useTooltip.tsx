@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeArrowOffset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
@@ -81,17 +81,17 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   state.content.id = useId('tooltip-', state.content.id);
 
-  const popperOptions = {
+  const positioningOptions = {
     enabled: state.visible,
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
-    offset: [0, 4] as [number, number],
+    offset: 4,
     ...resolvePositioningShorthand(state.positioning),
   };
 
   if (state.withArrow) {
-    popperOptions.offset = mergeArrowOffset(popperOptions.offset, arrowHeight);
+    positioningOptions.offset = mergeArrowOffset(positioningOptions.offset, arrowHeight);
   }
 
   const {
@@ -102,7 +102,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     targetRef: React.MutableRefObject<unknown>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
     arrowRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper(popperOptions);
+  } = usePositioning(positioningOptions);
 
   state.content.ref = useMergedRefs(state.content.ref, containerRef);
   state.arrowRef = arrowRef;
@@ -216,7 +216,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...triggerAriaProps,
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: popperOptions.target === undefined ? childTargetRef : child?.ref,
+    ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
     onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
     onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
     onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),

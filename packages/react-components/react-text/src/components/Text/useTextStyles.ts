@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { TextSlots, TextState } from './Text.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `textClassNames.root` instead.
- */
-export const textClassName = 'fui-Text';
 export const textClassNames: SlotClassNames<TextSlots> = {
   root: 'fui-Text',
 };

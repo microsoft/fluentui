@@ -16,17 +16,11 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Radio: ForwardRefComponent<RadioProps>;
 
-// @public @deprecated (undocumented)
-export const radioClassName = "fui-Radio";
-
 // @public (undocumented)
 export const radioClassNames: SlotClassNames<RadioSlots>;
 
 // @public
 export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
-
-// @public @deprecated (undocumented)
-export const radioGroupClassName = "fui-RadioGroup";
 
 // @public (undocumented)
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
@@ -53,7 +47,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
     value?: string;
     defaultValue?: string;
     onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
-    layout?: 'vertical' | 'horizontal' | 'horizontalStacked';
+    layout?: 'vertical' | 'horizontal' | 'horizontal-stacked';
     disabled?: boolean;
     required?: boolean;
 };

@@ -17,6 +17,7 @@ describe('MenuItemCheckbox conformance', () => {
       name: 'checkbox',
       value: '1',
     },
+    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuItemCheckbox',
     testOptions: {
       'has-static-classnames': [

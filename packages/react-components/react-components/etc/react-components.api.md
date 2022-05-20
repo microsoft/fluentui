@@ -6,13 +6,11 @@
 
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
-import { accordionClassName } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
 import { AccordionContext } from '@fluentui/react-accordion';
 import { AccordionContextValue } from '@fluentui/react-accordion';
 import { AccordionContextValues } from '@fluentui/react-accordion';
 import { AccordionHeader } from '@fluentui/react-accordion';
-import { accordionHeaderClassName } from '@fluentui/react-accordion';
 import { accordionHeaderClassNames } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValue } from '@fluentui/react-accordion';
 import { AccordionHeaderContextValues } from '@fluentui/react-accordion';
@@ -23,7 +21,6 @@ import { AccordionHeaderSlots } from '@fluentui/react-accordion';
 import { AccordionHeaderState } from '@fluentui/react-accordion';
 import { AccordionIndex } from '@fluentui/react-accordion';
 import { AccordionItem } from '@fluentui/react-accordion';
-import { accordionItemClassName } from '@fluentui/react-accordion';
 import { accordionItemClassNames } from '@fluentui/react-accordion';
 import { AccordionItemContext } from '@fluentui/react-accordion';
 import { AccordionItemContextValue } from '@fluentui/react-accordion';
@@ -33,7 +30,6 @@ import { AccordionItemSlots } from '@fluentui/react-accordion';
 import { AccordionItemState } from '@fluentui/react-accordion';
 import { AccordionItemValue } from '@fluentui/react-accordion';
 import { AccordionPanel } from '@fluentui/react-accordion';
-import { accordionPanelClassName } from '@fluentui/react-accordion';
 import { accordionPanelClassNames } from '@fluentui/react-accordion';
 import { AccordionPanelProps } from '@fluentui/react-accordion';
 import { AccordionPanelSlots } from '@fluentui/react-accordion';
@@ -46,7 +42,6 @@ import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
 import { Avatar } from '@fluentui/react-avatar';
-import { avatarClassName } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarNamedColor } from '@fluentui/react-avatar';
 import { AvatarProps } from '@fluentui/react-avatar';
@@ -54,27 +49,24 @@ import { AvatarSizes } from '@fluentui/react-avatar';
 import { AvatarSlots } from '@fluentui/react-avatar';
 import { AvatarState } from '@fluentui/react-avatar';
 import { Badge } from '@fluentui/react-badge';
-import { badgeClassName } from '@fluentui/react-badge';
 import { badgeClassNames } from '@fluentui/react-badge';
 import { BadgeProps } from '@fluentui/react-badge';
 import { BadgeSlots } from '@fluentui/react-badge';
 import { BadgeState } from '@fluentui/react-badge';
-import { Body as Body_2 } from '@fluentui/react-text';
-import { bodyClassName } from '@fluentui/react-text';
-import { bodyClassNames } from '@fluentui/react-text';
+import { Body1 } from '@fluentui/react-text';
+import { body1ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
-import { buttonClassName } from '@fluentui/react-button';
 import { buttonClassNames } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
-import { Caption } from '@fluentui/react-text';
-import { captionClassName } from '@fluentui/react-text';
-import { captionClassNames } from '@fluentui/react-text';
+import { Caption1 } from '@fluentui/react-text';
+import { caption1ClassNames } from '@fluentui/react-text';
+import { Caption2 } from '@fluentui/react-text';
+import { caption2ClassNames } from '@fluentui/react-text';
 import { Checkbox } from '@fluentui/react-checkbox';
-import { checkboxClassName } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
@@ -85,13 +77,11 @@ import { ColorTokens } from '@fluentui/react-theme';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import { CompoundButton } from '@fluentui/react-button';
-import { compoundButtonClassName } from '@fluentui/react-button';
 import { compoundButtonClassNames } from '@fluentui/react-button';
 import { CompoundButtonProps } from '@fluentui/react-button';
 import { CompoundButtonSlots } from '@fluentui/react-button';
 import { CompoundButtonState } from '@fluentui/react-button';
 import { CounterBadge } from '@fluentui/react-badge';
-import { counterBadgeClassName } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
@@ -106,10 +96,8 @@ import { createLightTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { Display } from '@fluentui/react-text';
-import { displayClassName } from '@fluentui/react-text';
 import { displayClassNames } from '@fluentui/react-text';
 import { Divider } from '@fluentui/react-divider';
-import { dividerClassName } from '@fluentui/react-divider';
 import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
@@ -117,7 +105,6 @@ import { DividerState } from '@fluentui/react-divider';
 import { DurationTokens } from '@fluentui/react-theme';
 import { elementContains } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
-import { fluentProviderClassName } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
 import { FluentProviderProps } from '@fluentui/react-provider';
@@ -132,28 +119,27 @@ import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
-import { Headline } from '@fluentui/react-text';
-import { headlineClassName } from '@fluentui/react-text';
-import { headlineClassNames } from '@fluentui/react-text';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
-import { imageClassName } from '@fluentui/react-image';
 import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { Input } from '@fluentui/react-input';
+import { inputClassNames } from '@fluentui/react-input';
+import { InputOnChangeData } from '@fluentui/react-input';
+import { InputProps } from '@fluentui/react-input';
+import { InputSlots } from '@fluentui/react-input';
+import { InputState } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
-import { labelClassName } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
 import { LabelSlots } from '@fluentui/react-label';
 import { LabelState } from '@fluentui/react-label';
 import { LargeTitle } from '@fluentui/react-text';
-import { largeTitleClassName } from '@fluentui/react-text';
 import { largeTitleClassNames } from '@fluentui/react-text';
 import { LineHeightTokens } from '@fluentui/react-theme';
 import { Link } from '@fluentui/react-link';
-import { linkClassName } from '@fluentui/react-link';
 import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
@@ -162,7 +148,6 @@ import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { Menu } from '@fluentui/react-menu';
 import { MenuButton } from '@fluentui/react-button';
-import { menuButtonClassName } from '@fluentui/react-button';
 import { menuButtonClassNames } from '@fluentui/react-button';
 import { MenuButtonProps } from '@fluentui/react-button';
 import { MenuButtonSlots } from '@fluentui/react-button';
@@ -173,19 +158,16 @@ import { MenuContext } from '@fluentui/react-menu';
 import { MenuContextValue } from '@fluentui/react-menu';
 import { MenuContextValues } from '@fluentui/react-menu';
 import { MenuDivider } from '@fluentui/react-menu';
-import { menuDividerClassName } from '@fluentui/react-menu';
 import { menuDividerClassNames } from '@fluentui/react-menu';
 import { MenuDividerProps } from '@fluentui/react-menu';
 import { MenuDividerSlots } from '@fluentui/react-menu';
 import { MenuDividerState } from '@fluentui/react-menu';
 import { MenuGroup } from '@fluentui/react-menu';
-import { menuGroupClassName } from '@fluentui/react-menu';
 import { menuGroupClassNames } from '@fluentui/react-menu';
 import { MenuGroupContextProvider } from '@fluentui/react-menu';
 import { MenuGroupContextValue } from '@fluentui/react-menu';
 import { MenuGroupContextValues } from '@fluentui/react-menu';
 import { MenuGroupHeader } from '@fluentui/react-menu';
-import { menuGroupHeaderClassName } from '@fluentui/react-menu';
 import { menuGroupHeaderClassNames } from '@fluentui/react-menu';
 import { MenuGroupHeaderProps } from '@fluentui/react-menu';
 import { MenuGroupHeaderSlots } from '@fluentui/react-menu';
@@ -195,15 +177,12 @@ import { MenuGroupSlots } from '@fluentui/react-menu';
 import { MenuGroupState } from '@fluentui/react-menu';
 import { MenuItem } from '@fluentui/react-menu';
 import { MenuItemCheckbox } from '@fluentui/react-menu';
-import { menuItemCheckboxClassName } from '@fluentui/react-menu';
 import { menuItemCheckboxClassNames } from '@fluentui/react-menu';
 import { MenuItemCheckboxProps } from '@fluentui/react-menu';
 import { MenuItemCheckboxState } from '@fluentui/react-menu';
-import { menuItemClassName } from '@fluentui/react-menu';
 import { menuItemClassNames } from '@fluentui/react-menu';
 import { MenuItemProps } from '@fluentui/react-menu';
 import { MenuItemRadio } from '@fluentui/react-menu';
-import { menuItemRadioClassName } from '@fluentui/react-menu';
 import { menuItemRadioClassNames } from '@fluentui/react-menu';
 import { MenuItemRadioProps } from '@fluentui/react-menu';
 import { MenuItemRadioState } from '@fluentui/react-menu';
@@ -212,7 +191,6 @@ import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
-import { menuListClassName } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContext } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -224,7 +202,6 @@ import { MenuListState } from '@fluentui/react-menu';
 import { MenuOpenChangeData } from '@fluentui/react-menu';
 import { MenuOpenEvents } from '@fluentui/react-menu';
 import { MenuPopover } from '@fluentui/react-menu';
-import { menuPopoverClassName } from '@fluentui/react-menu';
 import { menuPopoverClassNames } from '@fluentui/react-menu';
 import { MenuPopoverProps } from '@fluentui/react-menu';
 import { MenuPopoverSlots } from '@fluentui/react-menu';
@@ -233,7 +210,6 @@ import { MenuProps } from '@fluentui/react-menu';
 import { MenuProvider } from '@fluentui/react-menu';
 import { MenuSlots } from '@fluentui/react-menu';
 import { MenuSplitGroup } from '@fluentui/react-menu';
-import { menuSplitGroupClassName } from '@fluentui/react-menu';
 import { menuSplitGroupClassNames } from '@fluentui/react-menu';
 import { MenuSplitGroupProps } from '@fluentui/react-menu';
 import { MenuSplitGroupSlots } from '@fluentui/react-menu';
@@ -256,7 +232,6 @@ import { PopoverProps } from '@fluentui/react-popover';
 import { PopoverSize } from '@fluentui/react-popover';
 import { PopoverState } from '@fluentui/react-popover';
 import { PopoverSurface } from '@fluentui/react-popover';
-import { popoverSurfaceClassName } from '@fluentui/react-popover';
 import { popoverSurfaceClassNames } from '@fluentui/react-popover';
 import { PopoverSurfaceProps } from '@fluentui/react-popover';
 import { PopoverSurfaceSlots } from '@fluentui/react-popover';
@@ -267,20 +242,19 @@ import { PopoverTriggerState } from '@fluentui/react-popover';
 import { Portal } from '@fluentui/react-portal';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
+import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { presenceBadgeClassName } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { Radio } from '@fluentui/react-radio';
-import { radioClassName } from '@fluentui/react-radio';
 import { radioClassNames } from '@fluentui/react-radio';
 import { RadioGroup } from '@fluentui/react-radio';
-import { radioGroupClassName } from '@fluentui/react-radio';
 import { radioGroupClassNames } from '@fluentui/react-radio';
 import { RadioGroupContext } from '@fluentui/react-radio';
 import { RadioGroupContextValue } from '@fluentui/react-radio';
@@ -307,6 +281,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
@@ -330,6 +305,7 @@ import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
@@ -365,21 +341,25 @@ import { SpinnerProps } from '@fluentui/react-spinner';
 import { SpinnerSlots } from '@fluentui/react-spinner';
 import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButton } from '@fluentui/react-button';
-import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
-import { Subheadline } from '@fluentui/react-text';
-import { subheadlineClassName } from '@fluentui/react-text';
-import { subheadlineClassNames } from '@fluentui/react-text';
+import { Subtitle1 } from '@fluentui/react-text';
+import { subtitle1ClassNames } from '@fluentui/react-text';
+import { Subtitle2 } from '@fluentui/react-text';
+import { subtitle2ClassNames } from '@fluentui/react-text';
+import { Switch } from '@fluentui/react-switch';
+import { switchClassNames } from '@fluentui/react-switch';
+import { SwitchOnChangeData } from '@fluentui/react-switch';
+import { SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
+import { SwitchState } from '@fluentui/react-switch';
 import { Tab } from '@fluentui/react-tabs';
-import { tabClassName } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
 import { TabList } from '@fluentui/react-tabs';
-import { tabListClassName } from '@fluentui/react-tabs';
 import { tabListClassNames } from '@fluentui/react-tabs';
 import { TabListContextValue } from '@fluentui/react-tabs';
 import { TabListContextValues } from '@fluentui/react-tabs';
@@ -400,7 +380,6 @@ import { textareaClassNames } from '@fluentui/react-textarea';
 import { TextareaProps } from '@fluentui/react-textarea';
 import { TextareaSlots } from '@fluentui/react-textarea';
 import { TextareaState } from '@fluentui/react-textarea';
-import { textClassName } from '@fluentui/react-text';
 import { textClassNames } from '@fluentui/react-text';
 import { TextProps } from '@fluentui/react-text';
 import { TextSlots } from '@fluentui/react-text';
@@ -408,22 +387,17 @@ import { TextState } from '@fluentui/react-text';
 import { Theme } from '@fluentui/react-theme';
 import { themeToTokensObject } from '@fluentui/react-theme';
 import { Title1 } from '@fluentui/react-text';
-import { title1ClassName } from '@fluentui/react-text';
 import { title1ClassNames } from '@fluentui/react-text';
 import { Title2 } from '@fluentui/react-text';
-import { title2ClassName } from '@fluentui/react-text';
 import { title2ClassNames } from '@fluentui/react-text';
 import { Title3 } from '@fluentui/react-text';
-import { title3ClassName } from '@fluentui/react-text';
 import { title3ClassNames } from '@fluentui/react-text';
 import { ToggleButton } from '@fluentui/react-button';
-import { toggleButtonClassName } from '@fluentui/react-button';
 import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { tooltipClassName } from '@fluentui/react-tooltip';
 import { tooltipClassNames } from '@fluentui/react-tooltip';
 import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
@@ -472,6 +446,8 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInput_unstable } from '@fluentui/react-input';
+import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -531,6 +507,8 @@ import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
+import { useSwitch_unstable } from '@fluentui/react-switch';
+import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
 import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
@@ -553,8 +531,6 @@ export { __styles }
 
 export { Accordion }
 
-export { accordionClassName }
-
 export { accordionClassNames }
 
 export { AccordionContext }
@@ -564,8 +540,6 @@ export { AccordionContextValue }
 export { AccordionContextValues }
 
 export { AccordionHeader }
-
-export { accordionHeaderClassName }
 
 export { accordionHeaderClassNames }
 
@@ -587,8 +561,6 @@ export { AccordionIndex }
 
 export { AccordionItem }
 
-export { accordionItemClassName }
-
 export { accordionItemClassNames }
 
 export { AccordionItemContext }
@@ -606,8 +578,6 @@ export { AccordionItemState }
 export { AccordionItemValue }
 
 export { AccordionPanel }
-
-export { accordionPanelClassName }
 
 export { accordionPanelClassNames }
 
@@ -633,8 +603,6 @@ export { arrowHeights }
 
 export { Avatar }
 
-export { avatarClassName }
-
 export { avatarClassNames }
 
 export { AvatarNamedColor }
@@ -649,8 +617,6 @@ export { AvatarState }
 
 export { Badge }
 
-export { badgeClassName }
-
 export { badgeClassNames }
 
 export { BadgeProps }
@@ -659,19 +625,15 @@ export { BadgeSlots }
 
 export { BadgeState }
 
-export { Body_2 as Body }
+export { Body1 }
 
-export { bodyClassName }
-
-export { bodyClassNames }
+export { body1ClassNames }
 
 export { BorderRadiusTokens }
 
 export { BrandVariants }
 
 export { Button }
-
-export { buttonClassName }
 
 export { buttonClassNames }
 
@@ -681,15 +643,15 @@ export { ButtonSlots }
 
 export { ButtonState }
 
-export { Caption }
+export { Caption1 }
 
-export { captionClassName }
+export { caption1ClassNames }
 
-export { captionClassNames }
+export { Caption2 }
+
+export { caption2ClassNames }
 
 export { Checkbox }
-
-export { checkboxClassName }
 
 export { checkboxClassNames }
 
@@ -711,8 +673,6 @@ export { ComponentState }
 
 export { CompoundButton }
 
-export { compoundButtonClassName }
-
 export { compoundButtonClassNames }
 
 export { CompoundButtonProps }
@@ -722,8 +682,6 @@ export { CompoundButtonSlots }
 export { CompoundButtonState }
 
 export { CounterBadge }
-
-export { counterBadgeClassName }
 
 export { counterBadgeClassNames }
 
@@ -753,13 +711,9 @@ export { CurveTokens }
 
 export { Display }
 
-export { displayClassName }
-
 export { displayClassNames }
 
 export { Divider }
-
-export { dividerClassName }
 
 export { dividerClassNames }
 
@@ -774,8 +728,6 @@ export { DurationTokens }
 export { elementContains }
 
 export { FluentProvider }
-
-export { fluentProviderClassName }
 
 export { fluentProviderClassNames }
 
@@ -805,17 +757,9 @@ export { getSlots }
 
 export { GriffelStyle }
 
-export { Headline }
-
-export { headlineClassName }
-
-export { headlineClassNames }
-
 export { HorizontalSpacingTokens }
 
 export { Image_2 as Image }
-
-export { imageClassName }
 
 export { imageClassNames }
 
@@ -825,9 +769,19 @@ export { ImageSlots }
 
 export { ImageState }
 
-export { Label }
+export { Input }
 
-export { labelClassName }
+export { inputClassNames }
+
+export { InputOnChangeData }
+
+export { InputProps }
+
+export { InputSlots }
+
+export { InputState }
+
+export { Label }
 
 export { labelClassNames }
 
@@ -839,15 +793,11 @@ export { LabelState }
 
 export { LargeTitle }
 
-export { largeTitleClassName }
-
 export { largeTitleClassNames }
 
 export { LineHeightTokens }
 
 export { Link }
-
-export { linkClassName }
 
 export { linkClassNames }
 
@@ -864,8 +814,6 @@ export { makeStyles }
 export { Menu }
 
 export { MenuButton }
-
-export { menuButtonClassName }
 
 export { menuButtonClassNames }
 
@@ -887,8 +835,6 @@ export { MenuContextValues }
 
 export { MenuDivider }
 
-export { menuDividerClassName }
-
 export { menuDividerClassNames }
 
 export { MenuDividerProps }
@@ -899,8 +845,6 @@ export { MenuDividerState }
 
 export { MenuGroup }
 
-export { menuGroupClassName }
-
 export { menuGroupClassNames }
 
 export { MenuGroupContextProvider }
@@ -910,8 +854,6 @@ export { MenuGroupContextValue }
 export { MenuGroupContextValues }
 
 export { MenuGroupHeader }
-
-export { menuGroupHeaderClassName }
 
 export { menuGroupHeaderClassNames }
 
@@ -931,23 +873,17 @@ export { MenuItem }
 
 export { MenuItemCheckbox }
 
-export { menuItemCheckboxClassName }
-
 export { menuItemCheckboxClassNames }
 
 export { MenuItemCheckboxProps }
 
 export { MenuItemCheckboxState }
 
-export { menuItemClassName }
-
 export { menuItemClassNames }
 
 export { MenuItemProps }
 
 export { MenuItemRadio }
-
-export { menuItemRadioClassName }
 
 export { menuItemRadioClassNames }
 
@@ -964,8 +900,6 @@ export { MenuItemSlots }
 export { MenuItemState }
 
 export { MenuList }
-
-export { menuListClassName }
 
 export { menuListClassNames }
 
@@ -989,8 +923,6 @@ export { MenuOpenEvents }
 
 export { MenuPopover }
 
-export { menuPopoverClassName }
-
 export { menuPopoverClassNames }
 
 export { MenuPopoverProps }
@@ -1006,8 +938,6 @@ export { MenuProvider }
 export { MenuSlots }
 
 export { MenuSplitGroup }
-
-export { menuSplitGroupClassName }
 
 export { menuSplitGroupClassNames }
 
@@ -1053,8 +983,6 @@ export { PopoverState }
 
 export { PopoverSurface }
 
-export { popoverSurfaceClassName }
-
 export { popoverSurfaceClassNames }
 
 export { PopoverSurfaceProps }
@@ -1075,15 +1003,17 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningImperativeRef }
+
 export { PositioningProps }
 
 export { PositioningShorthand }
 
 export { PositioningShorthandValue }
 
-export { PresenceBadge }
+export { PositioningVirtualElement }
 
-export { presenceBadgeClassName }
+export { PresenceBadge }
 
 export { presenceBadgeClassNames }
 
@@ -1095,13 +1025,9 @@ export { PresenceBadgeStatus }
 
 export { Radio }
 
-export { radioClassName }
-
 export { radioClassNames }
 
 export { RadioGroup }
-
-export { radioGroupClassName }
 
 export { radioGroupClassNames }
 
@@ -1155,6 +1081,8 @@ export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
 
+export { renderInput_unstable }
+
 export { renderLabel_unstable }
 
 export { renderLink_unstable }
@@ -1200,6 +1128,8 @@ export { renderSlider_unstable }
 export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
+
+export { renderSwitch_unstable }
 
 export { renderTab_unstable }
 
@@ -1271,8 +1201,6 @@ export { SpinnerState }
 
 export { SplitButton }
 
-export { splitButtonClassName }
-
 export { splitButtonClassNames }
 
 export { SplitButtonProps }
@@ -1285,21 +1213,31 @@ export { SSRProvider }
 
 export { StrokeWidthTokens }
 
-export { Subheadline }
+export { Subtitle1 }
 
-export { subheadlineClassName }
+export { subtitle1ClassNames }
 
-export { subheadlineClassNames }
+export { Subtitle2 }
+
+export { subtitle2ClassNames }
+
+export { Switch }
+
+export { switchClassNames }
+
+export { SwitchOnChangeData }
+
+export { SwitchProps }
+
+export { SwitchSlots }
+
+export { SwitchState }
 
 export { Tab }
-
-export { tabClassName }
 
 export { tabClassNames }
 
 export { TabList }
-
-export { tabListClassName }
 
 export { tabListClassNames }
 
@@ -1341,8 +1279,6 @@ export { TextareaSlots }
 
 export { TextareaState }
 
-export { textClassName }
-
 export { textClassNames }
 
 export { TextProps }
@@ -1357,25 +1293,17 @@ export { themeToTokensObject }
 
 export { Title1 }
 
-export { title1ClassName }
-
 export { title1ClassNames }
 
 export { Title2 }
-
-export { title2ClassName }
 
 export { title2ClassNames }
 
 export { Title3 }
 
-export { title3ClassName }
-
 export { title3ClassNames }
 
 export { ToggleButton }
-
-export { toggleButtonClassName }
 
 export { toggleButtonClassNames }
 
@@ -1386,8 +1314,6 @@ export { ToggleButtonState }
 export { tokens }
 
 export { Tooltip }
-
-export { tooltipClassName }
 
 export { tooltipClassNames }
 
@@ -1484,6 +1410,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useInput_unstable }
+
+export { useInputStyles_unstable }
 
 export { useIsSSR }
 
@@ -1602,6 +1532,10 @@ export { useSplitButton_unstable }
 export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
+
+export { useSwitch_unstable }
+
+export { useSwitchStyles_unstable }
 
 export { useTab_unstable }
 

@@ -12,8 +12,6 @@ export {
 export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  fluentProviderClassName,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
   useFluent,
@@ -29,12 +27,8 @@ export type {
 } from '@fluentui/react-provider';
 export {
   Radio,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioClassName,
   radioClassNames,
   RadioGroup,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioGroupClassName,
   radioGroupClassNames,
   RadioGroupContext,
   renderRadio_unstable,
@@ -143,14 +137,6 @@ export {
   AccordionItem,
   AccordionItemContext,
   AccordionPanel,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionItemClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionPanelClassName,
   accordionClassNames,
   accordionHeaderClassNames,
   accordionItemClassNames,
@@ -201,8 +187,6 @@ export type {
 } from '@fluentui/react-accordion';
 export {
   Avatar,
-  /* eslint-disable-next-line deprecation/deprecation */
-  avatarClassName,
   avatarClassNames,
   renderAvatar_unstable,
   useAvatar_unstable,
@@ -213,12 +197,6 @@ export {
   Badge,
   CounterBadge,
   PresenceBadge,
-  /* eslint-disable-next-line deprecation/deprecation */
-  badgeClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  counterBadgeClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  presenceBadgeClassName,
   badgeClassNames,
   counterBadgeClassNames,
   presenceBadgeClassNames,
@@ -245,12 +223,6 @@ export {
   MenuButton,
   SplitButton,
   ToggleButton,
-  /* eslint-disable-next-line deprecation/deprecation */
-  buttonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  compoundButtonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuButtonClassName,
   buttonClassNames,
   compoundButtonClassNames,
   menuButtonClassNames,
@@ -259,10 +231,6 @@ export {
   renderMenuButton_unstable,
   renderSplitButton_unstable,
   renderToggleButton_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  splitButtonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  toggleButtonClassName,
   splitButtonClassNames,
   toggleButtonClassNames,
   useButton_unstable,
@@ -295,8 +263,6 @@ export type {
 } from '@fluentui/react-button';
 export {
   Checkbox,
-  /* eslint-disable-next-line deprecation/deprecation */
-  checkboxClassName,
   checkboxClassNames,
   renderCheckbox_unstable,
   useCheckbox_unstable,
@@ -305,8 +271,6 @@ export {
 export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
 export {
   Divider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  dividerClassName,
   dividerClassNames,
   renderDivider_unstable,
   useDivider_unstable,
@@ -314,9 +278,15 @@ export {
 } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
 export {
+  Input,
+  inputClassNames,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+export {
   Image,
-  /* eslint-disable-next-line deprecation/deprecation */
-  imageClassName,
   imageClassNames,
   renderImage_unstable,
   useImage_unstable,
@@ -325,8 +295,6 @@ export {
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
   Label,
-  /* eslint-disable-next-line deprecation/deprecation */
-  labelClassName,
   labelClassNames,
   renderLabel_unstable,
   useLabel_unstable,
@@ -335,8 +303,6 @@ export {
 export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
 export {
   Link,
-  /* eslint-disable-next-line deprecation/deprecation */
-  linkClassName,
   linkClassNames,
   renderLink_unstable,
   useLink_unstable,
@@ -362,24 +328,6 @@ export {
   MenuSplitGroup,
   MenuTrigger,
   MenuTriggerContextProvider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuDividerClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuGroupClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuGroupHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemCheckboxClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemRadioClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuListClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuPopoverClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuSplitGroupClassName,
   menuDividerClassNames,
   menuGroupClassNames,
   menuGroupHeaderClassNames,
@@ -482,8 +430,6 @@ export {
   PopoverSurface,
   PopoverTrigger,
   arrowHeights,
-  /* eslint-disable-next-line deprecation/deprecation */
-  popoverSurfaceClassName,
   popoverSurfaceClassNames,
   renderPopover_unstable,
   renderPopoverSurface_unstable,
@@ -533,15 +479,21 @@ export {
 } from '@fluentui/react-spinner';
 export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
 export {
+  Switch,
+  switchClassNames,
+  renderSwitch_unstable,
+  useSwitch_unstable,
+  useSwitchStyles_unstable,
+} from '@fluentui/react-switch';
+export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
+export {
   renderTab_unstable,
   Tab,
-  tabClassName,
   tabClassNames,
   useTabStyles_unstable,
   useTab_unstable,
   renderTabList_unstable,
   TabList,
-  tabListClassName,
   tabListClassNames,
   useTabListStyles_unstable,
   useTabList_unstable,
@@ -563,43 +515,25 @@ export type {
   TabListState,
 } from '@fluentui/react-tabs';
 export {
-  Body,
-  Caption,
+  Body1,
+  Caption1,
+  Caption2,
   Display,
-  Headline,
+  Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
   Title3,
-  /* eslint-disable-next-line deprecation/deprecation */
-  bodyClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  captionClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  displayClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  headlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  largeTitleClassName,
-  bodyClassNames,
-  captionClassNames,
+  body1ClassNames,
+  caption1ClassNames,
+  caption2ClassNames,
   displayClassNames,
-  headlineClassNames,
+  subtitle1ClassNames,
   largeTitleClassNames,
   renderText_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  subheadlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  textClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title3ClassName,
-  subheadlineClassNames,
+  subtitle2ClassNames,
   textClassNames,
   title1ClassNames,
   title2ClassNames,
@@ -619,8 +553,6 @@ export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/reac
 export {
   Tooltip,
   renderTooltip_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tooltipClassName,
   tooltipClassNames,
   useTooltip_unstable,
   useTooltipStyles_unstable,
@@ -633,4 +565,10 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export type { PositioningProps, PositioningShorthand, PositioningShorthandValue } from '@fluentui/react-positioning';
+export type {
+  PositioningProps,
+  PositioningShorthand,
+  PositioningShorthandValue,
+  PositioningImperativeRef,
+  PositioningVirtualElement,
+} from '@fluentui/react-positioning';

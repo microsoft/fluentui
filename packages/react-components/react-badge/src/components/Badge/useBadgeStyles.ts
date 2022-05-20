@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `badgeClassNames.root` instead.
- */
-export const badgeClassName = 'fui-Badge';
 export const badgeClassNames: SlotClassNames<BadgeSlots> = {
   root: 'fui-Badge',
   icon: 'fui-Badge__icon',
