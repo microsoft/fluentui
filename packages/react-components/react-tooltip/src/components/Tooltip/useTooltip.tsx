@@ -86,7 +86,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     arrowPadding: 2 * tooltipBorderRadius,
     position: 'above' as const,
     align: 'center' as const,
-    offset: { crossAxis: 0, mainAxis: 4 },
+    offset: 4,
     ...resolvePositioningShorthand(state.positioning),
   };
 
