@@ -6,7 +6,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -27,9 +26,6 @@ export type MenuCheckedValueChangeData = {
 
 // @public (undocumented)
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
-
-// @public (undocumented)
-export const MenuContext: Context<MenuContextValue>;
 
 // @public
 export type MenuContextValue = MenuListProps & Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline'> & {
@@ -197,9 +193,6 @@ export const menuListClassName = "fui-MenuList";
 
 // @public (undocumented)
 export const menuListClassNames: SlotClassNames<MenuListSlots>;
-
-// @public (undocumented)
-export const MenuListContext: Context<MenuListContextValue>;
 
 // @public
 export type MenuListContextValue = Pick<MenuListProps, 'checkedValues' | 'onCheckedValueChange' | 'hasIcons' | 'hasCheckmarks'> & {
