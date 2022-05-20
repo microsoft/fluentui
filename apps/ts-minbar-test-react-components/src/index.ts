@@ -27,6 +27,7 @@ async function performTest() {
       'react@17',
       'react-dom@17',
       `typescript@${tsVersion}`,
+      'patch-package',
     ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
@@ -41,6 +42,11 @@ async function performTest() {
     fs.mkdirSync(path.join(tempPaths.testApp, 'src'));
     fs.copyFileSync(scaffoldPath('index.tsx'), path.join(tempPaths.testApp, 'src/index.tsx'));
     fs.copyFileSync(scaffoldPath('tsconfig.json'), path.join(tempPaths.testApp, 'tsconfig.json'));
+
+    fs.mkdirSync(path.join(tempPaths.testApp, 'patches/'));
+    fs.copySync(scaffoldPath('patches/'), path.join(tempPaths.testApp, 'patches/'));
+    await shEcho(`yarn patch-package`, tempPaths.testApp);
+
     logger(`✔️ Source and configs were copied`);
 
     await shEcho(`npx npm-which yarn`);

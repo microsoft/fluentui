@@ -1,0 +1,20 @@
+diff --git a/node_modules/@floating-ui/core/src/types.d.ts b/node_modules/@floating-ui/core/src/types.d.ts
+index f5c4f1b..14cc9b3 100644
+--- a/node_modules/@floating-ui/core/src/types.d.ts
++++ b/node_modules/@floating-ui/core/src/types.d.ts
+@@ -1,6 +1,14 @@
+ export declare type Alignment = 'start' | 'end';
+ export declare type Side = 'top' | 'right' | 'bottom' | 'left';
+-export declare type AlignedPlacement = `${Side}-${Alignment}`;
++export declare type AlignedPlacement =
++  | 'top-start'
++  | 'top-end'
++  | 'right-start'
++  | 'right-end'
++  | 'bottom-start'
++  | 'bottom-end'
++  | 'left-start'
++  | 'left-end';
+ export declare type Placement = Side | AlignedPlacement;
+ export declare type Strategy = 'absolute' | 'fixed';
+ export declare type Axis = 'x' | 'y';

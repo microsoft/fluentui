@@ -1,0 +1,7 @@
+diff --git a/node_modules/@floating-ui/dom/src/utils/getOverflowAncestors.d.ts b/node_modules/@floating-ui/dom/src/utils/getOverflowAncestors.d.ts
+index 461f170..86d7a4a 100644
+--- a/node_modules/@floating-ui/dom/src/utils/getOverflowAncestors.d.ts
++++ b/node_modules/@floating-ui/dom/src/utils/getOverflowAncestors.d.ts
+@@ -1 +1 @@
+-export declare function getOverflowAncestors(node: Node, list?: Array<Element | Window>): Array<Element | Window | VisualViewport>;
++export declare function getOverflowAncestors(node: Node, list?: Array<Element | Window>): Array<Element | Window>;
