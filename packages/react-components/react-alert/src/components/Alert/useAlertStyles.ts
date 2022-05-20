@@ -1,23 +1,55 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const alertClassName = 'fui-Alert';
 export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
-  // TODO: add class names for all slots on AlertSlots.
-  // Should be of the form `<slotName>: 'fui-Alert__<slotName>`
+  icon: 'fui-Alert__icon',
+  action: 'fui-Alert__action',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    alignItems: 'center',
+    minHeight: '44px',
+    ...shorthands.padding('0', '12px'),
+    backgroundColor: tokens.colorNeutralBackground1, // todo - there is no bg10, used bg1
+    ...shorthands.borderColor('transparent'),
+    ...shorthands.borderRadius('4px'),
+    boxShadow: tokens.shadow8,
+    fontSize: tokens.fontSizeBase300, // todo - lineheight in tokens
+    fontWeight: tokens.fontWeightSemibold,
   },
+  icon: {
+    height: '16px',
+    fontSize: '16px',
+    ...shorthands.padding('0', '8px', '0', '0'),
+  },
+  action: {
+    ...shorthands.padding('0'),
+    minWidth: 0,
+    marginLeft: 'auto',
+    color: tokens.colorBrandForeground2, // todo - foreground3 doesn't exist
+  },
+});
 
-  // TODO add additional classes for different states and/or slots
+const useIntentIconStyles = makeStyles({
+  success: {
+    color: tokens.colorPaletteGreenBackground3,
+  },
+  error: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  warning: {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+  info: {
+    color: tokens.colorNeutralForeground2,
+  },
 });
 
 /**
@@ -25,10 +57,22 @@ const useStyles = makeStyles({
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(alertClassName, styles.root, state.root.className);
+  const intentIconStyles = useIntentIconStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(alertClassNames.root, styles.root, state.root.className);
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(
+      alertClassNames.icon,
+      styles.icon,
+      state.intent && intentIconStyles[state.intent],
+      state.icon.className,
+    );
+  }
+
+  if (state.action) {
+    state.action.className = mergeClasses(alertClassNames.action, styles.action, state.action.className);
+  }
 
   return state;
 };
