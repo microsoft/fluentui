@@ -63,5 +63,11 @@ describe('getNativeProps', () => {
     expect(result.a).toBeDefined();
     // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
     expect(result.b).toBeUndefined();
+
+    const resultObj = getNativeProps({ a: 1, b: 2 }, { a: 1, b: 1 }, ['b']);
+
+    expect(resultObj.a).toBeDefined();
+    // @ts-expect-error -- strict type checking for exclusion, b doesn't exist after removal
+    expect(resultObj.b).toBeUndefined();
   });
 });

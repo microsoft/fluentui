@@ -1,4 +1,4 @@
-import { getNativeElementProps } from './getNativeElementProps';
+import { getNativeElementProps, getPartitionedNativeProps } from './getNativeElementProps';
 
 describe('getNativeElementProps', () => {
   it('can filter native element properties', () => {
@@ -19,5 +19,23 @@ describe('getNativeElementProps', () => {
     // @ts-expect-error -- `as` was removed from the object
     expect(actual.as).toBeUndefined();
     expect(actual).toEqual({});
+  });
+});
+
+describe('getPartitionedNativeProps', () => {
+  it('creates modified root and primary and remove excluded prop names from "primary"', () => {
+    const actual = getPartitionedNativeProps({
+      primarySlotTagName: 'div',
+      props: { className: 'hello', style: { width: '100px' }, id: '123', dir: 'ltr' },
+      excludedPropNames: ['id'],
+    });
+
+    expect(actual.root).toEqual({ className: 'hello', style: { width: '100px' } });
+    expect(actual.primary).toEqual({ dir: 'ltr' });
+
+    // @ts-expect-error -- `className` was removed from the object
+    expect(actual.primary.className).toBeUndefined();
+    // @ts-expect-error -- `style` was removed from the object
+    expect(actual.primary.style).toBeUndefined();
   });
 });
