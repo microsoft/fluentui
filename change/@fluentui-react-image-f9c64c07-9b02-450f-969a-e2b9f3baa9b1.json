@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Image: Updating useImageStyles to use styles[state] pattern for props of string union types.",
+  "packageName": "@fluentui/react-image",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
