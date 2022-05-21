@@ -465,6 +465,22 @@ export {
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
 export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+} from '@fluentui/react-spinbutton';
+export {
   Spinner,
   spinnerClassNames,
   renderSpinner_unstable,

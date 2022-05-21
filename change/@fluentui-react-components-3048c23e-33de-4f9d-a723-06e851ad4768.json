@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Move SpinButton to stable",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
