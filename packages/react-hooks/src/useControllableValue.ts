@@ -43,16 +43,16 @@ export function useControllableValue<
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
 ) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
-  const isControlled = controlledValue !== undefined;
+  const isControlled = useConst<boolean>(controlledValue !== undefined);
   const currentValue = isControlled ? controlledValue : value;
 
-  // Duplicate the controlled state, current value, and onChange in refs so they're accessible from
+  useControlledWarning(isControlled, controlledValue);
+
+  // Duplicate the current value and onChange in refs so they're accessible from
   // setValueOrCallOnChange without creating a new callback every time
-  const isControlledRef = React.useRef(isControlled);
   const valueRef = React.useRef(currentValue);
   const onChangeRef = React.useRef(onChange);
   React.useEffect(() => {
-    isControlledRef.current = isControlled;
     valueRef.current = currentValue;
     onChangeRef.current = onChange;
   });
@@ -68,10 +68,41 @@ export function useControllableValue<
       onChangeRef.current(ev!, newValue);
     }
 
-    if (!isControlledRef.current) {
+    if (!isControlled) {
       setValue(newValue);
     }
   });
 
   return [currentValue, setValueOrCallOnChange] as const;
 }
+
+/**
+ * Helper to log an error if the controlled value switches from undefined to defined,
+ * or vice versa.
+ */
+const useControlledWarning = (isControlled: boolean, controlledValue: unknown) => {
+  // do not show in production environments
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (isControlled !== (controlledValue !== undefined)) {
+        const error = new Error();
+
+        const controlWarning = isControlled
+          ? 'a controlled value to be uncontrolled'
+          : 'an uncontrolled value to be controlled';
+
+        const undefinedWarning = isControlled ? 'defined to an undefined' : 'undefined to a defined';
+
+        // Default react error
+        // eslint-disable-next-line no-console
+        console.error(
+          'A component is changing ' + controlWarning + '. This is likely caused by the value',
+          'changing from ' + undefinedWarning + ' value, which should not happen.',
+          'Decide between using a controlled or uncontrolled value for the lifetime of the component.',
+          'More info: https://reactjs.org/link/controlled-components.\n' + error.stack,
+        );
+      }
+    }, [isControlled, controlledValue]);
+  }
+};
