@@ -28,14 +28,14 @@ export const spinButtonClassNames: SlotClassNames<SpinButtonSlots>;
 
 // @public (undocumented)
 export type SpinButtonOnChangeData = {
-    value?: number;
+    value?: number | null;
     displayValue?: string;
 };
 
 // @public
-export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'onChange' | 'size'> & {
+export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'input'>, 'defaultValue' | 'onChange' | 'size' | 'value'> & {
     appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-    defaultValue?: number;
+    defaultValue?: number | null;
     displayValue?: string;
     max?: number;
     min?: number;
@@ -44,7 +44,7 @@ export type SpinButtonProps = Omit<ComponentProps<Partial<SpinButtonSlots>, 'inp
     size?: 'small' | 'medium';
     step?: number;
     stepPage?: number;
-    value?: number;
+    value?: number | null;
 };
 
 // @public (undocumented)

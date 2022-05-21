@@ -80,6 +80,24 @@ describe('SpinButton', () => {
     expect(spinButton.getAttribute('aria-valuemax')).toBeNull();
   });
 
+  it('renders a null value when uncontrolled', () => {
+    render(<SpinButton defaultValue={null} />);
+
+    const spinButton = getSpinButtonInput();
+    expect(spinButton.value).toBe('');
+    expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
+    expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
+  });
+
+  it('renders a null value when controlled', () => {
+    render(<SpinButton value={null} onChange={jest.fn()} />);
+
+    const spinButton = getSpinButtonInput();
+    expect(spinButton.value).toBe('');
+    expect(spinButton.getAttribute('aria-valuenow')).toBeNull();
+    expect(spinButton.getAttribute('aria-valuetext')).toBeNull();
+  });
+
   it('applies the correct min and max value when both are specified', () => {
     render(<SpinButton value={1} min={0} max={10} onChange={jest.fn()} />);
 
@@ -241,6 +259,8 @@ describe('SpinButton', () => {
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
     expect(getSpinButtonInput().value).toEqual('2');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('changes values by `step` via spinner buttons when controlled', () => {
@@ -256,6 +276,8 @@ describe('SpinButton', () => {
     userEvent.click(decrementButton);
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('changes value by `step` via hotkeys when uncontrolled', () => {
@@ -272,6 +294,8 @@ describe('SpinButton', () => {
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
     expect(spinButton.value).toEqual('2');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('changes value by `step` via hotkeys when controlled', () => {
@@ -287,6 +311,8 @@ describe('SpinButton', () => {
     fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('changes values by the `stepPage` via hotkeys when uncontrolled', () => {
@@ -303,6 +329,8 @@ describe('SpinButton', () => {
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
     expect(spinButton.value).toEqual('2');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
   it('changes values by the `stepPage` via hotkeys when controlled', () => {
@@ -318,6 +346,129 @@ describe('SpinButton', () => {
     fireEvent.keyDown(spinButton, { key: Keys.PageDown });
 
     expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+  });
+
+  it('does not call on change at bounds when uncontrolled', () => {
+    const onChange = jest.fn();
+
+    const { getAllByRole } = render(<SpinButton defaultValue={0} min={0} max={1} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    const spinButton = getSpinButtonInput();
+
+    userEvent.click(decrementButton);
+    // Already at min bound, no change
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+    expect(onChange).not.toHaveBeenCalled();
+
+    userEvent.click(incrementButton);
+    // From 0 --> 1
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    userEvent.click(incrementButton);
+    // At max bound, no change
+    expect(onChange).toHaveBeenCalledTimes(1);
+    fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not call change at bounds when controlled', () => {
+    const onChange = jest.fn();
+
+    const { getAllByRole, rerender } = render(<SpinButton value={0} min={0} max={1} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    const spinButton = getSpinButtonInput();
+
+    userEvent.click(decrementButton);
+    // Already at min bound, no change
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.ArrowDown });
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.PageDown });
+    expect(onChange).not.toHaveBeenCalled();
+
+    rerender(<SpinButton value={1} min={0} max={1} onChange={onChange} />);
+
+    userEvent.click(incrementButton);
+    // Already at maz bound, no change
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.ArrowUp });
+    expect(onChange).not.toHaveBeenCalled();
+    fireEvent.keyDown(spinButton, { key: Keys.PageUp });
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('calls on change when defaultValue is `null` without min when uncontrolled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<SpinButton defaultValue={null} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(getSpinButtonInput().value).toBe('1');
+
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(getSpinButtonInput().value).toBe('0');
+  });
+
+  it('calls on change when value is `null` without min when controlled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<SpinButton value={null} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 1, displayValue: undefined });
+
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: -1, displayValue: undefined });
+  });
+
+  it('calls on change when defaultValue is `null` with min when uncontrolled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<SpinButton defaultValue={null} min={5} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(getSpinButtonInput().value).toBe('6');
+
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(getSpinButtonInput().value).toBe('5');
+  });
+
+  it('calls on change when value is `null` with min when controlled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole, rerender } = render(<SpinButton value={null} min={5} onChange={onChange} />);
+
+    const [incrementButton, decrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 6, displayValue: undefined });
+
+    rerender(<SpinButton value={null} min={5} onChange={onChange} />);
+    userEvent.click(decrementButton);
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 5, displayValue: undefined });
   });
 
   it('removes the increment and decrement buttons from the tab order', () => {
@@ -329,13 +480,15 @@ describe('SpinButton', () => {
   });
 
   it('updates value via text input on blur when uncontrolled', () => {
-    render(<SpinButton defaultValue={1} />);
+    const onChange = jest.fn();
+    render(<SpinButton defaultValue={1} onChange={onChange} />);
 
     const spinButton = getSpinButtonInput();
     userEvent.type(spinButton, '23');
     expect(spinButton.value).toEqual('123');
     spinButton.blur();
 
+    expect(onChange).toHaveBeenCalledTimes(1);
     expect(spinButton.value).toEqual('123');
   });
 
@@ -355,8 +508,45 @@ describe('SpinButton', () => {
     expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '123' });
   });
 
+  it('updates value after text input when uncontrolled', () => {
+    const onChange = jest.fn();
+
+    const { getAllByRole } = render(<SpinButton defaultValue={1} onChange={onChange} />);
+
+    const spinButton = getSpinButtonInput();
+    spinButton.setSelectionRange(0, spinButton.value.length);
+    userEvent.type(spinButton, '{backspace}cats');
+    expect(spinButton.value).toEqual('cats');
+    spinButton.blur();
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    const [incrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+    expect(spinButton.value).toEqual('2');
+
+    expect(onChange).toHaveBeenCalledTimes(2);
+  });
+
+  it('updates value after text input when controlled', () => {
+    const onChange = jest.fn();
+    const { getAllByRole } = render(<SpinButton value={1} onChange={onChange} />);
+
+    const spinButton = getSpinButtonInput();
+    spinButton.setSelectionRange(0, spinButton.value.length);
+    userEvent.type(spinButton, '{backspace}cats');
+    expect(spinButton.value).toEqual('cats');
+    spinButton.blur();
+    expect(onChange).toHaveBeenCalledTimes(1);
+
+    const [incrementButton] = getAllByRole('button');
+    userEvent.click(incrementButton);
+    expect(onChange.mock.calls[1][1]).toEqual({ value: 2, displayValue: undefined });
+    expect(onChange).toHaveBeenCalledTimes(2);
+  });
+
   it('updates value via text input on Enter press when uncontrolled', () => {
-    render(<SpinButton defaultValue={1} />);
+    const onChange = jest.fn();
+    render(<SpinButton defaultValue={1} onChange={onChange} />);
 
     const spinButton = getSpinButtonInput();
     userEvent.type(spinButton, '23');
@@ -364,6 +554,8 @@ describe('SpinButton', () => {
     userEvent.type(spinButton, '{enter}');
 
     expect(spinButton.value).toEqual('123');
+
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('updates value via text input on Enter press when controlled', () => {
@@ -380,6 +572,7 @@ describe('SpinButton', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(onChange.mock.calls[0][1]).toEqual({ value: undefined, displayValue: '123' });
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('allows values outside bounds via text input when uncontrolled', () => {
@@ -456,7 +649,7 @@ describe('SpinButton', () => {
     expect(decrementButton.getAttribute('aria-label')).toEqual('Decrement value');
   });
 
-  it('overrides overrides labels for buttons', () => {
+  it('overrides labels for buttons', () => {
     const { getAllByRole } = render(
       <SpinButton
         defaultValue={0}
