@@ -58,21 +58,38 @@ describe('useControllableValue', () => {
     expect(resultValue!).toBe(true);
   });
 
-  it('updates from uncontrolled to controlled when controlledValue is set', () => {
-    let resultValue: string | undefined;
+  it('logs an error when a value switches uncontrolled to controlled', () => {
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn());
     const TestComponent: React.FunctionComponent<{ value?: string; defaultValue?: string }> = ({
       value,
       defaultValue,
     }) => {
-      [resultValue] = useControllableValue(value, defaultValue);
+      useControllableValue(value, defaultValue);
       return <div />;
     };
 
     const wrapper = mount(<TestComponent value={undefined} />);
-    expect(resultValue!).toBeUndefined();
 
     wrapper.setProps({ value: 'A' });
-    expect(resultValue!).toBe('A');
+    expect(spy).toHaveBeenCalledTimes(1);
+    jest.clearAllMocks();
+  });
+
+  it('logs an error when a value switches controlled to uncontrolled', () => {
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn());
+    const TestComponent: React.FunctionComponent<{ value?: string; defaultValue?: string }> = ({
+      value,
+      defaultValue,
+    }) => {
+      useControllableValue(value, defaultValue);
+      return <div />;
+    };
+
+    const wrapper = mount(<TestComponent value={'A'} />);
+
+    wrapper.setProps({ value: undefined });
+    expect(spy).toHaveBeenCalledTimes(1);
+    jest.clearAllMocks();
   });
 
   validateHookValueNotChanged('returns the same setter callback', () => {
