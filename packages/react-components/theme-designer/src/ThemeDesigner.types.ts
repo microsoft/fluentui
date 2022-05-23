@@ -2,5 +2,5 @@
  * ThemeDesigner Props
  */
 export type ThemeDesignerProps = {
-  className: String;
+  className?: String;
 };
