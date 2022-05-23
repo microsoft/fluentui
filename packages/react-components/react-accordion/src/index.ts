@@ -1,10 +1,9 @@
 export {
   Accordion,
-  AccordionContext,
-  // eslint-disable-next-line deprecation/deprecation
-  accordionClassName,
+  AccordionProvider,
   accordionClassNames,
   renderAccordion_unstable,
+  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
@@ -22,9 +21,7 @@ export type {
 } from './Accordion';
 export {
   AccordionItem,
-  AccordionItemContext,
-  // eslint-disable-next-line deprecation/deprecation
-  accordionItemClassName,
+  AccordionItemProvider,
   accordionItemClassNames,
   renderAccordionItem_unstable,
   useAccordionItemContextValues_unstable,
@@ -42,8 +39,6 @@ export type {
 } from './AccordionItem';
 export {
   AccordionHeader,
-  // eslint-disable-next-line deprecation/deprecation
-  accordionHeaderClassName,
   accordionHeaderClassNames,
   renderAccordionHeader_unstable,
   useAccordionHeaderContextValues_unstable,
@@ -61,8 +56,6 @@ export type {
 } from './AccordionHeader';
 export {
   AccordionPanel,
-  // eslint-disable-next-line deprecation/deprecation
-  accordionPanelClassName,
   accordionPanelClassNames,
   renderAccordionPanel_unstable,
   useAccordionPanelStyles_unstable,

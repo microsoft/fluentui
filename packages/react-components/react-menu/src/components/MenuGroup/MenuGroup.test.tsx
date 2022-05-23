@@ -10,6 +10,7 @@ describe('MenuGroup', () => {
     Component: MenuGroup,
     displayName: 'MenuGroup',
     disabledTests: [
+      'component-has-static-classname-exported',
       // MenuGroup does not have own styles
       'make-styles-overrides-win',
     ],

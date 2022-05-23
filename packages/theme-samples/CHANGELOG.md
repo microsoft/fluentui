@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Thu, 19 May 2022 07:41:27 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 07:42:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.35](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.4.35)
+
+Mon, 23 May 2022 07:42:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.4.34..@fluentui/theme-samples_v8.4.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.4 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
 
 ## [8.4.34](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.4.34)
 

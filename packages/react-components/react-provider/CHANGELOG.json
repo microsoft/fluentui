@@ -2,6 +2,63 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:35 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "44062b15587c3a18b7f02d2beb3ba19fa793fb9c",
+            "comment": "Removing FluentProviderCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.10",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

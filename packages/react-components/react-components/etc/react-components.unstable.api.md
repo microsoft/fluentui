@@ -5,22 +5,18 @@
 ```ts
 
 import { Card } from '@fluentui/react-card';
-import { cardClassName } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
-import { cardFooterClassName } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
 import { CardFooterSlots } from '@fluentui/react-card';
 import { CardFooterState } from '@fluentui/react-card';
 import { CardHeader } from '@fluentui/react-card';
-import { cardHeaderClassName } from '@fluentui/react-card';
 import { cardHeaderClassNames } from '@fluentui/react-card';
 import { CardHeaderProps } from '@fluentui/react-card';
 import { CardHeaderSlots } from '@fluentui/react-card';
 import { CardHeaderState } from '@fluentui/react-card';
 import { CardPreview } from '@fluentui/react-card';
-import { cardPreviewClassName } from '@fluentui/react-card';
 import { cardPreviewClassNames } from '@fluentui/react-card';
 import { CardPreviewProps } from '@fluentui/react-card';
 import { CardPreviewSlots } from '@fluentui/react-card';
@@ -55,13 +51,9 @@ import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 
 export { Card }
 
-export { cardClassName }
-
 export { cardClassNames }
 
 export { CardFooter }
-
-export { cardFooterClassName }
 
 export { cardFooterClassNames }
 
@@ -73,8 +65,6 @@ export { CardFooterState }
 
 export { CardHeader }
 
-export { cardHeaderClassName }
-
 export { cardHeaderClassNames }
 
 export { CardHeaderProps }
@@ -84,8 +74,6 @@ export { CardHeaderSlots }
 export { CardHeaderState }
 
 export { CardPreview }
-
-export { cardPreviewClassName }
 
 export { cardPreviewClassNames }
 

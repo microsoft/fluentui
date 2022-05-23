@@ -104,7 +104,7 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
+const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search', 'textarea'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
@@ -1360,7 +1360,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean): boolean {
+  private _shouldInputLoseFocus(element: HTMLInputElement | HTMLTextAreaElement, isForward?: boolean): boolean {
     // If a tab was used, we want to focus on the next element.
     if (
       !this._processingTabKey &&

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing <componentName>ClassName exports.",
+  "packageName": "@fluentui/react-image",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

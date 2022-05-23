@@ -100,7 +100,6 @@ Common buttons now all map to `Button`:
 
 ### Renamed props
 
-- `fluid` => `block`
 - `text` => `transparent`
 
 ### Props removed because we can get them from HTML props
@@ -142,7 +141,7 @@ Common buttons now all map to `Button`:
 | `description`                      |                     |                        |
 | `disabled`                         | `disabled`          | `disabled`             |
 | `elementRef`                       |                     | `ref`                  |
-|                                    | `fluid`             | `block`                |
+|                                    | `fluid`             |                        |
 | `getClassNames`                    |                     |                        |
 | `getSplitButtonClassNames`         |                     |                        |
 | `href`                             |                     | `href`                 |

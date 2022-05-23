@@ -2,6 +2,107 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:14:06 GMT",
+      "tag": "@fluentui/react-checkbox_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4a1d26d400555424658af57d0d39ad5dfbbdda16",
+            "comment": "Replacing spacing constants with tokens."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b8a0ac5d1b0f2d04c67712154a52ffe5f78f0e6e",
+            "comment": "Moving Checkbox to RC."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e082a6130fe584a94448ddbb367817edbe416caf",
+            "comment": "Refactor styles to remove usage of flex gap"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "fdb6dc95fdd003e61b2e6f1eaa361c9d8e588b72",
+            "comment": "Updating spec to match implementation and added information to README."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4d4b7fd35b18a1569d32dd3361769eca6de536ae",
+            "comment": "Removing commons from checkbox."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c0b27cce0d29122e4488ff431689b966076a728b",
+            "comment": "Use vertical and horizontal spacing tokens for padding"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.2",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.10",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ],
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-checkbox_v9.0.0-beta.14",
       "version": "9.0.0-beta.14",

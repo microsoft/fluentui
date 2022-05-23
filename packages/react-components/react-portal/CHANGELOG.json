@@ -2,6 +2,39 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:33 GMT",
+      "tag": "@fluentui/react-portal_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d98a253a7768cb781f106153804c8683670bbf8a",
+            "comment": "Removing PortalCommons type."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.10",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:25 GMT",
       "tag": "@fluentui/react-portal_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

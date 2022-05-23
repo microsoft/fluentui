@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: Rename positioning types and APIs to avoid references to third party API",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

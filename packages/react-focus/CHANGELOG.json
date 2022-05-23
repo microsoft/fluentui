@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 07:42:16 GMT",
+      "tag": "@fluentui/react-focus_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "8a3a1d16923a24d56e022f38b0bcef06394a7d44",
+            "comment": "FocusZone: allow arrow keys to move within textareas, similar to text inputs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/react-focus_v8.5.8",
       "version": "8.5.8",

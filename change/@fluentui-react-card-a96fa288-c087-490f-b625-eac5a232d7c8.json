@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update tabster tab behaviors",
+  "packageName": "@fluentui/react-card",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

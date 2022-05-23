@@ -7,6 +7,7 @@ describe('CardPreview', () => {
   isConformant({
     Component: CardPreview,
     displayName: 'CardPreview',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

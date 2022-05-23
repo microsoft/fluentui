@@ -2,6 +2,75 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:14:17 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "1f5dc959ca89bb722fb9cea57b6880aedb5759aa",
+            "comment": "write readme"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602",
+            "comment": "react-input: update appearance stories background contrast"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "70164a1d13eb58eec6693f735029a8974b7aac70",
+            "comment": "Move from beta to release candidate."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-input",
+            "comment": "Bump @fluentui/react-text to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:24 GMT",
       "tag": "@fluentui/react-input_v9.0.0-beta.9",
       "version": "9.0.0-beta.9",

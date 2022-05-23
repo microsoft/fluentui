@@ -14,6 +14,7 @@ describe('AccordionPanel', () => {
   isConformant({
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
+    disabledTests: ['component-has-static-classname-exported'],
     renderOptions: { wrapper: Wrapper },
   });
 

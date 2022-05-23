@@ -16,8 +16,6 @@ export const useButton_unstable = (
   const {
     appearance = 'secondary',
     as,
-    // eslint-disable-next-line deprecation/deprecation
-    block = false,
     disabled = false,
     disabledFocusable = false,
     icon,
@@ -30,7 +28,6 @@ export const useButton_unstable = (
   return {
     // Props passed at the top-level
     appearance,
-    block,
     disabled,
     disabledFocusable,
     iconPosition,

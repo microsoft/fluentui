@@ -60,10 +60,6 @@ The `Button` component can include an `icon` that appears before or after its `c
 
 The `Button` component supports different sizing with at least three different sizes: `small`, `medium` (default) and `large`.
 
-### Block
-
-The `Button` component can completely fill the width of its container.
-
 ## API
 
 ### Slots

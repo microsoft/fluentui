@@ -2,6 +2,63 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:14:19 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "update README and package version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "6b3b09b6f05e6a17a578a65fc36b606e3004efe9",
+            "comment": "Removing commons type from Label."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:24 GMT",
       "tag": "@fluentui/react-label_v9.0.0-beta.12",
       "version": "9.0.0-beta.12",

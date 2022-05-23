@@ -2,6 +2,123 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:40 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e5f896d0098d23b01a4f0ab4b154fca0a47a1a89",
+            "comment": "react-spinbutton: update appearance stories"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "111151a252ce77c26354f50101791bbe71de78fe",
+            "comment": "appearance story updates"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "fbed857eb218943dcd08686eca1f469314bb84f6",
+            "comment": "widen `value` type to include `null`"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "8f40f25712a38b3b3121e7eb71623ce3d5a187e1",
+            "comment": "react-spinbutton: add aria-valuetext override"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "02fafa9e9ba11326583bad5db2e3dfce9d4407ff",
+            "comment": "react-spinbutton: use spacing tokens"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c70db5af9d6986c0f4c03c4c54bf26cb7a0f2096",
+            "comment": "react-spinbutton: remove \"strings\" prop"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "70164a1d13eb58eec6693f735029a8974b7aac70",
+            "comment": "Update react-input dependency version to release candidate."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d70513cb733174eb29068b9828b527b6425ba041",
+            "comment": "update stepper clamping behavior"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "2876fdf9a81f0a9a7c5fd0499bd48045b6b5fd5c",
+            "comment": "react-spinbutton: remove SpinButtonCommons type"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.0.0-rc.2",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.2",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.0-beta.9",
       "version": "9.0.0-beta.9",

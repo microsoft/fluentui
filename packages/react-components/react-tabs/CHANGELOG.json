@@ -2,6 +2,105 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:48 GMT",
+      "tag": "@fluentui/react-tabs_v9.0.0-rc.2",
+      "version": "9.0.0-rc.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5a4a2c6b1ed8d4c2abb12a08d1abec71e9055ce6",
+            "comment": "Removed TabListCommons and TabCommons types"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "58c5aafd8deb82eaf1ff117d9e2c9029f5658168",
+            "comment": "Removed flexgap from useTabStyles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "3460b40b4faf6c8939680f69878446da23ea20f9",
+            "comment": "Updated to focus on current selected tab"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "447a9aa0c3527d42bd071e63777b7afa1a14b273",
+            "comment": "Used background rather than border"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "083e54e4374c25be4200c27922c16621431bb2bc",
+            "comment": "Moved react-tabs to stable and rc.1"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "42e0900f7a008d83fdca5a6e5620f49951ecedf1",
+            "comment": "Remove overflow to allow focus outline to display"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "48bc32c6df6279b46ba94aab16f8bf650b17bd1e",
+            "comment": "Add aria-label for icon only story"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.10",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-tabs_v9.0.0-beta.12",
       "version": "9.0.0-beta.12",

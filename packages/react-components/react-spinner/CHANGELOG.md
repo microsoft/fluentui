@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-rc.2)
+
+Mon, 23 May 2022 12:13:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.0-beta.9..@fluentui/react-spinner_v9.0.0-rc.2)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Migrate react-spinner to rc ([PR #23009](https://github.com/microsoft/fluentui/pull/23009) by ololubek@microsoft.com)
+- Removing SpinnerCommons type. ([PR #22954](https://github.com/microsoft/fluentui/pull/22954) by Humberto.Morimoto@microsoft.com)
+- Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+- Updated to use tokens were possible ([PR #22949](https://github.com/microsoft/fluentui/pull/22949) by gcox@microsoft.com)
+- feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-label to v9.0.0-rc.2 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-beta.9)
 

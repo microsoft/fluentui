@@ -12,6 +12,7 @@ describe('AccordionHeader', () => {
   isConformant<AccordionHeaderProps>({
     Component: AccordionHeader,
     displayName: 'AccordionHeader',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

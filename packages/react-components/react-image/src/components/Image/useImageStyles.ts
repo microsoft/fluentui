@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { ImageSlots, ImageState } from './Image.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `imageClassNames.root` instead.
- */
-export const imageClassName = 'fui-Image';
 export const imageClassNames: SlotClassNames<ImageSlots> = {
   root: 'fui-Image',
 };

@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuPopoverClassNames.root` instead.
- */
-export const menuPopoverClassName = 'fui-MenuPopover';
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
   root: 'fui-MenuPopover',
 };

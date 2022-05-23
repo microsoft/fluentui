@@ -2,6 +2,65 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:14:15 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "a324d75aea71ad60c3f750743a315e3320f8a2fe",
+            "comment": "react-divider: ship rolluped only dts."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ae46bce718fbe25f3439cf63b813143023f5684c",
+            "comment": "Removing DividerCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "db1814209909b23fbbbff03dbd9b59ac333754a5",
+            "comment": "react-divider: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",
