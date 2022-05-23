@@ -274,6 +274,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
     const dots: React.ReactNode[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const xScaleBandwidthTranslate = isNumeric ? 0 : (xBarScale as any).bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
       let shouldHighlight = true;
@@ -281,10 +282,12 @@ export class VerticalStackedBarChartBase extends React.Component<
         shouldHighlight = selectedLegendTitle === item; // item is legend name;
       }
       for (let i = 1; i < lineObject[item].length; i++) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
           : (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
         const y1 = yScale(lineObject[item][i - 1].y);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
           : (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
@@ -314,6 +317,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             cx={
               isNumeric
                 ? xScale(circlePoint.xItem.xAxisPoint as number)
@@ -753,7 +757,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               `}
               fill={color}
               ref={e => (ref.refElement = e)}
-              transform={`translate(${xScaleBandwidthTranslate}, 0)`} // todo do we need this property if there is no translation // test vertical stacked bar chart for RTL.
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
               {...rectFocusProps}
             />
           );
