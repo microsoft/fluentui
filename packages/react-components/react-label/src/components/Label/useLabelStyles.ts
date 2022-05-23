@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { LabelSlots, LabelState } from './Label.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `labelClassNames.root` instead.
- */
-export const labelClassName = 'fui-Label';
 export const labelClassNames: SlotClassNames<LabelSlots> = {
   root: 'fui-Label',
   required: 'fui-Label__required',

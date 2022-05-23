@@ -26,11 +26,11 @@ const iconMap = (
       return outOfOffice ? presenceOfflineRegular[size] : presenceAwayFilled[size];
     case 'busy':
       return outOfOffice ? presenceUnknownRegular[size] : presenceBusyFilled[size];
-    case 'doNotDisturb':
+    case 'do-not-disturb':
       return outOfOffice ? presenceDndRegular[size] : presenceDndFilled[size];
     case 'offline':
       return presenceOfflineRegular[size];
-    case 'outOfOffice':
+    case 'out-of-office':
       return presenceOofRegular[size];
     case 'unknown':
       return presenceUnknownRegular[size];
@@ -39,11 +39,11 @@ const iconMap = (
 
 const DEFAULT_STRINGS = {
   busy: 'busy',
-  outOfOffice: 'out of office',
+  'out-of-office': 'out of office',
   away: 'away',
   available: 'available',
   offline: 'offline',
-  doNotDisturb: 'do not disturb',
+  'do-not-disturb': 'do not disturb',
   unknown: 'unknown',
 };
 

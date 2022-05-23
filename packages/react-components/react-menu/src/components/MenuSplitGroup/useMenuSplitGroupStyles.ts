@@ -4,10 +4,6 @@ import { menuItemClassNames } from '../MenuItem/useMenuItemStyles';
 import type { MenuSplitGroupSlots, MenuSplitGroupState } from './MenuSplitGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `menuSplitGroupClassNames.root` instead.
- */
-export const menuSplitGroupClassName = 'fui-MenuSplitGroup';
 export const menuSplitGroupClassNames: SlotClassNames<MenuSplitGroupSlots> = {
   root: 'fui-MenuSplitGroup',
 };

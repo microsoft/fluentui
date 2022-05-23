@@ -20,7 +20,7 @@ export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content
    * Controls the colors and borders of the combobox.
    * @default 'outline'
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * If set, the placeholder will show when value is undefined

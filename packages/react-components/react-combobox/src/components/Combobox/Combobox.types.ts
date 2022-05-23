@@ -27,7 +27,7 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
      * Controls the colors and borders of the combobox.
      * @default 'outline'
      */
-    appearance?: 'filledDarker' | 'filledLighter' | 'outline' | 'underline';
+    appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
 
     /**
      * The default open state when open is uncontrolled

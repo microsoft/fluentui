@@ -5,14 +5,6 @@ export {
   CardFooter,
   CardHeader,
   CardPreview,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardFooterClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardPreviewClassName,
   cardClassNames,
   cardFooterClassNames,
   cardHeaderClassNames,

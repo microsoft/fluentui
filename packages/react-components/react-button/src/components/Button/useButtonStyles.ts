@@ -9,10 +9,6 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
   root: 'fui-Button',
   icon: 'fui-Button__icon',
 };
-/**
- * @deprecated Use `buttonClassNames.root` instead.
- */
-export const buttonClassName = buttonClassNames.root;
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
@@ -87,12 +83,6 @@ const useRootStyles = makeStyles({
         color: 'Highlight',
       },
     },
-  },
-
-  // Block styles
-  block: {
-    maxWidth: '100%',
-    width: '100%',
   },
 
   // Appearance variations
@@ -437,17 +427,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();
 
-  const {
-    appearance,
-    // eslint-disable-next-line deprecation/deprecation
-    block,
-    disabled,
-    disabledFocusable,
-    iconOnly,
-    iconPosition,
-    shape,
-    size,
-  } = state;
+  const { appearance, disabled, disabledFocusable, iconOnly, iconPosition, shape, size } = state;
 
   state.root.className = mergeClasses(
     buttonClassNames.root,
@@ -455,7 +435,6 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     // Root styles
     rootStyles.base,
     rootStyles.highContrast,
-    block && rootStyles.block,
     appearance && rootStyles[appearance],
     rootStyles[size],
     rootStyles[shape],

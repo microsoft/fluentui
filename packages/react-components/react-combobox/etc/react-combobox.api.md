@@ -33,7 +33,7 @@ export type ComboboxOpenEvents = React_2.FocusEvent<HTMLElement> | React_2.Keybo
 
 // @public
 export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> & SelectionProps & {
-    appearance?: 'filledDarker' | 'filledLighter' | 'outline' | 'underline';
+    appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
     defaultOpen?: boolean;
     defaultValue?: string;
     inline?: boolean;
@@ -66,7 +66,7 @@ export const comboButtonClassNames: SlotClassNames<ComboButtonSlots>;
 
 // @public
 export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content'>> & {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     placeholder?: string;
     value?: string;
 };

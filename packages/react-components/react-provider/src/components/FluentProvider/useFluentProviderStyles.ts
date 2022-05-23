@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `fluentProviderClassNames.root` instead.
- */
-export const fluentProviderClassName = 'fui-FluentProvider';
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots> = {
   root: 'fui-FluentProvider',
 };
