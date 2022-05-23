@@ -31,8 +31,8 @@ module.exports = createRule({
      * @param {string} exportName
      */
     function checkContextType(node, exportName) {
-      const currentfileName = context.getFilename();
-      if (!currentfileName.endsWith('src/index.ts')) {
+      const isTopLevelExport = context.getFilename().endsWith('src/index.ts');
+      if (!isTopLevelExport) {
         return;
       }
 
