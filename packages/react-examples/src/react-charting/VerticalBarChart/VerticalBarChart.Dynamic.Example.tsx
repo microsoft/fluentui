@@ -54,6 +54,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           height={400}
           width={650}
         />
+
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
