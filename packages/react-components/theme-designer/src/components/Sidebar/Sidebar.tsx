@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export interface ComponentProps {
+export interface SidebarProps {
   className?: String;
 }
 
-export const Sidebar: React.FC<ComponentProps> = props => {
+export const Sidebar: React.FC<SidebarProps> = props => {
   return <div>Sidebar</div>;
 };

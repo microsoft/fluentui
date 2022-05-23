@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export interface ComponentProps {
+export interface BodyProps {
   className?: String;
 }
 
-export const Body: React.FC<ComponentProps> = props => {
+export const Body: React.FC<BodyProps> = props => {
   return <div>Body</div>;
 };
