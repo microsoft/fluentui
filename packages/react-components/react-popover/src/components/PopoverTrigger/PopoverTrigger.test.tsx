@@ -102,18 +102,6 @@ describe('PopoverTrigger', () => {
     expect(getByRole('button').getAttribute('aria-expanded')).toBeNull();
   });
 
-  it('should allow user to set aria-haspopoup on trigger element', () => {
-    // Arrange
-    const { getByRole } = render(
-      <PopoverTrigger>
-        <button aria-haspopup="menu">Trigger</button>
-      </PopoverTrigger>,
-    );
-
-    // Assert
-    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('menu');
-  });
-
   it('should retain original child callback ref', () => {
     // Arrange
     const ref = jest.fn();
