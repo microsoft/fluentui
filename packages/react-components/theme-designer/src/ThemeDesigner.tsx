@@ -50,9 +50,9 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const layouts = useLayouts();
   return (
     <div className={layouts.root}>
-      <div className={layouts.nav}><Nav /></div>
-      <div className={layouts.sidebar}><Sidebar /></div>
-      <div className={layouts.body}><Body /></div>
+      <Nav className={layouts.nav} />
+      <Sidebar className={layouts.sidebar} />
+      <Body className={layouts.body} />
     </div>
   );
 };
