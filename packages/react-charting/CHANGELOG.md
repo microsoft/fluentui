@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 19 May 2022 07:41:27 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 07:42:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.35)
+
+Mon, 23 May 2022 07:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.34..@fluentui/react-charting_v5.9.35)
+
+### Patches
+
+- fixing color contrast issue ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by v-hannapared@microsoft.com)
+- Bump @fluentui/react-focus to v8.6.0 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
+- Bump @fluentui/react to v8.68.4 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
 
 ## [5.9.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.34)
 
