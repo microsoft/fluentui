@@ -30,11 +30,11 @@ import { Button } from '@fluentui/react-button';
 import { ToolbarRadio } from '../ToolbarRadio';
 import { ToolbarRadioGroup } from '../ToolbarRadioGroup';
 
-export interface TestOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
+export interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
 }
 
-export const TestOverflowMenuItem: React.FC<TestOverflowMenuItemProps> = props => {
+export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = props => {
   const { id, ...rest } = props;
   const isVisible = useIsOverflowItemVisible(id);
 
@@ -108,7 +108,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
             return (
               <React.Fragment key={group.join()}>
                 {group.map(i => (
-                  <TestOverflowMenuItem key={i} id={i} />
+                  <ToolbarOverflowMenuItem key={i} id={i} />
                 ))}{' '}
                 {!isLast && <TestOverflowMenuDivider id={`${groupIndx + 1}`} />}
               </React.Fragment>
@@ -120,11 +120,11 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
   );
 };
 
-export type TestDividerProps = {
+export type ToolbarOverflowDividerProps = {
   groupId: string;
 };
 
-export const TestDivider = ({ groupId }: TestDividerProps) => {
+export const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps) => {
   const groupVisibleState = useIsOverflowGroupVisible(groupId);
 
   if (groupVisibleState !== 'hidden') {
@@ -150,7 +150,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
         </OverflowItem>
 
-        <TestDivider groupId="1" />
+        <ToolbarOverflowDivider groupId="1" />
 
         <OverflowItem id="underline-2" groupId="2">
           <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
@@ -168,7 +168,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
         </OverflowItem>
 
-        <TestDivider groupId="2" />
+        <ToolbarOverflowDivider groupId="2" />
 
         <OverflowItem id="underline-4" groupId="3">
           <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
@@ -180,7 +180,7 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
           <ToolbarButton appearance="subtle" icon={<TextItalic16Regular />} />
         </OverflowItem>
 
-        <TestDivider groupId="3" />
+        <ToolbarOverflowDivider groupId="3" />
 
         <OverflowItem id="radio" groupId="4">
           <ToolbarRadioGroup>
