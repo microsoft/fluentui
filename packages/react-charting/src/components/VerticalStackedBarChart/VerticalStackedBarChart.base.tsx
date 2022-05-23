@@ -282,15 +282,15 @@ export class VerticalStackedBarChartBase extends React.Component<
         shouldHighlight = selectedLegendTitle === item; // item is legend name;
       }
       for (let i = 1; i < lineObject[item].length; i++) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
-          : (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
         const y1 = yScale(lineObject[item][i - 1].y);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
-          : (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
+          : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
         const y2 = yScale(lineObject[item][i].y);
         lines.push(
           <line
@@ -317,11 +317,11 @@ export class VerticalStackedBarChartBase extends React.Component<
         dots.push(
           <circle
             key={`${index}-${subIndex}-dot`}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             cx={
               isNumeric
                 ? xScale(circlePoint.xItem.xAxisPoint as number)
-                : (xBarScale as any)(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
+                : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
             }
             cy={yScale(circlePoint.y)}
             onMouseOver={
