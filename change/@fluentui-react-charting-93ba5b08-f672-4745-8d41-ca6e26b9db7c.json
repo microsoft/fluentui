@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Align vertical bar chart labels with the bar. Fixing empty pies showing in donut chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "atishay.jain@microsoft.com",
+  "dependentChangeType": "none"
+}

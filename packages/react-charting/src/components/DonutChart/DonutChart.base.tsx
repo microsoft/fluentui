@@ -98,7 +98,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
     const legendBars = this._createLegends(data!, palette);
     const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
-    const chartData = data && data.chartData;
+    const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return (
       <div
