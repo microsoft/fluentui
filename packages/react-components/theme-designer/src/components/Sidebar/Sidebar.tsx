@@ -4,19 +4,13 @@ import { makeStyles } from "@griffel/react";
 export interface ComponentProps {}
 
 const useStyles = makeStyles({
-  sidebar: {
-    width: "33%",
-    left: 0,
-    overflowX: "hidden",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
+  root: {
   }
 });
 
 export const Sidebar: React.FC<ComponentProps> = props => {
   const styles = useStyles();
   return (
-    <div className={styles.sidebar}>Sidebar</div>
+    <div className={styles.root}>Sidebar</div>
   );
 };
