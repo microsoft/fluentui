@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 04 May 2022 13:26:45 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.10)
+
+Mon, 23 May 2022 12:13:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.9..@fluentui/react-popover_v9.0.0-rc.10)
+
+### Changes
+
+- Removing PopoverCommons type. ([PR #22968](https://github.com/microsoft/fluentui/pull/22968) by Humberto.Morimoto@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.9)
+
+Thu, 05 May 2022 18:26:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.8..@fluentui/react-popover_v9.0.0-rc.9)
+
+### Changes
+
+- Removing star exports. ([PR #22805](https://github.com/microsoft/fluentui/pull/22805) by humberto_makoto@hotmail.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.8)
 

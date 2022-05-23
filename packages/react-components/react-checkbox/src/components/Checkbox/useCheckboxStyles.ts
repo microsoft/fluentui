@@ -4,20 +4,12 @@ import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `checkboxClassNames.root` instead.
- */
-export const checkboxClassName = 'fui-Checkbox';
 export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   root: 'fui-Checkbox',
   label: 'fui-Checkbox__label',
   input: 'fui-Checkbox__input',
   indicator: 'fui-Checkbox__indicator',
 };
-
-// TODO replace these spacing constants with theme values once they're on the theme
-const spacingHorizontalS = '8px';
-const spacingHorizontalM = '12px';
 
 // The indicator size is used by the indicator and label styles
 const indicatorSizeMedium = '16px';
@@ -27,8 +19,7 @@ const useRootStyles = makeStyles({
   base: {
     position: 'relative',
     display: 'inline-flex',
-    columnGap: spacingHorizontalM,
-    ...shorthands.padding(spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
 });
@@ -196,13 +187,22 @@ const useLabelStyles = makeStyles({
     color: 'inherit',
   },
 
+  before: {
+    marginRight: tokens.spacingHorizontalM,
+  },
+  after: {
+    marginLeft: tokens.spacingHorizontalM,
+  },
+
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
   // This prevents the label from expanding the height of the Checkbox, but preserves line height if the label wraps.
   medium: {
-    ...shorthands.margin(`calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`, 0),
+    marginTop: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeMedium} - ${tokens.lineHeightBase300}) / 2)`,
   },
   large: {
-    ...shorthands.margin(`calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`, 0),
+    marginTop: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
+    marginBottom: `calc((${indicatorSizeLarge} - ${tokens.lineHeightBase300}) / 2)`,
   },
 });
 
@@ -233,6 +233,7 @@ export const useCheckboxStyles_unstable = (state: CheckboxState): CheckboxState 
       checkboxClassNames.label,
       labelStyles.base,
       labelStyles[state.size],
+      labelStyles[state.labelPosition],
       state.label.className,
     );
   }

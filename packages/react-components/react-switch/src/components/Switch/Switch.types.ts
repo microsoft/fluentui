@@ -30,24 +30,6 @@ export type SwitchSlots = {
   label?: Slot<typeof Label>;
 };
 
-type SwitchCommons = {
-  /**
-   * Defines the controlled checked state of the Switch.
-   * If passed, Switch ignores the `defaultChecked` property.
-   * This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the
-   * correct value based on handling `onChange` events and re-rendering.
-   * @default false
-   */
-  checked?: boolean;
-
-  /**
-   * The position of the label relative to the Switch.
-   *
-   * @default after
-   */
-  labelPosition: 'above' | 'after' | 'before';
-};
-
 export type SwitchOnChangeData = {
   checked: boolean;
 };
@@ -55,21 +37,38 @@ export type SwitchOnChangeData = {
 /**
  * Switch Props
  */
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> &
-  Partial<SwitchCommons> & {
-    /**
-     * Defines whether the Switch is initially in a checked state or not when rendered.
-     * @default false
-     */
-    defaultChecked?: boolean;
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & {
+  /**
+   * Defines the controlled checked state of the Switch.
+   * If passed, Switch ignores the `defaultChecked` property.
+   * This should only be used if the checked state is to be controlled at a higher level and there is a plan to pass the
+   * correct value based on handling `onChange` events and re-rendering.
+   *
+   * @default false
+   */
+  checked?: boolean;
 
-    /**
-     * Callback to be called when the checked state value changes.
-     */
-    onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
-  };
+  /**
+   * Defines whether the Switch is initially in a checked state or not when rendered.
+   *
+   * @default false
+   */
+  defaultChecked?: boolean;
+
+  /**
+   * The position of the label relative to the Switch.
+   *
+   * @default after
+   */
+  labelPosition?: 'above' | 'after' | 'before';
+
+  /**
+   * Callback to be called when the checked state value changes.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
+};
 
 /**
  * State used in rendering Switch
  */
-export type SwitchState = ComponentState<SwitchSlots> & SwitchCommons;
+export type SwitchState = ComponentState<SwitchSlots> & Required<Pick<SwitchProps, 'labelPosition'>>;

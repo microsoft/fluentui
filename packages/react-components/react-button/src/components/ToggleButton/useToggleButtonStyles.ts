@@ -11,11 +11,6 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-/**
- * @deprecated Use `toggleButtonClassName.root` instead.
- */
-export const toggleButtonClassName = toggleButtonClassNames.root;
-
 export const useCheckedStyles = makeStyles({
   // Base styles
   base: {
@@ -85,6 +80,9 @@ export const useCheckedStyles = makeStyles({
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForegroundOnBrand,
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
@@ -156,6 +154,9 @@ export const useDisabledStyles = makeStyles({
     ':hover:active': {
       ...shorthands.borderColor('transparent'),
     },
+  },
+  secondary: {
+    /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
     backgroundColor: 'transparent',

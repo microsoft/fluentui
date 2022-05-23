@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: update string unions to use spinal-case",
+  "packageName": "@fluentui/react-tabster",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

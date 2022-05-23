@@ -20,20 +20,25 @@ export const DisplayValue = () => {
   };
 
   const onSpinButtonChange: SpinButtonProps['onChange'] = (_ev, data) => {
-    if (data.value !== undefined) {
+    if (data.value !== undefined && data.value !== null) {
       setSpinButtonValue(data.value);
       setSpinButtonDisplayValue(formatter(data.value));
-    } else if (data.displayValue) {
+    } else if (data.displayValue !== undefined) {
       const newValue = parser(data.displayValue);
       if (!Number.isNaN(newValue)) {
         setSpinButtonValue(newValue);
         setSpinButtonDisplayValue(formatter(newValue));
+      } else {
+        // Display a "special" value when user types something
+        // that's not parsable as a number.
+        setSpinButtonValue(null);
+        setSpinButtonDisplayValue('(null)');
       }
     }
   };
 
   const id = useId();
-  const [spinButtonValue, setSpinButtonValue] = React.useState(1);
+  const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(1);
   const [spinButtonDisplayValue, setSpinButtonDisplayValue] = React.useState(formatter(1));
 
   return (

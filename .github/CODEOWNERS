@@ -80,7 +80,7 @@ apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
-apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal
+apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 
 #### Packages
@@ -108,7 +108,7 @@ packages/react-hooks @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
-packages/react-shared-contexts @microsoft/teams-prg
+packages/react-components/react-shared-contexts @microsoft/teams-prg
 packages/react-components/react-storybook @microsoft/cxe-prg @microsoft/teams-prg
 packages/react-components/react-storybook-addon @microsoft/cxe-prg
 packages/react-components/react-tabster @microsoft/teams-prg
@@ -130,19 +130,19 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
-packages/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
+packages/react-components/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
-packages/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
+packages/react-components/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-components/react-card @microsoft/cxe-prg
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
-packages/react-combobox @microsoft/cxe-coastal @smhigley
+packages/react-components/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
-packages/react-components/react-dialog @microsoft/cxe-prg
-packages/react-divider @microsoft/cxe-coastal
+packages/react-components/react-dialog @microsoft/teams-prg
+packages/react-components/react-divider @microsoft/cxe-coastal
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
-packages/react-components/react-input @microsoft/cxe-red
+packages/react-components/react-input @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
 packages/react-components/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
 packages/react-components/react-menu @microsoft/teams-prg

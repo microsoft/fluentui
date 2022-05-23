@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 05 May 2022 18:26:28 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 May 2022 13:26:36 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

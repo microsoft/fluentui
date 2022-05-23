@@ -18,8 +18,20 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+
+- Remove unnecesary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
+
+<!--------------------------------[ v0.63.0 ]------------------------------- -->
+## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.62.0..@fluentui/react-northstar_v0.63.0)
+
 ### BREAKING CHANGES
 - Change default Divider color in light and dark theme @yuanboxue-amber ([#22665](https://github.com/microsoft/fluentui/pull/22665))
+- Do not pass deprecated `.styles` to slots in `Avatar` @layershifter ([#23034](https://github.com/microsoft/fluentui/pull/23034))
+
+### Features
+- Add the `MicPulse` and `MicPulseOff` icons @sfilipi ([#22944](https://github.com/microsoft/fluentui/pull/22944))
 
 ### Fixes
 - Export types for `ChatMessageDetails`, `ChatMessageHeader`, and `ChatMessageReadStatus` styles props @Hirse ([#22491](https://github.com/microsoft/fluentui/pull/22491))
@@ -30,7 +42,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - fix `Tooltip` constrast style for pointing and subtle=false @yuanboxue-amber ([#22696](https://github.com/microsoft/fluentui/pull/22696))
 - Vertical menu background color should not change on focus in dark theme @yuanboxue-amber ([#22707](https://github.com/microsoft/fluentui/pull/22707))
 - Align `default` scheme colors between v0 and v9 @jurokapsiar ([#22699](https://github.com/microsoft/fluentui/pull/22699))
+- Fix `Dropdown`'s `headerMessage` background color @Hirse ([#22758](https://github.com/microsoft/fluentui/pull/22758))
+- Fix `AvatarStatusIcon` sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Fix `Status` icon sizing @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Fix `Dialog` to keep it open when press click on content and release outside @yuanboxue-amber ([#22849](https://github.com/microsoft/fluentui/pull/22849))
+- Align Avatar `font-weight` between v0 and v9 @annabratseiko ([#22822](https://github.com/microsoft/fluentui/pull/22822))
 - Fix `Pill` to be selectable by keyboard @chpalac ([#22839](https://github.com/microsoft/fluentui/pull/22839))
+- Fix the `MicPulseOff` outline path to be what's in the Figma file, it is currently the value of the filled icon @sfilipi ([#23021](https://github.com/microsoft/fluentui/pull/23021))
+
+### Features
+- Add compatibility with components from `@fluentui/react-components` in portals @layershifter ([#22541](https://github.com/microsoft/fluentui/pull/22541))
+- Add `AvatarStatusImage` to use images as `Avatar` status @Hirse ([#22714](https://github.com/microsoft/fluentui/pull/22714))
+- Copy utilities from `@fluentui/utilities` to avoid extra dependency on v8 @ling1726 ([#23054](https://github.com/microsoft/fluentui/pull/23054))
 
 ### Documentation
 - Use https for Embed and Video examples @Hirse ([#22738](https://github.com/microsoft/fluentui/pull/22738))

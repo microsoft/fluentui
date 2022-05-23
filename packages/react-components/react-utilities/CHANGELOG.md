@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 04 May 2022 13:26:36 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.9)
+
+Mon, 23 May 2022 12:13:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.8..@fluentui/react-utilities_v9.0.0-rc.9)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.8)
+
+Thu, 05 May 2022 18:26:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.7..@fluentui/react-utilities_v9.0.0-rc.8)
+
+### Changes
+
+- feat: add time element on nativeElementMap ([PR #22848](https://github.com/microsoft/fluentui/pull/22848) by bsunderhus@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.6 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.7)
 

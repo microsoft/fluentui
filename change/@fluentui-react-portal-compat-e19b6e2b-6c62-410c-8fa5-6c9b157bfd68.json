@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-portal-compat: Move to new common folder.",
-  "packageName": "@fluentui/react-portal-compat",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

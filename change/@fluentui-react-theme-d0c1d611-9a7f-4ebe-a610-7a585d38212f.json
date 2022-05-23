@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Generate theme tokens using token pipeline",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}

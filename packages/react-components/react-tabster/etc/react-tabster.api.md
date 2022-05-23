@@ -53,7 +53,7 @@ export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined)
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
+    tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
 // @public

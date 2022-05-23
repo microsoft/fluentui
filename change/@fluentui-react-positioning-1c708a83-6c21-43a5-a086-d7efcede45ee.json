@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing star exports.",
-  "packageName": "@fluentui/react-positioning",
-  "email": "humberto_makoto@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "react-textarea: Move to new common folder.",
-  "packageName": "@fluentui/react-textarea",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING CHANGE: Encapsulate Popper API",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
