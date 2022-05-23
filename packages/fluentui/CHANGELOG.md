@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+
+- Remove unnecesary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
+
 <!--------------------------------[ v0.63.0 ]------------------------------- -->
 ## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.62.0..@fluentui/react-northstar_v0.63.0)

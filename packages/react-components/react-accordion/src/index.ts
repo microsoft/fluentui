@@ -1,8 +1,9 @@
 export {
   Accordion,
-  AccordionContext,
+  AccordionProvider,
   accordionClassNames,
   renderAccordion_unstable,
+  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionStyles_unstable,
   useAccordion_unstable,
@@ -20,7 +21,7 @@ export type {
 } from './Accordion';
 export {
   AccordionItem,
-  AccordionItemContext,
+  AccordionItemProvider,
   accordionItemClassNames,
   renderAccordionItem_unstable,
   useAccordionItemContextValues_unstable,

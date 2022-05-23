@@ -15,4 +15,4 @@ export type {
 } from './RadioGroup';
 export { Radio, radioClassNames, renderRadio_unstable, useRadioStyles_unstable, useRadio_unstable } from './Radio';
 export type { RadioProps, RadioSlots, RadioState, RadioOnChangeData } from './Radio';
-export { RadioGroupContext, useRadioGroupContextValues } from './contexts/index';
+export { RadioGroupProvider, useRadioGroupContextValues, useRadioGroupContext_unstable } from './contexts/index';

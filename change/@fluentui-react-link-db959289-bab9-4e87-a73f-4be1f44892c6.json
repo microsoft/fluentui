@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Improving README and updating spec and migration guide.",
+  "packageName": "@fluentui/react-link",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "none"
+}

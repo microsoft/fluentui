@@ -122,7 +122,7 @@ type OverflowMenuProps = {
  */
 const OverflowMenu = (props: OverflowMenuProps) => {
   const { onTabSelect } = props;
-  const { ref, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+  const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
 
   const styles = useOverflowMenuStyles();
 
@@ -137,7 +137,14 @@ const OverflowMenu = (props: OverflowMenuProps) => {
   return (
     <Menu hasIcons>
       <MenuTrigger>
-        <Button appearance="transparent" className={styles.menuButton} ref={ref} icon={<MoreHorizontalRegular />} />
+        <Button
+          appearance="transparent"
+          className={styles.menuButton}
+          ref={ref}
+          icon={<MoreHorizontalRegular />}
+          aria-label={`${overflowCount} more tabs`}
+          role="tab"
+        />
       </MenuTrigger>
       <MenuPopover>
         <MenuList className={styles.menu}>
@@ -262,7 +269,10 @@ export const WithOverflow = () => {
 WithOverflow.parameters = {
   docs: {
     description: {
-      story: 'A tab list can support overflow by using Overflow and OverflowItem.',
+      story:
+        'A tab list can support overflow by using Overflow and OverflowItem.' +
+        'NOTE: when adding custom buttons to a tablist -- e.g. the overflow button in this example --' +
+        '`role="tab"` must be manually added for screen reader accessibility.',
     },
   },
 };
