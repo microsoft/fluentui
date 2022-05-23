@@ -238,6 +238,7 @@ const typeAwareRules = {
    * plugin: https://github.com/gund/eslint-plugin-deprecation
    */
   'deprecation/deprecation': 'error',
+  '@fluentui/ban-context-export': 'error',
 };
 
 /**
