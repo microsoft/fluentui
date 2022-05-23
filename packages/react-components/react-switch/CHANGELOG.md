@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Thu, 05 May 2022 18:26:26 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.10)
+
+Mon, 23 May 2022 12:13:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.9..@fluentui/react-switch_v9.0.0-rc.10)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- Replace hardcoded padding with spacing tokens ([PR #22982](https://github.com/microsoft/fluentui/pull/22982) by behowell@microsoft.com)
+- Refactor styles to remove usage of flex gap ([PR #22976](https://github.com/microsoft/fluentui/pull/22976) by behowell@microsoft.com)
+- Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+- feat: ship rolluped only dts ([PR #22874](https://github.com/microsoft/fluentui/pull/22874) by martinhochel@microsoft.com)
+- Removing SwitchCommons type in @fluentui/react-switch. ([PR #22943](https://github.com/microsoft/fluentui/pull/22943) by Humberto.Morimoto@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-rc.2 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.9)
 

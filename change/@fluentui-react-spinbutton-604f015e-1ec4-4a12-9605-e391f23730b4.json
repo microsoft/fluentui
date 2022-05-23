@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "widen `value` type to include `null`",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

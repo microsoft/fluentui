@@ -2,6 +2,35 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:38 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8afe4d15242d6220f202ca1d0d1522f4f9d151bb",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "7ac7eacca1f20d34cc5de7cc84c20938b4d5489d",
+            "comment": "refactor: move package under react-components folder"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:26 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

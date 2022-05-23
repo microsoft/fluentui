@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Thu, 05 May 2022 18:26:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:14:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.2)
+
+Mon, 23 May 2022 12:14:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.12..@fluentui/react-label_v9.0.0-rc.2)
+
+### Changes
+
+- update README and package version ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+- feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+- Removing commons type from Label. ([PR #22880](https://github.com/microsoft/fluentui/pull/22880) by esteban.230@hotmail.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.12)
 

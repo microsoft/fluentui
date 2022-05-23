@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:28 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

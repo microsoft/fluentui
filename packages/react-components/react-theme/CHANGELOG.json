@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:56 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.8",
+      "version": "9.0.0-rc.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:27 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.7",
       "version": "9.0.0-rc.7",

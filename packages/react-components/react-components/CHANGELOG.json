@@ -2,6 +2,1055 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:13:29 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "4ae08d6ecf85ac29593ddc2abb23f8a073711b38",
+            "comment": "feat: Initial beta release"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "af874b8a88494c3d3c13daa483348d386fef3736",
+            "comment": "Removing PopoverCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "d98a253a7768cb781f106153804c8683670bbf8a",
+            "comment": "Removing PortalCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "0915feeaa4278c32a7818b67b159ed207d1031fc",
+            "comment": "chore: use range for \"@fluentui/react-portal-compat-context\" dependency"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "eb1084fd607c0d1086f9d465168be5822daa5e40",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "44062b15587c3a18b7f02d2beb3ba19fa793fb9c",
+            "comment": "Removing FluentProviderCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "eb1084fd607c0d1086f9d465168be5822daa5e40",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "c0b27cce0d29122e4488ff431689b966076a728b",
+            "comment": "Replace hardcoded padding with spacing tokens"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "2ea15d322e01dc6055378f4f0f5f3febf7910f80",
+            "comment": "Refactor styles to remove usage of flex gap"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8afe4d15242d6220f202ca1d0d1522f4f9d151bb",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "4a05a4a5a3f0b7724ac81be01795e1572b048fd9",
+            "comment": "move slider commons into props and pick into state"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e5f896d0098d23b01a4f0ab4b154fca0a47a1a89",
+            "comment": "react-spinbutton: update appearance stories"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "111151a252ce77c26354f50101791bbe71de78fe",
+            "comment": "appearance story updates"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "fbed857eb218943dcd08686eca1f469314bb84f6",
+            "comment": "widen `value` type to include `null`"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "8f40f25712a38b3b3121e7eb71623ce3d5a187e1",
+            "comment": "react-spinbutton: add aria-valuetext override"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "02fafa9e9ba11326583bad5db2e3dfce9d4407ff",
+            "comment": "react-spinbutton: use spacing tokens"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "c70db5af9d6986c0f4c03c4c54bf26cb7a0f2096",
+            "comment": "react-spinbutton: remove \"strings\" prop"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "70164a1d13eb58eec6693f735029a8974b7aac70",
+            "comment": "Update react-input dependency version to release candidate."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d70513cb733174eb29068b9828b527b6425ba041",
+            "comment": "update stepper clamping behavior"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "2876fdf9a81f0a9a7c5fd0499bd48045b6b5fd5c",
+            "comment": "react-spinbutton: remove SpinButtonCommons type"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "8ab3a2ac23ee12d9b5fbd72d3b4593fb3691209b",
+            "comment": "Migrate react-spinner to rc"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "7327426c7b1a5469fb25f705ef2c1c1367b1633d",
+            "comment": "Removing SpinnerCommons type."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "06e13fdfd614eb965e922dec138a1e6df902b16e",
+            "comment": "Updated to use tokens were possible"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c0b27cce0d29122e4488ff431689b966076a728b",
+            "comment": "Replace hardcoded padding with spacing tokens"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "45ec789399b65b76b80cc8023d977de7d2b8b579",
+            "comment": "Refactor styles to remove usage of flex gap"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "eb1084fd607c0d1086f9d465168be5822daa5e40",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "ec6c1a33b3c4cec9422d07bcffc48b85928c22d2",
+            "comment": "Removing SwitchCommons type in @fluentui/react-switch."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5a4a2c6b1ed8d4c2abb12a08d1abec71e9055ce6",
+            "comment": "Removed TabListCommons and TabCommons types"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "58c5aafd8deb82eaf1ff117d9e2c9029f5658168",
+            "comment": "Removed flexgap from useTabStyles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "3460b40b4faf6c8939680f69878446da23ea20f9",
+            "comment": "Updated to focus on current selected tab"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "447a9aa0c3527d42bd071e63777b7afa1a14b273",
+            "comment": "Used background rather than border"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "083e54e4374c25be4200c27922c16621431bb2bc",
+            "comment": "Moved react-tabs to stable and rc.1"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "42e0900f7a008d83fdca5a6e5620f49951ecedf1",
+            "comment": "Remove overflow to allow focus outline to display"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "48bc32c6df6279b46ba94aab16f8bf650b17bd1e",
+            "comment": "Add aria-label for icon only story"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "9bdcf7a94d2a89e77533e2ec850ba247fa6ba68d",
+            "comment": "Update tabster dependency from ^1.3.3 to ^1.4.0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "cab7ae0f9667d278f6e4b3463f4890fe8bf63ca8",
+            "comment": "Removing TextCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "938c4f29cf91bb5e84c512162592aa1c74627e51",
+            "comment": "Moving react-textarea to RC."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "eb1084fd607c0d1086f9d465168be5822daa5e40",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "8ac48b7bba84d00b1240b1f449dbce20e97abbb6",
+            "comment": "Update appearance stories and add best practices."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "ff308632878f6037547ae2913c9dd7107a125975",
+            "comment": "Remove commons from react-textarea."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "43d5828c01a525fb1c3e5ae1c200201245741a9a",
+            "comment": "Updating spec to match implementation."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "f2f0c0d6ea55c51a1e12d5d0385d91e1414f5025",
+            "comment": "Updating Textarea styles to use font tokens."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "13543c30b0a05b61cb8d75c804d9b2aee45a8ae5",
+            "comment": "Removing TooltipCommons type."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "4ae08d6ecf85ac29593ddc2abb23f8a073711b38",
+            "comment": "feat: Initial beta release"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a324d75aea71ad60c3f750743a315e3320f8a2fe",
+            "comment": "react-accordion: ship rolluped only dts."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f57165a466c9d62226af2d49928f6eb797c20432",
+            "comment": "Add support for size={16} to Avatar"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "72684d3d57ee3cb0d7012a31559b8a2b7ad36849",
+            "comment": "Moving Avatar stories to stories folder."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2e5bf6decb7ac952a490a1cb626f0c6d0a064e4b",
+            "comment": "react-badge: ship rolluped only dts."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "3c97b3754e1f5f77672c3ceb9886de43a462ccb6",
+            "comment": "remove commons types from badges"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b25c126f876408124bbb717da7778cd0936e67a4",
+            "comment": "pass in icon props to presence badge icon slot, and use default strings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "6cb084a7afe7d662dc2d9d65b91474f132566390",
+            "comment": "Using spacing tokens for button components."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "29f73d77cfdc20a123cb64115fb1a926300d216e",
+            "comment": "Removing flex gap from button components and fixing spacing to better align with design spec."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "humberto_makoto@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "606dca4330f71a3a3ac466a30b3db1664ad0c55d",
+            "comment": "Removing Common types from all button components."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "be57c96ae39842da3bc38740b7823eeee68cc3ea",
+            "comment": "Removing ToggleButtonCommons type in @fluentui/react-button."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "a42bebb19d1403bfbde96cfb4b09e3ce32490ec6",
+            "comment": "CardPreview now expands properly, all the way to the Card's edges"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "d24b84d3239563973ed1dff9145998a4403c531e",
+            "comment": "fix: focus no longer being managed when using `focusMode=\"off\"`"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "a31441fdf2fa55f706983653febf5c318d76693d",
+            "comment": "remove commons from Card"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4a1d26d400555424658af57d0d39ad5dfbbdda16",
+            "comment": "Replacing spacing constants with tokens."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b8a0ac5d1b0f2d04c67712154a52ffe5f78f0e6e",
+            "comment": "Moving Checkbox to RC."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "e082a6130fe584a94448ddbb367817edbe416caf",
+            "comment": "Refactor styles to remove usage of flex gap"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "fdb6dc95fdd003e61b2e6f1eaa361c9d8e588b72",
+            "comment": "Updating spec to match implementation and added information to README."
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4d4b7fd35b18a1569d32dd3361769eca6de536ae",
+            "comment": "Removing commons from checkbox."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "c0b27cce0d29122e4488ff431689b966076a728b",
+            "comment": "Use vertical and horizontal spacing tokens for padding"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "938c4f29cf91bb5e84c512162592aa1c74627e51",
+            "comment": "Moving react-textarea from unstable to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f3098a8afdcdd3e3a6e436e3989fd4f58230269f",
+            "comment": "Re-exporting AvatarSizes from react-avatar."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "083e54e4374c25be4200c27922c16621431bb2bc",
+            "comment": "Moved react-tabs to stable and rc.1"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c70db5af9d6986c0f4c03c4c54bf26cb7a0f2096",
+            "comment": "react-spinbutton: remove \"strings\" prop"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Move react-label to release candidate"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8ab3a2ac23ee12d9b5fbd72d3b4593fb3691209b",
+            "comment": "Move react-spinner from unstable to stable"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b8a0ac5d1b0f2d04c67712154a52ffe5f78f0e6e",
+            "comment": "Moving Checkbox from unstable to stable."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "fa27fd518a6e817047737161162daa93f98c54f0",
+            "comment": "Switch: Moving component out of unstable."
+          },
+          {
+            "author": "adam.samec@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5464a92a4301e431fe322b67212d47b866e048ad",
+            "comment": "Add uncomplete Input scenario"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "70164a1d13eb58eec6693f735029a8974b7aac70",
+            "comment": "Update react-input to release candidate."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1c73d59fa11fc2e1090630bbf54dc2dc6dd892f5",
+            "comment": "fix: update mock of mergeClasses() to return an empty string"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "a324d75aea71ad60c3f750743a315e3320f8a2fe",
+            "comment": "react-divider: ship rolluped only dts."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "ae46bce718fbe25f3439cf63b813143023f5684c",
+            "comment": "Removing DividerCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "9ee5fba37a8d253133f4338575ebedd238cd74a3",
+            "comment": "Removing ImageCommons type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "1f5dc959ca89bb722fb9cea57b6880aedb5759aa",
+            "comment": "write readme"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602",
+            "comment": "react-input: update appearance stories background contrast"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "70164a1d13eb58eec6693f735029a8974b7aac70",
+            "comment": "Move from beta to release candidate."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "update README and package version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "6b3b09b6f05e6a17a578a65fc36b606e3004efe9",
+            "comment": "Removing commons type from Label."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "692e6916819ee07a1dfb0d99ac2ffbdd0d75252f",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "6462df4b4bf19411dd60e788c3316086aa685d8e",
+            "comment": "Removing LinkCommon type."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "01a1b4cd08dea21d547c1c2a05382426c5e7ea24",
+            "comment": "feat: Fill icon on hover"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "aaaf6d769e834645418a1144b109c679317fe393",
+            "comment": "fix: Context menu closes when its trigger is left clicked"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "11ba59f23523bedc29014cd29f7141c5debc6242",
+            "comment": "Removing Common types from all Menu components."
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "7ac7eacca1f20d34cc5de7cc84c20938b4d5489d",
+            "comment": "refactor: move package under react-components folder"
+          },
+          {
+            "author": "t-emmajiang@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "d1b79b83dbffbc0242d8f463715741efec9bf5dd",
+            "comment": "fixing typo in Text best practices"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "db1814209909b23fbbbff03dbd9b59ac333754a5",
+            "comment": "react-accordion: Move to new common folder."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "49a9c0d36d09f92f64e2167aff2276d525150816",
+            "comment": "remove commons types from accordion, remove unused state props"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "59ea4de9c55cfaca51bac4a07e1e03fb60939a15",
+            "comment": "remove commons type from avatar and avatargroup"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2769e4b68c65eb8e06cf15384f51059e819b1fc5",
+            "comment": "react-badge: Move to new common folder."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "0fac2d7a6f35c5fcebaf30da68b9604410fe0eb9",
+            "comment": "Updated react-label package version to RC."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "db1814209909b23fbbbff03dbd9b59ac333754a5",
+            "comment": "react-components: Update storybook test to account for package moves."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4a76bb578efc3c288c8d6bb5a49ca2c7db5efb67",
+            "comment": "react-components: fix broken storybook test."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b7fc187b2691b1fe4cb49ad228602e8d6ce3c552",
+            "comment": "react-components: simplify getVnextStories util function."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "db1814209909b23fbbbff03dbd9b59ac333754a5",
+            "comment": "react-divider: Move to new common folder."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "8639df27de59d5a48e0e46c07fe7ac9342cfc98a",
+            "comment": "Improving README and updating spec and migration guide."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:23 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 05 May 2022 18:26:27 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.8)
+
+Mon, 23 May 2022 12:13:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.7..@fluentui/react-theme_v9.0.0-rc.8)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.7)
 

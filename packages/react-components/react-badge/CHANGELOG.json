@@ -2,6 +2,71 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 12:14:01 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2769e4b68c65eb8e06cf15384f51059e819b1fc5",
+            "comment": "react-badge: Move to new common folder."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "2e5bf6decb7ac952a490a1cb626f0c6d0a064e4b",
+            "comment": "react-badge: ship rolluped only dts."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "3c97b3754e1f5f77672c3ceb9886de43a462ccb6",
+            "comment": "remove commons types from badges"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b25c126f876408124bbb717da7778cd0936e67a4",
+            "comment": "pass in icon props to presence badge icon slot, and use default strings"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:30 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

@@ -1,8 +1,212 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 05 May 2022 18:26:23 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.11)
+
+Mon, 23 May 2022 12:13:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.10..@fluentui/react-components_v9.0.0-rc.11)
+
+### Changes
+
+- `@fluentui/react-overflow`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - feat: Initial beta release ([PR #22913](https://github.com/microsoft/fluentui/pull/22913) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - Removing PopoverCommons type. ([PR #22968](https://github.com/microsoft/fluentui/pull/22968) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-portal`
+  - Removing PortalCommons type. ([PR #22969](https://github.com/microsoft/fluentui/pull/22969) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: use range for "@fluentui/react-portal-compat-context" dependency ([PR #22541](https://github.com/microsoft/fluentui/pull/22541) by olfedias@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22874](https://github.com/microsoft/fluentui/pull/22874) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - Removing FluentProviderCommons type. ([PR #23070](https://github.com/microsoft/fluentui/pull/23070) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - feat: ship rolluped only dts ([PR #22874](https://github.com/microsoft/fluentui/pull/22874) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Replace hardcoded padding with spacing tokens ([PR #22982](https://github.com/microsoft/fluentui/pull/22982) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Refactor styles to remove usage of flex gap ([PR #22975](https://github.com/microsoft/fluentui/pull/22975) by behowell@microsoft.com)
+  - Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: ship rolluped only dts ([PR #22965](https://github.com/microsoft/fluentui/pull/22965) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - move slider commons into props and pick into state ([PR #22879](https://github.com/microsoft/fluentui/pull/22879) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - react-spinbutton: update appearance stories ([PR #22980](https://github.com/microsoft/fluentui/pull/22980) by seanmonahan@microsoft.com)
+  - appearance story updates ([PR #22995](https://github.com/microsoft/fluentui/pull/22995) by seanmonahan@microsoft.com)
+  - widen `value` type to include `null` ([PR #23025](https://github.com/microsoft/fluentui/pull/23025) by seanmonahan@microsoft.com)
+  - Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+  - react-spinbutton: add aria-valuetext override ([PR #22905](https://github.com/microsoft/fluentui/pull/22905) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - react-spinbutton: use spacing tokens ([PR #22950](https://github.com/microsoft/fluentui/pull/22950) by gcox@microsoft.com)
+  - react-spinbutton: remove "strings" prop ([PR #22948](https://github.com/microsoft/fluentui/pull/22948) by seanmonahan@microsoft.com)
+  - Update react-input dependency version to release candidate. ([PR #23090](https://github.com/microsoft/fluentui/pull/23090) by seanmonahan@microsoft.com)
+  - update stepper clamping behavior ([PR #23004](https://github.com/microsoft/fluentui/pull/23004) by seanmonahan@microsoft.com)
+  - react-spinbutton: remove SpinButtonCommons type ([PR #22871](https://github.com/microsoft/fluentui/pull/22871) by seanmonahan@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Migrate react-spinner to rc ([PR #23009](https://github.com/microsoft/fluentui/pull/23009) by ololubek@microsoft.com)
+  - Removing SpinnerCommons type. ([PR #22954](https://github.com/microsoft/fluentui/pull/22954) by Humberto.Morimoto@microsoft.com)
+  - Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - Updated to use tokens were possible ([PR #22949](https://github.com/microsoft/fluentui/pull/22949) by gcox@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Replace hardcoded padding with spacing tokens ([PR #22982](https://github.com/microsoft/fluentui/pull/22982) by behowell@microsoft.com)
+  - Refactor styles to remove usage of flex gap ([PR #22976](https://github.com/microsoft/fluentui/pull/22976) by behowell@microsoft.com)
+  - Updated react-label package version to RC. ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22874](https://github.com/microsoft/fluentui/pull/22874) by martinhochel@microsoft.com)
+  - Removing SwitchCommons type in @fluentui/react-switch. ([PR #22943](https://github.com/microsoft/fluentui/pull/22943) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - Removed TabListCommons and TabCommons types ([PR #22922](https://github.com/microsoft/fluentui/pull/22922) by gcox@microsoft.com)
+  - Removed flexgap from useTabStyles ([PR #22920](https://github.com/microsoft/fluentui/pull/22920) by gcox@microsoft.com)
+  - Updated to focus on current selected tab ([PR #22900](https://github.com/microsoft/fluentui/pull/22900) by gcox@microsoft.com)
+  - Used background rather than border ([PR #22869](https://github.com/microsoft/fluentui/pull/22869) by gcox@microsoft.com)
+  - Moved react-tabs to stable and rc.1 ([PR #22923](https://github.com/microsoft/fluentui/pull/22923) by gcox@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Remove overflow to allow focus outline to display ([PR #22897](https://github.com/microsoft/fluentui/pull/22897) by gcox@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Add aria-label for icon only story ([PR #22898](https://github.com/microsoft/fluentui/pull/22898) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Update tabster dependency from ^1.3.3 to ^1.4.0 ([PR #23109](https://github.com/microsoft/fluentui/pull/23109) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Removing TextCommons type. ([PR #22971](https://github.com/microsoft/fluentui/pull/22971) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - Moving react-textarea to RC. ([PR #22999](https://github.com/microsoft/fluentui/pull/22999) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22874](https://github.com/microsoft/fluentui/pull/22874) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Update appearance stories and add best practices. ([PR #22987](https://github.com/microsoft/fluentui/pull/22987) by esteban.230@hotmail.com)
+  - Remove commons from react-textarea. ([PR #22881](https://github.com/microsoft/fluentui/pull/22881) by esteban.230@hotmail.com)
+  - Updating spec to match implementation. ([PR #22902](https://github.com/microsoft/fluentui/pull/22902) by esteban.230@hotmail.com)
+  - Updating Textarea styles to use font tokens. ([PR #22885](https://github.com/microsoft/fluentui/pull/22885) by esteban.230@hotmail.com)
+- `@fluentui/react-theme`
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Removing TooltipCommons type. ([PR #22953](https://github.com/microsoft/fluentui/pull/22953) by Humberto.Morimoto@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - feat: Initial beta release ([PR #22913](https://github.com/microsoft/fluentui/pull/22913) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - react-accordion: ship rolluped only dts. ([PR #23061](https://github.com/microsoft/fluentui/pull/23061) by tristan.watanabe@gmail.com)
+- `@fluentui/react-avatar`
+  - Add support for size={16} to Avatar ([PR #23003](https://github.com/microsoft/fluentui/pull/23003) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Moving Avatar stories to stories folder. ([PR #23047](https://github.com/microsoft/fluentui/pull/23047) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - react-badge: ship rolluped only dts. ([PR #23053](https://github.com/microsoft/fluentui/pull/23053) by tristan.watanabe@gmail.com)
+  - remove commons types from badges ([PR #22868](https://github.com/microsoft/fluentui/pull/22868) by sarah.higley@microsoft.com)
+  - pass in icon props to presence badge icon slot, and use default strings ([PR #22901](https://github.com/microsoft/fluentui/pull/22901) by mgodbolt@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - Using spacing tokens for button components. ([PR #23076](https://github.com/microsoft/fluentui/pull/23076) by Humberto.Morimoto@microsoft.com)
+  - Removing flex gap from button components and fixing spacing to better align with design spec. ([PR #23091](https://github.com/microsoft/fluentui/pull/23091) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Removing Common types from all button components. ([PR #22904](https://github.com/microsoft/fluentui/pull/22904) by humberto_makoto@hotmail.com)
+  - Removing ToggleButtonCommons type in @fluentui/react-button. ([PR #23067](https://github.com/microsoft/fluentui/pull/23067) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - CardPreview now expands properly, all the way to the Card's edges ([PR #22761](https://github.com/microsoft/fluentui/pull/22761) by 39736248+andrefcdias@users.noreply.github.com)
+  - fix: focus no longer being managed when using `focusMode="off"` ([PR #23011](https://github.com/microsoft/fluentui/pull/23011) by 39736248+andrefcdias@users.noreply.github.com)
+  - remove commons from Card ([PR #22872](https://github.com/microsoft/fluentui/pull/22872) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Replacing spacing constants with tokens. ([PR #22994](https://github.com/microsoft/fluentui/pull/22994) by esteban.230@hotmail.com)
+  - Moving Checkbox to RC. ([PR #22991](https://github.com/microsoft/fluentui/pull/22991) by esteban.230@hotmail.com)
+  - Refactor styles to remove usage of flex gap ([PR #22974](https://github.com/microsoft/fluentui/pull/22974) by behowell@microsoft.com)
+  - Updating spec to match implementation and added information to README. ([PR #22952](https://github.com/microsoft/fluentui/pull/22952) by esteban.230@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+  - Removing commons from checkbox. ([PR #22916](https://github.com/microsoft/fluentui/pull/22916) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Use vertical and horizontal spacing tokens for padding ([PR #22982](https://github.com/microsoft/fluentui/pull/22982) by behowell@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - Moving react-textarea from unstable to stable. ([PR #22999](https://github.com/microsoft/fluentui/pull/22999) by esteban.230@hotmail.com)
+  - Re-exporting AvatarSizes from react-avatar. ([PR #22998](https://github.com/microsoft/fluentui/pull/22998) by esteban.230@hotmail.com)
+  - Moved react-tabs to stable and rc.1 ([PR #22923](https://github.com/microsoft/fluentui/pull/22923) by gcox@microsoft.com)
+  - react-spinbutton: remove "strings" prop ([PR #22948](https://github.com/microsoft/fluentui/pull/22948) by seanmonahan@microsoft.com)
+  - Move react-label to release candidate ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - Move react-spinner from unstable to stable ([PR #23009](https://github.com/microsoft/fluentui/pull/23009) by ololubek@microsoft.com)
+  - Moving Checkbox from unstable to stable. ([PR #22991](https://github.com/microsoft/fluentui/pull/22991) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Switch: Moving component out of unstable. ([PR #23094](https://github.com/microsoft/fluentui/pull/23094) by Humberto.Morimoto@microsoft.com)
+  - Add uncomplete Input scenario ([PR #21651](https://github.com/microsoft/fluentui/pull/21651) by adam.samec@gmail.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Update react-input to release candidate. ([PR #23090](https://github.com/microsoft/fluentui/pull/23090) by seanmonahan@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - fix: update mock of mergeClasses() to return an empty string ([PR #22935](https://github.com/microsoft/fluentui/pull/22935) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - react-divider: ship rolluped only dts. ([PR #23061](https://github.com/microsoft/fluentui/pull/23061) by tristan.watanabe@gmail.com)
+  - Removing DividerCommons type. ([PR #22951](https://github.com/microsoft/fluentui/pull/22951) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Removing ImageCommons type. ([PR #22957](https://github.com/microsoft/fluentui/pull/22957) by Humberto.Morimoto@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - write readme ([PR #22993](https://github.com/microsoft/fluentui/pull/22993) by seanmonahan@microsoft.com)
+  - react-input: update appearance stories background contrast ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by seanmonahan@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - Move from beta to release candidate. ([PR #23090](https://github.com/microsoft/fluentui/pull/23090) by seanmonahan@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - update README and package version ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+  - feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+  - Removing commons type from Label. ([PR #22880](https://github.com/microsoft/fluentui/pull/22880) by esteban.230@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+  - Removing LinkCommon type. ([PR #22942](https://github.com/microsoft/fluentui/pull/22942) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+  - feat: Fill icon on hover ([PR #23084](https://github.com/microsoft/fluentui/pull/23084) by yuanboxue@microsoft.com)
+  - fix: Context menu closes when its trigger is left clicked ([PR #23089](https://github.com/microsoft/fluentui/pull/23089) by lingfangao@hotmail.com)
+  - chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+  - Removing Common types from all Menu components. ([PR #22958](https://github.com/microsoft/fluentui/pull/22958) by Humberto.Morimoto@microsoft.com)
 
 ## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.10)
 

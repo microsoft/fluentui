@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:14:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.9)
+
+Mon, 23 May 2022 12:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.0.0-rc.8..@fluentui/react-badge_v9.0.0-rc.9)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- react-badge: ship rolluped only dts. ([PR #23053](https://github.com/microsoft/fluentui/pull/23053) by tristan.watanabe@gmail.com)
+- remove commons types from badges ([PR #22868](https://github.com/microsoft/fluentui/pull/22868) by sarah.higley@microsoft.com)
+- pass in icon props to presence badge icon slot, and use default strings ([PR #22901](https://github.com/microsoft/fluentui/pull/22901) by mgodbolt@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.0.0-rc.8)
 

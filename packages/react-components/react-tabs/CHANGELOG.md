@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Thu, 05 May 2022 18:26:30 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 12:13:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-rc.2)
+
+Mon, 23 May 2022 12:13:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.0.0-beta.12..@fluentui/react-tabs_v9.0.0-rc.2)
+
+### Changes
+
+- Removed TabListCommons and TabCommons types ([PR #22922](https://github.com/microsoft/fluentui/pull/22922) by gcox@microsoft.com)
+- Removed flexgap from useTabStyles ([PR #22920](https://github.com/microsoft/fluentui/pull/22920) by gcox@microsoft.com)
+- Updated to focus on current selected tab ([PR #22900](https://github.com/microsoft/fluentui/pull/22900) by gcox@microsoft.com)
+- Used background rather than border ([PR #22869](https://github.com/microsoft/fluentui/pull/22869) by gcox@microsoft.com)
+- Moved react-tabs to stable and rc.1 ([PR #22923](https://github.com/microsoft/fluentui/pull/22923) by gcox@microsoft.com)
+- feat: ship rolluped only dts ([PR #22828](https://github.com/microsoft/fluentui/pull/22828) by martinhochel@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- Remove overflow to allow focus outline to display ([PR #22897](https://github.com/microsoft/fluentui/pull/22897) by gcox@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Add aria-label for icon only story ([PR #22898](https://github.com/microsoft/fluentui/pull/22898) by gcox@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.0.0-beta.12)
 
