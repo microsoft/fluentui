@@ -1,4 +1,6 @@
 /**
  * ThemeDesigner Props
  */
-export type ThemeDesignerProps = {};
+export type ThemeDesignerProps = {
+  className: String;
+};

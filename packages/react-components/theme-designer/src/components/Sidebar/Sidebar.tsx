@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { makeStyles } from "@griffel/react";
 
-export interface ComponentProps {}
-
-const useStyles = makeStyles({
-  root: {
-  }
-});
+export interface ComponentProps {
+  className?: String;
+}
 
 export const Sidebar: React.FC<ComponentProps> = props => {
-  const styles = useStyles();
-  return (
-    <div className={styles.root}>Sidebar</div>
-  );
+  return <div>Sidebar</div>;
 };
