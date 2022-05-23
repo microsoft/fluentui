@@ -109,7 +109,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
               <React.Fragment key={group.join()}>
                 {group.map(i => (
                   <ToolbarOverflowMenuItem key={i} id={i} />
-                ))}{' '}
+                ))}
                 {!isLast && <TestOverflowMenuDivider id={`${groupIndx + 1}`} />}
               </React.Fragment>
             );
