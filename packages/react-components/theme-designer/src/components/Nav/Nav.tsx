@@ -4,7 +4,7 @@ import { makeStyles } from "@griffel/react";
 export interface ComponentProps {}
 
 const useStyles = makeStyles({
-  nav: {
+  root: {
   }
 });
 
