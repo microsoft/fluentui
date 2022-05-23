@@ -1,9 +1,6 @@
 {
   "type": "patch",
-  "comment": {
-    "title": "",
-    "value": ""
-  },
+  "comment": "Bug 5915906 vertical stacked chart colors of legends is not displayed in high contrast",
   "packageName": "@fluentui/react-charting",
   "email": "ankityadav@microsoft.com",
   "dependentChangeType": "patch"
