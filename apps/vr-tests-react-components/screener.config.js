@@ -27,6 +27,8 @@ function getCurrentHash() {
   return '';
 }
 
+console.log({ someDebug: { SPTB: process.env.SYSTEM_PULLREQUEST_TARGETBRANCH } });
+
 const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
   : 'master';
