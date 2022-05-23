@@ -26,7 +26,7 @@ describe('PopoverTrigger', () => {
   });
 
   beforeEach(() => {
-    mockPopoverContext({ open: false });
+    mockPopoverContext();
   });
 
   /**
