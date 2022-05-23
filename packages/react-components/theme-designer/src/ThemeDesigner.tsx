@@ -47,12 +47,12 @@ const useLayouts = makeStyles({
  * ThemeDesigner component - TODO: add more docs
  */
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
-  const layouts = useLayouts();
+  const styles = useLayouts();
   return (
-    <div className={layouts.root}>
-      <Nav className={layouts.nav} />
-      <Sidebar className={layouts.sidebar} />
-      <Body className={layouts.body} />
+    <div className={styles.root}>
+      <Nav className={styles.nav} />
+      <Sidebar className={styles.sidebar} />
+      <Body className={styles.body} />
     </div>
   );
 };
