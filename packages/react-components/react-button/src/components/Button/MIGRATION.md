@@ -1,9 +1,5 @@
 # Button Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8
 
 ### Component renames
@@ -82,6 +78,8 @@ Common buttons now all map to `Button`:
 - `defaultRender`
 - `getClassNames`
 - `getSplitButtonClassNames`
+- `loader`
+- `loading`
 - `theme`
 - `uniqueId`
 
@@ -94,8 +92,6 @@ Common buttons now all map to `Button`:
 - `disabledFocusable`
 - `icon`
 - `iconPosition`
-- `loader`
-- `loading`
 - `size`
 
 ### Renamed props
@@ -151,8 +147,8 @@ Common buttons now all map to `Button`:
 | `iconProps`                        |                     |                        |
 |                                    | `inverted`          |                        |
 | `keytipProps`                      |                     |                        |
-|                                    | `loader`            | `loader`               |
-|                                    | `loading`           | `loading`              |
+|                                    | `loader`            |                        |
+|                                    | `loading`           |                        |
 | `menuAs`                           |                     |                        |
 | `menuIconProps`                    |                     |                        |
 | `menuProps`                        |                     |                        |

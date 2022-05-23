@@ -60,25 +60,16 @@ The `Button` component can include an `icon` that appears before or after its `c
 
 The `Button` component supports different sizing with at least three different sizes: `small`, `medium` (default) and `large`.
 
-### Loading
-
-The `Button` component can be loading if it's waiting for another action to occur before allowing itself to be interacted with.
-
 ## API
 
 ### Slots
 
 - `root` - The outer container representing the `Button` itself that wraps everything passed via the `children` prop.
 - `icon` - If specified, renders an `icon` either before or after the `children` as specified by the `iconPosition` prop.
-- `loader` - If specified, renders a `loader` before the `icon` and `children` while the `loading` flag is set to `true`.
 
 ### Props
 
-See API interface in [Button.types.ts](./Button.types.ts).
-
-### Styling Tokens
-
-TBD once we decide on component tokens work.
+See API at [Button.types.ts](./Button.types.ts).
 
 ## Structure
 
@@ -88,7 +79,6 @@ _Icon before children:_
 
 ```tsx
 <button class="root" href={href}>
-  <span class="loader" />
   <span class="icon" />
   {children}
 </button>
@@ -98,7 +88,6 @@ _Icon after children:_
 
 ```tsx
 <button class="root" href={href}>
-  <span class="loader" />
   {children}
   <span class="icon" />
 </button>
@@ -108,7 +97,6 @@ For `Buttons` rendering as anything other than `<button>` (the example below use
 
 ```tsx
 <div class="root" href={href}>
-  <span class="loader" />
   <span class="icon" />
   {children}
 </div>
@@ -118,7 +106,6 @@ _Icon after children:_
 
 ```tsx
 <div class="root" href={href}>
-  <span class="loader" />
   {children}
   <span class="icon" />
 </div>
@@ -126,7 +113,7 @@ _Icon after children:_
 
 ## Migration
 
-See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/react-button/MIGRATION.md).
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
@@ -153,10 +140,6 @@ A focused `Button` changes styling to communicate that the user has placed keybo
 #### Pressed state
 
 A pressed `Button` changes styling to communicate that the user is currently pressing it.
-
-#### Loading state
-
-A loading `Button` renders a `loader` before all the other content to indicate that it is waiting for another action before allowing itself to be interacted with.
 
 ### Interaction
 
