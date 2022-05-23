@@ -3,7 +3,7 @@ import type { ThemeDesignerProps } from './ThemeDesigner.types';
 
 import { Nav } from './components/Nav';
 import { Sidebar } from './components/Sidebar';
-import { Body } from './components/Body';
+import { Content } from './components/Content';
 
 /**
  * ThemeDesigner component - TODO: add more docs
@@ -13,7 +13,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     <>
       <Nav />
       <Sidebar />
-      <Body />
+      <Content />
     </>
   );
 };
