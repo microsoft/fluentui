@@ -164,7 +164,9 @@ packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
+#packages/react-components/theme-designer @microsoft/cxe-coastal
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
+
 
 
 ## Components
