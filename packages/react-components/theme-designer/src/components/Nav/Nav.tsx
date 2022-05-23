@@ -11,6 +11,6 @@ const useStyles = makeStyles({
 export const Nav: React.FC<ComponentProps> = props => {
   const styles = useStyles();
   return (
-    <div className={styles.nav}>Nav</div>
+    <div className={styles.root}>Nav</div>
   );
 };
