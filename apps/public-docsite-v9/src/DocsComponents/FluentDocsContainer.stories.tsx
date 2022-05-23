@@ -16,7 +16,7 @@ export const FluentDocsContainer: React.FC<IFluentDocsContainerProps> = ({ child
   const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
   return (
     <>
-      <FluentProvider theme={selectedTheme?.theme ?? webLightTheme}>
+      <FluentProvider style={{ backgroundColor: 'transparent' }} theme={selectedTheme?.theme ?? webLightTheme}>
         <FluentDocsHeader
           // eslint-disable-next-line deprecation/deprecation
           storybookGlobals={context.globals}

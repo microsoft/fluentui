@@ -142,6 +142,13 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { Input } from '@fluentui/react-input';
+import { inputClassName } from '@fluentui/react-input';
+import { inputClassNames } from '@fluentui/react-input';
+import { InputOnChangeData } from '@fluentui/react-input';
+import { InputProps } from '@fluentui/react-input';
+import { InputSlots } from '@fluentui/react-input';
+import { InputState } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
 import { labelClassName } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -307,6 +314,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { RendererProvider } from '@griffel/react';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderMenu_unstable } from '@fluentui/react-menu';
@@ -328,7 +336,9 @@ import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderText_unstable } from '@fluentui/react-text';
@@ -358,6 +368,11 @@ import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
+import { Spinner } from '@fluentui/react-spinner';
+import { spinnerClassNames } from '@fluentui/react-spinner';
+import { SpinnerProps } from '@fluentui/react-spinner';
+import { SpinnerSlots } from '@fluentui/react-spinner';
+import { SpinnerState } from '@fluentui/react-spinner';
 import { SplitButton } from '@fluentui/react-button';
 import { splitButtonClassName } from '@fluentui/react-button';
 import { splitButtonClassNames } from '@fluentui/react-button';
@@ -369,6 +384,12 @@ import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subheadline } from '@fluentui/react-text';
 import { subheadlineClassName } from '@fluentui/react-text';
 import { subheadlineClassNames } from '@fluentui/react-text';
+import { Switch } from '@fluentui/react-switch';
+import { switchClassNames } from '@fluentui/react-switch';
+import { SwitchOnChangeData } from '@fluentui/react-switch';
+import { SwitchProps } from '@fluentui/react-switch';
+import { SwitchSlots } from '@fluentui/react-switch';
+import { SwitchState } from '@fluentui/react-switch';
 import { Tab } from '@fluentui/react-tabs';
 import { tabClassName } from '@fluentui/react-tabs';
 import { tabClassNames } from '@fluentui/react-tabs';
@@ -466,6 +487,8 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInput_unstable } from '@fluentui/react-input';
+import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -520,9 +543,13 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinner_unstable } from '@fluentui/react-spinner';
+import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSSRContext } from '@fluentui/react-utilities';
+import { useSwitch_unstable } from '@fluentui/react-switch';
+import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
 import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
@@ -817,6 +844,20 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { Input }
+
+export { inputClassName }
+
+export { inputClassNames }
+
+export { InputOnChangeData }
+
+export { InputProps }
+
+export { InputSlots }
+
+export { InputState }
 
 export { Label }
 
@@ -1148,6 +1189,8 @@ export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
 
+export { renderInput_unstable }
+
 export { renderLabel_unstable }
 
 export { renderLink_unstable }
@@ -1190,7 +1233,11 @@ export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
+export { renderSpinner_unstable }
+
 export { renderSplitButton_unstable }
+
+export { renderSwitch_unstable }
 
 export { renderTab_unstable }
 
@@ -1250,6 +1297,16 @@ export { SlotPropsRecord }
 
 export { SpacingTokens }
 
+export { Spinner }
+
+export { spinnerClassNames }
+
+export { SpinnerProps }
+
+export { SpinnerSlots }
+
+export { SpinnerState }
+
 export { SplitButton }
 
 export { splitButtonClassName }
@@ -1271,6 +1328,18 @@ export { Subheadline }
 export { subheadlineClassName }
 
 export { subheadlineClassNames }
+
+export { Switch }
+
+export { switchClassNames }
+
+export { SwitchOnChangeData }
+
+export { SwitchProps }
+
+export { SwitchSlots }
+
+export { SwitchState }
 
 export { Tab }
 
@@ -1466,6 +1535,10 @@ export { useImage_unstable }
 
 export { useImageStyles_unstable }
 
+export { useInput_unstable }
+
+export { useInputStyles_unstable }
+
 export { useIsSSR }
 
 export { useKeyboardNavAttribute }
@@ -1574,11 +1647,19 @@ export { useSliderState_unstable }
 
 export { useSliderStyles_unstable }
 
+export { useSpinner_unstable }
+
+export { useSpinnerStyles_unstable }
+
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
 
 export { useSSRContext }
+
+export { useSwitch_unstable }
+
+export { useSwitchStyles_unstable }
 
 export { useTab_unstable }
 

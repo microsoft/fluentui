@@ -12,7 +12,7 @@ export { Required } from './SwitchRequired.stories';
 export { Themed } from './SwitchThemed.stories';
 
 export default {
-  title: 'Preview Components/Switch',
+  title: 'Components/Switch',
   component: Switch,
   parameters: {
     docs: {

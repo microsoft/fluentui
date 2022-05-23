@@ -791,3 +791,37 @@ describe(`Nested Menus`, () => {
     });
   });
 });
+
+describe('Context menu', () => {
+  const ContextMenuExample = () => (
+    <Menu openOnContext>
+      <MenuTrigger>
+        <button>trigger</button>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>Item</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+
+  it('should open on right click ', () => {
+    mount(<ContextMenuExample />);
+
+    cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('exist');
+  });
+
+  it('should close when the trigger is clicked', () => {
+    mount(<ContextMenuExample />);
+
+    cy.get(menuTriggerSelector)
+      .rightclick()
+      .get(menuSelector)
+      .should('exist')
+      .get(menuTriggerSelector)
+      .click()
+      .get(menuSelector)
+      .should('not.exist');
+  });
+});

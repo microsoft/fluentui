@@ -15,27 +15,28 @@ export type SelectSlots = {
   icon: Slot<'span'>;
 };
 
-export interface SelectCommons {
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
   /**
-   * Matches the Input sizes
-   * @default 'medium'
+   * Controls the colors and borders of the Select.
+   *
+   * @default 'outline'
    */
-  size?: 'small' | 'medium' | 'large';
+  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
 
   /**
    * If true, the Select will have an inline `display`, allowing it to be inline with other content.
    * By default, Select has block layout.
+   *
    * @default false
    */
   inline?: boolean;
 
   /**
-   * Controls the colors and borders of the Select.
-   * @default 'outline'
+   * Matches the Input sizes
+   *
+   * @default 'medium'
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-}
+  size?: 'small' | 'medium' | 'large';
+};
 
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
-
-export type SelectState = ComponentState<SelectSlots> & Required<SelectCommons>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
