@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "tsc --noEmit && eslint --ext .js --cache .",
-    "test": "yarn jest, --passWithNoTests"
+    "test": "yarn jest --passWithNoTests"
   },
   "dependencies": {
     "@rnx-kit/eslint-plugin": "^0.2.5",
