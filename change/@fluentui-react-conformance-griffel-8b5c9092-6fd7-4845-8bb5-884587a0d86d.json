@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump @fluentui/react-conformance to 0.13.1",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

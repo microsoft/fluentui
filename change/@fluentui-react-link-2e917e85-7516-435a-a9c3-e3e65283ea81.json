@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing <componentName>ClassName exports.",
-  "packageName": "@fluentui/react-link",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

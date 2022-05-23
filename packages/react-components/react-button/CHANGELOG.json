@@ -2,6 +2,53 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:41 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing deprecated block prop from all button components."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.11",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ],
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "aa1f446e037786d74a3c14f0bee09dbcf403a929",
+            "comment": "Improving README and updating spec and migration guide."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:14:03 GMT",
       "tag": "@fluentui/react-button_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 23 May 2022 12:13:51 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.11)
+
+Mon, 23 May 2022 18:56:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-rc.10..@fluentui/react-tabster_v9.0.0-rc.11)
+
+### Changes
+
+- BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.10)
 
