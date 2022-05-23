@@ -66,16 +66,16 @@ export const textClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export type TextProps = ComponentProps<TextSlots> & {
-    wrap?: boolean;
-    truncate?: boolean;
-    block?: boolean;
-    italic?: boolean;
-    underline?: boolean;
-    strikethrough?: boolean;
-    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
-    font?: 'base' | 'monospace' | 'numeric';
-    weight?: 'regular' | 'medium' | 'semibold';
     align?: 'start' | 'center' | 'end' | 'justify';
+    block?: boolean;
+    font?: 'base' | 'monospace' | 'numeric';
+    italic?: boolean;
+    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    strikethrough?: boolean;
+    truncate?: boolean;
+    underline?: boolean;
+    weight?: 'regular' | 'medium' | 'semibold';
+    wrap?: boolean;
 };
 
 // @public
