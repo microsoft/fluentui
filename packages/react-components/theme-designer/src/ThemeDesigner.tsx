@@ -9,7 +9,7 @@ import { Body } from './components/Body'
 const borderColor: string = "#D1D1D1";
 
 const useLayouts = makeStyles({
-  container: {
+  root: {
     display: "grid",
     gridTemplateColumns: "300px auto",
     gridTemplateRows: "40px auto",
@@ -49,7 +49,7 @@ const useLayouts = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const layouts = useLayouts();
   return (
-    <div className={layouts.container}>
+    <div className={layouts.root}>
       <div className={layouts.nav}><Nav /></div>
       <div className={layouts.sidebar}><Sidebar /></div>
       <div className={layouts.body}><Body /></div>
