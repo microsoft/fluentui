@@ -274,7 +274,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
     const dots: React.ReactNode[] = [];
-    const xScaleBandwidthTranslate = isNumeric ? 0 : xBarScale.bandwidth() / 2;
+    const xScaleBandwidthTranslate = isNumeric ? 0 : (xBarScale as any).bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
       let shouldHighlight = true;
       if (isLegendHovered || isLegendSelected) {
@@ -283,11 +283,11 @@ export class VerticalStackedBarChartBase extends React.Component<
       for (let i = 1; i < lineObject[item].length; i++) {
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
-          : xBarScale(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
+          : (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
         const y1 = yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
-          : xBarScale(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
+          : (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
         const y2 = yScale(lineObject[item][i].y);
         lines.push(
           <line
@@ -317,7 +317,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             cx={
               isNumeric
                 ? xScale(circlePoint.xItem.xAxisPoint as number)
-                : xBarScale(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
+                : (xBarScale as any)(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
             }
             cy={yScale(circlePoint.y)}
             onMouseOver={
