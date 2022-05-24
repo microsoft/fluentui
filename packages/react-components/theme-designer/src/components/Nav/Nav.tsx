@@ -10,9 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'left',
-    borderBottomWidth: '1px',
-    borderBottomColor: '#D1D1D1',
-    borderBottomStyle: 'solid',
+   ...shorthands.borderBottom('1px', 'solid', '#D1D1D1')
   },
 });
 
