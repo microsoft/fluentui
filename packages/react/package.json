@@ -523,10 +523,10 @@
       "import": "./lib/components/HoverCard/HoverCard.styles.js",
       "require": "./lib-commonjs/components/HoverCard/HoverCard.styles.js"
     },
-    "./lib/components/HoverCard/PlainCard.styles": {
-      "types": "./lib/components/HoverCard/PlainCard.styles.d.ts",
-      "import": "./lib/components/HoverCard/PlainCard.styles.js",
-      "require": "./lib-commonjs/components/HoverCard/PlainCard.styles.js"
+    "./lib/components/HoverCard/PlainCard/PlainCard.styles": {
+      "types": "./lib/components/HoverCard/PlainCard/PlainCard.styles.d.ts",
+      "import": "./lib/components/HoverCard/PlainCard/PlainCard.styles.js",
+      "require": "./lib-commonjs/components/HoverCard/PlainCard/PlainCard.styles.js"
     },
     "./lib/Icon": {
       "types": "./lib/Icon.d.ts",
