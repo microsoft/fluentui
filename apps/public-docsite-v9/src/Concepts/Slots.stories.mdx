@@ -30,16 +30,16 @@ For example, the button component provides `iconPosition` to render the icon bef
 
 There are several types of content that can be passed to a slot.
 
-- primitive (string, number, boolean)
-- HTML element (div, span, img)
+- primitive (`string`, `number`, `boolean`)
+- HTML element (`div`, `span`, `img`)
 - JSX component (`<MyCustomControl />`)
-- render function (() => React.ReactNode)
-- props object (InputProps, IconProps)
+- render function (`() => React.ReactNode`)
+- props object (`InputProps`, `LabelProps`)
 
 Components may limit which types can be passed to a particular slot.
 
 For example, the Avatar component has a badge slot.
-Avatar limites this slot to components or render functions with PresenceBadgeProps props.
+Avatar limits this slot to components or render functions with `PresenceBadgeProps` props.
 
 ### Defaults
 
