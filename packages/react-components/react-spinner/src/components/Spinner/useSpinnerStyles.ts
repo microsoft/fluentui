@@ -228,6 +228,10 @@ const useTrackStyles = makeStyles({
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
       stroke: tokens.colorNeutralBackground4,
