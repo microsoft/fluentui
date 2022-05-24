@@ -9,7 +9,7 @@ import { OverviewCard } from './OverviewCard';
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding('40px'),
-    ...shorthands.overflow('scroll'),
+    ...shorthands.overflow('auto'),
     width: 'fit-content',
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,

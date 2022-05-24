@@ -21,7 +21,7 @@ import springImageSrc from '../../../public/fluent9-spring.png';
 const useStyles = makeStyles({
   root: {
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralBackground3),
-    ...shorthands.borderRadius('3px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.overflow('visible'),
     ...shorthands.padding('40px'),
     boxSizing: 'border-box',
@@ -72,7 +72,7 @@ export const OverviewCard: React.FunctionComponent = () => {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <div className={styles.title}>Fluent UI React 9.0.0</div>
+        <div className={styles.title}>Fluent UI React</div>
         <div className={styles.tagline}>Smaller, faster, and just as powerful—welcome to v9.</div>
       </div>
       <div className={styles.features}>

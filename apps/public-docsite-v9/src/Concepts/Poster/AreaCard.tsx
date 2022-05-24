@@ -7,7 +7,7 @@ import { PackageCard } from './PackageCard';
 const useStyles = makeStyles({
   root: {
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralBackground3),
-    ...shorthands.borderRadius('3px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.overflow('visible'),
     ...shorthands.padding('40px'),
     boxSizing: 'border-box',

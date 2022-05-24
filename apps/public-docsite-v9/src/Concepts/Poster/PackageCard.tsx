@@ -8,8 +8,8 @@ const useStyles = makeStyles({
   root: {
     boxShadow: tokens.shadow8,
     boxSizing: 'border-box',
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke2),
-    ...shorthands.margin('10px'),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+    ...shorthands.margin(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
     display: 'flex',
     flexDirection: 'column',
   },

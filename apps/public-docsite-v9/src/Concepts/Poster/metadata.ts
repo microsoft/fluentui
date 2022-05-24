@@ -91,10 +91,8 @@ export const libraryInfo: LibraryInfo = {
           name: 'react-accordion',
           codeItems: [
             { name: 'Accordion', componentType: 'component' },
-            { name: 'AccordionContext', componentType: 'component' },
             { name: 'AccordionHeader', componentType: 'component' },
             { name: 'AccordionItem', componentType: 'component' },
-            { name: 'AccordionItemContext', componentType: 'component' },
             { name: 'AccordionPanel', componentType: 'component' },
           ],
         },

@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   },
   name: {
     display: 'inline',
-    marginLeft: '5px',
+    marginLeft: tokens.spacingHorizontalSNudge,
   },
 });
 
