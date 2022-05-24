@@ -76,7 +76,7 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
   return <MenuItem {...rest}>Item {id}</MenuItem>;
 };
 
-export const TestOverflowMenuDivider: React.FC<{
+export const ToolbarMenuOverflowDivider: React.FC<{
   id: string;
 }> = props => {
   const isGroupVisible = useIsOverflowGroupVisible(props.id);
@@ -110,7 +110,7 @@ export const OverflowMenu: React.FC<{ itemIds: Array<Array<string>> }> = ({ item
                 {group.map(i => (
                   <ToolbarOverflowMenuItem key={i} id={i} />
                 ))}
-                {!isLast && <TestOverflowMenuDivider id={`${groupIndx + 1}`} />}
+                {!isLast && <ToolbarMenuOverflowDivider id={`${groupIndx + 1}`} />}
               </React.Fragment>
             );
           })}
