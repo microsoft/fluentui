@@ -37,7 +37,7 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
+export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
 
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
@@ -47,7 +47,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     defaultOpen?: boolean;
     inline?: boolean;
     mouseLeaveDelay?: number;
-    noArrow?: boolean;
+    withArrow?: boolean;
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     open?: boolean;
     openOnContext?: boolean;
@@ -64,7 +64,7 @@ export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<P
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PositioningVirtualElement | undefined;
@@ -92,7 +92,7 @@ export type PopoverSurfaceSlots = {
 };
 
 // @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'noArrow' | 'size'> & {
+export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'size' | 'withArrow'> & {
     arrowClassName?: string;
 };
 
