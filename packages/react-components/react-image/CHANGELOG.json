@@ -2,6 +2,39 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:44 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "8fb515ae57dbd2ff50a52ab896daa058568c5273",
+            "comment": "Image: Updating useImageStyles to use styles[state] pattern for props of string union types."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:14:16 GMT",
       "tag": "@fluentui/react-image_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

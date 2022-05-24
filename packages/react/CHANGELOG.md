@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 23 May 2022 07:42:16 GMT and should not be manually modified.
+This log was last generated on Tue, 24 May 2022 07:47:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.69.0)
+
+Tue, 24 May 2022 07:47:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.68.4..@fluentui/react_v8.69.0)
+
+### Minor changes
+
+- feat: Bump @fluentui/react-portal-compat to 9.0.0-rc.3 ([PR #23138](https://github.com/microsoft/fluentui/pull/23138) by lingfangao@hotmail.com)
 
 ## [8.68.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.68.4)
 

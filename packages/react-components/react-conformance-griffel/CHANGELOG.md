@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Mon, 23 May 2022 12:14:14 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.7)
+
+Mon, 23 May 2022 18:56:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.6..@fluentui/react-conformance-griffel_v9.0.0-beta.7)
+
+### Changes
+
+- chore: Bump @fluentui/react-conformance to 0.13.1 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by lingfangao@hotmail.com)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.6)
 

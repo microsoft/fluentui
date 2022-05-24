@@ -1,8 +1,85 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 May 2022 12:13:29 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.12)
+
+Mon, 23 May 2022 18:56:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.11..@fluentui/react-components_v9.0.0-rc.12)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - BREAKING: stop exporting AccordionContext and AccordionItemContext ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-avatar`
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-button`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - Removing deprecated block prop from all button components. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-card`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - update tabster tab behaviors ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-components`
+  - BREAKING: Rename positioning types and APIs to avoid references to third party API ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - BREAKING: Exports of react context objects were removed, replaced with provider compoennts and hooks ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - fix(react-text): Change typography wrapper component names to match new design spec ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by 39736248+andrefcdias@users.noreply.github.com)
+  - Remove webHighContrast theme ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Bump @fluentui/react-conformance to 0.13.1 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-image`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - Image: Updating useImageStyles to use styles[state] pattern for props of string union types. ([PR #23121](https://github.com/microsoft/fluentui/pull/23121) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-input`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-label`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-link`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-menu`
+  - BREAKING: changes to positioning prop ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - BREAKING: Stop exporting MenuContext and MenuListContext ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-popover`
+  - BREAKING: changes to positioning prop ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - BREAKING: stop exporting PopoverContext ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-positioning`
+  - BREAKING CHANGE: Encapsulate Popper API ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-radio`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - BREAKING: stop exporting RadioGroupContext ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-tabs`
+  - Removing commons type from Label. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- `@fluentui/react-tabster`
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-text`
+  - fix: Change typography wrapper component names to match new design spec ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by 39736248+andrefcdias@users.noreply.github.com)
+  - Text: Ordering types alphabetically. ([PR #23120](https://github.com/microsoft/fluentui/pull/23120) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-textarea`
+  - BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- `@fluentui/react-theme`
+  - Remove webHighContrast theme ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tooltip`
+  - Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+  - BREAKING: changes to positioning prop ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.11)
 

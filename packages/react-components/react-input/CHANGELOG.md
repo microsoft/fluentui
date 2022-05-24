@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 23 May 2022 12:14:17 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-rc.3)
+
+Mon, 23 May 2022 18:56:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-rc.2..@fluentui/react-input_v9.0.0-rc.3)
+
+### Changes
+
+- Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-text to v9.0.0-rc.10 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-rc.2)
 

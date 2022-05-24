@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Mon, 23 May 2022 12:13:56 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.9)
+
+Mon, 23 May 2022 18:56:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-rc.8..@fluentui/react-theme_v9.0.0-rc.9)
+
+### Changes
+
+- Remove webHighContrast theme ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-rc.8)
 

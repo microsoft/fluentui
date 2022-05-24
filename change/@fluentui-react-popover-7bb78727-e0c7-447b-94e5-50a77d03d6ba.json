@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: stop exporting PopoverContext",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

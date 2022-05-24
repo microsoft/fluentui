@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:51 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:38 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

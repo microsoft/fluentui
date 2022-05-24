@@ -41,7 +41,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
       },
@@ -65,7 +65,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
       },
@@ -89,7 +89,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
       },
@@ -113,7 +113,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 88,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '88%',
       },
@@ -140,7 +140,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
         ...(showLine && {
           lineData: [
-            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -149,7 +149,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magenta }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
         }),
       },
       {
@@ -157,7 +157,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -167,7 +167,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 60,
         ...(showLine && {
           lineData: [
-            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -177,7 +177,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 80,
         ...(showLine && {
           lineData: [
-            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 70, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),

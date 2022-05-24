@@ -2,6 +2,51 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:40 GMT",
+      "tag": "@fluentui/react-accordion_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: stop exporting AccordionContext and AccordionItemContext"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.11",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:58 GMT",
       "tag": "@fluentui/react-accordion_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",

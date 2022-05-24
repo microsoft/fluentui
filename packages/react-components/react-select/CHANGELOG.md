@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Mon, 23 May 2022 12:14:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
+
+Mon, 23 May 2022 18:56:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.0..@fluentui/react-select_v9.0.0-beta.0)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
 

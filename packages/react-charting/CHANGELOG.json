@@ -2,6 +2,41 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 24 May 2022 07:47:25 GMT",
+      "tag": "@fluentui/react-charting_v5.9.36",
+      "version": "5.9.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ca4848f5625ccbf72f70fb1f7df1f6835c1a9d7",
+            "comment": "fixing line chart events focus issue"
+          },
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "110cfd53dabc9232029300cbeded58142f9a6718",
+            "comment": "added aria-valuetext attribute"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.69.0",
+            "commit": "48230861e5b0a67085c3d5674d2f68c6523b9540"
+          }
+        ],
+        "none": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394",
+            "comment": "Align vertical bar chart labels with the bar. Fixing empty pies showing in donut chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 07:42:16 GMT",
       "tag": "@fluentui/react-charting_v5.9.35",
       "version": "5.9.35",
