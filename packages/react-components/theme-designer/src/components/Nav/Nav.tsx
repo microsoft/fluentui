@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 export interface NavProps {
   className: string;
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'left',
-   ...shorthands.borderBottom('1px', 'solid', '#D1D1D1')
+    ...shorthands.borderBottom('1px', 'solid', '#D1D1D1'),
   },
 });
 

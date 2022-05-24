@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 export interface SidebarProps {
   className: string;
@@ -10,9 +10,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRightWidth: '1px',
-    borderRightColor: '#D1D1D1',
-    borderRightStyle: 'solid',
+    ...shorthands.borderRight('1px', 'solid', '#D1D1D1'),
   },
 });
 
