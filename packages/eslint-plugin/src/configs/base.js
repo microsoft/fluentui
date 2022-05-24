@@ -20,6 +20,7 @@ module.exports = {
       rules: {
         // TODO: propagate to `error` once all packages barrel files have been fixed
         '@rnx-kit/no-export-all': ['warn', { expand: 'all' }],
+        '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
       },
     },
   ],
