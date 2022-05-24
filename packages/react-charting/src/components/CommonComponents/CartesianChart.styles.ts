@@ -144,7 +144,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       ...fonts.small,
       lineHeight: '16px',
       selectors: {
-        [HighContrastSelector]: {
+        [HighContrastSelectorBlack]: {
           color: 'rgb(255, 255, 255)',
         },
       },
@@ -156,7 +156,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         fontWeight: 'bold',
         lineHeight: '22px',
         selectors: {
-          [HighContrastSelector]: {
+          [HighContrastSelectorBlack]: {
             color: 'rgb(255, 255, 255)',
           },
         },
@@ -166,7 +166,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       theme.fonts.small,
       {
         selectors: {
-          [HighContrastSelector]: {
+          [HighContrastSelectorBlack]: {
             color: 'rgb(255, 255, 255)',
           },
         },
