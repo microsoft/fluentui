@@ -11,5 +11,5 @@
     "types": ["node"]
   },
   "include": ["src/**/*"],
-  "exclude": ["fixtures/**/*"]
+  "exclude": ["**/fixtures/**/*"]
 }
