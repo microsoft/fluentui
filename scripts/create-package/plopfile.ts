@@ -17,7 +17,7 @@ const v8ReferencePackages = {
 };
 const convergedReferencePackages = {
   react: ['react-provider'],
-  node: ['babel-make-styles'],
+  node: ['react-components/react-utilities'],
 };
 
 interface Answers {
