@@ -143,6 +143,7 @@ const useTextareaStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackgroundInverted,
     },
 
+    outlineStyle: 'none',
     ':focus-visible': {
       outlineStyle: 'none', // disable default browser outline
     },
