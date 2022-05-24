@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Remove `status` prop in Spinner",
+  "comment": "BREAKING: Remove `status` prop in Spinner",
   "packageName": "@fluentui/react-spinner",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
