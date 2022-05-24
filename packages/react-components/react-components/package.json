@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-accordion": "9.0.0-rc.11",
+    "@fluentui/react-alert": "9.0.0-beta.0",
     "@fluentui/react-avatar": "9.0.0-rc.10",
     "@fluentui/react-badge": "9.0.0-rc.10",
     "@fluentui/react-button": "9.0.0-rc.11",
