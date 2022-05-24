@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Concepts/Upgrading/from v8/Important changes" />
+<Meta title="Concepts/Upgrading/Important changes" />
 
 # Important changes you should know about
 
@@ -45,6 +45,10 @@ function _onMenuClick(ev?: React.SyntheticEvent<any>) {
 
 <DefaultButton text="New item" menuProps={menuProps} menuAs={_getMenu} onMenuClick={_onMenuClick} />;
 ```
+
+### v0
+
+For v0, array props are also not used. Render props callback works very similarly in v9 as it was in v0.
 
 ### v9
 
@@ -123,6 +127,13 @@ return (
   </ThemeProvider>
 );
 ```
+
+### v0
+
+In v0, `styles` and `design` prop on components accept javascript objects. Styling and theming is also possible by using `variables` and extending the theme with custom varables.
+Flexible system of design variables allowed different consumers to extend their design systems in different ways. In v9, variables API is no longer available as it was one of the reasons for frequent style calculation during runtime. Instead, there was a different approach chosen in order to improve rendering performance - style overrides or CSS variables can be used to achieve similar functionality.
+
+Due to the high flexibility of variables, it is not possible to provide a straightforward migration plan for them. You can use the v0 debug panel to observe what styles are being applied based on variable change and transform those styles using [style transformation tool](aka.ms/perestroika).
 
 ### v9
 

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Concepts/Upgrading/from v8/Planning your journey" />
+<Meta title="Concepts/Upgrading/Planning your journey" />
 
 # Planning your journey
 
@@ -40,11 +40,11 @@ _Incremental_: upgrade a few components and ship, often by flighting the upgrade
 The benefits of the incremental approach are that you get v9 improvements sooner, find issues earlier,
 and can iteratively get faster upgrading components.
 
-Since v9 does not have all the components offered in v8 yet, incrementally upgrading allows you to gradually introduce v9
-side-by-side with v8.
+Since v9 does not have all the components offered in previous versions yet, incrementally upgrading allows you to gradually introduce v9
+side-by-side with v8 or v0.
 You can more closely monitor the changes to bundle size and performance improvements with a gradual approach.
 
-_All-at-once_: upgrade every v8 component to their v9 equivalent.
+_All-at-once_: upgrade every v8/v0 component to their v9 equivalent.
 You can still flight the upgraded experience to a subset of users.
 You get the benefit that you could A/B route to different web application servers when flighting and keep the
 previous untouched version running independent of the upgraded version.
@@ -55,7 +55,7 @@ tree-shaking out v8 components from the bundles, build-time CSS optimizations, a
 ### Horizontal or Vertical
 
 _Horizontal_: upgrading one component across your entire application.
-For example, upgrading Button from v8 to v9 everywhere.
+For example, upgrading Button from previous version to v9 everywhere.
 This has the benefit that your code will end up only depending on v9 Button and the v8 Button won't be included in the downloaded bundle.
 Your buttons will look and behave the same across your app.
 
@@ -89,6 +89,10 @@ or make v9 components look like v8 components.
 You may decide you can live with the style differences for a period of time.
 Most are small changes that are only noticable when v8 and v9 versions of the same component are next to each other in the UI.
 
+### New v9 or Old v0 style
+
+v0 will to some extent gradually converge its appearance. However, you might still need to use style overrides in some cases to achieve consistency.
+
 ### Manual changes, code mod scripts, or shims
 
 _Manual_: update each usage of Fluent React by hand.
@@ -102,15 +106,15 @@ how your code uses Fluent, and you can make incremental check-ins ensuring exist
 _Code mod_: author a script to update multiple locations in your code at once.
 You may be able to leverage existing scripts from previous upgrades, from others who have upgraded, or from the Fluent React team.
 If your codebase is very consistent in how it uses Fluent, this option can save a lot of extra effort over manual upgrade.
-You can have code mods that add flighting logic around usage to have both v8 and v9 available.
+You can have code mods that add flighting logic around usage to have both v8/v0 and v9 available.
 The downside is that if your usage is complex or highly varied, authoring a code mod that covers all cases may be impractical.
 
-_Shims_: author or use a component that takes v8 props and renders a v9 component.
+_Shims_: author or use a component that takes v8/v0 props and renders a v9 component.
 Shims can be a good option to get v9 components in your app if you don't have the time to update all the places you use the component.
 You can leave your props creation code alone and pass it to the shim.
 It is easy to search/replace your code to update to using the shim.
 You can also do your flighting logic within the shim itself.
-One downside is that your shim will retain the dependency on v8 and prevent removing it from your bundle.
+One downside is that your shim will retain the dependency on v8/v0 and prevent removing it from your bundle.
 Also, there are cases with custom renderprops callbacks that cannot be supported by a shim because the rendered
 content is not compatible with the v9 component.
 
