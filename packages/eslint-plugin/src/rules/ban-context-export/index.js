@@ -80,12 +80,12 @@ module.exports = createRule({
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ExportNamedDeclaration(exportNamedDeclaration) {
         if (exportNamedDeclaration.declaration?.type === AST_NODE_TYPES.VariableDeclaration) {
-          /** @type { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclaration) } */
+          /** @type { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclaration } */
           const variableDeclaration = exportNamedDeclaration.declaration;
           variableDeclaration.declarations.forEach(declaration => {
             let identifierName = 'unknown';
             if (declaration.id.type === AST_NODE_TYPES.Identifier) {
-              /** @type { import('@typescript-eslint/experimental-utils').TSESTree.Identifier) } */
+              /** @type { import('@typescript-eslint/experimental-utils').TSESTree.Identifier } */
               const identifier = declaration.id;
               identifierName = identifier.name;
             }
