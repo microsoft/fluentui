@@ -9,27 +9,29 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
+
     '> div': {
       display: 'flex',
       flexDirection: 'column',
       marginTop: tokens.spacingVerticalMNudge,
       ...shorthands.padding(tokens.spacingHorizontalMNudge),
     },
+
     '> div > label': {
       marginBottom: tokens.spacingHorizontalXXS,
       marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
   filledLighter: {
-    backgroundColor: '#8a8a8a',
+    backgroundColor: tokens.colorNeutralBackground4,
     '> label': {
-      color: '#000000',
+      color: tokens.colorNeutralForeground1,
     },
   },
   filledDarker: {
-    backgroundColor: '#8a8a8a',
+    backgroundColor: tokens.colorNeutralBackground4,
     '> label': {
-      color: '#000000',
+      color: tokens.colorNeutralForeground1,
     },
   },
 });
