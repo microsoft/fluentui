@@ -177,10 +177,7 @@ const useInputElementStyles = makeStyles({
       opacity: 1, // browser style override
     },
 
-    outlineStyle: 'none',
-    ':focus-visible': {
-      outlineStyle: 'none', // disable default browser outline
-    },
+    outlineStyle: 'none', // disable default browser outline
   },
   small: {
     // This is set on root but doesn't inherit
