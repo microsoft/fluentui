@@ -7,7 +7,7 @@ import {
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
 import { Toolbar, ToolbarProps } from '../index';
-import { ToolbarButton } from '../ToolbarButton';
+import { ToolbarButton, ToolbarButtonProps } from '../ToolbarButton';
 import { ToolbarDivider } from '../ToolbarDivider';
 import {
   Overflow,
@@ -134,6 +134,19 @@ export const ToolbarOverflowDivider = ({ groupId }: ToolbarOverflowDividerProps)
   return null;
 };
 
+export type ToolbarOverflowMenuProps = {
+  overflowId: string;
+  overflowGroupId: string;
+} & ToolbarButtonProps;
+
+export const ToolbarOverflowButton = ({ overflowId, overflowGroupId, ...props }: ToolbarOverflowMenuProps) => {
+  return (
+    <OverflowItem id={overflowId} groupId={overflowGroupId}>
+      <ToolbarButton {...props} />
+    </OverflowItem>
+  );
+};
+
 export const OverflowItems = (props: Partial<ToolbarProps>) => (
   <div
     style={{
@@ -143,42 +156,79 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
   >
     <Overflow padding={90}>
       <Toolbar {...props} size="small">
-        <OverflowItem id="underline-1" groupId="1">
-          <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="bold-1" groupId="1">
-          <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
-        </OverflowItem>
+        <ToolbarOverflowButton
+          overflowId="underline-1"
+          overflowGroupId="1"
+          appearance="subtle"
+          icon={<TextUnderline16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="bold-1"
+          overflowGroupId="1"
+          appearance="subtle"
+          icon={<TextBold16Regular />}
+        />
 
         <ToolbarOverflowDivider groupId="1" />
 
-        <OverflowItem id="underline-2" groupId="2">
-          <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="bold-2" groupId="2">
-          <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="italic-1" groupId="2">
-          <ToolbarButton appearance="subtle" icon={<TextItalic16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="underline-3" groupId="2">
-          <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="bold-3" groupId="2">
-          <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
-        </OverflowItem>
+        <ToolbarOverflowButton
+          overflowId="underline-2"
+          overflowGroupId="2"
+          appearance="subtle"
+          icon={<TextUnderline16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="bold-2"
+          overflowGroupId="2"
+          appearance="subtle"
+          icon={<TextBold16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="italic-1"
+          overflowGroupId="2"
+          appearance="subtle"
+          icon={<TextItalic16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="underline-3"
+          overflowGroupId="2"
+          appearance="subtle"
+          icon={<TextUnderline16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="bold-3"
+          overflowGroupId="2"
+          appearance="subtle"
+          icon={<TextBold16Regular />}
+        />
 
         <ToolbarOverflowDivider groupId="2" />
 
-        <OverflowItem id="underline-4" groupId="3">
-          <ToolbarButton appearance="subtle" icon={<TextUnderline16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="bold-4" groupId="3">
-          <ToolbarButton appearance="subtle" icon={<TextBold16Regular />} />
-        </OverflowItem>
-        <OverflowItem id="italic-2" groupId="3">
-          <ToolbarButton appearance="subtle" icon={<TextItalic16Regular />} />
-        </OverflowItem>
+        <ToolbarOverflowButton
+          overflowId="underline-4"
+          overflowGroupId="3"
+          appearance="subtle"
+          icon={<TextUnderline16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="bold-4"
+          overflowGroupId="3"
+          appearance="subtle"
+          icon={<TextBold16Regular />}
+        />
+
+        <ToolbarOverflowButton
+          overflowId="italic-2"
+          overflowGroupId="3"
+          appearance="subtle"
+          icon={<TextItalic16Regular />}
+        />
 
         <ToolbarOverflowDivider groupId="3" />
 
