@@ -17,8 +17,8 @@ module.exports = createRule({
       recommended: 'error',
     },
     messages: {
-      nativeContext: 'Trying to export React context {{exportName}} from {{filename}}',
-      contextSelector: 'Trying to export @fluentui/react-context-selector context {{exportName}} from {{filename}}',
+      nativeContext: '{{exportName}} should not be exported directly',
+      contextSelector: '{{exportName}} should not be exported directly',
     },
   },
   create(context) {
