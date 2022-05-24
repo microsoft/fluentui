@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 
 export interface ContentProps {
-  className: string;
+  className?: string;
 }
 
 const useStyles = makeStyles({

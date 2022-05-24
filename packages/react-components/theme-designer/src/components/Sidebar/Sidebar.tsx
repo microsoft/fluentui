@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 export interface SidebarProps {
-  className: string;
+  className?: string;
 }
 
 const useStyles = makeStyles({
