@@ -49,20 +49,20 @@ const examples = {
     { status: 'available' },
     { status: 'away' },
     { status: 'busy' },
-    { status: 'doNotDisturb' },
+    { status: 'do-not-disturb' },
     { status: 'offline' },
-    { status: 'outOfOffice' },
+    { status: 'out-of-office' },
     { status: 'available', outOfOffice: true },
     { status: 'away', outOfOffice: true },
     { status: 'busy', outOfOffice: true },
-    { status: 'doNotDisturb', outOfOffice: true },
+    { status: 'do-not-disturb', outOfOffice: true },
     { status: 'offline', outOfOffice: true },
-    { status: 'outOfOffice', outOfOffice: true },
+    { status: 'out-of-office', outOfOffice: true },
   ],
   activeDisplay: ['ring', 'ring-shadow', 'shadow'],
   color: ['neutral', 'brand', 'colorful'],
   namedColors: [
-    'darkRed',
+    'dark-red',
     'cranberry',
     'red',
     'pumpkin',
@@ -73,12 +73,12 @@ const examples = {
     'brown',
     'forest',
     'seafoam',
-    'darkGreen',
-    'lightTeal',
+    'dark-green',
+    'light-teal',
     'teal',
     'steel',
     'blue',
-    'royalBlue',
+    'royal-blue',
     'cornflower',
     'navy',
     'lavender',
@@ -190,8 +190,8 @@ storiesOf('Avatar Converged', module)
     { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
   )
   .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => <AvatarList badge={{ status: 'outOfOffice' }} shape="square" />)
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge={{ status: 'doNotDisturb' }} />)
+  .addStory('size+icon+badge+square', () => <AvatarList badge={{ status: 'out-of-office' }} shape="square" />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge={{ status: 'do-not-disturb' }} />)
   .addStory('size+inactive+badge', () => (
     <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
   ))

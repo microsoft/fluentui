@@ -18,7 +18,7 @@ import { calculatePrecision, precisionRound, getBound, clamp } from '../../utils
 import { ChevronUp16Regular, ChevronDown16Regular } from '@fluentui/react-icons';
 
 type InternalState = {
-  value: number;
+  value: number | null;
   spinState: SpinButtonSpinState;
   spinTime: number;
   spinDelay: number;
@@ -47,7 +47,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['onChange', 'size', 'min', 'max'],
+    excludedPropNames: ['defaultValue', 'max', 'min', 'onChange', 'size', 'value'],
   });
 
   const {
@@ -141,14 +141,20 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   React.useEffect(() => {
     let newTextValue;
-    if (value !== undefined) {
+    if (value === null || currentValue === null) {
+      newTextValue = displayValue ?? '';
+      internalState.current.value = null;
+      setAtBound('none');
+    } else if (value !== undefined) {
       const roundedValue = precisionRound(value, precision);
       newTextValue = displayValue ?? String(roundedValue);
       internalState.current.value = roundedValue;
       setAtBound(getBound(roundedValue, min, max));
     } else {
-      newTextValue = String(precisionRound(currentValue, precision));
-      internalState.current.value = currentValue;
+      const roundedValue = precisionRound(currentValue, precision);
+      newTextValue = String(roundedValue);
+      internalState.current.value = roundedValue;
+      setAtBound(getBound(roundedValue, min, max));
     }
     setTextValue(newTextValue);
   }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
@@ -163,9 +169,16 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const stepValue = (e: SpinButtonChangeEvent, direction: 'up' | 'down' | 'upPage' | 'downPage') => {
+    const val = internalState.current.value;
     const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
     const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
-    const val = internalState.current.value;
+
+    if (val === null) {
+      const stepStart = min === undefined ? 0 : min;
+      const nullStep = clamp(stepStart + stepSize * dir, min, max);
+      commit(e, nullStep);
+      return;
+    }
 
     let newValue = val + stepSize * dir;
     if (!Number.isNaN(newValue)) {
@@ -233,6 +246,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       setSpinState('up');
     } else if (e.key === Keys.Enter) {
       commit(e, currentValue, textValue);
+      internalState.current.previousTextValue = undefined;
       setSpinState('rest');
     } else if (e.key === Keys.Escape) {
       if (internalState.current.previousTextValue) {
@@ -249,7 +263,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     setSpinState('rest');
   };
 
-  const commit = (e: SpinButtonChangeEvent, newValue?: number, newDisplayValue?: string) => {
+  const commit = (e: SpinButtonChangeEvent, newValue?: number | null, newDisplayValue?: string) => {
     const valueChanged = newValue !== undefined && currentValue !== newValue;
     const displayValueChanged =
       newDisplayValue !== undefined &&
@@ -260,8 +274,6 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
     }
 
     if (valueChanged || displayValueChanged) {
@@ -272,7 +284,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   state.input.value = textValue;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
-  state.input['aria-valuenow'] = currentValue;
+  state.input['aria-valuenow'] = currentValue ?? undefined;
   state.input['aria-valuetext'] = state.input['aria-valuetext'] ?? ((value !== undefined && displayValue) || undefined);
   state.input.onChange = useMergedEventCallbacks(state.input.onChange, handleInputChange);
   state.input.onBlur = useMergedEventCallbacks(state.input.onBlur, handleBlur);

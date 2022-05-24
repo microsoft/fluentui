@@ -1,9 +1,5 @@
 # Link Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8
 
 The existing `Link` control supports a very similar set of props to the one being proposed with a few differences that are outlined below:

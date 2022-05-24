@@ -6,19 +6,21 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
-import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -33,9 +35,6 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 
 // @public
 export const Popover: React_2.FC<PopoverProps>;
-
-// @public (undocumented)
-export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
@@ -58,6 +57,9 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     trapFocus?: boolean;
 };
 
+// @public (undocumented)
+export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
+
 // @public
 export type PopoverSize = 'small' | 'medium' | 'large';
 
@@ -65,10 +67,10 @@ export type PopoverSize = 'small' | 'medium' | 'large';
 export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
-    contextTarget: PopperVirtualElement | undefined;
+    contextTarget: PositioningVirtualElement | undefined;
     popoverSurface: React_2.ReactElement | undefined;
     popoverTrigger: React_2.ReactElement | undefined;
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
     size: NonNullable<PopoverProps['size']>;
     toggleOpen: (e: OpenPopoverEvents) => void;
@@ -77,9 +79,6 @@ export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noAr
 
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
-
-// @public @deprecated (undocumented)
-export const popoverSurfaceClassName = "fui-PopoverSurface";
 
 // @public (undocumented)
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;

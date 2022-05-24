@@ -4,10 +4,6 @@ import { cardPreviewClassNames } from '../CardPreview/index';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `cardClassNames.root` instead.
- */
-export const cardClassName = 'fui-Card';
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
 };

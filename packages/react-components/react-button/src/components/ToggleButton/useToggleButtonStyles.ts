@@ -11,11 +11,6 @@ export const toggleButtonClassNames: SlotClassNames<ButtonSlots> = {
   icon: 'fui-ToggleButton__icon',
 };
 
-/**
- * @deprecated Use `toggleButtonClassName.root` instead.
- */
-export const toggleButtonClassName = toggleButtonClassNames.root;
-
 export const useCheckedStyles = makeStyles({
   // Base styles
   base: {

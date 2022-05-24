@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 19 May 2022 07:41:27 GMT and should not be manually modified.
+This log was last generated on Tue, 24 May 2022 07:47:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.36)
+
+Tue, 24 May 2022 07:47:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.35..@fluentui/react-charting_v5.9.36)
+
+### Patches
+
+- fixing line chart events focus issue ([PR #23079](https://github.com/microsoft/fluentui/pull/23079) by v-hannapared@microsoft.com)
+- added aria-valuetext attribute ([PR #22959](https://github.com/microsoft/fluentui/pull/22959) by v-hannapared@microsoft.com)
+- Bump @fluentui/react to v8.69.0 ([PR #23158](https://github.com/microsoft/fluentui/pull/23158) by beachball)
+
+## [5.9.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.35)
+
+Mon, 23 May 2022 07:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.34..@fluentui/react-charting_v5.9.35)
+
+### Patches
+
+- fixing color contrast issue ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by v-hannapared@microsoft.com)
+- Bump @fluentui/react-focus to v8.6.0 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
+- Bump @fluentui/react to v8.68.4 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
 
 ## [5.9.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.34)
 

@@ -5,16 +5,16 @@ export const Badge = () => (
   <>
     <Avatar name="Lydia Bauer" badge={{ status: 'available', 'aria-label': 'available' }} />
     <Avatar name="Amanda Brady" badge={{ status: 'busy', 'aria-label': 'busy' }} />
-    <Avatar name="Henry Brill" badge={{ status: 'outOfOffice', 'aria-label': 'out of office' }} />
+    <Avatar name="Henry Brill" badge={{ status: 'out-of-office', 'aria-label': 'out of office' }} />
     <Avatar name="Robin Counts" badge={{ status: 'away', 'aria-label': 'away' }} />
     <Avatar name="Tim Deboer" badge={{ status: 'offline', 'aria-label': 'offline' }} />
-    <Avatar name="Cameron Evans" badge={{ status: 'doNotDisturb', 'aria-label': 'do not disturb' }} />
+    <Avatar name="Cameron Evans" badge={{ status: 'do-not-disturb', 'aria-label': 'do not disturb' }} />
     <Avatar
       name="Mona Kane"
       badge={{ status: 'available', outOfOffice: true, 'aria-label': 'available out of office' }}
     />
     <Avatar name="Allan Munger" badge={{ status: 'busy', outOfOffice: true, 'aria-label': 'busy out of office' }} />
-    <Avatar name="Erik Nason" badge={{ status: 'outOfOffice', outOfOffice: true, 'aria-label': 'out of office' }} />
+    <Avatar name="Erik Nason" badge={{ status: 'out-of-office', outOfOffice: true, 'aria-label': 'out of office' }} />
     <Avatar name="Daisy Phillips" badge={{ status: 'away', outOfOffice: true, 'aria-label': 'away out of office' }} />
     <Avatar
       name="Kevin Sturgis"
@@ -22,7 +22,7 @@ export const Badge = () => (
     />
     <Avatar
       name="Elliot Woodward"
-      badge={{ status: 'doNotDisturb', outOfOffice: true, 'aria-label': 'do not disturb out of office' }}
+      badge={{ status: 'do-not-disturb', outOfOffice: true, 'aria-label': 'do not disturb out of office' }}
     />
   </>
 );

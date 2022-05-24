@@ -2,10 +2,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
-/**
- * @deprecated Use `cardHeaderClassNames.root` instead.
- */
-export const cardHeaderClassName = 'fui-CardHeader';
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   root: 'fui-CardHeader',
   image: 'fui-CardHeader__image',

@@ -57,7 +57,7 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
         <Combobox
           aria-labelledby={`${comboId}-filledDarker`}
           placeholder="Select a color"
-          appearance="filledDarker"
+          appearance="filled-darker"
           {...props}
         >
           <Option>Red</Option>
@@ -71,7 +71,7 @@ export const Appearance = (props: Partial<ComboboxProps>) => {
         <Combobox
           aria-labelledby={`${comboId}-filledLighter`}
           placeholder="Select a color"
-          appearance="filledLighter"
+          appearance="filled-lighter"
           {...props}
         >
           <Option>Red</Option>
@@ -90,8 +90,8 @@ Appearance.parameters = {
         'A Combobox can have the following `appearance` variants:\n' +
         '- `outline` (default): has a border around all four sides.\n' +
         '- `underline`: only has a bottom border.\n' +
-        '- `filledDarker`: no border, only a subtle background color difference against a white page.\n' +
-        '- `filledLighter`: no border, and a white background.\n',
+        '- `filled-darker`: no border, only a subtle background color difference against a white page.\n' +
+        '- `filled-lighter`: no border, and a white background.\n',
     },
   },
 };

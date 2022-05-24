@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Offset, resolvePositioningShorthand, usePopper } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
@@ -52,10 +52,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const ignoreTriggerBlur = React.useRef(false);
 
   // popper
-  const popperOptions = {
+  const positioningOptions = {
     position: 'below' as const,
     align: 'start' as const,
-    offset: [0, 2] as Offset,
+    offset: 2,
     ...resolvePositioningShorthand(positioning),
   };
 
@@ -65,7 +65,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   }: {
     targetRef: React.MutableRefObject<HTMLButtonElement>;
     containerRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePopper(popperOptions);
+  } = usePositioning(positioningOptions);
 
   // update value based on selectedOptions
   const isFirstMount = useFirstMount();

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fixing the PlainCard styles export to have the correct path. This never worked before, so I consider it a minor change.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
