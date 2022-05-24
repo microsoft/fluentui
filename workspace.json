@@ -740,6 +740,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/theme-designer": {
+      "root": "packages/react-components/theme-designer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/theme-designer/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/theme-samples": {
       "root": "packages/theme-samples",
       "projectType": "library",

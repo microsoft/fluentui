@@ -10,4 +10,6 @@ export const AccordionItemContext = React.createContext<AccordionItemContextValu
   disabled: false,
 });
 
+export const AccordionItemProvider = AccordionItemContext.Provider;
+
 export const useAccordionItemContext_unstable = () => React.useContext(AccordionItemContext);

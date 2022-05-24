@@ -12,18 +12,11 @@ export type TextSlots = {
  */
 export type TextProps = ComponentProps<TextSlots> & {
   /**
-   * Wraps the text content on white spaces.
+   * Aligns text based on the parent container.
    *
-   * @default true
+   * @default start
    */
-  wrap?: boolean;
-
-  /**
-   * Truncate overflowing text for block displays.
-   *
-   * @default false
-   */
-  truncate?: boolean;
+  align?: 'start' | 'center' | 'end' | 'justify';
 
   /**
    * Applies a block display for the content.
@@ -33,25 +26,18 @@ export type TextProps = ComponentProps<TextSlots> & {
   block?: boolean;
 
   /**
+   * Applies the font family to the content.
+   *
+   * @default base
+   */
+  font?: 'base' | 'monospace' | 'numeric';
+
+  /**
    * Applies the italic font style to the content.
    *
    * @default false
    */
   italic?: boolean;
-
-  /**
-   * Applies the underline text decoration to the content.
-   *
-   * @default false
-   */
-  underline?: boolean;
-
-  /**
-   * Applies the strikethrough text decoration to the content.
-   *
-   * @default false
-   */
-  strikethrough?: boolean;
 
   /**
    * Applies font size and line height based on the theme tokens.
@@ -61,11 +47,26 @@ export type TextProps = ComponentProps<TextSlots> & {
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
   /**
-   * Applies the font family to the content.
+   * Applies the strikethrough text decoration to the content.
    *
-   * @default base
+   * @default false
    */
-  font?: 'base' | 'monospace' | 'numeric';
+  strikethrough?: boolean;
+
+  /**
+   * Truncate overflowing text for block displays.
+   *
+   * @default false
+   */
+
+  truncate?: boolean;
+
+  /**
+   * Applies the underline text decoration to the content.
+   *
+   * @default false
+   */
+  underline?: boolean;
 
   /**
    * Applies font weight to the content.
@@ -75,11 +76,11 @@ export type TextProps = ComponentProps<TextSlots> & {
   weight?: 'regular' | 'medium' | 'semibold';
 
   /**
-   * Aligns text based on the parent container.
+   * Wraps the text content on white spaces.
    *
-   * @default start
+   * @default true
    */
-  align?: 'start' | 'center' | 'end' | 'justify';
+  wrap?: boolean;
 };
 
 /**

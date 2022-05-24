@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FluentProvider } from '@fluentui/react-provider';
-import { webDarkTheme, webHighContrastTheme, webLightTheme } from '@fluentui/react-theme';
+import { webDarkTheme, teamsHighContrastTheme, webLightTheme } from '@fluentui/react-theme';
 import { Switch } from '../index';
 
 const outerWrapperStyle: React.CSSProperties = {
@@ -33,7 +33,7 @@ export const Themed = () => (
         <Switch checked={false} label="Unchecked and enabled" />
         <Switch checked={false} disabled label="Unchecked and disabled" />
       </FluentProvider>
-      <FluentProvider style={rightSectionStyle} theme={webHighContrastTheme}>
+      <FluentProvider style={rightSectionStyle} theme={teamsHighContrastTheme}>
         <Switch checked={false} label="Unchecked and enabled" />
         <Switch checked={false} disabled label="Unchecked and disabled" />
       </FluentProvider>
@@ -47,7 +47,7 @@ export const Themed = () => (
         <Switch checked label="Checked and enabled" />
         <Switch checked disabled label="Checked and disabled" />
       </FluentProvider>
-      <FluentProvider style={rightSectionStyle} theme={webHighContrastTheme}>
+      <FluentProvider style={rightSectionStyle} theme={teamsHighContrastTheme}>
         <Switch checked label="Checked and enabled" />
         <Switch checked disabled label="Checked and disabled" />
       </FluentProvider>

@@ -17,15 +17,12 @@ export const renderSelect_unstable: (state: SelectState) => JSX.Element;
 // @public
 export const Select: ForwardRefComponent<SelectProps>;
 
-// @public @deprecated (undocumented)
-export const selectClassName = "fui-Select";
-
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
 // @public (undocumented)
 export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     inline?: boolean;
     size?: 'small' | 'medium' | 'large';
 };

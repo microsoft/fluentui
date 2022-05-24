@@ -40,7 +40,7 @@ export type SpinButtonProps = Omit<
    * Controls the colors and borders of the input.
    * @default 'outline'
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * Initial value of the control (assumed to be valid). Updates to this prop will not be respected.

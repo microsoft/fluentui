@@ -24,9 +24,6 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
     theme?: Partial<Theme> | undefined;
 } & React_2.RefAttributes<HTMLElement>>;
 
-// @public @deprecated (undocumented)
-export const fluentProviderClassName = "fui-FluentProvider";
-
 // @public (undocumented)
 export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 

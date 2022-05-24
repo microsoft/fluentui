@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Badge: ForwardRefComponent<BadgeProps>;
 
-// @public @deprecated (undocumented)
-export const badgeClassName = "fui-Badge";
-
 // @public (undocumented)
 export const badgeClassNames: SlotClassNames<BadgeSlots>;
 
@@ -41,9 +38,6 @@ export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
 
-// @public @deprecated (undocumented)
-export const counterBadgeClassName = "fui-CounterBadge";
-
 // @public (undocumented)
 export const counterBadgeClassNames: SlotClassNames<BadgeSlots>;
 
@@ -64,9 +58,6 @@ export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape
 // @public
 export const PresenceBadge: ForwardRefComponent<PresenceBadgeProps>;
 
-// @public @deprecated (undocumented)
-export const presenceBadgeClassName = "fui-PresenceBadge";
-
 // @public (undocumented)
 export const presenceBadgeClassNames: SlotClassNames<BadgeSlots>;
 
@@ -80,7 +71,7 @@ export type PresenceBadgeProps = Omit<ComponentProps<Pick<BadgeSlots, 'root' | '
 export type PresenceBadgeState = ComponentState<BadgeSlots> & BadgeState & Required<Pick<PresenceBadgeProps, 'status' | 'outOfOffice'>>;
 
 // @public (undocumented)
-export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' | 'offline' | 'doNotDisturb' | 'unknown';
+export type PresenceBadgeStatus = 'busy' | 'out-of-office' | 'away' | 'available' | 'offline' | 'do-not-disturb' | 'unknown';
 
 // @public (undocumented)
 export const renderBadge_unstable: (state: BadgeState) => JSX.Element;
