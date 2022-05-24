@@ -37,6 +37,17 @@ ruleTester.run('ban-context-export', rule, {
       `,
       filename: 'src/index.ts',
     },
+    {
+      // No way to type generics with jsdoc
+      // @ts-ignore
+      options: [{ exclude: ['**/special-path/**/*'] }],
+      parserOptions: getParserOptions('exclude'),
+      code: `
+      import * as React from 'react';
+      export const MyContext = React.createContext({});
+      `,
+      filename: 'special-path/src/index.ts',
+    },
   ],
   invalid: [
     {
@@ -72,6 +83,18 @@ ruleTester.run('ban-context-export', rule, {
       export const MyContext = createContext({});
       `,
       filename: 'src/index.ts',
+    },
+    {
+      errors: [{ messageId: 'nativeContext' }],
+      // No way to type generics with jsdoc
+      // @ts-ignore
+      options: [{ exclude: ['**/wrong-path/**/*'] }],
+      parserOptions: getParserOptions('exclude'),
+      code: `
+      import * as React from 'react';
+      export const MyContext = React.createContext({});
+      `,
+      filename: 'special-path/src/index.ts',
     },
   ],
 });

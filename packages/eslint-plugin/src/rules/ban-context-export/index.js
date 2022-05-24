@@ -1,15 +1,38 @@
 // @ts-check
 const { ESLintUtils, AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
 const createRule = require('../../utils/createRule');
+const minimatch = require('minimatch');
 
 /** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclarator } VariableDeclarator*/
 /** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.ExportSpecifier} ExportSpecifier */
+/**
+ * @typedef {{
+ *  exclude?: string[];
+ * }} Options
+ */
+
+/** @type {Options} */
+const defaultOptions = {};
 
 module.exports = createRule({
   name: 'ban-context-export',
   defaultOptions: [],
   meta: {
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          exclude: {
+            type: 'array',
+            items: {
+              type: 'string',
+            },
+            description: 'List of files to exclude',
+          },
+        },
+        additionalProperties: false,
+      },
+    ],
     type: 'problem',
     docs: {
       description: 'Ban export of React context or context selector objects',
@@ -22,6 +45,8 @@ module.exports = createRule({
     },
   },
   create(context) {
+    const rawOptions = /** @type {Options[]} */ (context.options);
+    const { exclude = [] } = rawOptions.length ? rawOptions[0] : defaultOptions;
     const { program, esTreeNodeToTSNodeMap } = ESLintUtils.getParserServices(context);
     /** @type {import("typescript").TypeChecker | undefined} */
     let typeChecker;
@@ -31,7 +56,12 @@ module.exports = createRule({
      * @param {string} exportName
      */
     function checkContextType(node, exportName) {
-      const isTopLevelExport = context.getFilename().endsWith('src/index.ts');
+      const currentFileName = context.getFilename();
+      if (exclude.some(pattern => minimatch(currentFileName, pattern))) {
+        return;
+      }
+
+      const isTopLevelExport = currentFileName.endsWith('src/index.ts');
       if (!isTopLevelExport) {
         return;
       }

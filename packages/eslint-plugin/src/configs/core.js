@@ -238,7 +238,7 @@ const typeAwareRules = {
    * plugin: https://github.com/gund/eslint-plugin-deprecation
    */
   'deprecation/deprecation': 'error',
-  '@fluentui/ban-context-export': 'error',
+  '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
 };
 
 /**
