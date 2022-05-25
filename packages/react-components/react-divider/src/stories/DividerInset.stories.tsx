@@ -44,9 +44,7 @@ export const Inset = () => {
 Inset.parameters = {
   docs: {
     description: {
-      story:
-        'A divider can have a `brand`, `subtle`, or `strong` appearance.' +
-        ' When not specified, it has its default experience.',
+      story: 'A divider can have its line inset from the edges of its container.',
     },
   },
 };
