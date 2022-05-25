@@ -25,10 +25,6 @@ export default {
     },
   },
   argTypes: {
-    inline: {
-      defaultValue: false,
-      control: 'boolean',
-    },
     navigation: {
       defaultValue: undefined,
       control: {
@@ -44,32 +40,8 @@ export default {
       defaultValue: false,
       control: 'boolean',
     },
-    icon: {
-      defaultValue: false,
-      control: 'boolean',
-    },
-    size: {
-      defaultValue: 'medium',
-      control: {
-        type: 'select',
-        options: ['small', 'medium', 'large', 'extra-large'],
-      },
-    },
     as: {
       control: false,
-    },
-    index: {
-      control: false,
-    },
-    defaultIndex: {
-      control: false,
-    },
-    expandIconPosition: {
-      defaultValue: 'start',
-      control: {
-        type: 'inline-radio',
-        options: ['start', 'end'],
-      },
     },
   },
 };

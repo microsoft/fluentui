@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
 
-export const Multiple = (args: AccordionProps) => (
-  <Accordion {...args}>
+export const Multiple = () => (
+  <Accordion multiple>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,10 +23,6 @@ export const Multiple = (args: AccordionProps) => (
     </AccordionItem>
   </Accordion>
 );
-
-Multiple.args = {
-  multiple: true,
-} as AccordionProps;
 
 Multiple.parameters = {
   docs: {
