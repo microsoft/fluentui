@@ -496,7 +496,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const lineColor: string = this._points[i].color;
       const { activePoint } = this.state;
       const { theme } = this.props;
-      const verticaLineHeight = containerHeight - this.margins.bottom! + 6;
+      const verticalLineHeight = containerHeight - this.margins.bottom! + 6;
       if (this._points[i].data.length === 1) {
         const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[0];
         const circleId = `${this._circleId}${i}`;
@@ -515,7 +515,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               verticalLineHeight,
               xAxisCalloutData,
               circleId,
-              xAxisCalloutAccessibilityData
+              xAxisCalloutAccessibilityData,
             )}
             onMouseMove={this._handleHover.bind(
               this,
@@ -524,7 +524,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               verticalLineHeight,
               xAxisCalloutData,
               circleId,
-              xAxisCalloutAccessibilityData
+              xAxisCalloutAccessibilityData,
             )}
             onMouseOut={this._handleMouseOut}
             strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
@@ -567,7 +567,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               verticalLineHeight,
               xAxisCalloutData,
               circleId,
-              xAxisCalloutAccessibilityData
+              xAxisCalloutAccessibilityData,
             )}
             onMouseMove={this._handleHover.bind(
               this,
@@ -576,7 +576,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               verticalLineHeight,
               xAxisCalloutData,
               circleId,
-              xAxisCalloutAccessibilityData
+              xAxisCalloutAccessibilityData,
             )}
             onMouseOut={this._handleMouseOut}
             onFocus={() => this._handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
@@ -762,7 +762,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     } else {
       this._colorFillBars = this.props.colorFillBars!;
     }
-    
+
     const yMinMaxValues = getMinMaxOfYAxis(this._points, ChartTypes.LineChart);
     const FILL_Y_PADDING = 3;
     for (let i = 0; i < this._colorFillBars.length; i++) {
