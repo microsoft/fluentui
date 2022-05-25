@@ -36,7 +36,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     required: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
-      'aria-hidden': true,
+      id: baseId + '__initials',
     },
   });
 
@@ -49,7 +49,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       defaultProps: {
         children: <PersonRegular />,
         'aria-hidden': true,
-        id: baseId + '__initials',
       },
     });
   }
