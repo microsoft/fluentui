@@ -25,6 +25,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           theme.fonts.tiny,
           {
             fill: theme.semanticColors.bodyText,
+            fontWeight: '600',
             selectors: {
               [HighContrastSelectorBlack]: {
                 fill: 'rgb(179, 179, 179)',
@@ -54,6 +55,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           theme.fonts.tiny,
           {
             fill: theme.semanticColors.bodyText,
+            fontWeight: '600',
             selectors: {
               [HighContrastSelectorBlack]: {
                 fill: 'rgb(179, 179, 179)',
