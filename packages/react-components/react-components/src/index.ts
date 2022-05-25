@@ -454,14 +454,6 @@ export type {
   PopoverTriggerState,
 } from '@fluentui/react-popover';
 export {
-  Portal,
-  elementContains,
-  renderPortal_unstable,
-  setVirtualParent,
-  usePortal_unstable,
-} from '@fluentui/react-portal';
-export type { PortalProps, PortalState } from '@fluentui/react-portal';
-export {
   Slider,
   sliderClassNames,
   useSliderState_unstable,
