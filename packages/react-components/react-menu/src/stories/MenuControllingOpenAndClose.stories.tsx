@@ -11,7 +11,7 @@ export const ControllingOpenAndClose = () => {
     setOpen(data.open);
   };
 
-  const onChange: CheckboxProps['onChange'] = (e: React.ChangeEvent<HTMLInputElement>, { checked }) => {
+  const onChange: CheckboxProps['onChange'] = (e, { checked }) => {
     if (typeof checked === 'boolean') {
       setOpen(checked);
     }
