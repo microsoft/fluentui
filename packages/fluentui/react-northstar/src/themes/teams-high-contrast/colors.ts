@@ -66,6 +66,7 @@ export const colorScheme: ColorSchemeMapping = {
     background4: colors.black,
     background5: accessibleYellow,
     background6: colors.black,
+    background8: colors.black,
 
     border: colors.white,
     border1: colors.white,

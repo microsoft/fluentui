@@ -23,6 +23,7 @@ export const colorScheme: ColorSchemeMapping = {
     background4: colors.grey[600],
     background5: colors.grey[250],
     background6: colors.grey[500],
+    background8: colors.grey[700],
 
     border: colors.grey[450], // buttons
     border1: colors.grey[850],

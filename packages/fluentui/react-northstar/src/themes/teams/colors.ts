@@ -233,6 +233,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background4: colors.grey[100],
     background5: colors.grey[350],
     background6: colors.grey[550],
+    background8: colors.grey[50],
 
     border: colors.grey[200],
     border1: colors.grey[150],

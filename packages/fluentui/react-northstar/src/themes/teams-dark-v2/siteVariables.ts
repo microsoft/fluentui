@@ -23,6 +23,7 @@ export const colorScheme = {
     background5: colors.grey['600'],
     background6: colors.grey['910'],
     background7: colors.grey['850'],
+    background8: colors.grey['700'],
 
     border: colors.grey['450'],
     border1: colors.grey['850'],
