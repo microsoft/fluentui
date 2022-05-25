@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add inline prop to Popover",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

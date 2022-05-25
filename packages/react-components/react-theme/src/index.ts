@@ -1,5 +1,5 @@
-export * from './themes/index';
-export * from './utils/index';
+export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
+export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
@@ -74,5 +74,6 @@ export type {
   ColorTokens,
   PartialTheme,
   Theme,
+  TypographyStyle,
   TypographyStyles,
 } from './types';

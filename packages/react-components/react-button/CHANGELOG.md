@@ -1,8 +1,68 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 25 Apr 2022 09:32:16 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.11)
+
+Mon, 23 May 2022 18:56:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.10..@fluentui/react-button_v9.0.0-rc.11)
+
+### Changes
+
+- Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- Removing deprecated block prop from all button components. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.11 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.10)
+
+Mon, 23 May 2022 12:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.9..@fluentui/react-button_v9.0.0-rc.10)
+
+### Changes
+
+- Using spacing tokens for button components. ([PR #23076](https://github.com/microsoft/fluentui/pull/23076) by Humberto.Morimoto@microsoft.com)
+- Removing flex gap from button components and fixing spacing to better align with design spec. ([PR #23091](https://github.com/microsoft/fluentui/pull/23091) by Humberto.Morimoto@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Removing Common types from all button components. ([PR #22904](https://github.com/microsoft/fluentui/pull/22904) by humberto_makoto@hotmail.com)
+- Removing ToggleButtonCommons type in @fluentui/react-button. ([PR #23067](https://github.com/microsoft/fluentui/pull/23067) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.9)
+
+Thu, 05 May 2022 18:26:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.8..@fluentui/react-button_v9.0.0-rc.9)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22823](https://github.com/microsoft/fluentui/pull/22823) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.6 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.9 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.8)
+
+Wed, 04 May 2022 13:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.7..@fluentui/react-button_v9.0.0-rc.8)
+
+### Changes
+
+- Bump @fluentui/keyboard-keys to v9.0.0-rc.5 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-aria to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.8 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.7)
 

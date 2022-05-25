@@ -15,6 +15,8 @@ export const PopoverContext: Context<PopoverContextValue> = createContext<Popove
   inline: false,
 });
 
+export const PopoverProvider = PopoverContext.Provider;
+
 /**
  * Context shared between Popover and its children components
  */

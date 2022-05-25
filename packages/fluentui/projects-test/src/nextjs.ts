@@ -25,7 +25,7 @@ export async function nextjs() {
 
   logger('STEP 2. Add Fluent UI dependency to test project');
 
-  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);

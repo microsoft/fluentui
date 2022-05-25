@@ -2,7 +2,7 @@ import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-shared-contexts';
 import { sliderCSSVars } from './useSliderStyles';
-import type { SliderState } from './Slider.types';
+import type { SliderState, SliderProps } from './Slider.types';
 
 const { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar, railDirectionVar } = sliderCSSVars;
 
@@ -10,8 +10,8 @@ const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
-export const useSliderState_unstable = (state: SliderState) => {
-  const { value, defaultValue = 0, min = 0, max = 100, step = 1, origin } = state;
+export const useSliderState_unstable = (state: SliderState, props: SliderProps) => {
+  const { defaultValue = 0, min = 0, max = 100, step, origin, value } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
     state: value !== undefined ? clamp(value, min, max) : undefined,
@@ -24,7 +24,7 @@ export const useSliderState_unstable = (state: SliderState) => {
   }, [max, min, origin]);
 
   const inputOnChange = state.input.onChange;
-  const propsOnChange = state.onChange;
+  const propsOnChange = props.onChange;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
     const newValue = Number(ev.target.value);
@@ -40,7 +40,7 @@ export const useSliderState_unstable = (state: SliderState) => {
   const rootVariables = {
     [railDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [thumbPositionVar]: valuePercent + '%',
-    [railStepsPercentVar]: state.step && state.step > 0 ? `${(step * 100) / (max - min)}%` : '',
+    [railStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [railOffsetVar]: origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : '0%',
     [railProgressVar]:
       origin !== undefined

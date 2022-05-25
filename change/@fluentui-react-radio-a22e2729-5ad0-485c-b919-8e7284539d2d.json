@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "react-radio: add required prop to RadioGroup",
-  "packageName": "@fluentui/react-radio",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

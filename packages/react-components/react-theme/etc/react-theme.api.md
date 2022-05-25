@@ -474,6 +474,14 @@ export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record
 export const tokens: Record<keyof Theme, string>;
 
 // @public (undocumented)
+export type TypographyStyle = {
+    fontFamily: string;
+    fontSize: string;
+    fontWeight: string;
+    lineHeight: string;
+};
+
+// @public (undocumented)
 export type TypographyStyles = {
     body1: TypographyStyle;
     body1Strong: TypographyStyle;
@@ -513,9 +521,6 @@ export type VerticalSpacingTokens = {
 
 // @public (undocumented)
 export const webDarkTheme: Theme;
-
-// @public (undocumented)
-export const webHighContrastTheme: Theme;
 
 // @public (undocumented)
 export const webLightTheme: Theme;

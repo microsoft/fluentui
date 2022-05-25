@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import logo from '../public/fluent.svg';
+import logo from '../public/fluentui-logo.svg';
 
 /**
  * Theming and branding the storybook to fluent. Taken from https://storybook.js.org/docs/react/configure/theming

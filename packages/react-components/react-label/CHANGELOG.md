@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Tue, 19 Apr 2022 19:17:27 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.3)
+
+Mon, 23 May 2022 18:56:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-rc.2..@fluentui/react-label_v9.0.0-rc.3)
+
+### Changes
+
+- Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+
+## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.2)
+
+Mon, 23 May 2022 12:14:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.12..@fluentui/react-label_v9.0.0-rc.2)
+
+### Changes
+
+- update README and package version ([PR #22865](https://github.com/microsoft/fluentui/pull/22865) by esteban.230@hotmail.com)
+- feat: ship rolluped only dts ([PR #22793](https://github.com/microsoft/fluentui/pull/22793) by martinhochel@microsoft.com)
+- Removing commons type from Label. ([PR #22880](https://github.com/microsoft/fluentui/pull/22880) by esteban.230@hotmail.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.12)
+
+Thu, 05 May 2022 18:26:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.11..@fluentui/react-label_v9.0.0-beta.12)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.7 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.8 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.5 ([PR #22857](https://github.com/microsoft/fluentui/pull/22857) by beachball)
+
+## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.11)
+
+Wed, 04 May 2022 13:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-beta.10..@fluentui/react-label_v9.0.0-beta.11)
+
+### Changes
+
+- Add style to make required match text when disabled ([PR #22715](https://github.com/microsoft/fluentui/pull/22715) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.6 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.7 ([PR #22786](https://github.com/microsoft/fluentui/pull/22786) by beachball)
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-beta.10)
 

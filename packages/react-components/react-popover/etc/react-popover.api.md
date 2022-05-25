@@ -6,19 +6,21 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
-import type { PopperVirtualElement } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { usePopperMouseTarget } from '@fluentui/react-positioning';
+import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -29,44 +31,54 @@ export type OnOpenChangeData = {
 };
 
 // @public
-export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.FocusEvent<HTMLElement>;
+export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
 export const Popover: React_2.FC<PopoverProps>;
-
-// @public (undocumented)
-export const PopoverContext: Context<PopoverContextValue>;
 
 // @public
 export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'noArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
 
 // @public
-export type PopoverProps = Partial<PopoverCommons> & {
+export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
+    appearance?: 'brand' | 'inverted';
     children: [JSX.Element, JSX.Element] | JSX.Element;
+    closeOnScroll?: boolean;
+    defaultOpen?: boolean;
+    inline?: boolean;
+    mouseLeaveDelay?: number;
+    noArrow?: boolean;
+    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+    open?: boolean;
+    openOnContext?: boolean;
+    openOnHover?: boolean;
+    positioning?: PositioningShorthand;
+    size?: PopoverSize;
+    trapFocus?: boolean;
 };
+
+// @public (undocumented)
+export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
 
 // @public
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = PopoverCommons & Pick<PopoverProps, 'children'> & {
+export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+    arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    contentRef: React_2.MutableRefObject<HTMLElement | null>;
+    contextTarget: PositioningVirtualElement | undefined;
+    popoverSurface: React_2.ReactElement | undefined;
+    popoverTrigger: React_2.ReactElement | undefined;
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
     setOpen: (e: OpenPopoverEvents, open: boolean) => void;
+    size: NonNullable<PopoverProps['size']>;
     toggleOpen: (e: OpenPopoverEvents) => void;
     triggerRef: React_2.MutableRefObject<HTMLElement | null>;
-    contentRef: React_2.MutableRefObject<HTMLElement | null>;
-    arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    contextTarget: PopperVirtualElement | undefined;
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
-    size: NonNullable<PopoverProps['size']>;
-    popoverTrigger: React_2.ReactElement | undefined;
-    popoverSurface: React_2.ReactElement | undefined;
 };
 
 // @public
 export const PopoverSurface: ForwardRefComponent<PopoverSurfaceProps>;
-
-// @public @deprecated (undocumented)
-export const popoverSurfaceClassName = "fui-PopoverSurface";
 
 // @public (undocumented)
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots>;
@@ -80,7 +92,7 @@ export type PopoverSurfaceSlots = {
 };
 
 // @public
-export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'mountNode' | 'noArrow' | 'size' | 'appearance' | 'arrowRef' | 'inline'> & {
+export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'noArrow' | 'size'> & {
     arrowClassName?: string;
 };
 
@@ -90,7 +102,7 @@ export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComp
 // @public (undocumented)
 export type PopoverTriggerChildProps = {
     ref?: React_2.Ref<never>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onMouseEnter' | 'onKeyDown' | 'onMouseLeave' | 'onContextMenu'>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'>;
 
 // @public
 export type PopoverTriggerProps = {

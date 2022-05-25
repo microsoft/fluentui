@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
+import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 
 import { Popover, PopoverTrigger, PopoverSurface } from '../index';
@@ -12,7 +13,8 @@ const useStyles = makeStyles({
 
 export const TrappingFocus = () => {
   const styles = useStyles();
-  const id = 'heading';
+  const id = useId();
+
   return (
     <Popover trapFocus>
       <PopoverTrigger>

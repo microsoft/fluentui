@@ -4,10 +4,10 @@ import { Button } from '@fluentui/react-button';
 import { ArrowRoutingRegular } from '@fluentui/react-icons';
 
 export const Target = () => {
-  const [icon, setIconRef] = React.useState<HTMLSpanElement | null>(null);
+  const [iconRef, setIconRef] = React.useState<HTMLSpanElement | null>(null);
   return (
     <Tooltip
-      positioning={{ target: icon }}
+      positioning={{ target: iconRef }}
       withArrow
       content="This tooltip points to the icon"
       relationship="description"

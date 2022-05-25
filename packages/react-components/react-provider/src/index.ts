@@ -1,6 +1,4 @@
 export {
-  // eslint-disable-next-line deprecation/deprecation
-  fluentProviderClassName,
   fluentProviderClassNames,
   FluentProvider,
   renderFluentProvider_unstable,

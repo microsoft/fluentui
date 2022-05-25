@@ -1,16 +1,18 @@
 import * as React from 'react';
-
 import { action } from '@storybook/addon-actions';
-import { Headline } from '@fluentui/react-text';
+import { Subtitle1 } from '@fluentui/react-text';
 import { makeStyles, shorthands } from '@griffel/react';
-
 import { SampleCard } from './SampleCard.stories';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
+  },
+  themeContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.padding('16px'),
     ...shorthands.gap('16px'),
   },
   header: {
@@ -22,9 +24,9 @@ const Title = (props: { children: React.ReactNode }) => {
   const styles = useStyles();
 
   return (
-    <Headline as="h4" block className={styles.header}>
+    <Subtitle1 as="h4" block className={styles.header}>
       {props.children}
-    </Headline>
+    </Subtitle1>
   );
 };
 
@@ -32,7 +34,7 @@ export const Appearance = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.container}>
+    <div className={styles.themeContainer}>
       <div>
         <Title>Filled (default)</Title>
         <SampleCard appearance="filled" />

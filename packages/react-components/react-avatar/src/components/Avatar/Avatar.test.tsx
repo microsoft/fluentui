@@ -8,6 +8,7 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -71,6 +72,11 @@ describe('Avatar', () => {
   it('renders 2 initials with a 3-word name', () => {
     render(<Avatar name="First Middle Last" />);
     expect(screen.getByText('FL')).toBeTruthy();
+  });
+
+  it('renders 1 initial at size 16', () => {
+    render(<Avatar name="First Middle Last" size={16} />);
+    expect(screen.getByText('F')).toBeTruthy();
   });
 
   it('renders an icon if the name is not alphabetic', () => {

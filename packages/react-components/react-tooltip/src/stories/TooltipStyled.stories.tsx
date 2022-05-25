@@ -6,7 +6,7 @@ import { SlideTextRegular } from '@fluentui/react-icons';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-const getStyles = makeStyles({
+const useStyles = makeStyles({
   tooltip: {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundInverted,
@@ -14,7 +14,7 @@ const getStyles = makeStyles({
 });
 
 export const Styled = (props: Partial<TooltipProps>) => {
-  const styles = getStyles();
+  const styles = useStyles();
   return (
     <Tooltip
       withArrow

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove chromatic command from react-components and move alias up to root pointing at new docsite",
-  "packageName": "@fluentui/react-components",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -4,10 +4,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { LinkSlots, LinkState } from './Link.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `linkClassNames.root` instead.
- */
-export const linkClassName = 'fui-Link';
 export const linkClassNames: SlotClassNames<LinkSlots> = {
   root: 'fui-Link',
 };
@@ -99,15 +95,17 @@ const useStyles = makeStyles({
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
+  const { appearance, disabled, inline, root } = state;
+
   state.root.className = mergeClasses(
     linkClassNames.root,
     styles.root,
     styles.focusIndicator,
-    state.root.as === 'a' && state.root.href && styles.href,
-    state.appearance === 'subtle' && styles.subtle,
-    state.inline && styles.inline,
-    state.appearance === 'subtle' && state.inline && styles.inlineSubtle,
-    state.root['aria-disabled'] && styles.disabled,
+    root.as === 'a' && root.href && styles.href,
+    appearance === 'subtle' && styles.subtle,
+    inline && styles.inline,
+    appearance === 'subtle' && inline && styles.inlineSubtle,
+    disabled && styles.disabled,
     state.root.className,
   );
 

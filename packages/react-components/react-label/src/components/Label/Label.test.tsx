@@ -7,6 +7,7 @@ describe('Label', () => {
   isConformant({
     Component: Label,
     displayName: 'Label',
+    disabledTests: ['component-has-static-classname-exported'],
     requiredProps: { children: "I'm a label." },
     testOptions: {
       'has-static-classnames': [
@@ -16,8 +17,6 @@ describe('Label', () => {
       ],
     },
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(<Label>Default Label</Label>);
