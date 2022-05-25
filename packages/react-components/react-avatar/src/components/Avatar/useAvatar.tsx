@@ -58,6 +58,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   const image: AvatarState['image'] = resolveShorthand(props.image, {
     defaultProps: {
       alt: '',
+      role: 'presentation',
+      'aria-hidden': true,
       hidden: imageHidden,
     },
   });
