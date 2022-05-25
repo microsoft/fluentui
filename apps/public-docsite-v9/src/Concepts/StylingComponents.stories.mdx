@@ -4,9 +4,9 @@ import { Meta, Source } from '@storybook/addon-docs';
 
 ## Styling components
 
-To style Fluent UI components `makeStyles` is used.
+To style Fluent UI React v9 components `makeStyles` is used. `makeStyles` comes from [`Griffel`](https://griffel.js.org) a homegrown CSS-in-JS implementation which generates atomic CSS classes.
 
-`makeStyles` is a homegrown CSS-in-JS implementation (inspired by stylex) which generates atomic CSS classes. Get started by simply importing
+Get started by simply importing:
 
 ```js
 import { makeStyles } from '@fluentui/react-components';
@@ -43,6 +43,8 @@ To properly merge the classes, you need to use `mergeClasses()` function, which 
 When `mergeClasses()` is called, it merges all classes from first to last - the latter argument overwrites the previous ones (similar to `Object.assign()`).
 
 ```jsx
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+
 const useStyles = makeStyles({
   blueBold: {
     color: 'blue',
@@ -66,6 +68,8 @@ function Component() {
 Both `makeStyles` and `mergeClasses` are simple. They are unaware of component state and props. Developers should merge and apply appropriate parts of the `useStyles` call based on their requirements.
 
 ```jsx
+import { makeStyles } from '@fluentui/react-components';
+
 const useStyles = makeStyles({
   root: { color: 'red' },
   rootPrimary: { color: 'blue' },
@@ -83,6 +87,8 @@ function Component(props) {
 The same approach is used to apply classes passed from parent component. Again, you need to use `mergeClasses()` to properly merge and deduplicate the classes. Note again, that the order of application is important in `mergeClasses()` so that parent classes overwrite component classes.
 
 ```jsx
+import { mergeClasses } from '@fluentui/react-components';
+
 function Component(props) {
   const classes = useStyles();
 
@@ -95,7 +101,7 @@ function Component(props) {
 No matter what theme is used, the component styles are always the same. The only way to change the component styling is through theme tokens which can be used in style values.
 
 ```js
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: { display: 'flex' },
@@ -110,6 +116,8 @@ Those tokens are resolved to CSS variable usages. The `FluentProvider` component
 This section shows and describes anti-patterns which should never be used.
 
 ```js
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+
 const useStyles = makeStyles({
   root: { color: 'red' }, // Do not use colors directly as those are not theme-able. Always use colors from a theme
 });
@@ -127,12 +135,15 @@ function Component(props) {
 To override an appearance of a FUI component, you use the exactly same approach - You call makeStyles/useStyles in your code and pass the resulting classes through `props`.
 
 ```jsx
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, tokens, shorthands } from '@fluentui/react-components';
+import { CallEndRegular } from '@fluentui/react-icons';
 
 const useOverrides = makeStyles({
   button: { color: tokens.colorNeutralForeground3 },
-  buttonIcon: { border: '1px solid red'},
-  link: { fontWeight: 'bold },
+  buttonIcon: {
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+  },
+  link: { fontWeight: 'bold' },
 });
 
 function MyComponent() {
@@ -140,7 +151,7 @@ function MyComponent() {
 
   return (
     <>
-      <Button className={overrides.button} icon={{className: overrides.buttonIcon, children: <CallIcon />}} />
+      <Button className={overrides.button} icon={{ className: overrides.buttonIcon, children: <CallEndRegular /> }} />
       <Link className={overrides.link} />
     </>
   );
