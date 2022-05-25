@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: Remove slider origin to align with design and avoid inaccessible design",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -319,6 +319,7 @@ import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
 import { SliderOnChangeData } from '@fluentui/react-slider';
 import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
@@ -1149,6 +1150,8 @@ export { shorthands }
 export { Slider }
 
 export { sliderClassNames }
+
+export { sliderCSSVars }
 
 export { SliderOnChangeData }
 

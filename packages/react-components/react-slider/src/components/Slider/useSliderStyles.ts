@@ -19,14 +19,12 @@ const progressColorVar = `--fui-Slider__progress--color`;
 const thumbColorVar = `--fui-Slider__thumb--color`;
 
 export const sliderCSSVars = {
-  railDirectionVar: `--fui-Slider__rail--direction`,
-  railOffsetVar: `--fui-Slider__rail--offset`,
-  railProgressVar: `--fui-Slider__rail--progress`,
-  railStepsPercentVar: `--fui-Slider__rail--steps-percent`,
-  thumbPositionVar: `--fui-Slider__thumb--position`,
+  sliderDirectionVar: `--fui-Slider--direction`,
+  sliderProgressVar: `--fui-Slider--progress`,
+  sliderStepsPercentVar: `--fui-Slider--steps-percent`,
 };
 
-const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderCSSVars;
+const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar } = sliderCSSVars;
 
 /**
  * Styles for the root slot
@@ -125,12 +123,10 @@ const useRailStyles = makeStyles({
     forcedColorAdjust: 'none',
     // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
-      var(${railDirectionVar}),
-      var(${railColorVar}) 0%,
-      var(${railColorVar}) var(${railOffsetVar}),
-      var(${progressColorVar}) var(${railOffsetVar}),
-      var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
-      var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
+      var(${sliderDirectionVar}),
+      var(${progressColorVar}) 0%,
+      var(${progressColorVar}) var(${sliderProgressVar}),
+      var(${railColorVar}) var(${sliderProgressVar})
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
@@ -140,23 +136,23 @@ const useRailStyles = makeStyles({
       position: 'absolute',
       // Repeating gradient represents the steps if provided
       backgroundImage: `repeating-linear-gradient(
-        var(${railDirectionVar}),
+        var(${sliderDirectionVar}),
         #0000 0%,
-        #0000 calc(var(${railStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} calc(var(${railStepsPercentVar}) - 1px),
-        ${tokens.colorNeutralBackground1} var(${railStepsPercentVar})
+        #0000 calc(var(${sliderStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
+        ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
       )`,
+      // force steps to use HighlightText for high contrast mode
       '@media (forced-colors: active)': {
         backgroundImage: `repeating-linear-gradient(
-          var(${railDirectionVar}),
+          var(${sliderDirectionVar}),
           #0000 0%,
-          #0000 calc(var(${railStepsPercentVar}) - 1px),
-          HighlightText calc(var(${railStepsPercentVar}) - 1px),
-          HighlightText var(${railStepsPercentVar})
+          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
+          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
+          HighlightText var(${sliderStepsPercentVar})
         )`,
       },
     },
-    // force steps to use HighlightText for high contrast mode
   },
 
   horizontal: {
@@ -213,11 +209,11 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
-    left: `var(${thumbPositionVar})`,
+    left: `var(${sliderProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${thumbPositionVar})`,
+    bottom: `var(${sliderProgressVar})`,
   },
 });
 
