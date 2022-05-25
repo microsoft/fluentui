@@ -91,8 +91,12 @@ const useSelectStyles = makeStyles({
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
   },
   small: {
     height: fieldHeights.small,
@@ -142,6 +146,12 @@ const useIconStyles = makeStyles({
       display: 'block',
     },
   },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+    },
+  },
   small: {
     fontSize: iconSizes.small,
     height: iconSizes.small,
@@ -188,7 +198,13 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(selectClassNames.icon, iconStyles.icon, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      selectClassNames.icon,
+      iconStyles.icon,
+      disabled && iconStyles.disabled,
+      iconStyles[size],
+      state.icon.className,
+    );
   }
 
   return state;
