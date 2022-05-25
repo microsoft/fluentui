@@ -4,6 +4,11 @@
 
 ```ts
 
+import { Alert } from '@fluentui/react-alert';
+import { alertClassNames } from '@fluentui/react-alert';
+import { AlertProps } from '@fluentui/react-alert';
+import { AlertSlots } from '@fluentui/react-alert';
+import { AlertState } from '@fluentui/react-alert';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
@@ -24,6 +29,7 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
@@ -44,6 +50,8 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
+import { useAlert_unstable } from '@fluentui/react-alert';
+import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -56,6 +64,16 @@ import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
+
+export { Alert }
+
+export { alertClassNames }
+
+export { AlertProps }
+
+export { AlertSlots }
+
+export { AlertState }
 
 export { Card }
 
@@ -97,6 +115,8 @@ export { CardSlots }
 
 export { CardState }
 
+export { renderAlert_unstable }
+
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -136,6 +156,10 @@ export { SpinButtonSlots }
 export { SpinButtonSpinState }
 
 export { SpinButtonState }
+
+export { useAlert_unstable }
+
+export { useAlertStyles_unstable }
 
 export { useCard_unstable }
 
