@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Publish react-alert as unstable component",
+  "packageName": "@fluentui/react-components",
+  "email": "rohitpag@microsoft.com",
+  "dependentChangeType": "patch"
+}
