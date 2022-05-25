@@ -9,10 +9,10 @@ export const menuDividerClassNames: SlotClassNames<MenuDividerSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    height: '1px',
     ...shorthands.margin('4px', '-5px', '4px', '-5px'),
     width: 'auto',
-    backgroundColor: tokens.colorNeutralStroke2,
+    backgroundColor: 'transparent',
+    ...shorthands.border('0.5px', 'solid', tokens.colorNeutralStroke2),
   },
 });
 
