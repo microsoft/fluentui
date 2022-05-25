@@ -48,7 +48,7 @@ Prototypes can be found in the following repos for create-react-app and next.js 
 A more detailed prototype has been created in the following repo, which also shows code transforms as a possible
 solution to application
 
-- https://github.com/ling1726/global-context
+- https://github.com/bsunderhus/create-global-context-babel-transformer
 
 ```ts
 import * as React from 'react';
