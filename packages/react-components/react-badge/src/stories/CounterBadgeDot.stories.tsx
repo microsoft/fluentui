@@ -1,13 +1,8 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '../index';
+import { CounterBadge } from '../index';
 
-export const Dot = (args: CounterBadgeProps) => <CounterBadge {...args} />;
-
-Dot.args = {
-  count: 0,
-  dot: true,
-};
+export const Dot = () => <CounterBadge count={0} dot />;
 
 Dot.parameters = {
   docs: {
