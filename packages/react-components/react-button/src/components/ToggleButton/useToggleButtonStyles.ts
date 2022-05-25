@@ -1,4 +1,5 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
@@ -43,14 +44,32 @@ export const useCheckedStyles = makeStyles({
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
+      backgroundColor: 'Highlight',
       ...shorthands.borderColor('Highlight'),
-      color: 'Highlight',
+      color: 'HighlightText',
+      forcedColorAdjust: 'none',
+
+      ':hover': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
+
+      ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
+        color: 'Highlight',
+      },
 
       ':focus': {
         ...shorthands.borderColor('Highlight'),
       },
     },
   },
+  highContrastFocusStyles: createCustomFocusIndicatorStyle({
+    ...shorthands.border('1px', 'solid', 'HighlightText'),
+    outlineColor: 'Highlight',
+  }),
 
   // Appearance variations
   outline: {
