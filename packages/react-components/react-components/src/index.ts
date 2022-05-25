@@ -456,6 +456,7 @@ export type {
 export {
   Slider,
   sliderClassNames,
+  sliderCSSVars,
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,

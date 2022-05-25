@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "export slider var names from top level",
+  "packageName": "@fluentui/react-components",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
