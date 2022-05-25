@@ -25,15 +25,6 @@ const meta: Meta = {
       },
     },
   },
-  decorators: [
-    (Story, context) => {
-      return (
-        <div>
-          <Story />
-        </div>
-      );
-    },
-  ],
 };
 
 export default meta;
