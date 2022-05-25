@@ -56,7 +56,7 @@ var siteInfo = [
   },
   {
     package: '@fluentui/theming-designer',
-    link: './theming-designer/index.html',
+    link: './theming-designer/storybook/index.html',
     icon: 'CheckMark',
     title: 'Theme Designer Example',
   },
