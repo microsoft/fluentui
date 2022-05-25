@@ -4,7 +4,7 @@
 
 - A `TabList` provides single selection from a list of tabs.
 - When a `Tab` is selected, the content associated with the selected tab is displayed and other content is hidden.
-- A `TabList` has options to control how tabs are dispayed:
+- A `TabList` has options to control how tabs are displayed:
   - horizontal or vertical
   - transparent or subtle appearance
   - small or medium size tabs
@@ -19,22 +19,31 @@ You can add an icon to a tab through the `icon` property.
 
 Each `Tab` requires a unique `value`.
 The value is passed as part of the data parameter when a tab is clicked and the `onTabSelect` event is raised.
+The `selectedValue` property allows you to control the selected tab.
 
 ```tsx
-import { TabList, Tab } from '@fluentui/react-components';
+import { SelectTabData, SelectTabEvent, TabList, Tab } from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
-  //show the content associated with the selected tab
+export const TabExample = () => {
+  const [selectedValue, setSelectedValue] = React.useState<TabValue>('conditions');
+
+  const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
+    console.log(`The ${data.value} tab was selected`);
+    setSelectedValue(data.value);
+  };
+
+  return (
+    <TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
+      <Tab value="tab1">First Tab</Tab>
+      <Tab value="tab2" icon={<CalendarMonthRegular />}>
+        Second Tab
+      </Tab>
+      <Tab value="tab3">Third Tab</Tab>
+      <Tab value="tab4">Fourth Tab</Tab>
+    </TabList>
+  );
 };
-
-<TabList onTabSelect={onTabSelect}>
-  <Tab value="tab1">First Tab</Tab>
-  <Tab value="tab2" icon={<CalendarMonthRegular />}>
-    Second Tab
-  </Tab>
-  <Tab value="tab3">Third Tab</Tab>
-  <Tab value="tab4">Fourth Tab</Tab>
-</TabList>;
 ```
 
 ### More information
