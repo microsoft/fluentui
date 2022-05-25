@@ -12,8 +12,8 @@ const typeAwareRules = {
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
   rules: {},
-  overrides: {
+  overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
     ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
-  },
+  ],
 };
