@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Select, SelectProps } from '../index';
+import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
 
     '> label': {
       display: 'block',
-      marginBottom: '2px',
+      marginBottom: tokens.spacingVerticalXXS,
     },
   },
 });

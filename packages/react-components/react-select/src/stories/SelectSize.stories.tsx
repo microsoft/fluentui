@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Select } from '../index';
+import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 
@@ -7,12 +8,12 @@ const useStyles = makeStyles({
   root: {
     maxWidth: '400px',
 
-    '> * + label': { marginTop: '20px' },
+    '> * + label': { marginTop: tokens.spacingVerticalMNudge },
 
     // Stack the label above the field with a 2px gap
     '> label': {
       display: 'block',
-      marginBottom: '2px',
+      marginBottom: tokens.spacingVerticalXXS,
     },
   },
 });
