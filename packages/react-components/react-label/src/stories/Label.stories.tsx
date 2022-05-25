@@ -5,7 +5,7 @@ import { Label } from '../index';
 import descriptionMd from './LabelDescription.md';
 export { Default } from './LabelDefault.stories';
 export { Size } from './LabelSize.stories';
-export { Strong } from './LabelStrong.stories';
+export { Weight } from './LabelWeight.stories';
 export { Disabled } from './LabelDisabled.stories';
 export { Required } from './LabelRequired.stories';
 
