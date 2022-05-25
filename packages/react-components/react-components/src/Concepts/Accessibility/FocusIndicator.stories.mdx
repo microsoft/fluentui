@@ -16,7 +16,12 @@ Instantiates [keyborg](https://github.com/microsoft/keyborg) and add attribute t
 
 ### Styling focus indicators
 
-Both methods are used internally to declare focus indication based on the attribute provided by `useKeyboardNavAttribute`, by default a component on Fluent UI uses `createFocusOutlineStyle` to create a focus indicator with [outline style](https://developer.mozilla.org/en-US/docs/Web/CSS/outline), but in some cases an outline is not the desired style, on those cases `createCustomFocusIndicatorStyle` can be used to add a cusom style with the same mechanisms.
+The default focus indicator used in Fluent UI is an outline. However, in some cases more specific focus indicators are necessary depending on the use case and component design. In order to accommodate these requirements, Fluent UI exports two different utilities to style focus indicators:
+
+1. `createFocusOutlineStyle`
+2. `createCustomFocusIndicatorStyle`
+
+Both of the helper functions are powered using the method described above.
 
 #### createFocusOutlineStyle
 
