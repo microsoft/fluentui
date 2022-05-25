@@ -67,8 +67,18 @@ module.exports = createRule({
 
       /**
        *
+       * `symbol` - standard typescript type kind / type Hello = string
+       * `aliasSymbol` - typescript type kind created via type alias / type HelloAlias = Hello
+       *
+       * Types from imported aliases are resolved in different way, thus one needs to use `aliasSymbol`,
+       *  to get proper type (in our case it's the case of `react-context-selector` )
+       * @typedef {Extract<keyof import('typescript').Type, 'symbol' | 'aliasSymbol'>} TypeProperty
+       */
+
+      /**
+       *
        * @param {{
-          typeProperty: Extract<keyof import('typescript').Type, 'symbol' | 'aliasSymbol'>
+          typeProperty: TypeProperty
           messageId: Parameters<typeof context.report>[0]['messageId']
           fileNameCheck:(fileName:string)=>boolean;
         }} options
