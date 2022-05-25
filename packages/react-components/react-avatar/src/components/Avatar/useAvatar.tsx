@@ -49,7 +49,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       defaultProps: {
         children: <PersonRegular />,
         'aria-hidden': true,
-        id: baseId + '__initials',
       },
     });
   }
