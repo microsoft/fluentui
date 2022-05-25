@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { Checkbox } from '@fluentui/react-checkbox';
+import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 
 export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
@@ -11,8 +11,10 @@ export const ControllingOpenAndClose = () => {
     setOpen(data.open);
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOpen(e.target.checked);
+  const onChange: CheckboxProps['onChange'] = (e: React.ChangeEvent<HTMLInputElement>, { checked }) => {
+    if (typeof checked === 'boolean') {
+      setOpen(checked);
+    }
   };
 
   return (
