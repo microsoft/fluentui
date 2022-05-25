@@ -31,7 +31,6 @@ export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'd
     disabled?: boolean;
     max?: number;
     min?: number;
-    origin?: number;
     size?: 'small' | 'medium';
     step?: number;
     value?: number;

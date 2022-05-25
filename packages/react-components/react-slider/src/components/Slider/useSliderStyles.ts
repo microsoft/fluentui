@@ -20,13 +20,11 @@ const thumbColorVar = `--fui-Slider__thumb--color`;
 
 export const sliderCSSVars = {
   railDirectionVar: `--fui-Slider__rail--direction`,
-  railOffsetVar: `--fui-Slider__rail--offset`,
   railProgressVar: `--fui-Slider__rail--progress`,
   railStepsPercentVar: `--fui-Slider__rail--steps-percent`,
-  thumbPositionVar: `--fui-Slider__thumb--position`,
 };
 
-const { railDirectionVar, railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar } = sliderCSSVars;
+const { railDirectionVar, railStepsPercentVar, railProgressVar } = sliderCSSVars;
 
 /**
  * Styles for the root slot
@@ -126,11 +124,9 @@ const useRailStyles = makeStyles({
     // Background gradient represents the progress of the slider
     backgroundImage: `linear-gradient(
       var(${railDirectionVar}),
-      var(${railColorVar}) 0%,
-      var(${railColorVar}) var(${railOffsetVar}),
-      var(${progressColorVar}) var(${railOffsetVar}),
-      var(${progressColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar})),
-      var(${railColorVar}) calc(var(${railOffsetVar}) + var(${railProgressVar}))
+      var(${progressColorVar}) 0%,
+      var(${progressColorVar}) var(${railProgressVar}),
+      var(${railColorVar}) var(${railProgressVar})
     )`,
     outlineWidth: '1px',
     outlineStyle: 'solid',
@@ -203,11 +199,11 @@ const useThumbStyles = makeStyles({
     },
   },
   horizontal: {
-    left: `var(${thumbPositionVar})`,
+    left: `var(${railProgressVar})`,
   },
   vertical: {
     transform: 'translateY(50%)',
-    bottom: `var(${thumbPositionVar})`,
+    bottom: `var(${railProgressVar})`,
   },
 });
 
