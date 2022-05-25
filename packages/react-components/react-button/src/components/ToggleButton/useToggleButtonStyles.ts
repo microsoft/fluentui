@@ -74,6 +74,7 @@ export const useCheckedStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackgroundSelected,
+    ...shorthands.borderWidth(tokens.strokeWidthThicker),
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
@@ -82,6 +83,10 @@ export const useCheckedStyles = makeStyles({
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
+
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    }),
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
