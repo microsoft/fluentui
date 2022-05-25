@@ -26,12 +26,7 @@ describe('Text', () => {
     const textElement = getByText('Test');
     expect(textElement.nodeName).toBe('SPAN');
     expect(textElement).toHaveStyle(`
-      font-family: var(--fontFamilyBase);
-      font-size: var(--fontSizeBase300);
-      font-weight: var(--fontWeightRegular);
-      line-height: var(--lineHeightBase300);
       display: inline;
-      text-align: start;
       white-space: normal;
       overflow-x: visible;
       overflow-y: visible;

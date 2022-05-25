@@ -14,9 +14,9 @@ export type TextProps = ComponentProps<TextSlots> & {
   /**
    * Aligns text based on the parent container.
    *
-   * @default start
+   * @default 'none'
    */
-  align?: 'start' | 'center' | 'end' | 'justify';
+  align?: 'none' | 'start' | 'center' | 'end' | 'justify';
 
   /**
    * Applies a block display for the content.
@@ -28,9 +28,9 @@ export type TextProps = ComponentProps<TextSlots> & {
   /**
    * Applies the font family to the content.
    *
-   * @default base
+   * @default 'none'
    */
-  font?: 'base' | 'monospace' | 'numeric';
+  font?: 'none' | 'base' | 'monospace' | 'numeric';
 
   /**
    * Applies the italic font style to the content.
@@ -42,9 +42,9 @@ export type TextProps = ComponentProps<TextSlots> & {
   /**
    * Applies font size and line height based on the theme tokens.
    *
-   * @default 300
+   * @default 'none'
    */
-  size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+  size?: 'none' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
 
   /**
    * Applies the strikethrough text decoration to the content.
@@ -71,9 +71,9 @@ export type TextProps = ComponentProps<TextSlots> & {
   /**
    * Applies font weight to the content.
    *
-   * @default regular
+   * @default 'none'
    */
-  weight?: 'regular' | 'medium' | 'semibold';
+  weight?: 'none' | 'regular' | 'medium' | 'semibold';
 
   /**
    * Wraps the text content on white spaces.

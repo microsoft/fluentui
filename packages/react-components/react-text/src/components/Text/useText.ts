@@ -16,15 +16,15 @@ export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>):
   const as = props.as ?? 'span';
 
   const state: TextState = {
-    align: align ?? 'start',
+    align: align ?? 'none',
     block: block ?? false,
-    font: font ?? 'base',
+    font: font ?? 'none',
     italic: italic ?? false,
-    size: size ?? 300,
+    size: size ?? 'none',
     strikethrough: strikethrough ?? false,
     truncate: truncate ?? false,
     underline: underline ?? false,
-    weight: weight ?? 'regular',
+    weight: weight ?? 'none',
     wrap: wrap ?? true,
 
     components: { root: 'span' },
