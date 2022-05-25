@@ -21,6 +21,13 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
+export const sliderCSSVars: {
+    sliderDirectionVar: string;
+    sliderProgressVar: string;
+    sliderStepsPercentVar: string;
+};
+
+// @public (undocumented)
 export type SliderOnChangeData = {
     value: number;
 };

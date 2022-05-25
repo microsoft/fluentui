@@ -4,7 +4,7 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { sliderCSSVars } from './useSliderStyles';
 import type { SliderState, SliderProps } from './Slider.types';
 
-const { railStepsPercentVar, railProgressVar, railDirectionVar } = sliderCSSVars;
+const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
@@ -35,9 +35,9 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
   });
 
   const rootVariables = {
-    [railDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
-    [railStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
-    [railProgressVar]: `${valuePercent}%`,
+    [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
+    [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
+    [sliderProgressVar]: `${valuePercent}%`,
   };
 
   // Root props
