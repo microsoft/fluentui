@@ -11,7 +11,6 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.margin('4px', '-5px', '4px', '-5px'),
     width: 'auto',
-    backgroundColor: 'transparent',
     ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStroke2),
   },
 });
