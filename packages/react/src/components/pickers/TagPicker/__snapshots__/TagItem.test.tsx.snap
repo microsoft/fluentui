@@ -131,7 +131,7 @@ exports[`TagItem accepts title override 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -376,7 +376,7 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -597,7 +597,7 @@ exports[`TagItem renders correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;

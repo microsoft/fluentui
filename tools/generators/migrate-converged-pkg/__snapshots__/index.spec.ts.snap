@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`migrate-converged-pkg generator e2e config should setup e2e if present 1`] = `
-"// workaround for https://github.com/cypress-io/cypress/issues/8599
-import '@fluentui/scripts/cypress/support';
-"
-`;
-
 exports[`migrate-converged-pkg generator jest config updates should setup new local jest config which extends from root  1`] = `
 "const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 const path = require('path');

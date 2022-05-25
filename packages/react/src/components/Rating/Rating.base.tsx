@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { classNamesFunction, css, format, divProperties, getNativeProps } from '../../Utilities';
+import { classNamesFunction, css, format, divProperties, getNativeProps, useFocusRects } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { RatingSize } from './Rating.types';
-import { useId, useWarnings, useControllableValue } from '@fluentui/react-hooks';
+import { useId, useWarnings, useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import type { IRatingProps, IRatingStyleProps, IRatingStyles, IRating, IRatingStarProps } from './Rating.types';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
@@ -75,7 +75,7 @@ const getStarId = (id: string, starNum: number) => {
 };
 
 export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRef<HTMLDivElement, IRatingProps>(
-  (props, ref) => {
+  (props, forwardedRef) => {
     const id = useId('Rating');
     const labelId = useId('RatingLabel');
     const {
@@ -105,6 +105,10 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
     useDebugWarnings(props);
 
     useComponentRef(props.componentRef, displayRating);
+
+    const rootRef = React.useRef<HTMLDivElement | null>(null);
+    const mergedRootRefs = useMergedRefs(rootRef, forwardedRef);
+    useFocusRects(rootRef);
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
 
@@ -172,7 +176,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
 
     return (
       <div
-        ref={ref}
+        ref={mergedRootRefs}
         className={css('ms-Rating-star', classNames.root, rootSizeClass)}
         aria-label={!readOnly ? normalModeAriaLabel : undefined}
         id={id}

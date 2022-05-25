@@ -1,431 +1,442 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
-<div
-  className=
-      testClassName
-      ms-ChoiceFieldGroup
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-      }
->
+<div>
   <div
-    onFocus={[Function]}
-    role="radiogroup"
+    class=
+        testClassName
+        ms-ChoiceFieldGroup
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
   >
     <div
-      className="ms-ChoiceFieldGroup-flexContainer"
+      role="radiogroup"
     >
       <div
-        className=
-            ms-ChoiceField
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
-            }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
-            }
+        class="ms-ChoiceFieldGroup-flexContainer"
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            autoFocus={true}
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            data-automation-id="auto1"
-            id="ChoiceGroup0-1"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
+          <div
+            class=
+                ms-ChoiceField-wrapper
+                is-inFocus
+                .ms-Fabric--isFocusVisible & {
+                  outline: transparent;
                   position: relative;
-                  user-select: none;
-                  vertical-align: top;
                 }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
+                .ms-Fabric--isFocusVisible &::-moz-focus-inner {
+                  border: 0px;
                 }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
+                .ms-Fabric--isFocusVisible &:after {
+                  border: 1px solid #605e5c;
+                  bottom: -2px;
                   content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
+                  left: -2px;
+                  pointer-events: none;
                   position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
+                  right: -2px;
+                  top: -2px;
                 }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+                  border-color: WindowText;
+                  border-width: 2px;
                 }
-            htmlFor="ChoiceGroup0-1"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-1"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              data-automation-id="auto1"
+              id="ChoiceGroup0-1"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-1"
             >
-              1
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-1"
+              >
+                1
+              </span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className=
-            ms-ChoiceField
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
-            }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
-            }
-      >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            id="ChoiceGroup0-2"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
-                  position: relative;
-                  user-select: none;
-                  vertical-align: top;
-                }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
-                  position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
-                }
-            htmlFor="ChoiceGroup0-2"
+          <div
+            class="ms-ChoiceField-wrapper"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-2"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              id="ChoiceGroup0-2"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-2"
             >
-              2
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-2"
+              >
+                2
+              </span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className=
-            ms-ChoiceField
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
-            }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
-            }
-      >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            id="ChoiceGroup0-3"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
-                  position: relative;
-                  user-select: none;
-                  vertical-align: top;
-                }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
-                  position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
-                }
-            htmlFor="ChoiceGroup0-3"
+          <div
+            class="ms-ChoiceField-wrapper"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-3"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              id="ChoiceGroup0-3"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-3"
             >
-              3
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-3"
+              >
+                3
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </div>
@@ -434,465 +445,476 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 `;
 
 exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
-<div
-  className=
-      testClassName
-      ms-ChoiceFieldGroup
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-      }
->
+<div>
   <div
-    aria-labelledby="ChoiceGroupLabel1"
-    onFocus={[Function]}
-    role="radiogroup"
+    class=
+        testClassName
+        ms-ChoiceFieldGroup
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-          &::after {
-            color: #a4262c;
-            content: ' *';
-            padding-right: 12px;
-          }
-      id="ChoiceGroupLabel1"
-    >
-      test label
-    </label>
     <div
-      className="ms-ChoiceFieldGroup-flexContainer"
+      aria-labelledby="ChoiceGroupLabel1"
+      role="radiogroup"
     >
-      <div
-        className=
-            ms-ChoiceField
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
+              box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              display: flex;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
+              font-weight: 600;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
+            &::after {
+              color: #a4262c;
+              content: ' *';
+              padding-right: 12px;
             }
+        id="ChoiceGroupLabel1"
+      >
+        test label
+      </label>
+      <div
+        class="ms-ChoiceFieldGroup-flexContainer"
       >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            autoFocus={true}
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            data-automation-id="auto1"
-            id="ChoiceGroup0-1"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
+          <div
+            class=
+                ms-ChoiceField-wrapper
+                is-inFocus
+                .ms-Fabric--isFocusVisible & {
+                  outline: transparent;
                   position: relative;
-                  user-select: none;
-                  vertical-align: top;
                 }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
+                .ms-Fabric--isFocusVisible &::-moz-focus-inner {
+                  border: 0px;
                 }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
+                .ms-Fabric--isFocusVisible &:after {
+                  border: 1px solid #605e5c;
+                  bottom: -2px;
                   content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
+                  left: -2px;
+                  pointer-events: none;
                   position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
+                  right: -2px;
+                  top: -2px;
                 }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+                  border-color: WindowText;
+                  border-width: 2px;
                 }
-            htmlFor="ChoiceGroup0-1"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-1"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              data-automation-id="auto1"
+              id="ChoiceGroup0-1"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-1"
             >
-              1
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-1"
+              >
+                1
+              </span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className=
-            ms-ChoiceField
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
-            }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
-            }
-      >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            id="ChoiceGroup0-2"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
-                  position: relative;
-                  user-select: none;
-                  vertical-align: top;
-                }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
-                  position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
-                }
-            htmlFor="ChoiceGroup0-2"
+          <div
+            class="ms-ChoiceField-wrapper"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-2"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              id="ChoiceGroup0-2"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-2"
             >
-              2
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-2"
+              >
+                2
+              </span>
+            </label>
+          </div>
         </div>
-      </div>
-      <div
-        className=
-            ms-ChoiceField
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              border: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-top: 8px;
-              min-height: 26px;
-              position: relative;
-            }
-            & .ms-ChoiceFieldLabel {
-              display: inline-block;
-              padding-left: 26px;
-            }
-      >
         <div
-          className="ms-ChoiceField-wrapper"
+          class=
+              ms-ChoiceField
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                align-items: center;
+                border: none;
+                box-sizing: border-box;
+                color: #323130;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-top: 8px;
+                min-height: 26px;
+                position: relative;
+              }
+              & .ms-ChoiceFieldLabel {
+                display: inline-block;
+                padding-left: 26px;
+              }
         >
-          <input
-            checked={false}
-            className=
-                ms-ChoiceField-input
-                {
-                  height: 100%;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  opacity: 0;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
-                  width: 100%;
-                }
-            id="ChoiceGroup0-3"
-            name="ChoiceGroup0"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            required={true}
-            type="radio"
-          />
-          <label
-            className=
-                ms-ChoiceField-field
-                {
-                  cursor: pointer;
-                  display: inline-block;
-                  margin-top: 0px;
-                  min-height: 20px;
-                  position: relative;
-                  user-select: none;
-                  vertical-align: top;
-                }
-                &:hover .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:hover:before {
-                  border-color: #323130;
-                }
-                &:hover:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:focus .ms-ChoiceFieldLabel {
-                  color: #201f1e;
-                }
-                &:focus:before {
-                  border-color: #323130;
-                }
-                &:focus:after {
-                  background-color: #605e5c;
-                  content: "";
-                  height: 10px;
-                  left: 5px;
-                  top: 5px;
-                  transition-property: background-color;
-                  width: 10px;
-                }
-                &:before {
-                  background-color: #ffffff;
-                  border-color: #323130;
-                  border-radius: 50%;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  content: "";
-                  display: inline-block;
-                  font-weight: normal;
-                  height: 20px;
-                  left: 0px;
-                  position: absolute;
-                  top: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-color;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 20px;
-                }
-                &:after {
-                  border-radius: 50%;
-                  box-sizing: border-box;
-                  content: "";
-                  height: 0px;
-                  left: 10px;
-                  position: absolute;
-                  right: 0px;
-                  transition-duration: 200ms;
-                  transition-property: border-width;
-                  transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
-                }
-            htmlFor="ChoiceGroup0-3"
+          <div
+            class="ms-ChoiceField-wrapper"
           >
-            <span
-              className="ms-ChoiceFieldLabel"
-              id="ChoiceGroupLabel1-3"
+            <input
+              class=
+                  ms-ChoiceField-input
+                  {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    opacity: 0;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
+                  }
+              id="ChoiceGroup0-3"
+              name="ChoiceGroup0"
+              required=""
+              type="radio"
+            />
+            <label
+              class=
+                  ms-ChoiceField-field
+                  {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin-top: 0px;
+                    min-height: 20px;
+                    position: relative;
+                    user-select: none;
+                    vertical-align: top;
+                  }
+                  &:hover .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:hover:before {
+                    border-color: #323130;
+                  }
+                  &:hover:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:focus .ms-ChoiceFieldLabel {
+                    color: #201f1e;
+                  }
+                  &:focus:before {
+                    border-color: #323130;
+                  }
+                  &:focus:after {
+                    background-color: #605e5c;
+                    content: "";
+                    height: 10px;
+                    left: 5px;
+                    top: 5px;
+                    transition-property: background-color;
+                    width: 10px;
+                  }
+                  &:before {
+                    background-color: #ffffff;
+                    border-color: #323130;
+                    border-radius: 50%;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    content: "";
+                    display: inline-block;
+                    font-weight: normal;
+                    height: 20px;
+                    left: 0px;
+                    position: absolute;
+                    top: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 20px;
+                  }
+                  &:after {
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
+                  }
+              for="ChoiceGroup0-3"
             >
-              3
-            </span>
-          </label>
+              <span
+                class="ms-ChoiceFieldLabel"
+                id="ChoiceGroupLabel1-3"
+              >
+                3
+              </span>
+            </label>
+          </div>
         </div>
       </div>
     </div>

@@ -410,6 +410,18 @@ describe('Dropdown', () => {
       expect(queryByRole('listbox')).toBeFalsy();
     });
 
+    it('closes when dismissMenu() is called', () => {
+      const dropdown = React.createRef<IDropdown>();
+      const { getByRole, queryByRole } = render(<Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} />);
+
+      userEvent.click(getByRole('combobox'));
+      expect(queryByRole('listbox')).toBeTruthy();
+
+      dropdown.current?.dismissMenu();
+
+      expect(queryByRole('listbox')).toBeFalsy();
+    });
+
     it('uses item title attribute if provided', () => {
       const options: IDropdownOption[] = [{ key: 'a', text: 'a', title: 'b' }];
       const { getByRole } = render(<Dropdown options={options} />);

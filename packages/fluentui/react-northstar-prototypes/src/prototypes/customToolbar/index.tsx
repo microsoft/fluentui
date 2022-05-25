@@ -57,7 +57,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
   if (themeName === 'teamsDark') {
     theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
   } else if (themeName === 'teamsHighContrast') {
-    theme = mergeThemes(teamsHighContrastTheme, darkThemeOverrides, highContrastThemeOverrides);
+    theme = mergeThemes(mergeThemes(teamsHighContrastTheme, darkThemeOverrides), highContrastThemeOverrides);
   }
 
   React.useEffect(() => {

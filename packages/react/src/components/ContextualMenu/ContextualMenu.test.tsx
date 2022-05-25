@@ -4,7 +4,6 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
-import { CalloutContent } from '../Callout/CalloutContent';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
@@ -39,17 +38,16 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
-    targetComponent: CalloutContent,
+    getTargetElement: (result, attr) =>
+      attr === 'className'
+        ? // className goes on a FocusZone inside the callout
+          result.baseElement.querySelector('[data-focuszone-id]')!
+        : // generally the CalloutContent's root element gets native props and ref
+          (result.baseElement.getElementsByClassName('ms-Callout-container')[0] as HTMLElement),
     requiredProps: {
       hidden: false,
       items: [{ text: 'test', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }],
     },
-    // TODO: ContextualMenu handles ref but doesn't pass:
-    // expect(rootRef.current?.getAttribute).toBeDefined();
-    //
-    // This test failure likely stems from Callout as it experiences the same error. The failing test should be
-    // further investigated and re-enabled in a future pull request.
-    disabledTests: ['component-handles-ref', 'component-handles-classname'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {

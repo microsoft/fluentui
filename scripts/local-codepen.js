@@ -5,6 +5,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 const execSync = require('./exec-sync');
 const { findGitRoot } = require('./monorepo/index');
+const chalk = require('chalk');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
@@ -34,12 +35,9 @@ if (fs.existsSync(configPath)) {
   server.listen(port, '127.0.0.1', async () => {
     const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
     console.log(`Starting server on http://${url}`);
-    console.log(
-      `Add this to CodePen:
-  <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script type="text/javascript" src="${url}/fluentui-react.js"></script>
-`,
-    );
+    // Put the script tag in a big yellow box so it's easier to find
+    const scriptTag = `  <script src="${url}/fluentui-react.js"></script>  `;
+    const message = ['', '  Replace the @fluentui/react script tag in your codepen with this:', '', scriptTag, ''];
+    console.log(chalk.bgYellowBright.bold(message.map(line => line.padEnd(scriptTag.length)).join('\n')));
   });
 }

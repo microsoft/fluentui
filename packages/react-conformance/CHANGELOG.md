@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Mar 2022 07:39:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.13.0)
+
+Tue, 29 Mar 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.12.0..@fluentui/react-conformance_v0.13.0)
+
+### Minor changes
+
+- BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs ([PR #22009](https://github.com/microsoft/fluentui/pull/22009) by elcraig@microsoft.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.12.0)
 

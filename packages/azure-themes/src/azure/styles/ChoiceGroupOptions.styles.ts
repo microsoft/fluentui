@@ -37,6 +37,8 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
+              width: StyleConstants.choiceGroupDimensions,
+              height: StyleConstants.choiceGroupDimensions,
               borderColor: semanticColors.bodyText,
             },
             checked && {
@@ -57,6 +59,8 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ':after': [
             {
               borderColor: extendedSemanticColors.checkboxBorderChecked,
+              top: 4,
+              left: 4,
             },
             checked &&
               disabled && {
@@ -78,6 +82,8 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                 ':after': {
                   borderColor: extendedSemanticColors.checkboxBorderChecked,
                   backgroundColor: extendedSemanticColors.choiceGroupUncheckedDotHover,
+                  top: 4,
+                  left: 4,
                 },
               },
             },

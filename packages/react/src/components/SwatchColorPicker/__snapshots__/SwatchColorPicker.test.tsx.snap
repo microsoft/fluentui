@@ -109,7 +109,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -284,7 +284,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -459,7 +459,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -634,7 +634,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -813,7 +813,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -988,7 +988,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -1163,7 +1163,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -1338,7 +1338,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -1517,7 +1517,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -1692,7 +1692,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -1867,7 +1867,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -2042,7 +2042,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;

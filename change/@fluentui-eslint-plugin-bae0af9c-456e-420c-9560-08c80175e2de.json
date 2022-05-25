@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: new eslint rule: `ban-context-export`",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "none"
+}

@@ -216,12 +216,8 @@ export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> 
 // context, the resulting theme takes this shape.
 export interface ThemePrepared<ThemeStylesProps extends Record<string, any> = any> {
   siteVariables: SiteVariablesPrepared;
-  componentVariables: {
-    [key in keyof ThemeComponentVariablesPrepared<ThemeStylesProps>]: ComponentVariablesPrepared;
-  };
-  componentStyles: {
-    [key in keyof ThemeComponentStylesPrepared<ThemeStylesProps>]: ComponentSlotStylesPrepared;
-  };
+  componentVariables: ThemeComponentVariablesPrepared<ThemeStylesProps>;
+  componentStyles: ThemeComponentStylesPrepared<ThemeStylesProps>;
   fontFaces: FontFaces;
   staticStyles: StaticStyles;
   animations: Record<string, ThemeAnimation>;

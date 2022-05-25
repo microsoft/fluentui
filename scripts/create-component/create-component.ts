@@ -8,7 +8,7 @@ import * as path from 'path';
 import { execSync } from 'child_process';
 import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import chalk from 'chalk';
-import { names } from '@nrwl/devkit';
+import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
 //#endregion
 
@@ -69,15 +69,15 @@ module.exports = (plop: NodePlopAPI) => {
 
     actions: (answers: Answers): Actions => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
+      const packageMetadata = getProjectMetadata({ root, name: answers.packageNpmName });
 
       const packageName = answers.packageNpmName.replace('@fluentui/', '');
-      const packagePath = path.join(root, 'packages', packageName);
-      const componentPath = path.join(packagePath, 'src/components', answers.componentName);
+      const componentPath = path.join(packageMetadata.sourceRoot, 'components', answers.componentName);
       const componentNames = names(answers.componentName);
       const data: Data = {
         ...answers,
         packageName,
-        packagePath,
+        packagePath: packageMetadata.root,
         componentPath,
         componentNames,
       };
@@ -87,7 +87,7 @@ module.exports = (plop: NodePlopAPI) => {
         {
           // Copy component templates
           type: 'addMany',
-          destination: packagePath,
+          destination: data.packagePath,
           globOptions,
           data,
           skipIfExists: true,
@@ -149,3 +149,11 @@ const appendToPackageIndex = (data: Data): string => {
   return `Package ${packageName} index.ts already contains reference to ${componentName}`;
 };
 //#endregion
+
+function getProjectMetadata(options: { root: string; name: string }) {
+  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
+  );
+
+  return nxWorkspace.projects[options.name];
+}

@@ -1,1707 +1,1663 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField snapshots renders correctly 1`] = `
-<div
-  className=
-      ms-TextField
-      testClassName
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className="ms-TextField-wrapper"
+    class=
+        ms-TextField
+        testClassName
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
-            display: flex;
-            flex-direction: row;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-          }
-          &:hover {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            border-color: Highlight;
-            forced-color-adjust: none;
-          }
+      class="ms-TextField-wrapper"
     >
-      <input
-        aria-invalid={false}
-        aria-labelledby="TextFieldLabel2"
-        className=
-            ms-TextField-field
-            testInputClassName
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 0;
-              text-overflow: ellipsis;
-              width: 100%;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
+      >
+        <input
+          aria-invalid="false"
+          aria-labelledby="TextFieldLabel2"
+          class=
+              ms-TextField-field
+              testInputClassName
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          type="text"
+          value=""
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`TextField snapshots renders multiline correctly with errorMessage 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--underlined
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className=
-        ms-TextField-wrapper
+    class=
+        ms-TextField
+        ms-TextField--underlined
         {
-          border-bottom: 1px solid #a4262c;
-          display: flex;
-          width: 100%;
-        }
-        &:hover {
-          border-bottom-color: #a4262c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-          -ms-high-contrast-adjust: none;
-          border-bottom-color: Highlight;
-          forced-color-adjust: none;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
         }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            height: 32px;
-            line-height: 22px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 8px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 12px;
-            padding-right: 0px;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
+      class=
+          ms-TextField-wrapper
           {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: none;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
+            border-bottom: 1px solid #a4262c;
             display: flex;
-            flex-direction: row;
-            flex: 1 1 0px;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            text-align: left;
+            width: 100%;
           }
           &:hover {
-            border-color: #323130;
+            border-bottom-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
-            border-color: Highlight;
+            border-bottom-color: Highlight;
             forced-color-adjust: none;
           }
     >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldPrefix3"
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test prefix
-        </span>
-      </div>
-      <input
-        aria-describedby="TextFieldDescription1"
-        aria-invalid={true}
-        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
-        className=
-            ms-TextField-field
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
+              height: 32px;
+              line-height: 22px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 8px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 12px;
+              padding-right: 0px;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              flex: 1 1 0px;
+              height: 32px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
               text-align: left;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className=
-            ms-TextField-suffix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldSuffix4"
       >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
+        <div
+          class=
+              ms-TextField-prefix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldPrefix3"
         >
-          test suffix
-        </span>
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test prefix
+          </span>
+        </div>
+        <input
+          aria-describedby="TextFieldDescription1"
+          aria-invalid="true"
+          aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
+          class=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-align: left;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          type="text"
+          value=""
+        />
+        <div
+          class=
+              ms-TextField-suffix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldSuffix4"
+        >
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test suffix
+          </span>
+        </div>
       </div>
     </div>
+    <span
+      id="TextFieldDescription1"
+    >
+      <div
+        role="alert"
+      />
+    </span>
   </div>
-  <span
-    id="TextFieldDescription1"
-  >
-    <div
-      role="alert"
-    />
-  </span>
 </div>
 `;
 
 exports[`TextField snapshots renders multiline correctly with props affecting styling 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--underlined
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className=
-        ms-TextField-wrapper
+    class=
+        ms-TextField
+        ms-TextField--underlined
         {
-          border-bottom: 1px solid #a4262c;
-          display: flex;
-          width: 100%;
-        }
-        &:hover {
-          border-bottom-color: #a4262c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-          -ms-high-contrast-adjust: none;
-          border-bottom-color: Highlight;
-          forced-color-adjust: none;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
         }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            height: 32px;
-            line-height: 22px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 8px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 12px;
-            padding-right: 0px;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
+      class=
+          ms-TextField-wrapper
           {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: none;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
+            border-bottom: 1px solid #a4262c;
             display: flex;
-            flex-direction: row;
-            flex: 1 1 0px;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            text-align: left;
+            width: 100%;
           }
           &:hover {
-            border-color: #323130;
+            border-bottom-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
-            border-color: Highlight;
+            border-bottom-color: Highlight;
             forced-color-adjust: none;
           }
     >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldPrefix3"
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test prefix
-        </span>
-      </div>
-      <input
-        aria-describedby="TextFieldDescription1"
-        aria-invalid={true}
-        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
-        className=
-            ms-TextField-field
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
+              height: 32px;
+              line-height: 22px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 8px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 12px;
+              padding-right: 0px;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              flex: 1 1 0px;
+              height: 32px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
               text-align: left;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className=
-            ms-TextField-suffix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldSuffix4"
       >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
+        <div
+          class=
+              ms-TextField-prefix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldPrefix3"
         >
-          test suffix
-        </span>
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test prefix
+          </span>
+        </div>
+        <input
+          aria-describedby="TextFieldDescription1"
+          aria-invalid="true"
+          aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
+          class=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-align: left;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          type="text"
+          value=""
+        />
+        <div
+          class=
+              ms-TextField-suffix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldSuffix4"
+        >
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test suffix
+          </span>
+        </div>
       </div>
     </div>
+    <span
+      id="TextFieldDescription1"
+    >
+      <div
+        role="alert"
+      />
+    </span>
   </div>
-  <span
-    id="TextFieldDescription1"
-  >
-    <div
-      role="alert"
-    />
-  </span>
 </div>
 `;
 
 exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--multiline
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className="ms-TextField-wrapper"
+    class=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
-            display: flex;
-            flex-direction: row;
-            height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            min-height: 60px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-          }
-          &:hover {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            border-color: Highlight;
-            forced-color-adjust: none;
-          }
+      class="ms-TextField-wrapper"
     >
-      <textarea
-        aria-invalid={false}
-        aria-labelledby="TextFieldLabel2"
-        className=
-            ms-TextField-field
-            ms-TextField--unresizable
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              flex-grow: 1;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              line-height: 17px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-height: inherit;
-              min-width: 0px;
-              outline: 0px;
-              overflow: auto;
-              padding-bottom: 6px;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 6px;
-              resize: none;
-              text-overflow: ellipsis;
-              width: 100%;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        value=""
-      />
+      >
+        <textarea
+          aria-invalid="false"
+          aria-labelledby="TextFieldLabel2"
+          class=
+              ms-TextField-field
+              ms-TextField--unresizable
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-height: inherit;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 6px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 6px;
+                resize: none;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`TextField snapshots renders multiline resizable correctly 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--multiline
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className="ms-TextField-wrapper"
+    class=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
-            display: flex;
-            flex-direction: row;
-            height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            min-height: 60px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-          }
-          &:hover {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            border-color: Highlight;
-            forced-color-adjust: none;
-          }
+      class="ms-TextField-wrapper"
     >
-      <textarea
-        aria-invalid={false}
-        aria-labelledby="TextFieldLabel2"
-        className=
-            ms-TextField-field
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              flex-grow: 1;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              line-height: 17px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-height: inherit;
-              min-width: 0px;
-              outline: 0px;
-              overflow: auto;
-              padding-bottom: 6px;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 6px;
-              text-overflow: ellipsis;
-              width: 100%;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        value=""
-      />
+      >
+        <textarea
+          aria-invalid="false"
+          aria-labelledby="TextFieldLabel2"
+          class=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-height: inherit;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 6px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`TextField snapshots renders multiline with placeholder correctly 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--multiline
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className="ms-TextField-wrapper"
+    class=
+        ms-TextField
+        ms-TextField--multiline
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
   >
-    <label
-      className=
-          ms-Label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
-            display: flex;
-            flex-direction: row;
-            height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            min-height: 60px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-          }
-          &:hover {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            border-color: Highlight;
-            forced-color-adjust: none;
-          }
+      class="ms-TextField-wrapper"
     >
-      <textarea
-        aria-invalid={false}
-        aria-labelledby="TextFieldLabel2"
-        className=
-            ms-TextField-field
+      <label
+        class=
+            ms-Label
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              flex-grow: 1;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              line-height: 17px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-height: inherit;
-              min-width: 0px;
-              outline: 0px;
-              overflow: auto;
-              padding-bottom: 6px;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 6px;
-              text-overflow: ellipsis;
-              width: 100%;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
             }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: auto;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              min-height: 60px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        placeholder="test placeholder"
-        value=""
-      />
+      >
+        <textarea
+          aria-invalid="false"
+          aria-labelledby="TextFieldLabel2"
+          class=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                flex-grow: 1;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 17px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-height: inherit;
+                min-width: 0px;
+                outline: 0px;
+                overflow: auto;
+                padding-bottom: 6px;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 6px;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          placeholder="test placeholder"
+        />
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`TextField snapshots renders with reveal password button 1`] = `
-<div
-  className=
-      ms-TextField
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className="ms-TextField-wrapper"
+    class=
+        ms-TextField
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+        }
   >
     <div
-      className=
-          ms-TextField-fieldGroup
-          {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: 1px solid #605e5c;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
-            display: flex;
-            flex-direction: row;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-          }
-          &:hover {
-            border-color: #323130;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            border-color: Highlight;
-            forced-color-adjust: none;
-          }
+      class="ms-TextField-wrapper"
     >
-      <input
-        aria-invalid={false}
-        className=
-            ms-TextField-field
+      <div
+        class=
+            ms-TextField-fieldGroup
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #605e5c;
               box-shadow: none;
               box-sizing: border-box;
-              color: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              height: 32px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 0;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
-            }
-            &:hover {
-              outline: 0px;
-            }
-            &::-ms-clear {
-              display: none;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="password"
-        value=""
-      />
-      <button
-        aria-pressed={false}
-        className=
-            ms-TextField-reveal
-            ms-Button
-            ms-Button--icon
-            {
-              background-color: transparent;
-              border: none;
-              color: #0078d4;
-              height: 30px;
-              outline: transparent;
               padding-bottom: 0px;
-              padding-left: 4px;
-              padding-right: 4px;
+              padding-left: 0px;
+              padding-right: 0px;
               padding-top: 0px;
               position: relative;
-              width: 32px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 2px;
-              content: "";
-              left: 2px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 2px;
-              top: 2px;
-              z-index: 1;
             }
             &:hover {
-              background-color: #f3f2f1;
-              color: #106ebe;
-              outline: 0px;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-color: Highlight;
-              color: Highlight;
+              forced-color-adjust: none;
             }
-            &:focus {
-              outline: 0px;
-            }
-        onClick={[Function]}
-        type="button"
       >
-        <span
-          className=
-
+        <input
+          aria-invalid="false"
+          class=
+              ms-TextField-field
               {
-                align-items: center;
-                display: flex;
-                height: 100%;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-overflow: ellipsis;
+                width: 100%;
               }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          type="password"
+          value=""
+        />
+        <button
+          aria-pressed="false"
+          class=
+              ms-TextField-reveal
+              ms-Button
+              ms-Button--icon
+              {
+                background-color: transparent;
+                border: none;
+                color: #0078d4;
+                height: 30px;
+                outline: transparent;
+                padding-bottom: 0px;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-top: 0px;
+                position: relative;
+                width: 32px;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 2px;
+                content: "";
+                left: 2px;
+                outline: 1px solid #605e5c;
+                position: absolute;
+                right: 2px;
+                top: 2px;
+                z-index: 1;
+              }
+              &:hover {
+                background-color: #f3f2f1;
+                color: #106ebe;
+                outline: 0px;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:focus {
+                outline: 0px;
+              }
+          type="button"
         >
-          <i
-            aria-hidden={true}
-            className=
+          <span
+            class=
 
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  bottom: 6px;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons-1";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  line-height: 18px;
-                  margin-bottom: 0px;
-                  margin-left: 4px;
-                  margin-right: 4px;
-                  margin-top: 0px;
-                  pointer-events: none;
-                  right: 8px;
-                  speak: none;
-                  top: auto;
+                  align-items: center;
+                  display: flex;
+                  height: 100%;
                 }
-            data-icon-name="RedEye"
           >
-            
-          </i>
-        </span>
-      </button>
+            <i
+              aria-hidden="true"
+              class=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    bottom: 6px;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons-1";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 18px;
+                    margin-bottom: 0px;
+                    margin-left: 4px;
+                    margin-right: 4px;
+                    margin-top: 0px;
+                    pointer-events: none;
+                    right: 8px;
+                    speak: none;
+                    top: auto;
+                  }
+              data-icon-name="RedEye"
+            >
+              
+            </i>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
 `;
 
 exports[`TextField snapshots should respect user component and subcomponent styling 1`] = `
-<div
-  className=
-      ms-TextField
-      ms-TextField--underlined
-      root-testClassName
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-      }
->
+<div>
   <div
-    className=
-        ms-TextField-wrapper
+    class=
+        ms-TextField
+        ms-TextField--underlined
+        root-testClassName
         {
-          border-bottom: 1px solid #a4262c;
-          display: flex;
-          width: 100%;
-        }
-        &:hover {
-          border-bottom-color: #a4262c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-          -ms-high-contrast-adjust: none;
-          border-bottom-color: Highlight;
-          forced-color-adjust: none;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
         }
   >
-    <label
-      className=
-          ms-Label
-          label-testClassName
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            height: 32px;
-            line-height: 22px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 8px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 12px;
-            padding-right: 0px;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="TextField0"
-      id="TextFieldLabel2"
-    >
-      Label
-    </label>
     <div
-      className=
-          ms-TextField-fieldGroup
+      class=
+          ms-TextField-wrapper
           {
-            align-items: stretch;
-            background: #ffffff;
-            border-radius: 2px;
-            border: none;
-            box-shadow: none;
-            box-sizing: border-box;
-            cursor: text;
+            border-bottom: 1px solid #a4262c;
             display: flex;
-            flex-direction: row;
-            flex: 1 1 0px;
-            height: 32px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            text-align: left;
+            width: 100%;
           }
           &:hover {
-            border-color: #323130;
+            border-bottom-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
-            border-color: Highlight;
+            border-bottom-color: Highlight;
             forced-color-adjust: none;
           }
     >
-      <div
-        className=
-            ms-TextField-prefix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldPrefix3"
-      >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
-        >
-          test prefix
-        </span>
-      </div>
-      <input
-        aria-describedby="TextFieldDescription1"
-        aria-invalid={true}
-        aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
-        className=
-            ms-TextField-field
+      <label
+        class=
+            ms-Label
+            label-testClassName
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
-              background: none;
-              border-radius: 0px;
-              border: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
+              height: 32px;
+              line-height: 22px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 8px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 12px;
+              padding-right: 0px;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        for="TextField0"
+        id="TextFieldLabel2"
+      >
+        Label
+      </label>
+      <div
+        class=
+            ms-TextField-fieldGroup
+            {
+              align-items: stretch;
+              background: #ffffff;
+              border-radius: 2px;
+              border: none;
+              box-shadow: none;
+              box-sizing: border-box;
+              cursor: text;
+              display: flex;
+              flex-direction: row;
+              flex: 1 1 0px;
+              height: 32px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
-              min-width: 0px;
-              outline: 0px;
-              padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
               text-align: left;
-              text-overflow: ellipsis;
-              width: 100%;
-            }
-            &:active {
-              outline: 0px;
-            }
-            &:focus {
-              outline: 0px;
             }
             &:hover {
-              outline: 0px;
+              border-color: #323130;
             }
-            &::-ms-clear {
-              display: none;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              border-color: Highlight;
+              forced-color-adjust: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-            &::placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-              color: GrayText;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-              color: GrayText;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-              opacity: 1;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-              color: GrayText;
-            }
-        id="TextField0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        onInput={[Function]}
-        type="text"
-        value=""
-      />
-      <div
-        className=
-            ms-TextField-suffix
-            {
-              align-items: center;
-              background: #f3f2f1;
-              color: #605e5c;
-              display: flex;
-              flex-shrink: 0;
-              line-height: 1px;
-              padding-bottom: 0;
-              padding-left: 10px;
-              padding-right: 10px;
-              padding-top: 0;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              background: Window;
-              color: WindowText;
-            }
-        id="TextFieldSuffix4"
       >
-        <span
-          style={
-            Object {
-              "paddingBottom": "1px",
-            }
-          }
+        <div
+          class=
+              ms-TextField-prefix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldPrefix3"
         >
-          test suffix
-        </span>
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test prefix
+          </span>
+        </div>
+        <input
+          aria-describedby="TextFieldDescription1"
+          aria-invalid="true"
+          aria-labelledby="TextFieldLabel2 TextFieldPrefix3 TextFieldSuffix4"
+          class=
+              ms-TextField-field
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: transparent;
+                background: none;
+                border-radius: 0px;
+                border: none;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                min-width: 0px;
+                outline: 0px;
+                padding-bottom: 0;
+                padding-left: 8px;
+                padding-right: 8px;
+                padding-top: 0;
+                text-align: left;
+                text-overflow: ellipsis;
+                width: 100%;
+              }
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+              &::placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+                color: GrayText;
+              }
+              &:-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+                color: GrayText;
+              }
+              &::-ms-input-placeholder {
+                color: #605e5c;
+                opacity: 1;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+                color: GrayText;
+              }
+          id="TextField0"
+          type="text"
+          value=""
+        />
+        <div
+          class=
+              ms-TextField-suffix
+              {
+                align-items: center;
+                background: #f3f2f1;
+                color: #605e5c;
+                display: flex;
+                flex-shrink: 0;
+                line-height: 1px;
+                padding-bottom: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 0;
+                white-space: nowrap;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                background: Window;
+                color: WindowText;
+              }
+          id="TextFieldSuffix4"
+        >
+          <span
+            style="padding-bottom: 1px;"
+          >
+            test suffix
+          </span>
+        </div>
       </div>
     </div>
+    <span
+      id="TextFieldDescription1"
+    >
+      <div
+        role="alert"
+      />
+    </span>
   </div>
-  <span
-    id="TextFieldDescription1"
-  >
-    <div
-      role="alert"
-    />
-  </span>
 </div>
 `;

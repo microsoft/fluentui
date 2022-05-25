@@ -107,13 +107,13 @@ exports[`Slider renders correctly 1`] = `
               background-color: Highlight;
             }
             &:active .ms-Slider-inactive {
-              background-color: #deecf9;
+              background-color: #8a8886;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:hover .ms-Slider-inactive {
-              background-color: #deecf9;
+              background-color: #8a8886;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
               border-color: Highlight;
@@ -189,7 +189,7 @@ exports[`Slider renders correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #c8c6c4;
+                  background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -207,7 +207,7 @@ exports[`Slider renders correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #605e5c;
+                  background: #323130;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -225,7 +225,7 @@ exports[`Slider renders correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #c8c6c4;
+                  background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -389,13 +389,13 @@ exports[`Slider renders range slider correctly 1`] = `
               background-color: Highlight;
             }
             &:active .ms-Slider-inactive {
-              background-color: #deecf9;
+              background-color: #8a8886;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:hover .ms-Slider-inactive {
-              background-color: #deecf9;
+              background-color: #8a8886;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
               border-color: Highlight;
@@ -538,7 +538,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #c8c6c4;
+                  background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -556,7 +556,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #605e5c;
+                  background: #323130;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -574,7 +574,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   width: 100%;
                 }
                 {
-                  background: #c8c6c4;
+                  background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {

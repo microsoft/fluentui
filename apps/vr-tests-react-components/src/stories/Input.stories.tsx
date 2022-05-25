@@ -23,11 +23,11 @@ storiesOf('Input Converged', module)
   ))
   .addStory('Appearance: outline (default)', () => <Input placeholder="Placeholder" />)
   .addStory('Appearance: underline', () => <Input appearance="underline" placeholder="Placeholder" />)
-  .addStory('Appearance: filledDarker', () => <Input appearance="filledDarker" placeholder="Placeholder" />)
-  .addStory('Appearance: filledLighter', () => (
+  .addStory('Appearance: filled-darker', () => <Input appearance="filled-darker" placeholder="Placeholder" />)
+  .addStory('Appearance: filled-lighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
-      <Input appearance="filledLighter" placeholder="Placeholder" />
+      <Input appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
   .addStory('Disabled', () => <Input disabled />)
@@ -44,7 +44,7 @@ storiesOf('Input Converged', module)
   .addStory('Size: large', () => <Input size="large" placeholder="Placeholder" />)
   .addStory('Inline', () => (
     <p>
-      Some text with <Input inline placeholder="hello" style={{ width: '75px' }} /> inline input
+      Some text with <Input placeholder="hello" style={{ width: '75px' }} /> inline input
     </p>
   ))
   .addStory(

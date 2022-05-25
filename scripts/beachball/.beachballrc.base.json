@@ -10,6 +10,7 @@
     "**/__fixtures__/**",
     "**/__mocks__/**",
     "**/common/isConformant.ts",
+    "**/config/tests.js",
     "**/jest.config.js",
     "**/SPEC*.md",
     "**/tests/**"

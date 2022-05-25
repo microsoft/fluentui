@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopoverSurface renders a default state 1`] = `
+<div
+  aria-label="test"
+  class="fui-PopoverSurface"
+  data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-1\\",\\"isOthersAccessible\\":true}}"
+  data-testid="component"
+  role="complementary"
+>
+  <div
+    class=""
+  />
+  Default PopoverSurface
+</div>
+`;

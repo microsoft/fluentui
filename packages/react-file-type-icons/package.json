@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-file-type-icons",
-  "version": "8.6.6",
+  "version": "8.6.8",
   "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,8 +26,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.0",
-    "@fluentui/style-utilities": "^8.6.5",
+    "@fluentui/set-version": "^8.2.1",
+    "@fluentui/style-utilities": "^8.6.7",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

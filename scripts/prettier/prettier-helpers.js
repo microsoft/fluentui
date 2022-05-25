@@ -1,8 +1,7 @@
 // @ts-check
 const path = require('path');
 const fs = require('fs');
-const execSync = require('../exec-sync');
-const exec = require('../exec');
+const { spawn, spawnSync } = require('child_process');
 const findGitRoot = require('../monorepo/findGitRoot');
 
 const repoRoot = findGitRoot();
@@ -74,10 +73,10 @@ function runPrettier(files, config = {}) {
   ].join(' ');
 
   if (runAsync) {
-    return exec(cmd, undefined, undefined, process);
+    return spawn(cmd, { shell: true });
   }
 
-  return execSync(cmd);
+  return spawnSync(cmd, { shell: true });
 }
 
 /**

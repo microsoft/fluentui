@@ -16,13 +16,7 @@ export const StatusCalloutExample: React.FunctionComponent = () => {
         className={styles.button}
       />
       {isCalloutVisible && (
-        <Callout
-          className={styles.callout}
-          target={`#${buttonId}`}
-          onDismiss={toggleIsCalloutVisible}
-          role="status"
-          aria-live="assertive"
-        >
+        <Callout className={styles.callout} target={`#${buttonId}`} onDismiss={toggleIsCalloutVisible} role="alert">
           <DelayedRender>
             <Text variant="small">
               This message is treated as an aria-live assertive status message, and will be read by a screen reader

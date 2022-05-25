@@ -10,7 +10,7 @@ const tsPathAliases = pathsToModuleNameMapper(tsConfig.compilerOptions.paths, {
 });
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 const baseConfig = {
   transform: {

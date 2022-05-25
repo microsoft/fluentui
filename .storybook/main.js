@@ -3,31 +3,17 @@ const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
 /**
- *  @callback StorybookWebpackConfig
- *  @param {import("webpack").Configuration} config
- *  @param {{configType: 'DEVELOPMENT' | 'PRODUCTION'}} options - change the build configuration. 'PRODUCTION' is used when building the static version of storybook.
- *  @returns {import("webpack").Configuration}
- */
-
-/**
- *  @typedef {{
- *    check:boolean;
- *    checkOptions: Record<string,unknown>;
- *    reactDocgen: string | boolean;
- *    reactDocgenTypescriptOptions: Record<string,unknown>
- *  }} StorybookTsConfig
- */
-
-/**
- *  @typedef {{
- *    stories: string[];
- *    addons: string[];
- *    typescript: StorybookTsConfig;
- *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
- *    webpackFinal: StorybookWebpackConfig;
- *    core: {builder:'webpack5'};
- *    previewHead: (head: string) => string
- * }} StorybookConfig
+ * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
+ *
+ * @typedef {{
+ *   babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
+ *   previewHead: (head: string) => string;
+ * }} StorybookExtraConfig
+ *
+ * @typedef {StorybookBaseConfig &
+ *   Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
+ *   StorybookExtraConfig
+ * } StorybookConfig
  */
 
 /**
@@ -37,6 +23,10 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
+  features: {
+    // Enables code splitting
+    storyStoreV7: true,
+  },
   stories: [],
   addons: [
     '@storybook/addon-essentials',

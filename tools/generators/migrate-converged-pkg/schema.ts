@@ -11,4 +11,8 @@ export interface MigrateConvergedPkgGeneratorSchema {
    * Run generator on all vNext packages
    */
   all?: boolean;
+  /**
+   * Add particular team to CODEOWNERS file
+   */
+  owner?: string;
 }

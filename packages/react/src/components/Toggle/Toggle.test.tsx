@@ -48,7 +48,6 @@ describe('Toggle', () => {
   isConformant({
     Component: Toggle,
     displayName: 'Toggle',
-    targetComponent: Toggle,
   });
 
   it('renders aria-label', () => {

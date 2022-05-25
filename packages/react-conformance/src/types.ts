@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComponentDoc } from 'react-docgen-typescript';
 import * as ts from 'typescript';
 
-import { mount, ComponentType } from 'enzyme';
+import { render } from '@testing-library/react';
 
 /**
  * Individual test options
@@ -22,6 +22,10 @@ export interface TestOptions {
       [key: string]: string;
     };
   }[];
+  'component-has-static-classname'?: {
+    /** Prefix for the classname, if not `fui-` */
+    prefix?: string;
+  };
 }
 
 export interface IsConformantOptions<TProps = {}> {
@@ -38,9 +42,9 @@ export interface IsConformantOptions<TProps = {}> {
    */
   displayName: string;
   /**
-   * In case that the mount from enzyme does not work for the component, a custom mount function can be provided.
+   * Custom options passed to `@testing-library/react`'s `render` method.
    */
-  customMount?: typeof mount;
+  renderOptions?: Parameters<typeof render>[1];
   /**
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
@@ -68,23 +72,18 @@ export interface IsConformantOptions<TProps = {}> {
    */
   testOptions?: TestOptions;
   /**
-   * This component uses wrapper slot to wrap the 'meaningful' element.
-   */
-  wrapperComponent?: React.ElementType;
-  /**
-   * Helpers such as FocusZone and Ref which should be ignored when finding nontrivial children.
-   */
-  helperComponents?: React.ElementType[];
-  /**
    * An alternative name for the ref prop which resolves to
    * the root element (e.g. `elementRef`).
    * @defaultvalue 'ref'
    */
   elementRefName?: string;
   /**
-   * Child component that will receive unhandledProps.
+   * Get the element that will receive native props (or the specified native prop, if it matters)
    */
-  targetComponent?: ComponentType<TProps>;
+  getTargetElement?: (
+    renderResult: ReturnType<typeof render>,
+    attr: keyof React.AllHTMLAttributes<HTMLElement> | 'ref' | `data-${string}`,
+  ) => HTMLElement;
   /**
    * The name of the slot designated as "primary", which receives native props passed to the component.
    * This is 'root' by default, and only needs to be specified if it's a slot other than 'root'.

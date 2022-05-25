@@ -31,7 +31,7 @@ import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox } from '../../Checkbox';
-import { getPropsWithDefaults } from '@fluentui/utilities';
+import { getNextElement, getPreviousElement, getPropsWithDefaults } from '@fluentui/utilities';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 import type { IStyleFunctionOrObject } from '../../Utilities';
 import type {
@@ -56,7 +56,7 @@ const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>()
 // eslint-disable-next-line deprecation/deprecation
 interface IDropdownInternalProps extends Omit<IDropdownProps, 'ref'>, IWithResponsiveModeState {
   hoisted: {
-    rootRef: React.Ref<HTMLDivElement>;
+    rootRef: React.RefObject<HTMLDivElement>;
     selectedIndices: number[];
     setSelectedIndices: React.Dispatch<React.SetStateAction<number[]>>;
   };
@@ -410,6 +410,14 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       </div>
     );
   }
+
+  /**
+   * Close menu callout if it is open
+   */
+  public dismissMenu = (): void => {
+    const { isOpen } = this.state;
+    isOpen && this.setState({ isOpen: false });
+  };
 
   public focus(shouldOpenOnFocus?: boolean): void {
     if (this._dropDown.current) {
@@ -1180,7 +1188,17 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
       case KeyCodes.tab:
         this.setState({ isOpen: false });
-        return;
+
+        const document = getDocument();
+
+        if (document) {
+          if (ev.shiftKey) {
+            getPreviousElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
+          } else {
+            getNextElement(document.body, this._dropDown.current, false, false, true, true)?.focus();
+          }
+        }
+        break;
 
       default:
         return;

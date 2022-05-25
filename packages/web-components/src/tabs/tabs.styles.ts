@@ -8,14 +8,12 @@ import {
 } from '@microsoft/fast-foundation';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   focusStrokeWidth,
   neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
 import { heightNumber } from '../styles';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const tabsStyles: (
   context: ElementDefinitionContext,
@@ -24,9 +22,7 @@ export const tabsStyles: (
   css`
       ${display('grid')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
+        ${typeRampBase}
         color: ${neutralForegroundRest};
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto 1fr;

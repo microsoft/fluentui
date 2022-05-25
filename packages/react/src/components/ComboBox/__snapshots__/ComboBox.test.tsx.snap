@@ -1,832 +1,964 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComboBox Renders correctly 1`] = `
-<div
-  className="ms-ComboBox-container "
->
+<div>
   <div
-    className=
-        ms-ComboBox
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          cursor: text;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          margin-left: 0;
-          outline: 0;
-          padding-left: 9px;
-          padding-right: 32px;
-          position: relative;
-          text-overflow: ellipsis;
-          user-select: none;
-          white-space: nowrap;
-        }
-        & .ms-Label {
-          display: inline-block;
-          margin-bottom: 8px;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
-          border-color: Highlight;
-        }
-        &:after {
-          border-color: #605e5c;
-          border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-        &:hover:after {
-          border-color: #323130;
-        }
-        &:hover .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        &:hover .ms-ComboBox-Input::placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
-          color: GrayText;
-        }
-        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: GrayText;
-        }
-        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: GrayText;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
-          border-color: Highlight;
-        }
-        &:active {
-          position: relative;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
-          border-color: Highlight;
-        }
-        &:focus {
-          border-color: #0078d4;
-        }
-        &:focus .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          border-color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-ktp-target={true}
-    id="ComboBox0wrapper"
+    class="ms-ComboBox-container "
   >
-    <input
-      aria-autocomplete="both"
-      aria-expanded={false}
-      autoCapitalize="off"
-      autoComplete="off"
-      className=
-          ms-ComboBox-Input
+    <div
+      class=
+          ms-ComboBox
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-style: none;
+            box-shadow: none;
             box-sizing: border-box;
             color: #323130;
-            font: inherit;
-            height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            padding-left: 9px;
+            padding-right: 32px;
+            position: relative;
             text-overflow: ellipsis;
-            width: 100%;
+            user-select: none;
+            white-space: nowrap;
           }
-          &::placeholder {
-            color: #605e5c;
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+            border-color: Highlight;
+          }
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          &:hover:after {
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
             color: GrayText;
           }
-          &:-ms-input-placeholder {
-            color: #605e5c;
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: GrayText;
           }
-          &::-ms-input-placeholder {
-            color: #605e5c;
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: GrayText;
           }
-          &::-ms-clear {
-            display: none;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
             forced-color-adjust: none;
           }
-      data-is-interactable={true}
-      data-ktp-execute-target={true}
-      data-lpignore={true}
-      id="ComboBox0-input"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onCompositionEnd={[Function]}
-      onCompositionStart={[Function]}
-      onCompositionUpdate={[Function]}
-      onFocus={[Function]}
-      onInput={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onTouchStart={[Function]}
-      role="combobox"
-      spellCheck={false}
-      style={
-        Object {
-          "fontFamily": "inherit",
-        }
-      }
-      type="text"
-      value="testValue"
-    />
-    <button
-      aria-hidden={true}
-      className=
-          ms-Button
-          ms-Button--icon
-          ms-ComboBox-CaretDown-button
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #605e5c;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            height: 100%;
-            line-height: 30px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: absolute;
-            text-align: center;
-            text-decoration: none;
-            top: 0px;
-            user-select: none;
-            width: 32px;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            background-color: ButtonFace;
-            border-color: ButtonText;
-            color: ButtonText;
-            forced-color-adjust: none;
-          }
-          &:hover {
-            background-color: #f3f2f1;
-            color: #201f1e;
-            cursor: pointer;
-          }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+            border-color: Highlight;
+          }
           &:active {
-            background-color: #edebe9;
-            color: #201f1e;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-      data-is-focusable={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      role="presentation"
-      tabIndex={-1}
-      type="button"
-    >
-      <span
-        className=
-            ms-Button-flexContainer
-            {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
-            }
-        data-automationid="splitbuttonprimary"
-      >
-        <i
-          aria-hidden={true}
-          className=
-              ms-Icon
-              ms-Button-icon
-              {
-                display: inline-block;
-              }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                flex-shrink: 0;
-                font-size: 12px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-          data-icon-name="ChevronDown"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons\\"",
-            }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+            border-color: Highlight;
           }
+          &:focus {
+            border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            border-color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      data-ktp-target="true"
+      id="ComboBox0wrapper"
+    >
+      <input
+        aria-autocomplete="both"
+        aria-expanded="false"
+        autocapitalize="off"
+        autocomplete="off"
+        class=
+            ms-ComboBox-Input
+            {
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #323130;
+              font: inherit;
+              height: 100%;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+        data-is-interactable="true"
+        data-ktp-execute-target="true"
+        data-lpignore="true"
+        id="ComboBox0-input"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        type="text"
+        value="testValue"
+      />
+      <button
+        aria-hidden="true"
+        class=
+            ms-Button
+            ms-Button--icon
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #605e5c;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 100%;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              top: 0px;
+              user-select: none;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: ButtonFace;
+              border-color: ButtonText;
+              color: ButtonText;
+              forced-color-adjust: none;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+        data-is-focusable="false"
+        role="presentation"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
+              }
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
+          <i
+            aria-hidden="true"
+            class=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="ChevronDown"
+            style="font-family: \\"FabricMDL2Icons\\";"
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;
 
 exports[`ComboBox Renders correctly when open 1`] = `
-<div
-  class="ms-ComboBox-container "
->
+<div>
   <div
-    aria-owns="ComboBox0-list"
-    class=
-        ms-ComboBox
-        is-open
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border-color: #0078d4;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          cursor: text;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          margin-left: 0;
-          outline: 0;
-          padding-left: 9px;
-          padding-right: 32px;
-          position: relative;
-          text-overflow: ellipsis;
-          user-select: none;
-          white-space: nowrap;
-        }
-        & .ms-Label {
-          display: inline-block;
-          margin-bottom: 8px;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
-          border-color: Highlight;
-        }
-        &:after {
-          border-color: #605e5c;
-          border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-        & .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
-          border-color: Highlight;
-        }
-        &:active {
-          position: relative;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
-          border-color: Highlight;
-        }
-        &:focus {
-          border-color: #0078d4;
-        }
-        &:focus .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          border-color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-ktp-target="true"
-    id="ComboBox0wrapper"
+    class="ms-ComboBox-container "
   >
-    <input
-      aria-activedescendant="ComboBox0-list3"
-      aria-autocomplete="both"
-      aria-controls="ComboBox0-list"
-      aria-expanded="true"
-      autocapitalize="off"
-      autocomplete="off"
+    <div
+      aria-owns="ComboBox0-list"
       class=
-          ms-ComboBox-Input
+          ms-ComboBox
+          is-open
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-style: none;
+            border-color: #0078d4;
+            box-shadow: none;
             box-sizing: border-box;
             color: #323130;
-            font: inherit;
-            height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            padding-left: 9px;
+            padding-right: 32px;
+            position: relative;
             text-overflow: ellipsis;
-            width: 100%;
+            user-select: none;
+            white-space: nowrap;
           }
-          &::placeholder {
-            color: #605e5c;
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-            color: GrayText;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
           }
-          &:-ms-input-placeholder {
-            color: #605e5c;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+            border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-            color: GrayText;
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
-          &::-ms-input-placeholder {
-            color: #605e5c;
+          & .ms-ComboBox-Input {
+            color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-            color: GrayText;
-          }
-          &::-ms-clear {
-            display: none;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
             forced-color-adjust: none;
           }
-      data-is-interactable="true"
-      data-ktp-execute-target="true"
-      data-lpignore="true"
-      id="ComboBox0-input"
-      role="combobox"
-      spellcheck="false"
-      style="font-family: inherit;"
-      type="text"
-      value="Option 2"
-    />
-    <button
-      aria-hidden="true"
-      class=
-          ms-Button
-          ms-Button--icon
-          is-checked
-          ms-ComboBox-CaretDown-button
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: #edebe9;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #201f1e;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            height: 100%;
-            line-height: 30px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: absolute;
-            text-align: center;
-            text-decoration: none;
-            top: 0px;
-            user-select: none;
-            width: 32px;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-          &:hover {
-            background-color: #e1dfdd;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
+            border-color: Highlight;
+          }
+          &:active {
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+            border-color: Highlight;
+          }
+          &:focus {
+            border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
+            color: WindowText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-      data-is-focusable="false"
-      role="presentation"
-      tabindex="-1"
-      type="button"
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            border-color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      data-ktp-target="true"
+      id="ComboBox0wrapper"
     >
-      <span
+      <input
+        aria-activedescendant="ComboBox0-list3"
+        aria-autocomplete="both"
+        aria-controls="ComboBox0-list"
+        aria-expanded="true"
+        autocapitalize="off"
+        autocomplete="off"
         class=
-            ms-Button-flexContainer
+            ms-ComboBox-Input
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #323130;
+              font: inherit;
               height: 100%;
-              justify-content: center;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
             }
-        data-automationid="splitbuttonprimary"
+            &::placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+        data-is-interactable="true"
+        data-ktp-execute-target="true"
+        data-lpignore="true"
+        id="ComboBox0-input"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        type="text"
+        value="Option 2"
+      />
+      <button
+        aria-hidden="true"
+        class=
+            ms-Button
+            ms-Button--icon
+            is-checked
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: #edebe9;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #201f1e;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 100%;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              top: 0px;
+              user-select: none;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+            &:hover {
+              background-color: #e1dfdd;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+        data-is-focusable="false"
+        role="presentation"
+        tabindex="-1"
+        type="button"
       >
-        <i
-          aria-hidden="true"
+        <span
           class=
-              ms-Icon
-              ms-Button-icon
+              ms-Button-flexContainer
               {
-                display: inline-block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                flex-shrink: 0;
-                font-size: 12px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-          data-icon-name="ChevronDown"
-          style="font-family: \\"FabricMDL2Icons\\";"
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
-  </div>
-  <span
-    class="ms-layer"
-  >
-    <div
-      class=
-          ms-Fabric
-          ms-Layer-content
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            visibility: visible;
-          }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
+          <i
+            aria-hidden="true"
+            class=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="ChevronDown"
+            style="font-family: \\"FabricMDL2Icons\\";"
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
+    <span
+      class="ms-layer"
     >
       <div
         class=
-            ms-Callout-container
+            ms-Fabric
+            ms-Layer-content
             {
-              position: relative;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
             }
       >
         <div
           class=
-              ms-Callout
-              ms-ComboBox-callout
+              ms-Callout-container
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                border-radius: 2px;
-                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-                box-sizing: border-box;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                outline: transparent;
-                position: absolute;
+                position: relative;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border-color: WindowText;
-                border-style: solid;
-                border-width: 1px;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-              }
-          style="opacity: 0; filter: opacity(0); pointer-events: none;"
-          tabindex="-1"
         >
           <div
             class=
-                ms-Callout-main
+                ms-Callout
+                ms-ComboBox-callout
                 {
-                  background-color: #ffffff;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-radius: 2px;
-                  overflow-x: hidden;
-                  overflow-y: auto;
-                  position: relative;
-                  width: 100%;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
                 }
-            style="outline: none; max-height: 100%;"
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+            style="opacity: 0; filter: opacity(0); pointer-events: none;"
+            tabindex="-1"
           >
             <div
-              class="ms-ComboBox-optionsContainerWrapper "
+              class=
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
+                  }
+              style="outline: none; max-height: 100%;"
             >
               <div
-                class=
-                    ms-ComboBox-optionsContainer
-                    {
-                      display: block;
-                    }
-                id="ComboBox0-list"
-                role="listbox"
+                class="ms-ComboBox-optionsContainerWrapper "
               >
                 <div
-                  aria-labelledby="ComboBox0header"
-                  role="group"
+                  class=
+                      ms-ComboBox-optionsContainer
+                      {
+                        display: block;
+                      }
+                  id="ComboBox0-list"
+                  role="listbox"
                 >
                   <div
-                    class=
-                        ms-ComboBox-header
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          background-color: none;
-                          border-style: none;
-                          color: #0078d4;
-                          cursor: default;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 600;
-                          height: 36px;
-                          line-height: 36px;
-                          padding-bottom: 0;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 0;
-                          text-align: left;
-                          user-select: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          -ms-high-contrast-adjust: none;
-                          color: GrayText;
-                          forced-color-adjust: none;
-                        }
-                    id="ComboBox0header"
+                    aria-labelledby="ComboBox0header"
+                    role="group"
                   >
-                    <span
+                    <div
                       class=
-                          ms-ComboBox-optionText
+                          ms-ComboBox-header
                           {
-                            display: inline-block;
-                            max-width: 100%;
-                            min-width: 0px;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: none;
+                            border-style: none;
+                            color: #0078d4;
+                            cursor: default;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            height: 36px;
+                            line-height: 36px;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            text-align: left;
+                            user-select: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            -ms-high-contrast-adjust: none;
+                            color: GrayText;
+                            forced-color-adjust: none;
+                          }
+                      id="ComboBox0header"
+                    >
+                      <span
+                        class=
+                            ms-ComboBox-optionText
+                            {
+                              display: inline-block;
+                              max-width: 100%;
+                              min-width: 0px;
+                              overflow-wrap: break-word;
+                              overflow: hidden;
+                              text-overflow: ellipsis;
+                              white-space: nowrap;
+                              word-wrap: break-word;
+                            }
+                      >
+                        Header
+                      </span>
+                    </div>
+                    <button
+                      aria-selected="false"
+                      class=
+                          ms-Button
+                          ms-Button--action
+                          ms-Button--command
+                          ms-ComboBox-option
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: transparent;
+                            border-color: transparent;
+                            border-radius: 0px;
+                            border-style: solid;
+                            border-width: 1px;
+                            border: 1px solid transparent;
+                            box-sizing: border-box;
+                            color: #323130;
+                            cursor: pointer;
+                            display: block;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            line-height: 20px;
+                            min-height: 36px;
+                            outline: transparent;
                             overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            position: relative;
+                            text-align: left;
+                            text-decoration: none;
+                            user-select: none;
+                            width: 100%;
                             word-wrap: break-word;
                           }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 2px;
+                            content: "";
+                            left: 2px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 2px;
+                            top: 2px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            bottom: -2px;
+                            left: -2px;
+                            outline-color: ButtonText;
+                            right: -2px;
+                            top: -2px;
+                          }
+                          &:active > span {
+                            left: 0px;
+                            position: relative;
+                            top: 0px;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            border-color: Background;
+                            border: none;
+                          }
+                          &.ms-Checkbox {
+                            align-items: center;
+                            display: flex;
+                          }
+                          &.ms-Button--command:hover:active {
+                            background-color: #edebe9;
+                          }
+                          & .ms-Checkbox-label {
+                            width: 100%;
+                          }
+                          &:hover {
+                            background-color: #f3f2f1;
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                            color: Highlight;
+                          }
+                          &:hover .ms-Button-icon {
+                            color: #0078d4;
+                          }
+                          &:focus {
+                            background-color: #f3f2f1;
+                          }
+                          &:active {
+                            color: #000000;
+                          }
+                          &:active .ms-Button-icon {
+                            color: #004578;
+                          }
+                      data-index="1"
+                      data-is-focusable="true"
+                      id="ComboBox0-list1"
+                      role="option"
+                      type="button"
                     >
-                      Header
-                    </span>
+                      <span
+                        class=
+                            ms-Button-flexContainer
+                            {
+                              align-items: center;
+                              display: flex;
+                              flex-wrap: nowrap;
+                              height: 100%;
+                              justify-content: flex-start;
+                            }
+                        data-automationid="splitbuttonprimary"
+                      >
+                        <span
+                          class=
+
+                              {
+                                align-items: center;
+                                display: flex;
+                                max-width: 100%;
+                              }
+                        >
+                          <span
+                            class=
+                                ms-ComboBox-optionText
+                                {
+                                  display: inline-block;
+                                  max-width: 100%;
+                                  min-width: 0px;
+                                  overflow-wrap: break-word;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;
+                                  white-space: nowrap;
+                                  word-wrap: break-word;
+                                }
+                          >
+                            Option 1
+                          </span>
+                        </span>
+                      </span>
+                    </button>
+                    <div
+                      class=
+                          ms-ComboBox-divider
+                          {
+                            background-color: #edebe9;
+                            height: 1px;
+                          }
+                      role="separator"
+                    />
                   </div>
                   <button
-                    aria-selected="false"
+                    aria-selected="true"
                     class=
                         ms-Button
                         ms-Button--action
                         ms-Button--command
+                        is-checked
                         ms-ComboBox-option
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -838,7 +970,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #323130;
+                          color: #000000;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -881,14 +1013,18 @@ exports[`ComboBox Renders correctly when open 1`] = `
                           right: -2px;
                           top: -2px;
                         }
-                        &:active > * {
+                        &:active > span {
                           left: 0px;
                           position: relative;
                           top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          border-color: Background;
+                          -ms-high-contrast-adjust: none;
+                          background-color: Highlight;
+                          border-color: Highlight;
                           border: none;
+                          color: HighlightText;
+                          forced-color-adjust: none;
                         }
                         &.ms-Checkbox {
                           align-items: center;
@@ -902,26 +1038,28 @@ exports[`ComboBox Renders correctly when open 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                          color: Highlight;
+                          -ms-high-contrast-adjust: none;
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                          forced-color-adjust: none;
                         }
-                        &:hover .ms-Button-icon {
-                          color: #0078d4;
+                        .ms-Fabric--isFocusVisible &:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
                         }
-                        &:focus {
-                          background-color: #f3f2f1;
-                        }
-                        &:active {
-                          color: #000000;
-                        }
-                        &:active .ms-Button-icon {
-                          color: #004578;
-                        }
-                    data-index="1"
+                    data-index="3"
                     data-is-focusable="true"
-                    id="ComboBox0-list1"
+                    id="ComboBox0-list3"
                     role="option"
                     type="button"
                   >
@@ -960,152 +1098,458 @@ exports[`ComboBox Renders correctly when open 1`] = `
                                 word-wrap: break-word;
                               }
                         >
-                          Option 1
+                          Option 2
                         </span>
                       </span>
                     </span>
                   </button>
-                  <div
-                    class=
-                        ms-ComboBox-divider
-                        {
-                          background-color: #edebe9;
-                          height: 1px;
-                        }
-                    role="separator"
-                  />
                 </div>
-                <button
-                  aria-selected="true"
-                  class=
-                      ms-Button
-                      ms-Button--action
-                      ms-Button--command
-                      is-checked
-                      ms-ComboBox-option
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-color: transparent;
-                        border-radius: 0px;
-                        border-style: solid;
-                        border-width: 1px;
-                        border: 1px solid transparent;
-                        box-sizing: border-box;
-                        color: #000000;
-                        cursor: pointer;
-                        display: block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: auto;
-                        line-height: 20px;
-                        min-height: 36px;
-                        outline: transparent;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        text-decoration: none;
-                        user-select: none;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 2px;
-                        content: "";
-                        left: 2px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 2px;
-                        top: 2px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        bottom: -2px;
-                        left: -2px;
-                        outline-color: ButtonText;
-                        right: -2px;
-                        top: -2px;
-                      }
-                      &:active > * {
-                        left: 0px;
-                        position: relative;
-                        top: 0px;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        -ms-high-contrast-adjust: none;
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        border: none;
-                        color: HighlightText;
-                        forced-color-adjust: none;
-                      }
-                      &.ms-Checkbox {
-                        align-items: center;
-                        display: flex;
-                      }
-                      &.ms-Button--command:hover:active {
-                        background-color: #edebe9;
-                      }
-                      & .ms-Checkbox-label {
-                        width: 100%;
-                      }
-                      &:hover {
-                        background-color: #f3f2f1;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                        -ms-high-contrast-adjust: none;
-                        background-color: Highlight;
-                        border-color: Highlight;
-                        color: HighlightText;
-                        forced-color-adjust: none;
-                      }
-                      .ms-Fabric--isFocusVisible &:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
-                        content: "";
-                        left: 0px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 0px;
-                        top: 0px;
-                        z-index: 1;
-                      }
-                  data-index="3"
-                  data-is-focusable="true"
-                  id="ComboBox0-list3"
-                  role="option"
-                  type="button"
-                >
-                  <span
-                    class=
-                        ms-Button-flexContainer
-                        {
-                          align-items: center;
-                          display: flex;
-                          flex-wrap: nowrap;
-                          height: 100%;
-                          justify-content: flex-start;
-                        }
-                    data-automationid="splitbuttonprimary"
-                  >
-                    <span
-                      class=
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+`;
 
+exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
+<div>
+  <div
+    class="ms-ComboBox-container "
+  >
+    <div
+      aria-owns="ComboBox0-list"
+      class=
+          ms-ComboBox
+          is-open
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+            border-color: #0078d4;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            padding-left: 9px;
+            padding-right: 32px;
+            position: relative;
+            text-overflow: ellipsis;
+            user-select: none;
+            white-space: nowrap;
+          }
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+            border-color: Highlight;
+          }
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          & .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
+            border-color: Highlight;
+          }
+          &:active {
+            position: relative;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+            border-color: Highlight;
+          }
+          &:focus {
+            border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            border-color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      data-ktp-target="true"
+      id="ComboBox0wrapper"
+    >
+      <input
+        aria-activedescendant="ComboBox0-list3"
+        aria-autocomplete="both"
+        aria-controls="ComboBox0-list"
+        aria-expanded="true"
+        autocapitalize="off"
+        autocomplete="off"
+        class=
+            ms-ComboBox-Input
+            {
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #323130;
+              font: inherit;
+              height: 100%;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+        data-is-interactable="true"
+        data-ktp-execute-target="true"
+        data-lpignore="true"
+        id="ComboBox0-input"
+        placeholder="Option 2"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        type="text"
+        value=""
+      />
+      <button
+        aria-hidden="true"
+        class=
+            ms-Button
+            ms-Button--icon
+            is-checked
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: #edebe9;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #201f1e;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 100%;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              top: 0px;
+              user-select: none;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+            &:hover {
+              background-color: #e1dfdd;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+        data-is-focusable="false"
+        role="presentation"
+        tabindex="-1"
+        type="button"
+      >
+        <span
+          class=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
+              }
+          data-automationid="splitbuttonprimary"
+        >
+          <i
+            aria-hidden="true"
+            class=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="ChevronDown"
+            style="font-family: \\"FabricMDL2Icons\\";"
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
+    <span
+      class="ms-layer"
+    >
+      <div
+        class=
+            ms-Fabric
+            ms-Layer-content
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
+      >
+        <div
+          class=
+              ms-Callout-container
+              {
+                position: relative;
+              }
+        >
+          <div
+            class=
+                ms-Callout
+                ms-ComboBox-callout
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-radius: 2px;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  box-sizing: border-box;
+                  display: flex;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+            style="opacity: 0; filter: opacity(0); pointer-events: none;"
+            tabindex="-1"
+          >
+            <div
+              class=
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    border-radius: 2px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                    width: 100%;
+                  }
+              style="outline: none; max-height: 100%;"
+            >
+              <div
+                class="ms-ComboBox-optionsContainerWrapper "
+              >
+                <div
+                  aria-multiselectable="true"
+                  class=
+                      ms-ComboBox-optionsContainer
+                      {
+                        display: block;
+                      }
+                  id="ComboBox0-list"
+                  role="listbox"
+                >
+                  <div
+                    aria-labelledby="ComboBox0header"
+                    role="group"
+                  >
+                    <div
+                      class=
+                          ms-ComboBox-header
                           {
-                            align-items: center;
-                            display: flex;
-                            max-width: 100%;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: none;
+                            border-style: none;
+                            color: #0078d4;
+                            cursor: default;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 600;
+                            height: 36px;
+                            line-height: 36px;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            text-align: left;
+                            user-select: none;
                           }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            -ms-high-contrast-adjust: none;
+                            color: GrayText;
+                            forced-color-adjust: none;
+                          }
+                      id="ComboBox0header"
                     >
                       <span
                         class=
@@ -1121,477 +1565,217 @@ exports[`ComboBox Renders correctly when open 1`] = `
                               word-wrap: break-word;
                             }
                       >
-                        Option 2
+                        Header
                       </span>
-                    </span>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </span>
-</div>
-`;
-
-exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
-<div
-  class="ms-ComboBox-container "
->
-  <div
-    aria-owns="ComboBox0-list"
-    class=
-        ms-ComboBox
-        is-open
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border-color: #0078d4;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          cursor: text;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          margin-left: 0;
-          outline: 0;
-          padding-left: 9px;
-          padding-right: 32px;
-          position: relative;
-          text-overflow: ellipsis;
-          user-select: none;
-          white-space: nowrap;
-        }
-        & .ms-Label {
-          display: inline-block;
-          margin-bottom: 8px;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
-          border-color: Highlight;
-        }
-        &:after {
-          border-color: #605e5c;
-          border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-        & .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
-          border-color: Highlight;
-        }
-        &:active {
-          position: relative;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
-          border-color: Highlight;
-        }
-        &:focus {
-          border-color: #0078d4;
-        }
-        &:focus .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          border-color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-ktp-target="true"
-    id="ComboBox0wrapper"
-  >
-    <input
-      aria-activedescendant="ComboBox0-list3"
-      aria-autocomplete="both"
-      aria-controls="ComboBox0-list"
-      aria-expanded="true"
-      autocapitalize="off"
-      autocomplete="off"
-      class=
-          ms-ComboBox-Input
-          {
-            background-color: #ffffff;
-            border-style: none;
-            box-sizing: border-box;
-            color: #323130;
-            font: inherit;
-            height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
-            text-overflow: ellipsis;
-            width: 100%;
-          }
-          &::placeholder {
-            color: #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
-            color: GrayText;
-          }
-          &:-ms-input-placeholder {
-            color: #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
-            color: GrayText;
-          }
-          &::-ms-input-placeholder {
-            color: #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
-            color: GrayText;
-          }
-          &::-ms-clear {
-            display: none;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            background-color: Window;
-            color: WindowText;
-            forced-color-adjust: none;
-          }
-      data-is-interactable="true"
-      data-ktp-execute-target="true"
-      data-lpignore="true"
-      id="ComboBox0-input"
-      placeholder="Option 2"
-      role="combobox"
-      spellcheck="false"
-      style="font-family: inherit;"
-      type="text"
-      value=""
-    />
-    <button
-      aria-hidden="true"
-      class=
-          ms-Button
-          ms-Button--icon
-          is-checked
-          ms-ComboBox-CaretDown-button
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: #edebe9;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #201f1e;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            height: 100%;
-            line-height: 30px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: absolute;
-            text-align: center;
-            text-decoration: none;
-            top: 0px;
-            user-select: none;
-            width: 32px;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
-            color: HighlightText;
-            forced-color-adjust: none;
-          }
-          &:hover {
-            background-color: #e1dfdd;
-            color: #201f1e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
-            color: HighlightText;
-            forced-color-adjust: none;
-          }
-      data-is-focusable="false"
-      role="presentation"
-      tabindex="-1"
-      type="button"
-    >
-      <span
-        class=
-            ms-Button-flexContainer
-            {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
-            }
-        data-automationid="splitbuttonprimary"
-      >
-        <i
-          aria-hidden="true"
-          class=
-              ms-Icon
-              ms-Button-icon
-              {
-                display: inline-block;
-              }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                flex-shrink: 0;
-                font-size: 12px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-          data-icon-name="ChevronDown"
-          style="font-family: \\"FabricMDL2Icons\\";"
-        >
-          
-        </i>
-      </span>
-    </button>
-  </div>
-  <span
-    class="ms-layer"
-  >
-    <div
-      class=
-          ms-Fabric
-          ms-Layer-content
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            visibility: visible;
-          }
-          & button {
-            font-family: inherit;
-          }
-          & input {
-            font-family: inherit;
-          }
-          & textarea {
-            font-family: inherit;
-          }
-    >
-      <div
-        class=
-            ms-Callout-container
-            {
-              position: relative;
-            }
-      >
-        <div
-          class=
-              ms-Callout
-              ms-ComboBox-callout
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                border-radius: 2px;
-                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-                box-sizing: border-box;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                outline: transparent;
-                position: absolute;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border-color: WindowText;
-                border-style: solid;
-                border-width: 1px;
-              }
-              &::-moz-focus-inner {
-                border: 0px;
-              }
-          style="opacity: 0; filter: opacity(0); pointer-events: none;"
-          tabindex="-1"
-        >
-          <div
-            class=
-                ms-Callout-main
-                {
-                  background-color: #ffffff;
-                  border-radius: 2px;
-                  overflow-x: hidden;
-                  overflow-y: auto;
-                  position: relative;
-                  width: 100%;
-                }
-            style="outline: none; max-height: 100%;"
-          >
-            <div
-              class="ms-ComboBox-optionsContainerWrapper "
-            >
-              <div
-                aria-multiselectable="true"
-                class=
-                    ms-ComboBox-optionsContainer
-                    {
-                      display: block;
-                    }
-                id="ComboBox0-list"
-                role="listbox"
-              >
-                <div
-                  aria-labelledby="ComboBox0header"
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-ComboBox-header
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          background-color: none;
-                          border-style: none;
-                          color: #0078d4;
-                          cursor: default;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 600;
-                          height: 36px;
-                          line-height: 36px;
-                          padding-bottom: 0;
-                          padding-left: 8px;
-                          padding-right: 8px;
-                          padding-top: 0;
-                          text-align: left;
-                          user-select: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          -ms-high-contrast-adjust: none;
-                          color: GrayText;
-                          forced-color-adjust: none;
-                        }
-                    id="ComboBox0header"
-                  >
-                    <span
+                    </div>
+                    <div
                       class=
-                          ms-ComboBox-optionText
+                          ms-Checkbox
+                          is-enabled
+                          ms-ComboBox-option
                           {
-                            display: inline-block;
-                            max-width: 100%;
-                            min-width: 0px;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: transparent;
+                            border-color: transparent;
+                            border-radius: 0px;
+                            border-style: solid;
+                            border-width: 1px;
+                            box-sizing: border-box;
+                            cursor: pointer;
+                            display: block;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            line-height: 20px;
+                            min-height: 36px;
                             overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
+                            padding-bottom: 0;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 0;
+                            position: relative;
+                            text-align: left;
+                            width: 100%;
                             word-wrap: break-word;
                           }
+                          &:hover .ms-Checkbox-checkbox {
+                            border-color: #323130;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                            border-color: Highlight;
+                          }
+                          &:focus .ms-Checkbox-checkbox {
+                            border-color: #323130;
+                          }
+                          &:hover .ms-Checkbox-checkmark {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+                            color: Highlight;
+                          }
+                          &:hover .ms-Checkbox-text {
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+                            color: WindowText;
+                          }
+                          &:focus .ms-Checkbox-text {
+                            color: #201f1e;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+                            color: WindowText;
+                          }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            border-color: Background;
+                            border: none;
+                          }
+                          &.ms-Checkbox {
+                            align-items: center;
+                            display: flex;
+                          }
+                          &.ms-Button--command:hover:active {
+                            background-color: #edebe9;
+                          }
+                          & .ms-Checkbox-label {
+                            width: 100%;
+                          }
                     >
-                      Header
-                    </span>
+                      <input
+                        aria-selected="false"
+                        class=
+
+                            {
+                              background: none;
+                              opacity: 0;
+                              position: absolute;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline-offset: 2px;
+                              outline: 1px solid #605e5c;
+                            }
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                              outline: 1px solid WindowText;
+                            }
+                        data-index="1"
+                        data-is-focusable="true"
+                        data-ktp-execute-target="true"
+                        id="ComboBox0-list1"
+                        role="option"
+                        type="checkbox"
+                      />
+                      <label
+                        class=
+                            ms-Checkbox-label
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              align-items: center;
+                              cursor: pointer;
+                              display: flex;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
+                              position: relative;
+                              user-select: none;
+                            }
+                            &::before {
+                              bottom: 0px;
+                              content: "";
+                              left: 0px;
+                              pointer-events: none;
+                              position: absolute;
+                              right: 0px;
+                              top: 0px;
+                            }
+                        for="ComboBox0-list1"
+                      >
+                        <div
+                          class=
+                              ms-Checkbox-checkbox
+                              {
+                                align-items: center;
+                                border-radius: 2px;
+                                border: 1px solid #323130;
+                                box-sizing: border-box;
+                                display: flex;
+                                flex-shrink: 0;
+                                height: 20px;
+                                justify-content: center;
+                                margin-right: 4px;
+                                overflow: hidden;
+                                position: relative;
+                                transition-duration: 200ms;
+                                transition-property: background, border, border-color;
+                                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                                width: 20px;
+                              }
+                              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                -ms-high-contrast-adjust: none;
+                                border-color: WindowText;
+                                forced-color-adjust: none;
+                              }
+                          data-ktp-target="true"
+                        >
+                          <i
+                            aria-hidden="true"
+                            class=
+                                ms-Checkbox-checkmark
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  color: #ffffff;
+                                  display: inline-block;
+                                  font-family: "FabricMDL2Icons";
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  opacity: 0;
+                                  speak: none;
+                                }
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                  -ms-high-contrast-adjust: none;
+                                  color: Window;
+                                  forced-color-adjust: none;
+                                }
+                            data-icon-name="CheckMark"
+                          >
+                            
+                          </i>
+                        </div>
+                        <span
+                          class=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option 1
+                        </span>
+                      </label>
+                    </div>
+                    <div
+                      class=
+                          ms-ComboBox-divider
+                          {
+                            background-color: #edebe9;
+                            height: 1px;
+                          }
+                      role="separator"
+                    />
                   </div>
                   <div
                     class=
                         ms-Checkbox
+                        is-checked
                         is-enabled
                         ms-ComboBox-option
                         {
@@ -1622,20 +1806,32 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           word-wrap: break-word;
                         }
                         &:hover .ms-Checkbox-checkbox {
-                          border-color: #323130;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                          border-color: Highlight;
+                          background: #005a9e;
+                          border-color: #005a9e;
                         }
                         &:focus .ms-Checkbox-checkbox {
-                          border-color: #323130;
+                          background: #005a9e;
+                          border-color: #005a9e;
                         }
-                        &:hover .ms-Checkbox-checkmark {
-                          color: #605e5c;
-                          opacity: 1;
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          border-color: Background;
+                          border: none;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                          background: Highlight;
+                          border-color: Highlight;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
+                          background: Highlight;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
+                          background: Highlight;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
+                          color: Window;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-                          color: Highlight;
+                          color: Window;
                         }
                         &:hover .ms-Checkbox-text {
                           color: #201f1e;
@@ -1649,10 +1845,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                           color: WindowText;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          border-color: Background;
-                          border: none;
-                        }
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
@@ -1665,7 +1857,8 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                         }
                   >
                     <input
-                      aria-selected="false"
+                      aria-selected="true"
+                      checked=""
                       class=
 
                           {
@@ -1680,10 +1873,10 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                             outline: 1px solid WindowText;
                           }
-                      data-index="1"
+                      data-index="3"
                       data-is-focusable="true"
                       data-ktp-execute-target="true"
-                      id="ComboBox0-list1"
+                      id="ComboBox0-list3"
                       role="option"
                       type="checkbox"
                     />
@@ -1711,13 +1904,15 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             right: 0px;
                             top: 0px;
                           }
-                      for="ComboBox0-list1"
+                      for="ComboBox0-list3"
                     >
                       <div
                         class=
                             ms-Checkbox-checkbox
                             {
                               align-items: center;
+                              background: #0078d4;
+                              border-color: #0078d4;
                               border-radius: 2px;
                               border: 1px solid #323130;
                               box-sizing: border-box;
@@ -1735,7 +1930,8 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                             }
                             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
-                              border-color: WindowText;
+                              background: Highlight;
+                              border-color: Highlight;
                               forced-color-adjust: none;
                             }
                         data-ktp-target="true"
@@ -1752,7 +1948,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 font-family: "FabricMDL2Icons";
                                 font-style: normal;
                                 font-weight: normal;
-                                opacity: 0;
+                                opacity: 1;
                                 speak: none;
                               }
                               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -1779,578 +1975,364 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                               word-wrap: break-word;
                             }
                       >
-                        Option 1
+                        Option 2
                       </span>
                     </label>
                   </div>
-                  <div
-                    class=
-                        ms-ComboBox-divider
-                        {
-                          background-color: #edebe9;
-                          height: 1px;
-                        }
-                    role="separator"
-                  />
-                </div>
-                <div
-                  class=
-                      ms-Checkbox
-                      is-checked
-                      is-enabled
-                      ms-ComboBox-option
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        background-color: transparent;
-                        border-color: transparent;
-                        border-radius: 0px;
-                        border-style: solid;
-                        border-width: 1px;
-                        box-sizing: border-box;
-                        cursor: pointer;
-                        display: block;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: auto;
-                        line-height: 20px;
-                        min-height: 36px;
-                        overflow-wrap: break-word;
-                        padding-bottom: 0;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 0;
-                        position: relative;
-                        text-align: left;
-                        width: 100%;
-                        word-wrap: break-word;
-                      }
-                      &:hover .ms-Checkbox-checkbox {
-                        background: #005a9e;
-                        border-color: #005a9e;
-                      }
-                      &:focus .ms-Checkbox-checkbox {
-                        background: #005a9e;
-                        border-color: #005a9e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border-color: Background;
-                        border: none;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                        background: Highlight;
-                        border-color: Highlight;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
-                        background: Highlight;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
-                        background: Highlight;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
-                        color: Window;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-                        color: Window;
-                      }
-                      &:hover .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      &:focus .ms-Checkbox-text {
-                        color: #201f1e;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-                        color: WindowText;
-                      }
-                      &.ms-Checkbox {
-                        align-items: center;
-                        display: flex;
-                      }
-                      &.ms-Button--command:hover:active {
-                        background-color: #edebe9;
-                      }
-                      & .ms-Checkbox-label {
-                        width: 100%;
-                      }
-                >
-                  <input
-                    aria-selected="true"
-                    checked=""
-                    class=
-
-                        {
-                          background: none;
-                          opacity: 0;
-                          position: absolute;
-                        }
-                        .ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline-offset: 2px;
-                          outline: 1px solid #605e5c;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                          outline: 1px solid WindowText;
-                        }
-                    data-index="3"
-                    data-is-focusable="true"
-                    data-ktp-execute-target="true"
-                    id="ComboBox0-list3"
-                    role="option"
-                    type="checkbox"
-                  />
-                  <label
-                    class=
-                        ms-Checkbox-label
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          align-items: center;
-                          cursor: pointer;
-                          display: flex;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
-                          position: relative;
-                          user-select: none;
-                        }
-                        &::before {
-                          bottom: 0px;
-                          content: "";
-                          left: 0px;
-                          pointer-events: none;
-                          position: absolute;
-                          right: 0px;
-                          top: 0px;
-                        }
-                    for="ComboBox0-list3"
-                  >
-                    <div
-                      class=
-                          ms-Checkbox-checkbox
-                          {
-                            align-items: center;
-                            background: #0078d4;
-                            border-color: #0078d4;
-                            border-radius: 2px;
-                            border: 1px solid #323130;
-                            box-sizing: border-box;
-                            display: flex;
-                            flex-shrink: 0;
-                            height: 20px;
-                            justify-content: center;
-                            margin-right: 4px;
-                            overflow: hidden;
-                            position: relative;
-                            transition-duration: 200ms;
-                            transition-property: background, border, border-color;
-                            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                            width: 20px;
-                          }
-                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                            -ms-high-contrast-adjust: none;
-                            background: Highlight;
-                            border-color: Highlight;
-                            forced-color-adjust: none;
-                          }
-                      data-ktp-target="true"
-                    >
-                      <i
-                        aria-hidden="true"
-                        class=
-                            ms-Checkbox-checkmark
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #ffffff;
-                              display: inline-block;
-                              font-family: "FabricMDL2Icons";
-                              font-style: normal;
-                              font-weight: normal;
-                              opacity: 1;
-                              speak: none;
-                            }
-                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                              -ms-high-contrast-adjust: none;
-                              color: Window;
-                              forced-color-adjust: none;
-                            }
-                        data-icon-name="CheckMark"
-                      >
-                        
-                      </i>
-                    </div>
-                    <span
-                      class=
-                          ms-ComboBox-optionText
-                          {
-                            display: inline-block;
-                            max-width: 100%;
-                            min-width: 0px;
-                            overflow-wrap: break-word;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            white-space: nowrap;
-                            word-wrap: break-word;
-                          }
-                    >
-                      Option 2
-                    </span>
-                  </label>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </span>
+    </span>
+  </div>
 </div>
 `;
 
 exports[`ComboBox renders with a Keytip correctly 1`] = `
-<div
-  class="ms-ComboBox-container "
->
+<div>
   <div
-    class=
-        ms-ComboBox
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          cursor: text;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          margin-left: 0;
-          outline: 0;
-          padding-left: 9px;
-          padding-right: 32px;
-          position: relative;
-          text-overflow: ellipsis;
-          user-select: none;
-          white-space: nowrap;
-        }
-        & .ms-Label {
-          display: inline-block;
-          margin-bottom: 8px;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
-          border-color: Highlight;
-        }
-        &:after {
-          border-color: #605e5c;
-          border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-        &:hover:after {
-          border-color: #323130;
-        }
-        &:hover .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        &:hover .ms-ComboBox-Input::placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
-          color: GrayText;
-        }
-        &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: GrayText;
-        }
-        &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: GrayText;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
-          border-color: Highlight;
-        }
-        &:active {
-          position: relative;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
-          border-color: Highlight;
-        }
-        &:focus {
-          border-color: #0078d4;
-        }
-        &:focus .ms-ComboBox-Input {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: WindowText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
-          -ms-high-contrast-adjust: none;
-          background-color: Window;
-          color: HighlightText;
-          forced-color-adjust: none;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
-          border-color: Highlight;
-        }
-        &:focus:after {
-          border-radius: 2px;
-          border: 2px solid #0078d4;
-          bottom: 0px;
-          content: '';
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-ktp-target="ktp-a"
-    id="ComboBox0wrapper"
+    class="ms-ComboBox-container "
   >
-    <input
-      aria-autocomplete="both"
-      aria-describedby="test-foo ktp-layer-id ktp-a"
-      aria-expanded="false"
-      autocapitalize="off"
-      autocomplete="off"
+    <div
       class=
-          ms-ComboBox-Input
+          ms-ComboBox
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-style: none;
+            box-shadow: none;
             box-sizing: border-box;
             color: #323130;
-            font: inherit;
-            height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            padding-left: 9px;
+            padding-right: 32px;
+            position: relative;
             text-overflow: ellipsis;
-            width: 100%;
+            user-select: none;
+            white-space: nowrap;
           }
-          &::placeholder {
-            color: #605e5c;
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+            border-color: Highlight;
+          }
+          &:after {
+            border-color: #605e5c;
+            border-radius: 2px;
+            border-style: solid;
+            border-width: 1px;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+          &:hover:after {
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
             color: GrayText;
           }
-          &:-ms-input-placeholder {
-            color: #605e5c;
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: GrayText;
           }
-          &::-ms-input-placeholder {
-            color: #605e5c;
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: GrayText;
           }
-          &::-ms-clear {
-            display: none;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
             forced-color-adjust: none;
           }
-      data-is-interactable="true"
-      data-ktp-execute-target="ktp-a"
-      data-lpignore="true"
-      id="ComboBox0-input"
-      role="combobox"
-      spellcheck="false"
-      style="font-family: inherit;"
-      type="text"
-      value=""
-    />
-    <button
-      aria-hidden="true"
-      class=
-          ms-Button
-          ms-Button--icon
-          ms-ComboBox-CaretDown-button
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #605e5c;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            height: 100%;
-            line-height: 30px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: absolute;
-            text-align: center;
-            text-decoration: none;
-            top: 0px;
-            user-select: none;
-            width: 32px;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            background-color: ButtonFace;
-            border-color: ButtonText;
-            color: ButtonText;
-            forced-color-adjust: none;
-          }
-          &:hover {
-            background-color: #f3f2f1;
-            color: #201f1e;
-            cursor: pointer;
-          }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+            border-color: Highlight;
+          }
           &:active {
-            background-color: #edebe9;
-            color: #201f1e;
+            position: relative;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
-            background-color: Highlight;
-            border-color: Highlight;
+            background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-      data-is-focusable="false"
-      role="presentation"
-      tabindex="-1"
-      type="button"
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+            border-color: Highlight;
+          }
+          &:focus {
+            border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: WindowText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            color: HighlightText;
+            forced-color-adjust: none;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+            border-color: Highlight;
+          }
+          &:focus:after {
+            border-radius: 2px;
+            border: 2px solid #0078d4;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      data-ktp-target="ktp-a"
+      id="ComboBox0wrapper"
     >
-      <span
+      <input
+        aria-autocomplete="both"
+        aria-describedby="test-foo ktp-layer-id ktp-a"
+        aria-expanded="false"
+        autocapitalize="off"
+        autocomplete="off"
         class=
-            ms-Button-flexContainer
+            ms-ComboBox-Input
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #323130;
+              font: inherit;
               height: 100%;
-              justify-content: center;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
             }
-        data-automationid="splitbuttonprimary"
+            &::placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-clear {
+              display: none;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: Window;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+        data-is-interactable="true"
+        data-ktp-execute-target="ktp-a"
+        data-lpignore="true"
+        id="ComboBox0-input"
+        role="combobox"
+        spellcheck="false"
+        style="font-family: inherit;"
+        type="text"
+        value=""
+      />
+      <button
+        aria-hidden="true"
+        class=
+            ms-Button
+            ms-Button--icon
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #605e5c;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 100%;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              top: 0px;
+              user-select: none;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: ButtonFace;
+              border-color: ButtonText;
+              color: ButtonText;
+              forced-color-adjust: none;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #201f1e;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #201f1e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+              -ms-high-contrast-adjust: none;
+              background-color: Highlight;
+              border-color: Highlight;
+              color: HighlightText;
+              forced-color-adjust: none;
+            }
+        data-is-focusable="false"
+        role="presentation"
+        tabindex="-1"
+        type="button"
       >
-        <i
-          aria-hidden="true"
+        <span
           class=
-              ms-Icon
-              ms-Button-icon
+              ms-Button-flexContainer
               {
-                display: inline-block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                flex-shrink: 0;
-                font-size: 12px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-          data-icon-name="ChevronDown"
-          style="font-family: \\"FabricMDL2Icons\\";"
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
+          <i
+            aria-hidden="true"
+            class=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="ChevronDown"
+            style="font-family: \\"FabricMDL2Icons\\";"
+          >
+            
+          </i>
+        </span>
+      </button>
+    </div>
   </div>
 </div>
 `;

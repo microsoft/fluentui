@@ -1,140 +1,91 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Coachmark renders Coachmark (color properties) 1`] = `
-<span
-  className="ms-layer"
->
-  <div
-    className=
-        ms-Fabric
-        ms-Layer-content
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          visibility: visible;
-        }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
-        }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
+<div>
+  <span
+    class="ms-layer"
   >
     <div
-      className=
-          ms-PositioningContainer
+      class=
+          ms-Fabric
+          ms-Layer-content
           {
-            position: relative;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
           }
     >
       <div
-        className=
-            ms-PositioningContainer-layerHost
+        class=
+            ms-PositioningContainer
             {
-              border: 1px solid \${};
-              box-sizing: border-box;
-              outline: transparent;
-              position: absolute;
+              position: relative;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              border: 1px solid WindowText;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        style={
-          Object {
-            "opacity": 0,
-          }
-        }
-        tabIndex={-1}
       >
         <div
-          className=
-
+          class=
+              ms-PositioningContainer-layerHost
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
+                border: 1px solid \${};
+                box-sizing: border-box;
+                outline: transparent;
+                position: absolute;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border: 1px solid WindowText;
+              }
+              &::-moz-focus-inner {
+                border: 0px;
+              }
+          style="opacity: 0;"
+          tabindex="-1"
         >
           <div
-            className=
+            class=
 
                 {
-                  animation-delay: 0ms;
-                  animation-duration: 14s;
-                  animation-iteration-count: 1;
-                  animation-name: keyframes 0%{border-color:green;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}8%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:green;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}38%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:green;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}100%{};
-                  border-radius: 225px;
-                  border-style: solid;
-                  height: 0px;
-                  left: 50%;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0px;
-                }
-          />
-          <div
-            className=
-
-                {
-                  animation-delay: 0s;
-                  animation-direction: normal;
-                  animation-duration: 14s;
-                  animation-fill-mode: forwards;
-                  animation-iteration-count: 1;
-                  animation-name: keyframes 0%{transform:translate(0, 0);animation-timing-function:linear;}78.57%{transform:translate(0, 0);animation-timing-function:cubic-bezier(0.62, 0, 0.56, 1);}82.14%{transform:translate(0, -5px);animation-timing-function:cubic-bezier(0.58, 0, 0, 1);}84.88%{transform:translate(0, 9px);animation-timing-function:cubic-bezier(1, 0, 0.56, 1);}88.1%{transform:translate(0, -2px);animation-timing-function:cubic-bezier(0.58, 0, 0.67, 1);}90.12%{transform:translate(0, 0);animation-timing-function:linear;}100%{transform:translate(0, 0);};
-                  animation-timing-function: linear;
-                  height: 100%;
-                  transition: opacity 0.5s ease-in-out;
-                  width: 100%;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  position: relative;
                 }
           >
             <div
-              className=
+              class=
+
+                  {
+                    animation-delay: 0ms;
+                    animation-duration: 14s;
+                    animation-iteration-count: 1;
+                    animation-name: keyframes 0%{border-color:green;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}8%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:green;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}38%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:green;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:green;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:blue;}100%{};
+                    border-radius: 225px;
+                    border-style: solid;
+                    height: 0px;
+                    left: 50%;
+                    opacity: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 0px;
+                  }
+            />
+            <div
+              class=
 
                   {
                     animation-delay: 0s;
@@ -142,14 +93,15 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                     animation-duration: 14s;
                     animation-fill-mode: forwards;
                     animation-iteration-count: 1;
-                    animation-name: keyframes 0%{transform: scale(0);animation-timing-function:linear;}14.29%{transform:scale(0);animation-timing-function:cubic-bezier(0.84, 0, 0.52, 0.99);}16.67%{transform:scale(1.15);animation-timing-function:cubic-bezier(0.48, -0.01, 0.52, 1.01);}19.05%{transform:scale(0.95);animation-timing-function:cubic-bezier(0.48, 0.02, 0.52, 0.98);}21.43%{transform:scale(1);animation-timing-function:linear;}42.86%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}45.71%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}50%{transform:scale(1);animation-timing-function:linear;}90.12%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}92.98%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}97.26%{transform:scale(1);animation-timing-function:linear;}100%{transform:scale(1);};
+                    animation-name: keyframes 0%{transform:translate(0, 0);animation-timing-function:linear;}78.57%{transform:translate(0, 0);animation-timing-function:cubic-bezier(0.62, 0, 0.56, 1);}82.14%{transform:translate(0, -5px);animation-timing-function:cubic-bezier(0.58, 0, 0, 1);}84.88%{transform:translate(0, 9px);animation-timing-function:cubic-bezier(1, 0, 0.56, 1);}88.1%{transform:translate(0, -2px);animation-timing-function:cubic-bezier(0.58, 0, 0.67, 1);}90.12%{transform:translate(0, 0);animation-timing-function:linear;}100%{transform:translate(0, 0);};
                     animation-timing-function: linear;
                     height: 100%;
+                    transition: opacity 0.5s ease-in-out;
                     width: 100%;
                   }
             >
               <div
-                className=
+                class=
 
                     {
                       animation-delay: 0s;
@@ -157,115 +109,118 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                       animation-duration: 14s;
                       animation-fill-mode: forwards;
                       animation-iteration-count: 1;
-                      animation-name: keyframes 0%{transform:rotate(0deg);animation-timing-function:linear;}83.33%{transform: rotate(0deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}83.93%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}84.52%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.12%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.71%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}86.31%{transform:rotate(0deg);animation-timing-function:linear;}100%{transform:rotate(0deg);};
+                      animation-name: keyframes 0%{transform: scale(0);animation-timing-function:linear;}14.29%{transform:scale(0);animation-timing-function:cubic-bezier(0.84, 0, 0.52, 0.99);}16.67%{transform:scale(1.15);animation-timing-function:cubic-bezier(0.48, -0.01, 0.52, 1.01);}19.05%{transform:scale(0.95);animation-timing-function:cubic-bezier(0.48, 0.02, 0.52, 0.98);}21.43%{transform:scale(1);animation-timing-function:linear;}42.86%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}45.71%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}50%{transform:scale(1);animation-timing-function:linear;}90.12%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}92.98%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}97.26%{transform:scale(1);animation-timing-function:linear;}100%{transform:scale(1);};
                       animation-timing-function: linear;
                       height: 100%;
                       width: 100%;
                     }
               >
                 <div
-                  className=
+                  class=
 
                       {
-                        border: none;
-                        bottom: 3px;
-                        box-shadow: inherit;
-                        box-sizing: border-box;
-                        height: 10px;
-                        left: calc(50% - 9px);
-                        position: absolute;
-                        transform: translateY(100%);
-                        width: 18px;
+                        animation-delay: 0s;
+                        animation-direction: normal;
+                        animation-duration: 14s;
+                        animation-fill-mode: forwards;
+                        animation-iteration-count: 1;
+                        animation-name: keyframes 0%{transform:rotate(0deg);animation-timing-function:linear;}83.33%{transform: rotate(0deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}83.93%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}84.52%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.12%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.71%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}86.31%{transform:rotate(0deg);animation-timing-function:linear;}100%{transform:rotate(0deg);};
+                        animation-timing-function: linear;
+                        height: 100%;
+                        width: 100%;
                       }
-                  role="presentation"
-                >
-                  <svg
-                    className=
-
-                        {
-                          display: block;
-                          fill: red;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          fill: windowtext;
-                        }
-                    height={10}
-                    width={18}
-                  >
-                    <polygon
-                      points="0, 0 18, 0 9, 10"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className=
-
-                      {
-                        background-color: red;
-                        border-radius: 32px;
-                        outline: none;
-                        overflow: hidden;
-                        position: relative;
-                        transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
-                        visibility: hidden;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        background-color: Window;
-                        border: 2px solid WindowText;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #71afe5;
-                      }
-                  data-is-focusable={true}
-                  role="dialog"
-                  tabIndex={-1}
                 >
                   <div
-                    onBlurCapture={[Function]}
-                    onFocusCapture={[Function]}
-                  >
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
+                    class=
+
+                        {
+                          border: none;
+                          bottom: 3px;
+                          box-shadow: inherit;
+                          box-sizing: border-box;
+                          height: 10px;
+                          left: calc(50% - 9px);
+                          position: absolute;
+                          transform: translateY(100%);
+                          width: 18px;
                         }
-                      }
-                      tabIndex={0}
-                    />
-                    <div
-                      className=
+                    role="presentation"
+                  >
+                    <svg
+                      class=
 
                           {
-                            transform-origin: center bottom;
-                            transform: scale(0);
-                            transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
+                            display: block;
+                            fill: red;
                           }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            fill: windowtext;
+                          }
+                      height="10"
+                      width="18"
                     >
+                      <polygon
+                        points="0, 0 18, 0 9, 10"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class=
+
+                        {
+                          background-color: red;
+                          border-radius: 32px;
+                          outline: none;
+                          overflow: hidden;
+                          position: relative;
+                          transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
+                          visibility: hidden;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          background-color: Window;
+                          border: 2px solid WindowText;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus {
+                          outline: 1px solid #71afe5;
+                        }
+                    data-is-focusable="true"
+                    role="dialog"
+                    tabindex="-1"
+                  >
+                    <div>
                       <div
-                        aria-hidden={true}
-                        className=
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
+                      />
+                      <div
+                        class=
 
                             {
-                              display: block;
+                              transform-origin: center bottom;
+                              transform: scale(0);
+                              transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
                             }
+                      >
+                        <div
+                          aria-hidden="true"
+                          class=
+
+                              {
+                                display: block;
+                              }
+                        />
+                      </div>
+                      <div
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
                       />
                     </div>
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
-                        }
-                      }
-                      tabIndex={0}
-                    />
                   </div>
                 </div>
               </div>
@@ -274,145 +229,96 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</span>
+  </span>
+</div>
 `;
 
 exports[`Coachmark renders Coachmark (correctly) 1`] = `
-<span
-  className="ms-layer"
->
-  <div
-    className=
-        ms-Fabric
-        ms-Layer-content
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          visibility: visible;
-        }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
-        }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
+<div>
+  <span
+    class="ms-layer"
   >
     <div
-      className=
-          ms-PositioningContainer
+      class=
+          ms-Fabric
+          ms-Layer-content
           {
-            position: relative;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
           }
     >
       <div
-        className=
-            ms-PositioningContainer-layerHost
+        class=
+            ms-PositioningContainer
             {
-              border: 1px solid \${};
-              box-sizing: border-box;
-              outline: transparent;
-              position: absolute;
+              position: relative;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              border: 1px solid WindowText;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        style={
-          Object {
-            "opacity": 0,
-          }
-        }
-        tabIndex={-1}
       >
         <div
-          className=
-              test-className
+          class=
+              ms-PositioningContainer-layerHost
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
+                border: 1px solid \${};
+                box-sizing: border-box;
+                outline: transparent;
+                position: absolute;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border: 1px solid WindowText;
+              }
+              &::-moz-focus-inner {
+                border: 0px;
+              }
+          style="opacity: 0;"
+          tabindex="-1"
         >
           <div
-            className=
-
+            class=
+                test-className
                 {
-                  animation-delay: 0ms;
-                  animation-duration: 14s;
-                  animation-iteration-count: 1;
-                  animation-name: keyframes 0%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}8%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}38%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:#0078d4;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}100%{};
-                  border-radius: 225px;
-                  border-style: solid;
-                  height: 0px;
-                  left: 50%;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0px;
-                }
-          />
-          <div
-            className=
-
-                {
-                  animation-delay: 0s;
-                  animation-direction: normal;
-                  animation-duration: 14s;
-                  animation-fill-mode: forwards;
-                  animation-iteration-count: 1;
-                  animation-name: keyframes 0%{transform:translate(0, 0);animation-timing-function:linear;}78.57%{transform:translate(0, 0);animation-timing-function:cubic-bezier(0.62, 0, 0.56, 1);}82.14%{transform:translate(0, -5px);animation-timing-function:cubic-bezier(0.58, 0, 0, 1);}84.88%{transform:translate(0, 9px);animation-timing-function:cubic-bezier(1, 0, 0.56, 1);}88.1%{transform:translate(0, -2px);animation-timing-function:cubic-bezier(0.58, 0, 0.67, 1);}90.12%{transform:translate(0, 0);animation-timing-function:linear;}100%{transform:translate(0, 0);};
-                  animation-timing-function: linear;
-                  height: 100%;
-                  transition: opacity 0.5s ease-in-out;
-                  width: 100%;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  position: relative;
                 }
           >
             <div
-              className=
+              class=
+
+                  {
+                    animation-delay: 0ms;
+                    animation-duration: 14s;
+                    animation-iteration-count: 1;
+                    animation-name: keyframes 0%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}1.42%{opacity:1;border-width:10px;}3.57%{opacity:1;}7.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}8%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}29.99%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}30%{border-color:#0078d4;border-width:0px;width:35px;height:35px;}31.42%{opacity:1;border-width:10px;}33.57%{opacity:1;}37.14%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}38%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.42%{border-color:#0078d4;border-width:0px;width:35px;height:35px;opacity:0;}79.43{border-color:#0078d4;border-width:0px;width:35px;height:35px;}81.85{opacity:1;border-width:10px;}83.42{opacity:1;}87%{border-width:0;width:150px;height:150px;opacity:0;border-color:#71afe5;}100%{};
+                    border-radius: 225px;
+                    border-style: solid;
+                    height: 0px;
+                    left: 50%;
+                    opacity: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 0px;
+                  }
+            />
+            <div
+              class=
 
                   {
                     animation-delay: 0s;
@@ -420,14 +326,15 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                     animation-duration: 14s;
                     animation-fill-mode: forwards;
                     animation-iteration-count: 1;
-                    animation-name: keyframes 0%{transform: scale(0);animation-timing-function:linear;}14.29%{transform:scale(0);animation-timing-function:cubic-bezier(0.84, 0, 0.52, 0.99);}16.67%{transform:scale(1.15);animation-timing-function:cubic-bezier(0.48, -0.01, 0.52, 1.01);}19.05%{transform:scale(0.95);animation-timing-function:cubic-bezier(0.48, 0.02, 0.52, 0.98);}21.43%{transform:scale(1);animation-timing-function:linear;}42.86%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}45.71%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}50%{transform:scale(1);animation-timing-function:linear;}90.12%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}92.98%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}97.26%{transform:scale(1);animation-timing-function:linear;}100%{transform:scale(1);};
+                    animation-name: keyframes 0%{transform:translate(0, 0);animation-timing-function:linear;}78.57%{transform:translate(0, 0);animation-timing-function:cubic-bezier(0.62, 0, 0.56, 1);}82.14%{transform:translate(0, -5px);animation-timing-function:cubic-bezier(0.58, 0, 0, 1);}84.88%{transform:translate(0, 9px);animation-timing-function:cubic-bezier(1, 0, 0.56, 1);}88.1%{transform:translate(0, -2px);animation-timing-function:cubic-bezier(0.58, 0, 0.67, 1);}90.12%{transform:translate(0, 0);animation-timing-function:linear;}100%{transform:translate(0, 0);};
                     animation-timing-function: linear;
                     height: 100%;
+                    transition: opacity 0.5s ease-in-out;
                     width: 100%;
                   }
             >
               <div
-                className=
+                class=
 
                     {
                       animation-delay: 0s;
@@ -435,117 +342,120 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                       animation-duration: 14s;
                       animation-fill-mode: forwards;
                       animation-iteration-count: 1;
-                      animation-name: keyframes 0%{transform:rotate(0deg);animation-timing-function:linear;}83.33%{transform: rotate(0deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}83.93%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}84.52%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.12%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.71%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}86.31%{transform:rotate(0deg);animation-timing-function:linear;}100%{transform:rotate(0deg);};
+                      animation-name: keyframes 0%{transform: scale(0);animation-timing-function:linear;}14.29%{transform:scale(0);animation-timing-function:cubic-bezier(0.84, 0, 0.52, 0.99);}16.67%{transform:scale(1.15);animation-timing-function:cubic-bezier(0.48, -0.01, 0.52, 1.01);}19.05%{transform:scale(0.95);animation-timing-function:cubic-bezier(0.48, 0.02, 0.52, 0.98);}21.43%{transform:scale(1);animation-timing-function:linear;}42.86%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}45.71%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}50%{transform:scale(1);animation-timing-function:linear;}90.12%{transform:scale(1);animation-timing-function:cubic-bezier(0.48, -0.02, 0.52, 1.02);}92.98%{transform:scale(0.8);animation-timing-function:cubic-bezier(0.48, 0.01, 0.52, 0.99);}97.26%{transform:scale(1);animation-timing-function:linear;}100%{transform:scale(1);};
                       animation-timing-function: linear;
                       height: 100%;
                       width: 100%;
                     }
               >
                 <div
-                  className=
+                  class=
 
                       {
-                        border: none;
-                        bottom: 3px;
-                        box-shadow: inherit;
-                        box-sizing: border-box;
-                        height: 10px;
-                        left: calc(50% - 9px);
-                        position: absolute;
-                        transform: translateY(100%);
-                        width: 18px;
+                        animation-delay: 0s;
+                        animation-direction: normal;
+                        animation-duration: 14s;
+                        animation-fill-mode: forwards;
+                        animation-iteration-count: 1;
+                        animation-name: keyframes 0%{transform:rotate(0deg);animation-timing-function:linear;}83.33%{transform: rotate(0deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}83.93%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}84.52%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.12%{transform:rotate(15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}85.71%{transform:rotate(-15deg);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1);}86.31%{transform:rotate(0deg);animation-timing-function:linear;}100%{transform:rotate(0deg);};
+                        animation-timing-function: linear;
+                        height: 100%;
+                        width: 100%;
                       }
-                  role="presentation"
-                >
-                  <svg
-                    className=
-
-                        {
-                          display: block;
-                          fill: #0078d4;
-                        }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                          fill: windowtext;
-                        }
-                    height={10}
-                    width={18}
-                  >
-                    <polygon
-                      points="0, 0 18, 0 9, 10"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className=
-
-                      {
-                        background-color: #0078d4;
-                        border-radius: 32px;
-                        outline: none;
-                        overflow: hidden;
-                        position: relative;
-                        transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
-                        visibility: hidden;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        background-color: Window;
-                        border: 2px solid WindowText;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #71afe5;
-                      }
-                  data-is-focusable={true}
-                  role="dialog"
-                  tabIndex={-1}
                 >
                   <div
-                    onBlurCapture={[Function]}
-                    onFocusCapture={[Function]}
-                  >
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
+                    class=
+
+                        {
+                          border: none;
+                          bottom: 3px;
+                          box-shadow: inherit;
+                          box-sizing: border-box;
+                          height: 10px;
+                          left: calc(50% - 9px);
+                          position: absolute;
+                          transform: translateY(100%);
+                          width: 18px;
                         }
-                      }
-                      tabIndex={0}
-                    />
-                    <div
-                      className=
+                    role="presentation"
+                  >
+                    <svg
+                      class=
 
                           {
-                            transform-origin: center bottom;
-                            transform: scale(0);
-                            transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
+                            display: block;
+                            fill: #0078d4;
                           }
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                            fill: windowtext;
+                          }
+                      height="10"
+                      width="18"
                     >
+                      <polygon
+                        points="0, 0 18, 0 9, 10"
+                      />
+                    </svg>
+                  </div>
+                  <div
+                    class=
+
+                        {
+                          background-color: #0078d4;
+                          border-radius: 32px;
+                          outline: none;
+                          overflow: hidden;
+                          position: relative;
+                          transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
+                          visibility: hidden;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          background-color: Window;
+                          border: 2px solid WindowText;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus {
+                          outline: 1px solid #71afe5;
+                        }
+                    data-is-focusable="true"
+                    role="dialog"
+                    tabindex="-1"
+                  >
+                    <div>
                       <div
-                        aria-hidden={true}
-                        className=
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
+                      />
+                      <div
+                        class=
 
                             {
-                              display: block;
+                              transform-origin: center bottom;
+                              transform: scale(0);
+                              transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
                             }
                       >
-                        This is a test
+                        <div
+                          aria-hidden="true"
+                          class=
+
+                              {
+                                display: block;
+                              }
+                        >
+                          This is a test
+                        </div>
                       </div>
+                      <div
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
+                      />
                     </div>
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
-                        }
-                      }
-                      tabIndex={0}
-                    />
                   </div>
                 </div>
               </div>
@@ -554,222 +464,177 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</span>
+  </span>
+</div>
 `;
 
 exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
-<span
-  className="ms-layer"
->
-  <div
-    className=
-        ms-Fabric
-        ms-Layer-content
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          color: #323130;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          visibility: visible;
-        }
-        & button {
-          font-family: inherit;
-        }
-        & input {
-          font-family: inherit;
-        }
-        & textarea {
-          font-family: inherit;
-        }
-    onBlur={[Function]}
-    onChange={[Function]}
-    onClick={[Function]}
-    onContextMenu={[Function]}
-    onDoubleClick={[Function]}
-    onDrag={[Function]}
-    onDragEnd={[Function]}
-    onDragEnter={[Function]}
-    onDragExit={[Function]}
-    onDragLeave={[Function]}
-    onDragOver={[Function]}
-    onDragStart={[Function]}
-    onDrop={[Function]}
-    onFocus={[Function]}
-    onInput={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-    onMouseMove={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    onMouseUp={[Function]}
-    onSubmit={[Function]}
-    onTouchCancel={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
+<div>
+  <span
+    class="ms-layer"
   >
     <div
-      className=
-          ms-PositioningContainer
+      class=
+          ms-Fabric
+          ms-Layer-content
           {
-            position: relative;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            visibility: visible;
+          }
+          & button {
+            font-family: inherit;
+          }
+          & input {
+            font-family: inherit;
+          }
+          & textarea {
+            font-family: inherit;
           }
     >
       <div
-        className=
-            ms-PositioningContainer-layerHost
+        class=
+            ms-PositioningContainer
             {
-              border: 1px solid \${};
-              box-sizing: border-box;
-              outline: transparent;
-              position: absolute;
+              position: relative;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-              border: 1px solid WindowText;
-            }
-            &::-moz-focus-inner {
-              border: 0px;
-            }
-        style={
-          Object {
-            "opacity": 0,
-          }
-        }
-        tabIndex={-1}
       >
         <div
-          className=
-              test-className
+          class=
+              ms-PositioningContainer-layerHost
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                position: relative;
+                border: 1px solid \${};
+                box-sizing: border-box;
+                outline: transparent;
+                position: absolute;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border: 1px solid WindowText;
+              }
+              &::-moz-focus-inner {
+                border: 0px;
+              }
+          style="opacity: 0;"
+          tabindex="-1"
         >
           <div
-            className=
-
+            class=
+                test-className
                 {
-                  border-radius: 225px;
-                  border-style: solid;
-                  height: 0px;
-                  left: 50%;
-                  opacity: 0;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0px;
-                }
-          />
-          <div
-            className=
-
-                {
-                  height: 100%;
-                  opacity: 1;
-                  width: 100%;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  position: relative;
                 }
           >
             <div
-              className=
+              class=
+
+                  {
+                    border-radius: 225px;
+                    border-style: solid;
+                    height: 0px;
+                    left: 50%;
+                    opacity: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 0px;
+                  }
+            />
+            <div
+              class=
 
                   {
                     height: 100%;
+                    opacity: 1;
                     width: 100%;
                   }
             >
               <div
-                className=
+                class=
 
                     {
                       height: 100%;
-                      opacity: 1;
                       width: 100%;
                     }
               >
                 <div
-                  className=
+                  class=
 
                       {
-                        background-color: #0078d4;
-                        border-radius: 1px;
+                        height: 100%;
                         opacity: 1;
-                        outline: none;
-                        overflow: hidden;
-                        position: relative;
-                        transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
-                        visibility: visible;
+                        width: 100%;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        background-color: Window;
-                        border: 2px solid WindowText;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #71afe5;
-                      }
-                  data-is-focusable={true}
-                  role="dialog"
-                  tabIndex={-1}
                 >
                   <div
-                    onBlurCapture={[Function]}
-                    onFocusCapture={[Function]}
-                  >
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
-                        }
-                      }
-                      tabIndex={0}
-                    />
-                    <div
-                      className=
+                    class=
 
-                          {
-                            transform-origin: center bottom;
-                            transform: scale(1);
-                            transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
-                            visibility: visible;
-                          }
-                    >
+                        {
+                          background-color: #0078d4;
+                          border-radius: 1px;
+                          opacity: 1;
+                          outline: none;
+                          overflow: hidden;
+                          position: relative;
+                          transition: border-radius 250ms, width 500ms, height 500ms cubic-bezier(0.5, 0, 0, 1);
+                          visibility: visible;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          background-color: Window;
+                          border: 2px solid WindowText;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus {
+                          outline: 1px solid #71afe5;
+                        }
+                    data-is-focusable="true"
+                    role="dialog"
+                    tabindex="-1"
+                  >
+                    <div>
                       <div
-                        aria-hidden={false}
-                        className=
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
+                      />
+                      <div
+                        class=
 
                             {
-                              display: block;
+                              transform-origin: center bottom;
+                              transform: scale(1);
+                              transition: transform 500ms cubic-bezier(0.5, 0, 0, 1);
+                              visibility: visible;
                             }
                       >
-                        This is a test
+                        <div
+                          aria-hidden="false"
+                          class=
+
+                              {
+                                display: block;
+                              }
+                        >
+                          This is a test
+                        </div>
                       </div>
+                      <div
+                        aria-hidden="true"
+                        data-is-focus-trap-zone-bumper="true"
+                        data-is-visible="true"
+                        style="pointer-events: none; position: fixed;"
+                        tabindex="0"
+                      />
                     </div>
-                    <div
-                      aria-hidden={true}
-                      data-is-focus-trap-zone-bumper={true}
-                      data-is-visible={true}
-                      style={
-                        Object {
-                          "pointerEvents": "none",
-                          "position": "fixed",
-                        }
-                      }
-                      tabIndex={0}
-                    />
                   </div>
                 </div>
               </div>
@@ -778,6 +643,6 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</span>
+  </span>
+</div>
 `;

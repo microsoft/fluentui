@@ -64,6 +64,22 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
     },
   ];
 
+  const personaSecondaryTextStyles: IStyle = [
+    selected &&
+      !invalid &&
+      !disabled && {
+        color: palette.white,
+        selectors: {
+          ':hover': {
+            color: palette.white,
+          },
+          [HighContrastSelector]: {
+            color: 'HighlightText',
+          },
+        },
+      },
+  ];
+
   const personaCoinInitialsStyles: IStyle = [
     invalid && {
       fontSize: fonts.xLarge.fontSize,
@@ -179,6 +195,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
     subComponentStyles: {
       persona: {
         primaryText: personaPrimaryTextStyles,
+        secondaryText: personaSecondaryTextStyles,
       },
       personaCoin: {
         initials: personaCoinInitialsStyles,

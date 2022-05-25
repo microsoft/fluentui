@@ -1,8 +1,17 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore "react-portal-compat-context" uses v9 configs via path aliases
+import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
-import { registerLayer, getDefaultTarget, unregisterLayer, getLayerHost } from './Layer.notification';
+import {
+  registerLayer,
+  getDefaultTarget,
+  unregisterLayer,
+  getLayerHost,
+  createDefaultLayerHost,
+} from './Layer.notification';
 import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
@@ -11,6 +20,8 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
+    const registerPortalEl = usePortalCompat();
+
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
@@ -54,7 +65,17 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         return doc?.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
-        return (defaultHostSelector ? doc?.querySelector(defaultHostSelector) : doc?.body) ?? null;
+
+        // Find the host.
+        let host: Node | null = defaultHostSelector ? (doc?.querySelector(defaultHostSelector) as Node) : null;
+
+        // If no host is available, create a container for injecting layers in.
+        // Having a container scopes layout computation.
+        if (!host && doc) {
+          host = createDefaultLayerHost(doc);
+        }
+
+        return host;
       }
     };
 
@@ -103,7 +124,13 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
         registerLayer(hostId, createLayerElement);
       }
 
+      const unregisterPortalEl = layerRef.current ? registerPortalEl(layerRef.current) : undefined;
+
       return () => {
+        if (unregisterPortalEl) {
+          unregisterPortalEl();
+        }
+
         removeLayerElement();
 
         if (hostId) {

@@ -70,6 +70,12 @@ To run migration on multiple packages you can specify a comma separated list of 
 yarn nx workspace-generator migrate-converged-pkg --name='@fluentui/lib-zero,@fluentui/lib-one,@fluentui/lib-two'
 ```
 
+#### `owner`
+
+Type: `string`
+
+Add particular team to CODEOWNERS file
+
 #### `all`
 
 Type: `boolean`
