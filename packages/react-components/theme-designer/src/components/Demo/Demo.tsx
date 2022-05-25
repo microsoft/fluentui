@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import {
   FluentProvider,
   teamsLightTheme,
@@ -13,8 +13,15 @@ import {
   Menu,
   MenuTrigger,
   MenuList,
+  MenuButton,
   MenuItemCheckbox,
   MenuPopover,
+  Slider,
+  Badge,
+  Switch,
+  Radio,
+  RadioGroup,
+  Checkbox,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
@@ -25,6 +32,11 @@ import {
   ClipboardPasteFilled,
   EditRegular,
   EditFilled,
+  ChevronRightRegular,
+  MeetNowRegular,
+  MeetNowFilled,
+  CalendarLtrFilled,
+  CalendarLtrRegular,
 } from '@fluentui/react-icons';
 
 export interface ContentProps {
@@ -34,17 +46,47 @@ export interface ContentProps {
 const useStyles = makeStyles({
   root: {
     display: 'grid',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     gridTemplateColumns: '30% 30% 30%',
     gridTemplateRows: 'auto',
     gridColumnGap: '5%',
   },
-  col: {
+  col2: {
+    display: 'grid',
+    gridTemplateRows: 'auto auto auto',
+    gridRowGap: '10%',
+    justifyContent: 'center',
     alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    rowGap: '20px',
+  },
+  col3: {
+    display: 'grid',
+    gridTemplateColumns: 'auto auto',
+    gridTemplateRows: 'auto auto auto auto',
+    gridRowGap: '5%',
+    gridColumnGap: '5%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  slider: {
+    gridColumnStart: 1,
+    gridColumnEnd: 3,
+    width: '100%',
+  },
+  icons: {
+    display: 'grid',
+    gridTemplateColumns: 'auto auto',
+    gridTemplateRows: 'auto auto',
+    gridRowGap: '20%',
+    gridColumnGap: '20%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  twoRow: {
+    display: 'grid',
+    gridTemplateRows: 'auto auto',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -53,6 +95,8 @@ export const Demo: React.FC<ContentProps> = props => {
   const CutIcon = bundleIcon(CutFilled, CutRegular);
   const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
   const EditIcon = bundleIcon(EditFilled, EditRegular);
+  const MeetNowIcon = bundleIcon(MeetNowFilled, MeetNowRegular);
+  const CalendarLtrIcon = bundleIcon(CalendarLtrFilled, CalendarLtrRegular);
   return (
     <FluentProvider theme={teamsLightTheme}>
       <Label>Examples</Label>
@@ -66,7 +110,7 @@ export const Demo: React.FC<ContentProps> = props => {
             format.
           </Body1>
         </div>
-        <div className={styles.col}>
+        <div className={styles.col2}>
           <TabList defaultSelectedValue="tab1">
             <Tab value="tab1">Home</Tab>
             <Tab value="tab2">Pages</Tab>
@@ -78,7 +122,7 @@ export const Demo: React.FC<ContentProps> = props => {
           />
           <Menu>
             <MenuTrigger>
-              <Button>Select</Button>
+              <MenuButton>Select </MenuButton>
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
@@ -95,7 +139,37 @@ export const Demo: React.FC<ContentProps> = props => {
             </MenuPopover>
           </Menu>
         </div>
-        <div>col3</div>
+        <div className={styles.col3}>
+          <div>
+            <Button appearance="primary">Sign Up</Button>
+          </div>
+          <div>
+            <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
+              Learn More
+            </Button>
+          </div>
+          <Slider className={styles.slider} defaultValue={20} />
+          <div className={styles.icons}>
+            <Badge size="medium" appearance="filled" icon={<CalendarLtrIcon />} />
+            <Badge size="medium" appearance="ghost" icon={<CalendarLtrIcon />} />
+            <Badge size="medium" appearance="outline" icon={<MeetNowIcon />} />
+            <Badge size="medium" appearance="tint" icon={<MeetNowIcon />} />
+          </div>
+          <div className={styles.twoRow}>
+            <Switch defaultChecked={true} label="On" />
+            <Switch label="Off" />
+          </div>
+          <div>
+            <Checkbox defaultChecked={true} label="Option 1" />
+            <Checkbox label="Option 2" />
+          </div>
+          <div>
+            <RadioGroup>
+              <Radio defaultChecked={true} label="Option 1" />
+              <Radio label="Option 2" />
+            </RadioGroup>
+          </div>
+        </div>
       </div>
     </FluentProvider>
   );
