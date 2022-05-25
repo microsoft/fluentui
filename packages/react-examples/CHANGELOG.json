@@ -2,6 +2,57 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 25 May 2022 07:44:28 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/azure-themes to v8.2.37",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react to v8.70.0",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-cards to v0.202.37",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-charting to v5.9.37",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-docsite-components to v8.7.20",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-experiments to v8.8.23",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/theme-samples to v8.4.37",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 May 2022 07:47:26 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",
