@@ -22,15 +22,15 @@ about what the build time optimization does.
 - For application developers please use the [Webpack loader](#webpack)
 - For library developers please use the [Babel preset](#babel)
 
-### Webpack
+### Webpack loader
 
 ```sh
-yarn add @griffel/webpack-loader
+yarn add -D @griffel/webpack-loader
 ```
 
 In your Webpack config, simply add the `@griffel/webpack-loader` to the list of rules.
 
-```javascript
+```js
 // webpack.config.js
 module: {
   rules: [
@@ -59,9 +59,9 @@ module: {
 }
 ```
 
-**We recommend adding the Griffel webpack loader after babel-loader or ts-loader.**. The underlying babel transforms
+**💡 NOTE: we recommend adding the Griffel webpack loader after babel-loader or ts-loader.**. The underlying babel transforms
 used by the webpack loader are configured by default to use the most basic language features. Therefore to avoid
-extra configuration or parsing errors, using the webpack loader after transpilation is the recommended approach.
+extra configuration or parsing errors, using the webpack loader after transpilation is the required approach.
 
 #### Typescript (and additional transpilation) support
 
@@ -71,27 +71,28 @@ any other language features that might be required can also be configured here. 
 ensure that the webpack loader will run on transpiled code (for a specific module), runtime evaluation can potentially require other
 modules that are not transpiled. Any additional language features can also be configured in the same way.
 
-### Babel
+### Babel preset
 
-The Babel preset is used internally by the Webpack loader. For applications the Webpack loader is appropriate
-since it is the most popular bundler.
-However, library developers might prefer to use the Babel preset since it is a better fit for tools such as [Rollup](https://rollupjs.org/guide/en/).
+The Babel preset is used internally by the Webpack loader.
+
+> For applications using [Webpack loader](#webpack-loader) is encouraged and recommended
+
+However, library devs which might prefer to not bundle their code should use our Babel preset.
 
 ```sh
-yarn add @griffel/babel-preset
+yarn add -D @griffel/babel-preset
 ```
 
-Simply create a Babel configuration file such as `.babelrc` and add the preset.
+Simply create a Babel configuration file such as `.babelrc.json` and add the preset.
 
-```js
-module.exports = {
-  presets: [
+```json
+{
+  "presets": [
     [
-      '@griffel',
+      "@griffel",
       {
-        // see https://github.com/microsoft/griffel/tree/main/packages/webpack-loader#configuring-babel-settings
-        babelOptions: {
-          presets: ['@babel/preset-typescript'],
+        "babelOptions": {
+          "presets": ["@babel/preset-typescript"],
         },
       },
     ],
@@ -106,7 +107,7 @@ module.exports = {
 #### Importing from a third party package
 
 If Griffel is re-exported from a third party package, it's necessary to configure the preset to use a different
-module source. By default, the preset already handles imports from `@fluentui/react-components`.
+module source. By default, the preset is hard coded to handle imports from `@fluentui/react-components`.
 
 ```js
 import { makeStyles } from 'custom-package';
@@ -127,8 +128,8 @@ import { makeStyles } from 'custom-package';
 
 ### What is being optimized
 
-> ⚠️ Style resolution only needs to happen on the initial render of a component. Therefore, without build time
-> optimization, the performance after the initial render is comparable. It is perfectly reasonable to follow the
+> ⚠️ Style resolution only needs to happen on the initial render of a component. Therefore,without build time
+> optimization the performance is comparable with the 2nd and consecutive renders. It is perfectly reasonable to follow the
 > quickstart guide and introduce build time optimization if/when it is required.
 
 Let's start with a simple example:
@@ -136,28 +137,37 @@ Let's start with a simple example:
 ```tsx
 import { makeStyles } from '@fluentui/react-components';
 
+// 1.
 const useStyles = makeStyles({
   root: { paddingLeft: '1px', display: 'flex' },
 });
 
 function Component() {
+  // 2.
   const classes = useStyles();
 
   return <div className={classes.root} />;
 }
 ```
 
-A correct invocation of `makeStyles` creates a styling hook that can be used inside a component. When the `useStyles`
-hook is invoked inside a component the styles are resolved and applied to the document. You can look at the image below
-which describes what work is done during style resolution. **Note that this work only happens once, during first render**.
+What's happening in that example?
+
+1. Invocation of makeStyles creates a styling hook that will be used inside a component
+2. The `useStyles` hook call resolves styles which are injected into the document.
+
+You can look at the image below which describes what work is done during style resolution.
+
+> 💡 NOTE: this work only happens once, during first render.
 
 <img src={imageFile} alt={'Illustration of work done by style resolution'} />
 
-The final result before the CSS rules are inserted into DOM can be prepared during build time through
-the methods above. Once the styles of our simple example are transformed at build time the resulting bundle contains
+The final result before the CSS rules are inserted into DOM can be compiled ahead of time during build time through
+the methods described above. Once the styles of our simple example are transformed at build time the resulting bundle contains
 a result similar to what is in our diagram. The actual runtime code of `makeStyles` is completely stripped from the
-bundle and replaced with a lightweight function that simply concatenates the CSS classes and inserts them to
+bundle and replaced with a lightweight function (`__styles`) that simply concatenates the CSS classes and inserts them to
 DOM.
+
+**Result of ahead of time compilation:**
 
 ```tsx
 const useStyles = __styles(
