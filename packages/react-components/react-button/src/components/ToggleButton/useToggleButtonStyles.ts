@@ -1,4 +1,5 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles';
@@ -64,6 +65,10 @@ export const useCheckedStyles = makeStyles({
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
     },
+
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    }),
   },
   primary: {
     backgroundColor: tokens.colorBrandBackgroundSelected,
