@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use neutral foreground 2 as text color for menu item",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
