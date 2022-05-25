@@ -1,13 +1,31 @@
 import * as React from 'react';
 import { Select } from '../index';
 import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: '400px',
+
+    // Stack the label above the field with a 2px gap
+    '> label': {
+      display: 'block',
+      marginBottom: '2px',
+    },
+
+    '> button': {
+      marginTop: '4px',
+    },
+  },
+});
 
 export const Controlled = () => {
   const selectId = useId();
+  const styles = useStyles();
   const [value, setValue] = React.useState<'red' | 'green' | 'blue'>('red');
 
   return (
-    <>
+    <div className={styles.root}>
       <label htmlFor={selectId}>Color</label>
       <Select id={selectId}>
         <option selected={value === 'red'}>Red</option>
@@ -15,7 +33,7 @@ export const Controlled = () => {
         <option selected={value === 'blue'}>Blue</option>
       </Select>
       <button onClick={() => setValue('blue')}>Select Blue</button>
-    </>
+    </div>
   );
 };
 
