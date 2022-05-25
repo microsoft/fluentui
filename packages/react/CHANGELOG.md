@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 24 May 2022 07:47:25 GMT and should not be manually modified.
+This log was last generated on Wed, 25 May 2022 07:44:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.70.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.70.0)
+
+Wed, 25 May 2022 07:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.69.0..@fluentui/react_v8.70.0)
+
+### Minor changes
+
+- Fixing the PlainCard styles export to have the correct path. This never worked before, so I consider it a minor change. ([PR #23201](https://github.com/microsoft/fluentui/pull/23201) by dzearing@microsoft.com)
 
 ## [8.69.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.69.0)
 

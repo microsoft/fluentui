@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionItemProps } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
 
-export const Disabled = (args: AccordionItemProps) => (
+export const Disabled = () => (
   <Accordion>
-    <AccordionItem {...args} value="1">
+    <AccordionItem disabled value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 1</div>
       </AccordionPanel>
     </AccordionItem>
-    <AccordionItem {...args} value="2">
+    <AccordionItem disabled value="2">
       <AccordionHeader>Accordion Header 2</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 2</div>
       </AccordionPanel>
     </AccordionItem>
-    <AccordionItem {...args} value="3">
+    <AccordionItem disabled value="3">
       <AccordionHeader>Accordion Header 3</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 3</div>
@@ -23,10 +23,6 @@ export const Disabled = (args: AccordionItemProps) => (
     </AccordionItem>
   </Accordion>
 );
-
-Disabled.args = {
-  disabled: true,
-} as AccordionItemProps;
 
 Disabled.parameters = {
   docs: {

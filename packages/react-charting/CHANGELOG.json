@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 25 May 2022 07:44:28 GMT",
+      "tag": "@fluentui/react-charting_v5.9.37",
+      "version": "5.9.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "601d8b59c5768b048c86e0d53ebe6632e9d6df1a",
+            "comment": "Bug 5915906 vertical stacked chart colors of legends is not displayed in high contrast"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.70.0",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 May 2022 07:47:25 GMT",
       "tag": "@fluentui/react-charting_v5.9.36",
       "version": "5.9.36",

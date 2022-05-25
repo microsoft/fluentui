@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "formatting improvements in stories",
+  "packageName": "@fluentui/react-textarea",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

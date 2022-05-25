@@ -4,6 +4,11 @@
 
 ```ts
 
+import { Alert } from '@fluentui/react-alert';
+import { alertClassNames } from '@fluentui/react-alert';
+import { AlertProps } from '@fluentui/react-alert';
+import { AlertSlots } from '@fluentui/react-alert';
+import { AlertState } from '@fluentui/react-alert';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
@@ -24,11 +29,18 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { Select } from '@fluentui/react-select';
+import { selectClassNames } from '@fluentui/react-select';
+import { SelectProps } from '@fluentui/react-select';
+import { SelectSlots } from '@fluentui/react-select';
+import { SelectState } from '@fluentui/react-select';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { SpinButtonBounds } from '@fluentui/react-spinbutton';
 import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
@@ -38,6 +50,8 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
+import { useAlert_unstable } from '@fluentui/react-alert';
+import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -46,8 +60,20 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
+
+export { Alert }
+
+export { alertClassNames }
+
+export { AlertProps }
+
+export { AlertSlots }
+
+export { AlertState }
 
 export { Card }
 
@@ -89,6 +115,8 @@ export { CardSlots }
 
 export { CardState }
 
+export { renderAlert_unstable }
+
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -97,7 +125,19 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
+export { renderSelect_unstable }
+
 export { renderSpinButton_unstable }
+
+export { Select }
+
+export { selectClassNames }
+
+export { SelectProps }
+
+export { SelectSlots }
+
+export { SelectState }
 
 export { SpinButton }
 
@@ -117,6 +157,10 @@ export { SpinButtonSpinState }
 
 export { SpinButtonState }
 
+export { useAlert_unstable }
+
+export { useAlertStyles_unstable }
+
 export { useCard_unstable }
 
 export { useCardFooter_unstable }
@@ -132,6 +176,10 @@ export { useCardPreview_unstable }
 export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
+
+export { useSelect_unstable }
+
+export { useSelectStyles_unstable }
 
 export { useSpinButton_unstable }
 

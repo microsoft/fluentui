@@ -46,6 +46,7 @@ export type {
   UseOnClickOrScrollOutsideOptions,
 } from './hooks/index';
 
+// eslint-disable-next-line @fluentui/ban-context-export
 export { canUseDOM, defaultSSRContextValue, useIsSSR, useSSRContext, SSRContext, SSRProvider } from './ssr/index';
 export type { SSRContextValue } from './ssr/index';
 

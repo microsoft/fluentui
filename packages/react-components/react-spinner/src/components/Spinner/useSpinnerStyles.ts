@@ -14,13 +14,13 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
  * Radii for the Spinner circles
  */
 const rValues = {
-  tiny: '9',
-  extraSmall: '11',
-  small: '13',
-  medium: '14.5',
-  large: '16.5',
-  extraLarge: '18.5',
-  huge: '20',
+  tiny: '9px',
+  extraSmall: '11px',
+  small: '13px',
+  medium: '14.5px',
+  large: '16.5px',
+  extraLarge: '18.5px',
+  huge: '20px',
 };
 
 /*
@@ -228,6 +228,10 @@ const useTrackStyles = makeStyles({
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
       stroke: tokens.colorNeutralBackground4,

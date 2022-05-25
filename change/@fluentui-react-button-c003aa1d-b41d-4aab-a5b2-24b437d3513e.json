@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "ToggleButton: Apply thicker border width to checked outline toggle buttons.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

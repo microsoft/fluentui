@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
 import { Combobox, ComboboxProps, Option } from '../index';
+import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
   root: {
@@ -13,14 +14,23 @@ const useStyles = makeStyles({
       display: 'flex',
       flexDirection: 'column',
       ...shorthands.gap('5px'),
-      ...shorthands.borderRadius('10px'),
       // need padding to see the background color for filled variants
       ...shorthands.padding('5px', '20px', '10px'),
     },
   },
   // filledLighter and filledDarker appearances depend on particular background colors
-  filledLighter: { backgroundColor: '#8a8a8a' },
-  filledDarker: { backgroundColor: '#8a8a8a' },
+  filledLighter: {
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
+    '> label': {
+      color: tokens.colorNeutralForegroundInverted,
+    },
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
+    '> label': {
+      color: tokens.colorNeutralForegroundInverted,
+    },
+  },
 });
 
 export const Appearance = (props: Partial<ComboboxProps>) => {

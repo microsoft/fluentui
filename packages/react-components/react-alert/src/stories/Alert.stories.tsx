@@ -7,7 +7,7 @@ export { Intent } from './AlertIntent.stories';
 export { Action } from './AlertAction.stories';
 
 export default {
-  title: 'Components/Alert',
+  title: 'Preview Components/Alert',
   component: Alert,
   parameters: {
     docs: {

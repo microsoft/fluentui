@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 25 May 2022 07:44:28 GMT",
+      "tag": "@fluentui/react_v8.70.0",
+      "version": "8.70.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "34ae102d8d81c10fe4919a4318af91ea3dac5fec",
+            "comment": "Fixing the PlainCard styles export to have the correct path. This never worked before, so I consider it a minor change."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 May 2022 07:47:25 GMT",
       "tag": "@fluentui/react_v8.69.0",
       "version": "8.69.0",

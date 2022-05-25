@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removing additional focus ring in native textarea for macOS safari.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

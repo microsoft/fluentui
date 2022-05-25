@@ -1,6 +1,14 @@
 // Stub for unstable exports
 
 export {
+  Alert,
+  alertClassNames,
+  renderAlert_unstable,
+  useAlertStyles_unstable,
+  useAlert_unstable,
+} from '@fluentui/react-alert';
+export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
+export {
   Card,
   CardFooter,
   CardHeader,
@@ -36,6 +44,14 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
+export {
+  Select,
+  renderSelect_unstable,
+  selectClassNames,
+  useSelectStyles_unstable,
+  useSelect_unstable,
+} from '@fluentui/react-select';
+export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
   SpinButton,
@@ -44,7 +60,6 @@ export {
   useSpinButtonStyles_unstable,
   useSpinButton_unstable,
 } from '@fluentui/react-spinbutton';
-
 export type {
   SpinButtonOnChangeData,
   SpinButtonChangeEvent,
