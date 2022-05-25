@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-component-event-listener",
   "description": "React components for binding events on the global scope.",
-  "version": "0.61.0",
+  "version": "0.63.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -23,8 +23,8 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17",
-    "react-dom": "^16.8.0 || ^17"
+    "react": "^16.8.0 || ^17 || ^18",
+    "react-dom": "^16.8.0 || ^17 || ^18"
   },
   "publishConfig": {
     "access": "public"

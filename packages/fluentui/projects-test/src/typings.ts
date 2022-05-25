@@ -31,7 +31,7 @@ export async function typings() {
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);

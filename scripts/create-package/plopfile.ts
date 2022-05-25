@@ -86,7 +86,7 @@ module.exports = (plop: NodePlopAPI) => {
       if (answers.target === 'react') answers = { hasTests: true, ...answers };
       const { packageName, target, hasTests } = answers;
 
-      const destination = `packages/${packageName}`;
+      const destination = answers.isConverged ? `packages/react-components/${packageName}` : `packages/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters

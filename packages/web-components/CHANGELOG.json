@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 17 May 2022 07:45:01 GMT",
+      "tag": "@fluentui/web-components_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "d5706692da2077930b084bff166d0981c058eb7e",
+            "comment": "Added the Color Explorer as a web components Storybook page"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 May 2022 07:36:53 GMT",
+      "tag": "@fluentui/web-components_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b60bcd3b01d2927a03660523eea42b42f507e85b",
+            "comment": "Added support for Segoe UI Variable font with variant configurations Added type ramp helpers to conveniently and consistently apply all necessary font attributes."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Apr 2022 07:39:56 GMT",
+      "tag": "@fluentui/web-components_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7b73745e44fb4be6c228de0f1a500eea0d9db00b",
+            "comment": "update to latest versions of fast-element and fast-foundation for web components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Mar 2022 23:29:58 GMT",
       "tag": "@fluentui/web-components_v2.3.1",
       "version": "2.3.1",

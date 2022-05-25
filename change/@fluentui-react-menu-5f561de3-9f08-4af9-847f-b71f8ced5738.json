@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add static classnames to Menu",
-  "packageName": "@fluentui/react-menu",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

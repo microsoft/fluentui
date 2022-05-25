@@ -1633,7 +1633,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             right: -2px;
                             top: -2px;
                           }
-                          &:active > * {
+                          &:active > span {
                             left: 0px;
                             position: relative;
                             top: 0px;
@@ -1811,7 +1811,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           right: -2px;
                           top: -2px;
                         }
-                        &:active > * {
+                        &:active > span {
                           left: 0px;
                           position: relative;
                           top: 0px;

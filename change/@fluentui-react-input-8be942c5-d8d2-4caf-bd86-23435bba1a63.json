@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING CHANGE: Remove `inline` prop and use `display: inline-flex` by default",
-  "packageName": "@fluentui/react-input",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

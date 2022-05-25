@@ -106,7 +106,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -245,7 +245,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -380,7 +380,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -515,7 +515,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -650,7 +650,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -785,7 +785,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -920,7 +920,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1055,7 +1055,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1190,7 +1190,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1325,7 +1325,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1460,7 +1460,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1595,7 +1595,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1730,7 +1730,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -1865,7 +1865,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2000,7 +2000,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2180,7 +2180,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2319,7 +2319,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2454,7 +2454,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2589,7 +2589,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2724,7 +2724,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2859,7 +2859,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -2994,7 +2994,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3129,7 +3129,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3264,7 +3264,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3399,7 +3399,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3534,7 +3534,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3669,7 +3669,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3804,7 +3804,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -3939,7 +3939,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4074,7 +4074,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4227,7 +4227,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4362,7 +4362,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4497,7 +4497,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4632,7 +4632,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4767,7 +4767,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -4902,7 +4902,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5037,7 +5037,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5172,7 +5172,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5323,7 +5323,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5462,7 +5462,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5597,7 +5597,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5732,7 +5732,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -5867,7 +5867,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -6002,7 +6002,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
@@ -6137,7 +6137,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 right: -2px;
                 top: -2px;
               }
-              &:active > * {
+              &:active > span {
                 left: 0px;
                 position: relative;
                 top: 0px;
