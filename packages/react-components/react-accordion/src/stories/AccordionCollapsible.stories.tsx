@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
 
-export const Collapsible = (args: AccordionProps) => (
-  <Accordion {...args}>
+export const Collapsible = () => (
+  <Accordion collapsible>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,10 +23,6 @@ export const Collapsible = (args: AccordionProps) => (
     </AccordionItem>
   </Accordion>
 );
-
-Collapsible.args = {
-  collapsible: true,
-} as AccordionProps;
 
 Collapsible.parameters = {
   docs: {

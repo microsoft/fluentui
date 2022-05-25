@@ -35,30 +35,32 @@ export type AccordionToggleData = {
 
 export type AccordionProps = ComponentProps<AccordionSlots> & {
   /**
-   * Default value for the uncontrolled state of the panel
+   * Default value for the uncontrolled state of the panel.
    */
   defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
 
   /**
-   * Indicates if Accordion support multiple Panels closed at the same time
+   * Indicates if Accordion support multiple Panels closed at the same time.
    */
   collapsible?: boolean;
 
   /**
-   * Indicates if Accordion support multiple Panels opened at the same time
+   * Indicates if Accordion support multiple Panels opened at the same time.
    */
   multiple?: boolean;
 
   /**
-   * Indicates if keyboard navigation is available and gives two options,
-   * linear or circular navigation
+   * Indicates if keyboard navigation is available and gives two options, linear or circular navigation.
    */
   navigation?: 'linear' | 'circular';
 
+  /**
+   * Callback to be called when the opened items change.
+   */
   onToggle?: AccordionToggleEventHandler;
 
   /**
-   * Controls the state of the panel
+   * Controls the state of the panel.
    */
   openItems?: AccordionItemValue | AccordionItemValue[];
 };
