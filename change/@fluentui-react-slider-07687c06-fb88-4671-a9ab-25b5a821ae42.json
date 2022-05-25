@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "new high contrast styles for slider steps",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
