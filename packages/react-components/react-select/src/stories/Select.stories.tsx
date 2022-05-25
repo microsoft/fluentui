@@ -12,7 +12,7 @@ export { Inline } from './SelectInline.stories';
 export { Size } from './SelectSize.stories';
 
 export default {
-  title: 'Components/Select',
+  title: 'Preview Components/Select',
   component: Select,
   parameters: {
     docs: {
