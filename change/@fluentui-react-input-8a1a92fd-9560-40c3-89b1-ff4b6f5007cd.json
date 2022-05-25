@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: update string unions to use spinal-case",
-  "packageName": "@fluentui/react-input",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

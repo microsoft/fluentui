@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:50 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Remove webHighContrast theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:56 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

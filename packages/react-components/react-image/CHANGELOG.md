@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 23 May 2022 12:14:16 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 18:56:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.10)
+
+Mon, 23 May 2022 18:56:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.9..@fluentui/react-image_v9.0.0-rc.10)
+
+### Changes
+
+- Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- Image: Updating useImageStyles to use styles[state] pattern for props of string union types. ([PR #23121](https://github.com/microsoft/fluentui/pull/23121) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.9)
 

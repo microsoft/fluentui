@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Bump @fluentui/react-portal-compat to 9.0.0-rc.3",
-  "packageName": "@fluentui/react",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

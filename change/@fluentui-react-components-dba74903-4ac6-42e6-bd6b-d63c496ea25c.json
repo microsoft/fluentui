@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: Stop exporting `Portal` component from react-components",
+  "comment": "BREAKING: fix: Stop exporting `Portal` component from react-components",
   "packageName": "@fluentui/react-components",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"

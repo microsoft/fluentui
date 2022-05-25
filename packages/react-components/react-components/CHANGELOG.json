@@ -2,6 +2,287 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 18:56:39 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: stop exporting AccordionContext and AccordionItemContext"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing deprecated block prop from all button components."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "update tabster tab behaviors"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: Rename positioning types and APIs to avoid references to third party API"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: Exports of react context objects were removed, replaced with provider compoennts and hooks"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-components",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "fix(react-text): Change typography wrapper component names to match new design spec"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Remove webHighContrast theme"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6",
+            "comment": "chore: Bump @fluentui/react-conformance to 0.13.1"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "8fb515ae57dbd2ff50a52ab896daa058568c5273",
+            "comment": "Image: Updating useImageStyles to use styles[state] pattern for props of string union types."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: changes to positioning prop"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: Stop exporting MenuContext and MenuListContext"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: changes to positioning prop"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: stop exporting PopoverContext"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING CHANGE: Encapsulate Popper API"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: stop exporting RadioGroupContext"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing commons type from Label."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-text",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "fix: Change typography wrapper component names to match new design spec"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "9c239eaf77f2f5e3246bb16904d263001a26c726",
+            "comment": "Text: Ordering types alphabetically."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: update string unions to use spinal-case"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Remove webHighContrast theme"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING: changes to positioning prop"
+          }
+        ],
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "aa1f446e037786d74a3c14f0bee09dbcf403a929",
+            "comment": "Improving README and updating spec and migration guide."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:29 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",
