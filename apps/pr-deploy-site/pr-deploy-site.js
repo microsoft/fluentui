@@ -56,13 +56,13 @@ var siteInfo = [
   },
   {
     package: '@fluentui/theming-designer',
-    link: './theming-designer/storybook/index.html',
+    link: './theming-designer/index.html',
     icon: 'CheckMark',
     title: 'Theme Designer Example',
   },
   {
     package: '@fluentui/theme-designer',
-    link: './theme-designer/index.html',
+    link: './theme-designer/storybook/index.html',
     icon: 'CheckMark',
     title: 'Theme Designer v9',
   },
