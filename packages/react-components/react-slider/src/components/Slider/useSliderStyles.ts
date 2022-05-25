@@ -142,17 +142,17 @@ const useRailStyles = makeStyles({
         ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
         ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
       )`,
+      // force steps to use HighlightText for high contrast mode
       '@media (forced-colors: active)': {
         backgroundImage: `repeating-linear-gradient(
-          var(${railDirectionVar}),
+          var(${sliderDirectionVar}),
           #0000 0%,
-          #0000 calc(var(${railStepsPercentVar}) - 1px),
-          HighlightText calc(var(${railStepsPercentVar}) - 1px),
-          HighlightText var(${railStepsPercentVar})
+          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
+          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
+          HighlightText var(${sliderStepsPercentVar})
         )`,
       },
     },
-    // force steps to use HighlightText for high contrast mode
   },
 
   horizontal: {
