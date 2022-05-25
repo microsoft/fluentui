@@ -17,7 +17,7 @@ const v8ReferencePackages = {
 };
 const convergedReferencePackages = {
   react: ['@fluentui/react-provider'],
-  node: [],
+  node: ['@fluentui/react-conformance-griffel'],
 };
 
 interface Answers {
