@@ -6,7 +6,7 @@ import bestPracticesMd from './AvatarGroupBestPractices.md';
 export { Default } from './AvatarGroupDefault.stories';
 
 export default {
-  title: 'Components/AvatarGroup',
+  title: 'Preview Components/AvatarGroup',
   component: AvatarGroup,
   parameters: {
     docs: {
