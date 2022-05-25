@@ -130,9 +130,21 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
       // Adding space supplementary for icon
       contentString += link.itemIcon ? ' xx' : '';
+
+      const itemSemantics =
+        link.role && link.role !== 'tab'
+          ? {
+              role: link.role,
+            }
+          : {
+              role: 'tab',
+              'aria-selected': isSelected,
+            };
+
       return (
         <CommandButton
           {...headerButtonProps}
+          {...itemSemantics}
           id={tabId}
           key={itemKey}
           className={css(className, isSelected && classNames.linkIsSelected)}
@@ -141,8 +153,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={link.ariaLabel}
-          role={link.role || 'tab'}
-          aria-selected={isSelected}
           name={link.headerText}
           keytipProps={link.keytipProps}
           data-content={contentString}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Body, Caption, Display, Headline, LargeTitle, Title1, Title2, Title3, Subheadline } from '../index';
+import { Body1, Caption1, Display, Subtitle1, LargeTitle, Title1, Title2, Title3, Subtitle2, Caption2 } from '../index';
 
 export const Typography = () => (
   <>
@@ -8,10 +8,11 @@ export const Typography = () => (
     <Title1 block>Title1 text wrapper, semibold, base800</Title1>
     <Title2 block>Title2 text wrapper, semibold, base700</Title2>
     <Title3 block>Title3 text wrapper, semibold, base600</Title3>
-    <Headline block>Headline text wrapper, semibold, base500</Headline>
-    <Subheadline block>Subheadline text wrapper, semibold, base400</Subheadline>
-    <Body block>Body text wrapper, regular, base300</Body>
-    <Caption block>Caption text wrapper, regular, base200</Caption>
+    <Subtitle1 block>Subtitle1 text wrapper, semibold, base500</Subtitle1>
+    <Subtitle2 block>Subtitle2 text wrapper, semibold, base400</Subtitle2>
+    <Body1 block>Body1 text wrapper, regular, base300</Body1>
+    <Caption1 block>Caption1 text wrapper, regular, base200</Caption1>
+    <Caption2 block>Caption2 text wrapper, regular, base100</Caption2>
   </>
 );
 

@@ -9,6 +9,7 @@ describe('MenuPopover', () => {
 
   isConformant({
     Component: MenuPopover,
+    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuPopover',
     requiredProps: { 'data-testid': testid } as MenuPopoverProps,
     getTargetElement: result => result.getByTestId(testid),

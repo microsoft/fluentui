@@ -24,7 +24,7 @@ export type AvatarSlots = {
   /**
    * Icon to be displayed when the avatar doesn't have an image or initials.
    *
-   * @defaultvalue `PersonRegular` (the default icon's size depends on the Avatar's size)
+   * @default `PersonRegular` (the default icon's size depends on the Avatar's size)
    */
   icon?: Slot<'span'>;
 
@@ -34,77 +34,11 @@ export type AvatarSlots = {
   badge?: Slot<typeof PresenceBadge>;
 };
 
-type AvatarCommons = {
-  /**
-   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
-   *
-   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
-   * accessibility tools.
-   */
-  name?: string;
-
-  /**
-   * Size of the avatar in pixels.
-   *
-   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
-   * based on design guidelines for the Avatar control.
-   *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
-   * to override the rendered size.
-   *
-   * For example, to set the avatar to 45px in size:
-   * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
-   *
-   * @defaultvalue 32
-   */
-  size: AvatarSizes;
-
-  /**
-   * The avatar can have a circular or square shape.
-   * @defaultvalue circular
-   */
-  shape: 'circular' | 'square';
-
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * unset: normal display
-   *
-   * @defaultvalue unset
-   */
-  active: 'active' | 'inactive' | 'unset';
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @defaultvalue ring
-   */
-  activeAppearance: 'ring' | 'shadow' | 'ring-shadow';
-
-  /**
-   * The color when displaying either an icon or initials.
-   * * neutral (default): gray
-   * * brand: color from the brand palette
-   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
-   * * [AvatarNamedColor]: a specific color from the theme
-   *
-   * @defaultvalue neutral
-   */
-  color: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
-
-  /**
-   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
-   * Use this when a name is not available, but there is another unique identifier that can be used instead.
-   */
-  idForColor: string | undefined;
-};
-
 /**
  * A specific named color for the Avatar
  */
 export type AvatarNamedColor =
-  | 'darkRed'
+  | 'dark-red'
   | 'cranberry'
   | 'red'
   | 'pumpkin'
@@ -115,12 +49,12 @@ export type AvatarNamedColor =
   | 'brown'
   | 'forest'
   | 'seafoam'
-  | 'darkGreen'
-  | 'lightTeal'
+  | 'dark-green'
+  | 'light-teal'
   | 'teal'
   | 'steel'
   | 'blue'
-  | 'royalBlue'
+  | 'royal-blue'
   | 'cornflower'
   | 'navy'
   | 'lavender'
@@ -138,20 +72,86 @@ export type AvatarNamedColor =
 /**
  * Sizes that can be used for the Avatar
  */
-export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 /**
  * Properties for Avatar
  */
-export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & Partial<AvatarCommons>;
+export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
+  /**
+   * Optional activity indicator
+   * * active: the avatar will be decorated according to activeAppearance
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * unset: normal display
+   *
+   * @default unset
+   */
+  active?: 'active' | 'inactive' | 'unset';
+
+  /**
+   * The appearance when `active="active"`
+   *
+   * @default ring
+   */
+  activeAppearance?: 'ring' | 'shadow' | 'ring-shadow';
+
+  /**
+   * The color when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
+   * * [AvatarNamedColor]: a specific color from the theme
+   *
+   * @default neutral
+   */
+  color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+
+  /**
+   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
+   * Use this when a name is not available, but there is another unique identifier that can be used instead.
+   */
+  idForColor?: string | undefined;
+
+  /**
+   * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
+   *
+   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * accessibility tools.
+   */
+  name?: string;
+
+  /**
+   * The avatar can have a circular or square shape.
+   * @default circular
+   */
+  shape?: 'circular' | 'square';
+
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
+   * based on design guidelines for the Avatar control.
+   *
+   * Note: At size 16, if initials are displayed, only the first initial will be rendered.
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * to override the rendered size.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
+   *
+   * @default 32
+   */
+  size?: AvatarSizes;
+};
 
 /**
  * State used in rendering Avatar
  */
 export type AvatarState = ComponentState<AvatarSlots> &
-  AvatarCommons & {
+  Required<Pick<AvatarProps, 'active' | 'activeAppearance' | 'shape' | 'size'>> & {
     /**
-     * The Avatar's color, with `'colorful'` resolved to a named color
+     * The Avatar's color, it matches props.color but with `'colorful'` resolved to a named color
      */
-    color: Exclude<AvatarCommons['color'], 'colorful'>;
+    color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
   };

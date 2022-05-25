@@ -9,18 +9,23 @@ import {
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import { commonPropTypes, UIComponentProps, createShorthandFactory } from '../../utils';
+import { commonPropTypes, UIComponentProps, createShorthandFactory, SizeValue } from '../../utils';
+import * as customPropTypes from '@fluentui/react-proptypes';
 import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 
 export interface AvatarStatusIconProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<never>;
+
   /** The pre-defined state values which can be consumed directly. */
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
+
+  /** Size multiplier */
+  size?: SizeValue;
 }
 
-export type AvatarStatusIconStylesProps = Required<Pick<AvatarStatusIconProps, 'state'>>;
+export type AvatarStatusIconStylesProps = Required<Pick<AvatarStatusIconProps, 'size' | 'state'>>;
 export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 
 /**
@@ -31,11 +36,12 @@ export const AvatarStatusIcon = (React.forwardRef<HTMLSpanElement, AvatarStatusI
   const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
   setStart();
 
-  const { className, children, design, styles, variables, state } = props;
+  const { children, className, design, size, state, styles, variables } = props;
 
   const { classes } = useStyles<AvatarStatusIconStylesProps>(AvatarStatusIcon.displayName, {
     className: avatarStatusIconClassName,
     mapPropsToStyles: () => ({
+      size,
       state,
     }),
     mapPropsToInlineStyles: () => ({
@@ -66,6 +72,7 @@ export const AvatarStatusIcon = (React.forwardRef<HTMLSpanElement, AvatarStatusI
 AvatarStatusIcon.displayName = 'AvatarStatusIcon';
 AvatarStatusIcon.propTypes = {
   ...commonPropTypes.createCommon(),
+  size: customPropTypes.size,
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };
 AvatarStatusIcon.handledProps = Object.keys(AvatarStatusIcon.propTypes) as any;

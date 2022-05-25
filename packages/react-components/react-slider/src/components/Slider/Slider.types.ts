@@ -37,37 +37,15 @@ export type SliderSlots = {
   };
 };
 
-type SliderCommons = {
+export type SliderProps = Omit<
+  ComponentProps<Partial<SliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   /**
    * The starting value for an uncontrolled Slider.
    * Mutually exclusive with `value` prop.
    */
   defaultValue?: number;
-
-  /**
-   * The current value of the controlled Slider.
-   * Mutually exclusive with `defaultValue` prop.
-   */
-  value?: number;
-
-  /**
-   * The min value of the Slider.
-   * @default 0
-   */
-  min?: number;
-
-  /**
-   * The max value of the Slider.
-   * @default 100
-   */
-  max?: number;
-
-  /**
-   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
-   * will snap to the closest available value. This must be a positive value.
-   * @default 1
-   */
-  step?: number;
 
   /**
    *  Whether to render the Slider as disabled.
@@ -77,10 +55,16 @@ type SliderCommons = {
   disabled?: boolean;
 
   /**
-   * Render the Slider in a vertical orientation, smallest value on the bottom.
-   * @default `false`
+   * The max value of the Slider.
+   * @default 100
    */
-  vertical?: boolean;
+  max?: number;
+
+  /**
+   * The min value of the Slider.
+   * @default 0
+   */
+  min?: number;
 
   /**
    * The starting origin point for the Slider.
@@ -95,6 +79,25 @@ type SliderCommons = {
   size?: 'small' | 'medium';
 
   /**
+   * The number of steps that the Slider's `value` will increment upon change. When provided, the Slider
+   * will snap to the closest available value. This must be a positive value.
+   * @default 1
+   */
+  step?: number;
+
+  /**
+   * The current value of the controlled Slider.
+   * Mutually exclusive with `defaultValue` prop.
+   */
+  value?: number;
+
+  /**
+   * Render the Slider in a vertical orientation, smallest value on the bottom.
+   * @default `false`
+   */
+  vertical?: boolean;
+
+  /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
@@ -104,10 +107,4 @@ export type SliderOnChangeData = {
   value: number;
 };
 
-export type SliderProps = Omit<
-  ComponentProps<Partial<SliderSlots>, 'input'>,
-  'defaultValue' | 'onChange' | 'size' | 'value'
-> &
-  SliderCommons;
-
-export type SliderState = ComponentState<SliderSlots> & SliderCommons;
+export type SliderState = ComponentState<SliderSlots> & Pick<SliderProps, 'disabled' | 'size' | 'vertical'>;

@@ -6,7 +6,7 @@ import { useId } from '@fluentui/react-utilities';
 export const Controlled = () => {
   const id = useId();
 
-  const [spinButtonValue, setSpinButtonValue] = React.useState(10);
+  const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(10);
 
   const onSpinButtonChange: SpinButtonProps['onChange'] = React.useCallback(
     (_ev, data) => {
@@ -18,7 +18,7 @@ export const Controlled = () => {
         if (!Number.isNaN(newValue)) {
           setSpinButtonValue(newValue);
         } else {
-          console.error(`"${data.displayValue}" is not a valid value.`);
+          console.error(`Cannot parse "${data.displayValue}" as a number.`);
         }
       }
     },

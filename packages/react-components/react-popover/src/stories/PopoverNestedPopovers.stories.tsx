@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
+import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 
 import { Popover, PopoverTrigger, PopoverSurface } from '../index';
@@ -12,7 +13,8 @@ const useStyles = makeStyles({
 
 const FirstNestedPopover = () => {
   const styles = useStyles();
-  const id = 'first';
+  const id = useId();
+
   return (
     <Popover trapFocus>
       <PopoverTrigger>
@@ -37,7 +39,8 @@ const FirstNestedPopover = () => {
 
 const SecondNestedPopover = () => {
   const styles = useStyles();
-  const id = 'second';
+  const id = useId();
+
   return (
     <Popover trapFocus>
       <PopoverTrigger>
@@ -59,8 +62,9 @@ const SecondNestedPopover = () => {
 };
 
 export const NestedPopovers = () => {
-  const id = 'root';
   const styles = useStyles();
+  const id = useId();
+
   return (
     <Popover trapFocus>
       <PopoverTrigger>

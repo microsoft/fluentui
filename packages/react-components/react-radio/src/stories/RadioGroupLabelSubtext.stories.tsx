@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text } from '@fluentui/react-components';
 import { Label } from '@fluentui/react-label';
+import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { Radio, RadioGroup } from '../index';
 
@@ -8,9 +9,9 @@ export const LabelSubtext = () => {
   const labelId = useId('label');
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
       <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup>
+      <RadioGroup aria-labelledby={labelId}>
         <Radio
           value="A"
           label={
