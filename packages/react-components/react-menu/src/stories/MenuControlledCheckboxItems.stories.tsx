@@ -18,7 +18,7 @@ const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
 export const ControlledCheckboxItems = () => {
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ edit: ['cut', 'paste'] });
   const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
     setCheckedValues(s => {
       return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
