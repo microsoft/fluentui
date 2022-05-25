@@ -45,6 +45,11 @@ Prototypes can be found in the following repos for create-react-app and next.js 
 - https://github.com/ling1726/global-context
 - https://github.com/ling1726/global-context-ssr
 
+A more detailed prototype has been created in the following repo, which also shows code transforms as a possible
+solution to application
+
+- https://github.com/ling1726/global-context
+
 ```ts
 import * as React from 'react';
 import { major } from 'semver';
@@ -170,6 +175,18 @@ export const useFooContext: FooContextValue = () => {
 We only care about the cases where the context value is an object since it context values that are primitives
 cannot ever be extended as it would result in a breaking change.
 
+### Application through code transforms
+
+Since the problem only occurs once `createContext` is invoked in the global file scope, it should be feasible
+to apply the global context shim at build time for applications. The information needed to create a key for the
+context (package name, version, context name) is all available at build time.
+
+This result would mean that there would need to be no direct code changes to Fluent UI. This solution would also
+be explicitly opt-in for customers that might need a temporary quick solution while they are cleaning up their
+dependency tree so that only one version of Fluent UI is in a bundle.
+
+> 💡 [A prototype code transform can be found here](https://github.com/bsunderhus/create-global-context-babel-transformer)
+
 ## Pros and Cons
 
 ### Cons
@@ -189,6 +206,7 @@ cannot ever be extended as it would result in a breaking change.
 - Functionality can be explicitly enabled
 - Functionality can be applied with post processing so that we still use `React.createContext` internally
 - Not exporting the actual context is good API encapsulation
+- No code changes to Fluent UI
 
 ## Discarded Solutions
 
