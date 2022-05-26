@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 07:42:24 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "chore: new eslint rule: `ban-context-export`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 May 2022 07:41:14 GMT",
       "tag": "@fluentui/eslint-plugin_v1.9.0",
       "version": "1.9.0",
