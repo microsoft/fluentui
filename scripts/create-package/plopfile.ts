@@ -196,7 +196,6 @@ function replaceVersionsFromReference(
 
   // Read the package.json files of the given reference packages and combine into one object.
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
-  // const packageJsons = referencePackages.map(pkg => fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')));
   const packageJsons = referencePackages.map(pkgName => {
     const metadata = getProjectMetadata({ root, name: pkgName });
 
