@@ -21,17 +21,22 @@ describe('Spinner', () => {
 
   it('has role progressbar', () => {
     const result = render(<Spinner label="Default Spinner" />);
-    expect(result.queryByRole('progessbar')).toBeDefined();
+    expect(result.queryByRole('progressbar')).toBeDefined();
   });
 
   it('renders Spinner with a label', () => {
     const result = render(<Spinner label="Loading" />);
     expect(result.getByText('Loading')).toBeDefined();
-    expect(result.queryByRole('progessbar')).toBeDefined();
+    expect(result.queryByRole('progressbar')).toBeDefined();
   });
 
-  it('doesnt render svg when status is inactive', () => {
-    const result = render(<Spinner status="inactive" />);
-    expect(result.queryByRole('progessbar')).toBeNull();
+  it('doesnt render Spinner when slot is overridden', () => {
+    const result = render(<Spinner spinner="" />);
+    expect(result.queryByRole('progressbar')).toBeNull();
+  });
+
+  it('doesnt render Spinner when spinner styles is overridden', () => {
+    const result = render(<Spinner spinner={{ style: { visibility: 'hidden' } }} />);
+    expect(result.queryByRole('progressbar')).toBeNull();
   });
 });
