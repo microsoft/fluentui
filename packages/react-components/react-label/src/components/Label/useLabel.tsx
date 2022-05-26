@@ -13,13 +13,13 @@ import { resolveShorthand } from '@fluentui/react-utilities';
  * @param ref - reference to root HTMLElement of Label
  */
 export const useLabel_unstable = (props: LabelProps, ref: React.Ref<HTMLElement>): LabelState => {
-  const { disabled = false, required = false, strong = false, size = 'medium' } = props;
+  const { disabled = false, required = false, weight = 'regular', size = 'medium' } = props;
   return {
     disabled,
     required: resolveShorthand(required === true ? '*' : required || undefined, {
       defaultProps: { 'aria-hidden': 'true' },
     }),
-    strong,
+    weight,
     size,
     components: { root: 'label', required: 'span' },
     root: getNativeElementProps('label', { ref, ...props }),

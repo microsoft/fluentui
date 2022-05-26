@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  strong: {
+  semibold: {
     fontWeight: tokens.fontWeightSemibold,
   },
 });
@@ -61,7 +61,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
-    state.strong && styles.strong,
+    state.weight === 'semibold' && styles.semibold,
     state.root.className,
   );
 

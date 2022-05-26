@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Renaming strong prop to weight to align with Text.",
+  "packageName": "@fluentui/react-label",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
