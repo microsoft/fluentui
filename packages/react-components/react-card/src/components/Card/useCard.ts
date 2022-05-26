@@ -22,11 +22,11 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     'tab-only': 'unlimited',
   } as const;
 
-  const grouperAttrs = useFocusableGroup({
+  const groupperAttrs = useFocusableGroup({
     tabBehavior: focusMap[focusMode],
   });
 
-  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...grouperAttrs } : null;
+  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
 
   return {
     appearance,

@@ -1,4 +1,4 @@
-import { Types, getGrouper } from 'tabster';
+import { Types, getGroupper } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
@@ -10,18 +10,18 @@ export interface UseFocusableGroupOptions {
 }
 
 /**
- * A hook that returns the necessary tabster attributes to support grouping.
+ * A hook that returns the necessary tabster attributes to support groupping.
  * @param options - Options to configure keyboard navigation
  */
 export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.TabsterDOMAttribute => {
   const tabster = useTabster();
 
   if (tabster) {
-    getGrouper(tabster);
+    getGroupper(tabster);
   }
 
   return useTabsterAttributes({
-    grouper: {
+    groupper: {
       tabbability: getTabbability(options?.tabBehavior),
     },
   });
@@ -29,14 +29,14 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.Tab
 
 const getTabbability = (
   tabBehavior?: UseFocusableGroupOptions['tabBehavior'],
-): Types.GrouperTabbability | undefined => {
+): Types.GroupperTabbability | undefined => {
   switch (tabBehavior) {
     case 'unlimited':
-      return Types.GrouperTabbabilities.Unlimited;
+      return Types.GroupperTabbabilities.Unlimited;
     case 'limited':
-      return Types.GrouperTabbabilities.Limited;
+      return Types.GroupperTabbabilities.Limited;
     case 'limited-trap-focus':
-      return Types.GrouperTabbabilities.LimitedTrapFocus;
+      return Types.GroupperTabbabilities.LimitedTrapFocus;
     default:
       return undefined;
   }

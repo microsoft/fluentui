@@ -124,7 +124,7 @@ The bundle size of each of the different modules of the library are listed in th
 
 `Tabster's` Core API provides the following functionalities:
 
-- Grouper - handling groups of focusable elements.
+- Groupper - handling groups of focusable elements.
 - Mover - hanling moving between (groups of) focusable elements.
 - Focusable - utilities to find and verify focusable elements.
 - Focused element state - observes the currently focused element.
@@ -209,11 +209,11 @@ Below, we present a comparison between the functionality available in `FocusZone
   - _What is missing in `Tabster`?:_ And abstraction similar to `useArrowNavigationGroup` would be nice to have. Even then, there is no equivalent currently for `inputOnly` tabbing.
 - `shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean`
   - _Description:_ Callback function that will be executed on keypresses to determine if the user intends to navigate into the inner (nested) zone. Returning true will ask the first inner zone to set focus.
-  - _Partial equivalent in `Tabster`:_ The "grouper" part of `Tabster` groups focusables and can handle nesting.
+  - _Partial equivalent in `Tabster`:_ The "groupper" part of `Tabster` groups focusables and can handle nesting.
   - _What is missing in `Tabster`?:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
 - `shouldFocusInnerElementWhenReceivedFocus?: boolean`
   - _Description:_ If true and `FocusZone's` root element (container) receives focus, the focus will land either on the `defaultTabbableElement` (if set) or on the first tabbable element of this `FocusZone`. Commonly used in the case of nested `FocusZones` where the nested `FocusZone's` container is a focusable element.
-  - _Partial equivalent in `Tabster`:_ The "grouper" part of `Tabster` groups focusables and can handle nesting.
+  - _Partial equivalent in `Tabster`:_ The "groupper" part of `Tabster` groups focusables and can handle nesting.
   - _What is missing in `Tabster`?:_ We need to be very clear about how we support nested focusables to determine what kind of API is needed here.
 
 ### What is covered in `FocusZone` that is not covered by `Tabster`
