@@ -1,7 +1,9 @@
 // @ts-check
-const { ESLintUtils, AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
-const createRule = require('../../utils/createRule');
+const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
 const minimatch = require('minimatch');
+
+const createRule = require('../../utils/createRule');
+const { getTypeServices } = require('../../utils/type-services');
 
 /** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclarator } VariableDeclarator*/
 /** @typedef { import('@typescript-eslint/experimental-utils').TSESTree.ExportSpecifier} ExportSpecifier */
@@ -11,12 +13,9 @@ const minimatch = require('minimatch');
  * }} Options
  */
 
-/** @type {Options} */
-const defaultOptions = {};
-
 module.exports = createRule({
   name: 'ban-context-export',
-  defaultOptions: [],
+  defaultOptions: /** @type {ReadonlyArray<Options>} */ ([{}]),
   meta: {
     schema: [
       {
@@ -45,11 +44,7 @@ module.exports = createRule({
     },
   },
   create(context) {
-    const rawOptions = /** @type {Options[]} */ (context.options);
-    const { exclude = [] } = rawOptions.length ? rawOptions[0] : defaultOptions;
-    const { program, esTreeNodeToTSNodeMap } = ESLintUtils.getParserServices(context);
-    /** @type {import("typescript").TypeChecker | undefined} */
-    let typeChecker;
+    const [{ exclude = /** @type string[]*/ ([]) } = {}] = context.options;
 
     /**
      * @param { ExportSpecifier | VariableDeclarator } node
@@ -66,61 +61,85 @@ module.exports = createRule({
         return;
       }
 
-      if (!typeChecker) {
-        typeChecker = program.getTypeChecker();
-      }
+      const { getType } = getTypeServices(context);
 
-      const tsNode = esTreeNodeToTSNodeMap.get(node);
-      const typeNode = typeChecker.getTypeAtLocation(tsNode);
+      const type = getType(node);
 
-      // @fluentui/react-context-selector
-      if (typeNode.aliasSymbol?.name === 'Context' && typeNode.aliasSymbol.declarations?.length) {
-        const firstDeclaration = typeNode.aliasSymbol.declarations[0];
-        const fileName = firstDeclaration.parent.getSourceFile().fileName;
-        if (fileName.includes('react-context-selector')) {
-          context.report({
-            node,
-            messageId: 'contextSelector',
-            data: {
-              exportName,
-              filename: context.getFilename(),
-            },
-          });
+      /**
+       *
+       * `symbol` - type defined via `interface` / export interface User { name: string }
+       * `aliasSymbol` - type defined via `type` / export type User = { name: string }
+       *
+       * In our case:
+       * - `React.createContext` from `@types/react` return type is `interface Context` we use `symbol`
+       * - `createContext` from `@fluentui/react-context-selector` return type is `type Context` we use `aliasSymbol`
+       *
+       * @see https://github.com/microsoft/TypeScript/issues/46921#issuecomment-985048637
+       * @typedef {Extract<keyof import('typescript').Type, 'symbol' | 'aliasSymbol'>} TypeProperty
+       */
+
+      /**
+       *
+       * @param {{
+          typeProperty: TypeProperty
+          messageId: Parameters<typeof context.report>[0]['messageId']
+          fileNameCheck:(fileName:string)=>boolean;
+        }} options
+       */
+      function reportViolation(options) {
+        const typeSymbol = type[options.typeProperty];
+
+        if (!typeSymbol) {
+          return;
+        }
+
+        if (typeSymbol.name === 'Context' && typeSymbol.declarations?.length) {
+          const firstDeclaration = typeSymbol.declarations[0];
+          const fileName = firstDeclaration.parent.getSourceFile().fileName;
+
+          if (options.fileNameCheck(fileName)) {
+            context.report({
+              node,
+              messageId: options.messageId,
+              data: {
+                exportName,
+                filename: context.getFilename(),
+              },
+            });
+          }
         }
       }
 
-      // Native react
-      if (typeNode.symbol?.name === 'Context' && typeNode.symbol.declarations?.length) {
-        const firstDeclaration = typeNode.symbol.declarations[0];
-        const fileName = firstDeclaration.parent.getSourceFile().fileName;
-        if (/\/node_modules\/@types\/react\//.test(fileName)) {
-          context.report({
-            node,
-            messageId: 'nativeContext',
-            data: {
-              exportName,
-              filename: context.getFilename(),
-            },
-          });
-        }
-      }
+      reportViolation({
+        typeProperty: 'aliasSymbol',
+        messageId: 'contextSelector',
+        fileNameCheck: fileName => fileName.includes('react-context-selector'),
+      });
+
+      const nativeContextFileNamePathRegexp = /\/node_modules\/@types\/react\//;
+      reportViolation({
+        typeProperty: 'symbol',
+        messageId: 'nativeContext',
+        fileNameCheck: fileName => nativeContextFileNamePathRegexp.test(fileName),
+      });
     }
 
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ExportNamedDeclaration(exportNamedDeclaration) {
         if (exportNamedDeclaration.declaration?.type === AST_NODE_TYPES.VariableDeclaration) {
-          /** @type { import('@typescript-eslint/experimental-utils').TSESTree.VariableDeclaration } */
           const variableDeclaration = exportNamedDeclaration.declaration;
           variableDeclaration.declarations.forEach(declaration => {
-            let identifierName = 'unknown';
             if (declaration.id.type === AST_NODE_TYPES.Identifier) {
-              /** @type { import('@typescript-eslint/experimental-utils').TSESTree.Identifier } */
               const identifier = declaration.id;
-              identifierName = identifier.name;
+              const identifierName = identifier.name;
+
+              checkContextType(declaration, identifierName);
+
+              return;
             }
 
-            checkContextType(declaration, identifierName);
+            checkContextType(declaration, 'unknown');
           });
         }
       },

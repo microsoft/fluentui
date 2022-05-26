@@ -1,14 +1,8 @@
 // @ts-check
 
 const path = require('path');
-const configHelpers = require('../utils/configHelpers');
 
 const { getNamingConventionRule } = require('../utils/configHelpers');
-
-/** @type {import("eslint").Linter.RulesRecord} */
-const typeAwareRules = {
-  '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
-};
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -21,8 +15,6 @@ module.exports = {
     ...getNamingConventionRule(),
   },
   overrides: [
-    // Enable rules requiring type info only for appropriate files/circumstances
-    ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
     {
       files: '**/src/index.{ts,tsx,js}',
       rules: {
