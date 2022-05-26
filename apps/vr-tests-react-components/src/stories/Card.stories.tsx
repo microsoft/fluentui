@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body1, Caption1, Title1 } from '@fluentui/react-text';
+import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
 
@@ -60,43 +60,7 @@ storiesOf('Card Converged', module)
         />
       </Card>
     </div>
-  ))
-  .addStory(
-    'appearance',
-    () => (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <div>
-          <Title1 as="h1">Filled</Title1>
-          <Card appearance="filled">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <Title1 as="h1">Filled alternative</Title1>
-          <Card appearance="filled-alternative">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <Title1 as="h1">Outline</Title1>
-          <Card appearance="outline">
-            <SampleCardContent />
-          </Card>
-        </div>
-        <div>
-          <Title1 as="h1">Subtle</Title1>
-          <Card appearance="subtle">
-            <SampleCardContent />
-          </Card>
-        </div>
-      </div>
-    ),
-    {
-      includeRtl: true,
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  );
+  ));
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (
