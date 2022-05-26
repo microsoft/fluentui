@@ -13,6 +13,7 @@ export type TextSlots = {
 export type TextProps = ComponentProps<TextSlots> & {
   /**
    * Aligns text based on the parent container.
+   * `none` will not apply styles.
    *
    * @default 'none'
    */
@@ -27,6 +28,7 @@ export type TextProps = ComponentProps<TextSlots> & {
 
   /**
    * Applies the font family to the content.
+   * `none` will not apply styles.
    *
    * @default 'none'
    */
@@ -41,6 +43,7 @@ export type TextProps = ComponentProps<TextSlots> & {
 
   /**
    * Applies font size and line height based on the theme tokens.
+   * `none` will not apply styles.
    *
    * @default 'none'
    */
@@ -70,6 +73,7 @@ export type TextProps = ComponentProps<TextSlots> & {
 
   /**
    * Applies font weight to the content.
+   * `none` will not apply styles.
    *
    * @default 'none'
    */
