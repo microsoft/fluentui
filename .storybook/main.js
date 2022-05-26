@@ -23,12 +23,6 @@ const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
-  core: {
-    builder: {
-      name: 'webpack5',
-      lazyCompilation: true,
-    },
-  },
   features: {
     // Enables code splitting
     storyStoreV7: true,
@@ -75,6 +69,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   core: {
     builder: 'webpack5',
+    lazyCompilation: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
