@@ -20,8 +20,8 @@ import {
   Badge,
   Switch,
   Radio,
-  RadioGroup,
   Checkbox,
+  Avatar,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
@@ -48,30 +48,39 @@ const useStyles = makeStyles({
     display: 'grid',
     alignItems: 'start',
     justifyContent: 'center',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridTemplateRows: 'auto',
+    gridTemplateColumns: 'repeat(3, 1fr)',
     gridColumnGap: '5%',
+  },
+  col1: {
+    display: 'grid',
+    gridTemplateRows: 'repeat(3, auto)',
+    gridRowGap: '10%',
+    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   col2: {
     display: 'grid',
-    gridTemplateRows: '1fr 1fr 1fr',
+    gridTemplateRows: 'repeat(3, 1fr)',
     gridRowGap: '10%',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
   },
   col3: {
     display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: '1fr 1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr',
+    gridTemplateRows: 'repeat(4, auto)',
     gridRowGap: '5%',
     gridColumnGap: '5%',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'stretch',
   },
   slider: {
     gridColumnStart: 1,
     gridColumnEnd: 3,
-    width: '100%',
+  },
+  button: {
+    display: 'flex',
+    justifyContent: 'center',
   },
   icons: {
     display: 'grid',
@@ -79,26 +88,33 @@ const useStyles = makeStyles({
     gridTemplateRows: 'auto auto',
     gridRowGap: '20%',
     gridColumnGap: '20%',
-    alignItems: 'center',
     justifyContent: 'center',
   },
   twoRow: {
-    display: 'grid',
-    gridTemplateRows: '1fr 1fr',
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
 export const Column1 = () => {
+  const styles = useStyles();
   return (
-    <div>
+    <div className={styles.col1}>
       <Title3 block>Make an impression</Title3>
-      <br />
       <Body1 block>
         Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to
         people inside or outside your team. Share your ideas, results, and more in this visually compelling format.
       </Body1>
+      <Avatar
+        color="brand"
+        initials="DF"
+        badge={{
+          status: 'available',
+          'aria-label': 'available',
+        }}
+      />
     </div>
   );
 };
@@ -165,10 +181,10 @@ export const Column3 = () => {
   const styles = useStyles();
   return (
     <div className={styles.col3}>
-      <div>
+      <div className={styles.button}>
         <Button appearance="primary">Sign Up</Button>
       </div>
-      <div>
+      <div className={styles.button}>
         <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
           Learn More
         </Button>
@@ -179,15 +195,13 @@ export const Column3 = () => {
         <Switch defaultChecked={true} label="On" />
         <Switch label="Off" />
       </div>
-      <div>
+      <div className={styles.twoRow}>
         <Checkbox defaultChecked={true} label="Option 1" />
         <Checkbox label="Option 2" />
       </div>
-      <div>
-        <RadioGroup>
-          <Radio defaultChecked={true} label="Option 1" />
-          <Radio label="Option 2" />
-        </RadioGroup>
+      <div className={styles.twoRow}>
+        <Radio defaultChecked={true} label="Option 1" />
+        <Radio label="Option 2" />
       </div>
     </div>
   );
