@@ -272,6 +272,7 @@
     ],
     "nohoist": [
       "@fluentui/docs",
+      "@fluentui/e2e",
       "@fluentui/react-northstar-fela-renderer/stylis",
       "@fluentui/react-northstar-emotion-renderer/@types/stylis",
       "@fluentui/react-northstar-emotion-renderer/stylis",
