@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove usage of focus-visible pseudo-class to conform to browser support matrix.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
