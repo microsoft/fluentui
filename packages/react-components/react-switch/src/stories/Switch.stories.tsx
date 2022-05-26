@@ -9,7 +9,6 @@ export { Disabled } from './SwitchDisabled.stories';
 export { Label } from './SwitchLabel.stories';
 export { LabelWrapping } from './SwitchLabelWrapping.stories';
 export { Required } from './SwitchRequired.stories';
-export { Themed } from './SwitchThemed.stories';
 
 export default {
   title: 'Components/Switch',
