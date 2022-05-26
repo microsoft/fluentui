@@ -1,3 +1,8 @@
+<details>
+<summary>
+ Best Practices
+</summary>
+
 ### Do
 
 - Add `tabIndex={-1}` to your Spinner to allow it to be picked up by screen readers.
@@ -11,3 +16,5 @@
 - Don’t use a Spinner when performing immediate tasks.
 - Don't show multiple Spinners at the same time.
 - Don't include more than a few words when paired with a Spinner.
+
+</details>

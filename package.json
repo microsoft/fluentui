@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "engines": {
+    "node": "^14.18.1 || ^16.0.0"
+  },
   "scripts": {
     "build": "lage build --verbose",
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components --min",
@@ -19,8 +22,8 @@
     "bundle": "lage bundle --verbose",
     "bundlesize": "cd scripts && yarn bundlesize",
     "bundlesizecollect": "node ./scripts/bundle-size-collect",
-    "change": "beachball change --no-commit --scope \"!packages/fluentui/*\"",
-    "check:change": "beachball check --scope \"!packages/fluentui/*\"",
+    "change": "beachball change --no-commit",
+    "check:change": "beachball check",
     "check:modified-files": "yarn workspace @fluentui/scripts just check-for-modified-files",
     "check:affected-package": "node ./scripts/monorepo/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react\"",

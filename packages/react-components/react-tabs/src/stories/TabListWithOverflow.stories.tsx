@@ -269,10 +269,12 @@ export const WithOverflow = () => {
 WithOverflow.parameters = {
   docs: {
     description: {
-      story:
-        'A tab list can support overflow by using Overflow and OverflowItem.' +
-        'NOTE: when adding custom buttons to a tablist -- e.g. the overflow button in this example --' +
-        '`role="tab"` must be manually added for screen reader accessibility.',
+      story: [
+        'A tab list can support overflow by using Overflow and OverflowItem.',
+        '',
+        '**Note**: when adding custom buttons to a tablist, e.g. the overflow button in this example,' +
+          '`role="tab"` must be manually added for screen reader accessibility.',
+      ].join('\n'),
     },
   },
 };

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 23 May 2022 18:56:41 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-rc.11..@fluentui/react-button_v9.0.0-rc.12)
+
+### Changes
+
+- ToggleButton: Differentiating hover and checked styles. ([PR #23209](https://github.com/microsoft/fluentui/pull/23209) by Humberto.Morimoto@microsoft.com)
+- ToggleButton: Apply thicker border width to checked outline toggle buttons. ([PR #23207](https://github.com/microsoft/fluentui/pull/23207) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-rc.11)
 

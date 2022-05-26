@@ -2,6 +2,20 @@ import * as React from 'react';
 import { SpinButton, SpinButtonProps } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '500px',
+
+    '> label': {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
 
 type FormatterFn = (value: number) => string;
 type ParserFn = (formattedValue: string) => number;
@@ -37,15 +51,16 @@ export const DisplayValue = () => {
     }
   };
 
+  const layoutStyles = useLayoutStyles();
   const id = useId();
   const [spinButtonValue, setSpinButtonValue] = React.useState<number | null>(1);
   const [spinButtonDisplayValue, setSpinButtonDisplayValue] = React.useState(formatter(1));
 
   return (
-    <>
+    <div className={layoutStyles.base}>
       <Label htmlFor={id}>Display Value</Label>
       <SpinButton value={spinButtonValue} displayValue={spinButtonDisplayValue} onChange={onSpinButtonChange} id={id} />
-    </>
+    </div>
   );
 };
 

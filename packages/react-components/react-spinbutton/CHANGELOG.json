@@ -2,6 +2,33 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:29 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native input for macOS safari."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.0.0-rc.4",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.4",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:48 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.0-beta.11",
       "version": "9.0.0-beta.11",

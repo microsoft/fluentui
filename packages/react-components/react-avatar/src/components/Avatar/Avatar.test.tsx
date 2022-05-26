@@ -169,12 +169,6 @@ describe('Avatar', () => {
     expect(image.getAttribute('role')).toEqual('presentation');
   });
 
-  it('sets aria-hidden on the initials', () => {
-    render(<Avatar name="First Last" />);
-
-    expect(screen.getByText('FL').getAttribute('aria-hidden')).toBeTruthy();
-  });
-
   it('sets aria-hidden on the icon', () => {
     const iconRef = React.createRef<HTMLSpanElement>();
     render(<Avatar icon={{ ref: iconRef }} />);
@@ -186,6 +180,14 @@ describe('Avatar', () => {
     render(<Avatar initials={{ children: 'FL', id: 'initials-id' }} />);
 
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('initials-id');
+  });
+
+  it('falls back to string initials for aria-labelledby', () => {
+    render(<Avatar initials="ABC" />);
+
+    const intialsId = screen.getByText('ABC').id;
+
+    expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe(intialsId);
   });
 
   it('includes badge in aria-labelledby', () => {

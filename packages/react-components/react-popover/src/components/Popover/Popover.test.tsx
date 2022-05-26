@@ -27,9 +27,11 @@ describe('Popover', () => {
    */
   it('Should not render arrow if `coverTarget` is set to true', () => {
     // Act
-    const { result } = renderHook(() => usePopover_unstable({ positioning: { coverTarget: true }, children: <div /> }));
+    const { result } = renderHook(() =>
+      usePopover_unstable({ withArrow: true, positioning: { coverTarget: true }, children: <div /> }),
+    );
 
     // Assert
-    expect(result.current.noArrow).toBe(true);
+    expect(result.current.withArrow).toBe(false);
   });
 });

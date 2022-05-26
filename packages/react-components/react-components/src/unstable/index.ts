@@ -69,3 +69,16 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
+
+export {
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  DATA_OVERFLOWING,
+  DATA_OVERFLOW_MENU,
+  DATA_OVERFLOW_ITEM,
+} from '@fluentui/react-overflow';
+
+export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

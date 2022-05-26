@@ -1,5 +1,8 @@
 import { Link } from '../index';
 
+import descriptionMd from './LinkDescription.md';
+import bestPracticesMd from './LinkBestPractices.md';
+
 export { Default } from './LinkDefault.stories';
 export { Appearance } from './LinkAppearance.stories';
 export { Inline } from './LinkInline.stories';
@@ -20,10 +23,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [
-          'Links allow users to navigate between different locations',
-          'They can be used as standalone controls or inline with text.',
-        ].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

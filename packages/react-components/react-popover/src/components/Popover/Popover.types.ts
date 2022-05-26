@@ -54,9 +54,11 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   mouseLeaveDelay?: number;
 
   /**
-   * Do not display the arrow
+   * Display an arrow pointing to the target.
+   *
+   * @default false
    */
-  noArrow?: boolean;
+  withArrow?: boolean;
 
   /**
    * Call back when the component requests to change value
@@ -110,7 +112,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
  */
 export type PopoverState = Pick<
   PopoverProps,
-  'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'
+  'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow'
 > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {

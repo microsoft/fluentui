@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Mon, 23 May 2022 18:56:46 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.11..@fluentui/react-popover_v9.0.0-rc.12)
+
+### Changes
+
+- BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`. ([PR #23205](https://github.com/microsoft/fluentui/pull/23205) by behowell@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.11)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: MenuDivider should be visible in Windows high contrast mode",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

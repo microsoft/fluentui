@@ -21,7 +21,6 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: 'white',
     minHeight: '192px',
   },
   customWidth: {
@@ -36,10 +35,10 @@ const useStyles = makeStyles({
   },
   customLineColor: {
     ':before': {
-      ...shorthands.borderColor('#FF00FF'),
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
     ':after': {
-      ...shorthands.borderColor('#FF00FF'),
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
   customLineStyle: {
@@ -71,7 +70,9 @@ export const CustomStyles = () => {
         <Divider className={styles.customFont}>Custom font (14px bold)</Divider>
       </div>
       <div className={styles.example}>
-        <Divider className={styles.customLineColor}>Custom line color (#FF00FF)</Divider>
+        <Divider className={styles.customLineColor}>
+          Custom line color (<code>tokens.colorPaletteRedBorder2</code>)
+        </Divider>
       </div>
       <div className={styles.example}>
         <Divider className={styles.customLineStyle}>Custom line style (2px dashed)</Divider>

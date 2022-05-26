@@ -88,8 +88,6 @@ export type SpinnerProps = ComponentProps &
     /* The size prop sets the size of the Spinner
      * @defaultValue "medium"*/
     size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge',
-    // inactive ? : boolean
-    status?: 'active' | 'inactive',
   };
 ```
 

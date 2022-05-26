@@ -29,7 +29,7 @@ export type PopoverContextValue = Pick<
   | 'openOnHover'
   | 'openOnContext'
   | 'mountNode'
-  | 'noArrow'
+  | 'withArrow'
   | 'arrowRef'
   | 'size'
   | 'appearance'

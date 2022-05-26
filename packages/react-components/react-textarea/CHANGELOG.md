@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Mon, 23 May 2022 18:56:50 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-rc.3..@fluentui/react-textarea_v9.0.0-rc.4)
+
+### Changes
+
+- Removing additional focus ring in native textarea for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.3)
 

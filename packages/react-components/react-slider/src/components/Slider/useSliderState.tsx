@@ -4,14 +4,14 @@ import { useFluent } from '@fluentui/react-shared-contexts';
 import { sliderCSSVars } from './useSliderStyles';
 import type { SliderState, SliderProps } from './Slider.types';
 
-const { railOffsetVar, railStepsPercentVar, railProgressVar, thumbPositionVar, railDirectionVar } = sliderCSSVars;
+const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
 
 export const useSliderState_unstable = (state: SliderState, props: SliderProps) => {
-  const { defaultValue = 0, min = 0, max = 100, step, origin, value } = props;
+  const { defaultValue = 0, min = 0, max = 100, step, value } = props;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
     state: value !== undefined ? clamp(value, min, max) : undefined,
@@ -19,9 +19,6 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     initialState: 0,
   });
   const valuePercent = getPercent(currentValue, min, max);
-  const originPercent = React.useMemo(() => {
-    return origin !== undefined ? getPercent(origin, min, max) : 0;
-  }, [max, min, origin]);
 
   const inputOnChange = state.input.onChange;
   const propsOnChange = props.onChange;
@@ -38,14 +35,9 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
   });
 
   const rootVariables = {
-    [railDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
-    [thumbPositionVar]: valuePercent + '%',
-    [railStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
-    [railOffsetVar]: origin !== undefined ? `${Math.min(valuePercent, originPercent)}%` : '0%',
-    [railProgressVar]:
-      origin !== undefined
-        ? `${Math.max(originPercent - valuePercent, valuePercent - originPercent)}%`
-        : `${valuePercent}%`,
+    [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
+    [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
+    [sliderProgressVar]: `${valuePercent}%`,
   };
 
   // Root props
