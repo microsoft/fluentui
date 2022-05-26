@@ -1,18 +1,14 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '../index';
+import { CounterBadge } from '../index';
 
-export const Shapes = (args: CounterBadgeProps) => {
+export const Shapes = () => {
   return (
     <>
-      <CounterBadge {...args} shape="circular" />
-      <CounterBadge {...args} shape="rounded" />
+      <CounterBadge count={5} shape="circular" />
+      <CounterBadge count={5} shape="rounded" />
     </>
   );
-};
-
-Shapes.args = {
-  count: 5,
 };
 
 Shapes.parameters = {
