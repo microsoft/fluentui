@@ -9,11 +9,10 @@ import { AllPackageInfo, getAllPackageInfo, isConvergedPackage } from '../monore
  */
 export function getConfig({
   version,
-  allPackageInfo = getAllPackageInfo(),
 }: {
   version: 'v8' | 'vNext';
-  allPackageInfo?: AllPackageInfo;
 }) {
+  const allPackageInfo = getAllPackageInfo()
   const vNextPackagePaths = getVNextPackagePaths(allPackageInfo);
 
   if (version === 'vNext') {

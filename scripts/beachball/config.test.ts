@@ -46,15 +46,15 @@ describe(`beachball configs`, () => {
   });
 
   it(`should generate vNext release config`, () => {
-    const specialPackages = ['!packages/fluentui/*'];
+    const excludedPackages = ['!packages/fluentui/*'];
 
     expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([...specialPackages, 'apps/perf-test-react-components', 'apps/vr-tests-react-components']),
+      expect.arrayContaining([...excludedPackages , 'apps/perf-test-react-components', 'apps/vr-tests-react-components']),
     );
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
-    const includeScopes = vNextConfig.scope.filter(scope => !specialPackages.includes(scope));
+    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackages .includes(scope));
 
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
