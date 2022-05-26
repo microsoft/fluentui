@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
   FluentProvider,
   teamsLightTheme,
+  tokens,
   Body1,
   Title3,
   TabList,
@@ -49,45 +50,42 @@ const useStyles = makeStyles({
     alignItems: 'start',
     justifyContent: 'center',
     gridTemplateColumns: 'repeat(3, 1fr)',
-    gridColumnGap: '5%',
+    gridTemplateRows: 'auto',
+    gridColumnGap: tokens.spacingHorizontalXXXL,
   },
   col1: {
-    display: 'grid',
-    gridTemplateRows: 'repeat(3, auto)',
-    gridRowGap: '10%',
-    justifyContent: 'center',
-    alignItems: 'stretch',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'left',
+    flexDirection: 'column',
+    flexGrow: 1,
+    ...shorthands.gap(tokens.spacingVerticalL),
   },
   col2: {
-    display: 'grid',
-    gridTemplateRows: 'repeat(3, 1fr)',
-    gridRowGap: '10%',
-    justifyContent: 'center',
-    alignItems: 'stretch',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    ...shorthands.gap(tokens.spacingVerticalL),
   },
   col3: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: 'repeat(4, auto)',
-    gridRowGap: '5%',
-    gridColumnGap: '5%',
+    gridRowGap: tokens.spacingVerticalS,
+    gridColumnGap: tokens.spacingHorizontalS,
     justifyContent: 'center',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
-  slider: {
+  twoCol: {
     gridColumnStart: 1,
     gridColumnEnd: 3,
-  },
-  button: {
-    display: 'flex',
-    justifyContent: 'center',
   },
   icons: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
     gridTemplateRows: 'auto auto',
-    gridRowGap: '20%',
-    gridColumnGap: '20%',
+    gridRowGap: tokens.spacingVerticalS,
+    gridColumnGap: tokens.spacingHorizontalS,
     justifyContent: 'center',
   },
   twoRow: {
@@ -181,15 +179,11 @@ export const Column3 = () => {
   const styles = useStyles();
   return (
     <div className={styles.col3}>
-      <div className={styles.button}>
-        <Button appearance="primary">Sign Up</Button>
-      </div>
-      <div className={styles.button}>
-        <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
-          Learn More
-        </Button>
-      </div>
-      <Slider className={styles.slider} defaultValue={20} />
+      <Button appearance="primary">Sign Up</Button>
+      <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
+        Learn More
+      </Button>
+      <Slider className={styles.twoCol} defaultValue={20} />
       <DemoIcons />
       <div className={styles.twoRow}>
         <Switch defaultChecked={true} label="On" />
