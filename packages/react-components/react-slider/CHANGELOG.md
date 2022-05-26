@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.17)
+
+Thu, 26 May 2022 21:01:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.16..@fluentui/react-slider_v9.0.0-beta.17)
+
+### Changes
+
+- new high contrast styles for slider steps ([PR #23253](https://github.com/microsoft/fluentui/pull/23253) by mgodbolt@microsoft.com)
+- BREAKING: Remove slider origin to align with design and avoid inaccessible design ([PR #23257](https://github.com/microsoft/fluentui/pull/23257) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-label to v9.0.0-rc.4 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.16)
 

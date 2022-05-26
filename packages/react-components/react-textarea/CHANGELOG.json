@@ -2,6 +2,29 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:31 GMT",
+      "tag": "@fluentui/react-textarea_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native textarea for macOS safari."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e2c3e492481d0c715705b0830505cce64292d614",
+            "comment": "formatting improvements in stories"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:50 GMT",
       "tag": "@fluentui/react-textarea_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

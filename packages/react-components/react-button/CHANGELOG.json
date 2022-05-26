@@ -2,6 +2,33 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:23 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "cc2a9d0f9b722f68a54da026ab320e3be22c21dd",
+            "comment": "ToggleButton: Differentiating hover and checked styles."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113",
+            "comment": "ToggleButton: Apply thicker border width to checked outline toggle buttons."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:41 GMT",
       "tag": "@fluentui/react-button_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",

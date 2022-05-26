@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinner",
-  "version": "9.0.0-rc.3",
+  "version": "9.0.0-rc.4",
   "description": "Spinner component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "9.0.0-rc.9",
-    "@fluentui/react-label": "9.0.0-rc.3",
+    "@fluentui/react-label": "9.0.0-rc.4",
     "@fluentui/react-utilities": "9.0.0-rc.9",
     "@griffel/react": "1.0.5",
     "tslib": "^2.1.0"

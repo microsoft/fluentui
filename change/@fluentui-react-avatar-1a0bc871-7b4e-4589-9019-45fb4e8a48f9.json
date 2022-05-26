@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix react-avatar: use initials as a fallback label even when no id is manually defined",
-  "packageName": "@fluentui/react-avatar",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

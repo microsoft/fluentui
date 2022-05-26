@@ -2,6 +2,35 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:28 GMT",
+      "tag": "@fluentui/react-radio_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "d5f8088dc5bb51cb0579933456d03b551e5b875d",
+            "comment": "make Best Practices collapsible"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.4",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:48 GMT",
       "tag": "@fluentui/react-radio_v9.0.0-rc.4",
       "version": "9.0.0-rc.4",

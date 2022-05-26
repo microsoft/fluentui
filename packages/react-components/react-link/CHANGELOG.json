@@ -2,6 +2,29 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:26 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e0417c44ab690bda8923df041a880b6085f48e2d",
+            "comment": "fix missing dot, create missing files"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:45 GMT",
       "tag": "@fluentui/react-link_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",

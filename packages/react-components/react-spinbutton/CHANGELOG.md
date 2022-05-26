@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Mon, 23 May 2022 18:56:48 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.12)
+
+Thu, 26 May 2022 21:01:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.11..@fluentui/react-spinbutton_v9.0.0-beta.12)
+
+### Changes
+
+- Removing additional focus ring in native input for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
+- Bump @fluentui/react-input to v9.0.0-rc.4 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-label to v9.0.0-rc.4 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.11)
 

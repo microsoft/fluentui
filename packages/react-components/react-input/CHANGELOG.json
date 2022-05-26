@@ -2,6 +2,29 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:25 GMT",
+      "tag": "@fluentui/react-input_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native input for macOS safari."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f2fd9407493b438898c6027fde432a1c7fefd344",
+            "comment": "changes to docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:45 GMT",
       "tag": "@fluentui/react-input_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:31 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "Add eslint-ignore"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:58 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",
