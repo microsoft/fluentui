@@ -18,6 +18,7 @@ describe(`beachball configs`, () => {
         '**/__fixtures__/**',
         '**/__mocks__/**',
         '**/common/isConformant.ts',
+        '**/config/tests.js',
         '**/jest.config.js',
         '**/SPEC*.md',
         '**/tests/**',
@@ -49,17 +50,21 @@ describe(`beachball configs`, () => {
     const excludedPackages = ['!packages/fluentui/*'];
 
     expect(vNextConfig.scope).toEqual(
-      expect.arrayContaining([...excludedPackages , 'apps/perf-test-react-components', 'apps/vr-tests-react-components']),
+      expect.arrayContaining([
+        ...excludedPackages,
+        'apps/perf-test-react-components',
+        'apps/vr-tests-react-components',
+      ]),
     );
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
-    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackages .includes(scope));
+    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackages.includes(scope));
 
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
       {
-        changelogPath: 'packages/react-components',
+        changelogPath: 'packages/react-components/react-components',
         masterPackageName: '@fluentui/react-components',
         include: includeScopes,
       },
