@@ -67,11 +67,14 @@ module.exports = createRule({
 
       /**
        *
-       * `symbol` - standard typescript type kind / type Hello = string
-       * `aliasSymbol` - typescript type kind created via type alias / type HelloAlias = Hello
+       * `symbol` - type defined via `interface` / export interface User { name: string }
+       * `aliasSymbol` - type defined via `type` / export type User = { name: string }
        *
-       * Types from imported aliases are resolved in different way, thus one needs to use `aliasSymbol`,
-       *  to get proper type (in our case it's the case of `react-context-selector` )
+       * In our case:
+       * - `React.createContext` from `@types/react` return type is `interface Context` we use `symbol`
+       * - `createContext` from `@fluentui/react-context-selector` return type is `type Context` we use `aliasSymbol`
+       *
+       * @see https://github.com/microsoft/TypeScript/issues/46921#issuecomment-985048637
        * @typedef {Extract<keyof import('typescript').Type, 'symbol' | 'aliasSymbol'>} TypeProperty
        */
 
