@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing line chart events focus issue",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}
