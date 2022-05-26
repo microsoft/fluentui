@@ -13,8 +13,7 @@
     "cypress-real-events": "1.7.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
-    "react-router-dom": "^5.2.0",
-    "react-router": "^5.2.0"
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
