@@ -31,7 +31,7 @@
     "@fluentui/react-utilities": "9.0.0-rc.9",
     "@griffel/react": "1.0.5",
     "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.0.0-rc.12",
+    "@fluentui/react-components": "^9.0.0-rc.13",
     "@fluentui/react-icons": "^2.0.166-rc.3"
   },
   "peerDependencies": {
