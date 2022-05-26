@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix missing dot, create missing files",
-  "packageName": "@fluentui/react-link",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

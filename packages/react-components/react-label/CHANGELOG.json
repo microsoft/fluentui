@@ -2,6 +2,29 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:25 GMT",
+      "tag": "@fluentui/react-label_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "a83d94f03515a893750637eb4e8e97d24dd2d915",
+            "comment": "Renaming strong prop to weight to align with Text."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f3f38785ed2cd5fda98b03672d6e7ba70c05b5da",
+            "comment": "remove a notice about unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:45 GMT",
       "tag": "@fluentui/react-label_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

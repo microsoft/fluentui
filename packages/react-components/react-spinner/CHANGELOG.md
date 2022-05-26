@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.0.0-rc.3..@fluentui/react-spinner_v9.0.0-rc.4)
+
+### Changes
+
+- BREAKING: Remove `status` prop in Spinner ([PR #23204](https://github.com/microsoft/fluentui/pull/23204) by ololubek@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-rc.4 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.0.0-rc.3)
 

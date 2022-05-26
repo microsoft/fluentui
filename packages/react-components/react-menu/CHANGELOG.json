@@ -2,6 +2,39 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:26 GMT",
+      "tag": "@fluentui/react-menu_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b90324261b0d64bc92a57ba040f4fcadeff68fe5",
+            "comment": "fix: MenuDivider should be visible in Windows high contrast mode"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d8c31ef39bbc2e44c4407b02c9e989f6481920d8",
+            "comment": "fix: use neutral foreground 2 as text color for menu item"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:46 GMT",
       "tag": "@fluentui/react-menu_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",
