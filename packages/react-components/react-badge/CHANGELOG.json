@@ -2,6 +2,21 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:22 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7c773e3f3f4a8991fee6af46277504378dbdf197",
+            "comment": "remove aria-hidden from badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:41 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",

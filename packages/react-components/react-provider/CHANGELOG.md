@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 23 May 2022 18:56:47 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-rc.11..@fluentui/react-provider_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.11)
 

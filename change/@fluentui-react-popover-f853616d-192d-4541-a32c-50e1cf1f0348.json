@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`.",
-  "packageName": "@fluentui/react-popover",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

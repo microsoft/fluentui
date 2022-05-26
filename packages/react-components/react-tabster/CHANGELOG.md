@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 23 May 2022 18:56:49 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0-rc.11..@fluentui/react-tabster_v9.0.0-rc.12)
+
+### Changes
+
+- Remove usage of focus-visible pseudo-class to conform to browser support matrix. ([PR #23255](https://github.com/microsoft/fluentui/pull/23255) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0-rc.11)
 

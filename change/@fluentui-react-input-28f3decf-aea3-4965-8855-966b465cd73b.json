@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing additional focus ring in native input for macOS safari.",
-  "packageName": "@fluentui/react-input",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

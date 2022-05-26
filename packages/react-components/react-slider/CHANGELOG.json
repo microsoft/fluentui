@@ -2,6 +2,39 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:28 GMT",
+      "tag": "@fluentui/react-slider_v9.0.0-beta.17",
+      "version": "9.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c17653d2a37e0bbe0fd84298221db3738cb43a23",
+            "comment": "new high contrast styles for slider steps"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5c6366a3d97cdc612535c299f8dd27bf79c4c842",
+            "comment": "BREAKING: Remove slider origin to align with design and avoid inaccessible design"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.4",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-slider_v9.0.0-beta.16",
       "version": "9.0.0-beta.16",

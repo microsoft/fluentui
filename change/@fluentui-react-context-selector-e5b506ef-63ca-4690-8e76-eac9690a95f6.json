@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "packageName": "@fluentui/react-context-selector",
-  "comment": "Add eslint ignore for context export",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "none"
-}
