@@ -10,7 +10,7 @@ import {
   Tab,
   Input,
   Button,
-  Label,
+  Caption1,
   Menu,
   MenuTrigger,
   MenuList,
@@ -205,7 +205,7 @@ export const Demo: React.FC<ContentProps> = props => {
   const styles = useStyles();
   return (
     <FluentProvider theme={teamsLightTheme}>
-      <Label>Examples</Label>
+      <Caption1>Examples</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
         <Column1 />
         <Column2 />
