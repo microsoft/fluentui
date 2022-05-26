@@ -45,6 +45,7 @@
     "@fluentui/react-label": "9.0.0-rc.3",
     "@fluentui/react-link": "9.0.0-rc.11",
     "@fluentui/react-menu": "9.0.0-rc.11",
+    "@fluentui/react-overflow": "9.0.0-beta.2",
     "@fluentui/react-popover": "9.0.0-rc.11",
     "@fluentui/react-positioning": "9.0.0-rc.10",
     "@fluentui/react-provider": "9.0.0-rc.11",
