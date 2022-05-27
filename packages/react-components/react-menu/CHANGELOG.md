@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 05 May 2022 18:26:24 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-rc.11..@fluentui/react-menu_v9.0.0-rc.12)
+
+### Changes
+
+- fix: MenuDivider should be visible in Windows high contrast mode ([PR #23238](https://github.com/microsoft/fluentui/pull/23238) by lingfangao@hotmail.com)
+- fix: use neutral foreground 2 as text color for menu item ([PR #22540](https://github.com/microsoft/fluentui/pull/22540) by lingfangao@hotmail.com)
+- Bump @fluentui/react-portal to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.11)
+
+Mon, 23 May 2022 18:56:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-rc.10..@fluentui/react-menu_v9.0.0-rc.11)
+
+### Changes
+
+- BREAKING: changes to positioning prop ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+- BREAKING: Stop exporting MenuContext and MenuListContext ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+- Removing <componentName>ClassName exports. ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by esteban.230@hotmail.com)
+- Bump @fluentui/react-portal to v9.0.0-rc.11 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.10 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.11 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.10)
+
+Mon, 23 May 2022 12:14:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-rc.9..@fluentui/react-menu_v9.0.0-rc.10)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #22894](https://github.com/microsoft/fluentui/pull/22894) by olfedias@microsoft.com)
+- feat: Fill icon on hover ([PR #23084](https://github.com/microsoft/fluentui/pull/23084) by yuanboxue@microsoft.com)
+- fix: Context menu closes when its trigger is left clicked ([PR #23089](https://github.com/microsoft/fluentui/pull/23089) by lingfangao@hotmail.com)
+- chore: Update Griffel to latest version ([PR #23029](https://github.com/microsoft/fluentui/pull/23029) by olfedias@microsoft.com)
+- Removing Common types from all Menu components. ([PR #22958](https://github.com/microsoft/fluentui/pull/22958) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.6 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.9)
 

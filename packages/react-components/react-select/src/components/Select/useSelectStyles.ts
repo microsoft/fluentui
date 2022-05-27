@@ -3,10 +3,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SelectSlots, SelectState } from './Select.types';
 
-/**
- * @deprecated Use `selectClassNames.root` instead.
- */
-export const selectClassName = 'fui-Select';
 export const selectClassNames: SlotClassNames<SelectSlots> = {
   root: 'fui-Select',
   select: 'fui-Select__select',
@@ -87,7 +83,7 @@ const useSelectStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
 
-    ':focus-visible': {
+    ':focus': {
       outlineWidth: '2px',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
@@ -123,10 +119,10 @@ const useSelectStyles = makeStyles({
     ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
     ...shorthands.borderRadius(0),
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
 });
@@ -137,7 +133,7 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     position: 'absolute',
-    right: '0',
+    right: tokens.spacingHorizontalMNudge,
     pointerEvents: 'none',
 
     // the SVG must have display: block for accurate positioning

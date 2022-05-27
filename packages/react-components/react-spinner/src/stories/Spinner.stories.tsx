@@ -9,7 +9,7 @@ export { Labels } from './SpinnerLabel.stories';
 export { Size } from './SpinnerSize.stories';
 
 export default {
-  title: 'Preview Components/Spinner',
+  title: 'Components/Spinner',
   component: Spinner,
   parameters: {
     docs: {

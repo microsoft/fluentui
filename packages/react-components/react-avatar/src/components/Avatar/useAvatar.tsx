@@ -35,8 +35,8 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
     required: true,
     defaultProps: {
-      children: getInitials(name, dir === 'rtl'),
-      'aria-hidden': true,
+      children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
+      id: baseId + '__initials',
     },
   });
 
@@ -49,7 +49,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       defaultProps: {
         children: <PersonRegular />,
         'aria-hidden': true,
-        id: baseId + '__initials',
       },
     });
   }
@@ -98,12 +97,10 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
 
   return {
     size,
-    name,
     shape,
     active,
     activeAppearance,
     color,
-    idForColor,
 
     components: {
       root: 'span',
@@ -138,7 +135,7 @@ const getBadgeSize = (size: AvatarState['size']) => {
 };
 
 const avatarColors: AvatarNamedColor[] = [
-  'darkRed',
+  'dark-red',
   'cranberry',
   'red',
   'pumpkin',
@@ -149,12 +146,12 @@ const avatarColors: AvatarNamedColor[] = [
   'brown',
   'forest',
   'seafoam',
-  'darkGreen',
-  'lightTeal',
+  'dark-green',
+  'light-teal',
   'teal',
   'steel',
   'blue',
-  'royalBlue',
+  'royal-blue',
   'cornflower',
   'navy',
   'lavender',

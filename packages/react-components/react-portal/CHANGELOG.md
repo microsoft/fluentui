@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 05 May 2022 18:26:25 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.11..@fluentui/react-portal_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.11)
+
+Mon, 23 May 2022 18:56:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.10..@fluentui/react-portal_v9.0.0-rc.11)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.11 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.10)
+
+Mon, 23 May 2022 12:13:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.9..@fluentui/react-portal_v9.0.0-rc.10)
+
+### Changes
+
+- Removing PortalCommons type. ([PR #22969](https://github.com/microsoft/fluentui/pull/22969) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.10 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.9 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.9)
 

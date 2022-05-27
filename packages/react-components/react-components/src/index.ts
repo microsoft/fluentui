@@ -12,8 +12,6 @@ export {
 export type { GriffelStyle } from '@griffel/react';
 export {
   FluentProvider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  fluentProviderClassName,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
   useFluent,
@@ -29,17 +27,14 @@ export type {
 } from '@fluentui/react-provider';
 export {
   Radio,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioClassName,
   radioClassNames,
   RadioGroup,
-  /* eslint-disable-next-line deprecation/deprecation */
-  radioGroupClassName,
+  RadioGroupProvider,
   radioGroupClassNames,
-  RadioGroupContext,
   renderRadio_unstable,
   renderRadioGroup_unstable,
   useRadio_unstable,
+  useRadioGroupContext_unstable,
   useRadioGroupContextValues,
   useRadioGroup_unstable,
   useRadioGroupStyles_unstable,
@@ -86,7 +81,6 @@ export {
   tokens,
   typographyStyles,
   webDarkTheme,
-  webHighContrastTheme,
   webLightTheme,
 } from '@fluentui/react-theme';
 export type {
@@ -139,19 +133,11 @@ export type {
 // Components
 export {
   Accordion,
-  AccordionContext,
+  AccordionProvider,
   AccordionHeader,
   AccordionItem,
-  AccordionItemContext,
+  AccordionItemProvider,
   AccordionPanel,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionItemClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  accordionPanelClassName,
   accordionClassNames,
   accordionHeaderClassNames,
   accordionItemClassNames,
@@ -161,6 +147,7 @@ export {
   renderAccordionItem_unstable,
   renderAccordionPanel_unstable,
   useAccordion_unstable,
+  useAccordionContext_unstable,
   useAccordionContextValues_unstable,
   useAccordionHeader_unstable,
   useAccordionHeaderContextValues_unstable,
@@ -202,24 +189,16 @@ export type {
 } from '@fluentui/react-accordion';
 export {
   Avatar,
-  /* eslint-disable-next-line deprecation/deprecation */
-  avatarClassName,
   avatarClassNames,
   renderAvatar_unstable,
   useAvatar_unstable,
   useAvatarStyles_unstable,
 } from '@fluentui/react-avatar';
-export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
+export type { AvatarNamedColor, AvatarProps, AvatarSizes, AvatarSlots, AvatarState } from '@fluentui/react-avatar';
 export {
   Badge,
   CounterBadge,
   PresenceBadge,
-  /* eslint-disable-next-line deprecation/deprecation */
-  badgeClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  counterBadgeClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  presenceBadgeClassName,
   badgeClassNames,
   counterBadgeClassNames,
   presenceBadgeClassNames,
@@ -246,12 +225,6 @@ export {
   MenuButton,
   SplitButton,
   ToggleButton,
-  /* eslint-disable-next-line deprecation/deprecation */
-  buttonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  compoundButtonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuButtonClassName,
   buttonClassNames,
   compoundButtonClassNames,
   menuButtonClassNames,
@@ -260,10 +233,6 @@ export {
   renderMenuButton_unstable,
   renderSplitButton_unstable,
   renderToggleButton_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  splitButtonClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  toggleButtonClassName,
   splitButtonClassNames,
   toggleButtonClassNames,
   useButton_unstable,
@@ -295,9 +264,15 @@ export type {
   ToggleButtonState,
 } from '@fluentui/react-button';
 export {
+  Checkbox,
+  checkboxClassNames,
+  renderCheckbox_unstable,
+  useCheckbox_unstable,
+  useCheckboxStyles_unstable,
+} from '@fluentui/react-checkbox';
+export type { CheckboxOnChangeData, CheckboxProps, CheckboxSlots, CheckboxState } from '@fluentui/react-checkbox';
+export {
   Divider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  dividerClassName,
   dividerClassNames,
   renderDivider_unstable,
   useDivider_unstable,
@@ -305,9 +280,15 @@ export {
 } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
 export {
+  Input,
+  inputClassNames,
+  renderInput_unstable,
+  useInput_unstable,
+  useInputStyles_unstable,
+} from '@fluentui/react-input';
+export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+export {
   Image,
-  /* eslint-disable-next-line deprecation/deprecation */
-  imageClassName,
   imageClassNames,
   renderImage_unstable,
   useImage_unstable,
@@ -315,9 +296,15 @@ export {
 } from '@fluentui/react-image';
 export type { ImageProps, ImageSlots, ImageState } from '@fluentui/react-image';
 export {
+  Label,
+  labelClassNames,
+  renderLabel_unstable,
+  useLabel_unstable,
+  useLabelStyles_unstable,
+} from '@fluentui/react-label';
+export type { LabelProps, LabelSlots, LabelState } from '@fluentui/react-label';
+export {
   Link,
-  /* eslint-disable-next-line deprecation/deprecation */
-  linkClassName,
   linkClassNames,
   renderLink_unstable,
   useLink_unstable,
@@ -327,7 +314,6 @@ export {
 export type { LinkProps, LinkSlots, LinkState } from '@fluentui/react-link';
 export {
   Menu,
-  MenuContext,
   MenuDivider,
   MenuGroup,
   MenuGroupContextProvider,
@@ -336,31 +322,12 @@ export {
   MenuItemCheckbox,
   MenuItemRadio,
   MenuList,
-  MenuListContext,
   MenuListProvider,
   MenuPopover,
   MenuProvider,
   MenuSplitGroup,
   MenuTrigger,
   MenuTriggerContextProvider,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuDividerClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuGroupClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuGroupHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemCheckboxClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuItemRadioClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuListClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuPopoverClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  menuSplitGroupClassName,
   menuDividerClassNames,
   menuGroupClassNames,
   menuGroupHeaderClassNames,
@@ -459,12 +426,10 @@ export type {
 } from '@fluentui/react-menu';
 export {
   Popover,
-  PopoverContext,
   PopoverSurface,
+  PopoverProvider,
   PopoverTrigger,
   arrowHeights,
-  /* eslint-disable-next-line deprecation/deprecation */
-  popoverSurfaceClassName,
   popoverSurfaceClassNames,
   renderPopover_unstable,
   renderPopoverSurface_unstable,
@@ -489,16 +454,9 @@ export type {
   PopoverTriggerState,
 } from '@fluentui/react-popover';
 export {
-  Portal,
-  elementContains,
-  renderPortal_unstable,
-  setVirtualParent,
-  usePortal_unstable,
-} from '@fluentui/react-portal';
-export type { PortalProps, PortalState } from '@fluentui/react-portal';
-export {
   Slider,
   sliderClassNames,
+  sliderCSSVars,
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,
@@ -506,43 +464,69 @@ export {
 } from '@fluentui/react-slider';
 export type { SliderProps, SliderSlots, SliderOnChangeData, SliderState } from '@fluentui/react-slider';
 export {
-  Body,
-  Caption,
+  Spinner,
+  spinnerClassNames,
+  renderSpinner_unstable,
+  useSpinner_unstable,
+  useSpinnerStyles_unstable,
+} from '@fluentui/react-spinner';
+export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+export {
+  Switch,
+  switchClassNames,
+  renderSwitch_unstable,
+  useSwitch_unstable,
+  useSwitchStyles_unstable,
+} from '@fluentui/react-switch';
+export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
+export {
+  renderTab_unstable,
+  Tab,
+  tabClassNames,
+  useTabStyles_unstable,
+  useTab_unstable,
+  renderTabList_unstable,
+  TabList,
+  tabListClassNames,
+  useTabListStyles_unstable,
+  useTabList_unstable,
+} from '@fluentui/react-tabs';
+export type {
+  TabProps,
+  TabSlots,
+  TabState,
+  TabValue,
+  TabRegisterData,
+  RegisterTabEventHandler,
+  SelectTabData,
+  SelectTabEvent,
+  SelectTabEventHandler,
+  TabListContextValue,
+  TabListContextValues,
+  TabListProps,
+  TabListSlots,
+  TabListState,
+} from '@fluentui/react-tabs';
+export {
+  Body1,
+  Caption1,
+  Caption2,
   Display,
-  Headline,
+  Subtitle1,
   LargeTitle,
-  Subheadline,
+  Subtitle2,
   Text,
   Title1,
   Title2,
   Title3,
-  /* eslint-disable-next-line deprecation/deprecation */
-  bodyClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  captionClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  displayClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  headlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  largeTitleClassName,
-  bodyClassNames,
-  captionClassNames,
+  body1ClassNames,
+  caption1ClassNames,
+  caption2ClassNames,
   displayClassNames,
-  headlineClassNames,
+  subtitle1ClassNames,
   largeTitleClassNames,
   renderText_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  subheadlineClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  textClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title1ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title2ClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  title3ClassName,
-  subheadlineClassNames,
+  subtitle2ClassNames,
   textClassNames,
   title1ClassNames,
   title2ClassNames,
@@ -552,10 +536,16 @@ export {
 } from '@fluentui/react-text';
 export type { TextProps, TextSlots, TextState } from '@fluentui/react-text';
 export {
+  Textarea,
+  textareaClassNames,
+  renderTextarea_unstable,
+  useTextarea_unstable,
+  useTextareaStyles_unstable,
+} from '@fluentui/react-textarea';
+export type { TextareaProps, TextareaSlots, TextareaState } from '@fluentui/react-textarea';
+export {
   Tooltip,
   renderTooltip_unstable,
-  /* eslint-disable-next-line deprecation/deprecation */
-  tooltipClassName,
   tooltipClassNames,
   useTooltip_unstable,
   useTooltipStyles_unstable,
@@ -568,4 +558,10 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
-export type { PositioningProps, PositioningShorthand, PositioningShorthandValue } from '@fluentui/react-positioning';
+export type {
+  PositioningProps,
+  PositioningShorthand,
+  PositioningShorthandValue,
+  PositioningImperativeRef,
+  PositioningVirtualElement,
+} from '@fluentui/react-positioning';

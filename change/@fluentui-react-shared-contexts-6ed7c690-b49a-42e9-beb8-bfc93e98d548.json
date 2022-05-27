@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove unused MenuContext",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

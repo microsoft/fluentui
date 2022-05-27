@@ -238,9 +238,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-accordion": {
-      "root": "packages/react-accordion",
+      "root": "packages/react-components/react-accordion",
       "projectType": "library",
-      "sourceRoot": "packages/react-accordion/src",
+      "sourceRoot": "packages/react-components/react-accordion/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -266,9 +266,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-badge": {
-      "root": "packages/react-badge",
+      "root": "packages/react-components/react-badge",
       "projectType": "library",
-      "sourceRoot": "packages/react-badge/src",
+      "sourceRoot": "packages/react-components/react-badge/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -314,10 +314,11 @@
       "implicitDependencies": []
     },
     "@fluentui/react-combobox": {
-      "root": "packages/react-combobox",
+      "root": "packages/react-components/react-combobox",
       "projectType": "library",
-      "sourceRoot": "packages/react-combobox/src",
-      "tags": ["vNext", "platform:web"]
+      "sourceRoot": "packages/react-components/react-combobox/src",
+      "tags": ["vNext", "platform:web"],
+      "implicitDependencies": []
     },
     "@fluentui/react-component-event-listener": {
       "root": "packages/fluentui/react-component-event-listener",
@@ -373,9 +374,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-divider": {
-      "root": "packages/react-divider",
+      "root": "packages/react-components/react-divider",
       "projectType": "library",
-      "sourceRoot": "packages/react-divider/src",
+      "sourceRoot": "packages/react-components/react-divider/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -570,9 +571,9 @@
       "implicitDependencies": []
     },
     "@fluentui/react-shared-contexts": {
-      "root": "packages/react-shared-contexts",
+      "root": "packages/react-components/react-shared-contexts",
       "projectType": "library",
-      "sourceRoot": "packages/react-shared-contexts/src",
+      "sourceRoot": "packages/react-components/react-shared-contexts/src",
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
@@ -738,6 +739,13 @@
       "root": "packages/theme",
       "projectType": "library",
       "implicitDependencies": []
+    },
+    "@fluentui/theme-designer": {
+      "root": "packages/react-components/theme-designer",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/theme-designer/src",
+      "tags": ["vNext", "platform:web"]
     },
     "@fluentui/theme-samples": {
       "root": "packages/theme-samples",

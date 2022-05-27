@@ -15,17 +15,12 @@ const spinButtonExtraClassNames = {
   buttonActive: 'fui-SpinButton__button_active',
 };
 
-// TODO(sharing) use theme values once available
-const horizontalSpacing = {
-  xs: '4px',
-};
-
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
     gridTemplateColumns: `1fr 24px`,
     gridTemplateRows: '1fr 1fr',
-    columnGap: horizontalSpacing.xs,
+    columnGap: tokens.spacingHorizontalXS,
     rowGap: 0,
     paddingRight: 0,
     position: 'relative',
@@ -157,6 +152,7 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '2',
     gridRowStart: '1',
     gridRowEnd: '3',
+    outlineStyle: 'none',
     ...shorthands.padding(0),
   },
 });
@@ -268,7 +264,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -290,7 +286,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -357,7 +353,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledDarker: {
+  'filled-darker': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {
@@ -375,7 +371,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledLighter: {
+  'filled-lighter': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {

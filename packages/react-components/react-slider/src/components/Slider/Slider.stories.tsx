@@ -7,7 +7,6 @@ export { Default } from './stories/SliderDefault.stories';
 export { Size } from './stories/SliderSize.stories';
 export { Controlled } from './stories/SliderControlled.stories';
 export { Step } from './stories/SliderStep.stories';
-export { Origin } from './stories/SliderOrigin.stories';
 export { Vertical } from './stories/SliderVertical.stories';
 export { Disabled } from './stories/SliderDisabled.stories';
 
@@ -17,8 +16,6 @@ export default {
   parameters: {
     docs: {
       // The provided typing is wrong, ignore it
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       description: {
         component: [descriptionMd].join('\n'),
       },

@@ -5,7 +5,7 @@ import { Button } from '@fluentui/react-button';
 
 export const Default = (props: PositioningProps) => {
   return (
-    <Popover positioning={props} noArrow>
+    <Popover positioning={props}>
       <PopoverTrigger>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>

@@ -8,6 +8,7 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -71,6 +72,11 @@ describe('Avatar', () => {
   it('renders 2 initials with a 3-word name', () => {
     render(<Avatar name="First Middle Last" />);
     expect(screen.getByText('FL')).toBeTruthy();
+  });
+
+  it('renders 1 initial at size 16', () => {
+    render(<Avatar name="First Middle Last" size={16} />);
+    expect(screen.getByText('F')).toBeTruthy();
   });
 
   it('renders an icon if the name is not alphabetic', () => {
@@ -163,12 +169,6 @@ describe('Avatar', () => {
     expect(image.getAttribute('role')).toEqual('presentation');
   });
 
-  it('sets aria-hidden on the initials', () => {
-    render(<Avatar name="First Last" />);
-
-    expect(screen.getByText('FL').getAttribute('aria-hidden')).toBeTruthy();
-  });
-
   it('sets aria-hidden on the icon', () => {
     const iconRef = React.createRef<HTMLSpanElement>();
     render(<Avatar icon={{ ref: iconRef }} />);
@@ -180,6 +180,14 @@ describe('Avatar', () => {
     render(<Avatar initials={{ children: 'FL', id: 'initials-id' }} />);
 
     expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('initials-id');
+  });
+
+  it('falls back to string initials for aria-labelledby', () => {
+    render(<Avatar initials="ABC" />);
+
+    const intialsId = screen.getByText('ABC').id;
+
+    expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe(intialsId);
   });
 
   it('includes badge in aria-labelledby', () => {

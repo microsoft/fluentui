@@ -96,7 +96,7 @@ export interface IFocusZoneProps extends React_2.HTMLAttributes<HTMLElement> {
     shouldEnterInnerZone?: (ev: React_2.KeyboardEvent<HTMLElement>) => boolean;
     shouldFocusInnerElementWhenReceivedFocus?: boolean;
     shouldFocusOnMount?: boolean;
-    shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement | HTMLTextAreaElement) => boolean;
     shouldRaiseClicks?: boolean;
     shouldRaiseClicksOnEnter?: boolean;
     shouldRaiseClicksOnSpace?: boolean;

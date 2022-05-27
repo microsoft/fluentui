@@ -156,6 +156,16 @@
   border-radius: 5px 5px 0px 0px !important;
 }
 
+/* Reduce font size of CodeSandbox and Show Code button when zoomed or small window width*/
+/* https://github.com/microsoft/fluentui/issues/22764 */
+
+@media screen and (max-width: 380px) {
+  #docs-root .docblock-code-toggle,
+  .docs-story > a:last-child {
+    font-size: 10px !important;
+  }
+}
+
 /* Make storybook-addon-export-to-codesandbox button match Figma design */
 .docs-story > a:last-child {
   right: 105px !important;

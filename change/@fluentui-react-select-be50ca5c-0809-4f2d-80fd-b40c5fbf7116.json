@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove usage of focus-visible pseudo-class.",
+  "packageName": "@fluentui/react-select",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

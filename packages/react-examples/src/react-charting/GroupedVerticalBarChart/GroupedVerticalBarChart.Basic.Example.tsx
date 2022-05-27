@@ -142,6 +142,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={1000}
           id="changeWidth_Basic"
           onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
         <label htmlFor="changeHeight_Basic">change Height:</label>
         <input
@@ -151,6 +152,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={1000}
           id="changeHeight_Basic"
           onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
         <br />
         <label htmlFor="changeBarwidth">change Barwidth:</label>
@@ -161,6 +163,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           max={70}
           id="changeBarwidth"
           onChange={this._onBarwidthChange}
+          aria-valuetext={`ChangeBarwidthslider${this.state.barwidth}`}
         />
         <label>{this.state.barwidth}</label>
         <ChoiceGroup
