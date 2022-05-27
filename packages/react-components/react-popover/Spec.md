@@ -344,7 +344,7 @@ Default popover
 
 // Expected Markup
 <div id="container">
-  <button aria-haspopup="dialog">Trigger</button>
+  <button aria-expanded="false">Trigger</button>
 </div>
 
 // on document.body
@@ -370,7 +370,7 @@ Popover that traps focus
 
 // Expected Markup
 <div id="container">
-  <button aria-haspopup="dialog">Trigger</button>
+  <button aria-expanded="false">Trigger</button>
 </div>
 
 // on document.body
@@ -396,7 +396,7 @@ Inline popover
 
 // Expected Markup
 <div id="container">
-  <button aria-haspopup="dialog">Trigger</button>
+  <button aria-expanded="false">Trigger</button>
   <div>
     {/** content */}
   </div>
@@ -498,7 +498,7 @@ Accessible markup is divided into two scenarios:
 
 ```tsx
 // Popover that does not trap focus
-<button aria-haspopup="dialog">Trigger</button>
+<button aria-expanded="false">Trigger</button>
 <div role="complementary">
   No focus trap
 </div>
@@ -507,7 +507,7 @@ Accessible markup is divided into two scenarios:
 <div aria-hidden="true" /> // other content
 <div aria-hidden="true" /> // other content
 <div aria-hidden="true" className='fui-provider'>
-  <button aria-haspopup="dialog">Trigger</button>
+  <button aria-expanded="false">Trigger</button>
 </div>
 
 <div role="dialog" aria-modal="true">

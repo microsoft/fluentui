@@ -8,6 +8,8 @@ name: 'v9_nightly_$(Date:yyyyMMdd)$(Rev:.r)'
 variables:
   - group: 'Github and NPM secrets'
   - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
   - group: InfoSec-SecurityResults
@@ -79,6 +81,14 @@ jobs:
         inputs:
           artifactName: SBom-$(System.JobAttempt)
           targetPath: $(System.DefaultWorkingDirectory)/_manifest
+
+      - task: ComponentGovernanceComponentDetection@0
+        displayName: 'Component Detection'
+        inputs:
+          sourceScanPath: $(Agent.BuildDirectory)
+        condition: succeeded()
+        timeoutInMinutes: 5
+        continueOnError: true
 
       - template: .devops/templates/cleanup.yml
         parameters:
