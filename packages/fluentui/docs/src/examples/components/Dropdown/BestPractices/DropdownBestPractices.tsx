@@ -15,7 +15,7 @@ const doList = [
 ];
 
 const dontList = [
-  'Use `id` property in `items` shorthand as it breaks aria-activedescendant relationship between the trigger and the item.',
+  'Use the `id` property in `items` shorthand as it breaks the aria-activedescendant relationship between the trigger and the item.',
 ];
 
 const DropdownBestPractices = () => {
