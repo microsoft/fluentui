@@ -53,45 +53,45 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fourthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 10, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fifthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 40, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
     const sixthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 20, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const seventhChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 80, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];
     const eightChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 50, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 50, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 50, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];

@@ -50,7 +50,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -79,7 +79,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -101,7 +101,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       <g>
         <line
           id="verticalLine3"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -142,7 +142,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -161,7 +161,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -372,7 +372,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -401,7 +401,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -423,7 +423,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       <g>
         <line
           id="verticalLine29"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -464,7 +464,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -483,7 +483,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -674,7 +674,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -703,7 +703,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -725,7 +725,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
       <g>
         <line
           id="verticalLine12"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -766,7 +766,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -785,7 +785,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -844,7 +844,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -873,7 +873,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -895,7 +895,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       <g>
         <line
           id="verticalLine20"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -936,7 +936,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -955,7 +955,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -1166,7 +1166,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1195,7 +1195,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1217,7 +1217,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       <g>
         <line
           id="verticalLine38"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1258,7 +1258,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -1277,7 +1277,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -1488,7 +1488,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1517,7 +1517,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1539,7 +1539,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       <g>
         <line
           id="verticalLine47"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1580,7 +1580,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -1599,7 +1599,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
@@ -1810,7 +1810,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1839,7 +1839,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1861,7 +1861,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       <g>
         <line
           id="verticalLine56"
-          stroke="steelblue"
+          stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
           x1={0}
@@ -1902,7 +1902,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
           <path
             d="M-20.5 20
@@ -1921,7 +1921,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOver={[Function]}
             opacity={1}
             stroke="red"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </g>
       </g>
