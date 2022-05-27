@@ -6,17 +6,23 @@ import { FelaRenderer, FelaRendererChange } from '../../types';
 export default function createNode(
   nodes: FelaRenderer['nodes'],
   score: number,
+  ruleScore: number,
   { type, media, support }: FelaRendererChange,
   targetDocument: any = document,
 ): HTMLStyleElement {
   const head = targetDocument.head || {};
 
   const node = targetDocument.createElement('style');
-  node.setAttribute('data-fela-type', type);
+  node.setAttribute('data-fela-type', type + score);
   node.type = 'text/css';
 
   if (support) {
     node.setAttribute('data-fela-support', 'true');
+  }
+
+  if (process.env.NODE !== 'production') {
+    node.setAttribute('data-fela-score', score);
+    node.setAttribute('data-fela-rulescore', ruleScore);
   }
 
   if (media) {

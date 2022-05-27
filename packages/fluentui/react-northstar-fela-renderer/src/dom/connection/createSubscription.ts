@@ -1,8 +1,17 @@
 /* eslint-disable */
 // @ts-ignore
 import objectEach from 'fast-loops/lib/objectEach';
-// @ts-ignore
-import { RULE_TYPE, KEYFRAME_TYPE, FONT_TYPE, STATIC_TYPE, CLEAR_TYPE, generateCSSRule } from 'fela-utils';
+import {
+  RULE_TYPE,
+  KEYFRAME_TYPE,
+  FONT_TYPE,
+  STATIC_TYPE,
+  CLEAR_TYPE,
+  // @ts-ignore
+  generateCSSRule,
+  // @ts-ignore
+  getRuleScore,
+} from 'fela-utils';
 
 import getNodeFromCache from './getNodeFromCache';
 import insertRule from './insertRule';
@@ -18,7 +27,8 @@ export default function createSubscription(renderer: FelaRenderer, targetDocumen
       return;
     }
 
-    const node = getNodeFromCache(change, renderer, targetDocument);
+    const ruleScore = change.type === RULE_TYPE ? getRuleScore(renderer.ruleOrder, change.pseudo) : 0;
+    const node = getNodeFromCache(change, renderer, targetDocument, ruleScore);
 
     switch (change.type) {
       case KEYFRAME_TYPE:
@@ -31,7 +41,7 @@ export default function createSubscription(renderer: FelaRenderer, targetDocumen
         node.textContent += change.selector ? generateCSSRule(change.selector, change.css) : change.css;
         break;
       case RULE_TYPE:
-        insertRule(change, renderer, node);
+        insertRule(change, node);
         break;
       default:
         // TODO: warning

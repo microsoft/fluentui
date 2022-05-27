@@ -18,6 +18,7 @@ function getRuleScore(baseScore: number, media: string = '', mediaQueryOrder: Ar
 export default function calculateNodeScore(
   { type, support, media }: FelaRendererChange,
   mediaQueryOrder: Array<string>,
+  ruleScore: number,
 ) {
   switch (type) {
     case FONT_TYPE:
@@ -27,7 +28,7 @@ export default function calculateNodeScore(
     case KEYFRAME_TYPE:
       return 2;
     case RULE_TYPE:
-      return getRuleScore(support ? 4 : 3, media, mediaQueryOrder);
+      return getRuleScore(support ? 4 : 3, media, mediaQueryOrder) + ruleScore;
     default:
       // TODO: warning
       return 9999;
