@@ -5,7 +5,6 @@ import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
 import * as React from 'react';
-import { RendererProvider } from 'react-fela';
 
 import { felaDisableAnimationsPlugin } from './felaDisableAnimationsPlugin';
 import { felaExpandCssShorthandsPlugin } from './felaExpandCssShorthandsPlugin';
@@ -14,7 +13,8 @@ import { felaInvokeKeyframesPlugin } from './felaInvokeKeyframesPlugin';
 import { felaPerformanceEnhancer } from './felaPerformanceEnhancer';
 import { felaSanitizeCssPlugin } from './felaSanitizeCssPlugin';
 import { felaStylisEnhancer } from './felaStylisEnhancer';
-import { FelaRendererParam } from './types';
+import { RendererProvider } from './RendererProvider';
+import { FelaRenderer, FelaRendererParam } from './types';
 
 let felaDevMode = false;
 
@@ -103,7 +103,7 @@ export const createFelaRenderer: CreateRenderer = () => {
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   const Provider: Renderer['Provider'] = props => (
-    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: props.target }}>
+    <RendererProvider renderer={(felaRenderer as unknown) as FelaRenderer} targetDocument={props.target}>
       {props.children}
     </RendererProvider>
   );

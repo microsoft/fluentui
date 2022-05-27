@@ -16,6 +16,12 @@ export type FelaRenderer = IRenderer & {
     media?: string,
     support?: string,
   ): string;
+
+  mediaQueryOrder: string[];
+  ruleOrder: RegExp[];
+  scoreIndex: Record<string, number>;
+  nodes: Record<string, { node: HTMLStyleElement; score: number }>;
+  updateSubscription: (change: any) => void;
 };
 
 export type FelaRendererChange = {
@@ -26,6 +32,9 @@ export type FelaRendererChange = {
   pseudo: string;
   media: string;
   support: string;
+  keyframe: string;
+  fontFace: string;
+  css: string;
 };
 
 export type FelaRendererParam = Omit<RendererParam, 'direction'> & { theme: { direction: RendererParam['direction'] } };

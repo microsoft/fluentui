@@ -136,8 +136,8 @@ Check http://fela.js.org/docs/basics/Rules.html#styleobject for more information
             support,
           };
 
-          renderer.cache[declarationReference] = change;
-          renderer._emitChange(change);
+          renderer.cache[declarationReference] = change as FelaRendererChange;
+          renderer._emitChange(change as FelaRendererChange);
         }
 
         const cachedClassName = renderer.cache[declarationReference].className;

@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render (development) should correctly sort rules 1`] = `
+"<html>
+
+<head>
+  <style data-fela-type=\\"RULE\\" type=\\"text/css\\">
+    .a {
+      color: blue
+    }
+
+    .e {
+      color: red
+    }
+
+    .c:hover {
+      color: red
+    }
+
+    .f:hover {
+      color: blue
+    }
+
+    .b:focus-within {
+      color: black
+    }
+
+    .d:active {
+      color: yellow
+    }
+  </style>
+</head>
+
+<body></body>
+
+</html>"
+`;
+
+exports[`render (development) should create style nodes and render CSS rules 1`] = `
+"<html>
+
+<head>
+  <style data-fela-type=\\"FONT\\" type=\\"text/css\\">
+    @font-face {
+      font-weight: 300;
+      src: url('../Lato.ttf') format('truetype');
+      font-family: \\"Lato\\"
+    }
+  </style>
+  <style data-fela-type=\\"KEYFRAME\\" type=\\"text/css\\">
+    @-webkit-keyframes k1 {
+      0% {
+        color: yellow
+      }
+
+      100% {
+        color: orange
+      }
+    }
+
+    @-moz-keyframes k1 {
+      0% {
+        color: yellow
+      }
+
+      100% {
+        color: orange
+      }
+    }
+
+    @keyframes k1 {
+      0% {
+        color: yellow
+      }
+
+      100% {
+        color: orange
+      }
+    }
+  </style>
+  <style data-fela-type=\\"RULE\\" type=\\"text/css\\">
+    .a {
+      background-color: red
+    }
+
+    .b {
+      color: blue
+    }
+  </style>
+</head>
+
+<body></body>
+
+</html>"
+`;
+
+exports[`render (development) should not overwrite rehydrated styles 1`] = `
+"<html>
+
+<head>
+  <style type=\\"text/css\\" data-fela-rehydration=\\"5\\" data-fela-type=\\"RULE\\">
+    .b {
+      color: yellow
+    }
+
+    .f {
+      background-color: red
+    }
+
+    .g {
+      color: blue
+    }
+
+    .c:hover {
+      color: red
+    }
+  </style>
+  <style type=\\"text/css\\" data-fela-rehydration=\\"5\\" data-fela-type=\\"RULE\\" data-fela-support=\\"true\\">
+    @supports (display:flex) {
+      .e {
+        color: green
+      }
+    }
+  </style>
+  <style type=\\"text/css\\" data-fela-rehydration=\\"5\\" data-fela-type=\\"RULE\\" media=\\"(max-width: 800px)\\">
+    .d {
+      color: blue
+    }
+  </style>
+</head>
+
+<body></body>
+
+</html>"
+`;
+
+exports[`render (development) should not render multiple times 1`] = `
+"<html>
+
+<head>
+  <style data-fela-type=\\"RULE\\" type=\\"text/css\\">
+    .a {
+      background-color: red
+    }
+
+    .b {
+      color: blue
+    }
+  </style>
+</head>
+
+<body></body>
+
+</html>"
+`;
+
+exports[`render (production) should correctly sort rules 1`] = `
+Array [
+  Object {
+    "_media": "",
+    "_support": false,
+    "_type": "RULE",
+    "style": Object {
+      "0_.a": Object {
+        "color": "blue",
+      },
+      "1_.e": Object {
+        "color": "red",
+      },
+      "2_.c:hover": Object {
+        "color": "red",
+      },
+      "3_.f:hover": Object {
+        "color": "blue",
+      },
+      "4_.b:focus-within": Object {
+        "color": "black",
+      },
+      "5_.d:active": Object {
+        "color": "yellow",
+      },
+    },
+  },
+]
+`;
+
+exports[`render (production) should create style nodes and render CSS rules 1`] = `
+Array [
+  Object {
+    "_media": "",
+    "_support": false,
+    "_type": "RULE",
+    "style": Object {
+      "0_.a": Object {
+        "background-color": "red",
+      },
+      "1_.b": Object {
+        "color": "blue",
+      },
+    },
+  },
+  Object {
+    "_type": "KEYFRAME",
+    "style": "@-webkit-keyframes k1{0%{color:yellow}100%{color:orange}}@-moz-keyframes k1{0%{color:yellow}100%{color:orange}}@keyframes k1{0%{color:yellow}100%{color:orange}}",
+  },
+  Object {
+    "_type": "FONT",
+    "style": "@font-face{font-weight:300;src:url('../Lato.ttf') format('truetype');font-family:\\"Lato\\"}",
+  },
+]
+`;
+
+exports[`render (production) should not overwrite rehydrated styles 1`] = `
+Array [
+  Object {
+    "_media": "",
+    "_support": false,
+    "_type": "RULE",
+    "style": Object {
+      "0_.b": Object {
+        "color": "yellow",
+      },
+      "1_.f": Object {
+        "background-color": "red",
+      },
+      "2_.g": Object {
+        "color": "blue",
+      },
+      "3_.c:hover": Object {
+        "color": "red",
+      },
+    },
+  },
+  Object {
+    "_media": "",
+    "_support": "true",
+    "_type": "RULE",
+    "style": Object {
+      "(display:flex)": Object {
+        "0_.e": Object {
+          "color": "green",
+        },
+      },
+      "(display:grid)": Object {
+        "0_.h": Object {
+          "color": "black",
+        },
+      },
+    },
+  },
+  Object {
+    "_media": "(max-width: 800px)",
+    "_support": false,
+    "_type": "RULE",
+    "style": Object {
+      "0_.d": Object {
+        "color": "blue",
+      },
+    },
+  },
+  Object {
+    "_media": "",
+    "_support": "true",
+    "_type": "RULE",
+    "style": Object {
+      "(display:flex)": Object {
+        "0_.e": Object {
+          "color": "green",
+        },
+      },
+      "(display:grid)": Object {
+        "0_.h": Object {
+          "color": "black",
+        },
+      },
+    },
+  },
+]
+`;
+
+exports[`render (production) should not render multiple times 1`] = `
+Array [
+  Object {
+    "_media": "",
+    "_support": false,
+    "_type": "RULE",
+    "style": Object {
+      "0_.a": Object {
+        "background-color": "red",
+      },
+      "1_.b": Object {
+        "color": "blue",
+      },
+    },
+  },
+]
+`;
