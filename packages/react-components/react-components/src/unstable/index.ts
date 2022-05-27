@@ -79,6 +79,10 @@ export {
   DATA_OVERFLOWING,
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
+  updateVisibilityAttribute,
+  useOverflowContainer,
+  useOverflowCount,
+  useOverflowItem,
 } from '@fluentui/react-overflow';
 
-export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
+export type { UseOverflowContainerReturn, OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
