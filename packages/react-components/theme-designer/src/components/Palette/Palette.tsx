@@ -20,20 +20,6 @@ const useStyles = makeStyles({
     alignItems: 'flex-end',
     flexGrow: 1,
   },
-  blackText: {
-    justifyContent: 'left',
-    display: 'flex',
-    alignItems: 'flex-end',
-    flexGrow: 1,
-    color: 'black',
-  },
-  whiteText: {
-    justifyContent: 'left',
-    display: 'flex',
-    alignItems: 'flex-end',
-    flexGrow: 1,
-    color: 'white',
-  },
 });
 
 const getBrands = (colors: BrandVariants): Brands[] => {
@@ -52,8 +38,8 @@ export const Palette: React.FC<PaletteProps> = props => {
           return (
             <div
               key={brandKey}
-              className={brandKey <= 80 ? styles.whiteText : styles.blackText}
-              style={{ backgroundColor: brandColor }}
+              className={styles.block}
+              style={{ backgroundColor: brandColor, color: brandKey <= 80 ? 'white' : 'black' }}
             >
               <Text>{brandKey}</Text>
             </div>
