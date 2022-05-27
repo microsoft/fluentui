@@ -4,7 +4,7 @@ import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { tokens } from '@fluentui/react-components';
 
-import { BrandVariants } from '@fluentui/react-theme';
+import { BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 
 export interface ContentProps {
   className?: string;
@@ -21,6 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
+// this data is temporary and will eventually be pulled from current theme
 export const brandWeb: BrandVariants = {
   10: `#061724`,
   20: `#082338`,
@@ -45,7 +46,7 @@ export const Content: React.FC<ContentProps> = props => {
   return (
     <div className={mergeClasses(styles.root, props.className)}>
       <Palette brandColors={brandWeb} />
-      <Demo />
+      <Demo theme={teamsLightTheme} />
     </div>
   );
 };

@@ -20,7 +20,18 @@ const useStyles = makeStyles({
     alignItems: 'flex-end',
     flexGrow: 1,
   },
+  blackText: {
+    justifyContent: 'left',
+    display: 'flex',
+    alignItems: 'flex-end',
+    flexGrow: 1,
+    color: 'black',
+  },
   whiteText: {
+    justifyContent: 'left',
+    display: 'flex',
+    alignItems: 'flex-end',
+    flexGrow: 1,
     color: 'white',
   },
 });
@@ -41,7 +52,7 @@ export const Palette: React.FC<PaletteProps> = props => {
           return (
             <div
               key={brandKey}
-              className={brandKey <= 80 ? mergeClasses(styles.block, styles.whiteText) : styles.block}
+              className={brandKey <= 80 ? styles.whiteText : styles.blackText}
               style={{ backgroundColor: brandColor }}
             >
               <Text>{brandKey}</Text>
