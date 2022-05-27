@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(eslint-plugin): move ban-context to react config from base",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
