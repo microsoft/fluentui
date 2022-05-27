@@ -38,19 +38,15 @@ export const Palette: React.FC<PaletteProps> = props => {
       <div className={mergeClasses(styles.root, props.className)}>
         {getBrands(props.brandColors).map(brandKey => {
           const brandColor = props.brandColors[brandKey];
-          if (brandKey > 80) {
-            return (
-              <div key={brandKey} className={styles.block} style={{ backgroundColor: brandColor }}>
-                <Text>{brandKey}</Text>
-              </div>
-            );
-          } else {
-            return (
-              <div key={brandKey} className={styles.block} style={{ backgroundColor: brandColor }}>
-                <Text className={styles.whiteText}>{brandKey}</Text>
-              </div>
-            );
-          }
+          return (
+            <div
+              key={brandKey}
+              className={brandKey <= 80 ? mergeClasses(styles.block, styles.whiteText) : styles.block}
+              style={{ backgroundColor: brandColor }}
+            >
+              <Text>{brandKey}</Text>
+            </div>
+          );
         })}
       </div>
     </div>
