@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "update splitbutton styles so inner buttons stretch to fill root button container",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
