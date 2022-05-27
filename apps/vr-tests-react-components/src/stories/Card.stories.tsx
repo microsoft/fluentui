@@ -60,7 +60,43 @@ storiesOf('Card Converged', module)
         />
       </Card>
     </div>
-  ));
+  ))
+  .addStory(
+    'appearance',
+    () => (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div>
+          <h1>Filled</h1>
+          <Card appearance="filled">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Filled alternative</h1>
+          <Card appearance="filled-alternative">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Outline</h1>
+          <Card appearance="outline">
+            <SampleCardContent />
+          </Card>
+        </div>
+        <div>
+          <h1>Subtle</h1>
+          <Card appearance="subtle">
+            <SampleCardContent />
+          </Card>
+        </div>
+      </div>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (
