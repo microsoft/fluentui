@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { Switch, Caption1, FluentProvider } from '@fluentui/react-components';
 import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
 
