@@ -14,8 +14,12 @@ const doList = [
   </Text>,
 ];
 
-const DropdownBestPractices: React.FunctionComponent<{}> = () => {
-  return <ComponentBestPractices doList={doList} />;
+const dontList = [
+  'Use `id` property in `items` shorthand as it breaks aria-activedescendant relationship between the trigger and the item.',
+];
+
+const DropdownBestPractices = () => {
+  return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 
 export default DropdownBestPractices;
