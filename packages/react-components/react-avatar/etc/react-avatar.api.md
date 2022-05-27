@@ -5,13 +5,14 @@
 ```ts
 
 import { Button } from '@fluentui/react-button';
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TooltipProps } from '@fluentui/react-tooltip';
 
@@ -34,15 +35,19 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
 
 // @public
-export type AvatarGroupItemProps = ComponentProps<AvatarGroupItemSlots> & {};
+export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>;
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'> | Slot<'li'>>;
+    avatar: NonNullable<Slot<typeof Avatar>>;
+    label?: Slot<typeof Label>;
 };
 
 // @public
-export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots>;
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
+    isOverflowItem?: boolean;
+};
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
@@ -61,7 +66,7 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
     tooltipContent: TooltipProps['content'];
 };
 

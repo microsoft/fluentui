@@ -1,33 +1,64 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
   root: 'fui-AvatarGroupItem',
-  // TODO: add class names for all slots on AvatarGroupItemSlots.
-  // Should be of the form `<slotName>: 'fui-AvatarGroupItem__<slotName>`
+  avatar: 'fui-AvatarGroupItem__avatar',
+  label: 'fui-AvatarGroupItem__label',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+const useRootStyles = makeStyles({
+  base: {
+    alignItems: 'center',
+    display: 'flex',
   },
+  overflowItem: {
+    '&:not(:first-child)': {
+      marginTop: tokens.spacingVerticalS,
+    },
+  },
+});
 
-  // TODO add additional classes for different states and/or slots
+/**
+ * Styles for the label slot
+ */
+const useLabelStyles = makeStyles({
+  overflowItem: {
+    marginLeft: tokens.spacingHorizontalS,
+    position: 'relative',
+  },
 });
 
 /**
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(avatarGroupItemClassNames.root, styles.root, state.root.className);
+  const { isOverflowItem } = state;
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const rootStyles = useRootStyles();
+  const labelStyles = useLabelStyles();
+
+  state.root.className = mergeClasses(
+    avatarGroupItemClassNames.root,
+    rootStyles.base,
+    isOverflowItem && rootStyles.overflowItem,
+    state.root.className,
+  );
+
+  state.avatar.className = mergeClasses(avatarGroupItemClassNames.avatar, state.avatar.className);
+
+  if (state.label) {
+    state.label.className = mergeClasses(
+      avatarGroupItemClassNames.label,
+      isOverflowItem && labelStyles.overflowItem,
+      state.label.className,
+    );
+  }
 
   return state;
 };

@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { Avatar } from '../Avatar';
+import { AvatarGroupContext } from '../../contexts';
+import { Label } from '@fluentui/react-label';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -15,17 +19,42 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
+  const groupOverflowItem = useContextSelector(AvatarGroupContext, ctx => ctx.overflowItem);
+  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const itemColor = useContextSelector(AvatarGroupContext, ctx => ctx.color);
+  // Since the primary slot is not an input element, getPartitionedNativeProps cannot be used here.
+  const { style, className, ...avatarSlotProps } = props;
+
   return {
-    // TODO add appropriate props/defaults
+    isOverflowItem: groupOverflowItem,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      avatar: Avatar,
+      label: Label,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        style,
+        className,
+        as: groupOverflowItem ? 'li' : 'div',
+        role: groupOverflowItem ? 'listitem' : undefined,
+      },
+    }),
+    avatar: resolveShorthand(props.avatar, {
+      required: true,
+      defaultProps: {
+        ref,
+        size: groupSize,
+        color: itemColor,
+        ...avatarSlotProps,
+      },
+    }),
+    label: resolveShorthand(props.label, {
+      required: true,
+      defaultProps: {
+        children: groupOverflowItem ? props.name : null,
+      },
     }),
   };
 };
