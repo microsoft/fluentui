@@ -82,11 +82,6 @@ jobs:
           artifactName: SBom-$(System.JobAttempt)
           targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-      # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
-      - script: |
-          yarn syncpack list-mismatches
-        displayName: Check for dependency mismatches
-
       - task: ComponentGovernanceComponentDetection@0
         displayName: 'Component Detection'
         inputs:
