@@ -64,7 +64,7 @@ jobs:
         displayName: yarn build
 
       - script: |
-          yarn publish:beachball -n $(npmToken)
+          yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-vNext.config.js
           git reset --hard origin/master
         env:
           GITHUB_PAT: $(githubPAT)

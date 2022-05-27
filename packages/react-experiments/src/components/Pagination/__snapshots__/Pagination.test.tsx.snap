@@ -66,7 +66,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -195,7 +195,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -325,7 +325,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -431,7 +431,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -537,7 +537,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -643,7 +643,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -749,7 +749,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -851,7 +851,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -992,7 +992,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1160,7 +1160,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1289,7 +1289,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1638,7 +1638,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1788,7 +1788,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1915,7 +1915,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;

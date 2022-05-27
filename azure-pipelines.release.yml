@@ -69,7 +69,7 @@ jobs:
         displayName: yarn bundle
 
       - script: |
-          yarn publish:beachball -n $(npmToken)
+          yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-v8.config.js
           git reset --hard origin/master
         env:
           GITHUB_PAT: $(githubPAT)

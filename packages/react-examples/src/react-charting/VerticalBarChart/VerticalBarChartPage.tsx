@@ -23,7 +23,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="VerticalBarChart"
+        title="Vertical Bar Chart"
         componentName="VerticalBarChartExample"
         exampleCards={
           <div>
@@ -51,10 +51,32 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>
+              A vertical bar chart is used to show comparisons between categories of data, usually over a period of
+              time. Categories and time are typically shown along the horizontal axis, while the data values are shown
+              along the vertical axis.
+            </p>
+            <p>The bar widths are proportional to the number of bars and space available within the charting area.</p>
+            <br />
+            <h3>Implementation details</h3>
+            <p>
+              The current vertical bar charts implementation is in the cartesian coordinate system. The cartesian
+              coordinate system is represented by Cartesian Chart which serves as the base class for vertical bar charts
+            </p>
+          </div>
+        }
+        bestPractices={
+          <div>
+            <p>Coming soon.</p>
+          </div>
+        }
       />
     );
   }

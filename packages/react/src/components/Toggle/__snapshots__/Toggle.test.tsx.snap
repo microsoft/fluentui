@@ -38,6 +38,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -169,6 +170,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -305,6 +307,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -439,6 +442,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -572,6 +576,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;

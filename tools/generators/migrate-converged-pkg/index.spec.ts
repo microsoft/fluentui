@@ -1,6 +1,7 @@
 import * as Enquirer from 'enquirer';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as chalk from 'chalk';
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import {
   Tree,
@@ -20,7 +21,7 @@ import {
 } from '@nrwl/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
-import { setupCodeowners } from '../../utils-testing';
+import { disableChalk, formatMockedCalls, setupCodeowners } from '../../utils-testing';
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
@@ -45,6 +46,7 @@ jest.mock(
 describe('migrate-converged-pkg generator', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
+  disableChalk(chalk);
 
   let tree: Tree;
   const options = { name: '@proj/react-dummy' } as const;
@@ -162,6 +164,38 @@ describe('migrate-converged-pkg generator', () => {
         expect(promptSpy).toHaveBeenCalledTimes(0);
       });
     });
+
+    describe(`projectType execution`, () => {
+      it(`should do limited migration for "application"`, async () => {
+        tree.write('apps/my-app/src/index.ts', `import * as React from 'react';`);
+        writeJson(tree, 'apps/my-app/package.json', { name: '@proj/my-app', private: true, version: '9.0.0' });
+        writeJson(tree, 'apps/my-app/tsconfig.json', { compilerOptions: {}, include: ['src'] });
+        addProjectConfiguration(tree, '@proj/my-app', {
+          root: 'apps/my-app',
+          projectType: 'application',
+          targets: {},
+        });
+
+        const loggerInfoSpy = jest.spyOn(logger, 'warn');
+
+        await generator(tree, { name: '@proj/my-app' });
+
+        expect(formatMockedCalls(loggerInfoSpy.mock.calls)).toMatchInlineSnapshot(`
+          "NOTE: you're trying to migrate an Application - @proj/my-app.
+          We apply limited migration steps at the moment."
+        `);
+      });
+    });
+
+    describe(`side effects`, () => {
+      it(`should notify user to generate change files`, async () => {
+        const sideEffects = await generator(tree, { name: options.name });
+
+        sideEffects();
+
+        expect(console.info).toHaveBeenCalled();
+      });
+    });
   });
 
   describe(`tsconfig updates`, () => {
@@ -209,7 +243,7 @@ describe('migrate-converged-pkg generator', () => {
       const tsConfigTest = getTsConfig.test();
 
       expect(tsConfigMain).toEqual({
-        extends: '../../tsconfig.base.json',
+        extends: '../../../tsconfig.base.json',
         compilerOptions: {
           importHelpers: true,
           isolatedModules: true,
@@ -234,10 +268,12 @@ describe('migrate-converged-pkg generator', () => {
       expect(tsConfigLib).toEqual({
         extends: './tsconfig.json',
         compilerOptions: {
-          declaration: true,
-          lib: ['ES2019', 'dom'],
           noEmit: false,
           outDir: 'dist',
+          declaration: true,
+          declarationDir: 'dist/types',
+          inlineSources: true,
+          lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
         },
         exclude: ['./src/common/**', '**/*.spec.ts', '**/*.spec.tsx', '**/*.test.ts', '**/*.test.tsx'],
@@ -396,7 +432,7 @@ describe('migrate-converged-pkg generator', () => {
         */
         module.exports = {
         displayName: 'react-dummy',
-        preset: '../../jest.preset.js',
+        preset: '../../../jest.preset.js',
         globals: {
         'ts-jest': {
         tsConfig: '<rootDir>/tsconfig.spec.json',
@@ -443,37 +479,13 @@ describe('migrate-converged-pkg generator', () => {
         return tree.read(jestSetupFilePath)?.toString('utf-8');
       }
 
-      let content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
-
-      await generator(tree, options);
-
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`
-        "/** Jest test setup file. */
-
-        const { configure } = require('enzyme');
-        const Adapter = require('enzyme-adapter-react-16');
-
-        // Configure enzyme.
-        configure({ adapter: new Adapter() });"
-      `);
-
       tree.delete(jestSetupFilePath);
       expect(tree.exists(jestSetupFilePath)).toBeFalsy();
 
       await generator(tree, options);
 
-      content = getJestSetupFile();
-      expect(content).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
+      expect(tree.exists(jestSetupFilePath)).toBeTruthy();
+      expect(getJestSetupFile()).toMatchInlineSnapshot(`"/** Jest test setup file. */"`);
     });
   });
 
@@ -554,9 +566,9 @@ describe('migrate-converged-pkg generator', () => {
       );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../.storybook/main');
+        "const rootMain = require('../../../../.storybook/main');
 
-        module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+        module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -571,7 +583,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../.storybook/preview';
+        "import * as rootPreview from '../../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];
@@ -660,7 +672,6 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, config.projectName);
       const paths = {
         e2eRoot: `${projectConfig.root}/e2e`,
-        e2eSupport: `${projectConfig.root}/e2e/support.js`,
         packageJson: `${projectConfig.root}/package.json`,
         tsconfig: {
           main: `${projectConfig.root}/tsconfig.json`,
@@ -719,15 +730,9 @@ describe('migrate-converged-pkg generator', () => {
           lib: ['ES2019', 'dom'],
           types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
         },
-        include: ['**/*.ts'],
+        include: ['**/*.ts', '**/*.tsx'],
       });
       expect(mainTsConfig.references).toEqual(expect.arrayContaining([{ path: './e2e/tsconfig.json' }]));
-
-      // support.js
-      const supportFile = tree.read(paths.e2eSupport)?.toString('utf-8');
-
-      // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
-      expect(supportFile).toMatchSnapshot();
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
@@ -735,7 +740,48 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
+  describe(`api-extractor.json updates`, () => {
+    it(`should create api-extractor.json`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
+    });
+
+    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
+
+      await generator(tree, options);
+
+      /* eslint-disable @fluentui/max-len */
+      expect(readJson(tree, `${projectConfig.root}/config/api-extractor.local.json`)).toMatchInlineSnapshot(`
+        Object {
+          "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+          "extends": "./api-extractor.json",
+          "mainEntryPointFilePath": "<projectFolder>/dist/types/packages/react-components/<unscopedPackageName>/src/index.d.ts",
+        }
+      `);
+      /* eslint-enable @fluentui/max-len */
+    });
+  });
+
   describe('package.json updates', () => {
+    it(`should update rolluped typings source`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      expect(pkgJson.typings).toEqual('lib/index.d.ts');
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      expect(pkgJson.typings).toEqual('dist/index.d.ts');
+    });
+
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
       let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
@@ -762,14 +808,14 @@ describe('migrate-converged-pkg generator', () => {
       expect(pkgJson.scripts).toEqual({
         docs: 'api-extractor run --config=config/api-extractor.local.json --local',
         // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/react-dummy/src && yarn docs`,
+        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-dummy/src && yarn docs`,
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
         start: 'yarn storybook',
-        storybook: 'node ../../scripts/storybook/runner',
+        storybook: 'node ../../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
@@ -780,20 +826,8 @@ describe('migrate-converged-pkg generator', () => {
       const projectConfig = readProjectConfiguration(tree, nodePackageName);
       let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
-      expect(pkgJson.scripts).toMatchInlineSnapshot(`
-        Object {
-          "build": "just-scripts build",
-          "clean": "just-scripts clean",
-          "code-style": "just-scripts code-style",
-          "just": "just-scripts",
-          "lint": "just-scripts lint",
-          "start": "just-scripts dev:storybook",
-          "start-test": "just-scripts jest-watch",
-          "test": "just-scripts test",
-          "test:watch": "just-scripts jest-watch",
-          "update-snapshots": "just-scripts jest -u",
-        }
-      `);
+      expect(pkgJson.scripts.start).toBeDefined();
+      expect(pkgJson.scripts['start-test']).toBeDefined();
 
       await generator(tree, {
         name: nodePackageName,
@@ -801,38 +835,8 @@ describe('migrate-converged-pkg generator', () => {
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
-      expect(pkgJson.scripts).toEqual({
-        build: 'just-scripts build',
-        // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/babel-make-styles/src && yarn docs`,
-        clean: 'just-scripts clean',
-        'code-style': 'just-scripts code-style',
-        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-        just: 'just-scripts',
-        lint: 'just-scripts lint',
-        test: 'jest --passWithNoTests',
-        'type-check': 'tsc -b tsconfig.json',
-      });
-    });
-
-    it(`should create api-extractor.json`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
-    });
-
-    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeTruthy();
+      expect(pkgJson.scripts.start).not.toBeDefined();
+      expect(pkgJson.scripts['start-test']).not.toBeDefined();
     });
   });
 
@@ -895,6 +899,7 @@ describe('migrate-converged-pkg generator', () => {
         etc/
         node_modules/
         src/
+        dist/types/
         temp/
         __fixtures__
         __mocks__
@@ -923,10 +928,6 @@ describe('migrate-converged-pkg generator', () => {
     function getBabelConfig(projectConfig: ReadProjectConfiguration) {
       const babelConfigPath = `${projectConfig.root}/.babelrc.json`;
       return readJson(tree, babelConfigPath);
-    }
-    function getPackageJson(projectConfig: ReadProjectConfiguration) {
-      const packageJsonPath = `${projectConfig.root}/package.json`;
-      return readJson<PackageJson>(tree, packageJsonPath);
     }
 
     it(`should setup .babelrc.json`, async () => {
@@ -983,7 +984,7 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(babelConfig).toEqual({
         presets: [],
-        plugins: ['annotate-pure-calls', '@babel/transform-react-pure-annotations'],
+        plugins: ['annotate-pure-calls'],
       });
     });
   });
@@ -999,6 +1000,18 @@ describe('migrate-converged-pkg generator', () => {
       projectConfig = readProjectConfiguration(tree, options.name);
 
       expect(projectConfig.sourceRoot).toBe(`${projectConfig.root}/src`);
+    });
+
+    it(`should set project 'implicitDependencies' in workspace.json`, async () => {
+      let projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toBe(undefined);
+
+      await generator(tree, options);
+
+      projectConfig = readProjectConfiguration(tree, options.name);
+
+      expect(projectConfig.implicitDependencies).toEqual([]);
     });
 
     it(`should set project 'vNext' and 'platform:web' tag in nx.json if its a web package`, async () => {
@@ -1046,35 +1059,12 @@ describe('migrate-converged-pkg generator', () => {
   });
 
   describe(`--stats`, () => {
-    beforeEach(() => {
-      setupDummyPackage(tree, { name: '@proj/react-foo', version: '9.0.22' });
-      setupDummyPackage(tree, { name: '@proj/react-bar', version: '9.0.31' });
-      setupDummyPackage(tree, { name: '@proj/react-old', version: '8.1.12' });
-      setupDummyPackage(tree, { name: '@proj/react-older', version: '8.9.12' });
-    });
-
     it(`should print project names and count of how many have been migrated`, async () => {
       const loggerInfoSpy = jest.spyOn(logger, 'info');
 
       await generator(tree, { stats: true });
 
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (4):`);
-      expect(loggerInfoSpy.mock.calls[6][0]).toEqual(
-        expect.stringContaining(stripIndents`
-      - @proj/react-dummy
-      - @proj/babel-make-styles
-      - @proj/react-foo
-      - @proj/react-bar
-      `),
-      );
-
-      loggerInfoSpy.mockClear();
-
-      await generator(tree, options);
-      await generator(tree, { stats: true });
-
-      expect(loggerInfoSpy.mock.calls[2][0]).toEqual('Migrated (1):');
-      expect(loggerInfoSpy.mock.calls[5][0]).toEqual(`Not migrated (3):`);
+      expect(loggerInfoSpy).toHaveBeenCalled();
     });
   });
 
@@ -1200,6 +1190,7 @@ function setupDummyPackage(
     packageJson: {
       name: pkgName,
       version: normalizedOptions.version,
+      typings: 'lib/index.d.ts',
       scripts: {
         build: 'just-scripts build',
         clean: 'just-scripts clean',
@@ -1230,12 +1221,6 @@ function setupDummyPackage(
     `,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
-
-    const { configure } = require('enzyme');
-    const Adapter = require('enzyme-adapter-react-16');
-
-    // Configure enzyme.
-    configure({ adapter: new Adapter() });
     `,
     npmConfig: stripIndents`
       *.api.json

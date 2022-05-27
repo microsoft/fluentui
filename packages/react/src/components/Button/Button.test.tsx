@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { DefaultButton } from './DefaultButton/DefaultButton';
@@ -17,6 +17,8 @@ const alertClicked = (): void => {
 describe('Button', () => {
   beforeEach(() => {
     resetIds();
+    cleanup();
+    document.body.innerHTML = '';
   });
 
   it('renders DefaultButton correctly', () => {
@@ -910,6 +912,7 @@ describe('Button', () => {
       it('Click on button opens the menu, escape press dismisses menu', () => {
         const callbackMock = jest.fn();
         const menuProps = { items: [{ key: 'item', name: 'Item' }], onDismiss: callbackMock };
+
         const { getAllByRole } = render(
           <DefaultButton iconProps={{ iconName: 'Add' }} menuProps={menuProps}>
             {'Button Text'}
@@ -921,11 +924,15 @@ describe('Button', () => {
 
         // get the menu id from the button's aria attribute
         const menuId = button.getAttribute('aria-controls');
+
         expect(menuId).toBeTruthy();
         const contextualMenuElement = button.ownerDocument!.getElementById(menuId as string);
+
         expect(contextualMenuElement).not.toBeNull();
         userEvent.tab();
+
         userEvent.keyboard('{esc}');
+
         expect(callbackMock.mock.calls.length).toBe(1);
 
         // Expect that the menu doesn't exist any more since it's been dismissed

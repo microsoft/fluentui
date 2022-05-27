@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { handleRef, Ref } from '@fluentui/react-component-ref';
+import { handleRef } from '@fluentui/react-component-ref';
 import {
   childrenExist,
   createShorthandFactory,
@@ -268,7 +268,7 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*') {
+    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*' && !e.altKey && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
       e.stopPropagation();
       const toFocusID = getToFocusIDByFirstCharacter(e, props.id);
@@ -283,8 +283,9 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
     node => {
       registerItemRef(id, node);
       handleRef(contentRef, node);
+      handleRef(ref, node);
     },
-    [id, contentRef, registerItemRef],
+    [id, contentRef, registerItemRef, ref],
   );
 
   const ElementType = getElementType(props);
@@ -294,7 +295,7 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
       {...getA11Props('root', {
         className: classes.root,
         id,
-        ref,
+        ref: elementRef,
         selected: selected === true,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
@@ -327,10 +328,9 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
     </ElementType>
   );
 
-  const elementWithRef = <Ref innerRef={elementRef}>{element}</Ref>;
   setEnd();
 
-  return elementWithRef;
+  return element;
 }) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;
 
 TreeItem.displayName = 'TreeItem';

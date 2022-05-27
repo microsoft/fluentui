@@ -1,5 +1,5 @@
 import { dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 
 const selectors = {
   triggerButton: `.${dropdownSlotClassNames.toggleIndicator}`,
@@ -7,7 +7,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
   steps: [
     builder => builder.click(selectors.triggerButton).snapshot('List with loading state'),
     (builder, keys) => builder.keys(selectors.input, keys.upArrow).snapshot('showing loading in the bottom'),

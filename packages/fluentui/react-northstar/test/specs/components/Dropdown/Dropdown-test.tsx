@@ -1251,6 +1251,24 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
+
+    it('has items count narration element associated via aria-describedby after an item has been selected', () => {
+      const itemToBeClickedIndex = 1;
+      const { clickOnItemAtIndex, searchInputNode, getItemsCountNode } = renderDropdown({
+        defaultOpen: true,
+        getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
+        search: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemToBeClickedIndex);
+      const itemsCountNode = getItemsCountNode();
+      const itemsCountNodeId = itemsCountNode.getAttribute('id');
+
+      expect(searchInputNode).toHaveAttribute('aria-describedby', itemsCountNodeId);
+
+      expect(itemsCountNode).toHaveTextContent('1 item is selected.');
+    });
   });
 
   describe('searchQuery', () => {

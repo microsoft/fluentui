@@ -1,7 +1,9 @@
 import custom from '@fluentui/scripts/storybook/webpack.config';
 import * as path from 'path';
+import { merge } from 'webpack-merge';
 
-export default {
+/** @type {Partial<import('@storybook/core-common').StorybookConfig>} */
+const config = {
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-essentials',
@@ -16,20 +18,20 @@ export default {
     // (also appears that it would require more configuration to work properly)
     reactDocgen: false,
   },
-  webpackFinal: (/** @type {import("webpack").Configuration} */ config) => {
+  webpackFinal: config => {
     const customConfig = custom(config);
 
-    customConfig.module?.rules?.push({
-      // Special loader that only includes stories from the current package
-      test: /\.storybook[/\\]preview.js/,
-      loader: path.resolve(__dirname, 'preview-loader.js'),
-    });
-
-    return {
-      ...customConfig,
+    return merge(customConfig, {
+      module: {
+        rules: [
+          {
+            // Special loader that only includes stories from the current package
+            test: /\.storybook[/\\]preview.js/,
+            loader: path.resolve(__dirname, 'preview-loader.js'),
+          },
+        ],
+      },
       resolve: {
-        ...customConfig.resolve,
-        // @ts-ignore
         fallback: {
           crypto: require.resolve('crypto-browserify'),
           stream: require.resolve('stream-browserify'),
@@ -37,10 +39,12 @@ export default {
           path: require.resolve('path-browserify'),
         },
       },
-    };
+    });
   },
 
   core: {
     builder: 'webpack5',
   },
 };
+
+export default config;

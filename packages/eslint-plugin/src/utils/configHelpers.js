@@ -5,7 +5,7 @@ const path = require('path');
 const jju = require('jju');
 
 const testFiles = [
-  '**/*{.,-}{test,spec}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
@@ -69,10 +69,10 @@ module.exports = {
    * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
    * This provides the ability to override *only* the interface rule without having to repeat or
    * lose the rest of the (very complicated) config.
-   * @param {boolean} prefixWithI - Whether to prefix interfaces with I
+   * @param {{prefixInterface: boolean}} config - Whether to prefix interfaces with I
    * @returns {import("eslint").Linter.RulesRecord}
    */
-  getNamingConventionRule: prefixWithI => ({
+  getNamingConventionRule: (config = { prefixInterface: false }) => ({
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
@@ -98,7 +98,7 @@ module.exports = {
       {
         selector: 'interface',
         format: ['PascalCase'],
-        ...(prefixWithI ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
+        ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
       },
       {
         selector: 'default',

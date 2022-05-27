@@ -1,16 +1,16 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.61.0",
+  "version": "0.63.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/accessibility": "^0.61.0",
-    "@fluentui/react-icons-northstar": "^0.61.0",
-    "@fluentui/react-northstar": "^0.61.0",
-    "@fluentui/react-northstar-prototypes": "^0.61.0",
+    "@fluentui/accessibility": "^0.63.0",
+    "@fluentui/react-icons-northstar": "^0.63.0",
+    "@fluentui/react-northstar": "^0.63.0",
+    "@fluentui/react-northstar-prototypes": "^0.63.0",
     "@types/react-router-dom": "^5.1.5",
-    "cypress": "6.6.0",
-    "cypress-real-events": "1.2.0",
+    "cypress": "9.5.2",
+    "cypress-real-events": "1.7.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
     "react-router-dom": "^5.2.0"

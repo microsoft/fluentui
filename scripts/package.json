@@ -61,7 +61,6 @@
     "markdown-table": "^2.0.0",
     "node-plop": "^0.25.0",
     "node-polyfill-webpack-plugin": "^1.0.2",
-    "node-sass": "^7.0.0",
     "p-queue": "^6.0.2",
     "path-browserify": "^1.0.1",
     "plop": "^2.6.0",

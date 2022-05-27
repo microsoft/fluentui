@@ -2,6 +2,105 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 23 May 2022 07:42:16 GMT",
+      "tag": "@fluentui/react-focus_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "8a3a1d16923a24d56e022f38b0bcef06394a7d44",
+            "comment": "FocusZone: allow arrow keys to move within textareas, similar to text inputs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/react-focus_v8.5.8",
+      "version": "8.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/keyboard-key to v0.4.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.5.2",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/set-version to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.7",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.8.3",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/test-utilities to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.19",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:48 GMT",
+      "tag": "@fluentui/react-focus_v8.5.7",
+      "version": "8.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.5.1",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.6.6",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.8.2",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.18",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 15 Mar 2022 07:45:54 GMT",
       "tag": "@fluentui/react-focus_v8.5.5",
       "version": "8.5.5",

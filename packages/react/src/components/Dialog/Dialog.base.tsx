@@ -102,16 +102,18 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     };
 
     let dialogDraggableClassName: string | undefined;
-    const dragOptions = modalProps?.dragOptions;
+    let dragOptions: IModalProps['dragOptions'];
 
-    // if we are draggable, make sure we are using the correct
-    // draggable classname and selectors
-    if (dragOptions && !dragOptions.dragHandleSelector) {
+    // If dragOptions are provided, but no drag handle is specified, we supply a drag handle,
+    // and inform dialog contents to add class to draggable class to the header
+    if (modalProps?.dragOptions && !modalProps.dragOptions?.dragHandleSelector) {
+      // spread options to avoid mutating props
+      dragOptions = { ...modalProps.dragOptions };
       dialogDraggableClassName = 'ms-Dialog-draggable-header';
       dragOptions.dragHandleSelector = `.${dialogDraggableClassName}`;
     }
 
-    const mergedModalProps = {
+    const mergedModalProps: IModalProps = {
       ...DefaultModalProps,
       elementToFocusOnDismiss,
       firstFocusableSelector,
@@ -125,8 +127,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       isDarkOverlay,
       onDismissed,
       ...modalProps,
-      layerProps: mergedLayerProps,
       dragOptions,
+      layerProps: mergedLayerProps,
       isOpen,
     };
 

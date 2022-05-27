@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "PresenceBadge: Adding unknown status.",
-  "packageName": "@fluentui/react-badge",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

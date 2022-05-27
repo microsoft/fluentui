@@ -20,9 +20,48 @@ import { initializeIcons as i17 } from './fabric-icons-17';
 
 import { IIconOptions } from '@fluentui/style-utilities';
 import { registerIconAliases } from './iconAliases';
+import { getWindow } from '@fluentui/utilities';
 const DEFAULT_BASE_URL = 'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/icons/';
 
-export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: IIconOptions): void {
+/*
+ * The Window variable has the iconBaseUrl prop in order to allow for users to redirect icon font downloads to a new
+ * URL. The config can be burned on the page to ensure there are no race conditions which might load resources on
+ * script load.
+ */
+declare global {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  interface Window {
+    /**
+     * The FabricConfig options can be burned on the page prior to script load to provide
+     * alternative defaults at script load time. This helps avoid race conditions by calling
+     * `initializeIcons` too late, or in cases where you can't control the `initializeIcons` call,
+     * such as using the pre-created Fluent bundle.
+     */
+    FabricConfig?: {
+      /**
+       * Controls the base url of the font files. This is useful for scenarios where the fonts
+       * are stored on a private CDN other than the default SharePoint CDN.
+       */
+      fontBaseUrl?: string;
+
+      /**
+       * Controls the base url of the icon font files. This is useful for scenarios where the icons
+       * are stored on a private CDN other than the default SharePoint CDN. Note that in prior
+       * iterations, `fontBaseUrl` was used to control both font and icon base urls. While you can
+       * still use `fontBaseUrl` to provide a single base url for both, the `iconBaseUrl` will be
+       * used first if available.
+       */
+      iconBaseUrl?: string;
+    };
+  }
+}
+
+const win = getWindow();
+
+export function initializeIcons(
+  baseUrl: string = win?.FabricConfig?.iconBaseUrl || win?.FabricConfig?.fontBaseUrl || DEFAULT_BASE_URL,
+  options?: IIconOptions,
+): void {
   [
     i,
     i0,
