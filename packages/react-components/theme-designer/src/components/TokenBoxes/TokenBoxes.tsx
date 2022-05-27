@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
-import { Switch, Caption1, FluentProvider } from '@fluentui/react-components';
+import { makeStyles } from '@griffel/react';
+import { Label, useId, Input, Switch, Caption1, FluentProvider } from '@fluentui/react-components';
 import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
 
 export interface TokenBoxesProps {
@@ -31,7 +31,8 @@ const useStyles = makeStyles({
 
 export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
   const styles = useStyles();
-  const [isDark, setIsDark] = React.useState(false);
+  const [isDark, setIsDark] = React.useState<boolean>(false);
+  const [filter, setFilter] = React.useState<string>('');
 
   const LightTheme = createLightTheme(props.brandColors);
   const DarkTheme = createDarkTheme(props.brandColors);
@@ -42,9 +43,30 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     return color.startsWith('color') && !color.includes('Palette');
   });
 
+  const filteredColors = colors.filter(color => {
+    const themeColor = ((theme as unknown) as Record<string, string>)[color];
+    if (!themeColor) {
+      return;
+    }
+    return themeColor.includes(filter);
+  });
+
   return (
     <FluentProvider theme={theme}>
       <Caption1> Color Tokens </Caption1>
+      <div>
+        <Label htmlFor={useId('input-outline')}>Search</Label>
+        <Input
+          appearance="outline"
+          id={useId('input-outline')}
+          onChange={React.useCallback(
+            (ev, data) => {
+              setFilter(ev.target.value);
+            },
+            [setFilter],
+          )}
+        />
+      </div>
       <Switch
         onChange={React.useCallback(
           (e, v) => {
@@ -55,7 +77,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
         label="dark theme"
       />
       <div className={styles.root}>
-        {colors.map(color => {
+        {filteredColors.map(color => {
           const themeColor = ((theme as unknown) as Record<string, string>)[color];
           if (!themeColor) {
             return;
