@@ -83,7 +83,7 @@ const useSelectStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
 
-    ':focus-visible': {
+    ':focus': {
       outlineWidth: '2px',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
