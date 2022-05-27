@@ -55,7 +55,7 @@ perf-test/ @microsoft/fluentui-react-build
 
 #### Packages
 packages/azure-themes/ @hyoshis @Jacqueline-ms
-packages/charting/ @Raghurk
+packages/charting/ @microsoft/charting-team
 packages/date-time @ermercer @evlevy
 packages/date-time-utilities @ermercer @evlevy
 packages/eslint-plugin/ @microsoft/fluentui-react-build
