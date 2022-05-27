@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
-
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
@@ -36,10 +36,12 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
   return (
-    <div className={styles.root}>
-      <Nav className={styles.nav} />
-      <Sidebar className={styles.sidebar} />
-      <Content className={styles.content} />
-    </div>
+    <FluentProvider theme={teamsLightTheme}>
+      <div className={styles.root}>
+        <Nav className={styles.nav} />
+        <Sidebar className={styles.sidebar} />
+        <Content className={styles.content} />
+      </div>
+    </FluentProvider>
   );
 };

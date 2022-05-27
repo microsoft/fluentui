@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/react_v8.71.0",
+      "version": "8.71.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "02b03646728acb14672b664dcdffe7bd8bac1087",
+            "comment": "update splitbutton styles so inner buttons stretch to fill root button container"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 May 2022 07:44:28 GMT",
       "tag": "@fluentui/react_v8.70.0",
       "version": "8.70.0",

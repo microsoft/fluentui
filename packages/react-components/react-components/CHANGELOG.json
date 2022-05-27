@@ -2,6 +2,251 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:21 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.13",
+      "version": "9.0.0-rc.13",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "70f12f46e904da75c3e1eb2c0270a6aecdc8f913",
+            "comment": "cleanup examples & docs"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "493c5cf76092b85f9859df6ab378bcbc6e959284",
+            "comment": "move v0 flex stories to migration guide of storybook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "Add eslint ignore for context export"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f2fd9407493b438898c6027fde432a1c7fefd344",
+            "comment": "changes to docs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f3f38785ed2cd5fda98b03672d6e7ba70c05b5da",
+            "comment": "remove a notice about unstable"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "e0417c44ab690bda8923df041a880b6085f48e2d",
+            "comment": "fix missing dot, create missing files"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ca6d248d3b70b893a0d857c4c4759b95651572aa",
+            "comment": "use \"useId\" in stories for id generation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "200be4ce33d4c57fbce1cfed87dd110f289de3af",
+            "comment": "add description for the component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "d5f8088dc5bb51cb0579933456d03b551e5b875d",
+            "comment": "make Best Practices collapsible"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "557ee9e396b4072ce539e5a2f8230d78d644adeb",
+            "comment": "fix Spinner on Firefox: add px units to r values"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "016c8e6d0984c27bfb0bb95abf207ce5a5a2c077",
+            "comment": "add prefers-reduced-motion to spinner"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "519ec97161849b2d6adbaa6ef56d28c92b10d71e",
+            "comment": "updates to docs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "8735876a860005ac5bde07c20da265b23341682a",
+            "comment": "cleanup stories & docs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "7bd33dbd7ddfc579e288c8081b8921be8cf421c5",
+            "comment": "improve formatting in stories"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "e2c3e492481d0c715705b0830505cce64292d614",
+            "comment": "formatting improvements in stories"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "Add eslint-ignore"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "rohitpag@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "303947a3e3687058c902a9a8bee1ecd1f19a92c8",
+            "comment": "Publish react-alert as unstable component"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "af1794dd70ab6bc30f9c19db3ee54b7a22f3c24c",
+            "comment": "fix react-avatar: use initials as a fallback label even when no id is manually defined"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "7c773e3f3f4a8991fee6af46277504378dbdf197",
+            "comment": "remove aria-hidden from badge"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "cc2a9d0f9b722f68a54da026ab320e3be22c21dd",
+            "comment": "ToggleButton: Differentiating hover and checked styles."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113",
+            "comment": "ToggleButton: Apply thicker border width to checked outline toggle buttons."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "02b40c905e997347f8c910bc51cfbdbdc67de7ee",
+            "comment": "add Select to Preview Components"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "5d37b4ee0208745bfca958f83137c0ec454ce8e0",
+            "comment": "feat: Export react-overflow utilities as unstable"
+          },
+          {
+            "author": "rohitpag@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "303947a3e3687058c902a9a8bee1ecd1f19a92c8",
+            "comment": "Publish react-alert as unstable component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "395b1d2f0786c9fb760d638aeb08eee93acc3c55",
+            "comment": "BREAKING: fix: Stop exporting `Portal` component from react-components"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5c6366a3d97cdc612535c299f8dd27bf79c4c842",
+            "comment": "export slider var names from top level"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native input for macOS safari."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "a83d94f03515a893750637eb4e8e97d24dd2d915",
+            "comment": "Renaming strong prop to weight to align with Text."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b90324261b0d64bc92a57ba040f4fcadeff68fe5",
+            "comment": "fix: MenuDivider should be visible in Windows high contrast mode"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d8c31ef39bbc2e44c4407b02c9e989f6481920d8",
+            "comment": "fix: use neutral foreground 2 as text color for menu item"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2bed5a599f10435dfa95be96f0bab5e4f71b4202",
+            "comment": "BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "02b40c905e997347f8c910bc51cfbdbdc67de7ee",
+            "comment": "add Select to Preview Components"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "c17653d2a37e0bbe0fd84298221db3738cb43a23",
+            "comment": "new high contrast styles for slider steps"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "5c6366a3d97cdc612535c299f8dd27bf79c4c842",
+            "comment": "BREAKING: Remove slider origin to align with design and avoid inaccessible design"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native input for macOS safari."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "d5593311dc3a5f63d3b239e52a5c34db33af54c2",
+            "comment": "BREAKING: Remove `status` prop in Spinner"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "2062c540d7ec78d424593cb18b0834e511dbc196",
+            "comment": "Update README.md"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c089a26b502e3b2f34855a86e932156c9271e03a",
+            "comment": "Remove usage of focus-visible pseudo-class to conform to browser support matrix."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "366ca40110552c9089ba2f8c3fee37b20c1494cb",
+            "comment": "Removing additional focus ring in native textarea for macOS safari."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:39 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.12",
       "version": "9.0.0-rc.12",

@@ -2,6 +2,47 @@
   "name": "@fluentui/react-spinner",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:29 GMT",
+      "tag": "@fluentui/react-spinner_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "557ee9e396b4072ce539e5a2f8230d78d644adeb",
+            "comment": "fix Spinner on Firefox: add px units to r values"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "016c8e6d0984c27bfb0bb95abf207ce5a5a2c077",
+            "comment": "add prefers-reduced-motion to spinner"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "519ec97161849b2d6adbaa6ef56d28c92b10d71e",
+            "comment": "updates to docs"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "d5593311dc3a5f63d3b239e52a5c34db33af54c2",
+            "comment": "BREAKING: Remove `status` prop in Spinner"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinner",
+            "comment": "Bump @fluentui/react-label to v9.0.0-rc.4",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-spinner_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme-designer",
-  "version": "0.1.0",
+  "version": "9.0.0-alpha.0",
   "private": true,
   "description": "A theme designer",
   "main": "lib-commonjs/index.js",
@@ -14,6 +14,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "build-storybook": "build-storybook -s ./public -o ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -30,7 +31,9 @@
     "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.9",
     "@griffel/react": "1.1.0",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@fluentui/react-components": "^9.0.0-rc.13",
+    "@fluentui/react-icons": "^2.0.166-rc.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
