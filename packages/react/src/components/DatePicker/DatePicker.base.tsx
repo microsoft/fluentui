@@ -161,10 +161,6 @@ function useErrorMessage(
       } else {
         // Only show error for empty inputValue if it is a required field
         setErrorMessage(isRequired ? strings!.isRequiredErrorMessage || ' ' : undefined);
-
-        // If no input date string or input date string is invalid
-        // date variable will be null, callback should expect null value for this case
-        onSelectDate?.(date);
       }
     } else if (isRequired && !inputValue) {
       // Check when DatePicker is a required field but has NO input value
