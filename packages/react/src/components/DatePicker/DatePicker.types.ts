@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DayOfWeek, FirstWeekOfYear } from '@fluentui/date-time-utilities';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '@fluentui/date-time-utilities';
 import type { ICalendarProps } from '../../Calendar';
 import type { ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
@@ -66,9 +66,12 @@ export interface IDatePickerProps
   calendarAs?: IComponentAs<ICalendarProps>;
 
   /**
-   * Callback issued when a date is selected
+   * Callback for when a date is selected
+   * @param date - The date the user selected
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
-  onSelectDate?: (date: Date | null | undefined) => void;
+  onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
    * Label for the DatePicker
@@ -149,6 +152,13 @@ export interface IDatePickerProps
    * Default value of the DatePicker, if any
    */
   value?: Date;
+
+  /**
+   * The date range type indicating how  many days should be selected as the user
+   * selects days
+   * @defaultValue DateRangeType.Day
+   */
+  dateRangeType?: DateRangeType;
 
   /**
    * Optional method to format the chosen date to a string to display in the DatePicker

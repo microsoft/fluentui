@@ -9,7 +9,13 @@ import {
   getPropsWithDefaults,
 } from '@fluentui/utilities';
 import { Calendar } from '../../Calendar';
-import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
+import {
+  FirstWeekOfYear,
+  getDatePartHashValue,
+  compareDatePart,
+  DayOfWeek,
+  DateRangeType,
+} from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
@@ -30,6 +36,7 @@ const DEFAULT_PROPS: IDatePickerProps = {
     return date ? new Date(date) : null;
   },
   firstDayOfWeek: DayOfWeek.Sunday,
+  dateRangeType: DateRangeType.Day,
   initialPickerDate: new Date(),
   isRequired: false,
   isMonthPickerVisible: true,
@@ -85,13 +92,12 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePick
 }
 
 function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) {
-  const [selectedDate, setSelectedDateState] = useControllableValue(value, undefined, (ev, newValue) =>
-    onSelectDate?.(newValue),
-  );
+  const [selectedDate, setSelectedDateState] = useControllableValue(value, new Date());
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
-  const setSelectedDate = (newDate: Date | undefined) => {
+  const setSelectedDate = (newDate: Date, selectedDateRangeArray?: Date[]) => {
     setSelectedDateState(newDate);
+    onSelectDate?.(newDate, selectedDateRangeArray);
     setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
   };
 
@@ -207,6 +213,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const {
     firstDayOfWeek,
+    dateRangeType,
     strings,
     label,
     theme,
@@ -263,13 +270,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       focus,
       reset() {
         setIsCalendarShown(false);
-        setSelectedDate(undefined);
+        // setSelectedDate(undefined);
         setErrorMessage(undefined);
         setStatusMessage(undefined);
       },
       showDatePickerPopup,
     }),
-    [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
+    [focus, setErrorMessage, setIsCalendarShown, setStatusMessage, showDatePickerPopup],
   );
 
   const onTextFieldFocus = (): void => {
@@ -283,14 +290,6 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       }
       preventFocusOpeningPicker.current = false;
     }
-  };
-
-  const onSelectDate = (date: Date): void => {
-    if (props.calendarProps && props.calendarProps.onSelectDate) {
-      props.calendarProps.onSelectDate(date);
-    }
-
-    calendarDismissed(date);
   };
 
   const onCalloutPositioned = (): void => {
@@ -513,7 +512,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             <CalendarType
               {...calendarProps}
               // eslint-disable-next-line react/jsx-no-bind
-              onSelectDate={onSelectDate}
+              onSelectDate={setSelectedDate}
               // eslint-disable-next-line react/jsx-no-bind
               onDismiss={calendarDismissed}
               isMonthPickerVisible={props.isMonthPickerVisible}
@@ -521,6 +520,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
               today={props.today}
               value={selectedDate || initialPickerDate}
               firstDayOfWeek={firstDayOfWeek}
+              dateRangeType={dateRangeType!}
               strings={strings!}
               highlightCurrentMonth={props.highlightCurrentMonth}
               highlightSelectedMonth={props.highlightSelectedMonth}
