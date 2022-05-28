@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherrypicking fixes from v8 branch",
-  "packageName": "@uifabric/charting",
-  "email": "atisjai@microsoft.com",
-  "dependentChangeType": "patch"
-}

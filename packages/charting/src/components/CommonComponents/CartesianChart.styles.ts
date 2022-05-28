@@ -1,5 +1,5 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { HighContrastSelectorBlack } from 'office-ui-fabric-react/lib/Styling';
 import { isIE11 } from 'office-ui-fabric-react';
 
 const isIE11Var: boolean = isIE11();
@@ -25,7 +25,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           theme.fonts.tiny,
           {
             fill: theme.semanticColors.bodyText,
-            fontWeight: '600',
             selectors: {
               [HighContrastSelectorBlack]: {
                 fill: 'rgb(179, 179, 179)',
@@ -55,7 +54,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
           theme.fonts.tiny,
           {
             fill: theme.semanticColors.bodyText,
-            fontWeight: '600',
             selectors: {
               [HighContrastSelectorBlack]: {
                 fill: 'rgb(179, 179, 179)',
@@ -125,11 +123,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         color: theme.semanticColors.bodyText,
       },
       !toDrawShape && {
-        selectors: {
-          [HighContrastSelector]: {
-            forcedColorAdjust: 'none',
-          },
-        },
         borderLeft: `4px solid ${lineColor}`,
         paddingLeft: '8px',
       },
@@ -143,11 +136,6 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     calloutlegendText: {
       ...fonts.small,
       lineHeight: '16px',
-      selectors: {
-        [HighContrastSelectorBlack]: {
-          color: 'rgb(255, 255, 255)',
-        },
-      },
       color: theme.semanticColors.bodySubtext,
     },
     calloutContentY: [
@@ -155,21 +143,11 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         ...fonts.mediumPlus,
         fontWeight: 'bold',
         lineHeight: '22px',
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
       },
     ],
     descriptionMessage: [
       theme.fonts.small,
       {
-        selectors: {
-          [HighContrastSelectorBlack]: {
-            color: 'rgb(255, 255, 255)',
-          },
-        },
         color: theme.semanticColors.bodyText,
         marginTop: '10px',
         paddingTop: '10px',

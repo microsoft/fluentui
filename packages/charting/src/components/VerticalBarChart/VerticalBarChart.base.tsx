@@ -2,7 +2,7 @@ import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -454,11 +454,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
-      const xBarScale = d3ScaleBand()
-        .domain(this._xAxisLabels)
-        .range([this.margins.left!, containerWidth - this.margins.right!])
-        .padding(this.props.xAxisPadding || 0.1);
-
+      const endpointDistance = 0.5 * ((containerWidth - this.margins.right!) / this._points.length);
+      const xBarScale = d3ScaleLinear()
+        .domain(this._isRtl ? [this._points.length - 1, 0] : [0, this._points.length - 1])
+        .range([
+          this.margins.left! + endpointDistance - 0.5 * this._barWidth,
+          containerWidth - this.margins.right! - endpointDistance - 0.5 * this._barWidth,
+        ]);
       const yBarScale = d3ScaleLinear()
         .domain([0, this._yMax])
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
@@ -543,7 +545,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       return (
         <rect
           key={point.x}
-          x={xBarScale(point.x)}
+          x={xBarScale(index)}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           height={barHeight}
@@ -560,7 +562,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
-          transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
         />
       );
     });

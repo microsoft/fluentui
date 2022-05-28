@@ -238,7 +238,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       },
       {
         legend: 'Time range 2',
-        color: 'brown',
+        color: 'red',
         data: [
           {
             startX: new Date('2018/01/18'),
