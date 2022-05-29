@@ -117,20 +117,18 @@ function overrideDefaultBabelLoader(rules) {
 function getCodesandboxBabelOptions() {
   const allPackageInfo = getAllPackageInfo();
 
-  return Object.values(allPackageInfo).reduce(
-    (acc, cur) => {
-      if (isConvergedPackage(cur.packageJson)) {
-        const prereleaseTags = semver.prerelease(cur.packageJson.version);
-        if (prereleaseTags && !prereleaseTags[0].includes('rc')) {
-          acc[cur.packageJson.name] = { replace: '@fluentui/react-components/unstable' };
-        } else {
-          acc[cur.packageJson.name] = {};
-        }
+  /** @type {import('storybook-addon-export-to-codesandbox').PluginOptions}  */
+  const initialValue = {};
+  return Object.values(allPackageInfo).reduce((acc, cur) => {
+    if (isConvergedPackage(cur.packageJson)) {
+      const prereleaseTags = semver.prerelease(cur.packageJson.version);
+      if (prereleaseTags && !prereleaseTags[0].includes('rc')) {
+        acc[cur.packageJson.name] = { replace: '@fluentui/react-components/unstable' };
+      } else {
+        acc[cur.packageJson.name] = {};
       }
+    }
 
-      return acc;
-    },
-    /** @type {import('storybook-addon-export-to-codesandbox').PluginOptions}  */
-    {},
-  );
+    return acc;
+  }, initialValue);
 }
