@@ -42,6 +42,10 @@ i.e. `Card` component's `appearance` prop, should have a default appearance, as 
 Cases where nothing is done in our hooks as a default, we would leverage `undefined`.
 i.e. `Card` component's `focusMode` prop should be nullable instead of using an `off` string value, as that reflects the fact that nothing is applied to the component.
 
+```tsx
+<Card focusMode=">
+```
+
 ### Pros and Cons
 
 #### Pros
@@ -52,16 +56,29 @@ i.e. `Card` component's `focusMode` prop should be nullable instead of using an 
 
 #### Cons
 
-- New style map approach would require changes
-  ```ts
+- Using the lookup object pattern for styling would require changes
+
+  Proposal:
+
+  <!-- prettier-ignore -->
+  ```tsx
+  const state = { align: undefined } as const;
+
   const alignMap = {
-    none: undefined,
+    _default: undefined,
     start: styles.alignStart,
     center: styles.alignCenter,
     end: styles.alignEnd,
     justify: styles.alignJustify,
   } as const;
+
+  const className = mergeClasses(
+    classNames.root,
+    styles.root,
+    alignMap[props.align ?? '_default']
+  );
   ```
+
 - Users who dynamically set a property value would need to do something like:
   ```tsx
   <Text align={isItFriday ? 'center' : undefined} />
