@@ -1,6 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -49,9 +49,7 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    lineHeight: tokens.lineHeightBase300,
-    fontSize: tokens.fontSizeBase300,
-    fontFamily: tokens.fontFamilyBase,
+    ...typographyStyles.body1,
     boxSizing: 'border-box',
   },
   buttonSmall: {
