@@ -112,12 +112,12 @@ function overrideDefaultBabelLoader(rules) {
 }
 
 /**
- * @returns {import('storybook-addon-export-to-codesandbox').PluginOptions}
+ * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
  */
 function getCodesandboxBabelOptions() {
   const allPackageInfo = getAllPackageInfo();
 
-  /** @type {import('storybook-addon-export-to-codesandbox').PluginOptions}  */
+  /** @type {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}  */
   const initialValue = {};
   return Object.values(allPackageInfo).reduce((acc, cur) => {
     if (isConvergedPackage(cur.packageJson)) {
@@ -125,7 +125,7 @@ function getCodesandboxBabelOptions() {
       if (prereleaseTags && !prereleaseTags[0].includes('rc')) {
         acc[cur.packageJson.name] = { replace: '@fluentui/react-components/unstable' };
       } else {
-        acc[cur.packageJson.name] = {};
+        acc[cur.packageJson.name] = { replace: '@fluentui/react-components' };
       }
     }
 

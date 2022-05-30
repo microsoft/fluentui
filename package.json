@@ -233,7 +233,7 @@
     "scheduler": "0.19.1",
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
-    "storybook-addon-export-to-codesandbox": "0.6.4",
+    "storybook-addon-export-to-codesandbox": "0.7.0",
     "storybook-addon-performance": "0.14.0",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
