@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 30 May 2022 12:26:49 GMT",
+      "tag": "@uifabric/charting_v4.20.19",
+      "version": "4.20.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherrypicking fixes from v8 branch",
+            "author": "atisjai@microsoft.com",
+            "commit": "8844d8d8c1685c9ed13288a56d5675c9241e9064",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 May 2022 12:22:01 GMT",
       "tag": "@uifabric/charting_v4.20.18",
       "version": "4.20.18",
