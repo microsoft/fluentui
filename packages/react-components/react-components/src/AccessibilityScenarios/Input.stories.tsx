@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Input } from '@fluentui/react-input';
+import { Checkbox } from '@fluentui/react-checkbox';
 import { Label } from '@fluentui/react-label';
 import { Button } from '@fluentui/react-button';
 
@@ -277,8 +278,7 @@ const RegistrationFormInputsAccessibility = () => {
             }}
           />
 
-          <Label htmlFor="showPassword">Show password</Label>
-          <input type="checkbox" id="showPassword" name="showPassword" onChange={onShowPasswordChange} />
+          <Checkbox label="Show password" onChange={onShowPasswordChange} />
 
           {errors.password?.types && (
             <ValidationMessage id="password" formValidation={formValidation}>
