@@ -39,7 +39,7 @@ For this, we should stop using `Required` for all props in the `State` and decid
 Cases where our component should have a default value, we would apply the state that should be the default value.
 i.e. `Card` component's `appearance` prop, should have a default appearance, as we don't want a card without a pre-defined appearance as that's detrimental to the usage.
 
-Cases where nothing is done in our hooks as a default, we would leverage `undefined` and `null`.
+Cases where nothing is done in our hooks as a default, we would leverage `undefined`.
 i.e. `Card` component's `focusMode` prop should be nullable instead of using an `off` string value, as that reflects the fact that nothing is applied to the component.
 
 ### Pros and Cons
