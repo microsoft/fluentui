@@ -7,7 +7,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
 };
-const cardSizeVar = '--fui-Card__size';
+export const cardCSSVars = {
+  cardSizeVar: '--fui-Card--size',
+};
 
 /**
  * Styles for the root slot
@@ -33,28 +35,28 @@ const useStyles = makeStyles({
       ...shorthands.borderWidth(tokens.strokeWidthThin),
     },
 
-    ...shorthands.padding(`var(${cardSizeVar})`),
-    ...shorthands.gap(`var(${cardSizeVar})`),
+    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
+    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
     [`> .${cardPreviewClassNames.root}`]: {
-      marginLeft: `calc(var(${cardSizeVar}) * -1)`,
-      marginRight: `calc(var(${cardSizeVar}) * -1)`,
+      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
     [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardSizeVar}) * -1)`,
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
 
   sizeSmall: {
-    [cardSizeVar]: '8px',
+    [cardCSSVars.cardSizeVar]: '8px',
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   sizeMedium: {
-    [cardSizeVar]: '12px',
+    [cardCSSVars.cardSizeVar]: '12px',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   sizeLarge: {
-    [cardSizeVar]: '16px',
+    [cardCSSVars.cardSizeVar]: '16px',
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
 
