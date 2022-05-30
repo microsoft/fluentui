@@ -17,6 +17,11 @@ export const Card: ForwardRefComponent<CardProps>;
 // @public (undocumented)
 export const cardClassNames: SlotClassNames<CardSlots>;
 
+// @public (undocumented)
+export const cardCSSVars: {
+    cardSizeVar: string;
+};
+
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
