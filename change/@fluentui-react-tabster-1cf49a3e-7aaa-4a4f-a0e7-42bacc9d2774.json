@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adds stories for focus indicator documentation",
+  "packageName": "@fluentui/react-tabster",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}
