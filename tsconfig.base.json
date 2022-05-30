@@ -13,6 +13,7 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
+      "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
       "@fluentui/priority-overflow": ["packages/react-components/priority-overflow/src/index.ts"],

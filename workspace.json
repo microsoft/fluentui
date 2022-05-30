@@ -108,6 +108,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/global-context": {
+      "root": "packages/react-components/global-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/global-context/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library",
