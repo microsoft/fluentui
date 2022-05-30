@@ -52,11 +52,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
 
     [`> .${cardPreviewClassNames.root}`]: {
-      marginTop: `calc(var(${cardSizeVar}) * -1)`,
-      marginBottom: `calc(var(${cardSizeVar}) * -1)`,
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
     [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
-      marginLeft: `calc(var(${cardSizeVar}) * -1)`,
+      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
   },
   orientationVertical: {
