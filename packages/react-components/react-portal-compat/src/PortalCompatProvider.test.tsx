@@ -1,4 +1,4 @@
-import { ThemeClassNameProvider } from '@fluentui/react-shared-contexts';
+import { ThemeClassNameProvider_unstable as ThemeClassNameProvider } from '@fluentui/react-shared-contexts';
 import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import { FluentProvider } from '@fluentui/react-provider';
 import { resetIdsForTests } from '@fluentui/react-utilities';

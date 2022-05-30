@@ -430,7 +430,7 @@ import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
@@ -511,14 +511,14 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
-import { useTheme_unstable } from '@fluentui/react-shared-contexts';
-import { useThemeClassName_unstable } from '@fluentui/react-shared-contexts';
+import { useTheme_unstable as useTheme } from '@fluentui/react-shared-contexts';
+import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
-import { useTooltipVisibility_unstable } from '@fluentui/react-shared-contexts';
+import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1375,7 +1375,7 @@ export { useDivider_unstable }
 
 export { useDividerStyles_unstable }
 
-export { useFluent_unstable }
+export { useFluent }
 
 export { useFluentProvider_unstable }
 
@@ -1537,9 +1537,9 @@ export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 
-export { useTheme_unstable }
+export { useTheme }
 
-export { useThemeClassName_unstable }
+export { useThemeClassName }
 
 export { useToggleButton_unstable }
 
@@ -1551,7 +1551,7 @@ export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
 
-export { useTooltipVisibility_unstable }
+export { useTooltipVisibility }
 
 export { VerticalSpacingTokens }
 

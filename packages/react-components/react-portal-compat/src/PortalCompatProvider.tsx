@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fluentProviderClassNames, useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-components';
+import { fluentProviderClassNames, useThemeClassName } from '@fluentui/react-components';
 import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 import type { RegisterPortalFn } from '@fluentui/react-portal-compat-context';

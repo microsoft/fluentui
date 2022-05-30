@@ -105,10 +105,10 @@ export type {
   TypographyStyles,
 } from '@fluentui/react-theme';
 export {
-  useFluent_unstable,
-  useTooltipVisibility_unstable,
-  useThemeClassName_unstable,
-  useTheme_unstable,
+  useFluent_unstable as useFluent,
+  useTooltipVisibility_unstable as useTooltipVisibility,
+  useThemeClassName_unstable as useThemeClassName,
+  useTheme_unstable as useTheme,
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
