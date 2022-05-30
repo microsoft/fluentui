@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import { useThemeClassName, useFluent } from '@fluentui/react-shared-contexts';
+import {
+  useThemeClassName_unstable as useThemeClassName,
+  useFluent_unstable as useFluent,
+} from '@fluentui/react-shared-contexts';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 
 export type UsePortalMountNodeOptions = {

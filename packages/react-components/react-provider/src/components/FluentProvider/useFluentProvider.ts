@@ -1,6 +1,6 @@
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import type { Theme } from '@fluentui/react-theme';
-import { useFluent, useTheme } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent, useTheme_unstable as useTheme } from '@fluentui/react-shared-contexts';
 import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';

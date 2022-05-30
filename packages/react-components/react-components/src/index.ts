@@ -14,7 +14,6 @@ export {
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
-  useFluent,
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
@@ -105,7 +104,12 @@ export type {
   TypographyStyle,
   TypographyStyles,
 } from '@fluentui/react-theme';
-export { useThemeClassName } from '@fluentui/react-shared-contexts';
+export {
+  useFluent_unstable,
+  useTooltipVisibility_unstable,
+  useThemeClassName_unstable,
+  useTheme_unstable,
+} from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
   getNativeProps,
