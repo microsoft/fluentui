@@ -11,6 +11,7 @@ import { Scenario } from './utils';
 export const ButtonsWithTooltipAccessibilityScenario: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Buttons with tooltip">
+      <h1>Tooltip variants</h1>
       <h2>Tooltips for text formatting icon-only buttons</h2>
       <Tooltip relationship="label" content="Make text bold">
         <Button icon={<TextBold24Regular />} />

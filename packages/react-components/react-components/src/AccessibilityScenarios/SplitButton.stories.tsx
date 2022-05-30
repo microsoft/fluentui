@@ -8,10 +8,9 @@ import { Scenario } from './utils';
 
 export const EventReminderAccessibilityScenario: React.FunctionComponent = () => {
   const [statusText, setStatusText] = React.useState<string | undefined>(undefined);
-  const statusRef = React.useRef<HTMLParagraphElement>(null);
 
   const focusStatus = () => {
-    statusRef.current!.focus();
+    document.getElementById('statusText')?.focus();
   };
 
   const onDismissButtonClick = () => {
@@ -32,6 +31,7 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
 
   return (
     <Scenario pageTitle="Event reminder split button">
+      <h1>Event reminder</h1>
       {!statusText && (
         <>
           <p>Your meeting starts in 10 minutes.</p>
@@ -86,7 +86,7 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
           </Menu>
         </>
       )}
-      <div ref={statusRef} tabIndex={0}>
+      <div id="statusText" tabIndex={0}>
         {statusText && <p>{statusText}</p>}
       </div>
     </Scenario>

@@ -71,33 +71,30 @@ export const MessengerButtonsAccessibilityScenario: React.FunctionComponent = ()
 
   return (
     <Scenario pageTitle="Messenger buttons">
-      <Button disabledFocusable={sendButtonDisabled} onClick={onSendButtonClick}>
-        Send
-      </Button>
-      <Button disabledFocusable={deleteButtonDisabled} onClick={onDeleteButtonClick}>
-        Delete
-      </Button>
       <Button ref={increaseFontButtonRef} disabled={increaseFontButtonDisabled} onClick={onIncreaseFontButtonClick}>
         Increase font size
       </Button>
       <Button ref={decreaseFontButtonRef} disabled={decreaseFontButtonDisabled} onClick={onDecreaseFontButtonClick}>
         Decrease font size
       </Button>
-      <div>
-        <textarea
-          name="message"
-          rows={3}
-          cols={50}
-          placeholder="Enter message here...."
-          aria-label="Message"
-          onChange={onMessageTextareaChange}
-          value={message}
-          style={messageStyle}
-        />
-      </div>
-      <p>
-        <span aria-live="polite">{statusText}</span>
-      </p>
+      <textarea
+        name="message"
+        rows={3}
+        cols={50}
+        placeholder="Enter message here...."
+        aria-label="Message"
+        onChange={onMessageTextareaChange}
+        value={message}
+        style={messageStyle}
+      />
+      <Button disabledFocusable={sendButtonDisabled} onClick={onSendButtonClick}>
+        Send
+      </Button>
+      <Button disabledFocusable={deleteButtonDisabled} onClick={onDeleteButtonClick}>
+        Delete
+      </Button>
+
+      <p aria-live="polite">{statusText}</p>
     </Scenario>
   );
 };

@@ -147,7 +147,7 @@ const RegistrationFormInputsAccessibility = () => {
 
   return (
     <Scenario pageTitle="Registration form inputs">
-      <h2>Registration form</h2>
+      <h1>Registration form</h1>
       {!isSubmittedAndValid ? (
         <form onSubmit={formValidation.handleSubmit(onSubmit)}>
           <Label htmlFor="fullName">Full name:</Label>

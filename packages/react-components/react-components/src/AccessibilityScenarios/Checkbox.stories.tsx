@@ -1,51 +1,78 @@
 import * as React from 'react';
 
-import { Checkbox } from '@fluentui/react-checkbox';
+import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
 
-export const SiteNavigationAccessibilityScenario: React.FunctionComponent = () => {
+export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponent = () => {
+  const [isAppleSelected, setIsAppleSelected] = React.useState(false);
+  const [isBananaSelected, setIsBananaSelected] = React.useState(false);
+  const [isOrangeSelected, setIsOrangeSelected] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isSubmitted) {
+      document.getElementById('formSubmittedText')?.focus();
+    }
+  }, [isSubmitted]);
+
+  const onSubmit = (event: React.BaseSyntheticEvent) => {
+    event.preventDefault();
+    setIsSubmitted(true);
+  };
+
   return (
-    <Scenario pageTitle="Site navigation links">
-      <nav aria-label="Main menu">
-        <ul>
-          <li>
-            <Link href="https://www.microsoft.com" target="_blank">
-              Microsoft
-            </Link>
-          </li>
-          <li>
-            <Link href="https://www.office.com" target="_blank">
-              Microsoft Office
-            </Link>
-          </li>
-          <li>
-            <Link href="https://www.github.com" target="_blank">
-              GitHub
-            </Link>
-          </li>
-          <li>
-            <Link href="https://www.linkedin.com" target="_blank">
-              LinkedIn
-            </Link>
-          </li>
-          <li>
-            <Link href="https://www.skype.com" target="_blank" disabled>
-              Skype
-            </Link>
-          </li>
-          <li>
-            <Link href="https://www.bing.com" target="_blank" disabledFocusable>
-              Bing
-            </Link>
-          </li>
-        </ul>
-      </nav>
+    <Scenario pageTitle="Checkboxes in questionnaire about food">
+      <h1>Questionnaire about food</h1>
+      {!isSubmitted ? (
+        <form onSubmit={onSubmit}>
+          <div role="group" aria-labelledby="selectFoodText">
+            <p id="selectFoodText">Select food that you like:</p>
+
+            <Checkbox
+              checked={
+                isAppleSelected && isBananaSelected && isOrangeSelected
+                  ? true
+                  : !(isAppleSelected || isBananaSelected || isOrangeSelected)
+                  ? false
+                  : 'mixed'
+              }
+              onChange={(event: React.ChangeEvent, data: CheckboxOnChangeData) => {
+                setIsAppleSelected(!!data.checked);
+                setIsBananaSelected(!!data.checked);
+                setIsOrangeSelected(!!data.checked);
+              }}
+              label="All fruits"
+            />
+            <Checkbox
+              checked={isAppleSelected}
+              onChange={() => setIsAppleSelected(checked => !checked)}
+              label="Apple"
+            />
+            <Checkbox
+              checked={isBananaSelected}
+              onChange={() => setIsBananaSelected(checked => !checked)}
+              label="Banana"
+            />
+            <Checkbox
+              checked={isOrangeSelected}
+              onChange={() => setIsOrangeSelected(checked => !checked)}
+              label="Orange"
+            />
+          </div>
+          <Button type="submit">Submit</Button>
+        </form>
+      ) : (
+        <p id="formSubmittedText" tabIndex={0}>
+          The form would have been submitted.
+        </p>
+      )}
     </Scenario>
   );
 };
 
 export default {
-  title: 'Accessibility Scenarios/ Site navigation links',
-  id: 'link-accessibility-scenario',
+  title: '  Accessibility Scenarios/ Checkboxes in questionnaire about food',
+  id: 'checkbox-accessibility-scenario',
 };
