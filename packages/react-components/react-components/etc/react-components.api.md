@@ -1536,7 +1536,6 @@ export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 
-export { useTheme }
 
 export { useThemeClassName }
 
