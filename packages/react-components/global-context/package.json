@@ -16,6 +16,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "e2e",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -30,9 +31,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.9",
-    "@griffel/react": "1.1.0",
+    "@fluentui/react-context-selector": "9.0.0-rc.9",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
