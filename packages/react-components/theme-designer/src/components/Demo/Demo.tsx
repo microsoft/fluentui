@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
-  FluentProvider,
-  teamsLightTheme,
   tokens,
   Body1,
   Title3,
@@ -23,6 +21,8 @@ import {
   Radio,
   Checkbox,
   Avatar,
+  Theme,
+  FluentProvider,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
@@ -42,6 +42,7 @@ import {
 
 export interface ContentProps {
   className?: string;
+  theme: Theme;
 }
 
 const useStyles = makeStyles({
@@ -204,7 +205,7 @@ export const Column3 = () => {
 export const Demo: React.FC<ContentProps> = props => {
   const styles = useStyles();
   return (
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider theme={props.theme}>
       <Caption1>Examples</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
         <Column1 />

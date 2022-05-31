@@ -31,9 +31,11 @@ export type CardProps = ComponentProps<CardSlots> & {
    * @defaultvalue off
    */
   focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+
+  size?: 'small' | 'medium' | 'large';
 };
 
 /**
  * State used in rendering Card
  */
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;

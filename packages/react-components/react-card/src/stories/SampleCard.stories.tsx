@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { makeStyles } from '@griffel/react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body1, Caption1 } from '@fluentui/react-text';
+import { Body1, Caption1, Subtitle1 } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter, CardPreview } from '../index';
 import type { CardProps } from '../index';
 
@@ -36,3 +37,20 @@ export const SampleCard = (props: CardProps) => (
     </CardFooter>
   </Card>
 );
+
+const useStyles = makeStyles({
+  container: {
+    marginBottom: '16px',
+  },
+});
+
+export const Title = (props: { title: string; description?: string }) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.container}>
+      <Subtitle1 block>{props.title}</Subtitle1>
+      {props.description && <Body1 block>{props.description}</Body1>}
+    </div>
+  );
+};
