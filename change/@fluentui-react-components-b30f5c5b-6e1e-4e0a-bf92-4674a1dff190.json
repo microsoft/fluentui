@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-card): CSS var for `size` prop is now exported",
-  "packageName": "@fluentui/react-components",
-  "email": "39736248+andrefcdias@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

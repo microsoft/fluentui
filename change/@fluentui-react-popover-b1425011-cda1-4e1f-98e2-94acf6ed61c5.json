@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update popover trigger to use aria-expanded instead of aria-haspopup",
-  "packageName": "@fluentui/react-popover",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

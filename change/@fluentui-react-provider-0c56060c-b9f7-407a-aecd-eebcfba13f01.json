@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "updates import to react-shared-components, removes re-export to provider",
-  "packageName": "@fluentui/react-provider",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

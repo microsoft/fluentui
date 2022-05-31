@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: FluentProvider now adds `line-height` by default",
-  "packageName": "@fluentui/react-provider",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

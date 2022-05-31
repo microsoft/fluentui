@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "mark context hooks and providers to unstable",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

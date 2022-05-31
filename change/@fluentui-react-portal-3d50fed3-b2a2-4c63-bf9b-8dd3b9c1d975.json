@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "updates import to react-shared-components",
-  "packageName": "@fluentui/react-portal",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 26 May 2022 21:01:32 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.13)
+
+Tue, 31 May 2022 21:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.12..@fluentui/react-portal_v9.0.0-rc.13)
+
+### Changes
+
+- updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.13 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
 
 ## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.12)
 

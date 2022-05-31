@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove exports for internal APIs",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
