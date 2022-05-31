@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
 import { Label } from '@fluentui/react-label';
 import { Input } from '@fluentui/react-input';
+import { RadioGroup, Radio } from '@fluentui/react-components';
 import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
@@ -33,16 +34,13 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
                 <Label htmlFor="name">Name:</Label>
                 <Input type="text" id="name" name="name" />
                 <Label htmlFor="email">Email:</Label>
-                <Input type="text" id="email" name="email" />
-                <fieldset>
-                  <legend>Age</legend>
-                  <input type="radio" id="ageClass1" name="age" value="ageClass1" />
-                  <Label htmlFor="ageClass1">Below 18</Label>
-                  <input type="radio" id="ageClass2" name="age" value="ageClass2" />
-                  <Label htmlFor="ageClass2">Between 18 and 30</Label>
-                  <input type="radio" id="ageClass3" name="age" value="ageClass3" />
-                  <Label htmlFor="ageClass3">Over 30</Label>
-                </fieldset>
+                <Input type="email" id="email" name="email" />
+                <Label id="ageLabel">Your age:</Label>
+                <RadioGroup value="ageClass1" aria-labelledby="ageLabel">
+                  <Radio value="ageClass1" label="Under 16" />
+                  <Radio value="ageClass2" label="Between 16 and 50" />
+                  <Radio value="ageClass3" label="Over 50" />
+                </RadioGroup>
               </AccordionPanel>
             </AccordionItem>
             <AccordionItem value="residence">
