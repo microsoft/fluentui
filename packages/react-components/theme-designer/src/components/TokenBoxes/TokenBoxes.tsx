@@ -11,7 +11,7 @@ export interface TokenBoxesProps {
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(275px, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
     gridGap: tokens.spacingVerticalXXL,
   },
   boxes: {
@@ -54,8 +54,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
   });
 
   return (
-    <FluentProvider theme={theme}>
-      <Caption1> Color Tokens </Caption1>
+    <>
       <div>
         <Label htmlFor={useId('input-outline')}>Search</Label>
         <Input
@@ -78,24 +77,27 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
         )}
         label="dark theme"
       />
-      <div className={styles.root}>
-        {filteredColors.map(color => {
-          const themeColor = ((theme as unknown) as Record<string, string>)[color];
-          if (!themeColor) {
-            return;
-          }
-          return (
-            <div className={styles.boxes} key={color}>
-              <div className={styles.colors} style={{ backgroundColor: themeColor }} />
-              <div className={styles.text}>
-                {color}
-                <br />
-                {themeColor}
+      <FluentProvider theme={theme}>
+        <Caption1> Color Tokens </Caption1>
+        <div className={styles.root}>
+          {filteredColors.map(color => {
+            const themeColor = ((theme as unknown) as Record<string, string>)[color];
+            if (!themeColor) {
+              return;
+            }
+            return (
+              <div className={styles.boxes} key={color}>
+                <div className={styles.colors} style={{ backgroundColor: themeColor }} />
+                <div className={styles.text}>
+                  {color}
+                  <br />
+                  {themeColor}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-    </FluentProvider>
+            );
+          })}
+        </div>
+      </FluentProvider>
+    </>
   );
 };
