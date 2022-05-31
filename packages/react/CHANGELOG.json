@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 30 May 2022 07:44:12 GMT",
+      "tag": "@fluentui/react_v8.71.1",
+      "version": "8.71.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "odhanson@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b01ac1a166a8dc67a6c53409d9fe86977517bae6",
+            "comment": "Fixed bug where className changes in List props does not cause a rerender"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 May 2022 07:39:11 GMT",
       "tag": "@fluentui/react_v8.71.0",
       "version": "8.71.0",

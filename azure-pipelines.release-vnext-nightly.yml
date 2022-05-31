@@ -83,7 +83,7 @@ jobs:
           targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
       - task: ComponentGovernanceComponentDetection@0
-        displayName: 'Component Detection'
+        displayName: 'Component governance detection'
         inputs:
           sourceScanPath: $(Agent.BuildDirectory)
         condition: succeeded()
