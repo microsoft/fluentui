@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { Label, useId, Input, Switch, Caption1, FluentProvider } from '@fluentui/react-components';
+import { makeStyles, shorthands } from '@griffel/react';
+import { Label, useId, Input, Switch, Caption1, FluentProvider, tokens } from '@fluentui/react-components';
 import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
 
 export interface TokenBoxesProps {
@@ -10,22 +10,24 @@ export interface TokenBoxesProps {
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(275px, 1fr))',
+    gridGap: tokens.spacingVerticalXXL,
   },
   boxes: {
     display: 'flex',
     flexDirection: 'column',
-    marginBottom: '10px',
-    width: '150px',
+    ...shorthands.borderRadius('0.5em'),
+    ...shorthands.border('2px solid'),
+    boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19)',
+    paddingBottom: '10px',
+    ...shorthands.overflow('hidden'),
   },
   colors: {
-    height: '50px',
+    height: '100px',
   },
-  textLabel: {
-    display: 'flex',
-    justifyContent: 'center',
+  text: {
+    paddingLeft: tokens.spacingVerticalS,
   },
 });
 
@@ -83,9 +85,13 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
             return;
           }
           return (
-            <div key={color} className={styles.boxes}>
+            <div className={styles.boxes} key={color}>
               <div className={styles.colors} style={{ backgroundColor: themeColor }} />
-              <div className={styles.textLabel}>{themeColor}</div>
+              <div className={styles.text}>
+                {color}
+                <br />
+                {themeColor}
+              </div>
             </div>
           );
         })}
