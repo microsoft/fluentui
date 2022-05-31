@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove export useTheme",
+  "packageName": "@fluentui/react-provider",
+  "email": "me@levithomason.com",
+  "dependentChangeType": "patch"
+}
