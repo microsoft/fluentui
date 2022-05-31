@@ -117,18 +117,15 @@ function overrideDefaultBabelLoader(rules) {
 function getCodesandboxBabelOptions() {
   const allPackageInfo = getAllPackageInfo();
 
-  /** @type {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}  */
-  const initialValue = {};
   return Object.values(allPackageInfo).reduce((acc, cur) => {
     if (isConvergedPackage(cur.packageJson)) {
       const prereleaseTags = semver.prerelease(cur.packageJson.version);
-      if (prereleaseTags && !prereleaseTags[0].includes('rc')) {
-        acc[cur.packageJson.name] = { replace: '@fluentui/react-components/unstable' };
-      } else {
-        acc[cur.packageJson.name] = { replace: '@fluentui/react-components' };
-      }
+      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
+      acc[cur.packageJson.name] = isNonRcPrerelease
+        ? { replace: '@fluentui/react-components/unstable' }
+        : { replace: '@fluentui/react-components' };
     }
 
     return acc;
-  }, initialValue);
+  }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
 }
