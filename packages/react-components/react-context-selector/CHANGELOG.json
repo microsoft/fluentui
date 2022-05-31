@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:25 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "Add eslint ignore for context export"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:14:24 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

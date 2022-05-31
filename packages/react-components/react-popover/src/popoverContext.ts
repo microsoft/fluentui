@@ -3,6 +3,7 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { PopoverState } from './components/Popover/index';
 
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
+  open: false,
   setOpen: () => null,
   toggleOpen: () => null,
   triggerRef: { current: null },
@@ -22,6 +23,7 @@ export const PopoverProvider = PopoverContext.Provider;
  */
 export type PopoverContextValue = Pick<
   PopoverState,
+  | 'open'
   | 'toggleOpen'
   | 'setOpen'
   | 'triggerRef'

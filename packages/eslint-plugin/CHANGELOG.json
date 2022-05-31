@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.1",
+      "version": "1.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "680885f2f33f62bc891d1abaa0ad8e6196903481",
+            "comment": "fix(eslint-plugin): move ban-context to react config from base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 May 2022 07:42:24 GMT",
       "tag": "@fluentui/eslint-plugin_v1.9.0",
       "version": "1.9.0",

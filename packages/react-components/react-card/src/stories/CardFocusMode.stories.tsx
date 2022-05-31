@@ -1,9 +1,6 @@
 import * as React from 'react';
-
-import { Title3, Text } from '@fluentui/react-text';
-
 import { makeStyles, shorthands } from '@griffel/react';
-import { SampleCard } from './SampleCard.stories';
+import { SampleCard as Card, Title } from './SampleCard.stories';
 
 const useStyles = makeStyles({
   root: {
@@ -19,32 +16,36 @@ export const FocusMode = () => {
   return (
     <div className={styles.root}>
       <div>
-        <Title3 block>'off' (Default)</Title3>
-        <Text block>
-          The contents might still be focusable, but the Card won't manage the focus of its contents or be focusable.
-        </Text>
+        <Title
+          title="'off' (Default)"
+          description={`The contents might still be focusable,
+          but the Card won't manage the focus of its contents or be focusable.`}
+        />
+        <Card />
       </div>
-      <SampleCard />
       <div>
-        <Title3 block>'no-tab'</Title3>
-        <Text block>
-          The Card will be focusable and trap the focus. You can use Tab to navigate between the contents and escaping
-          focus only by pressing the Esc key.
-        </Text>
+        <Title
+          title="'no-tab'"
+          description={`The Card will be focusable and trap the focus.
+          You can use Tab to navigate between the contents and escaping focus only by pressing the Esc key.`}
+        />
+        <Card focusMode="no-tab" />
       </div>
-      <SampleCard focusMode="no-tab" />
       <div>
-        <Title3 block>'tab-exit'</Title3>
-        <Text block>The Card will be focusable and trap the focus, but release it on an Esc or Tab key press.</Text>
+        <Title
+          title="'tab-exit'"
+          description="The Card will be focusable and trap the focus, but release it on an Esc or Tab key press."
+        />
+        <Card focusMode="tab-exit" />
       </div>
-      <SampleCard focusMode="tab-exit" />
       <div>
-        <Title3 block>'tab-only'</Title3>
-        <Text block>
-          The Card will not trap focus but will still be focusable and allow Tab navigation of its contents.
-        </Text>
+        <Title
+          title="'tab-only'"
+          description={`The Card will not trap focus
+          but will still be focusable and allow Tab navigation of its contents.`}
+        />
+        <Card focusMode="tab-only" />
       </div>
-      <SampleCard focusMode="tab-only" />
     </div>
   );
 };

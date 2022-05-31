@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 23 May 2022 18:56:45 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.0-rc.3..@fluentui/react-input_v9.0.0-rc.4)
+
+### Changes
+
+- Removing additional focus ring in native input for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.0-rc.3)
 

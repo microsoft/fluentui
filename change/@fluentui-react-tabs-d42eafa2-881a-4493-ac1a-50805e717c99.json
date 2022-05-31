@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update README.md",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

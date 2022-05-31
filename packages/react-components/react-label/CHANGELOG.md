@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Mon, 23 May 2022 18:56:45 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-rc.3..@fluentui/react-label_v9.0.0-rc.4)
+
+### Changes
+
+- Renaming strong prop to weight to align with Text. ([PR #23250](https://github.com/microsoft/fluentui/pull/23250) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.3)
 

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarGroupItem renders a default state 1`] = `
+<div>
+  <div
+    class="fui-AvatarGroupItem"
+  >
+    Default AvatarGroupItem
+  </div>
+</div>
+`;

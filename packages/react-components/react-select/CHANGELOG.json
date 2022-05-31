@@ -2,6 +2,21 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:28 GMT",
+      "tag": "@fluentui/react-select_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "02b40c905e997347f8c910bc51cfbdbdc67de7ee",
+            "comment": "add Select to Preview Components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-select_v9.0.0-beta.0",
       "version": "9.0.0-beta.0",

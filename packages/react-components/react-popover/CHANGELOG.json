@@ -2,6 +2,41 @@
   "name": "@fluentui/react-popover",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:27 GMT",
+      "tag": "@fluentui/react-popover_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ca6d248d3b70b893a0d857c4c4759b95651572aa",
+            "comment": "use \"useId\" in stories for id generation"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2bed5a599f10435dfa95be96f0bab5e4f71b4202",
+            "comment": "BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-portal to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:46 GMT",
       "tag": "@fluentui/react-popover_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",

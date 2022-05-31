@@ -37,7 +37,7 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inline'>;
 
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
@@ -102,7 +102,7 @@ export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComp
 // @public (undocumented)
 export type PopoverTriggerChildProps = {
     ref?: React_2.Ref<never>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-haspopup' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'>;
+} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-expanded' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'>;
 
 // @public
 export type PopoverTriggerProps = {

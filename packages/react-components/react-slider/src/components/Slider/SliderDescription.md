@@ -1,7 +1,1 @@
-<!-- Don't allow prettier to collapse code block into single line -->
-<!-- prettier-ignore -->
-```jsx
-
-import { Slider } from '@fluentui/react-components';
-
-```
+A Slider represents an input that allows user to choose a value from within a specific range.
