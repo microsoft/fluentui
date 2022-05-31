@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Use new ThemeContextValue typing and internal useTheme hook",
+  "packageName": "@fluentui/react-provider",
+  "email": "me@levithomason.com",
+  "dependentChangeType": "none"
+}
