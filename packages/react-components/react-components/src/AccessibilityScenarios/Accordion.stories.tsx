@@ -4,6 +4,7 @@ import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@flue
 import { Label } from '@fluentui/react-label';
 import { Input } from '@fluentui/react-input';
 import { RadioGroup, Radio } from '@fluentui/react-components';
+import { Checkbox } from '@fluentui/react-checkbox';
 import { Button } from '@fluentui/react-button';
 
 import { Scenario } from './utils';
@@ -36,7 +37,7 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
                 <Label htmlFor="email">Email:</Label>
                 <Input type="email" id="email" name="email" />
                 <Label id="ageLabel">Your age:</Label>
-                <RadioGroup value="ageClass1" aria-labelledby="ageLabel">
+                <RadioGroup defaultValue="ageClass1" aria-labelledby="ageLabel">
                   <Radio value="ageClass1" label="Under 16" />
                   <Radio value="ageClass2" label="Between 16 and 50" />
                   <Radio value="ageClass3" label="Over 50" />
@@ -57,15 +58,12 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
             <AccordionItem value="hobbies">
               <AccordionHeader as="h2">Hobbies</AccordionHeader>
               <AccordionPanel>
-                <div role="group" aria-label="Hobbies">
-                  <input type="checkbox" id="books" name="hobbies" value="books" />
-                  <Label htmlFor="books">books</Label>
-                  <input type="checkbox" id="sports" name="hobbies" value="sports" />
-                  <Label htmlFor="sports">sports</Label>
-                  <input type="checkbox" id="music" name="hobbies" value="music" />
-                  <Label htmlFor="music">music</Label>
-                  <input type="checkbox" id="travelling" name="hobbies" value="travelling" />
-                  <Label htmlFor="travelling">travelling</Label>
+                <div role="group" aria-labelledby="hobbiesText">
+                  <p id="hobbiesText">Please select your hobbies:</p>
+                  <Checkbox label="Books" />
+                  <Checkbox label="Sports" />
+                  <Checkbox label="Music" />
+                  <Checkbox label="Travelling" />
                 </div>
               </AccordionPanel>
             </AccordionItem>
