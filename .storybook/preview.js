@@ -39,9 +39,11 @@ export const parameters = {
   },
   exportToCodeSandbox: {
     requiredDependencies: {
-      react: 'latest',
-      'react-dom': 'latest', // for React
-      'react-scripts': 'latest', // necessary when using typescript in CodeSandbox
+      // for React
+      react: '^17',
+      'react-dom': '^17',
+      // necessary when using typescript in CodeSandbox
+      'react-scripts': 'latest',
     },
     optionalDependencies: {
       '@fluentui/react-components': 'rc', // necessary for FluentProvider
