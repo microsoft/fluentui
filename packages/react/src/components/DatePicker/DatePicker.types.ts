@@ -71,7 +71,7 @@ export interface IDatePickerProps
    * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
    * for the component.
    */
-  onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+  onSelectDate?: (date: Date | null | undefined, selectedDateRangeArray?: Date[]) => void;
 
   /**
    * Label for the DatePicker

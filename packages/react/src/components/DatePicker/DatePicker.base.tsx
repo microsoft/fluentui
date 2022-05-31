@@ -92,10 +92,10 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePick
 }
 
 function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) {
-  const [selectedDate, setSelectedDateState] = useControllableValue(value, new Date());
+  const [selectedDate, setSelectedDateState] = useControllableValue(value, undefined);
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
-  const setSelectedDate = (newDate: Date, selectedDateRangeArray?: Date[]) => {
+  const setSelectedDate = (newDate: Date | undefined, selectedDateRangeArray?: Date[]) => {
     setSelectedDateState(newDate);
     onSelectDate?.(newDate, selectedDateRangeArray);
     setFormattedDate(newDate && formatDate ? formatDate(newDate) : '');
@@ -161,6 +161,9 @@ function useErrorMessage(
       } else {
         // Only show error for empty inputValue if it is a required field
         setErrorMessage(isRequired ? strings!.isRequiredErrorMessage || ' ' : undefined);
+        // If no input date string or input date string is invalid
+        // date variable will be null, callback should expect null value for this case
+        onSelectDate?.(date);
       }
     } else if (isRequired && !inputValue) {
       // Check when DatePicker is a required field but has NO input value
@@ -266,13 +269,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       focus,
       reset() {
         setIsCalendarShown(false);
-        // setSelectedDate(undefined);
+        setSelectedDate(undefined);
         setErrorMessage(undefined);
         setStatusMessage(undefined);
       },
       showDatePickerPopup,
     }),
-    [focus, setErrorMessage, setIsCalendarShown, setStatusMessage, showDatePickerPopup],
+    [focus, setErrorMessage, setIsCalendarShown, setSelectedDate, setStatusMessage, showDatePickerPopup],
   );
 
   const onTextFieldFocus = (): void => {
@@ -286,6 +289,11 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       }
       preventFocusOpeningPicker.current = false;
     }
+  };
+
+  const onDateSelect = (date: Date, dateRangeArray: Date[]): void => {
+    setSelectedDate(date, dateRangeArray);
+    calendarDismissed();
   };
 
   const onCalloutPositioned = (): void => {
@@ -508,7 +516,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
             <CalendarType
               {...calendarProps}
               // eslint-disable-next-line react/jsx-no-bind
-              onSelectDate={setSelectedDate}
+              onSelectDate={onDateSelect}
               // eslint-disable-next-line react/jsx-no-bind
               onDismiss={calendarDismissed}
               isMonthPickerVisible={props.isMonthPickerVisible}
