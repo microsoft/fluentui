@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Avatar } from '../Avatar';
-import { AvatarGroupContext } from '../../contexts';
+import { Avatar } from '../Avatar/Avatar';
+import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { Label } from '@fluentui/react-label';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
