@@ -7,15 +7,14 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { PartialTheme } from '@fluentui/react-theme';
-import type { ProviderContextValue } from '@fluentui/react-shared-contexts';
+import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { Theme } from '@fluentui/react-theme';
-import type { ThemeClassNameContextValue } from '@fluentui/react-shared-contexts';
-import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
-import type { TooltipContextType } from '@fluentui/react-shared-contexts';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
@@ -29,10 +28,10 @@ export const fluentProviderClassNames: SlotClassNames<FluentProviderSlots>;
 
 // @public (undocumented)
 export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
-    provider: ProviderContextValue;
-    themeClassName: ThemeClassNameContextValue;
+    provider: ProviderContextValue_unstable;
+    themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
-    tooltip: TooltipContextType;
+    tooltip: TooltipVisibilityContextValue_unstable;
 };
 
 // @public (undocumented)
@@ -49,14 +48,12 @@ export type FluentProviderSlots = {
 
 // @public (undocumented)
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
-    theme: ThemeContextValue;
+    theme: ThemeContextValue_unstable;
     themeClassName: string;
 };
 
 // @public
 export const renderFluentProvider_unstable: (state: FluentProviderState, contextValues: FluentProviderContextValues) => JSX.Element;
-
-export { useFluent }
 
 // @public
 export const useFluentProvider_unstable: (props: FluentProviderProps, ref: React_2.Ref<HTMLElement>) => FluentProviderState;

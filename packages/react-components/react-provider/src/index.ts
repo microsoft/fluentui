@@ -13,5 +13,3 @@ export type {
   FluentProviderState,
   FluentProviderSlots,
 } from './FluentProvider';
-
-export { useFluent } from '@fluentui/react-shared-contexts';

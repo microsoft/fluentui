@@ -1,8 +1,8 @@
 import type {
-  ProviderContextValue,
-  TooltipContextType,
-  ThemeClassNameContextValue,
-  ThemeContextValue,
+  ProviderContextValue_unstable as ProviderContextValue,
+  TooltipVisibilityContextValue_unstable as TooltipVisibilityContextValue,
+  ThemeClassNameContextValue_unstable as ThemeClassNameContextValue,
+  ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
@@ -32,5 +32,5 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
-  tooltip: TooltipContextType;
+  tooltip: TooltipVisibilityContextValue;
 };

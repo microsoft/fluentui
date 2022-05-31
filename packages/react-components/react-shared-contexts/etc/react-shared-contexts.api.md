@@ -8,41 +8,47 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
-export const ProviderContext: React_2.Context<ProviderContextValue>;
+export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
-export interface ProviderContextValue {
+export type ProviderContextValue_unstable = {
     dir: 'ltr' | 'rtl';
     targetDocument?: Document;
-}
-
-// @public
-export const ThemeClassNameContext: React_2.Context<string>;
+};
 
 // @public (undocumented)
-export type ThemeClassNameContextValue = string;
+export type ThemeClassNameContextValue_unstable = string;
 
 // @public (undocumented)
-export const ThemeContext: React_2.Context<ThemeContextValue>;
+export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 
 // @public (undocumented)
-export type ThemeContextValue = Theme | Partial<Theme> | undefined;
+export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
+
+// @public (undocumented)
+export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
+
+// @public (undocumented)
+export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
 
 // @public
-export const TooltipContext: React_2.Context<TooltipContextType>;
-
-// @public
-export type TooltipContextType = {
+export type TooltipVisibilityContextValue_unstable = {
     visibleTooltip?: {
         hide: () => void;
     };
 };
 
 // @public (undocumented)
-export function useFluent(): ProviderContextValue;
+export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
 // @public (undocumented)
-export function useThemeClassName(): ThemeClassNameContextValue;
+export function useFluent_unstable(): ProviderContextValue_unstable;
+
+// @public (undocumented)
+export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
+
+// @public (undocumented)
+export function useTooltipVisibility_unstable(): TooltipVisibilityContextValue_unstable;
 
 // (No @packageDocumentation comment for this package)
 
