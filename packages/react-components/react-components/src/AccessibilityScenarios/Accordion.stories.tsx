@@ -58,8 +58,8 @@ export const PersonalFormAccordionAccessibilityScenario: React.FunctionComponent
             <AccordionItem value="hobbies">
               <AccordionHeader as="h2">Hobbies</AccordionHeader>
               <AccordionPanel>
-                <div role="group" aria-labelledby="hobbiesText">
-                  <p id="hobbiesText">Please select your hobbies:</p>
+                <div role="group" aria-labelledby="hobbiesLabel">
+                  <Label id="hobbiesLabel">Please select your hobbies:</Label>
                   <Checkbox label="Books" />
                   <Checkbox label="Sports" />
                   <Checkbox label="Music" />

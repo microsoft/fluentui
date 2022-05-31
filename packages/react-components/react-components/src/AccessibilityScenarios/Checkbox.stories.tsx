@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Label } from '@fluentui/react-label';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { Button } from '@fluentui/react-button';
 
@@ -32,8 +33,8 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
       <h1>Questionnaire about food</h1>
       {!isSubmitted ? (
         <form onSubmit={onSubmit}>
-          <div role="group" aria-labelledby="selectFoodText">
-            <p id="selectFoodText">Select food that you like:</p>
+          <div role="group" aria-labelledby="foodLabel">
+            <Label id="foodLabel">Select food that you like:</Label>
 
             <Checkbox
               checked={
@@ -73,8 +74,8 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
             label="I am on special diet"
           />
 
-          <div role="group" aria-labelledby="cannotEatText">
-            <p id="cannotEatText">I cannot eat the following:</p>
+          <div role="group" aria-labelledby="cannotEatLabel">
+            <Label id="cannotEatLabel">I cannot eat the following:</Label>
             <Checkbox disabled={getSpecialDietDisabled()} label="Sugar" />
             <Checkbox disabled={getSpecialDietDisabled()} label="Meat" />
             <Checkbox disabled={getSpecialDietDisabled()} label="Dairy products" />

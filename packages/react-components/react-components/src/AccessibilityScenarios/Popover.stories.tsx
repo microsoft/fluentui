@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { Button } from '@fluentui/react-button';
+import { Label } from '@fluentui/react-label';
 import { Input } from '@fluentui/react-input';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 
@@ -15,7 +16,7 @@ const AddPeopleContent: React.FunctionComponent<AddPeopleContentProps> = (props:
 
   return (
     <>
-      <label htmlFor="addPeopleInput">Enter name, email or tag</label>
+      <Label htmlFor="addPeopleInput">Enter name, email or tag</Label>
       <Input type="text" name="addPeopleInput" id="addPeopleInput" />
       <Button
         onClick={() => {
