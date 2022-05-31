@@ -72,6 +72,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     return themeColor.includes(filter);
   });
 
+  // Switch needs to be hoisted
   return (
     <>
       <div>
