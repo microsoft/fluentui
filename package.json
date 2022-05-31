@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
+  "engines": {
+    "node": "^14.18.1 || ^16.0.0"
+  },
   "scripts": {
     "build": "lage build --verbose",
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components --min",
@@ -19,8 +22,8 @@
     "bundle": "lage bundle --verbose",
     "bundlesize": "cd scripts && yarn bundlesize",
     "bundlesizecollect": "node ./scripts/bundle-size-collect",
-    "change": "beachball change --no-commit --scope \"!packages/fluentui/*\"",
-    "check:change": "beachball check --scope \"!packages/fluentui/*\"",
+    "change": "beachball change --no-commit",
+    "check:change": "beachball check",
     "check:modified-files": "yarn workspace @fluentui/scripts just check-for-modified-files",
     "check:affected-package": "node ./scripts/monorepo/checkIfPackagesAffected.js",
     "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/web-components|@storybook/html|svelte|@testing-library|vue|@cypress/react\"",
@@ -86,8 +89,8 @@
     "@griffel/babel-preset": "1.3.1",
     "@griffel/eslint-plugin": "1.0.0",
     "@griffel/jest-serializer": "1.0.5",
-    "@griffel/react": "1.0.5",
-    "@griffel/webpack-loader": "2.0.5",
+    "@griffel/react": "1.1.0",
+    "@griffel/webpack-loader": "2.0.6",
     "@microsoft/api-extractor": "7.18.1",
     "@microsoft/eslint-plugin-sdl": "0.1.9",
     "@nrwl/cli": "13.8.1",
@@ -230,7 +233,7 @@
     "scheduler": "0.19.1",
     "schema-utils": "3.1.1",
     "semver": "^6.2.0",
-    "storybook-addon-export-to-codesandbox": "0.6.4",
+    "storybook-addon-export-to-codesandbox": "0.7.0",
     "storybook-addon-performance": "0.14.0",
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
@@ -251,7 +254,7 @@
     "webpack-dev-server": "4.7.4",
     "webpack-hot-middleware": "2.25.1",
     "webpack-merge": "5.7.3",
-    "workspace-tools": "0.16.2",
+    "workspace-tools": "0.18.4",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
     "yargs-unparser": "2.0.0"
@@ -292,7 +295,9 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.14.23",
     "@types/react-dom": "16.9.14",
-    "eslint": "7.25.0"
+    "eslint": "7.25.0",
+    "workspace-tools": "0.18.4",
+    "requestretry": "7.0.0"
   },
   "syncpack": {
     "prod": true,

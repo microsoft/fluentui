@@ -1,20 +1,16 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '../index';
+import { CounterBadge } from '../index';
 
-export const Color = (args: CounterBadgeProps) => {
+export const Color = () => {
   return (
     <>
-      <CounterBadge appearance="filled" color="brand" {...args} />
-      <CounterBadge appearance="filled" color="danger" {...args} />
-      <CounterBadge appearance="filled" color="important" {...args} />
-      <CounterBadge appearance="filled" color="informative" {...args} />
+      <CounterBadge appearance="filled" color="brand" count={5} />
+      <CounterBadge appearance="filled" color="danger" count={5} />
+      <CounterBadge appearance="filled" color="important" count={5} />
+      <CounterBadge appearance="filled" color="informative" count={5} />
     </>
   );
-};
-
-Color.args = {
-  count: 5,
 };
 
 Color.parameters = {

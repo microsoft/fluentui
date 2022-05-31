@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
 
-export const OpenItems = (args: AccordionProps) => (
-  <Accordion defaultOpenItems="1" {...args}>
+export const OpenItems = () => (
+  <Accordion defaultOpenItems="1">
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,10 +23,6 @@ export const OpenItems = (args: AccordionProps) => (
     </AccordionItem>
   </Accordion>
 );
-
-OpenItems.args = {
-  openItems: ['1'],
-} as AccordionProps;
 
 OpenItems.parameters = {
   docs: {

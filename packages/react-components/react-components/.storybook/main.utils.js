@@ -6,6 +6,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Dependencies to exclude stories loading
+const excludedDependencies = ['@fluentui/react-overflow'];
+
 function getVnextStories() {
   /** @type {Record<string,unknown>} */
   const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, `../package.json`), 'utf-8'));
@@ -13,7 +16,7 @@ function getVnextStories() {
   const dependencies = /** @type {Record<string,string>} */ (packageJson.dependencies);
 
   return Object.keys(dependencies)
-    .filter(pkgName => pkgName.startsWith('@fluentui/'))
+    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
       const storiesGlob = '/src/**/*.stories.@(ts|tsx|mdx)';

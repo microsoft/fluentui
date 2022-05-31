@@ -9,7 +9,7 @@ export { Status } from './PresenceBadgeStatus.stories';
 export { OutOfOffice } from './PresenceBadgeOutOfOffice.stories';
 
 export default {
-  title: 'Components/Presence Badge',
+  title: 'Components/PresenceBadge',
   component: PresenceBadge,
   parameters: {
     docs: {

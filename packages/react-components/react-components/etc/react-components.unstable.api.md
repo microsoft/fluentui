@@ -11,6 +11,7 @@ import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
@@ -29,6 +30,13 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
+import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
+import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { Overflow } from '@fluentui/react-overflow';
+import { OverflowItem } from '@fluentui/react-overflow';
+import { OverflowItemProps } from '@fluentui/react-overflow';
+import { OverflowProps } from '@fluentui/react-overflow';
 import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -60,6 +68,9 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
+import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
@@ -78,6 +89,8 @@ export { AlertState }
 export { Card }
 
 export { cardClassNames }
+
+export { cardCSSVars }
 
 export { CardFooter }
 
@@ -114,6 +127,20 @@ export { CardProps }
 export { CardSlots }
 
 export { CardState }
+
+export { DATA_OVERFLOW_ITEM }
+
+export { DATA_OVERFLOW_MENU }
+
+export { DATA_OVERFLOWING }
+
+export { Overflow }
+
+export { OverflowItem }
+
+export { OverflowItemProps }
+
+export { OverflowProps }
 
 export { renderAlert_unstable }
 
@@ -176,6 +203,12 @@ export { useCardPreview_unstable }
 export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
+
+export { useIsOverflowGroupVisible }
+
+export { useIsOverflowItemVisible }
+
+export { useOverflowMenu }
 
 export { useSelect_unstable }
 

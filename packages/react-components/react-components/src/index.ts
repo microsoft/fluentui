@@ -108,7 +108,6 @@ export type {
 export { useThemeClassName } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
-  getNativeProps,
   getPartitionedNativeProps,
   getSlots,
   resetIdsForTests,
@@ -117,7 +116,6 @@ export {
   useId,
   useIsSSR,
   useMergedRefs,
-  useSSRContext,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -454,16 +452,9 @@ export type {
   PopoverTriggerState,
 } from '@fluentui/react-popover';
 export {
-  Portal,
-  elementContains,
-  renderPortal_unstable,
-  setVirtualParent,
-  usePortal_unstable,
-} from '@fluentui/react-portal';
-export type { PortalProps, PortalState } from '@fluentui/react-portal';
-export {
   Slider,
   sliderClassNames,
+  sliderCSSVars,
   useSliderState_unstable,
   useSliderStyles_unstable,
   useSlider_unstable,

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:30 GMT",
+      "tag": "@fluentui/react-tabs_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "7bd33dbd7ddfc579e288c8081b8921be8cf421c5",
+            "comment": "improve formatting in stories"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "2062c540d7ec78d424593cb18b0834e511dbc196",
+            "comment": "Update README.md"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:49 GMT",
       "tag": "@fluentui/react-tabs_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

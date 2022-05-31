@@ -18,3 +18,12 @@ import { Spinner } from '@fluentui/react-spinner';
 <Spinner label="Loading..." />
 <Spinner size="large" />
 ```
+
+#### Rendering Spinner without the animated circle
+
+You can directly override the Spinner slot to render a Spinner without the animated circle, as shown below
+
+```js
+<Spinner spinner='' appearance="primary" label="Primary Spinner" />
+<Spinner spinner={{style:{visibility: 'hidden'}}} appearance="inverted" label="Inverted Spinner" />
+```

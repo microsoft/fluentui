@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
 
-export const Navigation = (args: AccordionProps) => (
-  <Accordion {...args}>
+export const Navigation = () => (
+  <Accordion navigation="linear">
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,10 +23,6 @@ export const Navigation = (args: AccordionProps) => (
     </AccordionItem>
   </Accordion>
 );
-
-Navigation.args = {
-  navigation: 'linear',
-} as AccordionProps;
 
 Navigation.parameters = {
   docs: {

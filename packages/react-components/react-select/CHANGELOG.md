@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
+This log was last generated on Thu, 26 May 2022 21:01:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.1)
+
+Thu, 26 May 2022 21:01:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.0..@fluentui/react-select_v9.0.0-beta.1)
+
+### Changes
+
+- add Select to Preview Components ([PR #23208](https://github.com/microsoft/fluentui/pull/23208) by sarah.higley@microsoft.com)
 
 ## [9.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.0)
 

@@ -38,8 +38,6 @@ ruleTester.run('ban-context-export', rule, {
       filename: 'src/index.ts',
     },
     {
-      // No way to type generics with jsdoc
-      // @ts-ignore
       options: [{ exclude: ['**/special-path/**/*'] }],
       parserOptions: getParserOptions('exclude'),
       code: `
@@ -86,8 +84,6 @@ ruleTester.run('ban-context-export', rule, {
     },
     {
       errors: [{ messageId: 'nativeContext' }],
-      // No way to type generics with jsdoc
-      // @ts-ignore
       options: [{ exclude: ['**/wrong-path/**/*'] }],
       parserOptions: getParserOptions('exclude'),
       code: `

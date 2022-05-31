@@ -2,6 +2,27 @@
   "name": "@fluentui/react-alert",
   "entries": [
     {
+      "date": "Thu, 26 May 2022 21:01:22 GMT",
+      "tag": "@fluentui/react-alert_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rohitpag@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "303947a3e3687058c902a9a8bee1ecd1f19a92c8",
+            "comment": "Publish react-alert as unstable component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-alert",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-alert_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

@@ -103,7 +103,6 @@ import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
 import { DurationTokens } from '@fluentui/react-theme';
-import { elementContains } from '@fluentui/react-portal';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
@@ -115,7 +114,6 @@ import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
@@ -237,9 +235,6 @@ import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTrigger } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
-import { Portal } from '@fluentui/react-portal';
-import { PortalProps } from '@fluentui/react-portal';
-import { PortalState } from '@fluentui/react-portal';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
@@ -297,7 +292,6 @@ import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
 import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
-import { renderPortal_unstable } from '@fluentui/react-portal';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
@@ -319,12 +313,12 @@ import { SelectableHandler } from '@fluentui/react-menu';
 import { SelectTabData } from '@fluentui/react-tabs';
 import { SelectTabEvent } from '@fluentui/react-tabs';
 import { SelectTabEventHandler } from '@fluentui/react-tabs';
-import { setVirtualParent } from '@fluentui/react-portal';
 import { ShadowBrandTokens } from '@fluentui/react-theme';
 import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
 import { SliderOnChangeData } from '@fluentui/react-slider';
 import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
@@ -491,7 +485,6 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
 import { usePopoverTrigger_unstable } from '@fluentui/react-popover';
-import { usePortal_unstable } from '@fluentui/react-portal';
 import { usePresenceBadge_unstable } from '@fluentui/react-badge';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioGroup_unstable } from '@fluentui/react-radio';
@@ -506,7 +499,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
-import { useSSRContext } from '@fluentui/react-utilities';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -725,8 +717,6 @@ export { DividerState }
 
 export { DurationTokens }
 
-export { elementContains }
-
 export { FluentProvider }
 
 export { fluentProviderClassNames }
@@ -748,8 +738,6 @@ export { FontWeightTokens }
 export { ForwardRefComponent }
 
 export { getNativeElementProps }
-
-export { getNativeProps }
 
 export { getPartitionedNativeProps }
 
@@ -993,12 +981,6 @@ export { PopoverTriggerProps }
 
 export { PopoverTriggerState }
 
-export { Portal }
-
-export { PortalProps }
-
-export { PortalState }
-
 export { PositioningImperativeRef }
 
 export { PositioningProps }
@@ -1113,8 +1095,6 @@ export { renderPopoverSurface_unstable }
 
 export { renderPopoverTrigger_unstable }
 
-export { renderPortal_unstable }
-
 export { renderRadio_unstable }
 
 export { renderRadioGroup_unstable }
@@ -1157,8 +1137,6 @@ export { SelectTabEvent }
 
 export { SelectTabEventHandler }
 
-export { setVirtualParent }
-
 export { ShadowBrandTokens }
 
 export { ShadowTokens }
@@ -1168,6 +1146,8 @@ export { shorthands }
 export { Slider }
 
 export { sliderClassNames }
+
+export { sliderCSSVars }
 
 export { SliderOnChangeData }
 
@@ -1501,8 +1481,6 @@ export { usePopoverSurfaceStyles_unstable }
 
 export { usePopoverTrigger_unstable }
 
-export { usePortal_unstable }
-
 export { usePresenceBadge_unstable }
 
 export { useRadio_unstable }
@@ -1530,8 +1508,6 @@ export { useSpinnerStyles_unstable }
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
-
-export { useSSRContext }
 
 export { useSwitch_unstable }
 
