@@ -8,22 +8,24 @@ import { Scenario } from './utils';
 
 export const QuestionnaireAboutTransportationAccessibilityScenario: React.FunctionComponent = () => {
   const [isDrivingAllowed, setIsDrivingAllowed] = React.useState(true);
-  const [mostPreferred, setMostPreferred] = React.useState('bicycle');
+  const [isMotor, setIsMotor] = React.useState(false);
+  const [preferredMeans, setPreferredMeans] = React.useState('bicycle');
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const onAgeChange = (event: React.BaseSyntheticEvent, data: RadioGroupOnChangeData) => {
     if (data.value === 'ageClass1') {
       setIsDrivingAllowed(false);
-      if (['car', 'motorbike'].includes(mostPreferred)) {
-        setMostPreferred('bicycle');
+      if (['car', 'motorbike'].includes(preferredMeans)) {
+        setPreferredMeans('bicycle');
       }
     } else {
       setIsDrivingAllowed(true);
     }
   };
 
-  const onMostPreferredChange = (event: React.BaseSyntheticEvent, data: RadioGroupOnChangeData) => {
-    setMostPreferred(data.value);
+  const onPreferredMeansChange = (event: React.BaseSyntheticEvent, data: RadioGroupOnChangeData) => {
+    setPreferredMeans(data.value);
+    setIsMotor(['car', 'motorbike'].includes(data.value));
   };
 
   React.useEffect(() => {
@@ -49,13 +51,20 @@ export const QuestionnaireAboutTransportationAccessibilityScenario: React.Functi
             <Radio value="ageClass3" label="Over 50" />
           </RadioGroup>
 
-          <Label id="mostPreferredLabel">Transportation mean that you prefer the most as a driver/rider:</Label>
-          <RadioGroup value={mostPreferred} onChange={onMostPreferredChange} aria-labelledby="mostPreferredLabel">
+          <Label id="preferredMeansLabel">The most preferred transportation means as a driver/rider:</Label>
+          <RadioGroup value={preferredMeans} onChange={onPreferredMeansChange} aria-labelledby="preferredMeansLabel">
             <Radio value="bicycle" label="Bicycle" />
             <Radio value="scooter" label="Scooter" />
             <Radio value="rollerSkates" label="Roller-skates" />
             <Radio value="car" disabled={!isDrivingAllowed} label="Car" />
             <Radio value="motorbike" disabled={!isDrivingAllowed} label="Motorbike" />
+          </RadioGroup>
+
+          <Label id="preferredTypeLabel">The most preferred type of motor vehicle:</Label>
+          <RadioGroup defaultValue="gasoline" disabled={!isMotor} aria-labelledby="preferredTypeLabel">
+            <Radio value="gasoline" label="Gasoline" />
+            <Radio value="diesel" label="Diesel" />
+            <Radio value="electric" label="Electric" />
           </RadioGroup>
 
           <Button type="submit">Submit</Button>
