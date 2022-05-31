@@ -14,6 +14,9 @@ const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 
 const SampleCardContent = () => (
   <>
+    <CardPreview>
+      <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
+    </CardPreview>
     <CardHeader
       image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
       header={
@@ -112,12 +115,18 @@ storiesOf('Card Converged', module)
   ))
   .addStory('orientation', () => (
     <div style={{ display: 'flex', width: '600px', flexDirection: 'column', gap: '16px' }}>
-      <Card orientation="vertical">
-        <SampleCardContent />
-      </Card>
-      <Card orientation="horizontal">
-        <SampleCardContent />
-      </Card>
+      <div>
+        <h1>Vertical</h1>
+        <Card orientation="vertical">
+          <SampleCardContent />
+        </Card>
+      </div>
+      <div>
+        <h1>Horizontal</h1>
+        <Card orientation="horizontal">
+          <SampleCardContent />
+        </Card>
+      </div>
     </div>
   ));
 
