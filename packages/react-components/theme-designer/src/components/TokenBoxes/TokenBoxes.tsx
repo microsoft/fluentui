@@ -8,6 +8,11 @@ export interface TokenBoxesProps {
   brandColors: BrandVariants;
 }
 
+export interface TokenBoxProps {
+  color: string;
+  themeColor: string;
+}
+
 const useStyles = makeStyles({
   root: {
     display: 'grid',
@@ -30,6 +35,20 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingVerticalS,
   },
 });
+
+export const TokenBox: React.FC<TokenBoxProps> = props => {
+  const styles = useStyles();
+  return (
+    <>
+      <div className={styles.colors} style={{ backgroundColor: props.themeColor }} />
+      <div className={styles.text}>
+        {props.color}
+        <br />
+        {props.themeColor}
+      </div>
+    </>
+  );
+};
 
 export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
   const styles = useStyles();
@@ -87,12 +106,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
             }
             return (
               <div className={styles.boxes} key={color}>
-                <div className={styles.colors} style={{ backgroundColor: themeColor }} />
-                <div className={styles.text}>
-                  {color}
-                  <br />
-                  {themeColor}
-                </div>
+                <TokenBox color={color} themeColor={themeColor} />
               </div>
             );
           })}
