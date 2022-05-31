@@ -23,7 +23,10 @@ export const ThemeClassNameContext: React_2.Context<string>;
 export type ThemeClassNameContextValue = string;
 
 // @public (undocumented)
-export const ThemeContext: React_2.Context<Theme | Partial<Theme> | undefined>;
+export const ThemeContext: React_2.Context<ThemeContextValue>;
+
+// @public (undocumented)
+export type ThemeContextValue = Theme | Partial<Theme> | undefined;
 
 // @public
 export const TooltipContext: React_2.Context<TooltipContextType>;
@@ -37,9 +40,6 @@ export type TooltipContextType = {
 
 // @public (undocumented)
 export function useFluent(): ProviderContextValue;
-
-// @public (undocumented)
-export function useTheme(): Theme | Partial<Theme> | undefined;
 
 // @public (undocumented)
 export function useThemeClassName(): ThemeClassNameContextValue;
