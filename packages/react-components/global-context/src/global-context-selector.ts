@@ -24,7 +24,7 @@ if (!isBrowser && process.env.NODE_ENV !== 'production') {
 }
 
 /**
- * Wrapper around @see createContext from @fluentui/react-context-selector that implements context registration
+ * Wrapper around @see createContext from \@fluentui/react-context-selector that implements context registration
  * in the globalThis object to avoid duplicate contexts. Contexts are keyed with
  * a unique sybmol for the package name, version and name of the context.
  *
