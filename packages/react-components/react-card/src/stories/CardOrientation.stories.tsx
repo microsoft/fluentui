@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Card, CardHeader, CardFooter, CardPreview } from '../index';
+import { Card, CardHeader, CardPreview } from '../index';
 import { SampleCard, Title } from './SampleCard.stories';
-import { Body, Button, Caption } from '@fluentui/react-components';
-import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { Avatar, Body1, Button, Caption1 } from '@fluentui/react-components';
+import Logo from '../../assets/logo.svg';
+import { MoreHorizontal24Regular } from '@fluentui/react-icons';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 
-const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
-const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
+const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
 
 const useStyles = makeStyles({
   root: {
@@ -18,11 +18,11 @@ const useStyles = makeStyles({
     ...shorthands.gap('30px'),
 
     ['> *']: {
-      width: '500px',
+      width: 'fit-content',
     },
   },
   horizontalPreview: {
-    height: '64px',
+    height: '60px',
   },
 });
 
@@ -33,23 +33,20 @@ export const Orientation = () => {
     <div className={styles.root}>
       <div>
         <Title title="'horizontal'" />
-        <Card orientation="horizontal">
+        <Card size="small" orientation="horizontal">
           <CardPreview className={styles.horizontalPreview}>
-            <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
+            <img src={Logo} alt="company logo template" />
           </CardPreview>
           <CardHeader
-            image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+            image={<Avatar badge={{ status: 'available' }} image={{ src: avatarElviaURL }} />}
             header={
-              <Body>
-                <b>App Name</b>
-              </Body>
+              <Body1>
+                <b>Strategy 2021</b>
+              </Body1>
             }
-            description={<Caption>Developer</Caption>}
+            description={<Caption1>https://aka.ms/fluentui</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal24Regular />} />}
           />
-          <div>
-            <div>Donut chocolate bar oat cake.</div>
-            <div> Dragée tiramisu lollipop bear claw.</div>
-          </div>
         </Card>
       </div>
       <div>
