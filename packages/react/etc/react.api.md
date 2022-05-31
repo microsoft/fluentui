@@ -4239,6 +4239,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLA
     calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IDatePicker>;
+    dateRangeType?: DateRangeType;
     dateTimeFormatter?: IDateFormatting;
     disableAutoFocus?: boolean;
     disabled?: boolean;
@@ -4254,7 +4255,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLA
     maxDate?: Date;
     minDate?: Date;
     onAfterMenuDismiss?: () => void;
-    onSelectDate?: (date: Date | null | undefined) => void;
+    onSelectDate?: (date: Date | null | undefined, selectedDateRangeArray?: Date[]) => void;
     openOnClick?: boolean;
     parseDateFromString?: (dateStr: string) => Date | null;
     pickerAriaLabel?: string;
