@@ -1,6 +1,6 @@
 export { MenuContext, useMenuContext } from './MenuContext';
 export type { MinimalMenuProps } from './MenuContext';
-export { ThemeContext, useTheme } from './ThemeContext';
+export { ThemeContext, ThemeContextValue } from './ThemeContext';
 export { ThemeClassNameContext, useThemeClassName } from './ThemeClassNameContext';
 export type { ThemeClassNameContextValue } from './ThemeClassNameContext';
 export { TooltipContext } from './TooltipContext';
