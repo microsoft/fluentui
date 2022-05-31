@@ -1,4 +1,5 @@
-export { ThemeContext, useTheme } from './ThemeContext';
+export { ThemeContext } from './ThemeContext';
+export type { ThemeContextValue } from './ThemeContext';
 export { ThemeClassNameContext, useThemeClassName } from './ThemeClassNameContext';
 export type { ThemeClassNameContextValue } from './ThemeClassNameContext';
 export { TooltipContext } from './TooltipContext';

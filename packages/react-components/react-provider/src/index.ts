@@ -14,4 +14,4 @@ export type {
   FluentProviderSlots,
 } from './FluentProvider';
 
-export { useFluent, useTheme } from '@fluentui/react-shared-contexts';
+export { useFluent } from '@fluentui/react-shared-contexts';
