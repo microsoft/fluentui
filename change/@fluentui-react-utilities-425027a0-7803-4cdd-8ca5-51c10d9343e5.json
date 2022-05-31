@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove exports for internals APIs & unused hooks",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
