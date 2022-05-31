@@ -108,7 +108,6 @@ export {
   useFluent_unstable as useFluent,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
-  useTheme_unstable as useTheme,
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
