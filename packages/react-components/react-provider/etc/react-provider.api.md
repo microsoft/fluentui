@@ -14,6 +14,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 import { Theme } from '@fluentui/react-theme';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { ThemeContextValue } from '@fluentui/react-shared-contexts';
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
@@ -47,7 +48,7 @@ export type FluentProviderSlots = {
 
 // @public (undocumented)
 export type FluentProviderState = ComponentState<FluentProviderSlots> & Pick<FluentProviderProps, 'targetDocument'> & Required<Pick<FluentProviderProps, 'dir'>> & {
-    theme: Theme | Partial<Theme> | undefined;
+    theme: ThemeContextValue;
     themeClassName: string;
 };
 

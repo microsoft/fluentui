@@ -114,7 +114,6 @@ import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
@@ -500,7 +499,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
-import { useSSRContext } from '@fluentui/react-utilities';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -741,8 +739,6 @@ export { FontWeightTokens }
 export { ForwardRefComponent }
 
 export { getNativeElementProps }
-
-export { getNativeProps }
 
 export { getPartitionedNativeProps }
 
@@ -1513,8 +1509,6 @@ export { useSpinnerStyles_unstable }
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
-
-export { useSSRContext }
 
 export { useSwitch_unstable }
 

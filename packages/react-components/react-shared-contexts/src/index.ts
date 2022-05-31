@@ -1,4 +1,4 @@
-export { ThemeProvider as ThemeProvider_unstable, useTheme as useTheme_unstable } from './ThemeContext';
+export { ThemeContext as ThemeContext_unstable, ThemeProvider as ThemeProvider_unstable } from './ThemeContext';
 export type { ThemeContextValue as ThemeContextValue_unstable } from './ThemeContext';
 
 export {

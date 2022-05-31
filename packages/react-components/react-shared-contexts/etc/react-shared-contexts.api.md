@@ -23,6 +23,9 @@ export type ThemeClassNameContextValue_unstable = string;
 export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 
 // @public (undocumented)
+export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
+
+// @public (undocumented)
 export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
 
 // @public (undocumented)
@@ -40,9 +43,6 @@ export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibil
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
-
-// @public (undocumented)
-export function useTheme_unstable(): ThemeContextValue_unstable;
 
 // @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;

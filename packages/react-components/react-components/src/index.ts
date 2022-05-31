@@ -111,7 +111,6 @@ export {
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
-  getNativeProps,
   getPartitionedNativeProps,
   getSlots,
   resetIdsForTests,
@@ -120,7 +119,6 @@ export {
   useId,
   useIsSSR,
   useMergedRefs,
-  useSSRContext,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
