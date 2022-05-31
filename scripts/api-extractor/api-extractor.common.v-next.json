@@ -4,15 +4,31 @@
     "enabled": true
   },
   "docModel": {
-    "enabled": true,
+    "enabled": false,
     "apiJsonFilePath": "<projectFolder>/dist/<unscopedPackageName>.api.json"
   },
   "dtsRollup": {
     "enabled": true,
-    "untrimmedFilePath": "<projectFolder>/dist/index.d.ts"
+    // TODO: replace following line with these 2 commented ones after all v9 is migrated to new build and .d.ts API stripping
+    "untrimmedFilePath": "<projectFolder>/dist/index.d.ts",
+    // "untrimmedFilePath": "<projectFolder>/dist/untrimmed.d.ts",
+    // "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
+    "omitTrimmingComments": false
   },
-  "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
+  "compiler": {
+    "skipLibCheck": false,
+    "tsconfigFilePath": "<projectFolder>/tsconfig.lib.json"
+  },
+  "tsdocMetadata": {
+    "enabled": false
+  },
+  "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/index.d.ts",
   "messages": {
+    "compilerMessageReporting": {
+      "default": {
+        "logLevel": "error"
+      }
+    },
     "extractorMessageReporting": {
       "ae-forgotten-export": {
         "logLevel": "none",
@@ -23,6 +39,10 @@
       },
       "ae-unresolved-link": {
         "logLevel": "none"
+      },
+      "ae-internal-missing-underscore": {
+        "logLevel": "none",
+        "addToApiReportFile": false
       }
     },
     "tsdocMessageReporting": {

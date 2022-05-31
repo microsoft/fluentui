@@ -56,3 +56,12 @@ export declare function getAffectedPackages(since?: string): Set<string>;
  * @returns - A git commit SHA
  */
 export declare function getNthCommit(n = 1, ref = 'HEAD'): string;
+
+/**
+ *
+ * Gets project metadata from monorepo source of truth which is `workspace.json`
+ */
+export declare function getProjectMetadata(options: {
+  root: string;
+  name: string;
+}): import('@nrwl/devkit').ProjectConfiguration;

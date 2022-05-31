@@ -1,8 +1,10 @@
-import fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
-import jju from 'jju';
-import { apiExtractorVerifyTask, task, series, resolveCwd, logger, TaskFunction, TscTaskOptions } from 'just-scripts';
+import { apiExtractorVerifyTask, task, series, logger, TaskFunction } from 'just-scripts';
+import { ExtractorMessageCategory } from '@microsoft/api-extractor';
+import chalk from 'chalk';
+import { getTsPathAliasesConfig, getTsPathAliasesApiExtractorConfig } from './utils';
+import { getJustArgv } from './argv';
 
 const apiExtractorConfigs: Array<
   [
@@ -23,10 +25,49 @@ const apiExtractorConfigs: Array<
 
 const apiExtractorConfigsForExecution = apiExtractorConfigs.filter(([, configName]) => configName !== 'local');
 
-// Whether to update automatically on build
-const localBuild = !process.env.TF_BUILD;
+const compilerMessages = {
+  /**
+   * Module has no exported member '<identifier-name>'.
+   * This error is thrown when package uses other package `@internal` API's that are removed
+   */
+  TS2305: 'TS2305',
+  /**
+   * Could not find a declaration file for module
+   * This error is thrown when package depends on package that is missing rollup .d.ts (needs to be generated)
+   */
+  TS7016: 'TS7016',
+};
+
+/**
+ * Utility to convert enums (which lack proper strict dictionary checking) to strict dictionary
+ *
+ * This is mainly needed because api-extractor ships everything as typescript enums
+ */
+type CreateStrictDictionary<T extends Record<string, string>> = { [K in keyof T]: `${T[K]}` };
+
+const messageCategories: CreateStrictDictionary<typeof ExtractorMessageCategory> = {
+  Compiler: 'Compiler',
+  Console: 'console',
+  Extractor: 'Extractor',
+  TSDoc: 'TSDoc',
+};
+
+/**
+ * @see https://api-extractor.com/pages/commands/api-extractor_run/
+ */
+interface ApiExtractorCliRunCommandArgs {
+  config: string;
+  diagnostics: boolean;
+  local: boolean;
+  verbose: boolean;
+  'typescript-compiler-folder': string;
+}
 
 export function apiExtractor() {
+  const args: ReturnType<typeof getJustArgv> & Partial<ApiExtractorCliRunCommandArgs> = getJustArgv();
+
+  const { isUsingTsSolutionConfigs, packageJson, tsConfig, tsConfigPath } = getTsPathAliasesConfig();
+
   return apiExtractorConfigsForExecution.length
     ? (series(
         ...apiExtractorConfigsForExecution.map(([configPath, configName]) => {
@@ -34,22 +75,51 @@ export function apiExtractor() {
 
           task(
             taskName,
-            apiExtractorVerifyTask({
-              configJsonFilePath: configPath,
-              localBuild,
-              onConfigLoaded: config => {
-                const tsConfig: TsConfig = jju.parse(fs.readFileSync(resolveCwd('./tsconfig.json'), 'utf-8'));
-                const isUsingTsSolutionConfigs = fs.existsSync(resolveCwd('./tsconfig.lib.json'));
 
-                if (isUsingTsSolutionConfigs) {
-                  logger.info(`api-extractor: package is using TS path aliases. Overriding TS compiler settings.`);
-                  // baseUrl is the only override needed, but if any overrides are specified, API Extractor
-                  // no longer reads the default tsconfig.json. So we have to include the whole tsconfig here.
-                  tsConfig.compilerOptions.baseUrl = '.';
-                  config.compiler = {
-                    overrideTsconfig: tsConfig,
-                  };
+            apiExtractorVerifyTask({
+              showVerboseMessages: args.verbose,
+              showDiagnostics: args.diagnostics,
+              typescriptCompilerFolder: args['typescript-compiler-folder'],
+              configJsonFilePath: args.config ?? configPath,
+              localBuild: args.local ?? !process.env.TF_BUILD,
+
+              messageCallback: message => {
+                if (!isUsingTsSolutionConfigs) {
+                  return;
                 }
+                if (message.category !== messageCategories.Compiler) {
+                  return;
+                }
+
+                if (message.messageId === compilerMessages.TS2305) {
+                  logger.error(
+                    chalk.bgRed.white.bold(`api-extractor | API VIOLATION:`),
+                    chalk.red(`Looks like your package public API surface uses \`@internal\` marked API's!`),
+                    '\n',
+                  );
+                }
+
+                if (message.messageId === compilerMessages.TS7016) {
+                  logger.error(
+                    chalk.bgRed.white.bold(`api-extractor | MISSING DEPENDENCY TYPE DECLARATIONS:`),
+                    chalk.red(`Looks like your package dependencies don't have generated index.d.ts type definitions.`),
+                    '\n',
+                    chalk.blueBright(
+                      `🛠 Fix this by running: ${chalk.italic(`yarn lage generate-api --to ${packageJson.name}`)}`,
+                    ),
+                    '\n',
+                  );
+                }
+              },
+              onConfigLoaded: config => {
+                if (!isUsingTsSolutionConfigs) {
+                  return;
+                }
+
+                logger.info(`api-extractor: package is using TS path aliases. Overriding TS compiler settings.`);
+                const compilerConfig = getTsPathAliasesApiExtractorConfig({ tsConfig, tsConfigPath, packageJson });
+
+                config.compiler = compilerConfig;
               },
             }),
           );
@@ -67,16 +137,4 @@ export function apiExtractor() {
 
         logger.info(`skipping api-extractor execution - no configs present`);
       };
-}
-
-interface TsConfig {
-  extends?: string;
-
-  /**
-   * typescript doesn't provide a correct type for the compiler options file
-   * (`typescript.CompilerOptions` has enum values instead of raw options in some cases)
-   */
-  compilerOptions: Omit<TscTaskOptions, 'nodeArgs'>;
-  include?: string[];
-  exclude?: string[];
 }
