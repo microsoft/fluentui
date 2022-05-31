@@ -9,7 +9,12 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
   const [isAppleSelected, setIsAppleSelected] = React.useState(false);
   const [isBananaSelected, setIsBananaSelected] = React.useState(false);
   const [isOrangeSelected, setIsOrangeSelected] = React.useState(false);
+  const [isSpecialDietSelected, setIsSpecialDietSelected] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const getSpecialDietDisabled = () => {
+    return isSpecialDietSelected ? false : true;
+  };
 
   React.useEffect(() => {
     if (isSubmitted) {
@@ -61,6 +66,27 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
               label="Orange"
             />
           </div>
+
+          <Checkbox
+            checked={isSpecialDietSelected}
+            onChange={() => setIsSpecialDietSelected(checked => !checked)}
+            label="I am on special diet"
+          />
+
+          <div role="group" aria-labelledby="cannotEatText">
+            <p id="cannotEatText">I cannot eat the following:</p>
+            <Checkbox disabled={getSpecialDietDisabled()} label="Sugar" />
+            <Checkbox disabled={getSpecialDietDisabled()} label="Meat" />
+            <Checkbox disabled={getSpecialDietDisabled()} label="Dairy products" />
+          </div>
+          <Checkbox
+            required
+            label={
+              <>
+                I accept the <a href="#">terms and conditions</a>.
+              </>
+            }
+          />
           <Button type="submit">Submit</Button>
         </form>
       ) : (
