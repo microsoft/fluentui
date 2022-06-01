@@ -72,6 +72,31 @@ export type {
 } from '@fluentui/react-spinbutton';
 
 export {
+  Toolbar,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbarStyles_unstable,
+  useToolbar_unstable,
+  ToolbarDivider,
+  useToolbarDividerStyles_unstable,
+  ToolbarToggleButton,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from '@fluentui/react-toolbar';
+
+export {
   Overflow,
   OverflowItem,
   useIsOverflowGroupVisible,
