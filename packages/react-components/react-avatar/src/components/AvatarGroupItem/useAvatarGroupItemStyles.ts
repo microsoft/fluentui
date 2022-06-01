@@ -27,7 +27,7 @@ const useRootStyles = makeStyles({
 /**
  * Styles for the label slot
  */
-const useLabelStyles = makeStyles({
+const useOverflowLabelStyles = makeStyles({
   overflowItem: {
     marginLeft: tokens.spacingHorizontalS,
   },
@@ -40,7 +40,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   const { isOverflowItem } = state;
 
   const rootStyles = useRootStyles();
-  const labelStyles = useLabelStyles();
+  const overflowLabelStyles = useOverflowLabelStyles();
 
   state.root.className = mergeClasses(
     avatarGroupItemClassNames.root,
@@ -54,7 +54,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
   if (state.overflowLabel) {
     state.overflowLabel.className = mergeClasses(
       avatarGroupItemClassNames.overflowLabel,
-      isOverflowItem && labelStyles.overflowItem,
+      isOverflowItem && overflowLabelStyles.overflowItem,
       state.overflowLabel.className,
     );
   }
