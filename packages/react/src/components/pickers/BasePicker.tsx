@@ -19,6 +19,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { ValidationState } from './BasePicker.types';
 import { Autofill } from '../Autofill/index';
 import * as stylesImport from './BasePicker.scss';
+import { Label } from '../../Label';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
   ISuggestions,
@@ -44,6 +45,7 @@ export interface IBasePickerState<T> {
   isResultsFooterVisible?: boolean;
   selectedIndices?: number[];
   selectionRemoved?: T;
+  errorMessage?: string | JSX.Element;
 }
 
 /**
@@ -105,7 +107,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   protected _ariaMap: IPickerAriaIds;
   // eslint-disable-next-line deprecation/deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
-  private _id: string;
+  protected _id: string;
   private _async: Async;
 
   public static getDerivedStateFromProps(newProps: IBasePickerProps<any>) {
@@ -151,6 +153,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
   public componentDidMount(): void {
     this.selection.setItems(this.state.items);
+    this._updateErrorMessage(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
@@ -170,6 +173,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           this.resetFocus(this.state.items.length - 1);
         }
       }
+    }
+    if (!!oldProps.required !== !!this.props.required) {
+      this._updateErrorMessage(this.state.items);
     }
   }
 
@@ -275,6 +281,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         };
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
+
+    // TODO: Figure out how fluent style functions work and use them to always get the right style attributes
+    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
+    const inputStyle = hasError ? { border: '1px solid rgb(164, 38, 44)' } : undefined;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
     // because if the items list has an aria-label, the aria-describedby on the input will only read
@@ -289,12 +300,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onBlur={this.onBlur}
         onClick={this.onWrapperClick}
       >
+        {this.renderLabel(inputId)}
         {this.renderCustomAlert(classNames.screenReaderText)}
         <span id={`${this._ariaMap.selectedItems}-label`} hidden>
           {selectionAriaLabel || comboLabel}
         </span>
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-          <div className={classNames.text} aria-owns={suggestionsAvailable}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable} style={inputStyle}>
             {items.length > 0 && (
               <span
                 id={this._ariaMap.selectedItems}
@@ -311,7 +323,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
                 {...(inputProps as any)}
                 className={classNames.input}
                 componentRef={this.input}
-                id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
+                id={inputId}
                 onClick={this.onClick}
                 onFocus={this.onInputFocus}
                 onBlur={this.onInputBlur}
@@ -330,6 +342,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
             )}
           </div>
         </SelectionZone>
+        {this.renderError()}
         {this.renderSuggestions()}
       </div>
     );
@@ -340,6 +353,40 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     const { itemLimit } = this.props;
     return itemLimit === undefined || items.length < itemLimit;
   }
+
+  protected renderLabel(inputId: string): JSX.Element | null {
+    const { label, disabled, required } = this.props;
+    if (!label) {
+      return null;
+    }
+    return (
+      <Label id={this._id + '-label'} disabled={disabled} required={required} htmlFor={inputId}>
+        {label}
+      </Label>
+    );
+  }
+
+  protected renderError = (): JSX.Element | null => {
+    const errorMessage = this.props.errorMessage || this.state.errorMessage;
+    if (!errorMessage) {
+      return null;
+    }
+    // TODO: Figure out how fluent style functions work and use them to always get the right style attributes
+    const styles = {
+      fontSize: 12,
+      fontWeight: 400,
+      color: this.props.theme?.errorText || 'rgb(164, 38, 44)',
+      margin: 0,
+      paddingTop: 5,
+      display: 'flex',
+      alignItems: 'center',
+    };
+    return (
+      <div role="alert" id={this._id + '-error'} style={styles}>
+        {errorMessage}
+      </div>
+    );
+  };
 
   protected renderSuggestions(): JSX.Element | null {
     const StyledTypedSuggestions: React.FunctionComponent<ISuggestionsProps<T>> = this._styledSuggestions;
@@ -957,6 +1004,38 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     }
   }
 
+  private _getErrorMessage = (items: T[]) =>
+    new Promise<string | JSX.Element | undefined>(resolve => {
+      if (this.props.onGetErrorMessage) {
+        try {
+          const errorMessage = this.props.onGetErrorMessage(items);
+          if (errorMessage) {
+            if ((errorMessage as PromiseLike<string | JSX.Element>).then) {
+              (errorMessage as PromiseLike<string | JSX.Element>).then(
+                value => resolve(value),
+                () => resolve(undefined),
+              );
+            } else {
+              resolve(errorMessage as string | JSX.Element);
+            }
+          } else {
+            resolve(undefined);
+          }
+        } catch (err) {
+          console.error(err);
+          resolve(undefined);
+        }
+      } else {
+        resolve(undefined);
+      }
+    });
+
+  private _updateErrorMessage(items: T[]): void {
+    this._getErrorMessage(items).then(errorMessage => {
+      this.setState({ errorMessage });
+    });
+  }
+
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
    * If `selectedItems` is provided, this will act as a controlled component and it will not update its own state.
@@ -967,6 +1046,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       this.onChange(items);
     } else {
       this.setState({ items: items }, () => {
+        this._updateErrorMessage(items);
         this._onSelectedItemsUpdated(items);
       });
     }
@@ -1084,9 +1164,11 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         };
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+    const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
 
     return (
       <div ref={this.root} onBlur={this.onBlur} onFocus={this.onFocus}>
+        {this.renderLabel(inputId)}
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.renderCustomAlert(classNames.screenReaderText)}
           <div className={classNames.text} aria-owns={suggestionsAvailable}>
@@ -1105,7 +1187,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               aria-haspopup="listbox"
               aria-label={comboLabel}
               role="combobox"
-              id={inputProps?.id ? inputProps.id : this._ariaMap.combobox}
+              id={inputId}
               disabled={disabled}
               onInputChange={this.props.onInputChange}
             />
@@ -1122,6 +1204,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             {this.renderItems()}
           </div>
         </SelectionZone>
+        {this.renderError()}
       </div>
     );
   }

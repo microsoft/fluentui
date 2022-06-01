@@ -46,6 +46,16 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   componentRef?: IRefObject<IBasePicker<T>>;
 
   /**
+   * Descriptive label for the field
+   */
+  label?: string;
+
+  /**
+   * Aria Label for the field for screen reader users.
+   */
+  ariaLabel?: string;
+
+  /**
    * Function that specifies how the selected item will appear.
    */
   onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
@@ -137,6 +147,28 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   inputProps?: IInputProps;
 
   /**
+   * Static error message displayed below the selection zone of the field. Use `onGetErrorMessage` to dynamically
+   * change the error message displayed (if any) based on the current value. `errorMessage` and
+   * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
+   */
+  errorMessage?: string | JSX.Element;
+
+  /**
+   * Function used to determine whether the selected items are valid and get an error message if not.
+   * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
+   *
+   * When it returns `string | JSX.Element`:
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message and the text field will
+   *   show a red border and show an error message below the text field.
+   *
+   * When it returns `Promise<string | JSX.Element>`:
+   * - The resolved value is displayed as the error message.
+   * - If rejected, the value is thrown away.
+   */
+  onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+
+  /**
    * A callback for when an item is removed from the suggestion list
    */
   onRemoveSuggestion?: (item: T) => void;
@@ -156,6 +188,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @defaultvalue false
    */
   disabled?: boolean;
+
+  /**
+   * Whether or not the field is required.
+   * @defaultvalue false
+   */
+  required?: boolean;
 
   /**
    * Restrict the amount of selectable items.
