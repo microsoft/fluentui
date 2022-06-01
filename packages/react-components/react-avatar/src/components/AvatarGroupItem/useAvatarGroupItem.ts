@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
-import { Label } from '@fluentui/react-label';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
@@ -19,26 +18,25 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
-  const groupOverflowItem = useContextSelector(AvatarGroupContext, ctx => ctx.overflowItem);
+  const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
-  const itemColor = useContextSelector(AvatarGroupContext, ctx => ctx.color);
-  // Since the primary slot is not an input element, getPartitionedNativeProps cannot be used here.
+  // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
   const { style, className, ...avatarSlotProps } = props;
 
   return {
-    isOverflowItem: groupOverflowItem,
+    isOverflowItem: groupIsOverflow,
     components: {
       root: 'div',
       avatar: Avatar,
-      label: Label,
+      overflowLabel: 'span',
     },
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
         style,
         className,
-        as: groupOverflowItem ? 'li' : 'div',
-        role: groupOverflowItem ? 'listitem' : undefined,
+        as: groupIsOverflow ? 'li' : 'div',
+        role: groupIsOverflow ? 'listitem' : undefined,
       },
     }),
     avatar: resolveShorthand(props.avatar, {
@@ -46,14 +44,14 @@ export const useAvatarGroupItem_unstable = (
       defaultProps: {
         ref,
         size: groupSize,
-        color: itemColor,
+        color: 'colorful',
         ...avatarSlotProps,
       },
     }),
-    label: resolveShorthand(props.label, {
+    overflowLabel: resolveShorthand(props.overflowLabel, {
       required: true,
       defaultProps: {
-        children: groupOverflowItem ? props.name : null,
+        children: props.name,
       },
     }),
   };

@@ -6,7 +6,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
   root: 'fui-AvatarGroupItem',
   avatar: 'fui-AvatarGroupItem__avatar',
-  label: 'fui-AvatarGroupItem__label',
+  overflowLabel: 'fui-AvatarGroupItem__overflowLabel',
 };
 
 /**
@@ -30,7 +30,6 @@ const useRootStyles = makeStyles({
 const useLabelStyles = makeStyles({
   overflowItem: {
     marginLeft: tokens.spacingHorizontalS,
-    position: 'relative',
   },
 });
 
@@ -52,11 +51,11 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
 
   state.avatar.className = mergeClasses(avatarGroupItemClassNames.avatar, state.avatar.className);
 
-  if (state.label) {
-    state.label.className = mergeClasses(
-      avatarGroupItemClassNames.label,
+  if (state.overflowLabel) {
+    state.overflowLabel.className = mergeClasses(
+      avatarGroupItemClassNames.overflowLabel,
       isOverflowItem && labelStyles.overflowItem,
-      state.label.className,
+      state.overflowLabel.className,
     );
   }
 

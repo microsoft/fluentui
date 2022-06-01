@@ -1,7 +1,7 @@
 import { Button } from '@fluentui/react-button';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
-import type { AvatarProps, AvatarSizes } from '../Avatar/Avatar.types';
+import type { AvatarSizes } from '../Avatar/Avatar.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupSlots = {
@@ -68,13 +68,4 @@ export type AvatarGroupStrings = {
    * Can include the token "\{numOverflowedAvatars\}" which will be replaced with the number of overflowed avatars.
    */
   tooltipContent: string;
-};
-
-export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
-  overflowItem?: boolean;
-  color?: AvatarProps['color'];
-};
-
-export type AvatarGroupContextValues = {
-  avatarGroup: AvatarGroupContextValue;
 };

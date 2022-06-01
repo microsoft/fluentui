@@ -37,7 +37,6 @@
     "@fluentui/react-button": "9.0.0-rc.12",
     "@fluentui/react-context-selector": "9.0.0-rc.9",
     "@fluentui/react-icons": "^2.0.166-rc.3",
-    "@fluentui/react-label": "9.0.0-rc.4",
     "@fluentui/react-popover": "9.0.0-rc.12",
     "@fluentui/react-tooltip": "9.0.0-rc.12",
     "@fluentui/react-theme": "9.0.0-rc.9",

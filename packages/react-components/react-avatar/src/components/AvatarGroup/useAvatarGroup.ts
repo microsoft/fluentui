@@ -20,7 +20,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     layout = 'spread',
     maxAvatars = 5,
     overflowIndicator = 'number-overflowed',
-    size = 36,
+    size = 32,
     strings = avatarGroupDefaultStrings,
   } = props;
 

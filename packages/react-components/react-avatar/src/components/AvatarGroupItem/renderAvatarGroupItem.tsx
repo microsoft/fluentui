@@ -11,7 +11,7 @@ export const renderAvatarGroupItem_unstable = (state: AvatarGroupItemState) => {
   return (
     <slots.root {...slotProps.root}>
       <slots.avatar {...slotProps.avatar} />
-      {state.isOverflowItem && slots.label && <slots.label {...slotProps.label} />}
+      {state.isOverflowItem && slots.overflowLabel && <slots.overflowLabel {...slotProps.overflowLabel} />}
     </slots.root>
   );
 };
