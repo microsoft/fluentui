@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
 
-export const OpenItems = () => (
-  <Accordion defaultOpenItems="1">
+export const Default = () => (
+  <Accordion>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,12 +23,3 @@ export const OpenItems = () => (
     </AccordionItem>
   </Accordion>
 );
-
-OpenItems.parameters = {
-  docs: {
-    description: {
-      story:
-        'An accordion can have defined open items. If no open item is present, all panels will be closed by default',
-    },
-  },
-};

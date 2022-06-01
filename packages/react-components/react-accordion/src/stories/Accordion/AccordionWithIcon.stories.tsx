@@ -1,22 +1,24 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+import { RocketRegular } from '@fluentui/react-icons';
 
-export const Inline = () => (
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
+
+export const WithIcon = () => (
   <Accordion>
     <AccordionItem value="1">
-      <AccordionHeader inline>Accordion Header 1</AccordionHeader>
+      <AccordionHeader icon={<RocketRegular />}>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 1</div>
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="2">
-      <AccordionHeader inline>Accordion Header 2</AccordionHeader>
+      <AccordionHeader icon={<RocketRegular />}>Accordion Header 2</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 2</div>
       </AccordionPanel>
     </AccordionItem>
     <AccordionItem value="3">
-      <AccordionHeader inline>Accordion Header 3</AccordionHeader>
+      <AccordionHeader icon={<RocketRegular />}>Accordion Header 3</AccordionHeader>
       <AccordionPanel>
         <div>Accordion Panel 3</div>
       </AccordionPanel>
@@ -24,10 +26,10 @@ export const Inline = () => (
   </Accordion>
 );
 
-Inline.parameters = {
+WithIcon.parameters = {
   docs: {
     description: {
-      story: 'An accordion header can be set to `inline`',
+      story: 'An accordion header can contain an icon.',
     },
   },
 };

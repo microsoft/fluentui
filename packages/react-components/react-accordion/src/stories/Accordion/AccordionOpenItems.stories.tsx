@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
 
-export const Collapsible = () => (
-  <Accordion collapsible>
+export const OpenItems = () => (
+  <Accordion defaultOpenItems="1">
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -24,10 +24,11 @@ export const Collapsible = () => (
   </Accordion>
 );
 
-Collapsible.parameters = {
+OpenItems.parameters = {
   docs: {
     description: {
-      story: 'An accordion can have multiple panels collapsed at the same time.',
+      story:
+        'An accordion can have defined open items. If no open item is present, all panels will be closed by default',
     },
   },
 };

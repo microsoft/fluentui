@@ -1,4 +1,4 @@
-import { Alert } from '../index';
+import { Alert } from '../../index';
 import descriptionMd from './AlertDescription.md';
 
 export { Default } from './AlertDefault.stories';

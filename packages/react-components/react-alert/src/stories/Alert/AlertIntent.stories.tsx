@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Alert } from '../index';
+import { Alert } from '../../index';
 
 export const Intent = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

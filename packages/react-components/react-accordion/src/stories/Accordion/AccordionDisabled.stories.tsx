@@ -1,33 +1,33 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
 
-export const Navigation = () => (
-  <Accordion navigation="linear">
-    <AccordionItem value="1">
+export const Disabled = () => (
+  <Accordion>
+    <AccordionItem disabled value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
-        <button>Accordion Panel 1</button>
+        <div>Accordion Panel 1</div>
       </AccordionPanel>
     </AccordionItem>
-    <AccordionItem value="2">
+    <AccordionItem disabled value="2">
       <AccordionHeader>Accordion Header 2</AccordionHeader>
       <AccordionPanel>
-        <button>Accordion Panel 2</button>
+        <div>Accordion Panel 2</div>
       </AccordionPanel>
     </AccordionItem>
-    <AccordionItem value="3">
+    <AccordionItem disabled value="3">
       <AccordionHeader>Accordion Header 3</AccordionHeader>
       <AccordionPanel>
-        <button>Accordion Panel 3</button>
+        <div>Accordion Panel 3</div>
       </AccordionPanel>
     </AccordionItem>
   </Accordion>
 );
 
-Navigation.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
-      story: 'An accordion supports keyboard navigation.',
+      story: 'An accordion item can be `disabled`',
     },
   },
 };

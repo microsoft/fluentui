@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
 
-export const Default = () => (
-  <Accordion>
+export const Collapsible = () => (
+  <Accordion collapsible>
     <AccordionItem value="1">
       <AccordionHeader>Accordion Header 1</AccordionHeader>
       <AccordionPanel>
@@ -23,3 +23,11 @@ export const Default = () => (
     </AccordionItem>
   </Accordion>
 );
+
+Collapsible.parameters = {
+  docs: {
+    description: {
+      story: 'An accordion can have multiple panels collapsed at the same time.',
+    },
+  },
+};
