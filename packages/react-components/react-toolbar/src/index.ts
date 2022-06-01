@@ -12,12 +12,3 @@ export { ToolbarDivider, useToolbarDividerStyles_unstable } from './ToolbarDivid
 export type { ToolbarDividerProps, ToolbarDividerState } from './ToolbarDivider';
 export { ToolbarToggleButton } from './ToolbarToggleButton';
 export type { ToolbarToggleButtonProps, ToolbarToggleButtonState } from './ToolbarToggleButton';
-export { ToolbarRadio } from './ToolbarRadio';
-export type { ToolbarRadioProps, ToolbarRadioState } from './ToolbarRadio';
-export { ToolbarRadioGroup } from './ToolbarRadioGroup';
-export type {
-  RadioGroupContextValue,
-  RadioGroupContextValues,
-  ToolbarRadioGroupProps,
-  ToolbarRadioGroupState,
-} from './ToolbarRadioGroup';
