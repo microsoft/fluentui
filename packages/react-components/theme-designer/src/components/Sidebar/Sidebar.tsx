@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { TabList, Tab, Label, Input, useId, Subtitle2, tokens, Badge } from '@fluentui/react-components';
+import { Button, TabList, Tab, Label, Input, useId, Subtitle2, tokens, Badge } from '@fluentui/react-components';
+import { AddCircleRegular } from '@fluentui/react-icons';
 
 export interface SidebarProps {
   className?: string;
@@ -15,15 +16,33 @@ const useStyles = makeStyles({
     ...shorthands.borderRight('1px', 'solid', '#D1D1D1'),
     ...shorthands.gap(tokens.spacingVerticalXXL),
   },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap(tokens.spacingVerticalXXL),
+  },
+  tabs: {
+    display: 'flex',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+    width: '100%',
+    ...shorthands.borderBottom('1px', 'solid', '#D1D1D1'),
+  },
+  tab: {
+    display: 'flex',
+    flexGrow: 1,
+    paddingLeft: 0,
+    paddingRight: 0,
+  },
   inputs: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'left',
-    ...shorthands.gap(tokens.spacingVerticalS),
+    alignItems: 'flex-start',
   },
   labels: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    display: 'grid',
+    gridTemplateColumns: '135px auto',
+    columnGap: '15px',
   },
 });
 
@@ -31,31 +50,41 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
   return (
     <div className={mergeClasses(styles.root, props.className)}>
-      <TabList size="medium">
-        <Tab value="tab1">Use</Tab>
-        <Tab value="tab2">Edit</Tab>
+      <TabList className={styles.tabs} size="medium" defaultSelectedValue="use">
+        <Tab className={styles.tab} value="use">
+          Use
+        </Tab>
+        <Tab disabled className={styles.tab} value="edit">
+          Edit
+        </Tab>
       </TabList>
-      <div className={styles.inputs}>
-        <div className={styles.labels}>
+      <div className={styles.content}>
+        <div className={styles.inputs}>
           <Label htmlFor={useId('input-underline')}>Key Color Value</Label>
-          <Badge size="extra-large" />
+          <div className={styles.labels}>
+            <Input size="large" appearance="underline" id={useId('input-underline')} />
+            <Badge size="extra-large" />
+          </div>
         </div>
-        <Input appearance="underline" id={useId('input-underline')} />
-      </div>
-      <div className={styles.inputs}>
         <Subtitle2>Contrast References</Subtitle2>
-        <div className={styles.labels}>
+        <div className={styles.inputs}>
           <Label htmlFor={useId('input-underline')}>Light Theme</Label>
-          <Badge size="extra-large" />
+          <div className={styles.labels}>
+            <Input size="small" appearance="underline" id={useId('input-underline')} />
+            <Badge size="extra-large" />
+          </div>
         </div>
-        <Input appearance="underline" id={useId('input-underline')} />
-        <div className={styles.labels}>
+        <div className={styles.inputs}>
           <Label htmlFor={useId('input-underline')}>Dark Theme</Label>
-          <Badge size="extra-large" />
+          <div className={styles.labels}>
+            <Input size="small" appearance="underline" id={useId('input-underline')} />
+            <Badge size="extra-large" />
+          </div>
         </div>
-        <Input appearance="underline" id={useId('input-underline')} />
       </div>
-      Additional Background Colors
+      <Button appearance="transparent" icon={<AddCircleRegular />} iconPosition="before">
+        Add Background Colors
+      </Button>
     </div>
   );
 };
