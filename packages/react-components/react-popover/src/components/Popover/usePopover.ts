@@ -5,7 +5,7 @@ import {
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   usePositioning,
   resolvePositioningShorthand,

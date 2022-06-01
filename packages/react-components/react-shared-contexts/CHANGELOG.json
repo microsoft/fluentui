@@ -2,6 +2,33 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:45 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5a92ebd3f8687a1cd40e8233cacdb91d324b742a",
+            "comment": "remove unused MenuContext"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "4ed24c29ddf8de037e4402d67c820b7398eaa265",
+            "comment": "remove useTheme from exports"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "mark context hooks and providers to unstable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

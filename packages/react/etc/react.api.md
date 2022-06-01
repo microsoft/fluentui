@@ -3685,6 +3685,8 @@ export interface IColumn {
     onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
+    showSortIconWhenUnsorted?: boolean;
+    sortableAriaLabel?: string;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;

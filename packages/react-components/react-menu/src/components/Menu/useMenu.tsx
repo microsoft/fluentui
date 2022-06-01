@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';

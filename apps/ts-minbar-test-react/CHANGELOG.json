@@ -2,6 +2,21 @@
   "name": "@fluentui/ts-minbar-test-react",
   "entries": [
     {
+      "date": "Mon, 30 May 2022 07:44:13 GMT",
+      "tag": "@fluentui/ts-minbar-test-react_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ts-minbar-test-react",
+            "comment": "Bump @fluentui/react to v8.71.1",
+            "commit": "b01ac1a166a8dc67a6c53409d9fe86977517bae6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 May 2022 07:39:11 GMT",
       "tag": "@fluentui/ts-minbar-test-react_v1.0.0",
       "version": "1.0.0",
