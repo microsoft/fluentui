@@ -44,13 +44,36 @@ const useStyles = makeStyles({
     gridTemplateColumns: '135px auto',
     columnGap: '15px',
   },
+  colorPicker: {
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.borderRadius('25px'),
+    height: '30px',
+    width: '30px',
+    ...shorthands.overflow('hidden'),
+  },
+  color: {
+    ...shorthands.padding('0px'),
+    ...shorthands.border('0px'),
+    opacity: '0',
+  },
 });
 
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
+
   const keyColorId = useId();
   const lightThemeId = useId();
   const darkThemeId = useId();
+
+  const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
+  const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
+
+  const [lightTheme, setLightTheme] = React.useState<string>('#FFFFFF');
+  const changeLightTheme = React.useCallback(e => setLightTheme(e.target.value), [setLightTheme]);
+
+  const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
+  const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
+
   return (
     <div className={mergeClasses(styles.root, props.className)}>
       <TabList className={styles.tabs} size="medium" defaultSelectedValue="use">
@@ -66,7 +89,9 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           <Label htmlFor={keyColorId}>Key Color Value</Label>
           <div className={styles.labels}>
             <Input size="large" appearance="underline" id={keyColorId} />
-            <Badge size="extra-large" />
+            <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+              <input className={styles.color} type="color" id={keyColorId} onChange={changeKeyColor} />
+            </div>
           </div>
         </div>
         <Subtitle2>Contrast References</Subtitle2>
@@ -74,14 +99,18 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           <Label htmlFor={lightThemeId}>Light Theme</Label>
           <div className={styles.labels}>
             <Input size="small" appearance="underline" id={lightThemeId} />
-            <Badge size="extra-large" />
+            <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
+              <input className={styles.color} type="color" id={lightThemeId} onChange={changeLightTheme} />
+            </div>
           </div>
         </div>
         <div className={styles.inputs}>
           <Label htmlFor={darkThemeId}>Dark Theme</Label>
           <div className={styles.labels}>
             <Input size="small" appearance="underline" id={darkThemeId} />
-            <Badge size="extra-large" />
+            <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
+              <input className={styles.color} type="color" id={darkThemeId} onChange={changeDarkTheme} />
+            </div>
           </div>
         </div>
       </div>
