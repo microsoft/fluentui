@@ -8,39 +8,13 @@ import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
 // @public
-export const anchorProperties: Record<string, number>;
-
-// @public
 export const applyTriggerPropsToChildren: <TTriggerProps>(children: React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>> | ((props: TTriggerProps) => React_2.ReactElement | null) | null | undefined, triggerProps: TTriggerProps) => React_2.ReactElement | null;
-
-// @public
-export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = {
-    as?: As;
-};
-
-// @public
-export const audioProperties: Record<string, number>;
-
-// @public
-export const baseElementEvents: Record<string, number>;
-
-// @public
-export const baseElementProperties: Record<string, number>;
-
-// @public
-export const buttonProperties: Record<string, number>;
 
 // @public
 export function canUseDOM(): boolean;
 
 // @public
 export const clamp: (value: number, min: number, max: number) => number;
-
-// @public (undocumented)
-export const colGroupProperties: Record<string, number>;
-
-// @public (undocumented)
-export const colProperties: Record<string, number>;
 
 // @public
 export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
@@ -54,19 +28,8 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
     [Key in keyof Slots]: ReplaceNullWithUndefined<Exclude<Slots[Key], SlotShorthandValue | (Key extends 'root' ? null : never)>>;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "defaultSSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const defaultSSRContextValue: SSRContextValue;
-
-// @public
-export const divProperties: Record<string, number>;
-
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
-
-// @public
-export const fieldsetProperties: Record<string, number>;
 
 // @public
 export type FluentTriggerComponent = {
@@ -74,16 +37,10 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export const formProperties: Record<string, number>;
-
-// @public
 export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
-
-// @public
-export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
@@ -113,51 +70,7 @@ export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElem
 };
 
 // @public
-export const htmlElementProperties: Record<string, number>;
-
-// @public
-export const iframeProperties: Record<string, number>;
-
-// @public @deprecated (undocumented)
-export const imageProperties: Record<string, number>;
-
-// @public
-export const imgProperties: Record<string, number>;
-
-// @public
-export const inputProperties: Record<string, number>;
-
-// @public
-export const isFluentTrigger: (element: React_2.ReactElement) => boolean | undefined;
-
-// @public
-export type IsSingleton<T extends string> = {
-    [K in T]: Exclude<T, K> extends never ? true : false;
-}[T];
-
-// @public
-export const labelProperties: Record<string, number>;
-
-// @public
-export const liProperties: Record<string, number>;
-
-// @public
-export const olProperties: Record<string, number>;
-
-// @public
-export function omit<TObj extends Record<string, any>, Exclusions extends (keyof TObj)[]>(obj: TObj, exclusions: Exclusions): Omit<TObj, Exclusions[number]>;
-
-// @public (undocumented)
-export const optionProperties: Record<string, number>;
-
-// @public
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
-
-// @public
 export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
-
-// @public
-export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
 // @public
 export function resetIdsForTests(): void;
@@ -176,9 +89,6 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
     required?: Required;
     defaultProps?: Props;
 };
-
-// @public
-export const selectProperties: Record<string, number>;
 
 // @public
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
@@ -211,56 +121,8 @@ export type Slots<S extends SlotPropsRecord> = {
 // @public
 export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
 
-// Warning: (ae-incompatible-release-tags) The symbol "SSRContext" is marked as @public, but its signature references "SSRContextValue" which is marked as @internal
-//
-// @public (undocumented)
-export const SSRContext: React_2.Context<SSRContextValue>;
-
-// Warning: (ae-internal-missing-underscore) The name "SSRContextValue" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export type SSRContextValue = {
-    current: number;
-};
-
 // @public
 export const SSRProvider: React_2.FC;
-
-// @public
-export const tableProperties: Record<string, number>;
-
-// @public
-export const tdProperties: Record<string, number>;
-
-// @public
-export const textAreaProperties: Record<string, number>;
-
-// @public
-export const thProperties: Record<string, number>;
-
-// @public
-export const trProperties: Record<string, number>;
-
-// @public
-export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
-
-// @public
-export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
-    as?: keyof JSX.IntrinsicElements;
-};
-
-// @public
-export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
-
-// @public
-export type UseBooleanCallbacks = {
-    setTrue: () => void;
-    setFalse: () => void;
-    toggle: () => void;
-};
-
-// @public
-export function useConst<T>(initialValue: T | (() => T)): T;
 
 // @public
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
@@ -296,9 +158,6 @@ export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
-// @public
-export const useMount: (callback: () => void) => void;
-
 // @public (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
     element: Document | undefined;
@@ -317,19 +176,8 @@ export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => 
 // @public (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
 
-// Warning: (ae-internal-missing-underscore) The name "useSSRContext" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export function useSSRContext(): SSRContextValue;
-
 // @public
 export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
-
-// @public
-export const useUnmount: (callback: () => void) => void;
-
-// @public
-export const videoProperties: Record<string, number>;
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useConst } from './useConst';
 
 export type UseControllableStateOptions<State> = {
   /**
@@ -72,7 +71,7 @@ export const useControllableState = <State>(
  * @returns - whether the value is controlled
  */
 const useIsControlled = (controlledValue: unknown) => {
-  const isControlled = useConst<boolean>(controlledValue !== undefined);
+  const [isControlled] = React.useState<boolean>(() => controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {
     // We don't want these warnings in production even though it is against native behaviour
