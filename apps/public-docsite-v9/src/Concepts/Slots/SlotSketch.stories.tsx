@@ -67,7 +67,7 @@ const useStyles = makeStyles({
     ...shorthands.border('3px', 'dotted', tokens.colorNeutralStroke2),
   },
   input: {
-    width: '200px',
+    width: '210px',
     ...shorthands.padding(0),
     minHeight: 0,
   },
