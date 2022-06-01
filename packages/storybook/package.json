@@ -28,8 +28,8 @@
     "@storybook/addon-essentials": "6.5.5",
     "@storybook/addons": "6.5.5",
     "@fluentui/azure-themes": "^8.2.40",
-    "tslib": "^2.1.0",
-    "@fluentui/theme-samples": "^8.4.40"
+    "@fluentui/theme-samples": "^8.4.40",
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
