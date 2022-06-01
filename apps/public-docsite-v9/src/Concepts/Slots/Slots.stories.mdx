@@ -329,7 +329,7 @@ and define the default element types for each slot.
 const useButtonStyles_unstable = (state: ButtonState)
 ```
 
-Hooks like `useButtonStyles` will typically create classes using `makeStyles` and `mergeClasses`
+Hooks like `useButtonStyles` create classes and conditionally apply them based on the input state. Classes are typically created and applied with `makeStyles` and `mergeClasses`.
 and then apply them conditionally based on the input state.
 For instance, if a component is disabled then disabled styles are added.
 
