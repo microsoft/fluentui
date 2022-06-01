@@ -8,7 +8,6 @@ import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
@@ -39,9 +38,9 @@ export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>,
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div'> | Slot<'li'>>;
+    root: NonNullable<Slot<'div', 'li'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
-    label?: Slot<typeof Label>;
+    overflowLabel?: NonNullable<Slot<'span'>>;
 };
 
 // @public

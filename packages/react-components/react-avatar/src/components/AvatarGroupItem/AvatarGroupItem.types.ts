@@ -2,7 +2,7 @@ import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities'
 import type { Avatar } from '../../Avatar';
 
 export type AvatarGroupItemSlots = {
-  root: NonNullable<Slot<'div'> | Slot<'li'>>;
+  root: NonNullable<Slot<'div', 'li'>>;
 
   /**
    * Avatar that represents a person or entity.
