@@ -4,6 +4,14 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public
+export const createContext: <T>(defaultValue: T, name: string, packageName: string, packageVersion: string) => React_2.Context<T>;
+
+// @public
+export const createContextSelector: <T>(defaultValue: T, name: string, packageName: string, packageVersion: string) => React_2.Context<T>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
