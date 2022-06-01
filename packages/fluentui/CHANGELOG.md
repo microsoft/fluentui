@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - Remove unnecessary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
 - Render `selectionIndicator` in `TreeTitle` only when it's needed @layershifter ([#23131](https://github.com/microsoft/fluentui/pull/23131))
+- Setting `flex-schrink: 0` on listItemHeaderMediaStyle @simonmysun ([#23338](https://github.com/microsoft/fluentui/pull/23338))
 
 <!--------------------------------[ v0.63.0 ]------------------------------- -->
 ## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)
