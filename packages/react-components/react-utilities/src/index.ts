@@ -1,13 +1,9 @@
 export { getSlots, resolveShorthand } from './compose/index';
 export type {
-  AsIntrinsicElement,
+  ExtractSlotProps,
   ComponentProps,
   ComponentState,
-  ExtractSlotProps,
   ForwardRefComponent,
-  IsSingleton,
-  PropsWithoutRef,
-  ReplaceNullWithUndefined,
   ResolveShorthandFunction,
   ResolveShorthandOptions,
   Slot,
@@ -16,14 +12,10 @@ export type {
   SlotPropsRecord,
   SlotRenderFunction,
   SlotShorthandValue,
-  UnionToIntersection,
-  UnknownSlotProps,
 } from './compose/index';
 
 export {
   resetIdsForTests,
-  useBoolean,
-  useConst,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -32,61 +24,22 @@ export {
   useIsomorphicLayoutEffect,
   useMergedEventCallbacks,
   useMergedRefs,
-  useMount,
   useOnClickOutside,
   useOnScrollOutside,
   usePrevious,
   useTimeout,
-  useUnmount,
 } from './hooks/index';
-export type {
-  RefObjectFunction,
-  UseBooleanCallbacks,
-  UseControllableStateOptions,
-  UseOnClickOrScrollOutsideOptions,
-} from './hooks/index';
+export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
 
-// eslint-disable-next-line @fluentui/ban-context-export
-export { canUseDOM, defaultSSRContextValue, useIsSSR, useSSRContext, SSRContext, SSRProvider } from './ssr/index';
-export type { SSRContextValue } from './ssr/index';
+export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
-  anchorProperties,
   applyTriggerPropsToChildren,
-  audioProperties,
-  baseElementEvents,
-  baseElementProperties,
-  buttonProperties,
   clamp,
-  colGroupProperties,
-  colProperties,
-  divProperties,
-  fieldsetProperties,
-  formProperties,
   getNativeElementProps,
-  getNativeProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
   getTriggerChild,
-  htmlElementProperties,
-  iframeProperties,
-  // eslint-disable-next-line deprecation/deprecation
-  imageProperties,
-  imgProperties,
-  inputProperties,
-  isFluentTrigger,
-  labelProperties,
-  liProperties,
-  olProperties,
-  omit,
-  optionProperties,
-  selectProperties,
   shouldPreventDefaultOnKeyDown,
-  tableProperties,
-  tdProperties,
-  textAreaProperties,
-  thProperties,
-  trProperties,
-  videoProperties,
 } from './utils/index';
 export type { FluentTriggerComponent } from './utils/index';
