@@ -98,7 +98,7 @@ export const SlotSketch = () => {
       <div className={styles.card}>
         <Input
           className={styles.input}
-          contentBefore={<div className={styles.urlBefore}>www</div>}
+          contentBefore={<div className={styles.urlBefore}>www.</div>}
           contentAfter={<div className={styles.urlAfter}>.com</div>}
           placeholder="domain name here"
         />
