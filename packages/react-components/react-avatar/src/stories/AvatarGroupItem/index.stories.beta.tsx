@@ -1,4 +1,4 @@
-import { AvatarGroupItem } from '../index';
+import { AvatarGroupItem } from '../../index';
 
 import descriptionMd from './AvatarGroupItemDescription.md';
 import bestPracticesMd from './AvatarGroupItemBestPractices.md';
