@@ -6,7 +6,7 @@ import {
   useMergedRefs,
   getNativeElementProps,
 } from '@fluentui/react-utilities';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
 import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';

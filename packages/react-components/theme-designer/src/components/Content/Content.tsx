@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-components';
+
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
-import { tokens } from '@fluentui/react-components';
+import { TokenBoxes } from '../TokenBoxes/TokenBoxes';
 
 import { BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 
@@ -47,6 +49,7 @@ export const Content: React.FC<ContentProps> = props => {
     <div className={mergeClasses(styles.root, props.className)}>
       <Palette brandColors={brandWeb} />
       <Demo theme={teamsLightTheme} />
+      <TokenBoxes brandColors={brandWeb} />
     </div>
   );
 };

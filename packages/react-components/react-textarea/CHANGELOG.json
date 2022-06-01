@@ -2,6 +2,33 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:49 GMT",
+      "tag": "@fluentui/react-textarea_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-textarea",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 May 2022 21:01:31 GMT",
       "tag": "@fluentui/react-textarea_v9.0.0-rc.4",
       "version": "9.0.0-rc.4",

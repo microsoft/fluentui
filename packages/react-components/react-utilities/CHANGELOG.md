@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 23 May 2022 12:13:58 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.10)
+
+Tue, 31 May 2022 21:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-rc.9..@fluentui/react-utilities_v9.0.0-rc.10)
+
+### Changes
+
+- remove exports for internals APIs & unused hooks ([PR #23319](https://github.com/microsoft/fluentui/pull/23319) by olfedias@microsoft.com)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-rc.9)
 
