@@ -76,6 +76,8 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     return themeColor.includes(filter);
   });
 
+  const changeFilter = React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter]);
+
   return (
     <div>
       <Caption1> Color Tokens </Caption1>
@@ -85,7 +87,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
           contentAfter={<Button aria-label="Search" appearance="transparent" icon={<SearchRegular />} size="small" />}
           appearance="outline"
           id={useId('input-outline')}
-          onChange={React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter])}
+          onChange={changeFilter}
         />
         <Switch onChange={props.toggleTheme} label={props.isDark ? 'dark theme' : 'light theme'} />
       </div>

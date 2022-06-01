@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 // this data is temporary and will eventually be pulled from current theme
-const brandWeb: BrandVariants = {
+const brand: BrandVariants = {
   10: `#061724`,
   20: `#082338`,
   30: `#0a2e4a`,
@@ -46,8 +46,6 @@ const brandWeb: BrandVariants = {
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
   const [isDark, setIsDark] = React.useState<boolean>(false);
-
-  const brand = brandWeb;
 
   const toggleTheme = React.useCallback(() => setIsDark(!isDark), [isDark, setIsDark]);
 
