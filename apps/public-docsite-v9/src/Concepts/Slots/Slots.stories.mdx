@@ -14,7 +14,7 @@ but there are some differences.
 - Each slot is exposed as a top-level prop of the same name.
 - Some slots have default content and others are empty by default.
 - Slots may target different types of elements or components to restrict the type of content.
-- You can fill a slot with a primative value, JSX/TSX, props objects, or a render function.
+- You can fill a slot with a primitive value, JSX/TSX, props objects, or a render function.
 
 You can think of component slots like a template where the dotted line parts can be cut out and replaced.
 For example, the `Input` component has `contentBefore` and `contentAfter` slots.
@@ -41,12 +41,12 @@ Later in this topic, you will find examples covering each of these scenarios.
   For example, if you want to have borders to be a specific color on `:hover`, you can create a theme that sets `colorNeutralStroke1Hover`.
 
 - If you need to slightly adjust the display of a specific component instance, prefer to apply a custom style.
-  For example, if you want to make a particular components have a thicker border.
+  For example, if you want to make a particular component have a thicker border.
   You create the style using `makeStyles` and/or `mergeClasses` and then apply it to the component using `className`.
 
 - If you want to change how a component behaves, make deep style customizations,
   replace non-slot parts, or wrap a component with different props, then consider using the hooks API.
-  The hooks API gives you complete control to recompose a component, but is more complex than using slots.
+  The hooks API gives you complete control to recompose a component but is more complex than using slots.
 
 ### Conditional Rendering
 
@@ -103,7 +103,7 @@ the type of menu items in the list can vary.
 
 ### Passing content
 
-You can pass a primative value to slots.
+You can pass a primitive value to slots.
 The `Input` component's `contentBefore` and `contentAfter` slots can be passed strings.
 
 ```tsx
@@ -178,7 +178,7 @@ const renderBigLetterIcon () => {
 
 In `@fluentui/react-utilities`, `compose/types.ts` defines the types for the slots API.
 
-The typings are pretty dense and can be difficult to unwind,
+The types are pretty dense and can be difficult to unwind,
 but they provide a lot of capability with strong type-safety.
 This will start with some oversimplification and then add more type explanation as we go.
 The `compose/types.ts` file contains more detailed comments.
@@ -257,9 +257,9 @@ type SlotRenderFunction<Props> = (
 ### Defining slots
 
 In the Fluent UI React composition architecture, components define their props using `ComponentProps<Slot>`
-and state for rendering using `ComponentState<Slot>`. The typings for these are complex, but end up being a set of slot definitions.
+and state for rendering using `ComponentState<Slot>`.
 
-For example Button defines an icon slot.
+For example, Button defines an icon slot.
 
 ```tsx
 type ButtonSlots = {
@@ -330,8 +330,8 @@ and define the default element types for each slot.
 const useButtonStyles_unstable = (state: ButtonState)
 ```
 
-Hooks like `useButtonStyles` will typically create classes using `makeStyles` and `mergeClasses` and then
-apply them conditionally based on the input state.
+Hooks like `useButtonStyles` will typically create classes using `makeStyles` and `mergeClasses`
+and then apply them conditionally based on the input state.
 For instance, if a component is disabled then disabled styles are added.
 
 - `renderButton` will take in `ButtonState` and render content.
@@ -351,7 +351,7 @@ const renderButton_unstable = (state: ButtonState) => {
 };
 ```
 
-The `getSlots` method splits up the state to return back the slot elements to render and the props to apply.
+The `getSlots` method splits up the state to return the slot elements to render and the props to apply.
 This makes writing render methods straightforward and mostly boilerplate as most of the work was done in the hooks.
 The component's render method can conditionally render slots.
 
@@ -361,5 +361,5 @@ The component's render method can conditionally render slots.
   There may be other extensibility mechanisms like theming, custom styles, or the hooks API
   to consider when slots isn't the best choice.
 - The slots API provides a powerful extensibility mechanism with a minimal surface area.
-  While the typings are complex, they guide the caller with strong type safety.
+  While the types are complex, they guide the caller with strong type safety.
 - The slots API supports the hooks API by letting components create addressable locations for props and class styles.
