@@ -48,6 +48,9 @@ const useStyles = makeStyles({
 
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
+  const keyColorId = useId();
+  const lightThemeId = useId();
+  const darkThemeId = useId();
   return (
     <div className={mergeClasses(styles.root, props.className)}>
       <TabList className={styles.tabs} size="medium" defaultSelectedValue="use">
@@ -60,24 +63,24 @@ export const Sidebar: React.FC<SidebarProps> = props => {
       </TabList>
       <div className={styles.content}>
         <div className={styles.inputs}>
-          <Label htmlFor={useId('input-underline')}>Key Color Value</Label>
+          <Label htmlFor={keyColorId}>Key Color Value</Label>
           <div className={styles.labels}>
-            <Input size="large" appearance="underline" id={useId('input-underline')} />
+            <Input size="large" appearance="underline" id={keyColorId} />
             <Badge size="extra-large" />
           </div>
         </div>
         <Subtitle2>Contrast References</Subtitle2>
         <div className={styles.inputs}>
-          <Label htmlFor={useId('input-underline')}>Light Theme</Label>
+          <Label htmlFor={lightThemeId}>Light Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={useId('input-underline')} />
+            <Input size="small" appearance="underline" id={lightThemeId} />
             <Badge size="extra-large" />
           </div>
         </div>
         <div className={styles.inputs}>
-          <Label htmlFor={useId('input-underline')}>Dark Theme</Label>
+          <Label htmlFor={darkThemeId}>Dark Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={useId('input-underline')} />
+            <Input size="small" appearance="underline" id={darkThemeId} />
             <Badge size="extra-large" />
           </div>
         </div>
