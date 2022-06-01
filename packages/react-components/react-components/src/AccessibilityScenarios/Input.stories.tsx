@@ -310,7 +310,7 @@ const RegistrationFormInputsAccessibility = () => {
           <Button type="submit">Register</Button>
         </form>
       ) : (
-        <p id="validMessage" role="alert" tabIndex={0}>
+        <p id="validMessage" role="alert" tabIndex={-1}>
           The form is valid and would have been submitted.
         </p>
       )}

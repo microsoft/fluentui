@@ -91,7 +91,7 @@ export const QuestionnaireAboutFoodAccessibilityScenario: React.FunctionComponen
           <Button type="submit">Submit</Button>
         </form>
       ) : (
-        <p id="formSubmittedText" tabIndex={0}>
+        <p id="formSubmittedText" tabIndex={-1}>
           The form would have been submitted.
         </p>
       )}

@@ -86,7 +86,7 @@ export const EventReminderAccessibilityScenario: React.FunctionComponent = () =>
           </Menu>
         </>
       )}
-      <div id="statusText" tabIndex={0}>
+      <div id="statusText" tabIndex={-1}>
         {statusText && <p>{statusText}</p>}
       </div>
     </Scenario>
