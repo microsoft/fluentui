@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Not able to access all groups available in graph using keyboard.",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}
