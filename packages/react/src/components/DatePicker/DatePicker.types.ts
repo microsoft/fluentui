@@ -154,6 +154,11 @@ export interface IDatePickerProps
   value?: Date;
 
   /**
+   * Default value of the selectedDateRange, if any
+   */
+  dateRangeValue?: Date[];
+
+  /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
    * @defaultValue DateRangeType.Day

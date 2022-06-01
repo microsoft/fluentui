@@ -91,7 +91,7 @@ function useCalendarVisibility({ allowTextInput, onAfterMenuDismiss }: IDatePick
   return [isCalendarShown, setIsCalendarShown] as const;
 }
 
-function useSelectedDate({ formatDate, value, onSelectDate }: IDatePickerProps) {
+function useSelectedDate({ formatDate, value, dateRangeValue, onSelectDate }: IDatePickerProps) {
   const [selectedDate, setSelectedDateState] = useControllableValue(value, undefined);
   const [formattedDate, setFormattedDate] = React.useState(() => (value && formatDate ? formatDate(value) : ''));
 
@@ -292,8 +292,11 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   };
 
   const onDateSelect = (date: Date, dateRangeArray: Date[]): void => {
-    setSelectedDate(date, dateRangeArray);
-    calendarDismissed();
+    if (props.calendarProps && props.calendarProps.onSelectDate) {
+      // setSelectedDate?.(date, dateRangeArray);
+      props.calendarProps.onSelectDate(date, dateRangeArray);
+    }
+    calendarDismissed(date, dateRangeArray);
   };
 
   const onCalloutPositioned = (): void => {
@@ -381,13 +384,13 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     }
   };
 
-  const dismissDatePickerPopup = (newlySelectedDate?: Date): void => {
+  const dismissDatePickerPopup = (newlySelectedDate?: Date, newlySelectedDateRangeArray?: Date[]): void => {
     if (isCalendarShown) {
       setIsCalendarShown(false);
 
       validateTextInput(newlySelectedDate);
       if (!allowTextInput && newlySelectedDate) {
-        setSelectedDate(newlySelectedDate);
+        setSelectedDate(newlySelectedDate, newlySelectedDateRangeArray);
       }
     }
   };
@@ -421,9 +424,9 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   /**
    * Callback for closing the calendar callout
    */
-  const calendarDismissed = (newlySelectedDate?: Date): void => {
+  const calendarDismissed = (newlySelectedDate?: Date, newlySelectedDateRangeArray?: Date[]): void => {
     preventNextFocusOpeningPicker();
-    dismissDatePickerPopup(newlySelectedDate);
+    dismissDatePickerPopup(newlySelectedDate, newlySelectedDateRangeArray);
     // don't need to focus the text box, if necessary the focusTrapZone will do it
   };
 
