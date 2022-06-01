@@ -356,6 +356,9 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
  * {@docCategory Pickers}
  */
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
+  /** Element has an error message. */
+  hasErrorMessage?: boolean;
+
   /** Whether text style area is focused */
   isFocused?: boolean;
 
@@ -370,6 +373,9 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
 export interface IBasePickerStyles {
   /** Root element of any picker extending from BasePicker (wraps all the elements). */
   root: IStyle;
+
+  /** Refers fo the error message element. */
+  error: IStyle;
 
   /**
    * Refers to the elements already selected (picked) wrapped by `itemsWrapper` along with the input to type

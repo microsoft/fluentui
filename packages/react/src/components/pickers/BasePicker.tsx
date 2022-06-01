@@ -255,6 +255,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
     const suggestionsVisible = !!this.state.suggestionsVisible;
     const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
+    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -270,10 +271,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           className,
           isFocused,
           disabled,
+          hasErrorMessage: hasError,
           inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
+          error: css('ms-BasePicker-error', { display: 'none' }),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
@@ -282,10 +285,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
     const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
     const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
-
-    // TODO: Figure out how fluent style functions work and use them to always get the right style attributes
-    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
-    const inputStyle = hasError ? { border: '1px solid rgb(164, 38, 44)' } : undefined;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
     // because if the items list has an aria-label, the aria-describedby on the input will only read
@@ -306,7 +305,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           {selectionAriaLabel || comboLabel}
         </span>
         <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-          <div className={classNames.text} aria-owns={suggestionsAvailable} style={inputStyle}>
+          <div className={classNames.text} aria-owns={suggestionsAvailable}>
             {items.length > 0 && (
               <span
                 id={this._ariaMap.selectedItems}
@@ -342,7 +341,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
             )}
           </div>
         </SelectionZone>
-        {this.renderError()}
+        {this.renderError(classNames.error)}
         {this.renderSuggestions()}
       </div>
     );
@@ -366,23 +365,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     );
   }
 
-  protected renderError = (): JSX.Element | null => {
+  protected renderError = (className: string): JSX.Element | null => {
     const errorMessage = this.props.errorMessage || this.state.errorMessage;
     if (!errorMessage) {
       return null;
     }
-    // TODO: Figure out how fluent style functions work and use them to always get the right style attributes
-    const styles = {
-      fontSize: 12,
-      fontWeight: 400,
-      color: this.props.theme?.errorText || 'rgb(164, 38, 44)',
-      margin: 0,
-      paddingTop: 5,
-      display: 'flex',
-      alignItems: 'center',
-    };
     return (
-      <div role="alert" id={this._id + '-error'} style={styles}>
+      <div role="alert" id={this._id + '-error'} className={className}>
         {errorMessage}
       </div>
     );
@@ -1004,9 +993,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     }
   }
 
+  private _getRequiredFieldErrorMessage = (items: T[]): string | JSX.Element | undefined => {
+    if (!this.props.required || (items && items.length > 0)) {
+      return;
+    }
+    return 'Please fill out this field.';
+  };
+
   private _getErrorMessage = (items: T[]) =>
     new Promise<string | JSX.Element | undefined>(resolve => {
-      if (this.props.onGetErrorMessage) {
+      if (this.props.errorMessage) {
+        resolve(this.props.errorMessage);
+      } else if (this.props.onGetErrorMessage) {
         try {
           const errorMessage = this.props.onGetErrorMessage(items);
           if (errorMessage) {
@@ -1023,10 +1021,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           }
         } catch (err) {
           console.error(err);
-          resolve(undefined);
+          resolve(this._getRequiredFieldErrorMessage(items));
         }
       } else {
-        resolve(undefined);
+        resolve(this._getRequiredFieldErrorMessage(items));
       }
     });
 
@@ -1134,6 +1132,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     const suggestionsVisible = !!this.state.suggestionsVisible;
 
     const suggestionsAvailable: string | undefined = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
+    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -1148,10 +1147,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           theme,
           className,
           isFocused,
+          disabled,
+          hasErrorMessage: hasError,
           inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
+          error: css('ms-BasePicker-error', { display: 'none' }),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
@@ -1204,7 +1206,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             {this.renderItems()}
           </div>
         </SelectionZone>
-        {this.renderError()}
+        {this.renderError(classNames.error)}
       </div>
     );
   }
