@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding .beta to AvatarGroup stories so it's not shown in the docsite.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

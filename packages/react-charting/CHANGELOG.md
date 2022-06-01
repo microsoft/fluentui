@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 27 May 2022 07:39:11 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jun 2022 07:38:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.40)
+
+Wed, 01 Jun 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.39..@fluentui/react-charting_v5.9.40)
+
+### Patches
+
+- Not able to access all groups available in graph using keyboard. ([PR #23214](https://github.com/microsoft/fluentui/pull/23214) by v-hannapared@microsoft.com)
+- Bump @fluentui/react to v8.72.0 ([PR #23293](https://github.com/microsoft/fluentui/pull/23293) by beachball)
+
+## [5.9.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.39)
+
+Mon, 30 May 2022 07:44:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.38..@fluentui/react-charting_v5.9.39)
+
+### Patches
+
+- Bump @fluentui/react to v8.71.1 ([PR #23126](https://github.com/microsoft/fluentui/pull/23126) by beachball)
 
 ## [5.9.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.38)
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:40 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:51 GMT",
       "tag": "@fluentui/react-overflow_v9.0.0-beta.2",
       "version": "9.0.0-beta.2",

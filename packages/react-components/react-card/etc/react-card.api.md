@@ -17,6 +17,11 @@ export const Card: ForwardRefComponent<CardProps>;
 // @public (undocumented)
 export const cardClassNames: SlotClassNames<CardSlots>;
 
+// @public (undocumented)
+export const cardCSSVars: {
+    cardSizeVar: string;
+};
+
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
@@ -79,6 +84,7 @@ export type CardPreviewState = ComponentState<CardPreviewSlots>;
 export type CardProps = ComponentProps<CardSlots> & {
     appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public (undocumented)
@@ -87,7 +93,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

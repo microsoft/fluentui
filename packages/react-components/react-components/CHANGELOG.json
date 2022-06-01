@@ -2,6 +2,383 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:34 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.14",
+      "version": "9.0.0-rc.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "53dad4cc8a1db7976baa7b42cd6bc22473989336",
+            "comment": "Creating AvatarGroupItem component."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "87f555dfcbe007e701f80b56e3c69c50141e5466",
+            "comment": "Adding .beta to AvatarGroup stories so it's not shown in the docsite."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "8caa7bbfd4c5cb91324def7470a280ac9bf6dec8",
+            "comment": "feat: Add `size` property to control card padding and border radius"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-components",
+            "commit": "8caa7bbfd4c5cb91324def7470a280ac9bf6dec8",
+            "comment": "feat(react-card): CSS var for `size` prop is now exported"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "remove exports for internal APIs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "c55c7d9d1141ae09542a78970416a8bbb344f623",
+            "comment": "update popover trigger to use aria-expanded instead of aria-haspopup"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "eb3bf4d3f06fef632a98e1e354d92689dae218d6",
+            "comment": "BREAKING: FluentProvider now adds `line-height` by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components, removes re-export to provider"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-provider",
+            "commit": "4ed24c29ddf8de037e4402d67c820b7398eaa265",
+            "comment": "remove export useTheme"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "chore: replace useConst() usage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "969708ea8759adeceb51f3d60a401989ceb2a9b4",
+            "comment": "update disabled select style"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "45f628f2adb838d206f374887217ea8fc8e0e433",
+            "comment": "Remove usage of focus-visible pseudo-class."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5a92ebd3f8687a1cd40e8233cacdb91d324b742a",
+            "comment": "remove unused MenuContext"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "4ed24c29ddf8de037e4402d67c820b7398eaa265",
+            "comment": "remove useTheme from exports"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "mark context hooks and providers to unstable"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "8a3d525b3791c24631f63a52bda19113d886a563",
+            "comment": "Remove usage of focus-visible pseudo-class."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "remove exports for internals APIs & unused hooks"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "8880ed437b2f2db0fd10c5e74ceab3bd3639d650",
+            "comment": "Adds stories for focus indicator documentation"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "287cf6769bda0ca0ec7cd29b01a4a4481a488d92",
+            "comment": "updates to docs"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8880ed437b2f2db0fd10c5e74ceab3bd3639d650",
+            "comment": "Adds stories for focus indicator documentation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 May 2022 21:01:21 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.13",
       "version": "9.0.0-rc.13",

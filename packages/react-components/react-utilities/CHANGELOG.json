@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:50 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "remove exports for internals APIs & unused hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 May 2022 21:01:31 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

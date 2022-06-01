@@ -2,6 +2,81 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:35 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "53dad4cc8a1db7976baa7b42cd6bc22473989336",
+            "comment": "Creating AvatarGroupItem component."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "87f555dfcbe007e701f80b56e3c69c50141e5466",
+            "comment": "Adding .beta to AvatarGroup stories so it's not shown in the docsite."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.0-rc.12",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-button to v9.0.0-rc.13",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.0.0-rc.13",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-rc.13",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 May 2022 21:01:22 GMT",
       "tag": "@fluentui/react-avatar_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",
