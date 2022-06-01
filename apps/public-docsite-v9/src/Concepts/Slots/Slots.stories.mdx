@@ -1,0 +1,365 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import { SlotSketch } from './SlotSketch.stories';
+
+<Meta title="Concepts/Developer/Customizing Components with Slots" />
+
+## Customizing Components with Slots
+
+Fluent UI React components have parts that are designed to be replaced.
+These are called slots.
+Slots provide a more flexible approach over render callbacks used in previous versions.
+Fluent UI slots are conceptually similar to slots in other component libraries and frameworks,
+but there are some differences.
+
+- Each slot is exposed as a top-level prop of the same name.
+- Some slots have default content and others are empty by default.
+- Slots may target different types of elements or components to restrict the type of content.
+- You can fill a slot with a primative value, JSX/TSX, props objects, or a render function.
+
+You can think of component slots like a template where the dotted line parts can be cut out and replaced.
+For example, the `Input` component has `contentBefore` and `contentAfter` slots.
+
+<SlotSketch />
+
+### When to use slots
+
+Use a component's slots when you want to
+
+- Setting the content of component part
+- customize the style of a component part (via `className`)
+- customize the props passed to a component part
+- subscribe to event handlers of a component part
+- change the element type of a component part (via `as`)
+- completely replace existing content of a slot
+
+Later in this topic, you will find examples covering each of these scenarios.
+
+### When to not to use slots
+
+- If you need to slightly adjust the display of components across you application, prefer to customize the theme.
+  Fluent UI React components leverage theme design tokens to render consistently.
+  For example, if you want to have borders to be a specific color on `:hover`, you can create a theme that sets `colorNeutralStroke1Hover`.
+
+- If you need to slightly adjust the display of a specific component instance, prefer to apply a custom style.
+  For example, if you want to make a particular components have a thicker border.
+  You create the style using `makeStyles` and/or `mergeClasses` and then apply it to the component using `className`.
+
+- If you want to change how a component behaves, make deep style customizations,
+  replace non-slot parts, or wrap a component with different props, then consider using the hooks API.
+  The hooks API gives you complete control to recompose a component, but is more complex than using slots.
+
+### Conditional Rendering
+
+Some components conditionally render slots.
+
+For example, Avatar has `label` slot that only renders when there is no image provided.
+It also has an `icon` slot that only renders when there is neither an image nor a name provided.
+
+### What about the children?
+
+The primary content within a component is defined by adding children.
+If you like, you can think of children as the primary, unnamed slot.
+
+Component children allow for building deeper hierarchies using JSX/TSX.
+They also allow for greater extension of the types of content.
+
+For example, Menu is a hierarchy of menu items.
+Each level of submenu can contain different trigger configurations, and
+the type of menu items in the list can vary.
+
+```tsx
+<Menu>
+  <MenuTrigger>
+    <Button>Toggle menu</Button>
+  </MenuTrigger>
+  <MenuPopover>
+    <MenuList>
+      <MenuGroup>
+        <MenuGroupHeader>Create New Items</MenuGroupHeader>
+        <MenuItem>New Project</MenuItem>
+        <MenuItem>New Timeline</MenuItem>
+      </MenuGroup>
+      <MenuDivider />
+      <MenuItem disabled>Open File...</MenuItem>
+      <MenuItem>Open Folder...</MenuItem>
+      <MenuDivider />
+      <Menu>
+        <MenuTrigger>
+          <MenuItem>Zoom</MenuItem>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Zoom In</MenuItem>
+            <MenuItem>Zoom Out</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </MenuList>
+  </MenuPopover>
+</Menu>
+```
+
+## Examples
+
+### Passing content
+
+You can pass a primative value to slots.
+The `Input` component's `contentBefore` and `contentAfter` slots can be passed strings.
+
+```tsx
+<Input contentBefore="$" value="10" contentAfter=".00" />
+```
+
+You can pass HTML values to slots.
+The `Button` component can be passed an `img`.
+
+```tsx
+<Button icon={<img src='site-icon.png' alt='branded site icon' /> }
+```
+
+You can pass JSX/TSX to slots.
+The `Button` component can be passed an `CalendarRegular24` icon.
+
+```tsx
+<Button icon={<CalendarRegular24 />}
+```
+
+### Passing props
+
+When a slot renders a component or element by default, you can pass props to it.
+
+The `Avatar` component has a `badge` slot that renders a `PresenceBadge`.
+This allows you pass `PresenceBadge` props.
+
+```tsx
+<Avatar name="Support" badge={{ status: 'available', 'aria-label': 'available' }} />
+```
+
+You can pass the `className` prop to customize the style of a slot.
+The `Avatar` badge slot supports a `className`, allowing the badge style to be customized.
+
+```tsx
+const useStyles = makeStyles({
+  badge: { color: tokens.colorBrandStroke1 },
+});
+
+const BusyBrandAvatar = () => {
+  const styles = useStyles();
+  return <Avatar name="IT probably" badge={{ status: 'busy', className: styles.badge }} />;
+};
+```
+
+You can pass the `as` prop to change the element type of a slot.
+Note that you must choose from one of the available element types the slot provides.
+
+```tsx
+<AccordionHeader as="h1">Accordion Header as h1</AccordionHeader>
+```
+
+### Replacing the entire slot
+
+When you pass content or props to a slot,
+the component renders the content within a component or element based on the slot type.
+Through a render function you can replace the entire slots content including the containing element.
+
+This is an escape hatch in the slots API, so prefer the other techniques whenever possible.
+
+By passing a render function as the `children`, the `span` that normally contains the icon is replaces with an `h1`.
+
+```tsx
+const renderBigLetterIcon () => {
+  return <h1>B<h1>;
+};
+
+<Button icon={{ children: renderBigLetterIcon }}>utton</Button>;
+```
+
+## The Slot type
+
+In `@fluentui/react-utilities`, `compose/types.ts` defines the types for the slots API.
+
+The typings are pretty dense and can be difficult to unwind,
+but they provide a lot of capability with strong type-safety.
+This will start with some oversimplification and then add more type explanation as we go.
+The `compose/types.ts` file contains more detailed comments.
+
+### Slot
+
+The `Slot` type allows components to define a slot.
+
+```ts
+type Slot<Type, AlternateAs>
+```
+
+`Type` defines the default element or component for the slot.
+It can be a single intrinsic element type (i.e. an HTML element like 'div') or a React component type.
+
+`AlternateAs` allows the slot to support other kinds of elements through the `as` prop.
+It can be a single intrinsic element type, or a union of element types.
+
+Currently, `AlternateAs` only supports intrinsic element types.
+This is necessary to ensure components restrict slots where `Type` is a component type.
+Substituting other component types has caused deep typing, accessibility, and event handler problems in the past.
+
+For example,
+
+- `Slot<'div'>` means by default the slot will render a `div` element.
+- `Slot<typeof Button>` means by default the slot will render a `Button` component.
+- `Slot<'span', 'div' | 'pre'>` means that caller can use `as`to change from `span` to `div` or `pre`.
+
+### Slot definition
+
+A `Slot` can be passed a literal value, an object containing props, or a render function callback.
+The `Slot` type is defined using `WithSlotShorthandValue<Props>`.
+
+Note: The type definition here is simplified.
+
+```ts
+type Slot<Type, AlternateAs> =
+      ...
+      WithSlotShorthandValue<
+          Type extends keyof JSX.IntrinsicElements
+            ? { as?: Type } & WithSlotRenderFunction<IntrisicElementProps<Type>>
+            : Type extends React.ComponentType<infer Props>
+            ? WithSlotRenderFunction<Props>
+            : Type
+        >
+      ...
+```
+
+Following `WithSlotShorthandValue<Props>`, it is defined as the `Props` object
+or the `children` of a React child, array of nodes, or portal.
+
+```ts
+type WithSlotShorthandValue<Props extends { children?: unknown }> =
+  | Props
+  | Extract<SlotShorthandValue, Props['children']>;
+
+type SlotShorthandValue = React.ReactChild | React.ReactNodeArray | React.ReactPortal;
+```
+
+Following `WithSlotRenderFunction<Props>`, it is defined as the `Props` object and children.
+The children can be JSX/TSX or a function that renders JSX/TSX.
+
+```ts
+type WithSlotRenderFunction<Props extends { children?: unknown }> = Props & {
+  children?: Props['children'] | SlotRenderFunction<Props>;
+};
+
+type SlotRenderFunction<Props> = (
+  Component: React.ElementType<Props>,
+  props: Omit<Props, 'children' | 'as'>,
+) => React.ReactNode;
+```
+
+## Component slot usage
+
+### Defining slots
+
+In the Fluent UI React composition architecture, components define their props using `ComponentProps<Slot>`
+and state for rendering using `ComponentState<Slot>`. The typings for these are complex, but end up being a set of slot definitions.
+
+For example Button defines an icon slot.
+
+```tsx
+type ButtonSlots = {
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
+  icon?: Slot<'span'>;
+};
+
+type ButtonProps = ComponentProps<ButtonSlots> & {
+  ...
+};
+
+type ButtonState = ComponentState<ButtonSlots> & {
+  ...
+};
+}
+```
+
+### The special root slot
+
+Every component has a `root` slot.
+You can think of the root slot as
+the element the component renders that contains all component's rendered content.
+
+The root slot
+
+- defines the type of element that will be rendered
+- always gets `className` and `style` properties
+- get the properties passed to the component
+
+### NonNullable slots
+
+When a slot is defined in the props of a component, it can be set to null to prevent the slot from being rendered.
+In cases where components need to require a slot to always be rendered, it can be wrapped in `NonNullable<T>`.
+
+For example, in `RadioButton` the indicator must always be rendered.
+
+```ts
+indicator: NonNullable<Slot<'div'>>;
+```
+
+### Styling and Rendering with slots
+
+You can think of each slot as container for props and style that will be rendered as an element.
+
+The Fluent UI hooks architecture breaks up component rendering primarily into 3 parts
+
+- use*Component*(): This takes in props and produces state
+- use*Component*Styles() - This uses state to define and apply class styles
+- render*Component*() - This renders the elements of the component
+
+`Button` follows this pattern:
+
+- `useButton` will take in `ButtonProps` and return `ButtonState`.
+
+```ts
+const useButton_unstable = (
+  props: ButtonProps,
+  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+): ButtonState
+```
+
+Hooks like `useButton` will typically fill in default values, calculate state from props, add event handlers,
+and define the default element types for each slot.
+
+- `useButtonStyles` will take in and mutate `ButtonState`
+
+```ts
+const useButtonStyles_unstable = (state: ButtonState)
+```
+
+Hooks like `useButtonStyles` will typically create classes using `makeStyles` and `mergeClasses` and then
+apply them conditionally based on the input state.
+For instance, if a component is disabled then disabled styles are added.
+
+- `renderButton` will take in `ButtonState` and render content.
+
+```tsx
+const renderButton_unstable = (state: ButtonState) => {
+  const { slots, slotProps } = getSlots<ButtonSlots>(state);
+  const { iconOnly, iconPosition } = state;
+
+  return (
+    <slots.root {...slotProps.root}>
+      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+      {!iconOnly && state.root.children}
+      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+    </slots.root>
+  );
+};
+```
+
+The `getSlots` method splits up the state to return back the slot elements to render and the props to apply.
+This makes writing render methods straightforward and mostly boilerplate as most of the work was done in the hooks.
+The component's render method can conditionally render slots.
+
+## Wrap up
+
+- Slots are a great way to replace specific parts of a component.
+  There may be other extensibility mechanisms like theming, custom styles, or the hooks API
+  to consider when slots isn't the best choice.
+- The slots API provides a powerful extensibility mechanism with a minimal surface area.
+  While the typings are complex, they guide the caller with strong type safety.
+- The slots API supports the hooks API by letting components create addressable locations for props and class styles.
