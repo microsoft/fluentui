@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Creating AvatarGroupItem component.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

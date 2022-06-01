@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed bug where className changes in List props does not cause a rerender",
-  "packageName": "@fluentui/react",
-  "email": "odhanson@microsoft.com",
-  "dependentChangeType": "patch"
-}

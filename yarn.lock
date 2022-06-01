@@ -20827,6 +20827,13 @@ pkg-dir@^5.0.0:
   dependencies:
     find-up "^5.0.0"
 
+pkg-up@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/pkg-up/-/pkg-up-3.1.0.tgz#100ec235cc150e4fd42519412596a28512a0def5"
+  integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
+  dependencies:
+    find-up "^3.0.0"
+
 please-upgrade-node@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
@@ -24062,12 +24069,13 @@ store2@^2.12.0:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
 
-storybook-addon-export-to-codesandbox@0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.6.4.tgz#bda089cedf3ebae25df0201d4c97295cd87ab6db"
-  integrity sha512-IY8nTmeoxqwB/HkFARPXTtzRfXr0MzlrgDbdvCBgCBGXrseB85/cGSO8pS4eBdZxlz7Vr/B2Ano5rfy/Nuvv3Q==
+storybook-addon-export-to-codesandbox@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/storybook-addon-export-to-codesandbox/-/storybook-addon-export-to-codesandbox-0.7.0.tgz#530d6fa1bbc27a7d93c2909fa21341b75546565b"
+  integrity sha512-euSgOCzFggjl5iDLpq853ygIz/RoyCBHFCo+IFkFkCWbMtP/wHqjR0+fqm/t0iebe4px+L7cfFY/tFC3xsZcyg==
   dependencies:
     codesandbox-import-utils "^2.2.3"
+    pkg-up "^3.1.0"
 
 storybook-addon-performance@0.14.0:
   version "0.14.0"
