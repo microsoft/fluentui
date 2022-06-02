@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { Text, Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
@@ -66,19 +66,17 @@ export const ExportButton = () => {
 export const Nav: React.FC<NavProps> = props => {
   const styles = useStyles();
   return (
-    <div className={props.className}>
+    <div className={mergeClasses(styles.root, props.className)}>
       <FluentProvider theme={webDarkTheme}>
-        <div className={styles.root}>
-          <div className={styles.logo}>
-            <CircleRegular />
-            <Text>Color Tool</Text>
-          </div>
-          <div className={styles.content}>
-            UI Colors <ChevronRightRegular /> New palette
-          </div>
-          <Name />
-          <ExportButton />
+        <div className={styles.logo}>
+          <CircleRegular />
+          <Text>Color Tool</Text>
         </div>
+        <div className={styles.content}>
+          UI Colors <ChevronRightRegular /> New palette
+        </div>
+        <Name />
+        <ExportButton />
       </FluentProvider>
     </div>
   );
