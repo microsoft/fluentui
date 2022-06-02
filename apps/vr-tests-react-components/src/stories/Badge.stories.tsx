@@ -54,6 +54,12 @@ const useStyles = makeStyles({
   groupLabel: {
     ...typographyStyles.subtitle2Stronger,
   },
+
+  row: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    columnGap: '8px',
+  },
 });
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
@@ -131,14 +137,14 @@ const BadgeSampleRow: React.FC<BadgeProps> = props => {
   // Text content is not supported for tiny and extra-small
   if (props.size === 'tiny' || props.size === 'extra-small') {
     return (
-      <div className={styles.badgeContainer}>
+      <div className={styles.row}>
         <Badge {...props} icon={props.size === 'tiny' ? null : <CircleRegular />} />
       </div>
     );
   }
 
   return (
-    <div className={styles.badgeContainer}>
+    <div className={styles.row}>
       <Badge {...props}>1</Badge>
       <Badge {...props} icon={<CircleRegular />} />
       <Badge {...props}>BADGE</Badge>
