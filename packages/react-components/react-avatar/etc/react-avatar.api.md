@@ -28,6 +28,27 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+
+// @public (undocumented)
+export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
+
+// @public
+export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>;
+
+// @public (undocumented)
+export type AvatarGroupItemSlots = {
+    root: NonNullable<Slot<'div', 'li'>>;
+    avatar: NonNullable<Slot<typeof Avatar>>;
+    overflowLabel: NonNullable<Slot<'span'>>;
+};
+
+// @public
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
+    isOverflowItem?: boolean;
+};
+
+// @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
@@ -44,7 +65,7 @@ export type AvatarGroupSlots = {
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
     tooltipContent: TooltipProps['content'];
 };
 
@@ -91,11 +112,20 @@ export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 // @public
 export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
 
+// @public
+export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
+
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public
+export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
+
+// @public
+export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
 export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;

@@ -11,6 +11,7 @@ import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
@@ -88,6 +89,8 @@ export { AlertState }
 export { Card }
 
 export { cardClassNames }
+
+export { cardCSSVars }
 
 export { CardFooter }
 
