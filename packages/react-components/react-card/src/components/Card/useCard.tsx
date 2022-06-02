@@ -38,16 +38,19 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     tabBehavior: focusMap[focusMode],
   });
 
-  const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = event => {
+  const focusAttrs = focusMode !== 'off' ? { ...groupperAttrs } : null;
+
+  const onChangeHandler = () => {
     setChecked(!checked);
     onCardSelect && onCardSelect(checked);
   };
-  const focusAttrs = focusMode !== 'off' ? { ...groupperAttrs } : null;
   const selectAttrs =
     selectable === true
       ? {
           onClick: onChangeHandler,
-          onKeyDown: onChangeHandler,
+          onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
+            if (event.key === 'Enter') onChangeHandler();
+          },
         }
       : null;
 
