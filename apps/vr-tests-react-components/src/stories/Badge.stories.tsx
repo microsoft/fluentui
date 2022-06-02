@@ -41,6 +41,7 @@ const useStyles = makeStyles({
   groupSet: {
     display: 'inline-flex',
     flexDirection: 'column',
+    ...shorthands.padding(0, '16px'),
     rowGap: '16px',
   },
 
