@@ -11,7 +11,7 @@ export { Disabled } from './AccordionDisabled.stories';
 export { ExpandIcon } from './AccordionExpandIcon.stories';
 export { ExpandIconPosition } from './AccordionExpandIconPosition.stories';
 export { WithIcon } from './AccordionWithIcon.stories';
-import descriptionMd from '../AccordionDescription.md';
+import descriptionMd from './AccordionDescription.md';
 
 export default {
   title: 'Components/Accordion',
