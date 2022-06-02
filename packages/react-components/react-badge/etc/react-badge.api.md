@@ -24,6 +24,7 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
     iconPosition?: 'before' | 'after';
     shape?: 'circular' | 'rounded' | 'square';
     size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+    weight?: 'regular' | 'semibold' | 'bold';
 };
 
 // @public (undocumented)
@@ -33,7 +34,7 @@ export type BadgeSlots = {
 };
 
 // @public (undocumented)
-export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size'>>;
+export type BadgeState = ComponentState<BadgeSlots> & Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size' | 'weight'>>;
 
 // @public
 export const CounterBadge: ForwardRefComponent<CounterBadgeProps>;
