@@ -26,6 +26,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@babel/generator": "^7.12.13",
+    "@babel/helper-plugin-utils": "^7.12.13",
+    "@babel/template": "^7.12.13",
+    "@babel/traverse": "^7.12.13",
+    "@emotion/hash": "^0.8.0",
+    "find-up": "^5.0.0",
     "tslib": "^2.1.0"
   },
   "beachball": {

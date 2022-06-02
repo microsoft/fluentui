@@ -4,6 +4,25 @@
 
 ```ts
 
+import { CallExpression } from '@babel/types';
+import type { ConfigAPI } from '@babel/core';
+import { ImportDeclaration } from '@babel/types';
+import { NodePath } from '@babel/traverse';
+import { PluginObj } from '@babel/core';
+import { PluginPass } from '@babel/core';
+
+// @public (undocumented)
+function preset(babel: ConfigAPI): {
+    plugins: ((api: object, options: {} | null | undefined, dirname: string) => PluginObj<PluginPass & {
+    importDeclarationPaths?: NodePath<ImportDeclaration>[] | undefined;
+    nativeExpressionPaths?: NodePath<CallExpression>[] | undefined;
+    contextSelectorExpressionPaths?: NodePath<CallExpression>[] | undefined;
+    nativeLocalName?: string | undefined;
+    contextSelectorLocalName?: string | undefined;
+    }>)[][];
+};
+export default preset;
+
 // (No @packageDocumentation comment for this package)
 
 ```
