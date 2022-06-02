@@ -37,7 +37,13 @@ export type BadgeProps = Omit<ComponentProps<BadgeSlots>, 'color'> & {
    * @defaultvalue medium
    */
   size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+
+  /**
+   * The font weight of the badge's text.
+   * @defaultvalue semibold
+   */
+  weight?: 'regular' | 'semibold' | 'bold';
 };
 
 export type BadgeState = ComponentState<BadgeSlots> &
-  Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size'>>;
+  Required<Pick<BadgeProps, 'appearance' | 'color' | 'iconPosition' | 'shape' | 'size' | 'weight'>>;
