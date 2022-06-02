@@ -13,11 +13,11 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const { appearance = 'filled', focusMode = 'off' } = props;
+  const { appearance = 'filled', focusMode = 'off', size = 'medium' } = props;
 
   const focusMap = {
     off: undefined,
-    'no-tab': 'limitedTrapFocus',
+    'no-tab': 'limited-trap-focus',
     'tab-exit': 'limited',
     'tab-only': 'unlimited',
   } as const;
@@ -26,15 +26,17 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     tabBehavior: focusMap[focusMode],
   });
 
+  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
+
   return {
     appearance,
+    size,
 
     components: { root: 'div' },
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
-      tabIndex: focusMode !== 'off' ? 0 : undefined,
-      ...groupperAttrs,
+      ...focusAttrs,
       ...props,
     }),
   };

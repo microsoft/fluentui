@@ -1,4 +1,7 @@
-## Best practices
+<details>
+<summary>
+ Best Practices
+</summary>
 
 ### Do
 
@@ -21,3 +24,5 @@
 
 - **Include more than 5 options.**
   Use RadioGroup when there are 2-5 options, and you have enough screen space and the options are important enough to be a good use of that screen space. Otherwise, use Dropdown.
+
+</details>

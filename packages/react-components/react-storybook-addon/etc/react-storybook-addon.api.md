@@ -36,10 +36,6 @@ export const themes: readonly [{
     readonly label: "Web Dark";
     readonly theme: Theme;
 }, {
-    readonly id: "web-high-contrast";
-    readonly label: "Web High Contrast";
-    readonly theme: Theme;
-}, {
     readonly id: "teams-light";
     readonly label: "Teams Light";
     readonly theme: Theme;

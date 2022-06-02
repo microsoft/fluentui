@@ -35,7 +35,7 @@ export const CustomTrigger = () => {
 
   return (
     <>
-      <Button aria-haspopup ref={setTarget} onClick={onClick}>
+      <Button aria-expanded={`${open}`} ref={setTarget} onClick={onClick}>
         Custom trigger
       </Button>
       <Popover positioning={{ target }} open={open} onOpenChange={onOpenChange}>

@@ -13,10 +13,18 @@ import {
 
 import { Button } from '@fluentui/react-button';
 import {
-  CutRegular as CutIcon,
-  ClipboardPasteRegular as PasteIcon,
-  EditRegular as EditIcon,
+  bundleIcon,
+  CutRegular,
+  CutFilled,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  EditRegular,
+  EditFilled,
 } from '@fluentui/react-icons';
+
+const CutIcon = bundleIcon(CutFilled, CutRegular);
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const EditIcon = bundleIcon(EditFilled, EditRegular);
 
 export const SelectionGroup = () => (
   <Menu>

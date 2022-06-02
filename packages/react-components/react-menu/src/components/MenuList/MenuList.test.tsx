@@ -11,6 +11,7 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     disabledTests: [
+      'component-has-static-classname-exported',
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],

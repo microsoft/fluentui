@@ -3,7 +3,9 @@ import * as React from 'react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
 
 import { Button } from '@fluentui/react-button';
-import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
+import { bundleIcon, ClipboardPasteRegular, ClipboardPasteFilled } from '@fluentui/react-icons';
+
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 
 export const AligningWithIcons = () => (
   <Menu hasIcons>

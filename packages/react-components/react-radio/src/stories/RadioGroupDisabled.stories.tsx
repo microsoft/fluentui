@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
+import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
 import { Radio, RadioGroup } from '../index';
 
 export const Disabled = () => {
   const labelId = useId('label');
-  <Label id={labelId}>Favorite Fruit</Label>;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
+      <Label id={labelId} disabled>
+        Favorite Fruit
+      </Label>
       <RadioGroup defaultValue="apple" disabled aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />

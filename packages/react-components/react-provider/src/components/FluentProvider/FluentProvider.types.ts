@@ -1,37 +1,36 @@
 import type {
-  ProviderContextValue,
-  TooltipContextType,
-  ThemeClassNameContextValue,
+  ProviderContextValue_unstable as ProviderContextValue,
+  TooltipVisibilityContextValue_unstable as TooltipVisibilityContextValue,
+  ThemeClassNameContextValue_unstable as ThemeClassNameContextValue,
+  ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-import type { PartialTheme, Theme } from '@fluentui/react-theme';
+import type { PartialTheme } from '@fluentui/react-theme';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type FluentProviderSlots = {
   root: Slot<'div'>;
 };
 
-interface FluentProviderCommons {
+export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
   /** Sets the direction of text & generated styles. */
-  dir: 'ltr' | 'rtl';
+  dir?: 'ltr' | 'rtl';
 
   /** Provides the document, can be undefined during SSR render. */
-  targetDocument: Document | undefined;
-}
+  targetDocument?: Document;
 
-export interface FluentProviderProps
-  extends Omit<ComponentProps<FluentProviderSlots>, 'dir'>,
-    Partial<FluentProviderCommons> {
   theme?: PartialTheme;
-}
+};
 
-export interface FluentProviderState extends ComponentState<FluentProviderSlots>, FluentProviderCommons {
-  theme: Theme | Partial<Theme> | undefined;
-  themeClassName: string;
-}
+export type FluentProviderState = ComponentState<FluentProviderSlots> &
+  Pick<FluentProviderProps, 'targetDocument'> &
+  Required<Pick<FluentProviderProps, 'dir'>> & {
+    theme: ThemeContextValue;
+    themeClassName: string;
+  };
 
-export interface FluentProviderContextValues extends Pick<FluentProviderState, 'theme'> {
+export type FluentProviderContextValues = Pick<FluentProviderState, 'theme'> & {
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
-  tooltip: TooltipContextType;
-}
+  tooltip: TooltipVisibilityContextValue;
+};

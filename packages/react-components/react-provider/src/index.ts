@@ -1,6 +1,4 @@
 export {
-  // eslint-disable-next-line deprecation/deprecation
-  fluentProviderClassName,
   fluentProviderClassNames,
   FluentProvider,
   renderFluentProvider_unstable,
@@ -15,5 +13,3 @@ export type {
   FluentProviderState,
   FluentProviderSlots,
 } from './FluentProvider';
-
-export { useFluent, useTheme } from '@fluentui/react-shared-contexts';

@@ -2,6 +2,21 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 19 May 2022 07:41:26 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "5e400c20a2ae769dd34b0384ade9f97126585959",
+            "comment": "Update window to use iconBaseUrl to prevent collision"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.3.3",
       "version": "8.3.3",

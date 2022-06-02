@@ -2,6 +2,111 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:42 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 18:56:47 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "BREAKING CHANGE: Encapsulate Popper API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 12:13:34 GMT",
+      "tag": "@fluentui/react-positioning_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.8",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.9",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:25 GMT",
       "tag": "@fluentui/react-positioning_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

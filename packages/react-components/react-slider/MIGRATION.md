@@ -12,6 +12,7 @@ The Slider control is a thin wrapper around an `<input type="range"/>`. Addition
 - `showValue` and `valueFormat` => use explicitly rendered value instead
 - `onChanged` => use onChange and onMouse events
 - `ranged`, `defaultLowerValue` and `lowerValue` => Not supported. Multi value slider will be future work in separate control.
+- `origin` => no longer supported
 - `snapToStep` => use `step` instead
 - `originFromZero` => `origin`
 - `buttonProps` => Slider props, other than className and id, are passed to `input` element

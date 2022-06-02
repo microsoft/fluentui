@@ -14,17 +14,16 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public @deprecated (undocumented)
-export const cardClassName = "fui-Card";
-
 // @public (undocumented)
 export const cardClassNames: SlotClassNames<CardSlots>;
 
+// @public (undocumented)
+export const cardCSSVars: {
+    cardSizeVar: string;
+};
+
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
-
-// @public @deprecated (undocumented)
-export const cardFooterClassName = "fui-CardFooter";
 
 // @public (undocumented)
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
@@ -43,9 +42,6 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
-
-// @public @deprecated (undocumented)
-export const cardHeaderClassName = "fui-CardHeader";
 
 // @public (undocumented)
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
@@ -69,9 +65,6 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public @deprecated (undocumented)
-export const cardPreviewClassName = "fui-CardPreview";
-
 // @public (undocumented)
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
@@ -91,6 +84,7 @@ export type CardPreviewState = ComponentState<CardPreviewSlots>;
 export type CardProps = ComponentProps<CardSlots> & {
     appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public (undocumented)
@@ -99,7 +93,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

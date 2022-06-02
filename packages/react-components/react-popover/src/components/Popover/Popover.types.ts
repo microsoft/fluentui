@@ -1,6 +1,10 @@
 import * as React from 'react';
+import type {
+  PositioningVirtualElement,
+  PositioningShorthand,
+  usePositioningMouseTarget,
+} from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { PopperVirtualElement, PositioningShorthand, usePopperMouseTarget } from '@fluentui/react-positioning';
 
 /**
  * Determines popover padding and arrow size
@@ -50,9 +54,11 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   mouseLeaveDelay?: number;
 
   /**
-   * Do not display the arrow
+   * Display an arrow pointing to the target.
+   *
+   * @default false
    */
-  noArrow?: boolean;
+  withArrow?: boolean;
 
   /**
    * Call back when the component requests to change value
@@ -106,7 +112,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
  */
 export type PopoverState = Pick<
   PopoverProps,
-  'appearance' | 'mountNode' | 'noArrow' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus'
+  'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow'
 > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {
@@ -123,7 +129,7 @@ export type PopoverState = Pick<
     /**
      * Anchors the popper to the mouse click for context events
      */
-    contextTarget: PopperVirtualElement | undefined;
+    contextTarget: PositioningVirtualElement | undefined;
 
     popoverSurface: React.ReactElement | undefined;
 
@@ -132,7 +138,7 @@ export type PopoverState = Pick<
     /**
      * A callback to set the target of the popper to the mouse click for context events
      */
-    setContextTarget: ReturnType<typeof usePopperMouseTarget>[1];
+    setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
 
     /**
      * Callback to open/close the Popover

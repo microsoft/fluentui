@@ -2,10 +2,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
-/**
- * @deprecated Use `cardPreviewClassNames.root` instead.
- */
-export const cardPreviewClassName = 'fui-CardPreview';
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots> = {
   root: 'fui-CardPreview',
   logo: 'fui-CardPreview__logo',
