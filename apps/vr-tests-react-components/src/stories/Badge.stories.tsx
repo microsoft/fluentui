@@ -9,12 +9,11 @@ type ValueArrays<T> = {
   [K in keyof T]: T[K][];
 };
 
-const propValues: ValueArrays<Pick<Required<BadgeProps>, 'size' | 'color' | 'appearance' | 'shape' | 'weight'>> = {
+const propValues: ValueArrays<Pick<Required<BadgeProps>, 'size' | 'color' | 'appearance' | 'shape'>> = {
   size: ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'],
   color: ['brand', 'danger', 'severe', 'warning', 'success', 'important', 'informative', 'subtle'],
   appearance: ['filled', 'outline', 'tint', 'ghost'],
   shape: ['circular', 'rounded', 'square'],
-  weight: ['regular', 'semibold', 'bold'],
 };
 
 const useStyles = makeStyles({
