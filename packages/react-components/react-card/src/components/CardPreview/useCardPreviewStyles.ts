@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   root: {
     position: 'relative',
 
-    '> *': {
+    [`> :not(.${cardPreviewClassNames.logo})`]: {
       display: 'block',
       height: '100%',
       width: '100%',
