@@ -14,9 +14,6 @@ const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 
 const SampleCardContent = () => (
   <>
-    <CardPreview>
-      <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
-    </CardPreview>
     <CardHeader
       image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
       header={
