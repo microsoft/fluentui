@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 Jun 2022 07:38:24 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jun 2022 07:38:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.1)
+
+Thu, 02 Jun 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.0..@fluentui/react_v8.72.1)
+
+### Patches
+
+- update Layer to use getDocument instead of WindowContext document ([PR #23052](https://github.com/microsoft/fluentui/pull/23052) by sarah.higley@microsoft.com)
 
 ## [8.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.0)
 

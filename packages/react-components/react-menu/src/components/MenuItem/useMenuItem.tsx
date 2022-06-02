@@ -9,10 +9,19 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
-import { ChevronRightRegular as ChevronRightIcon, ChevronLeftRegular as ChevronLeftIcon } from '@fluentui/react-icons';
+import {
+  ChevronRightFilled,
+  ChevronRightRegular,
+  ChevronLeftFilled,
+  ChevronLeftRegular,
+  bundleIcon,
+} from '@fluentui/react-icons';
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
+
+const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
+const ChevronLeftIcon = bundleIcon(ChevronLeftFilled, ChevronLeftRegular);
 
 /**
  * Returns the props and state required to render the component
