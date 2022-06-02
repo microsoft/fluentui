@@ -10,19 +10,17 @@ export interface NavProps {
 
 const useStyles = makeStyles({
   root: {
-    height: '40px',
-  },
-  content: {
     alignItems: 'center',
     display: 'grid',
     gridTemplateColumns: '1fr 2fr 3fr 3fr',
+    height: '40px',
   },
   logo: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-evenly',
   },
-  name: {
+  element: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
@@ -38,7 +36,7 @@ const useStyles = makeStyles({
 export const Name = () => {
   const styles = useStyles();
   return (
-    <div className={styles.name}>
+    <div className={styles.element}>
       <Text>Untitled</Text>
     </div>
   );
@@ -68,20 +66,16 @@ export const ExportButton = () => {
 export const Nav: React.FC<NavProps> = props => {
   const styles = useStyles();
   return (
-    <div className={mergeClasses(styles.root, props.className)}>
-      <FluentProvider theme={webDarkTheme}>
-        <div className={styles.content}>
-          <div className={styles.logo}>
-            <CircleRegular />
-            <Text>Color Tool</Text>
-          </div>
-          <div className={styles.content}>
-            UI Colors <ChevronRightRegular /> New palette
-          </div>
-          <Name />
-          <ExportButton />
-        </div>
-      </FluentProvider>
-    </div>
+    <FluentProvider theme={webDarkTheme} className={mergeClasses(styles.root, props.className)}>
+      <div className={styles.logo}>
+        <CircleRegular />
+        <Text>Color Tool</Text>
+      </div>
+      <div className={styles.element}>
+        UI Colors <ChevronRightRegular /> New palette
+      </div>
+      <Name />
+      <ExportButton />
+    </FluentProvider>
   );
 };
