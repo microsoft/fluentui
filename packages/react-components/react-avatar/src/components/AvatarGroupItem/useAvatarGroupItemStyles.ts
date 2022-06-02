@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,7 +19,7 @@ const useRootStyles = makeStyles({
   },
   overflowItem: {
     '&:not(:first-child)': {
-      marginTop: tokens.spacingVerticalS,
+      ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingVerticalXS),
     },
   },
 });

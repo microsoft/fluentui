@@ -5,13 +5,13 @@
 ```ts
 
 import { Button } from '@fluentui/react-button';
-import { ComponentProps } from '@fluentui/react-utilities';
-import { ComponentState } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
-import { Slot } from '@fluentui/react-utilities';
+import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TooltipProps } from '@fluentui/react-tooltip';
 
@@ -40,7 +40,7 @@ export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>,
 export type AvatarGroupItemSlots = {
     root: NonNullable<Slot<'div', 'li'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
-    overflowLabel?: NonNullable<Slot<'span'>>;
+    overflowLabel: NonNullable<Slot<'span'>>;
 };
 
 // @public

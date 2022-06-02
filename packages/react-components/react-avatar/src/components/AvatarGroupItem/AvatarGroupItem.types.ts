@@ -1,4 +1,4 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Avatar } from '../../Avatar';
 
 export type AvatarGroupItemSlots = {
@@ -13,7 +13,7 @@ export type AvatarGroupItemSlots = {
    * Label used for the name of the AvatarGroupItem when rendered as an overflow item.
    * The content of the label, by default, is the `name` prop from the `avatar` slot.
    */
-  overflowLabel?: NonNullable<Slot<'span'>>;
+  overflowLabel: NonNullable<Slot<'span'>>;
 };
 
 /**
