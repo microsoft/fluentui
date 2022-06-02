@@ -74,8 +74,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
     defaultProps: {
       size: getBadgeSize(size),
-      role: 'presentation',
-      'aria-hidden': true,
       id: baseId + '__badge',
     },
   });

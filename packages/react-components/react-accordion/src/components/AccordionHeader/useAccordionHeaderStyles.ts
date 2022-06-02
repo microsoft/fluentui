@@ -1,6 +1,6 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { AccordionHeaderSlots, AccordionHeaderState } from './AccordionHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -29,9 +29,9 @@ const useStyles = makeStyles({
   focusIndicator: createFocusOutlineStyle(),
   root: {
     color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.margin(0),
-    ...shorthands.borderRadius('2px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   rootDisabled: {
     backgroundImage: 'none',
@@ -42,36 +42,46 @@ const useStyles = makeStyles({
   },
   button: {
     position: 'relative',
-    width: 'calc(100% - 22px)',
+    width: '100%',
     ...shorthands.border('1px', 'solid', 'transparent'),
-    paddingRight: '10px',
-    paddingLeft: '10px',
+    ...shorthands.padding(0, tokens.spacingHorizontalM, 0, tokens.spacingHorizontalMNudge),
     height: '44px',
     display: 'flex',
     alignItems: 'center',
     cursor: 'pointer',
-    fontSize: tokens.fontSizeBase300,
-    fontFamily: tokens.fontFamilyBase,
+    ...typographyStyles.body1,
+    boxSizing: 'border-box',
   },
   buttonSmall: {
     height: '32px',
     fontSize: tokens.fontSizeBase200,
   },
   buttonLarge: {
+    lineHeight: tokens.lineHeightBase400,
     fontSize: tokens.fontSizeBase400,
   },
   buttonExtraLarge: {
+    lineHeight: tokens.lineHeightBase500,
     fontSize: tokens.fontSizeBase500,
   },
   buttonInline: {
     display: 'inline-flex',
   },
+  buttonExpandIconEndNoIcon: {
+    paddingLeft: tokens.spacingHorizontalM,
+  },
+  buttonExpandIconEnd: {
+    paddingRight: tokens.spacingHorizontalMNudge,
+  },
   expandIcon: {
-    lineHeight: '0',
-    fontSize: '20px',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
   },
   expandIconStart: {
-    paddingRight: '8px',
+    paddingRight: tokens.spacingHorizontalS,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -79,14 +89,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: '8px',
+    paddingLeft: tokens.spacingHorizontalS,
   },
   icon: {
-    marginRight: '8px',
-    fontSize: '20px',
-  },
-  iconExpandIconEnd: {
-    marginLeft: '10px',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    paddingRight: tokens.spacingHorizontalS,
+    lineHeight: tokens.lineHeightBase500,
+    fontSize: tokens.fontSizeBase500,
   },
 });
 
@@ -106,6 +117,8 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
     styles.resetButton,
     styles.button,
     styles.focusIndicator,
+    state.expandIconPosition === 'end' && !state.icon && styles.buttonExpandIconEndNoIcon,
+    state.expandIconPosition === 'end' && styles.buttonExpandIconEnd,
     state.inline && styles.buttonInline,
     state.size === 'small' && styles.buttonSmall,
     state.size === 'large' && styles.buttonLarge,
@@ -123,12 +136,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
     );
   }
   if (state.icon) {
-    state.icon.className = mergeClasses(
-      accordionHeaderClassNames.icon,
-      styles.icon,
-      state.expandIconPosition === 'end' && styles.iconExpandIconEnd,
-      state.icon.className,
-    );
+    state.icon.className = mergeClasses(accordionHeaderClassNames.icon, styles.icon, state.icon.className);
   }
   return state;
 };
