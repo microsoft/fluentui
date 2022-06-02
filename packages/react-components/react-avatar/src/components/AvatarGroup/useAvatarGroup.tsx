@@ -4,7 +4,6 @@ import { extraAvatarGroupClassNames } from './useAvatarGroupStyles';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { PopoverSurface } from '@fluentui/react-popover';
-import { Label } from '@fluentui/react-label';
 import { AvatarGroupContext } from '../../contexts/index';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
@@ -26,11 +25,21 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   const numOfAvatarsToHide = childrenCount - numOfAvatarsToShow + 1;
 
   let rootChildren = childrenArray;
-  if (hasOverflow) {
-    if (layout === 'pie') {
-      rootChildren = childrenArray.slice(0, numOfAvatarsToShow);
+  let popoverChildren = null;
+  let popoverTriggerChildren = null;
+  let popoverTriggerIcon = null;
+
+  if (layout === 'pie') {
+    rootChildren = childrenArray.slice(0, numOfAvatarsToShow);
+    popoverChildren = childrenArray.slice(numOfAvatarsToShow);
+  } else {
+    rootChildren = childrenArray.slice(numOfAvatarsToHide);
+    popoverChildren = childrenArray.slice(0, numOfAvatarsToHide);
+
+    if (overflowIndicator === 'icon' || size < 24) {
+      popoverTriggerIcon = <MoreHorizontalRegular />;
     } else {
-      rootChildren = childrenArray.slice(numOfAvatarsToHide);
+      popoverTriggerChildren = `+${numOfAvatarsToHide}`;
     }
   }
 
@@ -45,8 +54,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     ['size'],
   );
 
-  const popoverTriggerChildren = layout === 'pie' || overflowIndicator === 'icon' ? null : `+${numOfAvatarsToHide}`;
-  const popoverTriggerIcon = layout !== 'pie' && overflowIndicator === 'icon' ? <MoreHorizontalRegular /> : undefined;
   const popoverTrigger = resolveShorthand(props.popoverTrigger, {
     required: true,
     defaultProps: {
@@ -57,21 +64,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
-  const popoverChildren =
-    hasOverflow &&
-    (layout === 'pie' ? childrenArray.slice(numOfAvatarsToShow) : childrenArray.slice(0, numOfAvatarsToHide)).map(
-      child => {
-        if (React.isValidElement(child)) {
-          return (
-            <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={child.key} role="listitem" tabIndex={0}>
-              {child}
-              <Label size="medium">{child.props.name}</Label>
-            </li>
-          );
-        }
-        return child;
-      },
-    );
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {

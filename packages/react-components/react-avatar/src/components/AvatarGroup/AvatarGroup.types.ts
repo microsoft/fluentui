@@ -1,7 +1,7 @@
-import { AvatarProps, AvatarSizes } from '../Avatar/Avatar.types';
 import { Button } from '@fluentui/react-button';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
+import type { AvatarSizes } from '../Avatar/Avatar.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupSlots = {
@@ -53,22 +53,14 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
   Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
-    /**
-     * Whether there are more Avatars than `maxAvatars`.
-     * @default false
-     */
-    hasOverflow: boolean;
-
-    /**
-     * Tooltip content for the overflow indicator.
-     */
     tooltipContent: TooltipProps['content'];
   };
 
-export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
-  color?: AvatarProps['color'];
-};
-
-export type AvatarGroupContextValues = {
-  avatarGroup: AvatarGroupContextValue;
+// TODO: Remove strings from AvatarGroup.
+export type AvatarGroupStrings = {
+  /**
+   * Text applied to the overflow indicator's tooltip.
+   * Can include the token "\{numOverflowedAvatars\}" which will be replaced with the number of overflowed avatars.
+   */
+  tooltipContent: string;
 };
