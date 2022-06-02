@@ -274,14 +274,25 @@ A slot can be defined with as optional or required and nullable or non-nullable.
 #### The special root slot
 
 Every component has a `root` slot.
-You can think of the root slot as
-the element the component renders that contains all component's rendered content.
+The root slot represents the top-level element the component renders.
 
-The root slot
+Properties passed to the component are generally applied to the root slot.
+Some components logically wrap an intrisic element and need to provide other elements around that intrinsic element.
+In this case, the component will properties to the slot for the intrinsic element.
+The `className` and `style` props are always passed to the root slot.
 
-- defines the type of element that will be rendered
-- always gets `className` and `style` properties
-- get the properties passed to the component
+For example, the `Input` component renders the `contentBefore`, `input`, and `contentAfter` within a span.
+Props like `value` and 'placeholder' need to be passed to the `<input>` intrinsic element.
+Slots like `input` are refered to as a primary slot.
+
+```ts
+export type InputSlots = {
+  root: NonNullable<Slot<'span'>>;
+  input: NonNullable<Slot<'input'>>;
+  contentBefore?: Slot<'span'>;
+  contentAfter?: Slot<'span'>;
+};
+```
 
 ### Styling and rendering components with slots
 
