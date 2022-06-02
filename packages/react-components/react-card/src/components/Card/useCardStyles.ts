@@ -137,6 +137,13 @@ const useStyles = makeStyles({
       },
     },
   },
+  filledInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+  },
   filled: {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow4,
@@ -168,6 +175,13 @@ const useStyles = makeStyles({
       '::after': {
         ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
       },
+    },
+  },
+  filledAlternativeInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground2Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
   },
   filledAlternative: {
@@ -202,6 +216,13 @@ const useStyles = makeStyles({
       },
     },
   },
+  outlineInteractiveSelected: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+  },
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
     boxShadow: 'none',
@@ -232,6 +253,13 @@ const useStyles = makeStyles({
       '::after': {
         ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
       },
+    },
+  },
+  subtleInteractiveSelected: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
   },
   subtle: {
@@ -291,6 +319,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     interactive: interactiveAppearanceLookup,
   } as const;
 
+  const selectedLookup = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  } as const;
+
   const interactive = state.selectable ? 'interactive' : 'nonInteractive';
 
   state.root.className = mergeClasses(
@@ -299,6 +334,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceLookup[interactive][state.appearance],
+    state.selected && selectedLookup[state.appearance],
     state.root.className,
   );
 

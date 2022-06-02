@@ -56,7 +56,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     orientation,
     size,
     selectable,
-    selected,
+    selected: checked,
 
     components: { root: 'div', select: 'input' },
     root: getNativeElementProps(props.as || 'div', {
