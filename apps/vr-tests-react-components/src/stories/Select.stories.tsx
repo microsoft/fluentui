@@ -48,7 +48,7 @@ storiesOf('Select Converged', module)
 // Non-interactive stories
 storiesOf('Select Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  // note: due to reused "Input Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
+  // note: due to reused "Select Converged" story ID, TestWrapperDecoratorFixedWidth is also reused
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
