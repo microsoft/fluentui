@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { Avatar } from '../Avatar/Avatar';
+import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -15,17 +18,41 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
+  const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
+  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
+  const { style, className, ...avatarSlotProps } = props;
+
   return {
-    // TODO add appropriate props/defaults
+    isOverflowItem: groupIsOverflow,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      avatar: Avatar,
+      overflowLabel: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        style,
+        className,
+        as: groupIsOverflow ? 'li' : 'div',
+        role: groupIsOverflow ? 'listitem' : undefined,
+      },
+    }),
+    avatar: resolveShorthand(props.avatar, {
+      required: true,
+      defaultProps: {
+        ref,
+        size: groupSize,
+        color: 'colorful',
+        ...avatarSlotProps,
+      },
+    }),
+    overflowLabel: resolveShorthand(props.overflowLabel, {
+      required: true,
+      defaultProps: {
+        children: props.name,
+      },
     }),
   };
 };
