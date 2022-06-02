@@ -83,15 +83,15 @@ export {
 } from '@fluentui/react-toolbar';
 
 export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
   ToolbarContextValue,
   ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
   ToolbarProps,
   ToolbarSlots,
   ToolbarState,
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarDividerProps,
-  ToolbarDividerState,
   ToolbarToggleButtonProps,
   ToolbarToggleButtonState,
 } from '@fluentui/react-toolbar';
