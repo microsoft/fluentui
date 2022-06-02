@@ -43,11 +43,6 @@ storiesOf('Select Converged', module)
         <option>text</option>
       </Select>
     </div>
-  ))
-  .addStory('Disabled', () => (
-    <Select disabled>
-      <option>text</option>
-    </Select>
   ));
 
 // Non-interactive stories
@@ -62,6 +57,11 @@ storiesOf('Select Converged', module)
       <option>Red</option>
       <option selected>Green</option>
       <option>Blue</option>
+    </Select>
+  ))
+  .addStory('Disabled', () => (
+    <Select disabled>
+      <option>text</option>
     </Select>
   ))
   .addStory('Size: small', () => (
