@@ -8,6 +8,7 @@ export type CardSlots = {
    * Root element of the component.
    */
   root: Slot<'div'>;
+  select?: Slot<'input'>;
 };
 
 /**
@@ -51,6 +52,14 @@ export type CardProps = ComponentProps<CardSlots> & {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
+
+  selectable?: boolean;
+
+  selected?: boolean;
+
+  defaultSelected?: boolean;
+
+  onCardSelect?: (selected: boolean) => void;
 };
 
 /**
