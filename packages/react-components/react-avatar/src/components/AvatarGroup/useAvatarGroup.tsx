@@ -58,24 +58,23 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     required: true,
     defaultProps: {
       children: popoverTriggerChildren,
-      shape: 'circular',
-      icon: popoverTriggerIcon,
-      appearance: layout === 'pie' ? 'transparent' : 'outline',
+      tabIndex: 1,
     },
   });
 
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {
-      // Avatars inside PopoverSurface must be size 24
-      children: (
-        <AvatarGroupContext.Provider value={{ color: 'colorful', layout: undefined, size: 24 }}>
-          <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer} role="list">
-            {popoverChildren}
-          </ul>
-        </AvatarGroupContext.Provider>
-      ),
       'aria-label': 'Overflow',
+    },
+  });
+
+  const popoverSurfaceList = resolveShorthand(props.popoverSurfaceList, {
+    required: true,
+    defaultProps: {
+      children: popoverChildren,
+      role: 'list',
+      tabIndex: 0,
     },
   });
 
@@ -90,11 +89,13 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     components: {
       root: 'div',
       popoverSurface: PopoverSurface,
-      popoverTrigger: Button,
+      popoverSurfaceList: 'ul',
+      popoverTrigger: 'button',
     },
 
     root,
     popoverTrigger,
     popoverSurface,
+    popoverSurfaceList,
   };
 };

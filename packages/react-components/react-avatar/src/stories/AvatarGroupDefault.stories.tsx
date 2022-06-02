@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarGroup } from '../AvatarGroup';
-import type { AvatarGroupProps } from '../AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
+import type { AvatarGroupProps } from '../AvatarGroup';
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
   return (

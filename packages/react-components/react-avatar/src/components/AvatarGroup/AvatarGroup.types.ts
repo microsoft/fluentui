@@ -16,6 +16,11 @@ export type AvatarGroupSlots = {
    * Popover surface that will be displayed when the popover is triggered.
    */
   popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+
+  /**
+   * Unordered list that contains the overflow AvatarGroupItems.
+   */
+  popoverSurfaceList: NonNullable<Slot<'ul'>>;
 };
 
 /**
@@ -53,14 +58,14 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
   Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
+    /**
+     * Whether there are more Avatars than `maxAvatars`.
+     * @default false
+     */
+    hasOverflow: boolean;
+
+    /**
+     * Tooltip content for the overflow indicator.
+     */
     tooltipContent: TooltipProps['content'];
   };
-
-// TODO: Remove strings from AvatarGroup.
-export type AvatarGroupStrings = {
-  /**
-   * Text applied to the overflow indicator's tooltip.
-   * Can include the token "\{numOverflowedAvatars\}" which will be replaced with the number of overflowed avatars.
-   */
-  tooltipContent: string;
-};
