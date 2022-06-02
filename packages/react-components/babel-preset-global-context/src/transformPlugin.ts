@@ -1,6 +1,4 @@
 import type { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
-// False positive - missing dependency on @types/babel__core which is a dev dependency
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { types } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import hash from '@emotion/hash';
