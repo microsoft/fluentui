@@ -10,9 +10,9 @@ import { readFileSync } from 'fs';
 import {
   CONTEXT_SELECTOR_PACKAGE,
   CREATE_CONTEXT_CALL,
-  GLOBAL_CONTEXT_CALL,
+  GLOBAL_CONTEXT_ALIAS,
   GLOBAL_CONTEXT_PACKAGE,
-  GLOBAL_CONTEXT_SELECTOR_CALL,
+  GLOBAL_CONTEXT_SELECTOR_ALIAS,
   GLOBAL_CONTEXT_SELECTOR_PACKAGE,
   REACT_PACKAGE,
 } from './constants';
@@ -54,7 +54,7 @@ function isCreateContextCallee(path: NodePath<t.Expression | t.V8IntrinsicIdenti
  */
 function createGlobalContextImportDeclaration(packageName: string, isContextSelector: boolean) {
   const origFunction = isContextSelector ? 'createContextSelector' : 'createContext';
-  const newFunction = isContextSelector ? GLOBAL_CONTEXT_SELECTOR_CALL : GLOBAL_CONTEXT_CALL;
+  const newFunction = isContextSelector ? GLOBAL_CONTEXT_SELECTOR_ALIAS : GLOBAL_CONTEXT_ALIAS;
   return types.importDeclaration(
     [types.importSpecifier(types.identifier(newFunction), types.identifier(origFunction))],
     types.stringLiteral(packageName),
@@ -154,7 +154,7 @@ export const transformPlugin = declare<{}, PluginObj<BabelPluginState>>(api => {
                 packageJson,
                 packageJsonPath,
                 filePath: state.filename,
-                functionName: GLOBAL_CONTEXT_SELECTOR_CALL,
+                functionName: GLOBAL_CONTEXT_SELECTOR_ALIAS,
               }),
             );
           }
@@ -166,7 +166,7 @@ export const transformPlugin = declare<{}, PluginObj<BabelPluginState>>(api => {
                 packageJson,
                 packageJsonPath,
                 filePath: state.filename,
-                functionName: GLOBAL_CONTEXT_CALL,
+                functionName: GLOBAL_CONTEXT_ALIAS,
               }),
             );
           }
