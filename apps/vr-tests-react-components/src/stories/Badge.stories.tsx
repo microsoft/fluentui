@@ -54,13 +54,6 @@ const useStyles = makeStyles({
   groupLabel: {
     ...typographyStyles.subtitle2Stronger,
   },
-
-  row: {
-    display: 'inline-flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    columnGap: '12px',
-  },
 });
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
