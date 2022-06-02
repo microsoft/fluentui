@@ -9,7 +9,7 @@ import { Content } from './components/Content/Content';
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: '300px auto',
+    gridTemplateColumns: '200px auto',
     gridTemplateRows: '40px auto',
   },
   nav: {

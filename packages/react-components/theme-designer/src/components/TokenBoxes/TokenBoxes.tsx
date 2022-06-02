@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Label, useId, Input, Switch, Caption1, FluentProvider, tokens } from '@fluentui/react-components';
-import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
+import { Button, useId, Input, Switch, Caption1, tokens } from '@fluentui/react-components';
+import { Theme } from '@fluentui/react-theme';
+import { SearchRegular } from '@fluentui/react-icons';
 
 export interface TokenBoxesProps {
   className?: string;
-  brandColors: BrandVariants;
+  theme: Theme;
+  isDark: boolean;
+  toggleTheme: () => void;
 }
 
 export interface TokenBoxProps {
@@ -18,6 +21,11 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
     gridGap: tokens.spacingVerticalXXL,
+  },
+  topbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: tokens.spacingVerticalS,
   },
   boxes: {
     display: 'flex',
@@ -52,13 +60,9 @@ export const TokenBox: React.FC<TokenBoxProps> = props => {
 
 export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
   const styles = useStyles();
-  const [isDark, setIsDark] = React.useState<boolean>(false);
   const [filter, setFilter] = React.useState<string>('');
 
-  const LightTheme = createLightTheme(props.brandColors);
-  const DarkTheme = createDarkTheme(props.brandColors);
-
-  const theme = isDark ? DarkTheme : LightTheme;
+  const theme = props.theme;
 
   const colors = Object.keys(theme).filter(color => {
     return color.startsWith('color') && !color.includes('Palette');
@@ -72,47 +76,41 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     return themeColor.includes(filter);
   });
 
-  // Switch needs to be hoisted
+  const changeFilter = React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter]);
+
   return (
-    <>
-      <div>
-        <Label htmlFor={useId('input-outline')}>Search</Label>
+    <div>
+      <Caption1> Color Tokens </Caption1>
+      <div className={styles.topbar}>
         <Input
+          placeholder="Search"
+          contentAfter={<Button aria-label="Search" appearance="transparent" icon={<SearchRegular />} size="small" />}
           appearance="outline"
           id={useId('input-outline')}
-          onChange={React.useCallback(
-            (ev, data) => {
-              setFilter(ev.target.value);
-            },
-            [setFilter],
-          )}
+          onChange={changeFilter}
         />
+        <Switch onChange={props.toggleTheme} label={props.isDark ? 'dark theme' : 'light theme'} />
       </div>
-      <Switch
-        onChange={React.useCallback(
-          (e, v) => {
-            setIsDark(v.checked);
-          },
-          [setIsDark],
-        )}
-        label="dark theme"
-      />
-      <FluentProvider theme={theme}>
-        <Caption1> Color Tokens </Caption1>
-        <div className={styles.root}>
-          {filteredColors.map(color => {
-            const themeColor = ((theme as unknown) as Record<string, string>)[color];
-            if (!themeColor) {
-              return;
-            }
-            return (
-              <div className={styles.boxes} key={color}>
-                <TokenBox color={color} themeColor={themeColor} />
-              </div>
-            );
-          })}
-        </div>
-      </FluentProvider>
-    </>
+      <div className={styles.root}>
+        {filteredColors.map(color => {
+          const themeColor = ((theme as unknown) as Record<string, string>)[color];
+          if (!themeColor) {
+            return;
+          }
+          return (
+            <div
+              className={styles.boxes}
+              key={color}
+              style={{
+                backgroundColor: props.theme.colorBrandBackgroundInverted,
+                color: props.theme.colorNeutralForeground1Static,
+              }}
+            >
+              <TokenBox color={color} themeColor={themeColor} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 };

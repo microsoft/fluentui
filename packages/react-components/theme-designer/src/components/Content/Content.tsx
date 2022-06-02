@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-components';
+import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { TokenBoxes } from '../TokenBoxes/TokenBoxes';
 
-import { BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
+import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
 
 export interface ContentProps {
   className?: string;
@@ -18,13 +18,13 @@ const useStyles = makeStyles({
     alignItems: 'left',
     justifyContent: 'center',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '10%', '0px', '10%'),
+    ...shorthands.padding('40px', '5%', '0px', '5%'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });
 
 // this data is temporary and will eventually be pulled from current theme
-export const brandWeb: BrandVariants = {
+const brand: BrandVariants = {
   10: `#061724`,
   20: `#082338`,
   30: `#0a2e4a`,
@@ -45,11 +45,23 @@ export const brandWeb: BrandVariants = {
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
+  const [isDark, setIsDark] = React.useState<boolean>(false);
+
+  const toggleTheme = React.useCallback(() => setIsDark(!isDark), [isDark, setIsDark]);
+
+  const LightTheme = createLightTheme(brand);
+  const DarkTheme = createDarkTheme(brand);
+
+  const theme = isDark ? DarkTheme : LightTheme;
+
   return (
-    <div className={mergeClasses(styles.root, props.className)}>
-      <Palette brandColors={brandWeb} />
-      <Demo theme={teamsLightTheme} />
-      <TokenBoxes brandColors={brandWeb} />
-    </div>
+    <FluentProvider theme={theme}>
+      <div className={mergeClasses(styles.root, props.className)}>
+        <Palette brandColors={brand} />
+        <Demo theme={theme} />
+        <Divider />
+        <TokenBoxes theme={theme} isDark={isDark} toggleTheme={toggleTheme} />
+      </div>
+    </FluentProvider>
   );
 };

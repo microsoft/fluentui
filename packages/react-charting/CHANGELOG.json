@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 01 Jun 2022 07:38:24 GMT",
+      "tag": "@fluentui/react-charting_v5.9.40",
+      "version": "5.9.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e2b948cd213f8f3f61f0c6322c31f5fae172924b",
+            "comment": "Not able to access all groups available in graph using keyboard."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.72.0",
+            "commit": "0f0e6ad066a52cdd3c4156ecb033413e0a92411d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 May 2022 07:44:13 GMT",
       "tag": "@fluentui/react-charting_v5.9.39",
       "version": "5.9.39",

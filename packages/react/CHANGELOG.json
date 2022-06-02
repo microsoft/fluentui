@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 01 Jun 2022 07:38:24 GMT",
+      "tag": "@fluentui/react_v8.72.0",
+      "version": "8.72.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "paruther@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a074e18ba5559606fd2a596bc7643cddf78e3678",
+            "comment": "allow for showing a sortable icon and sortable aria-label on an unsorted but sortable column in a DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 May 2022 07:44:12 GMT",
       "tag": "@fluentui/react_v8.71.1",
       "version": "8.71.1",
