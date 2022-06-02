@@ -12,11 +12,6 @@ export const textClassNames: SlotClassNames<TextSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
-    textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
     ...shorthands.overflow('visible'),
@@ -52,6 +47,10 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
   },
+  base300: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
   base400: {
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -80,17 +79,26 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeHero1000,
     lineHeight: tokens.lineHeightHero1000,
   },
-  monospace: {
+  fontBase: {
+    fontFamily: tokens.fontFamilyBase,
+  },
+  fontMonospace: {
     fontFamily: tokens.fontFamilyMonospace,
   },
-  numeric: {
+  fontNumeric: {
     fontFamily: tokens.fontFamilyNumeric,
+  },
+  weightRegular: {
+    fontWeight: tokens.fontWeightRegular,
   },
   weightMedium: {
     fontWeight: tokens.fontWeightMedium,
   },
   weightSemibold: {
     fontWeight: tokens.fontWeightSemibold,
+  },
+  alignStart: {
+    textAlign: 'start',
   },
   alignCenter: {
     textAlign: 'center',
@@ -109,6 +117,42 @@ const useStyles = makeStyles({
 export const useTextStyles_unstable = (state: TextState): TextState => {
   const styles = useStyles();
 
+  const sizeMap = {
+    none: undefined,
+    100: styles.base100,
+    200: styles.base200,
+    300: styles.base300,
+    400: styles.base400,
+    500: styles.base500,
+    600: styles.base600,
+    700: styles.hero700,
+    800: styles.hero800,
+    900: styles.hero900,
+    1000: styles.hero1000,
+  } as const;
+
+  const fontMap = {
+    none: undefined,
+    base: styles.fontBase,
+    monospace: styles.fontMonospace,
+    numeric: styles.fontNumeric,
+  } as const;
+
+  const weightMap = {
+    none: undefined,
+    regular: styles.weightRegular,
+    medium: styles.weightMedium,
+    semibold: styles.weightSemibold,
+  } as const;
+
+  const alignMap = {
+    none: undefined,
+    start: styles.alignStart,
+    center: styles.alignCenter,
+    end: styles.alignEnd,
+    justify: styles.alignJustify,
+  } as const;
+
   state.root.className = mergeClasses(
     textClassNames.root,
     styles.root,
@@ -119,22 +163,10 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
     state.underline && styles.underline,
     state.strikethrough && styles.strikethrough,
     state.underline && state.strikethrough && styles.strikethroughUnderline,
-    state.size === 100 && styles.base100,
-    state.size === 200 && styles.base200,
-    state.size === 400 && styles.base400,
-    state.size === 500 && styles.base500,
-    state.size === 600 && styles.base600,
-    state.size === 700 && styles.hero700,
-    state.size === 800 && styles.hero800,
-    state.size === 900 && styles.hero900,
-    state.size === 1000 && styles.hero1000,
-    state.font === 'monospace' && styles.monospace,
-    state.font === 'numeric' && styles.numeric,
-    state.weight === 'medium' && styles.weightMedium,
-    state.weight === 'semibold' && styles.weightSemibold,
-    state.align === 'center' && styles.alignCenter,
-    state.align === 'end' && styles.alignEnd,
-    state.align === 'justify' && styles.alignJustify,
+    sizeMap[state.size],
+    fontMap[state.font],
+    weightMap[state.weight],
+    alignMap[state.align],
     state.root.className,
   );
 

@@ -66,19 +66,19 @@ The new Text will provide props to customize text according to the standards def
 We're also introducing a new concept of wrappers for the main design variants (i.e. 'Title', 'Subtitle', 'Caption') to improve readability and semantics of the code. The wrappers are expected to have fixed styles in terms of size and font family, but flexible for the other supported props in Text.
 These wrappers follow the Fluent UI language so for any deviation, regarding the fixed styles mentioned above, should use the Text component instead, given that this is fully customizable.
 
-| Property      | Type                                                                   | Default value | Comments |
-| ------------- | ---------------------------------------------------------------------- | ------------- | -------- |
-| as            | "span" \| "p" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "pre" | "span"        |          |
-| wrap          | boolean                                                                | true          |          |
-| truncate      | boolean                                                                | false         |          |
-| block         | boolean                                                                | false         |          |
-| italic        | boolean                                                                | false         |          |
-| underline     | boolean                                                                | false         |          |
-| strikethrough | boolean                                                                | false         |          |
-| size          | number - 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000             | 300           |          |
-| font          | string - "base" \| "monospace" \| "numeric"                            | "base"        |          |
-| weight        | string - "regular" \| "medium" \| "semibold"                           | "regular"     |          |
-| align         | string - "start" \| "center" \| "end" \| "justify"                     | "start"       |          |
+| Property      | Type                                                                          | Default value | Comments |
+| ------------- | ----------------------------------------------------------------------------- | ------------- | -------- |
+| as            | "span" \| "p" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "pre"        | "span"        |          |
+| wrap          | boolean                                                                       | true          |          |
+| truncate      | boolean                                                                       | false         |          |
+| block         | boolean                                                                       | false         |          |
+| italic        | boolean                                                                       | false         |          |
+| underline     | boolean                                                                       | false         |          |
+| strikethrough | boolean                                                                       | false         |          |
+| size          | "none" \| 100 \| 200 \| 300 \| 400 \| 500 \| 600 \| 700 \| 800 \| 900 \| 1000 | "none"        |          |
+| font          | "none" \| "base" \| "monospace" \| "numeric"                                  | "none"        |          |
+| weight        | "none" \| "regular" \| "medium" \| "semibold"                                 | "none"        |          |
+| align         | "none" \| "start" \| "center" \| "end" \| "justify"                           | "none"        |          |
 
 ### make-styles rules
 

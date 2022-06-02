@@ -66,15 +66,15 @@ export const textClassNames: SlotClassNames<TextSlots>;
 
 // @public
 export type TextProps = ComponentProps<TextSlots> & {
-    align?: 'start' | 'center' | 'end' | 'justify';
+    align?: 'none' | 'start' | 'center' | 'end' | 'justify';
     block?: boolean;
-    font?: 'base' | 'monospace' | 'numeric';
+    font?: 'none' | 'base' | 'monospace' | 'numeric';
     italic?: boolean;
-    size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
+    size?: 'none' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
     strikethrough?: boolean;
     truncate?: boolean;
     underline?: boolean;
-    weight?: 'regular' | 'medium' | 'semibold';
+    weight?: 'none' | 'regular' | 'medium' | 'semibold';
     wrap?: boolean;
 };
 

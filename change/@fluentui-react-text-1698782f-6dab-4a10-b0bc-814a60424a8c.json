@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Text component no longer force applies styles by default #22855",
+  "packageName": "@fluentui/react-text",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
