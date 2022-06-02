@@ -179,7 +179,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('currentColor'),
   },
   'outline-brand': {
-    color: tokens.colorBrandBackground,
+    color: tokens.colorBrandForeground1,
   },
   'outline-danger': {
     color: tokens.colorPaletteRedForeground3,
@@ -233,7 +233,7 @@ const useRootStyles = makeStyles({
   'tint-severe': {
     backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
     color: tokens.colorPaletteDarkOrangeForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder1),
   },
   'tint-subtle': {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -243,12 +243,12 @@ const useRootStyles = makeStyles({
   'tint-success': {
     backgroundColor: tokens.colorPaletteGreenBackground1,
     color: tokens.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+    ...shorthands.borderColor(tokens.colorPaletteGreenBorder1),
   },
   'tint-warning': {
     backgroundColor: tokens.colorPaletteYellowBackground1,
     color: tokens.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
+    ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
   },
 });
 
