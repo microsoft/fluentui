@@ -26,6 +26,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/babel-preset-global-context": {
+      "root": "packages/react-components/babel-preset-global-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/babel-preset-global-context/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
