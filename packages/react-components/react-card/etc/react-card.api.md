@@ -87,15 +87,20 @@ export type CardProps = ComponentProps<CardSlots> & {
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
     orientation?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large';
+    selectable?: boolean;
+    selected?: boolean;
+    defaultSelected?: boolean;
+    onCardSelect?: (selected: boolean) => void;
 };
 
 // @public
 export type CardSlots = {
     root: Slot<'div'>;
+    select?: Slot<'input'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size' | 'selectable' | 'selected'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;
