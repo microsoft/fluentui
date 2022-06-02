@@ -3,5 +3,4 @@ import fluentStorybookTheme from './theme';
 
 addons.setConfig({
   theme: fluentStorybookTheme,
-  showPanel: false,
 });

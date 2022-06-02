@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "perf: rework mergeClasses() to compute cache key faster",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

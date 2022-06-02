@@ -2,7 +2,7 @@ import { ArgTypes } from '@storybook/api';
 import * as React from 'react';
 import { Avatar, AvatarProps } from '../index';
 
-export const Default = (props: Partial<AvatarProps>) => <Avatar aria-label="Guest" {...props} />;
+export const Default = (props: Partial<AvatarProps>) => <Avatar {...props} />;
 
 const argTypes: ArgTypes = {
   initials: {

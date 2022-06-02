@@ -250,7 +250,6 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checked
     openOnHover?: boolean;
     persistOnItemClick?: boolean;
     positioning?: PositioningShorthand;
-    closeOnScroll?: boolean;
 };
 
 // @public (undocumented)
@@ -277,7 +276,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'inline' | 'onOpenChange' | 'openOnContext' | 'persistOnItemClick'> & Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll'>> & {
+export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'inline' | 'onOpenChange' | 'openOnContext' | 'persistOnItemClick'> & Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover'>> & {
     contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;

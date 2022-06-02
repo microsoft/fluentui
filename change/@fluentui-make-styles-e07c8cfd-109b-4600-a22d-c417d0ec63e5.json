@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "block usage of CSS shorthands in typings, remove CSS shorthands expansion",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

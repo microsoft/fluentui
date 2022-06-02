@@ -445,29 +445,6 @@ describe('Menu', () => {
       .get(menuSelector)
       .should('be.visible');
   });
-
-  it('should close on scroll when closeOnScroll is set', () => {
-    mount(
-      <Menu closeOnScroll>
-        <MenuTrigger>
-          <button>Menu</button>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Item</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>,
-    );
-    cy.get(menuTriggerSelector)
-      .click()
-      .get(menuSelector)
-      .should('exist')
-      .get('body')
-      .trigger('wheel')
-      .get(menuSelector)
-      .should('not.exist');
-  });
 });
 
 describe('SplitMenuItem', () => {
@@ -844,18 +821,6 @@ describe('Context menu', () => {
       .should('exist')
       .get(menuTriggerSelector)
       .click()
-      .get(menuSelector)
-      .should('not.exist');
-  });
-
-  it('should close on scroll outside', () => {
-    mount(<ContextMenuExample />);
-    cy.get(menuTriggerSelector)
-      .rightclick()
-      .get(menuSelector)
-      .should('exist')
-      .get('body')
-      .trigger('wheel')
       .get(menuSelector)
       .should('not.exist');
   });

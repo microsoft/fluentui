@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update tooling configs",
+  "packageName": "@fluentui/make-styles-webpack-loader",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

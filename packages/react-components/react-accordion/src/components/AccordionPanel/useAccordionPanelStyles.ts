@@ -1,7 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
 export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
@@ -13,7 +11,8 @@ export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.margin(0, tokens.spacingHorizontalM),
+    marginRight: '12px',
+    marginLeft: '12px',
   },
 });
 

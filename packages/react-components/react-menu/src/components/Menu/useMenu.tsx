@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
-import {
-  useControllableState,
-  useId,
-  useOnClickOutside,
-  useEventCallback,
-  useOnScrollOutside,
-} from '@fluentui/react-utilities';
+import { useControllableState, useId, useOnClickOutside, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -67,7 +61,6 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     contextTarget,
     setContextTarget,
     ...props,
-    closeOnScroll: props.closeOnScroll ?? false,
     menuTrigger,
     menuPopover,
     triggerRef,
@@ -118,13 +111,7 @@ const useMenuSelectableState = (
 const useMenuOpenState = (
   state: Pick<
     MenuState,
-    | 'isSubmenu'
-    | 'menuPopoverRef'
-    | 'onOpenChange'
-    | 'setContextTarget'
-    | 'triggerRef'
-    | 'openOnContext'
-    | 'closeOnScroll'
+    'isSubmenu' | 'menuPopoverRef' | 'onOpenChange' | 'setContextTarget' | 'triggerRef' | 'openOnContext'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
@@ -198,19 +185,6 @@ const useMenuOpenState = (
     ) as React.MutableRefObject<HTMLElement>[],
     callback: e => setOpen(e, { open: false }),
   });
-
-  // only close on scroll for context, or when closeOnScroll is specified
-  const closeOnScroll = state.openOnContext || state.closeOnScroll;
-  useOnScrollOutside({
-    contains: elementContains,
-    element: targetDocument,
-    callback: ev => setOpen(ev, { open: false }),
-    refs: [state.menuPopoverRef, !state.openOnContext && state.triggerRef].filter(
-      Boolean,
-    ) as React.MutableRefObject<HTMLElement>[],
-    disabled: !open || !closeOnScroll,
-  });
-
   useOnMenuMouseEnter({
     element: targetDocument,
     callback: e => {
