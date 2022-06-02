@@ -35,7 +35,7 @@ Later in this topic, you will find examples covering each of these scenarios.
 
 ### When to not use slots
 
-- If you are trying to change the visual appearance every instance of a component, prefer to customize the theme.
+- If you are trying to change the visual appearance of every instance of a component, prefer to customize the theme.
   Fluent UI React components leverage theme design tokens to render consistently.
   For example, if you want to have borders to be a specific color on `:hover`,
   you can create a theme that overrides `colorNeutralStroke1Hover`.
@@ -296,7 +296,7 @@ export type InputSlots = {
 
 ### Styling and rendering components with slots
 
-You can think of each slot as container for props and style that will be rendered as an element.
+You can think of each slot as a container for props and style that will be rendered as an element.
 
 The Fluent UI hooks architecture breaks up component rendering primarily into 3 parts
 
@@ -347,7 +347,7 @@ const renderButton_unstable = (state: ButtonState) => {
 };
 ```
 
-The `getSlots` method splits up the state to return the slot elements to render and the props to apply.
+The `getSlots` method splits up the state to return the slot elements to render and the props to apply to each slot.
 This makes writing render methods straightforward and mostly boilerplate as most of the work was done in the hooks.
 The component's render method can conditionally render slots.
 
