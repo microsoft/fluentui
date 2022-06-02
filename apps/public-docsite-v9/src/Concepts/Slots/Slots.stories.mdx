@@ -37,11 +37,13 @@ Later in this topic, you will find examples covering each of these scenarios.
 
 - If you are trying to change the visual appearance every instance of a component, prefer to customize the theme.
   Fluent UI React components leverage theme design tokens to render consistently.
-  For example, if you want to have borders to be a specific color on `:hover`, you can create a theme that overrides `colorNeutralStroke1Hover`.
+  For example, if you want to have borders to be a specific color on `:hover`,
+  you can create a theme that overrides `colorNeutralStroke1Hover`.
 
 - If you need to slightly adjust the display of a specific component instance, prefer to apply a custom style.
   For example, if you want to make a particular component have a thicker border.
   You create the style using `makeStyles` and/or `mergeClasses` and then apply it to the component using `className`.
+  See the Styling Components topic for more information.
 
 - If you want to change how a component behaves, make deep style customizations,
   replace non-slot parts, or wrap a component with different props, then consider using the hooks API.
@@ -57,45 +59,32 @@ It also has an `icon` slot that only renders when there is neither an image nor 
 ### What about children?
 
 The primary content within a component is defined by adding children.
-If you like, you can think of children as an unnamed slot.
+Component children allow for building deep hierarchies using JSX/TSX.
+They also allow for heterogeneous types of content.
 
-Component children allow for building deeper hierarchies using JSX/TSX.
-They also allow for greater extension of the types of content.
-
-For example, Menu is a hierarchy of menu items.
-Each level of submenu can contain different trigger configurations, and
-the type of menu items in the list can vary.
+For example, `Accordion` is a hierarchy of `AccordionItem` elements.
 
 ```tsx
-<Menu>
-  <MenuTrigger>
-    <Button>Toggle menu</Button>
-  </MenuTrigger>
-  <MenuPopover>
-    <MenuList>
-      <MenuGroup>
-        <MenuGroupHeader>Create New Items</MenuGroupHeader>
-        <MenuItem>New Project</MenuItem>
-        <MenuItem>New Timeline</MenuItem>
-      </MenuGroup>
-      <MenuDivider />
-      <MenuItem disabled>Open File...</MenuItem>
-      <MenuItem>Open Folder...</MenuItem>
-      <MenuDivider />
-      <Menu>
-        <MenuTrigger>
-          <MenuItem>Zoom</MenuItem>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>Zoom In</MenuItem>
-            <MenuItem>Zoom Out</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </MenuList>
-  </MenuPopover>
-</Menu>
+<Accordion>
+  <AccordionItem value="1">
+    <AccordionHeader>Accordion Header 1</AccordionHeader>
+    <AccordionPanel>
+      <div>Accordion Panel 1</div>
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="2">
+    <AccordionHeader>Accordion Header 2</AccordionHeader>
+    <AccordionPanel>
+      <div>Accordion Panel 2</div>
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem value="3">
+    <AccordionHeader>Accordion Header 3</AccordionHeader>
+    <AccordionPanel>
+      <div>Accordion Panel 3</div>
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
 ```
 
 ## Usage examples
@@ -162,11 +151,11 @@ This is an escape hatch in the slots API, so prefer the other techniques wheneve
 By passing `renderBigLetterIcon` as the `children`, the `span` that normally contains the icon is replaced with an `h1`.
 
 ```tsx
-const renderBigLetterIcon () => {
+const renderBigLetterIcon (Component, props) => {
   return <h1>B<h1>;
 };
 
-<Button icon={{ children: renderBigLetterIcon }}>utton</Button>;
+<Button icon={{ children: renderBigLetterIcon }}>Bold</Button>;
 ```
 
 ## For component developers
@@ -251,22 +240,14 @@ type SlotRenderFunction<Props> = (
 In the Fluent UI React composition architecture, components define their props using `ComponentProps<Slot>`
 and state for rendering using `ComponentState<Slot>`.
 
-For example, Button defines an optional icon slot.
+For example, Spinner defines optional spinner and label slots.
 
 ```tsx
-type ButtonSlots = {
-  root: NonNullable<Slot<ARIAButtonSlotProps>>;
-  icon?: Slot<'span'>;
+type SpinnerSlots = {
+  root: NonNullable<Slot<'div'>>;
+  spinner?: Slot<'span'>;
+  label?: Slot<typeof Label>;
 };
-
-type ButtonProps = ComponentProps<ButtonSlots> & {
-  ...
-};
-
-type ButtonState = ComponentState<ButtonSlots> & {
-  ...
-};
-}
 ```
 
 #### Optional slots
@@ -288,12 +269,7 @@ indicator: NonNullable<Slot<'div'>>;
 ```
 
 Non-nullable and optional/required slots are independent from one another.
-Each of the following are valid slot definitions.
-
-- icon: `<Slot<'span'>`
-- icon?: `Slot<'span'>`
-- icon: `NonNullable<Slot<'span'>>`
-- icon?: `NonNullable<Slot<'span'>>`
+A slot can be defined with as optional or required and nullable or non-nullable.
 
 #### The special root slot
 
