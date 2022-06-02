@@ -65,4 +65,5 @@ export type CardProps = ComponentProps<CardSlots> & {
 /**
  * State used in rendering Card.
  */
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
+export type CardState = ComponentState<CardSlots> &
+  Required<Pick<CardProps, 'appearance' | 'orientation' | 'size' | 'selectable' | 'selected'>>;
