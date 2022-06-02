@@ -1,4 +1,4 @@
-import { AvatarSizes } from '../Avatar/Avatar.types';
+import { AvatarProps, AvatarSizes } from '../Avatar/Avatar.types';
 import { Button } from '@fluentui/react-button';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -37,9 +37,9 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
 
   /**
    * Whether the overflow indicator should render an icon instead of the number of overflowed avatars.
-   * @default number-overflowed
+   * @default count
    */
-  overflowIndicator?: 'number-overflowed' | 'icon';
+  overflowIndicator?: 'count' | 'icon';
 
   /**
    * Size of the avatars.
@@ -64,3 +64,11 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
      */
     tooltipContent: TooltipProps['content'];
   };
+
+export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
+  color?: AvatarProps['color'];
+};
+
+export type AvatarGroupContextValues = {
+  avatarGroup: AvatarGroupContextValue;
+};

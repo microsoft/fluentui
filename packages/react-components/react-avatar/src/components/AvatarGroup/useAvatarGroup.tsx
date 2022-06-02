@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { extraAvatarGroupClassNames } from './useAvatarGroupStyles';
-import { getInitials } from '../../utils/getInitials';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { PopoverSurface } from '@fluentui/react-popover';
-import { useId } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
+import { AvatarGroupContext } from '../../contexts/index';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
 /**
@@ -19,48 +18,35 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const {
-    children,
-    layout = 'spread',
-    maxAvatars = 5,
-    overflowIndicator = 'number-overflowed',
-    size = 32,
-    ...rest
-  } = props;
-  const id = useId('avatarGroup-', props.id);
-  const childrenCount = React.Children.count(children);
+  const { children, layout = 'spread', maxAvatars = 5, overflowIndicator = 'count', size = 32 } = props;
+  const childrenArray = React.Children.toArray(children);
+  const childrenCount = childrenArray.length;
   const numOfAvatarsToShow = layout === 'pie' ? 3 : maxAvatars;
   const hasOverflow = childrenCount > numOfAvatarsToShow;
-  const childrenArray = React.Children.toArray(children);
+  const numOfAvatarsToHide = childrenCount - numOfAvatarsToShow + 1;
 
-  const rootChildren = childrenArray.slice(0, numOfAvatarsToShow).map(child => {
-    if (React.isValidElement(child)) {
-      // If the layout is pie and the size is less than 40, the Avatar should only display the first initial
-      let initials = child.props.initials;
-
-      if (layout === 'pie' && child.props.name && size < 40) {
-        // No need to check if it's rtl since we will use only the first letter.
-        initials = getInitials(child.props.name, false)[0];
-      }
-
-      // Overwritting size to the one given in the props.
-      return React.cloneElement(child, { size: size, initials: initials, color: child.props.color ?? 'colorful' });
+  let rootChildren = childrenArray;
+  if (hasOverflow) {
+    if (layout === 'pie') {
+      rootChildren = childrenArray.slice(0, numOfAvatarsToShow);
+    } else {
+      rootChildren = childrenArray.slice(numOfAvatarsToHide);
     }
-    return child;
-  });
+  }
 
-  const root = getNativeElementProps('div', {
-    ref,
-    id: id,
-    role: 'group',
-    children: rootChildren,
-    ...rest,
-  });
+  const root = getNativeElementProps(
+    'div',
+    {
+      ...props,
+      ref,
+      role: 'group',
+      children: rootChildren,
+    },
+    ['size'],
+  );
 
-  const popoverTriggerChildren =
-    layout === 'pie' || overflowIndicator === 'icon' ? null : `+${childrenCount - numOfAvatarsToShow}`;
+  const popoverTriggerChildren = layout === 'pie' || overflowIndicator === 'icon' ? null : `+${numOfAvatarsToHide}`;
   const popoverTriggerIcon = layout !== 'pie' && overflowIndicator === 'icon' ? <MoreHorizontalRegular /> : undefined;
-
   const popoverTrigger = resolveShorthand(props.popoverTrigger, {
     required: true,
     defaultProps: {
@@ -73,29 +59,36 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
   const popoverChildren =
     hasOverflow &&
-    childrenArray.slice(numOfAvatarsToShow).map((child, k) => {
-      if (React.isValidElement(child)) {
-        // Avatars inside PopoverSurface must be size 24
-        return (
-          <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={k} tabIndex={0}>
-            {React.cloneElement(child, { size: 24, color: child.props.color ?? 'colorful' })}
-            <Label size="medium">{child.props.name ?? child.props.initials}</Label>
-          </li>
-        );
-      }
-      return child;
-    });
-
+    (layout === 'pie' ? childrenArray.slice(numOfAvatarsToShow) : childrenArray.slice(0, numOfAvatarsToHide)).map(
+      child => {
+        if (React.isValidElement(child)) {
+          return (
+            <li className={extraAvatarGroupClassNames.popoverSurfaceItem} key={child.key} role="listitem" tabIndex={0}>
+              {child}
+              <Label size="medium">{child.props.name}</Label>
+            </li>
+          );
+        }
+        return child;
+      },
+    );
   const popoverSurface = resolveShorthand(props.popoverSurface, {
     required: true,
     defaultProps: {
-      children: <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer}>{popoverChildren}</ul>,
+      // Avatars inside PopoverSurface must be size 24
+      children: (
+        <AvatarGroupContext.Provider value={{ color: 'colorful', layout: undefined, size: 24 }}>
+          <ul className={extraAvatarGroupClassNames.popoverSurfaceContainer} role="list">
+            {popoverChildren}
+          </ul>
+        </AvatarGroupContext.Provider>
+      ),
       'aria-label': 'Overflow',
     },
   });
 
-  const state: AvatarGroupState = {
-    hasOverflow: hasOverflow,
+  return {
+    hasOverflow,
     layout,
     maxAvatars: numOfAvatarsToShow,
     overflowIndicator,
@@ -108,10 +101,8 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
       popoverTrigger: Button,
     },
 
-    root: root,
-    popoverTrigger: popoverTrigger,
-    popoverSurface: popoverSurface,
+    root,
+    popoverTrigger,
+    popoverSurface,
   };
-
-  return state;
 };

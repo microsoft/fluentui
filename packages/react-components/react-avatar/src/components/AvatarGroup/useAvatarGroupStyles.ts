@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { useSizeStyles } from '../Avatar/useAvatarStyles';
 import type { AvatarGroupSlots, AvatarGroupState } from './AvatarGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -21,25 +22,6 @@ const useStyles = makeStyles({
     display: 'inline-flex',
     position: 'relative',
   },
-});
-
-/**
- * Styles for each size.
- */
-const useSizeStyles = makeStyles({
-  20: { width: '20px', height: '20px' },
-  24: { width: '24px', height: '24px' },
-  28: { width: '28px', height: '28px' },
-  32: { width: '32px', height: '32px' },
-  36: { width: '36px', height: '36px' },
-  40: { width: '40px', height: '40px' },
-  48: { width: '48px', height: '48px' },
-  56: { width: '56px', height: '56px' },
-  64: { width: '64px', height: '64px' },
-  72: { width: '72px', height: '72px' },
-  96: { width: '96px', height: '96px' },
-  120: { width: '120px', height: '120px' },
-  128: { width: '128px', height: '128px' },
 });
 
 /**

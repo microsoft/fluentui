@@ -212,7 +212,7 @@ const useStyles = makeStyles({
   icon48: { fontSize: '48px' },
 });
 
-const useSizeStyles = makeStyles({
+export const useSizeStyles = makeStyles({
   16: { width: '16px', height: '16px' },
   20: { width: '20px', height: '20px' },
   24: { width: '24px', height: '24px' },

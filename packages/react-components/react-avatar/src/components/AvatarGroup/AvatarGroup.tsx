@@ -4,6 +4,7 @@ import { renderAvatarGroup_unstable } from './renderAvatarGroup';
 import { useAvatarGroupStyles_unstable } from './useAvatarGroupStyles';
 import type { AvatarGroupProps } from './AvatarGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useAvatarGroupContextValues } from '../../contexts/useAvatarGroupContextValues';
 
 /**
  * The AvatarGroup component represents a group of multiple people or entities by taking care of the arrangement
@@ -11,9 +12,10 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  */
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardRef((props, ref) => {
   const state = useAvatarGroup_unstable(props, ref);
+  const contextValues = useAvatarGroupContextValues(state);
 
   useAvatarGroupStyles_unstable(state);
-  return renderAvatarGroup_unstable(state);
+  return renderAvatarGroup_unstable(state, contextValues);
 });
 
 AvatarGroup.displayName = 'AvatarGroup';
