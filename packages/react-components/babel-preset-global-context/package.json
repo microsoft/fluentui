@@ -28,15 +28,10 @@
   "dependencies": {
     "@babel/generator": "^7.12.13",
     "@babel/helper-plugin-utils": "^7.12.13",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-typescript": "^7.16.7",
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
     "@emotion/hash": "^0.8.0",
-    "ajv": "^8.4.0",
-    "babel-plugin-tester": "^10.1.0",
     "find-up": "^5.0.0",
-    "json-schema": "^0.4.0",
     "tslib": "^2.1.0"
   },
   "beachball": {
