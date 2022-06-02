@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Button, TabList, Tab, Label, Input, useId, Subtitle2, tokens, Badge } from '@fluentui/react-components';
+import { Button, TabList, Tab, Label, Input, useId, Subtitle2, tokenss } from '@fluentui/react-components';
 import { AddCircleRegular } from '@fluentui/react-icons';
 
 export interface SidebarProps {
