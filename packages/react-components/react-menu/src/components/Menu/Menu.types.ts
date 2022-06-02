@@ -79,6 +79,13 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Configures the positioned menu
      */
     positioning?: PositioningShorthand;
+
+    /**
+     * Close when scroll outside of it
+     *
+     * @default false
+     */
+    closeOnScroll?: boolean;
   };
 
 export type MenuState = ComponentState<MenuSlots> &
@@ -92,7 +99,7 @@ export type MenuState = ComponentState<MenuSlots> &
     | 'openOnContext'
     | 'persistOnItemClick'
   > &
-  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover'>> & {
+  Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll'>> & {
     /**
      * Anchors the popper to the mouse click for context events
      */
