@@ -1,4 +1,3 @@
-import { Button } from '@fluentui/react-button';
 import { PopoverSurface } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
 import type { AvatarSizes } from '../Avatar/Avatar.types';
@@ -10,7 +9,7 @@ export type AvatarGroupSlots = {
   /**
    * Popover trigger slot that can be used to change the overflow indicator.
    */
-  popoverTrigger: NonNullable<Slot<typeof Button>>;
+  popoverTrigger: NonNullable<Slot<'button'>>;
 
   /**
    * Popover surface that will be displayed when the popover is triggered.
