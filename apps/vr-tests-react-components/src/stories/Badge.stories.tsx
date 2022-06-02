@@ -195,20 +195,3 @@ propValues.size.forEach(size =>
     { includeRtl: true },
   ),
 );
-
-// weight stories
-propValues.weight.forEach(weight =>
-  badgeStories.addStory(`weight: ${weight}`, () => {
-    const styles = useStyles();
-    return (
-      <div className={styles.groupSet}>
-        {propValues.size.map(size => (
-          <div key={size} className={styles.group}>
-            <span className={styles.groupLabel}>size: {size}</span>
-            <BadgeSampleRow weight={weight} size={size} />
-          </div>
-        ))}
-      </div>
-    );
-  }),
-);

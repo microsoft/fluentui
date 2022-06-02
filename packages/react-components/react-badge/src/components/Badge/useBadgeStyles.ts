@@ -15,23 +15,10 @@ const useRootStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-  },
-
-  // font
-
-  caption1: {
-    ...typographyStyles.caption1,
-  },
-  caption1Strong: {
     ...typographyStyles.caption1Strong,
   },
-  caption1Stronger: {
-    ...typographyStyles.caption1Stronger,
-  },
-  caption2: {
-    ...typographyStyles.caption2,
-  },
-  caption2Strong: {
+
+  fontSmallToTiny: {
     ...typographyStyles.caption2Strong,
   },
 
@@ -303,16 +290,10 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
 
   const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
 
-  // Map weight to font props, depending on size
-  // Note there is no "caption2Stronger", so bold is the same as semibold for smallToTiny
-  const rootFontStyles = smallToTiny
-    ? { regular: rootStyles.caption2, semibold: rootStyles.caption2Strong, bold: rootStyles.caption2Strong }
-    : { regular: rootStyles.caption1, semibold: rootStyles.caption1Strong, bold: rootStyles.caption1Stronger };
-
   state.root.className = mergeClasses(
     badgeClassNames.root,
     rootStyles.base,
-    rootFontStyles[state.weight],
+    smallToTiny && rootStyles.fontSmallToTiny,
     rootStyles[state.size],
     rootStyles[state.shape],
     state.shape === 'rounded' && smallToTiny && rootStyles.roundedSmallToTiny,

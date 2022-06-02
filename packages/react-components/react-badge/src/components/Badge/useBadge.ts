@@ -12,7 +12,6 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
     iconPosition = 'before',
     appearance = 'filled',
     color = 'brand',
-    weight = 'semibold',
   } = props;
 
   const state: BadgeState = {
@@ -21,7 +20,6 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
     iconPosition,
     appearance,
     color,
-    weight,
     components: {
       root: 'div',
       icon: 'span',

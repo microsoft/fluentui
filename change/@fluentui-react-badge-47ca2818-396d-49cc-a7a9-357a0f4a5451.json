@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Add weight prop. Fix padding/sizes to align with visual design.",
+  "comment": "Fix font sizes, padding, and colors to align with visual design.",
   "packageName": "@fluentui/react-badge",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
