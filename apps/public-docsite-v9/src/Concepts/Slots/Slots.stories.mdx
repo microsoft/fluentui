@@ -109,18 +109,13 @@ The `Input` component's `contentBefore` and `contentAfter` slots can be passed s
 <Input contentBefore="$" value="10" contentAfter=".00" />
 ```
 
-You can pass HTML values to slots.
-The `Button` component can be passed an `img`.
+You can pass JSX elements to slots. For example, the `Button` component can be passed an `img` or an `CalendarRegular24` icon.
 
 ```tsx
-<Button icon={<img src='site-icon.png' alt='branded site icon' /> }
-```
-
-You can pass JSX/TSX to slots.
-The `Button` component can be passed an `CalendarRegular24` icon.
-
-```tsx
-<Button icon={<CalendarRegular24 />}
+<>
+  <Button icon={<img src='site-icon.png' alt='branded site icon' /> }
+  <Button icon={<CalendarRegular24 />} />
+</>
 ```
 
 ### Passing props
