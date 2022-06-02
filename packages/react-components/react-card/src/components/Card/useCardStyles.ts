@@ -275,7 +275,6 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: `var(${cardCSSVars.cardSizeVar})`,
     right: `var(${cardCSSVars.cardSizeVar})`,
-    zIndex: 1,
   },
 });
 
