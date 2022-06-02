@@ -41,8 +41,8 @@ Later in this topic, you will find examples covering each of these scenarios.
   you can create a theme that overrides `colorNeutralStroke1Hover`.
 
 - If you need to slightly adjust the display of a specific component instance, prefer to apply a custom style.
-  For example, if you want to make a particular component have a thicker border.
-  You create the style using `makeStyles` and/or `mergeClasses` and then apply it to the component using `className`.
+  For example, if you want to make a particular component have a thicker border,
+  create a class style using `makeStyles` and then apply it to the component using `className`.
   See the Styling Components topic for more information.
 
 - If you want to change how a component behaves, make deep style customizations,
@@ -53,8 +53,8 @@ Later in this topic, you will find examples covering each of these scenarios.
 
 Some components conditionally render slots.
 
-For example, Avatar has `label` slot that only renders when there is no image provided.
-It also has an `icon` slot that only renders when there is neither an image nor a name provided.
+For example, Avatar has a `label` slot that only renders when there is no image provided.
+t also defines an `icon` slot that only renders when neither an image nor a name are provided.
 
 ### What about children?
 
@@ -109,7 +109,9 @@ You can pass JSX elements to slots. For example, the `Button` component can be p
 
 ### Passing props
 
-When a slot renders an element by default, you can pass props to it.
+A slot can take in the props of the type it is rendering.
+When a slot renders an element, you can pass any native element props for that element type.
+When a slot renders a React component, you can pass any of the components props.
 
 The `Avatar` component has a `badge` slot that renders a `PresenceBadge`.
 This allows you pass `PresenceBadge` props.
@@ -147,12 +149,13 @@ If you need to replace the slot's entire content, including the containing eleme
 pass a render function as the children.
 
 This is an escape hatch in the slots API, so prefer the other techniques whenever possible.
+If you replace the entire slot, very accessibility, layout, and styling still work properly.
 
-By passing `renderBigLetterIcon` as the `children`, the `span` that normally contains the icon is replaced with an `h1`.
+By passing `renderBigLetterIcon` as the `children`, the `span` that normally contains the icon is replaced with an `b` (bold).
 
 ```tsx
 const renderBigLetterIcon (Component, props) => {
-  return <h1>B<h1>;
+  return <b>B</b>;
 };
 
 <Button icon={{ children: renderBigLetterIcon }}>Bold</Button>;
@@ -183,11 +186,11 @@ Currently, `AlternateAs` only supports intrinsic element types.
 This is necessary to ensure components restrict slots where `Type` is a component type.
 Substituting other component types has caused deep typing, accessibility, and event handler problems in the past.
 
-For example,
-
-- `Slot<'div'>` means by default the slot will render a `div` element.
-- `Slot<typeof Button>` means by default the slot will render a `Button` component.
-- `Slot<'span', 'div' | 'pre'>` means that caller can use `as`to change from `span` to `div` or `pre`.
+| Slot                                 | Renders                                                                                           |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| `Slot<'div'>`                        | A `div` is always rendered                                                                        |
+| `Slot<typeof Button>`                | A `Button` component accepting `Button` props is rendered                                         |
+| `Slot<'span', 'div' `&#124;` 'pre'>` | A `span` is rendered by default. A caller can opt to render `div` or `pre` by using the `as` prop |
 
 ### Slot definition
 
@@ -349,6 +352,7 @@ const renderButton_unstable = (state: ButtonState) => {
 
 The `getSlots` method splits up the state to return the slot elements to render and the props to apply to each slot.
 This makes writing render methods straightforward and mostly boilerplate as most of the work was done in the hooks.
+This also help separate behavior, element structure, and style concerns.
 The component's render method can conditionally render slots.
 
 ## Wrap up
@@ -358,4 +362,4 @@ The component's render method can conditionally render slots.
   to consider when slots isn't the best choice.
 - The slots API provides a powerful extensibility mechanism with a minimal surface area.
   While the types are complex, they guide the caller with strong type safety.
-- The slots API supports the hooks API by letting components create addressable locations for props and class styles.
+- The slots API and the hooks API work together to let components create addressable locations for props and class styles.
