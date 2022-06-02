@@ -104,6 +104,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
    */
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
+  private _isMounted: boolean = false;
   protected _ariaMap: IPickerAriaIds;
   // eslint-disable-next-line deprecation/deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
@@ -152,6 +153,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   public componentDidMount(): void {
+    this._isMounted = true;
     this.selection.setItems(this.state.items);
     this._updateErrorMessage(this.state.items);
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
@@ -180,6 +182,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   }
 
   public componentWillUnmount(): void {
+    this._isMounted = false;
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
@@ -276,7 +279,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
-          error: css('ms-BasePicker-error', { display: 'none' }),
+          error: css('ms-BasePicker-error', ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
@@ -365,7 +368,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     );
   }
 
-  protected renderError = (className: string): JSX.Element | null => {
+  protected renderError = (className?: string): JSX.Element | null => {
     const errorMessage = this.props.errorMessage || this.state.errorMessage;
     if (!errorMessage) {
       return null;
@@ -1029,9 +1032,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     });
 
   private _updateErrorMessage(items: T[]): void {
-    this._getErrorMessage(items).then(errorMessage => {
-      this.setState({ errorMessage });
-    });
+    let newErrorMessage: string | JSX.Element | undefined;
+    this._getErrorMessage(items)
+      .then(errorMessage => {
+        newErrorMessage = errorMessage;
+      })
+      .catch(err => {
+        console.error(`Error updating the error message for picker '${this._id}'`, err);
+      })
+      .finally(() => {
+        if (this._isMounted) {
+          this.setState({ errorMessage: newErrorMessage });
+        }
+      });
   }
 
   /**
@@ -1153,7 +1166,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
-          error: css('ms-BasePicker-error', { display: 'none' }),
+          error: css('ms-BasePicker-error', ''),
           text: css(
             'ms-BasePicker-text',
             legacyStyles.pickerText,
