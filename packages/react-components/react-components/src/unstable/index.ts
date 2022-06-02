@@ -14,6 +14,7 @@ export {
   CardHeader,
   CardPreview,
   cardClassNames,
+  cardCSSVars,
   cardFooterClassNames,
   cardHeaderClassNames,
   cardPreviewClassNames,

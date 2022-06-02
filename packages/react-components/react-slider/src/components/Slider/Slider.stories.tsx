@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Slider } from '../../index';
 import type { Meta } from '@storybook/react';
 
+import bestPracticesMd from './SliderBestPractices.md';
 import descriptionMd from './SliderDescription.md';
 export { Default } from './stories/SliderDefault.stories';
 export { Size } from './stories/SliderSize.stories';
@@ -15,9 +16,8 @@ export default {
   component: Slider,
   parameters: {
     docs: {
-      // The provided typing is wrong, ignore it
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

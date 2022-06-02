@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 27 May 2022 07:39:11 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jun 2022 07:38:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.1)
+
+Thu, 02 Jun 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.0..@fluentui/react_v8.72.1)
+
+### Patches
+
+- update Layer to use getDocument instead of WindowContext document ([PR #23052](https://github.com/microsoft/fluentui/pull/23052) by sarah.higley@microsoft.com)
+
+## [8.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.0)
+
+Wed, 01 Jun 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.71.1..@fluentui/react_v8.72.0)
+
+### Minor changes
+
+- allow for showing a sortable icon and sortable aria-label on an unsorted but sortable column in a DetailsList ([PR #22947](https://github.com/microsoft/fluentui/pull/22947) by paruther@microsoft.com)
+
+## [8.71.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.71.1)
+
+Mon, 30 May 2022 07:44:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.71.0..@fluentui/react_v8.71.1)
+
+### Patches
+
+- Fixed bug where className changes in List props does not cause a rerender ([PR #23126](https://github.com/microsoft/fluentui/pull/23126) by odhanson@microsoft.com)
 
 ## [8.71.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.71.0)
 
