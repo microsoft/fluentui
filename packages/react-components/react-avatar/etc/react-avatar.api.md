@@ -27,16 +27,6 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 // @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
-// @public (undocumented)
-export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
-    color?: AvatarProps['color'];
-};
-
-// @public (undocumented)
-export type AvatarGroupContextValues = {
-    avatarGroup: AvatarGroupContextValue;
-};
-
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 
@@ -59,7 +49,7 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 };
 
 // @public
-export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
+export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
     overflowIndicator?: 'count' | 'icon';
@@ -71,6 +61,7 @@ export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
     popoverTrigger: NonNullable<Slot<typeof Button>>;
     popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    popoverSurfaceList: NonNullable<Slot<'ul'>>;
 };
 
 // @public
@@ -120,7 +111,7 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
 
 // @public
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;

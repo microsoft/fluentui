@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { extraAvatarGroupClassNames } from './useAvatarGroupStyles';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { PopoverSurface } from '@fluentui/react-popover';
-import { AvatarGroupContext } from '../../contexts/index';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
 /**
@@ -27,7 +24,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   let rootChildren = childrenArray;
   let popoverChildren = null;
   let popoverTriggerChildren = null;
-  let popoverTriggerIcon = null;
 
   if (layout === 'pie') {
     rootChildren = childrenArray.slice(0, numOfAvatarsToShow);
@@ -37,7 +33,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     popoverChildren = childrenArray.slice(0, numOfAvatarsToHide);
 
     if (overflowIndicator === 'icon' || size < 24) {
-      popoverTriggerIcon = <MoreHorizontalRegular />;
+      popoverTriggerChildren = <MoreHorizontalRegular />;
     } else {
       popoverTriggerChildren = `+${numOfAvatarsToHide}`;
     }

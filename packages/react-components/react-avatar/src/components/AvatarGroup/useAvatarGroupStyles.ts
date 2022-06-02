@@ -6,12 +6,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
   popoverSurface: 'fui-AvatarGroup__popoverSurface',
+  popoverSurfaceList: 'fui-AvatarGroup__popoverSurfaceList',
   popoverTrigger: 'fui-AvatarGroup__popoverTrigger',
-};
-
-export const extraAvatarGroupClassNames = {
-  popoverSurfaceItem: 'fui-AvatarGroup__popoverSurfaceItem',
-  popoverSurfaceContainer: 'fui-AvatarGroup__popoverSurfaceContainer',
 };
 
 /**
@@ -45,13 +41,11 @@ const usePopoverTriggerStyles = makeStyles({
   },
 });
 
-const usePopoverSurfaceStyles = makeStyles({
+const usePopoverSurfaceListStyles = makeStyles({
   base: {
-    [`& > .${extraAvatarGroupClassNames.popoverSurfaceContainer}`]: {
-      listStyleType: 'none',
-      ...shorthands.margin(0),
-      ...shorthands.padding(0),
-    },
+    listStyleType: 'none',
+    ...shorthands.margin(0),
+    ...shorthands.padding(0),
   },
 });
 
@@ -63,15 +57,19 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const popoverTriggerStyles = usePopoverTriggerStyles();
-  const popoverSurfaceStyles = usePopoverSurfaceStyles();
+  const popoverSurfaceListStyles = usePopoverSurfaceListStyles();
 
   state.root.className = mergeClasses(avatarGroupClassNames.root, styles.base, state.root.className);
 
   if (state.popoverSurface) {
-    state.popoverSurface.className = mergeClasses(
-      avatarGroupClassNames.popoverSurface,
-      popoverSurfaceStyles.base,
-      state.popoverSurface.className,
+    state.popoverSurface.className = mergeClasses(avatarGroupClassNames.popoverSurface, state.popoverSurface.className);
+  }
+
+  if (state.popoverSurfaceList) {
+    state.popoverSurfaceList.className = mergeClasses(
+      avatarGroupClassNames.popoverSurfaceList,
+      popoverSurfaceListStyles.base,
+      state.popoverSurfaceList.className,
     );
   }
 

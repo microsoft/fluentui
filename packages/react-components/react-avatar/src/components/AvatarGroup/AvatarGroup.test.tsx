@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
 import { AvatarGroup } from './AvatarGroup';
+import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../common/isConformant';
-import { Avatar } from '../Avatar';
+import { render } from '@testing-library/react';
 
 describe('AvatarGroup', () => {
   // TODO: Remove component-has-static-classnames-object from disabled tests.
@@ -21,15 +21,15 @@ describe('AvatarGroup', () => {
   it('renders a default state', () => {
     const result = render(
       <AvatarGroup>
-        <Avatar name="Katri Athokas" />
-        <Avatar name="Elvia Atkins" />
-        <Avatar name="Cameron Evans" />
-        <Avatar name="Wanda Howard" />
-        <Avatar name="Mona Kane" />
-        <Avatar name="Allan Munger" />
-        <Avatar name="Daisy Phillips" />
-        <Avatar name="Robert Tolbert" />
-        <Avatar name="Kevin Sturgis" />
+        <AvatarGroupItem name="Katri Athokas" />
+        <AvatarGroupItem name="Elvia Atkins" />
+        <AvatarGroupItem name="Cameron Evans" />
+        <AvatarGroupItem name="Wanda Howard" />
+        <AvatarGroupItem name="Mona Kane" />
+        <AvatarGroupItem name="Allan Munger" />
+        <AvatarGroupItem name="Daisy Phillips" />
+        <AvatarGroupItem name="Robert Tolbert" />
+        <AvatarGroupItem name="Kevin Sturgis" />
       </AvatarGroup>,
     );
     expect(result.container).toMatchSnapshot();

@@ -6,64 +6,80 @@ exports[`AvatarGroup renders a default state 1`] = `
     class="fui-AvatarGroup"
     role="group"
   >
-    <span
-      aria-label="Allan Munger"
-      class="fui-Avatar"
-      id="avatar-1"
-      role="img"
+    <div
+      class="fui-AvatarGroupItem"
     >
       <span
-        aria-hidden="true"
-        class="fui-Avatar__initials"
+        aria-label="Allan Munger"
+        class="fui-Avatar fui-AvatarGroupItem__avatar"
+        id="avatar-1"
+        role="img"
       >
-        AM
+        <span
+          class="fui-Avatar__initials"
+          id="avatar-1__initials"
+        >
+          AM
+        </span>
       </span>
-    </span>
-    <span
-      aria-label="Daisy Phillips"
-      class="fui-Avatar"
-      id="avatar-2"
-      role="img"
+    </div>
+    <div
+      class="fui-AvatarGroupItem"
     >
       <span
-        aria-hidden="true"
-        class="fui-Avatar__initials"
+        aria-label="Daisy Phillips"
+        class="fui-Avatar fui-AvatarGroupItem__avatar"
+        id="avatar-2"
+        role="img"
       >
-        DP
+        <span
+          class="fui-Avatar__initials"
+          id="avatar-2__initials"
+        >
+          DP
+        </span>
       </span>
-    </span>
-    <span
-      aria-label="Robert Tolbert"
-      class="fui-Avatar"
-      id="avatar-3"
-      role="img"
+    </div>
+    <div
+      class="fui-AvatarGroupItem"
     >
       <span
-        aria-hidden="true"
-        class="fui-Avatar__initials"
+        aria-label="Robert Tolbert"
+        class="fui-Avatar fui-AvatarGroupItem__avatar"
+        id="avatar-3"
+        role="img"
       >
-        RT
+        <span
+          class="fui-Avatar__initials"
+          id="avatar-3__initials"
+        >
+          RT
+        </span>
       </span>
-    </span>
-    <span
-      aria-label="Kevin Sturgis"
-      class="fui-Avatar"
-      id="avatar-4"
-      role="img"
+    </div>
+    <div
+      class="fui-AvatarGroupItem"
     >
       <span
-        aria-hidden="true"
-        class="fui-Avatar__initials"
+        aria-label="Kevin Sturgis"
+        class="fui-Avatar fui-AvatarGroupItem__avatar"
+        id="avatar-4"
+        role="img"
       >
-        KS
+        <span
+          class="fui-Avatar__initials"
+          id="avatar-4__initials"
+        >
+          KS
+        </span>
       </span>
-    </span>
+    </div>
     <button
       aria-describedby="tooltip-6"
-      aria-haspopup="dialog"
-      class="fui-Button fui-AvatarGroup__popoverTrigger"
+      aria-expanded="false"
+      class="fui-AvatarGroup__popoverTrigger"
       data-tabster="{\\"deloser\\":{}}"
-      type="button"
+      tabindex="1"
     >
       +5
     </button>
