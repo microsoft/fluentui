@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
 
+    // Border setting using after pseudo element to allow CardPreview to render behind it
     '::after': {
       position: 'absolute',
       top: 0,
@@ -39,9 +40,11 @@ const useStyles = makeStyles({
     ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
     ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
+    // Prevents CardHeader and CardFooter from shrinking.
     [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
       flexShrink: 0,
     },
+    // Allows non-card components to grow to fill the available space.
     [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
       flexGrow: 1,
     },
@@ -51,10 +54,14 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     alignItems: 'center',
 
+    // Remove vertical padding to keep CardPreview content flush with Card's borders.
     [`> .${cardPreviewClassNames.root}`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
       marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
@@ -62,10 +69,14 @@ const useStyles = makeStyles({
   orientationVertical: {
     flexDirection: 'column',
 
+    // Remove lateral padding to keep CardPreview content flush with Card's borders.
     [`> .${cardPreviewClassNames.root}`]: {
       marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
       marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
     [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
       marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
     },
