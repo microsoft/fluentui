@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { CardProps, CardState } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { Enter } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render Card.
@@ -49,7 +50,9 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
       ? {
           onClick: onChangeHandler,
           onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
-            if (event.key === 'Enter') onChangeHandler();
+            if (event.key === Enter) {
+              onChangeHandler();
+            }
           },
         }
       : null;
