@@ -16,7 +16,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const GrouppingItems = () => (
+export const GroupingItems = () => (
   <Menu>
     <MenuTrigger>
       <Button>Toggle menu</Button>
@@ -42,7 +42,7 @@ export const GrouppingItems = () => (
   </Menu>
 );
 
-GrouppingItems.parameters = {
+GroupingItems.parameters = {
   docs: {
     description: {
       story: [
