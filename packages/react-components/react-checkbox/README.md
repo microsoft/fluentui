@@ -2,8 +2,6 @@
 
 **Checkbox component for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 Checkboxes give people a way to select one or more items from a group, or switch between
 two mutually exclusive options (checked or unchecked).
 
@@ -12,13 +10,13 @@ two mutually exclusive options (checked or unchecked).
 Import Checkbox:
 
 ```js
-import { Checkbox } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-components';
 ```
 
 #### Examples
 
 ```jsx
-<Checkbox label="Default Checkbox" />
+<Checkbox label="Default checkbox" />
 <Checkbox disabled label="Disabled" />
 <Checkbox shape="circular" label="Circular" />
 ```
