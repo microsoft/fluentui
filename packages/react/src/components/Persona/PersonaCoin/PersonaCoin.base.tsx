@@ -244,5 +244,5 @@ const renderPersonaCoinInitials = ({
 
   imageInitials = imageInitials || getInitials(text || primaryText || '', isRTL, allowPhoneInitials);
 
-  return imageInitials !== '' ? <span>{imageInitials}</span> : <Icon iconName="Contact" />;
+  return imageInitials !== '' ? <>{imageInitials}</> : <Icon iconName="Contact" />;
 };
