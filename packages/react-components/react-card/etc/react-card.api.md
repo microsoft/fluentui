@@ -84,6 +84,7 @@ export type CardPreviewState = ComponentState<CardPreviewSlots>;
 export type CardProps = ComponentProps<CardSlots> & {
     appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+    orientation?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large';
 };
 
@@ -93,7 +94,7 @@ export type CardSlots = {
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;
