@@ -73,25 +73,25 @@ export type {
 
 export {
   Toolbar,
+  ToolbarDivider,
+  ToolbarToggleButton,
   renderToolbar_unstable,
   toolbarClassNames,
-  useToolbarStyles_unstable,
   useToolbar_unstable,
-  ToolbarDivider,
   useToolbarDividerStyles_unstable,
-  ToolbarToggleButton,
+  useToolbarStyles_unstable,
 } from '@fluentui/react-toolbar';
 
 export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
   ToolbarContextValue,
   ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
   ToolbarProps,
   ToolbarSlots,
   ToolbarState,
-  ToolbarButtonProps,
-  ToolbarButtonState,
-  ToolbarDividerProps,
-  ToolbarDividerState,
   ToolbarToggleButtonProps,
   ToolbarToggleButtonState,
 } from '@fluentui/react-toolbar';
