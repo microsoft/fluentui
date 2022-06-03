@@ -70,7 +70,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         color: semanticColors.errorText,
         margin: 0,
         paddingTop: 5,
-        display: !!hasErrorMessage ? 'flex' : 'none',
+        display: hasErrorMessage ? 'flex' : 'none',
         alignItems: 'center',
       },
     ],

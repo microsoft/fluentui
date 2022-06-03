@@ -1023,7 +1023,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
             resolve(undefined);
           }
         } catch (err) {
-          console.error(err);
           resolve(this._getRequiredFieldErrorMessage(items));
         }
       } else {
@@ -1037,8 +1036,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       .then(errorMessage => {
         newErrorMessage = errorMessage;
       })
-      .catch(err => {
-        console.error(`Error updating the error message for picker '${this._id}'`, err);
+      .catch(() => {
+        /* NO-OP */
       })
       .finally(() => {
         if (this._isMounted) {
