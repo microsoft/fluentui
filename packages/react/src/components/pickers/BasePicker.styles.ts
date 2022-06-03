@@ -118,7 +118,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
           },
         },
       },
-      !!hasErrorMessage && {
+      hasErrorMessage && {
         borderColor: semanticColors.errorText,
         selectors: {
           ':hover': {

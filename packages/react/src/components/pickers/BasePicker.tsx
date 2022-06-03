@@ -104,12 +104,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
    */
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
-  private _isMounted: boolean = false;
   protected _ariaMap: IPickerAriaIds;
   // eslint-disable-next-line deprecation/deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
-  protected _id: string;
+  private _id: string;
   private _async: Async;
+  private _isMounted: boolean = false;
 
   public static getDerivedStateFromProps(newProps: IBasePickerProps<any>) {
     if (newProps.selectedItems) {
@@ -258,7 +258,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
 
     const suggestionsVisible = !!this.state.suggestionsVisible;
     const suggestionsAvailable = suggestionsVisible ? this._ariaMap.suggestionList : undefined;
-    const hasError = !!(this.state.errorMessage || this.props.errorMessage);
+    const hasError = typeof (this.state.errorMessage || this.props.errorMessage) !== 'undefined';
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
