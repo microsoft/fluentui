@@ -127,11 +127,12 @@ export const PeoplePickerNormalExample: React.FunctionComponent = () => {
     setShowSecondaryText(!showSecondaryText);
   };
 
-  function onGetErrorMessage(
-    items: IPersonaProps[],
-  ): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined {
-    return isPickerRequired && (items || []).length === 0 ? 'Please fill out this field.' : undefined;
-  }
+  const onGetErrorMessage = React.useCallback(
+    (items: IPersonaProps[]): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined => {
+      return isPickerRequired && (items || []).length === 0 ? 'Please fill out this field.' : undefined;
+    },
+    [isPickerRequired],
+  );
 
   return (
     <div>
