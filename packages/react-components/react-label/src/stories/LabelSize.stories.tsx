@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '../index'; // codesandbox-dependency: @fluentui/react-label ^9.0.0-beta
+import { Label } from '../index';
 
 export const Size = () => {
   return (
