@@ -695,8 +695,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React_2.Compon
     // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
-    protected _id: string;
-    // (undocumented)
     protected input: React_2.RefObject<IAutofill>;
     // (undocumented)
     get items(): T[];
@@ -2325,7 +2323,7 @@ export interface IBasePickerState<T> {
 
 // @public
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
-    hasErrorMessage?: boolean;
+    hasErrorMessage: boolean;
     isFocused?: boolean;
     inputClassName?: string;
 };
