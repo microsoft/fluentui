@@ -131,14 +131,16 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
     );
   };
 
-  const onGetErrorMessage = (items: IPersonaProps[]) => {
-    return isPickerRequired && (items || []).length == 0 && 'Please fill out this field.';
+  const onGetErrorMessage = (
+    items: IPersonaProps[],
+  ): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined => {
+    return isPickerRequired && (items || []).length == 0 ? 'Please fill out this field.' : undefined;
   };
 
   return (
     <div>
       <ListPeoplePicker
-        label={showPickerLabel && pickerLabel}
+        label={showPickerLabel ? pickerLabel : undefined}
         // eslint-disable-next-line react/jsx-no-bind
         onResolveSuggestions={onFilterChanged}
         // eslint-disable-next-line react/jsx-no-bind
