@@ -286,7 +286,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           screenReaderText: legacyStyles.screenReaderOnly,
         };
 
-    const comboLabel = this.props['aria-label'] || inputProps?.['aria-label'];
+    const comboLabel = this.props.ariaLabel || this.props['aria-label'] || inputProps?.['aria-label'];
     const inputId = inputProps?.id ? inputProps.id : this._ariaMap.combobox;
 
     // selectionAriaLabel is contained in a separate <span> rather than an aria-label on the items list
