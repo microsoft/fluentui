@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update Layer to use getDocument instead of WindowContext document",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

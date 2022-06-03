@@ -1,15 +1,34 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { Avatar } from '../../Avatar';
 
 export type AvatarGroupItemSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div', 'li'>>;
+
+  /**
+   * Avatar that represents a person or entity.
+   */
+  avatar: NonNullable<Slot<typeof Avatar>>;
+
+  /**
+   * Label used for the name of the AvatarGroupItem when rendered as an overflow item.
+   * The content of the label, by default, is the `name` prop from the `avatar` slot.
+   */
+  overflowLabel: NonNullable<Slot<'span'>>;
 };
 
 /**
  * AvatarGroupItem Props
  */
-export type AvatarGroupItemProps = ComponentProps<AvatarGroupItemSlots> & {};
+export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>;
 
 /**
  * State used in rendering AvatarGroupItem
  */
-export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots>;
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
+  /**
+   * Whether the Avatar is an overflow item.
+   *
+   * @default false
+   */
+  isOverflowItem?: boolean;
+};
