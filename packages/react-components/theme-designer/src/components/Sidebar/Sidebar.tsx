@@ -39,6 +39,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
+  keyColor: {
+    paddingLeft: '0px',
+  },
   labels: {
     display: 'grid',
     gridTemplateColumns: '135px auto',
@@ -88,9 +91,16 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         <div className={styles.inputs}>
           <Label htmlFor={keyColorId}>Key Color Value</Label>
           <div className={styles.labels}>
-            <Input size="large" appearance="underline" id={keyColorId} />
+            <Input
+              className={styles.keyColor}
+              size="large"
+              appearance="underline"
+              id={keyColorId}
+              value={keyColor}
+              onChange={changeKeyColor}
+            />
             <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} onChange={changeKeyColor} />
+              <input className={styles.color} type="color" id={keyColorId} value={keyColor} onChange={changeKeyColor} />
             </div>
           </div>
         </div>
@@ -98,18 +108,36 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         <div className={styles.inputs}>
           <Label htmlFor={lightThemeId}>Light Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={lightThemeId} />
+            <Input
+              size="small"
+              appearance="underline"
+              id={lightThemeId}
+              value={lightTheme}
+              onChange={changeLightTheme}
+            />
             <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
-              <input className={styles.color} type="color" id={lightThemeId} onChange={changeLightTheme} />
+              <input
+                className={styles.color}
+                type="color"
+                id={lightThemeId}
+                value={lightTheme}
+                onChange={changeLightTheme}
+              />
             </div>
           </div>
         </div>
         <div className={styles.inputs}>
           <Label htmlFor={darkThemeId}>Dark Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={darkThemeId} />
+            <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
             <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
-              <input className={styles.color} type="color" id={darkThemeId} onChange={changeDarkTheme} />
+              <input
+                className={styles.color}
+                type="color"
+                id={darkThemeId}
+                value={darkTheme}
+                onChange={changeDarkTheme}
+              />
             </div>
           </div>
         </div>
