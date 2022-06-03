@@ -5,6 +5,8 @@ import { AddCircleRegular } from '@fluentui/react-icons';
 
 export interface SidebarProps {
   className?: string;
+  keyColor: string;
+  changeKeyColor: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const useStyles = makeStyles({
@@ -68,9 +70,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const lightThemeId = useId();
   const darkThemeId = useId();
 
-  const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
-  const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
-
   const [lightTheme, setLightTheme] = React.useState<string>('#FFFFFF');
   const changeLightTheme = React.useCallback(e => setLightTheme(e.target.value), [setLightTheme]);
 
@@ -96,11 +95,17 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               size="large"
               appearance="underline"
               id={keyColorId}
-              value={keyColor}
-              onChange={changeKeyColor}
+              value={props.keyColor}
+              onChange={props.changeKeyColor}
             />
-            <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} value={keyColor} onChange={changeKeyColor} />
+            <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
+              <input
+                className={styles.color}
+                type="color"
+                id={keyColorId}
+                value={props.keyColor}
+                onChange={props.changeKeyColor}
+              />
             </div>
           </div>
         </div>

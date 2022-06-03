@@ -58,6 +58,9 @@ const brand: BrandVariants = {
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
+  const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
+  const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
+
   const lightTheme = createLightTheme(brand);
   const darkTheme = createDarkTheme(brand);
 
@@ -65,7 +68,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
         <Nav className={styles.nav} />
-        <Sidebar className={styles.sidebar} />
+        <Sidebar className={styles.sidebar} keyColor={keyColor} changeKeyColor={changeKeyColor} />
         <Content className={styles.content} brand={brand} darkTheme={darkTheme} lightTheme={lightTheme} />
       </div>
     </FluentProvider>
