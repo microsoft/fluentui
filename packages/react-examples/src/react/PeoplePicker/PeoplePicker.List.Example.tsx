@@ -131,11 +131,11 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
     );
   };
 
-  const onGetErrorMessage = (
+  function onGetErrorMessage(
     items: IPersonaProps[],
-  ): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined => {
-    return isPickerRequired && (items || []).length == 0 ? 'Please fill out this field.' : undefined;
-  };
+  ): string | JSX.Element | PromiseLike<string | JSX.Element> | undefined {
+    return isPickerRequired && (items || []).length === 0 ? 'Please fill out this field.' : undefined;
+  }
 
   return (
     <div>
