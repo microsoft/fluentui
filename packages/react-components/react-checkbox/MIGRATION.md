@@ -1,16 +1,12 @@
 # Checkbox Migration
 
-## STATUS: WIP
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v0
 
 - `Checkbox`
   - `checked` => `checked`.
   - `defaultChecked` => `defaultChecked`.
-  - `disabled` => `disabled`.
-  - `indicator` => `icon`.
+  - `disabled` => Use native `disabled`.
+  - `indicator` => `indicator`.
   - `label` => `label`.
   - `labelPosition` => `labelPosition`.
   - `onChange` => `onChange`.
@@ -22,14 +18,34 @@ This Migration guide is a work in progress and is not yet ready for use.
 - `Checkbox`
   - `boxSide` => `labelPosition`.
   - `checked`, `indeterminate` => `checked`.
-  - `checkmarkIconProps` => `icon`.
+  - `checkmarkIconProps` => `indicator`.
   - `componentRef` => Not supported.
   - `defaultChecked`, `defaultIndeterminate` => `defaultChecked`.
-  - `disabled` => `disabled`.
-  - `id` => `rootId`.
+  - `disabled` => Use native `disabled`.
+  - `id` => Use native `id`.
   - `label` => `label`.
   - `name` => Not supported.
   - `onChange` => `onChange`.
-  - `onRenderLabel` => Not supported.
-  - `required` => `required`.
-  - `title` => Not supported.
+  - `onRenderLabel` => Use `label` slot.
+  - `required` => Use native `required`.
+  - `title` => Use native `title`.
+
+## Property Mapping
+
+| v8 `Checkbox`        | v0 `Checkbox`    | v9 `Checkbox`    |
+| -------------------- | ---------------- | ---------------- |
+| `boxSide`            | `labelPosition`  | `labelPosition`  |
+| `checked`            | `checked`        | `checked`        |
+| `checkmarkIconProps` | `indicator`      | `indicator`      |
+| `componentRef`       |                  |                  |
+| `defaultChecked`     | `defaultChecked` | `defaultChecked` |
+| `disabled`           | `disabled`       | `disabled`       |
+| `id`                 |                  | `id`             |
+| `label`              | `label`          | `label`          |
+| `name`               |                  |                  |
+| `onChange`           | `onChange`       | `onChange`       |
+|                      | `onClick`        | `onChange`       |
+| `onRenderLabel`      |                  | `label`          |
+| `required`           |                  | `required`       |
+| `title`              |                  | `title`          |
+|                      | `toggle`         |                  |

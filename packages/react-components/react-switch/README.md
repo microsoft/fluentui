@@ -1,22 +1,12 @@
 # @fluentui/react-switch
 
-**React Switch components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Switch components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
-The `Switch` control (formerly `Toggle`) enables users to trigger an option on or off through pressing on the component.
-
-## STATUS: WIP 🚧
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+The `Switch` control enables users to trigger an option on or off through interacting with the component.
 
 ## Usage
 
 To import Switch:
-
-```js
-import { Switch } from '@fluentui/react-switch';
-```
-
-Once the Switch component graduates to a production release, the component will be available at:
 
 ```js
 import { Switch } from '@fluentui/react-components';
@@ -26,7 +16,23 @@ import { Switch } from '@fluentui/react-components';
 
 ```jsx
 <Switch />
-<Switch defaultChecked={true} />
-<Switch checked={switchValue} onChange={switchOnChange} />
+<Switch defaultChecked required />
+<Switch checked onChange={onChange} />
 <Switch disabled />
+<Switch label="Enable dark mode" labelPosition="after" />
 ```
+
+See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+
+Alternatively, run Storybook locally with:
+
+1. `yarn start`
+2. Select `react-switch` from the list.
+
+### Specification
+
+See [SPEC.md](./Spec.md).
+
+### Migration Guide
+
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Switch implementation.
