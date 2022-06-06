@@ -138,7 +138,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           target={this._currentHoverElement}
           alignTargetEdge={true}
           isBeakVisible={false}
-          directionalHint={DirectionalHint.bottomRightEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           gapSpace={15}
           hidden={!(!this.props.hideTooltip && this.state.showHover)}
           id={this._calloutId}
