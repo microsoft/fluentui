@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SelectSlots = {
@@ -15,7 +16,7 @@ export type SelectSlots = {
   icon: Slot<'span'>;
 };
 
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
   /**
    * Controls the colors and borders of the Select.
    *
@@ -32,6 +33,11 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
   inline?: boolean;
 
   /**
+   * Called when the user changes the select element's value by selecting an option.
+   */
+  onChange?: (ev: React.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
+
+  /**
    * Matches the Input sizes
    *
    * @default 'medium'
@@ -40,3 +46,13 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
 };
 
 export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
+
+/**
+ * Data passed to the `onChange` callback when a new option is selected.
+ */
+export type SelectOnChangeData = {
+  /**
+   * Updated `<select>` value, taken from either the selected option's value prop or inner text.
+   */
+  value: string;
+};
