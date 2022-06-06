@@ -2030,6 +2030,37 @@ describe('Dropdown', () => {
       expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
     });
 
+    it('trigger button merges props correctly', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { 'data-test': 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode).toHaveAttribute('data-test');
+    });
+
+    it('trigger button merges props correctly when content is string', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { content: 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+    });
+
+    it('trigger button merges props correctly when content is object', () => {
+      const { triggerButtonNode } = renderDropdown({
+        items,
+        triggerButton: { content: { content: 'ok', 'data-test': 'ok' } },
+      });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+      expect(triggerButtonNode.firstChild).toHaveAttribute('data-test');
+    });
+
     it('trigger button should have aria-labelledby from user prop', () => {
       const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
       expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('form-label');
