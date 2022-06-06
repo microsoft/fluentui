@@ -136,6 +136,71 @@ storiesOf('Card Converged', module)
         .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('[role="group"]')
         .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    </Screener>
+  ))
+  .addStory(
+    'appearance interactive - Filled',
+    () => (
+      <Card onClick={action('filled card clicked')} appearance="filled">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance interactive - Filled Alternative',
+    () => (
+      <Card onClick={action('filled alternative card clicked')} appearance="filled-alternative">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance interactive - Outline',
+    () => (
+      <Card onClick={action('outline card clicked')} appearance="outline">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance interactive - Subtle',
+    () => (
+      <Card onClick={action('subtle card clicked')} appearance="subtle">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );
+
+storiesOf('Card Converged', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .hover('[role="group"]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('[role="group"]')
+        .snapshot('click', { cropTo: '.testWrapper' })
         .mouseUp('[role="group"]')
         .snapshot('selected', { cropTo: '.testWrapper' })
         .end()}

@@ -284,6 +284,17 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
+  const hasInteraction =
+    state.root.onClick ||
+    state.root.onMouseUp ||
+    state.root.onMouseDown ||
+    state.root.onPointerUp ||
+    state.root.onPointerDown ||
+    state.root.onTouchStart ||
+    state.root.onTouchEnd;
+
+  const interactive = state.selectable || hasInteraction ? 'interactive' : 'nonInteractive';
+
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
     vertical: styles.orientationVertical,
@@ -320,8 +331,6 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     outline: styles.outlineInteractiveSelected,
     subtle: styles.subtleInteractiveSelected,
   } as const;
-
-  const interactive = state.selectable ? 'interactive' : 'nonInteractive';
 
   state.root.className = mergeClasses(
     cardClassNames.root,
