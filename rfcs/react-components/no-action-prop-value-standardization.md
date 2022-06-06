@@ -74,8 +74,8 @@ state.root.className = mergeClasses(
 );
 ```
 
-Cases where nothing is done in our hooks as a default, we should leverage `undefined`.
-i.e. `Text` component's `font` prop should be nullable instead of using a `'default'` string value, as that reflects the fact that there are no side-effects from it.
+Cases where nothing is done in our hooks as a default, we should leverage the JavaScript standard for no value - `undefined`.
+i.e. `Text` component's `font` prop should be optional/undefined, instead of using a `'default'` string value, as these values reflect the fact that there are no side-effects from it.
 
 ```tsx
 // Text.types.ts
