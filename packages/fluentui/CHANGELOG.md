@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->
-## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
+## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.0..@fluentui/react-northstar_v0.63.1)
 
 ### Fixes
