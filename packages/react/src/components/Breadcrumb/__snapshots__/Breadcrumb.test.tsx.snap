@@ -110,7 +110,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -128,7 +128,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                         background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
@@ -203,7 +203,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -240,7 +240,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -299,7 +299,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -336,7 +336,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -462,7 +462,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -521,7 +521,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -558,7 +558,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -617,7 +617,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -654,7 +654,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -713,7 +713,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -750,7 +750,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -876,7 +876,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -945,7 +945,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -1014,7 +1014,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -1083,7 +1083,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -1209,7 +1209,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -1268,7 +1268,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -1343,7 +1343,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1361,7 +1361,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                         background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
@@ -1556,7 +1556,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1574,7 +1574,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                         background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
@@ -1769,7 +1769,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1787,7 +1787,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                         background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
@@ -1877,7 +1877,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -1914,7 +1914,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -1973,7 +1973,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -2010,7 +2010,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -2136,7 +2136,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
@@ -2195,7 +2195,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -2270,7 +2270,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -2288,7 +2288,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                         background-color: transparent;
                         border-color: Highlight;
                         color: Highlight;
@@ -2378,7 +2378,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
                         forced-color-adjust: none;
@@ -2415,7 +2415,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       color: #323130;
                       font-weight: 600;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
+                    @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:last-child .ms-Breadcrumb-itemLink {
                       -ms-high-contrast-adjust: auto;
                       forced-color-adjust: auto;
                     }
