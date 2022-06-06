@@ -1,4 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
+import { ButtonShimExamples } from './ButtonShimExamples.tsx';
 
 <Meta title="Concepts/Upgrading/from v8/Components/Button Upgrade" />
 
@@ -70,3 +71,18 @@ To upgrade a button replace the v8 usage with the corresponding v9 button varian
 | theme                    | (use FluentProvider)                       |
 | toggle                   | (use ToggleButton)                         |
 | uniqueId                 | HTML key                                   |
+
+## Button Shims
+
+The button shim components accept v8 `IButtonProps` and render v9 buttons.
+Shims are useful when you have a large number of usage instances, want to render v9 components, and do not have time
+or resources to update every instance.
+
+Prefer to upgrade your code to use v9 buttons if possible rather than take a use shims.
+Shim depend on both v8 and v9 so may prevent bundle size optimizations.
+
+You can find the button shims in the Fluent UI React repository here [apps/public-docsite-v9/src/shims/ButtonShim.tsx](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/shims/ButtonShim.tsx)
+
+<Canvas>
+  <ButtonShimExamples />
+</Canvas>

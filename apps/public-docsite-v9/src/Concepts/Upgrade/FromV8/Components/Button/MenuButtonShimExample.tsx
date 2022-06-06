@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import * as React from 'react';
 import {
   ContextualMenuItemType,
@@ -10,7 +11,6 @@ import {
 import {
   webLightTheme,
   FluentProvider,
-  makeStyles,
   Menu,
   MenuTrigger,
   MenuButton,
@@ -20,28 +20,14 @@ import {
   MenuDivider,
   MenuItemCheckbox,
 } from '@fluentui/react-components';
-import { MenuButtonShim } from '../shims/ButtonShim';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    columnGap: '20px',
-    justifyContent: 'center',
-    justifyItems: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-  },
-});
+import { MenuButtonShim } from '../../../../../shims/ButtonShim';
 
 const addIcon: IIconProps = { iconName: 'Add' };
 const mailIcon: IIconProps = { iconName: 'Mail' };
 const calendarIcon: IIconProps = { iconName: 'Calendar' };
 const shareIcon: IIconProps = { iconName: 'Share', style: { color: 'salmon' } };
 
-export const MenuButtonStory = () => {
-  const styles = useStyles();
-
+export const MenuButtonShimExample = () => {
   const [selection, setSelection] = React.useState<{ [key: string]: boolean }>({});
 
   const onToggleSelect = React.useCallback(
@@ -130,10 +116,7 @@ export const MenuButtonStory = () => {
   };
 
   return (
-    <div className={styles.root}>
-      <h3>8.0</h3>
-      <h3>MenuButtonShim</h3>
-      <h3>9.0</h3>
+    <>
       <DefaultButton text="Menu Button" menuProps={menuProps} />
       <FluentProvider theme={webLightTheme}>
         <MenuButtonShim text="Menu Button" menuProps={menuProps} />
@@ -170,8 +153,6 @@ export const MenuButtonStory = () => {
           </MenuPopover>
         </Menu>
       </FluentProvider>
-    </div>
+    </>
   );
 };
-
-MenuButtonStory.storyName = 'MenuButton';

@@ -1,36 +1,21 @@
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { DefaultButton, IButtonProps, Icon, IIconProps, initializeIcons } from '@fluentui/react';
-import { webLightTheme, FluentProvider, makeStyles, ToggleButton } from '@fluentui/react-components';
-import { ToggleButtonShim } from '../shims/ButtonShim';
+import { webLightTheme, FluentProvider, ToggleButton } from '@fluentui/react-components';
+import { ToggleButtonShim } from '../../../../../shims/ButtonShim';
 
 initializeIcons();
-
-const useStyles = makeStyles({
-  root: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-    columnGap: '20px',
-    justifyContent: 'center',
-    justifyItems: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 const volume0Icon: IIconProps = { iconName: 'Volume0' };
 const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
-export const ToggleButtonStory = (props: IButtonProps) => {
-  const styles = useStyles();
+export const ToggleButtonShimExample = (props: IButtonProps) => {
   const [muted1, setMuted1] = React.useState(false);
   const [muted2, setMuted2] = React.useState(false);
   const [muted3, setMuted3] = React.useState(false);
 
   return (
-    <div className={styles.root}>
-      <h3>8.0</h3>
-      <h3>ToggleButtonShim</h3>
-      <h3>9.0</h3>
+    <>
       <DefaultButton
         toggle
         checked={muted1}
@@ -56,8 +41,6 @@ export const ToggleButtonStory = (props: IButtonProps) => {
           Toggle
         </ToggleButton>
       </FluentProvider>
-    </div>
+    </>
   );
 };
-
-ToggleButtonStory.storyName = 'ToggleButton';
