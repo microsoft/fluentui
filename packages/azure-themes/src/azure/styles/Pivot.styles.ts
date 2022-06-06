@@ -47,6 +47,11 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         paddingLeft: 0,
         paddingRight: 0,
         marginRight: 24,
+        selectors: {
+          '.ms-Pivot-text': {
+            padding: '0 4px',
+          },
+        },
       },
       !rootIsLarge && {
         fontSize: theme.fonts.large.fontSize,
@@ -54,13 +59,13 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       !rootIsTabs && {
         selectors: {
           ':hover': {
-            backgroundColor: extendedSemanticColors.bodyBackground,
+            backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.bodyBackground,
+            backgroundColor: semanticColors.buttonBackgroundHovered,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
           },
@@ -94,8 +99,15 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
           '.ms-Fabric--isFocusVisible': {
             outline: '1px solid black !important',
           },
+          '.ms-Pivot-text': {
+            backgroundColor: 'none',
+            padding: '0 8px',
+          },
           ':active': {
-            backgroundColor: semanticColors.bodyBackground,
+            backgroundColor: semanticColors.buttonBackgroundHovered,
+          },
+          '.ms-Pivot-text:hover': {
+            backgroundColor: semanticColors.buttonBackgroundHovered,
           },
         },
       },
