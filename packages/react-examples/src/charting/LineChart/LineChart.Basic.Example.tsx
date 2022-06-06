@@ -146,7 +146,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
         <Toggle
-          label="Enabled  multiple shapes for each line"
+          label="Enabled multiple shapes for each line"
           onText="On"
           offText="Off"
           onChange={this._onShapeChange}
