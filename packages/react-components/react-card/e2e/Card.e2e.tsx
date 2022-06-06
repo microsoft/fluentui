@@ -4,7 +4,8 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
-import { Card, cardClassNames, CardFooter, CardHeader } from '@fluentui/react-card';
+import { checkboxClassNames } from '@fluentui/react-checkbox';
+import { Card, CardFooter, CardHeader } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
@@ -245,29 +246,29 @@ describe('Card', () => {
     it('should not be selectable by default', () => {
       mountFluent(<CardSample />);
 
-      cy.get(`.${cardClassNames.select}`).should('not.exist');
+      cy.get(`.${checkboxClassNames.input}`).should('not.exist');
     });
 
     it('should show checkbox when selectable', () => {
       mountFluent(<CardSample selectable />);
 
-      cy.get(`.${cardClassNames.select}`).should('exist').should('not.be.checked');
+      cy.get(`.${checkboxClassNames.input}`).should('exist').should('not.be.checked');
     });
 
     it('should select with a mouse click', () => {
       mountFluent(<CardSample selectable />);
 
-      cy.get(`.${cardClassNames.select}`).realClick();
+      cy.get(`.${checkboxClassNames.input}`).realClick();
 
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
 
     it('should select with the Enter key', () => {
       mountFluent(<CardSample selectable />);
 
-      cy.get(`.${cardClassNames.select}`).focus().realPress('Enter');
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Enter');
 
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
 
     it('should select with a mouse click anywhere on the card', () => {
@@ -275,7 +276,7 @@ describe('Card', () => {
 
       cy.get(`#card`).realClick();
 
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
 
     it('should select with the Enter key anywhere on the card', () => {
@@ -283,7 +284,7 @@ describe('Card', () => {
 
       cy.get(`#card`).focus().realPress('Enter');
 
-      cy.get(`.${cardClassNames.select}`).should('be.checked');
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
   });
 });

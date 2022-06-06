@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { Checkbox } from '@fluentui/react-checkbox';
 import * as React from 'react';
 
 /**
@@ -16,7 +17,7 @@ export type CardSlots = {
    * Root element of the component.
    */
   root: Slot<'div'>;
-  select?: Slot<'input'>;
+  select?: Slot<typeof Checkbox>;
 };
 
 /**

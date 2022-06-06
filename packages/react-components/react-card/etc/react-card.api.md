@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -96,7 +97,7 @@ export type CardProps = ComponentProps<CardSlots> & {
 // @public
 export type CardSlots = {
     root: Slot<'div'>;
-    select?: Slot<'input'>;
+    select?: Slot<typeof Checkbox>;
 };
 
 // @public

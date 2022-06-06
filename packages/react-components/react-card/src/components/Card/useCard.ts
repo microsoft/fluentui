@@ -3,6 +3,7 @@ import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utiliti
 import type { CardProps, CardState } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { Enter } from '@fluentui/keyboard-keys';
+import { Checkbox } from '@fluentui/react-checkbox';
 
 /**
  * Create the state required to render Card.
@@ -65,7 +66,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     selectable,
     selected: checked,
 
-    components: { root: 'div', select: 'input' },
+    components: { root: 'div', select: Checkbox },
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
@@ -78,8 +79,6 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
       ? resolveShorthand(select || {}, {
           defaultProps: {
             checked,
-            type: 'checkbox',
-            readOnly: true,
           },
         })
       : undefined,

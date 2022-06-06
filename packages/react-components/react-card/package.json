@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "9.0.0-rc.6",
+    "@fluentui/react-checkbox": "9.0.0-rc.5",
     "@fluentui/react-utilities": "9.0.0-rc.10",
     "@fluentui/react-tabster": "9.0.0-rc.13",
     "@fluentui/react-theme": "9.0.0-rc.9",
