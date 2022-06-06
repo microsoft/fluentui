@@ -34,17 +34,21 @@ export type CardProps = ComponentProps<CardSlots> & {
    * This behaviour will cycle through all elements inside of the Card when pressing the Tab key and then release focus
    * after the last inner element.
    *
-   * @defaultvalue off
+   * @default 'off'
    */
   focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
 
   /**
+   * Defines the orientation of the card.
    *
+   * @default 'vertical'
    */
   orientation?: 'horizontal' | 'vertical';
 
   /**
+   * Controls the card's border radius and padding between inner elements.
    *
+   * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
 };
