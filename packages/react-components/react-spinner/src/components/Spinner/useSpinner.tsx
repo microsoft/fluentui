@@ -18,7 +18,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const { appearance = 'primary', labelPosition = 'after', size = 'medium' } = props;
   const baseId = useId('spinner');
 
-  const { tabIndex, role = 'progressbar', ...rest } = props;
+  const { role = 'progressbar', tabIndex, ...rest } = props;
   const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
 
   const labelShorthand = resolveShorthand(props.label, {
