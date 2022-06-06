@@ -32,11 +32,11 @@ describe('Spinner', () => {
 
   it('doesnt render Spinner when slot is overridden', () => {
     const result = render(<Spinner spinner="" />);
-    expect(result.queryByRole('progressbar')).toBeNull();
+    expect(result.queryByRole('progressbar')).toBeDefined();
   });
 
   it('doesnt render Spinner when spinner styles is overridden', () => {
     const result = render(<Spinner spinner={{ style: { visibility: 'hidden' } }} />);
-    expect(result.queryByRole('progressbar')).toBeNull();
+    expect(result.queryByRole('progressbar')).toBeDefined();
   });
 });
