@@ -589,6 +589,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
             return {
               content:
+                // If `null` is passed we should not render the slot
                 predefinedProps.content === null ? null : { content, id: triggerButtonContentId, ...resolvedContent },
               onClick: e => {
                 onClick(e);
