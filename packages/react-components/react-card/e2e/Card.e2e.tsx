@@ -242,7 +242,7 @@ describe('Card', () => {
     });
   });
 
-  describe('selection', () => {
+  describe('selectable', () => {
     it('should not be selectable by default', () => {
       mountFluent(<CardSample />);
 
