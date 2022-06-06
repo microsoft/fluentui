@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { CardProps, CardState } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { Enter } from '@fluentui/keyboard-keys';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { Checkbox } from '@fluentui/react-checkbox';
 
 /**
@@ -52,7 +52,8 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
       ? {
           onClick: onChangeHandler,
           onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
-            if (event.key === Enter) {
+            if (event.key === Enter || event.key === Space) {
+              event.preventDefault();
               onChangeHandler(event);
             }
           },

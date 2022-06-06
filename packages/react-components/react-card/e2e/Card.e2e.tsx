@@ -271,6 +271,14 @@ describe('Card', () => {
       cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
 
+    it('should select with the Spacebar key', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Space');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
     it('should select with a mouse click anywhere on the card', () => {
       mountFluent(<CardSample selectable />);
 
@@ -283,6 +291,14 @@ describe('Card', () => {
       mountFluent(<CardSample selectable />);
 
       cy.get(`#card`).focus().realPress('Enter');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with the Spacebar key anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).focus().realPress('Space');
 
       cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
