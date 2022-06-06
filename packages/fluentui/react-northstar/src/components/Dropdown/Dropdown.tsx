@@ -552,7 +552,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const renderTriggerButton = (getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any): JSX.Element => {
     const content = getSelectedItemAsString(value[0]);
     const triggerButtonId = triggerButton['id'] || defaultTriggerButtonId;
-
+    const triggerButtonContentId = `${triggerButtonId  }__content`;
     const triggerButtonProps = getToggleButtonProps({
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
@@ -562,7 +562,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
+      'aria-labelledby': [ariaLabelledby, triggerButtonContentId].filter(l => !!l).join(' '),
       ...(open && { 'aria-expanded': true }),
     });
 
@@ -573,7 +573,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
-            content,
+            content: { content, id: triggerButtonContentId },
             disabled,
             id: triggerButtonId,
             fluid: true,

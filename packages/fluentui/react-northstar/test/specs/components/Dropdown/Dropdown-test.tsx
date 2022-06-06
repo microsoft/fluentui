@@ -2024,14 +2024,16 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).not.toHaveAttribute('aria-label');
     });
 
-    it('trigger button should not have aria-labelledby', () => {
+    it('trigger button should have aria-labelledby which points to trigger button content', () => {
       const { triggerButtonNode } = renderDropdown({ items });
-      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
     });
 
     it('trigger button should have aria-labelledby from user prop', () => {
       const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
-      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
     });
 
     it('trigger button should not have aria-describedby', () => {
