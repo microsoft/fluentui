@@ -2,14 +2,14 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {
   root: 'fui-CardFooter',
   action: 'fui-CardFooter__action',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',

@@ -1,11 +1,17 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+/**
+ * Slots available in the Card component.
+ */
 export type CardSlots = {
+  /**
+   * Root element of the component.
+   */
   root: Slot<'div'>;
 };
 
 /**
- * Card Props
+ * Card component props.
  */
 export type CardProps = ComponentProps<CardSlots> & {
   appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
@@ -32,8 +38,14 @@ export type CardProps = ComponentProps<CardSlots> & {
    */
   focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
 
+  /**
+   *
+   */
   orientation?: 'horizontal' | 'vertical';
 
+  /**
+   *
+   */
   size?: 'small' | 'medium' | 'large';
 };
 

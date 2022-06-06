@@ -2,14 +2,14 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardPreviewSlots, CardPreviewState } from './CardPreview.types';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots> = {
   root: 'fui-CardPreview',
   logo: 'fui-CardPreview__logo',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     position: 'relative',

@@ -6,16 +6,20 @@ import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
 };
+
+/**
+ * CSS variable names used internally for uniform styling in Card.
+ */
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',

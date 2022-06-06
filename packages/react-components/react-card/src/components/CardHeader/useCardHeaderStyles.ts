@@ -2,6 +2,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   root: 'fui-CardHeader',
   image: 'fui-CardHeader__image',
@@ -11,9 +14,6 @@ export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   action: 'fui-CardHeader__action',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
