@@ -19,15 +19,15 @@ export const renderAvatarGroup_unstable = (state: AvatarGroupState) => {
         {state.hasOverflow && (
           <Popover trapFocus size="small">
             <PopoverTrigger>
-              <Tooltip content={state.tooltipContent} relationship="description" appearance="inverted">
-                <slots.popoverTrigger {...slotProps.popoverTrigger} />
+              <Tooltip content={state.tooltipContent} relationship="label">
+                <slots.overflowButton {...slotProps.overflowButton} />
               </Tooltip>
             </PopoverTrigger>
-            <slots.popoverSurface {...slotProps.popoverSurface}>
+            <slots.overflowSurface {...slotProps.overflowSurface}>
               <AvatarGroupContext.Provider value={{ isOverflow: true, layout, size: 24 }}>
-                <slots.popoverSurfaceList {...slotProps.popoverSurfaceList} />
+                <slots.overflowList {...slotProps.overflowList} />
               </AvatarGroupContext.Provider>
-            </slots.popoverSurface>
+            </slots.overflowSurface>
           </Popover>
         )}
       </slots.root>

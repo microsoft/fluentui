@@ -5,9 +5,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
-  popoverSurface: 'fui-AvatarGroup__popoverSurface',
-  popoverSurfaceList: 'fui-AvatarGroup__popoverSurfaceList',
-  popoverTrigger: 'fui-AvatarGroup__popoverTrigger',
+  overflowSurface: 'fui-AvatarGroup__overflowSurface',
+  overflowList: 'fui-AvatarGroup__overflowList',
+  overflowButton: 'fui-AvatarGroup__overflowButton',
 };
 
 /**
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const usePopoverSurfaceListStyles = makeStyles({
+const useOverflowListStyles = makeStyles({
   base: {
     listStyleType: 'none',
     ...shorthands.margin(0),
@@ -35,27 +35,30 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const { size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
-  const popoverSurfaceListStyles = usePopoverSurfaceListStyles();
+  const overflowListStyles = useOverflowListStyles();
 
   state.root.className = mergeClasses(avatarGroupClassNames.root, styles.base, state.root.className);
 
-  if (state.popoverSurface) {
-    state.popoverSurface.className = mergeClasses(avatarGroupClassNames.popoverSurface, state.popoverSurface.className);
-  }
-
-  if (state.popoverSurfaceList) {
-    state.popoverSurfaceList.className = mergeClasses(
-      avatarGroupClassNames.popoverSurfaceList,
-      popoverSurfaceListStyles.base,
-      state.popoverSurfaceList.className,
+  if (state.overflowSurface) {
+    state.overflowSurface.className = mergeClasses(
+      avatarGroupClassNames.overflowSurface,
+      state.overflowSurface.className,
     );
   }
 
-  if (state.popoverTrigger) {
-    state.popoverTrigger.className = mergeClasses(
-      avatarGroupClassNames.popoverTrigger,
+  if (state.overflowList) {
+    state.overflowList.className = mergeClasses(
+      avatarGroupClassNames.overflowList,
+      overflowListStyles.base,
+      state.overflowList.className,
+    );
+  }
+
+  if (state.overflowButton) {
+    state.overflowButton.className = mergeClasses(
+      avatarGroupClassNames.overflowButton,
       sizeStyles[size],
-      state.popoverTrigger.className,
+      state.overflowButton.className,
     );
   }
 

@@ -9,23 +9,23 @@ export type AvatarGroupSlots = {
   /**
    * Popover trigger slot that can be used to change the overflow indicator.
    */
-  popoverTrigger: NonNullable<Slot<'button'>>;
-
-  /**
-   * Popover surface that will be displayed when the popover is triggered.
-   */
-  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowButton: NonNullable<Slot<'button'>>;
 
   /**
    * Unordered list that contains the overflow AvatarGroupItems.
    */
-  popoverSurfaceList: NonNullable<Slot<'ul'>>;
+  overflowList: NonNullable<Slot<'ul'>>;
+
+  /**
+   * Popover surface that will be displayed when the popover is triggered.
+   */
+  overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
  * AvatarGroup Props
  */
-export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
   /**
    * Layout the Avatars should be displayed as.
    * @default spread
@@ -56,7 +56,7 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
  * State used in rendering AvatarGroup
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
-  Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
+  Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
     /**
      * Whether there are more Avatars than `maxAvatars`.
      * @default false
