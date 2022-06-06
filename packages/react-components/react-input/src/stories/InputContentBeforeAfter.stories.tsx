@@ -5,7 +5,7 @@ import { makeStyles, shorthands } from '@griffel/react';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 import type { ButtonProps } from '@fluentui/react-button';
-import { Body, Text } from '@fluentui/react-text';
+import { Body1, Text } from '@fluentui/react-text';
 import { Input } from '../index';
 
 const useStyles = makeStyles({
@@ -31,9 +31,9 @@ const ContentBefore = () => {
     <>
       <Label htmlFor={id}>Full Name</Label>
       <Input contentBefore={<PersonRegular />} id={id} />
-      <Body>
+      <Body1>
         An input with a decorative icon in the <code>contentBefore</code> slot.
-      </Body>
+      </Body1>
     </>
   );
 };
@@ -45,9 +45,9 @@ const ContentAfter = () => {
     <>
       <Label htmlFor={id}>First Name</Label>
       <Input contentAfter={<MicButton aria-label="Enter by voice" />} id={id} />
-      <Body>
+      <Body1>
         An input with a button in the <code>contentAfter</code> slot.
-      </Body>
+      </Body1>
     </>
   );
 };
@@ -74,10 +74,10 @@ const ContentBeforeAndAfter = () => {
         aria-labelledby={`${id} ${beforeId} ${afterId}`}
         id={id}
       />
-      <Body>
+      <Body1>
         An input with a presentational value in the <code>contentBefore</code> slot and another presentational value in
         the <code>contentAfter</code> slot.
-      </Body>
+      </Body1>
     </>
   );
 };

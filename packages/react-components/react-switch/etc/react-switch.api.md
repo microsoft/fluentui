@@ -30,7 +30,7 @@ export type SwitchOnChangeData = {
 };
 
 // @public
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & {
+export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'checked' | 'defaultChecked' | 'onChange'> & {
     checked?: boolean;
     defaultChecked?: boolean;
     labelPosition?: 'above' | 'after' | 'before';

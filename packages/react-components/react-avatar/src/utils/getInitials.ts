@@ -34,19 +34,20 @@ const MULTIPLE_WHITESPACES_REGEX: RegExp = /\s+/g;
 // eslint-disable-next-line @fluentui/max-len
 const UNSUPPORTED_TEXT_REGEX: RegExp = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\u1100-\u11FF\u3130-\u318F\uA960-\uA97F\uAC00-\uD7AF\uD7B0-\uD7FF\u3040-\u309F\u30A0-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]|[\uD840-\uD869][\uDC00-\uDED6]/;
 
-function getInitialsLatin(displayName: string, isRtl: boolean): string {
+function getInitialsLatin(displayName: string, isRtl: boolean, firstInitialOnly?: boolean): string {
   let initials = '';
 
   const splits: string[] = displayName.split(' ');
+  if (splits.length !== 0) {
+    initials += splits[0].charAt(0).toUpperCase();
+  }
 
-  if (splits.length === 2) {
-    initials += splits[0].charAt(0).toUpperCase();
-    initials += splits[1].charAt(0).toUpperCase();
-  } else if (splits.length === 3) {
-    initials += splits[0].charAt(0).toUpperCase();
-    initials += splits[2].charAt(0).toUpperCase();
-  } else if (splits.length !== 0) {
-    initials += splits[0].charAt(0).toUpperCase();
+  if (!firstInitialOnly) {
+    if (splits.length === 2) {
+      initials += splits[1].charAt(0).toUpperCase();
+    } else if (splits.length === 3) {
+      initials += splits[2].charAt(0).toUpperCase();
+    }
   }
 
   if (isRtl && initials.length > 1) {
@@ -70,7 +71,7 @@ function cleanupDisplayName(displayName: string): string {
  *
  * @param displayName - The full name of the person or entity
  * @param isRtl - Whether the display is in RTL
- * @param allowPhoneInitials - Should initials be generated from phone numbers (default false)
+ * @param options - Extra options to control the behavior of getInitials
  *
  * @returns The 1 or 2 character initials based on the name. Or an empty string if no initials
  * could be derived from the name.
@@ -78,7 +79,13 @@ function cleanupDisplayName(displayName: string): string {
 export function getInitials(
   displayName: string | undefined | null,
   isRtl: boolean,
-  allowPhoneInitials?: boolean,
+  options?: {
+    /** Should initials be generated from phone numbers (default false) */
+    allowPhoneInitials?: boolean;
+
+    /** Returns only the first initial */
+    firstInitialOnly?: boolean;
+  },
 ): string {
   if (!displayName) {
     return '';
@@ -87,9 +94,12 @@ export function getInitials(
   displayName = cleanupDisplayName(displayName);
 
   // For names containing CJK characters, and phone numbers, we don't display initials
-  if (UNSUPPORTED_TEXT_REGEX.test(displayName) || (!allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))) {
+  if (
+    UNSUPPORTED_TEXT_REGEX.test(displayName) ||
+    (!options?.allowPhoneInitials && PHONENUMBER_REGEX.test(displayName))
+  ) {
     return '';
   }
 
-  return getInitialsLatin(displayName, isRtl);
+  return getInitialsLatin(displayName, isRtl, options?.firstInitialOnly);
 }

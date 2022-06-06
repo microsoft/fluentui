@@ -2,6 +2,170 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 02 Jun 2022 07:38:04 GMT",
+      "tag": "@fluentui/react-charting_v5.9.41",
+      "version": "5.9.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.72.1",
+            "commit": "91fbffdab2aed4c6bc84500e76a9a355a72f2ea0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jun 2022 07:38:24 GMT",
+      "tag": "@fluentui/react-charting_v5.9.40",
+      "version": "5.9.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e2b948cd213f8f3f61f0c6322c31f5fae172924b",
+            "comment": "Not able to access all groups available in graph using keyboard."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.72.0",
+            "commit": "0f0e6ad066a52cdd3c4156ecb033413e0a92411d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 May 2022 07:44:13 GMT",
+      "tag": "@fluentui/react-charting_v5.9.39",
+      "version": "5.9.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.71.1",
+            "commit": "b01ac1a166a8dc67a6c53409d9fe86977517bae6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/react-charting_v5.9.38",
+      "version": "5.9.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.71.0",
+            "commit": "c55c7d9d1141ae09542a78970416a8bbb344f623"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 May 2022 07:44:28 GMT",
+      "tag": "@fluentui/react-charting_v5.9.37",
+      "version": "5.9.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "601d8b59c5768b048c86e0d53ebe6632e9d6df1a",
+            "comment": "Bug 5915906 vertical stacked chart colors of legends is not displayed in high contrast"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.70.0",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 May 2022 07:47:25 GMT",
+      "tag": "@fluentui/react-charting_v5.9.36",
+      "version": "5.9.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0ca4848f5625ccbf72f70fb1f7df1f6835c1a9d7",
+            "comment": "fixing line chart events focus issue"
+          },
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "110cfd53dabc9232029300cbeded58142f9a6718",
+            "comment": "added aria-valuetext attribute"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.69.0",
+            "commit": "48230861e5b0a67085c3d5674d2f68c6523b9540"
+          }
+        ],
+        "none": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394",
+            "comment": "Align vertical bar chart labels with the bar. Fixing empty pies showing in donut chart"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 07:42:16 GMT",
+      "tag": "@fluentui/react-charting_v5.9.35",
+      "version": "5.9.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9eafb7e633a288685f6584f699ea3c42c6096f43",
+            "comment": "fixing color contrast issue"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.6.0",
+            "commit": "9eafb7e633a288685f6584f699ea3c42c6096f43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.68.4",
+            "commit": "9eafb7e633a288685f6584f699ea3c42c6096f43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 May 2022 07:41:27 GMT",
+      "tag": "@fluentui/react-charting_v5.9.34",
+      "version": "5.9.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.68.3",
+            "commit": "ac42b59c728d923fc87cd11b3e99774933912d98"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 May 2022 07:45:01 GMT",
       "tag": "@fluentui/react-charting_v5.9.33",
       "version": "5.9.33",

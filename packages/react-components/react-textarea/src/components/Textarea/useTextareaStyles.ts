@@ -89,12 +89,12 @@ const useRootStyles = makeStyles({
     },
   },
 
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },
 
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },
@@ -143,9 +143,7 @@ const useTextareaStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackgroundInverted,
     },
 
-    ':focus-visible': {
-      outlineStyle: 'none', // disable default browser outline
-    },
+    outlineStyle: 'none', // disable default browser outline
   },
 
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not

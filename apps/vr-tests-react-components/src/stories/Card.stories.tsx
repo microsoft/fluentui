@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body, Caption } from '@fluentui/react-text';
+import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
 
@@ -17,11 +17,11 @@ const SampleCardContent = () => (
     <CardHeader
       image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
       header={
-        <Body>
+        <Body1>
           <b>App Name</b>
-        </Body>
+        </Body1>
       }
-      description={<Caption>Developer</Caption>}
+      description={<Caption1>Developer</Caption1>}
     />
     <div>
       Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
@@ -38,7 +38,7 @@ const SampleCardContent = () => (
 storiesOf('Card Converged', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      <div className="testWrapper" style={{ width: '300px' }}>
+      <div className="testWrapper" style={{ width: '600px' }}>
         {story()}
       </div>
     </Screener>
@@ -52,11 +52,11 @@ storiesOf('Card Converged', module)
         <CardHeader
           image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
           header={
-            <Body>
+            <Body1>
               <b>Sales analysis 2019 presentation</b>
-            </Body>
+            </Body1>
           }
-          description={<Caption>Folder &gt; Presentations</Caption>}
+          description={<Caption1>Folder &gt; Presentations</Caption1>}
         />
       </Card>
     </div>
@@ -96,7 +96,36 @@ storiesOf('Card Converged', module)
       includeHighContrast: true,
       includeDarkMode: true,
     },
-  );
+  )
+  .addStory('size', () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Card size="small">
+        <SampleCardContent />
+      </Card>
+      <Card size="medium">
+        <SampleCardContent />
+      </Card>
+      <Card size="large">
+        <SampleCardContent />
+      </Card>
+    </div>
+  ))
+  .addStory('orientation', () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <h1>Vertical</h1>
+        <Card orientation="vertical">
+          <SampleCardContent />
+        </Card>
+      </div>
+      <div>
+        <h1>Horizontal</h1>
+        <Card orientation="horizontal">
+          <SampleCardContent />
+        </Card>
+      </div>
+    </div>
+  ));
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (

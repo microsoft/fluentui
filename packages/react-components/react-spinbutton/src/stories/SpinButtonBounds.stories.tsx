@@ -2,8 +2,23 @@ import * as React from 'react';
 import { SpinButton, SpinButtonProps } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '500px',
+
+    '> label': {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
 
 export const Bounds = () => {
+  const layoutStyles = useLayoutStyles();
   const id = useId();
 
   const [spinButtonValue, setSpinButtonValue] = React.useState(10);
@@ -26,11 +41,11 @@ export const Bounds = () => {
   );
 
   return (
-    <>
+    <div className={layoutStyles.base}>
       <Label htmlFor={id}>Bounded SpinButton</Label>
       <SpinButton value={spinButtonValue} min={0} max={20} onChange={onSpinButtonChange} id={id} />
       <p>min: 0, max: 20</p>
-    </>
+    </div>
   );
 };
 

@@ -33,7 +33,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps, format } from '../../utils';
 import { Button } from '../Button/Button';
 import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
@@ -46,7 +46,6 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
 import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
-import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */

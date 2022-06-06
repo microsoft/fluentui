@@ -1,7 +1,7 @@
 // @ts-check
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
-import { webLightTheme, webHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
+import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
 
 /**
@@ -44,7 +44,7 @@ setAddon({
     }
     if (config.includeHighContrast) {
       this.add(storyName + ' - High Contrast', context => {
-        return <FluentProvider theme={webHighContrastTheme}>{storyFn(context)}</FluentProvider>;
+        return <FluentProvider theme={teamsHighContrastTheme}>{storyFn(context)}</FluentProvider>;
       });
     }
 

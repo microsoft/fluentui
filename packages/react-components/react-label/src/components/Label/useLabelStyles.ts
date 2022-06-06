@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { LabelSlots, LabelState } from './Label.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `labelClassNames.root` instead.
- */
-export const labelClassName = 'fui-Label';
 export const labelClassNames: SlotClassNames<LabelSlots> = {
   root: 'fui-Label',
   required: 'fui-Label__required',
@@ -50,7 +46,7 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
   },
 
-  strong: {
+  semibold: {
     fontWeight: tokens.fontWeightSemibold,
   },
 });
@@ -65,7 +61,7 @@ export const useLabelStyles_unstable = (state: LabelState): LabelState => {
     styles.root,
     state.disabled && styles.disabled,
     styles[state.size],
-    state.strong && styles.strong,
+    state.weight === 'semibold' && styles.semibold,
     state.root.className,
   );
 

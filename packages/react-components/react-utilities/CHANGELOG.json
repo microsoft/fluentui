@@ -2,6 +2,51 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:50 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "remove exports for internals APIs & unused hooks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 21:01:31 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "Add eslint-ignore"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 12:13:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-rc.9",
+      "version": "9.0.0-rc.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e7b70cb06f4422e5574993fd2ad44d9073647417",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:28 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.8",
       "version": "9.0.0-rc.8",

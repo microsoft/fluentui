@@ -9,27 +9,29 @@ const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
+
     '> div': {
       display: 'flex',
       flexDirection: 'column',
       marginTop: tokens.spacingVerticalMNudge,
       ...shorthands.padding(tokens.spacingHorizontalMNudge),
     },
+
     '> div > label': {
       marginBottom: tokens.spacingHorizontalXXS,
       marginLeft: tokens.spacingHorizontalMNudge,
     },
   },
   filledLighter: {
-    backgroundColor: '#8a8a8a',
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
     '> label': {
-      color: '#ffffff',
+      color: tokens.colorNeutralForegroundInverted,
     },
   },
   filledDarker: {
-    backgroundColor: '#8a8a8a',
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
     '> label': {
-      color: '#ffffff',
+      color: tokens.colorNeutralForegroundInverted,
     },
   },
 });
@@ -49,12 +51,12 @@ export const Appearance = () => {
 
       <div className={styles.filledDarker}>
         <Label htmlFor={filledDarkerId}>Textarea with Filled Darker appearance.</Label>
-        <Textarea id={filledDarkerId} appearance="filledDarker" placeholder="type here..." resize="both" />
+        <Textarea id={filledDarkerId} appearance="filled-darker" placeholder="type here..." resize="both" />
       </div>
 
       <div className={styles.filledLighter}>
         <Label htmlFor={filledLighterId}>Textarea with Filled Lighter appearance.</Label>
-        <Textarea id={filledLighterId} appearance="filledLighter" placeholder="type here..." resize="both" />
+        <Textarea id={filledLighterId} appearance="filled-lighter" placeholder="type here..." resize="both" />
       </div>
     </div>
   );

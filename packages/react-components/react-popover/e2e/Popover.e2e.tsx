@@ -10,7 +10,7 @@ const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-const popoverTriggerSelector = '[aria-haspopup]';
+const popoverTriggerSelector = '[aria-expanded]';
 const popoverContentSelector = '[role="complementary"]';
 const popoverInteractiveContentSelector = '[role="dialog"]';
 

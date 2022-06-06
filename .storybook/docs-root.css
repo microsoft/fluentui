@@ -357,6 +357,10 @@
   width: 100%;
 }
 
+#docs-root .os-padding {
+  z-index: 0;
+}
+
 @font-face {
   font-family: 'Segoe UI';
   src: local('Segoe UI Light'),

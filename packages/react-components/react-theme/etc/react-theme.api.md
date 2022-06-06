@@ -523,9 +523,6 @@ export type VerticalSpacingTokens = {
 export const webDarkTheme: Theme;
 
 // @public (undocumented)
-export const webHighContrastTheme: Theme;
-
-// @public (undocumented)
 export const webLightTheme: Theme;
 
 // (No @packageDocumentation comment for this package)

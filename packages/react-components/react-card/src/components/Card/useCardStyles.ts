@@ -1,15 +1,16 @@
 import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { cardPreviewClassNames } from '../CardPreview/index';
+import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles';
+import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
+import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `cardClassNames.root` instead.
- */
-export const cardClassName = 'fui-Card';
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
+};
+export const cardCSSVars = {
+  cardSizeVar: '--fui-Card--size',
 };
 
 /**
@@ -17,14 +18,12 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    display: 'block',
+    display: 'flex',
     position: 'relative',
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
 
-    // TODO: Extract this to separate stiles when tackling the `size` prop
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-
+    // Border setting using after pseudo element to allow CardPreview to render behind it
     '::after': {
       position: 'absolute',
       top: 0,
@@ -36,14 +35,64 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
-      // TODO: Extract this to separate styles when tackling the `size` prop
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
     },
 
-    [`> *:not(.${cardPreviewClassNames.root})`]: {
-      // TODO: Extract this to separate styles when tackling the `size` prop
-      ...shorthands.margin('12px'),
+    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
+    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+
+    // Prevents CardHeader and CardFooter from shrinking.
+    [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
+      flexShrink: 0,
     },
+    // Allows non-card components to grow to fill the available space.
+    [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
+      flexGrow: 1,
+    },
+  },
+
+  orientationHorizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+
+    // Remove vertical padding to keep CardPreview content flush with Card's borders.
+    [`> .${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginBottom: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on horizontal cards, the left padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+  },
+  orientationVertical: {
+    flexDirection: 'column',
+
+    // Remove lateral padding to keep CardPreview content flush with Card's borders.
+    [`> .${cardPreviewClassNames.root}`]: {
+      marginLeft: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+      marginRight: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+    // Due to Tabster's "Groupper" focus functionality, hidden elements are injected before and after Card's content.
+    // As such, the code below targets a CardPreview, when it's the first element.
+    // Since this is on vertical cards, the top padding is removed to keep the content flush with the border.
+    [`> :not([aria-hidden="true"]):first-of-type.${cardPreviewClassNames.root}`]: {
+      marginTop: `calc(var(${cardCSSVars.cardSizeVar}) * -1)`,
+    },
+  },
+
+  sizeSmall: {
+    [cardCSSVars.cardSizeVar]: '8px',
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
+  sizeMedium: {
+    [cardCSSVars.cardSizeVar]: '12px',
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  sizeLarge: {
+    [cardCSSVars.cardSizeVar]: '16px',
+    ...shorthands.borderRadius(tokens.borderRadiusLarge),
   },
 
   interactiveNoOutline: {
@@ -169,6 +218,17 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
+  const orientationMap = {
+    horizontal: styles.orientationHorizontal,
+    vertical: styles.orientationVertical,
+  } as const;
+
+  const sizeMap = {
+    small: styles.sizeSmall,
+    medium: styles.sizeMedium,
+    large: styles.sizeLarge,
+  } as const;
+
   const interactive =
     state.root.onClick ||
     state.root.onMouseUp ||
@@ -181,6 +241,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
+    orientationMap[state.orientation],
+    sizeMap[state.size],
     state.appearance === 'filled' && styles.filled,
     state.appearance === 'filled-alternative' && styles.filledAlternative,
     state.appearance === 'outline' && styles.outline,

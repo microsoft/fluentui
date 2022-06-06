@@ -7,6 +7,7 @@ describe('CardHeader', () => {
   isConformant({
     Component: CardHeader,
     displayName: 'CardHeader',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

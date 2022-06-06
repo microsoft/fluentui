@@ -1,9 +1,5 @@
 # Link Migration
 
-## STATUS: WIP 🚧
-
-This Migration guide is a work in progress and is not yet ready for use.
-
 ## Migration from v8
 
 The existing `Link` control supports a very similar set of props to the one being proposed with a few differences that are outlined below:
@@ -19,15 +15,15 @@ v0 does not currently export a `Link` component.
 
 ## Property mapping
 
-| v8 `Link`      | Converged `Link` |
-| -------------- | ---------------- |
-| `componentRef` | -                |
-| `disabled`     | `disabled`       |
-| `href`         | `href`           |
-| `onClick`      | `onClick`        |
-| `rel`          | `rel`            |
-| `styles`       | -                |
-| `target`       | `target`         |
-| `theme`        | -                |
-| `type`         | `type`           |
-| `underline`    | `inline`         |
+| v8 `Link`      | v9 `Link`  |
+| -------------- | ---------- |
+| `componentRef` | -          |
+| `disabled`     | `disabled` |
+| `href`         | `href`     |
+| `onClick`      | `onClick`  |
+| `rel`          | `rel`      |
+| `styles`       | -          |
+| `target`       | `target`   |
+| `theme`        | -          |
+| `type`         | `type`     |
+| `underline`    | `inline`   |

@@ -31,23 +31,28 @@ export type MenuItemSlots = {
   secondaryContent?: Slot<'span'>;
 };
 
-type MenuItemCommons = {
-  /**
-   * If the menu item is a trigger for a submenu
-   */
-  hasSubmenu?: boolean;
-
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
   /**
    * Applies disabled styles to menu item but remains focusable
+   *
+   * @default false
    */
   disabled?: boolean;
 
   /**
+   * If the menu item is a trigger for a submenu
+   *
+   * @default false
+   */
+  hasSubmenu?: boolean;
+
+  /**
    * Clicking on the menu item will not dismiss an open menu
+   *
+   * @default false
    */
   persistOnClick?: boolean;
 };
 
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & MenuItemCommons;
-
-export type MenuItemState = ComponentState<MenuItemSlots> & MenuItemCommons;
+export type MenuItemState = ComponentState<MenuItemSlots> &
+  Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>;
