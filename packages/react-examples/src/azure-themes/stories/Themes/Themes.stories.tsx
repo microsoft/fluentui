@@ -32,9 +32,6 @@ import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
 
-// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
-
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">

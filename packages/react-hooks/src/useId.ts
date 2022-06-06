@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getId } from '@fluentui/utilities/lib/getId';
+import { getId } from '@fluentui/utilities';
 
 /**
  * Hook to generate a unique ID in the global scope (spanning across duplicate copies of the same library).

@@ -168,6 +168,10 @@ export interface INavLinkGroup {
    * (Optional) Any additional properties to apply to a group.
    */
   groupData?: any;
+  /**
+   * Provides consumer control to update the collapsed/expanded state of the group.
+   */
+  isExpanded?: boolean;
 }
 
 /**

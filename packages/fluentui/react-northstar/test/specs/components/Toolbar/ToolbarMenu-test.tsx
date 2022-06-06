@@ -5,5 +5,6 @@ describe('ToolbarMenu', () => {
   isConformant(ToolbarMenu, {
     testPath: __filename,
     constructorName: 'ToolbarMenu',
+    skipAsPropTests: 'as-component',
   });
 });

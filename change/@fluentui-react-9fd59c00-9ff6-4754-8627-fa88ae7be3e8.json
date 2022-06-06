@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove incorrect toolbar role from Pivot and pass accname attributes to the tablist",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

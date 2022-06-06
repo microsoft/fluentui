@@ -4,6 +4,7 @@ import through2 from 'through2';
 import Vinyl from 'vinyl';
 import _ from 'lodash';
 import fs from 'fs';
+import doctrine from 'doctrine';
 import { Transform } from 'stream';
 import config from '../../config';
 
@@ -11,7 +12,6 @@ const { paths } = config;
 
 const pluginName = 'gulp-component-menu-behaviors';
 const extract = require('extract-comments');
-const doctrine = require('doctrine');
 
 type BehaviorMenuItem = {
   displayName: string;

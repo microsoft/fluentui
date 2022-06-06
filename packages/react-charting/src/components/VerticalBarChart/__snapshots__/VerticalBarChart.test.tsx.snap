@@ -17,6 +17,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         width: 100%;
       }
   id="chart_2"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -48,7 +49,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -77,7 +78,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -446,6 +447,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         width: 100%;
       }
   id="chart_14"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -477,7 +479,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -506,7 +508,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -855,6 +857,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         width: 100%;
       }
   id="chart_6"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -886,7 +889,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -915,7 +918,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -961,6 +964,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         width: 100%;
       }
   id="chart_10"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -992,7 +996,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1021,7 +1025,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1390,6 +1394,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         width: 100%;
       }
   id="chart_18"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1421,7 +1426,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1450,7 +1455,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1819,6 +1824,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         width: 100%;
       }
   id="chart_22"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1850,7 +1856,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1879,7 +1885,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -2248,6 +2254,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         width: 100%;
       }
   id="chart_26"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -2279,7 +2286,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -2308,7 +2315,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);

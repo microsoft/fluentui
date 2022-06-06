@@ -1,5 +1,6 @@
+import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-
+import * as d3Sankey from 'd3-sankey';
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -247,7 +248,7 @@ export interface ILineChartGap {
   endIndex: number;
 }
 
-export interface ILineChartLineOptions {
+export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
@@ -313,6 +314,11 @@ export interface ILineChartPoints {
   color: string;
 
   /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
+
+  /**
    * options for the line drawn
    */
   lineOptions?: ILineChartLineOptions;
@@ -357,7 +363,42 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  SankeyChartData?: ISankeyChartData;
+
+  /**
+   * data for the points in the line chart
+   */
+  pointOptions?: SVGProps<SVGCircleElement>;
+
+  /**
+   * data for the dotted line on hovering the point
+   */
+  pointLineOptions?: SVGProps<SVGLineElement>;
 }
+
+export interface ISankeyChartData {
+  nodes: SNode[];
+  links: SLink[];
+}
+
+interface ISNodeExtra {
+  nodeId: number | string;
+  name: string;
+  color: string;
+}
+
+interface ISLinkExtra {
+  source: number;
+  target: number;
+  value: number;
+}
+
+export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 export interface IAccessibilityProps {
   /**
@@ -501,6 +542,11 @@ export interface IGroupedVerticalBarChartData {
    * Data points for Grouped vertical bar chart
    */
   series: IGVBarChartSeriesPoint[];
+
+  /**
+   * Accessibility data for Group Bars Stack Callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IGVDataPoint {

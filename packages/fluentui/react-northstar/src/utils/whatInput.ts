@@ -124,7 +124,12 @@ const setInput = (event: WhatInputEvents) => {
 
     if (currentInput !== value && shouldUpdate) {
       currentInput = value;
-      doUpdate(event.view.document);
+
+      // https://github.com/testing-library/user-event/issues/709
+      // JSDOM does not implement `event.view` so prune this code path in test
+      if (process.env.NODE_ENV !== 'test') {
+        doUpdate(event.view.document);
+      }
     }
   }
 };

@@ -13,6 +13,7 @@
     "strict": false,
     "lib": ["es6", "dom"],
     "types": [],
+    "skipLibCheck": true,
     "noImplicitAny": true
   },
   "include": ["src"]

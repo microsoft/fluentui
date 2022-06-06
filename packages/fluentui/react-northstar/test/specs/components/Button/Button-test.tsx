@@ -49,7 +49,7 @@ describe('Button', () => {
           await htmlIsAccessibilityCompliant(
             <div>
               <Button icon="books" aria-labelledby="tstBtn" />
-              <span id="tstBtn" aria-label="testing button" />
+              <span id="tstBtn">testing button</span>
             </div>,
           ));
       });

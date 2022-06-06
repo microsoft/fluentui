@@ -1,4 +1,3 @@
-let path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 
 const BUNDLE_NAME = 'theming-designer';
@@ -13,13 +12,4 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     libraryTarget: 'var',
     library: 'Fabric',
   },
-
-  externals: [
-    {
-      react: 'React',
-    },
-    {
-      'react-dom': 'ReactDOM',
-    },
-  ],
 });

@@ -27,6 +27,7 @@ export * from './number-field/';
 export * from './progress/';
 export * from './radio/';
 export * from './radio-group/';
+export * from './search/';
 export * from './select';
 export * from './skeleton/';
 export * from './slider/';

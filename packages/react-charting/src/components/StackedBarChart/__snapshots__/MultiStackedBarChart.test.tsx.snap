@@ -14,6 +14,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
         font-weight: 400;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div>
     <div
@@ -384,6 +385,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
         font-weight: 400;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div>
     <div
@@ -746,6 +748,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
         font-weight: 400;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div>
     <div
@@ -1059,6 +1062,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
         font-weight: 400;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div>
     <div
@@ -1596,6 +1600,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
         font-weight: 400;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div>
     <div

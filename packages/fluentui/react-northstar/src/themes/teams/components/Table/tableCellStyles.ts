@@ -5,7 +5,9 @@ import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
 export const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TableVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 });
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
+    });
 
     return {
       display: 'flex',

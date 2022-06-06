@@ -1,2 +1,2 @@
-export * from './injectWrapperMethod';
-export * from './reactTestRenderer';
+export { injectWrapperMethod } from './injectWrapperMethod';
+export { create } from './reactTestRenderer';

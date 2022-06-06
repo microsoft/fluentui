@@ -1,6 +1,6 @@
 ---
-name: Component Convergence Epic
-about: Epic issue tracking convergence of a particular component
+name: (internal) Component convergence epic
+about: (team member use only) Epic issue tracking convergence of a particular component
 ---
 
 <!--
@@ -39,6 +39,7 @@ completed as part of converging a component. More info can be found here: https:
   - [ ] Unit tests
   - [ ] VR tests
   - [ ] Accessibility behavior tests
+  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): (issue link)
 - [ ] Write README.md covering basic usage
 - [ ] Write initial MIGRATION.md guide (include v8 and v0)
 - [ ] Set component ownership in CODEOWNERS

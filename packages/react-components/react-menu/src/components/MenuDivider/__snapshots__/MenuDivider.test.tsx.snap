@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuDivider renders a default state 1`] = `
+<div
+  aria-hidden={true}
+  className="fui-MenuDivider"
+  role="presentation"
+>
+  Default MenuDivider
+</div>
+`;

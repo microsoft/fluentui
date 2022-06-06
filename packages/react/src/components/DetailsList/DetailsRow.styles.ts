@@ -142,6 +142,11 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
 
         [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
           color: focusedLinkColor,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText',
+            },
+          },
         },
 
         // Selected State hover
@@ -150,10 +155,14 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           color: colors.selectedHoverMetaText,
           selectors: {
             // Selected State hover meta cell
-            [`.${classNames.cell} ${HighContrastSelector}`]: {
-              color: 'HighlightText',
+            [HighContrastSelector]: {
+              background: 'Highlight',
               selectors: {
-                '> a': {
+                [`.${classNames.cell}`]: {
+                  color: 'HighlightText',
+                },
+                [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+                  forcedColorAdjust: 'none',
                   color: 'HighlightText',
                 },
               },
@@ -167,11 +176,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
                   color: 'HighlightText',
                 },
               },
-            },
-
-            // Ensure high-contrast mode overrides default hover background
-            [HighContrastSelector]: {
-              background: 'Highlight',
             },
           },
         },
@@ -281,11 +285,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           background: 'Highlight',
           color: 'HighlightText',
           ...getHighContrastNoAdjustStyle(),
-          selectors: {
-            a: {
-              color: 'HighlightText',
-            },
-          },
         },
       },
     },

@@ -19,19 +19,11 @@ export default class ComponentPropName extends React.PureComponent<any, any> {
     return (
       <div>
         <code>{name}</code>
-        {required && (
-          <Popup
-            content="Required"
-            align="center"
-            styles={{ fontSize: 'x-small' }}
-            trigger={<span style={{ color: 'red' }}>*</span>}
-          />
-        )}
+        {required && <Popup content="Required" align="center" trigger={<span style={{ color: 'red' }}>*</span>} />}
         {slot && (
           <Popup
             content="Slot - see Shorthand Props page for details."
             align="center"
-            styles={{ fontSize: 'x-small' }}
             trigger={<span style={slotStyle}>&nbsp;S&nbsp;</span>}
           />
         )}

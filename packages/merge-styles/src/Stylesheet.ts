@@ -361,6 +361,7 @@ export class Stylesheet {
   private _createStyleElement(): HTMLStyleElement {
     const head: HTMLHeadElement = document.head;
     const styleElement = document.createElement('style');
+    let nodeToInsertBefore: Node | null = null;
 
     styleElement.setAttribute('data-merge-styles', 'true');
 
@@ -373,16 +374,18 @@ export class Stylesheet {
     if (this._lastStyleElement) {
       // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
       // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
-      head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+      nodeToInsertBefore = this._lastStyleElement.nextElementSibling;
     } else {
       const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
 
       if (placeholderStyleTag) {
-        head!.insertBefore(styleElement, placeholderStyleTag.nextElementSibling);
+        nodeToInsertBefore = placeholderStyleTag.nextElementSibling;
       } else {
-        head!.insertBefore(styleElement, head.childNodes[0]);
+        nodeToInsertBefore = head.childNodes[0];
       }
     }
+
+    head!.insertBefore(styleElement, head!.contains(nodeToInsertBefore) ? nodeToInsertBefore : null);
     this._lastStyleElement = styleElement;
 
     return styleElement;

@@ -142,6 +142,14 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   teachingBubbleSecondaryBackground: DarkSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: DarkSemanticColors.teachingBubble.rest.text,
   textFieldBorderDisabled: DarkSemanticColors.primaryButton.disabled.border,
+  calendarBackground: DarkSemanticColors.calendar.background,
+  calendarTextRest: DarkSemanticColors.calendar.text.rest,
+  calendarTextHover: DarkSemanticColors.calendar.text.hover,
+  calendarTextDisabled: DarkSemanticColors.calendar.text.disabled,
+  calendarTextOutside: DarkSemanticColors.calendar.text.outside,
+  calendarBackgroundBorder: DarkSemanticColors.calendar.button.border,
+  calendarBackgroundSelected: DarkSemanticColors.calendar.button.selected,
+  calendarBackgroundHover: DarkSemanticColors.calendar.button.hover,
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '0px',

@@ -1,0 +1,50 @@
+# These steps have to run on a windows machine,
+# and therefore unfortunately can't be integrated in the regular steps
+
+jobs:
+  - job: compliance
+    displayName: Compliance checks
+    pool: uifabric-windows-2019-small
+    steps:
+      - task: UseDotNet@2
+        condition: succeededOrFailed()
+        displayName: 'Use .NET Core sdk 3.x'
+        inputs:
+          version: 3.x
+          steps:
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
+        condition: succeededOrFailed()
+        displayName: '🧭 Run Credential Scanner'
+        inputs:
+          debugMode: false
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-eslint.ESLint@1
+        condition: succeededOrFailed()
+        displayName: '🧭 Run ESLint'
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+        displayName: '🧭 Publish Guardian Artifacts - All Tools'
+        inputs:
+          ArtifactType: M365
+        condition: succeededOrFailed()
+
+      - task: AssetRetention@3
+        displayName: 🧭 Arrow Retention
+        inputs:
+          ArrowServiceConnection: 'Arrow_uifabric_uifabric_PROD'
+          AssetGroupName: '$(System.TeamProject)_$(Build.DefinitionName)'
+          AssetNumber: '$(Build.BuildId)'
+          IsShipped: false
+          DropsToRetain: 'CodeAnalysisLogs'
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
+        displayName: '🧭 Guardian Break'
+        inputs:
+          GdnBreakPolicyMinSev: Warning
+          GdnBreakAllTools: true
+          GdnBreakGdnToolESLint: true
+          GdnBreakGdnToolESLintSeverity: Warning
+          GdnBreakPolicy: M365
+        condition: succeededOrFailed()

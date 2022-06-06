@@ -5,9 +5,10 @@ import { Actions } from 'node-plop';
 import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
-import { spawnSync } from 'child_process';
+import { execSync } from 'child_process';
 import { findGitRoot, getAllPackageInfo, isConvergedPackage } from '../monorepo/index';
 import chalk from 'chalk';
+import { names, WorkspaceJsonConfiguration } from '@nrwl/devkit';
 
 //#endregion
 
@@ -28,7 +29,6 @@ const root = findGitRoot();
 interface Answers {
   packageNpmName: string;
   componentName: string;
-  doComponentTestBuild?: boolean;
 }
 
 interface Data extends Answers {
@@ -38,6 +38,8 @@ interface Data extends Answers {
   packagePath: string;
   /** Absolute path to the component folder */
   componentPath: string;
+  /** Different strings Dictionary based off the provided `componentName` */
+  componentNames: ReturnType<typeof names>;
 }
 //#endregion
 
@@ -63,25 +65,21 @@ module.exports = (plop: NodePlopAPI) => {
         validate: (input: string) =>
           /^[A-Z][a-zA-Z0-9]+$/.test(input) || 'Must enter a PascalCase component name (ex: MyComponent)',
       },
-      {
-        type: 'confirm',
-        name: 'doComponentTestBuild',
-        message: 'Do you wish to run a test build after component creation?',
-        default: true,
-      },
     ],
 
     actions: (answers: Answers): Actions => {
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
+      const packageMetadata = getProjectMetadata({ root, name: answers.packageNpmName });
 
       const packageName = answers.packageNpmName.replace('@fluentui/', '');
-      const packagePath = path.join(root, 'packages', packageName);
-      const componentPath = path.join(packagePath, 'src/components', answers.componentName);
+      const componentPath = path.join(packageMetadata.sourceRoot, 'components', answers.componentName);
+      const componentNames = names(answers.componentName);
       const data: Data = {
         ...answers,
         packageName,
-        packagePath,
+        packagePath: packageMetadata.root,
         componentPath,
+        componentNames,
       };
 
       return [
@@ -89,7 +87,7 @@ module.exports = (plop: NodePlopAPI) => {
         {
           // Copy component templates
           type: 'addMany',
-          destination: packagePath,
+          destination: data.packagePath,
           globOptions,
           data,
           skipIfExists: true,
@@ -97,25 +95,27 @@ module.exports = (plop: NodePlopAPI) => {
         },
         () => appendToPackageIndex(data),
         () => {
-          if (!answers.doComponentTestBuild) {
-            return 'Skipping component test build';
-          }
+          console.log(`${chalk.green('✔')} Component files created!`);
 
-          console.log('Component files created! Running yarn build...\n');
-          const yarnResult = spawnSync('yarn', ['build', '--to', data.packageNpmName], {
+          console.log('👷‍♀️ Updating API and running tests...\n');
+
+          execSync(`yarn nx workspace-generator migrate-converged-pkg --name=${data.packageNpmName}`, {
             cwd: root,
             stdio: 'inherit',
-            shell: true,
           });
-          if (yarnResult.status !== 0) {
-            throw new Error('Something went wrong with building. Please check previous logs for details.');
-          }
-          return 'Component compiled!';
+
+          execSync(`yarn workspace ${data.packageNpmName} build:local`, {
+            cwd: root,
+            stdio: 'inherit',
+          });
+
+          execSync(`yarn workspace ${data.packageNpmName} test -t ${data.componentName}`, {
+            cwd: root,
+            stdio: 'inherit',
+          });
+
+          return 'Component ready!';
         },
-        chalk.green.bold(
-          'Created new component! Please check over it and ensure wording and included files ' +
-            'make sense for your scenario.',
-        ),
       ];
     },
   });
@@ -149,3 +149,11 @@ const appendToPackageIndex = (data: Data): string => {
   return `Package ${packageName} index.ts already contains reference to ${componentName}`;
 };
 //#endregion
+
+function getProjectMetadata(options: { root: string; name: string }) {
+  const nxWorkspace: WorkspaceJsonConfiguration = JSON.parse(
+    fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'),
+  );
+
+  return nxWorkspace.projects[options.name];
+}

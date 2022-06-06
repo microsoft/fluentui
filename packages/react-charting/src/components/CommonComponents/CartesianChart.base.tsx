@@ -11,8 +11,10 @@ import {
 } from '../../index';
 import {
   ChartHoverCard,
+  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
+  IAxisData,
   getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
@@ -106,7 +108,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -157,16 +159,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     let xScale: any;
     switch (this.props.xAxisType!) {
       case XAxisTypes.NumericAxis:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
         xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
         break;
       case XAxisTypes.StringAxis:
-        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!);
+        xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
         break;
       default:
-        xScale = createNumericXAxis(XAxisParams);
+        xScale = createNumericXAxis(XAxisParams, culture);
     }
 
     /*
@@ -197,12 +199,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let yScale: any;
+    const axisData: IAxisData = { yAxisDomainValues: [] };
     if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
       yScale = createStringYAxis(YAxisParams, this.props.stringDatasetForYAxisDomain!, this._isRtl);
     } else {
-      yScale = createYAxis(YAxisParams, this._isRtl);
+      yScale = createYAxis(YAxisParams, this._isRtl, axisData);
     }
-
+    this.props.getAxisData && this.props.getAxisData(axisData);
     // Callback function for chart, returns axis
     this._getData(xScale, yScale);
 
@@ -239,6 +242,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        onMouseLeave={this.props.onChartMouseLeave}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
           <svg
@@ -290,6 +294,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 Legend={calloutProps.legend!}
                 YValue={calloutProps.YValue!}
                 color={calloutProps.color!}
+                culture={this.props.culture}
                 {...chartHoverProps}
               />
             )}
@@ -311,9 +316,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         >
           <div
             className={this._classNames.calloutContentX}
-            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData)}
+            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
           >
-            {calloutProps!.hoverXValue}
+            {convertToLocaleString(calloutProps!.hoverXValue, this.props.culture)}
           </div>
         </div>
         <div
@@ -326,7 +331,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
-                  {...getAccessibleDataObject(yValue.callOutAccessibilityData)}
+                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
                   key={`callout-content-${index}`}
                   style={
                     yValueHoverSubCountsExists
@@ -389,12 +394,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       toDrawShape,
     });
 
+    const { culture } = this.props;
+    const yValue = convertToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
         <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
           {yValueHoverSubCountsExists && (
             <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-              {xValue.legend!} ({xValue.y})
+              {xValue.legend!} ({yValue})
             </div>
           )}
           <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
@@ -410,7 +417,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             <div>
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
-                {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
+                {convertToLocaleString(
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  culture,
+                )}
               </div>
             </div>
           </div>
@@ -421,13 +431,15 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       return (
         <div style={marginStyle}>
           <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-            {xValue.legend!} ({xValue.y})
+            {xValue.legend!} ({yValue})
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
               <div key={subcountName} className={_classNames.calloutBlockContainer}>
-                <div className={_classNames.calloutlegendText}> {subcountName}</div>
-                <div className={_classNames.calloutContentY}>{subcounts[subcountName]}</div>
+                <div className={_classNames.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
+                <div className={_classNames.calloutContentY}>
+                  {convertToLocaleString(subcounts[subcountName], culture)}
+                </div>
               </div>
             );
           })}

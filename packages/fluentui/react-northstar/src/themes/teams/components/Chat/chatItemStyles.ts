@@ -1,6 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensity';
 import { ChatItemStylesProps } from '../../../../components/Chat/ChatItem';
 import { chatItemStylesComfy } from './chatItemStylesComfy';
 import { chatItemStylesCompact } from './chatItemStylesCompact';

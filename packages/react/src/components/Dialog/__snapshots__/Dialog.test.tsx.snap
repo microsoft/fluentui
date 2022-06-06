@@ -1,361 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dialog renders Dialog correctly 1`] = `
-<div
-  className=
-
-      {
-        flex-grow: 1;
-        overflow-y: hidden;
-      }
->
+exports[`Dialog renders DialogContent correctly 1`] = `
+<div>
   <div
-    className=
-        ms-Dialog-header
+    class=
+
         {
-          box-sizing: border-box;
-          position: relative;
-          width: 100%;
+          flex-grow: 1;
+          overflow-y: hidden;
         }
   >
     <div
-      aria-level={1}
-      className=
-          ms-Dialog-title
+      class=
+          ms-Dialog-header
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
-            min-height: 20px;
-            padding-bottom: 20px;
-            padding-left: 24px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 16px;
-            padding-left: 16px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-      role="heading"
-    />
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 15px;
-            padding-top: 15px;
-            position: absolute;
-            right: 0;
-            top: 0;
-          }
-          & > * {
-            flex: 0 0 auto;
-          }
-          & .ms-Dialog-button {
-            color: #323130;
-          }
-          & .ms-Dialog-button:hover {
-            border-radius: 2px;
-            color: #201f1e;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 8px;
-            padding-top: 15px;
-          }
-    />
-  </div>
-  <div
-    className=
-        ms-Dialog-inner
-        {
-          padding-bottom: 24px;
-          padding-left: 24px;
-          padding-right: 24px;
-          padding-top: 0;
-        }
-        @media (min-width: 320px) and (max-width: 479px){& {
-          padding-bottom: 16px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-        }
-  >
-    <div
-      className=
-          ms-Dialog-content
-          {
-            position: relative;
-            width: 100%;
-          }
-    />
-  </div>
-</div>
-`;
-
-exports[`Dialog renders Dialog with a jsx title 1`] = `
-<div
-  className=
-
-      {
-        flex-grow: 1;
-        overflow-y: hidden;
-      }
->
-  <div
-    className=
-        ms-Dialog-header
-        {
-          box-sizing: border-box;
-          position: relative;
-          width: 100%;
-        }
-  >
-    <div
-      aria-level={1}
-      className=
-          ms-Dialog-title
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
-            min-height: 20px;
-            padding-bottom: 20px;
-            padding-left: 24px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 16px;
-            padding-left: 16px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-      role="heading"
-    >
-      <div>
-        <span>
-          I am span 1
-        </span>
-        <span>
-          I am span 2
-        </span>
-      </div>
-    </div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 15px;
-            padding-top: 15px;
-            position: absolute;
-            right: 0;
-            top: 0;
-          }
-          & > * {
-            flex: 0 0 auto;
-          }
-          & .ms-Dialog-button {
-            color: #323130;
-          }
-          & .ms-Dialog-button:hover {
-            border-radius: 2px;
-            color: #201f1e;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 8px;
-            padding-top: 15px;
-          }
-    />
-  </div>
-  <div
-    className=
-        ms-Dialog-inner
-        {
-          padding-bottom: 24px;
-          padding-left: 24px;
-          padding-right: 24px;
-          padding-top: 0;
-        }
-        @media (min-width: 320px) and (max-width: 479px){& {
-          padding-bottom: 16px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-        }
-  >
-    <div
-      className=
-          ms-Dialog-content
-          {
-            position: relative;
-            width: 100%;
-          }
-    />
-  </div>
-</div>
-`;
-
-exports[`Dialog renders DialogContent with titleProps 1`] = `
-<div
-  className=
-
-      {
-        flex-grow: 1;
-        overflow-y: hidden;
-      }
->
-  <div
-    className=
-        ms-Dialog-header
-        {
-          box-sizing: border-box;
-          position: relative;
-          width: 100%;
-        }
-  >
-    <div
-      aria-level={3}
-      className=
-          ms-Dialog-title
-          title_class
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: normal;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
-            min-height: 20px;
-            padding-bottom: 20px;
-            padding-left: 24px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 16px;
-            padding-left: 16px;
-            padding-right: 46px;
-            padding-top: 16px;
-          }
-      role="heading"
-      title="tooltip"
-    >
-      sample title
-    </div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 15px;
-            padding-top: 15px;
-            position: absolute;
-            right: 0;
-            top: 0;
-          }
-          & > * {
-            flex: 0 0 auto;
-          }
-          & .ms-Dialog-button {
-            color: #323130;
-          }
-          & .ms-Dialog-button:hover {
-            border-radius: 2px;
-            color: #201f1e;
-          }
-          @media (min-width: 320px) and (max-width: 479px){& {
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 8px;
-            padding-top: 15px;
-          }
-    />
-  </div>
-  <div
-    className=
-        ms-Dialog-inner
-        {
-          padding-bottom: 24px;
-          padding-left: 24px;
-          padding-right: 24px;
-          padding-top: 0;
-        }
-        @media (min-width: 320px) and (max-width: 479px){& {
-          padding-bottom: 16px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-        }
-  >
-    <div
-      className=
-          ms-Dialog-content
-          {
+            box-sizing: border-box;
             position: relative;
             width: 100%;
           }
     >
-      <p
-        className=
-            ms-Dialog-subText
+      <div
+        aria-level="1"
+        class=
+            ms-Dialog-title
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #605e5c;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              line-height: 1.5;
-              margin-bottom: 24px;
+              font-size: 20px;
+              font-weight: 600;
+              line-height: normal;
+              margin-bottom: 0;
               margin-left: 0;
               margin-right: 0;
               margin-top: 0;
-              word-wrap: break-word;
+              min-height: 20px;
+              padding-bottom: 20px;
+              padding-left: 24px;
+              padding-right: 46px;
+              padding-top: 16px;
             }
-      >
-        Sample subtext
-      </p>
+            @media (min-width: 320px) and (max-width: 479px){& {
+              padding-bottom: 16px;
+              padding-left: 16px;
+              padding-right: 46px;
+              padding-top: 16px;
+            }
+        role="heading"
+      />
+      <div
+        class=
+
+            {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 15px;
+              padding-top: 15px;
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            & > * {
+              flex: 0 0 auto;
+            }
+            & .ms-Dialog-button {
+              color: #323130;
+            }
+            & .ms-Dialog-button:hover {
+              border-radius: 2px;
+              color: #201f1e;
+            }
+            @media (min-width: 320px) and (max-width: 479px){& {
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 8px;
+              padding-top: 15px;
+            }
+      />
+    </div>
+    <div
+      class=
+          ms-Dialog-inner
+          {
+            padding-bottom: 24px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 0;
+          }
+          @media (min-width: 320px) and (max-width: 479px){& {
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+          }
+    >
+      <div
+        class=
+            ms-Dialog-content
+            {
+              position: relative;
+              width: 100%;
+            }
+      />
     </div>
   </div>
 </div>

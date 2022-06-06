@@ -2,7 +2,6 @@
 
 exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 <div
-  aria-label="Stacked Bar chart example"
   className=
       ms-DonutChart
       {
@@ -17,6 +16,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         height: 100%;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div
     className=
@@ -31,6 +31,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -71,7 +72,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -106,7 +111,11 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -358,7 +367,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
-  aria-label="Stacked Bar chart example"
   className=
       ms-DonutChart
       {
@@ -373,6 +381,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         height: 100%;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div
     className=
@@ -387,6 +396,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -427,7 +437,11 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -462,7 +476,11 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -714,7 +732,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
 exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 <div
-  aria-label="Stacked Bar chart example"
   className=
       ms-DonutChart
       {
@@ -729,6 +746,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         height: 100%;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div
     className=
@@ -743,6 +761,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -783,7 +802,11 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -818,7 +841,11 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -836,7 +863,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 <div
-  aria-label="Stacked Bar chart example"
   className=
       ms-DonutChart
       {
@@ -851,6 +877,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         height: 100%;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div
     className=
@@ -865,6 +892,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -905,7 +933,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -940,7 +972,11 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
@@ -1192,7 +1228,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
 exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 <div
-  aria-label="Stacked Bar chart example"
   className=
       ms-DonutChart
       {
@@ -1207,6 +1242,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         height: 100%;
         width: 100%;
       }
+  onMouseLeave={[Function]}
 >
   <div
     className=
@@ -1221,6 +1257,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   >
     <div>
       <svg
+        aria-label="Stacked Bar chart example"
         className=
 
             {
@@ -1261,12 +1298,16 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
           <g>
@@ -1298,12 +1339,16 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               className=
 
                   {
+                    fill: #323130;
                     font-size: 18px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                    fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
               y={5}
             >
-              1000
+              1,000
             </text>
           </g>
         </g>

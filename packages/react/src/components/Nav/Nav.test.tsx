@@ -209,4 +209,32 @@ describe('Nav', () => {
     expect(links[2].getAttribute('rel')).toBe('noopener noreferrer');
     expect(links[3].getAttribute('rel')).toBe('noopener noreferrer');
   });
+
+  it('updates header expanded state based on isExpanded prop correctly', () => {
+    const groups: INavLinkGroup[] = [
+      {
+        name: 'Nav Component',
+        expandAriaLabel: 'Expanded',
+        collapseAriaLabel: 'Collapsed',
+        isExpanded: true,
+        links: [
+          {
+            key: 'LinkItem',
+            name: 'LinkItem',
+            url: '#/examples/linkitem',
+          },
+        ],
+      },
+    ];
+
+    const nav = mount<NavBase>(<Nav groups={groups} />);
+
+    expect(nav.find('.ms-Nav-chevronButton').getElement().props['aria-expanded']).toEqual(true);
+
+    //update groups isExpanded state to false
+    const updatedGroups = [{ ...groups[0], isExpanded: false }];
+    nav.setProps({ groups: updatedGroups });
+
+    expect(nav.find('.ms-Nav-chevronButton').getElement().props['aria-expanded']).toEqual(false);
+  });
 });

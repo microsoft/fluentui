@@ -57,6 +57,16 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  xAxisPadding?: number;
 }
 
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {

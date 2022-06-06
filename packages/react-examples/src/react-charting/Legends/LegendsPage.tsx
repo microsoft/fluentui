@@ -10,10 +10,12 @@ import {
 import { LegendOverflowExample } from './Legends.Overflow.Example';
 import { LegendBasicExample } from './Legends.Basic.Example';
 import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
+import { LegendStyledExample } from './Legends.Styled.Example';
 
 const LegendsOverflowExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
 const LegendsWrapLinesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.WrapLines.Example.tsx') as string;
 const LegendsBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Basic.Example.tsx') as string;
+const LegendsStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Styled.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -33,6 +35,10 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
 
             <ExampleCard title="Legends with no overflow" code={LegendsBasicExampleCode}>
               <LegendBasicExample />
+            </ExampleCard>
+
+            <ExampleCard title="Legend styled" code={LegendsStyledExampleCode}>
+              <LegendStyledExample />
             </ExampleCard>
           </div>
         }

@@ -24,7 +24,7 @@ describe('getPropsWithDefaults', () => {
       num: 0,
       bool: false,
       str: '',
-      fn: jasmine.createSpy('fn'),
+      fn: () => undefined,
       nul: null,
     };
 

@@ -1,19 +1,18 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import * as ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 
 import { Panel } from './Panel';
 import { PanelBase } from './Panel.base';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
 import { resetIds } from '../../Utilities';
-import type { IPanel } from './Panel.types';
-
-let div: HTMLElement;
-
-const ReactDOM = require('react-dom');
+import type { IPanel, IPanelProps } from './Panel.types';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Panel', () => {
+  let div: HTMLElement | undefined;
+
   beforeEach(() => {
     resetIds();
   });
@@ -27,15 +26,9 @@ describe('Panel', () => {
   });
 
   it('renders Panel correctly', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const originalCreatePortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    const component = renderer.create(
+    render(
       <Panel
-        isOpen={true}
+        isOpen
         headerText="Test Panel"
         headerTextProps={{
           className: 'panel_class',
@@ -45,76 +38,58 @@ describe('Panel', () => {
         <span>Content goes here</span>
       </Panel>,
     );
-
-    expect(component.toJSON()).toMatchSnapshot();
-
-    ReactDOM.createPortal = originalCreatePortal;
+    expect(screen.getByRole('dialog')).toMatchSnapshot();
   });
 
   describe('open', () => {
-    beforeEach(() => {
-      div = document.createElement('div');
-    });
-
     afterEach(() => {
-      ReactDOM.unmountComponentAtNode(div);
+      if (div) {
+        ReactDOM.unmountComponentAtNode(div);
+        div = undefined;
+      }
     });
 
     it('fires the correct events on imperative scenarios', () => {
-      let openedCalled = false;
-      let openCalled = false;
-      let dismissedCalled = false;
-      let dismissCalled = false;
-      let dismissCount = 0;
+      const panel = React.createRef<IPanel>();
+      const onOpen = jest.fn();
+      const onOpened = jest.fn();
+      const onDismiss = jest.fn();
+      const onDimissed = jest.fn();
 
-      const setOpenTrue = (): void => {
-        openCalled = true;
-      };
-      const setOpenedTrue = (): void => {
-        openedCalled = true;
-      };
-      const setDismissTrue = (): void => {
-        dismissCalled = true;
-        dismissCount++;
-      };
-      const setDismissedTrue = (): void => {
-        dismissedCalled = true;
-      };
       jest.useFakeTimers();
 
-      const panel: PanelBase = ReactDOM.render(
+      render(
         <PanelBase
-          onOpen={setOpenTrue}
-          onOpened={setOpenedTrue}
-          onDismiss={setDismissTrue}
-          onDismissed={setDismissedTrue}
+          componentRef={panel}
+          onOpen={onOpen}
+          onOpened={onOpened}
+          onDismiss={onDismiss}
+          onDismissed={onDimissed}
         />,
-        div,
-      ) as any;
+      );
 
-      panel.open();
+      expect(panel.current).toBeDefined();
+      panel.current!.open();
 
-      expect(openCalled).toEqual(true);
-      expect(openedCalled).toEqual(false);
+      expect(onOpen).toHaveBeenCalledTimes(1);
+      expect(onOpened).toHaveBeenCalledTimes(0);
 
       jest.runOnlyPendingTimers();
 
-      expect(openedCalled).toEqual(true);
+      expect(onOpened).toHaveBeenCalledTimes(1);
 
-      expect(dismissCalled).toEqual(false);
-      expect(dismissedCalled).toEqual(false);
+      expect(onDismiss).toHaveBeenCalledTimes(0);
+      expect(onDimissed).toHaveBeenCalledTimes(0);
 
-      panel.dismiss();
-
-      expect(dismissCalled).toEqual(true);
-      expect(dismissedCalled).toEqual(false);
+      panel.current!.dismiss();
 
       // Dismiss should only be called once per dismiss.
-      expect(dismissCount).toEqual(1);
+      expect(onDismiss).toHaveBeenCalledTimes(1);
+      expect(onDimissed).toHaveBeenCalledTimes(0);
 
       jest.runOnlyPendingTimers();
 
-      expect(dismissedCalled).toEqual(true);
+      expect(onDimissed).toHaveBeenCalledTimes(1);
     });
 
     it('fires the correct events on non-imperative scenarios', () => {
@@ -126,20 +101,12 @@ describe('Panel', () => {
       const onDismissed = jest.fn();
       jest.useFakeTimers();
 
-      const wrapper = mount(
-        <Panel
-          isOpen={false}
-          onOpen={onOpen}
-          onOpened={onOpened}
-          onDismiss={onDismiss}
-          onDismissed={onDismissed}
-          componentRef={panel}
-        />,
-      );
+      const props: IPanelProps = { onOpen, onOpened, onDismiss, onDismissed, componentRef: panel };
+      const { rerender } = render(<Panel isOpen={false} {...props} />);
 
       expect(onOpen).toHaveBeenCalledTimes(0);
 
-      wrapper.setProps({ isOpen: true });
+      rerender(<Panel isOpen {...props} />);
 
       expect(onOpen).toHaveBeenCalledTimes(1);
       expect(onOpened).toHaveBeenCalledTimes(0);
@@ -149,7 +116,7 @@ describe('Panel', () => {
       expect(onOpened).toHaveBeenCalledTimes(1);
       expect(onDismiss).toHaveBeenCalledTimes(0);
 
-      wrapper.setProps({ isOpen: false });
+      rerender(<Panel isOpen={false} {...props} />);
 
       expect(onDismissed).toHaveBeenCalledTimes(0);
 
@@ -160,15 +127,9 @@ describe('Panel', () => {
   });
 
   it('allows the consumer to pass through popup props', () => {
-    // Mock createPortal to capture its component hierarchy in snapshot output.
-    const originalCreatePortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
-
-    const component = renderer.create(
+    render(
       <Panel
-        isOpen={true}
+        isOpen
         headerText="Test Panel"
         headerTextProps={{
           className: 'panel_class',
@@ -180,9 +141,51 @@ describe('Panel', () => {
       </Panel>,
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    const popup = screen.getByRole('dialog');
+    expect(popup.getAttribute('aria-label')).toBe('I am an aria label');
+    expect(popup.getAttribute('aria-labelledby')).toBe('');
+  });
 
-    ReactDOM.createPortal = originalCreatePortal;
+  describe('enableAriaHiddenSiblings', () => {
+    // These tests cover functionality inherited from Modal: when the dialog is open, all siblings
+    // outside the *content's* DOM tree should be hidden. The content is rendered in a portal
+    // (not under the same div as the rest of the React-rendered elements), so to test that a
+    // sibling element gets properly hidden, the sibling must be attached directly to document.body.
+    let sibling: HTMLElement;
+
+    beforeEach(() => {
+      sibling = document.createElement('div');
+      sibling.textContent = 'sibling';
+      document.body.appendChild(sibling);
+    });
+
+    afterEach(() => {
+      sibling.remove();
+    });
+
+    it('hides siblings when open', () => {
+      const { getByText } = render(<Panel isOpen>content</Panel>);
+
+      expect(getByText('sibling').getAttribute('aria-hidden')).toBe('true');
+    });
+
+    it('does not hide siblings when closed', () => {
+      const { queryByText } = render(<Panel isOpen={false}>content</Panel>);
+
+      expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+      expectNoHiddenParents(queryByText('sibling')!);
+    });
+
+    it('does not hide parent when closed and isHiddenOnDismiss is true', () => {
+      const { queryByText } = render(
+        <Panel isOpen={false} isHiddenOnDismiss={true}>
+          content
+        </Panel>,
+      );
+
+      expectNoHiddenParents(queryByText('content')!);
+    });
   });
 
   isConformant({
@@ -192,14 +195,5 @@ describe('Panel', () => {
     // Problem: Ref doesn't match DOM node.
     // Solution: Ensure ref is passed correctly to the root element.
     disabledTests: ['component-has-root-ref', 'component-handles-ref', 'component-handles-classname'],
-  });
-
-  describe('onClose', () => {
-    beforeEach(() => {
-      div = document.createElement('div');
-    });
-    afterEach(() => {
-      ReactDOM.unmountComponentAtNode(div);
-    });
   });
 });

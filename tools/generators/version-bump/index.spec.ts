@@ -15,7 +15,10 @@ const noop = () => null;
 
 describe('version-string-replace generator', () => {
   let tree: Tree;
-  const defaultTestOptions = { bumpType: 'prerelease', prereleaseTag: 'beta' };
+  const defaultTestOptions = {
+    bumpType: 'prerelease',
+    prereleaseTag: 'beta',
+  } as const;
 
   beforeEach(() => {
     jest.restoreAllMocks();
@@ -118,6 +121,19 @@ describe('version-string-replace generator', () => {
           `);
   });
 
+  it('should downgrade the version to 0.0.0 when `nightly` is selected as the bump type', async () => {
+    tree = setupDummyPackage(tree, {
+      name: '@proj/make-styles',
+      version: '9.0.0-alpha.0',
+      projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+    });
+
+    await generator(tree, { name: '@proj/make-styles', bumpType: 'nightly', prereleaseTag: 'nightly' });
+
+    const packageJson = readJson(tree, 'packages/make-styles/package.json');
+    expect(packageJson.version).toMatchInlineSnapshot(`"0.0.0-nightly.0"`);
+  });
+
   describe('--all', () => {
     beforeEach(() => {
       tree = setupDummyPackage(tree, {
@@ -136,6 +152,13 @@ describe('version-string-replace generator', () => {
         devDependencies: {
           '@proj/react-utilities': '^9.0.0-alpha.1',
         },
+        projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
+      });
+      tree = setupDummyPackage(tree, {
+        name: '@proj/react-theme',
+        version: '9.0.0-alpha.0',
+        dependencies: {},
+        devDependencies: {},
         projectConfiguration: { tags: ['vNext', 'platform:web'], sourceRoot: 'packages/make-styles/src' },
       });
       tree = setupDummyPackage(tree, {
@@ -187,6 +210,34 @@ describe('version-string-replace generator', () => {
       expect(makeStylesPackageJson.devDependencies).toMatchInlineSnapshot(`
         Object {
           "@proj/react-utilities": "^9.0.0-beta.0",
+        }
+      `);
+    });
+
+    it('should exclude packages', async () => {
+      await generator(tree, {
+        all: true,
+        ...defaultTestOptions,
+        exclude: '@proj/react-utilities,@proj/react-theme',
+      });
+
+      const reactThemePackageJson = readJson(tree, 'packages/react-theme/package.json');
+      const makeStylesPackageJson = readJson(tree, 'packages/make-styles/package.json');
+      const reactButtonPackageJson = readJson(tree, 'packages/react-button/package.json');
+      const reactUtilitiesPackageJson = readJson(tree, 'packages/react-utilities/package.json');
+      expect(reactButtonPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(makeStylesPackageJson.version).toEqual('9.0.0-beta.0');
+      expect(reactThemePackageJson.version).toEqual('9.0.0-alpha.0');
+      expect(reactUtilitiesPackageJson.version).toEqual('9.0.0-alpha.0');
+      expect(reactButtonPackageJson.dependencies).toMatchInlineSnapshot(`
+        Object {
+          "@proj/make-styles": "^9.0.0-beta.0",
+          "@proj/react-utilities": "^9.0.0-alpha.1",
+        }
+      `);
+      expect(makeStylesPackageJson.devDependencies).toMatchInlineSnapshot(`
+        Object {
+          "@proj/react-utilities": "^9.0.0-alpha.1",
         }
       `);
     });

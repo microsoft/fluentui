@@ -39,8 +39,15 @@ export const getFocusedStyles = ({
       background: colors.backgroundFocus,
     }),
 
+    // primary styles
+    ...(primary &&
+      !vertical &&
+      !underlined && {
+        color: v.primaryWrapperColorFocus,
+      }),
+
     ...(vertical && {
-      background: v.verticalBackgroundColorFocus,
+      background: 'inherit',
       color: v.colorFocus || colors.foregroundFocus,
       border: `${pxToRem(1)} solid transparent`,
       padding: pxToRem(1),
@@ -175,17 +182,12 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-
-        ...(underlined && {
+        ...((underlined || vertical) && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
             borderColor: v.borderColorActive,
           },
-        }),
-
-        ...(vertical && {
-          ...getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 }),
         }),
       }),
 

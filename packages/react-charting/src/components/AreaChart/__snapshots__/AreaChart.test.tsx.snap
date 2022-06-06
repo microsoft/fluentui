@@ -17,6 +17,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         width: 100%;
       }
   id="chart_5"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -49,7 +50,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -78,7 +79,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -128,6 +129,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -342,6 +344,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         width: 100%;
       }
   id="chart_26"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -374,7 +377,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -403,7 +406,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -453,6 +456,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -647,6 +651,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         width: 100%;
       }
   id="chart_12"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -679,7 +684,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -708,7 +713,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -758,6 +763,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -827,6 +833,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         width: 100%;
       }
   id="chart_19"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -859,7 +866,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -888,7 +895,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -938,6 +945,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1152,6 +1160,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         width: 100%;
       }
   id="chart_33"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1184,7 +1193,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1213,7 +1222,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1263,6 +1272,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1477,6 +1487,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         width: 100%;
       }
   id="chart_40"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1509,7 +1520,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1538,7 +1549,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1588,6 +1599,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"
@@ -1802,6 +1814,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         width: 100%;
       }
   id="chart_47"
+  onMouseLeave={[Function]}
   role="presentation"
 >
   <div
@@ -1834,7 +1847,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1863,7 +1876,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
-              font-weight: 400;
+              font-weight: 600;
             }
             @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
@@ -1913,6 +1926,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
+          opacity={1}
         />
         <g
           clipPath="url(#clip)"

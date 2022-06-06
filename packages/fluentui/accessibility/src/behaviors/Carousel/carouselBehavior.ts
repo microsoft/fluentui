@@ -27,8 +27,8 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
     root: {
       ...(!props.navigation && {
         role: 'region',
-        'aria-roledescription': props.ariaRoleDescription,
-        'aria-label': props.ariaLabel,
+        'aria-roledescription': props['aria-roledescription'],
+        'aria-label': props['aria-label'],
       }),
     },
     itemsContainerWrapper: {
@@ -36,7 +36,7 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
     },
     itemsContainer: {
       ...(props.navigation
-        ? { role: 'region', 'aria-roledescription': props.ariaRoleDescription, 'aria-label': props.ariaLabel }
+        ? { role: 'region', 'aria-roledescription': props['aria-roledescription'], 'aria-label': props['aria-label'] }
         : { tabIndex: -1, role: 'none' }),
     },
 
@@ -80,6 +80,6 @@ export type CarouselBehaviorProps = {
   /** Element type. */
   navigation: Object | Object[];
   ariaLiveOn: boolean;
-  ariaRoleDescription?: string;
-  ariaLabel?: string;
+  'aria-roledescription'?: string;
+  'aria-label'?: string;
 };

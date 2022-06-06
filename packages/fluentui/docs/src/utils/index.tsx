@@ -7,3 +7,4 @@ export { default as getFormattedHash } from './getFormattedHash';
 export { default as getInfoForSeeTags } from './getInfoForSeeTags';
 export { default as parseExamplePath } from './parseExamplePath';
 export { default as scrollToAnchor } from './scrollToAnchor';
+export { systemColors, isSystemColor } from './systemColors';

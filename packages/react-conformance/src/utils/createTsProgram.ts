@@ -7,13 +7,13 @@ let program: ts.Program;
 /**
  * Creates a cached TS Program.
  */
-export function createTsProgram(componentPath: string): ts.Program {
+export function createTsProgram(componentPath: string, tsconfigDir?: string): ts.Program {
   if (!program) {
     // Calling parse() from react-docgen-typescript would create a new ts.Program for every component,
     // which can take multiple seconds in a large project. For better performance, we create a single
     // ts.Program per package and pass it to parseWithProgramProvider().
 
-    const tsconfigPath = ts.findConfigFile(process.cwd(), fs.existsSync);
+    const tsconfigPath = ts.findConfigFile(tsconfigDir ?? componentPath, fs.existsSync);
 
     if (!tsconfigPath) {
       throw new Error('Cannot find tsconfig.json');

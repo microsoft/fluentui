@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Thu, 14 Apr 2022 07:38:08 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.8",
+      "version": "0.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "399a179957a37480093eaaf5b0ddfb37a97ad7a8",
+            "comment": "Add comments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Sep 2021 07:36:26 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.7",
       "version": "0.3.7",

@@ -77,7 +77,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300000,
+              y: 304000,
               onDataPointClick: () => alert('click on 300000'),
             },
             {
@@ -141,10 +141,26 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_basic">change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Basic">change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <Toggle
           label="Enabled  multiple shapes for each line"
           onText="On"
@@ -154,6 +170,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         />
         <div style={rootStyle}>
           <LineChart
+            culture={window.navigator.language}
             data={data}
             legendsOverflowText={'Overflow Items'}
             yMinValue={200}

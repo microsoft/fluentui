@@ -107,7 +107,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   wrapper?: ShorthandValue<ToolbarItemWrapperProps>;
 }
 
-export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
+export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled' | 'disabledFocusable'>>;
 
 export const toolbarItemClassName = 'ui-toolbar__item';
 
@@ -179,7 +179,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const { classes } = useStyles<ToolbarItemStylesProps>(composeOptions.displayName, {
       className: composeOptions.className,
       composeOptions,
-      mapPropsToStyles: () => ({ active, disabled: disabled || disabledFocusable }),
+      mapPropsToStyles: () => ({ active, disabled, disabledFocusable }),
       mapPropsToInlineStyles: () => ({
         className,
         design,

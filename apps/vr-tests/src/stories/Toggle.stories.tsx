@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { IToggleProps, Toggle } from '@fluentui/react';
 
 const baseProps: IToggleProps = {
@@ -11,7 +11,7 @@ const baseProps: IToggleProps = {
 };
 
 storiesOf('Toggle', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}

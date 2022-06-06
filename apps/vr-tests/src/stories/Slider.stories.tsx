@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Slider, ThemeProvider } from '@fluentui/react';
 
 storiesOf('Slider', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <ThemeProvider>
       <Screener

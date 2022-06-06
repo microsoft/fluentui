@@ -63,3 +63,30 @@ describe('Foo', () => {
   });
 });
 ```
+
+### isConformant with React Portals
+
+By default `isConformant` inspects a component's immediate parent container. Because React Portals are typically rendered outside this container components using Portals will fail conformance. For example the `component-has-static-classnames-object` tests inspect the rendered DOM for certain class names but, with default settings, will fail for anything rendered into a Portal.
+
+Portals can be inspected by providing a `getTargetElement` function to `isConformant`.
+
+```jsx
+
+// Assume that `Foo` is a component that renders a Portal.
+// It takes a prop called `idForPortal` that renders the
+// provided id in the Portal, allowing it to be looked up
+// via `getPortalElement()`.
+
+const getPortalElement = (result, attr) => {
+  return result.baseElement.querySelector("#portal-id");
+};
+
+describe('Foo', () => {
+  isConformant({
+    Component: Foo,
+    displayName: 'Foo'
+    requiredProps: { idForPortal: "portal-id" },
+    getTargetElement: getPortalElement
+  });
+});
+```

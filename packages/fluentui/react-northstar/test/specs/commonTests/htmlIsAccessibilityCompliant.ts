@@ -16,6 +16,8 @@ expect.extend(toHaveNoViolations);
 
 export const htmlIsAccessibilityCompliant = async (jsx: React.ReactElement<any>) => {
   const html = ReactDOMServer.renderToString(React.createElement(EmptyThemeProvider, null, jsx));
-  const results = await axe(html);
+  const results = await axe(html, {
+    rules: { region: { enabled: false } },
+  });
   expectAxe(results).toHaveNoViolations();
 };

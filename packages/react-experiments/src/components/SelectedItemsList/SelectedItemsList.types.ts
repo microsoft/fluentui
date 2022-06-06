@@ -59,7 +59,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 }
 
 export type BaseSelectedItem = {
-  key?: React.Key;
+  key?: React.Key | null;
 };
 
 // Type T is the type of the item that is displayed

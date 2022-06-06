@@ -5,8 +5,6 @@ import scenarioIterations from '../src/scenarioIterations';
 import { scenarioRenderTypes, DefaultRenderTypes } from '../src/scenarioRenderTypes';
 import { argv } from '@fluentui/scripts';
 
-import { getFluentPerfRegressions } from './fluentPerfRegressions';
-
 // TODO: consolidate with newer version of fluent perf-test
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
@@ -201,7 +199,7 @@ export async function getPerfRegressions() {
 
   const scenarioResults: CookResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createReport(scenarioSettings, scenarioResults) + getFluentPerfRegressions();
+  const comment = createReport(scenarioSettings, scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';

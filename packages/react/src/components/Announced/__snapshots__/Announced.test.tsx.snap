@@ -1,40 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Announced does not initially render message 1`] = `
-<div
-  aria-live="polite"
-  className=""
-  role="status"
-/>
+<div>
+  <div
+    aria-live="polite"
+    class=""
+    role="status"
+  />
+</div>
 `;
 
 exports[`Announced renders message after delay 1`] = `
-<div
-  aria-live="polite"
-  className=""
-  role="status"
->
+<div>
   <div
-    className=
-
-        {
-          border: 0px;
-          height: 1px;
-          margin-bottom: -1px;
-          margin-left: -1px;
-          margin-right: -1px;
-          margin-top: -1px;
-          overflow: hidden;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          position: absolute;
-          white-space: nowrap;
-          width: 1px;
-        }
+    aria-live="polite"
+    class=""
+    role="status"
   >
-    hello
+    <div
+      class=
+
+          {
+            border: 0px;
+            height: 1px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+          }
+    >
+      hello
+    </div>
   </div>
 </div>
 `;

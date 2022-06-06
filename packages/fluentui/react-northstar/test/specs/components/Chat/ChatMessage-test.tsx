@@ -11,6 +11,7 @@ describe('ChatMessage', () => {
   isConformant(ChatMessage, {
     testPath: __filename,
     constructorName: 'ChatMessage',
+    skipAsPropTests: 'as-component',
   });
 
   // Temporary disabled as implementsPopper() should be reimplemented

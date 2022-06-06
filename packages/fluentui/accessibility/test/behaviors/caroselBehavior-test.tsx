@@ -14,7 +14,7 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: false,
-        ariaRoleDescription: roleDescription,
+        'aria-roledescription': roleDescription,
       });
       expect(expectedResult.attributes.root['aria-roledescription']).toEqual(roleDescription);
     });
@@ -23,7 +23,7 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: false,
-        ariaLabel: label,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.root['aria-label']).toEqual(label);
     });
@@ -32,8 +32,8 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: true,
-        ariaRoleDescription: roleDescription,
-        ariaLabel: label,
+        'aria-roledescription': roleDescription,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.root['aria-roledescription']).toBeUndefined();
       expect(expectedResult.attributes.root['aria-label']).toBeUndefined();
@@ -51,7 +51,7 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: true,
-        ariaRoleDescription: roleDescription,
+        'aria-roledescription': roleDescription,
       });
       expect(expectedResult.attributes.itemsContainer['aria-roledescription']).toEqual(roleDescription);
     });
@@ -60,7 +60,7 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: true,
-        ariaLabel: label,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.itemsContainer['aria-label']).toEqual(label);
     });
@@ -69,8 +69,8 @@ describe('carouselBehavior.ts', () => {
       const expectedResult = carouselBehavior({
         ariaLiveOn: false,
         navigation: false,
-        ariaRoleDescription: roleDescription,
-        ariaLabel: label,
+        'aria-roledescription': roleDescription,
+        'aria-label': label,
       });
       expect(expectedResult.attributes.itemsContainer['aria-roledescription']).toBeUndefined();
       expect(expectedResult.attributes.itemsContainer['aria-label']).toBeUndefined();

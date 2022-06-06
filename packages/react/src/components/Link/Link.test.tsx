@@ -72,8 +72,6 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
-    skipAsPropTests: false,
-    asPropHandlesRef: true,
   });
 
   it('renders Link with "as=Route" a Route element', () => {

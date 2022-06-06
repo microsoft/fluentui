@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Authored slots documentation",
-  "packageName": "@fluentui/react-components",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

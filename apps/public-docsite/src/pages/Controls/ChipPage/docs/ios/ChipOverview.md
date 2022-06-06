@@ -3,7 +3,6 @@ Chips are compact representations of entities (most commonly, people) that can b
 The chip field control handles keyboard input, wrapping and truncation automatically.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Small Chip
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_badges_03_small_light.png?text=LightMode" />

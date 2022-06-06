@@ -208,7 +208,7 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 
 export type SlotProp<TProps> =
   | React.ReactChild
-  | React.ReactNodeArray
+  | React.ReactNode[]
   | React.ReactPortal
   | boolean
   | null
@@ -243,4 +243,13 @@ export const defaultMappedProps: Record<string, string> = {
   iframe: 'src',
   img: 'src',
   input: 'type',
+};
+
+/**
+ * React.ForwardRef with static props
+ */
+export type ForwardRefComponent<TProps> = React.ForwardRefExoticComponent<
+  TProps & React.RefAttributes<HTMLInputElement>
+> & {
+  handledProps: (keyof TProps)[];
 };

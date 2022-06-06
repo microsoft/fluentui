@@ -11,7 +11,6 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
@@ -25,9 +24,8 @@ import {
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -36,7 +34,7 @@ export const optionStyles: (
   css`
     ${display('inline-flex')} :host {
       position: relative;
-      font-family: ${bodyFont};
+      ${typeRampBase}
       background: ${neutralFillStealthRest};
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${focusStrokeWidth} * 1px) solid transparent;
@@ -44,10 +42,7 @@ export const optionStyles: (
       color: ${neutralForegroundRest};
       cursor: pointer;
       fill: currentcolor;
-      font-size: ${typeRampBaseFontSize};
       height: calc(${heightNumber} * 1px);
-      line-height: ${typeRampBaseLineHeight};
-      margin: 0 calc(${designUnit} * 1px);
       outline: none;
       overflow: hidden;
       align-items: center;
@@ -139,17 +134,21 @@ export const optionStyles: (
     forcedColorsStylesheetBehavior(
       css`
         :host {
-          border-color: transparent;
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonFace};
           color: ${SystemColors.ButtonText};
-          forced-color-adjust: none;
         }
-
-        :host(:not([aria-selected='true']):hover),
-        :host([aria-selected='true']) {
+        :host(:not([disabled]):not([aria-selected="true"]):hover),
+        :host(:not([disabled])[aria-selected="true"]:hover),
+        :host([aria-selected="true"]) {
+          forced-color-adjust: none;
           background: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
-
+        :host(:not([disabled]):active)::before,
+        :host([aria-selected='true'])::before {
+          background: ${SystemColors.HighlightText};
+        }
         :host([disabled]),
         :host([disabled]:not([aria-selected='true']):hover) {
           background: ${SystemColors.Canvas};

@@ -14,9 +14,9 @@ export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props 
   return _.merge(behavior, {
     attributes: {
       trigger: {
-        'aria-controls': props.open ? props.menuId : undefined,
-        'aria-expanded': (props.open && !props.contextMenu) || undefined,
-        'aria-haspopup': props.contextMenu ? undefined : 'true',
+        ...(props.open && { 'aria-controls': props.menuId }),
+        ...(props.open && !props.contextMenu && { 'aria-expanded': 'true' }),
+        ...(!props.contextMenu && { 'aria-haspopup': 'true' }),
         id: props.triggerId,
         ...(!props.contextMenu && props.open && { tabIndex: -1 }),
       },

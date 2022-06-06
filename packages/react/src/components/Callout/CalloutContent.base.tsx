@@ -112,6 +112,36 @@ function useBounds(
 }
 
 /**
+ * (Hook) to return the maximum available height for the Callout to render into.
+ */
+function useMaxHeight(
+  { calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, hidden }: ICalloutProps,
+  getBounds: () => IRectangle | undefined,
+  positions?: ICalloutPositionedInfo,
+) {
+  const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
+  const { top, bottom } = positions?.elementPosition ?? {};
+
+  React.useEffect(() => {
+    const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+
+    if (!calloutMaxHeight && !hidden) {
+      if (typeof top === 'number' && bottomBounds) {
+        setMaxHeight(bottomBounds - top);
+      } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
+        setMaxHeight(bottomBounds - topBounds - bottom);
+      }
+    } else if (calloutMaxHeight) {
+      setMaxHeight(calloutMaxHeight);
+    } else {
+      setMaxHeight(undefined);
+    }
+  }, [bottom, calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, getBounds, hidden, positions, top]);
+
+  return maxHeight;
+}
+
+/**
  * (Hook) to find the current position of Callout. If Callout is resized then a new position is calculated.
  */
 function usePositions(
@@ -125,7 +155,7 @@ function usePositions(
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
-  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
+  const { hidden, target, finalHeight, calloutMaxHeight, onPositioned, directionalHint } = props;
 
   React.useEffect(() => {
     if (!hidden) {
@@ -137,15 +167,25 @@ function usePositions(
             bounds: getBounds(),
           };
 
+          // duplicate calloutElement & remove useMaxHeight's maxHeight for position calc
+          const dupeCalloutElement = calloutElement.cloneNode(true) as HTMLElement;
+          dupeCalloutElement.style.maxHeight = calloutMaxHeight ? `${calloutMaxHeight}` : '';
+          dupeCalloutElement.style.visibility = 'hidden';
+          calloutElement.parentElement?.appendChild(dupeCalloutElement);
+
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement, previousPositions)
-            : positionCallout(currentProps, hostElement.current, calloutElement, previousPositions);
-          // Set the new position only when the positions are not exists or one of the new callout positions
-          // are different. The position should not change if the position is within 2 decimal places.
+            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions)
+            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions);
+
+          // clean up duplicate calloutElement
+          calloutElement.parentElement?.removeChild(dupeCalloutElement);
+
+          // Set the new position only when the positions do not exist or one of the new callout positions
+          // is different. The position should not change if the position is within 2 decimal places.
           if (
             (!positions && newPositions) ||
             (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
@@ -178,6 +218,7 @@ function usePositions(
     directionalHint,
     async,
     calloutElement,
+    calloutMaxHeight,
     hostElement,
     targetRef,
     finalHeight,
@@ -266,7 +307,8 @@ function useDismissHandlers(
     };
 
     const dismissOnClickOrScroll = (ev: Event) => {
-      const target = ev.target as HTMLElement;
+      const eventPaths: Array<EventTarget> = ev.composedPath ? ev.composedPath() : [];
+      const target = eventPaths.length > 0 ? (eventPaths[0] as HTMLElement) : (ev.target as HTMLElement);
       const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
 
       // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
@@ -393,6 +435,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+    const maxHeight = useMaxHeight(props, getBounds, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
       positions,
@@ -400,6 +443,17 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       targetRef,
       targetWindow,
     );
+
+    // do not set both top and bottom css props from positions
+    // instead, use maxHeight
+    const isForcedInBounds = positions?.elementPosition.top && positions?.elementPosition.bottom;
+    const cssPositions = {
+      ...positions?.elementPosition,
+      maxHeight,
+    };
+    if (isForcedInBounds) {
+      cssPositions.bottom = undefined;
+    }
 
     useAutoFocus(props, positions, calloutElement);
 
@@ -444,7 +498,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
-          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          style={positions ? { ...cssPositions } : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
@@ -453,7 +507,10 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
           {beakVisible && <div className={classNames.beak} style={getBeakPosition(positions)} />}
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
-            {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
+            // don't use getNativeElementProps for role and roledescription because it will also
+            // pass through data-* props (resulting in them being used in two places)
+            role={props.role}
+            aria-roledescription={props['aria-roledescription']}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabel={ariaLabel}
             ariaLabelledBy={ariaLabelledBy}

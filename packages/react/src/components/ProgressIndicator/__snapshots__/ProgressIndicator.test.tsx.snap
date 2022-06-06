@@ -120,7 +120,7 @@ exports[`ProgressIndicator renders React content 1`] = `
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-    id="progress-indicator4-label"
+    id="progress-indicator5-label"
   >
     <span>
       Test
@@ -153,8 +153,8 @@ exports[`ProgressIndicator renders React content 1`] = `
           }
     />
     <div
-      aria-describedby="progress-indicator4-description"
-      aria-labelledby="progress-indicator4-label"
+      aria-describedby="progress-indicator5-description"
+      aria-labelledby="progress-indicator5-label"
       className=
           ms-ProgressIndicator-progressBar
           {
@@ -190,7 +190,7 @@ exports[`ProgressIndicator renders React content 1`] = `
           font-size: 12px;
           line-height: 18px;
         }
-    id="progress-indicator4-description"
+    id="progress-indicator5-description"
   >
     <span>
       Test
@@ -293,6 +293,76 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
     id="progress-indicator1-description"
   >
     Test
+  </div>
+</div>
+`;
+
+exports[`ProgressIndicator renders with ariaLabel 1`] = `
+<div
+  className=
+      ms-ProgressIndicator
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
+>
+  <div
+    className=
+        ms-ProgressIndicator-itemProgress
+        {
+          height: 2px;
+          overflow: hidden;
+          padding-bottom: 8px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 8px;
+          position: relative;
+        }
+  >
+    <div
+      className=
+          ms-ProgressIndicator-progressTrack
+          {
+            background-color: #edebe9;
+            height: 2px;
+            position: absolute;
+            width: 100%;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            border-bottom: 1px solid WindowText;
+          }
+    />
+    <div
+      aria-label="Test"
+      className=
+          ms-ProgressIndicator-progressBar
+          {
+            animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
+            background-color: #0078d4;
+            background: linear-gradient(to right, #edebe9 0%, #0078d4 50%, #edebe9 100%);
+            height: 2px;
+            min-width: 33%;
+            position: absolute;
+            transition: width .3s ease;
+            width: 0px;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
+            background-color: highlight;
+            background: highlight;
+            forced-color-adjust: none;
+          }
+      role="progressbar"
+      style={
+        Object {
+          "transition": undefined,
+          "width": undefined,
+        }
+      }
+    />
   </div>
 </div>
 `;

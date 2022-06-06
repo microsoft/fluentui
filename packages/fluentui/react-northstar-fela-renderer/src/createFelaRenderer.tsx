@@ -1,4 +1,4 @@
-import { CreateRenderer } from '@fluentui/react-northstar-styles-renderer';
+import { CreateRenderer, Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { createRenderer, IRenderer, IStyle, TPlugin } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
@@ -46,21 +46,26 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   }
 }
 
-const blacklistedClassNames = [
-  // Blacklist contains a list of classNames that are used by FontAwesome
+const blocklistedClassNames = [
+  // Blocklist contains a list of classNames that are used by FontAwesome
   // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
   'fa',
   'fas',
   'far',
   'fal',
   'fab',
+  // Used by https://github.com/fullcalendar/fullcalendar
+  'fc',
   // .cke is used by CKEditor
   'ck',
   'cke',
 ];
 
-const filterClassName = (className: string): boolean =>
-  className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
+const filterClassName = (className: string): boolean => {
+  // Also ensure that class name does not contain 'ad' as it might
+  // cause compatibility issues regarding Ad blockers.
+  return className.indexOf('ad') === -1 && blocklistedClassNames.indexOf(className) === -1;
+};
 
 const rendererConfig = {
   devMode: felaDevMode,
@@ -87,7 +92,7 @@ const rendererConfig = {
   ],
 };
 
-export const createFelaRenderer: CreateRenderer = target => {
+export const createFelaRenderer: CreateRenderer = () => {
   const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
     listeners: [];
     nodes: Record<string, HTMLStyleElement>;
@@ -97,8 +102,8 @@ export const createFelaRenderer: CreateRenderer = target => {
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: React.FC = props => (
-    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
+  const Provider: Renderer['Provider'] = props => (
+    <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: props.target }}>
       {props.children}
     </RendererProvider>
   );

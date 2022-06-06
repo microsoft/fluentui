@@ -5,6 +5,7 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
   AccentButtonStyles,
   baseButtonStyles,
@@ -35,10 +36,67 @@ export const buttonStyles: (
         :host([disabled]) {
           opacity: 1;
         }
+        :host([disabled]) .control {
+          border-color: ${SystemColors.GrayText};
+          color: ${SystemColors.GrayText};
+          fill: currentcolor;
+        }
       `,
     ),
-    appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
-    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior(
+      'accent',
+      css`
+      ${AccentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)},
+      `.withBehaviors(
+        forcedColorsStylesheetBehavior(
+          css`
+            :host([disabled]) .control {
+              background: ${SystemColors.ButtonFace};
+            }
+          `,
+        ),
+      )
+    ),
+    appearanceBehavior(
+      'lightweight',
+      css`
+      ${LightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)},
+      `.withBehaviors(
+        forcedColorsStylesheetBehavior(
+          css`
+            :host([disabled]) .control {
+              border-color: ${SystemColors.ButtonFace};
+            }
+          `,
+        ),
+      )
+    ),
+    appearanceBehavior(
+      'outline',
+      css`
+      ${OutlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
+      `.withBehaviors(
+        forcedColorsStylesheetBehavior(
+          css`
+            :host([disabled]) .control {
+              border-color: ${SystemColors.GrayText};
+            }
+          `,
+        ),
+      )
+    ),
+    appearanceBehavior(
+      'stealth',
+      css`
+      ${StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
+      `.withBehaviors(
+        forcedColorsStylesheetBehavior(
+          css`
+            :host([disabled]) .control {
+              border-color: ${SystemColors.ButtonFace};
+            }
+          `,
+        ),
+      )
+    )
   );

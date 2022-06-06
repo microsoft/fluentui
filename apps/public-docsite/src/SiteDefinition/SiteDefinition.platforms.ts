@@ -3,9 +3,14 @@ import { Platforms } from '../interfaces/Platforms';
 
 export const platforms: { [x in Platforms]?: IPlatform } = {
   web: {
-    name: 'Web',
+    name: 'React',
     icon: 'WebLogo-platformPicker',
     color: '#28A8EA',
+  },
+  webcomponents: {
+    name: 'Web Components',
+    icon: 'WebLogo-platformPicker',
+    color: '#f11d69',
   },
   windows: {
     name: 'Windows',

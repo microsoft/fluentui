@@ -5,6 +5,7 @@ import {
   forcedColorsStylesheetBehavior,
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import {
   inputFilledForcedColorStyles,
   inputFilledStyles,
@@ -99,6 +100,10 @@ export const numberFieldStyles = (context, definition) =>
     forcedColorsStylesheetBehavior(
       css`
         ${inputForcedColorStyles(context, definition, '.root')}
+        .step-up,
+        .step-down {
+          fill: ${SystemColors.FieldText};
+        }
       `,
     ),
   );

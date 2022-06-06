@@ -110,15 +110,27 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   };
 
   /**
+   * If there is only one row of cells, they should use radio semantics,
+   * multi-row swatch cells should use grid semantics.
+   * There are two reasons for this:
+   *   1. Radios are a more simple and understandable control, and a better fit for a single-dimensional picker.
+   *   2. Multiple browsers use heuristics to strip table and grid roles from single-row tables with no column headers.
+   */
+  const isSemanticRadio = colorCells.length <= columnCount;
+
+  /**
    * When the whole swatchColorPicker is blurred,
    * make sure to clear the pending focused stated
    */
-  const onSwatchColorPickerBlur = React.useCallback((): void => {
-    if (onCellFocused) {
-      internalState.cellFocused = false;
-      onCellFocused();
-    }
-  }, [internalState, onCellFocused]);
+  const onSwatchColorPickerBlur = React.useCallback(
+    (event?: React.FocusEvent<HTMLButtonElement>): void => {
+      if (onCellFocused) {
+        internalState.cellFocused = false;
+        onCellFocused(undefined, undefined, event);
+      }
+    },
+    [internalState, onCellFocused],
+  );
 
   /**
    * Callback passed to the GridCell that will manage triggering the onCellHovered callback for mouseEnter
@@ -201,9 +213,9 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * NOTE: This will not be triggered if shouldFocusOnHover === true
    */
   const onGridCellHovered = React.useCallback(
-    (item?: IColorCellProps): void => {
+    (item?: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>): void => {
       if (onCellHovered) {
-        return item ? onCellHovered(item.id, item.color) : onCellHovered();
+        item ? onCellHovered(item.id, item.color, event) : onCellHovered(undefined, undefined, event);
       }
     },
     [onCellHovered],
@@ -213,14 +225,14 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
    */
   const onGridCellFocused = React.useCallback(
-    (item?: IColorCellProps): void => {
+    (item?: IColorCellProps, event?: React.FormEvent<HTMLButtonElement>): void => {
       if (onCellFocused) {
         if (item) {
           internalState.cellFocused = true;
-          return onCellFocused(item.id, item.color);
+          return onCellFocused(item.id, item.color, event);
         } else {
           internalState.cellFocused = false;
-          return onCellFocused();
+          return onCellFocused(undefined, undefined, event);
         }
       }
     },
@@ -231,7 +243,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    * Handle the click on a cell
    */
   const onCellClick = React.useCallback(
-    (item: IColorCellProps): void => {
+    (item: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>): void => {
       if (disabled) {
         return;
       }
@@ -239,9 +251,9 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       if (item.id !== selectedId) {
         if (onCellFocused && internalState.cellFocused) {
           internalState.cellFocused = false;
-          onCellFocused();
+          onCellFocused(undefined, undefined, event);
         }
-        setSelectedId(item.id);
+        setSelectedId(item.id, event);
       }
     },
     [disabled, internalState, onCellFocused, selectedId, setSelectedId],
@@ -312,6 +324,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
         height={cellHeight}
         width={cellWidth}
         borderWidth={cellBorderWidth}
+        isRadio={isSemanticRadio}
       />
     );
   };
@@ -319,6 +332,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   if (colorCells.length < 1 || columnCount < 1) {
     return null;
   }
+
   const onRenderItem = (item: IColorCellProps, index: number): JSX.Element => {
     const { onRenderColorCell = renderOption } = props;
     return onRenderColorCell(item, renderOption) as JSX.Element;
@@ -330,6 +344,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       id={id}
       items={itemsWithIndex}
       columnCount={columnCount}
+      isSemanticRadio={isSemanticRadio}
       // eslint-disable-next-line react/jsx-no-bind
       onRenderItem={onRenderItem}
       shouldFocusCircularNavigate={shouldFocusCircularNavigate}

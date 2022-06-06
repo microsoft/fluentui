@@ -1,5 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
 import { controlCornerRadius, neutralFillSecondaryHover, neutralFillSecondaryRest } from '../design-tokens';
 
 export const skeletonStyles: (
@@ -74,4 +75,12 @@ export const skeletonStyles: (
         transform: translateX(100%);
       }
     }
-  `;
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host{
+          background-color: ${SystemColors.CanvasText};
+        }
+      `
+    )
+  );

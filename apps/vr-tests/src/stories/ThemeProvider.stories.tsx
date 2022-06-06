@@ -4,10 +4,10 @@ import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { ThemeProvider } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -85,7 +85,7 @@ const LoadThemeTestButton: React.FunctionComponent<{
 };
 
 storiesOf('ThemeProvider with loadTheme', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -117,7 +117,7 @@ storiesOf('ThemeProvider with loadTheme', module)
   ));
 
 storiesOf('ThemeProvider with Customizer', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}

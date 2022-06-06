@@ -23,6 +23,7 @@ const _items: ICommandBarItemProps[] = [
     iconProps: { iconName: 'Add' },
     split: true,
     ariaLabel: 'New',
+    splitButtonAriaLabel: 'More New options',
     subMenuProps: {
       items: [
         { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
@@ -35,6 +36,8 @@ const _items: ICommandBarItemProps[] = [
     text: 'Upload',
     iconProps: { iconName: 'Upload' },
     split: true,
+    ariaLabel: 'Upload',
+    splitButtonAriaLabel: 'More Upload options',
     disabled: true,
     href: 'https://developer.microsoft.com/en-us/fluentui',
     subMenuProps: {

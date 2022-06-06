@@ -6,9 +6,4 @@ module.exports = resources.createServeConfig({
   output: {
     filename: 'demo-app.js',
   },
-
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
 });

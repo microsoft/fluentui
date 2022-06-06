@@ -34,6 +34,7 @@ export interface MenuVariables {
   colorActive: string;
 
   iconSize: string;
+  iconOnlyBorderRadius: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
   iconOnlyBackgroundColorHover: string;
@@ -61,7 +62,6 @@ export interface MenuVariables {
   verticalItemBorderWidth: string;
   verticalItemBorderColor: string;
   verticalPointingBorderColor: string;
-  verticalBackgroundColorFocus: string;
   verticalBorderColor: string;
 
   pointingIndicatorBackgroundColor: string;
@@ -85,6 +85,7 @@ export interface MenuVariables {
   wrapperColorActive: string;
   wrapperColorFocus: string;
   wrapperColorHover: string;
+  primaryWrapperColor: string;
   primaryWrapperColorHover: string;
   wrapperBackgroundColorFocus: string;
 
@@ -102,7 +103,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
       extendColorScheme(siteVars.colorScheme, {
         default: {
           borderActive: siteVars.colorScheme.default.border2,
-          backgroundActive: siteVars.colorScheme.default.backgroundActive1,
+          backgroundActive: siteVars.colorScheme.default.backgroundActive2,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
           foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
         },
@@ -139,6 +140,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
 
     iconSize: pxToRem(16),
 
+    iconOnlyBorderRadius: siteVars.borderRadiusMedium,
     iconOnlyColorActive: siteVars.colors.brand[600],
     iconOnlyColorFocus: siteVars.colors.brand[600],
     iconOnlyWrapperBackgroundColorFocus: undefined,
@@ -158,7 +160,6 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
-    verticalBackgroundColorFocus: undefined,
     verticalBorderColor: siteVars.colorScheme.default.borderTransparent,
 
     activeUnderlinedColor: undefined,
@@ -171,7 +172,9 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     underlinedBottomBorderWidth: pxToRem(2),
     underlinedColorHover: 'inherit',
     primaryBorderColor: siteVars.colorScheme.default.border2,
-    primaryWrapperColorFocus: siteVars.colors.white,
+    primaryWrapperColorFocus: siteVars.colors.black,
+    primaryWrapperColor: siteVars.colors.black,
+
     primaryWrapperBackgroundColorFocus: siteVars.colors.brand[500],
 
     underlinedWrapperColorHover: siteVars.colors.black,
@@ -185,7 +188,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     wrapperColorActive: siteVars.colors.grey[500],
     wrapperColorFocus: siteVars.colors.grey[500],
     wrapperColorHover: undefined,
-    primaryWrapperColorHover: siteVars.colors.white,
+    primaryWrapperColorHover: siteVars.colors.black,
     wrapperBackgroundColorFocus: siteVars.colors.grey[150],
 
     activeWrapperBackgroundColorHover: undefined,
@@ -193,8 +196,8 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     indicatorColor: siteVars.colors.grey[500],
     activeIndicatorColor: siteVars.colors.grey[750],
     activePrimaryIndicatorColor: siteVars.colors.grey[750],
-    activePrimaryVerticalIndicatorColor: siteVars.colors.white,
-    primaryIndicatorColorHover: siteVars.colors.white,
+    activePrimaryVerticalIndicatorColor: siteVars.colors.black,
+    primaryIndicatorColorHover: siteVars.colors.black,
     indicatorColorHover: siteVars.colors.grey[500],
   };
 };

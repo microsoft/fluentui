@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @type {jest.InitialOptions}
+ * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
   displayName: 'tools',
@@ -12,6 +12,7 @@ module.exports = {
       tsconfig: '<rootDir>/tsconfig.json',
     },
   },
+  testPathIgnorePatterns: ['/node_modules/'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

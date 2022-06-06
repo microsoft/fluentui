@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useId } from '@fluentui/react-hooks';
 import { SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
 
 const colorCellsExample1 = [
@@ -25,6 +26,7 @@ const colorCellsExample2 = [
 
 export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
   const [previewColor, setPreviewColor] = React.useState<string>();
+  const baseId = useId('colorpicker');
 
   const swatchColorPickerOnCellHovered = (id: string, color: string) => {
     setPreviewColor(color!);
@@ -32,19 +34,30 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      <div>Simple circle swatch color picker:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with default size of 20px:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'square'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with custom size of 35px:</div>
+      <div id={`${baseId}-circle`}>Simple circle swatch color picker:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-circle`}
+      />
+      <div id={`${baseId}-square`}>Simple square swatch color picker with default size of 20px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-square`}
+      />
+      <div id={`${baseId}-custom-size`}>Simple square swatch color picker with custom size of 35px:</div>
       <SwatchColorPicker
         columnCount={5}
         cellHeight={35}
         cellWidth={35}
         cellShape={'square'}
         colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-custom-size`}
       />
-      <div>
+      <div id={`${baseId}-grid`}>
         Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview
         color:
       </div>
@@ -67,9 +80,16 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
         cellWidth={35}
         cellBorderWidth={3}
         colorCells={colorCellsExample2}
+        aria-labelledby={`${baseId}-grid`}
       />
-      <div>Simple disabled circle swatch color picker:</div>
-      <SwatchColorPicker disabled columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
+      <div id={`${baseId}-disabled`}>Simple disabled circle swatch color picker:</div>
+      <SwatchColorPicker
+        disabled
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-disabled`}
+      />
     </div>
   );
 };

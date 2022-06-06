@@ -18,7 +18,6 @@ import {
   disabledOpacity,
   fillColor,
   focusStrokeOuter,
-  focusStrokeWidth,
   layerCornerRadius,
   neutralFillActive,
   neutralFillHover,
@@ -34,9 +33,8 @@ import {
   neutralStrokeControlHover,
   neutralStrokeControlRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -56,7 +54,25 @@ export const selectFilledStyles: (context: ElementDefinitionContext, definition:
     background: ${neutralFillSecondaryActive};
     border-color: transparent;
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(
+    css`
+      :host(:not([disabled]):not([open]):hover) {
+        background: transparent;
+      }
+      :host(:not([disabled]):not([open]):hover),
+      :host(:not([disabled]):not([open]):active) {
+        border-color: ${SystemColors.Highlight};
+      }
+      :host(:${focusVisible}) {
+        forced-color-adjust: none;
+        background: transparent;
+        border-color: ${SystemColors.Highlight};
+        box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
+      }
+    `,
+  )
+);
 
 export const selectStealthStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -105,12 +121,13 @@ export const selectStyles = (context, definition) =>
       flex-direction: column;
       left: 0;
       max-height: calc(var(--max-height) - (${heightNumber} * 1px));
-      padding: calc(${designUnit} * 1px) 0;
+      padding: calc((${designUnit} - ${strokeWidth} ) * 1px) 0;
       overflow-y: auto;
       position: absolute;
       width: 100%;
       z-index: 1;
       margin: 1px 0;
+      border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
     :host .listbox[hidden] {
@@ -122,10 +139,8 @@ export const selectStyles = (context, definition) =>
       box-sizing: border-box;
       cursor: pointer;
       display: flex;
-      font-size: ${typeRampBaseFontSize};
-      font-family: inherit;
+      ${typeRampBase}
       min-height: 100%;
-      line-height: ${typeRampBaseLineHeight};
       padding: 0 calc(${designUnit} * 2.25px);
       width: 100%;
     }
@@ -208,57 +223,39 @@ export const selectStyles = (context, definition) =>
     appearanceBehavior('stealth', selectStealthStyles(context, definition)),
     forcedColorsStylesheetBehavior(
       css`
-        :host([disabled]) {
-          border-color: ${SystemColors.GrayText};
-          background-color: ${SystemColors.ButtonFace};
-          color: ${SystemColors.GrayText};
-          opacity: 1;
-          forced-color-adjust: none;
-        }
-
-        :host([disabled]:hover) {
-          background: ${SystemColors.ButtonFace};
-        }
-
-        :host([disabled]) .control {
-          color: ${SystemColors.GrayText};
-          border-color: ${SystemColors.GrayText};
-        }
-
-        :host(:not([disabled]):hover) {
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-        }
-
-        :host(:${focusVisible}) {
-          forced-color-adjust: none;
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
-          color: ${SystemColors.ButtonText};
-          fill: currentcolor;
-        }
-
-        :host([open]) .listbox {
-          background: ${SystemColors.ButtonFace};
-          border: 1px solid ${SystemColors.ButtonText};
-        }
-
-        :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-          background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
-          color: ${SystemColors.HighlightText};
-          fill: currentcolor;
-        }
-
-        ::slotted([role='option']:not([aria-selected='true']):not([disabled]):hover) {
-          forced-color-adjust: none;
-          color: ${SystemColors.ButtonText};
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-          box-shadow: none;
-        }
-      `,
-    ),
-  );
+      :host {
+        background: ${SystemColors.ButtonFace};
+        color: ${SystemColors.ButtonText};
+      }
+      :host(:not([disabled]):not([open]):hover) {
+        background: transparent;
+      }
+      :host(:not([disabled]):hover) {
+        border-color: ${SystemColors.Highlight};
+      }
+      :host(:${focusVisible}) {
+        forced-color-adjust: none;
+        border-color: ${SystemColors.Highlight};
+        box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
+      }
+      :host([open]) .listbox {
+        background: ${SystemColors.ButtonFace};
+        border-color: ${SystemColors.CanvasText};
+      }
+      .start, .end, .indicator, ::slotted(svg) {
+        fill: ${SystemColors.FieldText};
+      }
+      :host([disabled]) {
+        border-color: ${SystemColors.GrayText};
+        color: ${SystemColors.GrayText};
+        opacity: 1;
+      }
+      :host([disabled]) .start,
+      :host([disabled]) .end,
+      :host([disabled]) .indicator,
+      :host([disabled]) ::slotted(svg) {
+        fill: ${SystemColors.GrayText};
+      }
+    `,
+  )
+);

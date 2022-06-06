@@ -49,7 +49,7 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
 
       ':focus-visible': borderFocusStyles[':focus-visible'],
 
-      ...(p.disabled && {
+      ...((p.disabled || p.disabledFocusable) && {
         cursor: 'default',
         color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.menuItemBackgroundDisabled,
@@ -62,6 +62,11 @@ export const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemS
         ':hover': {
           // empty to overwrite all existing hover styles
         },
+      }),
+      ...(p.disabled && {
+        // pointer events intentionally not disabled for focusable disabled toolbar items
+        // so that hover events work
+        pointerEvents: 'none',
       }),
     };
   },

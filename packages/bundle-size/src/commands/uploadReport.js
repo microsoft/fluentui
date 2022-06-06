@@ -1,4 +1,4 @@
-const { odata, TableClient, TablesSharedKeyCredential, TableTransaction } = require('@azure/data-tables');
+const { odata, TableClient, AzureNamedKeyCredential, TableTransaction } = require('@azure/data-tables');
 const chalk = require('chalk');
 const { isCI } = require('ci-info');
 
@@ -50,7 +50,7 @@ async function uploadReport(options) {
     process.exit(1);
   }
 
-  const credentials = new TablesSharedKeyCredential(AZURE_STORAGE_ACCOUNT, AZURE_ACCOUNT_KEY);
+  const credentials = new AzureNamedKeyCredential(AZURE_STORAGE_ACCOUNT, AZURE_ACCOUNT_KEY);
   const client = new TableClient(
     `https://${AZURE_STORAGE_ACCOUNT}.table.core.windows.net`,
     AZURE_STORAGE_TABLE_NAME,

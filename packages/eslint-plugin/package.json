@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.4.1",
+  "version": "1.9.1",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -9,9 +9,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "tsc --noEmit && eslint --ext .js --cache ."
+    "lint": "tsc --noEmit && eslint --ext .js --cache .",
+    "test": "yarn jest --passWithNoTests"
   },
   "dependencies": {
+    "@rnx-kit/eslint-plugin": "^0.2.5",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/experimental-utils": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
@@ -25,6 +27,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "minimatch": "^3.0.4",
     "jju": "^1.4.0"
   },
   "peerDependencies": {

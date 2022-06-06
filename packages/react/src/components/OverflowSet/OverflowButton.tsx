@@ -101,6 +101,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
               keytipSequences,
               overflowItem?.keytipProps?.keySequences,
             );
+            persistedKeytip.hasOverflowSubMenu = true;
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
             persistedKeytip.onExecute = keytip.onExecute;

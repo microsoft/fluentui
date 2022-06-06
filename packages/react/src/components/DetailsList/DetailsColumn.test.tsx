@@ -4,6 +4,7 @@ import { ColumnActionsMode } from './DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from './DetailsList';
 import { TooltipHost } from '../../Tooltip';
+import * as renderer from 'react-test-renderer';
 import type { IColumn, IDetailsHeaderProps } from './DetailsList.types';
 import type { IRenderFunction } from '../../Utilities';
 import type { ITooltipHostProps } from '../../Tooltip';
@@ -121,8 +122,27 @@ describe('DetailsColumn', () => {
     expect(mockOnColumnClick.mock.calls.length).toBe(0);
   });
 
-  it('by default, has aria-describedby set for columns which provide an ariaLabel value', () => {
+  it('has aria-label set for columns which provide an ariaLabel', () => {
     const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        componentRef={ref => (component = ref)}
+        onShouldVirtualize={() => false}
+      />,
+    );
+    expect(component.find('[aria-label]')).toHaveLength(1);
+  });
+
+  it('by default, has aria-describedby set for filtered columns which provide a filter label', () => {
+    const column: IColumn = { ...baseColumn, isFiltered: true, filterAriaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -142,7 +162,7 @@ describe('DetailsColumn', () => {
   });
 
   it("by default, has a node present in the DOM referenced by the column's aria-describedby attribute", () => {
-    const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
+    const column: IColumn = { ...baseColumn, isFiltered: true, filterAriaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -165,7 +185,7 @@ describe('DetailsColumn', () => {
   });
 
   it('does not render invalid aria-describedby if custom DetailsHeader has onRenderColumnHeaderTooltip', () => {
-    const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
+    const column: IColumn = { ...baseColumn, isFiltered: true, filterAriaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -239,5 +259,26 @@ describe('DetailsColumn', () => {
     const columnHeaderTitle = columnHeader.find('.ms-DetailsHeader-cellTitle');
 
     expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('renders a sortable icon on an unsorted column when showSortIconWhenUnsorted is set to true', () => {
+    const column: IColumn = { ...baseColumn, showSortIconWhenUnsorted: true, sortableAriaLabel: 'Foo' };
+
+    const columns = [column];
+    let component: any;
+
+    component = renderer.create(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        componentRef={ref => (component = ref)}
+        onShouldVirtualize={() => false}
+      />,
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

@@ -25,6 +25,11 @@ export interface IArcProps {
    * Color for the Arc.
    */
   color: string;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IArcData {

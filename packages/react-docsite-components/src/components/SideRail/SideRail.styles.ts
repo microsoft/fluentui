@@ -1,4 +1,4 @@
-import { FontWeights, getFocusOutlineStyle, IStyleFunction } from '@fluentui/react/lib/index';
+import { FontWeights, getFocusOutlineStyle, IStyleFunction } from '@fluentui/react';
 import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
 import { getLinkColors } from '../../utilities/getLinkColors';

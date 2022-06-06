@@ -10,7 +10,6 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { Swatch } from '../../color/swatch';
 import {
-  bodyFont,
   controlCornerRadius,
   designUnit,
   focusStrokeOuter,
@@ -23,9 +22,8 @@ import {
   neutralForegroundRest,
   neutralStrokeLayerRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
 import { heightNumber } from '../../styles/size';
 
 const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(
@@ -59,10 +57,8 @@ export const accordionItemStyles: (
   css`
     ${display('flex')} :host {
       box-sizing: border-box;
-      font-family: ${bodyFont};
+      ${typeRampBase};
       flex-direction: column;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
       background: ${neutralFillLayerRest};
       color: ${neutralForegroundRest};
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
@@ -80,7 +76,6 @@ export const accordionItemStyles: (
       position: relative;
       grid-template-columns: auto 1fr auto auto;
       align-items: center;
-      z-index: 2;
     }
 
     .button {
@@ -95,7 +90,7 @@ export const accordionItemStyles: (
       text-align: left;
       color: inherit;
       cursor: pointer;
-      font-family: inherit;
+      font: inherit;
     }
 
     .button::before {
@@ -105,7 +100,6 @@ export const accordionItemStyles: (
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 1;
       cursor: pointer;
     }
 
@@ -133,7 +127,6 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 4;
-      z-index: 2;
       pointer-events: none;
       background: ${neutralFillStealthRestOnNeutralFillLayerRest};
       border-radius: calc(${controlCornerRadius} * 1px);
@@ -173,7 +166,6 @@ export const accordionItemStyles: (
       padding-inline-start: calc(${designUnit} * 2 * 1px);
       justify-content: center;
       grid-column: 1;
-      z-index: 2;
     }
 
     .end {
@@ -181,7 +173,12 @@ export const accordionItemStyles: (
       align-items: center;
       justify-content: center;
       grid-column: 3;
-      z-index: 2;
+    }
+
+    .icon,
+    .start,
+    .end {
+      position: relative;
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(

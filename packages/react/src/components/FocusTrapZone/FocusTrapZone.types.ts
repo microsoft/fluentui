@@ -61,8 +61,16 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   /**
    * Class name (not actual selector) for first focusable item. Do not append a dot.
    * Only applies if `focusPreviouslyFocusedInnerElement` is false.
+   * @deprecated Use `firstFocusableTarget`, since it is more generic. `firstFocusableTarget` takes precedence if
+   * supplied.
    */
   firstFocusableSelector?: string | (() => string);
+
+  /**
+   * Either a full query selector for the first focusable element, or a function to select the focusable element
+   * within the area directly.
+   */
+  firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
 
   /**
    * Do not put focus onto the first element inside the focus trap zone.
@@ -81,8 +89,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * Puts aria-hidden=true on all non-ancestors of the current element, for screen readers.
-   * This is an experimental feature that will be graduated to default behavior after testing.
-   * This flag will be removed with the next major release.
+   * In future versions of the library, this will be the default behavior.
    */
   enableAriaHiddenSiblings?: boolean;
 }

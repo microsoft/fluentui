@@ -251,7 +251,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
     checkmark: [
       classNames.checkmark,
       {
-        opacity: checked ? '1' : '0',
+        opacity: checked && !indeterminate ? '1' : '0',
         color: checkmarkFontColor,
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'Window',

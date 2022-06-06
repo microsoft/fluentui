@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/motion/FluentMotion';
+export { MotionAnimations, MotionDurations, MotionTimings } from '@fluentui/theme';

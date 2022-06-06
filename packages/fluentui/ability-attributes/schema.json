@@ -134,6 +134,19 @@
         }
       ]
     },
+    "$controls": {
+      "name": "controls",
+      "attributes": [
+        {
+          "name": "aria-controls",
+          "constraints": [
+            {
+              "ref": "$existingIDs"
+            }
+          ]
+        }
+      ]
+    },
     "$describedBy": {
       "name": "describedBy",
       "attributes": [
@@ -237,7 +250,7 @@
           "value": [
             {
               "parameter": true,
-              "attribute": ["true", "menu"]
+              "attribute": ["true", "menu", "dialog"]
             },
             {
               "parameter": false,
@@ -252,6 +265,24 @@
       "attributes": [
         {
           "name": "aria-expanded",
+          "value": [
+            {
+              "parameter": true,
+              "attribute": "true"
+            },
+            {
+              "parameter": false,
+              "attribute": [false, "false"]
+            }
+          ]
+        }
+      ]
+    },
+    "$isHidden": {
+      "name": "isHidden",
+      "attributes": [
+        {
+          "name": "aria-hidden",
           "value": [
             {
               "parameter": true,
@@ -693,6 +724,12 @@
           "optional": true
         },
         {
+          "ref": "$label",
+          "optional": {
+            "ref": "$hasTitleOrText"
+          }
+        },
+        {
           "rel": "@tabbable"
         },
         {
@@ -813,6 +850,10 @@
         {
           "rel": "@disabled",
           "overridable": "disabled"
+        },
+        {
+          "ref": "$isHidden",
+          "optional": true
         },
         {
           "ref": "$hasPopup",
@@ -964,7 +1005,7 @@
           "attributes": [
             {
               "name": "aria-haspopup",
-              "value": "true"
+              "value": ["true", "menu", "dialog"]
             }
           ]
         },
@@ -972,7 +1013,7 @@
           "attributes": [
             {
               "name": "aria-haspopup",
-              "value": "true"
+              "value": ["true", "menu", "dialog"]
             }
           ]
         },
@@ -980,7 +1021,7 @@
           "attributes": [
             {
               "name": "aria-haspopup",
-              "value": "true"
+              "value": ["true", "menu", "dialog"]
             }
           ]
         }
@@ -994,6 +1035,10 @@
       "parameters": [
         {
           "rel": "@checked"
+        },
+        {
+          "ref": "$controls",
+          "optional": true
         }
       ],
       "tags": {
@@ -1163,6 +1208,16 @@
             }
           ]
         }
+      }
+    },
+    "Hidden": {
+      "parameters": [
+        {
+          "ref": "$isHidden"
+        }
+      ],
+      "tags": {
+        "<div>": {}
       }
     }
   }

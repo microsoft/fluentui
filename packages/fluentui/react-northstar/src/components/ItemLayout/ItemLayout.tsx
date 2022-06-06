@@ -6,6 +6,7 @@ import {
   useTelemetry,
   useUnhandledProps,
 } from '@fluentui/react-bindings';
+import { ICSSInJSStyle } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -43,15 +44,15 @@ export interface ItemLayoutProps extends UIComponentProps, ContentComponentProps
   renderHeaderArea?: (props: ItemLayoutProps, classes: ComponentSlotClasses) => React.ReactNode;
   renderMainArea?: (props: ItemLayoutProps, classes: ComponentSlotClasses) => React.ReactNode;
   /** Styled applied to the root element of the rendered component. */
-  rootCSS?: React.CSSProperties;
+  rootCSS?: ICSSInJSStyle;
   /** Styled applied to the media element of the rendered component. */
   mediaCSS?: React.CSSProperties;
   /** Styled applied to the header element of the rendered component. */
-  headerCSS?: React.CSSProperties;
+  headerCSS?: ICSSInJSStyle;
   /** Styled applied to the header media element of the rendered component. */
   headerMediaCSS?: React.CSSProperties;
   /** Styled applied to the content element of the rendered component. */
-  contentCSS?: React.CSSProperties;
+  contentCSS?: ICSSInJSStyle;
   /** Styled applied to the content element of the rendered component. */
   contentMediaCSS?: React.CSSProperties;
   /** Styled applied to the end media element of the rendered component. */

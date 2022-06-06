@@ -43,4 +43,9 @@ describe('buildFixture', () => {
     expect(buildResult.minifiedSize).toBeGreaterThan(1);
     expect(buildResult.gzippedSize).toBeGreaterThan(1);
   });
+
+  it('should throw on compilation errors', async () => {
+    const fixturePath = await setup(`import something from 'unknown-pkg'`);
+    await expect(buildFixture(fixturePath, true)).rejects.toBeDefined();
+  });
 });

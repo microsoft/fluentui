@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -279,7 +279,7 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
 ];
 
 storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -306,6 +306,7 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

@@ -37,7 +37,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     verticalAlign: 'middle',
     alignItems: 'start',
 
-    ...getBorderFocusStyles({ variables: t.siteVariables }),
+    ...getBorderFocusStyles({ variables: t.siteVariables, borderRadius: '3px' }),
 
     ':hover': {
       color: v.textColorHover,

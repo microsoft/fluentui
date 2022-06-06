@@ -1,514 +1,515 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox renders checked correctly 1`] = `
-<div
-  className=
-      ms-Checkbox
-      is-checked
-      is-enabled
-      {
-        display: flex;
-        position: relative;
-      }
-      &:hover .ms-Checkbox-checkbox {
-        background: #005a9e;
-        border-color: #005a9e;
-      }
-      &:focus .ms-Checkbox-checkbox {
-        background: #005a9e;
-        border-color: #005a9e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-        background: Highlight;
-        border-color: Highlight;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
-        background: Highlight;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
-        background: Highlight;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
-        color: Window;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-        color: Window;
-      }
-      &:hover .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-        color: WindowText;
-      }
-      &:focus .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-        color: WindowText;
-      }
->
-  <input
-    checked={true}
-    className=
-
+<div>
+  <div
+    class=
+        ms-Checkbox
+        is-checked
+        is-enabled
         {
-          background: none;
-          opacity: 0;
-          position: absolute;
-        }
-        .ms-Fabric--isFocusVisible &:focus + label::before {
-          outline-offset: 2px;
-          outline: 1px solid #605e5c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-          outline: 1px solid WindowText;
-        }
-    data-ktp-execute-target={true}
-    id="checkbox-0"
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <label
-    className=
-        ms-Checkbox-label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          align-items: flex-start;
-          cursor: pointer;
           display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           position: relative;
-          user-select: none;
         }
-        &::before {
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
+        &:hover .ms-Checkbox-checkbox {
+          background: #005a9e;
+          border-color: #005a9e;
         }
-    htmlFor="checkbox-0"
+        &:focus .ms-Checkbox-checkbox {
+          background: #005a9e;
+          border-color: #005a9e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+          border-color: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
+        }
   >
-    <div
-      className=
-          ms-Checkbox-checkbox
+    <input
+      checked=""
+      class=
+
           {
-            align-items: center;
-            background: #0078d4;
-            border-color: #0078d4;
-            border-radius: 2px;
-            border: 1px solid #323130;
-            box-sizing: border-box;
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
+      data-ktp-execute-target="true"
+      id="checkbox-0"
+      type="checkbox"
+    />
+    <label
+      class=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
             display: flex;
-            flex-shrink: 0;
-            height: 20px;
-            justify-content: center;
-            margin-right: 4px;
-            overflow: hidden;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
-            transition-duration: 200ms;
-            transition-property: background, border, border-color;
-            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-            width: 20px;
+            user-select: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            background: Highlight;
-            border-color: Highlight;
-            forced-color-adjust: none;
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
-      data-ktp-target={true}
+      for="checkbox-0"
     >
-      <i
-        aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
+      <div
+        class=
+            ms-Checkbox-checkbox
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              opacity: 1;
-              speak: none;
+              align-items: center;
+              background: #0078d4;
+              border-color: #0078d4;
+              border-radius: 2px;
+              border: 1px solid #323130;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              position: relative;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
-              color: Window;
+              background: Highlight;
+              border-color: Highlight;
               forced-color-adjust: none;
             }
-        data-icon-name="CheckMark"
+        data-ktp-target="true"
       >
-        
-      </i>
-    </div>
-    <span
-      className=
-          ms-Checkbox-text
-          {
-            color: #323130;
-            font-size: 14px;
-            line-height: 20px;
-            margin-left: 4px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            color: WindowText;
-            forced-color-adjust: none;
-          }
-    >
-      Standard checkbox
-    </span>
-  </label>
+        <i
+          aria-hidden="true"
+          class=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+                forced-color-adjust: none;
+              }
+          data-icon-name="CheckMark"
+        >
+          
+        </i>
+      </div>
+      <span
+        class=
+            ms-Checkbox-text
+            {
+              color: #323130;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+      >
+        Standard checkbox
+      </span>
+    </label>
+  </div>
 </div>
 `;
 
 exports[`Checkbox renders indeterminate correctly 1`] = `
-<div
-  className=
-      ms-Checkbox
-      is-enabled
-      {
-        display: flex;
-        position: relative;
-      }
-      &:hover .ms-Checkbox-checkbox {
-        border-color: #005a9e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-        border-color: WindowText;
-      }
-      &:focus .ms-Checkbox-checkbox {
-        border-color: #005a9e;
-      }
-      &:hover .ms-Checkbox-checkmark {
-        color: #605e5c;
-        opacity: 0;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-        color: Highlight;
-      }
-      &:hover .ms-Checkbox-checkbox:after {
-        border-color: #005a9e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox:after {
-        border-color: WindowText;
-      }
-      &:hover .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-        color: WindowText;
-      }
-      &:focus .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-        color: WindowText;
-      }
->
-  <input
-    aria-checked="mixed"
-    checked={false}
-    className=
-
+<div>
+  <div
+    class=
+        ms-Checkbox
+        is-enabled
         {
-          background: none;
-          opacity: 0;
-          position: absolute;
-        }
-        .ms-Fabric--isFocusVisible &:focus + label::before {
-          outline-offset: 2px;
-          outline: 1px solid #605e5c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-          outline: 1px solid WindowText;
-        }
-    data-ktp-execute-target={true}
-    id="checkbox-0"
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <label
-    className=
-        ms-Checkbox-label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          align-items: flex-start;
-          cursor: pointer;
           display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           position: relative;
-          user-select: none;
         }
-        &::before {
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #005a9e;
         }
-    htmlFor="checkbox-0"
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+          border-color: WindowText;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #005a9e;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #605e5c;
+          opacity: 0;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-checkbox:after {
+          border-color: #005a9e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox:after {
+          border-color: WindowText;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
+        }
   >
-    <div
-      className=
-          ms-Checkbox-checkbox
+    <input
+      aria-checked="mixed"
+      class=
+
           {
-            align-items: center;
-            border-color: #0078d4;
-            border-radius: 2px;
-            border: 1px solid #323130;
-            box-sizing: border-box;
-            display: flex;
-            flex-shrink: 0;
-            height: 20px;
-            justify-content: center;
-            margin-right: 4px;
-            overflow: hidden;
-            position: relative;
-            transition-duration: 200ms;
-            transition-property: background, border, border-color;
-            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-            width: 20px;
-          }
-          &:after {
-            border-color: #0078d4;
-            border-radius: 2px;
-            border-style: solid;
-            border-width: 5px;
-            box-sizing: border-box;
-            content: "";
-            height: 10px;
-            left: 4px;
+            background: none;
+            opacity: 0;
             position: absolute;
-            top: 4px;
-            transition-duration: 200ms;
-            transition-property: border-width, border, border-color;
-            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-            width: 10px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
-            border-color: WindowText;
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            border-color: WindowText;
-            forced-color-adjust: none;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
           }
-      data-ktp-target={true}
+      data-ktp-execute-target="true"
+      id="checkbox-0"
+      type="checkbox"
+    />
+    <label
+      class=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            user-select: none;
+          }
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      for="checkbox-0"
     >
-      <i
-        aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
+      <div
+        class=
+            ms-Checkbox-checkbox
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              opacity: 0;
-              speak: none;
+              align-items: center;
+              border-color: #0078d4;
+              border-radius: 2px;
+              border: 1px solid #323130;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              position: relative;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
+            &:after {
+              border-color: #0078d4;
+              border-radius: 2px;
+              border-style: solid;
+              border-width: 5px;
+              box-sizing: border-box;
+              content: "";
+              height: 10px;
+              left: 4px;
+              position: absolute;
+              top: 4px;
+              transition-duration: 200ms;
+              transition-property: border-width, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 10px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
+              border-color: WindowText;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
-              color: Window;
+              border-color: WindowText;
               forced-color-adjust: none;
             }
-        data-icon-name="CheckMark"
+        data-ktp-target="true"
       >
-        
-      </i>
-    </div>
-    <span
-      className=
-          ms-Checkbox-text
-          {
-            color: #323130;
-            font-size: 14px;
-            line-height: 20px;
-            margin-left: 4px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            color: WindowText;
-            forced-color-adjust: none;
-          }
-    >
-      Standard checkbox
-    </span>
-  </label>
+        <i
+          aria-hidden="true"
+          class=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+                forced-color-adjust: none;
+              }
+          data-icon-name="CheckMark"
+        >
+          
+        </i>
+      </div>
+      <span
+        class=
+            ms-Checkbox-text
+            {
+              color: #323130;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+      >
+        Standard checkbox
+      </span>
+    </label>
+  </div>
 </div>
 `;
 
 exports[`Checkbox renders unchecked correctly 1`] = `
-<div
-  className=
-      ms-Checkbox
-      is-enabled
-      {
-        display: flex;
-        position: relative;
-      }
-      &:hover .ms-Checkbox-checkbox {
-        border-color: #323130;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-        border-color: Highlight;
-      }
-      &:focus .ms-Checkbox-checkbox {
-        border-color: #323130;
-      }
-      &:hover .ms-Checkbox-checkmark {
-        color: #605e5c;
-        opacity: 1;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
-        color: Highlight;
-      }
-      &:hover .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
-        color: WindowText;
-      }
-      &:focus .ms-Checkbox-text {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
-        color: WindowText;
-      }
->
-  <input
-    checked={false}
-    className=
-
+<div>
+  <div
+    class=
+        ms-Checkbox
+        is-enabled
         {
-          background: none;
-          opacity: 0;
-          position: absolute;
-        }
-        .ms-Fabric--isFocusVisible &:focus + label::before {
-          outline-offset: 2px;
-          outline: 1px solid #605e5c;
-        }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-          outline: 1px solid WindowText;
-        }
-    data-ktp-execute-target={true}
-    id="checkbox-0"
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <label
-    className=
-        ms-Checkbox-label
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          align-items: flex-start;
-          cursor: pointer;
           display: flex;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
           position: relative;
-          user-select: none;
         }
-        &::before {
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #323130;
         }
-    htmlFor="checkbox-0"
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #323130;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #605e5c;
+          opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
+          color: WindowText;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
+          color: WindowText;
+        }
   >
-    <div
-      className=
-          ms-Checkbox-checkbox
+    <input
+      class=
+
           {
-            align-items: center;
-            border-radius: 2px;
-            border: 1px solid #323130;
-            box-sizing: border-box;
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
+          }
+      data-ktp-execute-target="true"
+      id="checkbox-0"
+      type="checkbox"
+    />
+    <label
+      class=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
             display: flex;
-            flex-shrink: 0;
-            height: 20px;
-            justify-content: center;
-            margin-right: 4px;
-            overflow: hidden;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
-            transition-duration: 200ms;
-            transition-property: background, border, border-color;
-            transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-            width: 20px;
+            user-select: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            border-color: WindowText;
-            forced-color-adjust: none;
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
-      data-ktp-target={true}
+      for="checkbox-0"
     >
-      <i
-        aria-hidden={true}
-        className=
-            ms-Checkbox-checkmark
+      <div
+        class=
+            ms-Checkbox-checkbox
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #ffffff;
-              display: inline-block;
-              font-family: "FabricMDL2Icons";
-              font-style: normal;
-              font-weight: normal;
-              opacity: 0;
-              speak: none;
+              align-items: center;
+              border-radius: 2px;
+              border: 1px solid #323130;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              position: relative;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
-              color: Window;
+              border-color: WindowText;
               forced-color-adjust: none;
             }
-        data-icon-name="CheckMark"
+        data-ktp-target="true"
       >
-        
-      </i>
-    </div>
-    <span
-      className=
-          ms-Checkbox-text
-          {
-            color: #323130;
-            font-size: 14px;
-            line-height: 20px;
-            margin-left: 4px;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            -ms-high-contrast-adjust: none;
-            color: WindowText;
-            forced-color-adjust: none;
-          }
-    >
-      Standard checkbox
-    </span>
-  </label>
+        <i
+          aria-hidden="true"
+          class=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+                forced-color-adjust: none;
+              }
+          data-icon-name="CheckMark"
+        >
+          
+        </i>
+      </div>
+      <span
+        class=
+            ms-Checkbox-text
+            {
+              color: #323130;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
+              color: WindowText;
+              forced-color-adjust: none;
+            }
+      >
+        Standard checkbox
+      </span>
+    </label>
+  </div>
 </div>
 `;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities/index';
+import { TestWrapperDecoratorFullWidth } from '../utilities/index';
 import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
 
 const rootStyles = {
@@ -68,7 +68,7 @@ const defaultProps = {
 };
 
 storiesOf('Stack', module)
-  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(TestWrapperDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore
     <Screener

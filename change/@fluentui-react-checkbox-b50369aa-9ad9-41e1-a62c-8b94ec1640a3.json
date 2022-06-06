@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Migrate react-checkbox tests to rtl",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "ndresx@gmail.com",
-  "dependentChangeType": "none"
-}

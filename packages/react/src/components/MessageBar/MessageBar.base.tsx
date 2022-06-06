@@ -50,6 +50,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     actions,
     className,
     children,
+    // eslint-disable-next-line deprecation/deprecation
     overflowButtonAriaLabel,
     dismissIconProps,
     styles,
@@ -62,6 +63,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     messageBarIconProps,
     role,
     delayedRender = true,
+    expandButtonProps,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -133,6 +135,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
                 iconProps={expandIconProps}
                 ariaLabel={overflowButtonAriaLabel}
                 aria-expanded={expandSingleLine}
+                {...expandButtonProps}
               />
             </div>
           )

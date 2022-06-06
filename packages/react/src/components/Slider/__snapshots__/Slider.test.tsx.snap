@@ -1,262 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Slider renders correctly 1`] = `
-<div
-  className=
-      ms-Slider
-      ms-Slider-enabled
-      ms-Slider-row
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        user-select: none;
-      }
->
-  <label
-    className=
-        ms-Label
+<div>
+  <div
+    class=
+        ms-Slider
+        ms-Slider-enabled
+        ms-Slider-row
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          word-wrap: break-word;
-        }
-    htmlFor="Slider0"
-  >
-    I am a slider
-  </label>
-  <div
-    className=
-        ms-Slider-container
-        {
-          align-items: center;
-          display: flex;
-          flex-wrap: nowrap;
+          font-weight: 400;
+          user-select: none;
         }
   >
-    <div
-      aria-disabled={false}
-      aria-label="I am a slider"
-      aria-valuemax={10}
-      aria-valuemin={0}
-      aria-valuenow={0}
-      aria-valuetext="0"
-      className=
-          ms-Slider-slideBox
-          ms-Slider-showValue
-          ms-Slider-showTransitions
-          {
-            align-items: center;
-            background: transparent;
-            border: none;
-            display: flex;
-            flex-grow: 1;
-            height: 28px;
-            line-height: 28px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 0;
-            position: relative;
-            width: auto;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 1px;
-            content: "";
-            left: 1px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 1px;
-            top: 1px;
-            z-index: 1;
-          }
-          &:active .ms-Slider-active {
-            background-color: #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-active {
-            background-color: #0078d4;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:active .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            forced-color-adjust: none;
-          }
-      data-is-focusable={true}
-      id="Slider0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onTouchStart={[Function]}
-      role="slider"
-      tabIndex={0}
-    >
-      <div
-        className=
-            ms-Slider-line
-            {
-              display: flex;
-              position: relative;
-              width: 100%;
-            }
-      >
-        <span
-          className=
-              ms-Slider-thumb
-              {
-                background: #ffffff;
-                border-color: #605e5c;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
-              }
-          style={
-            Object {
-              "left": "0%",
-            }
-          }
-        />
-        <span
-          className=
-              ms-Slider-inactive
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #c8c6c4;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border: 1px solid WindowText;
-              }
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
-        />
-        <span
-          className=
-              ms-Slider-active
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #605e5c;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                background-color: WindowText;
-              }
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
-        />
-        <span
-          className=
-              ms-Slider-inactive
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #c8c6c4;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border: 1px solid WindowText;
-              }
-          style={
-            Object {
-              "width": "100%",
-            }
-          }
-        />
-      </div>
-    </div>
     <label
-      className=
+      class=
           ms-Label
-          ms-Slider-value
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -264,87 +26,271 @@ exports[`Slider renders correctly 1`] = `
             box-sizing: border-box;
             color: #323130;
             display: block;
-            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0;
-            margin-left: 8px;
-            margin-right: 8px;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            white-space: nowrap;
-            width: 40px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             word-wrap: break-word;
           }
+      for="Slider0"
     >
-      0
+      I am a slider
     </label>
+    <div
+      class=
+          ms-Slider-container
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+          }
+    >
+      <div
+        aria-disabled="false"
+        aria-label="I am a slider"
+        aria-valuemax="10"
+        aria-valuemin="0"
+        aria-valuenow="0"
+        aria-valuetext="0"
+        class=
+            ms-Slider-slideBox
+            ms-Slider-showValue
+            ms-Slider-showTransitions
+            {
+              align-items: center;
+              background: transparent;
+              border: none;
+              display: flex;
+              flex-grow: 1;
+              height: 28px;
+              line-height: 28px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:active .ms-Slider-active {
+              background-color: #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
+              background-color: Highlight;
+            }
+            &:hover .ms-Slider-active {
+              background-color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
+              background-color: Highlight;
+            }
+            &:active .ms-Slider-inactive {
+              background-color: #8a8886;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-inactive {
+              background-color: #8a8886;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-zeroTick {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
+              background-color: Highlight;
+            }
+            &:hover .ms-Slider-zeroTick {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
+              background-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
+        data-is-focusable="true"
+        id="Slider0"
+        role="slider"
+        tabindex="0"
+      >
+        <div
+          class=
+              ms-Slider-line
+              {
+                display: flex;
+                position: relative;
+                width: 100%;
+              }
+        >
+          <span
+            class=
+                ms-Slider-thumb
+                {
+                  background: #ffffff;
+                  border-color: #605e5c;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-width: 2px;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 16px;
+                  position: absolute;
+                  top: -6px;
+                  transform: translateX(-50%);
+                  transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                  width: 16px;
+                }
+            style="left: 0%;"
+          />
+          <span
+            class=
+                ms-Slider-inactive
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #8a8886;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border: 1px solid WindowText;
+                }
+            style="width: 0%;"
+          />
+          <span
+            class=
+                ms-Slider-active
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #323130;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  background-color: WindowText;
+                }
+            style="width: 0%;"
+          />
+          <span
+            class=
+                ms-Slider-inactive
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #8a8886;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border: 1px solid WindowText;
+                }
+            style="width: 100%;"
+          />
+        </div>
+      </div>
+      <label
+        class=
+            ms-Label
+            ms-Slider-value
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 1;
+              margin-bottom: 0;
+              margin-left: 8px;
+              margin-right: 8px;
+              margin-top: 0;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              white-space: nowrap;
+              width: 40px;
+              word-wrap: break-word;
+            }
+      >
+        0
+      </label>
+    </div>
   </div>
 </div>
 `;
 
 exports[`Slider renders range slider correctly 1`] = `
-<div
-  className=
-      ms-Slider
-      ms-Slider-enabled
-      ms-Slider-row
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        user-select: none;
-      }
->
-  <label
-    className=
-        ms-Label
+<div>
+  <div
+    class=
+        ms-Slider
+        ms-Slider-enabled
+        ms-Slider-row
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          box-shadow: none;
-          box-sizing: border-box;
-          color: #323130;
-          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow-wrap: break-word;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-          word-wrap: break-word;
-        }
-    htmlFor="Slider0"
-  >
-    I am a ranged slider
-  </label>
-  <div
-    className=
-        ms-Slider-container
-        {
-          align-items: center;
-          display: flex;
-          flex-wrap: nowrap;
+          font-weight: 400;
+          user-select: none;
         }
   >
     <label
-      className=
+      class=
           ms-Label
-          ms-Slider-value
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -352,311 +298,325 @@ exports[`Slider renders range slider correctly 1`] = `
             box-sizing: border-box;
             color: #323130;
             display: block;
-            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0;
-            margin-left: 8px;
-            margin-right: 8px;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            white-space: nowrap;
-            width: 40px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             word-wrap: break-word;
           }
+      for="Slider0"
     >
-      0
+      I am a ranged slider
     </label>
     <div
-      className=
-          ms-Slider-slideBox
-          ms-Slider-showValue
-          ms-Slider-showTransitions
+      class=
+          ms-Slider-container
           {
             align-items: center;
-            background: transparent;
-            border: none;
             display: flex;
-            flex-grow: 1;
-            height: 28px;
-            line-height: 28px;
-            padding-bottom: 0;
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 0;
-            width: auto;
+            flex-wrap: nowrap;
           }
-          &:active .ms-Slider-active {
-            background-color: #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-active {
-            background-color: #0078d4;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
-            background-color: Highlight;
-          }
-          &:active .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-inactive {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:hover .ms-Slider-thumb {
-            border: 2px solid #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
-            border-color: Highlight;
-          }
-          &:active .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
-          &:hover .ms-Slider-zeroTick {
-            background-color: #deecf9;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
-            background-color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-            forced-color-adjust: none;
-          }
-      id="Slider0"
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onTouchStart={[Function]}
     >
-      <div
-        className=
-            ms-Slider-line
+      <label
+        class=
+            ms-Label
+            ms-Slider-value
             {
-              display: flex;
-              position: relative;
-              width: 100%;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 1;
+              margin-bottom: 0;
+              margin-left: 8px;
+              margin-right: 8px;
+              margin-top: 0;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              white-space: nowrap;
+              width: 40px;
+              word-wrap: break-word;
             }
       >
-        <span
-          aria-disabled={false}
-          aria-label="min I am a ranged slider"
-          aria-valuemax={5}
-          aria-valuemin={0}
-          aria-valuenow={0}
-          aria-valuetext="0"
-          className=
-              ms-Slider-thumb
-              {
-                background: #ffffff;
-                border-color: #605e5c;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                outline: transparent;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -3px;
-                content: "";
-                left: -3px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: -3px;
-                top: -3px;
-                z-index: 1;
-              }
-          data-is-focusable={true}
-          id="min-Slider0"
-          onFocus={[Function]}
-          role="slider"
-          style={
-            Object {
-              "left": "0%",
+        0
+      </label>
+      <div
+        class=
+            ms-Slider-slideBox
+            ms-Slider-showValue
+            ms-Slider-showTransitions
+            {
+              align-items: center;
+              background: transparent;
+              border: none;
+              display: flex;
+              flex-grow: 1;
+              height: 28px;
+              line-height: 28px;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              width: auto;
             }
-          }
-          tabIndex={0}
-        />
-        <span
-          aria-disabled={false}
-          aria-label="max I am a ranged slider"
-          aria-valuemax={10}
-          aria-valuemin={0}
-          aria-valuenow={5}
-          aria-valuetext="5"
-          className=
-              ms-Slider-thumb
-              {
-                background: #ffffff;
-                border-color: #605e5c;
-                border-radius: 10px;
-                border-style: solid;
-                border-width: 2px;
-                box-sizing: border-box;
-                display: block;
-                height: 16px;
-                outline: transparent;
-                position: absolute;
-                top: -6px;
-                transform: translateX(-50%);
-                transition: left 0.367s cubic-bezier(.1,.9,.2,1);
-                width: 16px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -3px;
-                content: "";
-                left: -3px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: -3px;
-                top: -3px;
-                z-index: 1;
-              }
-          data-is-focusable={true}
-          id="max-Slider0"
-          onFocus={[Function]}
-          role="slider"
-          style={
-            Object {
-              "left": "50%",
+            &:active .ms-Slider-active {
+              background-color: #005a9e;
             }
-          }
-          tabIndex={0}
-        />
-        <span
-          className=
-              ms-Slider-inactive
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
+              background-color: Highlight;
+            }
+            &:hover .ms-Slider-active {
+              background-color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
+              background-color: Highlight;
+            }
+            &:active .ms-Slider-inactive {
+              background-color: #8a8886;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-inactive {
+              background-color: #8a8886;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:hover .ms-Slider-thumb {
+              border: 2px solid #005a9e;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
+              border-color: Highlight;
+            }
+            &:active .ms-Slider-zeroTick {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
+              background-color: Highlight;
+            }
+            &:hover .ms-Slider-zeroTick {
+              background-color: #deecf9;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
+              background-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              forced-color-adjust: none;
+            }
+        id="Slider0"
+      >
+        <div
+          class=
+              ms-Slider-line
               {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
+                display: flex;
+                position: relative;
                 width: 100%;
               }
-              {
-                background: #c8c6c4;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border: 1px solid WindowText;
-              }
-          style={
-            Object {
-              "width": "0%",
-            }
-          }
-        />
-        <span
-          className=
-              ms-Slider-active
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #605e5c;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                background-color: WindowText;
-              }
-          style={
-            Object {
-              "width": "50%",
-            }
-          }
-        />
-        <span
-          className=
-              ms-Slider-inactive
-              {
-                border-radius: 4px;
-                box-sizing: border-box;
-                height: 4px;
-                width: 100%;
-              }
-              {
-                background: #c8c6c4;
-                transition: width 0.367s cubic-bezier(.1,.9,.2,1);
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                border: 1px solid WindowText;
-              }
-          style={
-            Object {
-              "width": "50%",
-            }
-          }
-        />
+        >
+          <span
+            aria-disabled="false"
+            aria-label="min I am a ranged slider"
+            aria-valuemax="5"
+            aria-valuemin="0"
+            aria-valuenow="0"
+            aria-valuetext="0"
+            class=
+                ms-Slider-thumb
+                {
+                  background: #ffffff;
+                  border-color: #605e5c;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-width: 2px;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 16px;
+                  outline: transparent;
+                  position: absolute;
+                  top: -6px;
+                  transform: translateX(-50%);
+                  transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                  width: 16px;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -3px;
+                  content: "";
+                  left: -3px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -3px;
+                  top: -3px;
+                  z-index: 1;
+                }
+            data-is-focusable="true"
+            id="min-Slider0"
+            role="slider"
+            style="left: 0%;"
+            tabindex="0"
+          />
+          <span
+            aria-disabled="false"
+            aria-label="max I am a ranged slider"
+            aria-valuemax="10"
+            aria-valuemin="0"
+            aria-valuenow="5"
+            aria-valuetext="5"
+            class=
+                ms-Slider-thumb
+                {
+                  background: #ffffff;
+                  border-color: #605e5c;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-width: 2px;
+                  box-sizing: border-box;
+                  display: block;
+                  height: 16px;
+                  outline: transparent;
+                  position: absolute;
+                  top: -6px;
+                  transform: translateX(-50%);
+                  transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+                  width: 16px;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -3px;
+                  content: "";
+                  left: -3px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -3px;
+                  top: -3px;
+                  z-index: 1;
+                }
+            data-is-focusable="true"
+            id="max-Slider0"
+            role="slider"
+            style="left: 50%;"
+            tabindex="0"
+          />
+          <span
+            class=
+                ms-Slider-inactive
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #8a8886;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border: 1px solid WindowText;
+                }
+            style="width: 0%;"
+          />
+          <span
+            class=
+                ms-Slider-active
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #323130;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  background-color: WindowText;
+                }
+            style="width: 50%;"
+          />
+          <span
+            class=
+                ms-Slider-inactive
+                {
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                  height: 4px;
+                  width: 100%;
+                }
+                {
+                  background: #8a8886;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  border: 1px solid WindowText;
+                }
+            style="width: 50%;"
+          />
+        </div>
       </div>
+      <label
+        class=
+            ms-Label
+            ms-Slider-value
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #323130;
+              display: block;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 1;
+              margin-bottom: 0;
+              margin-left: 8px;
+              margin-right: 8px;
+              margin-top: 0;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              white-space: nowrap;
+              width: 40px;
+              word-wrap: break-word;
+            }
+      >
+        5
+      </label>
     </div>
-    <label
-      className=
-          ms-Label
-          ms-Slider-value
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            flex-shrink: 1;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0;
-            margin-left: 8px;
-            margin-right: 8px;
-            margin-top: 0;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            white-space: nowrap;
-            width: 40px;
-            word-wrap: break-word;
-          }
-    >
-      5
-    </label>
   </div>
 </div>
 `;

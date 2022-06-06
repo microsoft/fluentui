@@ -341,7 +341,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionTitleStyles,
       {
         color: palette.white,
-        marginBottom: '1em',
+        marginBottom: 0,
+
+        position: 'relative',
+        selectors: {
+          [mediaQuery.minMobile]: {
+            bottom: 17,
+          },
+        },
       },
     ],
 

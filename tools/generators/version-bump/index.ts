@@ -26,6 +26,11 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   const packageJsonPath = options.paths.packageJson;
   let nextVersion = '';
 
+  if (schema.exclude.includes(schema.name)) {
+    userLog.push({ type: 'info', message: `excluding ${schema.name} from version bump` });
+    return;
+  }
+
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
     packageJson.version = nextVersion;
@@ -93,7 +98,13 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
     if (isPackageConverged(projectName, host)) {
       runMigrationOnProject(
         host,
-        { name: projectName, all: false, bumpType: schema.bumpType, prereleaseTag: schema.prereleaseTag },
+        {
+          name: projectName,
+          all: false,
+          bumpType: schema.bumpType,
+          prereleaseTag: schema.prereleaseTag,
+          exclude: schema.exclude,
+        },
         userLog,
       );
     }
@@ -101,12 +112,22 @@ function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog
 }
 
 function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpType'], prereleaseTag?: string) {
+  if (bumpType === 'nightly') {
+    // initialize the prerelease tag so that prerelease doesn't bump to 0.0.1
+    packageJson.version = '0.0.0-empty';
+  }
+
   const semverVersion = semver.parse(packageJson.version);
   if (!semverVersion) {
     throw new Error(`Cannot parse version ${packageJson.version} of ${packageJson.name}`);
   }
 
-  semverVersion.inc(bumpType, prereleaseTag);
+  if (bumpType === 'nightly') {
+    semverVersion.inc('prerelease', prereleaseTag);
+  } else {
+    semverVersion.inc(bumpType, prereleaseTag);
+  }
+
   return semverVersion.version;
 }
 
@@ -147,10 +168,21 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
   };
 }
 
-export const validbumpTypes = ['prerelease', 'major', 'premajor', 'minor', 'preminor', 'patch', 'prepatch'] as const;
+export const validbumpTypes = [
+  'prerelease',
+  'major',
+  'premajor',
+  'minor',
+  'preminor',
+  'patch',
+  'prepatch',
+  'nightly',
+] as const;
 
-interface ValidatedSchema extends Required<VersionBumpGeneratorSchema> {
+interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude'>> {
   bumpType: typeof validbumpTypes[number];
+
+  exclude: string[];
 }
 
 function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
@@ -179,6 +211,7 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
     prereleaseTag: schema.prereleaseTag ?? '',
     all: schema.all ?? false,
     name: schema.name ?? '',
+    exclude: schema.exclude ? schema.exclude.split(',') : [],
   };
 
   return validatedSchema;

@@ -68,6 +68,7 @@ dist
 dist-storybook
 screenshots
 .cache
+!tools/**/lib
 
 *.tar.gz
 

@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { classNamesFunction, find, getNativeProps, divProperties, setFocusVisibility } from '../../Utilities';
+import {
+  classNamesFunction,
+  find,
+  getNativeProps,
+  divProperties,
+  setFocusVisibility,
+  useFocusRects,
+} from '../../Utilities';
 import { ChoiceGroupOption } from './ChoiceGroupOption/index';
-import { useId, useControllableValue, useWarnings } from '@fluentui/react-hooks';
+import { useId, useControllableValue, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
 import type { IRefObject } from '../../Utilities';
 import type {
   IChoiceGroupOption,
@@ -23,6 +30,20 @@ const findOption = (options: IChoiceGroupOption[], key: string | number | undefi
   return key === undefined ? undefined : find(options, value => value.key === key);
 };
 
+const focusSelectedOption = (options: IChoiceGroupOption[], keyChecked: string | number | undefined, id: string) => {
+  const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
+  const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
+
+  if (elementToFocus) {
+    elementToFocus.focus();
+    setFocusVisibility(true, elementToFocus as Element);
+  }
+};
+
+const focusFromFocusTrapZone = (evt: React.FocusEvent<HTMLElement>): boolean => {
+  return evt.relatedTarget instanceof HTMLElement && evt.relatedTarget.dataset.isFocusTrapZoneBumper === 'true';
+};
+
 const useComponentRef = (
   options: IChoiceGroupOption[],
   keyChecked: string | number | undefined,
@@ -36,13 +57,7 @@ const useComponentRef = (
         return findOption(options, keyChecked);
       },
       focus() {
-        const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
-        const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
-
-        if (elementToFocus) {
-          elementToFocus.focus();
-          setFocusVisibility(true, elementToFocus as Element);
-        }
+        focusSelectedOption(options, keyChecked, id);
       },
     }),
     [options, keyChecked, id],
@@ -88,8 +103,12 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   const [keyChecked, setKeyChecked] = useControllableValue(props.selectedKey, defaultSelectedKey);
   const [keyFocused, setKeyFocused] = React.useState<string | number>();
 
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const mergedRootRefs: React.Ref<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
+
   useDebugWarnings(props);
   useComponentRef(options, keyChecked, id, componentRef);
+  useFocusRects(rootRef);
 
   const onFocus = React.useCallback((ev?: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {
     if (option) {
@@ -116,9 +135,19 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
     [onChange, options, setKeyChecked],
   );
 
+  const onRadioFocus = React.useCallback(
+    (evt: React.FocusEvent<HTMLElement>) => {
+      // Handles scenarios like this bug: https://github.com/microsoft/fluentui/issues/20173
+      if (focusFromFocusTrapZone(evt)) {
+        focusSelectedOption(options, keyChecked, id);
+      }
+    },
+    [options, keyChecked, id],
+  );
+
   return (
-    <div className={classNames.root} {...divProps} ref={forwardedRef}>
-      <div role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
+    <div className={classNames.root} {...divProps} ref={mergedRootRefs}>
+      <div role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })} onFocus={onRadioFocus}>
         {label && (
           <Label className={classNames.label} required={required} id={labelId} disabled={disabled}>
             {label}

@@ -166,6 +166,7 @@ MenuItemWrapper.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   underlined: PropTypes.bool,
   vertical: PropTypes.bool,
+  on: PropTypes.oneOf(['hover']),
 };
 
 MenuItemWrapper.handledProps = Object.keys(MenuItemWrapper.propTypes) as any;

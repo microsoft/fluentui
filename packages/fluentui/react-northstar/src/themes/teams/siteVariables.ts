@@ -16,7 +16,6 @@ export const borderRadiusMedium = '4px'; // default border radius
 export const borderRadiusXLarge = '8px'; // X Large Border Radius
 export const focusInnerBorderColor = colors.white;
 export const focusOuterBorderColor = colors.black;
-export const focusBorderRadius = borderRadiusMedium;
 
 //
 // SHADOW LEVELS

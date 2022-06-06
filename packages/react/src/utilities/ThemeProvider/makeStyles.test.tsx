@@ -12,6 +12,7 @@ import { ThemeProvider } from './ThemeProvider';
 describe('makeStyles', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
 
+  // eslint-disable-next-line deprecation/deprecation
   const useThemedStyles = makeStyles(theme => ({
     root: {
       background: theme.palette.themePrimary,
@@ -26,6 +27,7 @@ describe('makeStyles', () => {
 
   const ThemeStyledComponent = () => <ThemeStyledComponentInner />;
 
+  // eslint-disable-next-line deprecation/deprecation
   const useStaticStyles = makeStyles({
     root: {
       background: 'yellow',
@@ -46,6 +48,7 @@ describe('makeStyles', () => {
   });
 
   it('can create basic styles as an object (no type errors)', () => {
+    // eslint-disable-next-line deprecation/deprecation
     makeStyles({
       root: {
         alignItems: 'center',
@@ -54,6 +57,7 @@ describe('makeStyles', () => {
   });
 
   it('can create style functions (no type errors)', () => {
+    // eslint-disable-next-line deprecation/deprecation
     makeStyles(() => ({
       root: {
         alignItems: 'center',

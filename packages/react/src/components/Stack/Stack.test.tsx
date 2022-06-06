@@ -15,7 +15,6 @@ describe('Stack', () => {
     Component: Stack,
     displayName: 'Stack',
     useDefaultExport: true,
-    skipAsPropTests: false,
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
     disabledTests: ['component-handles-ref', 'component-has-root-ref'],
@@ -224,11 +223,37 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders vertical Stack with StackItems inside a React.Fragment correctly', () => {
+    const component = renderer.create(
+      <Stack>
+        <>
+          <Stack.Item>Item 1</Stack.Item>
+          <Stack.Item>Item 2</Stack.Item>
+        </>
+      </Stack>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
+      </Stack>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders horizontal Stack with StackItems inside a React.Fragment correctly', () => {
+    const component = renderer.create(
+      <Stack horizontal>
+        <>
+          <Stack.Item>Item 1</Stack.Item>
+          <Stack.Item>Item 2</Stack.Item>
+        </>
       </Stack>,
     );
     const tree = component.toJSON();

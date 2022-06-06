@@ -41,6 +41,13 @@ import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 import { TooltipStyles } from './styles/Tooltip.styles';
+import {
+  CalendarStyles,
+  CalendarDayGridStyles,
+  CalendarDayStyles,
+  CalendarMonthStyles,
+  CalendarYearStyles,
+} from './styles/Calendar.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -52,6 +59,21 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Breadcrumb: {
       styles: BreadcrumbStyles,
+    },
+    Calendar: {
+      styles: CalendarStyles,
+    },
+    CalendarDayGrid: {
+      styles: CalendarDayGridStyles,
+    },
+    CalendarDay: {
+      styles: CalendarDayStyles,
+    },
+    CalendarMonth: {
+      styles: CalendarMonthStyles,
+    },
+    CalendarYear: {
+      styles: CalendarYearStyles,
     },
     CalloutContent: {
       styles: CalloutContentStyles,

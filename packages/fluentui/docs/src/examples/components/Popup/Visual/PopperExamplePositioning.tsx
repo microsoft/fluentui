@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { createReferenceFromClick, Box, Portal, PositioningProps, usePopper } from '@fluentui/react-northstar';
+import {
+  ICSSInJSStyle,
+  createReferenceFromClick,
+  Box,
+  Portal,
+  PositioningProps,
+  usePopper,
+} from '@fluentui/react-northstar';
 
-const boxStyles: React.CSSProperties = {
+const boxStyles: ICSSInJSStyle = {
   border: '1px dashed #ccc',
   color: 'blue',
   textAlign: 'center',

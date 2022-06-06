@@ -73,6 +73,9 @@ export interface IComboBoxProps
    * 1) The selected option changes.
    * 2) A manually edited value is submitted. In this case there may not be a matched option if `allowFreeform`
    *    is also true (and hence only `value` would be provided; the other parameters would be unspecified).
+   *
+   * The value passed to the callback (4th paramenter) reflects the changed option's text, or the user-typed input when
+   * freeform is allowed.
    */
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
@@ -93,9 +96,16 @@ export interface IComboBoxProps
    * and the user types text matching the start of an option within a timeout, `option` and `index`
    * are provided and `value` is undefined. If `autoComplete` is off, typing does nothing.
    *
-   * If you simply want to be notified of raw text input, use the prop `autofill.onInputValueChange`.
+   * If you simply want to be notified of raw text input, use the prop `onInputValueChange`.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Called when the user types in to the input of the combo box
+   *
+   * Ideal if you want to be notified of raw text input
+   */
+  onInputValueChange?: (text: string) => void;
 
   /**
    * Called when the ComboBox menu is launched.

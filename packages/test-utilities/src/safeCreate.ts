@@ -19,6 +19,9 @@ export function safeCreate<TProps>(
     wrapper = renderer.create(content, options);
   });
 
-  callback(wrapper!);
-  wrapper!.unmount();
+  try {
+    callback(wrapper!);
+  } finally {
+    wrapper!.unmount();
+  }
 }

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option renders a default state 1`] = `
+<div>
+  <div
+    aria-selected="false"
+    class="fui-Option"
+    id="fluent-option1"
+    role="option"
+  >
+    <span
+      aria-hidden="true"
+      class="fui-Option__checkIcon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+        />
+      </svg>
+    </span>
+    Default Option
+  </div>
+</div>
+`;

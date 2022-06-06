@@ -475,4 +475,17 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * props to send to the focuszone
    */
   svgFocusZoneProps?: IFocusZoneProps;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getAxisData?: any;
+
+  /**
+   * Callback method used when mouse leaves the chart boundary.
+   */
+  onChartMouseLeave?: () => void;
 }

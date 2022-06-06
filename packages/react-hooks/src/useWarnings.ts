@@ -5,10 +5,10 @@ import {
   warnConditionallyRequiredProps,
   warnDeprecations,
   warnMutuallyExclusive,
-} from '@fluentui/utilities/lib/warn';
+} from '@fluentui/utilities';
 import { usePrevious } from './usePrevious';
 import { useConst } from './useConst';
-import type { ISettingsMap, IWarnControlledUsageParams } from '@fluentui/utilities/lib/warn';
+import type { ISettingsMap, IWarnControlledUsageParams } from '@fluentui/utilities';
 
 export interface IWarningOptions<P> {
   /** Name of the component */

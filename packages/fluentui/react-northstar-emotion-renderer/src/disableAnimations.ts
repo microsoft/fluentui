@@ -20,7 +20,8 @@ export function disableAnimations(styles: ICSSInJSStyle): ICSSInJSStyle {
     if (animationProps.indexOf(property) !== -1) {
       delete styles[property];
     } else if (isStyleObject(styles[property])) {
-      styles[property] = disableAnimations(styles[property] as ICSSInJSStyle);
+      // Cast to any to avoid "error TS2590: Expression produces a union type that is too complex to represent"
+      (styles as any)[property] = disableAnimations(styles[property] as ICSSInJSStyle);
     }
   }
 

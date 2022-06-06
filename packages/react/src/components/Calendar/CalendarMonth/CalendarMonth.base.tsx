@@ -215,11 +215,10 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
           data-is-focusable={!!props.onHeaderSelect || !yearPickerHidden}
           tabIndex={!!props.onHeaderSelect || !yearPickerHidden ? 0 : -1}
           type="button"
-          aria-atomic={true}
-          // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
-          aria-live="polite"
         >
-          {yearString}
+          <span aria-live="polite" aria-atomic="true">
+            {yearString}
+          </span>
         </button>
         <div className={classNames.navigationButtonsContainer}>
           <button
@@ -292,7 +291,6 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
                       aria-selected={isNavigatedMonth}
                       data-is-focusable={isInBounds ? true : undefined}
                       type="button"
-                      aria-readonly={true} // prevent grid from being "editable"
                     >
                       {month}
                     </button>

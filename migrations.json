@@ -1,44 +1,12 @@
 {
   "migrations": [
     {
-      "version": "12.1.2-beta.1",
+      "version": "13.6.0-beta.0",
+      "description": "Remove old options that are no longer used",
       "cli": "nx",
-      "description": "Replace tsConfig with tsconfig for ts-jest in jest.config.js",
-      "factory": "./src/migrations/update-12-1-2/update-ts-jest",
-      "package": "@nrwl/jest",
-      "name": "update-ts-jest-6-5-5"
-    },
-    {
-      "version": "12.4.0-beta.1",
-      "cli": "nx",
-      "description": "Add testEnvironment: 'jsdom' in web apps + libraries",
-      "factory": "./src/migrations/update-12-4-0/add-test-environment-for-node",
-      "package": "@nrwl/jest",
-      "name": "support-jest-27"
-    },
-    {
-      "version": "12.4.0-beta.1",
-      "cli": "nx",
-      "description": "Support for Jest 27 via updating ts-jest + jest-preset-angular",
-      "factory": "./src/migrations/update-12-4-0/update-jest-preset-angular",
-      "package": "@nrwl/jest",
-      "name": "update-ts-jest-and-jest-preset-angular"
-    },
-    {
-      "cli": "nx",
-      "version": "12.4.0-beta.0",
-      "description": "Remove ESLint parserOptions.project config if no rules requiring type-checking are in use",
-      "factory": "./src/migrations/update-12-4-0/remove-eslint-project-config-if-no-type-checking-rules",
-      "package": "@nrwl/linter",
-      "name": "remove-eslint-project-config-if-no-type-checking-rules"
-    },
-    {
-      "version": "12.5.0-beta.1",
-      "description": "Rename the workspace-schematic script into workspace-generator script",
-      "factory": "./src/migrations/update-12-5-0/add-target-dependencies",
-      "cli": "nx",
+      "implementation": "./src/migrations/update-13-6-0/remove-old-task-runner-options",
       "package": "@nrwl/workspace",
-      "name": "add-target-dependencies"
+      "name": "13-6-0-remove-old-task-runner-options"
     }
   ]
 }

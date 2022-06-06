@@ -1,0 +1,159 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/TextField to Input Upgrade" />
+
+# TextField to Input Upgrade
+
+Fluent UI v8 provides the `TextField` control for entering and editing text. In Fluent UI v9 `TextField` is replaced with `Input`.
+
+While basic usage is largely the same, `Input` omits some features found in `TextField`, preferring to compose several components together for greater flexibility.
+
+## Examples
+
+### Basic Upgrade
+
+Basic usage of `TextField` looks like
+
+```tsx
+import * as React from 'react';
+import { TextField } from '@fluentui/react/lib/TextField';}
+import { Stack, IStackProps, IStackStyles } from '@fluentui/react/lib/Stack';
+
+const columnProps: Partial<IStackProps> = {
+  tokens: { childrenGap: 15 },
+  styles: { root: { width: 300 } },
+};
+
+const TextFieldV8BasicExample = () => {
+  return <Stack {...columnProps}>
+    <TextField label="Standard" />
+    <TextField label="Disabled" disabled defaultValue="I am disabled" />
+    <TextField label="Read-only" readOnly defaultValue="I am read-only" />
+    <TextField label="Required " required />
+    <TextField ariaLabel="Required without visible label" required />
+    <TextField label="With error message" errorMessage="Error message" />
+  </Stack>
+}
+```
+
+An equivalent `Input` usage is:
+
+```tsx
+import * as React from 'react';
+import { Text } from '@fluentui/react-components';
+import { Label, Input } from '@fluentui/react-components/unstable';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
+
+const useStackStyles = makeStyles({
+  root: {
+    maxWidth: '300px',
+    display: 'flex',
+    flexDirection: 'column',
+
+    '> * + *': {
+      marginTop: '20px',
+    },
+
+    '> div': {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
+});
+
+const InputV9BasicExample = () => {
+  const stackStyles = useStackStyles();
+  const standardId = useId('standard');
+  const disabledId = useId('disabled');
+  const readonlyId = useId('readonly');
+  const requiredId = useId('required');
+  const errorId = useId('error');
+  const errorMessageId = useId('error-message');
+
+  return (
+    <div className={stackStyles.root}>
+      <div>
+        <Label htmlFor={standardId}>Standard</Label>
+        <Input id={standardId} />
+      </div>
+
+      <div>
+        <Label htmlFor={disabledId}>Disabled</Label>
+        <Input id={disabledId} disabled defaultValue="I am disabled" />
+      </div>
+
+      <div>
+        <Label htmlFor={readonlyId}>Read Only</Label>
+        <Input id={readonlyId} readOnly defaultValue="I am read only" />
+      </div>
+
+      <div>
+        <Label htmlFor={requiredId} required>
+          Required
+        </Label>
+        <Input id={requiredId} required defaultValue="I am required" />
+      </div>
+
+      <div>
+        <Input
+          aria-label="Required without visible label"
+          required
+          defaultValue="I am required without a visible label"
+        />
+      </div>
+
+      <div>
+        <Label htmlFor={errorId}>With Error Message</Label>
+        <Input id={errorId} aria-describedby={errorMessageId} />
+        <Text id={errorMessageId}>Error message</Text>
+      </div>
+    </div>
+  );
+};
+```
+
+## Prop Mapping
+
+This table maps v8 `TextField` props to the v9 `Input` equivalent.
+
+| v8                         | v9                                         | Notes                                                                                |
+| -------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `componentRef`             | `ref`                                      | v9 provides access to the underlyig DOM node, not ITextField                         |
+| `elementRef`               | `ref`                                      |                                                                                      |
+| `multiline`                | n/a                                        | Use `Textarea`                                                                       |
+| `resizable`                | n/a                                        |                                                                                      |
+| `autoAjustHeight`          | n/a                                        | See `Textarea` docs                                                                  |
+| `underlined`               | `appearance`                               |                                                                                      |
+| `borderless`               | `appearance`                               |                                                                                      |
+| `label`                    | Use `Label` component                      | Be sure to associate `Label` with `Input` via `htmlFor`                              |
+| `onRenderLabel`            | n/a                                        | Use slots to customize `Input`                                                       |
+| `description`              | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
+| `onRenderDescription`      | n/a                                        |                                                                                      |
+| `onRenderInput`            | n/a                                        | Use slots to customize `Input`                                                       |
+| `prefix`                   | `contentBefore`                            | This is a slot not a `string`                                                        |
+| `suffix`                   | `contentAfter`                             | This is a slot not a `string`                                                        |
+| `onRenderPrefix`           | n/a                                        | Use slots to customize `Input`                                                       |
+| `onRenderSuffix`           | n/a                                        | Use slots to customize `Input`                                                       |
+| `iconProps`                | Use `contentBefore` or `contentAfter` slot |                                                                                      |
+| `defaultValue`             | `defaultValue`                             | Mutually exclusive with `value`                                                      |
+| `value`                    | `value`                                    | Mutually exclusive with `defaultValue`                                               |
+| `disabled`                 | `disabled`                                 |                                                                                      |
+| `readOnly`                 | `readOnly`                                 | In v9 this is the native HTML prop                                                   |
+| `invalid`                  | n/a                                        | v9 `Input` does not handle validation states                                         |
+| `errorMessage`             | n/a                                        | Use another element like `Text` and associate it with `Input` via `aria-describedby` |
+| `onChange`                 | `onChange`                                 | Typescript types have changed                                                        |
+| `onNotifyValidationResult` | n/a                                        | v9 `Input` does not handle validation                                                |
+| `onGetErrorMessage`        | n/a                                        | v9 `Input` does not handle error states                                              |
+| `deferredValidationTime`   | n/a                                        | v9 `Input` does not handle validation                                                |
+| `className`                | `className`                                |                                                                                      |
+| `inputClassName`           | Use `input` slot                           |                                                                                      |
+| `ariaLabel`                | `aria-label`                               |                                                                                      |
+| `validateOnFocusIn`        | n/a                                        | v9 `Input` does not handle validation                                                |
+| `validateOnFocusOut`       | n/a                                        | v9 `Input` does not handle validation                                                |
+| `validateOnLoad`           | n/a                                        | v9 `Input` does not handle validation                                                |
+| `theme`                    | n/a                                        | Use `FluentProvider` to customize themes                                             |
+| `styles`                   | `className`                                |                                                                                      |
+| `autoComplete`             | `autoComplete`                             | In v9 this is the native HTML prop                                                   |
+| `canRevealPassword`        | n/a                                        | v9 `Input` does not provide built in password reveal behavior                        |
+| `revealPasswordAriaLabel`  | n/a                                        | v9 `Input` does not provide built in password reveal behavior                        |

@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/FluentTheme';
+export { FluentTheme } from '@fluentui/theme';

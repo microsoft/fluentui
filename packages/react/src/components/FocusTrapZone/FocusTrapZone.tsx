@@ -10,7 +10,7 @@ import {
   modalize,
   on,
 } from '../../Utilities';
-import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
+import { useId, useConst, useMergedRefs, useUnmount } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
@@ -74,7 +74,9 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     elementToFocusOnDismiss,
     forceFocusInsideTrap = true,
     focusPreviouslyFocusedInnerElement,
+    // eslint-disable-next-line deprecation/deprecation
     firstFocusableSelector,
+    firstFocusableTarget,
     ignoreExternalFocusing,
     isClickableOutsideFocusTrap = false,
     onFocus,
@@ -92,6 +94,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     },
     tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
     'data-is-visible': true,
+    'data-is-focus-trap-zone-bumper': true,
   } as React.HTMLAttributes<HTMLDivElement>;
 
   const focus = React.useCallback(() => {
@@ -113,7 +116,11 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     let firstFocusableChild: HTMLElement | null = null;
 
     if (root.current) {
-      if (focusSelector) {
+      if (typeof firstFocusableTarget === 'string') {
+        firstFocusableChild = root.current.querySelector(firstFocusableTarget);
+      } else if (firstFocusableTarget) {
+        firstFocusableChild = firstFocusableTarget(root.current);
+      } else if (focusSelector) {
         firstFocusableChild = root.current.querySelector('.' + focusSelector);
       }
 
@@ -132,7 +139,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     if (firstFocusableChild) {
       focusAsync(firstFocusableChild);
     }
-  }, [firstFocusableSelector, focusPreviouslyFocusedInnerElement, internalState]);
+  }, [firstFocusableSelector, firstFocusableTarget, focusPreviouslyFocusedInnerElement, internalState]);
 
   const onBumperFocus = React.useCallback(
     (isFirstBumper: boolean) => {
@@ -368,19 +375,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     </div>
   );
 }) as any;
-
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [unmountFunction],
-  );
-};
 
 FocusTrapZone.displayName = COMPONENT_NAME;
 FocusTrapZone.focusStack = [];

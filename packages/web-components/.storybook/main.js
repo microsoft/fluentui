@@ -7,6 +7,9 @@ module.exports = {
   },
   addons: [
     {
+      name: '@storybook/addon-docs',
+    },
+    {
       name: '@storybook/addon-essentials',
       options: {
         backgrounds: false,
@@ -14,9 +17,6 @@ module.exports = {
         toolbars: false,
         actions: false,
       },
-    },
-    {
-      name: '@storybook/addon-docs',
     },
   ],
   webpackFinal: async config => {

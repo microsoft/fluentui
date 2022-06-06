@@ -44,7 +44,6 @@ exports[`DetailsHeader can render 1`] = `
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header0-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -289,7 +288,6 @@ exports[`DetailsHeader can render 1`] = `
     </span>
   </div>
   <div
-    aria-colindex={2}
     aria-labelledby="header0-a-name"
     aria-sort="none"
     className=
@@ -478,7 +476,6 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-labelledby="header0-b-name"
     aria-sort="ascending"
     className=
@@ -699,7 +696,6 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-labelledby="header0-c-name"
     aria-sort="none"
     className=
@@ -967,7 +963,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header2-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -1075,7 +1070,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     </span>
   </div>
   <div
-    aria-colindex={2}
     aria-labelledby="header2-a-name"
     aria-sort="none"
     className=
@@ -1264,7 +1258,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-labelledby="header2-b-name"
     aria-sort="ascending"
     className=
@@ -1485,7 +1478,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-labelledby="header2-c-name"
     aria-sort="none"
     className=
@@ -1753,7 +1745,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header6-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -2023,7 +2014,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     Toggle selection for all items
   </label>
   <div
-    aria-colindex={2}
     aria-labelledby="header6-a-name"
     aria-sort="none"
     className=
@@ -2212,9 +2202,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-describedby="header6-b-tooltip"
-    aria-labelledby="header6-b-name"
+    aria-label="Click to sort."
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -2396,9 +2385,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           white-space: nowrap;
           width: 1px;
         }
+    hidden={true}
     id="header6-b-tooltip"
   >
-    Click to sort.
     Sorted up.
   </label>
   <div
@@ -2458,9 +2447,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-describedby="header6-c-tooltip"
-    aria-labelledby="header6-c-name"
+    aria-label="Click to sort, filter, or group."
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2704,9 +2692,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           white-space: nowrap;
           width: 1px;
         }
+    hidden={true}
     id="header6-c-tooltip"
   >
-    Click to sort, filter, or group.
     Filtered.
     Grouped.
   </label>

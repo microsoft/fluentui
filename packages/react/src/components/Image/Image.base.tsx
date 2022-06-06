@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, getNativeProps, imgProperties } from '../../Utilities';
 import { ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-hooks';
 import type { IImageProps, IImageStyleProps, IImageStyles } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -25,8 +25,7 @@ function useLoadState(
 
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.notLoaded);
 
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // If the src property changes, reset the load state
     // (does nothing if the load state is already notLoaded)
     setLoadState(ImageLoadState.notLoaded);

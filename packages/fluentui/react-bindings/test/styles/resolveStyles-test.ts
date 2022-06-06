@@ -74,6 +74,10 @@ const resolveStylesOptions = (options?: {
 };
 
 describe('resolveStyles', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('resolves styles', () => {
     const { resolvedStyles } = resolveStyles(resolveStylesOptions(), resolvedVariables);
 
@@ -81,7 +85,7 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const { resolvedStyles } = resolveStyles(resolveStylesOptions(), resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject({ color: 'red' });
@@ -117,7 +121,7 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles for no props', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const options = resolveStylesOptions();
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
@@ -141,7 +145,7 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles for the same props', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const options = resolveStylesOptions({
       displayNames: ['Test2'],
       componentProps: { primary: true },
@@ -189,7 +193,7 @@ describe('resolveStyles', () => {
   });
 
   test('considers props when caching resolved styles', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const options = resolveStylesOptions({
       displayNames: ['Test4'],
       componentProps: { primary: true },
@@ -225,7 +229,7 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache styles if caching is disabled', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const options = resolveStylesOptions({
       performance: { enableStylesCaching: false },
     });
@@ -253,7 +257,7 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache styles if there are inline overrides', () => {
-    spyOn(testComponentStyles, 'root').and.callThrough();
+    jest.spyOn(testComponentStyles, 'root');
     const propsInlineOverrides: ResolveStylesOptions['inlineStylesProps'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
@@ -369,7 +373,7 @@ describe('resolveStyles', () => {
     });
 
     test('avoids "styles" computation when enabled', () => {
-      spyOn(testComponentStyles, 'root').and.callThrough();
+      jest.spyOn(testComponentStyles, 'root');
       const options = resolveStylesOptions({
         inlineStylesProps: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
         performance: { enableBooleanVariablesCaching: true },
@@ -391,7 +395,7 @@ describe('resolveStyles', () => {
     });
 
     test('when enabled only "variables" as plain objects can be cached', () => {
-      spyOn(testComponentStyles, 'root').and.callThrough();
+      jest.spyOn(testComponentStyles, 'root');
       const options = resolveStylesOptions({
         inlineStylesProps: { variables: () => {} },
         performance: { enableBooleanVariablesCaching: true },
@@ -403,7 +407,7 @@ describe('resolveStyles', () => {
     });
 
     test('when enabled only "variables" as boolean or nil properties can be cached', () => {
-      spyOn(testComponentStyles, 'root').and.callThrough();
+      jest.spyOn(testComponentStyles, 'root');
       const options = resolveStylesOptions({
         inlineStylesProps: { variables: { foo: 'bar' } },
         performance: { enableBooleanVariablesCaching: true },

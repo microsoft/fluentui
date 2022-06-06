@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "replace temporary icons in stories",
-  "packageName": "@fluentui/react-accordion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

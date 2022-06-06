@@ -54,21 +54,6 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Run server-rendered-app",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
-      "cwd": "${workspaceRoot}/apps/server-rendered-app",
-      "stopOnEntry": false,
-      "args": ["-i"],
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true
-    },
-    {
       "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",

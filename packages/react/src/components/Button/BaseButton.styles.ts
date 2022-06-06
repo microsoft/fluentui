@@ -55,7 +55,7 @@ export const getStyles = memoizeFunction(
 
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
-            ':active > *': {
+            ':active > span': {
               position: 'relative',
               left: 0,
               top: 0,

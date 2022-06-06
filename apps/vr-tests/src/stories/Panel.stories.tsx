@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
@@ -17,7 +17,7 @@ const onRenderFooterContent = () => (
 );
 
 storiesOf('Panel', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -83,6 +83,14 @@ storiesOf('Panel', module)
       hasCloseButton={false}
     />
   ))
+  .addStory('With custom navigation', () => (
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="custom navigation"
+      onRenderNavigation={() => <DefaultButton>clickme</DefaultButton>}
+    />
+  ))
   .addStory('With no header, close button', () => (
     <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
   ))
@@ -97,6 +105,7 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

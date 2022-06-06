@@ -18,27 +18,34 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
-    props.children,
-    (child: React.ReactElement<IStackItemProps>, index: number) => {
-      if (!child) {
-        return null;
-      }
+  // React.Fragment needs to be ignored before checking for Stack's children
+  let stackChildren = React.Children.toArray(props.children);
+  if (
+    stackChildren.length === 1 &&
+    React.isValidElement(stackChildren[0]) &&
+    stackChildren[0].type === React.Fragment
+  ) {
+    stackChildren = stackChildren[0].props.children;
+  }
 
-      if (_isStackItem(child)) {
-        const defaultItemProps: IStackItemProps = {
-          shrink: !disableShrink,
-        };
+  stackChildren = React.Children.map(stackChildren, (child: React.ReactElement<IStackItemProps>, index: number) => {
+    if (!child) {
+      return null;
+    }
 
-        return React.cloneElement(child, {
-          ...defaultItemProps,
-          ...child.props,
-        });
-      }
+    if (_isStackItem(child)) {
+      const defaultItemProps: IStackItemProps = {
+        shrink: !disableShrink,
+      };
 
-      return child;
-    },
-  );
+      return React.cloneElement(child, {
+        ...defaultItemProps,
+        ...child.props,
+      });
+    }
+
+    return child;
+  });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 

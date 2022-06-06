@@ -57,9 +57,12 @@ function webpackAsync(webpackConfig) {
   return new Promise((resolve, reject) => {
     const compiler = webpack(webpackConfig);
 
-    compiler.run(err => {
+    compiler.run((err, result) => {
       if (err) {
         reject(err);
+      }
+      if (result && result.hasErrors()) {
+        reject(result.compilation.errors.join('\n'));
       }
 
       resolve(null);
