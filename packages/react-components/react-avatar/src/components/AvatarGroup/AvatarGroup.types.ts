@@ -34,13 +34,14 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 
   /**
    * Maximum number of Avatars to be displayed before overflowing.
-   * NOTE: if pie layout is used, `maxAvatars` will be ignored.
+   * Note: if pie layout is used, `maxAvatars` will be ignored.
    * @default 5
    */
   maxAvatars?: number;
 
   /**
    * Whether the overflow indicator should render an icon instead of the number of overflowed avatars.
+   * Note: The overflowIndicator will default to `icon` when the size is less than 24.
    * @default count
    */
   overflowIndicator?: 'count' | 'icon';

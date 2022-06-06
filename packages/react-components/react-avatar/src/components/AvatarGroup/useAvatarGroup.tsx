@@ -14,7 +14,8 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, layout = 'spread', maxAvatars = 5, overflowIndicator = 'count', size = 32 } = props;
+  const { children, layout = 'spread', maxAvatars = 5, size = 32 } = props;
+  const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
   const childrenArray = React.Children.toArray(children);
 
   let rootChildren = childrenArray;
@@ -30,10 +31,10 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     rootChildren = childrenArray.slice(numOfAvatarsToHide);
     overflowChildren = childrenArray.slice(0, numOfAvatarsToHide);
 
-    if (overflowIndicator === 'icon' || size < 24) {
+    if (overflowIndicator === 'icon') {
       overflowButtonChildren = <MoreHorizontalRegular />;
     } else {
-      overflowButtonChildren = numOfAvatarsToHide > 99 ? '+99' : `+${numOfAvatarsToHide}`;
+      overflowButtonChildren = numOfAvatarsToHide > 99 ? '99+' : `+${numOfAvatarsToHide}`;
     }
   }
 
