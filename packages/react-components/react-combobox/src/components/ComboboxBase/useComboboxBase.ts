@@ -43,7 +43,6 @@ export const useComboboxBase_unstable = (
     options,
     collectionData: { count, getOptionAtIndex, getIndexOfKey, getOptionByKey },
   } = optionCollection;
-  const idBase = useId('combobox');
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
@@ -149,7 +148,6 @@ export const useComboboxBase_unstable = (
     ...optionCollection,
     activeOption,
     appearance,
-    idBase,
     inline,
     onOptionClick,
     open,
