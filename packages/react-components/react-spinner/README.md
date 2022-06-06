@@ -24,6 +24,6 @@ import { Spinner } from '@fluentui/react-spinner';
 You can directly override the Spinner slot to render a Spinner without the animated circle, as shown below
 
 ```js
-<Spinner spinner='' appearance="primary" label="Primary Spinner" />
+<Spinner spinner={null} appearance="primary" label="Primary Spinner" />
 <Spinner spinner={{style:{visibility: 'hidden'}}} appearance="inverted" label="Inverted Spinner" />
 ```
