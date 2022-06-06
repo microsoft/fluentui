@@ -1637,6 +1637,13 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fluent-blocks/colors@9.1.0":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@fluent-blocks/colors/-/colors-9.1.0.tgz#4a77af3df7f09f15384f32a9a196f745498ef162"
+  integrity sha512-GusciyC/hZJW4cZjyQo1AQbA+aflw4aWZ4Umh5eTgXA3RfE5dyAB1LVuhPj4aodRgiPimPmV0RpxWS2ICxY1DQ==
+  dependencies:
+    nanoid latest
+
 "@fluentui/dom-utilities@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.1.tgz#b0bbab665fe726f245800bb9e7883b1ceb54248b"
@@ -19154,7 +19161,7 @@ nanoid@^3.1.23:
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.23.tgz#f744086ce7c2bc47ee0a8472574d5c78e4183a81"
   integrity sha512-FiB0kzdP0FFVGDKlRLEQ1BgDzU87dy5NnzjeW9YZNt+/c3+q82EQDUwniSAUxp/F0gFNI1ZhKU1FqYsMuqZVnw==
 
-nanoid@^3.3.1:
+nanoid@^3.3.1, nanoid@latest:
   version "3.3.4"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.4.tgz#730b67e3cd09e2deacf03c027c81c9d9dbc5e8ab"
   integrity sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==
