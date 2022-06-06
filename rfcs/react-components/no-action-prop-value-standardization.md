@@ -146,6 +146,7 @@ useTextStyles_unstable({
 - Follows JavaScript standards
 - Intuitive to the user because of the above pro - no need to read documentation
 - Consistency across our product - enables ease of use
+- Unified `Props` and `State` shape
 
 ### Cons
 
