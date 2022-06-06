@@ -4,7 +4,7 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
-import { Card, CardFooter, CardHeader } from '@fluentui/react-card';
+import { Card, cardClassNames, CardFooter, CardHeader } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
 const mountFluent = (element: JSX.Element) => {
@@ -32,10 +32,10 @@ const CardSample = (props: CardProps) => {
           plum.
         </div>
         <CardFooter>
-          <Button id="open-button" onClick={alert} appearance="primary">
+          <Button id="open-button" onClick={() => console.log('open-button clicked')} appearance="primary">
             Open
           </Button>
-          <Button id="close-button" appearance="outline">
+          <Button id="close-button" onClick={() => console.log('close-button clicked')} appearance="outline">
             Close
           </Button>
         </CardFooter>
@@ -238,6 +238,52 @@ describe('Card', () => {
 
         cy.get('#card').should('be.focused');
       });
+    });
+  });
+
+  describe('selection', () => {
+    it('should not be selectable by default', () => {
+      mountFluent(<CardSample />);
+
+      cy.get(`.${cardClassNames.select}`).should('not.exist');
+    });
+
+    it('should show checkbox when selectable', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${cardClassNames.select}`).should('exist').should('not.be.checked');
+    });
+
+    it('should select with a mouse click', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${cardClassNames.select}`).realClick();
+
+      cy.get(`.${cardClassNames.select}`).should('be.checked');
+    });
+
+    it('should select with the Enter key', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${cardClassNames.select}`).focus().realPress('Enter');
+
+      cy.get(`.${cardClassNames.select}`).should('be.checked');
+    });
+
+    it('should select with a mouse click anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).realClick();
+
+      cy.get(`.${cardClassNames.select}`).should('be.checked');
+    });
+
+    it('should select with the Enter key anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).focus().realPress('Enter');
+
+      cy.get(`.${cardClassNames.select}`).should('be.checked');
     });
   });
 });
