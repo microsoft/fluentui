@@ -284,10 +284,6 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
 
-  if (state.select) {
-    state.select.className = mergeClasses(cardClassNames.select, styles.select, state.select.className);
-  }
-
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
     vertical: styles.orientationVertical,
@@ -336,6 +332,10 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     state.selected && selectedLookup[state.appearance],
     state.root.className,
   );
+
+  if (state.select) {
+    state.select.className = mergeClasses(cardClassNames.select, styles.select, state.select.className);
+  }
 
   return state;
 };

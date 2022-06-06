@@ -90,7 +90,7 @@ export type CardProps = ComponentProps<CardSlots> & {
     selectable?: boolean;
     selected?: boolean;
     defaultSelected?: boolean;
-    onCardSelect?: (selected: boolean) => void;
+    onCardSelect?: (event: React_2.MouseEvent | React_2.KeyboardEvent, data: CardOnSelectData) => void;
 };
 
 // @public

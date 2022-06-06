@@ -41,17 +41,18 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   const focusAttrs = focusMode !== 'off' ? { ...groupperAttrs } : null;
 
-  const onChangeHandler = () => {
+  const onChangeHandler = (event: React.MouseEvent | React.KeyboardEvent) => {
     setChecked(!checked);
-    onCardSelect && onCardSelect(checked);
+    onCardSelect && onCardSelect(event, { selected: checked });
   };
+
   const selectAttrs =
     selectable === true
       ? {
           onClick: onChangeHandler,
           onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
             if (event.key === Enter) {
-              onChangeHandler();
+              onChangeHandler(event);
             }
           },
         }
@@ -68,7 +69,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
-      tabIndex: selectable || focusMode ? 0 : undefined,
+      tabIndex: selectable || focusMode !== 'off' ? 0 : undefined,
       ...focusAttrs,
       ...selectAttrs,
       ...props,

@@ -1,4 +1,12 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+/**
+ * Data sent from the selection events on a selectable card.
+ */
+export type CardOnSelectData = {
+  selected: boolean;
+};
 
 /**
  * Slots available in the Card component.
@@ -59,7 +67,7 @@ export type CardProps = ComponentProps<CardSlots> & {
 
   defaultSelected?: boolean;
 
-  onCardSelect?: (selected: boolean) => void;
+  onCardSelect?: (event: React.MouseEvent | React.KeyboardEvent, data: CardOnSelectData) => void;
 };
 
 /**

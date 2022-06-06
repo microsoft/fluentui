@@ -7,6 +7,9 @@ describe('Card', () => {
   isConformant({
     Component: Card,
     displayName: 'Card',
+    requiredProps: {
+      selectable: true,
+    },
     disabledTests: ['component-has-static-classname-exported'],
   });
 
