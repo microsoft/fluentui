@@ -12,6 +12,7 @@ module.exports = {
       diagnostics: false,
     },
   },
+  testEnvironment: 'jest-environment-node-single-context',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

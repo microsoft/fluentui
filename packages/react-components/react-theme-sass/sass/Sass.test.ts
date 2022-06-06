@@ -1,4 +1,4 @@
-import { renderSync } from 'node-sass';
+import { compileString } from 'sass';
 import { webLightTheme } from '@fluentui/react-theme';
 
 describe('Sass tokens', () => {
@@ -9,6 +9,6 @@ describe('Sass tokens', () => {
       ...Object.keys(webLightTheme).map(tokenName => `$expected__${tokenName}: $${tokenName};`),
     ].join('\n');
 
-    renderSync({ data });
+    compileString(data, { loadPaths: ['.'] });
   });
 });
