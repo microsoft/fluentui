@@ -73,7 +73,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     if (!themeColor) {
       return;
     }
-    return themeColor.includes(filter);
+    return themeColor.includes(filter) || color.toLowerCase().includes(filter.toLowerCase());
   });
 
   const changeFilter = React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter]);
