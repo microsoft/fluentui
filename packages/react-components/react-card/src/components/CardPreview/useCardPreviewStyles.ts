@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the CardPreview slots based on the state
+ * Apply styling to the CardPreview slots based on the state.
  */
 export const useCardPreviewStyles_unstable = (state: CardPreviewState): CardPreviewState => {
   const styles = useStyles();

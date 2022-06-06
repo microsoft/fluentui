@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
 
-    // Border setting using after pseudo element to allow CardPreview to render behind it
+    // Border setting using after pseudo element to allow CardPreview to render behind it.
     '::after': {
       position: 'absolute',
       top: 0,
@@ -217,7 +217,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Card slots based on the state
+ * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();

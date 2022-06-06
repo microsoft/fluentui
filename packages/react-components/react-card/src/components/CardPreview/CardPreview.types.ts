@@ -16,11 +16,11 @@ export type CardPreviewSlots = {
 };
 
 /**
- * CardPreview props
+ * CardPreview component props.
  */
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
 /**
- * State used in rendering CardPreview
+ * State used in rendering CardPreview.
  */
 export type CardPreviewState = ComponentState<CardPreviewSlots>;

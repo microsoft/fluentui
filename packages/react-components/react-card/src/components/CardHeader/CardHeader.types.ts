@@ -36,11 +36,11 @@ export type CardHeaderSlots = {
 };
 
 /**
- * CardHeader props
+ * CardHeader component props.
  */
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 /**
- * State used in rendering CardHeader
+ * State used in rendering CardHeader.
  */
 export type CardHeaderState = ComponentState<CardHeaderSlots>;

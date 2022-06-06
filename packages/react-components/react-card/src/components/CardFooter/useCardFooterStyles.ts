@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the CardFooter slots based on the state
+ * Apply styling to the CardFooter slots based on the state.
  */
 export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();

@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the CardHeader slots based on the state
+ * Apply styling to the CardHeader slots based on the state.
  */
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();
