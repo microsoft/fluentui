@@ -92,7 +92,7 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
 # packages/jest-serializer-merge-styles
 
-packages/merge-styles @dzearing
+packages/merge-styles @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
@@ -115,10 +115,10 @@ packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
-packages/style-utilities @dzearing
-packages/style-utilities/src/interfaces @phkuo @dzearing
-packages/style-utilities/src/styles @phkuo @dzearing
-packages/theme @dzearing
+packages/style-utilities @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/theme @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
 packages/utilities @microsoft/cxe-red
 
 ### Fabric

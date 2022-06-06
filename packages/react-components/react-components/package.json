@@ -60,6 +60,7 @@
     "@fluentui/react-tabster": "9.0.0-rc.13",
     "@fluentui/react-textarea": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.9",
+    "@fluentui/react-toolbar": "9.0.0-beta.0",
     "@fluentui/react-tooltip": "9.0.0-rc.13",
     "@fluentui/react-utilities": "9.0.0-rc.10",
     "@fluentui/react-text": "9.0.0-rc.11",

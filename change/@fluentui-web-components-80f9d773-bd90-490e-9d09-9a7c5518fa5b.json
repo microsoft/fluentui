@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "(web-components) Fix issue loading Color Explorer values",
+  "packageName": "@fluentui/web-components",
+  "email": "47367562+bheston@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

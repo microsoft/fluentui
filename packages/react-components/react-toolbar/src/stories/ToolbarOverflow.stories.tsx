@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {
   TextBold16Regular,
   TextItalic16Regular,
@@ -16,19 +15,8 @@ import {
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
 } from '@fluentui/react-overflow';
-import {
-  Menu,
-  MenuTrigger,
-  MenuPopover,
-  MenuList,
-  MenuItem,
-  MenuItemProps,
-  MenuDivider,
-  MenuItemRadio,
-} from '@fluentui/react-menu';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuItemProps, MenuDivider } from '@fluentui/react-menu';
 import { Button } from '@fluentui/react-button';
-import { ToolbarRadio } from '../ToolbarRadio';
-import { ToolbarRadioGroup } from '../ToolbarRadioGroup';
 
 export interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;
@@ -52,25 +40,6 @@ export const ToolbarOverflowMenuItem: React.FC<ToolbarOverflowMenuItemProps> = p
 
   if (id.includes('italic')) {
     return <MenuItem icon={<TextItalic16Regular />}> Italic</MenuItem>;
-  }
-
-  if (id.includes('radio')) {
-    return (
-      <MenuList>
-        <MenuItemRadio name="fruits" value="1">
-          Apple
-        </MenuItemRadio>
-        <MenuItemRadio name="fruits" value="2">
-          Pear
-        </MenuItemRadio>
-        <MenuItemRadio name="fruits" value="3">
-          Banana
-        </MenuItemRadio>
-        <MenuItemRadio name="fruits" value="4">
-          Orange
-        </MenuItemRadio>
-      </MenuList>
-    );
   }
 
   return <MenuItem {...rest}>Item {id}</MenuItem>;
@@ -232,20 +201,11 @@ export const OverflowItems = (props: Partial<ToolbarProps>) => (
 
         <ToolbarOverflowDivider groupId="3" />
 
-        <OverflowItem id="radio" groupId="4">
-          <ToolbarRadioGroup>
-            <ToolbarRadio value="apple" label="Apple" />
-            <ToolbarRadio value="pear" label="Pear" />
-            <ToolbarRadio value="banana" label="Banana" />
-            <ToolbarRadio value="orange" label="Orange" />
-          </ToolbarRadioGroup>
-        </OverflowItem>
         <OverflowMenu
           itemIds={[
             ['underline-1', 'bold-1'],
             ['underline-2', 'bold-2', 'italic-1', 'underline-3', 'bold-3'],
             ['underline-4', 'bold-4', 'italic-2'],
-            ['radio'],
           ]}
         />
       </Toolbar>
