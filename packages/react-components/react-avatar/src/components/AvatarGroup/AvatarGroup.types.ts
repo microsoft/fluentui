@@ -9,17 +9,17 @@ export type AvatarGroupSlots = {
   /**
    * Popover trigger slot that can be used to change the overflow indicator.
    */
-  overflowButton: NonNullable<Slot<'button'>>;
+  overflowButton?: NonNullable<Slot<'button'>>;
 
   /**
    * Unordered list that contains the overflow AvatarGroupItems.
    */
-  overflowList: NonNullable<Slot<'ul'>>;
+  overflowList?: NonNullable<Slot<'ul'>>;
 
   /**
    * Popover surface that will be displayed when the popover is triggered.
    */
-  overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**

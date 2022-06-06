@@ -48,7 +48,7 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 };
 
 // @public
-export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
+export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
     overflowIndicator?: 'count' | 'icon';
@@ -58,13 +58,13 @@ export type AvatarGroupProps = ComponentProps<Partial<AvatarGroupSlots>> & {
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
-    popoverTrigger: NonNullable<Slot<'button'>>;
-    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
-    popoverSurfaceList: NonNullable<Slot<'ul'>>;
+    overflowButton?: NonNullable<Slot<'button'>>;
+    overflowList?: NonNullable<Slot<'ul'>>;
+    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
     hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
 };

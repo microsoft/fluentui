@@ -75,17 +75,13 @@ exports[`AvatarGroup renders a default state 1`] = `
       </span>
     </div>
     <button
-      aria-describedby="tooltip-6"
       aria-expanded="false"
-      class="fui-AvatarGroup__popoverTrigger"
+      aria-label="View more people."
+      class="fui-AvatarGroup__overflowButton"
       data-tabster="{\\"deloser\\":{}}"
-      tabindex="1"
     >
       +5
     </button>
-    <span
-      hidden=""
-    />
   </div>
 </div>
 `;
