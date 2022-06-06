@@ -133,9 +133,11 @@ storiesOf('Card Converged', module)
       steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .hover('[role="group"]')
-        .snapshot('focused', { cropTo: '.testWrapper' })
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('[role="group"]')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .mouseUp('[role="group"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
         .end()}
     >
       <div className="testWrapper" style={{ width: '300px' }}>
@@ -144,9 +146,9 @@ storiesOf('Card Converged', module)
     </Screener>
   ))
   .addStory(
-    'appearance interactive - Filled',
+    'appearance selectable - Filled',
     () => (
-      <Card onClick={action('filled card clicked')} appearance="filled">
+      <Card selectable appearance="filled">
         <SampleCardContent />
       </Card>
     ),
@@ -157,9 +159,9 @@ storiesOf('Card Converged', module)
     },
   )
   .addStory(
-    'appearance interactive - Filled Alternative',
+    'appearance selectable - Filled Alternative',
     () => (
-      <Card onClick={action('filled alternative card clicked')} appearance="filled-alternative">
+      <Card selectable appearance="filled-alternative">
         <SampleCardContent />
       </Card>
     ),
@@ -170,9 +172,9 @@ storiesOf('Card Converged', module)
     },
   )
   .addStory(
-    'appearance interactive - Outline',
+    'appearance selectable - Outline',
     () => (
-      <Card onClick={action('outline card clicked')} appearance="outline">
+      <Card selectable appearance="outline">
         <SampleCardContent />
       </Card>
     ),
@@ -183,9 +185,9 @@ storiesOf('Card Converged', module)
     },
   )
   .addStory(
-    'appearance interactive - Subtle',
+    'appearance selectable - Subtle',
     () => (
-      <Card onClick={action('subtle card clicked')} appearance="subtle">
+      <Card selectable appearance="subtle">
         <SampleCardContent />
       </Card>
     ),
