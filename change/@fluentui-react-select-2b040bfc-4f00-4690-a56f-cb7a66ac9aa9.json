@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update disabled select style",
-  "packageName": "@fluentui/react-select",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

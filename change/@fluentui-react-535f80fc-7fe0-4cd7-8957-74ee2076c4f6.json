@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Only stop esc key propagation when picker is open",
+  "packageName": "@fluentui/react",
+  "email": "tand@microsoft.com",
+  "dependentChangeType": "patch"
+}

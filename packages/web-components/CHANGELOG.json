@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 02 Jun 2022 07:38:04 GMT",
+      "tag": "@fluentui/web-components_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d989caf6db389bb92221f372c8028cf7a85210b4",
+            "comment": "upgrade storybook to 6.5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 May 2022 07:45:01 GMT",
       "tag": "@fluentui/web-components_v2.5.1",
       "version": "2.5.1",

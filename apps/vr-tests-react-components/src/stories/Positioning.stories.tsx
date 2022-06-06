@@ -10,7 +10,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import Screener from 'screener-storybook/src/screener';
 
 const useStyles = makeStyles({

@@ -11,6 +11,7 @@ import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
@@ -43,6 +44,7 @@ import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
@@ -57,6 +59,21 @@ import { SpinButtonProps } from '@fluentui/react-spinbutton';
 import { SpinButtonSlots } from '@fluentui/react-spinbutton';
 import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
 import { SpinButtonState } from '@fluentui/react-spinbutton';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -74,6 +91,9 @@ import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
 
 export { Alert }
 
@@ -88,6 +108,8 @@ export { AlertState }
 export { Card }
 
 export { cardClassNames }
+
+export { cardCSSVars }
 
 export { CardFooter }
 
@@ -153,6 +175,8 @@ export { renderSelect_unstable }
 
 export { renderSpinButton_unstable }
 
+export { renderToolbar_unstable }
+
 export { Select }
 
 export { selectClassNames }
@@ -180,6 +204,36 @@ export { SpinButtonSlots }
 export { SpinButtonSpinState }
 
 export { SpinButtonState }
+
+export { Toolbar }
+
+export { ToolbarButtonProps }
+
+export { ToolbarButtonState }
+
+export { toolbarClassNames }
+
+export { ToolbarContextValue }
+
+export { ToolbarContextValues }
+
+export { ToolbarDivider }
+
+export { ToolbarDividerProps }
+
+export { ToolbarDividerState }
+
+export { ToolbarProps }
+
+export { ToolbarSlots }
+
+export { ToolbarState }
+
+export { ToolbarToggleButton }
+
+export { ToolbarToggleButtonProps }
+
+export { ToolbarToggleButtonState }
 
 export { useAlert_unstable }
 
@@ -214,6 +268,12 @@ export { useSelectStyles_unstable }
 export { useSpinButton_unstable }
 
 export { useSpinButtonStyles_unstable }
+
+export { useToolbar_unstable }
+
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

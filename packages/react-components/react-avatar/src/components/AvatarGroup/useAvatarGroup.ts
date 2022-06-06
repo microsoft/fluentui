@@ -15,10 +15,21 @@ import { avatarGroupDefaultStrings } from './AvatarGroup.strings';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, strings = avatarGroupDefaultStrings } = props;
+  const {
+    children,
+    layout = 'spread',
+    maxAvatars = 5,
+    overflowIndicator = 'number-overflowed',
+    size = 32,
+    strings = avatarGroupDefaultStrings,
+  } = props;
 
   return {
     // TODO: Replace with actual logic.
+    layout,
+    maxAvatars,
+    overflowIndicator,
+    size,
     tooltipContent: strings.tooltipContent.replace('{numOverflowedAvatars}', String(10)),
     components: {
       // TODO add each slot's element type or component

@@ -1,42 +1,41 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
-import { makeStyles, shorthands } from '@griffel/react';
-
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '../index';
+import {
+  bundleIcon,
+  ClipboardPasteRegular,
+  ClipboardPasteFilled,
+  CutRegular,
+  CutFilled,
+  CopyRegular,
+  CopyFilled,
+} from '@fluentui/react-icons';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    ...shorthands.gap('10px'),
-  },
-
-  indicator: {
-    width: '30px',
-    height: '30px',
-  },
-});
+const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
+const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
+const CutIcon = bundleIcon(CutFilled, CutRegular);
 
 export const Interaction = (props: Partial<MenuProps>) => {
-  const styles = useStyles();
-  const [color, setColor] = React.useState<string>('red');
-
   return (
-    <div className={styles.container}>
-      <Menu {...props}>
-        <MenuTrigger>
-          <Button>Pick a color</Button>
-        </MenuTrigger>
+    <Menu {...props}>
+      <MenuTrigger>
+        <Button>Edit content</Button>
+      </MenuTrigger>
 
-        <MenuPopover>
-          <MenuList>
-            <MenuItem onClick={() => setColor('red')}>Red</MenuItem>
-            <MenuItem onClick={() => setColor('green')}>Green</MenuItem>
-            <MenuItem onClick={() => setColor('blue')}>Blue</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-      <div className={styles.indicator} style={{ background: color }} />
-    </div>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem icon={<CutIcon />} onClick={() => alert('Cut to clipboard')}>
+            Cut
+          </MenuItem>
+          <MenuItem icon={<CopyIcon />} onClick={() => alert('Copied to clipboard')}>
+            Copy
+          </MenuItem>
+          <MenuItem icon={<PasteIcon />} onClick={() => alert('Pasted from clipboard')}>
+            Paste
+          </MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
   );
 };
 

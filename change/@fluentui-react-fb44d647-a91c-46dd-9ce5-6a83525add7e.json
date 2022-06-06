@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update high-contrast mixins to support forced-colors",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
