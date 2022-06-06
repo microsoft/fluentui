@@ -6,16 +6,20 @@ import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * Static CSS class names used internally for the component slots.
+ */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
 };
+
+/**
+ * CSS variable names used internally for uniform styling in Card.
+ */
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -23,7 +27,7 @@ const useStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
 
-    // Border setting using after pseudo element to allow CardPreview to render behind it
+    // Border setting using after pseudo element to allow CardPreview to render behind it.
     '::after': {
       position: 'absolute',
       top: 0,
@@ -213,7 +217,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Card slots based on the state
+ * Apply styling to the Card slots based on the state.
  */
 export const useCardStyles_unstable = (state: CardState): CardState => {
   const styles = useStyles();
