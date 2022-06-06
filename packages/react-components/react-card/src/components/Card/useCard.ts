@@ -26,7 +26,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     onCardSelect,
   } = props;
 
-  const [checked, setChecked] = React.useState(selected || defaultSelected);
+  const [checked, setChecked] = React.useState(selected ?? defaultSelected);
 
   const focusMap = {
     off: undefined,
