@@ -1,12 +1,5 @@
 import { BrandVariants } from '@fluentui/react-theme';
-import { Palette, PaletteConfig, hexColorsFromPalette } from '@fluent-blocks/colors';
-
-const defaultPaletteConfig: PaletteConfig = {
-  // The nShades and range values are based on a brand color audit
-  nShades: 16,
-  range: [1.42, 83.57],
-  linearity: 0.77,
-};
+import { Palette, PaletteConfig, hexColorsFromPalette, hex_to_LCH } from '@fluent-blocks/colors';
 
 /**
  * A palette is represented as a continuous curve through LAB space, made of two quadratic bezier curves that start at
@@ -23,9 +16,21 @@ const defaultPaletteConfig: PaletteConfig = {
 
  * The function returns a set of brand tokens.
  */
-export function getBrandTokensFromPalette(palette: Palette) {
+export function getBrandTokensFromPalette(keyColor: string, { darkCp = 2 / 3, lightCp = 1 / 3, hueTorsion = 0 }) {
+  const brandPalette: Palette = {
+    keyColor: hex_to_LCH(keyColor),
+    darkCp: darkCp,
+    lightCp: lightCp,
+    hueTorsion: hueTorsion,
+  };
+  const defaultPaletteConfig: PaletteConfig = {
+    // The nShades and range values are based on a brand color audit
+    nShades: 16,
+    range: [1.42, 83.57],
+    linearity: 0.77,
+  };
   const hexColors = hexColorsFromPalette(
-    palette,
+    brandPalette,
     defaultPaletteConfig.nShades,
     defaultPaletteConfig.range,
     defaultPaletteConfig.linearity,

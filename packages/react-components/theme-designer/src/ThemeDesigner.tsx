@@ -3,8 +3,7 @@ import { makeStyles } from '@griffel/react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
 import { createLightTheme, createDarkTheme, BrandVariants } from '@fluentui/react-theme';
-import { hex_to_LCH } from '@fluent-blocks/colors';
-import { getBrandTokensFromPalette } from './utils/colors';
+import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -43,12 +42,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
   const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
 
-  const brand: BrandVariants = getBrandTokensFromPalette({
-    keyColor: hex_to_LCH(keyColor),
-    darkCp: 2 / 3,
-    lightCp: 1 / 3,
-    hueTorsion: 0,
-  });
+  const brand: BrandVariants = getBrandTokensFromPalette(keyColor, {});
 
   const lightTheme = createLightTheme(brand);
   const darkTheme = createDarkTheme(brand);
