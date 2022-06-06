@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -52,20 +51,21 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
-    overflowIndicator?: 'number-overflowed' | 'icon';
+    overflowIndicator?: 'count' | 'icon';
     size?: AvatarSizes;
-    strings?: AvatarGroupStrings;
 };
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
-    root: Slot<'div'>;
-    popoverTrigger?: Slot<typeof Button>;
-    popoverSurface?: Slot<typeof PopoverSurface>;
+    root: NonNullable<Slot<'div'>>;
+    overflowButton?: NonNullable<Slot<'button'>>;
+    overflowList?: NonNullable<Slot<'ul'>>;
+    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
+    hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
 };
 
