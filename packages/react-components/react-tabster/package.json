@@ -15,7 +15,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "e2e",
+    "e2e": "cypress",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "storybook": "node ../../../scripts/storybook/runner",
