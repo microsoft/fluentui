@@ -1,4 +1,4 @@
-import type { NodePath, PluginObj, PluginPass, types as t } from '@babel/core';
+import type { NodePath, PluginObj, PluginPass } from '@babel/core';
 import { types } from '@babel/core';
 import { declare } from '@babel/helper-plugin-utils';
 import hash from '@emotion/hash';
@@ -15,9 +15,9 @@ import {
 } from './constants';
 
 type BabelPluginState = PluginPass & {
-  importDeclarationPaths?: NodePath<t.ImportDeclaration>[];
-  nativeExpressionPaths?: NodePath<t.CallExpression>[];
-  contextSelectorExpressionPaths?: NodePath<t.CallExpression>[];
+  importDeclarationPaths?: NodePath<types.ImportDeclaration>[];
+  nativeExpressionPaths?: NodePath<types.CallExpression>[];
+  contextSelectorExpressionPaths?: NodePath<types.CallExpression>[];
   nativeLocalName?: string;
   contextSelectorLocalName?: string;
 };
@@ -30,7 +30,9 @@ interface PackageJSON {
 /**
  * Checks that passed callee imports react context or context selector
  */
-function isCreateContextCallee(path: NodePath<t.Expression | t.V8IntrinsicIdentifier>): path is NodePath<t.Identifier> {
+function isCreateContextCallee(
+  path: NodePath<types.Expression | types.V8IntrinsicIdentifier>,
+): path is NodePath<types.Identifier> {
   if (!path.isIdentifier) {
     return false;
   }
@@ -64,7 +66,7 @@ function createGlobalContextImportDeclaration(packageName: string, isContextSele
  * @example const MyContext = __createGlobalContext();
  */
 function createGlobalContextCallExpression(options: {
-  expressionPath: NodePath<t.CallExpression>;
+  expressionPath: NodePath<types.CallExpression>;
   packageJson: PackageJSON;
   packageJsonPath: string;
   filePath: string;
