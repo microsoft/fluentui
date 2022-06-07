@@ -149,8 +149,8 @@ const useIconStyles = makeStyles({
 /**
  * Apply styling to the Combobox slots based on the state
  */
-export const useComboButtonStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, showingPlaceholder, size } = state;
+export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
+  const { appearance, placeholderVisible, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
@@ -159,7 +159,7 @@ export const useComboButtonStyles_unstable = (state: ComboboxState): ComboboxSta
     comboboxClassNames.button,
     styles.button,
     styles[size],
-    showingPlaceholder && styles.placeholder,
+    placeholderVisible && styles.placeholder,
     state.button.className,
   );
 

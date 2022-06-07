@@ -38,5 +38,5 @@ export type ComboButtonProps = Partial<ComponentProps<ComboButtonSlots, 'content
  */
 export type ComboButtonState = ComponentState<ComboButtonSlots> &
   Pick<ComboboxState, 'appearance' | 'size'> & {
-    showingPlaceholder: boolean;
+    placeholderVisible: boolean;
   };

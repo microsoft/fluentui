@@ -45,7 +45,9 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    placeholderVisible: boolean;
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
@@ -107,6 +109,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
 export type OptionSlots = {
     root: NonNullable<Slot<'div'>>;
     checkIcon: Slot<'span'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public

@@ -55,7 +55,7 @@ export const useComboButton_unstable = (
       },
     }),
     appearance,
-    showingPlaceholder: !value && !!placeholder,
+    placeholderVisible: !value && !!placeholder,
     size,
   };
 };
