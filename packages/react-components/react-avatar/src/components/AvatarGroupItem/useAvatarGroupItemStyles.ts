@@ -9,6 +9,9 @@ export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
   overflowLabel: 'fui-AvatarGroupItem__overflowLabel',
 };
 
+export const avatarGroupItemMarginVar = '--fuiAvatarGroupItem--margin';
+export const avatarGroupItemOutlineVar = '--fuiAvatarGroupItem--outline';
+
 /**
  * Styles for the root slot
  */

@@ -14,12 +14,7 @@ export type AvatarGroupSlots = {
   /**
    * Unordered list that contains the overflow AvatarGroupItems.
    */
-  overflowList?: NonNullable<Slot<'ul'>>;
-
-  /**
-   * Popover surface that will be displayed when the popover is triggered.
-   */
-  overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowList?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**

@@ -56,16 +56,10 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
-  const overflowSurface = resolveShorthand(props.overflowSurface, {
-    required: true,
-    defaultProps: {
-      'aria-label': 'Overflow',
-    },
-  });
-
   const overflowList = resolveShorthand(props.overflowList, {
     required: true,
     defaultProps: {
+      'aria-label': 'Overflow',
       children: overflowChildren,
       role: 'list',
       tabIndex: 0,
@@ -81,14 +75,12 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     components: {
       root: 'div',
-      overflowSurface: PopoverSurface,
-      overflowList: 'ul',
+      overflowList: PopoverSurface,
       overflowButton: 'button',
     },
 
     root,
     overflowButton,
-    overflowSurface,
     overflowList,
   };
 };
