@@ -1,6 +1,6 @@
 # @fluentui/react-slider
 
-**Slider component for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Slider components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
 Slider allows users to quickly select a value (or range) by dragging a thumb across a rail. It is often used when setting values with a relaxed precision such as audio volume and screen brightness.
 

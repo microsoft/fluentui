@@ -1,6 +1,6 @@
 # @fluentui/react-switch
 
-**React Switch components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Switch components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
 The `Switch` control enables users to trigger an option on or off through interacting with the component.
 
