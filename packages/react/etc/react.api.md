@@ -1715,6 +1715,9 @@ export { getDatePartHashValue }
 
 export { getDateRangeArray }
 
+// @public
+export function getDefaultLayerHostTarget()  string | undefined;
+
 // @public (undocumented)
 export const getDetailsColumnStyles: (props: IDetailsColumnStyleProps) => IDetailsColumnStyles;
 
