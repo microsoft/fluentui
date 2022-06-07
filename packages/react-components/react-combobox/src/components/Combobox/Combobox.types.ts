@@ -26,7 +26,11 @@ export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'button'> & C
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> &
+  ComboboxBaseState & {
+    /* Whether the placeholder is currently displayed */
+    placeholderVisible: boolean;
+  };
 
 /**
  * Data for the Combobox onOpenChange event.
