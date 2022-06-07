@@ -8,7 +8,7 @@ export interface TokenBoxesProps {
   className?: string;
   theme: Theme;
   isDark: boolean;
-  toggleTheme: () => void;
+  toggleTheme?: () => void;
 }
 
 export interface TokenBoxProps {

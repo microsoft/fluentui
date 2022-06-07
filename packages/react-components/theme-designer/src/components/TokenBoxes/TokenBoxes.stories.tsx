@@ -1,5 +1,9 @@
 import { TokenBoxes } from './TokenBoxes';
-import { teamsLightTheme } from '@fluentui/react-components';
-
+import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
+import { createLightTheme } from '@fluentui/react-components';
 export default { component: TokenBoxes };
-export const Default = { theme: teamsLightTheme };
+
+const brand = getBrandTokensFromPalette('#006BC7', {});
+const lightTheme = createLightTheme(brand);
+
+export const Default = { theme: lightTheme, isDark: false };
