@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 17 May 2022 07:45:01 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jun 2022 07:48:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.2)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.1..@fluentui/web-components_v2.5.2)
+
+### Patches
+
+- (web-components) Fix issue loading Color Explorer values ([PR #23392](https://github.com/microsoft/fluentui/pull/23392) by 47367562+bheston@users.noreply.github.com)
 
 ## [2.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.1)
 

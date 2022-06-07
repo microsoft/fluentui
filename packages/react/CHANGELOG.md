@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 02 Jun 2022 07:38:04 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Jun 2022 07:48:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.2)
+
+Tue, 07 Jun 2022 07:48:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.1..@fluentui/react_v8.72.2)
+
+### Patches
+
+- Only stop esc key propagation when picker is open ([PR #23337](https://github.com/microsoft/fluentui/pull/23337) by tand@microsoft.com)
+- Update high-contrast mixins to support forced-colors ([PR #23285](https://github.com/microsoft/fluentui/pull/23285) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.8 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.1 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/react-focus to v8.6.1 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/style-utilities to v8.7.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/common-styles to v1.1.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
 
 ## [8.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.1)
 
