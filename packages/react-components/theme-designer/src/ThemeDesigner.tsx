@@ -39,10 +39,10 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
+  const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
   const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
 
-  const brand: BrandVariants = getBrandTokensFromPalette(keyColor, {});
+  const brand: BrandVariants = getBrandTokensFromPalette(keyColor);
 
   const lightTheme = createLightTheme(brand);
   const darkTheme = createDarkTheme(brand);

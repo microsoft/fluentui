@@ -122,6 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             />
             <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
               <input
+                disabled={true}
                 className={styles.color}
                 type="color"
                 id={lightThemeId}
@@ -137,6 +138,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
             <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
               <input
+                disabled={true}
                 className={styles.color}
                 type="color"
                 id={darkThemeId}
