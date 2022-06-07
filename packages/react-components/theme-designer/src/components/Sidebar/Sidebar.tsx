@@ -6,7 +6,8 @@ import { AddCircleRegular } from '@fluentui/react-icons';
 export interface SidebarProps {
   className?: string;
   keyColor: string;
-  changeKeyColor: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  changeKeyColorChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  changeKeyColorBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const useStyles = makeStyles({
@@ -96,7 +97,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               appearance="underline"
               id={keyColorId}
               value={props.keyColor}
-              onChange={props.changeKeyColor}
+              onChange={props.changeKeyColorBlur}
             />
             <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
               <input
@@ -104,7 +105,8 @@ export const Sidebar: React.FC<SidebarProps> = props => {
                 type="color"
                 id={keyColorId}
                 value={props.keyColor}
-                onChange={props.changeKeyColor}
+                onChange={props.changeKeyColorChange}
+                onBlur={props.changeKeyColorBlur}
               />
             </div>
           </div>

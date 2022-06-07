@@ -40,7 +40,22 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
   const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
-  const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
+
+  const [tempKeyColor, setTempKeyColor] = React.useState<string>('#006bc7');
+
+  const changeKeyColorChange = React.useCallback(
+    e => {
+      setTempKeyColor(e.target.value);
+    },
+    [setTempKeyColor],
+  );
+
+  const changeKeyColorBlur = React.useCallback(
+    e => {
+      setKeyColor(tempKeyColor);
+    },
+    [tempKeyColor, setKeyColor],
+  );
 
   const brand: BrandVariants = getBrandTokensFromPalette(keyColor);
 
@@ -51,7 +66,12 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
         <Nav className={styles.nav} brand={brand} darkTheme={darkTheme} lightTheme={lightTheme} />
-        <Sidebar className={styles.sidebar} keyColor={keyColor} changeKeyColor={changeKeyColor} />
+        <Sidebar
+          className={styles.sidebar}
+          keyColor={keyColor}
+          changeKeyColorChange={changeKeyColorChange}
+          changeKeyColorBlur={changeKeyColorBlur}
+        />
         <Content className={styles.content} brand={brand} darkTheme={darkTheme} lightTheme={lightTheme} />
       </div>
     </FluentProvider>
