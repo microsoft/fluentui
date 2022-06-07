@@ -26,7 +26,11 @@ exports[`Option renders a default multi-select state 1`] = `
         />
       </svg>
     </span>
-    Default Option
+    <span
+      class="fui-Option__content"
+    >
+      Default Option
+    </span>
   </div>
 </div>
 `;
