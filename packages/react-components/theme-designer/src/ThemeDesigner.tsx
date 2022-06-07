@@ -43,19 +43,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
 
   const [tempKeyColor, setTempKeyColor] = React.useState<string>('#006bc7');
 
-  const changeKeyColorChange = React.useCallback(
-    e => {
-      setTempKeyColor(e.target.value);
-    },
-    [setTempKeyColor],
-  );
-
-  const changeKeyColorBlur = React.useCallback(
-    e => {
-      setKeyColor(tempKeyColor);
-    },
-    [tempKeyColor, setKeyColor],
-  );
+  const updateKeyColor = React.useCallback(() => setKeyColor(tempKeyColor), [setKeyColor, tempKeyColor]);
 
   const brand: BrandVariants = getBrandTokensFromPalette(keyColor);
 
@@ -69,8 +57,8 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
         <Sidebar
           className={styles.sidebar}
           keyColor={keyColor}
-          changeKeyColorChange={changeKeyColorChange}
-          changeKeyColorBlur={changeKeyColorBlur}
+          setTempKeyColor={setTempKeyColor}
+          updateKeyColor={updateKeyColor}
         />
         <Content className={styles.content} brand={brand} darkTheme={darkTheme} lightTheme={lightTheme} />
       </div>
