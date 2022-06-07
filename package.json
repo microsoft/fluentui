@@ -167,7 +167,7 @@
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
-    "cypress": "9.5.2",
+    "cypress": "10.0.3",
     "cypress-real-events": "1.7.0",
     "cypress-storybook": "0.5.1",
     "danger": "^11.0.0",
