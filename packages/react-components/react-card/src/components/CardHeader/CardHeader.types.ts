@@ -15,11 +15,6 @@ export type CardHeaderSlots = {
   image: Slot<'div'>;
 
   /**
-   * Parent container of the header and description slots.
-   */
-  content?: Slot<'div'>;
-
-  /**
    * Element used to render the main header title.
    */
   header: Slot<'span'>;
