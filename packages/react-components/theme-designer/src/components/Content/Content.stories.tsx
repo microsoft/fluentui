@@ -7,4 +7,4 @@ const brand = getBrandTokensFromPalette('#006BC7');
 const lightTheme = createLightTheme(brand);
 const darkTheme = createDarkTheme(brand);
 
-export const Default = { brand: brand, darkTheme: darkTheme, lightTheme: lightTheme };
+export const Default = { args: { brand: brand, darkTheme: darkTheme, lightTheme: lightTheme } };

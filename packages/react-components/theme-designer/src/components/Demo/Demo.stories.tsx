@@ -6,4 +6,4 @@ export default { component: Demo };
 const brand = getBrandTokensFromPalette('#006bc7');
 const lightTheme = createDarkTheme(brand);
 
-export const dark = () => <Demo theme={lightTheme} />;
+export const Default = { args: { theme: lightTheme } };

@@ -4,4 +4,4 @@ export default { component: Palette };
 
 const brand = getBrandTokensFromPalette('#006BC7');
 
-export const Default = { brandColors: brand };
+export const Default = { args: { brandColors: brand } };

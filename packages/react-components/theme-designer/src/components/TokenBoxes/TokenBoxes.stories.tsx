@@ -6,4 +6,4 @@ export default { component: TokenBoxes };
 const brand: BrandVariants = getBrandTokensFromPalette('#006bc7');
 const lightTheme: Theme = createLightTheme(brand);
 
-export const Default = { theme: lightTheme, isDark: false };
+export const Default = { args: { theme: lightTheme, isDark: false } };
