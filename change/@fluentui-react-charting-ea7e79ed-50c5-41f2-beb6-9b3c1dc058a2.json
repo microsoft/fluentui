@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Affixed hover state closer to the cursor",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}

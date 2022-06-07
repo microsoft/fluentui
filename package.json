@@ -159,6 +159,7 @@
     "babel-jest": "26.6.3",
     "babel-loader": "8.2.2",
     "babel-plugin-annotate-pure-calls": "0.4.0",
+    "babel-plugin-tester": "10.1.0",
     "beachball": "2.18.0",
     "chalk": "4.1.0",
     "ci-info": "3.2.0",

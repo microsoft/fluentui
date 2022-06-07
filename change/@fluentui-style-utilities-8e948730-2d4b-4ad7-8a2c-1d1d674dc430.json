@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update high-contrast mixins to support forced-colors",
-  "packageName": "@fluentui/style-utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

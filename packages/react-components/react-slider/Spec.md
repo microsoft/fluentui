@@ -9,6 +9,19 @@ The Slider component allows users to quickly select a value by dragging an icon 
 - `vertical` displayed vertically.
 - `disabled` read-only and does not update state.
 
+## API
+
+### Slots
+
+- `root` - The outer container that wraps the slider structure.
+- `rail` - The Slider's base. It is used to visibly display the min and max selectable values.
+- `thumb` - The draggable icon used to select a given value from the Slider. This is the element containing `role = 'slider'`.
+- `input` - The hidden input for the Slider. This is the PRIMARY slot: all native properties specified directly on `<Slider>` will be applied to this slot, except `className` and `style`, which remain on the root slot.
+
+### Props
+
+See API at [Slider.types.ts](./src/components/Slider/Slider.types.ts).
+
 ## Structure
 
 - _**Public**_
@@ -34,6 +47,10 @@ The Slider component allows users to quickly select a value by dragging an icon 
   <div className="fui-Slider__thumb" />
 </div>
 ```
+
+## Migration
+
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
