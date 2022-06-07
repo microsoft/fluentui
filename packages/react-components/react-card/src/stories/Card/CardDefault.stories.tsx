@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Body1, Caption1 } from '@fluentui/react-text';
-
-import { Button } from '@fluentui/react-button';
+import { Body1, Caption1, Button } from '@fluentui/react-components';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
 import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-card';
 import { ASSET_URL } from './SampleCard.stories';
