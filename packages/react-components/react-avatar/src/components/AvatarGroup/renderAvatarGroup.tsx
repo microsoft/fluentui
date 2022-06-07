@@ -16,7 +16,7 @@ export const renderAvatarGroup_unstable = (state: AvatarGroupState) => {
     <AvatarGroupContext.Provider value={{ layout, size }}>
       <slots.root {...slotProps.root}>
         {state.root.children}
-        {state.hasOverflow && slots.overflowButton && slots.overflowList && (
+        {state.hasOverflow && slots.overflowButton && slots.overflowContent && (
           <Popover trapFocus size="small">
             <PopoverTrigger>
               <Tooltip content={state.tooltipContent} relationship="label">
@@ -24,7 +24,7 @@ export const renderAvatarGroup_unstable = (state: AvatarGroupState) => {
               </Tooltip>
             </PopoverTrigger>
             <AvatarGroupContext.Provider value={{ isOverflow: true, layout, size: 24 }}>
-              <slots.overflowList {...slotProps.overflowList} />
+              <slots.overflowContent {...slotProps.overflowContent} />
             </AvatarGroupContext.Provider>
           </Popover>
         )}

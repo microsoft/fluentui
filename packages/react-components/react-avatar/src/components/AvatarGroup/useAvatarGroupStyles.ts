@@ -8,11 +8,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
-  overflowList: 'fui-AvatarGroup__overflowList',
+  overflowContent: 'fui-AvatarGroup__overflowContent',
   overflowButton: 'fui-AvatarGroup__overflowButton',
 };
-
-const avatarGroupOverflowButtonBorderVar = '--fuiAvatarGroup--overflowbuttonBorderWidth';
 
 /**
  * Styles for the root slot.
@@ -39,7 +37,6 @@ const useOverflowButtonStyles = makeStyles({
     alignItems: 'center',
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.borderWidth(`var(${avatarGroupOverflowButtonBorderVar})`),
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
@@ -66,11 +63,6 @@ const useOverflowButtonStyles = makeStyles({
       color: tokens.colorNeutralForeground1Pressed,
       backgroundColor: tokens.colorNeutralBackground1Pressed,
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-    },
-    ':checked': {
-      color: tokens.colorNeutralForeground1Selected,
-      backgroundColor: tokens.colorNeutralBackground1Selected,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
   },
 
@@ -104,10 +96,10 @@ const useOverflowButtonStyles = makeStyles({
   subtitle2: { ...typographyStyles.subtitle2 },
   subtitle1: { ...typographyStyles.subtitle1 },
   title3: { ...typographyStyles.title3 },
-  thin: { [avatarGroupOverflowButtonBorderVar]: tokens.strokeWidthThin },
-  thick: { [avatarGroupOverflowButtonBorderVar]: tokens.strokeWidthThick },
-  thicker: { [avatarGroupOverflowButtonBorderVar]: tokens.strokeWidthThicker },
-  thickest: { [avatarGroupOverflowButtonBorderVar]: tokens.strokeWidthThickest },
+  thin: { ...shorthands.borderWidth(tokens.strokeWidthThin) },
+  thick: { ...shorthands.borderWidth(tokens.strokeWidthThick) },
+  thicker: { ...shorthands.borderWidth(tokens.strokeWidthThicker) },
+  thickest: { ...shorthands.borderWidth(tokens.strokeWidthThickest) },
 });
 
 const useStackStyles = makeStyles({
@@ -131,9 +123,8 @@ const useSpreadStyles = makeStyles({
 /**
  * Styles for overflow list slot.
  */
-const useOverflowListStyles = makeStyles({
+const useOverflowContentStyles = makeStyles({
   base: {
-    listStyleType: 'none',
     maxHeight: '220px',
     minHeight: '80px',
     ...shorthands.overflow('hidden', 'scroll'),
@@ -149,7 +140,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const { layout, overflowIndicator, size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
-  const overflowListStyles = useOverflowListStyles();
+  const overflowContentStyles = useOverflowContentStyles();
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
@@ -184,66 +175,62 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
     } else {
       rootClasses.push(spreadStyles.xl);
     }
+  } else {
+    rootClasses.push(styles.pie);
+    rootClasses.push(sizeStyles[size]);
   }
 
-  state.root.className = mergeClasses(
-    avatarGroupClassNames.root,
-    styles.base,
-    layout === 'pie' && styles.pie,
-    layout === 'pie' && sizeStyles[size],
-    ...rootClasses,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(avatarGroupClassNames.root, styles.base, ...rootClasses, state.root.className);
 
-  if (state.overflowList) {
-    state.overflowList.className = mergeClasses(
-      avatarGroupClassNames.overflowList,
-      overflowListStyles.base,
-      state.overflowList.className,
+  if (state.overflowContent) {
+    state.overflowContent.className = mergeClasses(
+      avatarGroupClassNames.overflowContent,
+      overflowContentStyles.base,
+      state.overflowContent.className,
     );
   }
 
-  const popoverTriggerClasses = [];
+  const overflowButtonClasses = [];
 
   if (size < 36) {
-    rootClasses.push(overflowButtonStyles.thin);
+    overflowButtonClasses.push(overflowButtonStyles.thin);
   } else if (size < 56) {
-    rootClasses.push(overflowButtonStyles.thick);
+    overflowButtonClasses.push(overflowButtonStyles.thick);
   } else if (size < 72) {
-    rootClasses.push(overflowButtonStyles.thicker);
+    overflowButtonClasses.push(overflowButtonStyles.thicker);
   } else {
-    rootClasses.push(overflowButtonStyles.thickest);
+    overflowButtonClasses.push(overflowButtonStyles.thickest);
   }
 
   if (overflowIndicator === 'count') {
     if (size <= 24) {
-      popoverTriggerClasses.push(overflowButtonStyles.caption2Strong);
+      overflowButtonClasses.push(overflowButtonStyles.caption2Strong);
     } else if (size <= 28) {
-      popoverTriggerClasses.push(overflowButtonStyles.caption1Strong);
+      overflowButtonClasses.push(overflowButtonStyles.caption1Strong);
     } else if (size <= 40) {
-      popoverTriggerClasses.push(overflowButtonStyles.body1Strong);
+      overflowButtonClasses.push(overflowButtonStyles.body1Strong);
     } else if (size <= 56) {
-      popoverTriggerClasses.push(overflowButtonStyles.subtitle2);
+      overflowButtonClasses.push(overflowButtonStyles.subtitle2);
     } else if (size <= 96) {
-      popoverTriggerClasses.push(overflowButtonStyles.subtitle1);
+      overflowButtonClasses.push(overflowButtonStyles.subtitle1);
     } else {
-      popoverTriggerClasses.push(overflowButtonStyles.title3);
+      overflowButtonClasses.push(overflowButtonStyles.title3);
     }
   } else {
     if (size <= 16) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon12);
+      overflowButtonClasses.push(overflowButtonStyles.icon12);
     } else if (size <= 24) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon16);
+      overflowButtonClasses.push(overflowButtonStyles.icon16);
     } else if (size <= 40) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon20);
+      overflowButtonClasses.push(overflowButtonStyles.icon20);
     } else if (size <= 48) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon24);
+      overflowButtonClasses.push(overflowButtonStyles.icon24);
     } else if (size <= 56) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon28);
+      overflowButtonClasses.push(overflowButtonStyles.icon28);
     } else if (size <= 72) {
-      popoverTriggerClasses.push(overflowButtonStyles.icon32);
+      overflowButtonClasses.push(overflowButtonStyles.icon32);
     } else {
-      popoverTriggerClasses.push(overflowButtonStyles.icon48);
+      overflowButtonClasses.push(overflowButtonStyles.icon48);
     }
   }
 
@@ -257,7 +244,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       layout === 'pie' && overflowButtonStyles.pie,
       layout === 'spread' && overflowButtonStyles.spread,
       layout === 'stack' && overflowButtonStyles.stack,
-      ...popoverTriggerClasses,
+      ...overflowButtonClasses,
       state.overflowButton.className,
     );
   }

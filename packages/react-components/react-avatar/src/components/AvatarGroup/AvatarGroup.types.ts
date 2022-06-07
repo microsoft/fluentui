@@ -12,9 +12,9 @@ export type AvatarGroupSlots = {
   overflowButton?: NonNullable<Slot<'button'>>;
 
   /**
-   * Unordered list that contains the overflow AvatarGroupItems.
+   * List that contains the overflow AvatarGroupItems.
    */
-  overflowList?: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
