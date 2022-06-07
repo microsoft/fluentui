@@ -11,7 +11,7 @@ export { WithPopover } from './ToolbarWithPopover.stories';
 export { Subtle } from './ToolbarSubtle.stories';
 
 export default {
-  title: 'Components/Toolbar',
+  title: 'Preview Components/Toolbar',
   component: Toolbar,
   parameters: {
     docs: {
