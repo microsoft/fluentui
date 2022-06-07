@@ -55,13 +55,7 @@ See API at [Badge.types.ts](./src/components/Badge/Badge.types.ts).
 
 ## Migration
 
-- _Migration from v8_
-
-`Badge` can be passed to `Avatar`'s `badge` slot. The `PresenceBadge` will be the best replacement for `Persona` presence mapping status, icon and colors.
-
-- _Migration from v0_
-
-`Badge` can be passed to `Avatar`'s `badge` slot.
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
