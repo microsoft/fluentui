@@ -61,7 +61,7 @@ export function unregisterLayer(hostId: string, callback: () => void) {
  * @returns The number of layers currently registered with the host.
  */
 export function getLayerCount(hostId: string): number {
-  const layers = _layerHostsById[hostId];
+  const layers = _layersByHostId[hostId];
 
   return layers ? layers.length : 0;
 }
