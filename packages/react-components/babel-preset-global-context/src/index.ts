@@ -1,8 +1,6 @@
 import { transformPlugin } from './transformPlugin';
 
-import type { ConfigAPI } from '@babel/core';
-
-export default function preset(babel: ConfigAPI) {
+export default function preset() {
   return {
     plugins: [[transformPlugin]],
   };

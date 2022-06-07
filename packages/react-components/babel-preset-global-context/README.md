@@ -55,9 +55,9 @@ function Consumer() {
 ```
 
 > ⚠️ The recommended solution to the above problem is to make sure that the affected dependency
-> only exists once in node_modules. You can do this by upgrading your dependencies or using resolutions.
+> only exists once in node_modules. You can do this by upgrading your dependencies or using [resolutions](https://classic.yarnpkg.com/lang/en/docs/selective-version-resolutions/).
 
-This library can be used as a workaround in the cases where it might not be feasible to deduplicate `node_modules`.
+This library should only be used as a workaround in the cases where it might not be feasible to deduplicate `node_modules`.
 
 ## Usage
 
@@ -65,9 +65,9 @@ Install the shims for `createContext` that will this Babel preset will use to re
 calls.
 
 ```bash
-yarn add --dev @fluentui/global-context
+yarn add @fluentui/global-context
 # or
-npm install --dev @fluentui/global-context
+npm install @fluentui/global-context
 ```
 
 We recommend using this preset with [Webpack](https://webpack.js.org/) and [babel-loader](https://www.npmjs.com/package/babel-loader)
@@ -86,7 +86,9 @@ module.exports = {
             presets: [['@fluentui/babel-preset-global-context']],
           },
         },
-        // Targets all @fluentui scoped packages
+        // Targets all @fluentui scoped packages and replaces `createContext` calls with global context
+        // Can be setup for other packages
+        // /node_modules\/(<packageName>|<pacakgeName>)\/*/
         include: [/node_modules\/@fluentui\/*/],
       },
       {

@@ -5,14 +5,13 @@
 ```ts
 
 import { CallExpression } from '@babel/types';
-import type { ConfigAPI } from '@babel/core';
 import { ImportDeclaration } from '@babel/types';
 import { NodePath } from '@babel/traverse';
 import { PluginObj } from '@babel/core';
 import { PluginPass } from '@babel/core';
 
 // @public (undocumented)
-function preset(babel: ConfigAPI): {
+function preset(): {
     plugins: ((api: object, options: {} | null | undefined, dirname: string) => PluginObj<PluginPass & {
     importDeclarationPaths?: NodePath<ImportDeclaration>[] | undefined;
     nativeExpressionPaths?: NodePath<CallExpression>[] | undefined;
