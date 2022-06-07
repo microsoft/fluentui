@@ -6,7 +6,6 @@ import type { OptionSlots, OptionState } from './Option.types';
 export const optionClassNames: SlotClassNames<OptionSlots> = {
   root: 'fui-Option',
   checkIcon: 'fui-Option__checkIcon',
-  content: 'fui-Option__content',
 };
 
 /**
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(tokens.spacingHorizontalS),
     position: 'relative',
 
     '&:hover': {
@@ -76,6 +75,8 @@ const useStyles = makeStyles({
 
   checkIcon: {
     fontSize: tokens.fontSizeBase400,
+    marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
+    marginRight: tokens.spacingHorizontalXXS,
     visibility: 'hidden',
 
     '& svg': {
@@ -104,10 +105,6 @@ const useStyles = makeStyles({
       color: 'GrayText',
     },
   },
-
-  content: {
-    ...shorthands.padding(0, tokens.spacingHorizontalXS),
-  },
 });
 
 /**
@@ -124,8 +121,6 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
     selected && styles.selected,
     state.root.className,
   );
-
-  state.content.className = mergeClasses(optionClassNames.content, styles.content, state.content.className);
 
   if (state.checkIcon) {
     state.checkIcon.className = mergeClasses(

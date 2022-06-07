@@ -82,7 +82,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     components: {
       root: 'div',
       checkIcon: 'span',
-      content: 'span',
     },
     root: getNativeElementProps('div', {
       ref: useMergedRefs(ref, optionRef),
@@ -98,12 +97,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       defaultProps: {
         'aria-hidden': 'true',
         children: CheckIcon,
-      },
-    }),
-    content: resolveShorthand(props.content, {
-      required: true,
-      defaultProps: {
-        children: props.children,
       },
     }),
     active,

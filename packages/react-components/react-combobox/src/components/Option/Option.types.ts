@@ -6,12 +6,6 @@ export type OptionSlots = {
 
   /* The check icon that is visible for selected options */
   checkIcon: Slot<'span'>;
-
-  /**
-   * Option children are placed in this slot
-   * Avoid using the `children` property on this slot in favor of direct Option children.
-   */
-  content: NonNullable<Slot<'span'>>;
 };
 
 /**
