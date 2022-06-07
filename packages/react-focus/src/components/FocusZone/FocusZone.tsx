@@ -243,6 +243,17 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     const { current: root } = this._root;
     const doc = this._getDocument();
 
+    // If either _activeElement or _defaultFocusElement are no longer contained by _root,
+    // reset those variables (and update tab indexes) to avoid memory leaks
+    if (
+      !elementContains(this._root.current, this._activeElement, ALLOW_VIRTUAL_ELEMENTS) ||
+      !elementContains(this._root.current, this._defaultFocusElement, ALLOW_VIRTUAL_ELEMENTS)
+    ) {
+      this._activeElement = null;
+      this._defaultFocusElement = null;
+      this._updateTabIndexes();
+    }
+
     if (
       !this.props.preventFocusRestoration &&
       doc &&
@@ -419,6 +430,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    */
   public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
+  }
+
+  public get defaultFocusElement() {
+    return this._defaultFocusElement;
+  }
+
+  public get activeElement() {
+    return this._activeElement;
   }
 
   private _evaluateFocusBeforeRender(): void {
