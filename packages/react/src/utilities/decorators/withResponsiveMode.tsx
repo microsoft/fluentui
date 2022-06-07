@@ -86,8 +86,6 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._events = new EventGroup(this);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
-      // set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode
-      _defaultMode = props.responsiveMode;
       this.state = {
         responsiveMode: getInitialResponsiveMode(),
       };
@@ -127,6 +125,14 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
+function getWidthOfCurrentWindow(currentWindow: Window): number {
+  try {
+    return currentWindow.document.documentElement.clientWidth;
+  } catch (e) {
+    return currentWindow.innerWidth;
+  }
+}
+
 /**
  * Hook to get the current responsive mode (window size category).
  * @param currentWindow - Use this window when determining the responsive mode.
@@ -136,13 +142,12 @@ export function getResponsiveMode(currentWindow: Window | undefined): Responsive
 
   if (currentWindow) {
     try {
-      while (currentWindow.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
+      while (getWidthOfCurrentWindow(currentWindow) > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
         responsiveMode++;
       }
     } catch (e) {
       // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
       responsiveMode = getInitialResponsiveMode();
-      throw new Error('Failed to get innerWidth on the current window, falling back to default responisve mode');
     }
 
     // Tracking last mode just gives us a better default in future renders,
