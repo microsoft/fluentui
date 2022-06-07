@@ -719,6 +719,13 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/ssr-tests-v9": {
+      "root": "apps/ssr-tests-v9",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/ssr-tests-v9/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/state": {
       "root": "packages/fluentui/state",
       "projectType": "library",
