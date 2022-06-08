@@ -16306,7 +16306,14 @@ jest-environment-jsdom@^27.2.2, jest-environment-jsdom@^27.4.6:
     jest-util "^27.4.2"
     jsdom "^16.6.0"
 
-jest-environment-node@^26.6.2:
+jest-environment-node-single-context@26.2.0:
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/jest-environment-node-single-context/-/jest-environment-node-single-context-26.2.0.tgz#98bfc3ee0491ca87a19f209d41b6613eeee7d208"
+  integrity sha512-mc+zpmzZPemmyY5LYVMlK6RSPpCYxnUrPmt0Sy/+cfDdyR/x4bL116Wvfq8AANm4aLioY8Pz+5qytJG+HGlrOw==
+  dependencies:
+    jest-environment-node "^26.2.0"
+
+jest-environment-node@^26.2.0, jest-environment-node@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-environment-node/-/jest-environment-node-26.6.2.tgz#824e4c7fb4944646356f11ac75b229b0035f2b0c"
   integrity sha512-zhtMio3Exty18dy8ee8eJ9kjnRyZC1N4C1Nt/VShN1apyXc8rWGtJ9lI7vqiWcyyXS4BVSEn9lxAM2D+07/Tag==
