@@ -41,7 +41,11 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
       entryPoints: [esmEntryPoint],
       outfile: esmOutfile,
 
-      inject: [require.resolve('../shims/module')],
+      inject: [
+        // @storybook/addon-actions has a condition based on "module", this works with Webpack, but it's not defined in
+        // esbuild that causes ReferenceError.
+        require.resolve('../shims/module'),
+      ],
       format: 'iife',
       target: 'chrome101',
     });
