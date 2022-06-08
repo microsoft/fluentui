@@ -744,7 +744,9 @@ describe('migrate-converged-pkg generator', () => {
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
-      expect(packageJson.scripts).toEqual(expect.objectContaining({ e2e: 'e2e' }));
+      expect(packageJson.scripts).toEqual(
+        expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
+      );
     });
   });
 

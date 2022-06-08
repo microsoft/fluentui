@@ -754,7 +754,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'e2e';
+    json.scripts.e2e = 'cypress run --component';
+    json.scripts['e2e:local'] = 'cypress open --component';
 
     return json;
   });
