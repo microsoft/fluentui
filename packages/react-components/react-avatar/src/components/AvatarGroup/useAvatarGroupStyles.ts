@@ -4,6 +4,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useSizeStyles } from '../Avatar/useAvatarStyles';
 import type { AvatarGroupSlots, AvatarGroupState } from './AvatarGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useLayoutClassName } from '../../AvatarGroupItem';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
@@ -21,13 +22,6 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
-  },
-  stack: {
-    '& > *': {
-      outlineColor: tokens.colorNeutralBackground2,
-      outlineStyle: 'solid',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    },
   },
 });
 
@@ -97,24 +91,6 @@ const useOverflowButtonStyles = makeStyles({
   borderThickest: { ...shorthands.borderWidth(tokens.strokeWidthThickest) },
 });
 
-const useStackStyles = makeStyles({
-  thick: { '& > *': { outlineWidth: tokens.strokeWidthThick } },
-  thicker: { '& > *': { outlineWidth: tokens.strokeWidthThicker } },
-  thickest: { '& > *': { outlineWidth: tokens.strokeWidthThickest } },
-  xxs: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
-  xs: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
-  s: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },
-  l: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalL})` } },
-});
-
-const useSpreadStyles = makeStyles({
-  s: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalS } },
-  mNudge: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalMNudge } },
-  m: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalM } },
-  l: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalL } },
-  xl: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalXL } },
-});
-
 /**
  * Styles for overflow list slot.
  */
@@ -136,48 +112,17 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const overflowContentStyles = useOverflowContentStyles();
-  const stackStyles = useStackStyles();
-  const spreadStyles = useSpreadStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const rootClasses = [];
+  const layoutClassName = useLayoutClassName(layout, size);
 
-  if (layout === 'stack') {
-    rootClasses.push(styles.stack);
-
-    if (size < 56) {
-      rootClasses.push(stackStyles.thick);
-    } else if (size < 72) {
-      rootClasses.push(stackStyles.thicker);
-    } else {
-      rootClasses.push(stackStyles.thickest);
-    }
-
-    if (size < 24) {
-      rootClasses.push(stackStyles.xxs);
-    } else if (size < 48) {
-      rootClasses.push(stackStyles.xs);
-    } else if (size < 96) {
-      rootClasses.push(stackStyles.s);
-    } else {
-      rootClasses.push(stackStyles.l);
-    }
-  } else if (layout === 'spread') {
-    if (size < 20) {
-      rootClasses.push(spreadStyles.s);
-    } else if (size < 32) {
-      rootClasses.push(spreadStyles.mNudge);
-    } else if (size < 64) {
-      rootClasses.push(spreadStyles.l);
-    } else {
-      rootClasses.push(spreadStyles.xl);
-    }
-  } else {
-    rootClasses.push(styles.pie);
-    rootClasses.push(sizeStyles[size]);
-  }
-
-  state.root.className = mergeClasses(avatarGroupClassNames.root, styles.base, ...rootClasses, state.root.className);
+  state.root.className = mergeClasses(
+    avatarGroupClassNames.root,
+    styles.base,
+    layout === 'pie' && styles.pie,
+    layout === 'pie' && sizeStyles[size],
+    state.root.className,
+  );
 
   if (state.overflowContent) {
     state.overflowContent.className = mergeClasses(
@@ -239,7 +184,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       overflowButtonStyles.focusIndicator,
       layout !== 'pie' && overflowButtonStyles.states,
       layout === 'pie' && overflowButtonStyles.pie,
-      ...overflowButtonClasses,
+      layoutClassName,
       state.overflowButton.className,
     );
   }
