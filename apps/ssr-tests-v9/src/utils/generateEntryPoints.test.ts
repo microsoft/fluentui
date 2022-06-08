@@ -2,27 +2,27 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as tmp from 'tmp';
 
-import { getImportsFromIndexFile } from './getImportsFromIndexFile';
 import { generateEntryPoints } from './generateEntryPoints';
-
-jest.mock('./getImportsFromIndexFile');
 
 describe('generateEntryPoints', () => {
   it('creates entry point files', async () => {
-    (getImportsFromIndexFile as jest.Mock).mockReturnValue([]).mockReturnValueOnce([
-      {
-        local: 'Foo',
-        imported: 'ModuleFoo',
-        path: './Foo',
-      },
-    ]);
-
     const filesDir = tmp.dirSync({ unsafeCleanup: true }).name;
 
     const cjsEntryPoint = path.resolve(filesDir, 'cjs.js');
     const esmEntryPoint = path.resolve(filesDir, 'esm.js');
 
-    await generateEntryPoints({ cjsEntryPoint, esmEntryPoint });
+    const storiesDir = path.resolve(filesDir, 'stories', 'Module');
+
+    await fs.promises.mkdir(storiesDir, { recursive: true });
+    await fs.promises.writeFile(
+      path.resolve(storiesDir, 'index.stories.ts'),
+      `
+    export { Default } from './Default'
+    export { Foo } from './Foo'
+`,
+    );
+
+    await generateEntryPoints({ cjsEntryPoint, esmEntryPoint, storiesGlobs: [`${storiesDir}/*.ts`] });
 
     const storiesFile = await fs.promises.readFile(cjsEntryPoint, { encoding: 'utf8' });
     const appFile = await fs.promises.readFile(esmEntryPoint, { encoding: 'utf8' });
@@ -35,11 +35,13 @@ describe('generateEntryPoints', () => {
       } from \\"@fluentui/react-components\\";
       import * as React from \\"react\\";
 
-      import { Foo as ModuleFoo } from \\"./Foo\\";
+      import { Default as ModuleDefault } from \\"stories/Module/Default\\";
+      import { Foo as ModuleFoo } from \\"stories/Module/Foo\\";
 
       export const App = () => (
         <SSRProvider>
           <FluentProvider theme={teamsLightTheme}>
+            <ModuleDefault />
             <ModuleFoo />
           </FluentProvider>
         </SSRProvider>

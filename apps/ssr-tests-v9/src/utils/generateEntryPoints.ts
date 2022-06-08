@@ -1,6 +1,3 @@
-// @ts-expect-error There are no typings for this module
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { getVnextStories } from '@fluentui/public-docsite-v9/.storybook/main.utils';
 import * as glob from 'glob';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -8,15 +5,14 @@ import * as prettier from 'prettier';
 
 import { getImportsFromIndexFile } from './getImportsFromIndexFile';
 
-type GenerateEntryPointsConfig = { cjsEntryPoint: string; esmEntryPoint: string };
+type GenerateEntryPointsConfig = {
+  cjsEntryPoint: string;
+  esmEntryPoint: string;
+  storiesGlobs: string[];
+};
 
 export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<void> {
-  const rawStoriesGlobs = getVnextStories() as string[];
-  const storiesGlobs = rawStoriesGlobs
-    // TODO: Find a better way for this. Pass the path via params? 👇
-    .map(pattern => path.resolve(__dirname, '..', pattern));
-
-  const storiesFiles = storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
+  const storiesFiles = config.storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
 
   // TODO: Can removed after the issue will be solved https://github.com/microsoft/fluentui/issues/23393
   const indexStoriesFiles = storiesFiles.filter(filename =>

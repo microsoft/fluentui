@@ -1,3 +1,6 @@
+// @ts-expect-error There are no typings for this module
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { getVnextStories } from '@fluentui/public-docsite-v9/.storybook/main.utils';
 import { isCI } from 'ci-info';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -23,9 +26,15 @@ async function build() {
 
   const generateStartTime = process.hrtime();
 
+  const rawStoriesGlobs = getVnextStories() as string[];
+  const storiesGlobs = rawStoriesGlobs
+    // TODO: Find a better way for this. Pass the path via params? 👇
+    .map(pattern => path.resolve(__dirname, '..', pattern));
+
   await generateEntryPoints({
     esmEntryPoint,
     cjsEntryPoint,
+    storiesGlobs,
   });
 
   console.log(`Entry points were generated in ${hrToSeconds(process.hrtime(generateStartTime))}`);
