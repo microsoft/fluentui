@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Button, TabList, Tab, Label, Input, useId, Subtitle2, tokens } from '@fluentui/react-components';
+import { Button, TabList, Tab, Label, Input, useId, tokens } from '@fluentui/react-components';
 import { AddCircleRegular } from '@fluentui/react-icons';
 
 export interface SidebarProps {
@@ -67,14 +67,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
   const keyColorId = useId();
-  const lightThemeId = useId();
-  const darkThemeId = useId();
-
-  const [lightTheme, setLightTheme] = React.useState<string>('#FFFFFF');
-  const changeLightTheme = React.useCallback(e => setLightTheme(e.target.value), [setLightTheme]);
-
-  const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
-  const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
 
   const handleOnBlur = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
   const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
@@ -103,45 +95,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             />
             <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
               <input className={styles.color} type="color" id={keyColorId} onBlur={handleOnBlur} />
-            </div>
-          </div>
-        </div>
-        <Subtitle2>Contrast References</Subtitle2>
-        <div className={styles.inputs}>
-          <Label htmlFor={lightThemeId}>Light Theme</Label>
-          <div className={styles.labels}>
-            <Input
-              size="small"
-              appearance="underline"
-              id={lightThemeId}
-              value={lightTheme}
-              onChange={changeLightTheme}
-            />
-            <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
-              <input
-                disabled={true}
-                className={styles.color}
-                type="color"
-                id={lightThemeId}
-                value={lightTheme}
-                onChange={changeLightTheme}
-              />
-            </div>
-          </div>
-        </div>
-        <div className={styles.inputs}>
-          <Label htmlFor={darkThemeId}>Dark Theme</Label>
-          <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
-            <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
-              <input
-                disabled={true}
-                className={styles.color}
-                type="color"
-                id={darkThemeId}
-                value={darkTheme}
-                onChange={changeDarkTheme}
-              />
             </div>
           </div>
         </div>
