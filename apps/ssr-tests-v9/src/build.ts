@@ -29,7 +29,7 @@ async function build() {
   const rawStoriesGlobs = getVnextStories() as string[];
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
-    .map(pattern => path.resolve(__dirname, '..', pattern));
+    .map(pattern => path.resolve(__dirname, pattern));
 
   await generateEntryPoints({
     esmEntryPoint,
