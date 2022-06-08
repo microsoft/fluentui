@@ -25,7 +25,7 @@ export async function getImportsFromIndexFile(distDir: string, filename: string)
 
   const imports: StoryImport[] = [];
 
-  // A Babel plugin that parser imports in the index file of stories and returns them as a structure that contains
+  // A Babel plugin that parses imports in the index file of stories and returns them as a structure that contains
   // normalized paths and import names.
   const babelPlugin: Babel.PluginObj = {
     visitor: {
