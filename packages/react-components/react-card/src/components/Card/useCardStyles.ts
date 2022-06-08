@@ -28,9 +28,6 @@ const useStyles = makeStyles({
     position: 'relative',
     ...shorthands.overflow('hidden'),
     color: tokens.colorNeutralForeground1,
-    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
-    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
-    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
     // Border setting using after pseudo element to allow CardPreview to render behind it.
     '::after': {
