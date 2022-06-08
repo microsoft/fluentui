@@ -106,7 +106,7 @@ jobs:
 
       # only run e2e tests when the appropriate storybook is published by scoping to relevant packages
       - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components
+          yarn e2e $(sinceArg) --scope @fluentui/react-components,@fluentui/babel-preset-global-context
         displayName: v9 Cypress E2E tests
 
       - script: |
