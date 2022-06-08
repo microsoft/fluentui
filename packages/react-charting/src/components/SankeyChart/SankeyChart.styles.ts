@@ -1,7 +1,8 @@
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
+import { FontSizes } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
-  const { className, theme, pathColor } = props;
+  const { className, theme, pathColor, nodes } = props;
   return {
     root: [
       theme.fonts.medium,
@@ -17,6 +18,10 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     links: {
       stroke: pathColor ? pathColor : theme.palette.blue,
       fill: 'none',
+    },
+    nodes: {
+      fontWeight: nodes?.labelWeight ? nodes.labelWeight : 'normal',
+      fontSize: nodes?.labelSize ? nodes.labelSize : FontSizes.medium,
     },
   };
 };

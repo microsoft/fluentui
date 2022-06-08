@@ -385,13 +385,15 @@ export interface ISankeyChartData {
   links: SLink[];
 }
 
-interface ISNodeExtra {
+export interface ISNodeExtra {
   nodeId: number | string;
   name: string;
   color: string;
+  labelWeight?: string;
+  labelSize?: string;
 }
 
-interface ISLinkExtra {
+export interface ISLinkExtra {
   source: number;
   target: number;
   value: number;

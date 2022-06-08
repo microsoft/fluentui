@@ -49,6 +49,24 @@ export interface ISankeyChartProps {
    * Color for path
    */
   pathColor?: string;
+
+  nodes?: ISankeyNodeProps;
+
+  links?: ISankeyLinkProps;
+
+  labelWeight?: string;
+
+  labelSize?: string;
+}
+
+export interface ISankeyNodeProps {
+  labelWeight?: string;
+  labelSize?: string;
+  colors?: string[];
+}
+
+export interface ISankeyLinkProps {
+  colors?: string[];
 }
 
 export interface ISankeyChartStyleProps {
@@ -57,6 +75,8 @@ export interface ISankeyChartStyleProps {
   width: number;
   height: number;
   pathColor?: string;
+  nodes?: ISankeyNodeProps;
+  links?: ISankeyLinkProps;
 }
 
 export interface ISankeyChartStyles {
