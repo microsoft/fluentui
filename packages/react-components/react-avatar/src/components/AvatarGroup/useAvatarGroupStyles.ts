@@ -1,4 +1,3 @@
-import { avatarGroupItemMarginVar, avatarGroupItemOutlineVar } from '../AvatarGroupItem/useAvatarGroupItemStyles';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -23,6 +22,13 @@ const useStyles = makeStyles({
   pie: {
     clipPath: 'circle(50%)',
   },
+  stack: {
+    '& > *': {
+      outlineColor: tokens.colorNeutralBackground2,
+      outlineStyle: 'solid',
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    },
+  },
 });
 
 /**
@@ -40,7 +46,7 @@ const useOverflowButtonStyles = makeStyles({
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
-    ...shorthands.padding(tokens.spacingHorizontalNone),
+    ...shorthands.padding(0),
   },
 
   // These styles match the default button styles
@@ -72,17 +78,6 @@ const useOverflowButtonStyles = makeStyles({
     color: 'transparent',
   },
 
-  stack: {
-    marginLeft: `var(${avatarGroupItemMarginVar})`,
-    outlineColor: tokens.colorNeutralBackground2,
-    outlineStyle: 'solid',
-    outlineWidth: `var(${avatarGroupItemOutlineVar})`,
-  },
-
-  spread: {
-    marginLeft: `var(${avatarGroupItemMarginVar})`,
-  },
-
   icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
   icon20: { fontSize: '20px' },
@@ -96,28 +91,28 @@ const useOverflowButtonStyles = makeStyles({
   subtitle2: { ...typographyStyles.subtitle2 },
   subtitle1: { ...typographyStyles.subtitle1 },
   title3: { ...typographyStyles.title3 },
-  thin: { ...shorthands.borderWidth(tokens.strokeWidthThin) },
-  thick: { ...shorthands.borderWidth(tokens.strokeWidthThick) },
-  thicker: { ...shorthands.borderWidth(tokens.strokeWidthThicker) },
-  thickest: { ...shorthands.borderWidth(tokens.strokeWidthThickest) },
+  borderThin: { ...shorthands.borderWidth(tokens.strokeWidthThin) },
+  borderThick: { ...shorthands.borderWidth(tokens.strokeWidthThick) },
+  borderThicker: { ...shorthands.borderWidth(tokens.strokeWidthThicker) },
+  borderThickest: { ...shorthands.borderWidth(tokens.strokeWidthThickest) },
 });
 
 const useStackStyles = makeStyles({
-  thick: { [avatarGroupItemOutlineVar]: tokens.strokeWidthThick },
-  thicker: { [avatarGroupItemOutlineVar]: tokens.strokeWidthThicker },
-  thickest: { [avatarGroupItemOutlineVar]: tokens.strokeWidthThickest },
-  xxs: { [avatarGroupItemMarginVar]: `calc(-1 * ${tokens.spacingHorizontalXXS})` },
-  xs: { [avatarGroupItemMarginVar]: `calc(-1 * ${tokens.spacingHorizontalXS})` },
-  s: { [avatarGroupItemMarginVar]: `calc(-1 * ${tokens.spacingHorizontalS})` },
-  l: { [avatarGroupItemMarginVar]: `calc(-1 * ${tokens.spacingHorizontalL})` },
+  thick: { '& > *': { outlineWidth: tokens.strokeWidthThick } },
+  thicker: { '& > *': { outlineWidth: tokens.strokeWidthThicker } },
+  thickest: { '& > *': { outlineWidth: tokens.strokeWidthThickest } },
+  xxs: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
+  xs: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
+  s: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },
+  l: { '& > *:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalL})` } },
 });
 
 const useSpreadStyles = makeStyles({
-  s: { [avatarGroupItemMarginVar]: tokens.spacingHorizontalS },
-  mNudge: { [avatarGroupItemMarginVar]: tokens.spacingHorizontalMNudge },
-  m: { [avatarGroupItemMarginVar]: tokens.spacingHorizontalM },
-  l: { [avatarGroupItemMarginVar]: tokens.spacingHorizontalL },
-  xl: { [avatarGroupItemMarginVar]: tokens.spacingHorizontalXL },
+  s: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalS } },
+  mNudge: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalMNudge } },
+  m: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalM } },
+  l: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalL } },
+  xl: { '& > *:not(:first-child)': { marginLeft: tokens.spacingHorizontalXL } },
 });
 
 /**
@@ -148,6 +143,8 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const rootClasses = [];
 
   if (layout === 'stack') {
+    rootClasses.push(styles.stack);
+
     if (size < 56) {
       rootClasses.push(stackStyles.thick);
     } else if (size < 72) {
@@ -193,13 +190,13 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const overflowButtonClasses = [];
 
   if (size < 36) {
-    overflowButtonClasses.push(overflowButtonStyles.thin);
+    overflowButtonClasses.push(overflowButtonStyles.borderThin);
   } else if (size < 56) {
-    overflowButtonClasses.push(overflowButtonStyles.thick);
+    overflowButtonClasses.push(overflowButtonStyles.borderThick);
   } else if (size < 72) {
-    overflowButtonClasses.push(overflowButtonStyles.thicker);
+    overflowButtonClasses.push(overflowButtonStyles.borderThicker);
   } else {
-    overflowButtonClasses.push(overflowButtonStyles.thickest);
+    overflowButtonClasses.push(overflowButtonStyles.borderThickest);
   }
 
   if (overflowIndicator === 'count') {
@@ -242,8 +239,6 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       overflowButtonStyles.focusIndicator,
       layout !== 'pie' && overflowButtonStyles.states,
       layout === 'pie' && overflowButtonStyles.pie,
-      layout === 'spread' && overflowButtonStyles.spread,
-      layout === 'stack' && overflowButtonStyles.stack,
       ...overflowButtonClasses,
       state.overflowButton.className,
     );
