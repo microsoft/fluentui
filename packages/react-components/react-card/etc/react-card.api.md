@@ -20,6 +20,7 @@ export const cardClassNames: SlotClassNames<CardSlots>;
 // @public
 export const cardCSSVars: {
     cardSizeVar: string;
+    cardBorderRadiusVar: string;
 };
 
 // @public
