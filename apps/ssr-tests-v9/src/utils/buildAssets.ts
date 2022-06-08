@@ -1,4 +1,5 @@
 import { build, BuildOptions } from 'esbuild';
+import { getChromeVersion } from './getChromeVersion';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
@@ -19,6 +20,7 @@ type BuildConfig = {
 
 export async function buildAssets(config: BuildConfig): Promise<void> {
   const { cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
+  const chromeVersion = await getChromeVersion();
 
   try {
     // Used for SSR rendering, see renderToHTML.js
@@ -47,7 +49,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
         require.resolve('../shims/module'),
       ],
       format: 'iife',
-      target: 'chrome101',
+      target: `chrome${chromeVersion}`,
     });
   } catch (e) {
     throw new Error(

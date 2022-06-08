@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2019",
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,

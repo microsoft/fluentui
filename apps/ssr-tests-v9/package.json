@@ -14,6 +14,7 @@
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
+    "posttest": "node -r @fluentui/scripts/ts-node-register ./src/test.ts",
     "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {

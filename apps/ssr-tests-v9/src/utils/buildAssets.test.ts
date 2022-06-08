@@ -2,6 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as tmp from 'tmp';
 
+// Use mock to avoid launching Puppeteer for tests and avoid timeouts
+jest.mock('./getChromeVersion', () => ({
+  getChromeVersion: () => '100',
+}));
+
 import { buildAssets } from './buildAssets';
 
 function stripComments(content: string): string {
