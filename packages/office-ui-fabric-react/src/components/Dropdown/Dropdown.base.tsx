@@ -311,7 +311,12 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
               onMouseDown={this._onDropdownMouseDown}
               onFocus={this._onFocus}
             >
-              <span id={this._optionId} className={this._classNames.title} aria-live={hasFocus ? 'polite' : undefined} aria-atomic={hasFocus ? true : undefined}>
+              <span
+                id={this._optionId}
+                className={this._classNames.title}
+                aria-live={hasFocus ? 'polite' : undefined}
+                aria-atomic={hasFocus ? true : undefined}
+              >
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
