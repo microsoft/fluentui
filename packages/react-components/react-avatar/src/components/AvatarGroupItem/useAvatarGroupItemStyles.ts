@@ -66,19 +66,18 @@ const useSpreadStyles = makeStyles({
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const { isOverflowItem } = state;
-  const { size } = state.avatar;
+  const { isOverflowItem, size } = state;
 
   const rootStyles = useRootStyles();
   const overflowLabelStyles = useOverflowLabelStyles();
 
-  const layoutClassName = useLayoutClassName(layout, size);
+  const groupChildClassName = useGroupChildClassName(layout, size);
 
   state.root.className = mergeClasses(
     avatarGroupItemClassNames.root,
     rootStyles.base,
     isOverflowItem ? rootStyles.overflowItem : rootStyles.nonOverflowItem,
-    !isOverflowItem && layoutClassName,
+    !isOverflowItem && groupChildClassName,
     state.root.className,
   );
 
@@ -99,7 +98,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useLayoutClassName = (layout: AvatarGroupProps['layout'], size?: AvatarSizes): string => {
+export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSizes): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];

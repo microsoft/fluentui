@@ -4,7 +4,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useSizeStyles } from '../Avatar/useAvatarStyles';
 import type { AvatarGroupSlots, AvatarGroupState } from './AvatarGroup.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useLayoutClassName } from '../../AvatarGroupItem';
+import { useGroupChildClassName } from '../../AvatarGroupItem';
 
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
@@ -114,7 +114,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const layoutClassName = useLayoutClassName(layout, size);
+  const groupChildClassName = useGroupChildClassName(layout, size);
 
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
@@ -184,7 +184,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       overflowButtonStyles.focusIndicator,
       layout !== 'pie' && overflowButtonStyles.states,
       layout === 'pie' && overflowButtonStyles.pie,
-      layoutClassName,
+      groupChildClassName,
       state.overflowButton.className,
     );
   }

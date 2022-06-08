@@ -14,7 +14,7 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, layout = 'spread', maxAvatars = 5, size = 32 } = props;
+  const { children, layout = 'spread', maxAvatars = 5, size = defaultAvatarGroupSize } = props;
   const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
   const childrenArray = React.Children.toArray(children);
 
@@ -84,3 +84,5 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     overflowContent,
   };
 };
+
+export const defaultAvatarGroupSize = 32;
