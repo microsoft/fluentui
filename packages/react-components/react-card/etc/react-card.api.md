@@ -53,7 +53,6 @@ export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 export type CardHeaderSlots = {
     root: Slot<'div'>;
     image: Slot<'div'>;
-    content?: Slot<'div'>;
     header: Slot<'span'>;
     description: Slot<'span'>;
     action?: Slot<'div'>;
