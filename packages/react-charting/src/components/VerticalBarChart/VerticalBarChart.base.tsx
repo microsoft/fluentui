@@ -110,7 +110,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topRightEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${this._calloutId}`,
       target: this.state.refSelected,
       isBeakVisible: false,

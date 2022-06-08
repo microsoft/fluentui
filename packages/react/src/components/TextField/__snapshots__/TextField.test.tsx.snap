@@ -84,7 +84,7 @@ exports[`TextField snapshots renders correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -134,7 +134,7 @@ exports[`TextField snapshots renders correctly 1`] = `
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -142,21 +142,21 @@ exports[`TextField snapshots renders correctly 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -205,7 +205,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
           &:hover {
             border-bottom-color: #a4262c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             border-bottom-color: Highlight;
             forced-color-adjust: none;
@@ -271,7 +271,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -293,7 +293,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -350,7 +350,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -358,21 +358,21 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -395,7 +395,7 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -456,7 +456,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
           &:hover {
             border-bottom-color: #a4262c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             border-bottom-color: Highlight;
             forced-color-adjust: none;
@@ -522,7 +522,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -544,7 +544,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -601,7 +601,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -609,21 +609,21 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -646,7 +646,7 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -756,7 +756,7 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -811,7 +811,7 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -819,21 +819,21 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -929,7 +929,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -982,7 +982,7 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -990,21 +990,21 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -1100,7 +1100,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -1153,7 +1153,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -1161,21 +1161,21 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -1241,7 +1241,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -1289,7 +1289,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -1297,21 +1297,21 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -1356,7 +1356,7 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
                 color: #106ebe;
                 outline: 0px;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
@@ -1446,7 +1446,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
           &:hover {
             border-bottom-color: #a4262c;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             border-bottom-color: Highlight;
             forced-color-adjust: none;
@@ -1513,7 +1513,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
             &:hover {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               border-color: Highlight;
               forced-color-adjust: none;
@@ -1535,7 +1535,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -1592,7 +1592,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
               &::-ms-clear {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }
@@ -1600,21 +1600,21 @@ exports[`TextField snapshots should respect user component and subcomponent styl
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::placeholder {
                 color: GrayText;
               }
               &:-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:-ms-input-placeholder {
                 color: GrayText;
               }
               &::-ms-input-placeholder {
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&::-ms-input-placeholder {
                 color: GrayText;
               }
           id="TextField0"
@@ -1637,7 +1637,7 @@ exports[`TextField snapshots should respect user component and subcomponent styl
                 padding-top: 0;
                 white-space: nowrap;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
               }

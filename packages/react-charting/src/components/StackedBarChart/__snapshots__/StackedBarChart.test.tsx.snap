@@ -1264,7 +1264,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1287,7 +1287,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #5c005c, #5c005c);
                           opacity: ;
                         }
@@ -1353,7 +1353,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1376,7 +1376,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }

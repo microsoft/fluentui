@@ -19,6 +19,7 @@ import {
   Badge,
   Switch,
   Radio,
+  RadioGroup,
   Checkbox,
   Avatar,
   Theme,
@@ -194,8 +195,10 @@ export const Column3 = () => {
         <Checkbox label="Option 2" />
       </div>
       <div className={styles.twoRow}>
-        <Radio defaultChecked={true} label="Option 1" />
-        <Radio label="Option 2" />
+        <RadioGroup>
+          <Radio defaultChecked={true} label="Option 1" />
+          <Radio label="Option 2" />
+        </RadioGroup>
       </div>
     </div>
   );

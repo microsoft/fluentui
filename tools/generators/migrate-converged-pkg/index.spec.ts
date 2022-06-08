@@ -506,6 +506,7 @@ describe('migrate-converged-pkg generator', () => {
           lib: `${projectConfig.root}/tsconfig.lib.json`,
           test: `${projectConfig.root}/tsconfig.spec.json`,
         },
+        packageJson: `${projectConfig.root}/package.json`,
       };
 
       if (config.createDummyStories) {
@@ -543,6 +544,13 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
+
+      expect(readJson(tree, paths.packageJson).scripts).toEqual(
+        expect.objectContaining({
+          start: 'yarn storybook',
+          storybook: 'node ../../scripts/storybook/runner',
+        }),
+      );
 
       expect(readJson(tree, paths.tsconfig.storybook)).toEqual({
         extends: '../tsconfig.json',
@@ -736,7 +744,9 @@ describe('migrate-converged-pkg generator', () => {
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
-      expect(packageJson.scripts).toEqual(expect.objectContaining({ e2e: 'e2e' }));
+      expect(packageJson.scripts).toEqual(
+        expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
+      );
     });
   });
 
@@ -814,8 +824,6 @@ describe('migrate-converged-pkg generator', () => {
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        start: 'yarn storybook',
-        storybook: 'node ../../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });
