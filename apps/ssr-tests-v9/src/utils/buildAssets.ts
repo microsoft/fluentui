@@ -1,6 +1,4 @@
-import { TsconfigPathsPlugin } from '@esbuild-plugins/tsconfig-paths';
 import { build, BuildOptions } from 'esbuild';
-import * as path from 'path';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
@@ -10,8 +8,6 @@ const commonOptions: BuildOptions = {
   loader: {
     '.svg': 'dataurl',
   },
-  // Used to resolve packages aliases in stories files.
-  plugins: [TsconfigPathsPlugin({ tsconfig: path.resolve(__dirname, 'tsconfig.base.json') })],
 };
 
 type BuildConfig = {

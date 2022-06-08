@@ -1548,15 +1548,6 @@
     esquery "^1.4.0"
     jsdoc-type-pratt-parser "1.1.1"
 
-"@esbuild-plugins/tsconfig-paths@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@esbuild-plugins/tsconfig-paths/-/tsconfig-paths-0.0.4.tgz#675730e1ae44c798882a71e35aebafdcb71c458d"
-  integrity sha512-/86k8BmhfJOFoFLR2oKtoxUVUpIYBtJy29QSM5TXzZP8vdjuMPtXSUeCL+8Aa2GZ3to2k6VD9WLBE9OU+j1yQQ==
-  dependencies:
-    debug "^4.3.1"
-    find-up "^5.0.0"
-    strip-json-comments "^3.1.1"
-
 "@eslint/eslintrc@^0.4.0":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
