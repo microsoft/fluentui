@@ -5,7 +5,7 @@ import { Spinner } from '@fluentui/react-spinner';
 
 ## Icons
 
-The Fluent UI SVG icon set is released under the MIT License. There are three ways you can consume the fluent icon set in your application, with perks and drawbacks to each.
+The Fluent UI icon set is released under the MIT License. There are three ways you can consume the Fluent icon set in your application, with perks and drawbacks to each.
 
 ### Fluent Icons as React Elements
 
@@ -30,7 +30,7 @@ Each icon also accepts `className` and `primaryFill` props for styling.
 
 ### Fluent Icons as Fonts
 
-The fluent icons also can be consumed as a font. The API is the same as the react-element icons, and there are tools to allow you to more seamlessly integrate the font icons
+Fluent icons also can be consumed as a font. The API is the same as the React element icons, and there are tools to allow you to more seamlessly integrate the font icons
 into your application. You will also be able to only bundle the font icons you need in your application using the the package `@fluentui/react-icons-font-subsetting-webpack-plugin`
 
 If `optimization.usedExports` is enabled (as it is by default), this plugin will subset the font files to only include the glyphs actually used by your build.
@@ -65,7 +65,7 @@ module.exports = {
 
 ### Fluent Icons as SVG Sprites
 
-Another way that you can consume the fluent icons is by using them as svg-sprites. The fluent svg-sprites are located in the package `@fluentui/svg-sprites`.
+Fluent icons can be consumed as SVG sprites. The Fluent SVG sprites are located in the package `@fluentui/svg-sprites`.
 This package provides the Fluent UI System Icons as SVG sprites, which allow user agents to request and cache icons at runtime.
 
 For security reasons, most user agents require the sprites to be served from the same hostname, protocol and port. During development, requests can be proxied to a specific release on e.g. jsdelivr which you have vetted for integrity, a bucket in the cloud, or served from the service’s file system.
@@ -111,11 +111,11 @@ Pros
 
 - The visual fidelity of the icons imported here are the highest
 - These icons are the easiest to use right out of the gate. They require no setup except for importing the icons that you need from `@fluentui/react-icons`
-- Has treeshaking enabled when using esm node modules
+- Has tree shaking enabled when using ES modules
 
 Cons
 
-- If you are not using esm modules in your application, then treeshaking will not work properly, and icons that you don't use in the application
+- If you are not using ES modules in your application, then tree shaking will not work properly, and icons that you don't use in the application
   could get bundled in along with the icons you do use. This means your perf and bundle size would take a hit importing the icons.
 
 #### Icons as Font
@@ -128,7 +128,7 @@ Pros
 Cons
 
 - There is a slight dropoff in the visual fidelity of the font icons, but this is not noticeable at most sizes
-- There is more setup required to use the font icons than using the svg based icons i.e, setting up the webpack plugin
+- There is more setup required to use the font icons than using the SVG based icons i.e, setting up the webpack plugin
 
 #### Icons as Svg Sprites
 
