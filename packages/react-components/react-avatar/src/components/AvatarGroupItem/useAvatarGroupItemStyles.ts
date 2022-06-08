@@ -67,7 +67,7 @@ const useSpreadStyles = makeStyles({
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const { isOverflowItem } = state;
-  const { size = 32 } = state.avatar;
+  const { size } = state.avatar;
 
   const rootStyles = useRootStyles();
   const overflowLabelStyles = useOverflowLabelStyles();
@@ -99,40 +99,42 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useLayoutClassName = (layout: AvatarGroupProps['layout'], size: AvatarSizes): string => {
+export const useLayoutClassName = (layout: AvatarGroupProps['layout'], size?: AvatarSizes): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
 
-  if (layout === 'stack') {
-    layoutClasses.push(stackStyles.base);
+  if (size) {
+    if (layout === 'stack') {
+      layoutClasses.push(stackStyles.base);
 
-    if (size < 56) {
-      layoutClasses.push(stackStyles.thick);
-    } else if (size < 72) {
-      layoutClasses.push(stackStyles.thicker);
-    } else {
-      layoutClasses.push(stackStyles.thickest);
-    }
+      if (size < 56) {
+        layoutClasses.push(stackStyles.thick);
+      } else if (size < 72) {
+        layoutClasses.push(stackStyles.thicker);
+      } else {
+        layoutClasses.push(stackStyles.thickest);
+      }
 
-    if (size < 24) {
-      layoutClasses.push(stackStyles.xxs);
-    } else if (size < 48) {
-      layoutClasses.push(stackStyles.xs);
-    } else if (size < 96) {
-      layoutClasses.push(stackStyles.s);
-    } else {
-      layoutClasses.push(stackStyles.l);
-    }
-  } else if (layout === 'spread') {
-    if (size < 20) {
-      layoutClasses.push(spreadStyles.s);
-    } else if (size < 32) {
-      layoutClasses.push(spreadStyles.mNudge);
-    } else if (size < 64) {
-      layoutClasses.push(spreadStyles.l);
-    } else {
-      layoutClasses.push(spreadStyles.xl);
+      if (size < 24) {
+        layoutClasses.push(stackStyles.xxs);
+      } else if (size < 48) {
+        layoutClasses.push(stackStyles.xs);
+      } else if (size < 96) {
+        layoutClasses.push(stackStyles.s);
+      } else {
+        layoutClasses.push(stackStyles.l);
+      }
+    } else if (layout === 'spread') {
+      if (size < 20) {
+        layoutClasses.push(spreadStyles.s);
+      } else if (size < 32) {
+        layoutClasses.push(spreadStyles.mNudge);
+      } else if (size < 64) {
+        layoutClasses.push(spreadStyles.l);
+      } else {
+        layoutClasses.push(spreadStyles.xl);
+      }
     }
   }
 
