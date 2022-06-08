@@ -37,6 +37,7 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
 
   const renderer = createDOMRenderer();
 
+  // .hydrate() is used to trigger hydration on pre-generated markup in "index.html"
   ReactDOM.hydrate(
     <RendererProvider renderer={renderer}>
       <App />

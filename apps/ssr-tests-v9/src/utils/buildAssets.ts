@@ -53,7 +53,9 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
     throw new Error(
       [
         'Failed to build assets with esbuild...',
-        'Please check the errors output above, it should contain useful information to fix the problem.',
+        'Please check the errors output above (if present), it should contain useful information to fix the problem.',
+        '\n',
+        e.message,
       ].join(' '),
     );
   }
