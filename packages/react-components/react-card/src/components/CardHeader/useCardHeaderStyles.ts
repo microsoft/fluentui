@@ -16,7 +16,7 @@ export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'min-content 1fr min-content',
+    gridAutoColumns: 'min-content 1fr min-content',
     alignItems: 'center',
     ...shorthands.gap('12px', '0'),
   },
