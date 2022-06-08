@@ -38,7 +38,7 @@ export const useAvatarGroupItem_unstable = (
       defaultProps: {
         style,
         className,
-        as: groupIsOverflow ? 'li' : 'div',
+        as: 'div',
         role: groupIsOverflow ? 'listitem' : undefined,
       },
     }),

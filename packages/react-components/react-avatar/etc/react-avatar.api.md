@@ -37,7 +37,7 @@ export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSl
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div', 'li'>>;
+    root: NonNullable<Slot<'div'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
     overflowLabel: NonNullable<Slot<'span'>>;
 };
