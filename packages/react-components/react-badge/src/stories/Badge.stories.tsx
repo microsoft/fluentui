@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { Badge } from '../Badge';
-import descriptionMd from '../BadgeDescription.md';
-import bestPracticesMd from '../BadgeBestPractices.md';
+import descriptionMd from './BadgeDescription.md';
+import bestPracticesMd from './BadgeBestPractices.md';
 export { Default } from './BadgeDefault.stories';
 export { Appearance } from './BadgeAppearance.stories';
 export { Sizes } from './BadgeSizes.stories';
