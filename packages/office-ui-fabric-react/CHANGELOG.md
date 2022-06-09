@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jun 2022 12:31:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.185.8](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.8)
+
+Thu, 09 Jun 2022 12:31:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.185.7..office-ui-fabric-react_v7.185.8)
+
+### Patches
+
+- Fix Dropdown to only add ARIA live region when focused ([PR #23425](https://github.com/microsoft/fluentui/pull/23425) by sarah.higley@microsoft.com)
 
 ## [7.185.7](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.7)
 

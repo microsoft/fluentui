@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 09 Jun 2022 12:31:34 GMT",
+      "tag": "office-ui-fabric-react_v7.185.8",
+      "version": "7.185.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Dropdown to only add ARIA live region when focused",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "87ddc19b2a4133a82314f00d15ffc73c9d8f968e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 May 2022 12:22:01 GMT",
       "tag": "office-ui-fabric-react_v7.185.7",
       "version": "7.185.7",

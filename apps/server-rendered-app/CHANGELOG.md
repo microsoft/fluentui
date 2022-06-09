@@ -1,8 +1,17 @@
 # Change Log - server-rendered-app
 
-This log was last generated on Fri, 20 May 2022 12:22:01 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jun 2022 12:31:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
+
+Thu, 09 Jun 2022 12:31:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/server-rendered-app_v0.0.1..server-rendered-app_v0.0.1)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.185.8 ([PR #23425](https://github.com/microsoft/fluentui/pull/23425) by sarah.higley@microsoft.com)
 
 ## [0.0.1](https://github.com/microsoft/fluentui/tree/server-rendered-app_v0.0.1)
 
