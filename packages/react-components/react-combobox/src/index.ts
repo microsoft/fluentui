@@ -16,14 +16,6 @@ export {
 export type { OptionProps, OptionSlots, OptionState } from './Option';
 export { Combobox, comboboxClassNames, useComboboxStyles_unstable, useCombobox_unstable } from './Combobox';
 export type { ComboboxProps, ComboboxSlots, ComboboxState } from './Combobox';
-export {
-  ComboButton,
-  comboButtonClassNames,
-  renderComboButton_unstable,
-  useComboButtonStyles_unstable,
-  useComboButton_unstable,
-} from './ComboButton';
-export type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton';
 export { Dropdown, dropdownClassNames, useDropdownStyles_unstable, useDropdown_unstable } from './Dropdown';
 export type { DropdownProps, DropdownSlots, DropdownState } from './Dropdown';
 export {

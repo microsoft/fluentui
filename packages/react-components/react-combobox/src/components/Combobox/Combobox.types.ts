@@ -6,11 +6,14 @@ export type ComboboxSlots = {
   /* The root combobox slot */
   root: NonNullable<Slot<'div'>>;
 
-  /* The dropdown listbox slot */
-  listbox: NonNullable<Slot<typeof Listbox>>;
+  /* The dropdown arrow icon */
+  expandIcon: Slot<'span'>;
 
   /* The primary slot, the element with role="combobox" */
   input: NonNullable<Slot<'input'>>;
+
+  /* The dropdown listbox slot */
+  listbox: NonNullable<Slot<typeof Listbox>>;
 };
 
 /**

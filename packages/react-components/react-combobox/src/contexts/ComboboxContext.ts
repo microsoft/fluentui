@@ -1,5 +1,5 @@
 import { createContext } from '@fluentui/react-context-selector';
-import { ComboboxBaseState } from '../components/ComboboxBase/ComboboxBase.types';
+import { ComboboxBaseState } from '../ComboboxBase/ComboboxBase.types';
 
 /**
  * Context shared with Combobox, Listbox, & Options

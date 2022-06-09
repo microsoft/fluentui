@@ -1,8 +1,11 @@
 import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import { useMergedRefs } from '@fluentui/react-utilities';
-import type { ComboboxBaseProps, ComboboxBaseState } from '../ComboboxBase/ComboboxBase.types';
+import * as React from 'react';
+import type { ComboboxBaseProps } from '../ComboboxBase/ComboboxBase.types';
+import type { ComboboxState } from '../components/Combobox/Combobox.types';
+import type { DropdownState } from '../components/Dropdown/Dropdown.types';
 
-export const useComboboxPopup = (props: ComboboxBaseProps, state: ComboboxBaseState) => {
+export const useComboboxPopup = (props: ComboboxBaseProps, state: DropdownState | ComboboxState) => {
   const { positioning } = props;
 
   // popper options
@@ -13,19 +16,15 @@ export const useComboboxPopup = (props: ComboboxBaseProps, state: ComboboxBaseSt
     ...resolvePositioningShorthand(positioning),
   };
 
-  const {
-    targetRef,
-    containerRef,
-  }: {
-    targetRef: React.MutableRefObject<HTMLButtonElement | HTMLInputElement>;
-    containerRef: React.MutableRefObject<HTMLDivElement>;
-  } = usePositioning(popperOptions);
+  const { targetRef, containerRef } = usePositioning(popperOptions);
 
-  const containerSlot = state.listbox;
-  const targetSlot = state.input || state.button;
+  state.listbox.ref = useMergedRefs(state.listbox.ref, containerRef);
 
-  if (containerSlot && targetSlot) {
-    containerSlot.ref = useMergedRefs(containerSlot.ref, containerRef);
-    targetSlot.ref = useMergedRefs(targetSlot.ref, targetRef);
+  if ((state as ComboboxState).input) {
+    const triggerSlot = (state as ComboboxState).input;
+    triggerSlot.ref = useMergedRefs(triggerSlot.ref, targetRef as React.MutableRefObject<HTMLInputElement>);
+  } else if ((state as DropdownState).button) {
+    const triggerSlot = (state as DropdownState).button;
+    triggerSlot.ref = useMergedRefs(triggerSlot.ref, targetRef as React.MutableRefObject<HTMLButtonElement>);
   }
 };
