@@ -6,7 +6,7 @@ import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxOpenEvents } from './ComboboxBase.types';
 
 export const useComboboxBaseState = (props: ComboboxBaseProps) => {
-  const { appearance = 'outline', inline = false, multiselect, onOpenChange, size = 'medium' } = props;
+  const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
   const { getOptionAtIndex, getOptionById, getOptionsMatchingValue } = optionCollection;
@@ -82,7 +82,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     ...optionCollection,
     activeOption,
     appearance,
-    inline,
+    inlinePopup,
     onOptionClick,
     open,
     selectedOptions,

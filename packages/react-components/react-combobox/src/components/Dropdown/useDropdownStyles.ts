@@ -142,7 +142,7 @@ const useIconStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Combobox slots based on the state
+ * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
   const { appearance, size } = state;

@@ -1,7 +1,7 @@
 const utils = require('./main.utils');
 const rootMain = require('../../../.storybook/main');
 
-module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
   stories: [
     ...rootMain.stories,

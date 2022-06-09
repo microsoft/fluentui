@@ -25,10 +25,10 @@ export type ComboboxBaseProps = SelectionProps & {
   defaultValue?: string;
 
   /**
-   * Render the combobox dropdown inline in the DOM.
+   * Render the combobox's popup inline in the DOM.
    * This has accessibility benefits, particularly for touch screen readers.
    */
-  inline?: boolean;
+  inlinePopup?: boolean;
 
   /**
    * Callback when the open/closed state of the dropdown changes
@@ -69,7 +69,7 @@ export type ComboboxBaseProps = SelectionProps & {
 /**
  * State used in rendering Combobox
  */
-export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inline' | 'size'>> &
+export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
   Pick<ComboboxBaseProps, 'placeholder' | 'value'> &
   OptionCollectionState &
   SelectionState & {
