@@ -19,7 +19,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Com
       <ComboboxContext.Provider value={contextValues.combobox}>
         <slots.button {...slotProps.button}>
           {slotProps.button.children}
-          <slots.expandIcon {...slotProps.expandIcon} />
+          {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
         </slots.button>
         {state.open ? popup : null}
       </ComboboxContext.Provider>

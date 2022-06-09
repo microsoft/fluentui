@@ -44,6 +44,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       defaultProps: triggerNativeProps,
     }),
     expandIcon: resolveShorthand(props.expandIcon, {
+      required: true,
       defaultProps: {
         children: <ChevronDownIcon />,
       },

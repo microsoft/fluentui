@@ -18,7 +18,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
     <slots.root {...slotProps.root}>
       <ComboboxContext.Provider value={contextValues.combobox}>
         <slots.input {...slotProps.input} />
-        <slots.expandIcon {...slotProps.expandIcon} />
+        {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
         {state.open ? popup : null}
       </ComboboxContext.Provider>
     </slots.root>

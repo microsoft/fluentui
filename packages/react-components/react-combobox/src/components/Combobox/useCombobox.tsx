@@ -40,6 +40,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     expandIcon: resolveShorthand(props.expandIcon, {
+      required: true,
       defaultProps: {
         children: <ChevronDownIcon />,
       },
