@@ -103,6 +103,13 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     return typeof key === 'number' || key ? `${key}` : '';
   }
 
+  /**
+   * Control whether selection change trigger `onSelectionChanged` callback
+   *
+   * Note that `isEnabled` is not a boolean state internally, it is a counter.
+   * When the counter is back to 0, if `suppressChange` is false, trigger `onSelectionChanged`
+   * callback and raise `change` event.
+   */
   public setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void {
     this._changeEventSuppressionCount += isEnabled ? -1 : 1;
 
@@ -415,10 +422,20 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     this.setChangeEvents(true);
   }
 
+  /**
+   * Select all items between key and `anchorIndex`, which is default 0 if not set.
+   *
+   * Other items is kept if `clearSelection` is ture, otherwise cleared.
+   */
   public selectToKey(key: string, clearSelection?: boolean): void {
     this.selectToIndex(this._keyToIndexMap[key], clearSelection);
   }
 
+  /**
+   * Select all items between index and `anchorIndex`, which is default 0 if not set.
+   *
+   * Other items is kept if `clearSelection` is ture, otherwise cleared.
+   */
   public selectToIndex(index: number, clearSelection?: boolean): void {
     if (this.mode === SelectionMode.none) {
       return;
