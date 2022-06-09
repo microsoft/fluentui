@@ -1,17 +1,24 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ComboButton } from '../ComboButton/ComboButton';
-import type { ComboboxBaseProps, ComboboxBaseSlots, ComboboxBaseState } from '../ComboboxBase/ComboboxBase.types';
+import type { ComboboxBaseProps, ComboboxBaseState } from '../../ComboboxBase/ComboboxBase.types';
+import { Listbox } from '../Listbox/Listbox';
 
-export type DropdownSlots = Omit<ComboboxBaseSlots, 'input'> & {
-  input: NonNullable<Slot<typeof ComboButton>>;
+export type DropdownSlots = {
+  /* The root combobox slot */
+  root: NonNullable<Slot<'div'>>;
+
+  /* The dropdown listbox slot */
+  listbox: NonNullable<Slot<typeof Listbox>>;
+
+  /* The primary slot, the element with role="combobox" */
+  button: NonNullable<Slot<'button'>>;
 };
 
 /**
  * Dropdown Props
  */
-export type DropdownProps = ComponentProps<DropdownSlots> & Omit<ComboboxBaseProps, 'input'>;
+export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & ComboboxBaseProps;
 
 /**
  * State used in rendering Dropdown
  */
-export type DropdownState = Omit<ComboboxBaseState, 'components' | 'input'> & ComponentState<DropdownSlots>;
+export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState;

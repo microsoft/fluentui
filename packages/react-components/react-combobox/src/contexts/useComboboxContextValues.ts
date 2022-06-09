@@ -1,4 +1,4 @@
-import { ComboboxContextValues, ComboboxBaseState } from '../components/ComboboxBase/ComboboxBase.types';
+import { ComboboxContextValues, ComboboxBaseState } from '../ComboboxBase/ComboboxBase.types';
 
 export function useComboboxContextValues(state: ComboboxBaseState): ComboboxContextValues {
   const { activeOption, appearance, onOptionClick, open, registerOption, selectedOptions, size } = state;

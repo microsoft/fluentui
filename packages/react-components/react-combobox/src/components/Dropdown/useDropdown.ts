@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
-import { useComboboxBase_unstable } from '../ComboboxBase/useComboboxBase';
-import type { ComboboxBaseProps } from '../ComboboxBase/ComboboxBase.types';
-import { ComboButton } from '../ComboButton/ComboButton';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useComboboxBaseSlots } from '../../ComboboxBase/useComboboxBaseSlots';
+import { useComboboxBaseState } from '../../ComboboxBase/useComboboxBaseState';
+import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { Listbox } from '../Listbox/Listbox';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 
 /**
@@ -15,22 +16,39 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
-  // DropdownProps extends ComboboxBaseProps
-  // because ComboButton in the input slot extends the intrinsic HTMLButtonElement type
-  // however, the Slot type does not establish this relationship, so casting is needed
-  const initialState = useComboboxBase_unstable(props as ComboboxBaseProps, ref) as DropdownState;
+  const baseState = useComboboxBaseState(props);
+
+  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+    excludedPropNames: ['children'],
+  });
 
   const state: DropdownState = {
-    ...initialState,
     components: {
-      ...initialState.components,
-      input: ComboButton,
+      root: 'div',
+      listbox: Listbox,
+      button: 'button',
     },
-    input: resolveShorthand(props.input, {
+    root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: initialState.input,
+      defaultProps: {
+        children: props.children,
+        ...rootNativeProps,
+      },
     }),
+    listbox: resolveShorthand(props.listbox, {
+      required: true,
+    }),
+    button: resolveShorthand(props.button, {
+      required: true,
+      defaultProps: triggerNativeProps,
+    }),
+    ...baseState,
   };
+
+  useComboboxBaseSlots(props, state);
+  useComboboxPopup(props, state);
 
   return state;
 };

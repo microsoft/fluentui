@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { useComboboxBase } from '../../utils/useComboboxBase';
-import { ComboboxInput } from '../ComboboxInput/ComboboxInput';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { useComboboxBaseSlots } from '../../ComboboxBase/useComboboxBaseSlots';
+import { useComboboxBaseState } from '../../ComboboxBase/useComboboxBaseState';
+import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
 /**
@@ -12,10 +15,40 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
-  const state = useComboboxBase(props, ref);
+export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+  const baseState = useComboboxBaseState(props);
 
-  state.components.input = ComboboxInput;
+  const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['children', 'size'],
+  });
+
+  const state: ComboboxState = {
+    components: {
+      root: 'div',
+      listbox: Listbox,
+      input: 'input',
+    },
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        children: props.children,
+        ...rootNativeProps,
+      },
+    }),
+    listbox: resolveShorthand(props.listbox, {
+      required: true,
+    }),
+    input: resolveShorthand(props.input, {
+      required: true,
+      defaultProps: triggerNativeProps,
+    }),
+    ...baseState,
+  };
+
+  useComboboxBaseSlots(props, state);
+  useComboboxPopup(props, state);
 
   return state;
 };

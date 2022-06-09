@@ -17,21 +17,6 @@ export type { OptionProps, OptionSlots, OptionState } from './Option';
 export { Combobox, comboboxClassNames, useComboboxStyles_unstable, useCombobox_unstable } from './Combobox';
 export type { ComboboxProps, ComboboxSlots, ComboboxState } from './Combobox';
 export {
-  ComboboxBase,
-  comboboxBaseClassNames,
-  renderComboboxBase_unstable,
-  useComboboxBaseStyles_unstable,
-  useComboboxBase_unstable,
-} from './ComboboxBase';
-export type {
-  ComboboxContextValues,
-  ComboboxOpenChangeData,
-  ComboboxOpenEvents,
-  ComboboxBaseProps,
-  ComboboxBaseSlots,
-  ComboboxBaseState,
-} from './ComboboxBase';
-export {
   ComboButton,
   comboButtonClassNames,
   renderComboButton_unstable,
