@@ -8,6 +8,10 @@ export const badgeClassNames: SlotClassNames<BadgeSlots> = {
   icon: 'fui-Badge__icon',
 };
 
+// The text content of the badge has additional horizontal padding, but there is no `text` slot to add that padding to.
+// Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
+const textPadding = tokens.spacingHorizontalXXS;
+
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
@@ -39,22 +43,22 @@ const useRootStyles = makeStyles({
   small: {
     minWidth: '16px',
     height: '16px',
-    ...shorthands.padding(0, '4px'), // 2px root padding + 2px text padding
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`),
   },
   medium: {
     height: '20px',
     minWidth: '20px',
-    ...shorthands.padding(0, '6px'), // 4px root padding + 2px text padding
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
   },
   large: {
     minWidth: '24px',
     height: '24px',
-    ...shorthands.padding(0, '6px'), // 4px root padding + 2px text padding
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
   },
   'extra-large': {
     minWidth: '32px',
     height: '32px',
-    ...shorthands.padding(0, '8px'), // 6px root padding + 2px text padding
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`),
   },
 
   // shape
@@ -77,7 +81,7 @@ const useRootStyles = makeStyles({
   border: {
     // The border is applied in an :after pseudo-element because it should not affect layout.
     // The padding and size of the badge should be the same regardless of whether or not it has a border.
-    ':after': {
+    '::after': {
       content: '""',
       position: 'absolute',
       top: 0,
@@ -243,21 +247,21 @@ const useIconStyles = makeStyles({
   base: {
     display: 'flex',
     lineHeight: '1',
-    ...shorthands.margin(0, '-2px'), // Remove 2px text padding added to root
+    ...shorthands.margin(0, `calc(-1 * ${textPadding})`), // Remove text padding added to root
   },
 
   beforeText: {
-    marginRight: '4px', // 2px gap + 2px text padding
+    marginRight: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
   },
   afterText: {
-    marginLeft: '4px', // 2px gap + 2px text padding
+    marginLeft: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
   },
 
   beforeTextXL: {
-    marginRight: '6px', // 4px gap + 2px text padding
+    marginRight: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   },
   afterTextXL: {
-    marginLeft: '6px', // 4px gap + 2px text padding
+    marginLeft: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   },
 
   // size

@@ -40,15 +40,15 @@ const useStyles = makeStyles({
   groupSet: {
     display: 'inline-flex',
     flexDirection: 'column',
-    ...shorthands.padding(0, '16px'),
-    rowGap: '16px',
+    ...shorthands.padding(0, tokens.spacingHorizontalL),
+    rowGap: tokens.spacingVerticalL,
   },
 
   group: {
     display: 'inline-flex',
     flexDirection: 'column',
     alignItems: 'start',
-    rowGap: '8px',
+    rowGap: tokens.spacingVerticalS,
   },
 
   groupLabel: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
   row: {
     display: 'inline-flex',
     alignItems: 'center',
-    columnGap: '8px',
+    columnGap: tokens.spacingHorizontalS,
   },
 });
 
