@@ -82,7 +82,9 @@ exports[`Persona renders Persona children correctly 1`] = `
               font-weight: 600;
             }
       >
-        KL
+        <span>
+          KL
+        </span>
       </div>
     </div>
   </div>
@@ -590,7 +592,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 600;
             }
       >
-        KL
+        <span>
+          KL
+        </span>
       </div>
     </div>
   </div>
@@ -868,7 +872,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               font-weight: 600;
             }
       >
-        SV
+        <span>
+          SV
+        </span>
       </div>
       <span
         id="persona-coin-container"
@@ -2106,7 +2112,9 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             font-weight: 600;
           }
     >
-      SV
+      <span>
+        SV
+      </span>
     </div>
   </div>
 </div>
@@ -2163,7 +2171,9 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             font-weight: 600;
           }
     >
-      JG
+      <span>
+        JG
+      </span>
     </div>
   </div>
 </div>
@@ -2220,7 +2230,9 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             font-weight: 600;
           }
     >
-      KL
+      <span>
+        KL
+      </span>
     </div>
   </div>
 </div>
@@ -2277,7 +2289,9 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             font-weight: 600;
           }
     >
-      KL
+      <span>
+        KL
+      </span>
     </div>
     <div
       className=

@@ -202,7 +202,9 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             font-weight: 600;
           }
     >
-      JG
+      <span>
+        JG
+      </span>
     </div>
   </div>
 </div>
@@ -259,7 +261,9 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             font-weight: 600;
           }
     >
-      KL
+      <span>
+        KL
+      </span>
     </div>
   </div>
 </div>

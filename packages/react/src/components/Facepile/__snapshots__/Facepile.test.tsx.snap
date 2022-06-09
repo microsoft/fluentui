@@ -391,7 +391,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                           font-weight: 600;
                         }
                   >
-                    AL
+                    <span>
+                      AL
+                    </span>
                   </div>
                 </div>
               </div>

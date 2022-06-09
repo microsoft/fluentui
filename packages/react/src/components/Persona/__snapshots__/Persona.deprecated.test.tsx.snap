@@ -259,7 +259,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 600;
             }
       >
-        KL
+        <span>
+          KL
+        </span>
       </div>
     </div>
   </div>

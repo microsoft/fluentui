@@ -82,7 +82,9 @@ exports[`Persona renders Persona children correctly 1`] = `
               font-weight: 600;
             }
       >
-        KL
+        <span>
+          KL
+        </span>
       </div>
     </div>
   </div>
@@ -590,7 +592,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 600;
             }
       >
-        KL
+        <span>
+          KL
+        </span>
       </div>
     </div>
   </div>
@@ -868,7 +872,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               font-weight: 600;
             }
       >
-        SV
+        <span>
+          SV
+        </span>
       </div>
       <span
         id="persona-coin-container"

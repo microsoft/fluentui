@@ -124,7 +124,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            TN
+            <span>
+              TN
+            </span>
           </div>
         </div>
       </div>
@@ -400,7 +402,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            TN
+            <span>
+              TN
+            </span>
           </div>
         </div>
       </div>
@@ -562,7 +566,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            TN
+            <span>
+              TN
+            </span>
           </div>
         </div>
       </div>
@@ -717,7 +723,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            AN
+            <span>
+              AN
+            </span>
           </div>
         </div>
       </div>
@@ -842,7 +850,9 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            TN
+            <span>
+              TN
+            </span>
           </div>
         </div>
       </div>
@@ -1083,7 +1093,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            TN
+            <span>
+              TN
+            </span>
           </div>
         </div>
       </div>
@@ -1216,7 +1228,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   font-weight: 600;
                 }
           >
-            AN
+            <span>
+              AN
+            </span>
           </div>
         </div>
       </div>
