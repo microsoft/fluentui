@@ -119,7 +119,7 @@ state.root.className = mergeClasses(
 ```ts
 // Before
 useTextStyles_unstable({
-  // User has to check docs to double check what the default shoud be.
+  // User has to check docs to double check what the default should be.
   align: 'start',
   block: false,
   font: 'monospace', // Only change from defaults
