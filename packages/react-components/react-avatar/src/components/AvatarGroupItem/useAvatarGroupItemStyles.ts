@@ -1,8 +1,6 @@
 import { useSizeStyles } from '../../Avatar';
-import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarSizes } from '../../Avatar';
 import type { AvatarGroupProps } from '../../AvatarGroup';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
@@ -14,7 +12,7 @@ export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots> = {
   overflowLabel: 'fui-AvatarGroupItem__overflowLabel',
 };
 
-const avatarGroupItemDividerWidthVar = '--fuiAvatarGroupItem--divierWidth';
+const avatarGroupItemDividerWidthVar = '--fuiAvatarGroupItem__divier--width';
 
 /**
  * Styles for the root slot
@@ -27,7 +25,7 @@ const useRootStyles = makeStyles({
     position: 'relative',
   },
   overflowItem: {
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
   },
   nonOverflowItem: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -122,9 +120,7 @@ const useSpreadStyles = makeStyles({
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
-  const avatarCount = useContextSelector(AvatarGroupContext, ctx => ctx.avatarCount);
-  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const { isOverflowItem, size } = state;
+  const { avatarCount, isOverflowItem, layout, size } = state;
 
   const rootStyles = useRootStyles();
   const pieStyles = usePieStyles();
@@ -136,7 +132,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
 
   const rootClasses = [rootStyles.base];
 
-  if (!isOverflowItem && avatarCount) {
+  if (!isOverflowItem) {
     rootClasses.push(rootStyles.nonOverflowItem);
     rootClasses.push(groupChildClassName);
     rootClasses.push(sizeStyles[size]);
