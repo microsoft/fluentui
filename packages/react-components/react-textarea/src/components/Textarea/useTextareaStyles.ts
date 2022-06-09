@@ -154,8 +154,6 @@ const useTextareaStyles = makeStyles({
     minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-      tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
     ...typographyStyles.caption1,
