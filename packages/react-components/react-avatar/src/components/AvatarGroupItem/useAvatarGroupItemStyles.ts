@@ -62,7 +62,7 @@ const usePieStyles = makeStyles({
   base: {
     position: 'absolute',
   },
-  twoPies: {
+  twoSlices: {
     '&:first-child': {
       clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
       left: '-25%',
@@ -72,7 +72,7 @@ const usePieStyles = makeStyles({
       left: '25%',
     },
   },
-  threePies: {
+  threeSlices: {
     '&:first-child': {
       clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
       left: '-25%',
@@ -84,7 +84,7 @@ const usePieStyles = makeStyles({
       transform: 'scale(0.5)',
       transformOrigin: '0 0',
     },
-    '&:nth-of-type(3)': {
+    '&:nth-child(3)': {
       clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) 0 0 var(${avatarGroupItemDividerWidthVar}))`,
       top: '50%',
     },
@@ -120,7 +120,7 @@ const useSpreadStyles = makeStyles({
  * Apply styling to the AvatarGroupItem slots based on the state
  */
 export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): AvatarGroupItemState => {
-  const { avatarCount, isOverflowItem, layout, size } = state;
+  const { nonOverflowAvatarsCount, isOverflowItem, layout, size } = state;
 
   const rootStyles = useRootStyles();
   const pieStyles = usePieStyles();
@@ -148,10 +148,10 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
         rootClasses.push(pieStyles.thickest);
       }
 
-      if (avatarCount === 2) {
-        rootClasses.push(pieStyles.twoPies);
-      } else if (avatarCount === 3) {
-        rootClasses.push(pieStyles.threePies);
+      if (nonOverflowAvatarsCount === 2) {
+        rootClasses.push(pieStyles.twoSlices);
+      } else if (nonOverflowAvatarsCount === 3) {
+        rootClasses.push(pieStyles.threeSlices);
       }
     }
   } else {

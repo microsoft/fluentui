@@ -10,11 +10,10 @@ import type { AvatarGroupState, AvatarGroupSlots } from './AvatarGroup.types';
  */
 export const renderAvatarGroup_unstable = (state: AvatarGroupState) => {
   const { slots, slotProps } = getSlots<AvatarGroupSlots>(state);
-  const { layout, size } = state;
-  const avatarCount = React.Children.count(state.root.children);
+  const { layout, size, nonOverflowAvatarsCount } = state;
 
   return (
-    <AvatarGroupContext.Provider value={{ layout, size, avatarCount }}>
+    <AvatarGroupContext.Provider value={{ layout, size, nonOverflowAvatarsCount }}>
       <slots.root {...slotProps.root}>
         {state.root.children}
         {state.hasOverflow && slots.overflowButton && slots.overflowContent && (

@@ -67,6 +67,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   });
 
   return {
+    nonOverflowAvatarsCount: rootChildren.length,
     hasOverflow: !!overflowChildren,
     layout,
     overflowIndicator,

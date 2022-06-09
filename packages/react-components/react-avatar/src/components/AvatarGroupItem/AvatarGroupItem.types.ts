@@ -20,7 +20,7 @@ export type AvatarGroupItemSlots = {
 /**
  * AvatarGroupItem Props
  */
-export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size'>;
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
 /**
  * State used in rendering AvatarGroupItem
@@ -33,7 +33,7 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
    */
   isOverflowItem?: boolean;
 
-  avatarCount: number;
+  nonOverflowAvatarsCount: number;
   layout: AvatarGroupProps['layout'];
   size: AvatarSizes;
 };
