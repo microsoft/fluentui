@@ -723,6 +723,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
               selectionMode={selectionMode}
               isSelectedOnFocus={isSelectedOnFocus}
+              selectionClearedOnEscapePress={isSelectedOnFocus}
               onItemInvoked={onItemInvoked}
               onItemContextMenu={onItemContextMenu}
               enterModalOnTouch={enterModalSelectionOnTouch}
