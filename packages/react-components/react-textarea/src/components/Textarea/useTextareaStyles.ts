@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
   interactive: {
     // This is all for the bottom focus border.
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
