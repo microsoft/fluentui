@@ -82,9 +82,7 @@ exports[`Persona renders Persona children correctly 1`] = `
               font-weight: 600;
             }
       >
-        <span>
-          KL
-        </span>
+        KL
       </div>
     </div>
   </div>
@@ -154,47 +152,6 @@ exports[`Persona renders Persona children correctly 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
     <span>
       Persona Children
     </span>
@@ -370,47 +327,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
   </div>
 </div>
 `;
@@ -588,47 +504,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
   </div>
 </div>
 `;
@@ -715,9 +590,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               font-weight: 600;
             }
       >
-        <span>
-          KL
-        </span>
+        KL
       </div>
     </div>
   </div>
@@ -787,47 +660,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
   </div>
 </div>
 `;
@@ -949,65 +781,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           text-align: left;
           width: 100%;
         }
-  >
-    <div
-      className=
-          ms-Persona-primaryText
-          {
-            color: #323130;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-          &:hover {
-            color: #201f1e;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-  </div>
+  />
 </div>
 `;
 
@@ -1094,9 +868,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               font-weight: 600;
             }
       >
-        <span>
-          SV
-        </span>
+        SV
       </div>
       <span
         id="persona-coin-container"
@@ -2334,9 +2106,7 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             font-weight: 600;
           }
     >
-      <span>
-        SV
-      </span>
+      SV
     </div>
   </div>
 </div>
@@ -2393,9 +2163,7 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             font-weight: 600;
           }
     >
-      <span>
-        JG
-      </span>
+      JG
     </div>
   </div>
 </div>
@@ -2452,9 +2220,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             font-weight: 600;
           }
     >
-      <span>
-        KL
-      </span>
+      KL
     </div>
   </div>
 </div>
@@ -2511,9 +2277,7 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             font-weight: 600;
           }
     >
-      <span>
-        KL
-      </span>
+      KL
     </div>
     <div
       className=
