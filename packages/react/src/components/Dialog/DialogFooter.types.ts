@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { DialogFooterBase } from './DialogFooter.base';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IReactProps } from '../../common/React.types';
 
 /**
  * {@docCategory Dialog}
@@ -11,8 +11,7 @@ export interface IDialogFooter {}
 /**
  * {@docCategory Dialog}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
+export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
   /**
    * Gets the component ref.
    */

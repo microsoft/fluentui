@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove deprecated React.props",
+  "packageName": "@fluentui/react",
+  "email": "manhducdkcb@gmail.com",
+  "dependentChangeType": "none"
+}
