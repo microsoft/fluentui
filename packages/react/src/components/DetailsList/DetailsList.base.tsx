@@ -724,6 +724,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               selectionMode={selectionMode}
               isSelectedOnFocus={isSelectedOnFocus}
               selectionClearedOnEscapePress={isSelectedOnFocus}
+              toggleWithoutModifierPressed={!isSelectedOnFocus}
               onItemInvoked={onItemInvoked}
               onItemContextMenu={onItemContextMenu}
               enterModalOnTouch={enterModalSelectionOnTouch}
