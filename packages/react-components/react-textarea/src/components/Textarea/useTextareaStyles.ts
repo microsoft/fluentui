@@ -71,14 +71,14 @@ const useRootStyles = makeStyles({
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
     },
-    ':focus-within:after': {
+    ':focus-within::after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
     },
-    ':focus-within:active:after': {
+    ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
