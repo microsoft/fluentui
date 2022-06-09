@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -34,7 +33,7 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
 
 // @public
-export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>;
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size'>;
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
@@ -46,26 +45,27 @@ export type AvatarGroupItemSlots = {
 // @public
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
+    size: AvatarSizes;
 };
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
-    overflowIndicator?: 'number-overflowed' | 'icon';
+    overflowIndicator?: 'count' | 'icon';
     size?: AvatarSizes;
-    strings?: AvatarGroupStrings;
 };
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
-    root: Slot<'div'>;
-    popoverTrigger?: Slot<typeof Button>;
-    popoverSurface?: Slot<typeof PopoverSurface>;
+    root: NonNullable<Slot<'div'>>;
+    overflowButton?: NonNullable<Slot<'button'>>;
+    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'maxAvatars' | 'size' | 'overflowIndicator'>> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
+    hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
 };
 

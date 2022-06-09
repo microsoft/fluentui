@@ -5,6 +5,8 @@ import { AddCircleRegular } from '@fluentui/react-icons';
 
 export interface SidebarProps {
   className?: string;
+  keyColor: string;
+  setKeyColor: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const useStyles = makeStyles({
@@ -39,6 +41,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
+  keyColor: {
+    paddingLeft: '0px',
+  },
   labels: {
     display: 'grid',
     gridTemplateColumns: '135px auto',
@@ -65,14 +70,14 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const lightThemeId = useId();
   const darkThemeId = useId();
 
-  const [keyColor, setKeyColor] = React.useState<string>('#006BC7');
-  const changeKeyColor = React.useCallback(e => setKeyColor(e.target.value), [setKeyColor]);
-
   const [lightTheme, setLightTheme] = React.useState<string>('#FFFFFF');
   const changeLightTheme = React.useCallback(e => setLightTheme(e.target.value), [setLightTheme]);
 
   const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
   const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
+
+  const handleOnBlur = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
+  const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
@@ -88,9 +93,16 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         <div className={styles.inputs}>
           <Label htmlFor={keyColorId}>Key Color Value</Label>
           <div className={styles.labels}>
-            <Input size="large" appearance="underline" id={keyColorId} />
-            <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} onChange={changeKeyColor} />
+            <Input
+              className={styles.keyColor}
+              size="large"
+              appearance="underline"
+              id={keyColorId}
+              value={props.keyColor}
+              onChange={handleOnChange}
+            />
+            <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
+              <input className={styles.color} type="color" id={keyColorId} onBlur={handleOnBlur} />
             </div>
           </div>
         </div>
@@ -98,18 +110,38 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         <div className={styles.inputs}>
           <Label htmlFor={lightThemeId}>Light Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={lightThemeId} />
+            <Input
+              size="small"
+              appearance="underline"
+              id={lightThemeId}
+              value={lightTheme}
+              onChange={changeLightTheme}
+            />
             <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
-              <input className={styles.color} type="color" id={lightThemeId} onChange={changeLightTheme} />
+              <input
+                disabled={true}
+                className={styles.color}
+                type="color"
+                id={lightThemeId}
+                value={lightTheme}
+                onChange={changeLightTheme}
+              />
             </div>
           </div>
         </div>
         <div className={styles.inputs}>
           <Label htmlFor={darkThemeId}>Dark Theme</Label>
           <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={darkThemeId} />
+            <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
             <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
-              <input className={styles.color} type="color" id={darkThemeId} onChange={changeDarkTheme} />
+              <input
+                disabled={true}
+                className={styles.color}
+                type="color"
+                id={darkThemeId}
+                value={darkTheme}
+                onChange={changeDarkTheme}
+              />
             </div>
           </div>
         </div>

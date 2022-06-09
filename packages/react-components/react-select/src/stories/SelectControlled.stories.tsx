@@ -1,20 +1,24 @@
 import * as React from 'react';
-import { Select } from '../index';
+import { Select, SelectProps } from '../index';
 import { useId } from '@fluentui/react-utilities';
 
 export const Controlled = () => {
   const selectId = useId();
-  const [value, setValue] = React.useState<'red' | 'green' | 'blue'>('red');
+  const [value, setValue] = React.useState('Red');
+
+  const onChange: SelectProps['onChange'] = (event, data) => {
+    setValue(data.value);
+  };
 
   return (
     <>
       <label htmlFor={selectId}>Color</label>
-      <Select id={selectId}>
-        <option selected={value === 'red'}>Red</option>
-        <option selected={value === 'green'}>Green</option>
-        <option selected={value === 'blue'}>Blue</option>
+      <Select id={selectId} onChange={onChange} value={value}>
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
       </Select>
-      <button onClick={() => setValue('blue')}>Select Blue</button>
+      <button onClick={() => setValue('Blue')}>Select Blue</button>
     </>
   );
 };

@@ -1,23 +1,39 @@
 # @fluentui/react-divider
 
-**React Divider components for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**Divider components for [Fluent UI](https://aka.ms/fluentui-storybook)**
 
 The Divider component represents a visual separator, that may contain content. A Divider can be vertical or horizontal.
-
-## STATUS: WIP 🚧
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 ## Usage
 
 To import Divider:
 
 ```js
-import { Divider } from '@fluentui/react-divider';
-```
-
-Once the Divider component graduates to a production release, the component will be available at:
-
-```js
 import { Divider } from '@fluentui/react-components';
 ```
+
+### Examples
+
+```jsx
+<Divider />
+<Divider>This is a divider</Divider>
+<Divider alignContent="center">This is a divider</Divider>
+<Divider appearance="subtle">This is a divider</Divider>
+<Divider inset>This is a divider</Divider>
+<Divider vertical>This is a divider</Divider>
+```
+
+See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+
+Alternatively, run Storybook locally with:
+
+1. `yarn start`
+2. Select `react-divider` from the list.
+
+### Specification
+
+See [SPEC.md](./SPEC.md).
+
+### Migration Guide
+
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Divider implementation.

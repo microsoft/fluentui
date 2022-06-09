@@ -21,9 +21,10 @@ export const Select: ForwardRefComponent<SelectProps>;
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
 // @public (undocumented)
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & {
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
     appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     inline?: boolean;
+    onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
     size?: 'small' | 'medium' | 'large';
 };
 

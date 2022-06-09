@@ -5,7 +5,7 @@ module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescr
   stories: [
     ...rootMain.stories,
     '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(ts|tsx)',
+    '../src/**/index.stories.@(ts|tsx)',
     // `.beta` was added so AvatarGroup is not shown in the docsite until it's ready for unstable.
     // Refer to #23216 for more details.
     '../src/**/*.stories.beta.@(ts|tsx)',

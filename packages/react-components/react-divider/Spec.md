@@ -59,7 +59,7 @@ The `Divider` component has four appearance variants:
 
 ## API
 
-From [Divider.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-divider/src/components/Divider/Divider.types.ts)
+See API at [Divider.types.tsx](./src/components/Divider/Divider.types.ts).
 
 ## HTML Structure
 
@@ -73,7 +73,7 @@ From [Divider.types.tsx](https://github.com/microsoft/fluentui/blob/master/packa
 
 ## Migration
 
-[See MIGRATION.md](./Migration.md)
+[See MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 

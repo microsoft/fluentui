@@ -8,7 +8,7 @@ import type {
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
-import { useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM } from './constants';
 
@@ -23,28 +23,34 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
   const { overflowAxis, overflowDirection, padding, minimumVisible, onUpdateItemVisibility } = options;
+
   // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
   const updateOverflowItems = useEventCallback(update);
-  const [overflowManager] = React.useState<OverflowManager>(() => createOverflowManager());
+
+  const [overflowManager] = React.useState<OverflowManager | null>(() =>
+    canUseDOM() ? createOverflowManager() : null,
+  );
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
       return;
     }
 
-    overflowManager.observe(containerRef.current, {
-      overflowDirection: overflowDirection ?? 'end',
-      overflowAxis: overflowAxis ?? 'horizontal',
-      padding: padding ?? 10,
-      minimumVisible: minimumVisible ?? 0,
-      onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
-      onUpdateOverflow: updateOverflowItems ?? (() => undefined),
-    });
+    if (overflowManager) {
+      overflowManager.observe(containerRef.current, {
+        overflowDirection: overflowDirection ?? 'end',
+        overflowAxis: overflowAxis ?? 'horizontal',
+        padding: padding ?? 10,
+        minimumVisible: minimumVisible ?? 0,
+        onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
+        onUpdateOverflow: updateOverflowItems ?? (() => undefined),
+      });
 
-    return () => {
-      overflowManager.disconnect();
-    };
+      return () => {
+        overflowManager.disconnect();
+      };
+    }
   }, [
     updateOverflowItems,
     overflowManager,
@@ -57,20 +63,20 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
 
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {
-      overflowManager.addItem(item);
+      overflowManager?.addItem(item);
       item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
 
       return () => {
         item.element.removeAttribute(DATA_OVERFLOWING);
         item.element.removeAttribute(DATA_OVERFLOW_ITEM);
-        overflowManager.removeItem(item.id);
+        overflowManager?.removeItem(item.id);
       };
     },
     [overflowManager],
   );
 
   const updateOverflow = React.useCallback(() => {
-    overflowManager.update();
+    overflowManager?.update();
   }, [overflowManager]);
 
   return {
