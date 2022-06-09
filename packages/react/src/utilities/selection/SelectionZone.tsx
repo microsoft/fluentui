@@ -104,6 +104,13 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
    * @defaultvalue true
    */
   selectionClearedOnSurfaceClick?: boolean;
+
+  /**
+   * Determines if pressing the Escape clears the selection.
+   *
+   * @defaultvalue true
+   */
+  selectionClearedOnEscapePress?: boolean;
   /**
    * Optional callback for when an item is
    * invoked via ENTER or double-click.
@@ -487,7 +494,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
     const isSelectionDisabled = this._isSelectionDisabled(target);
 
-    const { selection } = this.props;
+    const { selection, selectionClearedOnEscapePress } = this.props;
     // eslint-disable-next-line deprecation/deprecation
     const isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
     // eslint-disable-next-line deprecation/deprecation
@@ -511,8 +518,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
       return;
     }
 
-    // If escape is pressed, clear selection (if any are selected.)
-    if (isClearSelectionKey && selection.getSelectedCount() > 0) {
+    // If escape is pressed and the component is configured to clear on escape press,
+    // clear selection (if any are selected.)
+    if (selectionClearedOnEscapePress && isClearSelectionKey && selection.getSelectedCount() > 0) {
       if (!isSelectionDisabled) {
         selection.setAllSelected(false);
       }
