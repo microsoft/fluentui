@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: Remove refs to _activeElement and _defaultFocusElement if they are no longer contained in _root",
-  "packageName": "@fluentui/react-focus",
-  "email": "jspurlin@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 09 Jun 2022 07:45:28 GMT",
+      "tag": "@fluentui/react_v8.72.3",
+      "version": "8.72.3",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "2da2d47e3dac6f8f4396ab112ab80b1dd34cc9ac",
+            "comment": "Bump cypress to v10"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.0",
+            "commit": "960f5354ba3d3e1d2ff7267ea1c70c2eddeb80de"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jun 2022 07:48:02 GMT",
       "tag": "@fluentui/react_v8.72.2",
       "version": "8.72.2",
