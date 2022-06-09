@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode",
+  "packageName": "@fluentui/react",
+  "email": "shmiitian@gmail.com",
+  "dependentChangeType": "patch"
+}
