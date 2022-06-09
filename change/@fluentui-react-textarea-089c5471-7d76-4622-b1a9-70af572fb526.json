@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Adding missing spacing to top+bottom padding, font family to large variant, and min-height to size variants.",
+  "comment": "fix: Adding missing spacing to top+bottom padding, font family to large variant, and min-height to size variants.",
   "packageName": "@fluentui/react-textarea",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
