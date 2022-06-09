@@ -76,7 +76,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
   const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
 
-  const handleOnBlur = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
   const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
 
   return (
@@ -102,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               onChange={handleOnChange}
             />
             <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} onBlur={handleOnBlur} />
+              <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
             </div>
           </div>
         </div>
