@@ -14,6 +14,7 @@ export {
   CardHeader,
   CardPreview,
   cardClassNames,
+  cardCSSVars,
   cardFooterClassNames,
   cardHeaderClassNames,
   cardPreviewClassNames,
@@ -69,3 +70,41 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
+
+export {
+  Toolbar,
+  ToolbarDivider,
+  ToolbarToggleButton,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbar_unstable,
+  useToolbarDividerStyles_unstable,
+  useToolbarStyles_unstable,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from '@fluentui/react-toolbar';
+
+export {
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  DATA_OVERFLOWING,
+  DATA_OVERFLOW_MENU,
+  DATA_OVERFLOW_ITEM,
+} from '@fluentui/react-overflow';
+
+export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

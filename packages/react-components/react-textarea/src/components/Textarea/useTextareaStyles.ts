@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TextareaSlots, TextareaState } from './Textarea.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import type { TextareaSlots, TextareaState } from './Textarea.types';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   root: 'fui-Textarea',
@@ -132,6 +132,7 @@ const useTextareaStyles = makeStyles({
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
+    fontFamily: tokens.fontFamilyBase,
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -150,22 +151,29 @@ const useTextareaStyles = makeStyles({
   // affected by changing the padding of the root.
   small: {
     height: textareaHeight.small,
+    minHeight: '40px',
     ...shorthands.padding(
-      '0',
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-      '0',
+      tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
     ...typographyStyles.caption1,
   },
   medium: {
     height: textareaHeight.medium,
-    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
+    minHeight: '52px',
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
     ...typographyStyles.body1,
   },
   large: {
     height: textareaHeight.large,
-    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`),
+    minHeight: '64px',
+    ...shorthands.padding(
+      tokens.spacingVerticalS,
+      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
+    ),
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
   },

@@ -4,6 +4,7 @@ import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
 
 export { Default } from './PopoverDefault.stories';
+export { WithArrow } from './PopoverWithArrow.stories';
 export { TrappingFocus } from './PopoverTrappingFocus.stories';
 export { ControllingOpenAndClose } from './PopoverControllingOpenAndClose.stories';
 export { NestedPopovers } from './PopoverNestedPopovers.stories';

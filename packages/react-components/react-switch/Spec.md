@@ -109,7 +109,7 @@ https://github.com/microsoft/fluentui/blob/master/packages/react-checkbox/src/co
 
 ### Switch Props
 
-See [Switch.types.ts](https://github.com/microsoft/fluentui/blob/master/packages/react-switch/src/components/Switch/Switch.types.ts).
+See API at [Switch.types.ts](./src/components/Switch/Switch.types.ts).
 
 ## Structure
 
@@ -165,7 +165,7 @@ _With label after the track thumb indicator:_
 
 ## Migration
 
-See [MIGRATION.md](MIGRATION.md).
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 

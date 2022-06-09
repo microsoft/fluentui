@@ -28,7 +28,7 @@ export const ImperativePositionUpdate = () => {
   });
 
   return (
-    <Popover positioning={{ position: 'below', positioningRef }} noArrow onOpenChange={onOpenChange}>
+    <Popover positioning={{ position: 'below', positioningRef }} onOpenChange={onOpenChange}>
       <PopoverTrigger>
         <Button appearance="primary">Click me</Button>
       </PopoverTrigger>

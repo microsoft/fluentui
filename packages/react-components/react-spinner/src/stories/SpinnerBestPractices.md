@@ -1,6 +1,11 @@
+<details>
+<summary>
+ Best Practices
+</summary>
+
 ### Do
 
-- Add `tabIndex={-1}` to your Spinner to allow it to be picked up by screen readers.
+- If your Spinner is the only element on the page, set tabIndex={0} on it to allow it to be picked up by screen readers.
 - Use a Spinner when a task is not immediate.
 - Use one Spinner at a time.
 - Descriptive verbs are appropriate under a Spinner to help the user understand what's happening. Ie: Saving, processing, updating.
@@ -11,3 +16,5 @@
 - Don’t use a Spinner when performing immediate tasks.
 - Don't show multiple Spinners at the same time.
 - Don't include more than a few words when paired with a Spinner.
+
+</details>

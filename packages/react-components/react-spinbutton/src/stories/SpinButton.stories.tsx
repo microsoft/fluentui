@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { SpinButton } from '../index';
 
@@ -15,22 +14,6 @@ export { Appearance } from './SpinButtonAppearance.stories';
 export { RTL } from './SpinButtonRTL.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-
-const useDecoratorStyles = makeStyles({
-  base: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: 'transparent',
-    rowGap: '2px',
-  },
-
-  docsViewMode: {
-    maxWidth: '500px',
-    ...shorthands.padding('24px'),
-  },
-});
-
 const meta: Meta = {
   title: 'Preview Components/SpinButton',
   component: SpinButton,
@@ -41,19 +24,6 @@ const meta: Meta = {
       },
     },
   },
-  decorators: [
-    (Story, context) => {
-      const decoratorStyles = useDecoratorStyles();
-
-      const className = mergeClasses(decoratorStyles.base, context.viewMode === 'docs' && decoratorStyles.docsViewMode);
-
-      return (
-        <div className={className}>
-          <Story />
-        </div>
-      );
-    },
-  ],
 };
 
 export default meta;

@@ -1,22 +1,18 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '../index';
+import { CounterBadge } from '../index';
 
-export const Sizes = (args: CounterBadgeProps) => {
+export const Sizes = () => {
   return (
     <>
-      <CounterBadge {...args} size="tiny" />
-      <CounterBadge {...args} size="extra-small" />
-      <CounterBadge {...args} size="small" />
-      <CounterBadge {...args} size="medium" />
-      <CounterBadge {...args} size="large" />
-      <CounterBadge {...args} size="extra-large" />
+      <CounterBadge count={5} size="tiny" />
+      <CounterBadge count={5} size="extra-small" />
+      <CounterBadge count={5} size="small" />
+      <CounterBadge count={5} size="medium" />
+      <CounterBadge count={5} size="large" />
+      <CounterBadge count={5} size="extra-large" />
     </>
   );
-};
-
-Sizes.args = {
-  count: 5,
 };
 
 Sizes.parameters = {

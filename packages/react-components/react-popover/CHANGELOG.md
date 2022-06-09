@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Mon, 23 May 2022 18:56:46 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.13)
+
+Tue, 31 May 2022 21:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.12..@fluentui/react-popover_v9.0.0-rc.13)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- update popover trigger to use aria-expanded instead of aria-haspopup ([PR #23127](https://github.com/microsoft/fluentui/pull/23127) by sarah.higley@microsoft.com)
+- updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-context-selector to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-portal to v9.0.0-rc.13 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.11 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.13 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.11..@fluentui/react-popover_v9.0.0-rc.12)
+
+### Changes
+
+- BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`. ([PR #23205](https://github.com/microsoft/fluentui/pull/23205) by behowell@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.11)
 

@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 23 May 2022 18:56:47 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.13)
+
+Tue, 31 May 2022 21:28:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-rc.12..@fluentui/react-provider_v9.0.0-rc.13)
+
+### Changes
+
+- BREAKING: FluentProvider now adds `line-height` by default ([PR #23279](https://github.com/microsoft/fluentui/pull/23279) by behowell@microsoft.com)
+- updates import to react-shared-components, removes re-export to provider ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- remove export useTheme ([PR #23335](https://github.com/microsoft/fluentui/pull/23335) by me@levithomason.com)
+- chore: replace useConst() usage ([PR #23319](https://github.com/microsoft/fluentui/pull/23319) by olfedias@microsoft.com)
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.13 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.0-rc.11..@fluentui/react-provider_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.0-rc.11)
 

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-list
 
-This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.0.0-alpha.0)
+
+Tue, 31 May 2022 21:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.0.0-alpha.0..@fluentui/react-list_v9.0.0-alpha.0)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.0.0-alpha.0)
 

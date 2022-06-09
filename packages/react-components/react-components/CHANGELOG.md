@@ -1,8 +1,155 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 May 2022 18:56:39 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.14)
+
+Tue, 31 May 2022 21:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.13..@fluentui/react-components_v9.0.0-rc.14)
+
+### Changes
+
+- `@fluentui/react-accordion`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-alert`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+  - Creating AvatarGroupItem component. ([PR #23287](https://github.com/microsoft/fluentui/pull/23287) by esteban.230@hotmail.com)
+  - Adding .beta to AvatarGroup stories so it's not shown in the docsite. ([PR #23216](https://github.com/microsoft/fluentui/pull/23216) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - feat: Add `size` property to control card padding and border radius ([PR #22915](https://github.com/microsoft/fluentui/pull/22915) by 39736248+andrefcdias@users.noreply.github.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - feat(react-card): CSS var for `size` prop is now exported ([PR #22915](https://github.com/microsoft/fluentui/pull/22915) by 39736248+andrefcdias@users.noreply.github.com)
+  - remove exports for internal APIs ([PR #23319](https://github.com/microsoft/fluentui/pull/23319) by olfedias@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-input`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-label`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-link`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - update popover trigger to use aria-expanded instead of aria-haspopup ([PR #23127](https://github.com/microsoft/fluentui/pull/23127) by sarah.higley@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal`
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal-compat`
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - BREAKING: FluentProvider now adds `line-height` by default ([PR #23279](https://github.com/microsoft/fluentui/pull/23279) by behowell@microsoft.com)
+  - updates import to react-shared-components, removes re-export to provider ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+  - remove export useTheme ([PR #23335](https://github.com/microsoft/fluentui/pull/23335) by me@levithomason.com)
+  - chore: replace useConst() usage ([PR #23319](https://github.com/microsoft/fluentui/pull/23319) by olfedias@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-select`
+  - update disabled select style ([PR #23265](https://github.com/microsoft/fluentui/pull/23265) by sarah.higley@microsoft.com)
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - Remove usage of focus-visible pseudo-class. ([PR #23282](https://github.com/microsoft/fluentui/pull/23282) by tristan.watanabe@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - remove unused MenuContext ([PR #23277](https://github.com/microsoft/fluentui/pull/23277) by olfedias@microsoft.com)
+  - remove useTheme from exports ([PR #23335](https://github.com/microsoft/fluentui/pull/23335) by me@levithomason.com)
+  - mark context hooks and providers to unstable ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-slider`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - Remove usage of focus-visible pseudo-class. ([PR #23305](https://github.com/microsoft/fluentui/pull/23305) by tristan.watanabe@gmail.com)
+- `@fluentui/react-switch`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-text`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+  - updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - remove exports for internals APIs & unused hooks ([PR #23319](https://github.com/microsoft/fluentui/pull/23319) by olfedias@microsoft.com)
+
+## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.13)
+
+Thu, 26 May 2022 21:01:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.12..@fluentui/react-components_v9.0.0-rc.13)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - Publish react-alert as unstable component ([PR #23198](https://github.com/microsoft/fluentui/pull/23198) by rohitpag@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix react-avatar: use initials as a fallback label even when no id is manually defined ([PR #23258](https://github.com/microsoft/fluentui/pull/23258) by sarah.higley@microsoft.com)
+- `@fluentui/react-badge`
+  - remove aria-hidden from badge ([PR #22858](https://github.com/microsoft/fluentui/pull/22858) by mgodbolt@microsoft.com)
+- `@fluentui/react-button`
+  - ToggleButton: Differentiating hover and checked styles. ([PR #23209](https://github.com/microsoft/fluentui/pull/23209) by Humberto.Morimoto@microsoft.com)
+  - ToggleButton: Apply thicker border width to checked outline toggle buttons. ([PR #23207](https://github.com/microsoft/fluentui/pull/23207) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-components`
+  - add Select to Preview Components ([PR #23208](https://github.com/microsoft/fluentui/pull/23208) by sarah.higley@microsoft.com)
+  - feat: Export react-overflow utilities as unstable ([PR #23226](https://github.com/microsoft/fluentui/pull/23226) by lingfangao@hotmail.com)
+  - Publish react-alert as unstable component ([PR #23198](https://github.com/microsoft/fluentui/pull/23198) by rohitpag@microsoft.com)
+  - BREAKING: fix: Stop exporting `Portal` component from react-components ([PR #23178](https://github.com/microsoft/fluentui/pull/23178) by lingfangao@hotmail.com)
+  - export slider var names from top level ([PR #23257](https://github.com/microsoft/fluentui/pull/23257) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - Removing additional focus ring in native input for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
+- `@fluentui/react-label`
+  - Renaming strong prop to weight to align with Text. ([PR #23250](https://github.com/microsoft/fluentui/pull/23250) by esteban.230@hotmail.com)
+- `@fluentui/react-menu`
+  - fix: MenuDivider should be visible in Windows high contrast mode ([PR #23238](https://github.com/microsoft/fluentui/pull/23238) by lingfangao@hotmail.com)
+  - fix: use neutral foreground 2 as text color for menu item ([PR #22540](https://github.com/microsoft/fluentui/pull/22540) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - BREAKING: Popover no longer has an arrow by default. The `noArrow` prop is replaced by `withArrow`. ([PR #23205](https://github.com/microsoft/fluentui/pull/23205) by behowell@microsoft.com)
+- `@fluentui/react-select`
+  - add Select to Preview Components ([PR #23208](https://github.com/microsoft/fluentui/pull/23208) by sarah.higley@microsoft.com)
+- `@fluentui/react-slider`
+  - new high contrast styles for slider steps ([PR #23253](https://github.com/microsoft/fluentui/pull/23253) by mgodbolt@microsoft.com)
+  - BREAKING: Remove slider origin to align with design and avoid inaccessible design ([PR #23257](https://github.com/microsoft/fluentui/pull/23257) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Removing additional focus ring in native input for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
+- `@fluentui/react-spinner`
+  - BREAKING: Remove `status` prop in Spinner ([PR #23204](https://github.com/microsoft/fluentui/pull/23204) by ololubek@microsoft.com)
+- `@fluentui/react-tabs`
+  - Update README.md ([PR #23200](https://github.com/microsoft/fluentui/pull/23200) by gcox@microsoft.com)
+- `@fluentui/react-tabster`
+  - Remove usage of focus-visible pseudo-class to conform to browser support matrix. ([PR #23255](https://github.com/microsoft/fluentui/pull/23255) by tristan.watanabe@gmail.com)
+- `@fluentui/react-textarea`
+  - Removing additional focus ring in native textarea for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.12)
 

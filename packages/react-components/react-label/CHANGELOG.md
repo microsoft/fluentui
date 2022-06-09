@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Mon, 23 May 2022 18:56:45 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.5)
+
+Tue, 31 May 2022 21:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-rc.4..@fluentui/react-label_v9.0.0-rc.5)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.0.0-rc.3..@fluentui/react-label_v9.0.0-rc.4)
+
+### Changes
+
+- Renaming strong prop to weight to align with Text. ([PR #23250](https://github.com/microsoft/fluentui/pull/23250) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.0.0-rc.3)
 

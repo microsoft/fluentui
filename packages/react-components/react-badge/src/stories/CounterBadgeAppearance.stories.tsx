@@ -1,18 +1,14 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '../index';
+import { CounterBadge } from '../index';
 
-export const Appearance = (args: CounterBadgeProps) => {
+export const Appearance = () => {
   return (
     <>
-      <CounterBadge {...args} appearance="filled" />
-      <CounterBadge {...args} appearance="ghost" />
+      <CounterBadge count={5} appearance="filled" />
+      <CounterBadge count={5} appearance="ghost" />
     </>
   );
-};
-
-Appearance.args = {
-  count: 5,
 };
 
 Appearance.parameters = {
