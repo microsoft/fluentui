@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Persona no longer renders empty divs for secondary, tertiary, and optional text if those are not present",
+  "comment": "fix: Persona no longer renders empty divs for secondaryText, tertiaryText, and optionalText if not present",
   "packageName": "@fluentui/react",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
