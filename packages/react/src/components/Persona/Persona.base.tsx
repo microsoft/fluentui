@@ -60,7 +60,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       renderFunction: IRenderFunction<IPersonaProps> | undefined,
       defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
     ): JSX.Element | undefined => {
-      const content = renderFunction?.(props, defaultRenderFunction);
+      const content = renderFunction && renderFunction(props, defaultRenderFunction);
       return content ? (
         <div dir="auto" className={elementClassNames}>
           {content}
