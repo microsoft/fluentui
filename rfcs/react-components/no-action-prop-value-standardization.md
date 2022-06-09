@@ -96,7 +96,7 @@ const state = {
 };
 
 // useTextStyles.ts
-const { font = '_default' } = state; // Applying a default to keep using a lookup
+const { font } = state;
 
 const fontLookup = {
   _default: undefined,
@@ -108,7 +108,7 @@ const fontLookup = {
 state.root.className = mergeClasses(
   cardClassNames.root,
   styles.root,
-  fontLookup[font],
+  fontLookup[font ?? '_default'], // Applying a default to keep usage of a lookup
   // {...}
   state.root.className,
 );
