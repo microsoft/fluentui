@@ -1247,6 +1247,12 @@ function setupDummyPackage(
     root: `packages/${normalizedPkgName}`,
   };
 
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const jestConfigTemplate = fs.readFileSync(
+    path.join(__dirname, '__fixtures__', 'old-jest-config.js__tmpl__'),
+    'utf-8',
+  );
+
   const templates = {
     packageJson: {
       name: pkgName,
@@ -1269,17 +1275,7 @@ function setupDummyPackage(
     tsConfig: {
       ...normalizedOptions.tsConfig,
     },
-    jestConfig: stripIndents`
-      const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-      const path = require('path');
-
-      const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-      });
-
-      module.exports = config;
-    `,
+    jestConfig: stripIndents`${jestConfigTemplate}`,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
@@ -1354,16 +1350,9 @@ function setupDummyPackage(
 }
 
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
-  tree.write(
-    `${projectConfig.root}/src/common/isConformant.ts`,
-    stripIndents`
-          import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-
-          export function isConformant<TProps = {}>(
-            testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
-          ){}
-        `,
-  );
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
+  tree.write(`${projectConfig.root}/src/common/isConformant.ts`, stripIndents`${template}`);
 }
 
 function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
