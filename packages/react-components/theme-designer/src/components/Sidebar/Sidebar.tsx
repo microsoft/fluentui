@@ -102,7 +102,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               onChange={handleOnChange}
             />
             <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} onBlur={handleOnBlur} />
+              <input className={styles.color} type="color" id={keyColorId} onChange={handleOnBlur} />
             </div>
           </div>
         </div>
