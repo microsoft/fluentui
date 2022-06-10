@@ -33,11 +33,11 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
 
 // @public
-export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size'>;
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div', 'li'>>;
+    root: NonNullable<Slot<'div'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
     overflowLabel: NonNullable<Slot<'span'>>;
 };
@@ -45,6 +45,8 @@ export type AvatarGroupItemSlots = {
 // @public
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
+    nonOverflowAvatarsCount: number;
+    layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
 };
 
@@ -67,6 +69,7 @@ export type AvatarGroupSlots = {
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
     hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
+    nonOverflowAvatarsCount: number;
 };
 
 // @public

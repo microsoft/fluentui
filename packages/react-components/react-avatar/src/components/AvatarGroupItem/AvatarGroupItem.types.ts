@@ -1,8 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { Avatar, AvatarSizes } from '../../Avatar';
+import { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 
 export type AvatarGroupItemSlots = {
-  root: NonNullable<Slot<'div', 'li'>>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Avatar that represents a person or entity.
@@ -19,7 +20,7 @@ export type AvatarGroupItemSlots = {
 /**
  * AvatarGroupItem Props
  */
-export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size'>;
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
 /**
  * State used in rendering AvatarGroupItem
@@ -32,5 +33,7 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
    */
   isOverflowItem?: boolean;
 
+  nonOverflowAvatarsCount: number;
+  layout: AvatarGroupProps['layout'];
   size: AvatarSizes;
 };
