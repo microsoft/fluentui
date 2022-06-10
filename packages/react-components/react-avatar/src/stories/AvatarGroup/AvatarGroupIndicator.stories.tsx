@@ -46,7 +46,7 @@ Indicator.parameters = {
   docs: {
     description: {
       story: `An AvatarGroup supports an icon and a count overflow indicator.
-        When size is less than 24 icon will be used by default.`,
+        When size is less than 24, then icon will be used by default.`,
     },
   },
 };

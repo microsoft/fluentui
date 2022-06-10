@@ -45,7 +45,8 @@ export const MaxAvatars = () => {
 MaxAvatars.parameters = {
   docs: {
     description: {
-      story: 'An AvatarGroup supports a custom number of AvatarGroupItems to render before overflowing.',
+      story: `An AvatarGroup supports a custom number of AvatarGroupItems to render before overflowing.
+      The default is 5.`,
     },
   },
 };
