@@ -1,8 +1,8 @@
 import * as React from 'react';
-
+import { DecoratorFunction } from '@storybook/addons';
 import { themes, defaultTheme, FluentProvider } from '../theme';
 import { THEME_ID } from '../constants';
-import { FluentGlobals, FluentStoryContext } from '../hooks';
+import { FluentGlobals } from '../hooks';
 
 import { Theme } from '@fluentui/react-theme';
 
@@ -13,7 +13,7 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
   return { theme };
 };
 
-export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
+export const withFluentProvider: DecoratorFunction<JSX.Element> = (StoryFn, context) => {
   const { theme } = getActiveFluentTheme(context.globals);
 
   return (

@@ -5,6 +5,7 @@
 ```ts
 
 import { Args } from '@storybook/api';
+import { DecoratorFunction } from '@storybook/addons';
 import { StoryContext } from '@storybook/addons';
 import type { Theme } from '@fluentui/react-theme';
 
@@ -48,6 +49,9 @@ export const themes: readonly [{
     readonly label: "Teams High Contrast";
     readonly theme: Theme;
 }];
+
+// @public (undocumented)
+export const withFluentProvider: DecoratorFunction<JSX.Element>;
 
 // (No @packageDocumentation comment for this package)
 

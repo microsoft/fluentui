@@ -1,4 +1,5 @@
-import { withFluentProvider, withStrictMode } from '@fluentui/react-storybook';
+import { withStrictMode } from '@fluentui/react-storybook';
+import { withFluentProvider } from '@fluentui/react-storybook-addon';
 import 'cypress-storybook/react';
 import * as dedent from 'dedent';
 import './docs-root.css';
