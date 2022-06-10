@@ -11,12 +11,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const Layout = () => {
+export const Indicator = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <AvatarGroup layout="spread">
+      <AvatarGroup overflowIndicator="count">
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
@@ -27,18 +27,7 @@ export const Layout = () => {
         <AvatarGroupItem name="Robert Tolbert" />
         <AvatarGroupItem name="Kevin Sturgis" />
       </AvatarGroup>
-      <AvatarGroup layout="stack">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
-      </AvatarGroup>
-      <AvatarGroup layout="pie">
+      <AvatarGroup overflowIndicator="icon">
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
@@ -51,4 +40,13 @@ export const Layout = () => {
       </AvatarGroup>
     </div>
   );
+};
+
+Indicator.parameters = {
+  docs: {
+    description: {
+      story: `An AvatarGroup supports an icon and a count overflow indicator.
+        When size is less than 24 icon will be used by default`,
+    },
+  },
 };
