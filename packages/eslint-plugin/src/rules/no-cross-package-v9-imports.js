@@ -21,9 +21,9 @@ module.exports = createRule({
   defaultOptions: [],
   create: context => {
     /**
-     * @type {import("@typescript-eslint/types/dist/ts-estree").Range}
+     * @type {import("@typescript-eslint/types/dist/ts-estree").ImportClause}
      */
-    let reactComponentsImportNodeRange;
+    let reactComponentsImportNode;
 
     return {
       ImportDeclaration: imprt => {
@@ -38,7 +38,7 @@ module.exports = createRule({
           imprt.source.type === AST_NODE_TYPES.Literal &&
           imprt.source.value === '@fluentui/react-components'
         ) {
-          reactComponentsImportNodeRange = specifiers[specifiers.length - 1].range;
+          reactComponentsImportNode = specifiers[specifiers.length - 1];
         }
 
         if (
@@ -48,8 +48,8 @@ module.exports = createRule({
             imprt.source.value.includes('@fluentui/react-')) ||
           imprt.source.value.includes('@griffel/react')
         ) {
-          if (!reactComponentsImportNodeRange) {
-            reactComponentsImportNodeRange = specifiers[specifiers.length - 1].range;
+          if (!reactComponentsImportNode) {
+            reactComponentsImportNode = specifiers[specifiers.length - 1];
             context.report({
               node: imprt,
               messageId: 'crossPackageImport',
@@ -66,7 +66,7 @@ module.exports = createRule({
               data: { packageName: imprt.source.value },
               fix: fixer => {
                 const importsToAdd = `, ${imprt.specifiers.map(specifier => specifier.local.name).join(', ')}`;
-                return [fixer.insertTextAfterRange(reactComponentsImportNodeRange, importsToAdd), fixer.remove(imprt)];
+                return [fixer.insertTextAfterRange(reactComponentsImportNode.range, importsToAdd), fixer.remove(imprt)];
               },
             });
           }
