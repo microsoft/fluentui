@@ -352,7 +352,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           (target === itemRoot || this._shouldAutoSelect(target)) &&
           !this._isShiftPressed &&
           !this._isCtrlPressed &&
-          !this._isMetaPressed
+          !this._isMetaPressed &&
+          !this.props.toggleWithoutModifierPressed
         ) {
           this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
           break;
