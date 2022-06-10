@@ -10,6 +10,8 @@ export interface AccessibilityCheckerProps {
 }
 
 export interface ContrastRatioPair {
+  background: string;
+  foreground: string;
   contrastRatioValue: string;
   contrastRatioPair: string;
   colorPair: string;
@@ -28,26 +30,32 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
 
     const currContrastRatioPair = background + ' on ' + foreground;
 
+    const pair = {
+      background: background,
+      foreground: foreground,
+      contrastRatioValue: contrastRatioString,
+      contrastRatioPair: currContrastRatioPair,
+      colorPair: colorPairString,
+    };
+
     if (currContrastRatio < 4.5) {
-      nonAccessiblePairs.push({
-        contrastRatioValue: contrastRatioString,
-        contrastRatioPair: currContrastRatioPair,
-        colorPair: colorPairString,
-      });
+      nonAccessiblePairs.push(pair);
     } else {
-      accessiblePairs.push({
-        contrastRatioValue: contrastRatioString,
-        contrastRatioPair: currContrastRatioPair,
-        colorPair: colorPairString,
-      });
+      accessiblePairs.push(pair);
     }
   };
 
   const loadAllContrastRatioPairsList = () => {
+    const input = props.theme;
     calculateContrastRatio(
-      props.theme.colorNeutralForeground1,
-      props.theme.colorNeutralBackground1,
-      'Neutral foreground on neutral background',
+      input.colorNeutralForeground1,
+      input.colorNeutralBackground1,
+      'Neutral foreground 1 on neutral background 1',
+    );
+    calculateContrastRatio(
+      input.colorNeutralForeground1,
+      input.colorNeutralForeground2,
+      'Neutral background 1 on neutral background 2',
     );
   };
 

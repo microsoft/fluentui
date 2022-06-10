@@ -10,9 +10,7 @@ export interface AccessibilityListProps {
 }
 
 export interface AccessibilityRowProps {
-  contrastRatioValue: string;
-  contrastRatioPair: string;
-  colorPair: string;
+  contrastRatioPair: ContrastRatioPair;
 }
 
 const useStyles = makeStyles({
@@ -24,12 +22,14 @@ const useStyles = makeStyles({
 });
 
 export const AccessibilityRow: React.FunctionComponent<AccessibilityRowProps> = props => {
+  const input = props.contrastRatioPair;
   const styles = useStyles();
   return (
     <div className={styles.row}>
-      <div>{props.contrastRatioValue}</div>
-      <div>{props.contrastRatioPair}</div>
-      <div>{props.colorPair}</div>
+      <div>{input.contrastRatioValue}</div>
+      <div>{input.contrastRatioPair}</div>
+      <div style={{ backgroundColor: input.background, color: input.foreground }}> Example </div>
+      <div>{props.contrastRatioPair.colorPair}</div>
     </div>
   );
 };
@@ -59,14 +59,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionHeader size="large">Accessible Pairs</AccordionHeader>
           <AccordionPanel>
             {accPairs.map(i => {
-              return (
-                <AccessibilityRow
-                  key={i.toString()}
-                  contrastRatioValue={i.contrastRatioValue}
-                  contrastRatioPair={i.contrastRatioPair}
-                  colorPair={i.colorPair}
-                />
-              );
+              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
@@ -74,14 +67,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionHeader size="large">Inaccessible Pairs</AccordionHeader>
           <AccordionPanel>
             {nonAccPairs.map(i => {
-              return (
-                <AccessibilityRow
-                  key={i.toString()}
-                  contrastRatioValue={i.contrastRatioValue}
-                  contrastRatioPair={i.contrastRatioPair}
-                  colorPair={i.colorPair}
-                />
-              );
+              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
