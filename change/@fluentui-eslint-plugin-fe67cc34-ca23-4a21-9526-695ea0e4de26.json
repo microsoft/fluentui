@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new rule to prevent cross package v9 imports.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
