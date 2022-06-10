@@ -36,8 +36,16 @@ useTextStyles_unstable({
 This RFC proposes that we leverage the standard JavaScript default, `undefined`, for attributes instead of a string.
 For this, we should stop using `Required` for all props in the `State` and decide case by case if something should / should not be optional.
 
-Cases where our component should have a default value, we would apply a primitive value for it, like a string or a boolean.
-i.e. `Card` component's `appearance` prop, should have a default value, as we don't want a card without a pre-defined appearance, as that's detrimental to the usage.
+Put simply, when a component has a default state/behavior, it SHOULD HAVE a default value.<br/>
+Example: Card.appearance has `'filled' | 'filled-alternative' | 'outline' | 'subtle'` and is `'filled'` by default.
+
+When a component does not have a default state/behavior, it SHOULD NOT HAVE a default value.<br/>
+Anti-example (current state): Text.font has `'base' | 'monospace' | 'numeric'` and defaults to `'base'`, where `'base'` does not apply any styles<br/>
+Example (proposal): Text.font has `'monospace' | 'numeric'` and has no defaults (i.e. `undefined`)
+
+### Usage
+
+#### With default
 
 ```tsx
 // Card.types.ts
@@ -74,21 +82,20 @@ state.root.className = mergeClasses(
 );
 ```
 
-Cases where nothing is done in our hooks as a default, we should leverage the JavaScript standard for no value - `undefined`.
-i.e. `Text` component's `font` prop should be optional/undefined, instead of using a `'default'` string value, as these values reflect the fact that there are no side-effects from it.
+#### Without default
 
 ```tsx
 // Text.types.ts
 type TextProps = {
-  font?: 'base' | 'monospace' | 'numeric';
+  font?: 'monospace' | 'numeric';
 };
 type TextState = {
   // Also nullable as the default does not overwrite styles
-  font?: 'base' | 'monospace' | 'numeric';
+  font?: 'monospace' | 'numeric';
 };
 
 // useText.ts
-const { font /* {...} */ } = props; // We no longer set the default here
+const { font /* {...} */ } = props; // We no longer set a default here
 
 const state = {
   font,
@@ -114,9 +121,21 @@ state.root.className = mergeClasses(
 );
 ```
 
-### Usage difference
+### Usage differences
 
-```ts
+#### Dynamically setting a prop value
+
+```jsx
+// Before
+<Text font={isNumeric ? 'numeric' : 'base'}>
+
+// After
+<Text font={isNumeric ? 'numeric' : undefined}>
+```
+
+#### Consuming style hooks directly
+
+```js
 // Before
 useTextStyles_unstable({
   // User has to check docs to double check what the default should be.
@@ -150,12 +169,11 @@ useTextStyles_unstable({
 
 ### Cons
 
-- Using the lookup object pattern for styling would require changes
+- Using the lookup object pattern for styling will require changes as `undefined` can't be used as an index type
 
   Proposal:
 
-  <!-- prettier-ignore -->
-  ```tsx
+  ```js
   const state = { align: undefined } as const;
 
   const alignMap = {
@@ -173,9 +191,9 @@ useTextStyles_unstable({
   );
   ```
 
-- Users who dynamically set a property value would need to do something like:
-  ```tsx
-  <Text align={isItFriday ? 'center' : undefined} />
+- Dynamically setting a property value requires explicit usage of `undefined`:
+  ```jsx
+  <Text font={isNumeric ? 'numeric' : undefined}>
   ```
 
 ## Discarded Solutions
