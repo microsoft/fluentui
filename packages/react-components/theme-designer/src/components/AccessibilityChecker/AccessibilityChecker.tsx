@@ -50,12 +50,12 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     calculateContrastRatio(
       input.colorNeutralForeground1,
       input.colorNeutralBackground1,
-      'Neutral foreground 1 on neutral background 1',
+      'NeutralForeground1 on NeutralBackground1',
     );
     calculateContrastRatio(
       input.colorNeutralForeground1,
       input.colorNeutralForeground2,
-      'Neutral background 1 on neutral background 2',
+      'NeutralBackground1 on NeutralBackground2',
     );
   };
 

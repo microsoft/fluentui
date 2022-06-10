@@ -54,7 +54,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
     <>
       <br />
       {messageBar}
-      <Accordion multiple>
+      <Accordion multiple defaultOpenItems="2">
         <AccordionItem value="1">
           <AccordionHeader size="large">Accessible Pairs</AccordionHeader>
           <AccordionPanel>
