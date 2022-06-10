@@ -32,13 +32,20 @@ const DEFAULT_PROPS = {
   isClickableOutsideFocusTrap: false,
 };
 
-const useComponentRef = (componentRef: IRefObject<IFocusTrapZone> | undefined, focusFTZ: () => void) => {
+const useComponentRef = (
+  componentRef: IRefObject<IFocusTrapZone> | undefined,
+  previouslyFocusedElement: HTMLElement | undefined,
+  focusFTZ: () => void,
+) => {
   React.useImperativeHandle(
     componentRef,
     () => ({
+      get previouslyFocusedElement() {
+        return previouslyFocusedElement;
+      },
       focus: focusFTZ,
     }),
-    [focusFTZ],
+    [focusFTZ, previouslyFocusedElement],
   );
 };
 
@@ -298,7 +305,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     delete internalState.previouslyFocusedElementInTrapZone;
   });
 
-  useComponentRef(componentRef, focusFTZ);
+  useComponentRef(componentRef, internalState.previouslyFocusedElementInTrapZone, focusFTZ);
 
   return (
     <div
