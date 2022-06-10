@@ -1,8 +1,107 @@
 # Change Log - @fluentui/ssr-tests
 
-This log was last generated on Mon, 16 May 2022 07:36:55 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Jun 2022 07:45:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Thu, 09 Jun 2022 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.72.3 ([PR #23445](https://github.com/microsoft/fluentui/pull/23445) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.72.2 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Thu, 02 Jun 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.72.1 ([PR #23356](https://github.com/microsoft/fluentui/pull/23356) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Wed, 01 Jun 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.72.0 ([PR #23293](https://github.com/microsoft/fluentui/pull/23293) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Mon, 30 May 2022 07:44:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.71.1 ([PR #23126](https://github.com/microsoft/fluentui/pull/23126) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Fri, 27 May 2022 07:39:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.71.0 ([PR #23127](https://github.com/microsoft/fluentui/pull/23127) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Wed, 25 May 2022 07:44:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.70.0 ([PR #23207](https://github.com/microsoft/fluentui/pull/23207) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Tue, 24 May 2022 07:47:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.69.0 ([PR #23158](https://github.com/microsoft/fluentui/pull/23158) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Mon, 23 May 2022 07:42:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.4 ([PR #23103](https://github.com/microsoft/fluentui/pull/23103) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Thu, 19 May 2022 07:41:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.3 ([PR #23069](https://github.com/microsoft/fluentui/pull/23069) by beachball)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
+
+Tue, 17 May 2022 07:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/ssr-tests_v1.0.0..@fluentui/ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.68.2 ([PR #23024](https://github.com/microsoft/fluentui/pull/23024) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/ssr-tests_v1.0.0)
 

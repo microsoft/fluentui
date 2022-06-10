@@ -3,7 +3,7 @@ import { MenuTriggerChildProps, MenuTriggerProps, MenuTriggerState } from './Men
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import {
   applyTriggerPropsToChildren,

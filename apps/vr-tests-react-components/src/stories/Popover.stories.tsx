@@ -36,7 +36,7 @@ positions.forEach(position => {
   stories.addStory(
     position as string,
     () => (
-      <Popover open positioning={position}>
+      <Popover withArrow open positioning={position}>
         <PopoverTrigger>
           <button>Toggle menu</button>
         </PopoverTrigger>

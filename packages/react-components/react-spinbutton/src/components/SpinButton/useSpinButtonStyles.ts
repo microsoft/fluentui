@@ -152,6 +152,7 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '2',
     gridRowStart: '1',
     gridRowEnd: '3',
+    outlineStyle: 'none',
     ...shorthands.padding(0),
   },
 });
@@ -263,7 +264,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -285,7 +286,7 @@ const useButtonStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: 'transparent',
     color: tokens.colorNeutralForeground3,
 
@@ -352,7 +353,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledDarker: {
+  'filled-darker': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {
@@ -370,7 +371,7 @@ const useButtonDisabledStyles = makeStyles({
     },
   },
 
-  filledLighter: {
+  'filled-lighter': {
     color: tokens.colorNeutralForegroundDisabled,
     ':enabled': {
       ':hover': {

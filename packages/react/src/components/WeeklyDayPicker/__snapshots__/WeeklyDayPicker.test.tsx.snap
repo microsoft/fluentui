@@ -172,7 +172,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -182,7 +182,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -190,12 +190,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -233,7 +233,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -243,7 +243,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -251,12 +251,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -294,7 +294,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -304,7 +304,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -312,12 +312,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -355,7 +355,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -365,7 +365,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -373,12 +373,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -416,7 +416,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -426,7 +426,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -434,12 +434,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -477,7 +477,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -487,7 +487,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -495,12 +495,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -538,7 +538,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -548,7 +548,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -556,12 +556,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -615,7 +615,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -625,7 +625,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -633,12 +633,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -728,7 +728,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -738,7 +738,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -746,12 +746,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -841,7 +841,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -851,7 +851,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -859,12 +859,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -954,7 +954,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -964,7 +964,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -972,12 +972,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1067,7 +1067,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1077,7 +1077,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1085,12 +1085,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1180,7 +1180,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1190,7 +1190,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1198,12 +1198,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1293,7 +1293,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1303,7 +1303,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1311,12 +1311,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1411,7 +1411,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1421,7 +1421,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1429,12 +1429,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1552,7 +1552,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1562,7 +1562,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1570,12 +1570,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1693,7 +1693,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1703,7 +1703,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1711,12 +1711,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1834,7 +1834,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1844,7 +1844,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1852,12 +1852,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -1976,7 +1976,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -1986,7 +1986,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -1994,12 +1994,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2041,25 +2041,25 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &:hover {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background: Highlight!important;
                   border-color: Highlight!important;
@@ -2123,7 +2123,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                     color: #ffffff!important;
                     font-weight: 600!important;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background: WindowText!important;
                     border-color: WindowText!important;
@@ -2167,7 +2167,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2177,7 +2177,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2185,12 +2185,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2304,7 +2304,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2314,7 +2314,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2322,12 +2322,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2457,7 +2457,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2467,7 +2467,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2475,12 +2475,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2566,7 +2566,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2576,7 +2576,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2584,12 +2584,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2675,7 +2675,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2685,7 +2685,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2693,12 +2693,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2784,7 +2784,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2794,7 +2794,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2802,12 +2802,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -2893,7 +2893,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -2903,7 +2903,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -2911,12 +2911,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3002,7 +3002,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3012,7 +3012,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3020,12 +3020,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3111,7 +3111,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3121,7 +3121,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3129,12 +3129,12 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3465,7 +3465,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3475,7 +3475,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3483,12 +3483,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3526,7 +3526,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3536,7 +3536,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3544,12 +3544,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3587,7 +3587,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3597,7 +3597,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3605,12 +3605,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3648,7 +3648,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3658,7 +3658,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3666,12 +3666,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3709,7 +3709,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3719,7 +3719,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3727,12 +3727,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3770,7 +3770,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3780,7 +3780,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3788,12 +3788,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3831,7 +3831,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3841,7 +3841,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3849,12 +3849,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -3908,7 +3908,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -3918,7 +3918,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -3926,12 +3926,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4021,7 +4021,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4031,7 +4031,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4039,12 +4039,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4134,7 +4134,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4144,7 +4144,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4152,12 +4152,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4247,7 +4247,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4257,7 +4257,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4265,12 +4265,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4360,7 +4360,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4370,7 +4370,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4378,12 +4378,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4473,7 +4473,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4483,7 +4483,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4491,12 +4491,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4586,7 +4586,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4596,7 +4596,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4604,12 +4604,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4704,7 +4704,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4714,7 +4714,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4722,12 +4722,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4845,7 +4845,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4855,7 +4855,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -4863,12 +4863,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -4987,7 +4987,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -4997,7 +4997,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5005,12 +5005,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5052,25 +5052,25 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &:hover {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background: Highlight!important;
                   color: HighlightText!important;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background: Highlight!important;
                   border-color: Highlight!important;
@@ -5134,7 +5134,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                     color: #ffffff!important;
                     font-weight: 600!important;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background: WindowText!important;
                     border-color: WindowText!important;
@@ -5178,7 +5178,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5188,7 +5188,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5196,12 +5196,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5315,7 +5315,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5325,7 +5325,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5333,12 +5333,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5452,7 +5452,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5462,7 +5462,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5470,12 +5470,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5589,7 +5589,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5599,7 +5599,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5607,12 +5607,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5742,7 +5742,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5752,7 +5752,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5760,12 +5760,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5851,7 +5851,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5861,7 +5861,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5869,12 +5869,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -5960,7 +5960,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -5970,7 +5970,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -5978,12 +5978,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -6069,7 +6069,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -6079,7 +6079,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -6087,12 +6087,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -6178,7 +6178,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -6188,7 +6188,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -6196,12 +6196,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -6287,7 +6287,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -6297,7 +6297,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -6305,12 +6305,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }
@@ -6396,7 +6396,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   position: relative;
                   width: 28px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: Window;
                   color: WindowText;
@@ -6406,7 +6406,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-hoverStyle {
                   background-color: #f3f2f1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                   z-index: 3;
@@ -6414,12 +6414,12 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 &.ms-CalendarDay-pressedStyle {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle {
                   background-color: Window;
                   border-color: Highlight;
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&.ms-CalendarDay-pressedStyle.ms-CalendarDay-hoverStyle {
                   background-color: Window;
                   outline: 1px solid Highlight;
                 }

@@ -1,7 +1,9 @@
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { render } from '@testing-library/react';
 import * as React from 'react';
-import { FluentProvider } from './FluentProvider';
 import * as renderer from 'react-test-renderer';
+
+import { FluentProvider } from './FluentProvider';
 import { isConformant } from '../../common/isConformant';
 
 describe('FluentProvider', () => {
@@ -13,7 +15,7 @@ describe('FluentProvider', () => {
   });
 
   isConformant({
-    disabledTests: ['component-handles-classname'],
+    disabledTests: ['component-handles-classname', 'component-has-static-classname-exported'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
   });
@@ -31,5 +33,23 @@ describe('FluentProvider', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  describe('applies "dir" attribute', () => {
+    it('ltr', () => {
+      const { getByText } = render(<FluentProvider dir="ltr">Test</FluentProvider>);
+      const element = getByText('Test');
+
+      expect(element).toHaveAttribute('dir', 'ltr');
+      expect(element).toHaveStyle({ textAlign: 'left' });
+    });
+
+    it('rtl', () => {
+      const { getByText } = render(<FluentProvider dir="rtl">Test</FluentProvider>);
+      const element = getByText('Test');
+
+      expect(element).toHaveAttribute('dir', 'rtl');
+      expect(element).toHaveStyle({ textAlign: 'right' });
+    });
   });
 });

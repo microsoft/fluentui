@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Input: ForwardRefComponent<InputProps>;
 
-// @public @deprecated (undocumented)
-export const inputClassName = "fui-Input";
-
 // @public (undocumented)
 export const inputClassNames: SlotClassNames<InputSlots>;
 
@@ -29,7 +26,7 @@ export type InputOnChangeData = {
 export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & {
     children?: never;
     size?: 'small' | 'medium' | 'large';
-    appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
+    appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
     defaultValue?: string;
     value?: string;
     onChange?: (ev: React_2.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;

@@ -98,7 +98,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
     const legendBars = this._createLegends(data!, palette);
     const outerRadius = Math.min(this.state._width!, this.state._height!) / 2;
-    const chartData = data && data.chartData;
+    const chartData = data && data.chartData?.filter((d: IChartDataPoint) => d.data! > 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return (
       <div
@@ -138,7 +138,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           target={this._currentHoverElement}
           alignTargetEdge={true}
           isBeakVisible={false}
-          directionalHint={DirectionalHint.bottomRightEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           gapSpace={15}
           hidden={!(!this.props.hideTooltip && this.state.showHover)}
           id={this._calloutId}

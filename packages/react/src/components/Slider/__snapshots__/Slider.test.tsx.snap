@@ -97,52 +97,52 @@ exports[`Slider renders correctly 1`] = `
             &:active .ms-Slider-active {
               background-color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-active {
               background-color: Highlight;
             }
             &:hover .ms-Slider-active {
               background-color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-active {
               background-color: Highlight;
             }
             &:active .ms-Slider-inactive {
               background-color: #8a8886;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:hover .ms-Slider-inactive {
               background-color: #8a8886;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:active .ms-Slider-thumb {
               border: 2px solid #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-thumb {
               border-color: Highlight;
             }
             &:hover .ms-Slider-thumb {
               border: 2px solid #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-thumb {
               border-color: Highlight;
             }
             &:active .ms-Slider-zeroTick {
               background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-zeroTick {
               background-color: Highlight;
             }
             &:hover .ms-Slider-zeroTick {
               background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-is-focusable="true"
@@ -192,7 +192,7 @@ exports[`Slider renders correctly 1`] = `
                   background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             style="width: 0%;"
@@ -210,7 +210,7 @@ exports[`Slider renders correctly 1`] = `
                   background: #323130;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   background-color: WindowText;
                 }
             style="width: 0%;"
@@ -228,7 +228,7 @@ exports[`Slider renders correctly 1`] = `
                   background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             style="width: 100%;"
@@ -379,52 +379,52 @@ exports[`Slider renders range slider correctly 1`] = `
             &:active .ms-Slider-active {
               background-color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-active {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-active {
               background-color: Highlight;
             }
             &:hover .ms-Slider-active {
               background-color: #0078d4;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-active {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-active {
               background-color: Highlight;
             }
             &:active .ms-Slider-inactive {
               background-color: #8a8886;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-inactive {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:hover .ms-Slider-inactive {
               background-color: #8a8886;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-inactive {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:active .ms-Slider-thumb {
               border: 2px solid #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-thumb {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-thumb {
               border-color: Highlight;
             }
             &:hover .ms-Slider-thumb {
               border: 2px solid #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-thumb {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-thumb {
               border-color: Highlight;
             }
             &:active .ms-Slider-zeroTick {
               background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Slider-zeroTick {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:active .ms-Slider-zeroTick {
               background-color: Highlight;
             }
             &:hover .ms-Slider-zeroTick {
               background-color: #deecf9;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         id="Slider0"
@@ -541,7 +541,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             style="width: 0%;"
@@ -559,7 +559,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   background: #323130;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   background-color: WindowText;
                 }
             style="width: 50%;"
@@ -577,7 +577,7 @@ exports[`Slider renders range slider correctly 1`] = `
                   background: #8a8886;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             style="width: 50%;"

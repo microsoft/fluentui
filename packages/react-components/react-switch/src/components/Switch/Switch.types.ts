@@ -37,7 +37,10 @@ export type SwitchOnChangeData = {
 /**
  * Switch Props
  */
-export type SwitchProps = Omit<ComponentProps<Partial<SwitchSlots>, 'input'>, 'onChange'> & {
+export type SwitchProps = Omit<
+  ComponentProps<Partial<SwitchSlots>, 'input'>,
+  'checked' | 'defaultChecked' | 'onChange'
+> & {
   /**
    * Defines the controlled checked state of the Switch.
    * If passed, Switch ignores the `defaultChecked` property.

@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 05 May 2022 18:26:26 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.10)
+
+Tue, 31 May 2022 21:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-rc.9..@fluentui/react-shared-contexts_v9.0.0-rc.10)
+
+### Changes
+
+- remove unused MenuContext ([PR #23277](https://github.com/microsoft/fluentui/pull/23277) by olfedias@microsoft.com)
+- remove useTheme from exports ([PR #23335](https://github.com/microsoft/fluentui/pull/23335) by me@levithomason.com)
+- mark context hooks and providers to unstable ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+
+## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.9)
+
+Mon, 23 May 2022 18:56:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-rc.8..@fluentui/react-shared-contexts_v9.0.0-rc.9)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+
+## [9.0.0-rc.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.8)
+
+Mon, 23 May 2022 12:13:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.0.0-rc.7..@fluentui/react-shared-contexts_v9.0.0-rc.8)
+
+### Changes
+
+- feat: ship rolluped only dts ([PR #22965](https://github.com/microsoft/fluentui/pull/22965) by martinhochel@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.8 ([PR #23030](https://github.com/microsoft/fluentui/pull/23030) by beachball)
 
 ## [9.0.0-rc.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.0.0-rc.7)
 

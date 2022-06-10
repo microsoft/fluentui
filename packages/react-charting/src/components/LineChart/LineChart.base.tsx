@@ -559,7 +559,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             id={circleId}
             key={circleId}
             d={path}
-            data-is-focusable={i === 0 ? true : false}
+            data-is-focusable={true}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -608,7 +608,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               id={lastCircleId}
               key={lastCircleId}
               d={path}
-              data-is-focusable={i === 0 ? true : false}
+              data-is-focusable={true}
               onMouseOver={this._handleHover.bind(
                 this,
                 x2,

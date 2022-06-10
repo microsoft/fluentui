@@ -1,18 +1,57 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
-import { Alert } from './Alert';
+
+import { render, screen } from '@testing-library/react';
+
 import { isConformant } from '../../common/isConformant';
+import { Alert } from './Alert';
+import { alertClassNames } from './useAlertStyles';
 
 describe('Alert', () => {
   isConformant({
     Component: Alert,
     displayName: 'Alert',
+    disabledTests: ['component-has-static-classname-exported'],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            action: 'Test Action',
+          },
+          expectedClassNames: {
+            root: alertClassNames.root,
+            icon: alertClassNames.icon,
+            action: alertClassNames.action,
+          },
+        },
+      ],
+    },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  // TODO - create visual regression tests in /apps/vr-tests
+  // TODO - add tests for aria attributes or any a11y behaviors
 
   it('renders a default state', () => {
-    const result = render(<Alert>Default Alert</Alert>);
-    expect(result.container).toMatchSnapshot();
+    render(<Alert>Test</Alert>);
+    expect(screen.getByText('Test')).toBeTruthy();
+  });
+
+  it('renders an icon', () => {
+    render(<Alert icon={<div data-testid="foo" />}>Test</Alert>);
+    expect(screen.getByTestId('foo')).toBeTruthy();
+  });
+
+  it('renders a button', () => {
+    render(<Alert action={{ appearance: 'transparent', children: 'Undo' }}>Test</Alert>);
+    expect(screen.getByText('Undo')).toBeTruthy();
+  });
+
+  it('prioritizes icon over intent prop', () => {
+    render(
+      <Alert intent="success" icon={<div data-testid="foo" />}>
+        Test
+      </Alert>,
+    );
+    expect(screen.getByTestId('foo')).toBeTruthy();
   });
 });
