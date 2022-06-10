@@ -9,7 +9,7 @@ export function getContrastRatio(color1: Vec3, color2: Vec3): number {
   // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
 
   /* calculate the intermediate value needed to calculating relative luminance */
-  function _getThing(x: number): number {
+  function getIntermediateValue(x: number): number {
     if (x <= 0.03928) {
       return x / 12.92;
     } else {
@@ -17,15 +17,15 @@ export function getContrastRatio(color1: Vec3, color2: Vec3): number {
     }
   }
 
-  const r1 = _getThing(color1[0]);
-  const g1 = _getThing(color1[1]);
-  const b1 = _getThing(color1[2]);
+  const r1 = getIntermediateValue(color1[0]);
+  const g1 = getIntermediateValue(color1[1]);
+  const b1 = getIntermediateValue(color1[2]);
   let L1 = 0.2126 * r1 + 0.7152 * g1 + 0.0722 * b1; // relative luminance of first color
   L1 += 0.05;
 
-  const r2 = _getThing(color2[0]);
-  const g2 = _getThing(color2[1]);
-  const b2 = _getThing(color2[2]);
+  const r2 = getIntermediateValue(color2[0]);
+  const g2 = getIntermediateValue(color2[1]);
+  const b2 = getIntermediateValue(color2[2]);
   let L2 = 0.2126 * r2 + 0.7152 * g2 + 0.0722 * b2; // relative luminance of second color
   L2 += 0.05;
 
