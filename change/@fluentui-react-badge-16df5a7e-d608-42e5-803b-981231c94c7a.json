@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "none",
   "comment": "Updated badge descriptions to be specific.",
   "packageName": "@fluentui/react-badge",
   "email": "gcox@microsoft.com",
