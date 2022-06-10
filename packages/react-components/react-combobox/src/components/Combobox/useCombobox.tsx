@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import {
   getPartitionedNativeProps,
@@ -13,7 +14,6 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { useSelection } from '../../utils/useSelection';
 import { Listbox } from '../Listbox/Listbox';
-import { ComboButton } from '../ComboButton/ComboButton';
 import type { ComboboxProps, ComboboxState, ComboboxOpenEvents } from './Combobox.types';
 
 /**
@@ -133,8 +133,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const state: ComboboxState = {
     components: {
       root: 'div',
+      button: 'button',
+      expandIcon: 'span',
       listbox: Listbox,
-      trigger: ComboButton,
     },
     root: resolveShorthand(props.root, {
       required: true,
@@ -151,15 +152,22 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         tabIndex: undefined,
       },
     }),
-    trigger: resolveShorthand(props.trigger, {
+    button: resolveShorthand(props.button, {
       required: true,
       defaultProps: {
         ref: useMergedRefs(ref, triggerRef, popperTargetRef),
         'aria-expanded': open,
         'aria-activedescendant': open ? activeOption?.id : undefined,
-        placeholder,
-        value,
+        children: value ? value : placeholder,
+        role: 'combobox',
+        type: 'button',
         ...triggerNativeProps,
+      },
+    }),
+    expandIcon: resolveShorthand(props.expandIcon, {
+      required: true,
+      defaultProps: {
+        children: <ChevronDownIcon />,
       },
     }),
     ...optionCollection,
@@ -192,8 +200,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   };
 
   // the trigger should open/close the popup on click or blur
-  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = state.trigger;
-  state.trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = state.button;
+  state.button.onBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
     if (!ignoreTriggerBlur.current) {
       setOpen(event, false);
     }
@@ -203,14 +211,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     onTriggerBlur?.(event);
   };
 
-  state.trigger.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  state.button.onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpen(event, !open);
 
     onTriggerClick?.(event);
   };
 
   // handle combobox keyboard interaction
-  state.trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  state.button.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = getCount() - 1;
     const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
