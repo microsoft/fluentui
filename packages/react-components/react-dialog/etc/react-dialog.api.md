@@ -14,14 +14,11 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Dialog: ForwardRefComponent<DialogProps>;
 
-// @public @deprecated (undocumented)
-export const dialogClassName = "fui-Dialog";
-
 // @public (undocumented)
 export const dialogClassNames: SlotClassNames<DialogSlots>;
 
 // @public
-export type DialogProps = ComponentProps<DialogSlots> & DialogCommons;
+export type DialogProps = ComponentProps<DialogSlots>;
 
 // @public (undocumented)
 export type DialogSlots = {
@@ -29,7 +26,7 @@ export type DialogSlots = {
 };
 
 // @public
-export type DialogState = ComponentState<DialogSlots> & DialogCommons;
+export type DialogState = ComponentState<DialogSlots>;
 
 // @public
 export const renderDialog_unstable: (state: DialogState) => JSX.Element;

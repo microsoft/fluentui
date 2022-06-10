@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 07 Jun 2022 07:48:03 GMT",
+      "tag": "@fluentui/style-utilities_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "ff54b8708e8bfec7392cf3f959445574c4cca127",
+            "comment": "Update high-contrast mixins to support forced-colors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/style-utilities_v8.6.7",
       "version": "8.6.7",

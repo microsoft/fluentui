@@ -2,8 +2,23 @@ import * as React from 'react';
 import { SpinButton, SpinButtonProps } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+
+const useLayoutStyles = makeStyles({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '500px',
+
+    '> label': {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
+  },
+});
 
 export const Step = () => {
+  const layoutStyles = useLayoutStyles();
   const id = useId();
   const [spinButtonValue, setSpinButtonValue] = React.useState(10);
 
@@ -22,10 +37,10 @@ export const Step = () => {
   );
 
   return (
-    <>
+    <div className={layoutStyles.base}>
       <Label htmlFor={id}>Step Size</Label>
       <SpinButton value={spinButtonValue} step={2} stepPage={20} onChange={onSpinButtonChange} id={id} />
-    </>
+    </div>
   );
 };
 

@@ -14,9 +14,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Label: ForwardRefComponent<LabelProps>;
 
-// @public @deprecated (undocumented)
-export const labelClassName = "fui-Label";
-
 // @public (undocumented)
 export const labelClassNames: SlotClassNames<LabelSlots>;
 
@@ -25,7 +22,7 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
     disabled?: boolean;
     required?: boolean | Slot<'span'>;
     size?: 'small' | 'medium' | 'large';
-    strong?: boolean;
+    weight?: 'regular' | 'semibold';
 };
 
 // @public (undocumented)
@@ -35,7 +32,7 @@ export type LabelSlots = {
 };
 
 // @public
-export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'strong'>>;
+export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;
 
 // @public
 export const renderLabel_unstable: (state: LabelState) => JSX.Element;

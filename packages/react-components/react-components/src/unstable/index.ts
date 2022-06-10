@@ -1,19 +1,20 @@
 // Stub for unstable exports
 
 export {
+  Alert,
+  alertClassNames,
+  renderAlert_unstable,
+  useAlertStyles_unstable,
+  useAlert_unstable,
+} from '@fluentui/react-alert';
+export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
+export {
   Card,
   CardFooter,
   CardHeader,
   CardPreview,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardFooterClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardHeaderClassName,
-  /* eslint-disable-next-line deprecation/deprecation */
-  cardPreviewClassName,
   cardClassNames,
+  cardCSSVars,
   cardFooterClassNames,
   cardHeaderClassNames,
   cardPreviewClassNames,
@@ -44,17 +45,14 @@ export type {
   CardSlots,
   CardState,
 } from '@fluentui/react-card';
-
 export {
-  Input,
-  /* eslint-disable-next-line deprecation/deprecation */
-  inputClassName,
-  inputClassNames,
-  renderInput_unstable,
-  useInput_unstable,
-  useInputStyles_unstable,
-} from '@fluentui/react-input';
-export type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
+  Select,
+  renderSelect_unstable,
+  selectClassNames,
+  useSelectStyles_unstable,
+  useSelect_unstable,
+} from '@fluentui/react-select';
+export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
   SpinButton,
@@ -63,7 +61,6 @@ export {
   useSpinButtonStyles_unstable,
   useSpinButton_unstable,
 } from '@fluentui/react-spinbutton';
-
 export type {
   SpinButtonOnChangeData,
   SpinButtonChangeEvent,
@@ -75,19 +72,39 @@ export type {
 } from '@fluentui/react-spinbutton';
 
 export {
-  Spinner,
-  spinnerClassNames,
-  renderSpinner_unstable,
-  useSpinner_unstable,
-  useSpinnerStyles_unstable,
-} from '@fluentui/react-spinner';
-export type { SpinnerProps, SpinnerSlots, SpinnerState } from '@fluentui/react-spinner';
+  Toolbar,
+  ToolbarDivider,
+  ToolbarToggleButton,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbar_unstable,
+  useToolbarDividerStyles_unstable,
+  useToolbarStyles_unstable,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from '@fluentui/react-toolbar';
 
 export {
-  Switch,
-  switchClassNames,
-  renderSwitch_unstable,
-  useSwitch_unstable,
-  useSwitchStyles_unstable,
-} from '@fluentui/react-switch';
-export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  DATA_OVERFLOWING,
+  DATA_OVERFLOW_MENU,
+  DATA_OVERFLOW_ITEM,
+} from '@fluentui/react-overflow';
+
+export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

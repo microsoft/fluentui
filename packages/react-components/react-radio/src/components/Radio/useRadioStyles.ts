@@ -4,20 +4,12 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { RadioSlots, RadioState } from './Radio.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `radioClassNames.root` instead.
- */
-export const radioClassName = 'fui-Radio';
 export const radioClassNames: SlotClassNames<RadioSlots> = {
   root: 'fui-Radio',
   indicator: 'fui-Radio__indicator',
   input: 'fui-Radio__input',
   label: 'fui-Radio__label',
 };
-
-// TODO replace these spacing constants with theme values once they're on the theme
-const spacingHorizontalS = '8px';
-const spacingHorizontalM = '12px';
 
 // The indicator size is used by the indicator and label styles
 const indicatorSize = '16px';
@@ -29,7 +21,7 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
-    ...shorthands.padding(spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
   },
 
   vertical: {
@@ -153,7 +145,7 @@ const useLabelStyles = makeStyles({
   },
 
   after: {
-    marginLeft: spacingHorizontalM,
+    marginLeft: tokens.spacingHorizontalM,
 
     // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.
     // This prevents the label from expanding the height of the Radio, but preserves line height if the label wraps.
@@ -162,7 +154,7 @@ const useLabelStyles = makeStyles({
   },
 
   below: {
-    marginTop: spacingHorizontalM,
+    marginTop: tokens.spacingVerticalM,
     textAlign: 'center',
   },
 });

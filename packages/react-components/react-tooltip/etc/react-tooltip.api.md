@@ -24,9 +24,6 @@ export const renderTooltip_unstable: (state: TooltipState) => JSX.Element;
 // @public
 export const Tooltip: React_2.FC<TooltipProps> & FluentTriggerComponent;
 
-// @public @deprecated (undocumented)
-export const tooltipClassName = "fui-Tooltip";
-
 // @public (undocumented)
 export const tooltipClassNames: SlotClassNames<TooltipSlots>;
 

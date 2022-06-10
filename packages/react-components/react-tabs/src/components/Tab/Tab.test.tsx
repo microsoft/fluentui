@@ -10,6 +10,7 @@ describe('Tab', () => {
   isConformant({
     Component: Tab,
     displayName: 'Tab',
+    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

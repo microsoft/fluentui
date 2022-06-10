@@ -1,7 +1,5 @@
 export {
   Avatar,
-  // eslint-disable-next-line deprecation/deprecation
-  avatarClassName,
   avatarClassNames,
   renderAvatar_unstable,
   useAvatarStyles_unstable,
@@ -17,3 +15,11 @@ export {
   useAvatarGroup_unstable,
 } from './AvatarGroup';
 export type { AvatarGroupProps, AvatarGroupSlots, AvatarGroupState } from './AvatarGroup';
+export {
+  AvatarGroupItem,
+  avatarGroupItemClassNames,
+  renderAvatarGroupItem_unstable,
+  useAvatarGroupItemStyles_unstable,
+  useAvatarGroupItem_unstable,
+} from './AvatarGroupItem';
+export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem';

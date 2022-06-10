@@ -130,7 +130,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           isBeakVisible={false}
           gapSpace={30}
           hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-          directionalHint={DirectionalHint.rightTopEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}

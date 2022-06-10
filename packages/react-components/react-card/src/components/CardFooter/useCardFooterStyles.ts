@@ -3,17 +3,13 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardFooterSlots, CardFooterState } from './CardFooter.types';
 
 /**
- * @deprecated Use `cardFooterClassNames.root` instead.
+ * Static CSS class names used internally for the component slots.
  */
-export const cardFooterClassName = 'fui-CardFooter';
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots> = {
   root: 'fui-CardFooter',
   action: 'fui-CardFooter__action',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -26,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the CardFooter slots based on the state
+ * Apply styling to the CardFooter slots based on the state.
  */
 export const useCardFooterStyles_unstable = (state: CardFooterState): CardFooterState => {
   const styles = useStyles();

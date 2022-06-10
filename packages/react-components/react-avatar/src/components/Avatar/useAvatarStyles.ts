@@ -3,10 +3,6 @@ import { tokens } from '@fluentui/react-theme';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `avatarClassNames.root` instead.
- */
-export const avatarClassName = 'fui-Avatar';
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
   root: 'fui-Avatar',
   image: 'fui-Avatar__image',
@@ -207,6 +203,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('inherit'),
   },
 
+  icon12: { fontSize: '12px' },
   icon16: { fontSize: '16px' },
   icon20: { fontSize: '20px' },
   icon24: { fontSize: '24px' },
@@ -215,7 +212,8 @@ const useStyles = makeStyles({
   icon48: { fontSize: '48px' },
 });
 
-const useSizeStyles = makeStyles({
+export const useSizeStyles = makeStyles({
+  16: { width: '16px', height: '16px' },
   20: { width: '20px', height: '20px' },
   24: { width: '24px', height: '24px' },
   28: { width: '28px', height: '28px' },
@@ -240,7 +238,7 @@ const useColorStyles = makeStyles({
     color: tokens.colorNeutralForegroundInverted,
     backgroundColor: tokens.colorBrandBackgroundStatic,
   },
-  darkRed: {
+  'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
     backgroundColor: tokens.colorPaletteDarkRedBackground2,
   },
@@ -284,11 +282,11 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteSeafoamForeground2,
     backgroundColor: tokens.colorPaletteSeafoamBackground2,
   },
-  darkGreen: {
+  'dark-green': {
     color: tokens.colorPaletteDarkGreenForeground2,
     backgroundColor: tokens.colorPaletteDarkGreenBackground2,
   },
-  lightTeal: {
+  'light-teal': {
     color: tokens.colorPaletteLightTealForeground2,
     backgroundColor: tokens.colorPaletteLightTealBackground2,
   },
@@ -304,7 +302,7 @@ const useColorStyles = makeStyles({
     color: tokens.colorPaletteBlueForeground2,
     backgroundColor: tokens.colorPaletteBlueBackground2,
   },
-  royalBlue: {
+  'royal-blue': {
     color: tokens.colorPaletteRoyalBlueForeground2,
     backgroundColor: tokens.colorPaletteRoyalBlueBackground2,
   },
@@ -451,7 +449,9 @@ export const useAvatarStyles_unstable = (state: AvatarState): AvatarState => {
 
   if (state.icon) {
     let iconSizeClass;
-    if (size <= 24) {
+    if (size <= 16) {
+      iconSizeClass = styles.icon12;
+    } else if (size <= 24) {
       iconSizeClass = styles.icon16;
     } else if (size <= 40) {
       iconSizeClass = styles.icon20;

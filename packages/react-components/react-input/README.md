@@ -11,7 +11,7 @@ Inputs give people a way to enter and edit text.
 Import Input:
 
 ```js
-import { Input } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-components';
 ```
 
 #### Examples

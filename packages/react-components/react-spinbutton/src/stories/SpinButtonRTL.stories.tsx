@@ -3,22 +3,27 @@ import { SpinButton } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { FluentProvider } from '@fluentui/react-provider';
+import { tokens } from '@fluentui/react-theme';
 import { makeStyles } from '@griffel/react';
 
-const useLayout = makeStyles({
-  root: {
+const useLayoutStyles = makeStyles({
+  base: {
     display: 'flex',
     flexDirection: 'column',
-    rowGap: '2px',
+    maxWidth: '500px',
+
+    '> label': {
+      marginBottom: tokens.spacingVerticalXXS,
+    },
   },
 });
 
 export const RTL = () => {
-  const layoutStyles = useLayout();
+  const layoutStyles = useLayoutStyles();
   const id = useId();
 
   return (
-    <FluentProvider dir="rtl" className={layoutStyles.root}>
+    <FluentProvider dir="rtl" className={layoutStyles.base}>
       <Label htmlFor={id}>Right-to-Left Layout</Label>
       <SpinButton id={id} />
     </FluentProvider>

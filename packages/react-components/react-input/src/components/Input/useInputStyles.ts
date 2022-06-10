@@ -3,10 +3,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InputSlots, InputState } from './Input.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-/**
- * @deprecated Use `inputClassNames.root` instead.
- */
-export const inputClassName = 'fui-Input';
 export const inputClassNames: SlotClassNames<InputSlots> = {
   root: 'fui-Input',
   input: 'fui-Input__input',
@@ -148,10 +144,10 @@ const useRootStyles = makeStyles({
       ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     },
   },
-  filledDarker: {
+  'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
   },
-  filledLighter: {
+  'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
   disabled: {
@@ -180,9 +176,8 @@ const useInputElementStyles = makeStyles({
       color: tokens.colorNeutralForeground4,
       opacity: 1, // browser style override
     },
-    ':focus-visible': {
-      outlineStyle: 'none', // disable default browser outline
-    },
+
+    outlineStyle: 'none', // disable default browser outline
   },
   small: {
     // This is set on root but doesn't inherit

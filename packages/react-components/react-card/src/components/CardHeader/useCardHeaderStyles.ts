@@ -3,9 +3,8 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 /**
- * @deprecated Use `cardHeaderClassNames.root` instead.
+ * Static CSS class names used internally for the component slots.
  */
-export const cardHeaderClassName = 'fui-CardHeader';
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   root: 'fui-CardHeader',
   image: 'fui-CardHeader__image',
@@ -15,9 +14,6 @@ export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   action: 'fui-CardHeader__action',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -56,7 +52,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the CardHeader slots based on the state
+ * Apply styling to the CardHeader slots based on the state.
  */
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
   const styles = useStyles();

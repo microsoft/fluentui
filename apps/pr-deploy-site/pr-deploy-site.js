@@ -61,6 +61,12 @@ var siteInfo = [
     title: 'Theme Designer Example',
   },
   {
+    package: '@fluentui/theme-designer',
+    link: './theme-designer/storybook/index.html',
+    icon: 'CheckMark',
+    title: 'Theme Designer v9',
+  },
+  {
     package: '@fluentui/perf-test',
     link: './perf-test/index.html',
     icon: 'SpeedHigh',

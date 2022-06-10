@@ -288,7 +288,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -487,7 +487,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
