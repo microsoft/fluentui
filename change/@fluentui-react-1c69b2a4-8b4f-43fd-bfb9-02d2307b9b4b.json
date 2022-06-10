@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add isSelectedOnFocus prop to DetailsList",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
