@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
-import type { ComboboxState } from '../components/Combobox/Combobox.types';
-import type { ComboboxBaseProps } from './ComboboxBase.types';
+import { Listbox } from '../components/Listbox/Listbox';
+import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
-export const useComboboxBaseSlots = (props: ComboboxBaseProps, state: ComboboxState) => {
+export const useTriggerListboxShorthand = (
+  props: ComboboxBaseProps,
+  state: ComboboxBaseState,
+  ref: React.Ref<HTMLButtonElement>,
+  triggerShorthand?: ExtractSlotProps<Slot<'button', 'input'>>,
+  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+) => {
   const { multiselect, placeholder } = props;
   const {
     activeOption,
@@ -19,55 +26,52 @@ export const useComboboxBaseSlots = (props: ComboboxBaseProps, state: ComboboxSt
   } = state;
 
   // handle trigger focus/blur
-  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
   const ignoreTriggerBlur = React.useRef(false);
 
-  /* Add listbox props and event handlers  */
-  state.listbox = {
-    multiselect,
-    tabIndex: undefined,
-    ...state.listbox,
-  };
+  // resolve listbox shorthand props
+  const listbox = resolveShorthand(listboxShorthand, {
+    required: true,
+    defaultProps: {
+      multiselect,
+      tabIndex: undefined,
+    },
+  });
+
+  // resolve trigger shorthand props
+  const trigger = resolveShorthand(triggerShorthand, {
+    required: true,
+    defaultProps: {
+      'aria-expanded': open,
+      'aria-activedescendant': open ? activeOption?.id : undefined,
+      children: value || placeholder,
+      ref: useMergedRefs(ref, triggerRef as React.RefObject<HTMLButtonElement>),
+      role: 'combobox',
+      type: 'button',
+    },
+  });
 
   /*
    * Handle focus when clicking the listbox popup:
    * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
    * 2. Do not close the listbox on button/input blur when clicking into the listbox
    */
-  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = state.listbox;
-  state.listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
+  listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
     triggerRef.current?.focus();
 
     onListboxClick?.(event);
   };
 
-  state.listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+  listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     ignoreTriggerBlur.current = true;
 
     onListboxMouseDown?.(event);
   };
 
-  /* Add trigger props and event handlers */
-  let triggerSlot;
-
-  if (state.input) {
-    state.input = {
-      'aria-expanded': open,
-      'aria-activedescendant': open ? activeOption?.id : undefined,
-      placeholder,
-      role: 'combobox',
-      type: 'text',
-      value,
-      ...state.input,
-      ref: useMergedRefs(state.input.ref, triggerRef as React.RefObject<HTMLInputElement>),
-    };
-
-    triggerSlot = state.input;
-  }
-
   // the trigger should open/close the popup on click or blur
-  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = triggerSlot;
-  triggerSlot.onBlur = (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
+  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = trigger;
+  trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
     if (!ignoreTriggerBlur.current) {
       setOpen(event, false);
     }
@@ -77,14 +81,14 @@ export const useComboboxBaseSlots = (props: ComboboxBaseProps, state: ComboboxSt
     onTriggerBlur?.(event);
   };
 
-  triggerSlot.onClick = (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
+  trigger.onClick = (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
     setOpen(event, !open);
 
     onTriggerClick?.(event);
   };
 
   // handle combobox keyboard interaction
-  triggerSlot.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
+  trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
     const action = getDropdownActionFromKey(event, { open, multiselect });
     const maxIndex = getCount() - 1;
     const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
@@ -122,4 +126,6 @@ export const useComboboxBaseSlots = (props: ComboboxBaseProps, state: ComboboxSt
 
     onTriggerKeyDown?.(event);
   };
+
+  return [trigger, listbox];
 };

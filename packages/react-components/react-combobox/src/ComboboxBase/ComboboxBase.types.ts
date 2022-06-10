@@ -86,10 +86,6 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     setOpen(event: ComboboxOpenEvents, newState: boolean): void;
   };
 
-export type ComboboxContextValues = {
-  combobox: ComboboxContextValue;
-};
-
 /**
  * Data for the Combobox onOpenChange event.
  */
