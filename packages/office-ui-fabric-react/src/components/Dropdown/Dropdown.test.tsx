@@ -34,6 +34,8 @@ describe('Dropdown', () => {
 
   beforeEach(() => {
     resetIds();
+    const win = window as any;
+    Object.defineProperty(win.HTMLHtmlElement.prototype, 'clientWidth', { configurable: true, value: 1024 });
   });
 
   afterEach(() => {
@@ -62,7 +64,7 @@ describe('Dropdown', () => {
       // version of createPortal first to allow some global setup to run properly.
       wrapper = mount(<div />);
       wrapper.unmount();
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
 
       const ref = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
@@ -483,7 +485,7 @@ describe('Dropdown', () => {
 
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
       const ref = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
       ref.current!.focus(true);
