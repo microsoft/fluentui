@@ -168,6 +168,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRowDidMount,
     onRowWillUnmount,
     disableSelectionZone,
+    isSelectedOnFocus = true,
     onColumnResized,
     onColumnAutoResized,
     onToggleCollapse,
@@ -635,7 +636,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         if (focusZoneRef.current && focusZoneRef.current.focus()) {
           // select the first item in list after down arrow key event
           // only if nothing was selected; otherwise start with the already-selected item
-          if (selection.getSelectedIndices().length === 0) {
+          if (isSelectedOnFocus && selection.getSelectedIndices().length === 0) {
             selection.setIndexSelected(0, true, false);
           }
 
@@ -644,7 +645,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       }
     },
-    [selection, focusZoneRef],
+    [selection, focusZoneRef, isSelectedOnFocus],
   );
 
   const onContentKeyDown = React.useCallback(
@@ -721,6 +722,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               selection={selection}
               selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
               selectionMode={selectionMode}
+              isSelectedOnFocus={isSelectedOnFocus}
               onItemInvoked={onItemInvoked}
               onItemContextMenu={onItemContextMenu}
               enterModalOnTouch={enterModalSelectionOnTouch}
