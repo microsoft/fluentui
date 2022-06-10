@@ -10,4 +10,7 @@
   height: 100%;
   fill: currentColor;
   vertical-align: top;
+  // Temporary forcing color to adjust in HCM until browsers do this properly
+  // https://github.com/microsoft/fluentui/issues/22410
+  forced-color-adjust: auto;
 }

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Removing star exports.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

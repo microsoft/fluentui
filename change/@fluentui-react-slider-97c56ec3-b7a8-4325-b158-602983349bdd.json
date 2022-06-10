@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "README update.",
+  "packageName": "@fluentui/react-slider",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

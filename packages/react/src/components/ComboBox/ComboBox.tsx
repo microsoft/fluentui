@@ -40,6 +40,7 @@ import type {
 } from './ComboBox.types';
 import type { IButtonStyles } from '../../Button';
 import type { ICalloutProps } from '../../Callout';
+import { getChildren } from '@fluentui/utilities';
 
 export interface IComboBoxState {
   /** The open state */
@@ -209,6 +210,29 @@ interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
     setCurrentOptions: React.Dispatch<React.SetStateAction<IComboBoxOption[]>>;
     setSuggestedDisplayValue: React.Dispatch<React.SetStateAction<string | undefined>>;
   };
+}
+
+/**
+ * Depth-first search to find the first descendant element where the match function returns true.
+ * @param element - element to start searching at
+ * @param match - the function that determines if the element is a match
+ * @returns the matched element or null no match was found
+ */
+function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement) => boolean): HTMLElement | null {
+  const children = getChildren(element);
+
+  // For loop is used because forEach cannot be stopped.
+  for (let index = 0; index < children.length; index++) {
+    const child = children[index];
+    if (match(child)) {
+      return child;
+    }
+    const candidate = findFirstDescendant(child, match);
+    if (candidate) {
+      return candidate;
+    }
+  }
+  return null;
 }
 
 @customizable('ComboBox', ['theme', 'styles'], true)
@@ -730,7 +754,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     return currentPendingValue !== null && currentPendingValue !== undefined
       ? currentPendingValue
       : indexWithinBounds(currentOptions, index)
-      ? currentOptions[index].text
+      ? getPreviewText(currentOptions[index])
       : '';
   }
 
@@ -1653,6 +1677,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._isScrollIdle = false;
     }
 
+    if (this.props.calloutProps?.onScroll) {
+      this.props.calloutProps.onScroll();
+    }
+
     this._scrollIdleTimeoutId = this._async.setTimeout(() => {
       this._isScrollIdle = true;
     }, ScrollIdleDelay);
@@ -1664,22 +1692,31 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _scrollIntoView(): void {
     const { onScrollToItem, scrollSelectedToTop } = this.props;
 
-    const { currentPendingValueValidIndex, currentPendingValue } = this.state;
+    const currentPendingSelectedIndex = this._getPendingSelectedIndex(true);
 
     if (onScrollToItem) {
       // Use the custom scroll handler
-      onScrollToItem(
-        currentPendingValueValidIndex >= 0 || currentPendingValue !== ''
-          ? currentPendingValueValidIndex
-          : this._getFirstSelectedIndex(),
-      );
-    } else if (this._selectedElement.current && this._selectedElement.current.offsetParent) {
+      onScrollToItem(currentPendingSelectedIndex >= 0 ? currentPendingSelectedIndex : this._getFirstSelectedIndex());
+      return;
+    }
+
+    let scrollToElement: HTMLElement | null = this._selectedElement.current as HTMLElement;
+
+    // in multi-select there are multiple selected elements, so we use the pending select index
+    // to locate the option to scroll to.
+    if (this.props.multiSelect && this._comboBoxMenu.current) {
+      scrollToElement = findFirstDescendant(this._comboBoxMenu.current, (element: HTMLElement) => {
+        return element.dataset?.index === currentPendingSelectedIndex.toString();
+      });
+    }
+
+    if (scrollToElement && scrollToElement.offsetParent) {
       let alignToTop = true;
 
       // We are using refs, scroll the ref into view
       if (this._comboBoxMenu.current && this._comboBoxMenu.current.offsetParent) {
         const scrollableParent = this._comboBoxMenu.current.offsetParent;
-        const selectedElement = this._selectedElement.current.offsetParent;
+        const selectedElement = scrollToElement.offsetParent;
 
         const { offsetHeight, offsetTop } = selectedElement as HTMLElement;
         const { offsetHeight: parentOffsetHeight, scrollTop } = scrollableParent as HTMLElement;
@@ -1697,7 +1734,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       // if _comboboxMenu doesn't exist, fall back to scrollIntoView
       else {
-        this._selectedElement.current.offsetParent.scrollIntoView(alignToTop);
+        scrollToElement.offsetParent.scrollIntoView(alignToTop);
       }
     }
   }

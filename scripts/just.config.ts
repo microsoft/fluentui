@@ -115,7 +115,8 @@ export function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor', () => !args.min),
+      // v9 needs to run api-extractor which generates rolluped .d.ts files that are shipped to npm
+      condition('api-extractor', () => isConvergedPackage() || !args.min),
     ),
   ).cached();
 

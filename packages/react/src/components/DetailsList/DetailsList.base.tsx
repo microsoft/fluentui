@@ -133,9 +133,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionMode = selection.mode,
     selectionPreservedOnEmptyClick,
     selectionZoneProps,
+    // eslint-disable-next-line deprecation/deprecation
     ariaLabel,
     ariaLabelForGrid,
     rowElementEventMap,
+    // eslint-disable-next-line deprecation/deprecation
     shouldApplyApplicationRole = false,
     getKey,
     listProps,
@@ -166,6 +168,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRowDidMount,
     onRowWillUnmount,
     disableSelectionZone,
+    isSelectedOnFocus = true,
     onColumnResized,
     onColumnAutoResized,
     onToggleCollapse,
@@ -633,7 +636,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         if (focusZoneRef.current && focusZoneRef.current.focus()) {
           // select the first item in list after down arrow key event
           // only if nothing was selected; otherwise start with the already-selected item
-          if (selection.getSelectedIndices().length === 0) {
+          if (isSelectedOnFocus && selection.getSelectedIndices().length === 0) {
             selection.setIndexSelected(0, true, false);
           }
 
@@ -642,7 +645,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       }
     },
-    [selection, focusZoneRef],
+    [selection, focusZoneRef, isSelectedOnFocus],
   );
 
   const onContentKeyDown = React.useCallback(
@@ -659,20 +662,19 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   );
 
   return (
-    // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
-    // with JAWS.
     <div
       ref={rootRef}
       className={classNames.root}
       data-automationid="DetailsList"
       data-is-scrollable="false"
-      aria-label={ariaLabel}
       {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
     >
       <FocusRects />
       <div
         role={role}
-        aria-label={ariaLabelForGrid}
+        // ariaLabel is a legacy prop that used to be applied on the root node, which has poor AT support
+        // it is now treated as a fallback to ariaLabelForGrid for legacy support
+        aria-label={ariaLabelForGrid || ariaLabel}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
         aria-readonly="true"
@@ -720,6 +722,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               selection={selection}
               selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
               selectionMode={selectionMode}
+              isSelectedOnFocus={isSelectedOnFocus}
               onItemInvoked={onItemInvoked}
               onItemContextMenu={onItemContextMenu}
               enterModalOnTouch={enterModalSelectionOnTouch}

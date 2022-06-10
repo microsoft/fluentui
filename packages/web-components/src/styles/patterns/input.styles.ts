@@ -10,7 +10,6 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { Swatch } from '../../color/swatch';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   disabledOpacity,
   focusStrokeWidth,
@@ -27,9 +26,8 @@ import {
   neutralStrokeInputRest,
   neutralStrokeRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../patterns/type-ramp';
 import { heightNumber } from '../size';
 
 const placeholderRest = DesignToken.create<Swatch>('input-placeholder-rest').withDefault((target: HTMLElement) => {
@@ -73,9 +71,7 @@ export const inputStyles: (
   rootSelector: string,
 ) => css`
   :host {
-    font-family: ${bodyFont};
-    font-size: ${typeRampBaseFontSize};
-    line-height: ${typeRampBaseLineHeight};
+    ${typeRampBase}
     color: ${neutralForegroundRest};
     fill: currentcolor;
     outline: none;
@@ -112,8 +108,7 @@ export const inputStyles: (
     display: block;
     color: ${neutralForegroundRest};
     cursor: pointer;
-    font-size: ${typeRampBaseFontSize};
-    line-height: ${typeRampBaseLineHeight};
+    ${typeRampBase}
     margin-bottom: 4px;
   }
 

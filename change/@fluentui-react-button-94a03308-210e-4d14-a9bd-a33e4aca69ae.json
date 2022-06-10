@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button components: Making root a non-nullable slot.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

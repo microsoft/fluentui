@@ -15,6 +15,7 @@ export { attachmentIconStyles as AttachmentIcon } from './components/Attachment/
 export { avatarStyles as Avatar } from './components/Avatar/avatarStyles';
 export { avatarStatusStyles as AvatarStatus } from './components/Avatar/avatarStatusStyles';
 export { avatarStatusIconStyles as AvatarStatusIcon } from './components/Avatar/avatarStatusIconStyles';
+export { avatarStatusImageStyles as AvatarStatusImage } from './components/Avatar/avatarStatusImageStyles';
 export { avatarImageStyles as AvatarImage } from './components/Avatar/avatarImageStyles';
 export { avatarIconStyles as AvatarIcon } from './components/Avatar/avatarIconStyles';
 export { avatarLabelStyles as AvatarLabel } from './components/Avatar/avatarLabelStyles';

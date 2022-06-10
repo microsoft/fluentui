@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update React dev deps and hoist them to the repo root",
-  "packageName": "@fluentui/react-portal",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

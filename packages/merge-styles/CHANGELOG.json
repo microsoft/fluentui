@@ -2,6 +2,36 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.2",
+      "version": "8.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/merge-styles",
+            "comment": "Bump @fluentui/set-version to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:46 GMT",
+      "tag": "@fluentui/merge-styles_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/merge-styles",
+            "commit": "b13b2d03788979116a222c17d73f523c523f7684",
+            "comment": "Adding missing package.json export for ssr"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Mar 2022 07:34:40 GMT",
       "tag": "@fluentui/merge-styles_v8.5.0",
       "version": "8.5.0",

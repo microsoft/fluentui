@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Listbox renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Listbox"
+    role="listbox"
+    tabindex="0"
+  >
+    Default Listbox
+  </div>
+</div>
+`;

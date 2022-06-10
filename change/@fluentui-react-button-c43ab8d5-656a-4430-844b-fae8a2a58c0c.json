@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove config file that's no longer needed",
-  "packageName": "@fluentui/react-button",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

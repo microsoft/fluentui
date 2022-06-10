@@ -4,16 +4,15 @@ export type {{componentName}}Slots = {
   root: Slot<'div'>;
 };
 
-type {{componentName}}Commons = {
-  // TODO Add things shared between props and state here
-};
-
 /**
  * {{componentName}} Props
  */
-export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {{componentName}}Commons;
+export type {{componentName}}Props = ComponentProps<{{componentName}}Slots> & {};
 
 /**
  * State used in rendering {{componentName}}
  */
-export type {{componentName}}State = ComponentState<{{componentName}}Slots> & {{componentName}}Commons;
+export type {{componentName}}State = ComponentState<{{componentName}}Slots>;
+// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from {{componentName}}Props.
+// & Required<Pick<{{componentName}}Props, 'propName'>>
+;

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update Checkbox onChange event parameter to be of type ChangeEvent instead of type FormEvent.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
