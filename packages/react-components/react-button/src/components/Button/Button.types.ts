@@ -27,14 +27,6 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
   appearance?: 'secondary' | 'primary' | 'outline' | 'subtle' | 'transparent';
 
   /**
-   * A button can fill the width of its container.
-   * @default false
-   *
-   * @deprecated - Use style overrides instead.
-   */
-  block?: boolean;
-
-  /**
    * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
    * is important to keep a consistent tab order for screen reader and keyboard users. The primary example of this
    * pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.
@@ -73,9 +65,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
 };
 
 export type ButtonState = ComponentState<ButtonSlots> &
-  Required<
-    Pick<ButtonProps, 'appearance' | 'block' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>
-  > & {
+  Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     /**
      * A button can contain only an icon.
      *

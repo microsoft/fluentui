@@ -1,41 +1,73 @@
-# @fluentui/react-alert Spec
+# Alert
 
 ## Background
 
-_Description and use cases of this component_
+An Alert displays a brief, important message to attract a user's attention without interrupting their current task.
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- [Alert - Open UI](https://open-ui.org/components/toast.research)
+- [Convergence epic issue #22579](https://github.com/microsoft/fluentui/issues/22579)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+Default Alert
 
-## Variants
+```
+import { Alert } from '@fluentui/react-alert'
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+const AlertExample = () => <Alert>This is a default alert</Alert>
+```
+
+Success Alert
+
+```
+import { Alert } from '@fluentui/react-alert'
+
+const AlertExample = () =><Alert intent="success">This is a success alert</Alert>
+```
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+See [Alert.types.ts](./src/components/Alert/Alert.types.ts)
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Slots
+
+- `root`: The outermost `<div>` that contains the rest of the slots
+- `icon`: (optional) A `<span>` that renders an icon and is inferred by the `intent` prop or passed in via the `icon` prop
+- `action`: (optional) A `<button>` that prompts users to act on it
+
+### **Public**
+
+```jsx
+<Alert>This is a default alert</Alert>
+```
+
+### **Internal**
+
+```tsx
+<slots.root {...slotProps.root}>
+  {slots.icon && <slots.icon {...slotProps.icon} />}
+  {slotProps.root.children}
+  {slots.action && <slots.action {...slotProps.action} />}
+</slots.root>
+```
+
+### **DOM**
+
+```html
+<div class="fui-Alert">
+  <span class="fui-Alert__icon">DeletedFilled</span>
+  Chat deleted
+  <button type="button" class="fui-Button fui-Alert__action">Undo</button>
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [Migration.md](./Migration.md)
 
 ## Behaviors
 

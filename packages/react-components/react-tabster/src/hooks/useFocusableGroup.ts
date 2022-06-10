@@ -6,7 +6,7 @@ export interface UseFocusableGroupOptions {
   /**
    * Behavior for the Tab key.
    */
-  tabBehavior?: 'unlimited' | 'limited' | 'limitedTrapFocus';
+  tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
 /**
@@ -35,7 +35,7 @@ const getTabbability = (
       return Types.GroupperTabbabilities.Unlimited;
     case 'limited':
       return Types.GroupperTabbabilities.Limited;
-    case 'limitedTrapFocus':
+    case 'limited-trap-focus':
       return Types.GroupperTabbabilities.LimitedTrapFocus;
     default:
       return undefined;

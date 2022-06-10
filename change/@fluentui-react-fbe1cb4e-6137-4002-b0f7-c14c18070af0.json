@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Calendar/Datepicker: add preventDefault to FocusZone keys to prevent page scroll when hitting bounds",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

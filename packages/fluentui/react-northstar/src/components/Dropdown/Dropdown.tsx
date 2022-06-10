@@ -552,7 +552,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const renderTriggerButton = (getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any): JSX.Element => {
     const content = getSelectedItemAsString(value[0]);
     const triggerButtonId = triggerButton['id'] || defaultTriggerButtonId;
-
+    const triggerButtonContentId = `${triggerButtonId}__content`;
     const triggerButtonProps = getToggleButtonProps({
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
@@ -562,7 +562,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
+      'aria-labelledby': [ariaLabelledby, triggerButtonContentId].filter(Boolean).join(' '),
       ...(open && { 'aria-expanded': true }),
     });
 
@@ -573,37 +573,48 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
-            content,
             disabled,
             id: triggerButtonId,
             fluid: true,
             styles: resolvedStyles.triggerButton,
             ...restTriggerButtonProps,
           }),
-          overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: e => {
-              onClick(e);
-              _.invoke(predefinedProps, 'onClick', e, predefinedProps);
-            },
-            onFocus: e => {
-              onFocus(e);
-              _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
-            },
-            onBlur: e => {
-              if (!disabled) {
-                onBlur(e);
-              }
+          overrideProps: (predefinedProps: ButtonProps) => {
+            // It can be a shorthand
+            const resolvedContent = _.isPlainObject(predefinedProps.content)
+              ? (predefinedProps.content as {})
+              : predefinedProps.content
+              ? { children: predefinedProps.content }
+              : {};
 
-              _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
-            },
-            onKeyDown: e => {
-              if (!disabled) {
-                onKeyDown(e);
-              }
+            return {
+              content:
+                // If `null` is passed we should not render the slot
+                predefinedProps.content === null ? null : { content, id: triggerButtonContentId, ...resolvedContent },
+              onClick: e => {
+                onClick(e);
+                _.invoke(predefinedProps, 'onClick', e, predefinedProps);
+              },
+              onFocus: e => {
+                onFocus(e);
+                _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
+              },
+              onBlur: e => {
+                if (!disabled) {
+                  onBlur(e);
+                }
 
-              _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
-            },
-          }),
+                _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
+              },
+              onKeyDown: e => {
+                if (!disabled) {
+                  onKeyDown(e);
+                }
+
+                _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
+              },
+            };
+          },
         })}
       </Ref>
     );

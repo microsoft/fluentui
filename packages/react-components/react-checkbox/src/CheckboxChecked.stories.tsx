@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Checkbox } from './index';
+import { Checkbox, CheckboxProps } from './index';
 
 export const Checked = () => {
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState<CheckboxProps['checked']>(true);
 
-  return <Checkbox checked={checked} onChange={ev => setChecked(ev.currentTarget.checked)} label="Checked" />;
+  return <Checkbox checked={checked} onChange={(ev, data) => setChecked(data.checked)} label="Checked" />;
 };
+
 Checked.parameters = {
   docs: {
     description: {

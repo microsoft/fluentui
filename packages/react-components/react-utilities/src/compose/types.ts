@@ -95,7 +95,7 @@ type IntrisicElementProps<Type extends keyof JSX.IntrinsicElements> = React.Prop
  * ```
  */
 export type Slot<
-  Type extends keyof JSX.IntrinsicElements | React.ComponentType | UnknownSlotProps,
+  Type extends keyof JSX.IntrinsicElements | React.ComponentType | React.VoidFunctionComponent | UnknownSlotProps,
   AlternateAs extends keyof JSX.IntrinsicElements = never
 > = IsSingleton<Extract<Type, string>> extends true
   ?

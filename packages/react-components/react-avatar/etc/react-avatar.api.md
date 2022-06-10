@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -18,9 +17,6 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
 
-// @public @deprecated (undocumented)
-export const avatarClassName = "fui-Avatar";
-
 // @public (undocumented)
 export const avatarClassNames: SlotClassNames<AvatarSlots>;
 
@@ -31,28 +27,50 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
 
 // @public
+export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
+
+// @public (undocumented)
+export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
+
+// @public
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size'>;
+
+// @public (undocumented)
+export type AvatarGroupItemSlots = {
+    root: NonNullable<Slot<'div', 'li'>>;
+    avatar: NonNullable<Slot<typeof Avatar>>;
+    overflowLabel: NonNullable<Slot<'span'>>;
+};
+
+// @public
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
+    isOverflowItem?: boolean;
+    size: AvatarSizes;
+};
+
+// @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
-    overflowIndicator?: 'number-overflowed' | 'icon';
+    overflowIndicator?: 'count' | 'icon';
     size?: AvatarSizes;
-    strings?: AvatarGroupStrings;
 };
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
-    root: Slot<'div'>;
-    popoverTrigger?: Slot<typeof Button>;
-    popoverSurface?: Slot<typeof PopoverSurface>;
+    root: NonNullable<Slot<'div'>>;
+    overflowButton?: NonNullable<Slot<'button'>>;
+    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
+    hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
 };
 
 // @public
-export type AvatarNamedColor = 'darkRed' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'darkGreen' | 'lightTeal' | 'teal' | 'steel' | 'blue' | 'royalBlue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
+export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
 
 // @public
 export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
@@ -66,7 +84,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
 };
 
 // @public
-export type AvatarSizes = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
 // @public (undocumented)
 export type AvatarSlots = {
@@ -83,7 +101,10 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
 };
 
 // @public
-export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
+    allowPhoneInitials?: boolean;
+    firstInitialOnly?: boolean;
+}): string;
 
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
@@ -91,11 +112,20 @@ export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 // @public
 export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
 
+// @public
+export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
+
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public
+export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
+
+// @public
+export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
 export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;

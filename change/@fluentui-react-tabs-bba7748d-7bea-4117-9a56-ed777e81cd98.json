@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove overflow to allow focus outline to display",
-  "packageName": "@fluentui/react-tabs",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

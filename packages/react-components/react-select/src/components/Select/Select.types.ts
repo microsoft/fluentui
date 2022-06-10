@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SelectSlots = {
@@ -15,27 +16,43 @@ export type SelectSlots = {
   icon: Slot<'span'>;
 };
 
-export interface SelectCommons {
+export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
   /**
-   * Matches the Input sizes
-   * @default 'medium'
+   * Controls the colors and borders of the Select.
+   *
+   * @default 'outline'
    */
-  size?: 'small' | 'medium' | 'large';
+  appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
    * If true, the Select will have an inline `display`, allowing it to be inline with other content.
    * By default, Select has block layout.
+   *
    * @default false
    */
   inline?: boolean;
 
   /**
-   * Controls the colors and borders of the Select.
-   * @default 'outline'
+   * Called when the user changes the select element's value by selecting an option.
    */
-  appearance?: 'outline' | 'underline' | 'filledDarker' | 'filledLighter';
-}
+  onChange?: (ev: React.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
 
-export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size'> & SelectCommons;
+  /**
+   * Matches the Input sizes
+   *
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
+};
 
-export type SelectState = ComponentState<SelectSlots> & Required<SelectCommons>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
+
+/**
+ * Data passed to the `onChange` callback when a new option is selected.
+ */
+export type SelectOnChangeData = {
+  /**
+   * Updated `<select>` value, taken from either the selected option's value prop or inner text.
+   */
+  value: string;
+};

@@ -1,6 +1,8 @@
 import { Select } from '../Select';
 import selectDescription from '../SelectDescription.md';
 
+import bestPracticesMd from './SelectBestPractices.md';
+
 export { Default } from './SelectDefault.stories';
 export { Appearance } from './SelectAppearance.stories';
 export { Controlled } from './SelectControlled.stories';
@@ -10,12 +12,12 @@ export { Inline } from './SelectInline.stories';
 export { Size } from './SelectSize.stories';
 
 export default {
-  title: 'Components/Select',
+  title: 'Preview Components/Select',
   component: Select,
   parameters: {
     docs: {
       description: {
-        component: [selectDescription].join('\n'),
+        component: [selectDescription, bestPracticesMd].join('\n'),
       },
     },
   },

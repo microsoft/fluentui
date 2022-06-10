@@ -12,6 +12,7 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  offsetFromRoot,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -633,7 +634,15 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
 
-    removeTsIgnorePragmas();
+    updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
+      const scripts = {
+        storybook: `node ${offsetFromRoot(options.projectConfig.root)}scripts/storybook/runner`,
+        start: 'yarn storybook',
+      };
+      Object.assign(json.scripts, scripts);
+
+      return json;
+    });
   }
 
   if (sbAction === 'remove') {
@@ -667,6 +676,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
       return json;
     });
   }
+
+  removeTsIgnorePragmas();
 
   function removeTsIgnorePragmas() {
     const stories: string[] = [];
@@ -703,7 +714,6 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
-  const hasStorybookConfig = tree.exists(options.paths.storybook.main);
   let hasStories = false;
 
   visitNotIgnoredFiles(tree, options.projectConfig.root, treePath => {
@@ -713,13 +723,10 @@ function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
     }
   });
 
-  const tags = options.projectConfig.tags || [];
-  const hasTags = tags.includes('vNext') && tags.includes('platform:web');
+  const shouldInit = hasStories;
+  const shouldDelete = !shouldInit;
 
-  const shouldInit = hasStories || hasTags;
-  const shouldDelete = !shouldInit && hasStorybookConfig;
-
-  if (shouldInit) {
+  if (hasStories) {
     return 'init';
   }
 
@@ -747,7 +754,8 @@ function setupE2E(tree: Tree, options: NormalizedSchema) {
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts ?? {};
-    json.scripts.e2e = 'e2e';
+    json.scripts.e2e = 'cypress run --component';
+    json.scripts['e2e:local'] = 'cypress open --component';
 
     return json;
   });

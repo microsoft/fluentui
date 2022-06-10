@@ -7,7 +7,9 @@ export type ThemeClassNameContextValue = string;
  *
  * Useful for elements in the React tree (can read context) but not in the DOM Tree. E.g. Portals
  */
-export const ThemeClassNameContext = React.createContext<ThemeClassNameContextValue>('');
+const ThemeClassNameContext = React.createContext<ThemeClassNameContextValue>('');
+
+export const { Provider: ThemeClassNameProvider } = ThemeClassNameContext;
 
 /**
  * @returns CSS class that applies css variables
