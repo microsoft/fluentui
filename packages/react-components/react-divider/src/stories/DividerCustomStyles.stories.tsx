@@ -34,20 +34,20 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
   customLineColor: {
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
     },
   },
   customLineStyle: {
     ...shorthands.borderWidth('2px'),
-    ':before': {
+    '::before': {
       borderTopStyle: 'dashed',
       borderTopWidth: '2px',
     },
-    ':after': {
+    '::after': {
       borderTopStyle: 'dashed',
       borderTopWidth: '2px',
     },

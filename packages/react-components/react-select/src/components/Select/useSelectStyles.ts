@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
 
-    '&:after': {
+    '&::after': {
       backgroundImage: `linear-gradient(
         0deg,
         ${tokens.colorCompoundBrandStroke} 0%,

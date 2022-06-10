@@ -63,4 +63,6 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
      * Tooltip content for the overflow indicator.
      */
     tooltipContent: TooltipProps['content'];
+
+    nonOverflowAvatarsCount: number;
   };
