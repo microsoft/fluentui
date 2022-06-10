@@ -70,6 +70,28 @@ Example:
 ]
 ```
 
+### `no-cross-package-v9-imports`
+
+Prevents imports from each specific v9 component packages. Ensures that all v9 imports are coming from the `@fluentui/react-components` suite.
+
+**❌ Don't**
+
+```ts
+// src/stories/Component.stories.tsx
+import * as React from 'react';
+import { makeStyles, shorthands } from `@griffel/react`;
+import { Text } from `@fluentui/react-text`;
+import { webDarkTheme, webLightTheme } from `@fluentui/react-theme`;
+```
+
+**✅ Do**
+
+```ts
+// src/stories/Component.stories.tsx
+import * as React from 'react';
+import { makeStyles, shorthands, Text, webDarkTheme, webLightTheme } from `@fluentui/react-components`;
+```
+
 ### `deprecated-keyboard-event-props`
 
 Prevent using deprecated `KeyboardEvent` props `which` and `keyCode`, and recommend using `@fluentui/keyboard-key` instead.
