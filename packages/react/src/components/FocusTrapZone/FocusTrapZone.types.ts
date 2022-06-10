@@ -53,7 +53,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   disableRestoreFocus?: boolean;
 
   /**
-   * @deprecated Use `disableRestoreFocus` (it has the same behavior and a clearer name)
+   * @deprecated Use `disableRestoreFocus` (it has the same behavior and a clearer name).
    */
   ignoreExternalFocusing?: boolean;
 
