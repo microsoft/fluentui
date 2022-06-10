@@ -2,9 +2,8 @@ import * as React from 'react';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { ISNodeExtra, ISLinkExtra } from '../../types/IDataPoint';
 import * as d3Sankey from 'd3-sankey';
-// import { max as d3Max } from 'd3-array';
+
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 
 export interface ISankeyChartState {
@@ -43,9 +42,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       height: this.state.containerHeight,
       pathColor: pathColor,
       className,
-      nodes: { labelSize: this.props.labelSize, labelWeight: this.props.labelWeight },
+      nodes: this.props.nodes,
     });
-    const margin = { top: 10, right: 20, bottom: 10, left: 20 };
+    const margin = { top: 10, right: 0, bottom: 10, left: 0 };
     const width = this.state.containerWidth - margin.left - margin.right;
     const height =
       this.state.containerHeight - margin.top - margin.bottom > 0
@@ -53,28 +52,23 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         : 0;
 
     const sankey = d3Sankey
-      .sankey<ISNodeExtra, ISLinkExtra>()
+      .sankey()
       .nodeWidth(5)
       .nodePadding(6)
-      //.nodeAlign(datum => datum.columnNumber)
       .extent([
         [1, 1],
-        [width - 30, height - 20],
+        [width - 1, height - 6],
       ]);
 
     sankey(this.props.data.SankeyChartData!);
     const nodeData = this._createNodes(width);
     const linkData = this._createLinks();
-    const labelData = this._createLabel();
     return (
       <div
         className={this._classNames.root}
         role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
-        <svg width={this.state.containerWidth} height={20}>
-          {labelData}
-        </svg>
         <svg width={width} height={height} id={getId('sankeyChart')}>
           <g className={this._classNames.nodes}>{nodeData}</g>
           <g className={this._classNames.links} strokeOpacity={0.2}>
@@ -84,34 +78,25 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       </div>
     );
   }
-  private _createLabel(): React.ReactNode[] | undefined {
-    const labels: React.ReactNode[] = [];
-    if (this.props.data.SankeyChartData) {
-      this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {
-        const label = (
-          <text x={singleNode.x0} y={12}>
-            Label
-          </text>
-        );
-        labels.push(label);
-      });
-    }
-    return labels;
-  }
 
   private _createLinks(): React.ReactNode[] | undefined {
     const links: React.ReactNode[] = [];
+    const linksPalette = this.props.links?.colors;
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
         const path = d3Sankey.sankeyLinkHorizontal();
         const pathValue = path(singleLink);
+        const linkColor: string = linksPalette
+          ? linksPalette[Math.floor(Math.random() * linksPalette.length)]
+          : singleLink.color;
         const link = (
           <path
             key={index}
             d={pathValue ? pathValue : undefined}
             strokeWidth={Math.max(1, singleLink.width)}
             id={getId('link')}
+            stroke={linkColor}
           >
             <title>
               <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
@@ -126,14 +111,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   private _createNodes(width: number): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
+    const palette = this.props.nodes?.colors;
     if (this.props.data.SankeyChartData) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      //const yMax = getMinMaxOfYAxis(this.props.data.SankeyChartData.nodes, (node: any) => node.singleNode.y1);
-      // const yMax = d3Max(this.props.data.SankeyChartData.nodes, (node: any) => node.y0)!;
-      //const yMinNumber = Math.max(yMin, 0);
-
       this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {
         const height = singleNode.y1 - singleNode.y0 > 0 ? singleNode.y1 - singleNode.y0 : 0;
+        const nodeColor: string = palette ? palette[Math.floor(Math.random() * palette.length)] : singleNode.color;
         const node = (
           <g id={getId('nodeGElement')} key={index}>
             <rect
@@ -141,7 +123,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               y={singleNode.y0}
               height={height}
               width={singleNode.x1 - singleNode.x0}
-              fill={singleNode.color}
+              fill={nodeColor}
               id={getId('nodeBar')}
             />
             <text

@@ -53,10 +53,6 @@ export interface ISankeyChartProps {
   nodes?: ISankeyNodeProps;
 
   links?: ISankeyLinkProps;
-
-  labelWeight?: string;
-
-  labelSize?: string;
 }
 
 export interface ISankeyNodeProps {

@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import {
+  IChartProps,
+  ISankeyChartProps,
+  ISankeyLinkProps,
+  ISankeyNodeProps,
+  SankeyChart,
+} from '@fluentui/react-charting';
 
 interface ISankeyChartBasicState {
   width: number;
@@ -113,6 +119,14 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+    const nodesProps: ISankeyNodeProps = {
+      labelWeight: 'bold',
+      labelSize: '12px',
+      colors: ['red', 'blue', 'green', 'voilet'],
+    };
+    const linksProps: ISankeyLinkProps = {
+      colors: ['red', 'blue', 'green'],
+    };
 
     return (
       <>
@@ -126,8 +140,8 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
             height={this.state.height}
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
-            labelSize="12px"
-            labelWeight="bold"
+            nodes={nodesProps}
+            links={linksProps}
           />
         </div>
       </>
