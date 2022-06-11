@@ -1,6 +1,6 @@
 # @fluentui/react-tabs
 
-**React Tabs components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Tabs components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
 - A `TabList` provides single selection from a list of tabs.
 - When a `Tab` is selected, the content associated with the selected tab is displayed and other content is hidden.
@@ -11,6 +11,14 @@
 - Each `Tab` typically contains a text header and often includes an icon.
 
 ## Usage
+
+To import Tabs:
+
+```js
+import { Tablist, Tab } from '@fluentui/react-components';
+```
+
+### Examples
 
 To display tabs, declare a `TabList` with a list of `Tab` components as children.
 
@@ -46,6 +54,17 @@ export const TabExample = () => {
 };
 ```
 
-### More information
+See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
 
-See [SPEC.md](./Spec.md) to learn more specifics how the `TabList` and `Tab` were built.
+Alternatively, run Storybook locally with:
+
+1. `yarn start`
+2. Select `react-tabs` from the list.
+
+### Specification
+
+See [SPEC.md](./SPEC.md).
+
+### Migration Guide
+
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Link implementation.

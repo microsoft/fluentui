@@ -182,6 +182,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       sizeStyles[size],
       overflowButtonStyles.base,
       overflowButtonStyles.focusIndicator,
+      ...overflowButtonClasses,
       layout !== 'pie' && overflowButtonStyles.states,
       layout === 'pie' && overflowButtonStyles.pie,
       groupChildClassName,

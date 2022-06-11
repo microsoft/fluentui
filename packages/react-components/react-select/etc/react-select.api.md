@@ -23,7 +23,6 @@ export const selectClassNames: SlotClassNames<SelectSlots>;
 // @public (undocumented)
 export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
     appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
-    inline?: boolean;
     onChange?: (ev: React_2.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
     size?: 'small' | 'medium' | 'large';
 };
@@ -36,7 +35,7 @@ export type SelectSlots = {
 };
 
 // @public (undocumented)
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
 
 // @public
 export const useSelect_unstable: (props: SelectProps, ref: React_2.Ref<HTMLSelectElement>) => SelectState;

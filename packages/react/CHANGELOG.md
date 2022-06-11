@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 09 Jun 2022 07:45:28 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Jun 2022 07:46:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.73.0)
+
+Fri, 10 Jun 2022 07:46:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.3..@fluentui/react_v8.73.0)
+
+### Minor changes
+
+- add isSelectedOnFocus prop to DetailsList ([PR #23467](https://github.com/microsoft/fluentui/pull/23467) by seanmonahan@microsoft.com)
+- Calendar/Datepicker: add preventDefault to FocusZone keys to prevent page scroll when hitting bounds ([PR #23441](https://github.com/microsoft/fluentui/pull/23441) by sarah.higley@microsoft.com)
+
+### Patches
+
+- set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode ([PR #23402](https://github.com/microsoft/fluentui/pull/23402) by shmiitian@gmail.com)
+- fix: Persona no longer renders empty divs for secondaryText, tertiaryText, and optionalText if not present ([PR #23401](https://github.com/microsoft/fluentui/pull/23401) by behowell@microsoft.com)
 
 ## [8.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.3)
 

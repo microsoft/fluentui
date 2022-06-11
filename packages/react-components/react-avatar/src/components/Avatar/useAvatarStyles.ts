@@ -99,7 +99,7 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
-    ':before': {
+    '::before': {
       content: '""',
       position: 'absolute',
       top: 0,
@@ -115,34 +115,34 @@ const useStyles = makeStyles({
   },
 
   ring: {
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorBrandBackgroundStatic),
       ...shorthands.borderStyle('solid'),
     },
   },
   ringThick: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThick})`),
       ...shorthands.borderWidth(tokens.strokeWidthThick),
     },
   },
   ringThicker: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThicker})`),
       ...shorthands.borderWidth(tokens.strokeWidthThicker),
     },
   },
   ringThickest: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThickest})`),
       ...shorthands.borderWidth(tokens.strokeWidthThickest),
     },
   },
 
-  shadow4: { ':before': { boxShadow: tokens.shadow4 } },
-  shadow8: { ':before': { boxShadow: tokens.shadow8 } },
-  shadow16: { ':before': { boxShadow: tokens.shadow16 } },
-  shadow28: { ':before': { boxShadow: tokens.shadow28 } },
+  shadow4: { '::before': { boxShadow: tokens.shadow4 } },
+  shadow8: { '::before': { boxShadow: tokens.shadow8 } },
+  shadow16: { '::before': { boxShadow: tokens.shadow16 } },
+  shadow28: { '::before': { boxShadow: tokens.shadow28 } },
 
   inactive: {
     opacity: '0.8',
@@ -152,7 +152,7 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
-    ':before': {
+    '::before': {
       ...shorthands.margin(0),
       opacity: 0,
 
