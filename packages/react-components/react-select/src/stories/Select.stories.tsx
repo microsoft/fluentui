@@ -8,7 +8,6 @@ export { Appearance } from './SelectAppearance.stories';
 export { Controlled } from './SelectControlled.stories';
 export { Disabled } from './SelectDisabled.stories';
 export { InitialValue } from './SelectInitialValue.stories';
-export { Inline } from './SelectInline.stories';
 export { Size } from './SelectSize.stories';
 
 export default {

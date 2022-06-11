@@ -2,6 +2,41 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 10 Jun 2022 07:46:13 GMT",
+      "tag": "@fluentui/react_v8.73.0",
+      "version": "8.73.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3e0c3a2e3c00ab03d385f0bd63310d8f957d69a7",
+            "comment": "add isSelectedOnFocus prop to DetailsList"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1bef03aa7359ab4c2a8e68ef1122957fa6b1d3a6",
+            "comment": "Calendar/Datepicker: add preventDefault to FocusZone keys to prevent page scroll when hitting bounds"
+          }
+        ],
+        "patch": [
+          {
+            "author": "shmiitian@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "7b86868a45617155c6f815ca5195500c24668e9b",
+            "comment": "set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "845b826ec74c72d8d543c4271930d7e42c0b9c40",
+            "comment": "fix: Persona no longer renders empty divs for secondaryText, tertiaryText, and optionalText if not present"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Jun 2022 07:45:28 GMT",
       "tag": "@fluentui/react_v8.72.3",
       "version": "8.72.3",
