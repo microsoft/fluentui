@@ -3,6 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 
 import { Demo } from '../Demo/Demo';
+import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
 import { TokenBoxes } from '../TokenBoxes/TokenBoxes';
 
@@ -39,6 +40,8 @@ export const Content: React.FC<ContentProps> = props => {
       <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={props.brand} />
         <Demo theme={theme} />
+        <Divider />
+        <AccessibilityChecker theme={theme} />
         <Divider />
         <TokenBoxes theme={theme} isDark={isDark} toggleTheme={toggleTheme} />
       </div>

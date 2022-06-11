@@ -369,48 +369,6 @@ Array [
                 </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -919,48 +877,6 @@ Array [
                 </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -1474,48 +1390,6 @@ Array [
                 </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -2024,48 +1898,6 @@ Array [
                 </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>

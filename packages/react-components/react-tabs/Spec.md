@@ -234,84 +234,25 @@ An icon only tab is displayed when the icon slot is filled and tab content is om
 
 ### Tab
 
-TabCommons.value supports an arbitrary identifier value.
-This is similar to Accordion's selection approach.
+See API at [Tab.types.ts](./src/components/Tab/Tab.types.ts).
 
-```ts
-export type TabValue = unknown;
+Notes:
 
-export type TabCommons = {
-  disabled?: boolean;
-  disabledFocusable?: boolean;
-  value: TabValue;
-};
-```
-
-Each tab has an icon slot.
-
-```ts
-export type TabSlots = {
-  root: IntrinsicSlotProps<'div'>;
-  icon?: IntrinsicSlotProps<'span'>;
-};
-```
-
-```ts
-export type TabProps = ComponentProps<TabSlots> & TabCommons;
-```
+- `TabCommons.value` supports an arbitrary identifier value. This is similar to Accordion's selection approach.
+- Each tab has an `icon` slot.
 
 ### TabList
 
-The tab list only has the root slot.
+See API at [TabList.types.ts](./src/components/TabList/TabList.types.ts).
 
-```ts
-export type TabListSlots = {
-  root: IntrinsicSlotProps<'div'>;
-};
-```
+Notes:
 
-The tab list supports tab selection events that include the value of the tab selected.
-
-```ts
-export type TabSelectedEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
-
-export type TabSelectedData = {
-  value: TabValue;
-};
-
-export type TabSelectedEventHandler = (event: TabSelectedEvent, data: TabSelectedData) => void;
-```
-
-Tab list supports default and selected values for controlled and uncontrolled scenarios.
-
-```ts
-export type TabListProps = ComponentProps<TabListSlots> & {
-  appearance?: 'transparent' | 'subtle';
-  defaultSelectedValue?: string | number;
-  selectedValue?: string | number;
-  size?: 'small' | 'medium';
-  vertical?: boolean;
-  verticalTabContent?: boolean;
-  onTabSelected?: TabSelectedEventHandler;
-};
-```
-
-The tab list communicates with tabs via context.
-This applies appearance, size, and layout.
-The tab can leverage the selectedValue and is expected to call selectTab when clicked.
-
-By adding these properties to TabProps we could allow individual tabs to override these values.
-However the expectation is that the tabs within a tab list have consistent layout and appearance.
-
-```ts
-export type TabListContextValue = TabListCommons & {
-  appearance: 'transparent' | 'subtle';
-  selectedValue: string;
-  size: 'small' | 'medium';
-  selectTab: SelectTabEventHandler;
-  vertical: boolean;
-};
-```
+- The tab list only has the `root` slot.
+- The tab list supports tab selection events that include the value of the tab selected.
+- Tab list supports default and selected values for controlled and uncontrolled scenarios.
+- The tab list communicates with tabs via context. This applies `appearance`, `size`, and `layout`.
+- The tab can leverage the `selectedValue` and is expected to call `selectTab` when clicked.
+- By adding these context properties to `TabProps` we could allow individual tabs to override these values. However the expectation is that the tabs within a tab list have a consistent layout and appearance.
 
 ## Structure
 
@@ -337,18 +278,7 @@ export type TabListContextValue = TabListCommons & {
 
 ## Migration
 
-### From v8
-
-1. Replace occurrences of `<Pivot>` with `<TabList>`
-2. Replace occurrences of `<PivotItem>` with `<Tab>`
-3. Replace `<PivotItem>` content with handling onTabSelected to show/hide associated content.
-4. Move PivotItem.headerText to be the content of Tab
-5. Subscribe to onTabSelected to show/hide content when a tab is selected.
-
-### From v0
-
-1. Replace use of `<Menu>` with `<TabList>`
-2. Replace items data with Tab instances, writing a `map` function as needed.
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 

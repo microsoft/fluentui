@@ -13,18 +13,17 @@ import type { SelectProps, SelectState } from './Select.types';
  * @param ref - reference to the `<select>` element in Select
  */
 export const useSelect_unstable = (props: SelectProps, ref: React.Ref<HTMLSelectElement>): SelectState => {
-  const { select, icon, root, appearance = 'outline', inline = false, onChange, size = 'medium' } = props;
+  const { select, icon, root, appearance = 'outline', onChange, size = 'medium' } = props;
 
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'select',
-    excludedPropNames: ['appearance', 'inline', 'onChange', 'size'],
+    excludedPropNames: ['appearance', 'onChange', 'size'],
   });
 
   const state: SelectState = {
     size,
     appearance,
-    inline,
     components: {
       root: 'span',
       select: 'select',

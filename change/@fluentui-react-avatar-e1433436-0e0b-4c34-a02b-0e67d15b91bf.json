@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: Removing AvatarGroupItem stories.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
