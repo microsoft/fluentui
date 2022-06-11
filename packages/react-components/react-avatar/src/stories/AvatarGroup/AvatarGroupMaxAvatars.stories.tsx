@@ -11,12 +11,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const Layout = () => {
+export const MaxAvatars = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <AvatarGroup layout="spread">
+      <AvatarGroup maxAvatars={8}>
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
@@ -27,18 +27,7 @@ export const Layout = () => {
         <AvatarGroupItem name="Robert Tolbert" />
         <AvatarGroupItem name="Kevin Sturgis" />
       </AvatarGroup>
-      <AvatarGroup layout="stack">
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
-      </AvatarGroup>
-      <AvatarGroup layout="pie">
+      <AvatarGroup maxAvatars={3}>
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
@@ -53,10 +42,11 @@ export const Layout = () => {
   );
 };
 
-Layout.parameters = {
+MaxAvatars.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports support three layouts: spread, stack, and pie. The default is spread.`,
+      story: `An AvatarGroup supports a custom number of AvatarGroupItems to render before overflowing.
+      The default is 5.`,
     },
   },
 };
