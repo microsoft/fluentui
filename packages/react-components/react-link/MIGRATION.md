@@ -15,15 +15,15 @@ v0 does not currently export a `Link` component.
 
 ## Property mapping
 
-| v8 `Link`      | Converged `Link` |
-| -------------- | ---------------- |
-| `componentRef` | -                |
-| `disabled`     | `disabled`       |
-| `href`         | `href`           |
-| `onClick`      | `onClick`        |
-| `rel`          | `rel`            |
-| `styles`       | -                |
-| `target`       | `target`         |
-| `theme`        | -                |
-| `type`         | `type`           |
-| `underline`    | `inline`         |
+| v8 `Link`      | v9 `Link`  |
+| -------------- | ---------- |
+| `componentRef` | -          |
+| `disabled`     | `disabled` |
+| `href`         | `href`     |
+| `onClick`      | `onClick`  |
+| `rel`          | `rel`      |
+| `styles`       | -          |
+| `target`       | `target`   |
+| `theme`        | -          |
+| `type`         | `type`     |
+| `underline`    | `inline`   |

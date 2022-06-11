@@ -102,6 +102,17 @@ export class AppSwatch extends FoundationElement {
   public connectedCallback() {
     super.connectedCallback();
 
+    const fillColorChangeHandler = () => {
+      this.updateObservables();
+    };
+
+    fillColor.subscribe(
+      {
+        handleChange: fillColorChangeHandler,
+      },
+      this,
+    );
+
     this.updateObservables();
   }
 

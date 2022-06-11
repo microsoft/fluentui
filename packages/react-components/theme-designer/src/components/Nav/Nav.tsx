@@ -4,8 +4,13 @@ import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { Text, Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
 
+import { Theme, BrandVariants } from '@fluentui/react-theme';
+
 export interface NavProps {
   className?: string;
+  brand: BrandVariants;
+  darkTheme: Theme;
+  lightTheme: Theme;
 }
 
 const useStyles = makeStyles({

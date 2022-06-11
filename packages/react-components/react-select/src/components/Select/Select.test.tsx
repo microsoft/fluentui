@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Select } from './Select';
 import { isConformant } from '../../common/isConformant';
 
@@ -52,5 +52,38 @@ describe('Select', () => {
 
     expect(select.id).toEqual('select');
     expect(select.getAttribute('aria-label')).toEqual('test');
+  });
+
+  it('calls onChange with new value', () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <Select onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    fireEvent.change(getByTestId('select'), { target: { value: 'B' } });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 'B' });
+  });
+
+  it('does not call onChange with value changes', () => {
+    const onChange = jest.fn();
+    const component = render(
+      <Select value="B" onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    component.rerender(
+      <Select value="C" onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    expect(onChange).toHaveBeenCalledTimes(0);
   });
 });

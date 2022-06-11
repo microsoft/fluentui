@@ -34,6 +34,7 @@
     "@fluentui/react-shared-contexts": "9.0.0-rc.10",
     "@fluentui/react-tabster": "9.0.0-rc.13",
     "@fluentui/react-utilities": "9.0.0-rc.10",
+    "@griffel/react": "1.1.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
