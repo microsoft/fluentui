@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
 import { CounterBadge } from '../CounterBadge';
-import descriptionMd from '../BadgeDescription.md';
-import bestPracticesMd from '../BadgeBestPractices.md';
+import descriptionMd from './CounterBadgeDescription.md';
+import bestPracticesMd from './CounterBadgeBestPractices.md';
 export { Default } from './CounterBadgeDefault.stories';
 export { Appearance } from './CounterBadgeAppearance.stories';
 export { Shapes } from './CounterBadgeShapes.stories';

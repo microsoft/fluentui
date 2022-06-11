@@ -74,15 +74,6 @@ storiesOf('Select Converged', module)
       <option>text</option>
     </Select>
   ))
-  .addStory('Inline', () => (
-    <p>
-      Some text with{' '}
-      <Select inline style={{ width: '75px' }}>
-        <option>text</option>
-      </Select>{' '}
-      an inline select
-    </p>
-  ))
   .addStory('Custom Icon', () => (
     <Select icon="+">
       <option>text</option>
