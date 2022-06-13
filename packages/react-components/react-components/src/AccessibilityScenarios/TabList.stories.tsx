@@ -62,6 +62,9 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
         <Tab id="appearanceTab" value="appearance">
           Appearance
         </Tab>
+        <Tab id="advancedTab" value="advanced" disabled>
+          Advanced
+        </Tab>
         <Tab id="aboutTab" value="about">
           About
         </Tab>
