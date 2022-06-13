@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ComboboxBaseProps, ComboboxBaseState } from '../../ComboboxBase/ComboboxBase.types';
+import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
 import { Listbox } from '../Listbox/Listbox';
 
 export type ComboboxSlots = {
@@ -39,3 +40,7 @@ export type ComboboxOpenEvents =
   | React.FocusEvent<HTMLElement>
   | React.KeyboardEvent<HTMLElement>
   | React.MouseEvent<HTMLElement>;
+
+export type ComboboxContextValues = {
+  combobox: ComboboxContextValue;
+};

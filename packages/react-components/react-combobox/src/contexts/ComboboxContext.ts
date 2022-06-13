@@ -9,10 +9,6 @@ export type ComboboxContextValue = Pick<
   'activeOption' | 'appearance' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'size'
 >;
 
-export type ComboboxContextValues = {
-  combobox: ComboboxContextValue;
-};
-
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
   appearance: 'outline',

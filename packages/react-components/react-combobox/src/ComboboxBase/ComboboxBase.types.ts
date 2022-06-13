@@ -2,7 +2,6 @@ import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from '../utils/Selection.types';
-import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 
 /**
  * ComboboxBase Props
