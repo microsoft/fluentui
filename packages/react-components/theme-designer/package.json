@@ -34,7 +34,9 @@
     "tslib": "^2.1.0",
     "@fluentui/react-components": "^9.0.0-rc.14",
     "@fluentui/react-icons": "^2.0.172-rc.8",
-    "@fluent-blocks/colors": "9.1.0"
+    "@fluent-blocks/colors": "9.1.0",
+    "codesandbox-import-utils": "2.2.3",
+    "@types/dedent": "0.7.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
