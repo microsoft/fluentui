@@ -16,7 +16,7 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('1px', 'solid', 'transparent'),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     position: 'relative',

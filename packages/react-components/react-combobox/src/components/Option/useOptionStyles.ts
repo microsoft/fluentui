@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalS),
     position: 'relative',
 
     '&:hover': {
