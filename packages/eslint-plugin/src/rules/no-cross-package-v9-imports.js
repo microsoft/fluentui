@@ -27,26 +27,23 @@ module.exports = createRule({
 
     return {
       ImportDeclaration: imprt => {
+        if (!imprt.source || (imprt.source && imprt.source.type !== AST_NODE_TYPES.Literal)) {
+          return;
+        }
+
         if (typeof imprt.source.value !== 'string') {
           return;
         }
 
         const specifiers = imprt.specifiers;
 
-        if (
-          imprt.source &&
-          imprt.source.type === AST_NODE_TYPES.Literal &&
-          imprt.source.value === '@fluentui/react-components'
-        ) {
+        if (imprt.source.value === '@fluentui/react-components' && !reactComponentsImportNode) {
           reactComponentsImportNode = specifiers[specifiers.length - 1];
         }
 
         if (
-          (imprt.source &&
-            imprt.source.type === AST_NODE_TYPES.Literal &&
-            imprt.source.value !== '@fluentui/react-components' &&
-            imprt.source.value.includes('@fluentui/react-')) ||
-          imprt.source.value.includes('@griffel/react')
+          (imprt.source.value.includes('@fluentui/react-') || imprt.source.value.includes('@griffel/react')) &&
+          imprt.source.value !== '@fluentui/react-components'
         ) {
           if (!reactComponentsImportNode) {
             reactComponentsImportNode = specifiers[specifiers.length - 1];
