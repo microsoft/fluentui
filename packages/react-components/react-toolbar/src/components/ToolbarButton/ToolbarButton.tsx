@@ -10,7 +10,7 @@ import { useToolbarContext } from '../Toolbar/ToolbarContext';
  */
 export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forwardRef((props, ref) => {
   const { size } = useToolbarContext();
-  const state = useButton_unstable({ size, ...props }, ref);
+  const state = useButton_unstable({ size, appearance: 'transparent', ...props }, ref);
   useButtonStyles_unstable(state);
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

@@ -173,47 +173,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
   </div>
 </div>
 `;
@@ -288,7 +247,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -372,47 +331,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
   </div>
 </div>
 `;
@@ -487,7 +405,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               height: 48px;
               line-height: 46px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window !important;
               border: 1px solid WindowText;
@@ -534,64 +452,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           text-align: left;
           width: 100%;
         }
-  >
-    <div
-      className=
-          ms-Persona-primaryText
-          {
-            color: #323130;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-          &:hover {
-            color: #201f1e;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-secondaryText
-          {
-            color: #605e5c;
-            font-size: 12px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-tertiaryText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-    <div
-      className=
-          ms-Persona-optionalText
-          {
-            color: #605e5c;
-            display: none;
-            font-size: 14px;
-            font-weight: 400;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-      dir="auto"
-    />
-  </div>
+  />
 </div>
 `;

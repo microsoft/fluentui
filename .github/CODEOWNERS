@@ -82,6 +82,7 @@ apps/pr-deploy-site @microsoft/fluentui-react-build
 apps/test-bundles @microsoft/fluentui-react
 apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
+apps/ssr-tests-v9 @microsoft/fluentui-react-build
 
 #### Packages
 packages/azure-themes @hyoshis @Jacqueline-ms
@@ -92,7 +93,7 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
 # packages/jest-serializer-merge-styles
 
-packages/merge-styles @dzearing
+packages/merge-styles @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
@@ -115,10 +116,10 @@ packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
-packages/style-utilities @dzearing
-packages/style-utilities/src/interfaces @phkuo @dzearing
-packages/style-utilities/src/styles @phkuo @dzearing
-packages/theme @dzearing
+packages/style-utilities @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/theme @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
 packages/utilities @microsoft/cxe-red
 
 ### Fabric
@@ -130,7 +131,7 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
-packages/react-components/react-accordion @microsoft/teams-prg @microsoft/cxe-coastal
+packages/react-components/react-accordion @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-badge @microsoft/teams-prg @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
@@ -164,8 +165,10 @@ packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
 packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
+packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-coastal
 packages/react-components/global-context @microsoft/teams-prg
+packages/react-components/babel-preset-global-context @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
 
 

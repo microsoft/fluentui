@@ -7,13 +7,19 @@ describe('AvatarGroupItem', () => {
   isConformant({
     Component: AvatarGroupItem,
     displayName: 'AvatarGroupItem',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
+    // TODO: enable component-has-static-classnames-object
+    disabledTests: [
+      'component-has-static-classname',
+      'component-has-static-classname-exported',
+      'component-has-static-classnames-object',
+    ],
+    primarySlot: 'avatar',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<AvatarGroupItem>Default AvatarGroupItem</AvatarGroupItem>);
+    const result = render(<AvatarGroupItem name="Default AvatarGroupItem" />);
     expect(result.container).toMatchSnapshot();
   });
 });

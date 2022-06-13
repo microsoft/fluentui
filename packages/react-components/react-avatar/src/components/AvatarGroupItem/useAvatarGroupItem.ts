@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { Avatar } from '../Avatar/Avatar';
+import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
+import { resolveShorthand } from '@fluentui/react-utilities';
+import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -15,17 +19,52 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
+  const nonOverflowAvatarsCount = useContextSelector(AvatarGroupContext, ctx => ctx.nonOverflowAvatarsCount);
+  const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
+  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
+  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
+  const { style, className, ...avatarSlotProps } = props;
+  const size = groupSize ?? defaultAvatarGroupSize;
+  const hasAvatarGroupContext = useHasParentContext(AvatarGroupContext);
+
+  if (process.env.NODE_ENV !== 'production' && !hasAvatarGroupContext) {
+    // eslint-disable-next-line no-console
+    console.warn('AvatarGroupItem must only be used inside an AvatarGroup component.');
+  }
+
   return {
-    // TODO add appropriate props/defaults
+    nonOverflowAvatarsCount: nonOverflowAvatarsCount ?? 1,
+    layout,
+    size,
+    isOverflowItem: groupIsOverflow,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      avatar: Avatar,
+      overflowLabel: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: resolveShorthand(props.root, {
+      required: true,
+      defaultProps: {
+        style,
+        className,
+        role: groupIsOverflow ? 'listitem' : undefined,
+      },
+    }),
+    avatar: resolveShorthand(props.avatar, {
+      required: true,
+      defaultProps: {
+        ref,
+        size,
+        color: 'colorful',
+        ...avatarSlotProps,
+      },
+    }),
+    overflowLabel: resolveShorthand(props.overflowLabel, {
+      required: true,
+      defaultProps: {
+        children: props.name,
+      },
     }),
   };
 };

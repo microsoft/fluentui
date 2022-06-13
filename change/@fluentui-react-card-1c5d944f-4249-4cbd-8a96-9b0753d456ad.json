@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add `size` property to control card padding and border radius",
-  "packageName": "@fluentui/react-card",
-  "email": "39736248+andrefcdias@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

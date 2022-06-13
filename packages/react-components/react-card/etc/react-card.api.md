@@ -14,24 +14,25 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Card: ForwardRefComponent<CardProps>;
 
-// @public (undocumented)
+// @public
 export const cardClassNames: SlotClassNames<CardSlots>;
 
-// @public (undocumented)
+// @public
 export const cardCSSVars: {
     cardSizeVar: string;
+    cardBorderRadiusVar: string;
 };
 
 // @public
 export const CardFooter: ForwardRefComponent<CardFooterProps>;
 
-// @public (undocumented)
+// @public
 export const cardFooterClassNames: SlotClassNames<CardFooterSlots>;
 
 // @public
 export type CardFooterProps = ComponentProps<CardFooterSlots>;
 
-// @public (undocumented)
+// @public
 export type CardFooterSlots = {
     root: Slot<'div'>;
     action?: Slot<'div'>;
@@ -43,13 +44,13 @@ export type CardFooterState = ComponentState<CardFooterSlots>;
 // @public
 export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 
-// @public (undocumented)
+// @public
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
 
 // @public
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
-// @public (undocumented)
+// @public
 export type CardHeaderSlots = {
     root: Slot<'div'>;
     image: Slot<'div'>;
@@ -65,13 +66,13 @@ export type CardHeaderState = ComponentState<CardHeaderSlots>;
 // @public
 export const CardPreview: ForwardRefComponent<CardPreviewProps>;
 
-// @public (undocumented)
+// @public
 export const cardPreviewClassNames: SlotClassNames<CardPreviewSlots>;
 
 // @public
 export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 
-// @public (undocumented)
+// @public
 export type CardPreviewSlots = {
     root: Slot<'div'>;
     logo?: Slot<'div'>;
@@ -84,16 +85,17 @@ export type CardPreviewState = ComponentState<CardPreviewSlots>;
 export type CardProps = ComponentProps<CardSlots> & {
     appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+    orientation?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large';
 };
 
-// @public (undocumented)
+// @public
 export type CardSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

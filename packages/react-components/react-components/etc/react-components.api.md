@@ -429,7 +429,7 @@ import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
@@ -509,12 +509,13 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
-import { useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1529,6 +1530,7 @@ export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 
+
 export { useThemeClassName }
 
 export { useToggleButton_unstable }
@@ -1540,6 +1542,8 @@ export { useToggleState }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
+
+export { useTooltipVisibility }
 
 export { VerticalSpacingTokens }
 

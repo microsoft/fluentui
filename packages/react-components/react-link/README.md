@@ -1,6 +1,6 @@
 # @fluentui/react-link
 
-**Link components for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**Link components for [Fluent UI](https://aka.ms/fluentui-storybook)**
 
 Links reference data that a user can follow by clicking or tapping it.
 
@@ -36,4 +36,4 @@ See [SPEC.md](./SPEC.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest SpinButton implementation.
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Link implementation.

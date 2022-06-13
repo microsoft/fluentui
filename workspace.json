@@ -26,6 +26,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/babel-preset-global-context": {
+      "root": "packages/react-components/babel-preset-global-context",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/babel-preset-global-context/src",
+      "tags": ["vNext", "platform:node"]
+    },
     "@fluentui/bundle-size": {
       "root": "packages/bundle-size",
       "projectType": "library",
@@ -666,6 +673,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-theme-sass": {
+      "root": "packages/react-components/react-theme-sass",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-theme-sass/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-toolbar": {
       "root": "packages/react-components/react-toolbar",
       "projectType": "library",
@@ -711,6 +725,13 @@
       "root": "apps/ssr-tests",
       "projectType": "application",
       "implicitDependencies": []
+    },
+    "@fluentui/ssr-tests-v9": {
+      "root": "apps/ssr-tests-v9",
+      "projectType": "application",
+      "implicitDependencies": [],
+      "sourceRoot": "apps/ssr-tests-v9/src",
+      "tags": ["vNext", "platform:node"]
     },
     "@fluentui/state": {
       "root": "packages/fluentui/state",

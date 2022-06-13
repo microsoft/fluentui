@@ -142,7 +142,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
       isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topRightEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       id: `toolTip${this._calloutId}`,
       target: this.state.refSelected,
       isBeakVisible: false,
