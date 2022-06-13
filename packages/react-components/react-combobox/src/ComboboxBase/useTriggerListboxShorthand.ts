@@ -5,30 +5,28 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownK
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
-type TriggerListboxShorthandFunction = {
-  (
-    props: ComboboxBaseProps,
-    state: ComboboxBaseState,
-    ref: React.Ref<HTMLButtonElement>,
-    triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
-    listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-  ): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
-  (
-    props: ComboboxBaseProps,
-    state: ComboboxBaseState,
-    ref: React.Ref<HTMLInputElement>,
-    triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
-    listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-  ): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
-};
+export function useTriggerListboxShorthand(
+  props: ComboboxBaseProps,
+  state: ComboboxBaseState,
+  ref: React.Ref<HTMLButtonElement>,
+  triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
+  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+export function useTriggerListboxShorthand(
+  props: ComboboxBaseProps,
+  state: ComboboxBaseState,
+  ref: React.Ref<HTMLInputElement>,
+  triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
+  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
 
-export const useTriggerListboxShorthand: TriggerListboxShorthandFunction = (
-  props,
-  state,
-  ref,
-  triggerShorthand,
-  listboxShorthand,
-) => {
+export function useTriggerListboxShorthand(
+  props: ComboboxBaseProps,
+  state: ComboboxBaseState,
+  ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
+  triggerShorthand?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
+  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+): [ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>] {
   const { multiselect } = props;
   const {
     activeOption,
@@ -60,7 +58,8 @@ export const useTriggerListboxShorthand: TriggerListboxShorthandFunction = (
     defaultProps: {
       'aria-expanded': open,
       'aria-activedescendant': open ? activeOption?.id : undefined,
-      ref: useMergedRefs(ref, triggerRef),
+      // explicitly type the ref here to prevent input/button type conflicts
+      ref: useMergedRefs(ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
       role: 'combobox',
     },
   });
@@ -142,4 +141,4 @@ export const useTriggerListboxShorthand: TriggerListboxShorthandFunction = (
   };
 
   return [trigger, listbox];
-};
+}
