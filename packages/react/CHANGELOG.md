@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 10 Jun 2022 07:46:13 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jun 2022 07:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
+
+Mon, 13 Jun 2022 07:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.73.0..@fluentui/react_v8.74.0)
+
+### Minor changes
+
+- FocusTrapZone: deprecate ignoreExternalFocusing in favor of disableRestoreFocus, and fix bugs with handling prop changes ([PR #22500](https://github.com/microsoft/fluentui/pull/22500) by elcraig@microsoft.com)
+- Bump @fluentui/react-hooks to v8.6.0 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+
+### Patches
+
+- move Calendar day focus styles to correct element ([PR #23311](https://github.com/microsoft/fluentui/pull/23311) by sarah.higley@microsoft.com)
 
 ## [8.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.73.0)
 
