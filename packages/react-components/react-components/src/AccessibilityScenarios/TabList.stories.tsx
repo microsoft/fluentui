@@ -44,6 +44,12 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
     </div>
   ));
 
+  const NotificationsPanel = React.memo(() => (
+    <div role="tabpanel" aria-labelledby="notificationsTab">
+      <Checkbox label="Disable all notifications" />
+    </div>
+  ));
+
   const AboutPanel = React.memo(() => (
     <div role="tabpanel" aria-labelledby="aboutTab">
       <h2>Mail</h2>
@@ -62,6 +68,9 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
         <Tab id="appearanceTab" value="appearance">
           Appearance
         </Tab>
+        <Tab id="notificationsTab" value="notifications">
+          Notifications
+        </Tab>
         <Tab id="advancedTab" value="advanced" disabled>
           Advanced
         </Tab>
@@ -71,6 +80,7 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
 
         {tabSelectedValue === 'general' && <GeneralPanel />}
         {tabSelectedValue === 'appearance' && <AppearancePanel />}
+        {tabSelectedValue === 'notifications' && <NotificationsPanel />}
         {tabSelectedValue === 'about' && <AboutPanel />}
       </TabList>
     </Scenario>
