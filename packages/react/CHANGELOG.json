@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 13 Jun 2022 07:39:07 GMT",
+      "tag": "@fluentui/react_v8.74.0",
+      "version": "8.74.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7e8b60ab46449dc7d8dca32e8616e513238de3f1",
+            "comment": "move Calendar day focus styles to correct element"
+          }
+        ],
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "94c35b09d908aa7a6a5075d9ef499494613f5f4b",
+            "comment": "FocusTrapZone: deprecate ignoreExternalFocusing in favor of disableRestoreFocus, and fix bugs with handling prop changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.0",
+            "commit": "7581977dbf55ea586280985c407c38ea58e54121"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jun 2022 07:46:13 GMT",
       "tag": "@fluentui/react_v8.73.0",
       "version": "8.73.0",
