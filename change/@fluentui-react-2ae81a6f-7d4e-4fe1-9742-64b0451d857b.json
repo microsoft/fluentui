@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

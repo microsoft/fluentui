@@ -406,6 +406,65 @@ describe('DetailsList', () => {
     );
   });
 
+  it('clears selection when escape key is pressed and isSelectedOnFocus is `true`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+        expect(selection.getSelectedCount()).toEqual(0);
+      },
+    );
+  });
+
+  it('does not clear selection when escape key is pressed and isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+        expect(selection.getSelectedCount()).toEqual(5);
+      },
+    );
+  });
+
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];
