@@ -1,12 +1,19 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
-import { Theme, Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
+import {
+  BrandVariants,
+  Menu,
+  MenuTrigger,
+  MenuButton,
+  MenuPopover,
+  MenuList,
+  MenuItem,
+} from '@fluentui/react-components';
 import { CodeSandbox } from './CodeSandbox';
 
 export interface ExportProps {
   className?: string;
-  lightTheme: Theme;
-  darkTheme: Theme;
+  brand: BrandVariants;
 }
 
 const useStyles = makeStyles({
@@ -32,10 +39,10 @@ export const Export: React.FC<ExportProps> = props => {
         <MenuPopover>
           <MenuList>
             <MenuItem>
-              <CodeSandbox theme={props.lightTheme} text={'Preview Light Theme in CodeSandbox'} />
+              <CodeSandbox brand={props.brand} isLightTheme={true} />
             </MenuItem>
             <MenuItem>
-              <CodeSandbox theme={props.darkTheme} text={'Preview Dark Theme in CodeSandbox'} />
+              <CodeSandbox brand={props.brand} isLightTheme={false} />
             </MenuItem>
           </MenuList>
         </MenuPopover>

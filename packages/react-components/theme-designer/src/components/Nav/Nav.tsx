@@ -1,17 +1,13 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
+import { BrandVariants, FluentProvider, webDarkTheme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { Text } from '@fluentui/react-components';
 import { Export } from '../Export/Export';
 
-import { Theme, BrandVariants } from '@fluentui/react-theme';
-
 export interface NavProps {
   className?: string;
   brand: BrandVariants;
-  darkTheme: Theme;
-  lightTheme: Theme;
 }
 
 const useStyles = makeStyles({
@@ -60,7 +56,7 @@ export const Nav: React.FC<NavProps> = props => {
         UI Colors <ChevronRightRegular /> New palette
       </div>
       <Name />
-      <Export lightTheme={props.lightTheme} darkTheme={props.darkTheme} />
+      <Export brand={props.brand} />
     </FluentProvider>
   );
 };

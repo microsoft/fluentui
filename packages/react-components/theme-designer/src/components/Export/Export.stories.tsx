@@ -1,10 +1,7 @@
 import { Export } from './Export';
 import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
-import { createLightTheme, createDarkTheme } from '@fluentui/react-components';
 export default { component: Export };
 
 const brand = getBrandTokensFromPalette('#006BC7');
-const lightTheme = createLightTheme(brand);
-const darkTheme = createDarkTheme(brand);
 
-export const Default = { args: { brand: brand, darkTheme: darkTheme, lightTheme: lightTheme } };
+export const Default = { args: { brand: brand, isLightTheme: true } };
