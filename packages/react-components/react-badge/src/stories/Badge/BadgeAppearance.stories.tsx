@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Badge } from '../index';
+import { Badge } from '../../index';
 
 export const Appearance = () => {
   return (
