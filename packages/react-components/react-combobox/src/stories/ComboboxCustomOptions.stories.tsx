@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { CheckmarkCircle20Filled } from '@fluentui/react-icons';
+import { makeStyles, shorthands } from '@griffel/react';
 import { Combobox, ComboboxProps, Option, OptionProps, OptionGroup, OptionGroupProps } from '../index';
 
 const CustomOption = (props: OptionProps) => {
@@ -21,18 +22,31 @@ const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: string[
   );
 };
 
+const useStyles = makeStyles({
+  root: {
+    // Stack the label above the field
+    display: 'flex',
+    flexDirection: 'column',
+    // Use 2px gap below the label (per the design system)
+    ...shorthands.gap('2px'),
+    // Prevent the example from taking the full width of the page (optional)
+    maxWidth: '400px',
+  },
+});
+
 export const CustomOptions = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
   const land = ['Cat', 'Dog', 'Ferret', 'Hamster'];
   const water = ['Fish', 'Jellyfish', 'Octopus', 'Seal'];
+  const styles = useStyles();
   return (
-    <>
+    <div className={styles.root}>
       <label id={comboId}>Best pet</label>
       <Combobox aria-labelledby={comboId} placeholder="Select an animal" {...props}>
         <CustomOptionGroup label="Land" options={land} />
         <CustomOptionGroup label="Sea" options={water} />
       </Combobox>
-    </>
+    </div>
   );
 };
 
