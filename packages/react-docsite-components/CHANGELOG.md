@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 07 Jun 2022 07:48:04 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jun 2022 07:39:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.7.28)
+
+Mon, 13 Jun 2022 07:39:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.7.27..@fluentui/react-docsite-components_v8.7.28)
+
+### Patches
+
+- Bump @fluentui/react to v8.74.0 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+- Bump @fluentui/react-hooks to v8.6.0 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.4.25 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+
+## [8.7.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.7.27)
+
+Fri, 10 Jun 2022 07:46:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.7.26..@fluentui/react-docsite-components_v8.7.27)
+
+### Patches
+
+- Bump @fluentui/react to v8.73.0 ([PR #23468](https://github.com/microsoft/fluentui/pull/23468) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.4.24 ([PR #23468](https://github.com/microsoft/fluentui/pull/23468) by beachball)
+
+## [8.7.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.7.26)
+
+Thu, 09 Jun 2022 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.7.25..@fluentui/react-docsite-components_v8.7.26)
+
+### Patches
+
+- Bump @fluentui/react to v8.72.3 ([PR #23445](https://github.com/microsoft/fluentui/pull/23445) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.4.23 ([PR #23445](https://github.com/microsoft/fluentui/pull/23445) by beachball)
 
 ## [8.7.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.7.25)
 

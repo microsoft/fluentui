@@ -16,6 +16,9 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
+  "dependencies": {
+    "@fluentui/react-components": "^9.0.0-rc.14"
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts": "^1.0.0"

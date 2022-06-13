@@ -33,11 +33,11 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
 
 // @public
-export type AvatarGroupItemProps = ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>;
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div', 'li'>>;
+    root: NonNullable<Slot<'div'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
     overflowLabel: NonNullable<Slot<'span'>>;
 };
@@ -45,6 +45,9 @@ export type AvatarGroupItemSlots = {
 // @public
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
+    nonOverflowAvatarsCount: number;
+    layout: AvatarGroupProps['layout'];
+    size: AvatarSizes;
 };
 
 // @public
@@ -59,14 +62,14 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
     overflowButton?: NonNullable<Slot<'button'>>;
-    overflowList?: NonNullable<Slot<'ul'>>;
-    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
+    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
     hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
+    nonOverflowAvatarsCount: number;
 };
 
 // @public

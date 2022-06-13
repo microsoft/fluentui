@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 09 Jun 2022 07:45:28 GMT",
+      "tag": "@fluentui/react-focus_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "960f5354ba3d3e1d2ff7267ea1c70c2eddeb80de",
+            "comment": "FocusZone: Remove refs to _activeElement and _defaultFocusElement if they are no longer contained in _root"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jun 2022 07:48:04 GMT",
       "tag": "@fluentui/react-focus_v8.6.1",
       "version": "8.6.1",

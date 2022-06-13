@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 07 Jun 2022 07:48:02 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jun 2022 07:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
+
+Mon, 13 Jun 2022 07:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.73.0..@fluentui/react_v8.74.0)
+
+### Minor changes
+
+- FocusTrapZone: deprecate ignoreExternalFocusing in favor of disableRestoreFocus, and fix bugs with handling prop changes ([PR #22500](https://github.com/microsoft/fluentui/pull/22500) by elcraig@microsoft.com)
+- Bump @fluentui/react-hooks to v8.6.0 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+
+### Patches
+
+- move Calendar day focus styles to correct element ([PR #23311](https://github.com/microsoft/fluentui/pull/23311) by sarah.higley@microsoft.com)
+
+## [8.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.73.0)
+
+Fri, 10 Jun 2022 07:46:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.3..@fluentui/react_v8.73.0)
+
+### Minor changes
+
+- add isSelectedOnFocus prop to DetailsList ([PR #23467](https://github.com/microsoft/fluentui/pull/23467) by seanmonahan@microsoft.com)
+- Calendar/Datepicker: add preventDefault to FocusZone keys to prevent page scroll when hitting bounds ([PR #23441](https://github.com/microsoft/fluentui/pull/23441) by sarah.higley@microsoft.com)
+
+### Patches
+
+- set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode ([PR #23402](https://github.com/microsoft/fluentui/pull/23402) by shmiitian@gmail.com)
+- fix: Persona no longer renders empty divs for secondaryText, tertiaryText, and optionalText if not present ([PR #23401](https://github.com/microsoft/fluentui/pull/23401) by behowell@microsoft.com)
+
+## [8.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.3)
+
+Thu, 09 Jun 2022 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.2..@fluentui/react_v8.72.3)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.7.0 ([PR #23445](https://github.com/microsoft/fluentui/pull/23445) by beachball)
 
 ## [8.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.2)
 

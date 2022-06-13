@@ -349,6 +349,63 @@ describe('DetailsList', () => {
     );
   });
 
+  it('focuses row by arrow key', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('does not focus by arrow key when isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+      },
+    );
+  });
+
   it('invokes optional onRenderMissingItem prop once per missing item rendered', () => {
     const onRenderMissingItem = jest.fn();
     const items = [...mockData(5), null, null];

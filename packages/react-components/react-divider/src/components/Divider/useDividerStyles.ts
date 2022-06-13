@@ -29,13 +29,13 @@ const useBaseStyles = makeStyles({
     lineHeight: tokens.lineHeightBase200,
     textAlign: 'center',
 
-    ':before': {
+    '::before': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
     },
 
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       display: 'flex',
       flexGrow: 1,
@@ -44,12 +44,12 @@ const useBaseStyles = makeStyles({
 
   // Childless styles
   childless: {
-    ':before': {
+    '::before': {
       marginBottom: 0,
       marginRight: 0,
     },
 
-    ':after': {
+    '::after': {
       marginLeft: 0,
       marginTop: 0,
     },
@@ -57,20 +57,20 @@ const useBaseStyles = makeStyles({
 
   // Alignment variations
   start: {
-    ':after': {
+    '::after': {
       content: '""',
     },
   },
   center: {
-    ':before': {
+    '::before': {
       content: '""',
     },
-    ':after': {
+    '::after': {
       content: '""',
     },
   },
   end: {
-    ':before': {
+    '::before': {
       content: '""',
     },
   },
@@ -79,44 +79,44 @@ const useBaseStyles = makeStyles({
   brand: {
     color: tokens.colorBrandForeground1,
 
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
 
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorBrandStroke1),
     },
   },
   default: {
     color: tokens.colorNeutralForeground2,
 
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
 
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke2),
     },
   },
   subtle: {
     color: tokens.colorNeutralForeground2,
 
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
 
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke3),
     },
   },
   strong: {
     color: tokens.colorNeutralForeground2,
 
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
 
-    ':after': {
+    '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
   },
@@ -127,13 +127,13 @@ const useHorizontalStyles = makeStyles({
   base: {
     width: '100%',
 
-    ':before': {
+    '::before': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
       minWidth: minStartEndLength,
     },
 
-    ':after': {
+    '::after': {
       borderTopStyle: 'solid',
       borderTopWidth: tokens.strokeWidthThin,
       minWidth: minStartEndLength,
@@ -148,29 +148,29 @@ const useHorizontalStyles = makeStyles({
 
   // Alignment variations
   start: {
-    ':before': {
+    '::before': {
       content: '""',
       marginRight: contentSpacing,
       maxWidth: maxStartEndLength,
     },
 
-    ':after': {
+    '::after': {
       marginLeft: contentSpacing,
     },
   },
   center: {
-    ':before': {
+    '::before': {
       marginRight: contentSpacing,
     },
-    ':after': {
+    '::after': {
       marginLeft: contentSpacing,
     },
   },
   end: {
-    ':before': {
+    '::before': {
       marginRight: contentSpacing,
     },
-    ':after': {
+    '::after': {
       content: '""',
       marginLeft: contentSpacing,
       maxWidth: maxStartEndLength,
@@ -184,13 +184,13 @@ const useVerticalStyles = makeStyles({
     flexDirection: 'column',
     minHeight: '20px',
 
-    ':before': {
+    '::before': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
       minHeight: minStartEndLength,
     },
 
-    ':after': {
+    '::after': {
       borderRightStyle: 'solid',
       borderRightWidth: tokens.strokeWidthThin,
       minHeight: minStartEndLength,
@@ -210,29 +210,29 @@ const useVerticalStyles = makeStyles({
 
   // Alignment variations
   start: {
-    ':before': {
+    '::before': {
       content: '""',
       marginBottom: contentSpacing,
       maxHeight: maxStartEndLength,
     },
 
-    ':after': {
+    '::after': {
       marginTop: contentSpacing,
     },
   },
   center: {
-    ':before': {
+    '::before': {
       marginBottom: contentSpacing,
     },
-    ':after': {
+    '::after': {
       marginTop: contentSpacing,
     },
   },
   end: {
-    ':before': {
+    '::before': {
       marginBottom: contentSpacing,
     },
-    ':after': {
+    '::after': {
       content: '""',
       marginTop: contentSpacing,
       maxHeight: maxStartEndLength,

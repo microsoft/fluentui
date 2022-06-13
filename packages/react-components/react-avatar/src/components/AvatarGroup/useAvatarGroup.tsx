@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { PopoverSurface } from '@fluentui/react-popover';
@@ -14,9 +15,17 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, layout = 'spread', maxAvatars = 5, size = 32 } = props;
+  const { children, layout = 'spread', maxAvatars = 5, size = defaultAvatarGroupSize } = props;
   const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
   const childrenArray = React.Children.toArray(children);
+
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    childrenArray.find(child => React.isValidElement(child) && child.type !== AvatarGroupItem)
+  ) {
+    // eslint-disable-next-line no-console
+    console.warn("AvatarGroup's children must be of type AvatarGroupItems.");
+  }
 
   let rootChildren = childrenArray;
   let overflowChildren;
@@ -56,16 +65,10 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
-  const overflowSurface = resolveShorthand(props.overflowSurface, {
+  const overflowContent = resolveShorthand(props.overflowContent, {
     required: true,
     defaultProps: {
       'aria-label': 'Overflow',
-    },
-  });
-
-  const overflowList = resolveShorthand(props.overflowList, {
-    required: true,
-    defaultProps: {
       children: overflowChildren,
       role: 'list',
       tabIndex: 0,
@@ -73,6 +76,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   });
 
   return {
+    nonOverflowAvatarsCount: rootChildren.length,
     hasOverflow: !!overflowChildren,
     layout,
     overflowIndicator,
@@ -81,14 +85,14 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     components: {
       root: 'div',
-      overflowSurface: PopoverSurface,
-      overflowList: 'ul',
+      overflowContent: PopoverSurface,
       overflowButton: 'button',
     },
 
     root,
     overflowButton,
-    overflowSurface,
-    overflowList,
+    overflowContent,
   };
 };
+
+export const defaultAvatarGroupSize = 32;

@@ -6,7 +6,7 @@ import { AddCircleRegular } from '@fluentui/react-icons';
 export interface SidebarProps {
   className?: string;
   keyColor: string;
-  changeKeyColor: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setKeyColor: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const useStyles = makeStyles({
@@ -76,6 +76,8 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
   const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
 
+  const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
+
   return (
     <div className={mergeClasses(styles.root, props.className)}>
       <TabList className={styles.tabs} size="medium" defaultSelectedValue="use">
@@ -96,16 +98,10 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               appearance="underline"
               id={keyColorId}
               value={props.keyColor}
-              onChange={props.changeKeyColor}
+              onChange={handleOnChange}
             />
             <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
-              <input
-                className={styles.color}
-                type="color"
-                id={keyColorId}
-                value={props.keyColor}
-                onChange={props.changeKeyColor}
-              />
+              <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
             </div>
           </div>
         </div>
