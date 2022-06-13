@@ -608,10 +608,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
 
     return isSmall ? (
       <Panel
+        hasCloseButton
         isOpen={true}
         isLightDismiss={true}
         onDismiss={this._onDismiss}
-        hasCloseButton={false}
         styles={panelStyles}
         {...panelProps}
       >
@@ -664,6 +664,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? this._labelId : undefined}
           aria-multiselectable={multiSelect}
+          shouldFocusOnMount
         >
           {onRenderList(props, this._onRenderList)}
         </FocusZone>
