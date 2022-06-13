@@ -210,6 +210,20 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - SimpleGrouped',
               url: '#/examples/detailslist/grouped',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardDragDropPage')
+                .DetailsListKeyboardDragDropPage,
+              key: 'DetailsList - Keyboard Column Reorder & Resize',
+              name: 'DetailsList - Keyboard Column Reorder & Resize',
+              url: '#/examples/detailslist/keyboardcolumnreorderresize',
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardOverridesPage')
+                .DetailsListKeyboardOverridesPage,
+              key: 'DetailsList - Keyboard Overrides',
+              name: 'DetailsList - Keyboard Overrides',
+              url: '#/examples/detailslist/keyboardoverrides',
+            },
           ],
         },
         {
