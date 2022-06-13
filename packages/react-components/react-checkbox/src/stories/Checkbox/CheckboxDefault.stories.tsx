@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, CheckboxProps } from './index';
+import { Checkbox, CheckboxProps } from '../../index';
 
 export const Default = (props: CheckboxProps) => <Checkbox {...props} />;
 Default.argTypes = {
