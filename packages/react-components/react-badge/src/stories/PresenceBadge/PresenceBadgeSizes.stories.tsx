@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PresenceBadge } from '../index';
+import { PresenceBadge } from '../../index';
 
 export const Sizes = () => {
   return (
