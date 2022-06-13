@@ -1,4 +1,4 @@
-import { Card } from '../index';
+import { Card } from '../../index';
 import descriptionMd from './CardDescription.md';
 
 export { Default } from './CardDefault.stories';
