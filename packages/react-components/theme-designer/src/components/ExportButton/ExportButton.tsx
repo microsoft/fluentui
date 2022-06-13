@@ -9,7 +9,7 @@ import {
   MenuList,
   MenuItem,
 } from '@fluentui/react-components';
-import { CodeSandbox } from './CodeSandbox';
+import { ExportLink } from './ExportLink';
 
 export interface ExportProps {
   className?: string;
@@ -39,10 +39,10 @@ export const ExportButton: React.FC<ExportProps> = props => {
         <MenuPopover>
           <MenuList>
             <MenuItem>
-              <CodeSandbox brand={props.brand} isLightTheme={true} />
+              <ExportLink brand={props.brand} isLightTheme={true} />
             </MenuItem>
             <MenuItem>
-              <CodeSandbox brand={props.brand} isLightTheme={false} />
+              <ExportLink brand={props.brand} isLightTheme={false} />
             </MenuItem>
           </MenuList>
         </MenuPopover>

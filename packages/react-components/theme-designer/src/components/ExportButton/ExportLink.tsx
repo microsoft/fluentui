@@ -3,13 +3,13 @@ import { Link, BrandVariants } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 
-export interface CodeSandboxProps {
+export interface ExportLinkProps {
   className?: string;
   brand: BrandVariants;
   isLightTheme: boolean;
 }
 
-export const CodeSandbox: React.FC<CodeSandboxProps> = props => {
+export const ExportLink: React.FC<ExportLinkProps> = props => {
   const defaultFileToPreview = encodeURIComponent('/example.tsx');
   const codeSandboxParameters = getParameters({
     files: {
