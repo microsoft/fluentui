@@ -1,6 +1,9 @@
 // @ts-check
 const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
 const createRule = require('../utils/createRule');
+const getAllPackageInfo = require('../utils/getAllPackageInfo');
+
+const V9_PKG_NAME = '@fluentui/react-components';
 
 module.exports = createRule({
   name: 'no-cross-package-v9-imports',
@@ -25,6 +28,8 @@ module.exports = createRule({
      */
     let reactComponentsImportNode;
 
+    const v9PackageDeps = getAllPackageInfo()[V9_PKG_NAME].packageJson.dependencies;
+
     return {
       ImportDeclaration: imprt => {
         if (!imprt.source || (imprt.source && imprt.source.type !== AST_NODE_TYPES.Literal)) {
@@ -37,14 +42,11 @@ module.exports = createRule({
 
         const specifiers = imprt.specifiers;
 
-        if (imprt.source.value === '@fluentui/react-components' && !reactComponentsImportNode) {
+        if (imprt.source.value === V9_PKG_NAME && !reactComponentsImportNode) {
           reactComponentsImportNode = specifiers[specifiers.length - 1];
         }
 
-        if (
-          (imprt.source.value.includes('@fluentui/react-') || imprt.source.value.includes('@griffel/react')) &&
-          imprt.source.value !== '@fluentui/react-components'
-        ) {
+        if (v9PackageDeps[imprt.source.value] && imprt.source.value !== V9_PKG_NAME) {
           if (!reactComponentsImportNode) {
             reactComponentsImportNode = specifiers[specifiers.length - 1];
             context.report({
@@ -53,7 +55,7 @@ module.exports = createRule({
               data: { packageName: imprt.source.value },
               fix: fixer => {
                 const [start, end] = imprt.source.range;
-                return fixer.replaceTextRange([start + 1, end - 1], '@fluentui/react-components');
+                return fixer.replaceTextRange([start + 1, end - 1], V9_PKG_NAME);
               },
             });
           } else {
