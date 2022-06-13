@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Move SpinButton to release candidate",
+  "comment": "chore: Move SpinButton to release candidate.",
   "packageName": "@fluentui/react-spinbutton",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"
