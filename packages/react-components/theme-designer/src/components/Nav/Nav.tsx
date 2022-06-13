@@ -2,7 +2,8 @@ import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { FluentProvider, webDarkTheme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { Text, Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
+import { Text } from '@fluentui/react-components';
+import { Export } from '../Export/Export';
 
 import { Theme, BrandVariants } from '@fluentui/react-theme';
 
@@ -47,27 +48,6 @@ export const Name = () => {
   );
 };
 
-export const ExportButton = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.export}>
-      <Menu>
-        <MenuTrigger>
-          <MenuButton size="small" appearance="outline">
-            Save
-          </MenuButton>
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>TBD</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    </div>
-  );
-};
-
 export const Nav: React.FC<NavProps> = props => {
   const styles = useStyles();
   return (
@@ -80,7 +60,7 @@ export const Nav: React.FC<NavProps> = props => {
         UI Colors <ChevronRightRegular /> New palette
       </div>
       <Name />
-      <ExportButton />
+      <Export lightTheme={props.lightTheme} darkTheme={props.darkTheme} />
     </FluentProvider>
   );
 };
