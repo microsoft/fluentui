@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Export: React.FC<ExportProps> = props => {
+export const ExportButton: React.FC<ExportProps> = props => {
   const styles = useStyles();
   return (
     <div className={styles.root}>

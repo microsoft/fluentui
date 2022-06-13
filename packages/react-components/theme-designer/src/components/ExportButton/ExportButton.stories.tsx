@@ -1,6 +1,6 @@
-import { Export } from './Export';
+import { ExportButton } from './ExportButton';
 import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
-export default { component: Export };
+export default { component: ExportButton };
 
 const brand = getBrandTokensFromPalette('#006BC7');
 

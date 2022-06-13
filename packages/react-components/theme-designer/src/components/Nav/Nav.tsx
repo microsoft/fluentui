@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { BrandVariants, FluentProvider, webDarkTheme } from '@fluentui/react-components';
+import { Text, BrandVariants, FluentProvider, webDarkTheme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { Text } from '@fluentui/react-components';
-import { Export } from '../Export/Export';
+import { ExportButton } from '../ExportButton/ExportButton';
 
 export interface NavProps {
   className?: string;
@@ -56,7 +55,7 @@ export const Nav: React.FC<NavProps> = props => {
         UI Colors <ChevronRightRegular /> New palette
       </div>
       <Name />
-      <Export brand={props.brand} />
+      <ExportButton brand={props.brand} />
     </FluentProvider>
   );
 };
