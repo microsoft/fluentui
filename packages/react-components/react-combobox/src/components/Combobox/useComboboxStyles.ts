@@ -156,6 +156,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(comboboxClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
   state.button.className = mergeClasses(
     comboboxClassNames.button,
     styles.button,
