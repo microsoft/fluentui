@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Mon, 13 Jun 2022 07:39:07 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "94c35b09d908aa7a6a5075d9ef499494613f5f4b",
+            "comment": "Add useEventCallback"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/react-hooks_v8.5.5",
       "version": "8.5.5",
