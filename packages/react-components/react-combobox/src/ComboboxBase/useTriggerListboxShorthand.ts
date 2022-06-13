@@ -5,14 +5,31 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownK
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
-export const useTriggerListboxShorthand = (
-  props: ComboboxBaseProps,
-  state: ComboboxBaseState,
-  ref: React.Ref<HTMLButtonElement>,
-  triggerShorthand?: ExtractSlotProps<Slot<'button', 'input'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+type TriggerListboxShorthandFunction = {
+  (
+    props: ComboboxBaseProps,
+    state: ComboboxBaseState,
+    ref: React.Ref<HTMLButtonElement>,
+    triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
+    listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+  ): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+  (
+    props: ComboboxBaseProps,
+    state: ComboboxBaseState,
+    ref: React.Ref<HTMLInputElement>,
+    triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
+    listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+  ): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+};
+
+export const useTriggerListboxShorthand: TriggerListboxShorthandFunction = (
+  props,
+  state,
+  ref,
+  triggerShorthand,
+  listboxShorthand,
 ) => {
-  const { multiselect, placeholder } = props;
+  const { multiselect } = props;
   const {
     activeOption,
     getCount,
@@ -22,11 +39,10 @@ export const useTriggerListboxShorthand = (
     selectOption,
     setActiveOption,
     setOpen,
-    value,
   } = state;
 
   // handle trigger focus/blur
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const triggerRef: typeof ref = React.useRef(null);
   const ignoreTriggerBlur = React.useRef(false);
 
   // resolve listbox shorthand props
@@ -44,10 +60,8 @@ export const useTriggerListboxShorthand = (
     defaultProps: {
       'aria-expanded': open,
       'aria-activedescendant': open ? activeOption?.id : undefined,
-      children: value || placeholder,
-      ref: useMergedRefs(ref, triggerRef as React.RefObject<HTMLButtonElement>),
+      ref: useMergedRefs(ref, triggerRef),
       role: 'combobox',
-      type: 'button',
     },
   });
 

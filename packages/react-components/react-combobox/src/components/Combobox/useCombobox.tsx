@@ -1,13 +1,8 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
-<<<<<<< HEAD
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
-=======
-import { useComboboxBaseState } from '../../ComboboxBase/useComboboxBaseState';
-import { useTriggerListboxShorthand } from '../../ComboboxBase/useTriggerListboxShorthand';
->>>>>>> abstract combobox functionality into shared hooks
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
