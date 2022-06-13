@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CounterBadge } from '../index';
+import { CounterBadge } from '../../index';
 
 export const Sizes = () => {
   return (
