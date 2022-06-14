@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Divider } from '../Divider';
+import { Divider } from '../../Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -19,43 +19,32 @@ const useStyles = makeStyles({
   },
 });
 
-export const AlignContent = () => {
+export const Appearance = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
       <div className={styles.example}>
-        <Divider alignContent="start">start</Divider>
+        <Divider>(default)</Divider>
       </div>
       <div className={styles.example}>
-        <Divider alignContent="center">center (default)</Divider>
+        <Divider appearance="subtle">subtle</Divider>
       </div>
       <div className={styles.example}>
-        <Divider alignContent="end">end</Divider>
+        <Divider appearance="brand">brand</Divider>
       </div>
       <div className={styles.example}>
-        <Divider alignContent="start" vertical>
-          start
-        </Divider>
-      </div>
-      <div className={styles.example}>
-        <Divider alignContent="center" vertical>
-          center (default)
-        </Divider>
-      </div>
-      <div className={styles.example}>
-        <Divider alignContent="end" vertical>
-          end
-        </Divider>
+        <Divider appearance="strong">strong</Divider>
       </div>
     </div>
   );
 };
 
-AlignContent.parameters = {
+Appearance.parameters = {
   docs: {
     description: {
       story:
-        'The label associated with the divider can be aligned at the `start`, `center`, or `end` of the divider line.',
+        'A divider can have a `brand`, `subtle`, or `strong` appearance.' +
+        ' When not specified, it has its default experience.',
     },
   },
 };

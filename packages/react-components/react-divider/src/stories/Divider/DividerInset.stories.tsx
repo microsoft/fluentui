@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Divider } from '../Divider';
+import { Divider } from '../../Divider';
 
 const useStyles = makeStyles({
   root: {
@@ -19,15 +19,21 @@ const useStyles = makeStyles({
   },
 });
 
-export const Vertical = () => {
+export const Inset = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
       <div className={styles.example}>
-        <Divider vertical style={{ height: '100%' }} />
+        <Divider inset />
       </div>
       <div className={styles.example}>
-        <Divider vertical style={{ height: '100%' }}>
+        <Divider inset>Text</Divider>
+      </div>
+      <div className={styles.example}>
+        <Divider inset vertical style={{ height: '100%' }} />
+      </div>
+      <div className={styles.example}>
+        <Divider inset vertical style={{ height: '100%' }}>
           Text
         </Divider>
       </div>
@@ -35,10 +41,10 @@ export const Vertical = () => {
   );
 };
 
-Vertical.parameters = {
+Inset.parameters = {
   docs: {
     description: {
-      story: 'A divider can vertically separate two pieces of content.',
+      story: 'A divider can have its line inset from the edges of its container.',
     },
   },
 };
