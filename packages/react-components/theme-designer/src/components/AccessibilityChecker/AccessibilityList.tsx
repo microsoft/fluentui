@@ -15,9 +15,18 @@ export interface AccessibilityRowProps {
 
 const useStyles = makeStyles({
   root: {},
-  row: {
+  col: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+  },
+  colDesc: {
+    display: 'flex',
+    marginLeft: '5%',
+  },
+  row: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 3fr',
+    alignItems: 'center',
   },
 });
 
@@ -26,10 +35,12 @@ export const AccessibilityRow: React.FunctionComponent<AccessibilityRowProps> = 
   const styles = useStyles();
   return (
     <div className={styles.row}>
-      <div>{input.contrastRatioValue}</div>
-      <div>{input.contrastRatioPair}</div>
-      <div style={{ backgroundColor: input.background, color: input.foreground }}> Example </div>
-      <div>{props.contrastRatioPair.colorPair}</div>
+      <div className={styles.col}>{input.contrastRatioValue}</div>
+      <div className={styles.col}>{input.contrastRatioPair}</div>
+      <div className={styles.col} style={{ backgroundColor: input.background, color: input.foreground }}>
+        Example
+      </div>
+      <div className={styles.colDesc}>{props.contrastRatioPair.colorPair}</div>
     </div>
   );
 };
