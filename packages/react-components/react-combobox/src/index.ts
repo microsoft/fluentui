@@ -36,7 +36,14 @@ export {
   useDropdownStyles_unstable,
   useDropdown_unstable,
 } from './Dropdown';
-export type { DropdownProps, DropdownSlots, DropdownState } from './Dropdown';
+export type {
+  DropdownContextValues,
+  DropdownOpenChangeData,
+  DropdownOpenEvents,
+  DropdownProps,
+  DropdownSlots,
+  DropdownState,
+} from './Dropdown';
 export {
   OptionGroup,
   optionGroupClassNames,

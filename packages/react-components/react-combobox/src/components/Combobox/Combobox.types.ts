@@ -1,7 +1,12 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ComboboxBaseProps, ComboboxBaseState } from '../../utils/ComboboxBase.types';
-import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
+import type {
+  ComboboxBaseContextValues,
+  ComboboxBaseOpenChangeData,
+  ComboboxBaseOpenEvents,
+  ComboboxBaseProps,
+  ComboboxBaseState,
+} from '../../utils/ComboboxBase.types';
 import { Listbox } from '../Listbox/Listbox';
 
 export type ComboboxSlots = {
@@ -38,19 +43,7 @@ export type ComboboxState = ComponentState<ComboboxSlots> &
     placeholderVisible: boolean;
   };
 
-/**
- * Data for the Combobox onOpenChange event.
- */
-export type ComboboxOpenChangeData = {
-  open: boolean;
-};
-
-/* Possible event types for onOpen */
-export type ComboboxOpenEvents =
-  | React.FocusEvent<HTMLElement>
-  | React.KeyboardEvent<HTMLElement>
-  | React.MouseEvent<HTMLElement>;
-
-export type ComboboxContextValues = {
-  combobox: ComboboxContextValue;
-};
+/* Export types defined in ComboboxBase */
+export type ComboboxContextValues = ComboboxBaseContextValues;
+export type ComboboxOpenChangeData = ComboboxBaseOpenChangeData;
+export type ComboboxOpenEvents = ComboboxBaseOpenEvents;

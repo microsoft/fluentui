@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { getSlots } from '@fluentui/react-utilities';
-import type { ComboboxState, ComboboxSlots, ComboboxContextValues } from './Combobox.types';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
+import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
 
 /**
  * Render the final JSX of Combobox

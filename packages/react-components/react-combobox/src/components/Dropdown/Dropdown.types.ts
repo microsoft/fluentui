@@ -1,6 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ComboboxBaseProps, ComboboxBaseState } from '../../ComboboxBase/ComboboxBase.types';
-import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
+import type {
+  ComboboxBaseContextValues,
+  ComboboxBaseOpenChangeData,
+  ComboboxBaseOpenEvents,
+  ComboboxBaseProps,
+  ComboboxBaseState,
+} from '../../utils/ComboboxBase.types';
 import { Listbox } from '../Listbox/Listbox';
 
 export type DropdownSlots = {
@@ -27,6 +32,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
  */
 export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState;
 
-export type ComboboxContextValues = {
-  combobox: ComboboxContextValue;
-};
+/* Export types defined in ComboboxBase */
+export type DropdownContextValues = ComboboxBaseContextValues;
+export type DropdownOpenEvents = ComboboxBaseOpenEvents;
+export type DropdownOpenChangeData = ComboboxBaseOpenChangeData;
