@@ -72,13 +72,13 @@ storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
-      steps={new Screener.Steps().click('[role=button]').snapshot('overflow open', { cropTo: '.testWrapper' }).end()}
+      steps={new Screener.Steps().click('#show-overflow').snapshot('overflow open', { cropTo: '.testWrapper' }).end()}
     >
       {story()}
     </Screener>
   ))
   .addStory('overflowContent', () => (
-    <AvatarGroup>
+    <AvatarGroup overflowButton={{ id: 'show-overflow' }}>
       {names.map(name => (
         <AvatarGroupItem key={name} name={name} />
       ))}
