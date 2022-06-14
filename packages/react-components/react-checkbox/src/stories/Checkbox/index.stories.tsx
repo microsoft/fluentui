@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Checkbox } from './index';
+import { Checkbox } from '../../index';
 import { tokens } from '@fluentui/react-theme';
 
 export { Default } from './CheckboxDefault.stories';

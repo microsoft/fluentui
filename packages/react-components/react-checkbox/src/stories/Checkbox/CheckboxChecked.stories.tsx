@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, CheckboxProps } from './index';
+import { Checkbox, CheckboxProps } from '../../index';
 
 export const Checked = () => {
   const [checked, setChecked] = React.useState<CheckboxProps['checked']>(true);

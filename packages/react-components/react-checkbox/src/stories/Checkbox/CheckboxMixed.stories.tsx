@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from './index';
+import { Checkbox } from '../../index';
 
 export const Mixed = () => {
   const [option1, setOption1] = React.useState(false);
