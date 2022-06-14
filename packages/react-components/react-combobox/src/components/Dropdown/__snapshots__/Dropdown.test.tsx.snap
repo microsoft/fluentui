@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Combobox renders a default state 1`] = `
+exports[`Dropdown renders a default state 1`] = `
 <div>
   <div
-    class="fui-Combobox"
+    class="fui-Dropdown"
   >
     <button
       aria-expanded="false"
-      class="fui-Combobox__button"
+      class="fui-Dropdown__button"
       role="combobox"
       type="button"
     >
       <span
-        class="fui-Combobox__expandIcon"
+        class="fui-Dropdown__expandIcon"
       >
         <svg
           aria-hidden="true"
