@@ -19,9 +19,13 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
 
   const GeneralPanel = React.memo(() => (
     <div role="tabpanel" aria-labelledby="generalTab">
-      <Checkbox label="Run app at startup" />
+      <div>
+        <Checkbox label="Run app at startup" />
+      </div>
 
-      <Checkbox label="Enable spell-check" />
+      <div>
+        <Checkbox label="Enable spell-check" />
+      </div>
 
       <Label htmlFor="oofTextarea">Out of office message:</Label>
       <Textarea id="oofTextarea" />
