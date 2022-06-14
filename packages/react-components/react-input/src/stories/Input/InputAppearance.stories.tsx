@@ -3,7 +3,7 @@ import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Input } from '../index';
+import { Input } from '../../index';
 
 const useStyles = makeStyles({
   base: {

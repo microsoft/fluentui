@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Input } from '../index';
+import { Input } from '../../index';
 
 import descriptionMd from './InputDescription.md';
 import bestPracticesMd from './InputBestPractices.md';

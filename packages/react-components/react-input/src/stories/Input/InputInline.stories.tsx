@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { Input } from '../index';
+import { Input } from '../../index';
 
 export const Inline = () => {
   const inputId = useId('input');
