@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Label } from '../index';
+import { Label } from '../../index';
 
 import descriptionMd from './LabelDescription.md';
 export { Default } from './LabelDefault.stories';

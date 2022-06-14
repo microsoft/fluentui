@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '../index';
+import { Label } from '../../index';
 
 export const Disabled = () => (
   <Label disabled required>
