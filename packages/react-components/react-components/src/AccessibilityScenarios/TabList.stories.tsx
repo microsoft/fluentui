@@ -6,6 +6,8 @@ import { Checkbox } from '@fluentui/react-checkbox';
 import { RadioGroup, Radio } from '@fluentui/react-components';
 import { Textarea } from '@fluentui/react-textarea';
 
+import { MusicNote1Filled, InfoRegular } from '@fluentui/react-icons';
+
 import { Scenario } from './utils';
 
 export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionComponent = () => {
@@ -34,7 +36,7 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
         <Radio value="dark" label="Dark" />
       </RadioGroup>
 
-      <Label id="fontsizeLabel">Font size:</Label>
+      <Label id="fontSizeLabel">Font size:</Label>
       <RadioGroup defaultValue="medium" aria-labelledby="fontSizeLabel">
         <Radio value="small" label="Small" />
         <Radio value="medium" label="Medium" />
@@ -44,9 +46,9 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
     </div>
   ));
 
-  const NotificationsPanel = React.memo(() => (
-    <div role="tabpanel" aria-labelledby="notificationsTab">
-      <Checkbox label="Disable all notifications" />
+  const SoundsPanel = React.memo(() => (
+    <div role="tabpanel" aria-labelledby="SoundsTab">
+      <Checkbox label="Disable all notification sounds" />
     </div>
   ));
 
@@ -59,7 +61,7 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
   ));
 
   return (
-    <Scenario pageTitle="Mail settings with horizontal tabs">
+    <Scenario pageTitle="Mail settings with horizontal tablist">
       <h1>Settings</h1>
       <TabList selectedValue={tabSelectedValue} onTabSelect={onTabSelect}>
         <Tab id="generalTab" value="general">
@@ -68,26 +70,24 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
         <Tab id="appearanceTab" value="appearance">
           Appearance
         </Tab>
-        <Tab id="notificationsTab" value="notifications">
-          Notifications
-        </Tab>
+        <Tab id="soundsTab" value="sounds" icon={<MusicNote1Filled />} aria-label="Sounds" />
         <Tab id="advancedTab" value="advanced" disabled>
           Advanced
         </Tab>
-        <Tab id="aboutTab" value="about">
+        <Tab id="aboutTab" icon={<InfoRegular />} value="about">
           About
         </Tab>
-
-        {tabSelectedValue === 'general' && <GeneralPanel />}
-        {tabSelectedValue === 'appearance' && <AppearancePanel />}
-        {tabSelectedValue === 'notifications' && <NotificationsPanel />}
-        {tabSelectedValue === 'about' && <AboutPanel />}
       </TabList>
+
+      {tabSelectedValue === 'general' && <GeneralPanel />}
+      {tabSelectedValue === 'appearance' && <AppearancePanel />}
+      {tabSelectedValue === 'sounds' && <SoundsPanel />}
+      {tabSelectedValue === 'about' && <AboutPanel />}
     </Scenario>
   );
 };
 
 export default {
-  title: 'Accessibility Scenarios / Mail settings with horizontal tabs',
+  title: 'Accessibility Scenarios / Mail settings with horizontal tablist',
   id: 'tablist-accessibility-scenario',
 };
