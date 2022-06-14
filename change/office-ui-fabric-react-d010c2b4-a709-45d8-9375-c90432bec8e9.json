@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "using clientWidth of window as a replacement for innerWidth",
+  "packageName": "office-ui-fabric-react",
+  "email": "shmiitian@gmail.com",
+  "dependentChangeType": "patch"
+}
