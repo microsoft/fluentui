@@ -24,19 +24,23 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
   const calculateContrastRatio = (foreground: string, background: string) => {
     const theme = (props.theme as unknown) as Record<string, string>;
 
-    const bghex: string = theme[foreground];
-    const fghex: string = theme[background];
+    const bgHex: string = theme[foreground];
+    const fgHex: string = theme[background];
 
-    const bgc: Vec3 = hex_to_sRGB(bghex);
-    const fgc: Vec3 = hex_to_sRGB(fghex);
+    if (!bgHex || !fgHex) {
+      return;
+    }
+
+    const bgc: Vec3 = hex_to_sRGB(bgHex);
+    const fgc: Vec3 = hex_to_sRGB(fgHex);
 
     const currContrastRatio = getContrastRatio(bgc, fgc);
 
     const pair = {
-      background: bghex,
-      foreground: fghex,
+      background: bgHex,
+      foreground: fgHex,
       contrastRatioValue: currContrastRatio.toFixed(2),
-      contrastRatioPair: fghex + ' on ' + bghex,
+      contrastRatioPair: fgHex + ' on ' + bgHex,
       colorPair: foreground + ' on ' + background,
     };
 
