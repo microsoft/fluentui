@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 13 Jun 2022 07:39:07 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Jun 2022 07:52:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.0)
+
+Tue, 14 Jun 2022 07:52:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.74.0..@fluentui/react_v8.75.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23487](https://github.com/microsoft/fluentui/pull/23487) by seanmonahan@microsoft.com)
 
 ## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
 
