@@ -8,7 +8,7 @@ describe('Combobox', () => {
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
-    primarySlot: 'button',
+    primarySlot: 'input',
     // don't test deprecated className export on new components
     disabledTests: ['component-has-static-classname-exported'],
     testOptions: {

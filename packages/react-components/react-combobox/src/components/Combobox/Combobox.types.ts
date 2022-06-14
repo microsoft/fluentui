@@ -11,8 +11,8 @@ export type ComboboxSlots = {
   /* The dropdown arrow icon */
   expandIcon: Slot<'span'>;
 
-  /* The primary slot, the element with role="combobox" */
-  button: NonNullable<Slot<'button'>>;
+  /* The primary slot, an input with role="combobox" */
+  input: NonNullable<Slot<'input'>>;
 
   /* The dropdown listbox slot */
   listbox: NonNullable<Slot<typeof Listbox>>;
@@ -21,7 +21,13 @@ export type ComboboxSlots = {
 /**
  * Combobox Props
  */
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'button'> & ComboboxBaseProps;
+export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
+  ComboboxBaseProps & {
+    /*
+     * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
+     */
+    children: React.ReactNode;
+  };
 
 /**
  * State used in rendering Combobox

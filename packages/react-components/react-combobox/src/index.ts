@@ -30,6 +30,14 @@ export type {
   ComboboxState,
 } from './Combobox';
 export {
+  Dropdown,
+  dropdownClassNames,
+  renderDropdown_unstable,
+  useDropdownStyles_unstable,
+  useDropdown_unstable,
+} from './Dropdown';
+export type { DropdownProps, DropdownSlots, DropdownState } from './Dropdown';
+export {
   OptionGroup,
   optionGroupClassNames,
   renderOptionGroup_unstable,

@@ -2,29 +2,23 @@ import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
-import type { ComboboxSlots, ComboboxState } from './Combobox.types';
+import type { DropdownSlots, DropdownState } from './Dropdown.types';
 
-export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
-  root: 'fui-Combobox',
-  input: 'fui-Combobox__input',
-  expandIcon: 'fui-Combobox__expandIcon',
-  listbox: 'fui-Combobox__listbox',
+export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
+  root: 'fui-Dropdown',
+  button: 'fui-Dropdown__button',
+  expandIcon: 'fui-Dropdown__expandIcon',
+  listbox: 'fui-Dropdown__listbox',
 };
 
 /**
- * Styles for Combobox
+ * Styles for Dropdown
  */
 const useStyles = makeStyles({
   root: {
-    alignItems: 'center',
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+    ...shorthands.border('1px', 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
-    display: 'inline-flex',
-    flexWrap: 'nowrap',
-    justifyContent: 'space-between',
-    minWidth: '160px',
     position: 'relative',
 
     // windows high contrast mode focus indicator
@@ -65,19 +59,21 @@ const useStyles = makeStyles({
 
   listbox: {},
 
-  input: {
+  button: {
+    alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
-    fontFamily: tokens.fontFamilyBase,
+    boxSizing: 'border-box',
+    columnGap: tokens.spacingHorizontalXXS,
+    display: 'flex',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
+    textAlign: 'left',
     width: '100%',
 
     '&:focus': {
       outlineStyle: 'none',
     },
-  },
-
-  placeholder: {
-    color: tokens.colorNeutralForeground4,
   },
 
   // size variants
@@ -146,26 +142,20 @@ const useIconStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Combobox slots based on the state
+ * Apply styling to the Dropdown slots based on the state
  */
-export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, placeholderVisible, size } = state;
+export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
+  const { appearance, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
-  state.root.className = mergeClasses(comboboxClassNames.root, styles.root, styles[appearance], state.root.className);
-  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
-  state.input.className = mergeClasses(
-    comboboxClassNames.input,
-    styles.input,
-    styles[size],
-    placeholderVisible && styles.placeholder,
-    state.input.className,
-  );
+  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.listbox.className = mergeClasses(dropdownClassNames.listbox, styles.listbox, state.listbox.className);
+  state.button.className = mergeClasses(dropdownClassNames.button, styles.button, styles[size], state.button.className);
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
-      comboboxClassNames.expandIcon,
+      dropdownClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[size],
       state.expandIcon.className,
