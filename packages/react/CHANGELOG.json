@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 14 Jun 2022 12:28:59 GMT",
+      "tag": "@fluentui/react_v7.185.9",
+      "version": "7.185.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode",
+            "author": "shmiitian@gmail.com",
+            "commit": "50cd8a8970c148c1d61507dcc5b7269b5537fbf6",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@fluentui/react_v7.185.6",
       "version": "7.185.6",

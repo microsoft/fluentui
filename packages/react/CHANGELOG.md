@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Jun 2022 12:28:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.185.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.9)
+
+Tue, 14 Jun 2022 12:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.185.6..@fluentui/react_v7.185.9)
+
+### Patches
+
+- set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode ([PR #23488](https://github.com/microsoft/fluentui/pull/23488) by shmiitian@gmail.com)
 
 ## [7.185.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.185.6)
 
