@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '../Image';
+import { Image } from '../../Image';
 
 export const Fit = () => (
   <>
