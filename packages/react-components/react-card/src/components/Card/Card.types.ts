@@ -90,11 +90,11 @@ export type CardProps = ComponentProps<CardSlots> & {
   /**
    * Callback to be called when the selected state value changes.
    */
-  onCardSelect?: (event: React.MouseEvent | React.KeyboardEvent, data: CardOnSelectData) => void;
+  onCardSelect?: (event: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent, data: CardOnSelectData) => void;
 };
 
 /**
  * State used in rendering Card.
  */
 export type CardState = ComponentState<CardSlots> &
-  Required<Pick<CardProps, 'appearance' | 'orientation' | 'size' | 'selectable' | 'selected'>>;
+  Required<Pick<CardProps, 'appearance' | 'focusMode' | 'orientation' | 'selectable' | 'selected' | 'size'>>;

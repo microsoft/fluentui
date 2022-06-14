@@ -42,13 +42,13 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   const focusAttrs = focusMode !== 'off' ? { ...groupperAttrs } : null;
 
-  const onChangeHandler = (event: React.MouseEvent | React.KeyboardEvent) => {
+  const onChangeHandler = (event: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent) => {
     setChecked(!checked);
     onCardSelect && onCardSelect(event, { selected: checked });
   };
 
-  const selectAttrs =
-    selectable === true
+  const selectionAttrs =
+    selectable === true && focusMode === 'off'
       ? {
           onClick: onChangeHandler,
           onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -59,9 +59,16 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
           },
         }
       : null;
+  const selectSlotAttrs =
+    selectable === true && focusMode !== 'off'
+      ? {
+          onChange: onChangeHandler,
+        }
+      : null;
 
   return {
     appearance,
+    focusMode,
     orientation,
     size,
     selectable,
@@ -73,13 +80,14 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
       role: 'group',
       tabIndex: selectable || focusMode !== 'off' ? 0 : undefined,
       ...focusAttrs,
-      ...selectAttrs,
+      ...selectionAttrs,
       ...props,
     }),
     select: selectable
       ? resolveShorthand(select || {}, {
           defaultProps: {
             checked,
+            ...selectSlotAttrs,
           },
         })
       : undefined,

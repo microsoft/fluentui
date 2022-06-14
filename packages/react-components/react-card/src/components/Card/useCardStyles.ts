@@ -293,7 +293,8 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     state.root.onTouchStart ||
     state.root.onTouchEnd;
 
-  const interactive = state.selectable || hasInteraction ? 'interactive' : 'nonInteractive';
+  const interactive =
+    (state.selectable && state.focusMode === 'off') || hasInteraction ? 'interactive' : 'nonInteractive';
 
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
