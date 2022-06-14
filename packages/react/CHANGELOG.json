@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 14 Jun 2022 07:52:11 GMT",
+      "tag": "@fluentui/react_v8.75.0",
+      "version": "8.75.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98aeeed439b9cff1161a01157ca97befe533f12f",
+            "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 13 Jun 2022 07:39:07 GMT",
       "tag": "@fluentui/react_v8.74.0",
       "version": "8.74.0",
