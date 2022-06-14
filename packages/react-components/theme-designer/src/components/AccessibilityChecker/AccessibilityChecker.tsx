@@ -21,21 +21,23 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
   const nonAccessiblePairs: ContrastRatioPair[] = [];
   const accessiblePairs: ContrastRatioPair[] = [];
 
-  const calculateContrastRatio = (foreground: string, background: string, colorPairString: string) => {
-    const bgc: Vec3 = hex_to_sRGB(background);
-    const fgc: Vec3 = hex_to_sRGB(foreground);
+  const calculateContrastRatio = (foreground: string, background: string) => {
+    const theme = (props.theme as unknown) as Record<string, string>;
+
+    const bghex: string = theme[foreground];
+    const fghex: string = theme[background];
+
+    const bgc: Vec3 = hex_to_sRGB(bghex);
+    const fgc: Vec3 = hex_to_sRGB(fghex);
 
     const currContrastRatio = getContrastRatio(bgc, fgc);
-    const contrastRatioString = currContrastRatio.toFixed(2);
-
-    const currContrastRatioPair = background + ' on ' + foreground;
 
     const pair = {
-      background: background,
-      foreground: foreground,
-      contrastRatioValue: contrastRatioString,
-      contrastRatioPair: currContrastRatioPair,
-      colorPair: colorPairString,
+      background: bghex,
+      foreground: fghex,
+      contrastRatioValue: currContrastRatio.toFixed(2),
+      contrastRatioPair: fghex + ' on ' + bghex,
+      colorPair: foreground + ' on ' + background,
     };
 
     if (currContrastRatio < 4.5) {
@@ -45,206 +47,56 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     }
   };
 
+  const colorPairs = [
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundHover'],
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundPressed'],
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundSelected'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackground'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundHover'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundPressed'],
+    ['colorNeutralForegroundInverted', 'colorBrandBackgroundStatic'],
+    ['colorNeutralForeground1', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandHover', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandHover', 'colorSubtleBackgroundHover'],
+    ['colorNeutralForeground2BrandPressed', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandPressed', 'colorSubtleBackgroundPressed'],
+    ['colorNeutralForeground2BrandSelected', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandSelected', 'colorSubtleBackgroundSelected'],
+    ['colorBrandForegroundLink', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkHover', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkPressed', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkSelected', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1Hover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1Pressed', 'colorNeutralBackground1'],
+    ['colorBrandForeground1', 'colorNeutralBackground1'],
+    ['colorBrandForeground2', 'colorNeutralBackground1'],
+    ['colorBrandBackground', 'colorNeutralBackground1'],
+    ['colorBrandBackground', 'colorNeutralForegroundOnBrand'],
+    ['colorBrandBackgroundHover', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundPressed', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundSelected', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackground', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackgroundHover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackgroundPressed', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundStatic', 'colorNeutralBackground1'],
+    ['colorBrandForeground2', 'colorBrandBackground2'],
+    ['colorBrandStroke1', 'colorBrandBackground2'],
+    ['colorBrandStroke2', 'colorBrandBackground2'],
+    ['colorCompoundBrandStroke', 'colorNeutralBackground1'],
+    ['colorCompoundBrandStroke', 'colorNeutralBackground3'],
+    ['colorCompoundBrandStrokeHover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandStrokePressed', 'colorNeutralBackground1'],
+  ];
+
   const loadAllContrastRatioPairsList = () => {
-    const input = props.theme;
-    calculateContrastRatio(
-      input.colorNeutralForeground1,
-      input.colorNeutralBackground1,
-      'NeutralForeground1 on NeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandHover,
-      input.colorNeutralBackground1,
-      'colorNeutralForeground2BrandHover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandHover,
-      input.colorSubtleBackgroundHover,
-      'colorNeutralForeground2BrandHover on colorSubtleBackgroundHover',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandPressed,
-      input.colorNeutralBackground1,
-      'colorNeutralForeground2BrandPressed on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandPressed,
-      input.colorSubtleBackgroundPressed,
-      'colorNeutralForeground2BrandPressed on colorSubtleBackgroundPressed',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandSelected,
-      input.colorNeutralBackground1,
-      'colorNeutralForeground2BrandSelected on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground2BrandSelected,
-      input.colorSubtleBackgroundSelected,
-      'colorNeutralForeground2BrandSelected on colorSubtleBackgroundSelected',
-    );
-    calculateContrastRatio(
-      input.colorBrandForegroundLink,
-      input.colorNeutralBackground1,
-      'colorBrandForegroundLink on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandForegroundLinkHover,
-      input.colorNeutralBackground1,
-      'colorBrandForegroundLinkHover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandForegroundLinkPressed,
-      input.colorNeutralBackground1,
-      'colorBrandForegroundLinkPressed on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandForegroundLinkSelected,
-      input.colorNeutralBackground1,
-      'colorBrandForegroundLinkSelected on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandForeground1,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandForeground1 on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandForeground1Hover,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandForeground1Hover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandForeground1Pressed,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandForeground1Pressed on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandForeground1,
-      input.colorNeutralBackground1,
-      'colorBrandForeground1 on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandForeground2,
-      input.colorNeutralBackground1,
-      'colorBrandForeground2 on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackground,
-      input.colorNeutralBackground1,
-      'colorBrandBackground on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackground,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackground on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundHover,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundHover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundHover,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundHover on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundPressed,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundPressed on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundPressed,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundPressed on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundSelected,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundSelected on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundSelected,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundSelected on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackground,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackground on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackground,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackground on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackgroundHover,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackgroundHover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackgroundHover,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackgroundHover on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackgroundPressed,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackgroundPressed on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandBackgroundPressed,
-      input.colorNeutralForegroundOnBrand,
-      'colorCompoundBrandBackgroundPressed on colorNeutralForegroundOnBrand',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundStatic,
-      input.colorNeutralForegroundOnBrand,
-      'colorBrandBackgroundStatic on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackgroundStatic,
-      input.colorNeutralForegroundInverted,
-      'colorBrandBackgroundStatic on colorNeutralForegroundInverted',
-    );
-    calculateContrastRatio(
-      input.colorBrandBackground2,
-      input.colorBrandForeground2,
-      'colorBrandBackground2 on colorBrandForeground2',
-    );
-    calculateContrastRatio(
-      input.colorBrandStroke1,
-      input.colorBrandBackground2,
-      'colorBrandStroke1 on colorBrandBackground2',
-    );
-    calculateContrastRatio(
-      input.colorBrandStroke2,
-      input.colorBrandBackground2,
-      'colorBrandStroke2 on colorBrandBackground2',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandStroke,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandStroke on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandStroke,
-      input.colorNeutralBackground3,
-      'colorCompoundBrandStroke on colorNeutralBackground3',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandStrokeHover,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandStrokeHover on colorNeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorCompoundBrandStrokePressed,
-      input.colorNeutralBackground1,
-      'colorCompoundBrandStrokePressed on colorNeutralBackground1',
-    );
+    colorPairs.map(([c1, c2]) => {
+      return calculateContrastRatio(c1, c2);
+    });
   };
 
   loadAllContrastRatioPairsList();
+
   return (
     <div className={props.className}>
       <Caption1>Accessibility Checker</Caption1>
