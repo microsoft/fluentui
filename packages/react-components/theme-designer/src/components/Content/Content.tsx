@@ -39,7 +39,7 @@ export const Content: React.FC<ContentProps> = props => {
   return (
     <FluentProvider theme={theme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
-        This tool is still a work in progress - colors are still subject to adjustment.
+        This tool is a work in progress - colors are subject to adjustment.
       </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={props.brand} />
