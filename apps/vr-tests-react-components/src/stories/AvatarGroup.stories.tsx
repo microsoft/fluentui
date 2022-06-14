@@ -71,16 +71,21 @@ storiesOf('AvatarGroup Converged', module)
 storiesOf('AvatarGroup Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().click('#show-overflow').snapshot('overflow open', { cropTo: '.testWrapper' }).end()}
-    >
+    <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('overflowConentOpen').end()}>
       {story()}
     </Screener>
   ))
-  .addStory('overflowContent', () => (
-    <AvatarGroup overflowButton={{ id: 'show-overflow' }}>
-      {names.map(name => (
-        <AvatarGroupItem key={name} name={name} />
-      ))}
-    </AvatarGroup>
-  ));
+  .addStory(
+    'overflowContent',
+    () => (
+      <AvatarGroup overflowButton={{ id: 'show-overflow' }}>
+        {names.map(name => (
+          <AvatarGroupItem key={name} name={name} />
+        ))}
+      </AvatarGroup>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  );
