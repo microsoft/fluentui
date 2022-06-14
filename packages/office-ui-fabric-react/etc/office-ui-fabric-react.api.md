@@ -3820,6 +3820,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
     isPlaceholderData?: boolean;
+    isSelectedOnFocus?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
