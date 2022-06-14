@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Jun 2022 07:39:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.0)
+
+Mon, 13 Jun 2022 07:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.5.5..@fluentui/react-hooks_v8.6.0)
+
+### Minor changes
+
+- Add useEventCallback ([PR #22500](https://github.com/microsoft/fluentui/pull/22500) by elcraig@microsoft.com)
 
 ## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.5.5)
 

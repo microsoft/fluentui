@@ -18,7 +18,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Features
+- Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
+
 ### Fixes
+- Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
 - Updating `inverted` style of `Dropdown` @notandrew ([#23101](https://github.com/microsoft/fluentui/pull/23101))
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->

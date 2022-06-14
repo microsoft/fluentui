@@ -5,23 +5,25 @@ import type { OptionValue, OptionCollectionState } from '../../utils/OptionColle
 import { SelectionProps, SelectionState } from '../../utils/Selection.types';
 import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
 import { Listbox } from '../Listbox/Listbox';
-import { ComboButton } from '../ComboButton/ComboButton';
 
 export type ComboboxSlots = {
   /* The root combobox slot */
   root: NonNullable<Slot<'div'>>;
 
-  /* The dropdown listbox slot */
-  listbox: NonNullable<Slot<typeof Listbox>>;
+  /* The dropdown arrow icon */
+  expandIcon: Slot<'span'>;
 
   /* The primary slot, the element with role="combobox" */
-  trigger: NonNullable<Slot<typeof ComboButton>>;
+  button: NonNullable<Slot<'button'>>;
+
+  /* The dropdown listbox slot */
+  listbox: NonNullable<Slot<typeof Listbox>>;
 };
 
 /**
  * Combobox Props
  */
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'trigger'> &
+export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'button'> &
   SelectionProps & {
     /**
      * Controls the colors and borders of the combobox.

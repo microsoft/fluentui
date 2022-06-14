@@ -55,7 +55,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   return (
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
-        <Nav className={styles.nav} brand={themes.brand} darkTheme={themes.darkTheme} lightTheme={themes.lightTheme} />
+        <Nav className={styles.nav} brand={themes.brand} />
         <Sidebar className={styles.sidebar} keyColor={debouncedKeyColor} setKeyColor={setKeyColor} />
         <Content
           className={styles.content}
