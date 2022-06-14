@@ -64,11 +64,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private minLegendContainerHeight: number = 32;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
-  private _xScale: any;
   private margins: IMargins;
   private idForGraph: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xScale: any;
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -117,7 +119,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         node: this.xAxisElement,
         xAxis: this._xScale,
       };
-      let rotatedHeight = rotateXAxisLabels(rotateLabelProps);
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
       if (
         this.state.isRemoveValCalculated &&
         this.state._removalValueForTextTuncate !== rotatedHeight! + this.margins.bottom! &&

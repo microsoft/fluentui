@@ -975,7 +975,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   }
 
   let maxHeight: number = 0;
-  let xAxisTranslations: string[] = [];
+  const xAxisTranslations: string[] = [];
   d3Select(node)
     .call(xAxis)
     .selectAll('.tick')
