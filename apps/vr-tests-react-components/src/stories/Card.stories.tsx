@@ -261,4 +261,9 @@ storiesOf('Card Converged', module)
       includeHighContrast: true,
       includeDarkMode: true,
     },
-  );
+  )
+  .addStory('appearance focusable + selectable', () => (
+    <Card focusMode="no-tab" selectable>
+      <SampleCardContent />
+    </Card>
+  ));
