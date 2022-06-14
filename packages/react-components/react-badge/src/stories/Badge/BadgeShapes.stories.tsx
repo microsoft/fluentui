@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Badge } from '../index';
+import { Badge } from '@fluentui/react-badge';
 
 export const Shapes = () => {
   return (

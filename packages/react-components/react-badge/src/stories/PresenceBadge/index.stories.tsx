@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { PresenceBadge } from '../PresenceBadge';
+import { PresenceBadge } from '../../PresenceBadge';
 import descriptionMd from './PresenceBadgeDescription.md';
 import bestPracticesMd from './PresenceBadgeBestPractices.md';
 export { Default } from './PresenceBadgeDefault.stories';

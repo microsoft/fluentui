@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CounterBadge } from '../index';
+import { CounterBadge } from '@fluentui/react-badge';
 
 export const Dot = () => <CounterBadge count={0} dot />;
 

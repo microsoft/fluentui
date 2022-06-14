@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { CounterBadge } from '../CounterBadge';
+import { CounterBadge } from '../../CounterBadge';
 import descriptionMd from './CounterBadgeDescription.md';
 import bestPracticesMd from './CounterBadgeBestPractices.md';
 export { Default } from './CounterBadgeDefault.stories';

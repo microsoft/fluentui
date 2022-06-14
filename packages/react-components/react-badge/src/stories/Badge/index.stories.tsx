@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Badge } from '../Badge';
+import { Badge } from '../../Badge';
 import descriptionMd from './BadgeDescription.md';
 import bestPracticesMd from './BadgeBestPractices.md';
 export { Default } from './BadgeDefault.stories';
