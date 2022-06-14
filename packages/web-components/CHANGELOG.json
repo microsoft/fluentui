@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 14 Jun 2022 07:52:10 GMT",
+      "tag": "@fluentui/web-components_v2.5.2",
+      "version": "2.5.2",
+      "comments": {
+        "none": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71cf20976f873e7aed3abd2aa3daf953d06941f9",
+            "comment": "Fixed Storybook loading page name check"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jun 2022 07:48:04 GMT",
       "tag": "@fluentui/web-components_v2.5.2",
       "version": "2.5.2",

@@ -25,6 +25,7 @@ import {
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
+  rotateXAxisLabels,
   Points,
   pointTypes,
 } from '../../utilities/index';
@@ -68,6 +69,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private _reqID: number;
   private _isRtl: boolean = getRTL();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _xScale: any;
+
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
     this.state = {
@@ -104,6 +108,28 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
+    }
+
+    if (
+      !this.props.wrapXAxisLables &&
+      this.props.rotateXAxisLables &&
+      this.props.xAxisType! === XAxisTypes.StringAxis
+    ) {
+      const rotateLabelProps = {
+        node: this.xAxisElement,
+        xAxis: this._xScale,
+      };
+      const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
+      if (
+        this.state.isRemoveValCalculated &&
+        this.state._removalValueForTextTuncate !== rotatedHeight! + this.margins.bottom! &&
+        rotatedHeight! > 0
+      ) {
+        this.setState({
+          _removalValueForTextTuncate: rotatedHeight! + this.margins.bottom!,
+          isRemoveValCalculated: false,
+        });
+      }
     }
   }
 
@@ -170,6 +196,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       default:
         xScale = createNumericXAxis(XAxisParams, culture);
     }
+    this._xScale = xScale;
 
     /*
      * To enable wrapping of x axis tick values or to disaply complete x axis tick values,

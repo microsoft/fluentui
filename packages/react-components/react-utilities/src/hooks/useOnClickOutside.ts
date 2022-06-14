@@ -145,7 +145,7 @@ const useIFrameFocus = (
     if (enableFrameFocusDispatch) {
       timeoutRef.current = targetDocument?.defaultView?.setInterval(() => {
         const activeElement = targetDocument?.activeElement;
-        if (activeElement?.tagName === 'IFRAME') {
+        if (activeElement?.tagName === 'IFRAME' || activeElement?.tagName === 'WEBVIEW') {
           const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
           activeElement.dispatchEvent(event);
         }
