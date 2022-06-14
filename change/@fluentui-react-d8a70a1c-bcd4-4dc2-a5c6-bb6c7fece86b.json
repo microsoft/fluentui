@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Adding close button to Dropdown list when it opens as a panel.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
