@@ -109,6 +109,15 @@ exports[`felaRenderer keyframe colors are rendered 1`] = `
 <div class=\\"a b\\"></div>"
 `;
 
+exports[`felaRenderer marginLeft is rendered into marginLeft due to LTR 1`] = `
+".a {
+  margin-left: 10px;
+}
+
+
+<div class=\\"a\\"></div>"
+`;
+
 exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`noFlip\` 1`] = `
 ".a {
   margin-left: 10px;

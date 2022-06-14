@@ -102,13 +102,20 @@ describe('felaRenderer', () => {
     expect(snapshot).toMatchSnapshot();
   });
 
+  test('marginLeft is rendered into marginLeft due to LTR', () => {
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { direction: 'ltr' });
+    expect(snapshot).toMatchSnapshot();
+  });
+
   test('marginLeft is rendered into marginRight due to RTL', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { rtl: true });
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { direction: 'rtl' });
     expect(snapshot).toMatchSnapshot();
   });
 
   test('marginLeft is rendered into marginLeft due to RTL with `noFlip`', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />);
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px /* @noflip */' }} />, {
+      direction: 'rtl',
+    });
     expect(snapshot).toMatchSnapshot();
   });
 
