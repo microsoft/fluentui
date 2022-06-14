@@ -1,52 +1,63 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/Button';
-import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
-import { Link } from '@fluentui/react/lib/Link';
-import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
-import { Text } from '@fluentui/react/lib/Text';
-import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
-import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@fluentui/react-hooks';
+import { ActionButton, DefaultButton, IconButton, Modal, PrimaryButton } from '@fluentui/react';
 
-const getStackStyles = memoizeFunction(
-  (useTrapZone: boolean): Partial<IStackStyles> => ({
-    root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
-  }),
-);
-const textFieldStyles: Partial<ITextFieldStyles> = { root: { width: 300 } };
-const stackTokens = { childrenGap: 8 };
+const onBlurCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+  setTimeout(() => {}, 100);
+};
 
 export const FocusTrapZoneBoxExample: React.FunctionComponent = () => {
-  const toggle = React.useRef<IToggle>(null);
-  const [useTrapZone, { toggle: toggleUseTrapZone }] = useBoolean(false);
+  const onDismiss = () => {
+    window.alert('Dismissed!');
+  };
+  const onNextClick = () => {
+    window.alert('Next clicked!');
+  };
+  const onPreviousClick = () => {
+    window.alert('Back clicked!');
+  };
+
   return (
-    <Stack tokens={stackTokens}>
-      <Stack.Item>
-        <Text>
-          If this button is used to enable FocusTrapZone, focus should return to this button after the FocusTrapZone is
-          disabled.
-        </Text>
-      </Stack.Item>
-      <Stack.Item>
-        <DefaultButton onClick={toggleUseTrapZone} text="Trap Focus" />
-      </Stack.Item>
-      <FocusTrapZone disabled={!useTrapZone}>
-        <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(useTrapZone)}>
-          <Toggle
-            label="Use trap zone"
-            componentRef={toggle}
-            checked={useTrapZone}
-            onChange={toggleUseTrapZone}
-            onText="On (toggle to exit)"
-            offText="Off"
-          />
-          <TextField label="Input inside trap zone" styles={textFieldStyles} />
-          <Link href="https://bing.com" target="_blank">
-            Hyperlink inside trap zone
-          </Link>
-        </Stack>
-      </FocusTrapZone>
-    </Stack>
+    <Modal
+      isBlocking={true}
+      onDismiss={onDismiss}
+      isOpen={true}
+      containerClassName={`dialogContainer setupWizard-connections`}
+      scrollableContentClassName="dialogScrollableContent"
+    >
+      <div className={`dialogContent setupWizard-connections`}>
+        <div className="dialogHeader">
+          <span role="heading" aria-level={1}>
+            Checking connections
+          </span>
+        </div>
+        <div className={`dialogContent`}>
+          <div className="dialogContentInner">
+            <div className="solutionSetupStep">
+              <div>These features require sign-in to the following services.</div>
+              <div className="solutionSetupWidget">
+                <iframe src="https://www.sqlite.org/copyright.html" className="zaIframe" />
+              </div>
+            </div>
+          </div>
+          <div className="dialogFooter">
+            <div>
+              <ActionButton
+                iconProps={{ iconName: 'ChevronLeft' }}
+                onClick={onPreviousClick}
+                className={'actionButton'}
+                text="Back"
+              />
+            </div>
+            <div className="sideContainer">
+              <PrimaryButton onClick={onNextClick} text="Next" />
+              <DefaultButton className={'dismissalButton'} onClick={onDismiss} text="Cancel" />
+            </div>
+          </div>
+        </div>
+        <div className={'createList-closeBtnContainer'}>
+          <IconButton iconProps={{ iconName: 'Cancel' }} onClick={onDismiss} className="closeButton" />
+        </div>
+      </div>
+    </Modal>
   );
 };

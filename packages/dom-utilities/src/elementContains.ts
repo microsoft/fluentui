@@ -1,4 +1,6 @@
 import { getParent } from './getParent';
+
+// const cnt = 0;
 /**
  * Determines whether or not a parent element contains a given child element.
  * If `allowVirtualParents` is true, this method may return `true` if the child
@@ -20,8 +22,13 @@ export function elementContains(
       } else {
         isContained = false;
 
+        // console.log(`------${cnt++}------`);
+        // console.log(parent);
+        // console.log(child);
+        // const originalChild = child;
         while (child) {
           const nextParent: HTMLElement | null = getParent(child);
+          // console.log(nextParent);
 
           if (nextParent === parent) {
             isContained = true;
@@ -30,6 +37,11 @@ export function elementContains(
 
           child = nextParent;
         }
+        if (child === null) {
+          // const doc = originalChild.ownerDocument;
+          // console.log(doc.defaultView);
+        }
+        // console.log('------------');
       }
     } else if (parent.contains) {
       isContained = parent.contains(child);
