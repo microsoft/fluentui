@@ -34,30 +34,47 @@ export const QuestionnaireAboutCustomerExperienceAccessibilityScenario: React.Fu
       </p>
       {!isSubmitted ? (
         <form onSubmit={onSubmit}>
-          <Label htmlFor="knowledgeTextarea">Describe the knowledge of the problem by the operator</Label>
-          <Textarea id="knowledgeTextarea" required />
+          <div>
+            <Label htmlFor="knowledgeTextarea">Describe the knowledge of the problem by the operator</Label>
+            <Textarea id="knowledgeTextarea" required />
+          </div>
 
-          <Label htmlFor="effortTextarea">Describe the kindness and effort to solve your problem by the operator</Label>
-          <Textarea id="effortTextarea" required />
+          <div>
+            <Label htmlFor="effortTextarea">
+              Describe the kindness and effort to solve your problem by the operator
+            </Label>
+            <Textarea id="effortTextarea" required />
+          </div>
 
-          <Checkbox
-            checked={isProblemNotSolvedSelected}
-            onChange={onProblemNotSolvedChange}
-            label="My problem has not been solved."
-          />
+          <div>
+            <Checkbox
+              checked={isProblemNotSolvedSelected}
+              onChange={onProblemNotSolvedChange}
+              label="My problem has not been solved."
+            />
+          </div>
 
-          <Label htmlFor="problemNotSolvedTextarea">Tell us why your problem has not been solved</Label>
-          <Textarea id="problemNotSolvedTextarea" disabled={!isProblemNotSolvedSelected} />
+          <div>
+            <Label htmlFor="problemNotSolvedTextarea">Tell us why your problem has not been solved</Label>
+            <Textarea id="problemNotSolvedTextarea" disabled={!isProblemNotSolvedSelected} />
+          </div>
 
-          <Label htmlFor="otherCommentsTextarea">
-            Anything else you want to tell us about your last telephone experience
-          </Label>
-          <Textarea id="otherCommentsTextarea" />
+          <div>
+            <Label htmlFor="otherCommentsTextarea">
+              Anything else you want to tell us about your last telephone experience
+            </Label>
+            <Textarea id="otherCommentsTextarea" />
+          </div>
 
-          <Label htmlFor="satisfactionTextarea">
-            Extra question: How satisfied are you otherwise with our services?
-          </Label>
-          <Textarea id="satisfactionTextarea" placeholder="Try to be concise, not using more than three sentences..." />
+          <div>
+            <Label htmlFor="satisfactionTextarea">
+              Extra question: How satisfied are you otherwise with our services?
+            </Label>
+            <Textarea
+              id="satisfactionTextarea"
+              placeholder="Try to be concise, not using more than three sentences..."
+            />
+          </div>
 
           <Button type="submit">Submit</Button>
         </form>
