@@ -1,4 +1,4 @@
-import { Image } from '../Image';
+import { Image } from '../../Image';
 import type { Meta } from '@storybook/react';
 import descriptionMd from './ImageDescription.md';
 import bestPracticesMd from './ImageBestPractices.md';
