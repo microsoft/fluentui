@@ -9,7 +9,7 @@ import {
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { makeStyles } from '@griffel/react';
-import { MenuButton } from '../../MenuButton';
+import { MenuButton } from '@fluentui/react-button';
 
 const useStyles = makeStyles({
   longText: {

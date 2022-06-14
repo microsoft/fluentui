@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { SplitButton, MenuButtonProps } from '../../index';
+import { SplitButton, MenuButtonProps } from '@fluentui/react-button';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 

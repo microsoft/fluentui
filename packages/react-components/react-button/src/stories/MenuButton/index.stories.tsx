@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { MenuButton } from '../../MenuButton';
+import { MenuButton } from '@fluentui/react-button';
 import descriptionMd from './MenuButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { Tooltip } from '@fluentui/react-tooltip';
-import { ToggleButton } from '../../ToggleButton';
+import { ToggleButton } from '@fluentui/react-button';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 

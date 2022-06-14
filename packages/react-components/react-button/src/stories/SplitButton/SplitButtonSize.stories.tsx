@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
-import { SplitButton, MenuButtonProps } from '../../index';
+import { SplitButton, MenuButtonProps } from '@fluentui/react-button';
 
 export const Size = () => {
   return (

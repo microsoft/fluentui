@@ -6,14 +6,14 @@ import {
   renderCompoundButton_unstable,
   useCompoundButton_unstable,
   useCompoundButtonStyles_unstable,
-} from '../../CompoundButton';
+} from '@fluentui/react-button';
 import {
   useCheckedStyles as useToggleButtonCheckedStyles,
   useDisabledStyles as useToggleButtonDisabledStyles,
 } from '../../components/ToggleButton/useToggleButtonStyles';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { CompoundButtonProps, CompoundButtonState } from '../../CompoundButton';
-import type { ToggleButtonProps, ToggleButtonState } from '../../ToggleButton';
+import type { CompoundButtonProps, CompoundButtonState } from '@fluentui/react-button';
+import type { ToggleButtonProps, ToggleButtonState } from '@fluentui/react-button';
 
 type ToggleCompoundButtonProps = CompoundButtonProps & ToggleButtonProps;
 type ToggleCompoundButtonState = CompoundButtonState & ToggleButtonState;

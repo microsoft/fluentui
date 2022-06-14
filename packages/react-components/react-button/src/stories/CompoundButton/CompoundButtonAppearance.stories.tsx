@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CompoundButton } from '../../CompoundButton';
+import { CompoundButton } from '@fluentui/react-button';
 
 export const Appearance = () => (
   <>

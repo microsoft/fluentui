@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton } from '../../ToggleButton';
+import { ToggleButton } from '@fluentui/react-button';
 
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };

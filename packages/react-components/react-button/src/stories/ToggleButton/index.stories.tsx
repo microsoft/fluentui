@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { ToggleButton } from '../../ToggleButton';
+import { ToggleButton } from '@fluentui/react-button';
 import descriptionMd from './ToggleButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 
