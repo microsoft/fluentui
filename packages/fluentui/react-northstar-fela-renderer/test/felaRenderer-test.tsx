@@ -16,7 +16,7 @@ function createSnapshot(component: JSX.Element, theme = {}) {
 
   ReactDOM.render(
     <RendererProvider renderer={felaRenderer}>
-      <ThemeProvider theme={theme}>{component}</ThemeProvider>
+      <ThemeProvider theme={{ direction: 'ltr', ...theme }}>{component}</ThemeProvider>
     </RendererProvider>,
     div,
   );
@@ -103,7 +103,7 @@ describe('felaRenderer', () => {
   });
 
   test('marginLeft is rendered into marginLeft due to LTR', () => {
-    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />, { direction: 'ltr' });
+    const snapshot = createSnapshot(<FelaComponent style={{ marginLeft: '10px' }} />);
     expect(snapshot).toMatchSnapshot();
   });
 
