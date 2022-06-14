@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IVerticalBarState {}
 
