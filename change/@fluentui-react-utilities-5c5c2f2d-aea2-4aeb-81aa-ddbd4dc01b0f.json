@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Consider webview element type for outside click scenarios",
+  "packageName": "@fluentui/react-utilities",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}
