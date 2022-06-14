@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../index';
+import { Link } from '../../index';
 
 export const AsButton = () => <Link>Render as a button</Link>;
 
