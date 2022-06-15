@@ -11,10 +11,10 @@ import { MusicNote1Filled, InfoRegular } from '@fluentui/react-icons';
 import { Scenario } from './utils';
 
 export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionComponent = () => {
-  const [tabSelectedValue, setTabSelectedValue] = React.useState<TabValue>('general');
+  const [selectedTabValue, setSelectedTabValue] = React.useState<TabValue>('general');
 
   const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
-    setTabSelectedValue(data.value);
+    setSelectedTabValue(data.value);
   };
 
   const GeneralPanel = React.memo(() => (
@@ -67,7 +67,7 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
   return (
     <Scenario pageTitle="Mail settings with horizontal tablist">
       <h1>Settings</h1>
-      <TabList selectedValue={tabSelectedValue} onTabSelect={onTabSelect}>
+      <TabList selectedValue={selectedTabValue} onTabSelect={onTabSelect}>
         <Tab id="generalTab" value="general">
           General
         </Tab>
@@ -83,15 +83,15 @@ export const MailSettingsHorizontalTabListAccessibilityScenario: React.FunctionC
         </Tab>
       </TabList>
 
-      {tabSelectedValue === 'general' && <GeneralPanel />}
-      {tabSelectedValue === 'appearance' && <AppearancePanel />}
-      {tabSelectedValue === 'sounds' && <SoundsPanel />}
-      {tabSelectedValue === 'about' && <AboutPanel />}
+      {selectedTabValue === 'general' && <GeneralPanel />}
+      {selectedTabValue === 'appearance' && <AppearancePanel />}
+      {selectedTabValue === 'sounds' && <SoundsPanel />}
+      {selectedTabValue === 'about' && <AboutPanel />}
     </Scenario>
   );
 };
 
 export default {
   title: 'Accessibility Scenarios / Mail settings with horizontal tablist',
-  id: 'tablist-accessibility-scenario',
+  id: 'tablist-horizontal-accessibility-scenario',
 };
