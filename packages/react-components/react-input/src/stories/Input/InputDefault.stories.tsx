@@ -3,8 +3,8 @@ import { ArgTypes } from '@storybook/api';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Input } from '../index';
-import type { InputProps } from '../index';
+import { Input } from '@fluentui/react-input';
+import type { InputProps } from '@fluentui/react-input';
 
 const useStyles = makeStyles({
   root: {

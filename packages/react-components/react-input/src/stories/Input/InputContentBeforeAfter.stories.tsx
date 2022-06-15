@@ -6,7 +6,7 @@ import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 import type { ButtonProps } from '@fluentui/react-button';
 import { Body1, Text } from '@fluentui/react-text';
-import { Input } from '../index';
+import { Input } from '@fluentui/react-input';
 
 const useStyles = makeStyles({
   root: {

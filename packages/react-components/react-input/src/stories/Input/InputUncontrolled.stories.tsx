@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Input } from '../index';
+import { Input } from '@fluentui/react-input';
+import type { InputProps } from '@fluentui/react-input';
 
 const useStyles = makeStyles({
   root: {
@@ -16,24 +17,29 @@ const useStyles = makeStyles({
   },
 });
 
-export const Disabled = () => {
+const onChange: InputProps['onChange'] = (ev, data) => {
+  // Uncontrolled inputs can be notified of changes to the value
+  console.log(`New value: "${data.value}"`);
+};
+
+export const Uncontrolled = () => {
   const inputId = useId('input');
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Label disabled htmlFor={inputId}>
-        Disabled Input
-      </Label>
-      <Input disabled id={inputId} defaultValue="disabled value" />
+      <Label htmlFor={inputId}>Uncontrolled input with default value</Label>
+      <Input defaultValue="default value" onChange={onChange} id={inputId} />
     </div>
   );
 };
 
-Disabled.parameters = {
+Uncontrolled.parameters = {
   docs: {
     description: {
-      story: 'An input can be disabled.',
+      story:
+        'By default, an input is uncontrolled: it tracks all updates internally. ' +
+        'You can optionally provide a default value.',
     },
   },
 };
