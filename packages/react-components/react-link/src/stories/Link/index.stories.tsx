@@ -1,4 +1,4 @@
-import { Link } from '../index';
+import { Link } from '@fluentui/react-link';
 
 import descriptionMd from './LinkDescription.md';
 import bestPracticesMd from './LinkBestPractices.md';

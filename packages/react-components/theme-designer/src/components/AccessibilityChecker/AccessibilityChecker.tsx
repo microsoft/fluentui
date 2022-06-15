@@ -18,9 +18,9 @@ export interface ContrastRatioPair {
 }
 
 export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerProps> = props => {
-  const AAAPairs: ContrastRatioPair[] = [];
-  const AAPairs: ContrastRatioPair[] = [];
-  const nonAccessiblePairs: ContrastRatioPair[] = [];
+  const highContrastPairs: ContrastRatioPair[] = [];
+  const midContrastPairs: ContrastRatioPair[] = [];
+  const lowContrastPairs: ContrastRatioPair[] = [];
 
   const calculateContrastRatio = (foreground: string, background: string) => {
     const theme = (props.theme as unknown) as Record<string, string>;
@@ -46,11 +46,11 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     };
 
     if (currContrastRatio < 3) {
-      nonAccessiblePairs.push(pair);
+      lowContrastPairs.push(pair);
     } else if (currContrastRatio < 4.5) {
-      AAPairs.push(pair);
+      midContrastPairs.push(pair);
     } else {
-      AAAPairs.push(pair);
+      highContrastPairs.push(pair);
     }
   };
 
@@ -108,9 +108,9 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
       <Caption1>Accessibility checker</Caption1>
       <AccessibilityList
         theme={props.theme}
-        AAAPairs={AAAPairs}
-        AAPairs={AAPairs}
-        nonAccessiblePairs={nonAccessiblePairs}
+        highContrastPairs={highContrastPairs}
+        midContrastPairs={midContrastPairs}
+        lowContrastPairs={lowContrastPairs}
       />
     </div>
   );

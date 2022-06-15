@@ -6846,6 +6846,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     dragOptions?: IDragOptions;
     // @deprecated
     enableAriaHiddenSiblings?: boolean;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
