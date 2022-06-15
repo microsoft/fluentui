@@ -20,6 +20,11 @@ export function useTriggerListboxShorthand(
   listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
 ): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
 
+/*
+ * useTriggerListboxShorthand returns a tuple of trigger/listbox shorthand,
+ * with the semantics and event handlers needed for combobox/dropdown.
+ * The element type of the ref should always match the element type used in the trigger shorthand.
+ */
 export function useTriggerListboxShorthand(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
