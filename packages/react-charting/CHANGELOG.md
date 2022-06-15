@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 14 Jun 2022 07:52:11 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 07:40:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.47)
+
+Wed, 15 Jun 2022 07:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.46..@fluentui/react-charting_v5.9.47)
+
+### Patches
+
+- Fix text overflow bugs ([PR #21773](https://github.com/microsoft/fluentui/pull/21773) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.75.1 ([PR #23551](https://github.com/microsoft/fluentui/pull/23551) by beachball)
 
 ## [5.9.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.46)
 

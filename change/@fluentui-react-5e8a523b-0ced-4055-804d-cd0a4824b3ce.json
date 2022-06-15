@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "handle entering key pressing in contenteditable element in SelectionZone",
-  "packageName": "@fluentui/react",
-  "email": "liqing@microsoft.com",
-  "dependentChangeType": "patch"
-}
