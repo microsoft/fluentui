@@ -498,8 +498,8 @@ describe('migrate-converged-pkg generator', () => {
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
       const paths = {
-        storyOne: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-        storyTwo: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        storyOne: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
         tsconfig: {
           storybook: `${projectStorybookConfigPath}/tsconfig.json`,
           main: `${projectConfig.root}/tsconfig.json`,
@@ -672,6 +672,40 @@ describe('migrate-converged-pkg generator', () => {
 
       // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
+    });
+
+    it(`stories should live in src/stories/ComponentName folder`, async () => {
+      const { projectConfig } = setup({ createDummyStories: true });
+      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
+      const componentName = names(normalizedProjectName).name.split('-')[1];
+      const oldStoriesPath = `${projectConfig.root}/src/stories`;
+      const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
+      const storyFiles: string[] = [];
+
+      visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+        if (treePath.includes('.stories.')) {
+          storyFiles.push(treePath.split('/').slice(-1)[0]);
+        }
+      });
+
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${oldStoriesPath}/${story}`)).toBeTruthy();
+      });
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${newStoriesPath}/${story}`)).toBeFalsy();
+      });
+
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, sourceRoot: `${projectConfig.root}/src` });
+
+      await generator(tree, { name: options.name });
+
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${oldStoriesPath}/${story}`)).toBeFalsy();
+      });
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${newStoriesPath}/${story}`)).toBeTruthy();
+      });
     });
   });
 
