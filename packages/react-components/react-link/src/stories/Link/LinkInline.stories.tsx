@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../index';
+import { Link } from '@fluentui/react-link';
 
 export const Inline = () => (
   <div>
