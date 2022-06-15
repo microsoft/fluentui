@@ -65,19 +65,19 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
     <>
       <br />
       {messageBar}
-      <Accordion multiple defaultOpenItems="2">
+      <Accordion multiple defaultOpenItems="1">
         <AccordionItem value="1">
-          <AccordionHeader size="large">Accessible Pairs</AccordionHeader>
+          <AccordionHeader size="large">Inaccessible pairs</AccordionHeader>
           <AccordionPanel>
-            {accPairs.map(i => {
+            {nonAccPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
-          <AccordionHeader size="large">Inaccessible Pairs</AccordionHeader>
+          <AccordionHeader size="large">Accessible pairs</AccordionHeader>
           <AccordionPanel>
-            {nonAccPairs.map(i => {
+            {accPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>

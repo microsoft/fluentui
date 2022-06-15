@@ -80,7 +80,7 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
 
   return (
     <div>
-      <Caption1> Color Tokens </Caption1>
+      <Caption1> Color tokens </Caption1>
       <div className={styles.topbar}>
         <Input
           placeholder="Search"
