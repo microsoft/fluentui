@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
