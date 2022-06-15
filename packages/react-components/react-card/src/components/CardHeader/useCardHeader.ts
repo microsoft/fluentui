@@ -27,15 +27,11 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       ref,
       ...props,
     }),
-    image: resolveShorthand(image, {
-      required: true,
-    }),
+    image: resolveShorthand(image),
     header: resolveShorthand(header, {
       required: true,
     }),
-    description: resolveShorthand(description, {
-      required: true,
-    }),
+    description: resolveShorthand(description),
     action: resolveShorthand(action),
   };
 };
