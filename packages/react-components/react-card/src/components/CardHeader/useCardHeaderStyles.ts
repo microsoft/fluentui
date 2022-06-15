@@ -17,6 +17,7 @@ const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridAutoColumns: 'min-content 1fr min-content',
+    gridAutoRows: '1fr min-content',
     alignItems: 'center',
     ...shorthands.gap('12px', '0'),
   },
