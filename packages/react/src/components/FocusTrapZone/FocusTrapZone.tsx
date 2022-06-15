@@ -15,7 +15,6 @@ import { useId, useConst, useMergedRefs, useEventCallback, usePrevious, useUnmou
 import { useDocument } from '../../WindowProvider';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
-import { getPreviousElement, KeyCodes } from '@fluentui/utilities';
 
 interface IFocusTrapZoneInternalState {
   previouslyFocusedElementInTrapZone?: HTMLElement;
@@ -197,7 +196,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
   /** Root div focus handler (doesn't need useCallback since it's for a native element) */
   const onRootFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
-    // console.log('focus');
     props.onFocusCapture?.(ev);
 
     if (ev.target === firstBumper.current) {

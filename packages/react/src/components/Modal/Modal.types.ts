@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { ResponsiveMode } from '../../ResponsiveMode';
-import type { IStyle, ITheme } from '../../Styling';
-import type { ILayerProps } from '../../Layer';
 import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import type { IIconProps } from '../../Icon';
 import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import type { IIconProps } from '../../Icon';
+import type { ILayerProps } from '../../Layer';
 import type { IOverlayProps } from '../../Overlay';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDragOptions {
   /**
@@ -188,6 +189,8 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
    * It will not be supported in future versions of the library (except for modeless modals).
    */
   enableAriaHiddenSiblings?: boolean;
+
+  focusTrapZoneProps?: IFocusTrapZoneProps;
 }
 
 /**
