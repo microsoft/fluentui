@@ -21,21 +21,27 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
   const nonAccessiblePairs: ContrastRatioPair[] = [];
   const accessiblePairs: ContrastRatioPair[] = [];
 
-  const calculateContrastRatio = (foreground: string, background: string, colorPairString: string) => {
-    const bgc: Vec3 = hex_to_sRGB(background);
-    const fgc: Vec3 = hex_to_sRGB(foreground);
+  const calculateContrastRatio = (foreground: string, background: string) => {
+    const theme = (props.theme as unknown) as Record<string, string>;
+
+    const bgHex: string = theme[foreground];
+    const fgHex: string = theme[background];
+
+    if (!bgHex || !fgHex) {
+      return;
+    }
+
+    const bgc: Vec3 = hex_to_sRGB(bgHex);
+    const fgc: Vec3 = hex_to_sRGB(fgHex);
 
     const currContrastRatio = getContrastRatio(bgc, fgc);
-    const contrastRatioString = currContrastRatio.toFixed(2);
-
-    const currContrastRatioPair = background + ' on ' + foreground;
 
     const pair = {
-      background: background,
-      foreground: foreground,
-      contrastRatioValue: contrastRatioString,
-      contrastRatioPair: currContrastRatioPair,
-      colorPair: colorPairString,
+      background: bgHex,
+      foreground: fgHex,
+      contrastRatioValue: currContrastRatio.toFixed(2),
+      contrastRatioPair: fgHex + ' on ' + bgHex,
+      colorPair: foreground + ' on ' + background,
     };
 
     if (currContrastRatio < 4.5) {
@@ -45,21 +51,56 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     }
   };
 
+  const colorPairs = [
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundHover'],
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundPressed'],
+    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundSelected'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackground'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundHover'],
+    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundPressed'],
+    ['colorNeutralForegroundInverted', 'colorBrandBackgroundStatic'],
+    ['colorNeutralForeground1', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandHover', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandHover', 'colorSubtleBackgroundHover'],
+    ['colorNeutralForeground2BrandPressed', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandPressed', 'colorSubtleBackgroundPressed'],
+    ['colorNeutralForeground2BrandSelected', 'colorNeutralBackground1'],
+    ['colorNeutralForeground2BrandSelected', 'colorSubtleBackgroundSelected'],
+    ['colorBrandForegroundLink', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkHover', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkPressed', 'colorNeutralBackground1'],
+    ['colorBrandForegroundLinkSelected', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1Hover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandForeground1Pressed', 'colorNeutralBackground1'],
+    ['colorBrandForeground1', 'colorNeutralBackground1'],
+    ['colorBrandForeground2', 'colorNeutralBackground1'],
+    ['colorBrandBackground', 'colorNeutralBackground1'],
+    ['colorBrandBackground', 'colorNeutralForegroundOnBrand'],
+    ['colorBrandBackgroundHover', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundPressed', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundSelected', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackground', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackgroundHover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandBackgroundPressed', 'colorNeutralBackground1'],
+    ['colorBrandBackgroundStatic', 'colorNeutralBackground1'],
+    ['colorBrandForeground2', 'colorBrandBackground2'],
+    ['colorBrandStroke1', 'colorBrandBackground2'],
+    ['colorBrandStroke2', 'colorBrandBackground2'],
+    ['colorCompoundBrandStroke', 'colorNeutralBackground1'],
+    ['colorCompoundBrandStroke', 'colorNeutralBackground3'],
+    ['colorCompoundBrandStrokeHover', 'colorNeutralBackground1'],
+    ['colorCompoundBrandStrokePressed', 'colorNeutralBackground1'],
+  ];
+
   const loadAllContrastRatioPairsList = () => {
-    const input = props.theme;
-    calculateContrastRatio(
-      input.colorNeutralForeground1,
-      input.colorNeutralBackground1,
-      'NeutralForeground1 on NeutralBackground1',
-    );
-    calculateContrastRatio(
-      input.colorNeutralForeground1,
-      input.colorNeutralForeground2,
-      'NeutralBackground1 on NeutralBackground2',
-    );
+    colorPairs.map(([c1, c2]) => {
+      return calculateContrastRatio(c1, c2);
+    });
   };
 
   loadAllContrastRatioPairsList();
+
   return (
     <div className={props.className}>
       <Caption1>Accessibility Checker</Caption1>

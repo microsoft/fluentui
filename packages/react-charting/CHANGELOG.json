@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 15 Jun 2022 07:40:21 GMT",
+      "tag": "@fluentui/react-charting_v5.9.47",
+      "version": "5.9.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6faffd280a37636c7917752693b7bf627caec32d",
+            "comment": "Fix text overflow bugs"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.75.1",
+            "commit": "d00ad919213921fe60f2e77dc862e50e19bcec66"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jun 2022 07:52:11 GMT",
       "tag": "@fluentui/react-charting_v5.9.46",
       "version": "5.9.46",

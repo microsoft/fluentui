@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 15 Jun 2022 07:40:21 GMT",
+      "tag": "@fluentui/react_v8.75.1",
+      "version": "8.75.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "82337ca348673485e78b9072431c00c222cd985a",
+            "comment": "fix: Adding close button to Dropdown list when it opens as a panel."
+          },
+          {
+            "author": "liqing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a827840680beff7297d0fc27425ea20426a00de3",
+            "comment": "handle entering key pressing in contenteditable element in SelectionZone"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jun 2022 07:52:11 GMT",
       "tag": "@fluentui/react_v8.75.0",
       "version": "8.75.0",
