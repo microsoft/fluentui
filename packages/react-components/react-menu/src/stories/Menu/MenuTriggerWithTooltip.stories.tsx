@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '@fluentui/react-button';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 
 export const MenuTriggerWithTooltip = () => (
   <Menu>

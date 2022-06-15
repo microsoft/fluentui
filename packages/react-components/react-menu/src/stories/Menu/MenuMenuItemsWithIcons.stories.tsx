@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 
 import { Button } from '@fluentui/react-button';
 import {
