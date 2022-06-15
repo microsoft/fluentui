@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccessibilityList } from './AccessibilityList';
 import { Vec3, hex_to_sRGB } from '@fluent-blocks/colors';
-import { getContrastRatio } from '../../utils/color/shades';
+import { contrast } from '../../utils/csswg';
 import { Caption1, Theme } from '@fluentui/react-components';
 
 export interface AccessibilityCheckerProps {
@@ -18,14 +18,15 @@ export interface ContrastRatioPair {
 }
 
 export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerProps> = props => {
-  const nonAccessiblePairs: ContrastRatioPair[] = [];
-  const accessiblePairs: ContrastRatioPair[] = [];
+  const highContrastPairs: ContrastRatioPair[] = [];
+  const midContrastPairs: ContrastRatioPair[] = [];
+  const lowContrastPairs: ContrastRatioPair[] = [];
 
   const calculateContrastRatio = (foreground: string, background: string) => {
     const theme = (props.theme as unknown) as Record<string, string>;
 
-    const bgHex: string = theme[foreground];
-    const fgHex: string = theme[background];
+    const bgHex: string = theme[background];
+    const fgHex: string = theme[foreground];
 
     if (!bgHex || !fgHex) {
       return;
@@ -34,7 +35,7 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     const bgc: Vec3 = hex_to_sRGB(bgHex);
     const fgc: Vec3 = hex_to_sRGB(fgHex);
 
-    const currContrastRatio = getContrastRatio(bgc, fgc);
+    const currContrastRatio = contrast(bgc, fgc);
 
     const pair = {
       background: bgHex,
@@ -44,10 +45,12 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
       colorPair: foreground + ' on ' + background,
     };
 
-    if (currContrastRatio < 4.5) {
-      nonAccessiblePairs.push(pair);
+    if (currContrastRatio < 3) {
+      lowContrastPairs.push(pair);
+    } else if (currContrastRatio < 4.5) {
+      midContrastPairs.push(pair);
     } else {
-      accessiblePairs.push(pair);
+      highContrastPairs.push(pair);
     }
   };
 
@@ -86,7 +89,6 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
     ['colorBrandBackgroundStatic', 'colorNeutralBackground1'],
     ['colorBrandForeground2', 'colorBrandBackground2'],
     ['colorBrandStroke1', 'colorBrandBackground2'],
-    ['colorBrandStroke2', 'colorBrandBackground2'],
     ['colorCompoundBrandStroke', 'colorNeutralBackground1'],
     ['colorCompoundBrandStroke', 'colorNeutralBackground3'],
     ['colorCompoundBrandStrokeHover', 'colorNeutralBackground1'],
@@ -106,8 +108,9 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
       <Caption1>Accessibility checker</Caption1>
       <AccessibilityList
         theme={props.theme}
-        accessiblePairs={accessiblePairs}
-        nonAccessiblePairs={nonAccessiblePairs}
+        highContrastPairs={highContrastPairs}
+        midContrastPairs={midContrastPairs}
+        lowContrastPairs={lowContrastPairs}
       />
     </div>
   );

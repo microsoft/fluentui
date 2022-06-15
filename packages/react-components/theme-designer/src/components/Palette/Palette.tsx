@@ -39,7 +39,7 @@ export const Palette: React.FC<PaletteProps> = props => {
             <div
               key={brandKey}
               className={styles.block}
-              style={{ backgroundColor: brandColor, color: brandKey <= 80 ? 'white' : 'black' }}
+              style={{ backgroundColor: brandColor, color: brandKey <= 100 ? 'white' : 'black' }}
             >
               <Text>{brandKey}</Text>
             </div>
