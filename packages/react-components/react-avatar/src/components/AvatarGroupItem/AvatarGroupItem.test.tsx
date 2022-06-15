@@ -21,7 +21,7 @@ describe('AvatarGroupItem', () => {
     },
   });
 
-  it('renders only an avatar when context provides true for isOverflow', () => {
+  it('renders only an avatar when context provides false for isOverflow', () => {
     render(
       <AvatarGroupContext.Provider value={{ isOverflow: false }}>
         <AvatarGroupItem data-testid={testId} name="Katri Athokas" />
