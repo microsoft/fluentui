@@ -40,7 +40,7 @@ const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 const AvatarGroupList: React.FC<AvatarGroupProps> = props => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px' }}>
+    <>
       {sizes.map(size => (
         <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
           {names.map(name => (
@@ -48,7 +48,7 @@ const AvatarGroupList: React.FC<AvatarGroupProps> = props => {
           ))}
         </AvatarGroup>
       ))}
-    </div>
+    </>
   );
 };
 

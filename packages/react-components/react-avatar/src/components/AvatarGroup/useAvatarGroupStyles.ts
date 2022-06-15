@@ -47,7 +47,7 @@ const useOverflowButtonStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.padding(0),
   },
