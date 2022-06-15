@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Selectionzone/keyboard options (#23487)",
+  "packageName": "office-ui-fabric-react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
