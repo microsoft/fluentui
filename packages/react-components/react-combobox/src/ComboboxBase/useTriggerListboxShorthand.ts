@@ -54,7 +54,9 @@ export function useTriggerListboxShorthand(
   const trigger: typeof triggerShorthand = {
     'aria-expanded': open,
     'aria-activedescendant': open ? activeOption?.id : undefined,
-    // explicitly type the ref here to prevent input/button type conflicts
+    // explicitly type the ref as an intersection here to prevent type errors
+    // since the `children` prop has mutually incompatible types between input/button
+    // functionally both ref and triggerRef will always be the same element type
     ref: useMergedRefs(ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
     role: 'combobox',
     ...triggerShorthand,
