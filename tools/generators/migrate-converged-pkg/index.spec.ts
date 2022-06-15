@@ -674,7 +674,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
 
-    it(`stories should live in src/stories/ComponentName folder`, async () => {
+    it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
       const { projectConfig } = setup({ createDummyStories: true });
       const workspaceConfig = readWorkspaceConfiguration(tree);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
