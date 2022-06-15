@@ -192,7 +192,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * Set of props to customize the `FocusTrapZone` inside of the `Modal`.
-   * @default {}
+   * @default `{}`
    */
   focusTrapZoneProps?: IFocusTrapZoneProps;
 }

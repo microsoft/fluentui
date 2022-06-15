@@ -422,14 +422,14 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         ref={focusTrapZoneElm}
         componentRef={focusTrapZoneRef}
         className={css(classNames.main, focusTrapZoneProps?.className)}
-        elementToFocusOnDismiss={elementToFocusOnDismiss ?? focusTrapZoneProps?.elementToFocusOnDismiss}
+        elementToFocusOnDismiss={focusTrapZoneProps?.elementToFocusOnDismiss ?? elementToFocusOnDismiss}
         isClickableOutsideFocusTrap={
-          (isModeless || isClickableOutsideFocusTrap || !isBlocking) ?? focusTrapZoneProps?.isClickableOutsideFocusTrap
+          focusTrapZoneProps?.isClickableOutsideFocusTrap ?? (isModeless || isClickableOutsideFocusTrap || !isBlocking)
         }
-        disableRestoreFocus={disableRestoreFocus ?? focusTrapZoneProps?.disableRestoreFocus}
-        forceFocusInsideTrap={(forceFocusInsideTrap ?? focusTrapZoneProps?.forceFocusInsideTrap) && !isModeless}
+        disableRestoreFocus={focusTrapZoneProps?.disableRestoreFocus ?? disableRestoreFocus}
+        forceFocusInsideTrap={(focusTrapZoneProps?.forceFocusInsideTrap ?? forceFocusInsideTrap) && !isModeless}
         // eslint-disable-next-line deprecation/deprecation
-        firstFocusableSelector={firstFocusableSelector || focusTrapZoneProps?.firstFocusableSelector}
+        firstFocusableSelector={focusTrapZoneProps?.firstFocusableSelector || firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={focusTrapZoneProps?.focusPreviouslyFocusedInnerElement ?? true}
         onBlur={internalState.isInKeyboardMoveMode ? handleExitKeyboardMoveMode : undefined}
         // enableAriaHiddenSiblings is handled by the Popup
