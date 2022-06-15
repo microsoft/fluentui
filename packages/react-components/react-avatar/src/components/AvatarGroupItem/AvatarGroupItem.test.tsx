@@ -44,10 +44,10 @@ describe('AvatarGroupItem', () => {
   it('sets role to listitem when context provides true for isOverflow', () => {
     render(
       <AvatarGroupContext.Provider value={{ isOverflow: true }}>
-        <AvatarGroupItem data-testid={testId} name="Katri Athokas" />
+        <AvatarGroupItem name="Katri Athokas" />
       </AvatarGroupContext.Provider>,
     );
 
-    expect(screen.getByRole('listitem')).toBeTruthy();
+    expect(screen.getByRole('listitem').textContent).toBe('KAKatri Athokas');
   });
 });
