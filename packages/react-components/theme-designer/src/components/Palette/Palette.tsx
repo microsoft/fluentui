@@ -31,7 +31,7 @@ export const Palette: React.FC<PaletteProps> = props => {
 
   return (
     <div>
-      <Caption1>Generated Palette</Caption1>
+      <Caption1>Generated palette</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
         {getBrands(props.brandColors).map(brandKey => {
           const brandColor = props.brandColors[brandKey];

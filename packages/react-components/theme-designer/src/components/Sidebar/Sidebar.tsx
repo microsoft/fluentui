@@ -90,7 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
       </TabList>
       <div className={styles.content}>
         <div className={styles.inputs}>
-          <Label htmlFor={keyColorId}>Key Color Value</Label>
+          <Label htmlFor={keyColorId}>Key color value</Label>
           <div className={styles.labels}>
             <Input
               className={styles.keyColor}
@@ -105,9 +105,9 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             </div>
           </div>
         </div>
-        <Subtitle2>Contrast References</Subtitle2>
+        <Subtitle2>Contrast references</Subtitle2>
         <div className={styles.inputs}>
-          <Label htmlFor={lightThemeId}>Light Theme</Label>
+          <Label htmlFor={lightThemeId}>Light theme</Label>
           <div className={styles.labels}>
             <Input
               size="small"
@@ -129,7 +129,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           </div>
         </div>
         <div className={styles.inputs}>
-          <Label htmlFor={darkThemeId}>Dark Theme</Label>
+          <Label htmlFor={darkThemeId}>Dark theme</Label>
           <div className={styles.labels}>
             <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
             <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
@@ -146,7 +146,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         </div>
       </div>
       <Button appearance="transparent" icon={<AddCircleRegular />} iconPosition="before">
-        Add Background Colors
+        Add background colors
       </Button>
     </div>
   );

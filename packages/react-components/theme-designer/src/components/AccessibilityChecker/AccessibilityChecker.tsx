@@ -103,7 +103,7 @@ export const AccessibilityChecker: React.FunctionComponent<AccessibilityCheckerP
 
   return (
     <div className={props.className}>
-      <Caption1>Accessibility Checker</Caption1>
+      <Caption1>Accessibility checker</Caption1>
       <AccessibilityList
         theme={props.theme}
         accessiblePairs={accessiblePairs}
