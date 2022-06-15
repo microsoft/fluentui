@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '../index';
+import { Label } from '@fluentui/react-label';
 
 export const Disabled = () => (
   <Label disabled required>
