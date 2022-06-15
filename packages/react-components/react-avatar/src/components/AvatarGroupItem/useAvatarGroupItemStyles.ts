@@ -98,6 +98,15 @@ const useStackStyles = makeStyles({
   base: {
     outlineColor: tokens.colorNeutralBackground2,
     outlineStyle: 'solid',
+
+    // this is needed for webkit browsers, otherwise the outline won't be circular
+    '&::after': {
+      content: "''",
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      height: '100%',
+      position: 'absolute',
+      width: '100%',
+    },
   },
   thick: { outlineWidth: tokens.strokeWidthThick },
   thicker: { outlineWidth: tokens.strokeWidthThicker },
@@ -191,13 +200,13 @@ export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size:
     if (layout === 'stack') {
       layoutClasses.push(stackStyles.base);
 
-      if (size < 56) {
-        layoutClasses.push(stackStyles.thick);
-      } else if (size < 72) {
-        layoutClasses.push(stackStyles.thicker);
-      } else {
-        layoutClasses.push(stackStyles.thickest);
-      }
+      // if (size < 56) {
+      //   layoutClasses.push(stackStyles.thick);
+      // } else if (size < 72) {
+      //   layoutClasses.push(stackStyles.thicker);
+      // } else {
+      //   layoutClasses.push(stackStyles.thickest);
+      // }
 
       if (size < 24) {
         layoutClasses.push(stackStyles.xxs);
