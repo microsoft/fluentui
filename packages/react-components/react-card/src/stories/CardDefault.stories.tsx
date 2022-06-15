@@ -15,7 +15,7 @@ export const Default = () => {
   return (
     <Card>
       <CardHeader
-        image={<img src={avatarElviaURL} alt="Face of a person" />}
+        image={{ as: 'img', src: avatarElviaURL, alt: 'Face of a person' }}
         header={
           <Body1>
             <b>Elvia Atkins</b> mentioned you

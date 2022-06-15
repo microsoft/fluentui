@@ -15,7 +15,7 @@ const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 const SampleCardContent = () => (
   <>
     <CardHeader
-      image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+      image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
       header={
         <Body1>
           <b>App Name</b>
@@ -50,7 +50,7 @@ storiesOf('Card Converged', module)
           <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
         </CardPreview>
         <CardHeader
-          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+          image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
           header={
             <Body1>
               <b>Sales analysis 2019 presentation</b>
@@ -129,7 +129,7 @@ storiesOf('Card Converged', module)
   .addStory('CardHeader', () => (
     <Card>
       <CardHeader
-        image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
         header={
           <Body1>
             <b>App Name</b>
@@ -148,7 +148,7 @@ storiesOf('Card Converged', module)
         action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
       />
       <CardHeader
-        image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
         header={
           <Body1>
             <b>App Name</b>
@@ -157,7 +157,7 @@ storiesOf('Card Converged', module)
         action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
       />
       <CardHeader
-        image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
         header={
           <Body1>
             <b>App Name</b>
@@ -174,7 +174,7 @@ storiesOf('Card Converged', module)
         action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
       />
       <CardHeader
-        image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
         header={
           <Body1>
             <b>App Name</b>

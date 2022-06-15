@@ -12,7 +12,7 @@ export type CardHeaderSlots = {
   /**
    * Element used to render an image or avatar related to the card.
    */
-  image: Slot<'div'>;
+  image: Slot<'div', 'img'>;
 
   /**
    * Element used to render the main header title.
