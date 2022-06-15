@@ -119,17 +119,17 @@ type DialogProps = ComponentProps<DialogSlots> & {
    */
   defaultOpen?: boolean;
   /**
-   * Callback fired when the component requests to be closed.
+   * Callback fired when the component changes value from open state.
    * @default undefined
    */
-  onClose?(event: MouseEvent | KeyboardEvent, data: DialogCloseData): void;
+  onOpenChange?(event: MouseEvent | KeyboardEvent, data: DialogOpenChangeData): void;
 };
 
-type DialogCloseData = {
+type DialogOpenChangeData = {
   /**
    * The event source of the callback invocation
    */
-  type: 'escapeKeyDown' | 'overlayClick' | 'closeButtonClick';
+  type: 'escapeKeyDown' | 'overlayClick' | 'triggerClick';
   /**
    * The next value for the internal state of the dialog
    */
@@ -295,7 +295,7 @@ const dialog = <Dialog type="alert">
 ```tsx
 const CustomDialog = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const handleClose = () => setIsOpen(false);
+  const handleOpenChange = (ev, { open }) => setIsOpen(open);
   const handleOpen = () => setIsOpen(true);
   return (
     <>
@@ -307,13 +307,13 @@ const CustomDialog = () => {
       <DialogTrigger>
         <Button onClick={handleOpen}>Button outside Dialog Context</Button>
       </DialogTrigger>
-      <Dialog open={isOpen} onClose={handleClose}>
+      <Dialog open={isOpen} onOpenChange={handleOpenChange}>
         <DialogContent>
           <DialogTitle>This is an alert</DialogTitle>
           <DialogBody>This is going to be inside the dialog</DialogBody>
           <DialogActions>
             {/*
-              In this case the trigger can be used to request close through `onClose`,
+              In this case the trigger can be used to request close through `onOpenChange`,
               as it's inside Dialog context
             */}
             <DialogTrigger type="close">
@@ -362,8 +362,8 @@ function AsyncConfirmDialog() {
   const handleInputChange = ev => {
     setInput(ev.target.value.trim());
   };
-  const handleClose = () => {
-    setIsOpen(false);
+  const handleOpenChange = (ev, { open }) => {
+    setIsOpen(open);
     setInput(''); // clean up on cancel/close
   };
   const handleSubmit = async ev => {
@@ -373,7 +373,7 @@ function AsyncConfirmDialog() {
   };
   return (
     <>
-      <Dialog open={isOpen} onClose={handleClose}>
+      <Dialog open={isOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger>
           <Button>Open Dialog</Button>
         </DialogTrigger>
