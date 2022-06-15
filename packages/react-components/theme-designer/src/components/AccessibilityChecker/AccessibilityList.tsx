@@ -55,16 +55,18 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
   if (nonAccPairs.length + AAPairs.length + AAAPairs.length > 0 && nonAccPairs.length > 0) {
     messageBar = <Body1>Your color palette has {nonAccPairs.length.toString()} accessibility errors.</Body1>;
   } else {
-    messageBar = <Body1>Looking good! Your color palette doesn't have any accessibility issues.</Body1>;
+    messageBar = <Body1>Your color palette doesn't have any accessibility issues.</Body1>;
   }
 
   return (
     <>
       <br />
+      {`To meet WCAG 2.1 accessibility requirements, text and images must meet a contrast ratio of 4.5:1, while large
+      text and images must meet a contrast ratio of 3:1. `}
       {messageBar}
       <Accordion multiple defaultOpenItems="Inaccessible">
         <AccordionItem value="Inaccessible">
-          <AccordionHeader size="large">Inaccessible pairs</AccordionHeader>
+          <AccordionHeader size="large">Below 3:1</AccordionHeader>
           <AccordionPanel>
             {nonAccPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
@@ -72,7 +74,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="AA">
-          <AccordionHeader size="large">AA pairs</AccordionHeader>
+          <AccordionHeader size="large">Above 3:1</AccordionHeader>
           <AccordionPanel>
             {AAPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
@@ -80,7 +82,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="AAA">
-          <AccordionHeader size="large">AAA pairs</AccordionHeader>
+          <AccordionHeader size="large">Above 4.5:1</AccordionHeader>
           <AccordionPanel>
             {AAAPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
