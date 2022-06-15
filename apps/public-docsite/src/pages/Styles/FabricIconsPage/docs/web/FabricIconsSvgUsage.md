@@ -21,6 +21,7 @@ import { unregisterIcons, registerIcons } from '@fluentui/react/lib/Styling';
 // Note: This approach works with any SVG icon set, not just @fluentui/react-icons-mdl2
 import { ChevronDownIcon, BadgeIcon } from '@fluentui/react-icons-mdl2';
 
+// Note: For any icon name that has an icon already registered to it, you need to unregister it first before registering a new one
 unregisterIcons(['ChevronDown']);
 
 registerIcons({
