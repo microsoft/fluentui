@@ -85,10 +85,6 @@ The root level component serves as an interface for interaction with all possibl
 ```tsx
 type DialogSlots = {
   /**
-   * The dialog element itself
-   */
-  root: Slot<'div'>;
-  /**
    * Dimmed background of dialog.
    * The default overlay is rendered as a `<div>` with styling.
    * This slot expects a `<div>` element which will replace the default overlay.

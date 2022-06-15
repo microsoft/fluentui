@@ -3,17 +3,14 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
 export const dialogClassNames: SlotClassNames<DialogSlots> = {
-  root: 'fui-Dialog',
+  overlay: 'fui-Dialog__overlay',
 };
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
-
-  // TODO add additional classes for different states and/or slots
+  root: {},
+  overlay: {},
 });
 
 /**
@@ -21,10 +18,10 @@ const useStyles = makeStyles({
  */
 export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.overlay) {
+    state.overlay.className = mergeClasses(dialogClassNames.overlay, styles.overlay, state.overlay.className);
+  }
 
   return state;
 };
