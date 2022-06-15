@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
 import { Listbox } from '../components/Listbox/Listbox';
@@ -44,25 +44,21 @@ export function useTriggerListboxShorthand(
   const ignoreTriggerBlur = React.useRef(false);
 
   // resolve listbox shorthand props
-  const listbox = resolveShorthand(listboxShorthand, {
-    required: true,
-    defaultProps: {
-      multiselect,
-      tabIndex: undefined,
-    },
-  });
+  const listbox: typeof listboxShorthand = {
+    multiselect,
+    tabIndex: undefined,
+    ...listboxShorthand,
+  };
 
   // resolve trigger shorthand props
-  const trigger = resolveShorthand(triggerShorthand, {
-    required: true,
-    defaultProps: {
-      'aria-expanded': open,
-      'aria-activedescendant': open ? activeOption?.id : undefined,
-      // explicitly type the ref here to prevent input/button type conflicts
-      ref: useMergedRefs(ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
-      role: 'combobox',
-    },
-  });
+  const trigger: typeof triggerShorthand = {
+    'aria-expanded': open,
+    'aria-activedescendant': open ? activeOption?.id : undefined,
+    // explicitly type the ref here to prevent input/button type conflicts
+    ref: useMergedRefs(ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
+    role: 'combobox',
+    ...triggerShorthand,
+  };
 
   /*
    * Handle focus when clicking the listbox popup:

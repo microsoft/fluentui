@@ -25,13 +25,18 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  const [triggerProps, listboxProps] = useTriggerListboxShorthand(
-    props,
-    baseState,
-    ref,
-    triggerNativeProps,
-    props.listbox,
-  );
+  const triggerSlot = resolveShorthand(props.button, {
+    required: true,
+    defaultProps: {
+      type: 'button',
+      children: baseState.value || props.placeholder,
+      ...triggerNativeProps,
+    },
+  });
+
+  const listboxSlot = resolveShorthand(props.listbox, { required: true });
+
+  const [triggerProps, listboxProps] = useTriggerListboxShorthand(props, baseState, ref, triggerSlot, listboxSlot);
 
   const state: ComboboxState = {
     components: {
