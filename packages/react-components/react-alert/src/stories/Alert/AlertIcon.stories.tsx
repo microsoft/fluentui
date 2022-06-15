@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { DeleteRegular } from '@fluentui/react-icons';
 
-import { Alert } from '../index';
+import { Alert } from '@fluentui/react-alert';
 
 export const Icon = () => (
   <Alert

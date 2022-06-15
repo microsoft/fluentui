@@ -1,4 +1,4 @@
-import { Alert } from '../index';
+import { Alert } from '@fluentui/react-alert';
 import descriptionMd from './AlertDescription.md';
 
 export { Default } from './AlertDefault.stories';
