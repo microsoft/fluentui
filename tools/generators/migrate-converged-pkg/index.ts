@@ -643,6 +643,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
+
+    moveStories(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -711,6 +713,36 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 
   return tree;
+}
+
+function moveStories(tree: Tree, options: NormalizedSchema) {
+  const componentName = options.normalizedPkgName.split('-')[1];
+  const oldStoriesPath = `${options.projectConfig.sourceRoot}/stories`;
+  const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
+
+  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+    if (treePath.includes('.stories.') || treePath.includes('.md')) {
+      let storyFileName = treePath.split('/').slice(-1)[0];
+
+      if (storyFileName.toLowerCase() === `${componentName}.stories.tsx`) {
+        storyFileName = 'index.stories.tsx';
+      }
+
+      const newStoryPath = `${newStoriesPath}/${storyFileName}`;
+      tree.rename(treePath, newStoryPath);
+      updateStoryFileImports(tree, options, newStoryPath);
+    }
+  });
+}
+
+function updateStoryFileImports(tree: Tree, options: NormalizedSchema, storyPath: string) {
+  if (!tree.exists(storyPath)) {
+    return;
+  }
+
+  const storyFile = tree.read(storyPath, 'utf8') as string;
+  const updatedStoryFile = storyFile.replace('../index', options.name);
+  tree.write(storyPath, updatedStoryFile);
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {
