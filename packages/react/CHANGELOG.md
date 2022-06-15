@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 15 Jun 2022 07:40:21 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 21:38:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.76.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.0)
+
+Wed, 15 Jun 2022 21:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.1..@fluentui/react_v8.76.0)
+
+### Minor changes
+
+- feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone. ([PR #23563](https://github.com/microsoft/fluentui/pull/23563) by Humberto.Morimoto@microsoft.com)
 
 ## [8.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.1)
 

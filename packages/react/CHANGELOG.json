@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 15 Jun 2022 21:38:03 GMT",
+      "tag": "@fluentui/react_v8.76.0",
+      "version": "8.76.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "921725e6051089c90a076208c10af5d93ec26cc5",
+            "comment": "feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jun 2022 07:40:21 GMT",
       "tag": "@fluentui/react_v8.75.1",
       "version": "8.75.1",
