@@ -65,6 +65,12 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
+  inlineInputs: {
+    display: 'flex',
+    columnGap: '1em',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   keyColor: {
     paddingLeft: '0px',
   },
@@ -91,7 +97,13 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
   const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = React.useCallback((event, data) => setTab(data.value), []);
+  const handleTabChange = React.useCallback(
+    (event, data) => {
+      props.setTheme('Custom');
+      setTab(data.value);
+    },
+    [props],
+  );
 
   const keyColorId = useId();
   const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
@@ -108,7 +120,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const themeId = useId();
   const handleThemeChange: MenuProps['onCheckedValueChange'] = React.useCallback(
     (e, data) => {
-      console.log(data);
       props.setTheme(data.checkedItems[0] as string);
     },
     [props],
@@ -116,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const Use = React.memo(() => (
     <div className={styles.content} role="tabpanel" aria-labelledby="Use">
-      <div className={styles.inputs}>
+      <div className={styles.inlineInputs}>
         <Label htmlFor={themeId}>Theme</Label>
         <Menu onCheckedValueChange={handleThemeChange}>
           <MenuTrigger>
