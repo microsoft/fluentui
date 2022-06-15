@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add isSelectedOnFocus prop to DetailsList (#23467)",
+  "packageName": "office-ui-fabric-react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
