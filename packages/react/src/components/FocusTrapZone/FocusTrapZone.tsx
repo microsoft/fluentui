@@ -216,7 +216,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   /** Called to restore focus on unmount or props change. (useEventCallback ensures latest prop values are used.) */
   const returnFocusToInitiator = useEventCallback((elementToFocusOnDismiss: HTMLElement | null) => {
     FocusTrapZone.focusStack = FocusTrapZone.focusStack!.filter(value => internalState.focusStackId !== value);
-    // console.log('returnFocusToInitiator', doc?.activeElement);
 
     if (!doc) {
       return;
@@ -235,7 +234,6 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
   /** Called in window event handlers. (useEventCallback ensures latest prop values are used.) */
   const forceFocusOrClickInTrap = useEventCallback((ev: FocusEvent | MouseEvent): void => {
-    // console.log('forceFocusOrClickInTrap', ev.target);
     // be sure to use the latest values here
     if (disabled) {
       return;
