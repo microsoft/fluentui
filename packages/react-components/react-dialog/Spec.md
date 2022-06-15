@@ -139,10 +139,12 @@ type DialogCloseData = {
 
 ### DialogTrigger
 
-A non-visual component that wraps its child and configures them to be the trigger that will open or close a `Dialog`. This component should only accept one child
+A non-visual component that wraps its child and configures them to be the trigger that will open or close a `Dialog`. This component should only accept one child.
+
+In case the trigger is used outside `Dialog` component it'll still provide basic [ARIA related attributes](#aria-roles-and-states) to it's wrapped child, but it won't be able to alter the dialog `open` state anymore, in that case the user must provide a [`controlled state`](#controlled-dialog)
 
 ```typescript
-export type MenuTriggerProps = {
+export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening,
    * closing or toggling a Dialog visibility state.
@@ -297,16 +299,26 @@ const CustomDialog = () => {
   const handleOpen = () => setIsOpen(true);
   return (
     <>
-      {/* 🚨 Don't forget to add aria-expanded props for ARIA usage*/}
-      <Button aria-expanded={isOpen ? 'true' : 'false'} onClick={handleOpen}>
-        Button outside Dialog Context
-      </Button>
-      <Dialog open={isOpen} onClose={handleClose} type="alert">
+      {/*
+        the trigger component is still useful outside of the Dialog,
+        to provide ARIA attributes, but it will no longer speak with the dialog.
+        A controlled state is required in this case
+      */}
+      <DialogTrigger>
+        <Button onClick={handleOpen}>Button outside Dialog Context</Button>
+      </DialogTrigger>
+      <Dialog open={isOpen} onClose={handleClose}>
         <DialogContent>
           <DialogTitle>This is an alert</DialogTitle>
           <DialogBody>This is going to be inside the dialog</DialogBody>
           <DialogActions>
-            <Button onClick={handleClose}>Close</Button>
+            {/*
+              In this case the trigger can be used to request close through `onClose`,
+              as it's inside Dialog context
+            */}
+            <DialogTrigger type="close">
+              <Button>Close</Button>
+            </DialogTrigger>
             <Button>Action</Button>
           </DialogActions>
         </DialogContent>
@@ -324,7 +336,7 @@ const CustomDialog = () => {
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
   aria-modal="true"
-  role="alertdialog"
+  role="dialog"
   class="fui-dialog-content"
 >
   <div id="fui-dialog-title-id" class="fui-dialog-title">
@@ -338,6 +350,54 @@ const CustomDialog = () => {
   </div>
 </div>
 <!-- ... portal ... -->
+```
+
+### Async Input submission dialog
+
+```tsx
+function AsyncConfirmDialog() {
+  const [input, setInput] = useState('');
+  const [state, sendInput] = useSendInput();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleInputChange = ev => {
+    setInput(ev.target.value.trim());
+  };
+  const handleClose = () => {
+    setIsOpen(false);
+    setInput(''); // clean up on cancel/close
+  };
+  const handleSubmit = async ev => {
+    ev.preventDefault();
+    await sendInput(input); // sending data on confirm
+    setIsOpen(false);
+  };
+  return (
+    <>
+      <Dialog open={isOpen} onClose={handleClose}>
+        <DialogTrigger>
+          <Button>Open Dialog</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogTitle>This is a dialog</DialogTitle>
+          <DialogBody>
+            <form id="form-id" onSubmit={handleSubmit}>
+              <Input required placeholder="Some input..." value={input} onChange={handleInputChange} />
+            </form>
+          </DialogBody>
+          <DialogActions>
+            <DialogTrigger type="close">
+              <Button>Close</Button>
+            </DialogTrigger>
+            <Button disabled={input === ''} form="form-id" type="submit">
+              {state === 'idle' && 'Submit'}
+              {state === 'submitting' && 'Submitting...'}
+            </Button>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
 ```
 
 ## Migration
@@ -373,7 +433,7 @@ The below references were used to decide appropriate keyboard interaction from a
 3. **(5-6)** After the dialog is dismissed, keyboard focus should be moved back to where it was before it moved into the dialog. Otherwise the focus can be dropped to the beginning of the page. Or if the item is no longer available it can be moved to the next logical location in that region i.e. next / previous item.
 4. **TabKey** Moves focus to next focusable element inside the dialog. When focus is on the last focusable element in the dialog, moves focus to the next focusable action in the browser window.
 5. **Shift+Tab** Moves focus to previous focusable element inside the dialog. When focus is on the first focusable element in the dialog, moves focus to the last focusable action within the browser window.
-6. **EscKey** Closes the dialog.
+6. **EscKey** Closes the dialog, returning focus to the trigger, in case the trigger is gone or not possible to focus, the use might require to setup focus manually.
 
 ### Non-Modal
 
@@ -440,7 +500,6 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
 
 - Trigger button
   - [`aria-haspopup="dialog"`](https://w3c.github.io/aria/#aria-haspopup)
-    > ⚠️ This is deprecated, the proper attribute should be [`aria-expanded=true`](https://w3c.github.io/aria/#aria-expanded)
 - Dialog
   - [`role="dialog"`](https://w3c.github.io/aria/#dialog)
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
