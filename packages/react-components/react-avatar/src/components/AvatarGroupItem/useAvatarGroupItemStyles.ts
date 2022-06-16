@@ -100,9 +100,18 @@ const useStackStyles = makeStyles({
       content: "''",
       position: 'absolute',
       display: 'block',
+      // Border is used instead of outline due to a bug in webkit browsers where border-radius is ignored in outline.
       ...shorthands.borderColor(tokens.colorNeutralBackground2),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       ...shorthands.borderStyle('solid'),
+    },
+  },
+  overflowButton: {
+    // border-color has to be set to transparent when there's focus due to the outline overlapping the focus ring.
+    '&:focus': {
+      '&::after': {
+        ...shorthands.borderColor('transparent'),
+      },
     },
   },
   thick: {
