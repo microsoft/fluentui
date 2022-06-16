@@ -719,6 +719,11 @@ function moveStories(tree: Tree, options: NormalizedSchema) {
   const componentName = options.normalizedPkgName.split('-')[1];
   const oldStoriesPath = `${options.projectConfig.sourceRoot}/stories`;
   const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
+  const storiesExistInNewPath = tree.exists(newStoriesPath + '/');
+
+  if (storiesExistInNewPath) {
+    return;
+  }
 
   visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
     if (treePath.includes('.stories.') || treePath.includes('.md')) {
