@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Concepts/Upgrading/from v0/Positioning" />
 
-# Mmigrate Positioning Props
+# Migrate Positioning Props
 
 Some components make use of positioning props, like `Menu`, `Popup`(v9 `Popover`), `Tooltip`.
 
@@ -17,7 +17,7 @@ If only `position` or `align` or both prop is used, for example `<Popup position
 
 This is v9 positioning shorthand syntax, which avoids using a full blown javascript object. See more on [v9 docsite example](?path=/docs/concepts-developer-positioning-components--default#shorthand-positions).
 
-## migrate other positioning props:
+## Migrate other positioning props:
 
 All v0 positioning props can be passed to v9 `positioning` as an object.
 For example, if v0 uses props `<Popup position="below" align="end" autoSize={"height"} />`, it can be migrate to prop `positioning={{ position: "below", align: "end", autoSize: "height" }}`.

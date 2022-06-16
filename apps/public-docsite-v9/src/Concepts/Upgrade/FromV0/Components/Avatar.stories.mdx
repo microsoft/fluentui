@@ -25,17 +25,17 @@ const Component = () => <Avatar />;
 | Avatar props              | migrate guide                                                                                            |
 | ------------------------- | -------------------------------------------------------------------------------------------------------- |
 | as, className             | keep it as is                                                                                            |
-| variables, design, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document                               |
+| variables, design, styles | see Migrate style overrides in this document                                                             |
 | accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-upgrading-from-v0-custom-accessibility--page) |
 | key, ref                  | keep it as is                                                                                            |
 | getInitials               | use `initials` prop instead                                                                              |
 | icon                      | keep it as is                                                                                            |
-| image                     | see [Migrate image prop](#./Migrate-`image`-prop) in this document                                       |
+| image                     | see Migrate image prop in this document                                                                  |
 | label                     | use `initials` prop instead                                                                              |
 | name                      | keep it as is                                                                                            |
-| size                      | see [Migrate size prop](#./Migrate-`size`-prop) in this document                                         |
+| size                      | see Migrate size prop in this document                                                                   |
 | square                    | replace with `shape="square"`                                                                            |
-| status                    | see [Migrate status prop](#./Migrate-`status`-prop) in this document                                     |
+| status                    | see Migrate status prop in this document                                                                 |
 
 ---
 
@@ -119,15 +119,15 @@ const Component = () => (
 ## Migrate `size` prop
 
 Introduced new size values:
+
 | Value before | Value after |
-| --------------|--------------|
-| smallest | 20 |
-| smaller | 24 |
-| small | 28 |
-| medium | 32 |
-| large | [40, 48] |
-| larger | 64 |
-| largest | 96 |
+| ------------ | ----------- |
+| smallest     | 20          |
+| smaller      | 24          |
+| small        | 28          |
+| medium       | 32          |
+| large        | 64          |
+| largest      | 96          |
 
 Before:
 

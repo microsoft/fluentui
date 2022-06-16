@@ -31,13 +31,13 @@ const Component = () => (
 
 ## How to migrate props:
 
-| Popup props                                                                                   | migrate guide                                                                            |
-| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| defaultOpen, closeOnScroll, inline, open, onOpenChange, mountNode, mouseLeaveDelay, trapFocus | keep it as is                                                                            |
-| content, contentRef                                                                           | see [Migrate content and contentRef](#./Migrate-content-and-contentRef) in this document |
-| trigger                                                                                       | Move `trigger` to JSX children of `PopoverTrigger` component                             |
-| pointing                                                                                      | Replace with `noArrow={false}`                                                           |
-| on                                                                                            | Replace `on='hover'` with `openOnHover`; `on='content'` with `openOnContext`             |
+| Popup props                                                                                   | migrate guide                                                                |
+| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| defaultOpen, closeOnScroll, inline, open, onOpenChange, mountNode, mouseLeaveDelay, trapFocus | keep it as is                                                                |
+| content, contentRef                                                                           | see Migrate content and contentRef in this document                          |
+| trigger                                                                                       | Move `trigger` to JSX children of `PopoverTrigger` component                 |
+| pointing                                                                                      | Replace with `withArrow={true}`                                              |
+| on                                                                                            | Replace `on='hover'` with `openOnHover`; `on='content'` with `openOnContext` |
 
 #### Postioning props:
 

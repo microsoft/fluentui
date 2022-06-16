@@ -22,27 +22,27 @@ const Component = () => <Button>Here is Button</Button>;
 
 ## How to migrate props:
 
-| Button props      | migrate guide                                                                                             |
-| ----------------- | --------------------------------------------------------------------------------------------------------- |
-| as, className     | keep it as is                                                                                             |
-| content           | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                    |
-| variables, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                |
-| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-upgrading-from-v0-custom-accessibility--page)  |
-| circular          | replace with `shape="circular"`                                                                           |
-| disabled          | keep it as is                                                                                             |
-| disabledFocusable | keep it as is                                                                                             |
-| flat              | REMOVED: it's a default view now, we're moving away from shadows                                          |
-| fluid             | replace with `block`                                                                                      |
-| icon              | keep it as is. See [Button + Icon integration](#./Button-+-Icon-integration) in this document             |
-| iconOnly          | REMOVED: see [Migrate iconOnly prop](#./Migrate-`iconOnly`-prop) in this document                         |
-| iconPosition      | keep it as is                                                                                             |
-| inverted          | REMOVED: use styles and color tokens to set a proper styling \*                                           |
-| loader, loading   | REMOVED: see [Migrate loading and loader props](#./Migrate-`loading`-and-`loader`-props) in this document |
-| primary           | use `appearance="primary"`                                                                                |
-| secondary         | REMOVED: the button appears with the default style                                                        |
-| size              | keep it as is. Values: `small`, `medium`(default) and `large`                                             |
-| text              | use `appearance="transparent"`                                                                            |
-| tinted            | REMOVED: use Default button instead                                                                       |
+| Button props      | migrate guide                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| as, className     | keep it as is                                                                                            |
+| content           | see Migrate content prop in this document                                                                |
+| variables, styles | see Migrate style overrides in this document                                                             |
+| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-upgrading-from-v0-custom-accessibility--page) |
+| circular          | replace with `shape="circular"`                                                                          |
+| disabled          | keep it as is                                                                                            |
+| disabledFocusable | keep it as is                                                                                            |
+| flat              | REMOVED: it's a default view now, we're moving away from shadows                                         |
+| fluid             | replace with `block`                                                                                     |
+| icon              | keep it as is. See Button + Icon integration in this document                                            |
+| iconOnly          | REMOVED: see Migrate iconOnly prop in this document                                                      |
+| iconPosition      | keep it as is                                                                                            |
+| inverted          | REMOVED: use styles and color tokens to set a proper styling \*                                          |
+| loader, loading   | REMOVED: see Migrate loading and loader props in this document                                           |
+| primary           | use `appearance="primary"`                                                                               |
+| secondary         | REMOVED: the button appears with the default style                                                       |
+| size              | keep it as is. Values: `small`, `medium`(default) and `large`                                            |
+| text              | use `appearance="transparent"`                                                                           |
+| tinted            | REMOVED: use Default button instead                                                                      |
 
 \* this may be changed
 Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/exciting-liskov-y5u5hy?file=/example.tsx)
