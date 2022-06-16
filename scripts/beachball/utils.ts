@@ -34,7 +34,7 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' }) {
 function getVNextPackagePaths(allPackageInfo: AllPackageInfo) {
   return Object.values(allPackageInfo)
     .map(packageInfo => {
-      if (isConvergedPackage(packageInfo.packageJson)) {
+      if (isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
         return packageInfo.packagePath;
       }
 

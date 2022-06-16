@@ -6,6 +6,10 @@ const path = require('path');
 let cwdForGitRoot;
 let gitRoot;
 
+/**
+ *
+ * @returns {string}
+ */
 function findGitRoot() {
   let cwd = process.cwd();
 
