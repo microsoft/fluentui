@@ -6,36 +6,104 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
-export const Dialog: ForwardRefComponent<DialogProps>;
+// @public (undocumented)
+export const Dialog: React_2.FC<DialogProps>;
 
 // @public (undocumented)
 export const dialogClassNames: SlotClassNames<DialogSlots>;
 
 // @public
-export type DialogProps = ComponentProps<DialogSlots>;
+export const DialogContent: ForwardRefComponent<DialogContentProps>;
 
 // @public (undocumented)
-export type DialogSlots = {
+export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
+
+// @public
+export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+
+// @public (undocumented)
+export type DialogContentSlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type DialogState = ComponentState<DialogSlots>;
+export type DialogContentState = ComponentState<DialogContentSlots>;
+
+// @public (undocumented)
+export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
+    type?: DialogType;
+    open?: boolean;
+    defaultOpen?: boolean;
+    onOpenChange?: DialogOpenChangeEventListener;
+    children: [JSX.Element, JSX.Element] | JSX.Element;
+};
+
+// @public (undocumented)
+export type DialogSlots = {
+    overlay: Slot<'div'>;
+};
+
+// @public (undocumented)
+export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
+    content: React_2.ReactNode;
+    trigger: React_2.ReactNode;
+};
 
 // @public
-export const renderDialog_unstable: (state: DialogState) => JSX.Element;
+export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
 
 // @public
-export const useDialog_unstable: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
+export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'aria-haspopup'>> & {
+    ref?: React_2.Ref<never>;
+};
+
+// @public (undocumented)
+export type DialogTriggerProps = {
+    type?: DialogTriggerType;
+    children: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+};
+
+// @public (undocumented)
+export type DialogTriggerState = {
+    children: React_2.ReactElement | null;
+};
+
+// @public (undocumented)
+export type DialogTriggerType = 'open' | 'close' | 'toggle';
+
+// @public
+export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
+
+// @public
+export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+
+// @public
+export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
+
+// @public
+export const useDialog_unstable: (props: DialogProps) => DialogState;
+
+// @public
+export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
+
+// @public
+export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
 
 // @public
 export const useDialogStyles_unstable: (state: DialogState) => DialogState;
+
+// @public
+export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

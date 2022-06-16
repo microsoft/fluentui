@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
 import type { DialogState, DialogSlots, DialogContextValues } from './Dialog.types';
-import { DialogProvider } from './DialogContext';
+import { DialogProvider } from '../../contexts/dialogContext';
 
 /**
  * Render the final JSX of Dialog

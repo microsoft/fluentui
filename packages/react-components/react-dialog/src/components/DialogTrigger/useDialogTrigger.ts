@@ -1,0 +1,45 @@
+import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { useDialogContext_unstable } from '../../contexts/dialogContext';
+import {
+  DialogTriggerChildProps,
+  DialogTriggerProps,
+  DialogTriggerState,
+  DialogTriggerType,
+} from './DialogTrigger.types';
+
+/**
+ * Create the state required to render DialogTrigger.
+ * Clones the only child component and adds necessary event handling behaviours to open a popup Dialog
+ *
+ * @param props - props from this instance of DialogTrigger
+ */
+export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
+  const { children, type = 'toggle' } = props;
+  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+
+  const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+
+  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
+    child?.props.onClick?.(ev);
+    requestOpenChange({ event: ev, type: 'triggerClick', open: updateOpen(type) });
+  });
+
+  return {
+    children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
+      'aria-haspopup': 'dialog',
+      onClick: handleClick,
+    }),
+  };
+};
+
+function updateOpen(type: DialogTriggerType): React.SetStateAction<boolean> {
+  switch (type) {
+    case 'close':
+      return false;
+    case 'open':
+      return true;
+    case 'toggle':
+      return curr => !curr;
+  }
+}

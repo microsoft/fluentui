@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { DialogOpenChangeData, DialogOpenChangeEvent, DialogProps, DialogState } from './Dialog.types';
+import type { DialogOpenChangeEvent, DialogProps, DialogState } from './Dialog.types';
+import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 
 /**
  * Create the state required to render Dialog.
@@ -20,11 +21,12 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
-  const requestOpenChange = useEventCallback((event: DialogOpenChangeEvent, data: DialogOpenChangeData) => {
-    onOpenChange?.(event, data);
+  const requestOpenChange = useEventCallback((data: DialogRequestOpenChangeData) => {
+    const nextOpen = normalizeSetOpen(data.open)(openValue);
+    onOpenChange?.(data.event as DialogOpenChangeEvent, { open: nextOpen, type: data.type });
     // if user prevents default then do not change state value
-    if (!event.defaultPrevented) {
-      setOpenValue(data.open);
+    if (!data.event.defaultPrevented) {
+      setOpenValue(nextOpen);
     }
   });
 
@@ -62,7 +64,7 @@ function childrenToTriggerAndContent(
   switch (childrenArray.length) {
     // case where there's a trigger followed by content
     case 2:
-      return [childrenArray[0], childrenArray[1]];
+      return childrenArray as [trigger: React.ReactNode, content: React.ReactNode];
     // case where there's only content
     case 1:
       return [undefined, childrenArray[1]];
@@ -70,4 +72,11 @@ function childrenToTriggerAndContent(
     default:
       return [undefined, undefined];
   }
+}
+
+/**
+ * Normalizes a state action into a function
+ */
+function normalizeSetOpen(setOpen: React.SetStateAction<boolean>) {
+  return typeof setOpen === 'function' ? setOpen : () => setOpen;
 }

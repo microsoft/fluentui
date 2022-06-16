@@ -1,20 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type DialogOpenChangeEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
-
-export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
-
-export type DialogOpenChangeData = {
-  /**
-   * The event source of the callback invocation
-   */
-  type: 'escapeKeyDown' | 'overlayClick' | 'triggerClick';
-  /**
-   * The next value for the internal state of the dialog
-   */
-  open: boolean;
-};
+import type { DialogContextValue, DialogRequestOpenChangeSourceType } from '../../contexts/dialogContext';
 
 export type DialogSlots = {
   /**
@@ -26,13 +12,18 @@ export type DialogSlots = {
   overlay: Slot<'div'>;
 };
 
-export type DialogType = 'modal' | 'non-modal' | 'alert';
-
-export type DialogContextValue = {
-  type: DialogType;
+export type DialogOpenChangeEvent = React.MouseEvent | React.KeyboardEvent;
+export type DialogOpenChangeData = {
+  /**
+   * The next value of open state
+   */
   open: boolean;
-  requestOpenChange: DialogOpenChangeEventHandler;
+  type: DialogRequestOpenChangeSourceType;
 };
+
+export type DialogOpenChangeEventListener = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+
+export type DialogType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
@@ -70,7 +61,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Callback fired when the component changes value from open state.
    * @default undefined
    */
-  onOpenChange?: DialogOpenChangeEventHandler;
+  onOpenChange?: DialogOpenChangeEventListener;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogContent}.
    * Alternatively can only contain {@link DialogContent} if using trigger outside dialog, or controlling state.

@@ -1,4 +1,5 @@
-import type { DialogContextValue, DialogContextValues, DialogState } from './Dialog.types';
+import { DialogContextValue } from '../../contexts/dialogContext';
+import type { DialogContextValues, DialogState } from './Dialog.types';
 
 export function useDialogContextValues_unstable(state: DialogState): DialogContextValues {
   const { type, open, requestOpenChange } = state;
