@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 13 Jun 2022 07:39:07 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 21:38:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.76.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.0)
+
+Wed, 15 Jun 2022 21:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.1..@fluentui/react_v8.76.0)
+
+### Minor changes
+
+- feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone. ([PR #23563](https://github.com/microsoft/fluentui/pull/23563) by Humberto.Morimoto@microsoft.com)
+
+## [8.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.1)
+
+Wed, 15 Jun 2022 07:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.0..@fluentui/react_v8.75.1)
+
+### Patches
+
+- fix: Adding close button to Dropdown list when it opens as a panel. ([PR #23524](https://github.com/microsoft/fluentui/pull/23524) by Humberto.Morimoto@microsoft.com)
+- handle entering key pressing in contenteditable element in SelectionZone ([PR #23472](https://github.com/microsoft/fluentui/pull/23472) by liqing@microsoft.com)
+
+## [8.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.0)
+
+Tue, 14 Jun 2022 07:52:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.74.0..@fluentui/react_v8.75.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23487](https://github.com/microsoft/fluentui/pull/23487) by seanmonahan@microsoft.com)
 
 ## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
 

@@ -35,7 +35,7 @@
   "dependencies": {
     "@griffel/react": "1.1.0",
     "@fluentui/keyboard-keys": "9.0.0-rc.6",
-    "@fluentui/react-icons": "^2.0.166-rc.3",
+    "@fluentui/react-icons": "^2.0.172-rc.8",
     "@fluentui/react-input": "9.0.0-rc.5",
     "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.10",

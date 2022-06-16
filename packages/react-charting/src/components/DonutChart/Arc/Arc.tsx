@@ -4,10 +4,13 @@ import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
+import { wrapTextInsideDonut } from '../../../utilities/index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
 }
+
+const TEXT_PADDING: number = 5;
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
@@ -63,6 +66,18 @@ export class Arc extends React.Component<IArcProps, IArcState> {
         </text>
       </g>
     );
+  }
+
+  public componentDidUpdate(): void {
+    const { href } = this.props;
+    const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
+    const classNames = getClassNames(getStyles, {
+      color: this.props.color,
+      href: href!,
+      theme: this.props.theme!,
+    });
+
+    wrapTextInsideDonut(classNames.insideDonutString, this.props.innerRadius! * 2 - TEXT_PADDING);
   }
 
   private _onFocus(data: IChartDataPoint, id: string): void {

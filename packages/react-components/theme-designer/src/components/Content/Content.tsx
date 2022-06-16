@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
+import { Alert } from '@fluentui/react-alert';
 
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
@@ -37,6 +38,9 @@ export const Content: React.FC<ContentProps> = props => {
 
   return (
     <FluentProvider theme={theme}>
+      <Alert intent="warning" action={{ appearance: 'transparent' }}>
+        This tool is still a work in progress - colors are still subject to adjustment.
+      </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={props.brand} />
         <Demo theme={theme} />
