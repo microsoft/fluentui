@@ -41,6 +41,8 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
+  // const [themes, dispatchThemes] = React.useReducer(themeReducer, initialTheme);
+
   const [theme, setTheme] = React.useState<string>('Custom');
   const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
   const [hueTorsion, setHueTorsion] = React.useState<number>(0);

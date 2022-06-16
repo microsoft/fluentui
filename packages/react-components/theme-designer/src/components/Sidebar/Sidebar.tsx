@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
@@ -109,10 +110,12 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
 
   const hueTorsionId = useId();
-  const handleHueTorsionChange = React.useCallback(e => props.setHueTorsion(e.target.value / 10), [props]);
+  const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    props.setHueTorsion(parseInt(e.target.value, 10) / 10);
 
   const lightCpId = useId();
-  const handleLightCpChange = React.useCallback(e => props.setLightCp(e.target.value / 100), [props]);
+  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    props.setLightCp(parseInt(e.target.value, 10) / 100);
 
   const darkCpId = useId();
   const handleDarkCpChange = React.useCallback(e => props.setDarkCp(e.target.value / 100), [props]);
@@ -125,7 +128,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
     [props],
   );
 
-  const Use = React.memo(() => (
+  const RenderUseTab = () => (
     <div className={styles.content} role="tabpanel" aria-labelledby="Use">
       <div className={styles.inlineInputs}>
         <Label htmlFor={themeId}>Theme</Label>
@@ -153,9 +156,9 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         </Menu>
       </div>
     </div>
-  ));
+  );
 
-  const Edit = React.memo(() => (
+  const RenderEditTab = () => (
     <div className={styles.content} role="tabpanel" aria-labelledby="Edit">
       <div className={styles.inputs}>
         <Label htmlFor={keyColorId}>Key color value</Label>
@@ -194,7 +197,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
       <Label htmlFor={darkCpId}>Dark Control Point</Label>
       <Slider size="small" min={0} max={100} id={darkCpId} value={props.darkCp * 100} onChange={handleDarkCpChange} />
     </div>
-  ));
+  );
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
@@ -206,8 +209,8 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           Edit
         </Tab>
       </TabList>
-      {tab === 'use' && <Use />}
-      {tab === 'edit' && <Edit />}
+      {tab === 'use' && <RenderUseTab />}
+      {tab === 'edit' && <RenderEditTab />}
     </div>
   );
 };
