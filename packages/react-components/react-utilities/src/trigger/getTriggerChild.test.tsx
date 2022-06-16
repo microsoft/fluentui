@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getTriggerChild } from './getTriggerChild';
-import { FluentTriggerComponent } from './isFluentTrigger';
+import { FluentTriggerComponent } from './types';
 
 export const TestTrigger: React.FC<{ id?: string }> & FluentTriggerComponent = props => <>{props.children}</>;
 TestTrigger.displayName = 'TestTrigger';

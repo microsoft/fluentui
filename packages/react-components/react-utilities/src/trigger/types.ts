@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 /**
  * Allows a component to be tagged as a FluentUI trigger component.
  *
@@ -15,12 +13,4 @@ import * as React from 'react';
  */
 export type FluentTriggerComponent = {
   isFluentTriggerComponent?: boolean;
-};
-
-/**
- * Checks if a given element is a FluentUI trigger (e.g. `MenuTrigger` or `Tooltip`).
- * See the {@link FluentTriggerComponent} type for more info.
- */
-export const isFluentTrigger = (element: React.ReactElement) => {
-  return (element.type as FluentTriggerComponent).isFluentTriggerComponent;
 };
