@@ -19,9 +19,9 @@ const useStyles = makeStyles({
     gridAutoColumns: 'min-content 1fr min-content',
     gridAutoRows: '1fr min-content',
     alignItems: 'center',
-    ...shorthands.gap('12px', '0'),
   },
   image: {
+    marginRight: '12px',
     gridColumnStart: '1',
     gridRowStart: 'span 2',
   },
@@ -34,6 +34,7 @@ const useStyles = makeStyles({
     gridRowStart: '2',
   },
   action: {
+    marginLeft: '12px',
     gridColumnStart: '3',
     gridRowStart: 'span 2',
   },
