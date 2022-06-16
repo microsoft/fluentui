@@ -92,7 +92,7 @@ export function preset() {
   task('ts', () => {
     return series(
       'ts:compile',
-      condition('copy-compiled', () => isConvergedPackage()),
+      condition('copy-compiled', () => isConvergedPackage({ projectType: 'library' })),
       'ts:postprocess',
       condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );
