@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 16 Jun 2022 12:21:33 GMT",
+      "tag": "office-ui-fabric-react_v7.186.0",
+      "version": "7.186.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: add isSelectedOnFocus prop to DetailsList (#23467)",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "f98c798612244456c16309246f55f563193f4e01",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jun 2022 12:28:59 GMT",
       "tag": "office-ui-fabric-react_v7.185.9",
       "version": "7.185.9",

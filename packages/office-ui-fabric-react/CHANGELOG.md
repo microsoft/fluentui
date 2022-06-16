@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Jun 2022 12:28:59 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jun 2022 12:21:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.186.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.186.0)
+
+Thu, 16 Jun 2022 12:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.185.9..office-ui-fabric-react_v7.186.0)
+
+### Minor changes
+
+- feat: add isSelectedOnFocus prop to DetailsList (#23467) ([PR #23548](https://github.com/microsoft/fluentui/pull/23548) by seanmonahan@microsoft.com)
 
 ## [7.185.9](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.185.9)
 
