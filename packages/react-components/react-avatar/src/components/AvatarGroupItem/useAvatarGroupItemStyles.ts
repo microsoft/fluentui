@@ -96,21 +96,32 @@ const usePieStyles = makeStyles({
 
 const useStackStyles = makeStyles({
   base: {
-    outlineColor: tokens.colorNeutralBackground2,
-    outlineStyle: 'solid',
-
-    // this is needed for webkit browsers, otherwise the outline won't be circular
     '&::after': {
       content: "''",
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      height: '100%',
       position: 'absolute',
+      // outlineColor: tokens.colorNeutralBackground2,
+      outlineColor: 'red',
+      outlineStyle: 'solid',
+      height: '100%',
       width: '100%',
     },
   },
-  thick: { outlineWidth: tokens.strokeWidthThick },
-  thicker: { outlineWidth: tokens.strokeWidthThicker },
-  thickest: { outlineWidth: tokens.strokeWidthThickest },
+  thick: {
+    '&::after': {
+      outlineWidth: tokens.strokeWidthThick,
+    },
+  },
+  thicker: {
+    '&::after': {
+      outlineWidth: tokens.strokeWidthThicker,
+    },
+  },
+  thickest: {
+    '&::after': {
+      outlineWidth: tokens.strokeWidthThickest,
+    },
+  },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
   s: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },
@@ -200,13 +211,13 @@ export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size:
     if (layout === 'stack') {
       layoutClasses.push(stackStyles.base);
 
-      // if (size < 56) {
-      //   layoutClasses.push(stackStyles.thick);
-      // } else if (size < 72) {
-      //   layoutClasses.push(stackStyles.thicker);
-      // } else {
-      //   layoutClasses.push(stackStyles.thickest);
-      // }
+      if (size < 56) {
+        layoutClasses.push(stackStyles.thick);
+      } else if (size < 72) {
+        layoutClasses.push(stackStyles.thicker);
+      } else {
+        layoutClasses.push(stackStyles.thickest);
+      }
 
       if (size < 24) {
         layoutClasses.push(stackStyles.xxs);
