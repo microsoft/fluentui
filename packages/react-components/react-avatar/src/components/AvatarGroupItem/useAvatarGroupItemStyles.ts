@@ -96,32 +96,12 @@ const usePieStyles = makeStyles({
 
 const useStackStyles = makeStyles({
   base: {
-    '&::after': {
-      content: "''",
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      position: 'absolute',
-      // outlineColor: tokens.colorNeutralBackground2,
-      outlineColor: 'red',
-      outlineStyle: 'solid',
-      height: '100%',
-      width: '100%',
-    },
+    outlineColor: tokens.colorNeutralBackground2,
+    outlineStyle: 'solid',
   },
-  thick: {
-    '&::after': {
-      outlineWidth: tokens.strokeWidthThick,
-    },
-  },
-  thicker: {
-    '&::after': {
-      outlineWidth: tokens.strokeWidthThicker,
-    },
-  },
-  thickest: {
-    '&::after': {
-      outlineWidth: tokens.strokeWidthThickest,
-    },
-  },
+  thick: { outlineWidth: tokens.strokeWidthThick },
+  thicker: { outlineWidth: tokens.strokeWidthThicker },
+  thickest: { outlineWidth: tokens.strokeWidthThickest },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
   s: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },

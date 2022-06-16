@@ -40,7 +40,6 @@ const useStyles = makeStyles({
 const useOverflowButtonStyles = makeStyles({
   base: {
     display: 'inline-flex',
-    // boxSizing: 'content-box',
     position: 'relative',
     flexShrink: 0,
     justifyContent: 'center',
