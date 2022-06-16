@@ -96,44 +96,14 @@ const usePieStyles = makeStyles({
 
 const useStackStyles = makeStyles({
   base: {
-    '&::after': {
-      content: "''",
-      position: 'absolute',
-      display: 'block',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      width: '100%',
-      height: '100%',
-      outlineStyle: 'solid',
-      outlineColor: tokens.colorNeutralBackground2,
-    },
+    // Outline style should be auto since there's a bug in webkit browsers where border radius
+    // is ignored if auto is not used. Please refer to #23576 for more details.
+    outlineStyle: 'auto',
+    outlineColor: tokens.colorNeutralBackground2,
   },
-  thick: { '&::after': { outlineWidth: tokens.strokeWidthThick } },
-  thicker: { '&::after': { outlineWidth: tokens.strokeWidthThicker } },
-  thickest: { '&::after': { outlineWidth: tokens.strokeWidthThickest } },
-  overflowButtonThin: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
-    },
-  },
-  overflowButtonThick: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
-    },
-  },
-  overflowButtonThicker: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
-    },
-  },
-  overflowButtonThickest: {
-    '&::after': {
-      width: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-      height: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
-    },
-  },
+  thick: { outlineWidth: tokens.strokeWidthThick },
+  thicker: { outlineWidth: tokens.strokeWidthThicker },
+  thickest: { outlineWidth: tokens.strokeWidthThickest },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
   s: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },
@@ -214,11 +184,7 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useGroupChildClassName = (
-  layout: AvatarGroupProps['layout'],
-  size: AvatarSizes,
-  isOverflowButton?: boolean,
-): string => {
+export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSizes): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
@@ -233,18 +199,6 @@ export const useGroupChildClassName = (
         layoutClasses.push(stackStyles.thicker);
       } else {
         layoutClasses.push(stackStyles.thickest);
-      }
-
-      if (isOverflowButton) {
-        if (size < 36) {
-          layoutClasses.push(stackStyles.overflowButtonThin);
-        } else if (size < 56) {
-          layoutClasses.push(stackStyles.overflowButtonThick);
-        } else if (size < 72) {
-          layoutClasses.push(stackStyles.overflowButtonThicker);
-        } else {
-          layoutClasses.push(stackStyles.overflowButtonThickest);
-        }
       }
 
       if (size < 24) {

@@ -121,7 +121,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const groupChildClassName = useGroupChildClassName(layout, size, true);
+  const groupChildClassName = useGroupChildClassName(layout, size);
 
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
