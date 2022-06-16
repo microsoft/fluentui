@@ -95,6 +95,10 @@ type DialogSlots = {
    * The overlay should have `aria-hidden="true"`.
    */
   overlay?: Slot<'div'>;
+  /**
+   * The root element of the Dialog right after Portal.
+   */
+  root: Slot<'div'>;
 };
 
 type DialogProps = ComponentProps<DialogSlots> & {
