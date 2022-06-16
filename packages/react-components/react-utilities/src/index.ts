@@ -34,12 +34,13 @@ export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScroll
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
-  applyTriggerPropsToChildren,
   clamp,
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
-  getTriggerChild,
   shouldPreventDefaultOnKeyDown,
 } from './utils/index';
-export type { FluentTriggerComponent } from './utils/index';
+
+export { applyTriggerPropsToChildren, getTriggerChild } from './trigger/index';
+
+export type { FluentTriggerComponent } from './trigger/index';

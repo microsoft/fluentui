@@ -19,7 +19,10 @@ import { isFluentTrigger } from './isFluentTrigger';
  * );
  * ```
  */
-export const getTriggerChild = (children: React.ReactNode): React.ReactElement & { ref?: React.Ref<unknown> } => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getTriggerChild = <P = any>(
+  children: React.ReactNode,
+): React.ReactElement<P> & { ref?: React.Ref<unknown> } => {
   const child = React.Children.only(children) as React.ReactElement;
   return isFluentTrigger(child) ? getTriggerChild(child.props.children) : child;
 };

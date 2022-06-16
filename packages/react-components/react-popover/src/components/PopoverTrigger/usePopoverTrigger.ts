@@ -21,7 +21,7 @@ import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState
  */
 export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children } = props;
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = React.isValidElement(children) ? getTriggerChild<PopoverTriggerChildProps>(children) : undefined;
 
   const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
