@@ -211,13 +211,6 @@ export const AppDefinition: IAppDefinition = {
               url: '#/examples/detailslist/grouped',
             },
             {
-              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardDragDropPage')
-                .DetailsListKeyboardDragDropPage,
-              key: 'DetailsList - Keyboard Column Reorder & Resize',
-              name: 'DetailsList - Keyboard Column Reorder & Resize',
-              url: '#/examples/detailslist/keyboardcolumnreorderresize',
-            },
-            {
               component: require<any>('./components/pages/DetailsList/DetailsListKeyboardOverridesPage')
                 .DetailsListKeyboardOverridesPage,
               key: 'DetailsList - Keyboard Overrides',
