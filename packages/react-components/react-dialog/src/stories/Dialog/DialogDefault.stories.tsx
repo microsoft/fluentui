@@ -1,9 +1,12 @@
 import * as React from 'react';
-import { Dialog } from '@fluentui/react-dialog';
+import { Dialog, DialogTrigger, DialogContent } from '@fluentui/react-dialog';
 import type { DialogProps } from '@fluentui/react-dialog';
 
 export const Default = (props: Partial<DialogProps>) => (
   <Dialog {...props}>
-    <div />
+    <DialogTrigger>
+      <button>Open dialog</button>
+    </DialogTrigger>
+    <DialogContent>Dialog Content</DialogContent>
   </Dialog>
 );

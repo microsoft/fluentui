@@ -10,6 +10,7 @@ export type DialogSlots = {
    * The overlay should have `aria-hidden="true"`.
    */
   overlay: Slot<'div'>;
+  root: Slot<'div'>;
 };
 
 export type DialogOpenChangeEvent = React.MouseEvent | React.KeyboardEvent;

@@ -8,16 +8,20 @@ import { DialogProvider } from '../../contexts/dialogContext';
  * Render the final JSX of Dialog
  */
 export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
-  const { content, trigger } = state;
+  const { content, trigger, open } = state;
   const { slots, slotProps } = getSlots<DialogSlots>(state);
 
   return (
     <DialogProvider value={contextValues.dialog}>
       {trigger}
-      <Portal>
-        <slots.overlay {...slotProps.overlay} />
-        {content}
-      </Portal>
+      {open && (
+        <Portal>
+          <slots.root {...slotProps.root}>
+            <slots.overlay {...slotProps.overlay} />
+            {content}
+          </slots.root>
+        </Portal>
+      )}
     </DialogProvider>
   );
 };

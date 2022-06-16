@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  resolveShorthand,
+  useControllableState,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import type { DialogOpenChangeEvent, DialogProps, DialogState } from './Dialog.types';
 import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 
@@ -11,8 +16,8 @@ import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
  *
  * @param props - props from this instance of Dialog
  */
-export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, open, defaultOpen, overlay, type = 'modal', onOpenChange } = props;
+export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
+  const { children, open, defaultOpen, overlay, type = 'modal', onOpenChange, as } = props;
   const [trigger, content] = childrenToTriggerAndContent(children);
 
   const [openValue, setOpenValue] = useControllableState({
@@ -33,9 +38,14 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   return {
     components: {
       overlay: 'div',
+      root: 'div',
     },
     overlay: resolveShorthand(overlay, {
       required: type === 'modal',
+    }),
+    root: getNativeElementProps(as ?? 'div', {
+      ...props,
+      ref,
     }),
     content,
     trigger,

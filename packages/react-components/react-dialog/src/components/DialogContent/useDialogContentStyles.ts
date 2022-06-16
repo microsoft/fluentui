@@ -2,11 +2,8 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const dialogContentClassName = 'fui-DialogContent';
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
-  // TODO: add class names for all slots on DialogContentSlots.
-  // Should be of the form `<slotName>: 'fui-DialogContent__<slotName>`
 };
 
 /**
@@ -25,7 +22,7 @@ const useStyles = makeStyles({
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogContentClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(dialogContentClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
