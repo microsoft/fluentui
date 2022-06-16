@@ -80,7 +80,7 @@ Sample usages will be give in the following section of this document [Sample cod
 
 ### Dialog
 
-The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality.
+The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogContent` or a `DialogTrigger` and a `DialogContent` (or some component that will eventually render one of those compound components) in this specific order
 
 ```tsx
 type DialogSlots = {
@@ -489,11 +489,11 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
 
 - Trigger button
   - [`aria-haspopup="dialog"`](https://w3c.github.io/aria/#aria-haspopup)
-    > ⚠️ This is deprecated, the proper attribute should be [`aria-expanded=true`](https://w3c.github.io/aria/#aria-expanded)
 - Dialog
   - [`role="dialog"`](https://w3c.github.io/aria/#dialog)
   - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
+  - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
   - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Non-modal
@@ -504,6 +504,7 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`role="dialog"`](https://w3c.github.io/aria/#dialog)
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
+  - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
   - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Alert dialog
@@ -515,4 +516,5 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`role="alertdialog"`](https://w3c.github.io/aria/#dialog)
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
+  - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
   - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
