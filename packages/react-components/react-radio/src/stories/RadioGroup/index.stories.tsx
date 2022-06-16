@@ -1,4 +1,4 @@
-import { RadioGroup } from '../index';
+import { RadioGroup } from '@fluentui/react-radio';
 import bestPracticesMd from './RadioGroupBestPractices.md';
 import descriptionMd from './RadioGroupDescription.md';
 

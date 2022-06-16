@@ -2,14 +2,15 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-export const Labeled = () => {
-  const labelId = useId('label-');
+export const HorizontalStacked = () => {
+  const labelId = useId('label');
+
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
       <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup aria-labelledby={labelId}>
+      <RadioGroup layout="horizontal-stacked" aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
@@ -18,13 +19,11 @@ export const Labeled = () => {
     </div>
   );
 };
-Labeled.parameters = {
+HorizontalStacked.storyName = 'Layout: horizontal-stacked';
+HorizontalStacked.parameters = {
   docs: {
     description: {
-      story:
-        'Use the `aria-labelledby` property on RadioGroup to associate a label with the group.<br />' +
-        '**Note**: The `<label>` attribute `htmlFor` does _not_ work with RadioGroup, as the group is not ' +
-        'an input element. You must use `aria-labelledby` instead.',
+      story: 'The `horizontal-stacked` layout places each radio item in a row, with labels below the radio indicator.',
     },
   },
 };

@@ -2,28 +2,28 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-export const ControlledValue = () => {
-  const [value, setValue] = React.useState('banana');
-  const labelId = useId('label');
+export const Required = () => {
+  const labelId = useId('label-');
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
-      <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup value={value} onChange={(_, data) => setValue(data.value)} aria-labelledby={labelId}>
+      <Label id={labelId} required>
+        Favorite Fruit
+      </Label>
+      <RadioGroup aria-labelledby={labelId} required>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
         <Radio value="orange" label="Orange" />
       </RadioGroup>
-      <div>Current value: {value}</div>
     </div>
   );
 };
-ControlledValue.parameters = {
+Required.parameters = {
   docs: {
     description: {
-      story: 'The selected radio item can be controlled using the `value` and `onChange` props.',
+      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
     },
   },
 };

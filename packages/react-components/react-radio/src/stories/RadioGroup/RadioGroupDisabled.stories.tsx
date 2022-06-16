@@ -2,14 +2,16 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-export const Horizontal = () => {
+export const Disabled = () => {
   const labelId = useId('label');
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
-      <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup layout="horizontal" aria-labelledby={labelId}>
+      <Label id={labelId} disabled>
+        Favorite Fruit
+      </Label>
+      <RadioGroup defaultValue="apple" disabled aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
@@ -18,11 +20,10 @@ export const Horizontal = () => {
     </div>
   );
 };
-Horizontal.storyName = 'Layout: horizontal';
-Horizontal.parameters = {
+Disabled.parameters = {
   docs: {
     description: {
-      story: 'The `horizontal` layout places each radio item in a row, with labels after the radio indicator.',
+      story: 'RadioGroup can be disabled, which disables all Radio items inside.',
     },
   },
 };

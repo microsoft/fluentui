@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-export const UncontrolledValue = () => {
-  const labelId = useId('label');
+export const Labeled = () => {
+  const labelId = useId('label-');
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
       <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup defaultValue="pear" aria-labelledby={labelId}>
+      <RadioGroup aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
@@ -18,13 +18,13 @@ export const UncontrolledValue = () => {
     </div>
   );
 };
-UncontrolledValue.parameters = {
+Labeled.parameters = {
   docs: {
     description: {
       story:
-        'The initially selected item can be set by setting the `defaultValue` of RadioGroup. ' +
-        'Alternatively, one Radio item can have `defaultChecked` set. ' +
-        'Both methods have the same effect, but only one should be used in a given RadioGroup.',
+        'Use the `aria-labelledby` property on RadioGroup to associate a label with the group.<br />' +
+        '**Note**: The `<label>` attribute `htmlFor` does _not_ work with RadioGroup, as the group is not ' +
+        'an input element. You must use `aria-labelledby` instead.',
     },
   },
 };

@@ -2,16 +2,14 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup, RadioGroupProps } from '@fluentui/react-radio';
 
-export const Required = () => {
-  const labelId = useId('label-');
+export const Default = (props: Partial<RadioGroupProps>) => {
+  const labelId = useId('label');
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
-      <Label id={labelId} required>
-        Favorite Fruit
-      </Label>
-      <RadioGroup aria-labelledby={labelId} required>
+      <Label id={labelId}>Favorite Fruit</Label>
+      <RadioGroup {...props} aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
@@ -19,11 +17,4 @@ export const Required = () => {
       </RadioGroup>
     </div>
   );
-};
-Required.parameters = {
-  docs: {
-    description: {
-      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
-    },
-  },
 };
