@@ -167,12 +167,6 @@ export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
   view: <DetailsListCustomFooterExample />,
 });
 
-export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps = generateProps({
-  title: 'Keyboard-accessible column reordering and resizing',
-  code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
-  view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
-});
-
 export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
   title: 'Keyboard overrides for selection',
   code: DetailsListKeyboardOverridesExampleCode,
