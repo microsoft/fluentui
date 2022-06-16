@@ -10,31 +10,15 @@ This RFC aims to standardize what values we use in our components for cases wher
 
 ## Background
 
-Currently, the approach we follow for all components is to use a string value like 'off', 'none' or 'default' for default values of a prop.
+Currently, the approach we follow for all components is to use a string value like `'off'`, `'none'` or `'default'` for default values of a prop. This happens both on cases where the default prop has and doesn't have an effect on the component.
 
 ## Problem statement
 
-There is no standardization for the naming, resulting in our users needing to read documentation to figure out what to use and requiring specific component knowledge as they can't reuse this information for other components. Given that we use TypeScript's `Required` to enforce these attributes to be non-nullable, a user will have to read through all the docs of said component to figure out what to use, when consuming a `useComponentStyles_unstable` hook. For a user that wants to consume the `useTextStyles` to apply only bold, they would need to write:
-
-```ts
-useTextStyles_unstable({
-  align: 'start',
-  block: false,
-  font: 'base',
-  italic: false,
-  size: 300,
-  strikethrough: false,
-  truncate: false,
-  underline: false,
-  weight: 'semibold', // Only change from defaults
-  wrap: true,
-});
-```
+There is no standardization for the naming, resulting in our users needing to read documentation to figure out what to use, as the names used might be compared to CSS keywords (like `'unset'`), and requiring specific component knowledge as the user can't reuse this information for other components. It is also misleading to provide a string value that has no actual impact on the component.
 
 ## Detailed Design or Proposal
 
 This RFC proposes that we leverage the standard JavaScript default, `undefined`, for attributes instead of a string.
-For this, we should stop using `Required` for all props in the `State` and decide case by case if something should / should not be optional.
 
 Put simply, when a component has a default state/behavior, it SHOULD HAVE a default value.<br/>
 Example: Card.appearance has `'filled' | 'filled-alternative' | 'outline' | 'subtle'` and is `'filled'` by default.
@@ -131,31 +115,6 @@ state.root.className = mergeClasses(
 
 // After
 <Text font={isNumeric ? 'numeric' : undefined}>
-```
-
-#### Consuming style hooks directly
-
-```js
-// Before
-useTextStyles_unstable({
-  // User has to check docs to double check what the default should be.
-  align: 'start',
-  block: false,
-  font: 'monospace', // Only change from defaults
-  italic: false,
-  size: 300,
-  strikethrough: false,
-  truncate: false,
-  underline: false,
-  weight: 'regular',
-  wrap: true,
-});
-
-// After
-useTextStyles_unstable({
-  font: 'monospace',
-  // {...} - Required props
-});
 ```
 
 ## Pros and Cons
