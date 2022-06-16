@@ -277,6 +277,8 @@ export const useGroupChildClassName = (
       // When the child is an overflowButton, we have to calculate the overflowButton's border + width + outline width
       // since the ::after pseudo-element doesn't take the overflowButton's border for its size.
       if (isOverflowButton) {
+        layoutClasses.push(stackStyles.overflowButton);
+
         if (size < 36) {
           layoutClasses.push(stackStyles.borderThin);
         } else if (size < 56) {
