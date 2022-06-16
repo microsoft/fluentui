@@ -783,7 +783,12 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   }
 
   private _isInputElement(element: HTMLElement): boolean {
-    return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
+    return (
+      element.tagName === 'INPUT' ||
+      element.tagName === 'TEXTAREA' ||
+      element.getAttribute('contenteditable') === 'true' ||
+      element.getAttribute('contenteditable') === ''
+    );
   }
 
   private _isNonHandledClick(element: HTMLElement): boolean {
