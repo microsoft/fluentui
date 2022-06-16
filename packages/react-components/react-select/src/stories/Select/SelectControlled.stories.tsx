@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select, SelectProps } from '../index';
+import { Select, SelectProps } from '@fluentui/react-select';
 import { useId } from '@fluentui/react-utilities';
 
 export const Controlled = () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Select } from '../index';
+import { Select } from '@fluentui/react-select';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
