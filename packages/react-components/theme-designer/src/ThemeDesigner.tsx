@@ -51,7 +51,7 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const CustomTheme = ({
+  const createCustomTheme = ({
     keyColor,
     hueTorsion,
     lightCp,
@@ -110,7 +110,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
           theme: webDarkTheme,
         };
       case 'Custom':
-        const custom = CustomTheme(action.customAttributes);
+        const custom = createCustomTheme(action.customAttributes);
         return {
           themeLabel: 'Custom',
           brand: custom.brand,
