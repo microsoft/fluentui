@@ -14,6 +14,7 @@ import {
 } from '@fluentui/react-theme';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandWeb, brandTeams } from './utils/brandColors';
+import type { CustomAttributes } from './utils/themes';
 // import { useDebounce } from './utils/useDebounce';
 
 import { Nav } from './components/Nav/Nav';
@@ -50,7 +51,13 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const CustomTheme = (keyColor = '#006bc7', hueTorsion = 0, darkCp = 2 / 3, lightCp = 1 / 3, isDark = true) => {
+  const CustomTheme = ({
+    keyColor,
+    hueTorsion,
+    lightCp,
+    darkCp,
+    isDark,
+  }: CustomAttributes): { brand: BrandVariants; theme: Theme } => {
     // const debouncedKeyColor = useDebounce(keyColor, 400);
     const debouncedKeyColor = keyColor;
     const brand = getBrandTokensFromPalette(debouncedKeyColor, {
@@ -60,7 +67,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     });
     return {
       brand: brand,
-      theme: isDark ? createLightTheme(brand) : createDarkTheme(brand),
+      theme: isDark ? createDarkTheme(brand) : createLightTheme(brand),
     };
   };
 
@@ -74,11 +81,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     state: { themeLabel: string; brand: BrandVariants; theme: Theme },
     action: {
       type: string;
-      keyColor?: string;
-      hueTorsion?: number;
-      darkCp?: number;
-      lightCp?: number;
-      isDark?: boolean;
+      customAttributes: CustomAttributes;
     },
   ) => {
     switch (action.type) {
@@ -107,7 +110,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
           theme: webDarkTheme,
         };
       case 'Custom':
-        const custom = CustomTheme(action.keyColor, action.hueTorsion, action.darkCp, action.lightCp, action.isDark);
+        const custom = CustomTheme(action.customAttributes);
         return {
           themeLabel: 'Custom',
           brand: custom.brand,

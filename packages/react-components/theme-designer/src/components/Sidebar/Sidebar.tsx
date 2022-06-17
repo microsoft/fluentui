@@ -22,16 +22,13 @@ import {
   Switch,
   Slider,
 } from '@fluentui/react-components';
+import type { CustomAttributes } from '../../utils/themes';
 
 export interface SidebarProps {
   className?: string;
   dispatchThemes: React.Dispatch<{
     type: string;
-    keyColor?: string;
-    hueTorsion?: number;
-    darkCp?: number;
-    lightCp?: number;
-    isDark?: boolean;
+    customAttributes: CustomAttributes;
   }>;
 }
 
@@ -101,6 +98,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     setTheme('Custom');
+    dispatchCustom(custom);
     setTab(data.value);
   };
 
@@ -110,49 +108,56 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const darkCpId = useId();
   const themeId = useId();
 
-  const [isDark, setIsDark] = React.useState<boolean>(false);
-  const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
-  const [hueTorsion, setHueTorsion] = React.useState<number>(0);
-  const [lightCp, setLightCp] = React.useState<number>(1 / 3);
-  const [darkCp, setDarkCp] = React.useState<number>(2 / 3);
-  const [theme, setTheme] = React.useState<string>('Custom');
+  const [theme, setTheme] = React.useState<string>('Teams Light');
 
-  const dispatchCustom = () => {
-    console.log(keyColor);
-    props.dispatchThemes({
-      type: 'Custom',
-      keyColor: keyColor,
-      hueTorsion: hueTorsion,
-      darkCp: darkCp,
-      lightCp: lightCp,
-      isDark: isDark,
-    });
+  const initialCustom = {
+    keyColor: '#006bc7',
+    hueTorsion: 0,
+    darkCp: 2 / 3,
+    lightCp: 1 / 3,
+    isDark: false,
   };
 
-  const toggleTheme = React.useCallback(() => setIsDark(!isDark), [isDark, setIsDark]);
+  const customReducer = (state: CustomAttributes, action: CustomAttributes) => {
+    return {
+      keyColor: action.keyColor,
+      hueTorsion: action.hueTorsion,
+      darkCp: action.darkCp,
+      lightCp: action.lightCp,
+      isDark: action.isDark,
+    };
+  };
+
+  const [custom, dispatchCustom] = React.useReducer(customReducer, initialCustom);
+
+  const toggleTheme = () => {
+    const newCustomAttributes: CustomAttributes = { ...custom, isDark: !custom.isDark };
+    dispatchCustom(newCustomAttributes);
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
+  };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
-    dispatchCustom();
+    const newCustomAttributes: CustomAttributes = { ...custom, keyColor: e.target.value };
+    dispatchCustom(newCustomAttributes);
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setHueTorsion(parseInt(e.target.value, 10) / 10);
-    dispatchCustom();
+    const newCustomAttributes: CustomAttributes = { ...custom, hueTorsion: parseInt(e.target.value, 10) / 10 };
+    dispatchCustom(newCustomAttributes);
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
   };
   const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLightCp(parseInt(e.target.value, 10) / 100);
-    dispatchCustom();
+    const newCustomAttributes: CustomAttributes = { ...custom, lightCp: parseInt(e.target.value, 10) / 100 };
+    dispatchCustom(newCustomAttributes);
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
   };
   const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkCp(parseInt(e.target.value, 10) / 100);
-    dispatchCustom();
+    const newCustomAttributes: CustomAttributes = { ...custom, darkCp: parseInt(e.target.value, 10) / 100 };
+    dispatchCustom(newCustomAttributes);
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
   };
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
-    if (newTheme === 'Custom') {
-      dispatchCustom();
-    } else {
-      props.dispatchThemes({ type: newTheme });
-    }
+    props.dispatchThemes({ type: newTheme, customAttributes: custom });
     setTheme(newTheme);
   };
 
@@ -199,10 +204,10 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             size="large"
             appearance="underline"
             id={keyColorId}
-            value={keyColor}
+            value={custom.keyColor}
             onChange={handleOnChange}
           />
-          <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
+          <div className={styles.colorPicker} style={{ backgroundColor: custom.keyColor }}>
             <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
           </div>
         </div>
@@ -213,14 +218,21 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         min={-50}
         max={50}
         id={hueTorsionId}
-        value={hueTorsion * 10}
+        value={custom.hueTorsion * 10}
         onChange={handleHueTorsionChange}
       />
       <Label htmlFor={lightCpId}>Light Control Point</Label>
-      <Slider size="small" min={0} max={100} id={lightCpId} value={lightCp * 100} onChange={handleLightCpChange} />
+      <Slider
+        size="small"
+        min={0}
+        max={100}
+        id={lightCpId}
+        value={custom.lightCp * 100}
+        onChange={handleLightCpChange}
+      />
       <Label htmlFor={darkCpId}>Dark Control Point</Label>
-      <Slider size="small" min={0} max={100} id={darkCpId} value={darkCp * 100} onChange={handleDarkCpChange} />
-      <Switch onChange={toggleTheme} label={isDark ? 'dark theme' : 'light theme'} />
+      <Slider size="small" min={0} max={100} id={darkCpId} value={custom.darkCp * 100} onChange={handleDarkCpChange} />
+      <Switch onChange={toggleTheme} label={custom.isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
 
