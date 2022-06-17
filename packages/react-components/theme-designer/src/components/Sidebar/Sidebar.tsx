@@ -22,14 +22,12 @@ import {
   Switch,
   Slider,
 } from '@fluentui/react-components';
-import type { CustomAttributes } from '../../utils/themes';
+
+import type { CustomAttributes, DispatchTheme } from '../../ThemeDesigner';
 
 export interface SidebarProps {
   className?: string;
-  dispatchThemes: React.Dispatch<{
-    type: string;
-    customAttributes: CustomAttributes;
-  }>;
+  dispatchThemes: DispatchTheme;
 }
 
 const useStyles = makeStyles({

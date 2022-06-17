@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
-import { FluentProvider } from '@fluentui/react-components';
 import {
   createDarkTheme,
   createLightTheme,
@@ -9,17 +8,29 @@ import {
   teamsLightTheme,
   webDarkTheme,
   webLightTheme,
-  BrandVariants,
-  Theme,
-} from '@fluentui/react-theme';
+  FluentProvider,
+} from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams, brandWeb } from './utils/brandColors';
-import type { CustomAttributes } from './utils/themes';
-// import { useDebounce } from './utils/useDebounce';
+
+import type { BrandVariants, Theme } from '@fluentui/react-components';
 
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
+
+export type CustomAttributes = {
+  keyColor: string;
+  hueTorsion: number;
+  darkCp: number;
+  lightCp: number;
+  isDark: boolean;
+};
+
+export type DispatchTheme = React.Dispatch<{
+  type: string;
+  customAttributes: CustomAttributes;
+}>;
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +69,6 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     keyColor,
     lightCp,
   }: CustomAttributes): { brand: BrandVariants; theme: Theme } => {
-    // const debouncedKeyColor = useDebounce(keyColor, 400);
     const debouncedKeyColor = keyColor;
     const brand = getBrandTokensFromPalette(debouncedKeyColor, {
       hueTorsion: hueTorsion,

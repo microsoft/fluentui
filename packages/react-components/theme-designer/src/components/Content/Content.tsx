@@ -29,19 +29,20 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
+  const { brand, className, theme } = props;
 
   return (
-    <FluentProvider theme={props.theme}>
+    <FluentProvider theme={theme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
-      <div className={mergeClasses(styles.root, props.className)}>
-        <Palette brandColors={props.brand} />
-        <Demo theme={props.theme} />
+      <div className={mergeClasses(styles.root, className)}>
+        <Palette brandColors={brand} />
+        <Demo theme={theme} />
         <Divider />
-        <AccessibilityChecker theme={props.theme} />
+        <AccessibilityChecker theme={theme} />
         <Divider />
-        <TokenBoxes theme={props.theme} />
+        <TokenBoxes theme={theme} />
       </div>
     </FluentProvider>
   );
