@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 17 Jun 2022 07:41:59 GMT",
+      "tag": "@fluentui/react_v8.76.1",
+      "version": "8.76.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6c3f40639fa9a7532d01289424a99516e6604235",
+            "comment": "make row count zero when placeholder data is true because header will still render"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Jun 2022 21:38:03 GMT",
       "tag": "@fluentui/react_v8.76.0",
       "version": "8.76.0",

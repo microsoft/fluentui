@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make row count zero when placeholder data is true because header will still render",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 15 Jun 2022 21:38:03 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jun 2022 07:41:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.76.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.1)
+
+Fri, 17 Jun 2022 07:41:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.76.0..@fluentui/react_v8.76.1)
+
+### Patches
+
+- make row count zero when placeholder data is true because header will still render ([PR #23523](https://github.com/microsoft/fluentui/pull/23523) by mgodbolt@microsoft.com)
 
 ## [8.76.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.0)
 
