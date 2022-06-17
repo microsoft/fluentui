@@ -2,7 +2,8 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 import * as React from 'react';
 import { LikeIcon, MoreIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
-const actionMenu = {
+const createActionMenu = (id: string) => ({
+  id,
   iconOnly: true,
   inline: false,
   items: [
@@ -33,14 +34,20 @@ const actionMenu = {
       },
     },
   ],
-};
+});
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
     attached: 'top',
     contentPosition: 'end',
     message: (
-      <Chat.Message actionMenu={actionMenu} content="Hello" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />
+      <Chat.Message
+        actionMenu={createActionMenu('action-menu0')}
+        content="Hello"
+        author="Cecil Folk"
+        timestamp="Yesterday, 10:15 PM"
+        mine
+      />
     ),
     key: 'message-0',
   },
@@ -48,7 +55,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
     message: (
       <Chat.Message
-        actionMenu={actionMenu}
+        actionMenu={createActionMenu('action-menu1')}
         content={
           <>
             Hi! check this{' '}

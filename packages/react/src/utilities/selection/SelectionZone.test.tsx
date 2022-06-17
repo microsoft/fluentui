@@ -30,8 +30,18 @@ let _invoke4: Element;
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTouchInvocationTarget?: boolean }): void {
-  const { selectionMode = SelectionMode.multiple, enableTouchInvocationTarget = false } = props || {};
+function _initializeSelection(props?: {
+  selectionMode?: SelectionMode;
+  enableTouchInvocationTarget?: boolean;
+  selectionClearedOnEscapePress?: boolean;
+  toggleWithoutModifierPressed?: boolean;
+}): void {
+  const {
+    selectionMode = SelectionMode.multiple,
+    enableTouchInvocationTarget = false,
+    selectionClearedOnEscapePress = true,
+    toggleWithoutModifierPressed = false,
+  } = props || {};
 
   _selection = new Selection();
   _selection.setItems(SELECTABLE_ITEMS);
@@ -39,6 +49,8 @@ function _initializeSelection(props?: { selectionMode?: SelectionMode; enableTou
     <SelectionZone
       selection={_selection}
       selectionMode={selectionMode}
+      selectionClearedOnEscapePress={selectionClearedOnEscapePress}
+      toggleWithoutModifierPressed={toggleWithoutModifierPressed}
       disableAutoSelectOnInputElements={true}
       enterModalOnTouch={true}
       enableTouchInvocationTarget={enableTouchInvocationTarget}
@@ -361,6 +373,37 @@ describe('SelectionZone - disabled touch targets', () => {
 
       ReactTestUtils.Simulate.click(_invoke4);
       expect(_onItemInvokeCalled).toEqual(0);
+    });
+  });
+});
+
+describe('SelectionZone - override default keyboard behavior', () => {
+  describe('escape key', () => {
+    beforeEach(() => {
+      _initializeSelection({
+        selectionClearedOnEscapePress: false,
+      });
+    });
+
+    it('does not unselect all on escape when selectionClearedOnEscapePress is false', () => {
+      _selection.setAllSelected(true);
+      ReactTestUtils.Simulate.keyDown(_componentElement, { which: KeyCodes.escape });
+      expect(_selection.getSelectedCount()).toEqual(5);
+    });
+  });
+
+  describe('toggle modifier', () => {
+    beforeEach(() => {
+      _initializeSelection({
+        toggleWithoutModifierPressed: true,
+      });
+    });
+
+    it('toggles value when pressing space key without a modifier key', () => {
+      ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+      expect(_selection.isIndexSelected(0)).toEqual(true);
+      ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
+      expect(_selection.isIndexSelected(0)).toEqual(false);
     });
   });
 });

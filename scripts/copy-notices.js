@@ -6,10 +6,14 @@ const fs = require('fs');
  * Copies NOTICE.txt files from `@fluentui/react-components` to all of its internal production dependencies
  */
 async function copyNotices() {
-  const noticeFilePath = path.resolve(monorepo.findGitRoot(), 'packages/react-components', 'NOTICE.txt');
+  const noticeFilePath = path.resolve(
+    monorepo.findGitRoot(),
+    'packages/react-components/react-components',
+    'NOTICE.txt',
+  );
 
   if (!fs.existsSync(noticeFilePath)) {
-    throw new Error('NOTICE.txt file does not exsit in packages/react-components');
+    throw new Error('NOTICE.txt file does not exsit in packages/react-components/react-components');
   }
 
   console.log(`NOTICE.txt exists in ${noticeFilePath}`);

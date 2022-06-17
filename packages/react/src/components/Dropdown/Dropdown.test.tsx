@@ -30,6 +30,8 @@ const RENDER_OPTIONS: IDropdownOption[] = [
 describe('Dropdown', () => {
   beforeEach(() => {
     resetIds();
+    const win = window as any;
+    Object.defineProperty(win.HTMLHtmlElement.prototype, 'clientWidth', { configurable: true, value: 1024 });
   });
 
   afterEach(() => {
@@ -406,6 +408,18 @@ describe('Dropdown', () => {
       fireEvent.blur(dropdownRoot);
       fireEvent.keyDown(dropdownRoot, { which: KeyCodes.escape });
       fireEvent.focus(dropdownRoot);
+
+      expect(queryByRole('listbox')).toBeFalsy();
+    });
+
+    it('closes when dismissMenu() is called', () => {
+      const dropdown = React.createRef<IDropdown>();
+      const { getByRole, queryByRole } = render(<Dropdown componentRef={dropdown} options={DEFAULT_OPTIONS} />);
+
+      userEvent.click(getByRole('combobox'));
+      expect(queryByRole('listbox')).toBeTruthy();
+
+      dropdown.current?.dismissMenu();
 
       expect(queryByRole('listbox')).toBeFalsy();
     });

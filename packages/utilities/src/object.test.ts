@@ -41,16 +41,34 @@ describe('mapEnumByName', () => {
       fourth,
     }
 
-    let result: string[] = [];
-    mapEnumByName(Foo, (name: string) => {
-      if (name) {
-        result.push(name);
-      } else {
-        expect(name).not.toBeFalsy;
-      }
+    const result = mapEnumByName(Foo, (name: string) => {
+      return name;
     });
 
     expect(result).toEqual(['first', 'second', 'third', 'fourth']);
+  });
+
+  it('filters undefined values', () => {
+    enum Foo {
+      first,
+      second,
+      third,
+      fourth,
+    }
+
+    const result = mapEnumByName(Foo, (name: string) => {
+      if (name === 'first' || name === 'third') {
+        return name;
+      }
+
+      if (name === 'second') {
+        return undefined;
+      }
+
+      return null;
+    });
+
+    expect(result).toEqual(['first', 'third']);
   });
 });
 

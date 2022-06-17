@@ -23,3 +23,4 @@ export * from './whatInput';
 
 export { screenReaderContainerStyles } from './accessibility/Styles/accessibilityStyles';
 export * from './commonPropTypes';
+export { format } from './format';

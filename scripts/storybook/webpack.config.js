@@ -1,10 +1,16 @@
+// @ts-check
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
 const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
 
-module.exports = (/** @type {webpack.Configuration} */ config) => {
+/**
+ * Updates the given webpack config to include resolutions and other options for v8 packages.
+ * @param {webpack.Configuration} config webpack config, WILL BE MUTATED
+ * @returns {webpack.Configuration} the same object that was passed in
+ */
+module.exports = config => {
   config.resolveLoader = {
     ...config.resolveLoader,
     modules: [
@@ -77,28 +83,23 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
     },
   );
 
-  config.resolve.alias = {
-    // Use the aliases for react-examples since the examples and demo may depend on some things
-    // that the package itself doesn't (and it will include the aliases for all the package's deps)
-    ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
+  config.resolve = {
+    ...config.resolve,
+    alias: {
+      // Use the aliases for react-examples since the examples and demo may depend on some things
+      // that the package itself doesn't (and it will include the aliases for all the package's deps)
+      ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
+    },
   };
 
-  config.plugins.push(new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));
+  config.plugins = [...(config.plugins || []), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })];
 
   // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
   if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
     config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
   }
 
-  config.optimization.minimize = false;
-
-  if (process.env.TF_BUILD) {
-    console.log(
-      'Storybook webpack config:',
-      // Plugins have circular references, and they're probably not the issue here
-      JSON.stringify(config, (key, value) => (key === 'plugins' ? undefined : value), 2),
-    );
-  }
+  config.optimization = { ...config.optimization, minimize: false };
 
   return config;
 };

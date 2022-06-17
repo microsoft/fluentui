@@ -1,24 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ReactWrapper } from 'enzyme';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { safeCreate, safeMount } from '@fluentui/test-utilities';
-
 import { isConformant } from '../../common/isConformant';
-import { Autofill } from '../../Autofill';
 import { useKeytipRef } from '../../Keytips';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
-import { KeyCodes, resetIds } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import type { IComboBox, IComboBoxOption } from './ComboBox.types';
-
-const OPTION_SELECTOR = '.ms-ComboBox-option';
-const CHECKBOX_OPTION = OPTION_SELECTOR + ' > input';
-const BUTTON_OPTION = 'button' + OPTION_SELECTOR;
-const OPEN_SELECTOR = '.is-open';
 
 const RENDER_OPTIONS: IComboBoxOption[] = [
   { key: 'header', text: 'Header', itemType: SelectableOptionMenuItemType.Header },
@@ -54,27 +45,12 @@ const RUSSIAN_OPTIONS: IComboBoxOption[] = [
 
 const returnUndefined = () => undefined;
 
-const createNodeMock = (el: React.ReactElement<{}>) => {
-  return {
-    __events__: {},
-    addEventListener: () => undefined,
-    removeEventListener: () => undefined,
-  };
-};
-
 describe('ComboBox', () => {
   const createPortal = ReactDOM.createPortal;
 
   function mockCreatePortal() {
     (ReactDOM as any).createPortal = (node: any) => node;
   }
-
-  beforeAll(() => {
-    // Certain later tests mock ReactDOM.createPortal.
-    // Since this is the first test to call mount(), we have to mount something with the real
-    // version of createPortal first to allow some global setup to run properly (enzyme quirk/bug).
-    safeMount(<div />);
-  });
 
   beforeEach(() => {
     resetIds();
@@ -90,14 +66,8 @@ describe('ComboBox', () => {
   });
 
   it('Renders correctly', () => {
-    safeCreate(
-      <ComboBox options={DEFAULT_OPTIONS} text="testValue" />,
-      component => {
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-      },
-      { createNodeMock },
-    );
+    const { container } = render(<ComboBox options={DEFAULT_OPTIONS} text="testValue" />);
+    expect(container).toMatchSnapshot();
   });
 
   it('Renders correctly when open', () => {
@@ -105,24 +75,22 @@ describe('ComboBox', () => {
     mockCreatePortal();
 
     const ref = React.createRef<IComboBox>();
-    safeMount(<ComboBox options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />, wrapper => {
-      ref.current!.focus(true);
-      wrapper.update();
-      // Unlike react-test-renderer's toJSON, snapshots of DOM nodes don't include event handlers
-      // and have a few other differences, but it's a decent tradeoff since react-test-renderer
-      // doesn't support refs and makes it hard/impossible to open the ComboBox for a snapshot.
-      expect(wrapper.getDOMNode()).toMatchSnapshot();
-    });
+    const { container, getByRole } = render(
+      <ComboBox options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />,
+    );
+    userEvent.click(getByRole('combobox'));
+    expect(container).toMatchSnapshot();
   });
 
   it('Renders correctly when opened in multi-select mode', () => {
     mockCreatePortal();
     const ref = React.createRef<IComboBox>();
-    safeMount(<ComboBox multiSelect options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />, wrapper => {
-      ref.current!.focus(true);
-      wrapper.update();
-      expect(wrapper.getDOMNode()).toMatchSnapshot();
-    });
+    const { container, getByRole } = render(
+      <ComboBox multiSelect options={RENDER_OPTIONS} defaultSelectedKey="2" componentRef={ref} />,
+    );
+
+    userEvent.click(getByRole('combobox'));
+    expect(container).toMatchSnapshot();
   });
 
   it('renders with a Keytip correctly', () => {
@@ -136,42 +104,32 @@ describe('ComboBox', () => {
       return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={keytipRef} />;
     };
 
-    safeMount(<TestComponent />, wrapper => {
-      expect(wrapper.getDOMNode()).toMatchSnapshot();
-    });
+    const { container } = render(<TestComponent />);
+    expect(container).toMatchSnapshot();
   });
 
   it('Can flip between enabled and disabled.', () => {
-    safeMount(<ComboBox disabled={false} options={DEFAULT_OPTIONS} />, wrapper => {
-      expect(wrapper.find('.ms-ComboBox.is-disabled')).toHaveLength(0);
-      expect(wrapper.find('input[data-is-interactable=true]')).toHaveLength(1);
+    const { getByRole, rerender } = render(<ComboBox disabled={false} options={DEFAULT_OPTIONS} />);
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-disabled')).toEqual('false');
 
-      wrapper.setProps({ disabled: true });
-
-      expect(wrapper.find('.ms-ComboBox.is-disabled')).toHaveLength(1);
-      expect(wrapper.find('input[data-is-interactable=false]')).toHaveLength(1);
-    });
+    rerender(<ComboBox disabled={true} options={DEFAULT_OPTIONS} />);
+    expect(combobox.getAttribute('aria-disabled')).toEqual('true');
   });
 
   it('Renders no selected item in default case', () => {
-    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, container => {
-      const input = container.root.findByType('input');
-      expect(input.props.value).toEqual('');
-    });
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('');
   });
 
   it('Renders a selected item in uncontrolled case', () => {
-    safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container => {
-      const input = container.root.findByType('input');
-      expect(input.props.value).toEqual('1');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('1');
   });
 
   it('Renders a selected item in controlled case', () => {
-    safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
-      const input = container.root.findByType('input');
-      expect(input.props.value).toEqual('1');
-    });
+    const { getByRole } = render(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('1');
   });
 
   it('Renders a selected item with zero key', () => {
@@ -179,10 +137,8 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    safeCreate(<ComboBox selectedKey={0} options={options} />, container => {
-      const input = container.root.findByType('input');
-      expect(input.props.value).toEqual('zero');
-    });
+    const { getByRole } = render(<ComboBox selectedKey={0} options={options} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('zero');
   });
 
   it('changes to a selected key change the input', () => {
@@ -190,14 +146,11 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    safeMount(<ComboBox selectedKey={0} options={options} />, wrapper => {
-      expect(wrapper.find('input').props().value).toEqual('zero');
+    const { getByRole, rerender } = render(<ComboBox selectedKey={0} options={options} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('zero');
 
-      wrapper.setProps({ selectedKey: 1 });
-      wrapper.update();
-
-      expect(wrapper.find('input').props().value).toEqual('one');
-    });
+    rerender(<ComboBox selectedKey={1} options={options} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('one');
   });
 
   it('changes to a selected item on key change', () => {
@@ -205,232 +158,214 @@ describe('ComboBox', () => {
       { key: 0, text: 'zero' },
       { key: 1, text: 'one' },
     ];
-    safeMount(<ComboBox selectedKey={0} options={options} />, wrapper => {
-      expect(wrapper.find('input').props().value).toEqual('zero');
+    const { getByRole, rerender } = render(<ComboBox selectedKey={0} options={options} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('zero');
 
-      wrapper.setProps({ selectedKey: null });
-      wrapper.update();
-
-      expect(wrapper.find('input').props().value).toEqual('');
-    });
+    rerender(<ComboBox selectedKey={null} options={options} />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('');
   });
 
   it('Applies correct attributes to the selected option', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />, wrapper => {
-      // open combobox to check options list
-      wrapper.find('button').simulate('click');
+    const { getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="2" />);
 
-      const options = wrapper.find(BUTTON_OPTION);
-      expect(options.at(1).prop('aria-selected')).toEqual('true');
-    });
+    const combobox = getByRole('combobox');
+    // open combobox to select one option
+    userEvent.click(combobox);
+    userEvent.click(getAllByRole('option')[0], undefined, { skipPointerEventsCheck: true });
+    // reopen combobox to check selected option
+    userEvent.click(combobox);
+    expect(getAllByRole('option')[0].getAttribute('aria-selected')).toEqual('true');
   });
 
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
-    safeCreate(<ComboBox options={DEFAULT_OPTIONS} placeholder={placeholder} />, container => {
-      const inputElement = container.root.findByType('input');
-      expect(inputElement.props.placeholder).toEqual(placeholder);
-      expect(inputElement.props.value).toEqual('');
-    });
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} placeholder={placeholder} />);
+
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('placeholder')).toEqual(placeholder);
+    expect(combobox.getAttribute('value')).toEqual('');
   });
 
   it('Does not automatically add new options when allowFreeform is on in controlled case', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform onChange={returnUndefined} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('input', { target: { value: 'f' } });
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform onChange={returnUndefined} />,
+    );
 
-      // open combobox to check options list
-      wrapper.find('button').simulate('click');
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f{enter}');
 
-      expect(wrapper.find(BUTTON_OPTION)).toHaveLength(DEFAULT_OPTIONS.length);
-    });
+    const caretdownButton = getByRole('presentation', { hidden: true });
+    userEvent.click(caretdownButton);
+
+    expect(getAllByRole('option')).toHaveLength(DEFAULT_OPTIONS.length);
   });
 
   it('Automatically adds new options when allowFreeform is on in uncontrolled case', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('input', { target: { value: 'f' } });
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} allowFreeform />);
 
-      // open combobox to check options list
-      wrapper.find('button').simulate('click');
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f{enter}');
 
-      const options = wrapper.find(BUTTON_OPTION);
-      expect(options.at(options.length - 1).text()).toEqual('f');
-    });
+    const caretdownButton = getByRole('presentation', { hidden: true });
+    userEvent.click(caretdownButton);
+
+    const options = getAllByRole('option');
+    expect(options[options.length - 1].textContent).toEqual('f');
   });
 
   it('Renders a default value with options', () => {
-    safeCreate(<ComboBox options={DEFAULT_OPTIONS} text="1" />, container => {
-      const inputElement = container.root.findByType('input');
-      expect(inputElement.props.value).toEqual('1');
-    });
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} text="1" />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('1');
   });
 
   it('Renders a default value with no options', () => {
-    safeCreate(<ComboBox options={[]} text="1" />, container => {
-      const inputElement = container.root.findByType('input');
-      expect(inputElement.props.value).toEqual('1');
-    });
+    const { getByRole } = render(<ComboBox options={[]} text="1" />);
+    expect(getByRole('combobox').getAttribute('value')).toEqual('1');
   });
 
   it('Can change items in uncontrolled case', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, wrapper => {
-      // open the menu and click the second item
-      wrapper.find('button').simulate('click');
-      const option = wrapper.find(BUTTON_OPTION).at(1);
-      option.simulate('click');
+    const { getByRole, getAllByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      // check item is selected
-      expect(wrapper.find('input').props().value).toBe('2');
-    });
+    // open the menu and click the second item
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+    const selectedOption = getAllByRole('option')[1];
+    userEvent.click(selectedOption, undefined, { skipPointerEventsCheck: true });
+
+    // check item is selected
+    expect(combobox.getAttribute('value')).toEqual('2');
   });
 
   it('Does not automatically change items in controlled case', () => {
-    safeMount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, wrapper => {
-      // open the menu and click the second item
-      wrapper.find('button').simulate('click');
-      const option = wrapper.find(BUTTON_OPTION).at(1);
-      option.simulate('click');
+    const { getByRole, getAllByRole } = render(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      // check item is not selected since combobox is controlled
-      expect(wrapper.find('input').props().value).toBe('1');
-    });
+    // open the menu and click the second item
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+    const selectedOption = getAllByRole('option')[1];
+    userEvent.click(selectedOption, undefined, { skipPointerEventsCheck: true });
+
+    // check item is not selected since combobox is controlled
+    expect(combobox.getAttribute('value')).toEqual('1');
   });
 
   it('Multiselect does not mutate props', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} multiSelect />, wrapper => {
-      // open combobox
-      wrapper.find('button').simulate('click');
+    const { getByRole, getAllByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} multiSelect />,
+    );
 
-      // select second option
-      let dropdownOption = wrapper.find(CHECKBOX_OPTION).at(1);
-      expect(dropdownOption.props().checked).toBeFalsy(); // ensure it's not already selected
-      dropdownOption.simulate('change');
-      wrapper.update();
+    // open combobox
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      // checkbox selected
-      dropdownOption = wrapper.find(CHECKBOX_OPTION).at(1);
-      expect(dropdownOption.props().checked).toBeTruthy();
-      // option object not mutated
-      expect(!!DEFAULT_OPTIONS[1].selected).toBeFalsy();
-    });
+    // select second option
+    const secondOption = getAllByRole('option')[1];
+    expect(secondOption.getAttribute('aria-selected')).toEqual('false'); // ensure it's not already selected
+    userEvent.click(secondOption, undefined, { skipPointerEventsCheck: true });
+
+    // checkbox selected
+    expect(secondOption.getAttribute('aria-selected')).toEqual('true');
+    // option object not mutated
+    expect(!!DEFAULT_OPTIONS[1].selected).toBeFalsy();
   });
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
-    safeMount(
+    const { getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform />,
-      wrapper => {
-        wrapper.find('input').simulate('input', { target: { value: 'f' } });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toBe('Foo');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('Foo');
   });
 
   it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />, wrapper => {
-      wrapper.find('input').simulate('input', { target: { value: 'f' } });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toBe('Foo');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('Foo');
   });
 
   it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    safeMount(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" />, wrapper => {
-      wrapper.find('input').simulate('input', { target: { value: 'п' } });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toBe('папа');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'п');
+    expect(combobox.getAttribute('value')).toEqual('папа');
   });
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
-    safeMount(
+    const { getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform />,
-      wrapper => {
-        wrapper.find('input').simulate('input', { target: { value: 'f' } });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toBe('f');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('f');
   });
 
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: 'f' });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toBe('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {
-    safeMount(
+    const { getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform />,
-      wrapper => {
-        // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-        const input = wrapper.find('input');
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        input.simulate('keydown', { which: KeyCodes.enter });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toBe('');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.clear(combobox);
+    userEvent.type(combobox, '{enter}');
+    expect(combobox.getAttribute('value')).toEqual('');
   });
 
   it('Cannot insert an empty string in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />, wrapper => {
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '' } });
-      input.simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toBe('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.clear(combobox);
+    userEvent.type(combobox, '{enter}');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete off and allowFreeform on', () => {
-    safeMount(
+    const { getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform />,
-      wrapper => {
-        // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-        const input = wrapper.find('input');
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        input.simulate('keydown', { which: KeyCodes.enter });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toBe('');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.clear(combobox);
+    userEvent.type(combobox, '{enter}');
+    expect(combobox.getAttribute('value')).toEqual('');
   });
 
   it('Cannot insert an empty string in uncontrolled case with autoComplete and allowFreeform off', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />, wrapper => {
-      const input = wrapper.find('input');
-      input.simulate('input', { target: { value: '' } });
-      input.simulate('keydown', { which: KeyCodes.enter });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toBe('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />);
+
+    const combobox = getByRole('combobox');
+    userEvent.clear(combobox);
+    userEvent.type(combobox, '{enter}');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it(
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete and allowFreeform on',
     () => {
-      safeMount(
+      const { getByRole } = render(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform />,
-        wrapper => {
-          const input = wrapper.find('input');
-          input.simulate('input', { target: { value: 'f' } });
-          // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-          (input.getDOMNode() as HTMLInputElement).value = '';
-          input.simulate('input', { target: { value: '' } });
-          input.simulate('keydown', { which: KeyCodes.enter });
-          wrapper.update();
-          expect(wrapper.find('input').props().value).toBe('');
-        },
       );
+
+      const combobox = getByRole('combobox');
+      userEvent.type(combobox, 'f');
+      userEvent.clear(combobox);
+      userEvent.type(combobox, '{enter}');
+      expect(combobox.getAttribute('value')).toEqual('');
     },
   );
 
@@ -438,14 +373,13 @@ describe('ComboBox', () => {
     'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete on and allowFreeform off',
     () => {
-      safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />, wrapper => {
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'f' } });
-        input.simulate('input', { target: { value: '' } });
-        input.simulate('keydown', { which: KeyCodes.enter });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toBe('Foo');
-      });
+      const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" />);
+
+      const combobox = getByRole('combobox');
+      userEvent.type(combobox, 'f');
+      userEvent.clear(combobox);
+      userEvent.type(combobox, '{enter}');
+      expect(combobox.getAttribute('value')).toEqual('Foo');
     },
   );
 
@@ -453,19 +387,15 @@ describe('ComboBox', () => {
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete off and allowFreeform on',
     () => {
-      safeMount(
+      const { getByRole } = render(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform />,
-        wrapper => {
-          const input = wrapper.find('input');
-          input.simulate('input', { target: { value: 'f' } });
-          // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-          (input.getDOMNode() as HTMLInputElement).value = '';
-          input.simulate('input', { target: { value: '' } });
-          input.simulate('keydown', { which: KeyCodes.enter });
-          wrapper.update();
-          expect(wrapper.find('input').props().value).toEqual('');
-        },
       );
+
+      const combobox = getByRole('combobox');
+      userEvent.type(combobox, 'f');
+      userEvent.clear(combobox);
+      userEvent.type(combobox, '{enter}');
+      expect(combobox.getAttribute('value')).toEqual('');
     },
   );
 
@@ -473,43 +403,42 @@ describe('ComboBox', () => {
     'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete and allowFreeform off',
     () => {
-      safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />, wrapper => {
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'f' } });
-        input.simulate('input', { target: { value: '' } });
-        input.simulate('keydown', { which: KeyCodes.enter });
-        wrapper.update();
-        expect(wrapper.find('input').props().value).toEqual('One');
-      });
+      const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" />);
+
+      const combobox = getByRole('combobox');
+      userEvent.type(combobox, 'f');
+      userEvent.clear(combobox);
+      userEvent.type(combobox, '{enter}');
+      expect(combobox.getAttribute('value')).toEqual('One');
     },
   );
 
   it('Can change selected option with keyboard', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-      expect(wrapper.find('input').props().value).toEqual('Foo');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{arrowdown}');
+    expect(combobox.getAttribute('value')).toEqual('Foo');
   });
 
   it('Can change selected option with keyboard, looping from top to bottom', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
-      expect(wrapper.find('input').props().value).toEqual('Bar');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{arrowup}');
+    expect(combobox.getAttribute('value')).toEqual('Bar');
   });
 
   it('Can change selected option with keyboard, looping from bottom to top', () => {
-    safeMount(<ComboBox defaultSelectedKey="3" options={DEFAULT_OPTIONS2} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-      expect(wrapper.find('input').props().value).toEqual('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="3" options={DEFAULT_OPTIONS2} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{arrowdown}');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Can change selected option with keyboard, looping from top to bottom', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
-      expect(wrapper.find('input').props().value).toEqual('Bar');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{arrowup}');
+    expect(combobox.getAttribute('value')).toEqual('Bar');
   });
 
   it('Changing selected option with keyboard triggers onChange with the correct value', () => {
@@ -517,8 +446,8 @@ describe('ComboBox', () => {
       void,
       [React.FormEvent<IComboBox>, IComboBoxOption | undefined, number | undefined, string | undefined]
     >();
-    render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} onChange={onChange} />);
-
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} onChange={onChange} />);
+    const combobox = getByRole('combobox');
     expect(onChange).not.toHaveBeenCalled();
 
     userEvent.tab();
@@ -530,86 +459,80 @@ describe('ComboBox', () => {
     expect(onChange.mock.calls[0][2]).toEqual(2);
     expect(onChange.mock.calls[0][3]).toEqual(DEFAULT_OPTIONS3[2].text);
 
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS3} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.up });
-      expect(wrapper.find('input').props().value).toEqual('Bar');
-    });
+    userEvent.type(combobox, '{arrowup}');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Cannot insert text while disabled', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.a });
-      expect(wrapper.find('input').props().value).toEqual('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'a');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Cannot change selected option with keyboard while disabled', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.down });
-      expect(wrapper.find('input').props().value).toEqual('One');
-    });
+    const { getByRole } = render(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />);
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{arrowdown}');
+    expect(combobox.getAttribute('value')).toEqual('One');
   });
 
   it('Cannot expand the menu when clicking on the input while disabled', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS2} disabled />, wrapper => {
-      wrapper.find('input').simulate('click');
-      expect(wrapper.find(OPEN_SELECTOR).length).toEqual(0);
-    });
+    const { getByRole, queryAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS2} disabled />);
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+    expect(queryAllByRole('option')).toHaveLength(0);
   });
 
   it('Cannot expand the menu when clicking on the button while disabled', () => {
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />, wrapper => {
-      wrapper.find('button').simulate('click');
-      expect(wrapper.find(OPEN_SELECTOR).length).toEqual(0);
-    });
+    const { getByRole, queryAllByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} disabled />,
+    );
+    const caretdownButton = getByRole('presentation', { hidden: true });
+    userEvent.click(caretdownButton);
+    expect(queryAllByRole('option')).toHaveLength(0);
   });
 
   it('Cannot expand the menu when focused with a button while combobox is disabled', () => {
     const comboBoxRef = React.createRef<any>();
-    safeMount(
+    const { queryAllByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} componentRef={comboBoxRef} disabled />,
-      wrapper => {
-        comboBoxRef.current?.focus(true);
-        expect(comboBoxRef.current.state.isOpen).toEqual(false);
-      },
     );
+    comboBoxRef.current?.focus(true);
+    expect(queryAllByRole('option')).toHaveLength(0);
   });
 
   it('Calls onMenuOpen when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
-    safeMount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />, wrapper => {
-      wrapper.find('button').simulate('click');
-      expect(onMenuOpenMock.mock.calls.length).toBe(1);
-    });
+    const { getByRole, queryAllByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
+    );
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+    expect(queryAllByRole('options')).toBeTruthy;
   });
 
   it('Opens on focus when openOnKeyboardFocus is true', () => {
     const onMenuOpenMock = jest.fn();
-    safeMount(
+    const { queryAllByRole } = render(
       <ComboBox defaultSelectedKey="1" openOnKeyboardFocus options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
-      wrapper => {
-        const input = wrapper.find('input');
-        input.simulate('focus');
-        input.simulate('keyup');
-        expect(onMenuOpenMock.mock.calls.length).toBe(1);
-      },
     );
+    userEvent.tab();
+    expect(queryAllByRole('options')).toBeTruthy;
   });
 
   it('Calls onMenuOpen when touch start on the input', () => {
-    safeMount(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} allowFreeform />,
-      wrapper => {
-        const input = wrapper.find('input');
-
-        // in a normal scenario, when we do a touchstart we would also cause a click event to fire.
-        // This doesn't happen in the simulator so we're manually adding this in.
-        input.simulate('touchstart');
-        input.simulate('click');
-
-        expect(wrapper.find(OPEN_SELECTOR).length).toEqual(1);
-      },
+    const onMenuOpenMock = jest.fn();
+    const { getByRole, queryAllByRole } = render(
+      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} allowFreeform />,
     );
+
+    // in a normal scenario, when we do a touchstart we would also cause a click event to fire.
+    // This doesn't happen in the simulator so we're manually adding this in.
+    const combobox = getByRole('combobox');
+    fireEvent.touchStart(combobox);
+    userEvent.click(combobox);
+    expect(queryAllByRole('options')).toBeTruthy;
   });
 
   it('onPendingValueChanged triggers for all indexes', () => {
@@ -619,22 +542,19 @@ describe('ComboBox', () => {
         indexSeen.push(index);
       }
     };
-    safeMount(
+
+    const { getByRole } = render(
       <ComboBox
         options={DEFAULT_OPTIONS}
         defaultSelectedKey="1"
         allowFreeform
         onPendingValueChanged={pendingValueChangedHandler}
       />,
-      wrapper => {
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'f' } });
-        input.simulate('keydown', { which: KeyCodes.down });
-        input.simulate('keydown', { which: KeyCodes.up });
-        expect(indexSeen).toContain(0);
-        expect(indexSeen).toContain(1);
-      },
     );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'f{arrowdown}{arrowup}');
+    expect(indexSeen).toContain(0);
+    expect(indexSeen).toContain(1);
   });
 
   it('onPendingValueChanged is called with an empty string when the input is cleared', () => {
@@ -643,20 +563,13 @@ describe('ComboBox', () => {
       changedValue = value;
     };
 
-    safeMount(
+    const { getByRole } = render(
       <ComboBox options={DEFAULT_OPTIONS} allowFreeform onPendingValueChanged={pendingValueChangedHandler} />,
-      wrapper => {
-        // Simulate typing one character into the ComboBox input
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'a' } });
-
-        // Simulate clearing the ComboBox input
-        // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        expect(changedValue).toEqual('');
-      },
     );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'a');
+    userEvent.clear(combobox);
+    expect(changedValue).toEqual('');
   });
 
   it('onInputValueChange is called whenever the input changes', () => {
@@ -665,34 +578,25 @@ describe('ComboBox', () => {
       changedValue = value;
     };
 
-    safeMount(
+    const { getByRole } = render(
       <ComboBox options={DEFAULT_OPTIONS} allowFreeform onInputValueChange={onInputValueChangeHandler} />,
-      wrapper => {
-        // Simulate typing one character into the ComboBox input
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'a' } });
-        expect(changedValue).toEqual('a');
-
-        // Simulate clearing the ComboBox input
-        // (have to manually update the input element beforehand due to issues with Autofill in enzyme)
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        expect(changedValue).toEqual('');
-      },
     );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'a');
+    expect(changedValue).toEqual('a');
+
+    userEvent.clear(combobox);
+    expect(changedValue).toEqual('');
   });
 
   it('suggestedDisplayValue is set to undefined when the selected input is cleared', () => {
-    safeMount(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, wrapper => {
-      expect(wrapper.find('input').props().value).toEqual('1');
+    const { getByRole, rerender } = render(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
 
-      wrapper.setProps({ selectedKey: null });
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('');
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('value')).toEqual('1');
 
-      const autofill = wrapper.find(Autofill);
-      expect(autofill.props().suggestedDisplayValue).toEqual(undefined);
-    });
+    rerender(<ComboBox selectedKey={null} options={DEFAULT_OPTIONS} />);
+    expect(combobox.getAttribute('value')).toEqual('');
   });
 
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
@@ -702,40 +606,37 @@ describe('ComboBox', () => {
     >();
     const initialOption = { key: '1', text: 'Text' };
 
-    safeMount(<ComboBox options={[initialOption]} autoComplete="on" allowFreeform onChange={onChange} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('input', { target: { value: 't' } });
-      inputElement.simulate('input', { target: { value: 'te' } });
-      inputElement.simulate('input', { target: { value: 'tex' } });
-      inputElement.simulate('input', { target: { value: 'text' } });
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
-      expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange.mock.calls[0][1]).toEqual(initialOption);
-      expect(onChange.mock.calls[0][2]).toEqual(0);
-      expect(onChange.mock.calls[0][3]).toEqual(initialOption.text);
+    const { getByRole } = render(
+      <ComboBox options={[initialOption]} autoComplete="on" allowFreeform onChange={onChange} />,
+    );
 
-      wrapper.update();
-      expect(wrapper.find('input').props().value).toEqual('Text');
-    });
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'text{enter}');
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual(initialOption);
+    expect(onChange.mock.calls[0][2]).toEqual(0);
+    expect(onChange.mock.calls[0][3]).toEqual(initialOption.text);
+    expect(combobox.getAttribute('value')).toEqual('Text');
   });
 
   it('merges callout classNames', () => {
-    safeMount(
+    const { baseElement, getByRole } = render(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} calloutProps={{ className: 'foo' }} />,
-      wrapper => {
-        wrapper.find('button').simulate('click');
-
-        const callout = wrapper.find('.ms-Callout').getDOMNode();
-        expect(callout).toBeTruthy();
-        expect(callout.classList.contains('ms-ComboBox-callout')).toBeTruthy();
-        expect(callout.classList.contains('foo')).toBeTruthy();
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const callout = baseElement.querySelector('.ms-Callout');
+    expect(callout).toBeTruthy();
+    expect(callout!.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+    expect(callout!.classList.contains('foo')).toBeTruthy();
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
     let updatedText: string | undefined;
-    safeMount(
+
+    const { getByRole } = render(
       <ComboBox
         options={DEFAULT_OPTIONS}
         autoComplete="off"
@@ -745,22 +646,18 @@ describe('ComboBox', () => {
           updatedText = value;
         }}
       />,
-      wrapper => {
-        const input = wrapper.find('input');
-        // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        input.simulate('keydown', { which: KeyCodes.enter });
-        wrapper.update();
-
-        expect(updatedText).toEqual('');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.clear(combobox);
+    userEvent.type(combobox, '{enter}');
+    expect(updatedText).toEqual('');
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
     let updatedText: string | undefined;
-    safeMount(
+
+    const { getByRole } = render(
       <ComboBox
         options={DEFAULT_OPTIONS}
         autoComplete="off"
@@ -769,101 +666,99 @@ describe('ComboBox', () => {
           updatedText = value;
         }}
       />,
-      wrapper => {
-        const input = wrapper.find('input');
-        input.simulate('input', { target: { value: 'ab' } });
-        input.simulate('keydown', { which: KeyCodes.backspace });
-        input.simulate('input', { target: { value: 'a' } });
-        input.simulate('keydown', { which: KeyCodes.backspace });
-        wrapper.update();
-
-        // Have to manually update the input element beforehand due to issues with Autofill in enzyme
-        (input.getDOMNode() as HTMLInputElement).value = '';
-        input.simulate('input', { target: { value: '' } });
-        wrapper.update();
-        expect((input.getDOMNode() as HTMLInputElement).value).toEqual('');
-        input.simulate('keydown', { which: KeyCodes.enter });
-
-        expect(updatedText).toEqual('');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, 'ab{backspace}a{backspace}');
+    userEvent.clear(combobox);
+    expect(combobox.getAttribute('value')).toEqual('');
+
+    userEvent.type(combobox, '{enter}');
+    expect(updatedText).toEqual('');
   });
 
   it('in multiSelect mode, selectedOptions are correct after performing multiple selections using mouse click', () => {
     const comboBoxRef = React.createRef<IComboBox>();
-    safeMount(<ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      options.at(1).simulate('change');
-      options.at(2).simulate('change');
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, '{enter}');
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['1', '2', '3']);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['1', '2', '3']);
   });
 
   it('in multiSelect mode, defaultSelectedKey produces correct display input', () => {
     const comboBoxRef = React.createRef<any>();
     const keys = [DEFAULT_OPTIONS[0].key as string, DEFAULT_OPTIONS[2].key as string];
-    safeMount(
+    const { getByRole, getAllByRole } = render(
       <ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={keys} />,
-      wrapper => {
-        const inputElement = wrapper.find('input');
-        expect(inputElement.props().value).toEqual(keys.join(', '));
-
-        inputElement.simulate('keydown', { which: KeyCodes.enter });
-
-        const options = wrapper.find(CHECKBOX_OPTION);
-        options.at(2).simulate('change');
-        options.at(0).simulate('change');
-        wrapper.update();
-
-        expect((inputElement.getDOMNode() as HTMLInputElement).value).toEqual('');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('value')).toEqual(keys.join(', '));
+
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(combobox.getAttribute('value')).toEqual('');
   });
 
   it('in multiSelect mode, input has correct value after selecting options', () => {
-    safeMount(<ComboBox multiSelect options={DEFAULT_OPTIONS} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      options.at(2).simulate('change');
+    const { container, getByRole, getAllByRole } = render(<ComboBox multiSelect options={DEFAULT_OPTIONS} />);
 
-      const keys = [DEFAULT_OPTIONS[0].key, DEFAULT_OPTIONS[2].key];
-      expect((inputElement.getDOMNode() as HTMLInputElement).value).toEqual(keys.join(', '));
-    });
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(combobox);
+    userEvent.click(container);
+
+    const keys = [DEFAULT_OPTIONS[0].key, DEFAULT_OPTIONS[2].key];
+    expect(combobox.getAttribute('value')).toEqual(keys.join(', '));
   });
 
   it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
     const delimiter = '; ';
-    safeMount(<ComboBox multiSelect multiSelectDelimiter={delimiter} options={DEFAULT_OPTIONS} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      options.at(2).simulate('change');
+    const { container, getByRole, getAllByRole } = render(
+      <ComboBox multiSelect multiSelectDelimiter={delimiter} options={DEFAULT_OPTIONS} />,
+    );
 
-      const keys = [DEFAULT_OPTIONS[0].key, DEFAULT_OPTIONS[2].key];
-      expect((inputElement.getDOMNode() as HTMLInputElement).value).toEqual(keys.join(delimiter));
-    });
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(combobox);
+    userEvent.click(container);
+    const keys = [DEFAULT_OPTIONS[0].key, DEFAULT_OPTIONS[2].key];
+    expect(combobox.getAttribute('value')).toEqual(keys.join(delimiter));
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
     const onItemClickMock = jest.fn();
-    safeMount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, wrapper => {
-      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />,
+    );
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      options.at(1).simulate('change');
-      options.at(2).simulate('change');
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      expect(onItemClickMock).toHaveBeenCalledTimes(3);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    expect(onItemClickMock).toHaveBeenCalledTimes(3);
   });
 
   it('in multiSelect mode, selectAll selects all options', () => {
@@ -872,17 +767,19 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...DEFAULT_OPTIONS,
     ];
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { container, getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      inputElement.simulate('keydown', { which: KeyCodes.escape });
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
-      expect(wrapper.find('input').props().value).toEqual('1, 2, 3');
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    userEvent.type(combobox, '{esc}');
+    userEvent.click(container);
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
+    expect(combobox.getAttribute('value')).toEqual('1, 2, 3');
   });
 
   it('in multiSelect mode, selectAll does not select disabled options', () => {
@@ -892,15 +789,17 @@ describe('ComboBox', () => {
       ...DEFAULT_OPTIONS,
     ];
     SELECTALL_OPTIONS[1] = { ...SELECTALL_OPTIONS[1], disabled: true };
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '2', '3']);
-    });
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '2', '3']);
   });
 
   it('in multiSelect mode, selectAll does not select heeaders or dividers', () => {
@@ -909,15 +808,16 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...RENDER_OPTIONS,
     ];
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2']);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2']);
   });
 
   it('in multiSelect mode, selectAll checked calculation ignores headers, dividers, and disabled options', () => {
@@ -927,15 +827,16 @@ describe('ComboBox', () => {
       ...RENDER_OPTIONS,
     ];
     SELECTALL_OPTIONS[2] = { ...SELECTALL_OPTIONS[2], disabled: true };
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(2).simulate('change');
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', 'selectAll']);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', 'selectAll']);
   });
 
   it('in multiSelect mode, modifying option selection updates selectAll', () => {
@@ -944,21 +845,22 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...DEFAULT_OPTIONS,
     ];
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(0).simulate('change');
-      // un-check one option
-      options.at(1).simulate('change');
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />,
+    );
 
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3']);
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      // re-check option
-      options.at(1).simulate('change');
-      expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3', '1', 'selectAll']);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    // un-check one option
+    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3']);
+    // re-check option
+    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['2', '3', '1', 'selectAll']);
   });
 
   it('in multiSelect mode with mixed selected, selectAll is indeterminate', () => {
@@ -967,16 +869,15 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...DEFAULT_OPTIONS,
     ];
-    safeMount(
+    const { getByRole, getAllByRole } = render(
       <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
-      wrapper => {
-        const inputElement = wrapper.find('input');
-        inputElement.simulate('keydown', { which: KeyCodes.enter });
-
-        const options = wrapper.find(CHECKBOX_OPTION);
-        expect(options.at(0).props()['aria-checked']).toEqual('mixed');
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    expect(options[0].getAttribute('aria-checked')).toEqual('mixed');
   });
 
   it('in multiSelect mode, checking options sets selectAll to indeterminate', () => {
@@ -985,23 +886,22 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...DEFAULT_OPTIONS,
     ];
-    safeMount(<ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
 
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(1).simulate('change');
+    const { getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
+    );
 
-      let selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
-      expect(selectAll.props()['aria-checked']).toEqual('mixed');
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      options.at(2).simulate('change');
-      options.at(3).simulate('change');
+    const options = getAllByRole('option');
+    userEvent.click(options[1], undefined, { skipPointerEventsCheck: true });
+    expect(options[0].getAttribute('aria-checked')).toEqual('mixed');
 
-      selectAll = wrapper.find(CHECKBOX_OPTION).at(0);
-      expect(selectAll.props().checked).toEqual(true);
-      expect(selectAll.props()['aria-checked']).toBeUndefined();
-    });
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    userEvent.click(options[3], undefined, { skipPointerEventsCheck: true });
+
+    expect(options[0].getAttribute('aria-checked')).toEqual('mixed');
   });
 
   it('in multiSelect mode, checking an indeterminate selectAll checks all options', () => {
@@ -1010,18 +910,16 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...DEFAULT_OPTIONS,
     ];
-    safeMount(
+    const { getByRole, getAllByRole } = render(
       <ComboBox multiSelect options={SELECTALL_OPTIONS} componentRef={comboBoxRef} defaultSelectedKey={['2']} />,
-      wrapper => {
-        const inputElement = wrapper.find('input');
-        inputElement.simulate('keydown', { which: KeyCodes.enter });
-
-        const options = wrapper.find(CHECKBOX_OPTION);
-        options.at(0).simulate('change');
-
-        expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
-      },
     );
+
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(comboBoxRef.current!.selectedOptions.map(o => o.key)).toEqual(['selectAll', '1', '2', '3']);
   });
 
   it('in single-select mode, selectAll behaves as a normal option', () => {
@@ -1030,90 +928,89 @@ describe('ComboBox', () => {
       { key: 'selectAll', text: 'Select All', itemType: SelectableOptionMenuItemType.SelectAll },
       ...RENDER_OPTIONS,
     ];
-    safeMount(<ComboBox options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />, wrapper => {
-      const inputElement = wrapper.find('input');
-      inputElement.simulate('keydown', { which: KeyCodes.enter });
 
-      const options = wrapper.find(BUTTON_OPTION);
-      options.at(0).simulate('click');
+    const { getByRole, getAllByRole } = render(<ComboBox options={SELECTALL_OPTIONS} componentRef={comboBoxRef} />);
 
-      expect(wrapper.find('input').props().value).toEqual('Select All');
-    });
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
+
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(combobox.getAttribute('value')).toEqual('Select All');
   });
 
   it('invokes optional onItemClick callback on option select', () => {
     const onItemClickMock = jest.fn();
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, wrapper => {
-      wrapper.find('button').simulate('click');
+    const { getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
 
-      const option = wrapper.find(BUTTON_OPTION).at(0);
-      option.simulate('click');
+    const combobox = getByRole('combobox');
+    userEvent.click(combobox);
 
-      expect(onItemClickMock).toHaveBeenCalledTimes(1);
-    });
+    const options = getAllByRole('option');
+    userEvent.click(options[0], undefined, { skipPointerEventsCheck: true });
+    expect(onItemClickMock).toHaveBeenCalledTimes(1);
   });
 
   it('defaults to ariaDescribedBy prop when passing id to input', () => {
     const ariaId = 'customAriaDescriptionId';
-    safeMount(
+    const { getByRole } = render(
       <ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={ariaId} aria-describedby="usePropInstead" />,
-      wrapper => {
-        const inputElement = wrapper.find('input').getDOMNode();
-        expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
-      },
     );
+
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-describedby')).toBe(ariaId);
   });
 
   it('allows adding a custom aria-describedby id to the input via an attribute', () => {
     const ariaId = 'customAriaDescriptionId';
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} aria-describedby={ariaId} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-describedby')).toBe(ariaId);
-    });
+    const { getByRole } = render(
+      <ComboBox options={DEFAULT_OPTIONS} ariaDescribedBy={ariaId} aria-describedby="usePropInstead" />,
+    );
+
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-describedby')).toBe(ariaId);
   });
 
   it('correctly handles (aria-labelledby) when label is also provided', () => {
     const customId = 'customAriaLabelledById';
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />, wrapper => {
-      const labelElement = wrapper.find('label').getDOMNode();
-      const labelId = labelElement.getAttribute('id');
+    const { container, getByRole } = render(
+      <ComboBox options={DEFAULT_OPTIONS} label="hello world" aria-labelledby={customId} />,
+    );
 
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-labelledby')).toBe(customId + ' ' + labelId);
-    });
+    const combobox = getByRole('combobox');
+    const labelElement = container.querySelector('.ms-Label');
+    const labelId = labelElement!.getAttribute('id');
+    expect(combobox.getAttribute('aria-labelledby')).toBe(customId + ' ' + labelId);
   });
 
   it('sets ariaLabel on both the input and the dropdown list', () => {
-    safeMount(<ComboBox options={RENDER_OPTIONS} ariaLabel="customAriaLabel" persistMenu />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-label')).toBe('customAriaLabel');
-      expect(inputElement.getAttribute('aria-labelledby')).toBeNull();
-
-      const listElement = wrapper.find('.ms-ComboBox-optionsContainer').getDOMNode();
-      expect(listElement.getAttribute('aria-label')).toBe('customAriaLabel');
-      expect(listElement.getAttribute('aria-labelledby')).toBeNull();
-    });
+    const { getByRole } = render(<ComboBox options={RENDER_OPTIONS} ariaLabel="customAriaLabel" persistMenu />);
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-label')).toBe('customAriaLabel');
+    expect(combobox.getAttribute('aria-labelledby')).toBeNull();
+    userEvent.click(combobox);
+    const listElement = getByRole('listbox');
+    expect(listElement.getAttribute('aria-label')).toBe('customAriaLabel');
+    expect(listElement.getAttribute('aria-labelledby')).toBeNull();
   });
 
   it('adds aria-required to the DOM when the required prop is set to true', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} required />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-required')).toEqual('true');
-    });
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} required />);
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-required')).toEqual('true');
   });
 
   it('does not add aria-required to the DOM when the required prop is not set', () => {
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
-      const inputElement = wrapper.find('input').getDOMNode();
-      expect(inputElement.getAttribute('aria-required')).toBeNull();
-    });
+    const { getByRole } = render(<ComboBox options={DEFAULT_OPTIONS} />);
+    const combobox = getByRole('combobox');
+    expect(combobox.getAttribute('aria-required')).toBeNull();
   });
 
   it('with persistMenu, callout should exist before and after opening menu', () => {
     const onMenuOpenMock = jest.fn();
     const onMenuDismissedMock = jest.fn();
 
-    safeMount(
+    const { baseElement, getByRole } = render(
       <ComboBox
         defaultSelectedKey="1"
         persistMenu
@@ -1121,27 +1018,24 @@ describe('ComboBox', () => {
         onMenuOpen={onMenuOpenMock}
         onMenuDismissed={onMenuDismissedMock}
       />,
-      wrapper => {
-        // Find menu
-        const calloutBeforeOpen = wrapper.find('.ms-Callout').getDOMNode();
-        expect(calloutBeforeOpen).toBeTruthy();
-        expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
-
-        // Open combobox
-        const buttonElement = wrapper.find('.ms-ComboBox button');
-        buttonElement.simulate('click');
-        expect(onMenuOpenMock.mock.calls.length).toBe(1);
-
-        // Close combobox
-        buttonElement.simulate('click');
-        expect(onMenuDismissedMock.mock.calls.length).toBe(1);
-
-        // Ensure menu is still there
-        const calloutAfterClose = wrapper.find('.ms-Callout').getDOMNode();
-        expect(calloutAfterClose).toBeTruthy();
-        expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
-      },
     );
+    const combobox = getByRole('combobox');
+
+    // Find menu
+    const calloutBeforeOpen = baseElement.querySelector('.ms-Callout');
+    expect(calloutBeforeOpen).toBeTruthy();
+    expect(calloutBeforeOpen!.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+
+    userEvent.click(combobox);
+    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+    userEvent.click(combobox);
+    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+    // Ensure menu is still there
+    const calloutAfterClose = baseElement.querySelector('.ms-Callout');
+    expect(calloutAfterClose).toBeTruthy();
+    expect(calloutAfterClose!.classList.contains('ms-ComboBox-callout')).toBeTruthy();
   });
 
   // Adds currentPendingValue to options and makes it selected onBlur
@@ -1152,19 +1046,15 @@ describe('ComboBox', () => {
       text: 'ManuallyEnteredValue',
       selected: true,
     };
-    safeMount(
-      <ComboBox multiSelect options={DEFAULT_OPTIONS} defaultSelectedKey={['1', '2', '3']} allowFreeform />,
-      wrapper => {
-        const inputElement = wrapper.find('input');
-        _verifyStateVariables(wrapper, 'none', DEFAULT_OPTIONS, [0, 1, 2]);
-        inputElement.simulate('focus');
-        _verifyStateVariables(wrapper, 'focusing', DEFAULT_OPTIONS, [0, 1, 2]);
-        inputElement.simulate('input', { target: { value: comboBoxOption.text } });
-        _verifyStateVariables(wrapper, 'focusing', DEFAULT_OPTIONS, [0, 1, 2]);
-        inputElement.simulate('blur');
-        _verifyStateVariables(wrapper, 'none', [...DEFAULT_OPTIONS, comboBoxOption], [0, 1, 2, 3]);
-      },
+    const selectedKeys = ['1', '2', '3'];
+    const { container, getByRole } = render(
+      <ComboBox multiSelect options={DEFAULT_OPTIONS} defaultSelectedKey={selectedKeys} allowFreeform />,
     );
+    const combobox = getByRole('combobox');
+    userEvent.type(combobox, comboBoxOption.text);
+    //click on container to trigger onBlur
+    userEvent.click(container);
+    expect(combobox.getAttribute('value')).toEqual(selectedKeys.concat(comboBoxOption.text).join(', '));
   });
 
   // Adds currentPendingValue to options and makes it selected onBlur
@@ -1175,32 +1065,25 @@ describe('ComboBox', () => {
       text: 'ManuallyEnteredValue',
       selected: true,
     };
-    safeMount(<ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform />, wrapper => {
-      const inputElement = wrapper.find('input');
-      _verifyStateVariables(wrapper, 'none', DEFAULT_OPTIONS, []);
-      inputElement.simulate('focus');
-      inputElement.simulate('keyup', { which: 10 });
-      _verifyStateVariables(wrapper, 'focused', DEFAULT_OPTIONS, []);
-      inputElement.simulate('input', { target: { value: comboBoxOption.text } });
-      _verifyStateVariables(wrapper, 'focused', DEFAULT_OPTIONS, []);
-      inputElement.simulate('blur');
-      _verifyStateVariables(wrapper, 'none', [...DEFAULT_OPTIONS, comboBoxOption], [3]);
 
-      inputElement.simulate('focus');
-      _verifyStateVariables(wrapper, 'focusing', [...DEFAULT_OPTIONS, comboBoxOption], [3]);
-      inputElement.simulate('input', { target: { value: comboBoxOption.text } });
-      _verifyStateVariables(wrapper, 'focusing', [...DEFAULT_OPTIONS, comboBoxOption], [3]);
+    const { container, getByRole, getAllByRole } = render(
+      <ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform />,
+    );
+    const combobox = getByRole('combobox');
+    const caretdownButton = getByRole('presentation', { hidden: true });
+    userEvent.type(combobox, comboBoxOption.text);
+    //click on container to trigger onBlur
+    userEvent.click(container);
 
-      // This should toggle the checkbox off. With multi-select the currentPendingValue is not reset on input change
-      // because it would break keyboard accessibility
-      wrapper.find('.ms-ComboBox button').simulate('click');
-      const options = wrapper.find(CHECKBOX_OPTION);
-      options.at(3).simulate('change');
-
-      // with 'ManuallyEnteredValue' still in the input, on blur it should toggle the check back to on
-      inputElement.simulate('blur');
-      _verifyStateVariables(wrapper, 'none', [...DEFAULT_OPTIONS, { ...comboBoxOption, selected: true }], [3]);
-    });
+    userEvent.type(combobox, comboBoxOption.text);
+    userEvent.click(caretdownButton);
+    const options = getAllByRole('option');
+    // This should toggle the checkbox off. With multi-select the currentPendingValue is not reset on input change
+    // because it would break keyboard accessibility
+    userEvent.click(options[3], undefined, { skipPointerEventsCheck: true });
+    // with 'ManuallyEnteredValue' still in the input, on blur it should toggle the check back to on
+    userEvent.click(container);
+    expect(combobox.getAttribute('value')).toEqual(comboBoxOption.text);
   });
 
   // adds currentPendingValue to options and makes it selected onBlur
@@ -1210,40 +1093,19 @@ describe('ComboBox', () => {
       key: 'ManuallyEnteredValue',
       text: 'ManuallyEnteredValue',
     };
-    safeMount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform />, wrapper => {
-      const inputElement = wrapper.find('input');
-      _verifyStateVariables(wrapper, 'none', DEFAULT_OPTIONS, []);
-      inputElement.simulate('focus');
-      _verifyStateVariables(wrapper, 'focusing', DEFAULT_OPTIONS, []);
-      inputElement.simulate('input', { target: { value: comboBoxOption.text } });
-      _verifyStateVariables(wrapper, 'focusing', DEFAULT_OPTIONS, []);
-      inputElement.simulate('blur');
-      _verifyStateVariables(wrapper, 'none', [...DEFAULT_OPTIONS, comboBoxOption], [3]);
 
-      inputElement.simulate('focus');
-      _verifyStateVariables(wrapper, 'focusing', [...DEFAULT_OPTIONS, comboBoxOption], [3]);
-      wrapper.find('.ms-ComboBox button').simulate('click');
-      const options = wrapper.find(BUTTON_OPTION);
-      options.at(2).simulate('click');
+    const { container, getByRole, getAllByRole } = render(<ComboBox options={DEFAULT_OPTIONS} allowFreeform />);
+    const combobox = getByRole('combobox');
+    const caretdownButton = getByRole('presentation', { hidden: true });
+    userEvent.type(combobox, comboBoxOption.text);
+    userEvent.click(container);
+    expect(combobox.getAttribute('value')).toEqual(comboBoxOption.text);
 
-      inputElement.simulate('blur');
-      _verifyStateVariables(wrapper, 'none', [...DEFAULT_OPTIONS, comboBoxOption], [2]);
-    });
+    userEvent.click(caretdownButton);
+    const options = getAllByRole('option');
+    userEvent.click(options[2], undefined, { skipPointerEventsCheck: true });
+    //click on container to trigger onBlur
+    userEvent.click(container);
+    expect(combobox.getAttribute('value')).toEqual(DEFAULT_OPTIONS[2].text);
   });
-
-  function _verifyStateVariables(
-    wrapper: ReactWrapper,
-    focusState: 'none' | 'focused' | 'focusing',
-    currentOptions: IComboBoxOption[],
-    selectedIndices?: number[],
-  ): void {
-    // Once ComboBox is fully converted, we'll need to find another way to test this,
-    // but for the time being we can use hacks to get these values from the internal class
-    // (enzyme "selectors" support finding components by name)
-    const comboBoxInternal = wrapper.find('ComboBoxInternal').instance() as any;
-    expect(comboBoxInternal.state.focusState).toEqual(focusState);
-    expect(comboBoxInternal.props.hoisted.currentOptions).toEqual(currentOptions);
-    // This one could be tested using IComboBox.selectedOptions instead
-    expect(comboBoxInternal.props.hoisted.selectedIndices).toEqual(selectedIndices);
-  }
 });

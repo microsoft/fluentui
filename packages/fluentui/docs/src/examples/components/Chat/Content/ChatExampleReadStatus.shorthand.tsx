@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { Chat, ReactionGroupProps, ChatProps } from '@fluentui/react-northstar';
-import { EmojiIcon, LikeIcon, EyeFriendlierIcon } from '@fluentui/react-icons-northstar';
 
-const reactions: ReactionGroupProps['items'] = [
-  { key: 'up', icon: <LikeIcon />, content: '1K' },
-  { key: 'smile', icon: <EmojiIcon />, content: 5 },
-];
+import { EyeFriendlierIcon, PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
+import { Chat, ChatProps } from '@fluentui/react-northstar';
 
 const items: ChatProps['items'] = [
   {
@@ -13,10 +9,13 @@ const items: ChatProps['items'] = [
     contentPosition: 'end',
     message: (
       <Chat.Message
-        reactionGroup={reactions}
         content="Hello"
         author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
+        readStatus={{
+          title: 'Read by All',
+          content: <EyeFriendlierIcon size="small" />,
+        }}
         mine
       />
     ),
@@ -28,13 +27,12 @@ const items: ChatProps['items'] = [
     key: 'message-2',
     message: (
       <Chat.Message
-        reactionGroup={[{ key: 'up', icon: <LikeIcon />, content: '8' }]}
         content="I'm back!"
         author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         readStatus={{
-          title: 'Read by All',
-          content: <EyeFriendlierIcon size="small" />,
+          title: 'Sent',
+          content: <PresenceAvailableIcon size="small" />,
         }}
         mine
       />

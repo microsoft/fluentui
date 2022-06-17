@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.5.0",
+  "version": "8.5.2",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.0",
+    "@fluentui/set-version": "^8.2.1",
     "tslib": "^2.1.0"
   },
   "exports": {
@@ -62,6 +62,11 @@
       "types": "./lib/mergeStyleSets.d.ts",
       "import": "./lib/mergeStyleSets.js",
       "require": "./lib-commonjs/mergeStyleSets.js"
+    },
+    "./lib/server": {
+      "types": "./lib/server.d.ts",
+      "import": "./lib/server.js",
+      "require": "./lib-commonjs/server.js"
     }
   }
 }
