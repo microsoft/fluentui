@@ -59,17 +59,14 @@ storiesOf('AvatarGroup Converged', module)
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
   .addStory('basic', () => <AvatarGroupList />, {
-    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
-    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory('layoutStack', () => <AvatarGroupList layout="stack" />, {
-    includeRtl: true,
     includeHighContrast: true,
     includeDarkMode: true,
   })
