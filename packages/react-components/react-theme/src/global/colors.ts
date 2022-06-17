@@ -922,6 +922,7 @@ export const personaSharedColors: Pick<GlobalSharedColors, PersonaSharedColors> 
 };
 
 // These shared colors are currently not used in themes
+// Not exported from the package, we can consider removing them
 export const unusedSharedColors: Partial<GlobalSharedColors> = {
   burgundy,
   bronze,
