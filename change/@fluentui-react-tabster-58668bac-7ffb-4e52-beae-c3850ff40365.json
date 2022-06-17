@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add new `absolute` focus trap variant to `useModalAttributes`",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
