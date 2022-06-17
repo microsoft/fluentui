@@ -13,25 +13,26 @@ import {
   TabValue,
   TabList,
   Tab,
+  SelectTabEvent,
+  SelectTabData,
   Label,
   Input,
   useId,
   tokens,
+  Switch,
   Slider,
 } from '@fluentui/react-components';
 
 export interface SidebarProps {
   className?: string;
-  keyColor: string;
-  setKeyColor: React.Dispatch<React.SetStateAction<string>>;
-  hueTorsion: number;
-  setHueTorsion: React.Dispatch<React.SetStateAction<number>>;
-  darkCp: number;
-  setDarkCp: React.Dispatch<React.SetStateAction<number>>;
-  lightCp: number;
-  setLightCp: React.Dispatch<React.SetStateAction<number>>;
-  theme: string;
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  dispatchThemes: React.Dispatch<{
+    type: string;
+    keyColor?: string;
+    hueTorsion?: number;
+    darkCp?: number;
+    lightCp?: number;
+    isDark?: boolean;
+  }>;
 }
 
 const useStyles = makeStyles({
@@ -98,54 +99,84 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
   const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = React.useCallback(
-    (event, data) => {
-      props.setTheme('Custom');
-      setTab(data.value);
-    },
-    [props],
-  );
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    setTheme('Custom');
+    setTab(data.value);
+  };
 
   const keyColorId = useId();
-  const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
-
   const hueTorsionId = useId();
-  const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    props.setHueTorsion(parseInt(e.target.value, 10) / 10);
-
   const lightCpId = useId();
-  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    props.setLightCp(parseInt(e.target.value, 10) / 100);
-
   const darkCpId = useId();
-  const handleDarkCpChange = React.useCallback(e => props.setDarkCp(e.target.value / 100), [props]);
-
   const themeId = useId();
-  const handleThemeChange: MenuProps['onCheckedValueChange'] = React.useCallback(
-    (e, data) => {
-      props.setTheme(data.checkedItems[0] as string);
-    },
-    [props],
-  );
+
+  const [isDark, setIsDark] = React.useState<boolean>(false);
+  const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
+  const [hueTorsion, setHueTorsion] = React.useState<number>(0);
+  const [lightCp, setLightCp] = React.useState<number>(1 / 3);
+  const [darkCp, setDarkCp] = React.useState<number>(2 / 3);
+  const [theme, setTheme] = React.useState<string>('Custom');
+
+  const dispatchCustom = () => {
+    console.log(keyColor);
+    props.dispatchThemes({
+      type: 'Custom',
+      keyColor: keyColor,
+      hueTorsion: hueTorsion,
+      darkCp: darkCp,
+      lightCp: lightCp,
+      isDark: isDark,
+    });
+  };
+
+  const toggleTheme = React.useCallback(() => setIsDark(!isDark), [isDark, setIsDark]);
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyColor(e.target.value);
+    dispatchCustom();
+  };
+  const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHueTorsion(parseInt(e.target.value, 10) / 10);
+    dispatchCustom();
+  };
+  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLightCp(parseInt(e.target.value, 10) / 100);
+    dispatchCustom();
+  };
+  const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDarkCp(parseInt(e.target.value, 10) / 100);
+    dispatchCustom();
+  };
+  const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
+    const newTheme = data.checkedItems[0] as string;
+    if (newTheme === 'Custom') {
+      dispatchCustom();
+    } else {
+      props.dispatchThemes({ type: newTheme });
+    }
+    setTheme(newTheme);
+  };
 
   const RenderUseTab = () => (
-    <div className={styles.content} role="tabpanel" aria-labelledby="Use">
-      <div className={styles.inlineInputs}>
+    <div className={styles.content}>
+      <div className={styles.inlineInputs} role="tabpanel" aria-labelledby="Use">
         <Label htmlFor={themeId}>Theme</Label>
         <Menu onCheckedValueChange={handleThemeChange}>
           <MenuTrigger>
-            <Button>{props.theme}</Button>
+            <Button>{theme}</Button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList>
-              <MenuItemRadio name="Teams" value="Teams">
-                Teams
+              <MenuItemRadio name="Teams Light" value="Teams Light">
+                Teams Light
               </MenuItemRadio>
-              <MenuItemRadio name="Web" value="Web">
-                Web
+              <MenuItemRadio name="Teams Dark" value="Teams Dark">
+                Teams Dark
               </MenuItemRadio>
-              <MenuItemRadio name="Office" value="Office">
-                Office
+              <MenuItemRadio name="Web Light" value="Web Light">
+                Web Light
+              </MenuItemRadio>
+              <MenuItemRadio name="Web Dark" value="Web Dark">
+                Web Dark
               </MenuItemRadio>
               <MenuDivider />
               <MenuItemRadio name="Custom" value="Custom">
@@ -168,10 +199,10 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             size="large"
             appearance="underline"
             id={keyColorId}
-            value={props.keyColor}
+            value={keyColor}
             onChange={handleOnChange}
           />
-          <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
+          <div className={styles.colorPicker} style={{ backgroundColor: keyColor }}>
             <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
           </div>
         </div>
@@ -182,20 +213,14 @@ export const Sidebar: React.FC<SidebarProps> = props => {
         min={-50}
         max={50}
         id={hueTorsionId}
-        value={props.hueTorsion * 10}
+        value={hueTorsion * 10}
         onChange={handleHueTorsionChange}
       />
       <Label htmlFor={lightCpId}>Light Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={lightCpId}
-        value={props.lightCp * 100}
-        onChange={handleLightCpChange}
-      />
+      <Slider size="small" min={0} max={100} id={lightCpId} value={lightCp * 100} onChange={handleLightCpChange} />
       <Label htmlFor={darkCpId}>Dark Control Point</Label>
-      <Slider size="small" min={0} max={100} id={darkCpId} value={props.darkCp * 100} onChange={handleDarkCpChange} />
+      <Slider size="small" min={0} max={100} id={darkCpId} value={darkCp * 100} onChange={handleDarkCpChange} />
+      <Switch onChange={toggleTheme} label={isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
 

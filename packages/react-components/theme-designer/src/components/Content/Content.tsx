@@ -13,8 +13,7 @@ import { Theme, BrandVariants } from '@fluentui/react-theme';
 export interface ContentProps {
   className?: string;
   brand: BrandVariants;
-  darkTheme: Theme;
-  lightTheme: Theme;
+  theme: Theme;
 }
 
 const useStyles = makeStyles({
@@ -30,24 +29,19 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const [isDark, setIsDark] = React.useState<boolean>(false);
-
-  const toggleTheme = React.useCallback(() => setIsDark(!isDark), [isDark, setIsDark]);
-
-  const theme = isDark ? props.darkTheme : props.lightTheme;
 
   return (
-    <FluentProvider theme={theme}>
+    <FluentProvider theme={props.theme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={props.brand} />
-        <Demo theme={theme} />
+        <Demo theme={props.theme} />
         <Divider />
-        <AccessibilityChecker theme={theme} />
+        <AccessibilityChecker theme={props.theme} />
         <Divider />
-        <TokenBoxes theme={theme} isDark={isDark} toggleTheme={toggleTheme} />
+        <TokenBoxes theme={props.theme} />
       </div>
     </FluentProvider>
   );
