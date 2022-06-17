@@ -31,7 +31,7 @@ Note that our approach will be applied only on **Type Declaration emit level** a
 It indicates that an API item is meant only for usage by other NPM packages from the same repo. Third parties _should never use “internal” APIs._
 
 - tooling will trim the declaration from a public API surface.
-- tolling will trim the declaration from `/unstable` API surface.
+- tooling will trim the declaration from `/unstable` API surface.
 
 **Example:**
 
