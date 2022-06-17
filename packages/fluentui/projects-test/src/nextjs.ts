@@ -19,13 +19,13 @@ export async function nextjs() {
   logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
   logger('STEP 1. Add dependencies to test project');
-  const dependencies = ['next', 'react', 'react-dom'].join(' ');
+  const dependencies = ['next', 'react@17', 'react-dom@17'].join(' ');
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
   logger('STEP 2. Add Fluent UI dependency to test project');
 
-  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);

@@ -42,6 +42,7 @@ export * from './components/Attachment/AttachmentIcon';
 export * from './components/Avatar/Avatar';
 export * from './components/Avatar/AvatarStatus';
 export * from './components/Avatar/AvatarStatusIcon';
+export * from './components/Avatar/AvatarStatusImage';
 export * from './components/Avatar/AvatarImage';
 export * from './components/Avatar/AvatarIcon';
 export * from './components/Avatar/AvatarLabel';
@@ -161,6 +162,7 @@ export * from './components/Popup/PopupContent';
 
 export * from './components/Portal/Portal';
 
+export { PortalContext } from './components/Provider/portalContext';
 export * from './components/Provider/Provider';
 export * from './components/Provider/ProviderConsumer';
 

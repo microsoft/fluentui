@@ -44,7 +44,7 @@ Cypress.Commands.add('focusOn', selector => {
   cy.get(selector).focus();
 });
 
-Cypress.Commands.add('hover', selector => {
+Cypress.Commands.add('hoverOn', selector => {
   cy.get(selector).realHover();
 });
 

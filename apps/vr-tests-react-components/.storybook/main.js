@@ -22,7 +22,16 @@ module.exports = {
 
     config.module.rules.unshift({
       test: /\.(ts|tsx)$/,
-      use: [{ loader: '@griffel/webpack-loader' }],
+      use: [
+        {
+          loader: '@griffel/webpack-loader',
+          options: {
+            babelOptions: {
+              presets: ['@babel/preset-typescript'],
+            },
+          },
+        },
+      ],
     });
 
     return config;

@@ -50,6 +50,9 @@ const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@
 import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
 const DetailsListKeyboardAccessibleResizeAndReorderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
 
+import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
+const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
+
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
   componentName: 'DetailsList',
@@ -165,4 +168,10 @@ export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps =
   title: 'Keyboard-accessible column reordering and resizing',
   code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
   view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
+});
+
+export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
+  title: 'Keyboard overrides for selection',
+  code: DetailsListKeyboardOverridesExampleCode,
+  view: <DetailsListKeyboardOverridesExample />,
 });
