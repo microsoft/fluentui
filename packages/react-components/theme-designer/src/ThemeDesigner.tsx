@@ -3,12 +3,12 @@ import { makeStyles } from '@griffel/react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { FluentProvider } from '@fluentui/react-components';
 import {
-  createLightTheme,
   createDarkTheme,
-  teamsLightTheme,
+  createLightTheme,
   teamsDarkTheme,
-  webLightTheme,
+  teamsLightTheme,
   webDarkTheme,
+  webLightTheme,
   BrandVariants,
   Theme,
 } from '@fluentui/react-theme';
