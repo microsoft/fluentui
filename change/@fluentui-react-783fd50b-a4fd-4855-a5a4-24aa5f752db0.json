@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Remove deprecated React.props",
+  "comment": "chore: Removing deprecated React.props and replacing it with mirrored type.",
   "packageName": "@fluentui/react",
   "email": "manhducdkcb@gmail.com",
   "dependentChangeType": "none"
