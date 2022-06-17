@@ -13,7 +13,7 @@ import {
   Theme,
 } from '@fluentui/react-theme';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
-import { brandWeb, brandTeams } from './utils/brandColors';
+import { brandTeams, brandWeb } from './utils/brandColors';
 import type { CustomAttributes } from './utils/themes';
 // import { useDebounce } from './utils/useDebounce';
 
