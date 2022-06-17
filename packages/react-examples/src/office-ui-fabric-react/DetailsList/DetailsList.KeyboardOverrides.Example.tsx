@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Announced } from '@fluentui/react/lib/Announced';
-import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
-import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
-import { Text } from '@fluentui/react/lib/Text';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
