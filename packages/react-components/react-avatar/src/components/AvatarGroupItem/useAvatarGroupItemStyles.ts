@@ -99,11 +99,15 @@ const useStackStyles = makeStyles({
     '&::after': {
       content: "''",
       position: 'absolute',
-      display: 'block',
+      display: 'inline-flex',
       // Border is used instead of outline due to a bug in webkit browsers where border-radius is ignored in outline.
       ...shorthands.borderColor(tokens.colorNeutralBackground2),
       ...shorthands.borderRadius(tokens.borderRadiusCircular),
       ...shorthands.borderStyle('solid'),
+
+      '@media (forced-colors: active)': {
+        forcedColorAdjust: 'none',
+      },
     },
   },
   overflowButton: {
@@ -112,6 +116,10 @@ const useStackStyles = makeStyles({
       '&::after': {
         ...shorthands.borderColor('transparent'),
       },
+    },
+    // hide inner border when using high contrast mode and use the outer (::after) to match Avatar's outline
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('Canvas'),
     },
   },
   thick: {

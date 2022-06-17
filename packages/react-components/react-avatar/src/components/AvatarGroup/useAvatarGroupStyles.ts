@@ -50,6 +50,11 @@ const useOverflowButtonStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.padding(0),
+
+    // match color to Avatar's outline color
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('CanvasText'),
+    },
   },
 
   // These styles match the default button styles
