@@ -34,7 +34,6 @@ const useRootStyles = makeStyles({
     position: 'relative',
     display: 'inline-grid',
     gridTemplateAreas: '"slider"',
-    userSelect: 'none',
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
