@@ -52,11 +52,11 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
   const createCustomTheme = ({
-    keyColor,
-    hueTorsion,
-    lightCp,
     darkCp,
+    hueTorsion,
     isDark,
+    keyColor,
+    lightCp,
   }: CustomAttributes): { brand: BrandVariants; theme: Theme } => {
     // const debouncedKeyColor = useDebounce(keyColor, 400);
     const debouncedKeyColor = keyColor;
