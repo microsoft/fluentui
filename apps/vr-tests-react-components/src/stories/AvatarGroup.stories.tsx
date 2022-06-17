@@ -63,8 +63,16 @@ storiesOf('AvatarGroup Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('layoutPie', () => <AvatarGroupList layout="pie" />)
-  .addStory('layoutStack', () => <AvatarGroupList layout="stack" />)
+  .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
+  .addStory('layoutStack', () => <AvatarGroupList layout="stack" />, {
+    includeRtl: true,
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('overflowIndicator', () => <AvatarGroupList overflowIndicator="icon" />);
 
 // Interactive stories
