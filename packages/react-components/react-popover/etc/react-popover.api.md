@@ -20,6 +20,7 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster/src';
 import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
@@ -54,7 +55,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     openOnHover?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    trapFocus?: boolean;
+    trapFocus?: UseModalAttributesOptions['trapFocus'];
 };
 
 // @public (undocumented)

@@ -5,6 +5,7 @@ import type {
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster/src';
 
 /**
  * Determines popover padding and arrow size
@@ -104,7 +105,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    *
    * @default false
    */
-  trapFocus?: boolean;
+  trapFocus?: UseModalAttributesOptions['trapFocus'];
 };
 
 /**

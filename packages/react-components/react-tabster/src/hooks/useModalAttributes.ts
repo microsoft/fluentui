@@ -5,9 +5,11 @@ import { useTabster } from './useTabster';
 
 export interface UseModalAttributesOptions {
   /**
-   * Traps focus inside the elements the attributes are applied
+   * Traps focus inside the elements the attributes are applied.
+   * It is recommended not to use the `absolute` variant since
+   * it forbigs users to tab out of the focus trap into the actual browser.
    */
-  trapFocus?: boolean;
+  trapFocus?: boolean | 'absolute';
 
   /**
    * Always reachabled in Tab order
@@ -36,7 +38,12 @@ export const useModalAttributes = (
   const id = useId('modal-');
   const modalAttributes = useTabsterAttributes({
     deloser: {},
-    modalizer: { id, isOthersAccessible: !trapFocus, isAlwaysAccessible: alwaysFocusable },
+    modalizer: {
+      id,
+      isOthersAccessible: !trapFocus,
+      isAlwaysAccessible: alwaysFocusable,
+      isTrapped: trapFocus === 'absolute',
+    },
   });
 
   const triggerAttributes = useTabsterAttributes({

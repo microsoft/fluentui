@@ -77,7 +77,7 @@ export const useModalAttributes: (options?: UseModalAttributesOptions) => {
 // @public (undocumented)
 export interface UseModalAttributesOptions {
     alwaysFocusable?: boolean;
-    trapFocus?: boolean;
+    trapFocus?: boolean | 'absolute';
 }
 
 // @public
