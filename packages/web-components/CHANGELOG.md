@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 07 Jun 2022 07:48:04 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jun 2022 23:03:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.3)
+
+Thu, 16 Jun 2022 23:03:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.2..@fluentui/web-components_v2.5.3)
+
+### Patches
+
+- update to latest stable versions of FAST packages ([PR #23585](https://github.com/microsoft/fluentui/pull/23585) by chhol@microsoft.com)
 
 ## [2.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.2)
 

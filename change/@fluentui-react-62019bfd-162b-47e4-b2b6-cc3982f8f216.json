@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Allow `null` as value for choice group selected key",
+  "packageName": "@fluentui/react",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
