@@ -48,7 +48,7 @@ import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Examp
 const DetailsListCustomFooterExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
 
 import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
-const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
+const DetailsListKeyboardOverridesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/office-ui-fabric-react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
