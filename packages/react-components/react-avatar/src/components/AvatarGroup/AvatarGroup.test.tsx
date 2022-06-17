@@ -52,7 +52,7 @@ describe('AvatarGroup', () => {
     expect(screen.getByRole('button').textContent).toBe('');
   });
 
-  it('ignores maxAvatars when using ap pie layout', () => {
+  it('ignores maxAvatars when using pie layout', () => {
     render(
       <AvatarGroup layout="pie">
         <AvatarGroupItem name="Katri Athokas" />
