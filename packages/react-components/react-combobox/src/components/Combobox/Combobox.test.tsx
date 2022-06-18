@@ -105,7 +105,7 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
-  it('does not open the combobox on click with controlled open', () => {
+  it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
       <Combobox open>
         <Option>Red</Option>
