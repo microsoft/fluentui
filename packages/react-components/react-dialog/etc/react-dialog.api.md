@@ -7,15 +7,16 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { Types } from '@fluentui/react-tabster';
 
 // @public (undocumented)
-export const Dialog: React_2.FC<DialogProps>;
+export const Dialog: ForwardRefComponent<DialogProps>;
 
 // @public (undocumented)
 export const dialogClassNames: SlotClassNames<DialogSlots>;
@@ -27,7 +28,7 @@ export const DialogContent: ForwardRefComponent<DialogContentProps>;
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
 
 // @public
-export type DialogContentProps = ComponentProps<DialogContentSlots> & {};
+export type DialogContentProps = ComponentProps<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogContentSlots = {
@@ -42,13 +43,14 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     type?: DialogType;
     open?: boolean;
     defaultOpen?: boolean;
-    onOpenChange?: DialogOpenChangeEventListener;
+    onOpenChange?(...args: DialogOpenChangeArgs): void;
     children: [JSX.Element, JSX.Element] | JSX.Element;
 };
 
 // @public (undocumented)
 export type DialogSlots = {
     overlay: Slot<'div'>;
+    root: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -56,6 +58,23 @@ export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
     content: React_2.ReactNode;
     trigger: React_2.ReactNode;
 };
+
+// @public
+export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
+
+// @public (undocumented)
+export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots>;
+
+// @public
+export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
+
+// @public (undocumented)
+export type DialogTitleSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogTitleState = ComponentState<DialogTitleSlots>;
 
 // @public
 export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
@@ -88,10 +107,13 @@ export const renderDialog_unstable: (state: DialogState, contextValues: DialogCo
 export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
 
 // @public
+export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;
+
+// @public
 export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
-export const useDialog_unstable: (props: DialogProps) => DialogState;
+export const useDialog_unstable: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
 
 // @public
 export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
@@ -101,6 +123,12 @@ export const useDialogContentStyles_unstable: (state: DialogContentState) => Dia
 
 // @public
 export const useDialogStyles_unstable: (state: DialogState) => DialogState;
+
+// @public
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;
+
+// @public
+export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;
 
 // @public
 export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;

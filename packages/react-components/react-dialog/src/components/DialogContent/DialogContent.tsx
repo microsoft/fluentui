@@ -6,7 +6,8 @@ import type { DialogContentProps } from './DialogContent.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DialogContent component - TODO: add more docs
+ * DialogContent component represents the visual part of a `Dialog` as a whole,
+ * it contains everything that should be visible.
  */
 export const DialogContent: ForwardRefComponent<DialogContentProps> = React.forwardRef((props, ref) => {
   const state = useDialogContent_unstable(props, ref);

@@ -24,3 +24,12 @@ export {
 } from './DialogContent';
 
 export type { DialogContentProps, DialogContentSlots, DialogContentState } from './DialogContent';
+
+export {
+  DialogTitle,
+  dialogTitleClassNames,
+  useDialogTitleStyles_unstable,
+  useDialogTitle_unstable,
+  renderDialogTitle_unstable,
+} from './DialogTitle';
+export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './DialogTitle';

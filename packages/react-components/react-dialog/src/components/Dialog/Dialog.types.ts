@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { DialogContextValue, DialogRequestOpenChangeSourceType } from '../../contexts/dialogContext';
+import type { DialogContextValue } from '../../contexts/dialogContext';
 
 export type DialogSlots = {
   /**
@@ -13,16 +13,14 @@ export type DialogSlots = {
   root: Slot<'div'>;
 };
 
-export type DialogOpenChangeEvent = React.MouseEvent | React.KeyboardEvent;
-export type DialogOpenChangeData = {
+export type DialogOpenChangeArgs =
+  | [event: React.KeyboardEvent, data: { type: 'escapeKeyDown'; open: boolean }]
   /**
-   * The next value of open state
+   * document escape keydown defers from internal escape keydown events because of the synthetic event API
    */
-  open: boolean;
-  type: DialogRequestOpenChangeSourceType;
-};
-
-export type DialogOpenChangeEventListener = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+  | [event: KeyboardEvent, data: { type: 'documentEscapeKeyDown'; open: boolean }]
+  | [event: React.MouseEvent, data: { type: 'overlayClick'; open: boolean }]
+  | [event: React.MouseEvent, data: { type: 'triggerClick'; open: boolean }];
 
 export type DialogType = 'modal' | 'non-modal' | 'alert';
 
@@ -62,7 +60,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Callback fired when the component changes value from open state.
    * @default undefined
    */
-  onOpenChange?: DialogOpenChangeEventListener;
+  onOpenChange?(...args: DialogOpenChangeArgs): void;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogContent}.
    * Alternatively can only contain {@link DialogContent} if using trigger outside dialog, or controlling state.

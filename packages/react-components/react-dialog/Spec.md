@@ -162,7 +162,6 @@ export type DialogTriggerProps = {
 ### DialogContent
 
 The `DialogContent` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
-By itself it has no style, but it's responsible of showing/hiding content when `Dialog` visibility state changes, also it'll ensure a `Portal` is properly created for the content being provided as well as for the `overlay` element provided by `Dialog`
 
 ```tsx
 type DialogTitleSlots = {

@@ -10,8 +10,22 @@ export const dialogClassNames: SlotClassNames<DialogSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
-  overlay: {},
+  root: {
+    position: 'fixed',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
 });
 
 /**

@@ -1,4 +1,10 @@
-import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import {
+  applyTriggerPropsToChildren,
+  getTriggerChild,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import {
@@ -16,19 +22,24 @@ import {
  */
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
   const { children, type = 'toggle' } = props;
+
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
+  const triggerRef = useDialogContext_unstable(ctx => ctx.triggerRef);
+  const { triggerAttributes } = useModalAttributes();
 
-  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLElement>) => {
-    child?.props.onClick?.(ev);
-    requestOpenChange({ event: ev, type: 'triggerClick', open: updateOpen(type) });
+  const handleClick = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
+    child?.props.onClick?.(event);
+    requestOpenChange({ event, type: 'triggerClick', open: updateOpen(type) });
   });
 
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
       'aria-haspopup': 'dialog',
+      ref: useMergedRefs(child?.ref, triggerRef),
       onClick: handleClick,
+      ...triggerAttributes,
     }),
   };
 };

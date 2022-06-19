@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
 import type { DialogContentProps, DialogContentState } from './DialogContent.types';
+import { useDialogContext_unstable } from '../../contexts/dialogContext';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render DialogContent.
@@ -15,17 +17,23 @@ export const useDialogContent_unstable = (
   props: DialogContentProps,
   ref: React.Ref<HTMLElement>,
 ): DialogContentState => {
+  const { as = 'div' } = props;
+
+  const contentRef = useDialogContext_unstable(ctx => ctx.contentRef);
+  const type = useDialogContext_unstable(ctx => ctx.type);
+
+  const { modalAttributes } = useModalAttributes({
+    trapFocus: type !== 'non-modal',
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
-      ref,
+    root: getNativeElementProps(as, {
+      ref: useMergedRefs(ref, contentRef),
       ...props,
+      ...modalAttributes,
     }),
   };
 };
