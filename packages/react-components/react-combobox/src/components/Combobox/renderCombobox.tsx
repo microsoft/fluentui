@@ -11,7 +11,7 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
   const { slots, slotProps } = getSlots<ComboboxSlots>(state);
 
   const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
-  const popup = state.inline ? listbox : <Portal>{listbox}</Portal>;
+  const popup = state.inline ? listbox : <Portal visible={state.open}>{listbox}</Portal>;
 
   return (
     <slots.root {...slotProps.root}>

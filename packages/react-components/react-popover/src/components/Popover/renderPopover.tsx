@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Portal } from '@fluentui/react-portal';
 import { PopoverContext } from '../../popoverContext';
 import type { PopoverState } from './Popover.types';
 
@@ -43,7 +44,7 @@ export const renderPopover_unstable = (state: PopoverState) => {
       }}
     >
       {state.popoverTrigger}
-      {state.open && state.popoverSurface}
+      {state.inline ? state.popoverSurface : <Portal visible={state.open}>{state.popoverSurface}</Portal>}
     </PopoverContext.Provider>
   );
 };

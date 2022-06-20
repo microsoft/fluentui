@@ -12,7 +12,7 @@ import type { PortalProps, PortalState } from './Portal.types';
  * @param props - props from this instance of Portal
  */
 export const usePortal_unstable = (props: PortalProps): PortalState => {
-  const { children, mountNode } = props;
+  const { children, mountNode, open } = props;
 
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
   const fallbackMountNode = usePortalMountNode({ disabled: !!mountNode });
@@ -20,7 +20,7 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
   const state: PortalState = {
     children,
     mountNode: mountNode ?? fallbackMountNode,
-    shouldRender: !useIsSSR(),
+    shouldRender: !useIsSSR() && open,
     virtualParentRootRef,
   };
 

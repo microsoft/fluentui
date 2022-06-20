@@ -12,14 +12,12 @@ export const renderTooltip_unstable = (state: TooltipState) => {
   return (
     <>
       {state.children}
-      {state.shouldRenderTooltip && (
-        <Portal mountNode={state.mountNode}>
-          <slots.content {...slotProps.content}>
-            {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
-            {state.content.children}
-          </slots.content>
-        </Portal>
-      )}
+      <Portal visible={!!state.shouldRenderTooltip} mountNode={state.mountNode}>
+        <slots.content {...slotProps.content}>
+          {state.withArrow && <div ref={state.arrowRef} className={state.arrowClassName} />}
+          {state.content.children}
+        </slots.content>
+      </Portal>
     </>
   );
 };

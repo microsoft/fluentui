@@ -9,13 +9,5 @@ import { Portal } from '@fluentui/react-portal';
 export const renderMenuPopover_unstable = (state: MenuPopoverState) => {
   const { slots, slotProps } = getSlots<MenuPopoverSlots>(state);
 
-  if (state.inline) {
-    return <slots.root {...slotProps.root} />;
-  }
-
-  return (
-    <Portal>
-      <slots.root {...slotProps.root} />
-    </Portal>
-  );
+  return <slots.root {...slotProps.root} />;
 };

@@ -12,6 +12,8 @@ export type PortalProps = {
    * @default a new element on document.body without any styling
    */
   mountNode?: HTMLElement | null;
+
+  visible: boolean;
 };
 
 export type PortalState = Pick<PortalProps, 'children'> &
