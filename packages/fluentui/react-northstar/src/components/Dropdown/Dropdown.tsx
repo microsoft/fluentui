@@ -812,9 +812,9 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   };
 
   const selectedItemsCountNarration = renderSelectedItemsCountNarration(selectedItemsCountNarrationId);
-  const renderSelectedItems = () => {
+  const renderSelectedItems = (searchInput: JSX.Element) => {
     if (value.length === 0) {
-      return null;
+      return searchInput;
     }
 
     const selectedItems = value.map((item: DropdownItemProps, index) =>
@@ -837,6 +837,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       <>
         <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
           {selectedItems}
+          {searchInput}
         </div>
         {selectedItemsCountNarration}
       </>
@@ -1627,6 +1628,17 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           );
           const showClearIndicator = clearable && value.length > 0;
 
+          const searchInput = search
+            ? renderSearchInput(
+                accessibilityRootPropsRest,
+                highlightedIndex,
+                getInputProps,
+                selectItemAtIndex,
+                toggleMenu,
+                variables,
+              )
+            : undefined;
+
           return (
             <Ref innerRef={innerRef}>
               <div
@@ -1639,16 +1651,8 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
                     after listbox wrapper was introduced we moved it to before and
                      set as absolute to avoid visual regressions   */}
                   {!search && renderTriggerButton(getToggleButtonProps)}
-                  {multiple && renderSelectedItems()}
-                  {search &&
-                    renderSearchInput(
-                      accessibilityRootPropsRest,
-                      highlightedIndex,
-                      getInputProps,
-                      selectItemAtIndex,
-                      toggleMenu,
-                      variables,
-                    )}
+                  {multiple && renderSelectedItems(searchInput)}
+                  {search && !multiple && searchInput}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
