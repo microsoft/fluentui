@@ -3,7 +3,7 @@ import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../ComboboxBase/useComboboxBaseState';
 import { useTriggerListboxShorthand } from '../../ComboboxBase/useTriggerListboxShorthand';
-import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useComboboxPopup } from '../../ComboboxBase/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
@@ -25,7 +25,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  const triggerSlot = resolveShorthand(props.button, {
+  const triggerShorthand = resolveShorthand(props.button, {
     required: true,
     defaultProps: {
       type: 'button',
@@ -34,9 +34,17 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     },
   });
 
-  const listboxSlot = resolveShorthand(props.listbox, { required: true });
+  const listboxShorthand = resolveShorthand(props.listbox, { required: true });
 
-  const [triggerProps, listboxProps] = useTriggerListboxShorthand(props, baseState, ref, triggerSlot, listboxSlot);
+  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
+
+  const [triggerSlot, listboxSlot] = useTriggerListboxShorthand(
+    props,
+    baseState,
+    ref,
+    triggerWithPopup,
+    listboxWithPopup,
+  );
 
   const state: ComboboxState = {
     components: {
@@ -52,8 +60,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         ...rootNativeProps,
       },
     }),
-    listbox: listboxProps,
-    button: triggerProps,
+    button: triggerSlot,
+    listbox: listboxSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {
