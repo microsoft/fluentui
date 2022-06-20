@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Hover state",
+  "comment": "Data viz Hover state issues fixed in multiple charts",
   "packageName": "@fluentui/react-charting",
   "email": "v-hannapared@microsoft.com",
   "dependentChangeType": "patch"
