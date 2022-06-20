@@ -1,29 +1,11 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import {
-  Menu,
-  MenuTrigger,
-  Button,
-  MenuPopover,
-  MenuList,
-  MenuItemRadio,
-  MenuDivider,
-  MenuProps,
-  TabValue,
-  TabList,
-  Tab,
-  SelectTabEvent,
-  SelectTabData,
-  Label,
-  Input,
-  useId,
-  tokens,
-  Switch,
-  Slider,
-} from '@fluentui/react-components';
+import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
 
-import type { CustomAttributes, DispatchTheme } from '../../ThemeDesigner';
+import type { CustomAttributes, DispatchTheme } from '../../ThemeDesigner.states';
+import { UseTab } from './UseTab';
+import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
@@ -93,20 +75,7 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
-  const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
-    setTheme('Custom');
-    dispatchCustom(custom);
-    setTab(data.value);
-  };
-
-  const keyColorId = useId();
-  const hueTorsionId = useId();
-  const lightCpId = useId();
-  const darkCpId = useId();
-  const themeId = useId();
-
-  const [theme, setTheme] = React.useState<string>('Teams Light');
+  const sidebarId = useId();
 
   const initialCustom = {
     keyColor: '#006bc7',
@@ -116,123 +85,58 @@ export const Sidebar: React.FC<SidebarProps> = props => {
     isDark: false,
   };
 
-  const customReducer = (state: CustomAttributes, action: CustomAttributes) => {
-    return {
-      keyColor: action.keyColor,
-      hueTorsion: action.hueTorsion,
-      darkCp: action.darkCp,
-      lightCp: action.lightCp,
-      isDark: action.isDark,
+  const customReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
+    const newAttributes = action.attributes;
+
+    const newCustomAttributes: () => CustomAttributes = () => {
+      switch (action.type) {
+        case 'new':
+          return newAttributes;
+        case 'isDark':
+          return {
+            ...state,
+            isDark: newAttributes.isDark,
+          };
+        case 'keyColor':
+          return {
+            ...state,
+            keyColor: newAttributes.keyColor,
+          };
+        case 'hueTorsion':
+          return {
+            ...state,
+            hueTorsion: newAttributes.hueTorsion,
+          };
+        case 'lightCp':
+          return {
+            ...state,
+            lightCp: newAttributes.lightCp,
+          };
+        case 'darkCp':
+          return {
+            ...state,
+            darkCp: newAttributes.darkCp,
+          };
+        default:
+          return state;
+      }
     };
+
+    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes() });
+
+    return newCustomAttributes();
   };
 
   const [custom, dispatchCustom] = React.useReducer(customReducer, initialCustom);
 
-  const toggleTheme = () => {
-    const newCustomAttributes: CustomAttributes = { ...custom, isDark: !custom.isDark };
-    dispatchCustom(newCustomAttributes);
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
-  };
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCustomAttributes: CustomAttributes = { ...custom, keyColor: e.target.value };
-    dispatchCustom(newCustomAttributes);
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
-  };
-  const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCustomAttributes: CustomAttributes = { ...custom, hueTorsion: parseInt(e.target.value, 10) / 10 };
-    dispatchCustom(newCustomAttributes);
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
-  };
-  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCustomAttributes: CustomAttributes = { ...custom, lightCp: parseInt(e.target.value, 10) / 100 };
-    dispatchCustom(newCustomAttributes);
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
-  };
-  const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCustomAttributes: CustomAttributes = { ...custom, darkCp: parseInt(e.target.value, 10) / 100 };
-    dispatchCustom(newCustomAttributes);
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes });
-  };
-  const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
-    const newTheme = data.checkedItems[0] as string;
-    props.dispatchThemes({ type: newTheme, customAttributes: custom });
-    setTheme(newTheme);
+  const [tab, setTab] = React.useState<TabValue>('use');
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    setTheme('Custom');
+    dispatchCustom({ attributes: custom, type: 'theme' });
+    setTab(data.value);
   };
 
-  const RenderUseTab = () => (
-    <div className={styles.content}>
-      <div className={styles.inlineInputs} role="tabpanel" aria-labelledby="Use">
-        <Label htmlFor={themeId}>Theme</Label>
-        <Menu onCheckedValueChange={handleThemeChange}>
-          <MenuTrigger>
-            <Button>{theme}</Button>
-          </MenuTrigger>
-          <MenuPopover>
-            <MenuList>
-              <MenuItemRadio name="Teams Light" value="Teams Light">
-                Teams Light
-              </MenuItemRadio>
-              <MenuItemRadio name="Teams Dark" value="Teams Dark">
-                Teams Dark
-              </MenuItemRadio>
-              <MenuItemRadio name="Web Light" value="Web Light">
-                Web Light
-              </MenuItemRadio>
-              <MenuItemRadio name="Web Dark" value="Web Dark">
-                Web Dark
-              </MenuItemRadio>
-              <MenuDivider />
-              <MenuItemRadio name="Custom" value="Custom">
-                Custom
-              </MenuItemRadio>
-            </MenuList>
-          </MenuPopover>
-        </Menu>
-      </div>
-    </div>
-  );
-
-  const RenderEditTab = () => (
-    <div className={styles.content} role="tabpanel" aria-labelledby="Edit">
-      <div className={styles.inputs}>
-        <Label htmlFor={keyColorId}>Key color value</Label>
-        <div className={styles.labels}>
-          <Input
-            className={styles.keyColor}
-            size="large"
-            appearance="underline"
-            id={keyColorId}
-            value={custom.keyColor}
-            onChange={handleOnChange}
-          />
-          <div className={styles.colorPicker} style={{ backgroundColor: custom.keyColor }}>
-            <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
-          </div>
-        </div>
-      </div>
-      <Label htmlFor={hueTorsionId}>Hue Torsion</Label>
-      <Slider
-        size="small"
-        min={-50}
-        max={50}
-        id={hueTorsionId}
-        value={custom.hueTorsion * 10}
-        onChange={handleHueTorsionChange}
-      />
-      <Label htmlFor={lightCpId}>Light Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={lightCpId}
-        value={custom.lightCp * 100}
-        onChange={handleLightCpChange}
-      />
-      <Label htmlFor={darkCpId}>Dark Control Point</Label>
-      <Slider size="small" min={0} max={100} id={darkCpId} value={custom.darkCp * 100} onChange={handleDarkCpChange} />
-      <Switch checked={custom.isDark}  onChange={toggleTheme} label={custom.isDark ? 'dark theme' : 'light theme'} />
-    </div>
-  );
+  const [theme, setTheme] = React.useState<string>('Teams Light');
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
@@ -244,8 +148,16 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           Edit
         </Tab>
       </TabList>
-      {tab === 'use' && <RenderUseTab />}
-      {tab === 'edit' && <RenderEditTab />}
+      {tab === 'use' && (
+        <UseTab
+          sidebarId={sidebarId}
+          theme={theme}
+          setTheme={setTheme}
+          dispatchThemes={props.dispatchThemes}
+          custom={custom}
+        />
+      )}
+      {tab === 'edit' && <EditTab sidebarId={sidebarId} custom={custom} dispatchCustom={dispatchCustom} />}
     </div>
   );
 };
