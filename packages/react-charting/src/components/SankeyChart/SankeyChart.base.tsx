@@ -10,6 +10,10 @@ export class SankeyChartBase extends React.Component<
   {
     containerWidth: number;
     containerHeight: number;
+    selectedState: boolean;
+    selectedLinks: any[];
+    selectedNodes: any[];
+    selectedNode: any;
   }
 > {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
@@ -20,6 +24,10 @@ export class SankeyChartBase extends React.Component<
     this.state = {
       containerHeight: 0,
       containerWidth: 0,
+      selectedState: false,
+      selectedLinks: [],
+      selectedNodes: [],
+      selectedNode: '',
     };
   }
   public componentDidMount(): void {
@@ -52,7 +60,7 @@ export class SankeyChartBase extends React.Component<
 
     const sankey = d3Sankey
       .sankey()
-      .nodeWidth(5)
+      .nodeWidth(4)
       .nodePadding(6)
       .extent([
         [1, 1],
@@ -91,6 +99,11 @@ export class SankeyChartBase extends React.Component<
             d={pathValue ? pathValue : undefined}
             strokeWidth={Math.max(1, singleLink.width)}
             id={getId('link')}
+            stroke={
+              this.state.selectedState && this.state.selectedLinks.indexOf(singleLink) !== -1
+                ? this.state.selectedNode.color
+                : singleLink.color
+            }
           >
             <title>
               <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
@@ -108,6 +121,12 @@ export class SankeyChartBase extends React.Component<
     if (this.props.data.SankeyChartData) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.nodes.forEach((singleNode: any, index: number) => {
+        const onHoverHandler = () => {
+          this._onHover(singleNode);
+        };
+        const onMouseOut = () => {
+          this._onLeave(singleNode);
+        };
         const height = singleNode.y1 - singleNode.y0 > 0 ? singleNode.y1 - singleNode.y0 : 0;
         const node = (
           <g id={getId('nodeGElement')} key={index}>
@@ -115,15 +134,23 @@ export class SankeyChartBase extends React.Component<
               x={singleNode.x0}
               y={singleNode.y0}
               height={height}
-              width={singleNode.x1 - singleNode.x0}
+              width={
+                this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) !== -1
+                  ? 6
+                  : singleNode.x1 - singleNode.x0
+              }
               fill={singleNode.color}
               id={getId('nodeBar')}
+              onMouseOver={onHoverHandler}
+              onMouseOut={onMouseOut}
+              opacity={this._getOpacityNode(singleNode)}
             />
             <text
               x={singleNode.x0 < width / 2 ? singleNode.x1 + 6 : singleNode.x0 - 6}
               y={(singleNode.y1 + singleNode.y0) / 2}
               dy={'0.35em'}
               textAnchor={singleNode.x0 < width / 2 ? 'start' : 'end'}
+              opacity={this._getOpacityNodeLabel(singleNode)}
             >
               {singleNode.name}
             </text>
@@ -136,6 +163,73 @@ export class SankeyChartBase extends React.Component<
       });
       return nodes;
     }
+  }
+
+  private _getOpacityNode(singleNode: any): number {
+    if (this.state.selectedState) {
+      if (this.state.selectedNodes.indexOf(singleNode) === -1) {
+        return 0.6;
+      } else {
+        return 0.8;
+      }
+    }
+    return 1;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getOpacityNodeLabel(singleNode: any): number {
+    if (this.state.selectedState) {
+      if (this.state.selectedNodes.indexOf(singleNode) === -1) {
+        return 0.6;
+      } else {
+        return 1;
+      }
+    }
+    return 1;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onLeave(singleNode: any) {
+    if (this.state.selectedState) {
+      this.setState({
+        selectedState: false,
+        selectedNodes: [],
+        selectedLinks: [],
+        selectedNode: '',
+      });
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onHover(singleNode: any) {
+    if (!this.state.selectedState) {
+      const selectedLinks = this._getSelectedLinks(singleNode);
+      const selectedNodes = this._getSelectedNodes(selectedLinks);
+      this.setState({
+        selectedState: true,
+        selectedNodes: selectedNodes,
+        selectedLinks: selectedLinks,
+        selectedNode: singleNode,
+      });
+    }
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getSelectedNodes(selectedLinks: any[]): any[] {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const nodes: any = [];
+    selectedLinks.forEach(link => {
+      nodes.push(link.target);
+
+      if (nodes.indexOf(link.source) === -1) {
+        nodes.push(link.source);
+      }
+    });
+    return nodes;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getSelectedLinks(singleNode: any): any[] {
+    return singleNode.sourceLinks;
   }
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
