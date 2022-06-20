@@ -25,7 +25,7 @@ export type DispatchTheme = React.Dispatch<{
   customAttributes: CustomAttributes;
 }>;
 
-export const ThemeDesignerStates = () => {
+export const useThemeDesignerState = () => {
   const createCustomTheme = ({
     darkCp,
     hueTorsion,

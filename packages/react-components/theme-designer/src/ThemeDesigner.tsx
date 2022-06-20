@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { useStyles } from './ThemeDesigner.styles';
-import { ThemeDesignerStates } from './ThemeDesigner.states';
+import { useThemeDesignerState } from './ThemeDesigner.state';
 import { teamsLightTheme, FluentProvider } from '@fluentui/react-components';
 
 import { Nav } from './components/Nav/Nav';
@@ -14,7 +14,7 @@ import { Content } from './components/Content/Content';
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const { state, dispatchStates } = ThemeDesignerStates();
+  const { state, dispatchStates } = useThemeDesignerState();
 
   return (
     <FluentProvider theme={teamsLightTheme}>
