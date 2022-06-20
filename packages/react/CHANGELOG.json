@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 20 Jun 2022 07:45:12 GMT",
+      "tag": "@fluentui/react_v8.77.0",
+      "version": "8.77.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "eab5e8113a378cdf539632a9a3bd716901b2cdaa",
+            "comment": "feat: Allow `null` as value for choice group selected key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 17 Jun 2022 07:41:59 GMT",
       "tag": "@fluentui/react_v8.76.1",
       "version": "8.76.1",
