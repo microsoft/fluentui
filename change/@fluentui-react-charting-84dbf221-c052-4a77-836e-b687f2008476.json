@@ -1,7 +1,7 @@
 {
   "type": "minor",
   "comment": {
-    "title": "",
+    "title": "Task5556 Hovering over a node should highlight all streams starting from the node for the sankey chart",
     "value": ""
   },
   "packageName": "@fluentui/react-charting",
