@@ -848,7 +848,7 @@ const charcoal: ColorVariants = {
   tint60: '#f7f7f7',
 };
 
-export type StatusSharedColors = 'red' | 'green' | 'darkOrange' | 'yellow' | 'berry';
+export type StatusSharedColors = 'red' | 'green' | 'darkOrange' | 'yellow' | 'berry' | 'lightGreen' | 'marigold';
 
 export const statusSharedColors: Pick<GlobalSharedColors, StatusSharedColors> = {
   red,
@@ -856,6 +856,8 @@ export const statusSharedColors: Pick<GlobalSharedColors, StatusSharedColors> = 
   darkOrange,
   yellow,
   berry,
+  lightGreen,
+  marigold,
 };
 
 export type PersonaSharedColors =
@@ -863,7 +865,6 @@ export type PersonaSharedColors =
   | 'cranberry'
   | 'pumpkin'
   | 'peach'
-  | 'marigold'
   | 'gold'
   | 'brass'
   | 'brown'
@@ -894,7 +895,6 @@ export const personaSharedColors: Pick<GlobalSharedColors, PersonaSharedColors> 
   cranberry,
   pumpkin,
   peach,
-  marigold,
   gold,
   brass,
   brown,
@@ -923,13 +923,12 @@ export const personaSharedColors: Pick<GlobalSharedColors, PersonaSharedColors> 
 
 // These shared colors are currently not used in themes
 // Not exported from the package, we can consider removing them
-export const unusedSharedColors: Partial<GlobalSharedColors> = {
+export const unusedSharedColors = {
   burgundy,
   bronze,
   orange,
   darkBrown,
   lime,
-  lightGreen,
   darkTeal,
   cyan,
   lightBlue,

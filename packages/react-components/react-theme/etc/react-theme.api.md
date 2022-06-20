@@ -36,16 +36,7 @@ export type ColorPaletteBlue = 'colorPaletteBlueBackground2' | 'colorPaletteBlue
 export type ColorPaletteBrass = 'colorPaletteBrassBackground2' | 'colorPaletteBrassForeground2' | 'colorPaletteBrassBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteBronze = 'colorPaletteBronzeBackground2' | 'colorPaletteBronzeForeground2' | 'colorPaletteBronzeBorderActive';
-
-// @public (undocumented)
 export type ColorPaletteBrown = 'colorPaletteBrownBackground2' | 'colorPaletteBrownForeground2' | 'colorPaletteBrownBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteBurgundy = 'colorPaletteBurgundyBackground2' | 'colorPaletteBurgundyForeground2' | 'colorPaletteBurgundyBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteCharcoal = 'colorPaletteCharcoalBackground2' | 'colorPaletteCharcoalForeground2' | 'colorPaletteCharcoalBorderActive';
 
 // @public (undocumented)
 export type ColorPaletteCornflower = 'colorPaletteCornflowerBackground2' | 'colorPaletteCornflowerForeground2' | 'colorPaletteCornflowerBorderActive';
@@ -54,28 +45,13 @@ export type ColorPaletteCornflower = 'colorPaletteCornflowerBackground2' | 'colo
 export type ColorPaletteCranberry = 'colorPaletteCranberryBackground2' | 'colorPaletteCranberryForeground2' | 'colorPaletteCranberryBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteCyan = 'colorPaletteCyanBackground2' | 'colorPaletteCyanForeground2' | 'colorPaletteCyanBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteDarkBlue = 'colorPaletteDarkBlueBackground2' | 'colorPaletteDarkBlueForeground2' | 'colorPaletteDarkBlueBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteDarkBrown = 'colorPaletteDarkBrownBackground2' | 'colorPaletteDarkBrownForeground2' | 'colorPaletteDarkBrownBorderActive';
-
-// @public (undocumented)
 export type ColorPaletteDarkGreen = 'colorPaletteDarkGreenBackground2' | 'colorPaletteDarkGreenForeground2' | 'colorPaletteDarkGreenBorderActive';
 
 // @public (undocumented)
 export type ColorPaletteDarkOrange = 'colorPaletteDarkOrangeBackground1' | 'colorPaletteDarkOrangeBackground2' | 'colorPaletteDarkOrangeBackground3' | 'colorPaletteDarkOrangeForeground1' | 'colorPaletteDarkOrangeForeground2' | 'colorPaletteDarkOrangeForeground3' | 'colorPaletteDarkOrangeBorderActive' | 'colorPaletteDarkOrangeBorder1' | 'colorPaletteDarkOrangeBorder2';
 
 // @public (undocumented)
-export type ColorPaletteDarkPurple = 'colorPaletteDarkPurpleBackground2' | 'colorPaletteDarkPurpleForeground2' | 'colorPaletteDarkPurpleBorderActive';
-
-// @public (undocumented)
 export type ColorPaletteDarkRed = 'colorPaletteDarkRedBackground2' | 'colorPaletteDarkRedForeground2' | 'colorPaletteDarkRedBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteDarkTeal = 'colorPaletteDarkTealBackground2' | 'colorPaletteDarkTealForeground2' | 'colorPaletteDarkTealBorderActive';
 
 // @public (undocumented)
 export type ColorPaletteForest = 'colorPaletteForestBackground2' | 'colorPaletteForestForeground2' | 'colorPaletteForestBorderActive';
@@ -90,16 +66,10 @@ export type ColorPaletteGrape = 'colorPaletteGrapeBackground2' | 'colorPaletteGr
 export type ColorPaletteGreen = 'colorPaletteGreenBackground1' | 'colorPaletteGreenBackground2' | 'colorPaletteGreenBackground3' | 'colorPaletteGreenForeground1' | 'colorPaletteGreenForeground2' | 'colorPaletteGreenForeground3' | 'colorPaletteGreenBorderActive' | 'colorPaletteGreenBorder1' | 'colorPaletteGreenBorder2';
 
 // @public (undocumented)
-export type ColorPaletteHotPink = 'colorPaletteHotPinkBackground2' | 'colorPaletteHotPinkForeground2' | 'colorPaletteHotPinkBorderActive';
-
-// @public (undocumented)
 export type ColorPaletteLavender = 'colorPaletteLavenderBackground2' | 'colorPaletteLavenderForeground2' | 'colorPaletteLavenderBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteLightBlue = 'colorPaletteLightBlueBackground2' | 'colorPaletteLightBlueForeground2' | 'colorPaletteLightBlueBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteLightGreen = 'colorPaletteLightGreenBackground2' | 'colorPaletteLightGreenForeground2' | 'colorPaletteLightGreenBorderActive';
+export type ColorPaletteLightGreen = 'colorPaletteLightGreenBackground1' | 'colorPaletteLightGreenBackground2' | 'colorPaletteLightGreenBackground3' | 'colorPaletteLightGreenForeground1' | 'colorPaletteLightGreenForeground2' | 'colorPaletteLightGreenForeground3' | 'colorPaletteLightGreenBorderActive' | 'colorPaletteLightGreenBorder1' | 'colorPaletteLightGreenBorder2';
 
 // @public (undocumented)
 export type ColorPaletteLightTeal = 'colorPaletteLightTealBackground2' | 'colorPaletteLightTealForeground2' | 'colorPaletteLightTealBorderActive';
@@ -108,25 +78,16 @@ export type ColorPaletteLightTeal = 'colorPaletteLightTealBackground2' | 'colorP
 export type ColorPaletteLilac = 'colorPaletteLilacBackground2' | 'colorPaletteLilacForeground2' | 'colorPaletteLilacBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteLime = 'colorPaletteLimeBackground2' | 'colorPaletteLimeForeground2' | 'colorPaletteLimeBorderActive';
-
-// @public (undocumented)
 export type ColorPaletteMagenta = 'colorPaletteMagentaBackground2' | 'colorPaletteMagentaForeground2' | 'colorPaletteMagentaBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteMarigold = 'colorPaletteMarigoldBackground2' | 'colorPaletteMarigoldForeground2' | 'colorPaletteMarigoldBorderActive';
+export type ColorPaletteMarigold = 'colorPaletteMarigoldBackground1' | 'colorPaletteMarigoldBackground2' | 'colorPaletteMarigoldBackground3' | 'colorPaletteMarigoldForeground1' | 'colorPaletteMarigoldForeground2' | 'colorPaletteMarigoldForeground3' | 'colorPaletteMarigoldBorderActive' | 'colorPaletteMarigoldBorder1' | 'colorPaletteMarigoldBorder2';
 
 // @public (undocumented)
 export type ColorPaletteMink = 'colorPaletteMinkBackground2' | 'colorPaletteMinkForeground2' | 'colorPaletteMinkBorderActive';
 
 // @public (undocumented)
 export type ColorPaletteNavy = 'colorPaletteNavyBackground2' | 'colorPaletteNavyForeground2' | 'colorPaletteNavyBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteOrange = 'colorPaletteOrangeBackground2' | 'colorPaletteOrangeForeground2' | 'colorPaletteOrangeBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteOrchid = 'colorPaletteOrchidBackground2' | 'colorPaletteOrchidForeground2' | 'colorPaletteOrchidBorderActive';
 
 // @public (undocumented)
 export type ColorPalettePeach = 'colorPalettePeachBackground2' | 'colorPalettePeachForeground2' | 'colorPalettePeachBorderActive';
@@ -154,9 +115,6 @@ export type ColorPaletteRoyalBlue = 'colorPaletteRoyalBlueBackground2' | 'colorP
 
 // @public (undocumented)
 export type ColorPaletteSeafoam = 'colorPaletteSeafoamBackground2' | 'colorPaletteSeafoamForeground2' | 'colorPaletteSeafoamBorderActive';
-
-// @public (undocumented)
-export type ColorPaletteSilver = 'colorPaletteSilverBackground2' | 'colorPaletteSilverForeground2' | 'colorPaletteSilverBorderActive';
 
 // @public (undocumented)
 export type ColorPaletteSteel = 'colorPaletteSteelBackground2' | 'colorPaletteSteelForeground2' | 'colorPaletteSteelBorderActive';

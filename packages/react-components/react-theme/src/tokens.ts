@@ -202,6 +202,28 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteBerryForeground2: 'var(--colorPaletteBerryForeground2)',
   colorPaletteBerryForeground3: 'var(--colorPaletteBerryForeground3)',
 
+  // Color palette marigold tokens
+  colorPaletteMarigoldBackground1: 'var(--colorPaletteMarigoldBackground1)',
+  colorPaletteMarigoldBackground2: 'var(--colorPaletteMarigoldBackground2)',
+  colorPaletteMarigoldBackground3: 'var(--colorPaletteMarigoldBackground3)',
+  colorPaletteMarigoldBorderActive: 'var(--colorPaletteMarigoldBorderActive)',
+  colorPaletteMarigoldBorder1: 'var(--colorPaletteMarigoldBorder1)',
+  colorPaletteMarigoldBorder2: 'var(--colorPaletteMarigoldBorder2)',
+  colorPaletteMarigoldForeground1: 'var(--colorPaletteMarigoldForeground1)',
+  colorPaletteMarigoldForeground2: 'var(--colorPaletteMarigoldForeground2)',
+  colorPaletteMarigoldForeground3: 'var(--colorPaletteMarigoldForeground3)',
+
+  // Color palette light green tokens
+  colorPaletteLightGreenBackground1: 'var(--colorPaletteLightGreenBackground1)',
+  colorPaletteLightGreenBackground2: 'var(--colorPaletteLightGreenBackground2)',
+  colorPaletteLightGreenBackground3: 'var(--colorPaletteLightGreenBackground3)',
+  colorPaletteLightGreenBorderActive: 'var(--colorPaletteLightGreenBorderActive)',
+  colorPaletteLightGreenBorder1: 'var(--colorPaletteLightGreenBorder1)',
+  colorPaletteLightGreenBorder2: 'var(--colorPaletteLightGreenBorder2)',
+  colorPaletteLightGreenForeground1: 'var(--colorPaletteLightGreenForeground1)',
+  colorPaletteLightGreenForeground2: 'var(--colorPaletteLightGreenForeground2)',
+  colorPaletteLightGreenForeground3: 'var(--colorPaletteLightGreenForeground3)',
+
   // Color palette anchor tokens
   colorPaletteAnchorBackground2: 'var(--colorPaletteAnchorBackground2)',
   colorPaletteAnchorBorderActive: 'var(--colorPaletteAnchorBorderActive)',
@@ -281,11 +303,6 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteMagentaBackground2: 'var(--colorPaletteMagentaBackground2)',
   colorPaletteMagentaBorderActive: 'var(--colorPaletteMagentaBorderActive)',
   colorPaletteMagentaForeground2: 'var(--colorPaletteMagentaForeground2)',
-
-  // Color palette marigold tokens
-  colorPaletteMarigoldBackground2: 'var(--colorPaletteMarigoldBackground2)',
-  colorPaletteMarigoldBorderActive: 'var(--colorPaletteMarigoldBorderActive)',
-  colorPaletteMarigoldForeground2: 'var(--colorPaletteMarigoldForeground2)',
 
   // Color palette mink tokens
   colorPaletteMinkBackground2: 'var(--colorPaletteMinkBackground2)',

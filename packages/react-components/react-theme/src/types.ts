@@ -201,45 +201,47 @@ export type ColorPaletteBerry =
   | 'colorPaletteBerryBorder1'
   | 'colorPaletteBerryBorder2';
 
+export type ColorPaletteMarigold =
+  | 'colorPaletteMarigoldBackground1'
+  | 'colorPaletteMarigoldBackground2'
+  | 'colorPaletteMarigoldBackground3'
+  | 'colorPaletteMarigoldForeground1'
+  | 'colorPaletteMarigoldForeground2'
+  | 'colorPaletteMarigoldForeground3'
+  | 'colorPaletteMarigoldBorderActive'
+  | 'colorPaletteMarigoldBorder1'
+  | 'colorPaletteMarigoldBorder2';
+
+export type ColorPaletteLightGreen =
+  | 'colorPaletteLightGreenBackground1'
+  | 'colorPaletteLightGreenBackground2'
+  | 'colorPaletteLightGreenBackground3'
+  | 'colorPaletteLightGreenForeground1'
+  | 'colorPaletteLightGreenForeground2'
+  | 'colorPaletteLightGreenForeground3'
+  | 'colorPaletteLightGreenBorderActive'
+  | 'colorPaletteLightGreenBorder1'
+  | 'colorPaletteLightGreenBorder2';
+
 export type ColorPaletteDarkRed =
   | 'colorPaletteDarkRedBackground2'
   | 'colorPaletteDarkRedForeground2'
   | 'colorPaletteDarkRedBorderActive';
-
-export type ColorPaletteBurgundy =
-  | 'colorPaletteBurgundyBackground2'
-  | 'colorPaletteBurgundyForeground2'
-  | 'colorPaletteBurgundyBorderActive';
 
 export type ColorPaletteCranberry =
   | 'colorPaletteCranberryBackground2'
   | 'colorPaletteCranberryForeground2'
   | 'colorPaletteCranberryBorderActive';
 
-export type ColorPaletteBronze =
-  | 'colorPaletteBronzeBackground2'
-  | 'colorPaletteBronzeForeground2'
-  | 'colorPaletteBronzeBorderActive';
-
 export type ColorPalettePumpkin =
   | 'colorPalettePumpkinBackground2'
   | 'colorPalettePumpkinForeground2'
   | 'colorPalettePumpkinBorderActive';
 
-export type ColorPaletteOrange =
-  | 'colorPaletteOrangeBackground2'
-  | 'colorPaletteOrangeForeground2'
-  | 'colorPaletteOrangeBorderActive';
-
 export type ColorPalettePeach =
   | 'colorPalettePeachBackground2'
   | 'colorPalettePeachForeground2'
   | 'colorPalettePeachBorderActive';
-
-export type ColorPaletteMarigold =
-  | 'colorPaletteMarigoldBackground2'
-  | 'colorPaletteMarigoldForeground2'
-  | 'colorPaletteMarigoldBorderActive';
 
 export type ColorPaletteGold =
   | 'colorPaletteGoldBackground2'
@@ -256,16 +258,6 @@ export type ColorPaletteBrown =
   | 'colorPaletteBrownForeground2'
   | 'colorPaletteBrownBorderActive';
 
-export type ColorPaletteDarkBrown =
-  | 'colorPaletteDarkBrownBackground2'
-  | 'colorPaletteDarkBrownForeground2'
-  | 'colorPaletteDarkBrownBorderActive';
-
-export type ColorPaletteLime =
-  | 'colorPaletteLimeBackground2'
-  | 'colorPaletteLimeForeground2'
-  | 'colorPaletteLimeBorderActive';
-
 export type ColorPaletteForest =
   | 'colorPaletteForestBackground2'
   | 'colorPaletteForestForeground2'
@@ -275,11 +267,6 @@ export type ColorPaletteSeafoam =
   | 'colorPaletteSeafoamBackground2'
   | 'colorPaletteSeafoamForeground2'
   | 'colorPaletteSeafoamBorderActive';
-
-export type ColorPaletteLightGreen =
-  | 'colorPaletteLightGreenBackground2'
-  | 'colorPaletteLightGreenForeground2'
-  | 'colorPaletteLightGreenBorderActive';
 
 export type ColorPaletteDarkGreen =
   | 'colorPaletteDarkGreenBackground2'
@@ -296,25 +283,10 @@ export type ColorPaletteTeal =
   | 'colorPaletteTealForeground2'
   | 'colorPaletteTealBorderActive';
 
-export type ColorPaletteDarkTeal =
-  | 'colorPaletteDarkTealBackground2'
-  | 'colorPaletteDarkTealForeground2'
-  | 'colorPaletteDarkTealBorderActive';
-
-export type ColorPaletteCyan =
-  | 'colorPaletteCyanBackground2'
-  | 'colorPaletteCyanForeground2'
-  | 'colorPaletteCyanBorderActive';
-
 export type ColorPaletteSteel =
   | 'colorPaletteSteelBackground2'
   | 'colorPaletteSteelForeground2'
   | 'colorPaletteSteelBorderActive';
-
-export type ColorPaletteLightBlue =
-  | 'colorPaletteLightBlueBackground2'
-  | 'colorPaletteLightBlueForeground2'
-  | 'colorPaletteLightBlueBorderActive';
 
 export type ColorPaletteBlue =
   | 'colorPaletteBlueBackground2'
@@ -325,11 +297,6 @@ export type ColorPaletteRoyalBlue =
   | 'colorPaletteRoyalBlueBackground2'
   | 'colorPaletteRoyalBlueForeground2'
   | 'colorPaletteRoyalBlueBorderActive';
-
-export type ColorPaletteDarkBlue =
-  | 'colorPaletteDarkBlueBackground2'
-  | 'colorPaletteDarkBlueForeground2'
-  | 'colorPaletteDarkBlueBorderActive';
 
 export type ColorPaletteCornflower =
   | 'colorPaletteCornflowerBackground2'
@@ -351,16 +318,6 @@ export type ColorPalettePurple =
   | 'colorPalettePurpleForeground2'
   | 'colorPalettePurpleBorderActive';
 
-export type ColorPaletteDarkPurple =
-  | 'colorPaletteDarkPurpleBackground2'
-  | 'colorPaletteDarkPurpleForeground2'
-  | 'colorPaletteDarkPurpleBorderActive';
-
-export type ColorPaletteOrchid =
-  | 'colorPaletteOrchidBackground2'
-  | 'colorPaletteOrchidForeground2'
-  | 'colorPaletteOrchidBorderActive';
-
 export type ColorPaletteGrape =
   | 'colorPaletteGrapeBackground2'
   | 'colorPaletteGrapeForeground2'
@@ -375,11 +332,6 @@ export type ColorPalettePink =
   | 'colorPalettePinkBackground2'
   | 'colorPalettePinkForeground2'
   | 'colorPalettePinkBorderActive';
-
-export type ColorPaletteHotPink =
-  | 'colorPaletteHotPinkBackground2'
-  | 'colorPaletteHotPinkForeground2'
-  | 'colorPaletteHotPinkBorderActive';
 
 export type ColorPaletteMagenta =
   | 'colorPaletteMagentaBackground2'
@@ -401,11 +353,6 @@ export type ColorPaletteMink =
   | 'colorPaletteMinkForeground2'
   | 'colorPaletteMinkBorderActive';
 
-export type ColorPaletteSilver =
-  | 'colorPaletteSilverBackground2'
-  | 'colorPaletteSilverForeground2'
-  | 'colorPaletteSilverBorderActive';
-
 export type ColorPalettePlatinum =
   | 'colorPalettePlatinumBackground2'
   | 'colorPalettePlatinumForeground2'
@@ -416,13 +363,14 @@ export type ColorPaletteAnchor =
   | 'colorPaletteAnchorForeground2'
   | 'colorPaletteAnchorBorderActive';
 
-export type ColorPaletteCharcoal =
-  | 'colorPaletteCharcoalBackground2'
-  | 'colorPaletteCharcoalForeground2'
-  | 'colorPaletteCharcoalBorderActive';
-
 export type StatusColorPaletteTokens = Record<
-  ColorPaletteRed | ColorPaletteGreen | ColorPaletteDarkOrange | ColorPaletteYellow | ColorPaletteBerry,
+  | ColorPaletteRed
+  | ColorPaletteGreen
+  | ColorPaletteDarkOrange
+  | ColorPaletteYellow
+  | ColorPaletteBerry
+  | ColorPaletteMarigold
+  | ColorPaletteLightGreen,
   string
 >;
 
@@ -431,7 +379,6 @@ export type PersonaColorPaletteTokens = Record<
   | ColorPaletteCranberry
   | ColorPalettePumpkin
   | ColorPalettePeach
-  | ColorPaletteMarigold
   | ColorPaletteGold
   | ColorPaletteBrass
   | ColorPaletteBrown
@@ -488,21 +435,16 @@ export type BrandVariants = Record<Brands, string>;
  */
 export type GlobalSharedColors = {
   darkRed: ColorVariants;
-  burgundy: ColorVariants;
   cranberry: ColorVariants;
   red: ColorVariants;
   darkOrange: ColorVariants;
-  bronze: ColorVariants;
   pumpkin: ColorVariants;
-  orange: ColorVariants;
   peach: ColorVariants;
   marigold: ColorVariants;
   yellow: ColorVariants;
   gold: ColorVariants;
   brass: ColorVariants;
   brown: ColorVariants;
-  darkBrown: ColorVariants;
-  lime: ColorVariants;
   forest: ColorVariants;
   seafoam: ColorVariants;
   lightGreen: ColorVariants;
@@ -510,32 +452,23 @@ export type GlobalSharedColors = {
   darkGreen: ColorVariants;
   lightTeal: ColorVariants;
   teal: ColorVariants;
-  darkTeal: ColorVariants;
-  cyan: ColorVariants;
   steel: ColorVariants;
-  lightBlue: ColorVariants;
   blue: ColorVariants;
   royalBlue: ColorVariants;
-  darkBlue: ColorVariants;
   cornflower: ColorVariants;
   navy: ColorVariants;
   lavender: ColorVariants;
   purple: ColorVariants;
-  darkPurple: ColorVariants;
-  orchid: ColorVariants;
   grape: ColorVariants;
   berry: ColorVariants;
   lilac: ColorVariants;
   pink: ColorVariants;
-  hotPink: ColorVariants;
   magenta: ColorVariants;
   plum: ColorVariants;
   beige: ColorVariants;
   mink: ColorVariants;
-  silver: ColorVariants;
   platinum: ColorVariants;
   anchor: ColorVariants;
-  charcoal: ColorVariants;
 };
 
 export type FontSizeTokens = {
