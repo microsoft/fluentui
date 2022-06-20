@@ -20,7 +20,7 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { UseModalAttributesOptions } from '@fluentui/react-tabster/src';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import type { usePositioningMouseTarget } from '@fluentui/react-positioning';
 
 // @public (undocumented)
