@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Selectionzone/keyboard options (#23487)",
+  "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList",
   "packageName": "office-ui-fabric-react",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"
