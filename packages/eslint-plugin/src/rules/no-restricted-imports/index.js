@@ -59,7 +59,7 @@ module.exports = createRule({
     const options = context.options;
 
     if (!options.length) {
-      throw new Error('restrict-import-paths: Must specify a paths object.');
+      throw new Error('no-restricted-imports: Must specify a paths object.');
     }
 
     const paths = options[0].paths;
