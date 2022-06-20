@@ -3,13 +3,13 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
 
-import type { CustomAttributes, DispatchTheme } from '../../ThemeDesigner.states';
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
 import { UseTab } from './UseTab';
 import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  dispatchThemes: DispatchTheme;
+  dispatchState: DispatchTheme;
 }
 
 const useStyles = makeStyles({
@@ -77,64 +77,8 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const sidebarId = useId();
 
-  const initialCustom = {
-    keyColor: '#006bc7',
-    hueTorsion: 0,
-    darkCp: 2 / 3,
-    lightCp: 1 / 3,
-    isDark: false,
-  };
-
-  const customReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
-    const newAttributes = action.attributes;
-
-    const newCustomAttributes: () => CustomAttributes = () => {
-      switch (action.type) {
-        case 'new':
-          return newAttributes;
-        case 'isDark':
-          return {
-            ...state,
-            isDark: newAttributes.isDark,
-          };
-        case 'keyColor':
-          return {
-            ...state,
-            keyColor: newAttributes.keyColor,
-          };
-        case 'hueTorsion':
-          return {
-            ...state,
-            hueTorsion: newAttributes.hueTorsion,
-          };
-        case 'lightCp':
-          return {
-            ...state,
-            lightCp: newAttributes.lightCp,
-          };
-        case 'darkCp':
-          return {
-            ...state,
-            darkCp: newAttributes.darkCp,
-          };
-        default:
-          return state;
-      }
-    };
-
-    props.dispatchThemes({ ...custom, type: 'Custom', customAttributes: newCustomAttributes() });
-
-    return newCustomAttributes();
-  };
-
-  const [custom, dispatchCustom] = React.useReducer(customReducer, initialCustom);
-
   const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
-    setTheme('Custom');
-    dispatchCustom({ attributes: custom, type: 'theme' });
-    setTab(data.value);
-  };
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => setTab(data.value);
 
   const [theme, setTheme] = React.useState<string>('Teams Light');
 
@@ -153,11 +97,11 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           sidebarId={sidebarId}
           theme={theme}
           setTheme={setTheme}
-          dispatchThemes={props.dispatchThemes}
-          custom={custom}
+          dispatchState={props.dispatchState}
+          setTab={setTab}
         />
       )}
-      {tab === 'edit' && <EditTab sidebarId={sidebarId} custom={custom} dispatchCustom={dispatchCustom} />}
+      {tab === 'edit' && <EditTab sidebarId={sidebarId} dispatchState={props.dispatchState} />}
     </div>
   );
 };

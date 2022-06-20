@@ -12,9 +12,10 @@ import {
   MenuProps,
   tokens,
   Label,
+  TabValue,
 } from '@fluentui/react-components';
 
-import type { CustomAttributes, DispatchTheme } from '../../ThemeDesigner.states';
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
   root: {
@@ -31,29 +32,35 @@ const useStyles = makeStyles({
 });
 
 export interface UseTabProps {
-  className?: string;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  dispatchThemes: DispatchTheme;
+  dispatchState: DispatchTheme;
   sidebarId: string;
-  custom: CustomAttributes;
+  setTab: React.Dispatch<TabValue>;
 }
 
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
+  const { theme, setTheme, dispatchState, sidebarId } = props;
+
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
-    props.dispatchThemes({ type: newTheme, customAttributes: props.custom });
-    props.setTheme(newTheme);
+    if (newTheme === 'Custom') {
+      props.setTab('edit');
+    } else {
+      dispatchState({ type: newTheme });
+    }
+    setTheme(newTheme);
   };
+
   return (
     <div className={styles.root}>
       <div className={styles.inlineInputs} role="tabpanel" aria-labelledby="Use">
-        <Label htmlFor={props.sidebarId + 'theme'}>Theme</Label>
+        <Label htmlFor={sidebarId + 'theme'}>Theme</Label>
         <Menu>
           <MenuTrigger>
-            <Button>{props.theme}</Button>
+            <Button>{theme}</Button>
           </MenuTrigger>
           <MenuPopover>
             <MenuList onCheckedValueChange={handleThemeChange}>

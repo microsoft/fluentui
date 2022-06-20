@@ -22,10 +22,10 @@ export type CustomAttributes = {
 
 export type DispatchTheme = React.Dispatch<{
   type: string;
-  customAttributes: CustomAttributes;
+  customAttributes?: CustomAttributes;
 }>;
 
-export const useThemeDesignerState = () => {
+export const useThemeDesignerReducer = () => {
   const createCustomTheme = ({
     darkCp,
     hueTorsion,
@@ -54,7 +54,7 @@ export const useThemeDesignerState = () => {
     state: { themeLabel: string; brand: BrandVariants; theme: Theme },
     action: {
       type: string;
-      customAttributes: CustomAttributes;
+      customAttributes?: CustomAttributes;
     },
   ) => {
     switch (action.type) {
@@ -83,6 +83,9 @@ export const useThemeDesignerState = () => {
           theme: webDarkTheme,
         };
       case 'Custom':
+        if (!action.customAttributes) {
+          return state;
+        }
         const custom = createCustomTheme(action.customAttributes);
         return {
           themeLabel: 'Custom',
@@ -94,7 +97,5 @@ export const useThemeDesignerState = () => {
     }
   };
 
-  const [state, dispatchStates] = React.useReducer(stateReducer, initialState);
-
-  return { state, dispatchStates };
+  return React.useReducer(stateReducer, initialState);
 };
