@@ -4,6 +4,8 @@ export * from '@fluentui/react-bindings';
 export * from '@fluentui/react-icons-northstar';
 export * from '@fluentui/styles';
 
+// NOOP
+
 //
 // Themes
 //
