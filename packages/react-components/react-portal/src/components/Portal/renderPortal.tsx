@@ -8,7 +8,7 @@ import type { PortalState } from './Portal.types';
 export const renderPortal_unstable = (state: PortalState): React.ReactElement => {
   return (
     <span hidden ref={state.virtualParentRootRef}>
-      {state.shouldRender && state.mountNode && ReactDOM.createPortal(state.children, state.mountNode)}
+      {state.mountNode && ReactDOM.createPortal(state.children, state.mountNode)}
     </span>
   );
 };
