@@ -7,7 +7,7 @@ export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
    * It is recommended not to use the `absolute` variant since
-   * it forbigs users to tab out of the focus trap into the actual browser.
+   * it forbids users to tab out of the focus trap into the actual browser.
    */
   trapFocus?: boolean | 'absolute';
 
