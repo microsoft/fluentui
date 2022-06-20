@@ -230,7 +230,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
       />
       <Label htmlFor={darkCpId}>Dark Control Point</Label>
       <Slider size="small" min={0} max={100} id={darkCpId} value={custom.darkCp * 100} onChange={handleDarkCpChange} />
-      <Switch onChange={toggleTheme} label={custom.isDark ? 'dark theme' : 'light theme'} />
+      <Switch checked={custom.isDark}  onChange={toggleTheme} label={custom.isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
 
