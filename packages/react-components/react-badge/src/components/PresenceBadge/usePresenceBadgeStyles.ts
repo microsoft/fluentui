@@ -35,10 +35,10 @@ const useStyles = makeStyles({
     color: tokens.colorPaletteRedBackground3,
   },
   statusAway: {
-    color: tokens.colorPaletteYellowBackground3, // FIXME: Badge specs uses Marigold for Away
+    color: tokens.colorPaletteMarigoldBackground3,
   },
   statusAvailable: {
-    color: tokens.colorPaletteGreenForeground3, // FIXME: Badge spec uses LightGreen for Available
+    color: tokens.colorPaletteLightGreenForeground3,
   },
   statusOffline: {
     color: tokens.colorNeutralForeground3,
@@ -50,13 +50,13 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralBackground1,
   },
   outOfOfficeAvailable: {
-    color: tokens.colorPaletteGreenForeground3, // FIXME: Badge spec uses LightGreen for Available
+    color: tokens.colorPaletteLightGreenForeground3,
   },
   outOfOfficeBusy: {
     color: tokens.colorPaletteRedBackground3,
   },
   outOfOfficeAway: {
-    color: tokens.colorPaletteYellowBackground3, // FIXME: Badge specs uses Marigold for Away
+    color: tokens.colorPaletteMarigoldBackground3,
   },
 
   // Icons are not resizeable, and these sizes are currently missing
