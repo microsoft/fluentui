@@ -5,7 +5,7 @@ import type {
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
-import type { UseModalAttributesOptions } from '@fluentui/react-tabster/src';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 /**
  * Determines popover padding and arrow size
