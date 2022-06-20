@@ -1,15 +1,36 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
-import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
-import { createLightTheme, createDarkTheme } from '@fluentui/react-theme';
+import {
+  createDarkTheme,
+  createLightTheme,
+  teamsDarkTheme,
+  teamsLightTheme,
+  webDarkTheme,
+  webLightTheme,
+  FluentProvider,
+} from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
-import { brandWeb, brandTeams, brandOffice } from './utils/brandColors';
-import { useDebounce } from './utils/useDebounce';
+import { brandTeams, brandWeb } from './utils/brandColors';
+
+import type { BrandVariants, Theme } from '@fluentui/react-components';
 
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
+
+export type CustomAttributes = {
+  keyColor: string;
+  hueTorsion: number;
+  darkCp: number;
+  lightCp: number;
+  isDark: boolean;
+};
+
+export type DispatchTheme = React.Dispatch<{
+  type: string;
+  customAttributes: CustomAttributes;
+}>;
 
 const useStyles = makeStyles({
   root: {
@@ -41,15 +62,14 @@ const useStyles = makeStyles({
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const [theme, setTheme] = React.useState<string>('Custom');
-  const [keyColor, setKeyColor] = React.useState<string>('#006bc7');
-  const [hueTorsion, setHueTorsion] = React.useState<number>(0);
-  const [darkCp, setDarkCp] = React.useState<number>(2 / 3);
-  const [lightCp, setLightCp] = React.useState<number>(1 / 3);
-
-  const debouncedKeyColor = useDebounce(keyColor, 400);
-
-  const customTheme = React.useMemo(() => {
+  const createCustomTheme = ({
+    darkCp,
+    hueTorsion,
+    isDark,
+    keyColor,
+    lightCp,
+  }: CustomAttributes): { brand: BrandVariants; theme: Theme } => {
+    const debouncedKeyColor = keyColor;
     const brand = getBrandTokensFromPalette(debouncedKeyColor, {
       hueTorsion: hueTorsion,
       darkCp: darkCp,
@@ -57,58 +77,68 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
     });
     return {
       brand: brand,
-      lightTheme: createLightTheme(brand),
-      darkTheme: createDarkTheme(brand),
+      theme: isDark ? createDarkTheme(brand) : createLightTheme(brand),
     };
-  }, [hueTorsion, darkCp, lightCp, debouncedKeyColor]);
+  };
 
-  const themes = React.useMemo(() => {
-    if (theme === 'Teams') {
-      return {
-        brand: brandTeams,
-        lightTheme: createLightTheme(brandTeams),
-        darkTheme: createDarkTheme(brandTeams),
-      };
-    } else if (theme === 'Web') {
-      return {
-        brand: brandWeb,
-        lightTheme: createLightTheme(brandWeb),
-        darkTheme: createDarkTheme(brandWeb),
-      };
-    } else if (theme === 'Office') {
-      return {
-        brand: brandOffice,
-        lightTheme: createLightTheme(brandOffice),
-        darkTheme: createDarkTheme(brandOffice),
-      };
-    } else {
-      return customTheme;
+  const initialTheme = {
+    themeLabel: 'Teams Light',
+    brand: brandTeams,
+    theme: teamsLightTheme,
+  };
+
+  const themeReducer = (
+    state: { themeLabel: string; brand: BrandVariants; theme: Theme },
+    action: {
+      type: string;
+      customAttributes: CustomAttributes;
+    },
+  ) => {
+    switch (action.type) {
+      case 'Teams Light':
+        return {
+          themeLabel: 'Teams Light',
+          brand: brandTeams,
+          theme: teamsLightTheme,
+        };
+      case 'Teams Dark':
+        return {
+          themeLabel: 'Teams Dark',
+          brand: brandTeams,
+          theme: teamsDarkTheme,
+        };
+      case 'Web Light':
+        return {
+          themeLabel: 'Web Light',
+          brand: brandWeb,
+          theme: webLightTheme,
+        };
+      case 'Web Dark':
+        return {
+          themeLabel: 'Web Dark',
+          brand: brandWeb,
+          theme: webDarkTheme,
+        };
+      case 'Custom':
+        const custom = createCustomTheme(action.customAttributes);
+        return {
+          themeLabel: 'Custom',
+          brand: custom.brand,
+          theme: custom.theme,
+        };
+      default:
+        return state;
     }
-  }, [customTheme, theme]);
+  };
+
+  const [theme, dispatchThemes] = React.useReducer(themeReducer, initialTheme);
 
   return (
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
-        <Nav className={styles.nav} brand={themes.brand} />
-        <Sidebar
-          className={styles.sidebar}
-          keyColor={debouncedKeyColor}
-          setKeyColor={setKeyColor}
-          hueTorsion={hueTorsion}
-          setHueTorsion={setHueTorsion}
-          darkCp={darkCp}
-          setDarkCp={setDarkCp}
-          lightCp={lightCp}
-          setLightCp={setLightCp}
-          theme={theme}
-          setTheme={setTheme}
-        />
-        <Content
-          className={styles.content}
-          brand={themes.brand}
-          darkTheme={themes.darkTheme}
-          lightTheme={themes.lightTheme}
-        />
+        <Nav className={styles.nav} brand={theme.brand} />
+        <Sidebar className={styles.sidebar} dispatchThemes={dispatchThemes} />
+        <Content className={styles.content} brand={theme.brand} theme={theme.theme} />
       </div>
     </FluentProvider>
   );
