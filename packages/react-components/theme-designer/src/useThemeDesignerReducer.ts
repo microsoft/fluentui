@@ -48,10 +48,11 @@ export const useThemeDesignerReducer = () => {
     themeLabel: 'Teams Light',
     brand: brandTeams,
     theme: teamsLightTheme,
+    isDark: false,
   };
 
   const stateReducer = (
-    state: { themeLabel: string; brand: BrandVariants; theme: Theme },
+    state: { themeLabel: string; brand: BrandVariants; theme: Theme; isDark: boolean },
     action: {
       type: string;
       customAttributes?: CustomAttributes;
@@ -63,24 +64,28 @@ export const useThemeDesignerReducer = () => {
           themeLabel: 'Teams Light',
           brand: brandTeams,
           theme: teamsLightTheme,
+          isDark: false,
         };
       case 'Teams Dark':
         return {
           themeLabel: 'Teams Dark',
           brand: brandTeams,
           theme: teamsDarkTheme,
+          isDark: true,
         };
       case 'Web Light':
         return {
           themeLabel: 'Web Light',
           brand: brandWeb,
           theme: webLightTheme,
+          isDark: false,
         };
       case 'Web Dark':
         return {
           themeLabel: 'Web Dark',
           brand: brandWeb,
           theme: webDarkTheme,
+          isDark: true,
         };
       case 'Custom':
         if (!action.customAttributes) {
@@ -91,6 +96,7 @@ export const useThemeDesignerReducer = () => {
           themeLabel: 'Custom',
           brand: custom.brand,
           theme: custom.theme,
+          isDark: action.customAttributes.isDark,
         };
       default:
         return state;

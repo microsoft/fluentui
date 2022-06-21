@@ -6,7 +6,7 @@ import * as dedent from 'dedent';
 export interface ExportLinkProps {
   className?: string;
   brand: BrandVariants;
-  isLightTheme: boolean;
+  isDark: boolean;
 }
 
 export const ExportLink: React.FC<ExportLinkProps> = props => {
@@ -261,13 +261,13 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         content: dedent`
           import * as ReactDOM from 'react-dom';
           import { FluentProvider, ${
-            props.isLightTheme ? 'createLightTheme' : 'createDarkTheme'
+            props.isDark ? 'createDarkTheme' : 'createLightTheme'
           } } from '@fluentui/react-components';
           import { Example } from './example';
 
           const brand = ${JSON.stringify(props.brand)};
 
-          ${props.isLightTheme ? 'const theme = createLightTheme(brand);' : 'const theme = createDarkTheme(brand);'}
+          ${props.isDark ? 'const theme = createDarkTheme(brand);' : 'const theme = createLightTheme(brand);'}
 
           ReactDOM.render(
               <FluentProvider theme={theme}>
@@ -291,7 +291,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
   return (
     <div>
       <Link appearance="subtle" href={link}>
-        {props.isLightTheme ? 'Preview light theme in CodeSandbox' : 'Preview dark theme in CodeSandbox'}
+        Preview theme in CodeSandbox
       </Link>
     </div>
   );
