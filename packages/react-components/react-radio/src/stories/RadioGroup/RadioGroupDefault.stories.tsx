@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup, RadioGroupProps } from '@fluentui/react-radio';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
+import type { RadioGroupProps } from '@fluentui/react-radio';
 
 export const Default = (props: Partial<RadioGroupProps>) => {
   const labelId = useId('label');
