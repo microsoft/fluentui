@@ -366,13 +366,19 @@ export const defaultTests: TestObject = {
         };
         const result = render(<Component {...mergedProps} />, renderOptions);
         const rootEl = getTargetElement(testInfo, result, 'className');
+        const portalEl = staticClassNames.getPortalElement && staticClassNames.getPortalElement(result);
 
         const indexFile = require(indexPath);
         const classNamesFromFile = indexFile[exportName];
 
         const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
         const missingClassNames = Object.values(expectedClassNames).filter(
-          className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
+          className =>
+            !rootEl.classList.contains(className) &&
+            !rootEl.querySelector(`.${className}`) &&
+            portalEl &&
+            !portalEl.classList.contains(className) &&
+            !portalEl.querySelector(`.${className}`),
         );
 
         try {
