@@ -2,6 +2,21 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Tue, 21 Jun 2022 17:11:07 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.10",
+            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 May 2022 21:28:50 GMT",
       "tag": "@fluentui/global-context_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",
