@@ -12,7 +12,7 @@ export async function runTest(browser: Browser, url: string): Promise<void> {
   const page = await browser.newPage();
   await page.setRequestInterception(true);
 
-  let error;
+  let error: Error | undefined;
 
   page.on('console', message => {
     if (message.type() === 'error') {
