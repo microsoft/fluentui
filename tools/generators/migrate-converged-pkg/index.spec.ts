@@ -676,9 +676,9 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
       const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
-      const componentName = names(normalizedProjectName).name.split('-')[1];
+      const componentName = names(normalizedProjectName).className.replace('React', '');
       const oldStoriesPath = `${projectConfig.root}/src/stories`;
-      const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
+      const newStoriesPath = `${oldStoriesPath}/${componentName}`;
       const storyFiles: string[] = [];
 
       visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
