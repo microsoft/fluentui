@@ -3,8 +3,8 @@ import { makeStyles } from '@griffel/react';
 import { Button } from '@fluentui/react-button';
 import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body1, Caption1, Subtitle1 } from '@fluentui/react-text';
-import { Card, CardHeader, CardFooter, CardPreview } from '../index';
-import type { CardProps } from '../index';
+import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
+import type { CardProps } from '@fluentui/react-card';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';

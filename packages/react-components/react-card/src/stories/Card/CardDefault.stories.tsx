@@ -4,7 +4,7 @@ import { Body1, Caption1 } from '@fluentui/react-text';
 
 import { Button } from '@fluentui/react-button';
 import { ArrowReplyRegular, ShareRegular } from '@fluentui/react-icons';
-import { Card, CardFooter, CardHeader, CardPreview } from '../index';
+import { Card, CardFooter, CardHeader, CardPreview } from '@fluentui/react-card';
 import { ASSET_URL } from './SampleCard.stories';
 
 const avatarElviaURL = ASSET_URL + '/assets/avatar_elvia.svg';
