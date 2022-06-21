@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Browser } from 'puppeteer';
 
+import { PROVIDER_ID } from './utils/constants';
 import { hrToSeconds } from './utils/helpers';
 import { launchBrowser } from './utils/launchBrowser';
 
@@ -37,6 +38,8 @@ export async function runTest(browser: Browser, url: string): Promise<void> {
   });
 
   await page.goto(url);
+  await page.waitForSelector(`#${PROVIDER_ID}`);
+
   await page.close();
 
   if (error) {

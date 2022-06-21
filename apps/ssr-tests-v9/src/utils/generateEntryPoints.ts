@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
 
+import { PROVIDER_ID } from './constants';
 import { getImportsFromIndexFile } from './getImportsFromIndexFile';
 
 type GenerateEntryPointsConfig = {
@@ -50,7 +51,7 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
 
   export const App = () => (
       <SSRProvider>
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider id="${PROVIDER_ID}" theme={teamsLightTheme}>
       ${imports.map(entry => `<${entry.imported} />`).join('\n')}
     </FluentProvider>
     </SSRProvider>
