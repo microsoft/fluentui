@@ -96,12 +96,91 @@ const usePieStyles = makeStyles({
 
 const useStackStyles = makeStyles({
   base: {
-    outlineColor: tokens.colorNeutralBackground2,
-    outlineStyle: 'solid',
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      display: 'inline-flex',
+      // Border is used instead of outline due to a bug in webkit browsers where border-radius is ignored in outline.
+      ...shorthands.borderColor(tokens.colorNeutralBackground2),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      ...shorthands.borderStyle('solid'),
+
+      '@media (forced-colors: active)': {
+        forcedColorAdjust: 'none',
+      },
+    },
   },
-  thick: { outlineWidth: tokens.strokeWidthThick },
-  thicker: { outlineWidth: tokens.strokeWidthThicker },
-  thickest: { outlineWidth: tokens.strokeWidthThickest },
+  overflowButton: {
+    // border-color has to be set to transparent when there's focus due to the outline overlapping the focus ring.
+    '&:focus': {
+      '&::after': {
+        ...shorthands.borderColor('transparent'),
+      },
+    },
+    // hide inner border when using high contrast mode and use the outer (::after) to match Avatar's outline
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('Canvas'),
+    },
+  },
+  thick: {
+    '&::after': {
+      width: '100%',
+      height: '100%',
+      left: `calc(-1 * ${tokens.strokeWidthThick})`,
+      top: `calc(-1 * ${tokens.strokeWidthThick})`,
+      ...shorthands.borderWidth(tokens.strokeWidthThick),
+    },
+  },
+  thicker: {
+    '&::after': {
+      width: '100%',
+      height: '100%',
+      left: `calc(-1 * ${tokens.strokeWidthThicker})`,
+      top: `calc(-1 * ${tokens.strokeWidthThicker})`,
+      ...shorthands.borderWidth(tokens.strokeWidthThicker),
+    },
+  },
+  thickest: {
+    '&::after': {
+      width: '100%',
+      height: '100%',
+      left: `calc(-1 * ${tokens.strokeWidthThickest})`,
+      top: `calc(-1 * ${tokens.strokeWidthThickest})`,
+      ...shorthands.borderWidth(tokens.strokeWidthThickest),
+    },
+  },
+  borderThin: {
+    '&::after': {
+      width: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
+      height: `calc(100% + ${tokens.strokeWidthThin} * 2)`,
+      left: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
+      top: `calc(-1 * (${tokens.strokeWidthThick} + ${tokens.strokeWidthThin}))`,
+    },
+  },
+  borderThick: {
+    '&::after': {
+      width: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
+      height: `calc(100% + ${tokens.strokeWidthThick} * 2)`,
+      left: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
+      top: `calc(-1 * ${tokens.strokeWidthThick} * 2)`,
+    },
+  },
+  borderThicker: {
+    '&::after': {
+      width: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
+      height: `calc(100% + ${tokens.strokeWidthThicker} * 2)`,
+      left: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
+      top: `calc(-1 * ${tokens.strokeWidthThicker} * 2)`,
+    },
+  },
+  borderThickest: {
+    '&::after': {
+      width: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
+      height: `calc(100% + ${tokens.strokeWidthThickest} * 2)`,
+      left: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
+      top: `calc(-1 * ${tokens.strokeWidthThickest} * 2)`,
+    },
+  },
   xxs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXXS})` } },
   xs: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalXS})` } },
   s: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalS})` } },
@@ -182,7 +261,11 @@ export const useAvatarGroupItemStyles_unstable = (state: AvatarGroupItemState): 
  * Hook for getting the className for the children of AvatarGroup. This hook will provide the spacing and outlines
  * needed for each layout.
  */
-export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size: AvatarSizes): string => {
+export const useGroupChildClassName = (
+  layout: AvatarGroupProps['layout'],
+  size: AvatarSizes,
+  isOverflowButton?: boolean,
+): string => {
   const stackStyles = useStackStyles();
   const spreadStyles = useSpreadStyles();
   const layoutClasses = [];
@@ -197,6 +280,22 @@ export const useGroupChildClassName = (layout: AvatarGroupProps['layout'], size:
         layoutClasses.push(stackStyles.thicker);
       } else {
         layoutClasses.push(stackStyles.thickest);
+      }
+
+      // When the child is an overflowButton, we have to calculate the overflowButton's border + width + outline width
+      // since the ::after pseudo-element doesn't take the overflowButton's border for its size.
+      if (isOverflowButton) {
+        layoutClasses.push(stackStyles.overflowButton);
+
+        if (size < 36) {
+          layoutClasses.push(stackStyles.borderThin);
+        } else if (size < 56) {
+          layoutClasses.push(stackStyles.borderThick);
+        } else if (size < 72) {
+          layoutClasses.push(stackStyles.borderThicker);
+        } else {
+          layoutClasses.push(stackStyles.borderThickest);
+        }
       }
 
       if (size < 24) {

@@ -35,6 +35,18 @@ describe('Select', () => {
     expect(result.container).toMatchSnapshot();
   });
 
+  it('handles the defaultValue attribute', () => {
+    const { getByTestId } = render(
+      <Select defaultValue="B">
+        <option>A</option>
+        <option data-testid="option-b">B</option>
+        <option>C</option>
+      </Select>,
+    );
+
+    expect((getByTestId('option-b') as HTMLOptionElement).selected).toBeTruthy();
+  });
+
   it('handles the disabled attribute', () => {
     const { getByTestId } = render(<Select data-testid="select" disabled />);
     expect((getByTestId('select') as HTMLSelectElement).disabled).toBeTruthy();

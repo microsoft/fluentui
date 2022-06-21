@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-accordion",
-  "version": "9.0.0-rc.13",
+  "version": "9.0.0-rc.14",
   "description": "Fluent UI accordion component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,11 @@
   "dependencies": {
     "@fluentui/react-aria": "9.0.0-rc.10",
     "@fluentui/react-context-selector": "9.0.0-rc.10",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.10",
+    "@fluentui/react-shared-contexts": "9.0.0-rc.11",
     "@fluentui/react-icons": "^2.0.172-rc.8",
     "@griffel/react": "1.1.0",
-    "@fluentui/react-tabster": "9.0.0-rc.13",
-    "@fluentui/react-theme": "9.0.0-rc.9",
+    "@fluentui/react-tabster": "9.0.0-rc.14",
+    "@fluentui/react-theme": "9.0.0-rc.10",
     "@fluentui/react-utilities": "9.0.0-rc.10",
     "tslib": "^2.1.0"
   },
