@@ -1,4 +1,4 @@
-import { Menu } from '../index';
+import { Menu } from '@fluentui/react-menu';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';

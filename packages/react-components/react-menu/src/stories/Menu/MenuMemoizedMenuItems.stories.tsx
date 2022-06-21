@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuItemCheckboxProps } from '../index';
+import {
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItemCheckbox,
+  MenuPopover,
+  MenuItemCheckboxProps,
+} from '@fluentui/react-menu';
 
 import { Button } from '@fluentui/react-button';
 import { EditFilled, EditRegular, bundleIcon } from '@fluentui/react-icons';

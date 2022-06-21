@@ -1,4 +1,4 @@
-import { MenuList } from '../index';
+import { MenuList } from '@fluentui/react-menu';
 import descriptionMd from './MenuListDescription.md';
 
 export { Default } from './MenuListDefault.stories';

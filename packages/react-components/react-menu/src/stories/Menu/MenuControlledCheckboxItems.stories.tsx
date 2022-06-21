@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuProps } from '@fluentui/react-menu';
 
 import { Button } from '@fluentui/react-button';
 import {
@@ -17,14 +17,21 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const CheckboxItems = () => {
+export const ControlledCheckboxItems = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ edit: ['cut', 'paste'] });
+  const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  };
+
   return (
     <Menu>
       <MenuTrigger>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>
-        <MenuList>
+        <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
           <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
             Cut
           </MenuItemCheckbox>
@@ -38,19 +45,4 @@ export const CheckboxItems = () => {
       </MenuPopover>
     </Menu>
   );
-};
-
-CheckboxItems.parameters = {
-  docs: {
-    description: {
-      story: [
-        'A variant of `MenuItem` that handles checkbox like selection. The `name` and `value` props are are used',
-        'similar to [HTML checkboxes with `input`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox)',
-        '',
-        '```html',
-        '<input type="checkbox" name="name" value="value" />',
-        '```',
-      ].join('\n'),
-    },
-  },
 };

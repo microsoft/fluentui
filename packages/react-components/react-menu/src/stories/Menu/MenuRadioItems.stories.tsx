@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItemRadio, MenuPopover, MenuProps } from '../index';
+import { Menu, MenuTrigger, MenuList, MenuItemRadio, MenuPopover } from '@fluentui/react-menu';
 
 import { Button } from '@fluentui/react-button';
 import {
@@ -17,19 +17,14 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const ControlledRadioItems = () => {
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ font: ['calibri'] });
-  const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
-    setCheckedValues(s => ({ ...s, [name]: checkedItems }));
-  };
-
+export const RadioItems = () => {
   return (
     <Menu>
       <MenuTrigger>
         <Button>Toggle menu</Button>
       </MenuTrigger>
       <MenuPopover>
-        <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuList>
           <MenuItemRadio icon={<CutIcon />} name="font" value="segoe">
             Segoe
           </MenuItemRadio>
@@ -43,4 +38,19 @@ export const ControlledRadioItems = () => {
       </MenuPopover>
     </Menu>
   );
+};
+
+RadioItems.parameters = {
+  docs: {
+    description: {
+      story: [
+        'A variant of `MenuItem` that handles radio like selection. The `name` and `value` props are are used',
+        'similar to [HTML checkboxes with `input`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)',
+        '',
+        '```html',
+        '<input type="radio" name="name" value="value" />',
+        '```',
+      ].join('\n'),
+    },
+  },
 };

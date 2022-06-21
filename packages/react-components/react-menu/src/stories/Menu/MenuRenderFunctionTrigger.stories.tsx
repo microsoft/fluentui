@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { ChevronDownRegular } from '@fluentui/react-icons';
 
-import { Menu, MenuProps, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuTriggerChildProps } from '../index';
+import {
+  Menu,
+  MenuProps,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  MenuTriggerChildProps,
+} from '@fluentui/react-menu';
 
 const buttonStyle = { height: 22, verticalAlign: 'middle' };
 
