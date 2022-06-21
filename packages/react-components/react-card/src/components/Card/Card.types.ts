@@ -1,11 +1,17 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+/**
+ * Slots available in the Card component.
+ */
 export type CardSlots = {
+  /**
+   * Root element of the component.
+   */
   root: Slot<'div'>;
 };
 
 /**
- * Card Props
+ * Card component props.
  */
 export type CardProps = ComponentProps<CardSlots> & {
   appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
@@ -28,14 +34,26 @@ export type CardProps = ComponentProps<CardSlots> & {
    * This behaviour will cycle through all elements inside of the Card when pressing the Tab key and then release focus
    * after the last inner element.
    *
-   * @defaultvalue off
+   * @default 'off'
    */
   focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
 
+  /**
+   * Defines the orientation of the card.
+   *
+   * @default 'vertical'
+   */
+  orientation?: 'horizontal' | 'vertical';
+
+  /**
+   * Controls the card's border radius and padding between inner elements.
+   *
+   * @default 'medium'
+   */
   size?: 'small' | 'medium' | 'large';
 };
 
 /**
- * State used in rendering Card
+ * State used in rendering Card.
  */
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;

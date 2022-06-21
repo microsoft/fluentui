@@ -244,7 +244,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             }
             yMaxValue={120}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             margins={{ left: 50 }}
             colors={['red', 'white', 'green', 'black']}

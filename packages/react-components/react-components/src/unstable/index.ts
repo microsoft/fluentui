@@ -9,6 +9,26 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 export {
+  AvatarGroup,
+  AvatarGroupItem,
+  avatarGroupClassNames,
+  avatarGroupItemClassNames,
+  renderAvatarGroup_unstable,
+  renderAvatarGroupItem_unstable,
+  useAvatarGroup_unstable,
+  useAvatarGroupItem_unstable,
+  useAvatarGroupStyles_unstable,
+  useAvatarGroupItemStyles_unstable,
+} from '@fluentui/react-avatar';
+export type {
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+  AvatarGroupItemProps,
+  AvatarGroupItemSlots,
+  AvatarGroupItemState,
+} from '@fluentui/react-avatar';
+export {
   Card,
   CardFooter,
   CardHeader,
@@ -70,6 +90,31 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
+
+export {
+  Toolbar,
+  ToolbarDivider,
+  ToolbarToggleButton,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbar_unstable,
+  useToolbarDividerStyles_unstable,
+  useToolbarStyles_unstable,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from '@fluentui/react-toolbar';
 
 export {
   Overflow,

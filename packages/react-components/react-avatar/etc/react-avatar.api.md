@@ -4,7 +4,8 @@
 
 ```ts
 
-import { Button } from '@fluentui/react-button';
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -34,35 +35,43 @@ export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
 export const avatarGroupItemClassNames: SlotClassNames<AvatarGroupItemSlots>;
 
 // @public
-export type AvatarGroupItemProps = ComponentProps<AvatarGroupItemSlots> & {};
+export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSlots>, 'avatar'>, 'size' | 'shape'>;
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    avatar: NonNullable<Slot<typeof Avatar>>;
+    overflowLabel: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots>;
+export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
+    isOverflowItem?: boolean;
+    nonOverflowAvatarsCount: number;
+    layout: AvatarGroupProps['layout'];
+    size: AvatarSizes;
+};
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
-    overflowIndicator?: 'number-overflowed' | 'icon';
+    overflowIndicator?: 'count' | 'icon';
     size?: AvatarSizes;
-    strings?: AvatarGroupStrings;
 };
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
-    root: Slot<'div'>;
-    popoverTrigger?: Slot<typeof Button>;
-    popoverSurface?: Slot<typeof PopoverSurface>;
+    root: NonNullable<Slot<'div'>>;
+    overflowButton?: NonNullable<Slot<'button'>>;
+    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & {
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
+    hasOverflow: boolean;
     tooltipContent: TooltipProps['content'];
+    nonOverflowAvatarsCount: number;
 };
 
 // @public

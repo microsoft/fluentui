@@ -35,7 +35,15 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+
+    // external custom addons
+
+    /**  @see https://github.com/microsoft/fluentui-storybook-addons */
     'storybook-addon-export-to-codesandbox',
+
+    // internal monorepo custom addons
+
+    /**  @see ../packages/react-components/react-storybook-addon */
     '@fluentui/react-storybook-addon',
   ],
   webpackFinal: config => {
@@ -71,6 +79,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   core: {
     builder: 'webpack5',
+    lazyCompilation: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo

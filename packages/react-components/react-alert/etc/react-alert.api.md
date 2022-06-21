@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';

@@ -1,4 +1,6 @@
-import { LaunchOptions } from 'puppeteer';
+import { launch } from 'puppeteer';
+
+type LaunchOptions = Parameters<typeof launch>[0];
 
 /** Common set of args to be passed to Chromium. */
 const chromiumArgs: LaunchOptions['args'] = [
@@ -6,7 +8,7 @@ const chromiumArgs: LaunchOptions['args'] = [
   process.env.TF_BUILD && '--single-process',
 ].filter(Boolean);
 
-export const safeLaunchOptions = (launchOptions?: LaunchOptions) => {
+export const safeLaunchOptions = (launchOptions?: LaunchOptions): LaunchOptions => {
   const mergedChromiumArgs = [...((launchOptions && launchOptions.args) || []), ...chromiumArgs];
 
   return Object.assign({}, launchOptions, { args: mergedChromiumArgs });

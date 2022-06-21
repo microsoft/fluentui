@@ -13,7 +13,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const { appearance = 'filled', focusMode = 'off', size = 'medium' } = props;
+  const { appearance = 'filled', focusMode = 'off', orientation = 'vertical', size = 'medium' } = props;
 
   const focusMap = {
     off: undefined,
@@ -30,6 +30,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   return {
     appearance,
+    orientation,
     size,
 
     components: { root: 'div' },

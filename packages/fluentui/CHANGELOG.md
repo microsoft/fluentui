@@ -18,10 +18,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Features
+- Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
+
+### Fixes
+- Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
+- Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
+
+<!--------------------------------[ v0.63.1 ]------------------------------- -->
+## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.0..@fluentui/react-northstar_v0.63.1)
+
 ### Fixes
 
 - Remove unnecessary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
 - Render `selectionIndicator` in `TreeTitle` only when it's needed @layershifter ([#23131](https://github.com/microsoft/fluentui/pull/23131))
+- Setting `flex-schrink: 0` on listItemHeaderMediaStyle @simonmysun ([#23338](https://github.com/microsoft/fluentui/pull/23338))
+- Return selected value to the `Dropdown` label @jurokapsiar ([#23407](https://github.com/microsoft/fluentui/pull/23407))
 
 <!--------------------------------[ v0.63.0 ]------------------------------- -->
 ## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)

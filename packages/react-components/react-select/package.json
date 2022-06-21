@@ -31,7 +31,7 @@
     "@fluentui/react-conformance-griffel": "9.0.0-beta.8"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.166-rc.3",
+    "@fluentui/react-icons": "^2.0.172-rc.8",
     "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.10",
     "@griffel/react": "1.1.0",

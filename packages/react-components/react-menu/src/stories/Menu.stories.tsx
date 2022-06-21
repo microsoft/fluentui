@@ -9,7 +9,7 @@ export { AligningWithIcons } from './MenuAligningWithIcons.stories';
 export { AligningWithSelectableItems } from './MenuAligningWithSelectableItems.stories';
 export { SecondaryContentForMenuItems } from './MenuSecondaryContentForMenuItems.stories';
 export { ControllingOpenAndClose } from './MenuControllingOpenAndClose.stories';
-export { GrouppingItems } from './MenuGrouppingItems.stories';
+export { GroupingItems } from './MenuGroupingItems.stories';
 export { VisualDividerOnly } from './MenuVisualDividerOnly.stories';
 export { CheckboxItems } from './MenuCheckboxItems.stories';
 export { RadioItems } from './MenuRadioItems.stories';

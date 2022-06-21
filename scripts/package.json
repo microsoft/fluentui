@@ -4,8 +4,7 @@
   "private": true,
   "main": "./index.js",
   "bin": {
-    "just-scripts": "./just-scripts.js",
-    "e2e": "./cypress.js"
+    "just-scripts": "./just-scripts.js"
   },
   "scripts": {
     "build": "echo no-op",
@@ -31,7 +30,6 @@
     "@types/inquirer": "^6.5.0",
     "@types/lerna-alias": "^3.0.0",
     "@types/lodash": "^4.14.149",
-    "@types/puppeteer": "1.12.3",
     "@types/read-pkg-up": "^6.0.0",
     "async": "^2.6.1",
     "babel-plugin-annotate-pure-imports": "^1.0.0-1",
@@ -66,7 +64,6 @@
     "plop": "^2.6.0",
     "progress": "^2.0.3",
     "prompts": "^2.3.0",
-    "puppeteer": "^1.13.0",
     "react-hot-loader": "^4.13.0",
     "react-vis": "^1.11.6",
     "read-pkg-up": "^7.0.1",

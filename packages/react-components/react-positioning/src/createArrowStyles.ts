@@ -74,7 +74,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
 
     ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 
-    ':before': {
+    '::before': {
       content: '""',
       visibility: 'visible',
       position: 'absolute',

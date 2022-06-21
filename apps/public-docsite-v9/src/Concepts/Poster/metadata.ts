@@ -159,6 +159,15 @@ export const libraryInfo: LibraryInfo = {
             { name: 'PopoverTrigger', componentType: 'component' },
           ],
         },
+        {
+          name: 'react-toolbar',
+          codeItems: [
+            { name: 'Toolbar', componentType: 'component' },
+            { name: 'ToolbarButton', componentType: 'component' },
+            { name: 'ToolbarToggleButton', componentType: 'component' },
+            { name: 'ToolbarDivider', componentType: 'component' },
+          ],
+        },
       ],
     },
     {

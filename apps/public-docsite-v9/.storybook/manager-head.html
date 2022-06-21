@@ -136,6 +136,13 @@
   }
 
   /*
+  * Hides "Addons" button from mobile view nav.
+  */
+  nav > button:last-child {
+    display: none;
+  }
+
+  /*
   Storybook has proposed a feature for this in https://github.com/storybookjs/storybook/issues/9209
   which will configure stories to exist in deeplink URL format, but do not appear in the nav tree or the docs page
   Usign suggested temporary workaround until storybook gets proper support

@@ -54,16 +54,17 @@ export const usePresenceBadge_unstable = (
   props: PresenceBadgeProps,
   ref: React.Ref<HTMLElement>,
 ): PresenceBadgeState => {
+  const statusText = DEFAULT_STRINGS[props.status ?? 'available'];
+  const oofText = props.outOfOffice && props.status !== 'out-of-office' ? ` ${DEFAULT_STRINGS['out-of-office']}` : '';
   const state: PresenceBadgeState = {
     ...useBadge_unstable(
       {
         size: 'medium',
+        'aria-label': statusText + oofText,
+        role: 'img',
         ...props,
         icon: resolveShorthand(props.icon, {
           required: true,
-          defaultProps: {
-            'aria-label': props.status && DEFAULT_STRINGS[props.status],
-          },
         }),
       },
       ref,

@@ -13,6 +13,7 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
+      "@fluentui/babel-preset-global-context": ["packages/react-components/babel-preset-global-context/src/index.ts"],
       "@fluentui/global-context": ["packages/react-components/global-context/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
       "@fluentui/keyboard-keys": ["packages/react-components/keyboard-keys/src/index.ts"],
@@ -60,6 +61,7 @@
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
+      "@fluentui/react-theme-sass": ["packages/react-components/react-theme-sass/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],

@@ -39,11 +39,11 @@
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0",
-    "@storybook/addons": "^6.4.19",
-    "@storybook/api": "^6.4.19",
-    "@storybook/components": "^6.4.19",
-    "@storybook/core-events": "^6.4.19",
-    "@storybook/theming": "^6.4.19"
+    "@storybook/addons": "^6.5.5",
+    "@storybook/api": "^6.5.5",
+    "@storybook/components": "^6.5.5",
+    "@storybook/core-events": "^6.5.5",
+    "@storybook/theming": "^6.5.5"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -57,6 +57,9 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
+    },
+    "./preset": {
+      "require": "./preset.js"
     }
   }
 }

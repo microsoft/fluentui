@@ -38,10 +38,12 @@ const useStyles = makeStyles({
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
-        color: tokens.colorNeutralForeground2BrandSelected,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
+      },
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandSelected,
       },
     },
 

@@ -1,8 +1,125 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 30 May 2022 07:44:12 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Jun 2022 07:45:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.77.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.0)
+
+Mon, 20 Jun 2022 07:45:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.76.1..@fluentui/react_v8.77.0)
+
+### Minor changes
+
+- feat: Allow `null` as value for choice group selected key ([PR #23518](https://github.com/microsoft/fluentui/pull/23518) by lingfangao@hotmail.com)
+
+## [8.76.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.1)
+
+Fri, 17 Jun 2022 07:41:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.76.0..@fluentui/react_v8.76.1)
+
+### Patches
+
+- make row count zero when placeholder data is true because header will still render ([PR #23523](https://github.com/microsoft/fluentui/pull/23523) by mgodbolt@microsoft.com)
+
+## [8.76.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.76.0)
+
+Wed, 15 Jun 2022 21:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.1..@fluentui/react_v8.76.0)
+
+### Minor changes
+
+- feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone. ([PR #23563](https://github.com/microsoft/fluentui/pull/23563) by Humberto.Morimoto@microsoft.com)
+
+## [8.75.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.1)
+
+Wed, 15 Jun 2022 07:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.75.0..@fluentui/react_v8.75.1)
+
+### Patches
+
+- fix: Adding close button to Dropdown list when it opens as a panel. ([PR #23524](https://github.com/microsoft/fluentui/pull/23524) by Humberto.Morimoto@microsoft.com)
+- handle entering key pressing in contenteditable element in SelectionZone ([PR #23472](https://github.com/microsoft/fluentui/pull/23472) by liqing@microsoft.com)
+
+## [8.75.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.75.0)
+
+Tue, 14 Jun 2022 07:52:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.74.0..@fluentui/react_v8.75.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23487](https://github.com/microsoft/fluentui/pull/23487) by seanmonahan@microsoft.com)
+
+## [8.74.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.74.0)
+
+Mon, 13 Jun 2022 07:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.73.0..@fluentui/react_v8.74.0)
+
+### Minor changes
+
+- FocusTrapZone: deprecate ignoreExternalFocusing in favor of disableRestoreFocus, and fix bugs with handling prop changes ([PR #22500](https://github.com/microsoft/fluentui/pull/22500) by elcraig@microsoft.com)
+- Bump @fluentui/react-hooks to v8.6.0 ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by beachball)
+
+### Patches
+
+- move Calendar day focus styles to correct element ([PR #23311](https://github.com/microsoft/fluentui/pull/23311) by sarah.higley@microsoft.com)
+
+## [8.73.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.73.0)
+
+Fri, 10 Jun 2022 07:46:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.3..@fluentui/react_v8.73.0)
+
+### Minor changes
+
+- add isSelectedOnFocus prop to DetailsList ([PR #23467](https://github.com/microsoft/fluentui/pull/23467) by seanmonahan@microsoft.com)
+- Calendar/Datepicker: add preventDefault to FocusZone keys to prevent page scroll when hitting bounds ([PR #23441](https://github.com/microsoft/fluentui/pull/23441) by sarah.higley@microsoft.com)
+
+### Patches
+
+- set defaultMode to responsive mode provided as props, so that in error scenarios we can fallback to this mode ([PR #23402](https://github.com/microsoft/fluentui/pull/23402) by shmiitian@gmail.com)
+- fix: Persona no longer renders empty divs for secondaryText, tertiaryText, and optionalText if not present ([PR #23401](https://github.com/microsoft/fluentui/pull/23401) by behowell@microsoft.com)
+
+## [8.72.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.3)
+
+Thu, 09 Jun 2022 07:45:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.2..@fluentui/react_v8.72.3)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.7.0 ([PR #23445](https://github.com/microsoft/fluentui/pull/23445) by beachball)
+
+## [8.72.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.2)
+
+Tue, 07 Jun 2022 07:48:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.1..@fluentui/react_v8.72.2)
+
+### Patches
+
+- Only stop esc key propagation when picker is open ([PR #23337](https://github.com/microsoft/fluentui/pull/23337) by tand@microsoft.com)
+- Update high-contrast mixins to support forced-colors ([PR #23285](https://github.com/microsoft/fluentui/pull/23285) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.8 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.1 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/react-focus to v8.6.1 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/style-utilities to v8.7.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+- Bump @fluentui/common-styles to v1.1.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+
+## [8.72.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.1)
+
+Thu, 02 Jun 2022 07:38:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.72.0..@fluentui/react_v8.72.1)
+
+### Patches
+
+- update Layer to use getDocument instead of WindowContext document ([PR #23052](https://github.com/microsoft/fluentui/pull/23052) by sarah.higley@microsoft.com)
+
+## [8.72.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.72.0)
+
+Wed, 01 Jun 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.71.1..@fluentui/react_v8.72.0)
+
+### Minor changes
+
+- allow for showing a sortable icon and sortable aria-label on an unsorted but sortable column in a DetailsList ([PR #22947](https://github.com/microsoft/fluentui/pull/22947) by paruther@microsoft.com)
 
 ## [8.71.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.71.1)
 

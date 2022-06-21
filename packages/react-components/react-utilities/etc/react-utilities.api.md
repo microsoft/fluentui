@@ -65,8 +65,8 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @public
-export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElement & {
-    ref?: React_2.Ref<unknown>;
+export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
+    ref?: React_2.Ref<unknown> | undefined;
 };
 
 // @public
@@ -94,7 +94,7 @@ export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
 export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React_2.KeyboardEvent): boolean;
 
 // @public
-export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
+export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
 } & WithSlotRenderFunction<IntrisicElementProps<Type>> : Type extends React_2.ComponentType<infer Props> ? WithSlotRenderFunction<Props> : Type> | {
     [As in AlternateAs]: {
