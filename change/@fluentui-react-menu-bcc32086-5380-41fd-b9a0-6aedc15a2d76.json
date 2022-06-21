@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: use callback ref for focusing during open/close",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
