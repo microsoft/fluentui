@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: applying package updates",
+  "packageName": "@fluentui/react-link",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
