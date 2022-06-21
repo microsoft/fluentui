@@ -5,20 +5,27 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as d3Sankey from 'd3-sankey';
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 
-export class SankeyChartBase extends React.Component<
-  ISankeyChartProps,
-  {
-    containerWidth: number;
-    containerHeight: number;
-    selectedState: boolean;
-    selectedLinks: any[];
-    selectedNodes: any[];
-    selectedNode: any;
-  }
-> {
+/*eslint-disable @typescript-eslint/no-explicit-any */
+interface ISankeyChartState {
+  containerWidth: number;
+  containerHeight: number;
+  selectedState: boolean;
+  selectedLinks: any[];
+  selectedNodes: any[];
+  selectedNode?: any;
+}
+/*eslint-disable @typescript-eslint/no-explicit-any */
+
+const restNodeOpacity: number = 1;
+const restStreamOpacity: number = 0.6;
+const nonSelectedOpacity: number = 0.2;
+const nonSelectedNodeLabelOpacity: number = 0.6;
+
+export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
   private chartContainer: HTMLDivElement;
   private _reqID: number;
+
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
@@ -27,7 +34,6 @@ export class SankeyChartBase extends React.Component<
       selectedState: false,
       selectedLinks: [],
       selectedNodes: [],
-      selectedNode: '',
     };
   }
   public componentDidMount(): void {
@@ -104,6 +110,7 @@ export class SankeyChartBase extends React.Component<
                 ? this.state.selectedNode.color
                 : singleLink.color
             }
+            opacity={restStreamOpacity}
           >
             <title>
               <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
@@ -165,27 +172,25 @@ export class SankeyChartBase extends React.Component<
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getOpacityNode(singleNode: any): number {
-    if (this.state.selectedState) {
-      if (this.state.selectedNodes.indexOf(singleNode) === -1) {
-        return 0.6;
-      } else {
-        return 0.8;
-      }
+    if (this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) === -1) {
+      return nonSelectedOpacity;
+    } else {
+      return restNodeOpacity;
     }
-    return 1;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getOpacityNodeLabel(singleNode: any): number {
     if (this.state.selectedState) {
       if (this.state.selectedNodes.indexOf(singleNode) === -1) {
-        return 0.6;
+        return nonSelectedNodeLabelOpacity;
       } else {
-        return 1;
+        return restNodeOpacity;
       }
     }
-    return 1;
+    return restNodeOpacity;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -195,7 +200,6 @@ export class SankeyChartBase extends React.Component<
         selectedState: false,
         selectedNodes: [],
         selectedLinks: [],
-        selectedNode: '',
       });
     }
   }
