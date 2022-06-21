@@ -63,18 +63,22 @@ module.exports = createRule({
     }
 
     const paths = options[0].paths;
-    const restrictedToPreferred = new Map();
+    /** @type {Map<string, string | undefined>} */
+    const forbiddenPkgs = new Map();
+    /** @type {Set<string>} */
     const preferredPkgNames = new Set();
 
     paths.forEach(path => {
       const { forbidden, preferred } = path;
       forbidden.forEach(pkg => {
-        restrictedToPreferred.set(pkg, preferred);
+        forbiddenPkgs.set(pkg, preferred);
       });
     });
 
-    restrictedToPreferred.forEach(preferred => {
-      preferredPkgNames.add(preferred);
+    forbiddenPkgs.forEach(preferred => {
+      if (preferred) {
+        preferredPkgNames.add(preferred);
+      }
     });
 
     /** @type {FixMap}*/
@@ -96,7 +100,7 @@ module.exports = createRule({
         const packageName = imprt.source.value;
         const specifiers = imprt.specifiers;
 
-        if (!restrictedToPreferred.has(packageName) && !preferredPkgNames.has(packageName)) {
+        if (!forbiddenPkgs.has(packageName) && !preferredPkgNames.has(packageName)) {
           return;
         }
 
@@ -105,14 +109,19 @@ module.exports = createRule({
          * already present in the file.
          */
         function runLintRule(fixMap) {
-          const preferredImportForCurrentPkg = restrictedToPreferred.get(packageName);
+          const preferredImportForCurrentPkg = forbiddenPkgs.get(packageName);
           if (preferredPkgNames.has(packageName) && !fixMap[packageName]) {
             fixMap[packageName] = specifiers[specifiers.length - 1];
           }
 
-          if (restrictedToPreferred.has(packageName) && !preferredPkgNames.has(packageName)) {
-            if (!fixMap[preferredImportForCurrentPkg]) {
-              fixMap[preferredImportForCurrentPkg] = specifiers[specifiers.length - 1];
+          if (forbiddenPkgs.has(packageName) && !preferredPkgNames.has(packageName)) {
+            if (
+              !preferredImportForCurrentPkg ||
+              (preferredImportForCurrentPkg && !fixMap[preferredImportForCurrentPkg])
+            ) {
+              if (preferredImportForCurrentPkg) {
+                fixMap[preferredImportForCurrentPkg] = specifiers[specifiers.length - 1];
+              }
               context.report({
                 node: imprt,
                 messageId: 'restrictedImport',
