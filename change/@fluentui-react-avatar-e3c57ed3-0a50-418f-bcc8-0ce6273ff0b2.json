@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: Remove AvatarGroup and AvatarGroupItem warnings since they break the composition pattern and fixed issue when the children in AvatarGroup is a Fragment containing the AvatarGroupItems.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "none"
+}
