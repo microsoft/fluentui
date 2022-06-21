@@ -675,9 +675,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
-      const { projectConfig } = setup({ createDummyStories: true });
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-      const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
+      const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
       const componentName = names(normalizedProjectName).name.split('-')[1];
       const oldStoriesPath = `${projectConfig.root}/src/stories`;
       const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
@@ -685,7 +683,7 @@ describe('migrate-converged-pkg generator', () => {
 
       visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
         if (treePath.includes('.stories.')) {
-          storyFiles.push(treePath.split('/').slice(-1)[0]);
+          storyFiles.push(path.basename(treePath));
         }
       });
 
