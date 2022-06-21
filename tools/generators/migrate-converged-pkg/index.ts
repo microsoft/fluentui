@@ -13,6 +13,7 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  names,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -716,10 +717,11 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 }
 
 function moveStories(tree: Tree, options: NormalizedSchema) {
-  const componentName = options.normalizedPkgName.split('-')[1];
-  const oldStoriesPath = `${options.projectConfig.sourceRoot}/stories`;
-  const newStoriesPath = `${oldStoriesPath}/${componentName.charAt(0).toUpperCase()}${componentName.slice(1)}`;
-  const storiesExistInNewPath = tree.exists(newStoriesPath + '/');
+  const componentName = names(options.normalizedPkgName).className.replace('React', '');
+  const sourceRoot = options.projectConfig.sourceRoot ?? '';
+  const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
+  const newStoriesPath = joinPathFragments(oldStoriesPath, componentName);
+  const storiesExistInNewPath = tree.exists(newStoriesPath);
 
   if (storiesExistInNewPath) {
     return;
@@ -727,13 +729,14 @@ function moveStories(tree: Tree, options: NormalizedSchema) {
 
   visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
     if (treePath.includes('.stories.') || treePath.includes('.md')) {
-      let storyFileName = treePath.split('/').slice(-1)[0];
+      const storyFileName = path.basename(treePath);
+      const shouldBeMigratedToIndexFile = storyFileName.toLowerCase() === `${componentName.toLowerCase()}.stories.tsx`;
 
-      if (storyFileName.toLowerCase() === `${componentName}.stories.tsx`) {
-        storyFileName = 'index.stories.tsx';
-      }
+      const newStoryPath = joinPathFragments(
+        newStoriesPath,
+        shouldBeMigratedToIndexFile ? 'index.stories.tsx' : storyFileName,
+      );
 
-      const newStoryPath = `${newStoriesPath}/${storyFileName}`;
       tree.rename(treePath, newStoryPath);
       updateStoryFileImports(tree, options, newStoryPath);
     }
