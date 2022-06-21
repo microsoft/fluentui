@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     display: 'inline-block',
+    minWidth: '160px',
     position: 'relative',
 
     // windows high contrast mode focus indicator

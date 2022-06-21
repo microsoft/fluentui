@@ -24,12 +24,11 @@ const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: string[
 
 const useStyles = makeStyles({
   root: {
-    // Stack the label above the field
-    display: 'flex',
-    flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
+    // Stack the label above the field with a gap
+    display: 'grid',
+    gridTemplateRows: 'repeat(1fr)',
+    justifyItems: 'start',
     ...shorthands.gap('2px'),
-    // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
 });
