@@ -279,7 +279,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
   return (
     <div>
       <Link appearance="subtle" href={link}>
-        {props.isLightTheme ? 'Preview Light Theme in CodeSandbox' : 'Preview Dark Theme in CodeSandbox'}
+        {props.isLightTheme ? 'Preview light theme in CodeSandbox' : 'Preview dark theme in CodeSandbox'}
       </Link>
     </div>
   );
