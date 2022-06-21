@@ -2,39 +2,6 @@
   "name": "@fluentui/perf-test-react-components",
   "entries": [
     {
-      "date": "Tue, 21 Jun 2022 17:11:07 GMT",
-      "tag": "@fluentui/perf-test-react-components_v9.0.0-rc.0",
-      "version": "9.0.0-rc.0",
-      "comments": {
-        "patch": [
-          {
-            "author": "beachball",
-            "package": "@fluentui/perf-test-react-components",
-            "comment": "Bump @fluentui/react-avatar to v9.0.0-rc.13",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/perf-test-react-components",
-            "comment": "Bump @fluentui/react-button to v9.0.0-rc.14",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/perf-test-react-components",
-            "comment": "Bump @fluentui/react-provider to v9.0.0-rc.14",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/perf-test-react-components",
-            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.10",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          }
-        ]
-      }
-    },
-    {
       "date": "Tue, 31 May 2022 21:28:50 GMT",
       "tag": "@fluentui/perf-test-react-components_v9.0.0-rc.0",
       "version": "9.0.0-rc.0",
