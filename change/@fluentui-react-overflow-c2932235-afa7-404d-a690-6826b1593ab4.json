@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Revert \"applying package updates\"",
+  "packageName": "@fluentui/react-overflow",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "none"
+}

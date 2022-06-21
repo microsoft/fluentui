@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Revert \"applying package updates\"",
+  "packageName": "@fluentui/react-slider",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "none"
+}

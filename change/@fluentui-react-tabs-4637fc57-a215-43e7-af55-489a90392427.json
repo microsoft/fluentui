@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Revert \"applying package updates\"",
+  "packageName": "@fluentui/react-tabs",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "none"
+}
