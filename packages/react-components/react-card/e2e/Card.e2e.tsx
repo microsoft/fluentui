@@ -4,6 +4,7 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
+import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { Card, CardFooter, CardHeader } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 
@@ -12,7 +13,7 @@ const mountFluent = (element: JSX.Element) => {
 };
 
 const CardSample = (props: CardProps) => {
-  const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-card';
+  const ASSET_URL = 'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
 
   const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 
@@ -32,10 +33,10 @@ const CardSample = (props: CardProps) => {
           plum.
         </div>
         <CardFooter>
-          <Button id="open-button" onClick={alert} appearance="primary">
+          <Button id="open-button" onClick={() => console.log('open-button clicked')} appearance="primary">
             Open
           </Button>
-          <Button id="close-button" appearance="outline">
+          <Button id="close-button" onClick={() => console.log('close-button clicked')} appearance="outline">
             Close
           </Button>
         </CardFooter>
@@ -238,6 +239,118 @@ describe('Card', () => {
 
         cy.get('#card').should('be.focused');
       });
+    });
+  });
+
+  describe('selectable', () => {
+    it('should not be selectable by default', () => {
+      mountFluent(<CardSample />);
+
+      cy.get(`.${checkboxClassNames.input}`).should('not.exist');
+    });
+
+    it('should show checkbox when selectable', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).should('exist').should('not.be.checked');
+    });
+
+    it('should select with a mouse click', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).realClick();
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with the Enter key', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Enter');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with the Space key', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Space');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with a mouse click anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).realClick();
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with the Enter key anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).focus().realPress('Enter');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should select with the Space key anywhere on the card', () => {
+      mountFluent(<CardSample selectable />);
+
+      cy.get(`#card`).focus().realPress('Space');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+  });
+
+  describe('focusable + selectable', () => {
+    it('should not select on click', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`#card`).realClick();
+
+      cy.get(`.${checkboxClassNames.input}`).should('not.be.checked');
+    });
+
+    it('should not select on Enter key', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`#card`).focus().realPress('Enter');
+
+      cy.get(`.${checkboxClassNames.input}`).should('not.be.checked');
+    });
+
+    it('should not select on Space key', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`#card`).focus().realPress('Space');
+
+      cy.get(`.${checkboxClassNames.input}`).should('not.be.checked');
+    });
+
+    it('should select on checkbox click', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).realClick();
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
+    });
+
+    it('should not select on checkbox Enter key press', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Enter');
+
+      cy.get(`.${checkboxClassNames.input}`).should('not.be.checked');
+    });
+
+    it('should select on checkbox Space key press', () => {
+      mountFluent(<CardSample focusMode="no-tab" selectable />);
+
+      cy.get(`.${checkboxClassNames.input}`).focus().realPress('Space');
+
+      cy.get(`.${checkboxClassNames.input}`).should('be.checked');
     });
   });
 });

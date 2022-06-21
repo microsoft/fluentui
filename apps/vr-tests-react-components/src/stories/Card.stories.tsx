@@ -133,9 +133,9 @@ storiesOf('Card Converged', module)
       steps={new Screener.Steps()
         .snapshot('normal', { cropTo: '.testWrapper' })
         .hover('[role="group"]')
-        .snapshot('focused', { cropTo: '.testWrapper' })
+        .snapshot('hover', { cropTo: '.testWrapper' })
         .mouseDown('[role="group"]')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
+        .snapshot('click', { cropTo: '.testWrapper' })
         .end()}
     >
       <div className="testWrapper" style={{ width: '300px' }}>
@@ -151,7 +151,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -164,7 +163,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -177,7 +175,6 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
@@ -190,8 +187,83 @@ storiesOf('Card Converged', module)
       </Card>
     ),
     {
-      includeRtl: true,
       includeHighContrast: true,
       includeDarkMode: true,
     },
   );
+
+storiesOf('Card Converged', module)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('normal', { cropTo: '.testWrapper' })
+        .hover('[role="group"]')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('[role="group"]')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .mouseUp('[role="group"]')
+        .snapshot('selected', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      <div className="testWrapper" style={{ width: '300px' }}>
+        {story()}
+      </div>
+    </Screener>
+  ))
+  .addStory(
+    'appearance selectable - Filled',
+    () => (
+      <Card selectable appearance="filled">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Filled Alternative',
+    () => (
+      <Card selectable appearance="filled-alternative">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Outline',
+    () => (
+      <Card selectable appearance="outline">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'appearance selectable - Subtle',
+    () => (
+      <Card selectable appearance="subtle">
+        <SampleCardContent />
+      </Card>
+    ),
+    {
+      includeRtl: true,
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory('appearance focusable + selectable', () => (
+    <Card focusMode="no-tab" selectable>
+      <SampleCardContent />
+    </Card>
+  ));

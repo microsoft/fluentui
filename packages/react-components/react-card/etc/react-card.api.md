@@ -4,6 +4,9 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import type { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -87,15 +90,20 @@ export type CardProps = ComponentProps<CardSlots> & {
     focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
     orientation?: 'horizontal' | 'vertical';
     size?: 'small' | 'medium' | 'large';
+    selectable?: boolean;
+    selected?: boolean;
+    defaultSelected?: boolean;
+    onCardSelect?: (event: React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent, data: CardOnSelectData) => void;
 };
 
 // @public
 export type CardSlots = {
     root: Slot<'div'>;
+    select?: Slot<typeof Checkbox>;
 };
 
 // @public
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
+export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'focusMode' | 'orientation' | 'selectable' | 'selected' | 'size'>>;
 
 // @public
 export const renderCard_unstable: (state: CardState) => JSX.Element;

@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import type { CardProps, CardState } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { Enter, Space } from '@fluentui/keyboard-keys';
+import { Checkbox } from '@fluentui/react-checkbox';
 
 /**
  * Create the state required to render Card.
@@ -13,7 +15,19 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Card
  */
 export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const { appearance = 'filled', focusMode = 'off', orientation = 'vertical', size = 'medium' } = props;
+  const {
+    appearance = 'filled',
+    focusMode = 'off',
+    orientation = 'vertical',
+    size = 'medium',
+    select,
+    selectable = false,
+    selected,
+    defaultSelected = false,
+    onCardSelect,
+  } = props;
+
+  const [checked, setChecked] = React.useState(selected ?? defaultSelected);
 
   const focusMap = {
     off: undefined,
@@ -26,19 +40,56 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
     tabBehavior: focusMap[focusMode],
   });
 
-  const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
+  const focusAttrs = focusMode !== 'off' ? { ...groupperAttrs } : null;
+
+  const onChangeHandler = (event: React.MouseEvent | React.KeyboardEvent | React.ChangeEvent) => {
+    setChecked(!checked);
+    onCardSelect && onCardSelect(event, { selected: checked });
+  };
+
+  const selectionAttrs =
+    selectable === true && focusMode === 'off'
+      ? {
+          onClick: onChangeHandler,
+          onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => {
+            if (event.key === Enter || event.key === Space) {
+              event.preventDefault();
+              onChangeHandler(event);
+            }
+          },
+        }
+      : null;
+  const selectSlotAttrs =
+    selectable === true && focusMode !== 'off'
+      ? {
+          onChange: onChangeHandler,
+        }
+      : null;
 
   return {
     appearance,
+    focusMode,
     orientation,
     size,
+    selectable,
+    selected: checked,
 
-    components: { root: 'div' },
+    components: { root: 'div', select: Checkbox },
     root: getNativeElementProps(props.as || 'div', {
       ref,
       role: 'group',
+      tabIndex: selectable || focusMode !== 'off' ? 0 : undefined,
       ...focusAttrs,
+      ...selectionAttrs,
       ...props,
     }),
+    select: selectable
+      ? resolveShorthand(select || {}, {
+          defaultProps: {
+            checked,
+            ...selectSlotAttrs,
+          },
+        })
+      : undefined,
   };
 };
