@@ -17,7 +17,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         isBinary: false,
         content: dedent`
           import * as React from 'react';
-          import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+          import { makeStyles, makeStaticStyles, mergeClasses, shorthands } from '@griffel/react';
           import {
             tokens,
             Body1,
@@ -63,8 +63,19 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
             theme: Theme;
           }
 
+          const useStaticStyles = makeStaticStyles({
+            body: {
+              position: "fixed",
+              margin: "0px",
+              top: "0px",
+              left: "0px",
+              height: "100vh"
+            }
+          });
+
           const useStyles = makeStyles({
             root: {
+              height: "100vh",
               display: 'grid',
               alignItems: 'start',
               justifyContent: 'center',
@@ -117,6 +128,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
 
           export const Column1 = () => {
             const styles = useStyles();
+            useStaticStyles();
             return (
               <div className={styles.col1}>
                 <Title3 block>Make an impression</Title3>
