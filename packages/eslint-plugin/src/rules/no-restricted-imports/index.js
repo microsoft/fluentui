@@ -4,6 +4,8 @@ const createRule = require('../../utils/createRule');
 
 /**
  * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportClause} ImportClause
+ *
+ * Lookup for insertion point for new imports when moving a restricted import to a preferred import.
  * @typedef {{[preferredPkgName: string] : ImportClause}} FixMap
  *
  * @typedef {{
@@ -78,6 +80,12 @@ module.exports = createRule({
     forbiddenPkgs.forEach(preferred => {
       if (preferred) {
         preferredPkgNames.add(preferred);
+      }
+    });
+
+    forbiddenPkgs.forEach((_, forbidden) => {
+      if (preferredPkgNames.has(forbidden)) {
+        throw new Error('no-restricted-imports: Forbidden and Preferred Packages are not mutually exclusive.');
       }
     });
 
