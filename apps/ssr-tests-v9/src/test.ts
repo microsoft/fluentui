@@ -67,24 +67,24 @@ async function test(): Promise<void> {
 }
 
 test().catch(err => {
-  console.log('');
-  console.log(chalk.bgRed.whiteBright(' @fluentui/ssr-tests-v9 '));
+  console.error('');
+  console.error(chalk.bgRed.whiteBright(' @fluentui/ssr-tests-v9 '));
 
   if (err instanceof RenderError) {
-    console.log(
+    console.error(
       [
         '  The test failed.',
         'Please use `$ npx serve dist` or `$ open dist/index.html` to open a HTML page that is used in tests.',
       ].join(' '),
     );
-    console.log('  The reference error is below, you will see it in Devtools on the opened page.');
-    console.log('');
+    console.error('  The reference error is below, you will see it in Devtools on the opened page.');
+    console.error('');
   } else {
-    console.log('  The test is failed, the error below contains relevant information.');
-    console.log('');
+    console.error('  The test is failed, the error below contains relevant information.');
+    console.error('');
   }
 
-  console.log(err);
+  console.error(err);
 
   process.exit(1);
 });

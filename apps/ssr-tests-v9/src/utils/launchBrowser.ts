@@ -9,12 +9,12 @@ export async function launchBrowser(): Promise<Browser> {
       browser = await launch();
     } catch (err) {
       if (attempt === 5) {
-        console.log(`Failed to launch a browser after 5 attempts...`);
+        console.error(`Failed to launch a browser after 5 attempts...`);
         throw err;
       }
 
-      console.log('A browser failed to start, retrying...');
-      console.log(err);
+      console.warn('A browser failed to start, retrying...');
+      console.warn(err);
       attempt++;
     }
   }
