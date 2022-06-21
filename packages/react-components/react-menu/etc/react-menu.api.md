@@ -9,9 +9,12 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -256,7 +259,7 @@ export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checked
 };
 
 // @public (undocumented)
-export const MenuProvider: React_2.Provider<MenuContextValue> & React_2.FC<React_2.ProviderProps<MenuContextValue>>;
+export const MenuProvider: Provider<MenuContextValue> & FC<ProviderProps<MenuContextValue>>;
 
 // @public (undocumented)
 export type MenuSlots = {};
@@ -279,16 +282,16 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'inline' | 'onOpenChange' | 'openOnContext' | 'persistOnItemClick'> & Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll'>> & {
+export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'inline' | 'onOpenChange' | 'openOnContext' | 'persistOnItemClick'> & Required<Pick<MenuProps, 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay'>> & {
     contextTarget: ReturnType<typeof usePositioningMouseTarget>[0];
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
-    menuPopoverRef: React_2.MutableRefObject<HTMLElement>;
+    menuPopoverRef: React_2.MutableRefObject<HTMLElement | null>;
     menuTrigger: React_2.ReactNode;
     setContextTarget: ReturnType<typeof usePositioningMouseTarget>[1];
     setOpen: (e: MenuOpenEvents, data: MenuOpenChangeData) => void;
     triggerId: string;
-    triggerRef: React_2.MutableRefObject<HTMLElement>;
+    triggerRef: React_2.MutableRefObject<HTMLElement | null>;
 };
 
 // @public

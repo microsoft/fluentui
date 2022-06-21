@@ -36,9 +36,9 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
         // Needs to trigger on mouseover to support keyboard + mouse together
         // i.e. keyboard opens submenus while cursor is still on the parent
         node.addEventListener('mouseover', e => {
-          if (canDispatchCustomEventRef.current) {
+          if (canDispatchCustomEventRef.current && popoverRef.current) {
             canDispatchCustomEventRef.current = false;
-            dispatchMenuEnterEvent(popoverRef.current as HTMLElement, e);
+            dispatchMenuEnterEvent(popoverRef.current, e);
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore #16889 Node setTimeout type leaking
             throttleDispatchTimerRef.current = setTimeout(() => (canDispatchCustomEventRef.current = true), 250);

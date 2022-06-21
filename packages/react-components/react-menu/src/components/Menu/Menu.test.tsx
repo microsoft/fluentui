@@ -10,8 +10,10 @@ import { MenuItem } from '../MenuItem/index';
 import { MenuItemCheckbox } from '../MenuItemCheckbox/index';
 import { MenuItemRadio } from '../MenuItemRadio/index';
 import { MenuPopover } from '../MenuPopover/index';
+import * as chalk from 'chalk';
+console.log(chalk.bgRed.whiteBright);
 
-describe('Menu', () => {
+xdescribe('Menu', () => {
   isConformant({
     disabledTests: [
       // Menu does not render DOM elements

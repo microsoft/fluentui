@@ -20,9 +20,7 @@ describe('useMenuContextValues_unstable', () => {
         "hasIcons": undefined,
         "inline": undefined,
         "isSubmenu": false,
-        "menuPopoverRef": Object {
-          "current": null,
-        },
+        "menuPopoverRef": [Function],
         "onCheckedValueChange": [Function],
         "open": false,
         "openOnContext": undefined,

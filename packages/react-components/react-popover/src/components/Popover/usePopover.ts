@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   useControllableState,
   useEventCallback,
+  useMergedRefs,
   useOnClickOutside,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
@@ -119,12 +120,19 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
   const { findFirstFocusable } = useFocusFinders();
 
-  React.useEffect(() => {
-    if (open && positioningRefs.contentRef.current) {
-      const firstFocusable = findFirstFocusable(positioningRefs.contentRef.current);
-      firstFocusable?.focus();
-    }
-  }, [findFirstFocusable, open, positioningRefs.contentRef]);
+  // Use a callback ref because Portals require a second render in SSR so effects won't work
+  // https://github.com/microsoft/fluentui/issues/17893
+  const focusRef = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (el && positioningRefs.contentRef.current) {
+        const firstFocusable = findFirstFocusable(positioningRefs.contentRef.current);
+        firstFocusable?.focus();
+      }
+    },
+    [findFirstFocusable, positioningRefs],
+  );
+
+  positioningRefs.contentRef = useMergedRefs(positioningRefs.contentRef, focusRef);
 
   return {
     ...initialState,
@@ -212,5 +220,5 @@ function usePopoverRefs(
     triggerRef,
     contentRef,
     arrowRef,
-  } as const;
+  };
 }

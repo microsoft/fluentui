@@ -5,18 +5,22 @@ import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '.
 import { Button } from '@fluentui/react-button';
 
 export const Default = (props: Partial<MenuProps>) => (
-  <Menu {...props}>
-    <MenuTrigger>
-      <Button>Toggle menu</Button>
-    </MenuTrigger>
+  <>
+    <button>Focusable</button>
+    <Menu {...props}>
+      <MenuTrigger>
+        <Button>Toggle menu</Button>
+      </MenuTrigger>
 
-    <MenuPopover>
-      <MenuList>
-        <MenuItem>New </MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuItem disabled>Open File</MenuItem>
-        <MenuItem>Open Folder</MenuItem>
-      </MenuList>
-    </MenuPopover>
-  </Menu>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+    <button>Focusable</button>
+  </>
 );

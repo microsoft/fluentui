@@ -34,7 +34,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const { findFirstFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(menuPopoverRef.current);
+    const firstFocusable = menuPopoverRef.current && findFirstFocusable(menuPopoverRef.current);
     firstFocusable?.focus();
   }, [findFirstFocusable, menuPopoverRef]);
 

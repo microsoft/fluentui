@@ -7,13 +7,13 @@ import {
   useEventCallback,
   useOnScrollOutside,
 } from '@fluentui/react-utilities';
+import { Tab } from '@fluentui/keyboard-keys';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { elementContains } from '@fluentui/react-portal';
-import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
-import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
-import { useIsSubmenu } from '../../utils/useIsSubmenu';
+import { MENU_ENTER_EVENT, useOnMenuMouseEnter, useIsSubmenu, useFocusHelpers } from '../../utils/index';
 import type { MenuOpenChangeData, MenuOpenEvents, MenuProps, MenuState } from './Menu.types';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Menu.
@@ -75,8 +75,6 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     components: {},
   } as const;
 
-  // TODO Better way to narrow types ?
-
   const [open, setOpen] = useMenuOpenState(initialState);
   const [checkedValues, onCheckedValueChange] = useMenuSelectableState(initialState);
 
@@ -125,6 +123,7 @@ const useMenuOpenState = (
     | 'triggerRef'
     | 'openOnContext'
     | 'closeOnScroll'
+    | 'hoverDelay'
   > &
     Pick<MenuProps, 'open' | 'defaultOpen'>,
 ) => {
@@ -132,9 +131,7 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleKeyboardRef = React.useRef(false);
-  const shouldHandleTabRef = React.useRef(false);
-  const pressedShiftRef = React.useRef(false);
+  const keyboardOpenEventRef = React.useRef<React.KeyboardEvent | undefined>();
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -156,9 +153,7 @@ const useMenuOpenState = (
     }
 
     if (data.keyboard) {
-      shouldHandleKeyboardRef.current = true;
-      shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
-      pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+      keyboardOpenEventRef.current = e as React.KeyboardEvent;
     }
 
     if (data.bubble) {
@@ -180,9 +175,6 @@ const useMenuOpenState = (
         enteringTriggerRef.current = e.type === 'mouseenter' || e.type === 'mousemove';
       }
 
-      // FIXME leaking Node timeout type
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       setOpenTimeout.current = setTimeout(() => trySetOpen(e, data), state.hoverDelay);
     } else {
       trySetOpen(e, data);
@@ -224,54 +216,32 @@ const useMenuOpenState = (
     refs: [state.menuPopoverRef],
   });
 
+  const { focusFirst, focusBefore, focusAfter } = useFocusHelpers();
+  // Use a callback ref because Portals require a second render in SSR so effects won't work
+  // https://github.com/microsoft/fluentui/issues/17893
+  const focusRef = React.useCallback(
+    (el: HTMLElement | null) => {
+      if (el) {
+        focusFirst(el);
+      } else {
+        if (state.triggerRef.current) {
+          const triggerElement = state.triggerRef.current;
+          if (keyboardOpenEventRef.current?.key === Tab && !state.isSubmenu) {
+            keyboardOpenEventRef.current.shiftKey ? focusBefore(triggerElement) : focusAfter(triggerElement);
+          } else {
+            triggerElement.focus();
+          }
+        }
+      }
+    },
+    [focusFirst, focusBefore, focusAfter],
+  );
+
+  state.menuPopoverRef = useMergedRefs(state.menuPopoverRef, focusRef);
+
   // Clear timeout on unmount
   // Setting state after a component unmounts can cause memory leaks
-  React.useEffect(() => {
-    return () => {
-      clearTimeout(setOpenTimeout.current);
-    };
-  }, []);
-
-  // Manage focus for open state
-  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
-  const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, state.menuPopoverRef]);
-
-  const focusAfterMenuTrigger = React.useCallback(() => {
-    const nextFocusable = findNextFocusable(state.triggerRef.current);
-    nextFocusable?.focus();
-  }, [findNextFocusable, state.triggerRef]);
-
-  const focusBeforeMenuTrigger = React.useCallback(() => {
-    const prevFocusable = findPrevFocusable(state.triggerRef.current);
-    prevFocusable?.focus();
-  }, [findPrevFocusable, state.triggerRef]);
-
-  React.useEffect(() => {
-    if (open) {
-      focusFirst();
-    }
-  }, [open, focusFirst]);
-
-  React.useEffect(() => {
-    if (open) {
-      focusFirst();
-    }
-
-    if (shouldHandleKeyboardRef.current && !open) {
-      if (shouldHandleTabRef.current && !state.isSubmenu) {
-        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-      } else {
-        state.triggerRef.current?.focus();
-      }
-    }
-
-    shouldHandleKeyboardRef.current = false;
-    shouldHandleTabRef.current = false;
-    pressedShiftRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
+  React.useEffect(() => () => clearTimeout(setOpenTimeout.current), []);
 
   return [open ?? false, setOpen] as const;
 };
