@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { PopoverSurface } from '@fluentui/react-popover';
@@ -17,15 +16,9 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
   const { children, layout = 'spread', maxAvatars = 5, size = defaultAvatarGroupSize } = props;
   const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
-  const childrenArray = React.Children.toArray(children);
-
-  if (
-    process.env.NODE_ENV !== 'production' &&
-    childrenArray.find(child => React.isValidElement(child) && child.type !== AvatarGroupItem)
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn("AvatarGroup's children must be of type AvatarGroupItems.");
-  }
+  const childrenArray = React.Children.toArray(
+    React.isValidElement(children) && children.type === React.Fragment ? children.props.children : children,
+  );
 
   let rootChildren = childrenArray;
   let overflowChildren;
