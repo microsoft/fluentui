@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Revert \"applying package updates\"",
-  "packageName": "@fluentui/react-badge",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "none"
-}
