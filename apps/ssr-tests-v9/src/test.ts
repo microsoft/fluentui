@@ -7,7 +7,9 @@ import { PROVIDER_ID } from './utils/constants';
 import { hrToSeconds } from './utils/helpers';
 import { launchBrowser } from './utils/launchBrowser';
 
-class RenderError extends Error {}
+class RenderError extends Error {
+  public name = 'RangeError';
+}
 
 export async function runTest(browser: Browser, url: string): Promise<void> {
   const page = await browser.newPage();
