@@ -1,6 +1,6 @@
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList } from '../index';
+import { Tab, TabList } from '@fluentui/react-tabs';
 
 const useStyles = makeStyles({
   root: {

@@ -1,8 +1,8 @@
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { SelectTabData, SelectTabEvent, Tab, TabList } from '../index';
+import { Tab, TabList } from '@fluentui/react-tabs';
+import type { SelectTabData, SelectTabEvent, TabValue } from '@fluentui/react-tabs';
 import { AirplaneRegular, AirplaneTakeOffRegular, TimeAndWeatherRegular } from '@fluentui/react-icons';
-import { TabValue } from '../Tab';
 import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
