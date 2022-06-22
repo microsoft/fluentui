@@ -4,7 +4,7 @@ import { Button } from '@fluentui/react-button';
 import { createDOMRenderer, makeStyles, RendererProvider, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-import { FluentProvider } from '../FluentProvider';
+import { FluentProvider } from '@fluentui/react-provider';
 
 const useExampleStyles = makeStyles({
   button: {
