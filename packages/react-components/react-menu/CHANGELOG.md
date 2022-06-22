@@ -1,21 +1,8 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 21 Jun 2022 17:11:07 GMT and should not be manually modified.
+This log was last generated on Tue, 31 May 2022 21:28:40 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.14)
-
-Tue, 21 Jun 2022 17:11:07 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.0.0-rc.13..@fluentui/react-menu_v9.0.0-rc.14)
-
-### Changes
-
-- Bump @fluentui/react-portal to v9.0.0-rc.14 ([commit](https://github.com/microsoft/fluentui/commit/cdcfdb3f941571cd4def35c8f42f951455707794) by beachball)
-- Bump @fluentui/react-positioning to v9.0.0-rc.12 ([commit](https://github.com/microsoft/fluentui/commit/cdcfdb3f941571cd4def35c8f42f951455707794) by beachball)
-- Bump @fluentui/react-shared-contexts to v9.0.0-rc.11 ([commit](https://github.com/microsoft/fluentui/commit/cdcfdb3f941571cd4def35c8f42f951455707794) by beachball)
-- Bump @fluentui/react-tabster to v9.0.0-rc.14 ([commit](https://github.com/microsoft/fluentui/commit/cdcfdb3f941571cd4def35c8f42f951455707794) by beachball)
-- Bump @fluentui/react-theme to v9.0.0-rc.10 ([commit](https://github.com/microsoft/fluentui/commit/cdcfdb3f941571cd4def35c8f42f951455707794) by beachball)
 
 ## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.0.0-rc.13)
 

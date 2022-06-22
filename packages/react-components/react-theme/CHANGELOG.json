@@ -2,21 +2,6 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
-      "date": "Tue, 21 Jun 2022 17:11:07 GMT",
-      "tag": "@fluentui/react-theme_v9.0.0-rc.10",
-      "version": "9.0.0-rc.10",
-      "comments": {
-        "prerelease": [
-          {
-            "author": "miroslav.stastny@microsoft.com",
-            "package": "@fluentui/react-theme",
-            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed",
-            "comment": "BREAKING: reduce shared colors"
-          }
-        ]
-      }
-    },
-    {
       "date": "Mon, 23 May 2022 18:56:50 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",
