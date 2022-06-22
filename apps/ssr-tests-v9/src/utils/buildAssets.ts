@@ -1,5 +1,4 @@
 import { build, BuildOptions } from 'esbuild';
-import { getChromeVersion } from './getChromeVersion';
 
 const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 
@@ -16,11 +15,12 @@ type BuildConfig = {
   cjsOutfile: string;
   esmEntryPoint: string;
   esmOutfile: string;
+
+  chromeVersion: number;
 };
 
 export async function buildAssets(config: BuildConfig): Promise<void> {
-  const { cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
-  const chromeVersion = await getChromeVersion();
+  const { chromeVersion, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
 
   try {
     // Used for SSR rendering, see renderToHTML.js

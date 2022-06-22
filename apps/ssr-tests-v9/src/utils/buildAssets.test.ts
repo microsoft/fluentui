@@ -2,11 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as tmp from 'tmp';
 
-// Use mock to avoid launching Puppeteer for tests and avoid timeouts
-jest.mock('./getChromeVersion', () => ({
-  getChromeVersion: () => '100',
-}));
-
 import { buildAssets } from './buildAssets';
 
 function stripComments(content: string): string {
@@ -28,7 +23,7 @@ describe('buildAssets', () => {
     await fs.promises.writeFile(cjsEntryPoint, template);
     await fs.promises.writeFile(esmEntryPoint, template);
 
-    await buildAssets({ cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile });
+    await buildAssets({ chromeVersion: 100, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile });
 
     const cjsContent = stripComments(await fs.promises.readFile(cjsOutfile, { encoding: 'utf8' }));
     const esmContent = stripComments(await fs.promises.readFile(esmOutfile, { encoding: 'utf8' }));

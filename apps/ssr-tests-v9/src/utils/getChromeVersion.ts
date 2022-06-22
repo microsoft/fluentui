@@ -1,6 +1,6 @@
 import { launchBrowser } from './launchBrowser';
 
-export async function getChromeVersion(): Promise<string> {
+export async function getChromeVersion(): Promise<number> {
   const browser = await launchBrowser();
 
   // includes browser name, example: HeadlessChrome/103.0.5058.0
@@ -9,5 +9,5 @@ export async function getChromeVersion(): Promise<string> {
 
   await browser.close();
 
-  return version;
+  return parseInt(version, 10);
 }
