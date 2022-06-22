@@ -83,7 +83,7 @@ test().catch(err => {
     console.error('  The reference error is below, you will see it in Devtools on the opened page.');
     console.error('');
   } else {
-    console.error('  The test is failed, the error below contains relevant information.');
+    console.error('  The test failed, the error below contains relevant information.');
     console.error('');
   }
 
