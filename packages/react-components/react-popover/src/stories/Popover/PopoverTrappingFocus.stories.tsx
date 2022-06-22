@@ -3,7 +3,7 @@ import { Button } from '@fluentui/react-button';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 
-import { Popover, PopoverTrigger, PopoverSurface } from '../index';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 
 const useStyles = makeStyles({
   contentHeader: {
