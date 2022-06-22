@@ -2,7 +2,8 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import { ComboboxOptions, disabledCursor, ElementDefinitionContext, focusVisible } from '@microsoft/fast-foundation';
 import { selectFilledStyles, selectStyles } from '../select/select.styles';
 import { appearanceBehavior } from '../utilities/behaviors';
-import { strokeWidth, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
+import { strokeWidth } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -30,8 +31,7 @@ export const comboboxStyles: (context: ElementDefinitionContext, definition: Com
         background: transparent;
         border: none;
         color: inherit;
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
+        ${typeRampBase}
         height: calc(100% - ${strokeWidth} * 1px));
         margin: auto 0;
         width: 100%;
