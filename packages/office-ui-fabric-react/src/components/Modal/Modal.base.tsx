@@ -227,6 +227,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         }
         ignoreExternalFocusing={focusTrapZoneProps?.ignoreExternalFocusing ?? ignoreExternalFocusing}
         forceFocusInsideTrap={(focusTrapZoneProps?.forceFocusInsideTrap ?? forceFocusInsideTrap) && !isModeless}
+        // eslint-disable-next-line deprecation/deprecation
         firstFocusableSelector={focusTrapZoneProps?.firstFocusableSelector || firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={focusTrapZoneProps?.focusPreviouslyFocusedInnerElement ?? true}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
