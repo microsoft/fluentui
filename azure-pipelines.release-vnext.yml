@@ -64,8 +64,8 @@ jobs:
         displayName: yarn build
 
       - script: |
-          yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-vNext.config.js
-          git reset --hard origin/master
+          yarn publish:beachball --branch origin/9.0-rc -n $(npmToken) --config scripts/beachball/release-vNext.config.js
+          git reset --hard origin/9.0-rc
         env:
           GITHUB_PAT: $(githubPAT)
         displayName: Publish changes and bump versions
