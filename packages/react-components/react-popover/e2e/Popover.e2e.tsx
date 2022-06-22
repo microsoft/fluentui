@@ -358,7 +358,7 @@ describe('Popover', () => {
     describe('legacy focus trap behaviour', () => {
       it('Tab should not go to the window', () => {
         mount(
-          <Popover trapFocus="absolute">
+          <Popover trapFocus legacyTrapFocus>
             <PopoverTrigger>
               <button>Popover trigger</button>
             </PopoverTrigger>
