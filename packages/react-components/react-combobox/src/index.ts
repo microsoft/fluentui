@@ -30,14 +30,6 @@ export type {
   ComboboxState,
 } from './Combobox';
 export {
-  ComboButton,
-  comboButtonClassNames,
-  renderComboButton_unstable,
-  useComboButtonStyles_unstable,
-  useComboButton_unstable,
-} from './ComboButton';
-export type { ComboButtonProps, ComboButtonSlots, ComboButtonState } from './ComboButton';
-export {
   OptionGroup,
   optionGroupClassNames,
   renderOptionGroup_unstable,

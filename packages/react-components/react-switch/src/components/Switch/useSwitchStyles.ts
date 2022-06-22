@@ -179,10 +179,6 @@ const useInputStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
-  base: {
-    userSelect: 'none',
-  },
-
   above: {
     marginBottom: tokens.spacingVerticalXS,
   },
@@ -222,12 +218,7 @@ export const useSwitchStyles_unstable = (state: SwitchState): SwitchState => {
   );
 
   if (state.label) {
-    state.label.className = mergeClasses(
-      switchClassNames.label,
-      labelStyles.base,
-      labelStyles[labelPosition],
-      state.label.className,
-    );
+    state.label.className = mergeClasses(switchClassNames.label, labelStyles[labelPosition], state.label.className);
   }
 
   return state;

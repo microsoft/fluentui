@@ -23,6 +23,15 @@ const useStyles = makeStyles({
   pie: {
     clipPath: 'circle(50%)',
   },
+  focusIndicator: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderColor('transparent'),
+      outlineColor: tokens.colorStrokeFocus2,
+      outlineWidth: tokens.strokeWidthThick,
+      outlineStyle: 'solid',
+    },
+    { selector: 'focus-within' },
+  ),
 });
 
 /**
@@ -41,16 +50,19 @@ const useOverflowButtonStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.padding(0),
+
+    // match color to Avatar's outline color
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('CanvasText'),
+    },
   },
 
   // These styles match the default button styles
   focusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
+    outlineColor: tokens.colorStrokeFocus2,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
-    boxShadow: `${tokens.shadow4} 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-    zIndex: 1,
   }),
 
   states: {
@@ -114,13 +126,14 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const groupChildClassName = useGroupChildClassName(layout, size);
+  const groupChildClassName = useGroupChildClassName(layout, size, true);
 
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,
     layout === 'pie' && styles.pie,
     layout === 'pie' && sizeStyles[size],
+    layout === 'pie' && styles.focusIndicator,
     state.root.className,
   );
 
@@ -181,9 +194,9 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       avatarGroupClassNames.overflowButton,
       sizeStyles[size],
       overflowButtonStyles.base,
-      overflowButtonStyles.focusIndicator,
       ...overflowButtonClasses,
       layout !== 'pie' && overflowButtonStyles.states,
+      layout !== 'pie' && overflowButtonStyles.focusIndicator,
       layout === 'pie' && overflowButtonStyles.pie,
       groupChildClassName,
       state.overflowButton.className,

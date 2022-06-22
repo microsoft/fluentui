@@ -5,8 +5,9 @@ import { ContrastRatioPair } from './AccessibilityChecker';
 
 export interface AccessibilityListProps {
   theme: Theme;
-  accessiblePairs: ContrastRatioPair[];
-  nonAccessiblePairs: ContrastRatioPair[];
+  highContrastPairs: ContrastRatioPair[];
+  midContrastPairs: ContrastRatioPair[];
+  lowContrastPairs: ContrastRatioPair[];
 }
 
 export interface AccessibilityRowProps {
@@ -15,9 +16,18 @@ export interface AccessibilityRowProps {
 
 const useStyles = makeStyles({
   root: {},
-  row: {
+  col: {
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
+  },
+  colDesc: {
+    display: 'flex',
+    marginLeft: '5%',
+  },
+  row: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 3fr',
+    alignItems: 'center',
   },
 });
 
@@ -26,47 +36,55 @@ export const AccessibilityRow: React.FunctionComponent<AccessibilityRowProps> = 
   const styles = useStyles();
   return (
     <div className={styles.row}>
-      <div>{input.contrastRatioValue}</div>
-      <div>{input.contrastRatioPair}</div>
-      <div style={{ backgroundColor: input.background, color: input.foreground }}> Example </div>
-      <div>{props.contrastRatioPair.colorPair}</div>
+      <div className={styles.col}>{input.contrastRatioValue}</div>
+      <div className={styles.col}>{input.contrastRatioPair}</div>
+      <div className={styles.col} style={{ backgroundColor: input.background, color: input.foreground }}>
+        Example
+      </div>
+      <div className={styles.colDesc}>{props.contrastRatioPair.colorPair}</div>
     </div>
   );
 };
 
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
-  const nonAccPairs = props.nonAccessiblePairs;
-  const accPairs = props.accessiblePairs;
+  const nonAccPairs = props.lowContrastPairs;
+  const midContrastPairs = props.midContrastPairs;
+  const highContrastPairs = props.highContrastPairs;
 
   let messageBar;
-  if (nonAccPairs.length + accPairs.length > 0 && nonAccPairs.length > 0) {
-    messageBar = (
-      <Body1>
-        Your color palette has {nonAccPairs.length.toString()} accessibility errors. Each pair of colors below should
-        produce legible text and have a minimum contrast of 4.5.
-      </Body1>
-    );
+  if (nonAccPairs.length + midContrastPairs.length + highContrastPairs.length > 0 && nonAccPairs.length > 0) {
+    messageBar = <Body1>Your color palette has {nonAccPairs.length.toString()} accessibility errors.</Body1>;
   } else {
-    messageBar = <Body1>Looking good! Your color palette doesn't have any accessibility issues.</Body1>;
+    messageBar = <Body1>Your color palette doesn't have any accessibility issues.</Body1>;
   }
 
   return (
     <>
       <br />
+      {`To meet WCAG 2.1 accessibility requirements, text and images must meet a contrast ratio of 4.5:1, while large
+      text and images must meet a contrast ratio of 3:1. `}
       {messageBar}
-      <Accordion multiple defaultOpenItems="2">
-        <AccordionItem value="1">
-          <AccordionHeader size="large">Accessible Pairs</AccordionHeader>
+      <Accordion multiple defaultOpenItems="Inaccessible">
+        <AccordionItem value="Inaccessible">
+          <AccordionHeader size="large">Below 3:1</AccordionHeader>
           <AccordionPanel>
-            {accPairs.map(i => {
+            {nonAccPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem value="2">
-          <AccordionHeader size="large">Inaccessible Pairs</AccordionHeader>
+        <AccordionItem value="AA">
+          <AccordionHeader size="large">Above 3:1</AccordionHeader>
           <AccordionPanel>
-            {nonAccPairs.map(i => {
+            {midContrastPairs.map(i => {
+              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
+            })}
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="AAA">
+          <AccordionHeader size="large">Above 4.5:1</AccordionHeader>
+          <AccordionPanel>
+            {highContrastPairs.map(i => {
               return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
             })}
           </AccordionPanel>

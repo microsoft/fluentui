@@ -2,6 +2,116 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 20 Jun 2022 07:45:12 GMT",
+      "tag": "@fluentui/react_v8.77.0",
+      "version": "8.77.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "eab5e8113a378cdf539632a9a3bd716901b2cdaa",
+            "comment": "feat: Allow `null` as value for choice group selected key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jun 2022 07:41:59 GMT",
+      "tag": "@fluentui/react_v8.76.1",
+      "version": "8.76.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6c3f40639fa9a7532d01289424a99516e6604235",
+            "comment": "make row count zero when placeholder data is true because header will still render"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 21:38:03 GMT",
+      "tag": "@fluentui/react_v8.76.0",
+      "version": "8.76.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "921725e6051089c90a076208c10af5d93ec26cc5",
+            "comment": "feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 07:40:21 GMT",
+      "tag": "@fluentui/react_v8.75.1",
+      "version": "8.75.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "82337ca348673485e78b9072431c00c222cd985a",
+            "comment": "fix: Adding close button to Dropdown list when it opens as a panel."
+          },
+          {
+            "author": "liqing@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a827840680beff7297d0fc27425ea20426a00de3",
+            "comment": "handle entering key pressing in contenteditable element in SelectionZone"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jun 2022 07:52:11 GMT",
+      "tag": "@fluentui/react_v8.75.0",
+      "version": "8.75.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "98aeeed439b9cff1161a01157ca97befe533f12f",
+            "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jun 2022 07:39:07 GMT",
+      "tag": "@fluentui/react_v8.74.0",
+      "version": "8.74.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7e8b60ab46449dc7d8dca32e8616e513238de3f1",
+            "comment": "move Calendar day focus styles to correct element"
+          }
+        ],
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "94c35b09d908aa7a6a5075d9ef499494613f5f4b",
+            "comment": "FocusTrapZone: deprecate ignoreExternalFocusing in favor of disableRestoreFocus, and fix bugs with handling prop changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.0",
+            "commit": "7581977dbf55ea586280985c407c38ea58e54121"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Jun 2022 07:46:13 GMT",
       "tag": "@fluentui/react_v8.73.0",
       "version": "8.73.0",

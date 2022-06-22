@@ -16,55 +16,42 @@ export default {
 };
 
 const colorPalette = {
-  DarkRed: `colorPaletteDarkRed`,
-  Burgundy: 'colorPaletteBurgundy',
-  Cranberry: 'colorPaletteCranberry',
   Red: 'colorPaletteRed',
+  Green: 'colorPaletteGreen',
+  LightGreen: 'colorPaletteLightGreen',
   DarkOrange: 'colorPaletteDarkOrange',
-  Bronze: 'colorPaletteBronze',
-  Pumpkin: 'colorPalettePumpkin',
-  Orange: 'colorPaletteOrange',
-  Peach: 'colorPalettePeach',
   Marigold: 'colorPaletteMarigold',
   Yellow: 'colorPaletteYellow',
+  Berry: 'colorPaletteBerry',
+
+  DarkRed: `colorPaletteDarkRed`,
+  Cranberry: 'colorPaletteCranberry',
+  Pumpkin: 'colorPalettePumpkin',
+  Peach: 'colorPalettePeach',
   Gold: 'colorPaletteGold',
   Brass: 'colorPaletteBrass',
   Brown: 'colorPaletteBrown',
-  DarkBrown: 'colorPaletteDarkBrown',
-  Lime: 'colorPaletteLime',
   Forest: 'colorPaletteForest',
   Seafoam: 'colorPaletteSeafoam',
-  LightGreen: 'colorPaletteLightGreen',
-  Green: 'colorPaletteGreen',
   DarkGreen: 'colorPaletteDarkGreen',
   LightTeal: 'colorPaletteLightTeal',
   Teal: 'colorPaletteTeal',
-  DarkTeal: 'colorPaletteDarkTeal',
-  Cyan: 'colorPaletteCyan',
   Steel: 'colorPaletteSteel',
-  LightBlue: 'colorPaletteLightBlue',
   Blue: 'colorPaletteBlue',
   RoyalBlue: 'colorPaletteRoyalBlue',
-  DarkBlue: 'colorPaletteDarkBlue',
   Cornflower: 'colorPaletteCornflower',
   Navy: 'colorPaletteNavy',
   Lavender: 'colorPaletteLavender',
   Purple: 'colorPalettePurple',
-  DarkPurple: 'colorPaletteDarkPurple',
-  Orchid: 'colorPaletteOrchid',
   Grape: 'colorPaletteGrape',
-  Berry: 'colorPaletteBerry',
   Lilac: 'colorPaletteLilac',
   Pink: 'colorPalettePink',
-  HotPink: 'colorPaletteHotPink',
   Magenta: 'colorPaletteMagenta',
   Plum: 'colorPalettePlum',
   Beige: 'colorPaletteBeige',
   Mink: 'colorPaletteMink',
-  Silver: 'colorPaletteSilver',
   Platinum: 'colorPalettePlatinum',
   Anchor: 'colorPaletteAnchor',
-  Charcoal: 'colorPaletteCharcoal',
 } as const;
 
 type GlobalSharedColors = keyof typeof colorPalette;
@@ -143,7 +130,7 @@ export const Colors = () => {
             setColor={setColor}
             setPreviewColor={setPreviewColor}
             style={{
-              background: theme.light[`colorPalette${colorName}Background3` as keyof Theme],
+              background: theme.light[`colorPalette${colorName}BorderActive` as keyof Theme],
             }}
           />
         ))}
