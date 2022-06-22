@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton, SpinButtonProps } from '../index';
+import { SpinButton } from '../index';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -20,26 +20,11 @@ const useLayoutStyles = makeStyles({
 export const Step = () => {
   const layoutStyles = useLayoutStyles();
   const id = useId();
-  const [spinButtonValue, setSpinButtonValue] = React.useState(10);
-
-  const onSpinButtonChange: SpinButtonProps['onChange'] = React.useCallback(
-    (_ev, data) => {
-      if (data.value !== undefined) {
-        setSpinButtonValue(data.value);
-      } else if (data.displayValue !== undefined) {
-        const newValue = parseFloat(data.displayValue);
-        if (!Number.isNaN(newValue)) {
-          setSpinButtonValue(newValue);
-        }
-      }
-    },
-    [setSpinButtonValue],
-  );
 
   return (
     <div className={layoutStyles.base}>
       <Label htmlFor={id}>Step Size</Label>
-      <SpinButton value={spinButtonValue} step={2} stepPage={20} onChange={onSpinButtonChange} id={id} />
+      <SpinButton defaultValue={10} step={2} stepPage={20} id={id} />
     </div>
   );
 };

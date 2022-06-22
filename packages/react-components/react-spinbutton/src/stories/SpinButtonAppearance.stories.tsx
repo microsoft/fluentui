@@ -20,13 +20,13 @@ const useStyles = makeStyles({
   },
 
   filledLighter: {
-    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
+    backgroundColor: tokens.colorPaletteBerryForeground1,
     '> label': {
       color: tokens.colorNeutralForegroundInverted,
     },
   },
   filledDarker: {
-    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
+    backgroundColor: tokens.colorPaletteBerryForeground1,
     '> label': {
       color: tokens.colorNeutralForegroundInverted,
     },
