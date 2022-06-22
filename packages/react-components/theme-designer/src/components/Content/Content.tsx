@@ -15,6 +15,7 @@ export interface ContentProps {
   className?: string;
   brand: BrandVariants;
   theme: Theme;
+  isDark: boolean;
 }
 
 const useStyles = makeStyles({
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { brand, className, theme } = props;
+  const { className, brand, theme, isDark } = props;
 
   return (
     <FluentProvider theme={theme}>
@@ -43,7 +44,7 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <ColorTokens theme={theme} />
+        <ColorTokens isDark={isDark} brand={brand} />
         <Divider />
         <TokenBoxes theme={theme} />
       </div>

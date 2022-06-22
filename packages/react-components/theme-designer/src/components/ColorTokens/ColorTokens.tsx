@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
-import { Vec3, hex_to_sRGB } from '@fluent-blocks/colors';
-import { contrast } from '../../utils/csswg';
-import { Caption1, Theme } from '@fluentui/react-components';
+import { BrandVariants, Caption1, createDarkTheme, createLightTheme, Theme } from '@fluentui/react-components';
+import type { AccentColors } from '../../utils/themes/createCustomLightTheme';
 
 export interface ColorTokensProps {
   className?: string;
-  theme: Theme;
+  isDark: boolean;
+  brand: BrandVariants;
 }
 
 const useStyles = makeStyles({
@@ -19,101 +19,98 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ContrastRatioPair {
-  background: string;
-  foreground: string;
-  contrastRatioValue: string;
-  contrastRatioPair: string;
-  colorPair: string;
-}
-
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const highContrastPairs: ContrastRatioPair[] = [];
-  const midContrastPairs: ContrastRatioPair[] = [];
-  const lowContrastPairs: ContrastRatioPair[] = [];
+  let theme: Theme;
+  let initialColors: AccentColors;
 
-  const calculateContrastRatio = (foreground: string, background: string) => {
-    const theme = (props.theme as unknown) as Record<string, string>;
-
-    const bgHex: string = theme[background];
-    const fgHex: string = theme[foreground];
-
-    if (!bgHex || !fgHex) {
-      return;
-    }
-
-    const bgc: Vec3 = hex_to_sRGB(bgHex);
-    const fgc: Vec3 = hex_to_sRGB(fgHex);
-
-    const currContrastRatio = contrast(bgc, fgc);
-
-    const pair = {
-      background: bgHex,
-      foreground: fgHex,
-      contrastRatioValue: currContrastRatio.toFixed(2),
-      contrastRatioPair: fgHex + ' on ' + bgHex,
-      colorPair: foreground + ' on ' + background,
+  if (props.isDark) {
+    theme = createDarkTheme(props.brand);
+    // below is still light theme stuff, needs to be changed
+    initialColors = {
+      colorNeutralForeground2BrandHover: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground2BrandPressed: { brandValue: 70, usage: 'usage goes here' },
+      colorNeutralForeground2BrandSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground3BrandHover: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground3BrandPressed: { brandValue: 70, usage: 'usage goes here' },
+      colorNeutralForeground3BrandSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForegroundLink: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundLinkHover: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandForegroundLinkPressed: { brandValue: 40, usage: 'usage goes here' },
+      colorBrandForegroundLinkSelected: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandForeground1Hover: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandForeground1Pressed: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForeground2: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundInverted: { brandValue: 100, usage: 'usage goes here' },
+      colorBrandForegroundInvertedHover: { brandValue: 110, usage: 'usage goes here' },
+      colorBrandForegroundInvertedPressed: { brandValue: 100, usage: 'usage goes here' },
+      colorBrandForegroundOnLight: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForegroundOnLightHover: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundOnLightPressed: { brandValue: 50, usage: 'usage goes here' },
+      colorBrandForegroundOnLightSelected: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandBackground: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandBackgroundPressed: { brandValue: 40, usage: 'usage goes here' },
+      colorBrandBackgroundSelected: { brandValue: 60, usage: 'usage goes here' },
+      colorCompoundBrandBackground: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandBackgroundPressed: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandBackgroundStatic: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandBackground2: { brandValue: 160, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedHover: { brandValue: 160, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedPressed: { brandValue: 140, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedSelected: { brandValue: 150, usage: 'usage goes here' },
+      colorNeutralStrokeAccessibleSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandStroke: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandStrokeHover: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandStrokePressed: { brandValue: 60, usage: 'usage goes here' },
     };
-
-    if (currContrastRatio < 3) {
-      lowContrastPairs.push(pair);
-    } else if (currContrastRatio < 4.5) {
-      midContrastPairs.push(pair);
-    } else {
-      highContrastPairs.push(pair);
-    }
-  };
-
-  const colorPairs = [
-    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundHover'],
-    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundPressed'],
-    ['colorNeutralForegroundOnBrand', 'colorBrandBackgroundSelected'],
-    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackground'],
-    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundHover'],
-    ['colorNeutralForegroundOnBrand', 'colorCompoundBrandBackgroundPressed'],
-    ['colorNeutralForegroundInverted', 'colorBrandBackgroundStatic'],
-    ['colorNeutralForeground1', 'colorNeutralBackground1'],
-    ['colorNeutralForeground2BrandHover', 'colorNeutralBackground1'],
-    ['colorNeutralForeground2BrandHover', 'colorSubtleBackgroundHover'],
-    ['colorNeutralForeground2BrandPressed', 'colorNeutralBackground1'],
-    ['colorNeutralForeground2BrandPressed', 'colorSubtleBackgroundPressed'],
-    ['colorNeutralForeground2BrandSelected', 'colorNeutralBackground1'],
-    ['colorNeutralForeground2BrandSelected', 'colorSubtleBackgroundSelected'],
-    ['colorBrandForegroundLink', 'colorNeutralBackground1'],
-    ['colorBrandForegroundLinkHover', 'colorNeutralBackground1'],
-    ['colorBrandForegroundLinkPressed', 'colorNeutralBackground1'],
-    ['colorBrandForegroundLinkSelected', 'colorNeutralBackground1'],
-    ['colorCompoundBrandForeground1', 'colorNeutralBackground1'],
-    ['colorCompoundBrandForeground1Hover', 'colorNeutralBackground1'],
-    ['colorCompoundBrandForeground1Pressed', 'colorNeutralBackground1'],
-    ['colorBrandForeground1', 'colorNeutralBackground1'],
-    ['colorBrandForeground2', 'colorNeutralBackground1'],
-    ['colorBrandBackground', 'colorNeutralBackground1'],
-    ['colorBrandBackground', 'colorNeutralForegroundOnBrand'],
-    ['colorBrandBackgroundHover', 'colorNeutralBackground1'],
-    ['colorBrandBackgroundPressed', 'colorNeutralBackground1'],
-    ['colorBrandBackgroundSelected', 'colorNeutralBackground1'],
-    ['colorCompoundBrandBackground', 'colorNeutralBackground1'],
-    ['colorCompoundBrandBackgroundHover', 'colorNeutralBackground1'],
-    ['colorCompoundBrandBackgroundPressed', 'colorNeutralBackground1'],
-    ['colorBrandBackgroundStatic', 'colorNeutralBackground1'],
-    ['colorBrandForeground2', 'colorBrandBackground2'],
-    ['colorBrandStroke1', 'colorBrandBackground2'],
-    ['colorCompoundBrandStroke', 'colorNeutralBackground1'],
-    ['colorCompoundBrandStroke', 'colorNeutralBackground3'],
-    ['colorCompoundBrandStrokeHover', 'colorNeutralBackground1'],
-    ['colorCompoundBrandStrokePressed', 'colorNeutralBackground1'],
-  ];
-
-  const loadAllContrastRatioPairsList = () => {
-    colorPairs.map(([c1, c2]) => {
-      return calculateContrastRatio(c1, c2);
-    });
-  };
-
-  loadAllContrastRatioPairsList();
+  } else {
+    theme = createLightTheme(props.brand);
+    initialColors = {
+      colorNeutralForeground2BrandHover: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground2BrandPressed: { brandValue: 70, usage: 'usage goes here' },
+      colorNeutralForeground2BrandSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground3BrandHover: { brandValue: 80, usage: 'usage goes here' },
+      colorNeutralForeground3BrandPressed: { brandValue: 70, usage: 'usage goes here' },
+      colorNeutralForeground3BrandSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForegroundLink: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundLinkHover: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandForegroundLinkPressed: { brandValue: 40, usage: 'usage goes here' },
+      colorBrandForegroundLinkSelected: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandForeground1Hover: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandForeground1Pressed: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForeground2: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundInverted: { brandValue: 100, usage: 'usage goes here' },
+      colorBrandForegroundInvertedHover: { brandValue: 110, usage: 'usage goes here' },
+      colorBrandForegroundInvertedPressed: { brandValue: 100, usage: 'usage goes here' },
+      colorBrandForegroundOnLight: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandForegroundOnLightHover: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandForegroundOnLightPressed: { brandValue: 50, usage: 'usage goes here' },
+      colorBrandForegroundOnLightSelected: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandBackground: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
+      colorBrandBackgroundPressed: { brandValue: 40, usage: 'usage goes here' },
+      colorBrandBackgroundSelected: { brandValue: 60, usage: 'usage goes here' },
+      colorCompoundBrandBackground: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandBackgroundPressed: { brandValue: 60, usage: 'usage goes here' },
+      colorBrandBackgroundStatic: { brandValue: 80, usage: 'usage goes here' },
+      colorBrandBackground2: { brandValue: 160, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedHover: { brandValue: 160, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedPressed: { brandValue: 140, usage: 'usage goes here' },
+      colorBrandBackgroundInvertedSelected: { brandValue: 150, usage: 'usage goes here' },
+      colorNeutralStrokeAccessibleSelected: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandStroke: { brandValue: 80, usage: 'usage goes here' },
+      colorCompoundBrandStrokeHover: { brandValue: 70, usage: 'usage goes here' },
+      colorCompoundBrandStrokePressed: { brandValue: 60, usage: 'usage goes here' },
+    };
+  }
 
   return (
     <div className={props.className}>
@@ -122,12 +119,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
       </div>
-      <ColorTokensList
-        theme={props.theme}
-        highContrastPairs={highContrastPairs}
-        midContrastPairs={midContrastPairs}
-        lowContrastPairs={lowContrastPairs}
-      />
+      <ColorTokensList accentColors={initialColors} />
     </div>
   );
 };
