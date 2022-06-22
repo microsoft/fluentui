@@ -7,6 +7,7 @@ import { ExportButton } from '../ExportButton/ExportButton';
 export interface NavProps {
   className?: string;
   brand: BrandVariants;
+  isDark: boolean;
 }
 
 const useStyles = makeStyles({
@@ -55,7 +56,7 @@ export const Nav: React.FC<NavProps> = props => {
         UI Colors <ChevronRightRegular /> New palette
       </div>
       <Name />
-      <ExportButton brand={props.brand} />
+      <ExportButton brand={props.brand} isDark={props.isDark} />
     </FluentProvider>
   );
 };

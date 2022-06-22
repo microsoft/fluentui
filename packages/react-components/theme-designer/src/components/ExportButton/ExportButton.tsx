@@ -14,6 +14,7 @@ import { ExportLink } from './ExportLink';
 export interface ExportProps {
   className?: string;
   brand: BrandVariants;
+  isDark: boolean;
 }
 
 const useStyles = makeStyles({
@@ -39,10 +40,7 @@ export const ExportButton: React.FC<ExportProps> = props => {
         <MenuPopover>
           <MenuList>
             <MenuItem>
-              <ExportLink brand={props.brand} isLightTheme={true} />
-            </MenuItem>
-            <MenuItem>
-              <ExportLink brand={props.brand} isLightTheme={false} />
+              <ExportLink brand={props.brand} isDark={props.isDark} />
             </MenuItem>
           </MenuList>
         </MenuPopover>

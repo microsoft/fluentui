@@ -6,7 +6,7 @@ import * as dedent from 'dedent';
 export interface ExportLinkProps {
   className?: string;
   brand: BrandVariants;
-  isLightTheme: boolean;
+  isDark: boolean;
 }
 
 export const ExportLink: React.FC<ExportLinkProps> = props => {
@@ -17,7 +17,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         isBinary: false,
         content: dedent`
           import * as React from 'react';
-          import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+          import { makeStyles, makeStaticStyles, mergeClasses, shorthands } from '@griffel/react';
           import {
             tokens,
             Body1,
@@ -63,8 +63,19 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
             theme: Theme;
           }
 
+          const useStaticStyles = makeStaticStyles({
+            body: {
+              position: "fixed",
+              margin: "0px",
+              top: "0px",
+              left: "0px",
+              height: "100vh"
+            }
+          });
+
           const useStyles = makeStyles({
             root: {
+              height: "100vh",
               display: 'grid',
               alignItems: 'start',
               justifyContent: 'center',
@@ -117,6 +128,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
 
           export const Column1 = () => {
             const styles = useStyles();
+            useStaticStyles();
             return (
               <div className={styles.col1}>
                 <Title3 block>Make an impression</Title3>
@@ -249,13 +261,13 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         content: dedent`
           import * as ReactDOM from 'react-dom';
           import { FluentProvider, ${
-            props.isLightTheme ? 'createLightTheme' : 'createDarkTheme'
+            props.isDark ? 'createDarkTheme' : 'createLightTheme'
           } } from '@fluentui/react-components';
           import { Example } from './example';
 
           const brand = ${JSON.stringify(props.brand)};
 
-          ${props.isLightTheme ? 'const theme = createLightTheme(brand);' : 'const theme = createDarkTheme(brand);'}
+          ${props.isDark ? 'const theme = createDarkTheme(brand);' : 'const theme = createLightTheme(brand);'}
 
           ReactDOM.render(
               <FluentProvider theme={theme}>
@@ -279,7 +291,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
   return (
     <div>
       <Link appearance="subtle" href={link}>
-        {props.isLightTheme ? 'Preview light theme in CodeSandbox' : 'Preview dark theme in CodeSandbox'}
+        Preview theme in CodeSandbox
       </Link>
     </div>
   );
