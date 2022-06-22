@@ -104,6 +104,7 @@ export const colorScheme = {
     backgroundHover: colors.brand['600'],
     backgroundHover1: colors.brand['900'],
     backgroundHover3: colors.grey['750'],
+    backgroundHoverNEW: colors.brand['300'],
 
     foregroundPressed: colors.brand['200'],
     foregroundPressed1: colors.white,

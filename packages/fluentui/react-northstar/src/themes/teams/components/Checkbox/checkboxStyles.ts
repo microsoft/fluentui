@@ -79,6 +79,12 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
       },
     },
 
+    ':active': {
+      [`& .${checkboxSlotClassNames.indicator}`]: {
+        background: v.checkedBackgroundActive,
+      },
+    },
+
     ...(p.checked && {
       color: v.checkedTextColor,
     }),
