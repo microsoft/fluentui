@@ -51,25 +51,31 @@ async function test(): Promise<void> {
   const startTime = process.hrtime();
   console.log('Starting a browser...');
 
-  const browser = await launchBrowser();
-  console.log('Using', await browser.version());
+  let browser: Browser | undefined;
 
-  const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
+  try {
+    browser = await launchBrowser();
+    console.log('Using', await browser.version());
 
-  if (!fs.existsSync(htmlPath)) {
-    throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
+    const htmlPath = path.resolve(__dirname, '..', 'dist', 'index.html');
+
+    if (!fs.existsSync(htmlPath)) {
+      throw new Error('"dist/index.html" does not exist, please run "yarn build" first');
+    }
+
+    const url = `file://${htmlPath}`;
+    console.log(`Using "${url}"`);
+
+    await runTest(browser, url);
+    console.log(`Test finished successfully in ${hrToSeconds(process.hrtime(startTime))}`);
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
   }
-
-  const url = `file://${htmlPath}`;
-  console.log(`Using "${url}"`);
-
-  await runTest(browser, url);
-  await browser.close();
-
-  console.log(`Test finished successfully in ${hrToSeconds(process.hrtime(startTime))}`);
 }
 
-test().catch((err:Error) => {
+test().catch((err: Error) => {
   console.error('');
   console.error(chalk.bgRed.whiteBright(' @fluentui/ssr-tests-v9 '));
 
