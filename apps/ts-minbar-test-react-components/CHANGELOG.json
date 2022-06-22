@@ -2,21 +2,6 @@
   "name": "@fluentui/ts-minbar-test-react-components",
   "entries": [
     {
-      "date": "Tue, 21 Jun 2022 17:11:07 GMT",
-      "tag": "@fluentui/ts-minbar-test-react-components_v9.0.0-rc.0",
-      "version": "9.0.0-rc.0",
-      "comments": {
-        "patch": [
-          {
-            "author": "beachball",
-            "package": "@fluentui/ts-minbar-test-react-components",
-            "comment": "Bump @fluentui/react-components to v9.0.0-rc.15",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          }
-        ]
-      }
-    },
-    {
       "date": "Tue, 31 May 2022 21:28:50 GMT",
       "tag": "@fluentui/ts-minbar-test-react-components_v9.0.0-rc.0",
       "version": "9.0.0-rc.0",
