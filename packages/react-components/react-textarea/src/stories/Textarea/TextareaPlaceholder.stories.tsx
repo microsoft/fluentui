@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
-import { Textarea, TextareaProps } from '../index';
+import { Textarea } from '@fluentui/react-textarea';
 import { Label } from '@fluentui/react-label';
+import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
@@ -15,14 +15,13 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<TextareaProps>) => {
-  const textareaId = useId('textarea');
+export const Placeholder = () => {
   const styles = useStyles();
-
+  const textareaId = useId('textarea');
   return (
     <div className={styles.base}>
-      <Label htmlFor={textareaId}>Default Textarea</Label>
-      <Textarea id={textareaId} {...props} />
+      <Label htmlFor={textareaId}>Textarea with placeholder.</Label>
+      <Textarea id={textareaId} placeholder="type here..." />
     </div>
   );
 };

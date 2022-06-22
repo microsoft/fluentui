@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { useId } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { Textarea } from '../Textarea';
+import { Textarea } from '@fluentui/react-textarea';
 import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({

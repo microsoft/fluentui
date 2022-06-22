@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Textarea, TextareaProps } from '../index';
+import { Textarea } from '@fluentui/react-textarea';
+import type { TextareaProps } from '@fluentui/react-textarea';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles } from '@griffel/react';
