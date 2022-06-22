@@ -9,6 +9,16 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
 import { cardCSSVars } from '@fluentui/react-card';
@@ -38,6 +48,8 @@ import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
 import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
@@ -76,6 +88,10 @@ import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -104,6 +120,26 @@ export { AlertProps }
 export { AlertSlots }
 
 export { AlertState }
+
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
 
 export { Card }
 
@@ -162,6 +198,10 @@ export { OverflowItemProps }
 export { OverflowProps }
 
 export { renderAlert_unstable }
+
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
 
 export { renderCard_unstable }
 
@@ -238,6 +278,14 @@ export { ToolbarToggleButtonState }
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
+
+export { useAvatarGroup_unstable }
+
+export { useAvatarGroupItem_unstable }
+
+export { useAvatarGroupItemStyles_unstable }
+
+export { useAvatarGroupStyles_unstable }
 
 export { useCard_unstable }
 

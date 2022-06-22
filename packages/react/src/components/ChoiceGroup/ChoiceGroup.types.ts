@@ -51,7 +51,7 @@ export interface IChoiceGroupProps
    * The key of the selected option. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    */
-  selectedKey?: string | number;
+  selectedKey?: string | number | null;
 
   /**
    * A callback for receiving a notification when the choice has been changed.

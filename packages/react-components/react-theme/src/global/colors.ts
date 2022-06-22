@@ -848,54 +848,94 @@ const charcoal: ColorVariants = {
   tint60: '#f7f7f7',
 };
 
-export const sharedColors: GlobalSharedColors = {
-  darkRed,
-  burgundy,
-  cranberry,
+export type StatusSharedColors = 'red' | 'green' | 'darkOrange' | 'yellow' | 'berry' | 'lightGreen' | 'marigold';
+
+export const statusSharedColors: Pick<GlobalSharedColors, StatusSharedColors> = {
   red,
+  green,
   darkOrange,
-  bronze,
-  pumpkin,
-  orange,
-  peach,
-  marigold,
   yellow,
+  berry,
+  lightGreen,
+  marigold,
+};
+
+export type PersonaSharedColors =
+  | 'darkRed'
+  | 'cranberry'
+  | 'pumpkin'
+  | 'peach'
+  | 'gold'
+  | 'brass'
+  | 'brown'
+  | 'forest'
+  | 'seafoam'
+  | 'darkGreen'
+  | 'lightTeal'
+  | 'teal'
+  | 'steel'
+  | 'blue'
+  | 'royalBlue'
+  | 'cornflower'
+  | 'navy'
+  | 'lavender'
+  | 'purple'
+  | 'grape'
+  | 'lilac'
+  | 'pink'
+  | 'magenta'
+  | 'plum'
+  | 'beige'
+  | 'mink'
+  | 'platinum'
+  | 'anchor';
+
+export const personaSharedColors: Pick<GlobalSharedColors, PersonaSharedColors> = {
+  darkRed,
+  cranberry,
+  pumpkin,
+  peach,
   gold,
   brass,
   brown,
-  darkBrown,
-  lime,
   forest,
   seafoam,
-  lightGreen,
-  green,
   darkGreen,
   lightTeal,
   teal,
-  darkTeal,
-  cyan,
   steel,
-  lightBlue,
   blue,
   royalBlue,
-  darkBlue,
   cornflower,
   navy,
   lavender,
   purple,
-  darkPurple,
-  orchid,
   grape,
-  berry,
   lilac,
   pink,
-  hotPink,
   magenta,
   plum,
   beige,
   mink,
-  silver,
   platinum,
   anchor,
+};
+
+// These shared colors are currently not used in themes
+// Not exported from the package, we can consider removing them
+export const unusedSharedColors = {
+  burgundy,
+  bronze,
+  orange,
+  darkBrown,
+  lime,
+  darkTeal,
+  cyan,
+  lightBlue,
+  darkBlue,
+  darkPurple,
+  orchid,
+  hotPink,
+  silver,
   charcoal,
 };

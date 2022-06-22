@@ -65,8 +65,8 @@ export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
 };
 
 // @public
-export const getTriggerChild: (children: React_2.ReactNode) => React_2.ReactElement & {
-    ref?: React_2.Ref<unknown>;
+export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.ReactElement<P, string | React_2.JSXElementConstructor<any>> & {
+    ref?: React_2.Ref<unknown> | undefined;
 };
 
 // @public
