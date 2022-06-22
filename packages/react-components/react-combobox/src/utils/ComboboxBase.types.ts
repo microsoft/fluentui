@@ -5,6 +5,7 @@ import { SelectionEvents, SelectionProps, SelectionState } from '../utils/Select
 
 /**
  * ComboboxBase Props
+ * Shared types between Combobox and Dropdown components
  */
 export type ComboboxBaseProps = SelectionProps & {
   /**

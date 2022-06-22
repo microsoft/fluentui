@@ -5,6 +5,10 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownK
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
+/**
+ * Semantics and event listeners for the trigger and listbox slots
+ * Shared between Combobox and Dropdown components
+ */
 export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,

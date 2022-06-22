@@ -5,6 +5,9 @@ import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxOpenEvents } from './ComboboxBase.types';
 
+/**
+ * State shared between Combobox and Dropdown components
+ */
 export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
