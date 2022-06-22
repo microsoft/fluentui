@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { ComboboxBaseProps, ComboboxBaseState } from '../../ComboboxBase/ComboboxBase.types';
+import type { ComboboxBaseProps, ComboboxBaseState } from '../../utils/ComboboxBase.types';
 import type { ComboboxContextValue } from '../../contexts/ComboboxContext';
 import { Listbox } from '../Listbox/Listbox';
 

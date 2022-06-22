@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
-import { useComboboxBaseState } from '../../ComboboxBase/useComboboxBaseState';
-import { useTriggerListboxShorthand } from '../../ComboboxBase/useTriggerListboxShorthand';
-import { useComboboxPopup } from '../../ComboboxBase/useComboboxPopup';
+import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
+import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
+import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
@@ -38,13 +38,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
 
   const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
 
-  const [triggerSlot, listboxSlot] = useTriggerListboxShorthand(
-    props,
-    baseState,
-    ref,
-    triggerWithPopup,
-    listboxWithPopup,
-  );
+  const [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
 
   const state: ComboboxState = {
     components: {

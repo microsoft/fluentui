@@ -5,32 +5,32 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownK
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
-export function useTriggerListboxShorthand(
+export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
   ref: React.Ref<HTMLButtonElement>,
-  triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+  triggerSlot?: ExtractSlotProps<Slot<'button'>>,
+  listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
 ): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
-export function useTriggerListboxShorthand(
+export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
   ref: React.Ref<HTMLInputElement>,
-  triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+  triggerSlot?: ExtractSlotProps<Slot<'input'>>,
+  listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
 ): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
 
 /*
- * useTriggerListboxShorthand returns a tuple of trigger/listbox shorthand,
+ * useTriggerListboxSlots returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for combobox/dropdown.
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
-export function useTriggerListboxShorthand(
+export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
   ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
-  triggerShorthand?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
+  triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
+  listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
 ): [ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>] {
   const { multiselect } = props;
   const {
@@ -49,22 +49,22 @@ export function useTriggerListboxShorthand(
   const ignoreTriggerBlur = React.useRef(false);
 
   // resolve listbox shorthand props
-  const listbox: typeof listboxShorthand = {
+  const listbox: typeof listboxSlot = {
     multiselect,
     tabIndex: undefined,
-    ...listboxShorthand,
+    ...listboxSlot,
   };
 
   // resolve trigger shorthand props
-  const trigger: typeof triggerShorthand = {
+  const trigger: typeof triggerSlot = {
     'aria-expanded': open,
     'aria-activedescendant': open ? activeOption?.id : undefined,
     // explicitly type the ref as an intersection here to prevent type errors
     // since the `children` prop has mutually incompatible types between input/button
     // functionally both ref and triggerRef will always be the same element type
-    ref: useMergedRefs(ref, triggerShorthand?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
+    ref: useMergedRefs(ref, triggerSlot?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
     role: 'combobox',
-    ...triggerShorthand,
+    ...triggerSlot,
   };
 
   /*
