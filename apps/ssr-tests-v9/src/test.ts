@@ -69,7 +69,7 @@ async function test(): Promise<void> {
   console.log(`Test finished successfully in ${hrToSeconds(process.hrtime(startTime))}`);
 }
 
-test().catch(err => {
+test().catch((err:Error) => {
   console.error('');
   console.error(chalk.bgRed.whiteBright(' @fluentui/ssr-tests-v9 '));
 
