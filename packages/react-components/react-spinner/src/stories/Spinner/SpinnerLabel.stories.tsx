@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Spinner } from '../index';
+import { Spinner } from '@fluentui/react-spinner';
 
 const useStyles = makeStyles({
   container: {

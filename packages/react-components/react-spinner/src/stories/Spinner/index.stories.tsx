@@ -1,4 +1,4 @@
-import { Spinner } from '../index';
+import { Spinner } from '@fluentui/react-spinner';
 
 import descriptionMd from './SpinnerDescription.md';
 import bestPracticesMd from './SpinnerBestPractices.md';
