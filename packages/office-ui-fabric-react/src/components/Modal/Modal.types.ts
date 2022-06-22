@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { IStyle, ITheme } from '../../Styling';
-import { ILayerProps } from '../../Layer';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import { IIconProps } from '../../Icon';
+import { ILayerProps } from '../../Layer';
 import { IOverlayProps } from '../../Overlay';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ModalBase } from './Modal.base';
 
 export interface IDragOptions {
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initiated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 
@@ -74,13 +75,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 
   /**
    * Whether the dialog is displayed.
-   * @defaultvalue false
+   * @default false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @defaultvalue true
+   * @default true
    */
   isDarkOverlay?: boolean;
 
@@ -106,7 +107,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @defaultvalue false
+   * @default false
    */
   isBlocking?: boolean;
 
@@ -169,7 +170,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 
   /**
    * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
-   * @defaultvalue false
+   * @default false
    */
   allowTouchBodyScroll?: boolean;
 
@@ -179,6 +180,12 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * This flag will be removed with the next major release.
    */
   enableAriaHiddenSiblings?: boolean;
+
+  /**
+   * Set of props to customize the `FocusTrapZone` inside of the `Modal`.
+   * @default `{}`
+   */
+  focusTrapZoneProps?: IFocusTrapZoneProps;
 }
 
 /**
