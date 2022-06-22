@@ -1,0 +1,207 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/ChoiceGroup to RadioGroup Upgrade" />
+
+# ChoiceGroup to RadioGroup Upgrade
+
+Fluent UI v8 provides the `ChoiceGroup` control for presenting a list of radio options.
+In Fluent UI v9 `ChoiceGroup` is replaced with `RadioGroup`.
+
+While there are several differences between these controls, the primary change is that `RadioGroup` accepts
+its options as child `Radio` components while `ChoiceGroup` accepts options via its `options` prop.
+
+## Examples
+
+### Basic Upgrarde
+
+Basic usage of `ChoiceGroup` looks like
+
+```tsx
+import * as React from 'react';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+
+const ChoiceGroupBasicExample = () => {
+  const options: IChoiceGroupOption[] = [
+    { key: 'A', text: 'Option A' },
+    { key: 'B', text: 'Option B' },
+    { key: 'C', text: 'Option C', disabled: true },
+    { key: 'D', text: 'Option D' },
+  ];
+
+  return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" required={true} />;
+};
+```
+
+An equivalent `RadioGroup` usage is
+
+```tsx
+import * as React from 'react';
+import { Label, Radio, RadioGroup } from '@fluentui/react-components';
+import { useId } from '@fluentui/react-utilities';
+
+const RadioGroupBasicExample = () => {
+  const labelId = useId('label');
+
+  return (
+    <>
+      <Label id={labelId} required>
+        Pick One
+      </Label>
+      <RadioGroup aria-labelledby={labelId} defaultValue="B">
+        <Radio value="A" label="Option A" required />
+        <Radio value="B" label="Option B" required />
+        <Radio value="C" label="Option C" disabled required />
+        <Radio value="D" label="Option D" required />
+      </RadioGroup>
+    </>
+  );
+};
+```
+
+### Custom Option Rendering Upgrade
+
+Since `RadioGroup` accepts options as children, options may be directly customized without the use of v8's
+`onRenderField` callback.
+
+`ChoiceGroup` `onRenderField` callback for customization:
+
+```tsx
+import * as React from 'react';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { CatIcon } from '@fluentui/react-icons-mdl2';
+
+const ChoiceGroupCustomOptionExample = () => {
+  const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'center', gap: '5px' });
+
+  const options: IChoiceGroupOption[] = [
+    {
+      key: 'A',
+      text: 'A label with an icon',
+      ariaLabel: 'A label with a cat icon',
+      onRenderField: (props, render) => {
+        z;
+        return (
+          <div className={optionRootClass}>
+            {render!(props)}
+            <CatIcon />
+          </div>
+        );
+      },
+    },
+    { key: 'B', text: 'Option B', styles: { root: { border: '1px solid green' } } },
+    { key: 'C', text: 'Option C', disabled: true },
+    { key: 'D', text: 'Option D' },
+  ];
+
+  return <ChoiceGroup defaultSelectedKey="B" options={options} label="Pick one" />;
+};
+```
+
+An equivalent `RadioGroup` implementation:
+
+```tsx
+import * as React from 'react';
+import { Label, Radio, RadioGroup } from '@fluentui/react-components';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles, shorthands } from '@griffel/react';
+import { AnimalCat24Regular } from '@fluentui/react-icons';
+
+const useIconOptionStyles = makeStyles({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.gap('5px'),
+  },
+});
+
+const useLabelStyles = makeStyles({
+  root: {
+    display: 'flex',
+    ...shorthands.gap('5px'),
+  },
+});
+
+const useGreenBorderOptionStyles = makeStyles({
+  root: {
+    ...shorthands.border('1px', 'solid', 'green'),
+  },
+});
+
+const RadioGroupCustomOptionExample = () => {
+  const labelId = useId('label');
+  const iconOptionStyles = useIconOptionStyles();
+  const labelStyles = useLabelStyles();
+  const greenBorderOptionStyles = useGreenBorderOptionStyles();
+
+  return (
+    <>
+      <Label id={labelId} required>
+        Pick One
+      </Label>
+      <RadioGroup aria-labelledby={labelId} defaultValue="B">
+        <div className={iconOptionStyles.root}>
+          <Radio
+            value="A"
+            label={{
+              className: labelStyles.root,
+              children: (
+                <>
+                  A <AnimalCat24Regular />
+                </>
+              ),
+            }}
+          />
+        </div>
+        <Radio value="B" label="Option B" className={greenBorderOptionStyles.root} />
+        <Radio value="C" label="Option C" disabled />
+        <Radio value="D" label="Option D" />
+      </RadioGroup>
+    </>
+  );
+};
+```
+
+## Prop Mapping
+
+This table maps v8 `ChoiceGroup` props to the v9 `RadioGroup` equivalent.
+
+| v8                   | v9                    | Notes                                                                |
+| -------------------- | --------------------- | -------------------------------------------------------------------- |
+| `componentRef`       | `ref`                 | v9 provides access to the underlyig DOM node, not IChoiceGroup       |
+| `options`            | `children`            | v9 uses React `children` rather than data props                      |
+| `defaultSelectedKey` | `defaultValue`        | Mutually exclusive with `value`                                      |
+| `selectedKey`        | `value`               | Mutually exclusive with `defaultValue`                               |
+| `onChange`           | `onChange`            | The Typescript types have changed in v9                              |
+| `label`              | Use `Label` component | Be sure to associate `Label` with `RadioGroup` via `aria-labelledby` |
+| `theme`              | n/a                   | Use `FluentProvider` to customize themes                             |
+| `styles`             | `className`           |                                                                      |
+| `ariaLabelledBy`     | `aria-labelledby`     | In v9 this is the intrinsic HTML prop                                |
+
+This table maps v8 `IChoiceGroupOption` props to the v9 `Radio` equivalent.
+
+| v8                 | v9           | Notes                                                                                                          |
+| ------------------ | ------------ | -------------------------------------------------------------------------------------------------------------- |
+| `key`              | `key`        | This is only necessary if you `.map()` an array to generate the list of `Radio`s.                              |
+| `text`             | `label`      | In v9 this is a slot so this prop can be a string, a component or a shorthand object                           |
+| `onRenderField`    | n/a          | Provide a custom child to `RadioGroup`                                                                         |
+| `onRenderLabel`    | `label`      | Provide a custom component to the `label` slot                                                                 |
+| `iconProps`        | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageSrc`         | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageAlt`         | n/a          | Use slots to customize `Radio`                                                                                 |
+| `selectedImageSrc` | n/a          | Use slots to customize `Radio`                                                                                 |
+| `imageSize`        | n/a          | Use slots to customize `Radio`                                                                                 |
+| `disabled`         | `disabled`   |                                                                                                                |
+| `id`               | `id`         | In v9 this is the intrinsic HTML prop                                                                          |
+| `labeldId`         | n/a          | Provide an id to the `label` slot via shorthand props or a custom component                                    |
+| `ariaLabel`        | `aria-label` | In v9 this is the intrinsic HTML prop                                                                          |
+| `styles`           | `className`  |                                                                                                                |
+| `itemKey`          | n/a          |                                                                                                                |
+| `checked`          | `checked`    | When used in a `RadioGroup` use the `value` prop on `RadioGroup` instead                                       |
+| `onChange`         | `onChange`   | Typescript types have changed                                                                                  |
+| `onFocus`          | `onFocus`    | v9 uses native `onFocus`                                                                                       |
+| `onBlur`           | `onBlur`     | v9 uses native `onBlur`                                                                                        |
+| `focused`          | n/a          |                                                                                                                |
+| `theme`            | n/a          | Use `FluentProvider` to customize themes                                                                       |
+| `required`         | `required`   |                                                                                                                |
+| `name`             | `name`       | v9 uses native HTML prop. When used in a `RadioGroup` this prop is inherited from the `RadioGroup` by default. |

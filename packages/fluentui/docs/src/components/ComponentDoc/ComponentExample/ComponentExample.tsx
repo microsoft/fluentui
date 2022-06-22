@@ -1,18 +1,24 @@
+import * as copyToClipboard from 'copy-to-clipboard';
+import * as _ from 'lodash';
+import * as qs from 'qs';
+import * as React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
 import {
   CopyToClipboard,
-  EDITOR_GUTTER_COLOR,
   Editor,
+  EDITOR_GUTTER_COLOR,
   KnobInspector,
   KnobProvider,
   LogInspector,
 } from '@fluentui/docs-components';
+import { AcceptIcon, EditIcon, UndoIcon } from '@fluentui/react-icons-northstar';
 import {
   ComponentVariablesInput,
   createTheme,
   Flex,
   ICSSInJSStyle,
-  Image,
   Menu,
   mergeThemes,
   Provider,
@@ -21,23 +27,18 @@ import {
   teamsDarkTheme,
   ThemeInput,
 } from '@fluentui/react-northstar';
-import * as _ from 'lodash';
-import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import * as copyToClipboard from 'copy-to-clipboard';
-import * as qs from 'qs';
 
-import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
-import { babelConfig, importResolver } from '../../Playground/renderConfig';
-import ExampleContext, { ExampleContextValue } from '../../../context/ExampleContext';
-import { SourceRender } from '../SourceRender';
-import ComponentControls from '../ComponentControls';
-import ComponentExampleTitle from './ComponentExampleTitle';
-import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
-import VariableResolver from '../../VariableResolver/VariableResolver';
-import ComponentExampleVariables from './ComponentExampleVariables';
-import { AcceptIcon, EditIcon, UndoIcon } from '@fluentui/react-icons-northstar';
 import config from '../../../config';
+import ExampleContext, { ExampleContextValue } from '../../../context/ExampleContext';
+import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
+import { GitHubIcon } from '../../Icons/GitHubIcon';
+import { babelConfig, importResolver } from '../../Playground/renderConfig';
+import VariableResolver from '../../VariableResolver/VariableResolver';
+import ComponentControls from '../ComponentControls';
+import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
+import { SourceRender } from '../SourceRender';
+import ComponentExampleTitle from './ComponentExampleTitle';
+import ComponentExampleVariables from './ComponentExampleVariables';
 
 const ERROR_COLOR = '#D34';
 
@@ -102,9 +103,9 @@ const childrenStyle: ICSSInJSStyle = {
 class ComponentExample extends React.Component<ComponentExampleProps, ComponentExampleState> {
   kebabExamplePath: string;
 
-  static getClearedActiveState = () => ({
+  static getClearedActiveState = (showRtl: boolean = false) => ({
     showCode: false,
-    showRtl: false,
+    showRtl,
     showVariables: false,
     showTransparent: false,
   });
@@ -149,7 +150,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     props.history.replace({ ...props.history.location, search: `?${nextQueryString}` });
   };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: ComponentExampleProps, state) {
     const anchorName = ComponentExample.getAnchorName(props);
     const isActiveHash = ComponentExample.isActiveHash(props);
     const isActive = !!state.showCode || !!state.showVariables;
@@ -164,7 +165,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     // deactivate examples when switching from one to the next
     if (!isActiveHash && state.prevHash !== nextHash) {
-      Object.assign(nextState, ComponentExample.getClearedActiveState());
+      Object.assign(nextState, ComponentExample.getClearedActiveState(props.examplePath.endsWith('.rtl')));
     }
 
     return nextState;
@@ -188,11 +189,10 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       componentVariables: {},
       usedVariables: {},
       showCode: isActiveHash,
-      showRtl: false,
+      showRtl: props.examplePath.endsWith('.rtl'),
       showTransparent: false,
       showVariables: false,
       ...(isActiveHash && ComponentExample.getStateFromURL(props)),
-      ...(/\.rtl$/.test(props.examplePath) && { showRtl: true }),
       // FIXME: this is potentially dangerous operation. Original author should specifi explicit return type of `ComponentExample.getStateFromURL` call to match the state shape
     } as ComponentExampleState;
   }
@@ -364,13 +364,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: (
-          <Image
-            src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
-            width="16px"
-            height="16px"
-          />
-        ),
+        icon: <GitHubIcon />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',

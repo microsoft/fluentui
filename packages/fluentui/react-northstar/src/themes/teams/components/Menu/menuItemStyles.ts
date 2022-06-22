@@ -39,8 +39,15 @@ export const getFocusedStyles = ({
       background: colors.backgroundFocus,
     }),
 
+    // primary styles
+    ...(primary &&
+      !vertical &&
+      !underlined && {
+        color: v.primaryWrapperColorFocus,
+      }),
+
     ...(vertical && {
-      background: v.verticalBackgroundColorFocus,
+      background: 'inherit',
       color: v.colorFocus || colors.foregroundFocus,
       border: `${pxToRem(1)} solid transparent`,
       padding: pxToRem(1),

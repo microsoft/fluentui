@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Move `scheduler` to a peer dependency and allow appropriate versions for React 16 or 17",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -27,5 +27,6 @@
       "pattern": "^@[/-\\w]+$"
     }
   },
-  "required": []
+  "required": [],
+  "additionalProperties": false
 }

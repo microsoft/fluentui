@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "move-packages",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Package name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What package would you like to move?"
+    },
+    "destination": {
+      "type": "string",
+      "description": "New package destination",
+      "x-prompt": "Where would you like to move this to (this will live in the packages folder)?",
+      "pattern": "^[a-zA-Z].*$"
+    },
+    "updateImportPath": {
+      "type": "boolean",
+      "description": "Update package import path",
+      "default": false
+    },
+    "allConverged": {
+      "type": "boolean",
+      "description": "Move all converged packages to a new location."
+    },
+    "allV8": {
+      "type": "boolean",
+      "description": "Move all v8 packages to a new location."
+    }
+  },
+  "required": ["destination"]
+}

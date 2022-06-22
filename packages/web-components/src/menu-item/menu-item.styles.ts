@@ -10,7 +10,6 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { DirectionalStyleSheetBehavior, heightNumber } from '../styles/index';
 import {
-  bodyFont,
   controlCornerRadius,
   disabledOpacity,
   focusStrokeOuter,
@@ -20,9 +19,8 @@ import {
   neutralForegroundHint,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -32,7 +30,7 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
     ${display('grid')} :host {
       contain: layout;
       overflow: visible;
-      font-family: ${bodyFont};
+      ${typeRampBase}
       outline: none;
       box-sizing: border-box;
       height: calc(${heightNumber} * 1px);
@@ -45,8 +43,6 @@ export const menuItemStyles: (context: ElementDefinitionContext, definition: Men
       color: ${neutralForegroundRest};
       fill: currentcolor;
       cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
       border-radius: calc(${controlCornerRadius} * 1px);
       border: calc(${strokeWidth} * 1px) solid transparent;
     }

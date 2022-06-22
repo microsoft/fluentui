@@ -912,6 +912,9 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React_2.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
+export const CHECK_CELL_WIDTH = 48;
+
+// @public (undocumented)
 export const CheckBase: React_2.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
@@ -1225,6 +1228,9 @@ export const defaultWeeklyDayPickerStrings: IWeeklyDayPickerStrings;
 export { DelayedRender }
 
 export { Depths }
+
+// @public (undocumented)
+export const DetailsColumn: React_2.FunctionComponent<IDetailsColumnProps>;
 
 // @public
 export class DetailsColumnBase extends React_2.Component<IDetailsColumnProps> {
@@ -1549,9 +1555,9 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 20,
+    black = 21,
     // (undocumented)
-    neutralDark = 19,
+    neutralDark = 20,
     // (undocumented)
     neutralLight = 11,
     // (undocumented)
@@ -1559,15 +1565,17 @@ export enum FabricSlots {
     // (undocumented)
     neutralLighterAlt = 9,
     // (undocumented)
-    neutralPrimary = 18,
+    neutralPrimary = 19,
     // (undocumented)
-    neutralPrimaryAlt = 17,
+    neutralPrimaryAlt = 18,
     // (undocumented)
     neutralQuaternary = 13,
     // (undocumented)
     neutralQuaternaryAlt = 12,
     // (undocumented)
-    neutralSecondary = 16,
+    neutralSecondary = 17,
+    // (undocumented)
+    neutralSecondaryAlt = 16,
     // (undocumented)
     neutralTertiary = 15,
     // (undocumented)
@@ -1591,7 +1599,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 21
+    white = 22
 }
 
 // @public
@@ -1647,7 +1655,7 @@ export const FocusTrapCallout: React_2.FunctionComponent<IFocusTrapCalloutProps>
 
 // @public (undocumented)
 export const FocusTrapZone: React_2.FunctionComponent<IFocusTrapZoneProps> & {
-    focusStack: string[];
+    focusStack?: string[];
 };
 
 export { FocusZone }
@@ -1683,6 +1691,12 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boo
 // @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
+// @public (undocumented)
+export const getCellStyles: (props: {
+    theme: ITheme;
+    cellStyleProps?: ICellStyleProps | undefined;
+}) => IStyle;
+
 export { getChildren }
 
 // @public
@@ -1700,6 +1714,18 @@ export function getContrastRatio(color1: IColor, color2: IColor): number;
 export { getDatePartHashValue }
 
 export { getDateRangeArray }
+
+// @public (undocumented)
+export const getDetailsColumnStyles: (props: IDetailsColumnStyleProps) => IDetailsColumnStyles;
+
+// @public (undocumented)
+export const getDetailsHeaderStyles: (props: IDetailsHeaderStyleProps) => IDetailsHeaderStyles;
+
+// @public (undocumented)
+export const getDetailsListStyles: (props: IDetailsListStyleProps) => IDetailsListStyles;
+
+// @public (undocumented)
+export const getDetailsRowCheckStyles: (props: IDetailsRowCheckStyleProps) => IDetailsRowCheckStyles;
 
 // @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
@@ -1825,6 +1851,9 @@ export { getScrollbarWidth }
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
+export const getShimmeredDetailsListStyles: (props: IShimmeredDetailsListStyleProps) => IShimmeredDetailsListStyles;
+
+// @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
 
 export { getStartDateOfWeek }
@@ -1918,6 +1947,9 @@ export { hasOverflow }
 
 export { hasVerticalOverflow }
 
+// @public (undocumented)
+export const HEADER_HEIGHT = 42;
+
 // @public
 export const HEX_REGEX: RegExp;
 
@@ -1987,9 +2019,11 @@ export { htmlElementProperties }
 // @public (undocumented)
 export interface IAccessiblePopupProps {
     closeButtonAriaLabel?: string;
+    disableRestoreFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
     forceFocusInsideTrap?: boolean;
+    // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
 }
@@ -2040,8 +2074,10 @@ export { IAnimationStyles }
 
 export { IAnimationVariables }
 
+// Warning: (ae-forgotten-export) The symbol "IReactProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface IAnnouncedProps extends React_2.Props<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
     as?: React_2.ElementType;
     message?: string;
@@ -2209,7 +2245,7 @@ export interface IBasePicker<T> {
 }
 
 // @public
-export interface IBasePickerProps<T> extends React_2.Props<any> {
+export interface IBasePickerProps<T> extends IReactProps<any> {
     ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
@@ -3268,7 +3304,7 @@ export interface IChoiceGroupProps extends React_2.InputHTMLAttributes<HTMLEleme
     label?: string;
     onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
     options?: IChoiceGroupOption[];
-    selectedKey?: string | number;
+    selectedKey?: string | number | null;
     styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
     theme?: ITheme;
 }
@@ -3653,6 +3689,8 @@ export interface IColumn {
     onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
     onRenderFilterIcon?: IRenderFunction<IDetailsColumnFilterIconProps>;
     onRenderHeader?: IRenderFunction<IDetailsColumnProps>;
+    showSortIconWhenUnsorted?: boolean;
+    sortableAriaLabel?: string;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
@@ -4531,6 +4569,7 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 
 // @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
+    // @deprecated
     ariaLabel?: string;
     ariaLabelForGrid?: string;
     ariaLabelForListHeader?: string;
@@ -4564,6 +4603,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
     isPlaceholderData?: boolean;
+    isSelectedOnFocus?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
@@ -4595,6 +4635,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     selectionPreservedOnEmptyClick?: boolean;
     selectionZoneProps?: ISelectionZoneProps;
     setKey?: string;
+    // @deprecated
     shouldApplyApplicationRole?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     theme?: ITheme;
@@ -4877,7 +4918,7 @@ export interface IDialogFooter {
 }
 
 // @public (undocumented)
-export interface IDialogFooterProps extends React_2.Props<DialogFooterBase> {
+export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
@@ -5060,13 +5101,21 @@ export interface IDocumentCardActivityStyles {
 }
 
 // @public (undocumented)
+export interface IDocumentCardContext {
+    // (undocumented)
+    role?: string;
+    // (undocumented)
+    tabIndex?: number;
+}
+
+// @public (undocumented)
 export interface IDocumentCardDetails {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IDocumentCardDetailsProps extends React_2.Props<DocumentCardDetailsBase> {
+export interface IDocumentCardDetailsProps extends IReactProps<DocumentCardDetailsBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardDetails>;
     styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
@@ -5259,7 +5308,7 @@ export interface IDocumentCardStatus {
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IDocumentCardStatusProps extends React_2.Props<DocumentCardStatusBase> {
+export interface IDocumentCardStatusProps extends IReactProps<DocumentCardStatusBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardStatus>;
     status: string;
@@ -5407,6 +5456,7 @@ export interface IDragOptions {
 
 // @public (undocumented)
 export interface IDropdown {
+    dismissMenu: () => void;
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
     readonly selectedOptions: IDropdownOption[];
@@ -5738,6 +5788,7 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     componentRef?: IRefObject<IFocusTrapZone>;
     disabled?: boolean;
     disableFirstFocus?: boolean;
+    disableRestoreFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     enableAriaHiddenSiblings?: boolean;
     // @deprecated
@@ -5745,6 +5796,7 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     firstFocusableTarget?: string | ((element: HTMLElement) => HTMLElement | null);
     focusPreviouslyFocusedInnerElement?: boolean;
     forceFocusInsideTrap?: boolean;
+    // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
 }
@@ -6796,6 +6848,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     dragOptions?: IDragOptions;
     // @deprecated
     enableAriaHiddenSiblings?: boolean;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
@@ -8072,9 +8125,11 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnEscapePress?: boolean;
     selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
+    toggleWithoutModifierPressed?: boolean;
 }
 
 // @public (undocumented)
@@ -8596,7 +8651,7 @@ export interface IStackTokens {
 }
 
 // @public (undocumented)
-export interface IStickyProps extends React_2.Props<Sticky> {
+export interface IStickyProps extends IReactProps<Sticky> {
     componentRef?: IRefObject<IStickyProps>;
     isScrollSynced?: boolean;
     stickyBackgroundColor?: string;
@@ -8742,7 +8797,7 @@ export interface ISuggestionsItemStyles {
 }
 
 // @public
-export interface ISuggestionsProps<T> extends React_2.Props<any> {
+export interface ISuggestionsProps<T> extends IReactProps<any> {
     className?: string;
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
@@ -9625,9 +9680,7 @@ export function makeStyles<TStyleSet extends {
     [key in keyof TStyleSet]: IStyle;
 } = {
     [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
-    [key in keyof TStyleSet]: string;
-};
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => StylesClassMapping<TStyleSet>;
 
 export { mapEnumByName }
 
@@ -10387,7 +10440,9 @@ export class SelectionZone extends React_2.Component<ISelectionZoneProps, ISelec
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
+        toggleWithoutModifierPressed: boolean;
         selectionMode: SelectionMode_2;
+        selectionClearedOnEscapePress: boolean;
     };
     // (undocumented)
     static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
@@ -10652,6 +10707,13 @@ export enum StickyPositionType {
 export { styled }
 
 export { StyleFunction }
+
+// @public (undocumented)
+export type StylesClassMapping<TStyleSet extends {
+    [key in keyof TStyleSet]: IStyle;
+}> = {
+    [key in keyof TStyleSet]: string;
+};
 
 export { Stylesheet }
 

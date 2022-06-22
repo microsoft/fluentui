@@ -2,7 +2,6 @@ PopupMenus provide a set of commands or options inside of a drawer. Two types of
 
 <!-- prettier-ignore-start -->
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Top down
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_drawer_02_topsheet_light.png?text=LightMode" />
