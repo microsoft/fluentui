@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, makeStyles, shorthands } from '@fluentui/react-components';
-import { Overflow } from '../components/Overflow';
+import { Overflow } from '@fluentui/react-overflow';
 import { OverflowMenu, TestOverflowItem } from './utils.stories';
 
 const useStyles = makeStyles({

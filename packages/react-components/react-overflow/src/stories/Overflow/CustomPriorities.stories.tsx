@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Overflow } from '../components/Overflow';
+import { Overflow } from '@fluentui/react-overflow';
 import { OverflowMenu, TestOverflowItem } from './utils.stories';
 
 const useStyles = makeStyles({
@@ -12,18 +12,18 @@ const useStyles = makeStyles({
   },
 });
 
-export const MinimumVisible = () => {
+export const CustomPriorities = () => {
   const styles = useStyles();
 
-  const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
+  const priorities = [2, 3, 6, 1, 4, 5, 0, 7];
 
   return (
-    <Overflow minimumVisible={4}>
+    <Overflow>
       <div className={styles.container}>
-        {itemIds.map(i => (
-          <TestOverflowItem key={i} id={i} />
+        {priorities.map(i => (
+          <TestOverflowItem key={i} id={i.toString()} priority={i} />
         ))}
-        <OverflowMenu itemIds={itemIds} />
+        <OverflowMenu itemIds={priorities.map(x => x.toString())} />
       </div>
     </Overflow>
   );
