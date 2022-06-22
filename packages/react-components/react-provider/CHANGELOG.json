@@ -2,33 +2,6 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
-      "date": "Tue, 21 Jun 2022 17:11:07 GMT",
-      "tag": "@fluentui/react-provider_v9.0.0-rc.14",
-      "version": "9.0.0-rc.14",
-      "comments": {
-        "prerelease": [
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-provider",
-            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.11",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-provider",
-            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.14",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-provider",
-            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.10",
-            "commit": "cdcfdb3f941571cd4def35c8f42f951455707794"
-          }
-        ]
-      }
-    },
-    {
       "date": "Tue, 31 May 2022 21:28:42 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-rc.13",
       "version": "9.0.0-rc.13",
