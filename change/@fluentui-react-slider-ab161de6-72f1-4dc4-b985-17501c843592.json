@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: convert slider stories to index based approach",
+  "packageName": "@fluentui/react-slider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
