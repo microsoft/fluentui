@@ -394,7 +394,7 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  const { appearance, atBound, spinState, size } = state;
+  const { appearance, atBound, size, spinState } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
