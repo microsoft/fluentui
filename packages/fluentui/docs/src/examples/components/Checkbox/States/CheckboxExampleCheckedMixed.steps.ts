@@ -1,4 +1,4 @@
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 
 export const config: ScreenerTestsConfig = {
   steps: [
@@ -11,7 +11,7 @@ export const config: ScreenerTestsConfig = {
         .click('#all')
         .snapshot('select all'),
   ],
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
 };
 
 export default config;

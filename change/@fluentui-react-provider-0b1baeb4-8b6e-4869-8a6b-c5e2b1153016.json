@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: properly handle text direction in styles",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

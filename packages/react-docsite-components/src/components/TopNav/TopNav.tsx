@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, FocusZone, Panel, PanelType, ScreenWidthMinUhfMobile, on } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
-import { hasActiveChild, removeAnchorLink } from '../../utilities/index2';
+import { hasActiveChild, getNormalizedPath } from '../../utilities/index2';
 import { INavPage } from '../Nav/Nav.types';
 import { Badge } from '../Badge/index';
 import { ITopNavProps } from './TopNav.types';
@@ -20,7 +20,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
 
   private _disposables: Function[] = [];
   private _isMounted: boolean = false;
-  private _route: string = removeAnchorLink(location.hash);
+  private _route: string = getNormalizedPath();
 
   public componentDidMount(): void {
     this._isMounted = true;
@@ -103,7 +103,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
   };
 
   private _onHashChange = (): void => {
-    const newRoute = removeAnchorLink(location.hash);
+    const newRoute = getNormalizedPath();
     if (this._isMounted && newRoute !== this._route) {
       this._route = newRoute;
       this.setState({ isNavOpen: false });

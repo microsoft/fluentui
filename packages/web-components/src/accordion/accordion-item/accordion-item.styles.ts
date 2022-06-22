@@ -10,7 +10,6 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { Swatch } from '../../color/swatch';
 import {
-  bodyFont,
   controlCornerRadius,
   designUnit,
   focusStrokeOuter,
@@ -23,9 +22,8 @@ import {
   neutralForegroundRest,
   neutralStrokeLayerRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
 import { heightNumber } from '../../styles/size';
 
 const neutralFillStealthRestOnNeutralFillLayerRest = DesignToken.create<Swatch>(
@@ -59,10 +57,8 @@ export const accordionItemStyles: (
   css`
     ${display('flex')} :host {
       box-sizing: border-box;
-      font-family: ${bodyFont};
+      ${typeRampBase};
       flex-direction: column;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
       background: ${neutralFillLayerRest};
       color: ${neutralForegroundRest};
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeLayerRest};
@@ -94,7 +90,7 @@ export const accordionItemStyles: (
       text-align: left;
       color: inherit;
       cursor: pointer;
-      font-family: inherit;
+      font: inherit;
     }
 
     .button::before {

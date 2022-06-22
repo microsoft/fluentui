@@ -1,12 +1,14 @@
 import * as path from 'path';
+import * as glob from 'glob';
 import { sassTask } from 'just-scripts';
 import postcssModules from 'postcss-modules';
-import CleanCSS from 'clean-css';
 
 const _fileNameToClassMap = {};
 
-function createTypeScriptModule(fileName, css) {
+function createTypeScriptModule(fileName: string, css: string) {
   const { splitStyles } = require('@microsoft/load-themed-styles');
+  const CleanCSS = require('clean-css');
+
   // Create a source file.
   const minifiedCSS = new CleanCSS().minify(css).styles;
   const source = [
@@ -24,22 +26,30 @@ function createTypeScriptModule(fileName, css) {
   return source.join('\n');
 }
 
-function generateScopedName(name, fileName, css) {
+function generateScopedName(name: string, fileName: string, css: string) {
   const crypto = require('crypto');
 
   return name + '_' + crypto.createHmac('sha1', fileName).update(css).digest('hex').substring(0, 8);
 }
 
-function getJSON(cssFileName, json) {
+function getJSON(cssFileName: string, json: Record<string, string>) {
   _fileNameToClassMap[path.resolve(cssFileName)] = json;
 }
 
-export const sass = sassTask({
-  createSourceModule: createTypeScriptModule,
-  postcssPlugins: [
-    postcssModules({
-      getJSON,
-      generateScopedName,
-    }),
-  ],
-});
+export function sass() {
+  // small optimization: if there are no sass files, the task does nothing
+  // (skip actually calling sassTask which must parse several extra dependencies)
+  if (!glob.sync(path.join(process.cwd(), 'src/**/*.scss')).length) {
+    return () => undefined;
+  }
+
+  return sassTask({
+    createSourceModule: createTypeScriptModule,
+    postcssPlugins: [
+      postcssModules({
+        getJSON,
+        generateScopedName,
+      }),
+    ],
+  });
+}

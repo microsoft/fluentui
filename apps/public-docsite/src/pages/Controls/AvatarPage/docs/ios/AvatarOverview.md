@@ -1,7 +1,6 @@
 `AvatarView` displays either a photo or the initials of a person on circular background and displays entity or group on square background.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Initials
 
 <img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_avatar_02_initials.png?text=LightMode" />

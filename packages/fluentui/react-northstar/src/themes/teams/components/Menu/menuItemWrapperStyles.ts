@@ -72,6 +72,13 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
           boxShadow: `-1px 0 0 0 ${primary ? v.primaryBorderColor : v.borderColor || colors.border} inset`,
         }),
 
+      // primary styles
+      ...(primary &&
+        !vertical &&
+        !underlined && {
+          color: v.primaryWrapperColor,
+        }),
+
       // active styles
       ...(active &&
         !vertical && {
@@ -79,6 +86,12 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
           ...(!underlined && {
             background: v.backgroundColorActive,
           }),
+
+          ...(primary &&
+            !vertical &&
+            !underlined && {
+              color: v.primaryWrapperColor,
+            }),
 
           ...(!underlined &&
             on !== 'hover' && {

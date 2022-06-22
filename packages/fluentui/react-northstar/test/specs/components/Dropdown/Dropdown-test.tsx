@@ -1251,6 +1251,24 @@ describe('Dropdown', () => {
 
       expect(getA11yMessageContainerNode()).toHaveTextContent('');
     });
+
+    it('has items count narration element associated via aria-describedby after an item has been selected', () => {
+      const itemToBeClickedIndex = 1;
+      const { clickOnItemAtIndex, searchInputNode, getItemsCountNode } = renderDropdown({
+        defaultOpen: true,
+        getA11ySelectionMessage: { itemsCount: count => `${count} item is  selected.` },
+        search: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemToBeClickedIndex);
+      const itemsCountNode = getItemsCountNode();
+      const itemsCountNodeId = itemsCountNode.getAttribute('id');
+
+      expect(searchInputNode).toHaveAttribute('aria-describedby', itemsCountNodeId);
+
+      expect(itemsCountNode).toHaveTextContent('1 item is selected.');
+    });
   });
 
   describe('searchQuery', () => {
@@ -2006,14 +2024,47 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).not.toHaveAttribute('aria-label');
     });
 
-    it('trigger button should not have aria-labelledby', () => {
+    it('trigger button should have aria-labelledby which points to trigger button content', () => {
       const { triggerButtonNode } = renderDropdown({ items });
-      expect(triggerButtonNode).not.toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
+    });
+
+    it('trigger button merges props correctly', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { 'data-test': 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode).toHaveAttribute('data-test');
+    });
+
+    it('trigger button merges props correctly when content is string', () => {
+      const { triggerButtonNode } = renderDropdown({ items, triggerButton: { content: 'ok' } });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+    });
+
+    it('trigger button merges props correctly when content is object', () => {
+      const { triggerButtonNode } = renderDropdown({
+        items,
+        triggerButton: { content: { content: 'ok', 'data-test': 'ok' } },
+      });
+      expect(triggerButtonNode.firstChild).toHaveAttribute('id');
+      const contentId = triggerButtonNode.firstElementChild.getAttribute('id');
+      expect(triggerButtonNode).toHaveAttribute('aria-labelledby');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain(contentId);
+      expect(triggerButtonNode.firstChild.textContent).toBe('ok');
+      expect(triggerButtonNode.firstChild).toHaveAttribute('data-test');
     });
 
     it('trigger button should have aria-labelledby from user prop', () => {
       const { triggerButtonNode } = renderDropdown({ items, 'aria-labelledby': 'form-label' });
-      expect(triggerButtonNode).toHaveAttribute('aria-labelledby', 'form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('form-label');
+      expect(triggerButtonNode.getAttribute('aria-labelledby')).toContain('__content');
     });
 
     it('trigger button should not have aria-describedby', () => {

@@ -53,45 +53,45 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fourthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 10, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
     const fifthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 40, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
     const sixthChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 40, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 20, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const seventhChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 80, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];
     const eightChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 50, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 50, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 50, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 20, color: DefaultPalette.blueLight },
     ];
@@ -189,17 +189,35 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <label>BarGapMax:</label>
+        <label htmlFor="changeWidth_Callout">change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Callout"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Callout">change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Callout"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
+        <label htmlFor="changeBarGapMax_Callout">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}
           min={0}
           max={10}
+          id="changeBarGapMax_Callout"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
+          aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
         <ChoiceGroup
           options={options}
@@ -226,7 +244,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             }
             yMaxValue={120}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             margins={{ left: 50 }}
             colors={['red', 'white', 'green', 'black']}

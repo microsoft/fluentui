@@ -403,6 +403,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       return true;
     }
 
+    if (newProps.className !== this.props.className) {
+      return true;
+    }
+
     if (newProps.items === this.props.items && oldPages!.length === newPages!.length) {
       for (let i = 0; i < oldPages!.length; i++) {
         const oldPage = oldPages![i];

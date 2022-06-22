@@ -91,7 +91,7 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
     hook: useStringKnob,
     name: propName,
     initialValue:
-      'http://fabricweb.azureedge.net/fabric-website/assets/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
+      'https://fabricweb.azureedge.net/fabric-website/assets/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
   }),
   // Hack until `size` prop will not supported
   variables: () => ({
@@ -120,12 +120,13 @@ export const Video: KnobComponentGenerators<VideoProps> = {
   poster: ({ componentInfo, propName }) => ({
     hook: useStringKnob,
     name: propName,
-    initialValue: 'public/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
+    initialValue:
+      'https://fabricweb.azureedge.net/fabric-website/assets/images/2020_MSFT_Icon_Celebration_placeholder.jpg',
   }),
   src: ({ propName }) => ({
     hook: useStringKnob,
     name: propName,
-    initialValue: 'http://fabricweb.azureedge.net/fabric-website/assets/videos/2020_MSFT_Icon_Celebration.mp4',
+    initialValue: 'https://fabricweb.azureedge.net/fabric-website/assets/videos/2020_MSFT_Icon_Celebration.mp4',
   }),
   // Hack until `size` prop will not supported
   variables: () => ({

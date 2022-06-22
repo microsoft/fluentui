@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix styles in getFocusOutlineStyles()",
-  "packageName": "@fluentui/react-tabster",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

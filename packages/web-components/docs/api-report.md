@@ -790,6 +790,9 @@ export const focusStrokeOuterRecipe: DesignToken<ColorRecipe>;
 export const focusStrokeWidth: CSSDesignToken<number>;
 
 // @public (undocumented)
+export const fontWeight: CSSDesignToken<number>;
+
+// @public (undocumented)
 export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
 
 // @public @deprecated (undocumented)
@@ -1662,55 +1665,109 @@ export { TreeView }
 export const treeViewStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
 
 // @public (undocumented)
+export const typeRampBase: CSSDirective;
+
+// @public (undocumented)
 export const typeRampBaseFontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampBaseFontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampBaseLineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampMinus1: CSSDirective;
+
+// @public (undocumented)
 export const typeRampMinus1FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus1FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampMinus1LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampMinus2: CSSDirective;
+
+// @public (undocumented)
 export const typeRampMinus2FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampMinus2FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampMinus2LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus1: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus1FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus1FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus1LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus2: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus2FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus2FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus2LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus3: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus3FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus3FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus3LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus4: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus4FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus4FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus4LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus5: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus5FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus5FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus5LineHeight: CSSDesignToken<string>;
 
 // @public (undocumented)
+export const typeRampPlus6: CSSDirective;
+
+// @public (undocumented)
 export const typeRampPlus6FontSize: CSSDesignToken<string>;
+
+// @public (undocumented)
+export const typeRampPlus6FontVariations: CSSDesignToken<string>;
 
 // @public (undocumented)
 export const typeRampPlus6LineHeight: CSSDesignToken<string>;

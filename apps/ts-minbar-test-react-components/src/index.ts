@@ -21,9 +21,13 @@ async function performTest() {
     logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
     // Install dependencies, using the minimum TS version supported for consumers
-    const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(
-      ' ',
-    );
+    const dependencies = [
+      '@types/react@17',
+      '@types/react-dom@17',
+      'react@17',
+      'react-dom@17',
+      `typescript@${tsVersion}`,
+    ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
 

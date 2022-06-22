@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/jest-serializer-merge-styles",
-  "version": "8.0.17",
+  "version": "8.0.19",
   "description": "Jest serializer for merge-styles.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,6 +23,6 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.5.0"
+    "@fluentui/merge-styles": "^8.5.2"
   }
 }
