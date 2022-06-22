@@ -5,13 +5,6 @@ import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownK
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
 
-<<<<<<< HEAD:packages/react-components/react-combobox/src/utils/useTriggerListboxSlots.ts
-/**
- * Semantics and event listeners for the trigger and listbox slots
- * Shared between Combobox and Dropdown components
- */
-=======
->>>>>>> move and rename shared combobox hooks:packages/react-components/react-combobox/src/utils/useTriggerListboxSlots.ts
 export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
@@ -29,7 +22,7 @@ export function useTriggerListboxSlots(
 
 /*
  * useTriggerListboxSlots returns a tuple of trigger/listbox shorthand,
- * with the semantics and event handlers needed for combobox/dropdown.
+ * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
 export function useTriggerListboxSlots(
