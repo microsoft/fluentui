@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
-import { Slider } from '../../../index';
+import { Slider } from '@fluentui/react-slider';
 
 export const Size = () => {
   const smallId = useId('small');

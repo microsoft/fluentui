@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Slider } from '../../index';
+import { Slider } from '@fluentui/react-slider';
 import type { Meta } from '@storybook/react';
 
 import bestPracticesMd from './SliderBestPractices.md';
 import descriptionMd from './SliderDescription.md';
-export { Default } from './stories/SliderDefault.stories';
-export { Size } from './stories/SliderSize.stories';
-export { Controlled } from './stories/SliderControlled.stories';
-export { Step } from './stories/SliderStep.stories';
-export { Vertical } from './stories/SliderVertical.stories';
-export { Disabled } from './stories/SliderDisabled.stories';
+export { Default } from './SliderDefault.stories';
+export { Size } from './SliderSize.stories';
+export { Controlled } from './SliderControlled.stories';
+export { Step } from './SliderStep.stories';
+export { Vertical } from './SliderVertical.stories';
+export { Disabled } from './SliderDisabled.stories';
 
 export default {
   title: 'Components/Slider',

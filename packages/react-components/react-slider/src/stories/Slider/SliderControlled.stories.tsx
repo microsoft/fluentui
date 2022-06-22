@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
-import { Slider, SliderProps } from '../../../index';
+import { Slider, SliderProps } from '@fluentui/react-slider';
 
 export const Controlled = () => {
   const id = useId();
