@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { Body1, Caption1, Display, Subtitle1, LargeTitle, Title1, Title2, Title3, Subtitle2, Caption2 } from '../index';
+import {
+  Body1,
+  Caption1,
+  Display,
+  Subtitle1,
+  LargeTitle,
+  Title1,
+  Title2,
+  Title3,
+  Subtitle2,
+  Caption2,
+} from '@fluentui/react-text';
 
 export const Typography = () => (
   <>

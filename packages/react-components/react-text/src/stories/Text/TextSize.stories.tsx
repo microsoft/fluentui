@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '../index';
+import { Text } from '@fluentui/react-text';
 
 export const Size = () => (
   <div style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
