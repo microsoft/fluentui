@@ -108,7 +108,8 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   trapFocus?: UseModalAttributesOptions['trapFocus'];
 
   /**
-   * Enabbles older Fluent UI focus trap behavior where the user
+   * Must be used with the `trapFocus` prop
+   * Enables older Fluent UI focus trap behavior where the user
    * cannot tab into the window outside of the document. This is now
    * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
    * where the focus trap involves setting outside elements inert.
