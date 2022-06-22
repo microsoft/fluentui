@@ -6,7 +6,6 @@ import { Alert } from '@fluentui/react-alert';
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
-import { TokenBoxes } from '../TokenBoxes/TokenBoxes';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 
 import { Theme, BrandVariants } from '@fluentui/react-theme';
@@ -45,8 +44,6 @@ export const Content: React.FC<ContentProps> = props => {
         <AccessibilityChecker theme={theme} />
         <Divider />
         <ColorTokens isDark={isDark} brand={brand} />
-        <Divider />
-        <TokenBoxes theme={theme} />
       </div>
     </FluentProvider>
   );

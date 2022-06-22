@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
-import { BrandVariants, Caption1, createDarkTheme, createLightTheme, Theme } from '@fluentui/react-components';
+import { Caption1, createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import type { AccentColors } from '../../utils/themes/createCustomLightTheme';
+
+import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 
 export interface ColorTokensProps {
   className?: string;
@@ -22,95 +24,106 @@ const useStyles = makeStyles({
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
+  const { isDark, brand } = props;
+
   let theme: Theme;
   let initialColors: AccentColors;
 
-  if (props.isDark) {
-    theme = createDarkTheme(props.brand);
+  if (isDark) {
+    theme = createDarkTheme(brand);
     // below is still light theme stuff, needs to be changed
     initialColors = {
-      colorNeutralForeground2BrandHover: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground2BrandPressed: { brandValue: 70, usage: 'usage goes here' },
-      colorNeutralForeground2BrandSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground3BrandHover: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground3BrandPressed: { brandValue: 70, usage: 'usage goes here' },
-      colorNeutralForeground3BrandSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForegroundLink: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundLinkHover: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandForegroundLinkPressed: { brandValue: 40, usage: 'usage goes here' },
-      colorBrandForegroundLinkSelected: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandForeground1Hover: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandForeground1Pressed: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForeground2: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundInverted: { brandValue: 100, usage: 'usage goes here' },
-      colorBrandForegroundInvertedHover: { brandValue: 110, usage: 'usage goes here' },
-      colorBrandForegroundInvertedPressed: { brandValue: 100, usage: 'usage goes here' },
-      colorBrandForegroundOnLight: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForegroundOnLightHover: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundOnLightPressed: { brandValue: 50, usage: 'usage goes here' },
-      colorBrandForegroundOnLightSelected: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandBackground: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandBackgroundPressed: { brandValue: 40, usage: 'usage goes here' },
-      colorBrandBackgroundSelected: { brandValue: 60, usage: 'usage goes here' },
-      colorCompoundBrandBackground: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandBackgroundPressed: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandBackgroundStatic: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandBackground2: { brandValue: 160, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedHover: { brandValue: 160, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedPressed: { brandValue: 140, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedSelected: { brandValue: 150, usage: 'usage goes here' },
-      colorNeutralStrokeAccessibleSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandStroke: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandStrokeHover: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandStrokePressed: { brandValue: 60, usage: 'usage goes here' },
+      colorNeutralForeground2BrandHover: 80,
+      colorNeutralForeground2BrandPressed: 70,
+      colorNeutralForeground2BrandSelected: 80,
+      colorNeutralForeground3BrandHover: 80,
+      colorNeutralForeground3BrandPressed: 70,
+      colorNeutralForeground3BrandSelected: 80,
+      colorBrandForegroundLink: 70,
+      colorBrandForegroundLinkHover: 60,
+      colorBrandForegroundLinkPressed: 40,
+      colorBrandForegroundLinkSelected: 70,
+      colorCompoundBrandForeground1: 80,
+      colorCompoundBrandForeground1Hover: 80,
+      colorCompoundBrandForeground1Pressed: 80,
+      colorBrandForeground1: 80,
+      colorBrandForeground2: 70,
+      colorBrandForegroundInverted: 100,
+      colorBrandForegroundInvertedHover: 110,
+      colorBrandForegroundInvertedPressed: 100,
+      colorBrandForegroundOnLight: 80,
+      colorBrandForegroundOnLightHover: 70,
+      colorBrandForegroundOnLightPressed: 50,
+      colorBrandForegroundOnLightSelected: 60,
+      colorBrandBackground: 80,
+      colorBrandBackgroundHover: 70,
+      colorBrandBackgroundPressed: 40,
+      colorBrandBackgroundSelected: 60,
+      colorCompoundBrandBackground: 80,
+      colorCompoundBrandBackgroundHover: 70,
+      colorCompoundBrandBackgroundPressed: 60,
+      colorBrandBackgroundStatic: 80,
+      colorBrandBackground2: 160,
+      colorBrandBackgroundInvertedHover: 160,
+      colorBrandBackgroundInvertedPressed: 140,
+      colorBrandBackgroundInvertedSelected: 150,
+      colorNeutralStrokeAccessibleSelected: 80,
+      colorCompoundBrandStroke: 80,
+      colorCompoundBrandStrokeHover: 70,
+      colorCompoundBrandStrokePressed: 60,
     };
   } else {
-    theme = createLightTheme(props.brand);
+    theme = createLightTheme(brand);
     initialColors = {
-      colorNeutralForeground2BrandHover: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground2BrandPressed: { brandValue: 70, usage: 'usage goes here' },
-      colorNeutralForeground2BrandSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground3BrandHover: { brandValue: 80, usage: 'usage goes here' },
-      colorNeutralForeground3BrandPressed: { brandValue: 70, usage: 'usage goes here' },
-      colorNeutralForeground3BrandSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForegroundLink: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundLinkHover: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandForegroundLinkPressed: { brandValue: 40, usage: 'usage goes here' },
-      colorBrandForegroundLinkSelected: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandForeground1Hover: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandForeground1Pressed: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForeground1: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForeground2: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundInverted: { brandValue: 100, usage: 'usage goes here' },
-      colorBrandForegroundInvertedHover: { brandValue: 110, usage: 'usage goes here' },
-      colorBrandForegroundInvertedPressed: { brandValue: 100, usage: 'usage goes here' },
-      colorBrandForegroundOnLight: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandForegroundOnLightHover: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandForegroundOnLightPressed: { brandValue: 50, usage: 'usage goes here' },
-      colorBrandForegroundOnLightSelected: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandBackground: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
-      colorBrandBackgroundPressed: { brandValue: 40, usage: 'usage goes here' },
-      colorBrandBackgroundSelected: { brandValue: 60, usage: 'usage goes here' },
-      colorCompoundBrandBackground: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandBackgroundHover: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandBackgroundPressed: { brandValue: 60, usage: 'usage goes here' },
-      colorBrandBackgroundStatic: { brandValue: 80, usage: 'usage goes here' },
-      colorBrandBackground2: { brandValue: 160, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedHover: { brandValue: 160, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedPressed: { brandValue: 140, usage: 'usage goes here' },
-      colorBrandBackgroundInvertedSelected: { brandValue: 150, usage: 'usage goes here' },
-      colorNeutralStrokeAccessibleSelected: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandStroke: { brandValue: 80, usage: 'usage goes here' },
-      colorCompoundBrandStrokeHover: { brandValue: 70, usage: 'usage goes here' },
-      colorCompoundBrandStrokePressed: { brandValue: 60, usage: 'usage goes here' },
+      colorNeutralForeground2BrandHover: 80,
+      colorNeutralForeground2BrandPressed: 70,
+      colorNeutralForeground2BrandSelected: 80,
+      colorNeutralForeground3BrandHover: 80,
+      colorNeutralForeground3BrandPressed: 70,
+      colorNeutralForeground3BrandSelected: 80,
+      colorBrandForegroundLink: 70,
+      colorBrandForegroundLinkHover: 60,
+      colorBrandForegroundLinkPressed: 40,
+      colorBrandForegroundLinkSelected: 70,
+      colorCompoundBrandForeground1: 80,
+      colorCompoundBrandForeground1Hover: 80,
+      colorCompoundBrandForeground1Pressed: 80,
+      colorBrandForeground1: 80,
+      colorBrandForeground2: 70,
+      colorBrandForegroundInverted: 100,
+      colorBrandForegroundInvertedHover: 110,
+      colorBrandForegroundInvertedPressed: 100,
+      colorBrandForegroundOnLight: 80,
+      colorBrandForegroundOnLightHover: 70,
+      colorBrandForegroundOnLightPressed: 50,
+      colorBrandForegroundOnLightSelected: 60,
+      colorBrandBackground: 80,
+      colorBrandBackgroundHover: 70,
+      colorBrandBackgroundPressed: 40,
+      colorBrandBackgroundSelected: 60,
+      colorCompoundBrandBackground: 80,
+      colorCompoundBrandBackgroundHover: 70,
+      colorCompoundBrandBackgroundPressed: 60,
+      colorBrandBackgroundStatic: 80,
+      colorBrandBackground2: 160,
+      colorBrandBackgroundInvertedHover: 160,
+      colorBrandBackgroundInvertedPressed: 140,
+      colorBrandBackgroundInvertedSelected: 150,
+      colorNeutralStrokeAccessibleSelected: 80,
+      colorCompoundBrandStroke: 80,
+      colorCompoundBrandStrokeHover: 70,
+      colorCompoundBrandStrokePressed: 60,
     };
   }
+
+  const colorReducer: (state: AccentColors, action: { colorToken: string; newValue: Brands }) => AccentColors = (
+    state,
+    action,
+  ) => {
+    return { ...state, [action.colorToken]: action.newValue };
+  };
+
+  const [colors, dispatchColors] = React.useReducer(colorReducer, initialColors);
 
   return (
     <div className={props.className}>
@@ -119,7 +132,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
       </div>
-      <ColorTokensList accentColors={initialColors} />
+      <ColorTokensList brand={brand} colors={colors} dispatchColors={dispatchColors} />
     </div>
   );
 };
