@@ -6,7 +6,7 @@ import {
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-toolbar';
+import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-toolbar';
 import {
   Overflow,
   OverflowItem,

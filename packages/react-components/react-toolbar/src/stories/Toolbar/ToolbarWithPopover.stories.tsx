@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
-import { ToolbarProps } from '@fluentui/react-toolbar';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
