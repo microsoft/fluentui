@@ -3,7 +3,7 @@ import { Text } from '@fluentui/react-components';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
 export const LabelSubtext = () => {
   const labelId = useId('label');

@@ -2,16 +2,14 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { tokens } from '@fluentui/react-theme';
 import { useId } from '@fluentui/react-utilities';
-import { Radio, RadioGroup } from '../index';
+import { Radio, RadioGroup } from '@fluentui/react-radio';
 
-export const Required = () => {
-  const labelId = useId('label-');
+export const Horizontal = () => {
+  const labelId = useId('label');
   return (
     <div style={{ display: 'grid', gridRowGap: tokens.spacingVerticalS }}>
-      <Label id={labelId} required>
-        Favorite Fruit
-      </Label>
-      <RadioGroup aria-labelledby={labelId} required>
+      <Label id={labelId}>Favorite Fruit</Label>
+      <RadioGroup layout="horizontal" aria-labelledby={labelId}>
         <Radio value="apple" label="Apple" />
         <Radio value="pear" label="Pear" />
         <Radio value="banana" label="Banana" />
@@ -20,10 +18,11 @@ export const Required = () => {
     </div>
   );
 };
-Required.parameters = {
+Horizontal.storyName = 'Layout: horizontal';
+Horizontal.parameters = {
   docs: {
     description: {
-      story: 'Use the `required` prop on `RadioGroup` to make all child `Radio`s required.',
+      story: 'The `horizontal` layout places each radio item in a row, with labels after the radio indicator.',
     },
   },
 };
