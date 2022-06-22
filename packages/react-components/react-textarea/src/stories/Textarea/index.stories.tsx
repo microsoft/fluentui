@@ -1,4 +1,4 @@
-import { Textarea } from '../index';
+import { Textarea } from '@fluentui/react-textarea';
 
 import descriptionMd from './TextareaDescription.md';
 import bestPracticesMd from './TextareaBestPractices.md';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react-label';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Textarea } from '../index';
+import { Textarea } from '@fluentui/react-textarea';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
