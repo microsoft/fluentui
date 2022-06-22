@@ -1,0 +1,19 @@
+{
+  "name": "University",
+  "subname": "VIT Vellore",
+  "fill": "#0099BC",
+  "children": [
+    {
+      "name": "Professor",
+      "subname": "Department: CS",
+      "fill": "pink"
+    },
+    { "name": "Student", "subname": "Field: CS", "fill": "pink" },
+    { "name": "Placement", "subname": "Field: CS", "fill": "pink" },
+    {
+      "name": "Management",
+      "subname": "Different domains",
+      "fill": "pink"
+    }
+  ]
+}
