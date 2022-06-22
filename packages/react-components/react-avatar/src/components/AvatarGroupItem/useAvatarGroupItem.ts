@@ -3,7 +3,7 @@ import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -23,9 +23,15 @@ export const useAvatarGroupItem_unstable = (
   const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const hasAvatarGroupContext = useHasParentContext(AvatarGroupContext);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
   const { style, className, ...avatarSlotProps } = props;
   const size = groupSize ?? defaultAvatarGroupSize;
+
+  if (process.env.NODE_ENV !== 'production' && !hasAvatarGroupContext) {
+    // eslint-disable-next-line no-console
+    console.warn('AvatarGroupItem must only be used inside an AvatarGroup component.');
+  }
 
   return {
     nonOverflowAvatarsCount: nonOverflowAvatarsCount ?? 1,
