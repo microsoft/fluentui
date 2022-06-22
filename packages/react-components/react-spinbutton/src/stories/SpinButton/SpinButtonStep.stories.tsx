@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from '../index';
+import { SpinButton } from '@fluentui/react-spinbutton';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -17,22 +17,23 @@ const useLayoutStyles = makeStyles({
   },
 });
 
-export const Uncontrolled = () => {
+export const Step = () => {
   const layoutStyles = useLayoutStyles();
   const id = useId();
 
   return (
     <div className={layoutStyles.base}>
-      <Label htmlFor={id}>Uncontrolled SpinButton</Label>
-      <SpinButton defaultValue={10} id={id} />
+      <Label htmlFor={id}>Step Size</Label>
+      <SpinButton defaultValue={10} step={2} stepPage={20} id={id} />
     </div>
   );
 };
 
-Uncontrolled.parameters = {
+Step.parameters = {
   docs: {
     description: {
-      story: `An uncontrolled SpinButton`,
+      story: `SpinButton step size can be set. Additionally \`stepPage\` can be
+      set to a large value to allow bulk steps via the \`Page Up\` and \`Page Down\` keys.`,
     },
   },
 };

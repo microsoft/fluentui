@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from '../index';
+import { SpinButton } from '@fluentui/react-spinbutton';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -17,22 +17,14 @@ const useLayoutStyles = makeStyles({
   },
 });
 
-export const Disabled = () => {
+export const Default = () => {
   const layoutStyles = useLayoutStyles();
   const id = useId();
 
   return (
     <div className={layoutStyles.base}>
-      <Label htmlFor={id}>Disabled</Label>
-      <SpinButton disabled id={id} />
+      <Label htmlFor={id}>Default SpinButton</Label>
+      <SpinButton defaultValue={10} id={id} />
     </div>
   );
-};
-
-Disabled.parameters = {
-  docs: {
-    description: {
-      story: `SpinButton can be disabled.`,
-    },
-  },
 };

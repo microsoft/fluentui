@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SpinButton, SpinButtonProps } from '../index';
+import { SpinButton, SpinButtonProps } from '@fluentui/react-spinbutton';
 import { Label } from '@fluentui/react-label';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
