@@ -1,6 +1,6 @@
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList, TabListProps } from '../index';
+import { Tab, TabList } from '@fluentui/react-tabs';
 
 const useStyles = makeStyles({
   root: {
@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<TabListProps>) => {
+export const Horizontal = () => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <TabList {...props}>
+      <TabList defaultSelectedValue="tab2">
         <Tab value="tab1">First Tab</Tab>
         <Tab value="tab2">Second Tab</Tab>
         <Tab value="tab3">Third Tab</Tab>
@@ -26,4 +26,12 @@ export const Default = (props: Partial<TabListProps>) => {
       </TabList>
     </div>
   );
+};
+
+Horizontal.parameters = {
+  docs: {
+    description: {
+      story: 'The tabs within a tab list are arranged horzontally by default.',
+    },
+  },
 };

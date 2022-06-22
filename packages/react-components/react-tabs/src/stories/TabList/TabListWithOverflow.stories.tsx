@@ -17,9 +17,7 @@ import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
 import { Overflow, OverflowItem, useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
 import { tokens } from '@fluentui/react-theme';
-
-import { TabList } from '../TabList';
-import { Tab } from '../Tab';
+import { Tab, TabList } from '@fluentui/react-tabs';
 
 //----- Example Tab Data -----//
 

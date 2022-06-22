@@ -1,6 +1,7 @@
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList } from '../index';
+import { Tab, TabList } from '@fluentui/react-tabs';
+import type { TabListProps } from '@fluentui/react-tabs';
 
 const useStyles = makeStyles({
   root: {
@@ -13,12 +14,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const Vertical = () => {
+export const Default = (props: Partial<TabListProps>) => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2" vertical>
+      <TabList {...props}>
         <Tab value="tab1">First Tab</Tab>
         <Tab value="tab2">Second Tab</Tab>
         <Tab value="tab3">Third Tab</Tab>
@@ -26,12 +27,4 @@ export const Vertical = () => {
       </TabList>
     </div>
   );
-};
-
-Vertical.parameters = {
-  docs: {
-    description: {
-      story: 'The tabs within a tab list can be arranged vertically. The default is false.',
-    },
-  },
 };

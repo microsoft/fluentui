@@ -1,4 +1,4 @@
-import { TabList } from '../index';
+import { TabList } from '@fluentui/react-tabs';
 
 import descriptionMd from './TabListDescription.md';
 import bestPracticesMd from './TabListBestPractices.md';

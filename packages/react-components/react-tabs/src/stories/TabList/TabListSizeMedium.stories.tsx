@@ -1,7 +1,7 @@
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@griffel/react';
 import * as React from 'react';
-import { Tab, TabList } from '../index';
+import { Tab, TabList } from '@fluentui/react-tabs';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const SizeSmall = () => {
+export const SizeMedium = () => {
   const styles = useStyles();
 
   const renderTabs = () => {
@@ -32,20 +32,20 @@ export const SizeSmall = () => {
 
   return (
     <div className={styles.root}>
-      <TabList defaultSelectedValue="tab2" size="small">
+      <TabList defaultSelectedValue="tab2" size="medium">
         {renderTabs()}
       </TabList>
-      <TabList defaultSelectedValue="tab2" size="small" vertical>
+      <TabList defaultSelectedValue="tab2" size="medium" vertical>
         {renderTabs()}
       </TabList>
     </div>
   );
 };
 
-SizeSmall.parameters = {
+SizeMedium.parameters = {
   docs: {
     description: {
-      story: 'A tab list can have `small` tabs. The default size is `medium`.',
+      story: 'A tab list can have `medium` tabs. The default size is `medium`.',
     },
   },
 };
