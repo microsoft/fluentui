@@ -75,6 +75,8 @@ const useStyles = makeStyles({
 
   checkIcon: {
     fontSize: tokens.fontSizeBase400,
+    // Shift icon(s) to the left to give text content extra spacing without needing an extra node
+    // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
     marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
     marginRight: tokens.spacingHorizontalXXS,
     visibility: 'hidden',
