@@ -101,7 +101,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return (
       <>
         <div>
-          <label htmlFor="ChangeWidth_Styled">Width:</label>
+          <label htmlFor="changeWidth_Styled">Width:</label>
           <input
             type="range"
             value={this.state.width}

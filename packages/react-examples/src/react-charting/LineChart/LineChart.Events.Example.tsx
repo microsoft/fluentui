@@ -29,7 +29,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
   public render(): JSX.Element {
     return (
       <>
-        <label htmlFor="changeWidth_Events">change Width:</label>
+        <label htmlFor="changeWidth_Events">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -39,7 +39,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           id="changeWidth_Events"
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Events">change Height:</label>
+        <label htmlFor="changeHeight_Events">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
