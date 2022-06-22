@@ -91,6 +91,21 @@ ruleTester.run('no-restricted-imports', rule, {
     },
     {
       code: `
+        import type { TypographyStyle } from '@fluentui/react-theme';
+      `,
+      errors: [{ messageId: 'restrictedImport' }],
+      options: [
+        {
+          paths: [
+            {
+              forbidden: ['@fluentui/react-theme'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
         import { webDarkTheme } from '@fluentui/react-theme';
       `,
       errors: [{ messageId: 'restrictedImport' }],
@@ -106,6 +121,25 @@ ruleTester.run('no-restricted-imports', rule, {
       ],
       output: `
         import { webDarkTheme } from '@fluentui/react-components';
+      `,
+    },
+    {
+      code: `
+        import type { TypographyStyle } from '@fluentui/react-theme';
+      `,
+      errors: [{ messageId: 'restrictedImport' }],
+      options: [
+        {
+          paths: [
+            {
+              forbidden: ['@fluentui/react-theme'],
+              preferred: '@fluentui/react-components',
+            },
+          ],
+        },
+      ],
+      output: `
+        import type { TypographyStyle } from '@fluentui/react-components';
       `,
     },
     {
@@ -132,6 +166,57 @@ ruleTester.run('no-restricted-imports', rule, {
         import type { SpinnerProps, TypographyStyle } from '@fluentui/react-components';
         import { makeStyles } from '@fluentui/react-components';
       `,
+    },
+    {
+      code:
+        // eslint-disable-next-line @fluentui/max-len
+        "import type { SpinnerProps } from '@fluentui/react-components';import type { TextProps } from '@fluentui/react-text';",
+      errors: [{ messageId: 'restrictedImport' }],
+      options: [
+        {
+          paths: [
+            {
+              forbidden: ['@fluentui/react-text'],
+              preferred: '@fluentui/react-components',
+            },
+          ],
+        },
+      ],
+      output: "import type { SpinnerProps, TextProps } from '@fluentui/react-components';",
+    },
+    {
+      code: "import type { SpinnerProps } from '@fluentui/react-spinner';import { Text } from '@fluentui/react-text';",
+      errors: [{ messageId: 'restrictedImport' }, { messageId: 'restrictedImport' }],
+      options: [
+        {
+          paths: [
+            {
+              forbidden: ['@fluentui/react-spinner', '@fluentui/react-text'],
+              preferred: '@fluentui/react-components',
+            },
+          ],
+        },
+      ],
+      output:
+        // eslint-disable-next-line @fluentui/max-len
+        "import type { SpinnerProps } from '@fluentui/react-components';import { Text } from '@fluentui/react-components';",
+    },
+    {
+      code:
+        // eslint-disable-next-line @fluentui/max-len
+        "import type { SpinnerProps } from '@fluentui/react-spinner';import type { TextProps } from '@fluentui/react-text';",
+      errors: [{ messageId: 'restrictedImport' }, { messageId: 'restrictedImport' }],
+      options: [
+        {
+          paths: [
+            {
+              forbidden: ['@fluentui/react-spinner', '@fluentui/react-text'],
+              preferred: '@fluentui/react-components',
+            },
+          ],
+        },
+      ],
+      output: "import type { SpinnerProps, TextProps } from '@fluentui/react-components';",
     },
   ],
 });
