@@ -8,9 +8,9 @@ export const InitialValue = () => {
   return (
     <>
       <label htmlFor={selectId}>Color</label>
-      <Select id={selectId}>
+      <Select defaultValue="Green" id={selectId}>
         <option>Red</option>
-        <option selected>Green</option>
+        <option>Green</option>
         <option>Blue</option>
       </Select>
     </>

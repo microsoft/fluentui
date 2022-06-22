@@ -16,6 +16,7 @@ import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
+import { popoverSurfaceBorderRadius } from './constants';
 
 /**
  * Create the state required to render Popover.
@@ -191,6 +192,7 @@ function usePopoverRefs(
   const positioningOptions = {
     position: 'above' as const,
     align: 'center' as const,
+    arrowPadding: 2 * popoverSurfaceBorderRadius,
     target: state.openOnContext ? state.contextTarget : undefined,
     ...resolvePositioningShorthand(state.positioning),
   };
