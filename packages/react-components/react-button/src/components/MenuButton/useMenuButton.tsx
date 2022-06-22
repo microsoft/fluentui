@@ -12,6 +12,7 @@ export const useMenuButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): MenuButtonState => {
   const buttonState = useButton_unstable(props, ref);
+
   return {
     // Button state
     ...buttonState,
