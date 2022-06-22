@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Switch } from '../index';
-import type { SwitchProps } from '../index';
+import { Switch } from '@fluentui/react-switch';
+import type { SwitchProps } from '@fluentui/react-switch';
 
 export const Default = (props: SwitchProps) => <Switch label="This is a switch" {...props} />;
 

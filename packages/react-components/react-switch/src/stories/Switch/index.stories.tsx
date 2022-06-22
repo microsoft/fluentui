@@ -1,4 +1,4 @@
-import { Switch } from '../index';
+import { Switch } from '@fluentui/react-switch';
 
 import descriptionMd from './SwitchDescription.md';
 import bestPracticesMd from './SwitchBestPractices.md';

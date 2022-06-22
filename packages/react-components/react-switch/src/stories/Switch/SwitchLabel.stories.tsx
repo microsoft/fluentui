@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch } from '../index';
+import { Switch } from '@fluentui/react-switch';
 
 const wrapperStyle: React.CSSProperties = {
   display: 'flex',
