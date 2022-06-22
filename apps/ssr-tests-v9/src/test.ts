@@ -1,7 +1,7 @@
 import * as chalk from 'chalk';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Browser } from 'puppeteer';
+import type { Browser } from 'puppeteer';
 
 import { PROVIDER_ID } from './utils/constants';
 import { hrToSeconds } from './utils/helpers';
