@@ -65,7 +65,5 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
     ...baseState,
   };
 
-  useComboboxPopup(props, state);
-
   return state;
 };
