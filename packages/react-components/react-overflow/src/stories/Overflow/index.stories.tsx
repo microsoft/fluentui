@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Overflow } from '../components/Overflow';
+import { Overflow } from '@fluentui/react-overflow';
 import { ComponentMeta } from '@storybook/react';
 
 export { DomOrder } from './DomOrder.stories';

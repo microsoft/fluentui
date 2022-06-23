@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Overflow } from '../components/Overflow';
+import { Overflow } from '@fluentui/react-overflow';
 import { OverflowMenu, TestOverflowGroupDivider, TestOverflowItem } from './utils.stories';
 
 const useStyles = makeStyles({

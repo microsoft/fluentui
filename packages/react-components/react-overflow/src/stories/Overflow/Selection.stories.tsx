@@ -9,8 +9,7 @@ import {
   MenuList,
   shorthands,
 } from '@fluentui/react-components';
-import { Overflow } from '../components/Overflow';
-import { useOverflowMenu } from '../useOverflowMenu';
+import { Overflow, useOverflowMenu } from '@fluentui/react-overflow';
 import { TestOverflowItem, TestOverflowItemProps, TestOverflowMenuItem } from './utils.stories';
 
 const useStyles = makeStyles({
