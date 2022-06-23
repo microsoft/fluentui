@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add a bunch of missing peers on react/react-dom",
+  "packageName": "@fluentui/scheme-utilities",
+  "email": "stuartwilcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

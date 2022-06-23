@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add a bunch of missing peers on react/react-dom",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "stuartwilcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
