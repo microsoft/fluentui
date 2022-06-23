@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 /**
+ * @internal
  * Helper to manage a browser timeout.
  * Ensures that the timeout isn't set multiple times at once,
  * and is cleaned up when the component is unloaded.

@@ -37,3 +37,26 @@ flowchart TB
     b22-->b3
     end
 ```
+
+### `test`
+
+Uses assets from the `build` step and runs them in a real browser to ensure that there are no errors in console related to SSR.
+
+```shell
+# yarn test
+```
+
+```mermaid
+flowchart TB
+    subgraph Test
+      t1(Open a browser)
+      t2(Open a page and run JS)
+      t3(Ensure that console is empty)
+      t1-->t2
+      t2-->t3
+    end
+```
+
+#### Debugging
+
+All assets are available in `./dist` folder that is available once `build` have been run. You can open `./dist/index.html` in any browser and debug relevant issues.

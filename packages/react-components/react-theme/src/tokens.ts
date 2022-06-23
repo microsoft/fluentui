@@ -146,467 +146,6 @@ export const tokens: Record<keyof Theme, string> = {
   colorBrandShadowKey: 'var(--colorBrandShadowKey)',
 
   // Color palette tokens
-  // Color palette anchor tokens
-  colorPaletteAnchorBackground1: 'var(--colorPaletteAnchorBackground1)',
-  colorPaletteAnchorBackground2: 'var(--colorPaletteAnchorBackground2)',
-  colorPaletteAnchorBackground3: 'var(--colorPaletteAnchorBackground3)',
-  colorPaletteAnchorBorderActive: 'var(--colorPaletteAnchorBorderActive)',
-  colorPaletteAnchorBorder1: 'var(--colorPaletteAnchorBorder1)',
-  colorPaletteAnchorBorder2: 'var(--colorPaletteAnchorBorder2)',
-  colorPaletteAnchorForeground1: 'var(--colorPaletteAnchorForeground1)',
-  colorPaletteAnchorForeground2: 'var(--colorPaletteAnchorForeground2)',
-  colorPaletteAnchorForeground3: 'var(--colorPaletteAnchorForeground3)',
-
-  // Color palette beige tokens
-  colorPaletteBeigeBackground1: 'var(--colorPaletteBeigeBackground1)',
-  colorPaletteBeigeBackground2: 'var(--colorPaletteBeigeBackground2)',
-  colorPaletteBeigeBackground3: 'var(--colorPaletteBeigeBackground3)',
-  colorPaletteBeigeBorderActive: 'var(--colorPaletteBeigeBorderActive)',
-  colorPaletteBeigeBorder1: 'var(--colorPaletteBeigeBorder1)',
-  colorPaletteBeigeBorder2: 'var(--colorPaletteBeigeBorder2)',
-  colorPaletteBeigeForeground1: 'var(--colorPaletteBeigeForeground1)',
-  colorPaletteBeigeForeground2: 'var(--colorPaletteBeigeForeground2)',
-  colorPaletteBeigeForeground3: 'var(--colorPaletteBeigeForeground3)',
-
-  // Color palette berry tokens
-  colorPaletteBerryBackground1: 'var(--colorPaletteBerryBackground1)',
-  colorPaletteBerryBackground2: 'var(--colorPaletteBerryBackground2)',
-  colorPaletteBerryBackground3: 'var(--colorPaletteBerryBackground3)',
-  colorPaletteBerryBorderActive: 'var(--colorPaletteBerryBorderActive)',
-  colorPaletteBerryBorder1: 'var(--colorPaletteBerryBorder1)',
-  colorPaletteBerryBorder2: 'var(--colorPaletteBerryBorder2)',
-  colorPaletteBerryForeground1: 'var(--colorPaletteBerryForeground1)',
-  colorPaletteBerryForeground2: 'var(--colorPaletteBerryForeground2)',
-  colorPaletteBerryForeground3: 'var(--colorPaletteBerryForeground3)',
-
-  // Color palette blue tokens
-  colorPaletteBlueBackground1: 'var(--colorPaletteBlueBackground1)',
-  colorPaletteBlueBackground2: 'var(--colorPaletteBlueBackground2)',
-  colorPaletteBlueBackground3: 'var(--colorPaletteBlueBackground3)',
-  colorPaletteBlueBorderActive: 'var(--colorPaletteBlueBorderActive)',
-  colorPaletteBlueBorder1: 'var(--colorPaletteBlueBorder1)',
-  colorPaletteBlueBorder2: 'var(--colorPaletteBlueBorder2)',
-  colorPaletteBlueForeground1: 'var(--colorPaletteBlueForeground1)',
-  colorPaletteBlueForeground2: 'var(--colorPaletteBlueForeground2)',
-  colorPaletteBlueForeground3: 'var(--colorPaletteBlueForeground3)',
-
-  // Color palette brass tokens
-  colorPaletteBrassBackground1: 'var(--colorPaletteBrassBackground1)',
-  colorPaletteBrassBackground2: 'var(--colorPaletteBrassBackground2)',
-  colorPaletteBrassBackground3: 'var(--colorPaletteBrassBackground3)',
-  colorPaletteBrassBorderActive: 'var(--colorPaletteBrassBorderActive)',
-  colorPaletteBrassBorder1: 'var(--colorPaletteBrassBorder1)',
-  colorPaletteBrassBorder2: 'var(--colorPaletteBrassBorder2)',
-  colorPaletteBrassForeground1: 'var(--colorPaletteBrassForeground1)',
-  colorPaletteBrassForeground2: 'var(--colorPaletteBrassForeground2)',
-  colorPaletteBrassForeground3: 'var(--colorPaletteBrassForeground3)',
-
-  // Color palette bronze tokens
-  colorPaletteBronzeBackground1: 'var(--colorPaletteBronzeBackground1)',
-  colorPaletteBronzeBackground2: 'var(--colorPaletteBronzeBackground2)',
-  colorPaletteBronzeBackground3: 'var(--colorPaletteBronzeBackground3)',
-  colorPaletteBronzeBorderActive: 'var(--colorPaletteBronzeBorderActive)',
-  colorPaletteBronzeBorder1: 'var(--colorPaletteBronzeBorder1)',
-  colorPaletteBronzeBorder2: 'var(--colorPaletteBronzeBorder2)',
-  colorPaletteBronzeForeground1: 'var(--colorPaletteBronzeForeground1)',
-  colorPaletteBronzeForeground2: 'var(--colorPaletteBronzeForeground2)',
-  colorPaletteBronzeForeground3: 'var(--colorPaletteBronzeForeground3)',
-
-  // Color palette brown tokens
-  colorPaletteBrownBackground1: 'var(--colorPaletteBrownBackground1)',
-  colorPaletteBrownBackground2: 'var(--colorPaletteBrownBackground2)',
-  colorPaletteBrownBackground3: 'var(--colorPaletteBrownBackground3)',
-  colorPaletteBrownBorderActive: 'var(--colorPaletteBrownBorderActive)',
-  colorPaletteBrownBorder1: 'var(--colorPaletteBrownBorder1)',
-  colorPaletteBrownBorder2: 'var(--colorPaletteBrownBorder2)',
-  colorPaletteBrownForeground1: 'var(--colorPaletteBrownForeground1)',
-  colorPaletteBrownForeground2: 'var(--colorPaletteBrownForeground2)',
-  colorPaletteBrownForeground3: 'var(--colorPaletteBrownForeground3)',
-
-  // Color palette burgundy tokens
-  colorPaletteBurgundyBackground1: 'var(--colorPaletteBurgundyBackground1)',
-  colorPaletteBurgundyBackground2: 'var(--colorPaletteBurgundyBackground2)',
-  colorPaletteBurgundyBackground3: 'var(--colorPaletteBurgundyBackground3)',
-  colorPaletteBurgundyBorderActive: 'var(--colorPaletteBurgundyBorderActive)',
-  colorPaletteBurgundyBorder1: 'var(--colorPaletteBurgundyBorder1)',
-  colorPaletteBurgundyBorder2: 'var(--colorPaletteBurgundyBorder2)',
-  colorPaletteBurgundyForeground1: 'var(--colorPaletteBurgundyForeground1)',
-  colorPaletteBurgundyForeground2: 'var(--colorPaletteBurgundyForeground2)',
-  colorPaletteBurgundyForeground3: 'var(--colorPaletteBurgundyForeground3)',
-
-  // Color palette charcoal tokens
-  colorPaletteCharcoalBackground1: 'var(--colorPaletteCharcoalBackground1)',
-  colorPaletteCharcoalBackground2: 'var(--colorPaletteCharcoalBackground2)',
-  colorPaletteCharcoalBackground3: 'var(--colorPaletteCharcoalBackground3)',
-  colorPaletteCharcoalBorderActive: 'var(--colorPaletteCharcoalBorderActive)',
-  colorPaletteCharcoalBorder1: 'var(--colorPaletteCharcoalBorder1)',
-  colorPaletteCharcoalBorder2: 'var(--colorPaletteCharcoalBorder2)',
-  colorPaletteCharcoalForeground1: 'var(--colorPaletteCharcoalForeground1)',
-  colorPaletteCharcoalForeground2: 'var(--colorPaletteCharcoalForeground2)',
-  colorPaletteCharcoalForeground3: 'var(--colorPaletteCharcoalForeground3)',
-
-  // Color palette cornflower tokens
-  colorPaletteCornflowerBackground1: 'var(--colorPaletteCornflowerBackground1)',
-  colorPaletteCornflowerBackground2: 'var(--colorPaletteCornflowerBackground2)',
-  colorPaletteCornflowerBackground3: 'var(--colorPaletteCornflowerBackground3)',
-  colorPaletteCornflowerBorderActive: 'var(--colorPaletteCornflowerBorderActive)',
-  colorPaletteCornflowerBorder1: 'var(--colorPaletteCornflowerBorder1)',
-  colorPaletteCornflowerBorder2: 'var(--colorPaletteCornflowerBorder2)',
-  colorPaletteCornflowerForeground1: 'var(--colorPaletteCornflowerForeground1)',
-  colorPaletteCornflowerForeground2: 'var(--colorPaletteCornflowerForeground2)',
-  colorPaletteCornflowerForeground3: 'var(--colorPaletteCornflowerForeground3)',
-
-  // Color palette cranberry tokens
-  colorPaletteCranberryBackground1: 'var(--colorPaletteCranberryBackground1)',
-  colorPaletteCranberryBackground2: 'var(--colorPaletteCranberryBackground2)',
-  colorPaletteCranberryBackground3: 'var(--colorPaletteCranberryBackground3)',
-  colorPaletteCranberryBorderActive: 'var(--colorPaletteCranberryBorderActive)',
-  colorPaletteCranberryBorder1: 'var(--colorPaletteCranberryBorder1)',
-  colorPaletteCranberryBorder2: 'var(--colorPaletteCranberryBorder2)',
-  colorPaletteCranberryForeground1: 'var(--colorPaletteCranberryForeground1)',
-  colorPaletteCranberryForeground2: 'var(--colorPaletteCranberryForeground2)',
-  colorPaletteCranberryForeground3: 'var(--colorPaletteCranberryForeground3)',
-
-  // Color palette cyan tokens
-  colorPaletteCyanBackground1: 'var(--colorPaletteCyanBackground1)',
-  colorPaletteCyanBackground2: 'var(--colorPaletteCyanBackground2)',
-  colorPaletteCyanBackground3: 'var(--colorPaletteCyanBackground3)',
-  colorPaletteCyanBorderActive: 'var(--colorPaletteCyanBorderActive)',
-  colorPaletteCyanBorder1: 'var(--colorPaletteCyanBorder1)',
-  colorPaletteCyanBorder2: 'var(--colorPaletteCyanBorder2)',
-  colorPaletteCyanForeground1: 'var(--colorPaletteCyanForeground1)',
-  colorPaletteCyanForeground2: 'var(--colorPaletteCyanForeground2)',
-  colorPaletteCyanForeground3: 'var(--colorPaletteCyanForeground3)',
-
-  // Color palette dark blue tokens
-  colorPaletteDarkBlueBackground1: 'var(--colorPaletteDarkBlueBackground1)',
-  colorPaletteDarkBlueBackground2: 'var(--colorPaletteDarkBlueBackground2)',
-  colorPaletteDarkBlueBackground3: 'var(--colorPaletteDarkBlueBackground3)',
-  colorPaletteDarkBlueBorderActive: 'var(--colorPaletteDarkBlueBorderActive)',
-  colorPaletteDarkBlueBorder1: 'var(--colorPaletteDarkBlueBorder1)',
-  colorPaletteDarkBlueBorder2: 'var(--colorPaletteDarkBlueBorder2)',
-  colorPaletteDarkBlueForeground1: 'var(--colorPaletteDarkBlueForeground1)',
-  colorPaletteDarkBlueForeground2: 'var(--colorPaletteDarkBlueForeground2)',
-  colorPaletteDarkBlueForeground3: 'var(--colorPaletteDarkBlueForeground3)',
-
-  // Color palette dark brown tokens
-  colorPaletteDarkBrownBackground1: 'var(--colorPaletteDarkBrownBackground1)',
-  colorPaletteDarkBrownBackground2: 'var(--colorPaletteDarkBrownBackground2)',
-  colorPaletteDarkBrownBackground3: 'var(--colorPaletteDarkBrownBackground3)',
-  colorPaletteDarkBrownBorderActive: 'var(--colorPaletteDarkBrownBorderActive)',
-  colorPaletteDarkBrownBorder1: 'var(--colorPaletteDarkBrownBorder1)',
-  colorPaletteDarkBrownBorder2: 'var(--colorPaletteDarkBrownBorder2)',
-  colorPaletteDarkBrownForeground1: 'var(--colorPaletteDarkBrownForeground1)',
-  colorPaletteDarkBrownForeground2: 'var(--colorPaletteDarkBrownForeground2)',
-  colorPaletteDarkBrownForeground3: 'var(--colorPaletteDarkBrownForeground3)',
-
-  // Color palette dark green tokens
-  colorPaletteDarkGreenBackground1: 'var(--colorPaletteDarkGreenBackground1)',
-  colorPaletteDarkGreenBackground2: 'var(--colorPaletteDarkGreenBackground2)',
-  colorPaletteDarkGreenBackground3: 'var(--colorPaletteDarkGreenBackground3)',
-  colorPaletteDarkGreenBorderActive: 'var(--colorPaletteDarkGreenBorderActive)',
-  colorPaletteDarkGreenBorder1: 'var(--colorPaletteDarkGreenBorder1)',
-  colorPaletteDarkGreenBorder2: 'var(--colorPaletteDarkGreenBorder2)',
-  colorPaletteDarkGreenForeground1: 'var(--colorPaletteDarkGreenForeground1)',
-  colorPaletteDarkGreenForeground2: 'var(--colorPaletteDarkGreenForeground2)',
-  colorPaletteDarkGreenForeground3: 'var(--colorPaletteDarkGreenForeground3)',
-
-  // Color palette dark orange tokens
-  colorPaletteDarkOrangeBackground1: 'var(--colorPaletteDarkOrangeBackground1)',
-  colorPaletteDarkOrangeBackground2: 'var(--colorPaletteDarkOrangeBackground2)',
-  colorPaletteDarkOrangeBackground3: 'var(--colorPaletteDarkOrangeBackground3)',
-  colorPaletteDarkOrangeBorderActive: 'var(--colorPaletteDarkOrangeBorderActive)',
-  colorPaletteDarkOrangeBorder1: 'var(--colorPaletteDarkOrangeBorder1)',
-  colorPaletteDarkOrangeBorder2: 'var(--colorPaletteDarkOrangeBorder2)',
-  colorPaletteDarkOrangeForeground1: 'var(--colorPaletteDarkOrangeForeground1)',
-  colorPaletteDarkOrangeForeground2: 'var(--colorPaletteDarkOrangeForeground2)',
-  colorPaletteDarkOrangeForeground3: 'var(--colorPaletteDarkOrangeForeground3)',
-
-  // Color palette dark purple tokens
-  colorPaletteDarkPurpleBackground1: 'var(--colorPaletteDarkPurpleBackground1)',
-  colorPaletteDarkPurpleBackground2: 'var(--colorPaletteDarkPurpleBackground2)',
-  colorPaletteDarkPurpleBackground3: 'var(--colorPaletteDarkPurpleBackground3)',
-  colorPaletteDarkPurpleBorderActive: 'var(--colorPaletteDarkPurpleBorderActive)',
-  colorPaletteDarkPurpleBorder1: 'var(--colorPaletteDarkPurpleBorder1)',
-  colorPaletteDarkPurpleBorder2: 'var(--colorPaletteDarkPurpleBorder2)',
-  colorPaletteDarkPurpleForeground1: 'var(--colorPaletteDarkPurpleForeground1)',
-  colorPaletteDarkPurpleForeground2: 'var(--colorPaletteDarkPurpleForeground2)',
-  colorPaletteDarkPurpleForeground3: 'var(--colorPaletteDarkPurpleForeground3)',
-
-  // Color palette dark red tokens
-  colorPaletteDarkRedBackground1: 'var(--colorPaletteDarkRedBackground1)',
-  colorPaletteDarkRedBackground2: 'var(--colorPaletteDarkRedBackground2)',
-  colorPaletteDarkRedBackground3: 'var(--colorPaletteDarkRedBackground3)',
-  colorPaletteDarkRedBorderActive: 'var(--colorPaletteDarkRedBorderActive)',
-  colorPaletteDarkRedBorder1: 'var(--colorPaletteDarkRedBorder1)',
-  colorPaletteDarkRedBorder2: 'var(--colorPaletteDarkRedBorder2)',
-  colorPaletteDarkRedForeground1: 'var(--colorPaletteDarkRedForeground1)',
-  colorPaletteDarkRedForeground2: 'var(--colorPaletteDarkRedForeground2)',
-  colorPaletteDarkRedForeground3: 'var(--colorPaletteDarkRedForeground3)',
-
-  // Color palette dark teal tokens
-  colorPaletteDarkTealBackground1: 'var(--colorPaletteDarkTealBackground1)',
-  colorPaletteDarkTealBackground2: 'var(--colorPaletteDarkTealBackground2)',
-  colorPaletteDarkTealBackground3: 'var(--colorPaletteDarkTealBackground3)',
-  colorPaletteDarkTealBorderActive: 'var(--colorPaletteDarkTealBorderActive)',
-  colorPaletteDarkTealBorder1: 'var(--colorPaletteDarkTealBorder1)',
-  colorPaletteDarkTealBorder2: 'var(--colorPaletteDarkTealBorder2)',
-  colorPaletteDarkTealForeground1: 'var(--colorPaletteDarkTealForeground1)',
-  colorPaletteDarkTealForeground2: 'var(--colorPaletteDarkTealForeground2)',
-  colorPaletteDarkTealForeground3: 'var(--colorPaletteDarkTealForeground3)',
-
-  // Color palette forest tokens
-  colorPaletteForestBackground1: 'var(--colorPaletteForestBackground1)',
-  colorPaletteForestBackground2: 'var(--colorPaletteForestBackground2)',
-  colorPaletteForestBackground3: 'var(--colorPaletteForestBackground3)',
-  colorPaletteForestBorderActive: 'var(--colorPaletteForestBorderActive)',
-  colorPaletteForestBorder1: 'var(--colorPaletteForestBorder1)',
-  colorPaletteForestBorder2: 'var(--colorPaletteForestBorder2)',
-  colorPaletteForestForeground1: 'var(--colorPaletteForestForeground1)',
-  colorPaletteForestForeground2: 'var(--colorPaletteForestForeground2)',
-  colorPaletteForestForeground3: 'var(--colorPaletteForestForeground3)',
-
-  // Color palette gold tokens
-  colorPaletteGoldBackground1: 'var(--colorPaletteGoldBackground1)',
-  colorPaletteGoldBackground2: 'var(--colorPaletteGoldBackground2)',
-  colorPaletteGoldBackground3: 'var(--colorPaletteGoldBackground3)',
-  colorPaletteGoldBorderActive: 'var(--colorPaletteGoldBorderActive)',
-  colorPaletteGoldBorder1: 'var(--colorPaletteGoldBorder1)',
-  colorPaletteGoldBorder2: 'var(--colorPaletteGoldBorder2)',
-  colorPaletteGoldForeground1: 'var(--colorPaletteGoldForeground1)',
-  colorPaletteGoldForeground2: 'var(--colorPaletteGoldForeground2)',
-  colorPaletteGoldForeground3: 'var(--colorPaletteGoldForeground3)',
-
-  // Color palette grape tokens
-  colorPaletteGrapeBackground1: 'var(--colorPaletteGrapeBackground1)',
-  colorPaletteGrapeBackground2: 'var(--colorPaletteGrapeBackground2)',
-  colorPaletteGrapeBackground3: 'var(--colorPaletteGrapeBackground3)',
-  colorPaletteGrapeBorderActive: 'var(--colorPaletteGrapeBorderActive)',
-  colorPaletteGrapeBorder1: 'var(--colorPaletteGrapeBorder1)',
-  colorPaletteGrapeBorder2: 'var(--colorPaletteGrapeBorder2)',
-  colorPaletteGrapeForeground1: 'var(--colorPaletteGrapeForeground1)',
-  colorPaletteGrapeForeground2: 'var(--colorPaletteGrapeForeground2)',
-  colorPaletteGrapeForeground3: 'var(--colorPaletteGrapeForeground3)',
-
-  // Color palette green tokens
-  colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
-  colorPaletteGreenBackground2: 'var(--colorPaletteGreenBackground2)',
-  colorPaletteGreenBackground3: 'var(--colorPaletteGreenBackground3)',
-  colorPaletteGreenBorderActive: 'var(--colorPaletteGreenBorderActive)',
-  colorPaletteGreenBorder1: 'var(--colorPaletteGreenBorder1)',
-  colorPaletteGreenBorder2: 'var(--colorPaletteGreenBorder2)',
-  colorPaletteGreenForeground1: 'var(--colorPaletteGreenForeground1)',
-  colorPaletteGreenForeground2: 'var(--colorPaletteGreenForeground2)',
-  colorPaletteGreenForeground3: 'var(--colorPaletteGreenForeground3)',
-
-  // Color palette hot pink tokens
-  colorPaletteHotPinkBackground1: 'var(--colorPaletteHotPinkBackground1)',
-  colorPaletteHotPinkBackground2: 'var(--colorPaletteHotPinkBackground2)',
-  colorPaletteHotPinkBackground3: 'var(--colorPaletteHotPinkBackground3)',
-  colorPaletteHotPinkBorderActive: 'var(--colorPaletteHotPinkBorderActive)',
-  colorPaletteHotPinkBorder1: 'var(--colorPaletteHotPinkBorder1)',
-  colorPaletteHotPinkBorder2: 'var(--colorPaletteHotPinkBorder2)',
-  colorPaletteHotPinkForeground1: 'var(--colorPaletteHotPinkForeground1)',
-  colorPaletteHotPinkForeground2: 'var(--colorPaletteHotPinkForeground2)',
-  colorPaletteHotPinkForeground3: 'var(--colorPaletteHotPinkForeground3)',
-
-  // Color palette lavender tokens
-  colorPaletteLavenderBackground1: 'var(--colorPaletteLavenderBackground1)',
-  colorPaletteLavenderBackground2: 'var(--colorPaletteLavenderBackground2)',
-  colorPaletteLavenderBackground3: 'var(--colorPaletteLavenderBackground3)',
-  colorPaletteLavenderBorderActive: 'var(--colorPaletteLavenderBorderActive)',
-  colorPaletteLavenderBorder1: 'var(--colorPaletteLavenderBorder1)',
-  colorPaletteLavenderBorder2: 'var(--colorPaletteLavenderBorder2)',
-  colorPaletteLavenderForeground1: 'var(--colorPaletteLavenderForeground1)',
-  colorPaletteLavenderForeground2: 'var(--colorPaletteLavenderForeground2)',
-  colorPaletteLavenderForeground3: 'var(--colorPaletteLavenderForeground3)',
-
-  // Color palette light blue tokens
-  colorPaletteLightBlueBackground1: 'var(--colorPaletteLightBlueBackground1)',
-  colorPaletteLightBlueBackground2: 'var(--colorPaletteLightBlueBackground2)',
-  colorPaletteLightBlueBackground3: 'var(--colorPaletteLightBlueBackground3)',
-  colorPaletteLightBlueBorderActive: 'var(--colorPaletteLightBlueBorderActive)',
-  colorPaletteLightBlueBorder1: 'var(--colorPaletteLightBlueBorder1)',
-  colorPaletteLightBlueBorder2: 'var(--colorPaletteLightBlueBorder2)',
-  colorPaletteLightBlueForeground1: 'var(--colorPaletteLightBlueForeground1)',
-  colorPaletteLightBlueForeground2: 'var(--colorPaletteLightBlueForeground2)',
-  colorPaletteLightBlueForeground3: 'var(--colorPaletteLightBlueForeground3)',
-
-  // Color palette light green tokens
-  colorPaletteLightGreenBackground1: 'var(--colorPaletteLightGreenBackground1)',
-  colorPaletteLightGreenBackground2: 'var(--colorPaletteLightGreenBackground2)',
-  colorPaletteLightGreenBackground3: 'var(--colorPaletteLightGreenBackground3)',
-  colorPaletteLightGreenBorderActive: 'var(--colorPaletteLightGreenBorderActive)',
-  colorPaletteLightGreenBorder1: 'var(--colorPaletteLightGreenBorder1)',
-  colorPaletteLightGreenBorder2: 'var(--colorPaletteLightGreenBorder2)',
-  colorPaletteLightGreenForeground1: 'var(--colorPaletteLightGreenForeground1)',
-  colorPaletteLightGreenForeground2: 'var(--colorPaletteLightGreenForeground2)',
-  colorPaletteLightGreenForeground3: 'var(--colorPaletteLightGreenForeground3)',
-
-  // Color palette light teal tokens
-  colorPaletteLightTealBackground1: 'var(--colorPaletteLightTealBackground1)',
-  colorPaletteLightTealBackground2: 'var(--colorPaletteLightTealBackground2)',
-  colorPaletteLightTealBackground3: 'var(--colorPaletteLightTealBackground3)',
-  colorPaletteLightTealBorderActive: 'var(--colorPaletteLightTealBorderActive)',
-  colorPaletteLightTealBorder1: 'var(--colorPaletteLightTealBorder1)',
-  colorPaletteLightTealBorder2: 'var(--colorPaletteLightTealBorder2)',
-  colorPaletteLightTealForeground1: 'var(--colorPaletteLightTealForeground1)',
-  colorPaletteLightTealForeground2: 'var(--colorPaletteLightTealForeground2)',
-  colorPaletteLightTealForeground3: 'var(--colorPaletteLightTealForeground3)',
-
-  // Color palette lilac tokens
-  colorPaletteLilacBackground1: 'var(--colorPaletteLilacBackground1)',
-  colorPaletteLilacBackground2: 'var(--colorPaletteLilacBackground2)',
-  colorPaletteLilacBackground3: 'var(--colorPaletteLilacBackground3)',
-  colorPaletteLilacBorderActive: 'var(--colorPaletteLilacBorderActive)',
-  colorPaletteLilacBorder1: 'var(--colorPaletteLilacBorder1)',
-  colorPaletteLilacBorder2: 'var(--colorPaletteLilacBorder2)',
-  colorPaletteLilacForeground1: 'var(--colorPaletteLilacForeground1)',
-  colorPaletteLilacForeground2: 'var(--colorPaletteLilacForeground2)',
-  colorPaletteLilacForeground3: 'var(--colorPaletteLilacForeground3)',
-
-  // Color palette lime tokens
-  colorPaletteLimeBackground1: 'var(--colorPaletteLimeBackground1)',
-  colorPaletteLimeBackground2: 'var(--colorPaletteLimeBackground2)',
-  colorPaletteLimeBackground3: 'var(--colorPaletteLimeBackground3)',
-  colorPaletteLimeBorderActive: 'var(--colorPaletteLimeBorderActive)',
-  colorPaletteLimeBorder1: 'var(--colorPaletteLimeBorder1)',
-  colorPaletteLimeBorder2: 'var(--colorPaletteLimeBorder2)',
-  colorPaletteLimeForeground1: 'var(--colorPaletteLimeForeground1)',
-  colorPaletteLimeForeground2: 'var(--colorPaletteLimeForeground2)',
-  colorPaletteLimeForeground3: 'var(--colorPaletteLimeForeground3)',
-
-  // Color palette magenta tokens
-  colorPaletteMagentaBackground1: 'var(--colorPaletteMagentaBackground1)',
-  colorPaletteMagentaBackground2: 'var(--colorPaletteMagentaBackground2)',
-  colorPaletteMagentaBackground3: 'var(--colorPaletteMagentaBackground3)',
-  colorPaletteMagentaBorderActive: 'var(--colorPaletteMagentaBorderActive)',
-  colorPaletteMagentaBorder1: 'var(--colorPaletteMagentaBorder1)',
-  colorPaletteMagentaBorder2: 'var(--colorPaletteMagentaBorder2)',
-  colorPaletteMagentaForeground1: 'var(--colorPaletteMagentaForeground1)',
-  colorPaletteMagentaForeground2: 'var(--colorPaletteMagentaForeground2)',
-  colorPaletteMagentaForeground3: 'var(--colorPaletteMagentaForeground3)',
-
-  // Color palette marigold tokens
-  colorPaletteMarigoldBackground1: 'var(--colorPaletteMarigoldBackground1)',
-  colorPaletteMarigoldBackground2: 'var(--colorPaletteMarigoldBackground2)',
-  colorPaletteMarigoldBackground3: 'var(--colorPaletteMarigoldBackground3)',
-  colorPaletteMarigoldBorderActive: 'var(--colorPaletteMarigoldBorderActive)',
-  colorPaletteMarigoldBorder1: 'var(--colorPaletteMarigoldBorder1)',
-  colorPaletteMarigoldBorder2: 'var(--colorPaletteMarigoldBorder2)',
-  colorPaletteMarigoldForeground1: 'var(--colorPaletteMarigoldForeground1)',
-  colorPaletteMarigoldForeground2: 'var(--colorPaletteMarigoldForeground2)',
-  colorPaletteMarigoldForeground3: 'var(--colorPaletteMarigoldForeground3)',
-
-  // Color palette mink tokens
-  colorPaletteMinkBackground1: 'var(--colorPaletteMinkBackground1)',
-  colorPaletteMinkBackground2: 'var(--colorPaletteMinkBackground2)',
-  colorPaletteMinkBackground3: 'var(--colorPaletteMinkBackground3)',
-  colorPaletteMinkBorderActive: 'var(--colorPaletteMinkBorderActive)',
-  colorPaletteMinkBorder1: 'var(--colorPaletteMinkBorder1)',
-  colorPaletteMinkBorder2: 'var(--colorPaletteMinkBorder2)',
-  colorPaletteMinkForeground1: 'var(--colorPaletteMinkForeground1)',
-  colorPaletteMinkForeground2: 'var(--colorPaletteMinkForeground2)',
-  colorPaletteMinkForeground3: 'var(--colorPaletteMinkForeground3)',
-
-  // Color palette navy tokens
-  colorPaletteNavyBackground1: 'var(--colorPaletteNavyBackground1)',
-  colorPaletteNavyBackground2: 'var(--colorPaletteNavyBackground2)',
-  colorPaletteNavyBackground3: 'var(--colorPaletteNavyBackground3)',
-  colorPaletteNavyBorderActive: 'var(--colorPaletteNavyBorderActive)',
-  colorPaletteNavyBorder1: 'var(--colorPaletteNavyBorder1)',
-  colorPaletteNavyBorder2: 'var(--colorPaletteNavyBorder2)',
-  colorPaletteNavyForeground1: 'var(--colorPaletteNavyForeground1)',
-  colorPaletteNavyForeground2: 'var(--colorPaletteNavyForeground2)',
-  colorPaletteNavyForeground3: 'var(--colorPaletteNavyForeground3)',
-
-  // Color palette orange tokens
-  colorPaletteOrangeBackground1: 'var(--colorPaletteOrangeBackground1)',
-  colorPaletteOrangeBackground2: 'var(--colorPaletteOrangeBackground2)',
-  colorPaletteOrangeBackground3: 'var(--colorPaletteOrangeBackground3)',
-  colorPaletteOrangeBorderActive: 'var(--colorPaletteOrangeBorderActive)',
-  colorPaletteOrangeBorder1: 'var(--colorPaletteOrangeBorder1)',
-  colorPaletteOrangeBorder2: 'var(--colorPaletteOrangeBorder2)',
-  colorPaletteOrangeForeground1: 'var(--colorPaletteOrangeForeground1)',
-  colorPaletteOrangeForeground2: 'var(--colorPaletteOrangeForeground2)',
-  colorPaletteOrangeForeground3: 'var(--colorPaletteOrangeForeground3)',
-
-  // Color palette orchid tokens
-  colorPaletteOrchidBackground1: 'var(--colorPaletteOrchidBackground1)',
-  colorPaletteOrchidBackground2: 'var(--colorPaletteOrchidBackground2)',
-  colorPaletteOrchidBackground3: 'var(--colorPaletteOrchidBackground3)',
-  colorPaletteOrchidBorderActive: 'var(--colorPaletteOrchidBorderActive)',
-  colorPaletteOrchidBorder1: 'var(--colorPaletteOrchidBorder1)',
-  colorPaletteOrchidBorder2: 'var(--colorPaletteOrchidBorder2)',
-  colorPaletteOrchidForeground1: 'var(--colorPaletteOrchidForeground1)',
-  colorPaletteOrchidForeground2: 'var(--colorPaletteOrchidForeground2)',
-  colorPaletteOrchidForeground3: 'var(--colorPaletteOrchidForeground3)',
-
-  // Color palette peach tokens
-  colorPalettePeachBackground1: 'var(--colorPalettePeachBackground1)',
-  colorPalettePeachBackground2: 'var(--colorPalettePeachBackground2)',
-  colorPalettePeachBackground3: 'var(--colorPalettePeachBackground3)',
-  colorPalettePeachBorderActive: 'var(--colorPalettePeachBorderActive)',
-  colorPalettePeachBorder1: 'var(--colorPalettePeachBorder1)',
-  colorPalettePeachBorder2: 'var(--colorPalettePeachBorder2)',
-  colorPalettePeachForeground1: 'var(--colorPalettePeachForeground1)',
-  colorPalettePeachForeground2: 'var(--colorPalettePeachForeground2)',
-  colorPalettePeachForeground3: 'var(--colorPalettePeachForeground3)',
-
-  // Color palette pink tokens
-  colorPalettePinkBackground1: 'var(--colorPalettePinkBackground1)',
-  colorPalettePinkBackground2: 'var(--colorPalettePinkBackground2)',
-  colorPalettePinkBackground3: 'var(--colorPalettePinkBackground3)',
-  colorPalettePinkBorderActive: 'var(--colorPalettePinkBorderActive)',
-  colorPalettePinkBorder1: 'var(--colorPalettePinkBorder1)',
-  colorPalettePinkBorder2: 'var(--colorPalettePinkBorder2)',
-  colorPalettePinkForeground1: 'var(--colorPalettePinkForeground1)',
-  colorPalettePinkForeground2: 'var(--colorPalettePinkForeground2)',
-  colorPalettePinkForeground3: 'var(--colorPalettePinkForeground3)',
-
-  // Color palette platinum tokens
-  colorPalettePlatinumBackground1: 'var(--colorPalettePlatinumBackground1)',
-  colorPalettePlatinumBackground2: 'var(--colorPalettePlatinumBackground2)',
-  colorPalettePlatinumBackground3: 'var(--colorPalettePlatinumBackground3)',
-  colorPalettePlatinumBorderActive: 'var(--colorPalettePlatinumBorderActive)',
-  colorPalettePlatinumBorder1: 'var(--colorPalettePlatinumBorder1)',
-  colorPalettePlatinumBorder2: 'var(--colorPalettePlatinumBorder2)',
-  colorPalettePlatinumForeground1: 'var(--colorPalettePlatinumForeground1)',
-  colorPalettePlatinumForeground2: 'var(--colorPalettePlatinumForeground2)',
-  colorPalettePlatinumForeground3: 'var(--colorPalettePlatinumForeground3)',
-
-  // Color palette plum tokens
-  colorPalettePlumBackground1: 'var(--colorPalettePlumBackground1)',
-  colorPalettePlumBackground2: 'var(--colorPalettePlumBackground2)',
-  colorPalettePlumBackground3: 'var(--colorPalettePlumBackground3)',
-  colorPalettePlumBorderActive: 'var(--colorPalettePlumBorderActive)',
-  colorPalettePlumBorder1: 'var(--colorPalettePlumBorder1)',
-  colorPalettePlumBorder2: 'var(--colorPalettePlumBorder2)',
-  colorPalettePlumForeground1: 'var(--colorPalettePlumForeground1)',
-  colorPalettePlumForeground2: 'var(--colorPalettePlumForeground2)',
-  colorPalettePlumForeground3: 'var(--colorPalettePlumForeground3)',
-
-  // Color palette pumpkin tokens
-  colorPalettePumpkinBackground1: 'var(--colorPalettePumpkinBackground1)',
-  colorPalettePumpkinBackground2: 'var(--colorPalettePumpkinBackground2)',
-  colorPalettePumpkinBackground3: 'var(--colorPalettePumpkinBackground3)',
-  colorPalettePumpkinBorderActive: 'var(--colorPalettePumpkinBorderActive)',
-  colorPalettePumpkinBorder1: 'var(--colorPalettePumpkinBorder1)',
-  colorPalettePumpkinBorder2: 'var(--colorPalettePumpkinBorder2)',
-  colorPalettePumpkinForeground1: 'var(--colorPalettePumpkinForeground1)',
-  colorPalettePumpkinForeground2: 'var(--colorPalettePumpkinForeground2)',
-  colorPalettePumpkinForeground3: 'var(--colorPalettePumpkinForeground3)',
-
-  // Color palette purple tokens
-  colorPalettePurpleBackground1: 'var(--colorPalettePurpleBackground1)',
-  colorPalettePurpleBackground2: 'var(--colorPalettePurpleBackground2)',
-  colorPalettePurpleBackground3: 'var(--colorPalettePurpleBackground3)',
-  colorPalettePurpleBorderActive: 'var(--colorPalettePurpleBorderActive)',
-  colorPalettePurpleBorder1: 'var(--colorPalettePurpleBorder1)',
-  colorPalettePurpleBorder2: 'var(--colorPalettePurpleBorder2)',
-  colorPalettePurpleForeground1: 'var(--colorPalettePurpleForeground1)',
-  colorPalettePurpleForeground2: 'var(--colorPalettePurpleForeground2)',
-  colorPalettePurpleForeground3: 'var(--colorPalettePurpleForeground3)',
 
   // Color palette red tokens
   colorPaletteRedBackground1: 'var(--colorPaletteRedBackground1)',
@@ -619,60 +158,27 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteRedForeground2: 'var(--colorPaletteRedForeground2)',
   colorPaletteRedForeground3: 'var(--colorPaletteRedForeground3)',
 
-  // Color palette royal blue tokens
-  colorPaletteRoyalBlueBackground1: 'var(--colorPaletteRoyalBlueBackground1)',
-  colorPaletteRoyalBlueBackground2: 'var(--colorPaletteRoyalBlueBackground2)',
-  colorPaletteRoyalBlueBackground3: 'var(--colorPaletteRoyalBlueBackground3)',
-  colorPaletteRoyalBlueBorderActive: 'var(--colorPaletteRoyalBlueBorderActive)',
-  colorPaletteRoyalBlueBorder1: 'var(--colorPaletteRoyalBlueBorder1)',
-  colorPaletteRoyalBlueBorder2: 'var(--colorPaletteRoyalBlueBorder2)',
-  colorPaletteRoyalBlueForeground1: 'var(--colorPaletteRoyalBlueForeground1)',
-  colorPaletteRoyalBlueForeground2: 'var(--colorPaletteRoyalBlueForeground2)',
-  colorPaletteRoyalBlueForeground3: 'var(--colorPaletteRoyalBlueForeground3)',
+  // Color palette green tokens
+  colorPaletteGreenBackground1: 'var(--colorPaletteGreenBackground1)',
+  colorPaletteGreenBackground2: 'var(--colorPaletteGreenBackground2)',
+  colorPaletteGreenBackground3: 'var(--colorPaletteGreenBackground3)',
+  colorPaletteGreenBorderActive: 'var(--colorPaletteGreenBorderActive)',
+  colorPaletteGreenBorder1: 'var(--colorPaletteGreenBorder1)',
+  colorPaletteGreenBorder2: 'var(--colorPaletteGreenBorder2)',
+  colorPaletteGreenForeground1: 'var(--colorPaletteGreenForeground1)',
+  colorPaletteGreenForeground2: 'var(--colorPaletteGreenForeground2)',
+  colorPaletteGreenForeground3: 'var(--colorPaletteGreenForeground3)',
 
-  // Color palette seafoam tokens
-  colorPaletteSeafoamBackground1: 'var(--colorPaletteSeafoamBackground1)',
-  colorPaletteSeafoamBackground2: 'var(--colorPaletteSeafoamBackground2)',
-  colorPaletteSeafoamBackground3: 'var(--colorPaletteSeafoamBackground3)',
-  colorPaletteSeafoamBorderActive: 'var(--colorPaletteSeafoamBorderActive)',
-  colorPaletteSeafoamBorder1: 'var(--colorPaletteSeafoamBorder1)',
-  colorPaletteSeafoamBorder2: 'var(--colorPaletteSeafoamBorder2)',
-  colorPaletteSeafoamForeground1: 'var(--colorPaletteSeafoamForeground1)',
-  colorPaletteSeafoamForeground2: 'var(--colorPaletteSeafoamForeground2)',
-  colorPaletteSeafoamForeground3: 'var(--colorPaletteSeafoamForeground3)',
-
-  // Color palette silver tokens
-  colorPaletteSilverBackground1: 'var(--colorPaletteSilverBackground1)',
-  colorPaletteSilverBackground2: 'var(--colorPaletteSilverBackground2)',
-  colorPaletteSilverBackground3: 'var(--colorPaletteSilverBackground3)',
-  colorPaletteSilverBorderActive: 'var(--colorPaletteSilverBorderActive)',
-  colorPaletteSilverBorder1: 'var(--colorPaletteSilverBorder1)',
-  colorPaletteSilverBorder2: 'var(--colorPaletteSilverBorder2)',
-  colorPaletteSilverForeground1: 'var(--colorPaletteSilverForeground1)',
-  colorPaletteSilverForeground2: 'var(--colorPaletteSilverForeground2)',
-  colorPaletteSilverForeground3: 'var(--colorPaletteSilverForeground3)',
-
-  // Color palette steel tokens
-  colorPaletteSteelBackground1: 'var(--colorPaletteSteelBackground1)',
-  colorPaletteSteelBackground2: 'var(--colorPaletteSteelBackground2)',
-  colorPaletteSteelBackground3: 'var(--colorPaletteSteelBackground3)',
-  colorPaletteSteelBorderActive: 'var(--colorPaletteSteelBorderActive)',
-  colorPaletteSteelBorder1: 'var(--colorPaletteSteelBorder1)',
-  colorPaletteSteelBorder2: 'var(--colorPaletteSteelBorder2)',
-  colorPaletteSteelForeground1: 'var(--colorPaletteSteelForeground1)',
-  colorPaletteSteelForeground2: 'var(--colorPaletteSteelForeground2)',
-  colorPaletteSteelForeground3: 'var(--colorPaletteSteelForeground3)',
-
-  // Color palette teal tokens
-  colorPaletteTealBackground1: 'var(--colorPaletteTealBackground1)',
-  colorPaletteTealBackground2: 'var(--colorPaletteTealBackground2)',
-  colorPaletteTealBackground3: 'var(--colorPaletteTealBackground3)',
-  colorPaletteTealBorderActive: 'var(--colorPaletteTealBorderActive)',
-  colorPaletteTealBorder1: 'var(--colorPaletteTealBorder1)',
-  colorPaletteTealBorder2: 'var(--colorPaletteTealBorder2)',
-  colorPaletteTealForeground1: 'var(--colorPaletteTealForeground1)',
-  colorPaletteTealForeground2: 'var(--colorPaletteTealForeground2)',
-  colorPaletteTealForeground3: 'var(--colorPaletteTealForeground3)',
+  // Color palette dark orange tokens
+  colorPaletteDarkOrangeBackground1: 'var(--colorPaletteDarkOrangeBackground1)',
+  colorPaletteDarkOrangeBackground2: 'var(--colorPaletteDarkOrangeBackground2)',
+  colorPaletteDarkOrangeBackground3: 'var(--colorPaletteDarkOrangeBackground3)',
+  colorPaletteDarkOrangeBorderActive: 'var(--colorPaletteDarkOrangeBorderActive)',
+  colorPaletteDarkOrangeBorder1: 'var(--colorPaletteDarkOrangeBorder1)',
+  colorPaletteDarkOrangeBorder2: 'var(--colorPaletteDarkOrangeBorder2)',
+  colorPaletteDarkOrangeForeground1: 'var(--colorPaletteDarkOrangeForeground1)',
+  colorPaletteDarkOrangeForeground2: 'var(--colorPaletteDarkOrangeForeground2)',
+  colorPaletteDarkOrangeForeground3: 'var(--colorPaletteDarkOrangeForeground3)',
 
   // Color palette yellow tokens
   colorPaletteYellowBackground1: 'var(--colorPaletteYellowBackground1)',
@@ -684,6 +190,179 @@ export const tokens: Record<keyof Theme, string> = {
   colorPaletteYellowForeground1: 'var(--colorPaletteYellowForeground1)',
   colorPaletteYellowForeground2: 'var(--colorPaletteYellowForeground2)',
   colorPaletteYellowForeground3: 'var(--colorPaletteYellowForeground3)',
+
+  // Color palette berry tokens
+  colorPaletteBerryBackground1: 'var(--colorPaletteBerryBackground1)',
+  colorPaletteBerryBackground2: 'var(--colorPaletteBerryBackground2)',
+  colorPaletteBerryBackground3: 'var(--colorPaletteBerryBackground3)',
+  colorPaletteBerryBorderActive: 'var(--colorPaletteBerryBorderActive)',
+  colorPaletteBerryBorder1: 'var(--colorPaletteBerryBorder1)',
+  colorPaletteBerryBorder2: 'var(--colorPaletteBerryBorder2)',
+  colorPaletteBerryForeground1: 'var(--colorPaletteBerryForeground1)',
+  colorPaletteBerryForeground2: 'var(--colorPaletteBerryForeground2)',
+  colorPaletteBerryForeground3: 'var(--colorPaletteBerryForeground3)',
+
+  // Color palette marigold tokens
+  colorPaletteMarigoldBackground1: 'var(--colorPaletteMarigoldBackground1)',
+  colorPaletteMarigoldBackground2: 'var(--colorPaletteMarigoldBackground2)',
+  colorPaletteMarigoldBackground3: 'var(--colorPaletteMarigoldBackground3)',
+  colorPaletteMarigoldBorderActive: 'var(--colorPaletteMarigoldBorderActive)',
+  colorPaletteMarigoldBorder1: 'var(--colorPaletteMarigoldBorder1)',
+  colorPaletteMarigoldBorder2: 'var(--colorPaletteMarigoldBorder2)',
+  colorPaletteMarigoldForeground1: 'var(--colorPaletteMarigoldForeground1)',
+  colorPaletteMarigoldForeground2: 'var(--colorPaletteMarigoldForeground2)',
+  colorPaletteMarigoldForeground3: 'var(--colorPaletteMarigoldForeground3)',
+
+  // Color palette light green tokens
+  colorPaletteLightGreenBackground1: 'var(--colorPaletteLightGreenBackground1)',
+  colorPaletteLightGreenBackground2: 'var(--colorPaletteLightGreenBackground2)',
+  colorPaletteLightGreenBackground3: 'var(--colorPaletteLightGreenBackground3)',
+  colorPaletteLightGreenBorderActive: 'var(--colorPaletteLightGreenBorderActive)',
+  colorPaletteLightGreenBorder1: 'var(--colorPaletteLightGreenBorder1)',
+  colorPaletteLightGreenBorder2: 'var(--colorPaletteLightGreenBorder2)',
+  colorPaletteLightGreenForeground1: 'var(--colorPaletteLightGreenForeground1)',
+  colorPaletteLightGreenForeground2: 'var(--colorPaletteLightGreenForeground2)',
+  colorPaletteLightGreenForeground3: 'var(--colorPaletteLightGreenForeground3)',
+
+  // Color palette anchor tokens
+  colorPaletteAnchorBackground2: 'var(--colorPaletteAnchorBackground2)',
+  colorPaletteAnchorBorderActive: 'var(--colorPaletteAnchorBorderActive)',
+  colorPaletteAnchorForeground2: 'var(--colorPaletteAnchorForeground2)',
+
+  // Color palette beige tokens
+  colorPaletteBeigeBackground2: 'var(--colorPaletteBeigeBackground2)',
+  colorPaletteBeigeBorderActive: 'var(--colorPaletteBeigeBorderActive)',
+  colorPaletteBeigeForeground2: 'var(--colorPaletteBeigeForeground2)',
+
+  // Color palette blue tokens
+  colorPaletteBlueBackground2: 'var(--colorPaletteBlueBackground2)',
+  colorPaletteBlueBorderActive: 'var(--colorPaletteBlueBorderActive)',
+  colorPaletteBlueForeground2: 'var(--colorPaletteBlueForeground2)',
+
+  // Color palette brass tokens
+  colorPaletteBrassBackground2: 'var(--colorPaletteBrassBackground2)',
+  colorPaletteBrassBorderActive: 'var(--colorPaletteBrassBorderActive)',
+  colorPaletteBrassForeground2: 'var(--colorPaletteBrassForeground2)',
+
+  // Color palette brown tokens
+  colorPaletteBrownBackground2: 'var(--colorPaletteBrownBackground2)',
+  colorPaletteBrownBorderActive: 'var(--colorPaletteBrownBorderActive)',
+  colorPaletteBrownForeground2: 'var(--colorPaletteBrownForeground2)',
+
+  // Color palette cornflower tokens
+  colorPaletteCornflowerBackground2: 'var(--colorPaletteCornflowerBackground2)',
+  colorPaletteCornflowerBorderActive: 'var(--colorPaletteCornflowerBorderActive)',
+  colorPaletteCornflowerForeground2: 'var(--colorPaletteCornflowerForeground2)',
+
+  // Color palette cranberry tokens
+  colorPaletteCranberryBackground2: 'var(--colorPaletteCranberryBackground2)',
+  colorPaletteCranberryBorderActive: 'var(--colorPaletteCranberryBorderActive)',
+  colorPaletteCranberryForeground2: 'var(--colorPaletteCranberryForeground2)',
+
+  // Color palette dark green tokens
+  colorPaletteDarkGreenBackground2: 'var(--colorPaletteDarkGreenBackground2)',
+  colorPaletteDarkGreenBorderActive: 'var(--colorPaletteDarkGreenBorderActive)',
+  colorPaletteDarkGreenForeground2: 'var(--colorPaletteDarkGreenForeground2)',
+
+  // Color palette dark red tokens
+  colorPaletteDarkRedBackground2: 'var(--colorPaletteDarkRedBackground2)',
+  colorPaletteDarkRedBorderActive: 'var(--colorPaletteDarkRedBorderActive)',
+  colorPaletteDarkRedForeground2: 'var(--colorPaletteDarkRedForeground2)',
+
+  // Color palette forest tokens
+  colorPaletteForestBackground2: 'var(--colorPaletteForestBackground2)',
+  colorPaletteForestBorderActive: 'var(--colorPaletteForestBorderActive)',
+  colorPaletteForestForeground2: 'var(--colorPaletteForestForeground2)',
+
+  // Color palette gold tokens
+  colorPaletteGoldBackground2: 'var(--colorPaletteGoldBackground2)',
+  colorPaletteGoldBorderActive: 'var(--colorPaletteGoldBorderActive)',
+  colorPaletteGoldForeground2: 'var(--colorPaletteGoldForeground2)',
+
+  // Color palette grape tokens
+  colorPaletteGrapeBackground2: 'var(--colorPaletteGrapeBackground2)',
+  colorPaletteGrapeBorderActive: 'var(--colorPaletteGrapeBorderActive)',
+  colorPaletteGrapeForeground2: 'var(--colorPaletteGrapeForeground2)',
+
+  // Color palette lavender tokens
+  colorPaletteLavenderBackground2: 'var(--colorPaletteLavenderBackground2)',
+  colorPaletteLavenderBorderActive: 'var(--colorPaletteLavenderBorderActive)',
+  colorPaletteLavenderForeground2: 'var(--colorPaletteLavenderForeground2)',
+
+  // Color palette light teal tokens
+  colorPaletteLightTealBackground2: 'var(--colorPaletteLightTealBackground2)',
+  colorPaletteLightTealBorderActive: 'var(--colorPaletteLightTealBorderActive)',
+  colorPaletteLightTealForeground2: 'var(--colorPaletteLightTealForeground2)',
+
+  // Color palette lilac tokens
+  colorPaletteLilacBackground2: 'var(--colorPaletteLilacBackground2)',
+  colorPaletteLilacBorderActive: 'var(--colorPaletteLilacBorderActive)',
+  colorPaletteLilacForeground2: 'var(--colorPaletteLilacForeground2)',
+
+  // Color palette magenta tokens
+  colorPaletteMagentaBackground2: 'var(--colorPaletteMagentaBackground2)',
+  colorPaletteMagentaBorderActive: 'var(--colorPaletteMagentaBorderActive)',
+  colorPaletteMagentaForeground2: 'var(--colorPaletteMagentaForeground2)',
+
+  // Color palette mink tokens
+  colorPaletteMinkBackground2: 'var(--colorPaletteMinkBackground2)',
+  colorPaletteMinkBorderActive: 'var(--colorPaletteMinkBorderActive)',
+  colorPaletteMinkForeground2: 'var(--colorPaletteMinkForeground2)',
+
+  // Color palette navy tokens
+  colorPaletteNavyBackground2: 'var(--colorPaletteNavyBackground2)',
+  colorPaletteNavyBorderActive: 'var(--colorPaletteNavyBorderActive)',
+  colorPaletteNavyForeground2: 'var(--colorPaletteNavyForeground2)',
+
+  // Color palette peach tokens
+  colorPalettePeachBackground2: 'var(--colorPalettePeachBackground2)',
+  colorPalettePeachBorderActive: 'var(--colorPalettePeachBorderActive)',
+  colorPalettePeachForeground2: 'var(--colorPalettePeachForeground2)',
+
+  // Color palette pink tokens
+  colorPalettePinkBackground2: 'var(--colorPalettePinkBackground2)',
+  colorPalettePinkBorderActive: 'var(--colorPalettePinkBorderActive)',
+  colorPalettePinkForeground2: 'var(--colorPalettePinkForeground2)',
+
+  // Color palette platinum tokens
+  colorPalettePlatinumBackground2: 'var(--colorPalettePlatinumBackground2)',
+  colorPalettePlatinumBorderActive: 'var(--colorPalettePlatinumBorderActive)',
+  colorPalettePlatinumForeground2: 'var(--colorPalettePlatinumForeground2)',
+
+  // Color palette plum tokens
+  colorPalettePlumBackground2: 'var(--colorPalettePlumBackground2)',
+  colorPalettePlumBorderActive: 'var(--colorPalettePlumBorderActive)',
+  colorPalettePlumForeground2: 'var(--colorPalettePlumForeground2)',
+
+  // Color palette pumpkin tokens
+  colorPalettePumpkinBackground2: 'var(--colorPalettePumpkinBackground2)',
+  colorPalettePumpkinBorderActive: 'var(--colorPalettePumpkinBorderActive)',
+  colorPalettePumpkinForeground2: 'var(--colorPalettePumpkinForeground2)',
+
+  // Color palette purple tokens
+  colorPalettePurpleBackground2: 'var(--colorPalettePurpleBackground2)',
+  colorPalettePurpleBorderActive: 'var(--colorPalettePurpleBorderActive)',
+  colorPalettePurpleForeground2: 'var(--colorPalettePurpleForeground2)',
+
+  // Color palette royal blue tokens
+  colorPaletteRoyalBlueBackground2: 'var(--colorPaletteRoyalBlueBackground2)',
+  colorPaletteRoyalBlueBorderActive: 'var(--colorPaletteRoyalBlueBorderActive)',
+  colorPaletteRoyalBlueForeground2: 'var(--colorPaletteRoyalBlueForeground2)',
+
+  // Color palette seafoam tokens
+  colorPaletteSeafoamBackground2: 'var(--colorPaletteSeafoamBackground2)',
+  colorPaletteSeafoamBorderActive: 'var(--colorPaletteSeafoamBorderActive)',
+  colorPaletteSeafoamForeground2: 'var(--colorPaletteSeafoamForeground2)',
+
+  // Color palette steel tokens
+  colorPaletteSteelBackground2: 'var(--colorPaletteSteelBackground2)',
+  colorPaletteSteelBorderActive: 'var(--colorPaletteSteelBorderActive)',
+  colorPaletteSteelForeground2: 'var(--colorPaletteSteelForeground2)',
+
+  // Color palette teal tokens
+  colorPaletteTealBackground2: 'var(--colorPaletteTealBackground2)',
+  colorPaletteTealBorderActive: 'var(--colorPaletteTealBorderActive)',
+  colorPaletteTealForeground2: 'var(--colorPaletteTealForeground2)',
 
   // Border radius tokens
   borderRadiusNone: 'var(--borderRadiusNone)',
