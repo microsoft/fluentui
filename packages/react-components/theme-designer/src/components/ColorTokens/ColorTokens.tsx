@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
-import { Caption1 } from '@fluentui/react-components';
+import { Caption1, createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import type { AccentColors } from '../../utils/themes/createCustomLightTheme';
 
 import type { Brands, BrandVariants } from '@fluentui/react-theme';
@@ -26,95 +26,66 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const { isDark, brand } = props;
 
-  // let theme: Theme;
-  let initialColors: AccentColors;
+  const hexColorToBrand: Record<string, Brands> = {
+    [brand[10]]: 10,
+    [brand[20]]: 20,
+    [brand[30]]: 30,
+    [brand[40]]: 40,
+    [brand[50]]: 50,
+    [brand[60]]: 60,
+    [brand[70]]: 70,
+    [brand[80]]: 80,
+    [brand[90]]: 90,
+    [brand[100]]: 100,
+    [brand[110]]: 110,
+    [brand[120]]: 120,
+    [brand[130]]: 130,
+    [brand[140]]: 140,
+    [brand[150]]: 150,
+    [brand[160]]: 160,
+  };
 
-  if (isDark) {
-    // theme = createDarkTheme(brand);
-    // below is still light theme stuff, needs to be changed
-    initialColors = {
-      colorNeutralForeground2BrandHover: 80,
-      colorNeutralForeground2BrandPressed: 70,
-      colorNeutralForeground2BrandSelected: 80,
-      colorNeutralForeground3BrandHover: 80,
-      colorNeutralForeground3BrandPressed: 70,
-      colorNeutralForeground3BrandSelected: 80,
-      colorBrandForegroundLink: 70,
-      colorBrandForegroundLinkHover: 60,
-      colorBrandForegroundLinkPressed: 40,
-      colorBrandForegroundLinkSelected: 70,
-      colorCompoundBrandForeground1: 80,
-      colorCompoundBrandForeground1Hover: 80,
-      colorCompoundBrandForeground1Pressed: 80,
-      colorBrandForeground1: 80,
-      colorBrandForeground2: 70,
-      colorBrandForegroundInverted: 100,
-      colorBrandForegroundInvertedHover: 110,
-      colorBrandForegroundInvertedPressed: 100,
-      colorBrandForegroundOnLight: 80,
-      colorBrandForegroundOnLightHover: 70,
-      colorBrandForegroundOnLightPressed: 50,
-      colorBrandForegroundOnLightSelected: 60,
-      colorBrandBackground: 80,
-      colorBrandBackgroundHover: 70,
-      colorBrandBackgroundPressed: 40,
-      colorBrandBackgroundSelected: 60,
-      colorCompoundBrandBackground: 80,
-      colorCompoundBrandBackgroundHover: 70,
-      colorCompoundBrandBackgroundPressed: 60,
-      colorBrandBackgroundStatic: 80,
-      colorBrandBackground2: 160,
-      colorBrandBackgroundInvertedHover: 160,
-      colorBrandBackgroundInvertedPressed: 140,
-      colorBrandBackgroundInvertedSelected: 150,
-      colorNeutralStrokeAccessibleSelected: 80,
-      colorCompoundBrandStroke: 80,
-      colorCompoundBrandStrokeHover: 70,
-      colorCompoundBrandStrokePressed: 60,
-    };
-  } else {
-    // theme = createLightTheme(brand);
-    initialColors = {
-      colorNeutralForeground2BrandHover: 80,
-      colorNeutralForeground2BrandPressed: 70,
-      colorNeutralForeground2BrandSelected: 80,
-      colorNeutralForeground3BrandHover: 80,
-      colorNeutralForeground3BrandPressed: 70,
-      colorNeutralForeground3BrandSelected: 80,
-      colorBrandForegroundLink: 70,
-      colorBrandForegroundLinkHover: 60,
-      colorBrandForegroundLinkPressed: 40,
-      colorBrandForegroundLinkSelected: 70,
-      colorCompoundBrandForeground1: 80,
-      colorCompoundBrandForeground1Hover: 80,
-      colorCompoundBrandForeground1Pressed: 80,
-      colorBrandForeground1: 80,
-      colorBrandForeground2: 70,
-      colorBrandForegroundInverted: 100,
-      colorBrandForegroundInvertedHover: 110,
-      colorBrandForegroundInvertedPressed: 100,
-      colorBrandForegroundOnLight: 80,
-      colorBrandForegroundOnLightHover: 70,
-      colorBrandForegroundOnLightPressed: 50,
-      colorBrandForegroundOnLightSelected: 60,
-      colorBrandBackground: 80,
-      colorBrandBackgroundHover: 70,
-      colorBrandBackgroundPressed: 40,
-      colorBrandBackgroundSelected: 60,
-      colorCompoundBrandBackground: 80,
-      colorCompoundBrandBackgroundHover: 70,
-      colorCompoundBrandBackgroundPressed: 60,
-      colorBrandBackgroundStatic: 80,
-      colorBrandBackground2: 160,
-      colorBrandBackgroundInvertedHover: 160,
-      colorBrandBackgroundInvertedPressed: 140,
-      colorBrandBackgroundInvertedSelected: 150,
-      colorNeutralStrokeAccessibleSelected: 80,
-      colorCompoundBrandStroke: 80,
-      colorCompoundBrandStrokeHover: 70,
-      colorCompoundBrandStrokePressed: 60,
-    };
-  }
+  const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
+  const initialColors: AccentColors = {
+    colorNeutralForeground2BrandHover: hexColorToBrand[theme.colorNeutralForeground2BrandHover],
+    colorNeutralForeground2BrandPressed: hexColorToBrand[theme.colorNeutralForeground2BrandPressed],
+    colorNeutralForeground2BrandSelected: hexColorToBrand[theme.colorNeutralForeground2BrandSelected],
+    colorNeutralForeground3BrandHover: hexColorToBrand[theme.colorNeutralForeground3BrandHover],
+    colorNeutralForeground3BrandPressed: hexColorToBrand[theme.colorNeutralForeground3BrandPressed],
+    colorNeutralForeground3BrandSelected: hexColorToBrand[theme.colorNeutralForeground3BrandSelected],
+    colorBrandForegroundLink: hexColorToBrand[theme.colorBrandForegroundLink],
+    colorBrandForegroundLinkHover: hexColorToBrand[theme.colorBrandForegroundLinkHover],
+    colorBrandForegroundLinkPressed: hexColorToBrand[theme.colorBrandForegroundLinkPressed],
+    colorBrandForegroundLinkSelected: hexColorToBrand[theme.colorBrandForegroundLinkSelected],
+    colorCompoundBrandForeground1: hexColorToBrand[theme.colorCompoundBrandForeground1],
+    colorCompoundBrandForeground1Hover: hexColorToBrand[theme.colorCompoundBrandForeground1Hover],
+    colorCompoundBrandForeground1Pressed: hexColorToBrand[theme.colorCompoundBrandForeground1Pressed],
+    colorBrandForeground1: hexColorToBrand[theme.colorBrandForeground1],
+    colorBrandForeground2: hexColorToBrand[theme.colorBrandForeground2],
+    colorBrandForegroundInverted: hexColorToBrand[theme.colorBrandForegroundInverted],
+    colorBrandForegroundInvertedHover: hexColorToBrand[theme.colorBrandForegroundInvertedHover],
+    colorBrandForegroundInvertedPressed: hexColorToBrand[theme.colorBrandForegroundInvertedPressed],
+    colorBrandForegroundOnLight: hexColorToBrand[theme.colorBrandForegroundOnLight],
+    colorBrandForegroundOnLightHover: hexColorToBrand[theme.colorBrandForegroundOnLightHover],
+    colorBrandForegroundOnLightPressed: hexColorToBrand[theme.colorBrandForegroundOnLightPressed],
+    colorBrandForegroundOnLightSelected: hexColorToBrand[theme.colorBrandForegroundOnLightSelected],
+    colorBrandBackground: hexColorToBrand[theme.colorBrandBackground],
+    colorBrandBackgroundHover: hexColorToBrand[theme.colorBrandBackgroundHover],
+    colorBrandBackgroundPressed: hexColorToBrand[theme.colorBrandBackgroundPressed],
+    colorBrandBackgroundSelected: hexColorToBrand[theme.colorBrandBackgroundSelected],
+    colorCompoundBrandBackground: hexColorToBrand[theme.colorCompoundBrandBackground],
+    colorCompoundBrandBackgroundHover: hexColorToBrand[theme.colorCompoundBrandBackgroundHover],
+    colorCompoundBrandBackgroundPressed: hexColorToBrand[theme.colorCompoundBrandBackgroundPressed],
+    colorBrandBackgroundStatic: hexColorToBrand[theme.colorBrandBackgroundStatic],
+    colorBrandBackground2: hexColorToBrand[theme.colorBrandBackground2],
+    colorBrandBackgroundInvertedHover: hexColorToBrand[theme.colorBrandBackgroundInvertedHover],
+    colorBrandBackgroundInvertedPressed: hexColorToBrand[theme.colorBrandBackgroundInvertedPressed],
+    colorBrandBackgroundInvertedSelected: hexColorToBrand[theme.colorBrandBackgroundInvertedSelected],
+    colorNeutralStrokeAccessibleSelected: hexColorToBrand[theme.colorNeutralStrokeAccessibleSelected],
+    colorCompoundBrandStroke: hexColorToBrand[theme.colorCompoundBrandStroke],
+    colorCompoundBrandStrokeHover: hexColorToBrand[theme.colorCompoundBrandStrokeHover],
+    colorCompoundBrandStrokePressed: hexColorToBrand[theme.colorCompoundBrandStrokePressed],
+  };
 
   const colorReducer: (state: AccentColors, action: { colorToken: string; newValue: Brands }) => AccentColors = (
     state,
