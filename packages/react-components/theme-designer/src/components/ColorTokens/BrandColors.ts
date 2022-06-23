@@ -3,6 +3,15 @@ import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 
 export type AccentColors = Record<string, Brands>;
 
+/**
+ * This function returns a list of the accent colors in the theme that use brand colors. We specifically look for color
+ * tokens, hence including 'color', and exclude color palette tokens, hence removing 'palette'. We are not looking for
+ * neutrals, so we search for 'Brand' and remove 'NeutralStroke'. We also don't care about the Shadow values, so they
+ * are excluded. Additionally, there are overrides for specific edge cases that do not match the above criteria.
+ * @param theme The theme that is being passed in
+ * @param brand The brand that the theme uses
+ * @returns A list of color tokens whos values are overridable by the user
+ */
 export const BrandColors = (theme: Theme, brand: BrandVariants): AccentColors => {
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
