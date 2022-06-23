@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
-import { Caption1, createDarkTheme, createLightTheme } from '@fluentui/react-components';
+import { Caption1 } from '@fluentui/react-components';
 import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 import { AccentColors, BrandColors } from './BrandColors';
 import { brandTeams } from '../../utils/brandColors';
@@ -26,9 +26,9 @@ const brandColors: AccentColors = BrandColors(teamsLightTheme, brandTeams);
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { isDark, brand } = props;
+  const { brand } = props;
 
-  const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
+  // const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
 
   const colorOverrideReducer: (
     state: AccentColors,

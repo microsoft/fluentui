@@ -53,8 +53,6 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
   const newColors = { ...brandColors, ...colorOverrides };
 
-  console.log(colorOverrides);
-
   return (
     <div>
       {Object.keys(newColors).map(color => {
