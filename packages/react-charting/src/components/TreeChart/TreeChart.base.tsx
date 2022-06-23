@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 /* eslint-disable one-var */
 /* eslint-disable @fluentui/max-len */
 /* eslint-disable prefer-arrow-callback */
@@ -13,7 +14,6 @@ import { ITreeProps, ITreeState, ITreeDataStructure } from '../../index';
 import { createRef } from 'react';
 
 export class TreeBase extends React.Component<ITreeProps, ITreeState> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public svgRef = createRef<SVGSVGElement>();
   private margin = {
     top: 30,
@@ -28,22 +28,21 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
 
   constructor(props: ITreeProps) {
     super(props);
-    this.state = {
-      data: this.props.treeData,
-    };
-    this.width = 380 - this.margin.left - this.margin.right;
-    this.height = 140 - this.margin.top - this.margin.bottom;
+    // this.state = {
+    //   data: this.props.treeData,
+    // };
+    this.width = 800 - this.margin.left - this.margin.right;
+    this.height = 500 - this.margin.top - this.margin.bottom;
     this.treeData = this.props.treeData;
   }
 
   public componentDidMount() {
     console.log('componentDidMount');
-    // const treeData = this.props.treeData;
     console.log('data->', this.treeData);
     this.createTree();
-    this.setState({
-      data: this.treeData,
-    });
+    // this.setState({
+    //   data: this.treeData,
+    // });
   }
 
   public createTree() {
@@ -53,9 +52,8 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
     svg.attr('width', this.width).attr('height', this.height).append('g');
 
     // Create tree layout, for 2 layered width is 150, 3 layered width is 75
-    let treemap = d3.tree().nodeSize([120, 40]);
+    let treemap = d3.tree().nodeSize([150, 50]);
 
-    // eslint-disable-next-line prefer-arrow-callback
     let root = d3.hierarchy(this.treeData, function (d: any) {
       return d.children;
     });
@@ -70,10 +68,10 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
 
     console.log('inside createtree', nodes);
     // Normalize for fixed-depth and width
-    // eslint-disable-next-line prefer-arrow-callback
+
     nodes.forEach(function (d) {
       d.y = d.depth * 120;
-      d.x += 100;
+      d.x += 250;
     });
 
     // <------------------ Nodes section ------------------>
@@ -83,7 +81,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
     let TreeID: number = 0;
     root.eachBefore((d: any) => {
       // make id to find parentID from parent object
-      // eslint-disable-next-line dot-notation
+
       d['id'] = TreeID;
 
       BFS.push({
@@ -146,8 +144,8 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
         });
     }
 
-    let rectHeight = 70,
-      rectWidth = 140;
+    let rectHeight = 60,
+      rectWidth = 120;
     // let parentSet = new Set();
     let gap: number = 20;
 
@@ -155,6 +153,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
       console.log(d);
       AddNodetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight);
     }
+
     // <------------------ Links section ------------------>
 
     // Create path element
@@ -163,13 +162,18 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
     });
 
     // UPDATE the link
-    let linkUpdate = link.enter().insert('path', 'g').attr('class', 'link');
+    let linkUpdate = link
+      .enter()
+      .insert('path', 'g')
+      .attr('class', 'link')
+      .style('fill', 'none')
+      .style('stroke', 'black')
+      .style('stroke-width', '2px');
+
     // let linkParentSet = new Set();
-    linkUpdate
-      // .transition()
-      .attr('d', function (d: any): string {
-        return AddLinktoNodes(d, d.parent, false);
-      });
+    linkUpdate.attr('d', function (d: any): string {
+      return AddLinktoNodes(d, d.parent, false);
+    });
 
     // Creates a rectangular path from parent to the child nodes
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -184,6 +188,12 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
 
   public render() {
     // eslint-disable-next-line react/self-closing-comp
-    return <div>{this.state.data ? <svg ref={this.svgRef}></svg> : null}</div>;
+    return (
+      <div>
+        {/* {this.state.data ?  */}
+        <svg ref={this.svgRef}></svg>
+        {/* : null} */}
+      </div>
+    );
   }
 }

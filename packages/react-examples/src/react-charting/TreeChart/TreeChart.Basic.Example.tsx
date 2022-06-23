@@ -8,18 +8,20 @@ const twoLayerChart = {
   children: [
     {
       name: 'Professor',
-      subname: 'Department: CS',
+      subname: 'subtext',
       fill: 'pink',
     },
-    { name: 'Student', subname: 'Field: CS', fill: 'pink' },
-    { name: 'Placement', subname: 'Field: CS', fill: 'pink' },
+    { name: 'Student', subname: 'subtext', fill: 'pink' },
+    { name: 'Placement', subname: 'subtext', fill: 'pink' },
     {
       name: 'Management',
-      subname: 'Different domains',
+      subname: 'subtext',
       fill: 'pink',
     },
   ],
 };
+
+// import * as twoLayerChart from './twoLayerChart.json';
 
 interface ITreeState {}
 

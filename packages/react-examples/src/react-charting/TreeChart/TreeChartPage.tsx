@@ -19,7 +19,7 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="TreeChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="TreeChart basic" code={TreeChartBasicExampleCode}>
+            <ExampleCard title="TreeChart Two-Layer" code={TreeChartBasicExampleCode}>
               <TreeChartBasicExample />
             </ExampleCard>
           </div>
