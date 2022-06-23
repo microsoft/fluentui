@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adding getPortalElement option to static classnames object test.",
+  "packageName": "@fluentui/react-conformance",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
