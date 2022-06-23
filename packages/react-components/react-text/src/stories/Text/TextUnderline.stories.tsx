@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { Text } from '../index';
+import { Text } from '@fluentui/react-text';
 
 export const Underline = () => <Text underline>Underlined text</Text>;

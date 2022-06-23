@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Text } from '../Text';
+import { Text } from '@fluentui/react-text';
 import textDescriptionMd from './TextDescription.md';
 import textBestPractices from './TextBestPractices.md';
 
