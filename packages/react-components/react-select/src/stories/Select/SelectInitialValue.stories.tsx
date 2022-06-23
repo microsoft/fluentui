@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Select } from '../index';
+import { Select } from '@fluentui/react-select';
 import { useId } from '@fluentui/react-utilities';
 
-export const Disabled = () => {
+export const InitialValue = () => {
   const selectId = useId();
 
   return (
     <>
       <label htmlFor={selectId}>Color</label>
-      <Select disabled id={selectId}>
+      <Select defaultValue="Green" id={selectId}>
         <option>Red</option>
         <option>Green</option>
         <option>Blue</option>
@@ -17,10 +17,10 @@ export const Disabled = () => {
   );
 };
 
-Disabled.parameters = {
+InitialValue.parameters = {
   docs: {
     description: {
-      story: 'A Select can be disabled through the native `disabled` prop',
+      story: 'A Select can have its initial value defined by using `selected` on a child `option`',
     },
   },
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Select, SelectProps } from '../index';
+import { Select } from '@fluentui/react-select';
 import { useId } from '@fluentui/react-utilities';
+import type { SelectProps } from '@fluentui/react-select';
 
 export const Default = (props: SelectProps) => {
   const selectId = useId();
