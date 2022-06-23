@@ -1,5 +1,5 @@
 import { Select } from '@fluentui/react-select';
-import selectDescription from '../SelectDescription.md';
+import selectDescription from './SelectDescription.md';
 
 import bestPracticesMd from './SelectBestPractices.md';
 
