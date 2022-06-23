@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
   focusIndicator: createCustomFocusIndicatorStyle(
     {
