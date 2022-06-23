@@ -13,7 +13,7 @@ import {
   tokens,
   Subtitle2,
 } from '@fluentui/react-components';
-import type { AccentColors } from './BrandColors';
+import type { AccentColors } from './OverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 

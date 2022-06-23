@@ -3,7 +3,7 @@ import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Caption1 } from '@fluentui/react-components';
 import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
-import { AccentColors, BrandColors } from './BrandColors';
+import { AccentColors, OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 
 export interface ColorTokensProps {
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const brandColors: AccentColors = BrandColors(teamsLightTheme, brandTeams);
+const brandColors: AccentColors = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
