@@ -36,6 +36,12 @@
     "@fluentui/utilities": "^8.8.3",
     "tslib": "^2.1.0"
   },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
+  },
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
