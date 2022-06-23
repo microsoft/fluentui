@@ -65,37 +65,16 @@ const useStyles = makeStyles({
 
   listbox: {},
 
-  input: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
-    fontFamily: tokens.fontFamilyBase,
-    width: '100%',
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-  },
-
-  placeholder: {
-    color: tokens.colorNeutralForeground4,
-  },
-
   // size variants
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
+    paddingRight: tokens.spacingHorizontalMNudge,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', tokens.spacingHorizontalM),
+    paddingRight: tokens.spacingHorizontalM,
   },
 
   // appearance variants
@@ -114,6 +93,40 @@ const useStyles = makeStyles({
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
+  },
+});
+
+const useInputStyles = makeStyles({
+  input: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('0'),
+    fontFamily: tokens.fontFamilyBase,
+    width: '100%',
+
+    '&:focus': {
+      outlineStyle: 'none',
+    },
+
+    '&::placeholder': {
+      color: tokens.colorNeutralForeground4,
+    },
+  },
+
+  // size variants
+  small: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    ...shorthands.padding('3px', 0, '3px', tokens.spacingHorizontalSNudge),
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    ...shorthands.padding('5px', 0, '5px', tokens.spacingHorizontalMNudge),
+  },
+  large: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    ...shorthands.padding('7px', 0, '7px', tokens.spacingHorizontalM),
   },
 });
 
@@ -149,17 +162,23 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, placeholderVisible, size } = state;
+  const { appearance, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
+  const inputStyles = useInputStyles();
 
-  state.root.className = mergeClasses(comboboxClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.root.className = mergeClasses(
+    comboboxClassNames.root,
+    styles.root,
+    styles[appearance],
+    styles[size],
+    state.root.className,
+  );
   state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
   state.input.className = mergeClasses(
     comboboxClassNames.input,
-    styles.input,
-    styles[size],
-    placeholderVisible && styles.placeholder,
+    inputStyles.input,
+    inputStyles[size],
     state.input.className,
   );
 
