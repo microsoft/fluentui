@@ -21,7 +21,13 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
       <div className={styles.root}>
         <Nav className={styles.nav} brand={state.brand} isDark={state.isDark} />
         <Sidebar className={styles.sidebar} dispatchState={dispatchState} />
-        <Content className={styles.content} brand={state.brand} theme={state.theme} isDark={state.isDark} />
+        <Content
+          className={styles.content}
+          brand={state.brand}
+          theme={state.theme}
+          isDark={state.isDark}
+          dispatchState={dispatchState}
+        />
       </div>
     </FluentProvider>
   );

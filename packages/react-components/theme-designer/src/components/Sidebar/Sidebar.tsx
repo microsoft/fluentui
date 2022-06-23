@@ -9,7 +9,7 @@ import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  dispatchState: DispatchTheme;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({

@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 export interface UseTabProps {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  dispatchState: DispatchTheme;
+  dispatchState: React.Dispatch<DispatchTheme>;
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
 }

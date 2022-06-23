@@ -3,13 +3,17 @@ import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Caption1 } from '@fluentui/react-components';
 import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
-import { AccentColors, OverridableTokenBrandColors } from './OverridableTokenBrandColors';
+import type { ColorOverrides } from '../../utils/colorOverrides';
+import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
+
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
 
 export interface ColorTokensProps {
   className?: string;
   isDark: boolean;
   brand: BrandVariants;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -21,20 +25,20 @@ const useStyles = makeStyles({
   },
 });
 
-const brandColors: AccentColors = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
+const brandColors: ColorOverrides = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand } = props;
-
-  // const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
+  const { brand, dispatchState } = props;
 
   const colorOverrideReducer: (
-    state: AccentColors,
+    state: ColorOverrides,
     action: { colorToken: string; newValue: Brands },
-  ) => AccentColors = (state, action) => {
-    return { ...state, [action.colorToken]: action.newValue };
+  ) => ColorOverrides = (state, action) => {
+    const overrides = { ...state, [action.colorToken]: action.newValue };
+    dispatchState({ type: 'Overrides', overrides: overrides });
+    return overrides;
   };
 
   const [colorOverrides, dispatchColorOverrides] = React.useReducer(colorOverrideReducer, {});

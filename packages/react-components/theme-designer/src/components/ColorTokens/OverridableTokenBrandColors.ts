@@ -1,7 +1,6 @@
 // import * as React from 'react';
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
-
-export type AccentColors = Record<string, Brands>;
+import type { ColorOverrides } from '../../utils/colorOverrides';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
@@ -15,7 +14,7 @@ export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110
  * @param brand The brand that the theme uses
  * @returns A list of color tokens whos values are overridable by the user
  */
-export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): AccentColors => {
+export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): ColorOverrides => {
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
@@ -40,7 +39,7 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     return a;
   }, {});
 
-  const brandColors: AccentColors = {};
+  const brandColors: ColorOverrides = {};
 
   for (let i = 0; i < overridableColorTokens.length; i++) {
     const key = overridableColorTokens[i];

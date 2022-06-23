@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 
 export interface EditTabProps {
   sidebarId: string;
-  dispatchState: DispatchTheme;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 export const EditTab: React.FC<EditTabProps> = props => {
