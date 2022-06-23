@@ -2,7 +2,7 @@ import * as React from 'react';
 import { shorthands, makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-import { FluentProvider } from '../FluentProvider';
+import { FluentProvider } from '@fluentui/react-provider';
 
 const useStyles = makeStyles({
   example: {
