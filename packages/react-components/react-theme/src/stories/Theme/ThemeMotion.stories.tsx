@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { teamsLightTheme, DurationTokens, CurveTokens } from '../index';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import type { DurationTokens, CurveTokens } from '@fluentui/react-theme';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-
-export default {
-  title: 'Theme',
-};
 
 const theme = teamsLightTheme;
 

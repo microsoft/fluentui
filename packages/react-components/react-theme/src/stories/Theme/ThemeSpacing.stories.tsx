@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { teamsLightTheme } from '../index';
-import type { HorizontalSpacingTokens, VerticalSpacingTokens } from '../index';
-
-export default {
-  title: 'Theme/Spacing',
-};
+import { teamsLightTheme } from '@fluentui/react-theme';
+import type { HorizontalSpacingTokens, VerticalSpacingTokens } from '@fluentui/react-theme';
 
 const theme = teamsLightTheme;
 

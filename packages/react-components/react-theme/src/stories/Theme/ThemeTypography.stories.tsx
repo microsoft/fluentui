@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { teamsLightTheme, typographyStyles } from '../index';
-import type { FontFamilyTokens, FontSizeTokens, LineHeightTokens, FontWeightTokens, TypographyStyle } from '../index';
-
-export default {
-  title: 'Theme',
-};
+import { teamsLightTheme, typographyStyles } from '@fluentui/react-theme';
+import type {
+  FontFamilyTokens,
+  FontSizeTokens,
+  LineHeightTokens,
+  FontWeightTokens,
+  TypographyStyle,
+} from '@fluentui/react-theme';
 
 const theme = teamsLightTheme;
 
