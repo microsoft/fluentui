@@ -2,6 +2,7 @@ import * as React from 'react';
 import { isFluentTrigger } from './isFluentTrigger';
 
 /**
+ * @internal
  * Apply the trigger props to the children, either by calling the render function, or cloning with the new props.
  */
 export const applyTriggerPropsToChildren = <TTriggerProps>(

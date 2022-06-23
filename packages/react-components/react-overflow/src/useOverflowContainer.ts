@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { createOverflowManager } from '@fluentui/priority-overflow';
 
+/**
+ * @internal
+ */
 import type {
   OnUpdateItemVisibility,
   OnUpdateOverflow,
@@ -13,7 +16,7 @@ import { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM } from './constants';
 
 /**
- *
+ * @internal
  * @param update - Callback when overflow state changes
  * @param options - Options to configure the overflow container
  * @returns - ref to attach to an intrinsic HTML element and imperative functions
