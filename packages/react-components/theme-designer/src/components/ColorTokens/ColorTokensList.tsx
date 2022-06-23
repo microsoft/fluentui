@@ -27,6 +27,12 @@ export interface ColorTokensListProps {
   dispatchColorOverrides: React.Dispatch<{ colorToken: string; newValue: Brands }>;
 }
 
+export interface ColorTokenRowProps {
+  brand: BrandVariants;
+  brandValue: Brands;
+  brandValueString: string;
+}
+
 const useStyles = makeStyles({
   root: {},
   colorLabel: {
@@ -47,6 +53,19 @@ const useStyles = makeStyles({
     paddingBottom: tokens.spacingVerticalXXXL,
   },
 });
+
+const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
+  const { brand, brandValue, brandValueString } = props;
+  return (
+    <MenuItemRadio
+      icon={<CircleFilled primaryFill={brand[brandValue]} />}
+      name={brandValueString}
+      value={brandValueString}
+    >
+      Untitled {brandValueString}
+    </MenuItemRadio>
+  );
+};
 
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
@@ -84,14 +103,9 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                       {brandRamp.map(brandValue => {
                         const brandValueString = brandValue.toString();
                         return (
-                          <MenuItemRadio
-                            key={brandValueString}
-                            icon={<CircleFilled primaryFill={brand[brandValue]} />}
-                            name={brandValueString}
-                            value={brandValueString}
-                          >
-                            Untitled {brandValueString}
-                          </MenuItemRadio>
+                          <div key={brandValueString}>
+                            <ColorTokenRow brand={brand} brandValue={brandValue} brandValueString={brandValueString} />
+                          </div>
                         );
                       })}
                     </MenuList>
