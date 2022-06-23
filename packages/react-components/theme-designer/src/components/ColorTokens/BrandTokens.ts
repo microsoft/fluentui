@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 // import * as React from 'react';
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 
