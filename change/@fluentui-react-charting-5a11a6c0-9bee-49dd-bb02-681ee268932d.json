@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Some charts don't automatically adopt sentence case for labels and legends",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
