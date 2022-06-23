@@ -36,7 +36,7 @@
     "@fluentui/react-context-selector": "9.0.0-rc.10",
     "@fluentui/react-shared-contexts": "9.0.0-rc.10",
     "@fluentui/react-icons": "^2.0.172-rc.8",
-    "@griffel/react": "1.1.0",
+    "@griffel/react": "1.2.0",
     "@fluentui/react-tabster": "9.0.0-rc.13",
     "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.10",
