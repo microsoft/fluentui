@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const App = () => (
   <FluentProvider>
-    <Button children={{ text: 'Press Me' }} />
+    <Button>Press Me</Button>
   </FluentProvider>
 );
 

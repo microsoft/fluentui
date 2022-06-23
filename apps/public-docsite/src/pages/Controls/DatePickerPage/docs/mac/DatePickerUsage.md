@@ -1,7 +1,6 @@
 The DatePicker uses the provided [`Calendar`](https://developer.apple.com/documentation/foundation/calendar) instance as a data source. If no calendar is provided, it uses [`Calendar.current`](https://developer.apple.com/documentation/foundation/calendar/2293438-current), which is the system calendar.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Default configuration
 
 ```Swift

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions & Discussions
+    url: https://github.com/microsoft/fluentui/discussions
+    about: Use GitHub discussions for message-board style questions and discussions.
+  - name: Questions via Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/fluentui
+    about: Please use Stack Overflow for questions `#fluentui-react`, `#fluentui`

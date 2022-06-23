@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Deprecating block prop.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

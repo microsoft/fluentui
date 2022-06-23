@@ -33,11 +33,13 @@ export const getStyles = memoizeFunction(
               borderTopRightRadius: '0',
               borderBottomRightRadius: '0',
               borderRight: 'none',
+              flexGrow: '1',
             },
             '.ms-Button--primary': {
               borderTopRightRadius: '0',
               borderBottomRightRadius: '0',
               border: 'none',
+              flexGrow: '1',
 
               selectors: {
                 [HighContrastSelector]: {

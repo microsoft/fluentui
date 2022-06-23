@@ -104,7 +104,7 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
+const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search', 'textarea'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
@@ -242,6 +242,18 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = this._getDocument();
+
+    // If either _activeElement or _defaultFocusElement are no longer contained by _root,
+    // reset those variables (and update tab indexes) to avoid memory leaks
+    if (
+      (this._activeElement && !elementContains(this._root.current, this._activeElement, ALLOW_VIRTUAL_ELEMENTS)) ||
+      (this._defaultFocusElement &&
+        !elementContains(this._root.current, this._defaultFocusElement, ALLOW_VIRTUAL_ELEMENTS))
+    ) {
+      this._activeElement = null;
+      this._defaultFocusElement = null;
+      this._updateTabIndexes();
+    }
 
     if (
       !this.props.preventFocusRestoration &&
@@ -419,6 +431,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    */
   public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
+  }
+
+  public get defaultFocusElement() {
+    return this._defaultFocusElement;
+  }
+
+  public get activeElement() {
+    return this._activeElement;
   }
 
   private _evaluateFocusBeforeRender(): void {
@@ -1360,7 +1380,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     return false;
   }
 
-  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean): boolean {
+  private _shouldInputLoseFocus(element: HTMLInputElement | HTMLTextAreaElement, isForward?: boolean): boolean {
     // If a tab was used, we want to focus on the next element.
     if (
       !this._processingTabKey &&

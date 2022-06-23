@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Updating outdated fixtures now that makeStyles no longer supports functions.",
-  "packageName": "@fluentui/make-styles-webpack-loader",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "none"
-}
