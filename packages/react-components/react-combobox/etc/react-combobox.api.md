@@ -34,18 +34,7 @@ export type ComboboxOpenChangeData = {
 export type ComboboxOpenEvents = React_2.FocusEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
-export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'button'> & SelectionProps & {
-    appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
-    defaultOpen?: boolean;
-    defaultValue?: string;
-    inline?: boolean;
-    onOpenChange?: (e: ComboboxOpenEvents, data: ComboboxOpenChangeData) => void;
-    open?: boolean;
-    placeholder?: string;
-    positioning?: PositioningShorthand;
-    size?: 'small' | 'medium' | 'large';
-    value?: string;
-};
+export type ComboboxProps = ComponentProps<Partial<ComboboxSlots>, 'button'> & ComboboxBaseProps;
 
 // @public (undocumented)
 export type ComboboxSlots = {
@@ -56,10 +45,7 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & Required<Pick<ComboboxProps, 'appearance' | 'inline' | 'open' | 'size'>> & Pick<ComboboxProps, 'placeholder' | 'value'> & OptionCollectionState & SelectionState & {
-    activeOption?: OptionValue;
-    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
-};
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
