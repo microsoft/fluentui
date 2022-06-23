@@ -1,4 +1,4 @@
-import { Toolbar } from '../index';
+import { Toolbar } from '@fluentui/react-toolbar';
 
 import descriptionMd from './ToolbarDescription.md';
 import bestPracticesMd from './ToolbarBestPractices.md';

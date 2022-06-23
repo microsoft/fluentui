@@ -5,9 +5,8 @@ import {
   TextUnderline16Regular,
   MoreHorizontal20Filled,
 } from '@fluentui/react-icons';
-import { Toolbar, ToolbarProps } from '../index';
-import { ToolbarButton, ToolbarButtonProps } from '../ToolbarButton';
-import { ToolbarDivider } from '../ToolbarDivider';
+import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
+import type { ToolbarProps, ToolbarButtonProps } from '@fluentui/react-toolbar';
 import {
   Overflow,
   OverflowItem,

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Toolbar, ToolbarProps } from '../index';
-import { ToolbarButton } from '../ToolbarButton';
-import { ToolbarDivider } from '../ToolbarDivider';
-import { ToolbarToggleButton } from '../ToolbarToggleButton';
+import { Toolbar, ToolbarButton, ToolbarDivider, ToolbarToggleButton } from '@fluentui/react-toolbar';
+import type { ToolbarProps } from '@fluentui/react-toolbar';
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
