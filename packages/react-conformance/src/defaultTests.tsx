@@ -376,7 +376,7 @@ export const defaultTests: TestObject = {
           className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
         );
 
-        if (missingClassNames && portalEl) {
+        if (missingClassNames.length && portalEl) {
           missingClassNames = missingClassNames.filter(
             className => !portalEl.classList.contains(className) && !portalEl.querySelector(`.${className}`),
           );
