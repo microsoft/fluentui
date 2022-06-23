@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Applying package updates for rc.15.",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
