@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 07:40:55 GMT",
+      "tag": "@fluentui/react_v8.77.0",
+      "version": "8.77.0",
+      "comments": {
+        "none": [
+          {
+            "author": "manhducdkcb@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "1559acc2976a451c336d78efd5ae417133361bcd",
+            "comment": "chore: Removing deprecated React.props and replacing it with mirrored type."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Jun 2022 07:45:12 GMT",
       "tag": "@fluentui/react_v8.77.0",
       "version": "8.77.0",
