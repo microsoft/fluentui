@@ -3,18 +3,23 @@ import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 
 export type AccentColors = Record<string, Brands>;
 
-export const BrandTokens = (theme: Theme, brand: BrandVariants): AccentColors => {
-  const exceptionsList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralStrokeAccessibleSelected'];
+export const BrandColors = (theme: Theme, brand: BrandVariants): AccentColors => {
+  const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
+  const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
   const colors: string[] = Object.keys(theme).filter(color => {
-    const colorExceptions = exceptionsList.filter(exceptionColor => exceptionColor === color).length > 0;
+    if (addList.filter(exceptionColor => exceptionColor === color).length > 0) {
+      return true;
+    }
+    if (removeList.filter(exceptionColor => exceptionColor === color).length > 0) {
+      return false;
+    }
     return (
-      (color.startsWith('color') &&
-        !color.includes('Palette') &&
-        color.includes('Brand') &&
-        !color.includes('Shadow') &&
-        !color.includes('NeutralStroke')) ||
-      colorExceptions
+      color.startsWith('color') &&
+      !color.includes('Palette') &&
+      color.includes('Brand') &&
+      !color.includes('Shadow') &&
+      !color.includes('NeutralStroke')
     );
   });
 
@@ -37,13 +42,13 @@ export const BrandTokens = (theme: Theme, brand: BrandVariants): AccentColors =>
     [brand[160]]: 160,
   };
 
-  const brandTokens: AccentColors = {};
+  const brandColors: AccentColors = {};
 
   for (let i = 0; i < colors.length; i++) {
     const key = colors[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];
-    brandTokens[key] = hexColorToBrand[themeColor];
+    brandColors[key] = hexColorToBrand[themeColor];
   }
 
-  return brandTokens;
+  return brandColors;
 };

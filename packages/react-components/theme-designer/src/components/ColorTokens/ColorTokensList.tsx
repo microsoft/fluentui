@@ -13,7 +13,7 @@ import {
   tokens,
   Subtitle2,
 } from '@fluentui/react-components';
-import type { AccentColors } from './BrandTokens';
+import type { AccentColors } from './BrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
@@ -21,8 +21,9 @@ import { usageList } from './UsageList';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
-  colors: AccentColors;
-  dispatchColors: React.Dispatch<{ colorToken: string; newValue: Brands }>;
+  brandColors: AccentColors;
+  colorOverrides: AccentColors;
+  dispatchColorOverrides: React.Dispatch<{ colorToken: string; newValue: Brands }>;
 }
 
 const useStyles = makeStyles({
@@ -48,23 +49,24 @@ const useStyles = makeStyles({
 
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
-  const { brand, colors, dispatchColors } = props;
+  const { brand, brandColors, colorOverrides, dispatchColorOverrides } = props;
+
+  const newColors = { ...brandColors, ...colorOverrides };
+
+  console.log(colorOverrides);
 
   return (
     <div>
-      {Object.keys(colors).map(color => {
-        const colorValue = ((colors as unknown) as Record<string, Brands>)[color];
+      {Object.keys(newColors).map(color => {
+        const colorValue = newColors[color];
         const usage = ((usageList as unknown) as Record<string, string>)[color];
-        if (!colorValue) {
-          return;
-        }
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          dispatchColors({ colorToken: color, newValue: newColor });
+          dispatchColorOverrides({ colorToken: color, newValue: newColor });
         };
 
-        const brandColors: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+        const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
         return (
           <>
@@ -82,16 +84,16 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                   </MenuTrigger>
                   <MenuPopover>
                     <MenuList onCheckedValueChange={handleColorChange}>
-                      {brandColors.map(brandColor => {
-                        const brandColorString = brandColor.toString();
+                      {brandRamp.map(brandValue => {
+                        const brandValueString = brandValue.toString();
                         return (
                           <MenuItemRadio
-                            key={brandColorString}
-                            icon={<CircleFilled primaryFill={brand[brandColor]} />}
-                            name={brandColorString}
-                            value={brandColorString}
+                            key={brandValueString}
+                            icon={<CircleFilled primaryFill={brand[brandValue]} />}
+                            name={brandValueString}
+                            value={brandValueString}
                           >
-                            Untitled {brandColorString}
+                            Untitled {brandValueString}
                           </MenuItemRadio>
                         );
                       })}

@@ -3,7 +3,7 @@ import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Caption1, createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
-import { AccentColors, BrandTokens } from './BrandTokens';
+import { AccentColors, BrandColors } from './BrandColors';
 import { brandTeams } from '../../utils/brandColors';
 
 export interface ColorTokensProps {
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const brandTokens: AccentColors = BrandTokens(teamsLightTheme, brandTeams);
+const brandColors: AccentColors = BrandColors(teamsLightTheme, brandTeams);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
@@ -30,14 +30,14 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
 
-  const colorReducer: (state: AccentColors, action: { colorToken: string; newValue: Brands }) => AccentColors = (
-    state,
-    action,
-  ) => {
+  const colorOverrideReducer: (
+    state: AccentColors,
+    action: { colorToken: string; newValue: Brands },
+  ) => AccentColors = (state, action) => {
     return { ...state, [action.colorToken]: action.newValue };
   };
 
-  const [colors, dispatchColors] = React.useReducer(colorReducer, brandTokens);
+  const [colorOverrides, dispatchColorOverrides] = React.useReducer(colorOverrideReducer, {});
 
   return (
     <div className={props.className}>
@@ -46,7 +46,12 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
       </div>
-      <ColorTokensList brand={brand} colors={colors} dispatchColors={dispatchColors} />
+      <ColorTokensList
+        brand={brand}
+        brandColors={brandColors}
+        colorOverrides={colorOverrides}
+        dispatchColorOverrides={dispatchColorOverrides}
+      />
     </div>
   );
 };
