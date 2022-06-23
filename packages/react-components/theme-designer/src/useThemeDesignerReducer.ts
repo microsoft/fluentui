@@ -9,7 +9,6 @@ import {
 } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams, brandWeb } from './utils/brandColors';
-import { overrideTheme } from './utils/overrideTheme';
 
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import type { ColorOverrides } from './utils/colorOverrides';
@@ -69,7 +68,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: 'Teams Light',
           brand: brandTeams,
-          theme: overrideTheme(teamsLightTheme, brandTeams, state.overrides),
+          theme: teamsLightTheme,
           isDark: false,
           overrides: state.overrides,
         };
@@ -77,7 +76,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: 'Teams Dark',
           brand: brandTeams,
-          theme: overrideTheme(teamsDarkTheme, brandTeams, state.overrides),
+          theme: teamsDarkTheme,
           isDark: true,
           overrides: state.overrides,
         };
@@ -85,7 +84,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: 'Web Light',
           brand: brandWeb,
-          theme: overrideTheme(webLightTheme, brandWeb, state.overrides),
+          theme: webLightTheme,
           isDark: false,
           overrides: state.overrides,
         };
@@ -93,7 +92,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: 'Web Dark',
           brand: brandWeb,
-          theme: overrideTheme(webDarkTheme, brandWeb, state.overrides),
+          theme: webDarkTheme,
           isDark: true,
           overrides: state.overrides,
         };
@@ -105,7 +104,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: 'Custom',
           brand: custom.brand,
-          theme: overrideTheme(custom.theme, custom.brand, state.overrides),
+          theme: custom.theme,
           isDark: action.customAttributes.isDark,
           overrides: state.overrides,
         };
@@ -116,7 +115,7 @@ export const useThemeDesignerReducer = () => {
         return {
           themeLabel: state.themeLabel,
           brand: state.brand,
-          theme: overrideTheme(state.theme, state.brand, action.overrides),
+          theme: state.theme,
           isDark: state.isDark,
           overrides: action.overrides,
         };
