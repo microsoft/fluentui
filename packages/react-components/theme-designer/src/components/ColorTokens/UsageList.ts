@@ -34,6 +34,8 @@ export const usageList = {
   colorBrandBackgroundInvertedPressed: 'usage goes here',
   colorBrandBackgroundInvertedSelected: 'usage goes here',
   colorNeutralStrokeAccessibleSelected: 'usage goes here',
+  colorBrandStroke1: 'usage goes here',
+  colorBrandStroke2: 'usage goes here',
   colorCompoundBrandStroke: 'usage goes here',
   colorCompoundBrandStrokeHover: 'usage goes here',
   colorCompoundBrandStrokePressed: 'usage goes here',
