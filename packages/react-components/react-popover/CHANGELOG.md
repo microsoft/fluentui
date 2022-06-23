@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Tue, 31 May 2022 21:28:41 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.14)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.0.0-rc.13..@fluentui/react-popover_v9.0.0-rc.14)
+
+### Changes
+
+- Bump @fluentui/react-portal to v9.0.0-rc.14 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-positioning to v9.0.0-rc.12 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.11 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.14 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
 
 ## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.0.0-rc.13)
 

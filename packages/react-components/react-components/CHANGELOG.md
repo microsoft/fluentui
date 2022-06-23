@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 31 May 2022 21:28:34 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.15)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.14..@fluentui/react-components_v9.0.0-rc.15)
+
+### Changes
+
+- `@fluentui/react-theme`
+  - BREAKING: reduce shared colors ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.14)
 
