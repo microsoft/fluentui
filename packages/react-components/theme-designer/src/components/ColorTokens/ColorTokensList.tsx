@@ -17,6 +17,8 @@ import type { AccentColors } from '../../utils/themes/createCustomLightTheme';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
+import { usageList } from './UsageList';
+
 export interface ColorTokensListProps {
   brand: BrandVariants;
   colors: AccentColors;
@@ -47,47 +49,6 @@ const useStyles = makeStyles({
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
   const { brand, colors, dispatchColors } = props;
-
-  const usageList = {
-    colorNeutralForeground2BrandHover: 'usage goes here',
-    colorNeutralForeground2BrandPressed: 'usage goes here',
-    colorNeutralForeground2BrandSelected: 'usage goes here',
-    colorNeutralForeground3BrandHover: 'usage goes here',
-    colorNeutralForeground3BrandPressed: 'usage goes here',
-    colorNeutralForeground3BrandSelected: 'usage goes here',
-    colorBrandForegroundLink: 'usage goes here',
-    colorBrandForegroundLinkHover: 'usage goes here',
-    colorBrandForegroundLinkPressed: 'usage goes here',
-    colorBrandForegroundLinkSelected: 'usage goes here',
-    colorCompoundBrandForeground1: 'usage goes here',
-    colorCompoundBrandForeground1Hover: 'usage goes here',
-    colorCompoundBrandForeground1Pressed: 'usage goes here',
-    colorBrandForeground1: 'usage goes here',
-    colorBrandForeground2: 'usage goes here',
-    colorBrandForegroundInverted: 'usage goes here',
-    colorBrandForegroundInvertedHover: 'usage goes here',
-    colorBrandForegroundInvertedPressed: 'usage goes here',
-    colorBrandForegroundOnLight: 'usage goes here',
-    colorBrandForegroundOnLightHover: 'usage goes here',
-    colorBrandForegroundOnLightPressed: 'usage goes here',
-    colorBrandForegroundOnLightSelected: 'usage goes here',
-    colorBrandBackground: 'usage goes here',
-    colorBrandBackgroundHover: 'usage goes here',
-    colorBrandBackgroundPressed: 'usage goes here',
-    colorBrandBackgroundSelected: 'usage goes here',
-    colorCompoundBrandBackground: 'usage goes here',
-    colorCompoundBrandBackgroundHover: 'usage goes here',
-    colorCompoundBrandBackgroundPressed: 'usage goes here',
-    colorBrandBackgroundStatic: 'usage goes here',
-    colorBrandBackground2: 'usage goes here',
-    colorBrandBackgroundInvertedHover: 'usage goes here',
-    colorBrandBackgroundInvertedPressed: 'usage goes here',
-    colorBrandBackgroundInvertedSelected: 'usage goes here',
-    colorNeutralStrokeAccessibleSelected: 'usage goes here',
-    colorCompoundBrandStroke: 'usage goes here',
-    colorCompoundBrandStrokeHover: 'usage goes here',
-    colorCompoundBrandStrokePressed: 'usage goes here',
-  };
 
   return (
     <div>
