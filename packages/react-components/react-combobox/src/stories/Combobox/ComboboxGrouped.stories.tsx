@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { Combobox, ComboboxProps, Option, OptionGroup } from '@fluentui/react-combobox';
+import { Combobox, Option, OptionGroup } from '@fluentui/react-combobox';
+import type { ComboboxProps } from '@fluentui/react-combobox';
 
 export const Grouped = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-grouped');

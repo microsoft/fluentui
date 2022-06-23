@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { Combobox, ComboboxProps, Option } from '@fluentui/react-combobox';
+import { Combobox, Option } from '@fluentui/react-combobox';
+import type { ComboboxProps } from '@fluentui/react-combobox';
 
 export const Default = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
