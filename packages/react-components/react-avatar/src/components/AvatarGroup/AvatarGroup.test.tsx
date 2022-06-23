@@ -2,7 +2,25 @@ import * as React from 'react';
 import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../common/isConformant';
-import { render, screen, within } from '@testing-library/react';
+import { render, RenderResult, screen, within } from '@testing-library/react';
+import { avatarGroupClassNames } from './useAvatarGroupStyles';
+
+// testing-library's queryByRole function doesn't look inside portals
+function queryByRoleList(result: RenderResult) {
+  const lists = result.baseElement.querySelectorAll('*[role="list"]');
+  if (!lists?.length) {
+    return null;
+  } else {
+    expect(lists.length).toBe(1);
+    return lists.item(0) as HTMLElement;
+  }
+}
+
+const getOverflowContentElement = (result: RenderResult) => {
+  // overflowButton needs to be clicked otherwise overflowContent won't be rendered.
+  result.queryByRole('button')?.click();
+  return queryByRoleList(result)!;
+};
 
 describe('AvatarGroup', () => {
   isConformant({
@@ -11,9 +29,34 @@ describe('AvatarGroup', () => {
     disabledTests: [
       'component-has-static-classname',
       'component-has-static-classname-exported',
-      // AvatarGroup's overflowContent is rendered in a portal, therefore this test won't work
-      'component-has-static-classnames-object',
+      'make-styles-overrides-win',
     ],
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {},
+          expectedClassNames: {
+            root: avatarGroupClassNames.root,
+            overflowButton: avatarGroupClassNames.overflowButton,
+            overflowContent: avatarGroupClassNames.overflowContent,
+          },
+          getPortalElement: getOverflowContentElement,
+        },
+      ],
+    },
+    requiredProps: {
+      children: [
+        <AvatarGroupItem key="0" name="Katri Athokas" />,
+        <AvatarGroupItem key="1" name="Elvia Atkins" />,
+        <AvatarGroupItem key="2" name="Cameron Evans" />,
+        <AvatarGroupItem key="3" name="Wanda Howard" />,
+        <AvatarGroupItem key="4" name="Mona Kane" />,
+        <AvatarGroupItem key="5" name="Allan Munger" />,
+        <AvatarGroupItem key="6" name="Daisy Phillips" />,
+        <AvatarGroupItem key="7" name="Robert Tolbert" />,
+        <AvatarGroupItem key="8" name="Kevin Sturgis" />,
+      ],
+    },
   });
 
   it('renders an overflow indicator when AvatarGroupItems overflow', () => {
