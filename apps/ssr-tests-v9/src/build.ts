@@ -9,6 +9,7 @@ import { buildAssets } from './utils/buildAssets';
 import { generateEntryPoints } from './utils/generateEntryPoints';
 import { hrToSeconds } from './utils/helpers';
 import { renderToHTML } from './utils/renderToHTML';
+import { getChromeVersion } from './utils/getChromeVersion';
 
 async function build() {
   const distDirectory = path.resolve(__dirname, '..', 'dist');
@@ -41,9 +42,12 @@ async function build() {
 
   // ---
 
+  const chromeVersion = await getChromeVersion();
   const buildStartTime = process.hrtime();
 
   await buildAssets({
+    chromeVersion,
+
     esmEntryPoint,
     cjsEntryPoint,
 
