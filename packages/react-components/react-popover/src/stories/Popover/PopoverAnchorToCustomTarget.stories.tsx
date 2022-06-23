@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { makeStyles, shorthands } from '@griffel/react';
 
-import { Popover, PopoverTrigger, PopoverSurface } from '../index';
+import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 
 const useStyles = makeStyles({

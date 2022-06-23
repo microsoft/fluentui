@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { makeStyles } from '@griffel/react';
 
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '../index';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
 
 const useStyles = makeStyles({
   contentHeader: {
