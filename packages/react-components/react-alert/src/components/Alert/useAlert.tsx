@@ -61,7 +61,6 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     root: getNativeElementProps('div', {
       ref,
       role: defaultRole,
-      'aria-live': 'assertive',
       children: props.children,
       ...props,
     }),
