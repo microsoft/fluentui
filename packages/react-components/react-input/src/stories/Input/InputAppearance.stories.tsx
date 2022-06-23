@@ -18,13 +18,13 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingHorizontalMNudge),
   },
   filledLighter: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
     '> label': {
       color: tokens.colorNeutralForegroundInverted,
     },
   },
   filledDarker: {
-    backgroundColor: tokens.colorPaletteBerryForeground1,
+    backgroundColor: tokens.colorPaletteDarkBlueForeground1,
     '> label': {
       color: tokens.colorNeutralForegroundInverted,
     },
