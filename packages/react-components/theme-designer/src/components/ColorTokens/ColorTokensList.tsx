@@ -64,6 +64,8 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
           dispatchColors({ colorToken: color, newValue: newColor });
         };
 
+        const brandColors: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+
         return (
           <>
             <div key={color.toString()} className={styles.row}>
@@ -80,54 +82,19 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                   </MenuTrigger>
                   <MenuPopover>
                     <MenuList onCheckedValueChange={handleColorChange}>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[10]} />} name="10" value="10">
-                        Untitled 10
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[20]} />} name="20" value="20">
-                        Untitled 20
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[30]} />} name="30" value="30">
-                        Untitled 30
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[40]} />} name="40" value="40">
-                        Untitled 40
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[50]} />} name="50" value="50">
-                        Untitled 50
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[60]} />} name="60" value="60">
-                        Untitled 60
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[70]} />} name="70" value="70">
-                        Untitled 70
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[80]} />} name="80" value="80">
-                        Untitled 80
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[90]} />} name="90" value="90">
-                        Untitled 90
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[100]} />} name="100" value="100">
-                        Untitled 100
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[110]} />} name="110" value="110">
-                        Untitled 110
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[120]} />} name="120" value="120">
-                        Untitled 120
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[130]} />} name="130" value="130">
-                        Untitled 130
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[140]} />} name="140" value="140">
-                        Untitled 140
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[150]} />} name="150" value="150">
-                        Untitled 150
-                      </MenuItemRadio>
-                      <MenuItemRadio icon={<CircleFilled primaryFill={brand[160]} />} name="160" value="160">
-                        Untitled 160
-                      </MenuItemRadio>
+                      {brandColors.map(brandColor => {
+                        const brandColorString = brandColor.toString();
+                        return (
+                          <MenuItemRadio
+                            key={brandColorString}
+                            icon={<CircleFilled primaryFill={brand[brandColor]} />}
+                            name={brandColorString}
+                            value={brandColorString}
+                          >
+                            Untitled {brandColorString}
+                          </MenuItemRadio>
+                        );
+                      })}
                     </MenuList>
                   </MenuPopover>
                 </Menu>
