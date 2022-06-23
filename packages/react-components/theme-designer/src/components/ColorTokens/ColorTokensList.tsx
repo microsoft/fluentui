@@ -13,7 +13,7 @@ import {
   tokens,
   Subtitle2,
 } from '@fluentui/react-components';
-import type { AccentColors } from './OverridableTokenBrandColors';
+import { brandRamp, AccentColors } from './OverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
@@ -63,8 +63,6 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
           dispatchColorOverrides({ colorToken: color, newValue: newColor });
         };
-
-        const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
         return (
           <>

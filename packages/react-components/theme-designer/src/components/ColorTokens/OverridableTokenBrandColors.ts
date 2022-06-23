@@ -3,6 +3,8 @@ import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 
 export type AccentColors = Record<string, Brands>;
 
+export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+
 /**
  * This function returns a list of the accent colors in the theme that use brand colors. We specifically look for color
  * tokens, hence including 'color', and exclude color palette tokens, hence removing 'palette'. We are not looking for
@@ -33,24 +35,10 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     );
   });
 
-  const hexColorToBrand: Record<string, Brands> = {
-    [brand[10]]: 10,
-    [brand[20]]: 20,
-    [brand[30]]: 30,
-    [brand[40]]: 40,
-    [brand[50]]: 50,
-    [brand[60]]: 60,
-    [brand[70]]: 70,
-    [brand[80]]: 80,
-    [brand[90]]: 90,
-    [brand[100]]: 100,
-    [brand[110]]: 110,
-    [brand[120]]: 120,
-    [brand[130]]: 130,
-    [brand[140]]: 140,
-    [brand[150]]: 150,
-    [brand[160]]: 160,
-  };
+  const hexColorToBrand: Record<string, Brands> = brandRamp.reduce((a: Record<string, Brands>, c, i) => {
+    a[brand[c]] = c;
+    return a;
+  }, {});
 
   const brandColors: AccentColors = {};
 
