@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
-import { Caption1, createDarkTheme, createLightTheme } from '@fluentui/react-components';
+import { Caption1 } from '@fluentui/react-components';
 import type { AccentColors } from '../../utils/themes/createCustomLightTheme';
 
-import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
+import type { Brands, BrandVariants } from '@fluentui/react-theme';
 
 export interface ColorTokensProps {
   className?: string;
@@ -26,11 +26,11 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const { isDark, brand } = props;
 
-  let theme: Theme;
+  // let theme: Theme;
   let initialColors: AccentColors;
 
   if (isDark) {
-    theme = createDarkTheme(brand);
+    // theme = createDarkTheme(brand);
     // below is still light theme stuff, needs to be changed
     initialColors = {
       colorNeutralForeground2BrandHover: 80,
@@ -73,7 +73,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
       colorCompoundBrandStrokePressed: 60,
     };
   } else {
-    theme = createLightTheme(brand);
+    // theme = createLightTheme(brand);
     initialColors = {
       colorNeutralForeground2BrandHover: 80,
       colorNeutralForeground2BrandPressed: 70,
