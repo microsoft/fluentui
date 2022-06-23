@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 12:23:22 GMT",
+      "tag": "@fluentui/react-examples_v0.15.15",
+      "version": "0.15.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.7.10",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f8e35026a7bddb593f39cb0db2031e85c45a6f26",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jun 2022 12:21:33 GMT",
       "tag": "@fluentui/react-examples_v0.15.15",
       "version": "0.15.15",

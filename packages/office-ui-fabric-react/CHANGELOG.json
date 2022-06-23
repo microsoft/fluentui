@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 12:23:22 GMT",
+      "tag": "office-ui-fabric-react_v7.187.0",
+      "version": "7.187.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f8e35026a7bddb593f39cb0db2031e85c45a6f26",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jun 2022 12:21:33 GMT",
       "tag": "office-ui-fabric-react_v7.186.0",
       "version": "7.186.0",

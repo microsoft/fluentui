@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Jun 2022 12:21:33 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 12:23:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.187.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.187.0)
+
+Thu, 23 Jun 2022 12:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.186.0..office-ui-fabric-react_v7.187.0)
+
+### Minor changes
+
+- feat: Adding focusTrapZoneProps to Modal so we can customize inner FocusTrapZone. ([PR #23638](https://github.com/microsoft/fluentui/pull/23638) by Humberto.Morimoto@microsoft.com)
 
 ## [7.186.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.186.0)
 
