@@ -372,14 +372,15 @@ export const defaultTests: TestObject = {
         const classNamesFromFile = indexFile[exportName];
 
         const expectedClassNames: { [key: string]: string } = staticClassNames.expectedClassNames ?? classNamesFromFile;
-        const missingClassNames = Object.values(expectedClassNames).filter(
-          className =>
-            !rootEl.classList.contains(className) &&
-            !rootEl.querySelector(`.${className}`) &&
-            portalEl &&
-            !portalEl.classList.contains(className) &&
-            !portalEl.querySelector(`.${className}`),
+        let missingClassNames = Object.values(expectedClassNames).filter(
+          className => !rootEl.classList.contains(className) && !rootEl.querySelector(`.${className}`),
         );
+
+        if (missingClassNames && portalEl) {
+          missingClassNames = missingClassNames.filter(
+            className => !portalEl.classList.contains(className) && !portalEl.querySelector(`.${className}`),
+          );
+        }
 
         try {
           expect(missingClassNames).toHaveLength(0);
