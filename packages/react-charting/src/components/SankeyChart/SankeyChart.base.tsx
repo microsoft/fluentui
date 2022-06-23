@@ -20,6 +20,7 @@ const restNodeOpacity: number = 1;
 const restStreamOpacity: number = 0.6;
 const nonSelectedOpacity: number = 0.2;
 const nonSelectedNodeLabelOpacity: number = 0.6;
+const selectedStreamOpacity: number = 0.8;
 
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
@@ -98,6 +99,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.props.data.SankeyChartData.links.forEach((singleLink: any, index: number) => {
         const path = d3Sankey.sankeyLinkHorizontal();
+        const onHoverHandler = () => {
+          this._onStreamHover(singleLink);
+        };
+        const onMouseOut = () => {
+          this._onStreamLeave(singleLink);
+        };
         const pathValue = path(singleLink);
         const link = (
           <path
@@ -110,7 +117,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                 ? this.state.selectedNode.color
                 : singleLink.color
             }
-            opacity={restStreamOpacity}
+            onMouseOver={onHoverHandler}
+            onMouseOut={onMouseOut}
+            opacity={this._getOpacityStream(singleLink)}
           >
             <title>
               <text>{singleLink.source.name + ' → ' + singleLink.target.name + '\n' + singleLink.value}</text>
@@ -194,6 +203,18 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _getOpacityStream(singleLink: any): number {
+    if (this.state.selectedState) {
+      if (this.state.selectedLinks.indexOf(singleLink) === -1) {
+        return nonSelectedOpacity;
+      } else {
+        return selectedStreamOpacity;
+      }
+    }
+    return restStreamOpacity;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _onLeave(singleNode: any) {
     if (this.state.selectedState) {
       this.setState({
@@ -214,6 +235,31 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: selectedNodes,
         selectedLinks: selectedLinks,
         selectedNode: singleNode,
+      });
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onStreamHover(singleLink: any) {
+    if (!this.state.selectedState) {
+      const selectedNodes = this._getSelectedNodes([singleLink]);
+      this.setState({
+        selectedState: true,
+        selectedNodes: selectedNodes,
+        selectedLinks: [singleLink],
+        selectedNode: singleLink.source,
+      });
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _onStreamLeave(singleLink: any) {
+    if (this.state.selectedState) {
+      this.setState({
+        selectedState: false,
+        selectedNodes: [],
+        selectedLinks: [],
+        selectedNode: '',
       });
     }
   }
