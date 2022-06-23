@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox } from '@fluentui/react-checkbox';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 
 export const Controlled = () => {
   const [visible, setVisible] = React.useState(false);

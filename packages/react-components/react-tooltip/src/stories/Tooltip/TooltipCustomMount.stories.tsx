@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Tooltip, TooltipProps } from '../Tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 import { Button } from '@fluentui/react-button';
 import { SlideTextRegular } from '@fluentui/react-icons';
 

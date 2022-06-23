@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { Button } from '@fluentui/react-button';
 import { ArrowRoutingRegular } from '@fluentui/react-icons';
 

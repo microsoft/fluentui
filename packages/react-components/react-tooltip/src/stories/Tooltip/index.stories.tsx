@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Tooltip } from '../index';
+import { Tooltip } from '@fluentui/react-tooltip';
 import descriptionMd from './TooltipDescription.md';
 export { Default } from './TooltipDefault.stories';
 export { RelationshipLabel } from './TooltipRelationshipLabel.stories';
