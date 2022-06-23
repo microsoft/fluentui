@@ -42,45 +42,49 @@ module.exports = {
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$',
   }),
   jestAliases,
-  createConfig: customConfig =>
-    merge(
-      {
-        moduleNameMapper: {
-          'ts-jest': resolve.sync('ts-jest'),
-          '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
-          KeyCodes: path.resolve(__dirname, 'jest-mock.js'),
-          ...jestAliases(),
-        },
-
-        transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/dist'),
-        },
-
-        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
-
-        reporters: [path.resolve(__dirname, './jest-reporter.js')],
-
-        testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
-        moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
-
-        setupFiles: [path.resolve(__dirname, 'jest-setup.js')],
-
-        moduleDirectories: [
-          'node_modules',
-          path.resolve(packageRoot, 'node_modules'),
-          path.resolve(__dirname, '../node_modules'),
-        ],
-
-        globals: {
-          'ts-jest': {
-            diagnostics: false,
-          },
-        },
-
-        testURL: 'http://localhost',
-
-        watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  /**
+   * @param {Partial<import('@jest/types').Config.InitialOptions>} [customConfig]
+   */
+  createConfig: (customConfig = {}) => {
+    /** @type {import('@jest/types').Config.InitialOptions} */
+    const defaultConfig = {
+      moduleNameMapper: {
+        'ts-jest': resolve.sync('ts-jest'),
+        '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
+        KeyCodes: path.resolve(__dirname, 'jest-mock.js'),
+        ...jestAliases(),
       },
-      customConfig,
-    ),
+
+      transform: {
+        '.(ts|tsx)': resolve.sync('ts-jest/dist'),
+      },
+
+      transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
+
+      reporters: [path.resolve(__dirname, './jest-reporter.js')],
+
+      testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
+      moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+
+      setupFiles: [path.resolve(__dirname, 'jest-setup.js')],
+
+      moduleDirectories: [
+        'node_modules',
+        path.resolve(packageRoot, 'node_modules'),
+        path.resolve(__dirname, '../node_modules'),
+      ],
+
+      globals: {
+        'ts-jest': {
+          diagnostics: false,
+        },
+      },
+
+      testURL: 'http://localhost',
+
+      watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    };
+
+    return merge(defaultConfig, customConfig);
+  },
 };

@@ -172,6 +172,8 @@ export { MergeCallsIcon } from './components/MergeCallsIcon';
 export { MessageSeenIcon } from './components/MessageSeenIcon';
 export { MicIcon } from './components/MicIcon';
 export { MicOffIcon } from './components/MicOffIcon';
+export { MicPulseIcon } from './components/MicPulseIcon';
+export { MicPulseOffIcon } from './components/MicPulseOffIcon';
 export { MicrophoneDisabledIcon } from './components/MicrophoneDisabledIcon';
 export { MicrosoftStreamIcon } from './components/MicrosoftStreamIcon';
 export { MoleculeIcon } from './components/MoleculeIcon';

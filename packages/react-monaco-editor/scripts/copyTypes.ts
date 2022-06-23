@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { copyTask } from '@fluentui/scripts';
 import { expandSourcePath } from '@fluentui/scripts/tasks/copy';
 import * as fs from 'fs';
@@ -15,18 +14,18 @@ export function copyTypes() {
     const pkg = packagesToResolve.shift();
     resolvedPackages.push(pkg);
 
-    const packageMatch = pkg.match(/^(@uifabric\/|@fluentui\/)?([\w-]+)/);
-    const dtsPath = expandSourcePath(`${pkg}/dist/${packageMatch[2]}.d.ts`);
+    const packageMatch = pkg.match(/^@fluentui\/([\w-]+)/);
+    const dtsPath = expandSourcePath(`${pkg}/dist/${packageMatch[1]}.d.ts`);
 
     if (fs.existsSync(dtsPath)) {
       // copy this .d.ts
       pathsToCopy.push(dtsPath);
 
-      // add any other @uifabric or @fluentui packages it references for processing
+      // add any other @fluentui packages it references for processing
       // (ignore React imports and other imports)
       const dtsContents = fs.readFileSync(dtsPath).toString();
-      const importRegex = /(?:import|export) .*? from ['"](@(?:uifabric|fluentui)\/[\w-]+)/gm;
-      let importMatch;
+      const importRegex = /(?:import|export) .*? from ['"](@fluentui\/[\w-]+)/gm;
+      let importMatch: RegExpExecArray | null;
       while ((importMatch = importRegex.exec(dtsContents))) {
         const packageName = importMatch[1];
         if (packageName && !packagesToResolve.includes(packageName) && !resolvedPackages.includes(packageName)) {

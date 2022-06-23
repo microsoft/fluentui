@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add inline slider, update tests and examples",
-  "packageName": "@fluentui/react-slider",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

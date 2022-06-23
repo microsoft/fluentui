@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add static classnames to Input",
-  "packageName": "@fluentui/react-input",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

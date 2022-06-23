@@ -61,6 +61,10 @@ declare module '@storybook/addons' {
      */
     requiredDependencies?: Record<string, string>;
     /**
+     * Dependencies that should be included if the story code contains it
+     */
+    optionalDependencies?: Record<string, string>;
+    /**
      * Content of index.tsx in CodeSandbox
      */
     indexTsx?: string;

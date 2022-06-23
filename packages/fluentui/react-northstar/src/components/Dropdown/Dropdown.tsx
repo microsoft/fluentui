@@ -62,6 +62,7 @@ export interface DropdownSlotClassNames {
   container: string;
   toggleIndicator: string;
   item: string;
+  itemsCount: string;
   itemsList: string;
   searchInput: string;
   selectedItem: string;
@@ -75,6 +76,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
 
   /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
   'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+  'aria-describedby'?: AccessibilityAttributes['aria-describedby'];
 
   /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
   'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
@@ -124,6 +126,11 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
      * @param item - Dropdown removed element.
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
+    /**
+     * Callback that creates custom accessibility message about the selected items count a screen reader narrates on input field focus.
+     * @param count - number of items selected.
+     */
+    itemsCount?: (count: number) => string;
   };
 
   /** A label for selected items listbox. */
@@ -297,6 +304,7 @@ export const dropdownSlotClassNames: DropdownSlotClassNames = {
   container: `${dropdownClassName}__container`,
   toggleIndicator: `${dropdownClassName}__toggle-indicator`,
   item: `${dropdownClassName}__item`,
+  itemsCount: `${dropdownClassName}__items-count`,
   itemsList: `${dropdownClassName}__items-list`,
   searchInput: `${dropdownClassName}__searchinput`,
   selectedItem: `${dropdownClassName}__selecteditem`,
@@ -374,6 +382,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
 
   const {
     'aria-labelledby': ariaLabelledby,
+    'aria-describedby': ariaDescribedby,
     'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
@@ -430,6 +439,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const containerRef = React.useRef<HTMLDivElement>();
 
   const defaultTriggerButtonId = React.useMemo(() => _.uniqueId('dropdown-trigger-button-'), []);
+  const selectedItemsCountNarrationId = React.useMemo(() => _.uniqueId('dropdown-selected-items-count-'), []);
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Dropdown.handledProps, props);
@@ -542,7 +552,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const renderTriggerButton = (getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any): JSX.Element => {
     const content = getSelectedItemAsString(value[0]);
     const triggerButtonId = triggerButton['id'] || defaultTriggerButtonId;
-
+    const triggerButtonContentId = `${triggerButtonId}__content`;
     const triggerButtonProps = getToggleButtonProps({
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
@@ -552,7 +562,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      ...(ariaLabelledby && { 'aria-labelledby': ariaLabelledby }),
+      'aria-labelledby': [ariaLabelledby, triggerButtonContentId].filter(Boolean).join(' '),
       ...(open && { 'aria-expanded': true }),
     });
 
@@ -563,37 +573,48 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
         {createShorthand(Button, triggerButton, {
           defaultProps: () => ({
             className: dropdownSlotClassNames.triggerButton,
-            content,
             disabled,
             id: triggerButtonId,
             fluid: true,
             styles: resolvedStyles.triggerButton,
             ...restTriggerButtonProps,
           }),
-          overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: e => {
-              onClick(e);
-              _.invoke(predefinedProps, 'onClick', e, predefinedProps);
-            },
-            onFocus: e => {
-              onFocus(e);
-              _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
-            },
-            onBlur: e => {
-              if (!disabled) {
-                onBlur(e);
-              }
+          overrideProps: (predefinedProps: ButtonProps) => {
+            // It can be a shorthand
+            const resolvedContent = _.isPlainObject(predefinedProps.content)
+              ? (predefinedProps.content as {})
+              : predefinedProps.content
+              ? { children: predefinedProps.content }
+              : {};
 
-              _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
-            },
-            onKeyDown: e => {
-              if (!disabled) {
-                onKeyDown(e);
-              }
+            return {
+              content:
+                // If `null` is passed we should not render the slot
+                predefinedProps.content === null ? null : { content, id: triggerButtonContentId, ...resolvedContent },
+              onClick: e => {
+                onClick(e);
+                _.invoke(predefinedProps, 'onClick', e, predefinedProps);
+              },
+              onFocus: e => {
+                onFocus(e);
+                _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
+              },
+              onBlur: e => {
+                if (!disabled) {
+                  onBlur(e);
+                }
 
-              _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
-            },
-          }),
+                _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
+              },
+              onKeyDown: e => {
+                if (!disabled) {
+                  onKeyDown(e);
+                }
+
+                _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
+              },
+            };
+          },
         })}
       </Ref>
     );
@@ -627,6 +648,18 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     });
   };
 
+  const renderSelectedItemsCountNarration = id => {
+    // Get narration only if callback is provided, at least one item is selected and only in multiple case
+    if (!getA11ySelectionMessage || !getA11ySelectionMessage.itemsCount || value.length === 0 || !multiple) {
+      return null;
+    }
+    const narration = getA11ySelectionMessage.itemsCount(value.length);
+    return (
+      <span id={id} className={dropdownSlotClassNames.itemsCount} style={screenReaderContainerStyles}>
+        {narration}
+      </span>
+    );
+  };
   const renderItemsList = (
     highlightedIndex: number,
     toggleMenu: () => void,
@@ -778,6 +811,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
     return null;
   };
 
+  const selectedItemsCountNarration = renderSelectedItemsCountNarration(selectedItemsCountNarrationId);
   const renderSelectedItems = () => {
     if (value.length === 0) {
       return null;
@@ -800,9 +834,12 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       }),
     );
     return (
-      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
-        {selectedItems}
-      </div>
+      <>
+        <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+          {selectedItems}
+        </div>
+        {selectedItemsCountNarration}
+      </>
     );
   };
 
@@ -1129,6 +1166,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
             setSearchQuery(e.target.value);
           },
           'aria-labelledby': ariaLabelledby,
+          'aria-describedby': ariaDescribedby || selectedItemsCountNarrationId,
         }),
       },
       // same story as above for getRootProps.

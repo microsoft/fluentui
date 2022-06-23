@@ -1,9 +1,9 @@
-import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
+import { ScreenerTestsConfig, ALL_THEMES } from '@fluentui/scripts/screener';
 import { inputClassName } from '@fluentui/react-northstar';
 import { datepickerCalendarCellSelector } from '../datepickerCalendarCellSelector';
 
 const config: ScreenerTestsConfig = {
-  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  themes: ALL_THEMES,
   steps: [
     builder =>
       builder

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-components): fix lint issues exposed by import/no-extrenaus-dependency rule",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

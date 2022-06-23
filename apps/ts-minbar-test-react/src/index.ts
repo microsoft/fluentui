@@ -23,10 +23,10 @@ async function performTest() {
     // Install dependencies, using the minimum TS version supported for consumers
     const dependencies = [
       '@types/node',
-      '@types/react',
-      '@types/react-dom',
-      'react',
-      'react-dom',
+      '@types/react@17',
+      '@types/react-dom@17',
+      'react@17',
+      'react-dom@17',
       `typescript@${tsVersion}`,
     ].join(' ');
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);

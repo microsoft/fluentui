@@ -1,8 +1,53 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 07 Mar 2022 07:41:14 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Jun 2022 23:03:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.3)
+
+Thu, 16 Jun 2022 23:03:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.2..@fluentui/web-components_v2.5.3)
+
+### Patches
+
+- update to latest stable versions of FAST packages ([PR #23585](https://github.com/microsoft/fluentui/pull/23585) by chhol@microsoft.com)
+
+## [2.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.2)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.1..@fluentui/web-components_v2.5.2)
+
+### Patches
+
+- (web-components) Fix issue loading Color Explorer values ([PR #23392](https://github.com/microsoft/fluentui/pull/23392) by 47367562+bheston@users.noreply.github.com)
+
+## [2.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.1)
+
+Tue, 17 May 2022 07:45:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.0..@fluentui/web-components_v2.5.1)
+
+### Patches
+
+- Added the Color Explorer as a web components Storybook page ([PR #22918](https://github.com/microsoft/fluentui/pull/22918) by 47367562+bheston@users.noreply.github.com)
+
+## [2.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.0)
+
+Fri, 06 May 2022 07:36:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.4.0..@fluentui/web-components_v2.5.0)
+
+### Minor changes
+
+- Added support for Segoe UI Variable font with variant configurations Added type ramp helpers to conveniently and consistently apply all necessary font attributes. ([PR #22079](https://github.com/microsoft/fluentui/pull/22079) by 47367562+bheston@users.noreply.github.com)
+
+## [2.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.4.0)
+
+Thu, 28 Apr 2022 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.3.1..@fluentui/web-components_v2.4.0)
+
+### Minor changes
+
+- update to latest versions of fast-element and fast-foundation for web components ([PR #22648](https://github.com/microsoft/fluentui/pull/22648) by chhol@microsoft.com)
 
 ## [2.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.3.1)
 

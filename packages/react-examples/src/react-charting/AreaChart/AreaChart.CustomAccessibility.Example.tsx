@@ -149,6 +149,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>Change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+
         <div style={rootStyle}>
           <AreaChart
             height={this.state.height}

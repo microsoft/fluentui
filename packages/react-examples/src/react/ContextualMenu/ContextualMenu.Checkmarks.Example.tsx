@@ -104,6 +104,7 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           },
           text: 'Split Button',
           canCheck: true,
+          checked: true,
           isChecked: selection[keys[8]],
           split: true,
           onClick: onToggleSelect,
