@@ -7,7 +7,7 @@ export const BrandColors = (theme: Theme, brand: BrandVariants): AccentColors =>
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
-  const colors: string[] = Object.keys(theme).filter(color => {
+  const overridableColorTokens: string[] = Object.keys(theme).filter(color => {
     if (addList.filter(exceptionColor => exceptionColor === color).length > 0) {
       return true;
     }
@@ -44,8 +44,8 @@ export const BrandColors = (theme: Theme, brand: BrandVariants): AccentColors =>
 
   const brandColors: AccentColors = {};
 
-  for (let i = 0; i < colors.length; i++) {
-    const key = colors[i];
+  for (let i = 0; i < overridableColorTokens.length; i++) {
+    const key = overridableColorTokens[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];
     brandColors[key] = hexColorToBrand[themeColor];
   }
