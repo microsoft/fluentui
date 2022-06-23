@@ -35,20 +35,21 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "9.0.0-rc.10",
-    "@griffel/react": "1.2.0",
     "@fluentui/react-portal": "9.0.0-rc.13",
     "@fluentui/react-positioning": "9.0.0-rc.11",
     "@fluentui/react-shared-contexts": "9.0.0-rc.10",
     "@fluentui/react-tabster": "9.0.0-rc.13",
     "@fluentui/react-theme": "9.0.0-rc.9",
     "@fluentui/react-utilities": "9.0.0-rc.10",
+    "@griffel/react": "1.2.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "react-dom": ">=16.8.0 <18.0.0",
+    "scheduler": "^0.19.0 || ^0.20.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
