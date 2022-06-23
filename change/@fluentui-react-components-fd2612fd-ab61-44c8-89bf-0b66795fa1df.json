@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding Switch to @fluentui/react-components/unstable.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

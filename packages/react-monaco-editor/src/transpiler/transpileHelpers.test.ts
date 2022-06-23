@@ -123,18 +123,23 @@ describe('_getErrorMessages', () => {
 
 describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
-    expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
-      '@fluentui/example-data': 'FluentUIExampleData',
-      '@fluentui/font-icons-mdl2': 'FluentUIReact',
-      '@fluentui/foundation-legacy': 'FluentUIReact',
-      '@fluentui/merge-styles': 'FluentUIReact',
-      '@fluentui/react': 'FluentUIReact',
-      '@fluentui/date-time-utilities': 'FluentUIReact',
-      '@fluentui/react-focus': 'FluentUIReact',
-      '@fluentui/react-hooks': 'FluentUIReactHooks',
-      '@fluentui/style-utilities': 'FluentUIReact',
-      '@fluentui/utilities': 'FluentUIReact',
-    });
+    expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toMatchInlineSnapshot(`
+      Object {
+        "@fluentui/date-time-utilities": "FluentUIReact",
+        "@fluentui/dom-utilities": "FluentUIReact",
+        "@fluentui/example-data": "FluentUIExampleData",
+        "@fluentui/font-icons-mdl2": "FluentUIReact",
+        "@fluentui/foundation-legacy": "FluentUIReact",
+        "@fluentui/merge-styles": "FluentUIReact",
+        "@fluentui/react": "FluentUIReact",
+        "@fluentui/react-focus": "FluentUIReact",
+        "@fluentui/react-hooks": "FluentUIReactHooks",
+        "@fluentui/react-window-provider": "FluentUIReact",
+        "@fluentui/style-utilities": "FluentUIReact",
+        "@fluentui/theme": "FluentUIReact",
+        "@fluentui/utilities": "FluentUIReact",
+      }
+    `);
   });
 
   it('is memoized', () => {

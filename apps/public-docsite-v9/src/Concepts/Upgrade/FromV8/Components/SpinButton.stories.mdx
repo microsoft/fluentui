@@ -1,0 +1,286 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Upgrading/from v8/Components/SpinButton Upgrade" />
+
+# SpinButton Upgrade
+
+Both Fluent UI v8 and v9 provide `SpinButton` controls. The controls are largely similar and this guide provides some examples of how to upgrade areas that differ.
+
+## Examples
+
+### Basic Upgrade
+
+Basic usage of `SpinButton` v8 looks like
+
+```tsx
+import * as React from 'react';
+import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+
+const styles: Partial<ISpinButtonStyles> = {
+  spinButtonWrapper: { width: 300 },
+};
+
+const SpinButtonV8BasicExample: React.FunctionComponent = () => {
+  const [value, setValue] = React.useState('5');
+
+  const onChange = React.useCallback((event: React.SyntheticEvent<HTMLElement>, newValue?: string) => {
+    console.log('onChange');
+    if (newValue !== undefined) {
+      setValue(newValue);
+    }
+  }, []);
+
+  return (
+    <SpinButton
+      label="Basic SpinButton Usage"
+      value={value}
+      onChange={onChange}
+      incrementButtonAriaLabel="Increment"
+      decrementButtonAriaLabel="Decrement"
+      styles={styles}
+    />
+  );
+};
+```
+
+An equivalent `SpinButton` v9 usage is
+
+```tsx
+import * as React from 'react';
+import { Label, SpinButton } from '@fluentui/react-components/unstable';
+import type { SpinButtonChangeEvent, SpinButtonOnChangeData } from '@fluentui/react-components/unstable';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
+
+const useLayoutStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '300px',
+
+    '> label': {
+      marginBottom: '5px',
+    },
+  },
+});
+
+const getNumericPart = (value: string): number | undefined => {
+  const valueRegex = /^(\d+(\.\d+)?).*/;
+  if (valueRegex.test(value)) {
+    const numericValue = Number(value.replace(valueRegex, '$1'));
+    return isNaN(numericValue) ? undefined : numericValue;
+  }
+  return undefined;
+};
+
+const SpinButtonV9BasicExample = () => {
+  const spinButtonId = useId('spinbutton');
+  const layoutStyles = useLayoutStyles();
+
+  const [value, setValue] = React.useState(5);
+
+  const onChange = (e: SpinButtonChangeEvent, data: SpinButtonOnChangeData): void => {
+    console.log('onChange');
+    let newValue;
+    if (data.value !== undefined) {
+      // Value stepped with the buttons or hotkeys
+      newValue = data.value;
+    } else if (data.displayValue !== undefined) {
+      // Value changed by typing into text input
+      newValue = getNumericPart(data.displayValue);
+    }
+
+    if (newValue !== undefined) {
+      setValue(newValue);
+    }
+  };
+
+  return (
+    <div className={layoutStyles.root}>
+      <Label htmlFor={spinButtonId}>SpinButton with Increment/Decrement</Label>
+      <SpinButton id={spinButtonId} value={value} min={0} max={100} onChange={onChange} />
+    </div>
+  );
+};
+```
+
+### Custom Suffixes Upgrade
+
+Basic usage of `SpinButton` v8 custom suffixes looks like
+
+```tsx
+import * as React from 'react';
+import { SpinButton, ISpinButtonStyles } from '@fluentui/react/lib/SpinButton';
+
+const suffix = ' cm';
+const min = 0;
+const max = 100;
+
+const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 300 } };
+
+/** Remove the suffix or any other text after the numbers, or return undefined if not a number */
+const getNumericPart = (value: string): number | undefined => {
+  const valueRegex = /^(\d+(\.\d+)?).*/;
+  if (valueRegex.test(value)) {
+    const numericValue = Number(value.replace(valueRegex, '$1'));
+    return isNaN(numericValue) ? undefined : numericValue;
+  }
+  return undefined;
+};
+
+/** Increment the value (or return nothing to keep the previous value if invalid) */
+const onIncrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
+  const numericValue = getNumericPart(value);
+  if (numericValue !== undefined) {
+    return String(Math.min(numericValue + 2, max)) + suffix;
+  }
+};
+
+/** Decrement the value (or return nothing to keep the previous value if invalid) */
+const onDecrement = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
+  const numericValue = getNumericPart(value);
+  if (numericValue !== undefined) {
+    return String(Math.max(numericValue - 2, min)) + suffix;
+  }
+};
+
+/**
+ * Clamp the value within the valid range (or return nothing to keep the previous value
+ * if there's not valid numeric input)
+ */
+const onValidate = (value: string, event?: React.SyntheticEvent<HTMLElement>): string | void => {
+  let numericValue = getNumericPart(value);
+  if (numericValue !== undefined) {
+    numericValue = Math.min(numericValue, max);
+    numericValue = Math.max(numericValue, min);
+    return String(numericValue) + suffix;
+  }
+};
+
+/** This will be called after each change */
+const onChange = (event: React.SyntheticEvent<HTMLElement>, value?: string): void => {
+  console.log('Value changed to ' + value);
+};
+
+const SpinButtonV8CustomSuffixBasicExample: React.FunctionComponent = () => {
+  return (
+    <SpinButton
+      label="SpinButton with Custom Suffix"
+      defaultValue={'7' + suffix}
+      min={min}
+      max={max}
+      onValidate={onValidate}
+      onIncrement={onIncrement}
+      onDecrement={onDecrement}
+      onChange={onChange}
+      incrementButtonAriaLabel="Increase value by 2"
+      decrementButtonAriaLabel="Decrease value by 2"
+      styles={styles}
+    />
+  );
+};
+```
+
+`SpinButton` v9 introduces a new prop called `displayValue` that may be used in conjunction with `value` to display a formatted value in `SpinButton`. To display a value with a custom suffix (or prefix or an entirely different name) just provide the `displayValue` prop to your `SpinButton`:
+
+```tsx
+import * as React from 'react';
+import { Label, SpinButton } from '@fluentui/react-components/unstable';
+import type { SpinButtonChangeEvent, SpinButtonOnChangeData } from '@fluentui/react-components/unstable';
+import { useId } from '@fluentui/react-utilities';
+import { makeStyles } from '@griffel/react';
+
+const useLayoutStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    maxWidth: '300px',
+
+    '> label': {
+      marginBottom: '5px',
+    },
+  },
+});
+
+const suffix = 'cm';
+const getNumericPart = (value: string): number | undefined => {
+  const valueRegex = /^(\d+(\.\d+)?).*/;
+  if (valueRegex.test(value)) {
+    const numericValue = Number(value.replace(valueRegex, '$1'));
+    return isNaN(numericValue) ? undefined : numericValue;
+  }
+  return undefined;
+};
+
+const SpinButtonV9CustomSuffixBasicExample = () => {
+  const spinButtonId = useId('spinbutton');
+  const layoutStyles = useLayoutStyles();
+
+  const [value, setValue] = React.useState(7);
+  const [displayValue, setDisplayValue] = React.useState(`7 ${suffix}`);
+
+  const onChange = (e: SpinButtonChangeEvent, data: SpinButtonOnChangeData): void => {
+    let newValue;
+    let newDisplayValue;
+    if (data.value !== undefined) {
+      // Value stepped with the buttons or hotkeys
+      newValue = data.value;
+      newDisplayValue = `${data.value} ${suffix}`;
+    } else if (data.displayValue !== undefined) {
+      // Value changed by typing into text input.
+      newValue = getNumericPart(data.displayValue);
+      if (newValue !== undefined) {
+        newDisplayValue = `${newValue} ${suffix}`;
+      }
+    }
+
+    if (newValue !== undefined && newDisplayValue !== undefined) {
+      console.log(`Display value changed to ${newDisplayValue}`);
+      setValue(newValue);
+      setDisplayValue(newDisplayValue);
+    }
+  };
+
+  return (
+    <div className={layoutStyles.root}>
+      <Label htmlFor={spinButtonId}>SpinButton with Custom Suffix</Label>
+      <SpinButton
+        id={spinButtonId}
+        value={value}
+        displayValue={displayValue}
+        step={2}
+        min={0}
+        max={100}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
+```
+
+## Prop Mapping
+
+This table maps v8 `SpinButton` props to the v9 `SpinButton` equivalent.
+
+| v8                  | v9                    | Notes                                                                                                    |
+| ------------------- | --------------------- | -------------------------------------------------------------------------------------------------------- |
+| `componentRef`      | `ref`                 | v9 provides access to the underlyig DOM node, not ISpinButton                                            |
+| `defaultValue`      | `defaultValue`        | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `value`.        |
+| `value`             | `value`               | v9 uses `number` rather than `string` for the type of this prop. Mutually exclusive with `defaultValue`. |
+| `min`               | `min`                 |                                                                                                          |
+| `max`               | `max`                 |                                                                                                          |
+| `step`              | `step`                |                                                                                                          |
+| `precision`         | `precision`           |                                                                                                          |
+| `onChange`          | `onChange`            | Typescript types have changed                                                                            |
+| `onValidate`        | n/a                   |                                                                                                          |
+| `onIncrement`       | `onChange`            | See example above                                                                                        |
+| `onDecrement`       | `onChange`            | See example above                                                                                        |
+| `label`             | Use `Label` component | Be sure to associate `Label` with `SpinButton` via `htmlFor`                                             |
+| `labelPosition`     | Use `Label` component |                                                                                                          |
+| `ariaLabel`         | `aria-label`          |                                                                                                          |
+| `ariaDescribedBy`   | `aria-describedby`    |                                                                                                          |
+| `ariaPositionInSet` | `aria-posinset`       | You probably don't need this for `SpinButton`                                                            |
+| `ariaSetSize`       | `aria-setsize`        | You probably don't need this for `SpinButton`                                                            |
+| `ariaValueNow`      | n/a                   | Set internally by `SpinButton`                                                                           |
+| `ariaValueText`     | `aria-valuetext`      | Set internally by `SpinButton` but can be overridden by setting this prop                                |
+| `iconProps`         | Use `Icon` component  |                                                                                                          |

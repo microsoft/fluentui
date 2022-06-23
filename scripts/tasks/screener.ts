@@ -1,4 +1,4 @@
-import { getAffectedPackages, getAllPackageInfo, findGitRoot } from '../monorepo';
+import { getAffectedPackages, getAllPackageInfo, findGitRoot, getNthCommit } from '../monorepo';
 import { screenerRunner, cancelScreenerRun } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
@@ -20,11 +20,21 @@ export async function screener() {
   const packageInfos = getAllPackageInfo();
   const packagePath = path.relative(findGitRoot(), process.cwd());
   const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
-  const affectedPackages = getAffectedPackages();
+  let affectedPackages = new Set<string>();
   const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
 
+  if (isPrBuild) {
+    affectedPackages = getAffectedPackages();
+  } else {
+    // master CI build,
+    const previousMasterCommit = getNthCommit();
+    affectedPackages = getAffectedPackages(previousMasterCommit);
+  }
+
+  debugAffectedGraph(affectedPackages);
+
   try {
-    if (!affectedPackages.has(affectedPackageInfo.packageJson.name) && isPrBuild) {
+    if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
       await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
       await screenerRunner(screenerConfig);
@@ -70,6 +80,15 @@ async function getScreenerStates(screenerConfig: ScreenerRunnerConfig): Promise<
   await startStorybook(screenerConfig, {});
 
   return transformToStates(screenerGetStorybook() as ScreenerStorybookSection, screenerConfig.baseUrl);
+}
+
+/**
+ * Outputs debug output for the affected packages graph
+ * @param affectedPackages  - set of affected packages
+ */
+function debugAffectedGraph(affectedPackages: Set<string>) {
+  console.log('affected package tree');
+  console.log(Array.from(affectedPackages.values()));
 }
 
 type ScreenerStory = { steps?: ScreenerRunnerStep[] };

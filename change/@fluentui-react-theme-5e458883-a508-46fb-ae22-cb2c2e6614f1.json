@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "BREAKING: reduce shared colors",
+  "packageName": "@fluentui/react-theme",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

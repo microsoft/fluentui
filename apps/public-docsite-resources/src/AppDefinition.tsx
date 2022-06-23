@@ -217,6 +217,13 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - Keyboard Column Reorder & Resize',
               url: '#/examples/detailslist/keyboardcolumnreorderresize',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardOverridesPage')
+                .DetailsListKeyboardOverridesPage,
+              key: 'DetailsList - Keyboard Overrides',
+              name: 'DetailsList - Keyboard Overrides',
+              url: '#/examples/detailslist/keyboardoverrides',
+            },
           ],
         },
         {
