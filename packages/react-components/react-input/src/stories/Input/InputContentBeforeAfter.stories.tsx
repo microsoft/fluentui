@@ -29,7 +29,7 @@ const ContentBefore = () => {
 
   return (
     <>
-      <Label htmlFor={id}>Full Name</Label>
+      <Label htmlFor={id}>Full name</Label>
       <Input contentBefore={<PersonRegular />} id={id} />
       <Body1>
         An input with a decorative icon in the <code>contentBefore</code> slot.
@@ -43,7 +43,7 @@ const ContentAfter = () => {
 
   return (
     <>
-      <Label htmlFor={id}>First Name</Label>
+      <Label htmlFor={id}>First name</Label>
       <Input contentAfter={<MicButton aria-label="Enter by voice" />} id={id} />
       <Body1>
         An input with a button in the <code>contentAfter</code> slot.
@@ -59,7 +59,7 @@ const ContentBeforeAndAfter = () => {
 
   return (
     <>
-      <Label htmlFor={id}>Amount to Pay</Label>
+      <Label htmlFor={id}>Amount to pay</Label>
       <Input
         contentBefore={
           <Text size={400} id={beforeId}>
