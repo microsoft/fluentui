@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Link, BrandVariants } from '@fluentui/react-components';
+import { Link, BrandVariants, Theme } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 
 export interface ExportLinkProps {
-  className?: string;
   brand: BrandVariants;
   isDark: boolean;
+  overrides: Partial<Theme>;
 }
 
 export const ExportLink: React.FC<ExportLinkProps> = props => {
-  const defaultFileToPreview = encodeURIComponent('/example.tsx');
+  const { brand, isDark, overrides } = props;
+  const defaultFileToPreview = encodeURIComponent('/index.tsx');
   const codeSandboxParameters = getParameters({
     files: {
       'example.tsx': {
@@ -261,13 +262,16 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         content: dedent`
           import * as ReactDOM from 'react-dom';
           import { FluentProvider, ${
-            props.isDark ? 'createDarkTheme' : 'createLightTheme'
+            isDark ? 'createDarkTheme' : 'createLightTheme'
           } } from '@fluentui/react-components';
+          import type { BrandVariants, Theme } from '@fluentui/react-theme';
           import { Example } from './example';
 
-          const brand = ${JSON.stringify(props.brand)};
+          const brand: BrandVariants = ${JSON.stringify(brand)};
 
-          ${props.isDark ? 'const theme = createDarkTheme(brand);' : 'const theme = createLightTheme(brand);'}
+          const overrides: Partial<Theme> = ${JSON.stringify(overrides)};
+
+          const theme: Theme = { ...${isDark ? 'createDarkTheme' : 'createLightTheme'}(brand), ...overrides };
 
           ReactDOM.render(
               <FluentProvider theme={theme}>

@@ -1,5 +1,4 @@
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
-import type { ColorOverrides } from '../../utils/colorOverrides';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
@@ -13,7 +12,7 @@ export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110
  * @param brand The brand that the theme uses
  * @returns A list of color tokens whos values are overridable by the user
  */
-export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): ColorOverrides => {
+export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): Record<string, Brands> => {
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
@@ -40,7 +39,7 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
   }, {});
 
   // Create an assignment of color tokens to brand ramp colors given the hex value
-  const brandColors: ColorOverrides = {};
+  const brandColors: Record<string, Brands> = {};
   for (let i = 0; i < overridableColorTokens.length; i++) {
     const key = overridableColorTokens[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];

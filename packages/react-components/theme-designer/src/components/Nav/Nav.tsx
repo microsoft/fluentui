@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
-import { Text, BrandVariants, FluentProvider, webDarkTheme } from '@fluentui/react-components';
+import { Text, BrandVariants, FluentProvider, webDarkTheme, Theme } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { ExportButton } from '../ExportButton/ExportButton';
 
@@ -8,6 +8,7 @@ export interface NavProps {
   className?: string;
   brand: BrandVariants;
   isDark: boolean;
+  overrides: Partial<Theme>;
 }
 
 const useStyles = makeStyles({
@@ -56,7 +57,7 @@ export const Nav: React.FC<NavProps> = props => {
         UI Colors <ChevronRightRegular /> New palette
       </div>
       <Name />
-      <ExportButton brand={props.brand} isDark={props.isDark} />
+      <ExportButton brand={props.brand} isDark={props.isDark} overrides={props.overrides} />
     </FluentProvider>
   );
 };
