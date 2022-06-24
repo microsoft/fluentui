@@ -146,7 +146,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <>
-        <label htmlFor="changeWidth">Change Width:</label>
+        <label htmlFor="changeWidth">change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -156,7 +156,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           id="changeWidth"
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight">Change Height:</label>
+        <label htmlFor="changeHeight">change Height:</label>
         <input
           type="range"
           value={this.state.height}

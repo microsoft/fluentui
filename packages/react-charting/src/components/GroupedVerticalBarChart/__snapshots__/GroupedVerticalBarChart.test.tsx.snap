@@ -313,6 +313,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -402,6 +403,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -491,6 +493,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -857,6 +860,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -946,6 +950,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1035,6 +1040,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1653,6 +1659,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1742,6 +1749,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1831,6 +1839,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2214,6 +2223,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2303,6 +2313,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2392,6 +2403,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2775,6 +2787,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2864,6 +2877,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2953,6 +2967,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3336,6 +3351,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3425,6 +3441,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3514,6 +3531,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
