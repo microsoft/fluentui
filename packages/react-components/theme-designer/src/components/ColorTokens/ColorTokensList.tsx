@@ -85,7 +85,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
         };
 
         return (
-          <>
+          <div key={color.toString()}>
             <div key={color.toString()} className={styles.row}>
               <div className={styles.col}>
                 <Subtitle2 className={styles.colorLabel}>{color}</Subtitle2>
@@ -115,7 +115,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
               <div className={styles.col}>{usage}</div>
             </div>
             <Divider />
-          </>
+          </div>
         );
       })}
     </div>
