@@ -264,14 +264,14 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
           import { FluentProvider, ${
             isDark ? 'createDarkTheme' : 'createLightTheme'
           } } from '@fluentui/react-components';
+          import type { BrandVariants, Theme } from '@fluentui/react-theme';
           import { Example } from './example';
 
-          const brand = ${JSON.stringify(brand)};
+          const brand: BrandVariants = ${JSON.stringify(brand)};
 
-          const theme = {
-            ...${isDark ? 'createDarkTheme' : 'createLightTheme'}(brand),
-            ...${JSON.stringify(overrides)}
-          };
+          const overrides: Partial<Theme> = ${JSON.stringify(overrides)};
+
+          const theme: Theme = { ...${isDark ? 'createDarkTheme' : 'createLightTheme'}(brand), ...overrides };
 
           ReactDOM.render(
               <FluentProvider theme={theme}>
