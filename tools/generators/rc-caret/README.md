@@ -30,9 +30,6 @@ After:
 - [Options](#options)
   - [`name`](#name)
   - [`all`](#all)
-  - [`exclude`](#exclude)
-  - [`bumpType`](#bumpType)
-  - [`prereleaseTag`](#prereleaseTag)
 
 <!-- tocstop -->
 
