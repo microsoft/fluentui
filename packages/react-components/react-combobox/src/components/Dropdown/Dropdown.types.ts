@@ -30,7 +30,11 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 /**
  * State used in rendering Dropdown
  */
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState;
+export type DropdownState = ComponentState<DropdownSlots> &
+  ComboboxBaseState & {
+    /* Whether the placeholder is currently displayed */
+    placeholderVisible: boolean;
+  };
 
 /* Export types defined in ComboboxBase */
 export type DropdownContextValues = ComboboxBaseContextValues;

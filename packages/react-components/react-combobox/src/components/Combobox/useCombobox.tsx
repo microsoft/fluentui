@@ -61,7 +61,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         children: <ChevronDownIcon />,
       },
     }),
-    placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
 

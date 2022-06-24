@@ -37,11 +37,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<ComboboxSlots> &
-  ComboboxBaseState & {
-    /* Whether the placeholder is currently displayed */
-    placeholderVisible: boolean;
-  };
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

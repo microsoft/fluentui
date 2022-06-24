@@ -61,6 +61,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         children: <ChevronDownIcon />,
       },
     }),
+    placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
 
