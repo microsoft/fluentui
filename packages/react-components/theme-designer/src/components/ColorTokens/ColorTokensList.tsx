@@ -16,14 +16,13 @@ import {
 import { brandRamp } from './OverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
-import type { ColorOverrides } from '../../utils/colorOverrides';
 
 import { usageList } from './UsageList';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
-  brandColors: ColorOverrides;
-  colorOverrides: ColorOverrides;
+  brandColors: Record<string, Brands>;
+  colorOverrides: Record<string, Brands>;
   dispatchColorOverrides: React.Dispatch<{ colorToken: string; newValue: Brands }>;
 }
 
