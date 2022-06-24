@@ -183,9 +183,13 @@ export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema 
   return Boolean(schema[flag]);
 }
 
+export function isPackageVersionConverged(version: string) {
+  return version.startsWith('9.');
+}
+
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
+  return isPackageVersionConverged(packageJson.version);
 }
 
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {
