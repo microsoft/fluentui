@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Hover state aren't paired with cursor_New",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
