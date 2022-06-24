@@ -5606,6 +5606,11 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
   integrity sha512-41qEJgBH/TWgo5NFSvBCJ1qkoi3Q6ONSF2avrHq1LVEZfYpdHmj0y9SuTK+u9ZhG1sYQKBL1AWXKyLWP4RaUoQ==
 
+"@types/semver@^6.2.0":
+  version "6.2.3"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.2.3.tgz#5798ecf1bec94eaa64db39ee52808ec0693315aa"
+  integrity sha512-KQf+QAMWKMrtBMsB8/24w53tEsxllMj6TuA80TT/5igJalLI/zm0L3oXRbIAl4Ohfc85gyHX/jhMwsVkmhLU4A==
+
 "@types/serve-index@^1.9.1":
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/@types/serve-index/-/serve-index-1.9.1.tgz#1b5e85370a192c01ec6cec4735cf2917337a6278"
