@@ -66,7 +66,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         backgroundColor: shimmerColor || semanticColors.disabledBackground,
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
-          '> *': {
+          '> div:last-child': {
             transform: 'translateZ(0)',
           },
           [HighContrastSelector]: {
