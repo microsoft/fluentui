@@ -57,14 +57,14 @@ export const EditTab: React.FC<EditTabProps> = props => {
   };
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
-    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
     return action.attributes;
   };
 
   const [form, dispatchForm] = React.useReducer(formReducer, initialForm);
 
   React.useEffect(() => {
-    dispatchState({ type: 'Custom', customAttributes: form });
+    dispatchState({ type: 'Custom', customAttributes: form, overrides: {} });
   }, [dispatchState, form]);
 
   const toggleTheme = () => {

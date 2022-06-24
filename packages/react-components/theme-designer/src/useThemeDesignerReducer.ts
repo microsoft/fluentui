@@ -24,7 +24,7 @@ export type CustomAttributes = {
 export type DispatchTheme = {
   type: string;
   customAttributes?: CustomAttributes;
-  overrides?: ColorOverrides;
+  overrides: ColorOverrides;
 };
 
 type ReducerState = {
@@ -70,7 +70,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandTeams,
           theme: teamsLightTheme,
           isDark: false,
-          overrides: state.overrides,
+          overrides: action.overrides,
         };
       case 'Teams Dark':
         return {
@@ -78,7 +78,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandTeams,
           theme: teamsDarkTheme,
           isDark: true,
-          overrides: state.overrides,
+          overrides: action.overrides,
         };
       case 'Web Light':
         return {
@@ -86,7 +86,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandWeb,
           theme: webLightTheme,
           isDark: false,
-          overrides: state.overrides,
+          overrides: action.overrides,
         };
       case 'Web Dark':
         return {
@@ -94,7 +94,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandWeb,
           theme: webDarkTheme,
           isDark: true,
-          overrides: state.overrides,
+          overrides: action.overrides,
         };
       case 'Custom':
         if (!action.customAttributes) {
@@ -106,12 +106,9 @@ export const useThemeDesignerReducer = () => {
           brand: custom.brand,
           theme: custom.theme,
           isDark: action.customAttributes.isDark,
-          overrides: state.overrides,
+          overrides: action.overrides,
         };
       case 'Overrides':
-        if (!action.overrides) {
-          return state;
-        }
         return {
           themeLabel: state.themeLabel,
           brand: state.brand,

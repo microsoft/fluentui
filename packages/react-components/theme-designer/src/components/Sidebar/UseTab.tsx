@@ -49,7 +49,7 @@ export const UseTab: React.FC<UseTabProps> = props => {
     if (newTheme === 'Custom') {
       props.setTab('edit');
     } else {
-      dispatchState({ type: newTheme });
+      dispatchState({ type: newTheme, overrides: {} });
     }
     setTheme(newTheme);
   };
