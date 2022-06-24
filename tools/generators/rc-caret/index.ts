@@ -21,12 +21,12 @@ export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
   };
 }
 
-function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
-  const options = normalizeOptions(host, schema);
+function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: UserLog) {
+  const options = normalizeOptions(tree, schema);
   const packageJsonPath = options.paths.packageJson;
   userLog.push({ type: 'info', message: `Convering ${options.name} v9 RC dependencies to carets` });
 
-  updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
+  updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
     if (!packageJson.dependencies) {
       userLog.push({ type: 'info', message: `${options.name} has no dependencies` });
       return packageJson;
@@ -52,12 +52,12 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   });
 }
 
-function runBatchMigration(host: Tree, userLog: UserLog) {
-  const projects = getProjects(host);
+function runBatchMigration(tree: Tree, userLog: UserLog) {
+  const projects = getProjects(tree);
 
   projects.forEach((project, projectName) => {
     runMigrationOnProject(
-      host,
+      tree,
       {
         name: projectName,
         all: false,
@@ -67,9 +67,9 @@ function runBatchMigration(host: Tree, userLog: UserLog) {
   });
 }
 
-function normalizeOptions(host: Tree, options: ValidatedSchema) {
+function normalizeOptions(tree: Tree, options: ValidatedSchema) {
   const defaults = {};
-  const project = getProjectConfig(host, { packageName: options.name });
+  const project = getProjectConfig(tree, { packageName: options.name });
 
   return {
     ...defaults,
