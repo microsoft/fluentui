@@ -69,7 +69,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionHeader size="large">Below 3:1</AccordionHeader>
           <AccordionPanel>
             {nonAccPairs.map(i => {
-              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
+              return <AccessibilityRow key={i.colorPair} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
@@ -77,7 +77,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionHeader size="large">Above 3:1</AccordionHeader>
           <AccordionPanel>
             {midContrastPairs.map(i => {
-              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
+              return <AccessibilityRow key={i.colorPair} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
@@ -85,7 +85,7 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
           <AccordionHeader size="large">Above 4.5:1</AccordionHeader>
           <AccordionPanel>
             {highContrastPairs.map(i => {
-              return <AccessibilityRow key={i.toString()} contrastRatioPair={i} />;
+              return <AccessibilityRow key={i.colorPair} contrastRatioPair={i} />;
             })}
           </AccordionPanel>
         </AccordionItem>
