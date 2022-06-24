@@ -86,7 +86,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
         return (
           <div key={color.toString()}>
-            <div key={color.toString()} className={styles.row}>
+            <div className={styles.row}>
               <div className={styles.col}>
                 <Subtitle2 className={styles.colorLabel}>{color}</Subtitle2>
                 <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>
