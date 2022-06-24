@@ -243,6 +243,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -556,6 +557,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -645,6 +647,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1126,6 +1129,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1439,6 +1443,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
