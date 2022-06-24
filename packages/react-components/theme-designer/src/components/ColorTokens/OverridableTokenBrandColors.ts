@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
 import type { ColorOverrides } from '../../utils/colorOverrides';
 
