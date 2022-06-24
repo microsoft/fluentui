@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '../index';
-import { Theme } from '../types';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '@fluentui/react-theme';
+import { Theme } from '@fluentui/react-theme';
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
@@ -9,10 +9,6 @@ const theme = {
   dark: webDarkTheme,
   teamsDark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
-};
-
-export default {
-  title: 'Theme/Colors',
 };
 
 const colorPalette = {
