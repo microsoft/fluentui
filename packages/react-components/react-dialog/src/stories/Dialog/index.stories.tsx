@@ -1,4 +1,4 @@
-import { Dialog } from '../index';
+import { Dialog } from '@fluentui/react-dialog';
 
 import descriptionMd from './DialogDescription.md';
 import bestPracticesMd from './DialogBestPractices.md';

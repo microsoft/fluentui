@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
-import { Portal } from '../Portal';
+import { Portal } from '@fluentui/react-portal';
 
 const useStyles = makeStyles({
   container: {

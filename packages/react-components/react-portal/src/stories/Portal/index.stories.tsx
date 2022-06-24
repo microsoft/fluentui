@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Portal } from '../Portal';
+import { Portal } from '@fluentui/react-portal';
 import descriptionMd from './PortalDescription.md';
 export { Default } from './PortalDefault.stories';
 export { Nested } from './PortalNested.stories';

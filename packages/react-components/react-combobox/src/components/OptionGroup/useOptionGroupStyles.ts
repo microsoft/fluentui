@@ -22,7 +22,7 @@ const useStyles = makeStyles({
       ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
       display: 'block',
       paddingBottom: tokens.spacingHorizontalXS,
-      marginBottom: tokens.spacingHorizontalXS,
+      ...shorthands.margin(0, `calc(${tokens.spacingHorizontalXS} * -1)`, tokens.spacingVerticalXS),
     },
   },
 

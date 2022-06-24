@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { teamsLightTheme } from '../index';
-import type { BorderRadiusTokens } from '../index';
-
-export default {
-  title: 'Theme/Border Radii',
-};
+import { teamsLightTheme } from '@fluentui/react-theme';
+import type { BorderRadiusTokens } from '@fluentui/react-theme';
 
 const theme = teamsLightTheme;
 

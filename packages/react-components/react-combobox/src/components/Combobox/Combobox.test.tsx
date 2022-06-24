@@ -17,7 +17,7 @@ describe('Combobox', () => {
           props: {
             open: true,
             // Portal messes with the classNames test, so rendering the listbox inline here
-            inline: true,
+            inlinePopup: true,
           },
         },
       ],
@@ -37,7 +37,7 @@ describe('Combobox', () => {
 
   it('renders an open listbox', () => {
     const result = render(
-      <Combobox open inline>
+      <Combobox open inlinePopup>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -60,7 +60,7 @@ describe('Combobox', () => {
 
   it('renders the popup inline when specified', () => {
     const { container } = render(
-      <Combobox open inline>
+      <Combobox open inlinePopup>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
