@@ -24,7 +24,7 @@ export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
 function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const options = normalizeOptions(host, schema);
   const packageJsonPath = options.paths.packageJson;
-  userLog.push({ type: 'info', message: `Convering ${options.name} v9 RC dependencies to carets` });
+  userLog.push({ type: 'info', message: `Converting ${options.name} v9 RC dependencies to carets` });
 
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     if (!packageJson.dependencies) {
