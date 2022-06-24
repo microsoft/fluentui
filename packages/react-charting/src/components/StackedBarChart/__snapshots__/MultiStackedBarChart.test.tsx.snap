@@ -1424,7 +1424,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1514,7 +1513,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;

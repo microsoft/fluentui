@@ -206,7 +206,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -296,7 +295,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -573,7 +571,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -663,7 +660,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1071,7 +1067,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1161,7 +1156,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1442,7 +1436,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1532,7 +1525,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
-                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
