@@ -34,13 +34,14 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     );
   });
 
+  // Flips the brand ramp to use the hex values as keys and the brand ramp colors as values for O(1) indexing
   const hexColorToBrand: Record<string, Brands> = brandRamp.reduce((a: Record<string, Brands>, c, i) => {
     a[brand[c]] = c;
     return a;
   }, {});
 
+  // Create an assignment of color tokens to brand ramp colors given the hex value
   const brandColors: ColorOverrides = {};
-
   for (let i = 0; i < overridableColorTokens.length; i++) {
     const key = overridableColorTokens[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];
