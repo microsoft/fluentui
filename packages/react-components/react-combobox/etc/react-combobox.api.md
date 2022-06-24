@@ -43,9 +43,7 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
-    placeholderVisible: boolean;
-};
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -74,7 +72,9 @@ export type DropdownSlots = {
 };
 
 // @public
-export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState;
+export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
+    placeholderVisible: boolean;
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
