@@ -13,8 +13,10 @@ export interface UseModalAttributesOptions {
 
   /**
    * Traps focus inside the elements the attributes are applied.
-   * It is recommended not to use the `absolute` variant since
-   * it forbigs users to tab out of the focus trap into the actual browser.
+   * This prop enables legacy behavior to match previous versions of Fluent and is not
+   * recommended for general use.
+   * Enabling `legacyTrapFocus` prevents users from tabbing out of the focus trap and into
+   * the actual browser. Prefer using `trapFocus` instead of this prop.
    */
   legacyTrapFocus?: boolean;
 
