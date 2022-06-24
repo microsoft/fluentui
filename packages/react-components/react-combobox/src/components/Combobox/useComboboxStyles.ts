@@ -16,9 +16,11 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.border('1px', 'solid', 'transparent'),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
+    display: 'inline-block',
+    minWidth: '160px',
     position: 'relative',
 
     // windows high contrast mode focus indicator
@@ -67,6 +69,7 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingHorizontalXXS,
     display: 'flex',
     flexWrap: 'nowrap',
+    fontFamily: tokens.fontFamilyBase,
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -74,6 +77,10 @@ const useStyles = makeStyles({
     '&:focus': {
       outlineStyle: 'none',
     },
+  },
+
+  placeholder: {
+    color: tokens.colorNeutralForeground4,
   },
 
   // size variants
@@ -145,13 +152,19 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, size } = state;
+  const { appearance, placeholderVisible, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(comboboxClassNames.root, styles.root, styles[appearance], state.root.className);
   state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
-  state.button.className = mergeClasses(comboboxClassNames.button, styles.button, styles[size], state.button.className);
+  state.button.className = mergeClasses(
+    comboboxClassNames.button,
+    styles.button,
+    styles[size],
+    placeholderVisible && styles.placeholder,
+    state.button.className,
+  );
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(

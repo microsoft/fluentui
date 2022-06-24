@@ -6,14 +6,17 @@ import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
+    // Stack the label above the field with a gap
+    display: 'grid',
+    gridTemplateRows: 'repeat(1fr)',
+    justifyItems: 'start',
     ...shorthands.gap('20px'),
     maxWidth: '400px',
     '> div': {
-      display: 'flex',
-      flexDirection: 'column',
-      ...shorthands.gap('5px'),
+      display: 'grid',
+      gridTemplateRows: 'repeat(1fr)',
+      justifyItems: 'start',
+      ...shorthands.gap('2px'),
       // need padding to see the background color for filled variants
       ...shorthands.padding('5px', '20px', '10px'),
     },

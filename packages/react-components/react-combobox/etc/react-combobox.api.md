@@ -45,7 +45,9 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    placeholderVisible: boolean;
+};
 
 // @public
 export const Listbox: ForwardRefComponent<ListboxProps>;
