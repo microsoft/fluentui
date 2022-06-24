@@ -64,11 +64,18 @@ module.exports = createRule({
       throw new Error('no-restricted-imports: Must specify a paths object.');
     }
 
+    /** @type {FixMap}*/
+    const typeImportKindFix = {};
+    /** @type {FixMap}*/
+    const valueImportKindFix = {};
+
     const paths = options[0].paths;
     /** @type {Map<string, string | undefined>} */
     const forbiddenPkgs = new Map();
     /** @type {Set<string>} */
     const preferredPkgNames = new Set();
+    /** @type {string[]} */
+    const overlappingPkgs = [];
 
     paths.forEach(path => {
       const { forbidden, preferred } = path;
@@ -85,14 +92,17 @@ module.exports = createRule({
 
     forbiddenPkgs.forEach((_, forbidden) => {
       if (preferredPkgNames.has(forbidden)) {
-        throw new Error('no-restricted-imports: Forbidden and Preferred Packages are not mutually exclusive.');
+        overlappingPkgs.push(forbidden);
       }
     });
 
-    /** @type {FixMap}*/
-    const typeImportKindFix = {};
-    /** @type {FixMap}*/
-    const valueImportKindFix = {};
+    if (overlappingPkgs.length) {
+      throw new Error(
+        `no-restricted-imports: The package(s) ${overlappingPkgs.join(
+          ', ',
+        )} are not mutually exclusive as they are both forbidden and preferred. `,
+      );
+    }
 
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -122,7 +132,7 @@ module.exports = createRule({
             fixMap[packageName] = specifiers[specifiers.length - 1];
           }
 
-          if (forbiddenPkgs.has(packageName) && !preferredPkgNames.has(packageName)) {
+          if (forbiddenPkgs.has(packageName)) {
             if (
               !preferredImportForCurrentPkg ||
               (preferredImportForCurrentPkg && !fixMap[preferredImportForCurrentPkg])
