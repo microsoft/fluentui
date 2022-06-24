@@ -11,7 +11,6 @@ import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams, brandWeb } from './utils/brandColors';
 
 import type { BrandVariants, Theme } from '@fluentui/react-components';
-import type { ColorOverrides } from './utils/colorOverrides';
 
 export type CustomAttributes = {
   keyColor: string;
@@ -24,7 +23,7 @@ export type CustomAttributes = {
 export type DispatchTheme = {
   type: string;
   customAttributes?: CustomAttributes;
-  overrides: ColorOverrides;
+  overrides: Partial<Theme>;
 };
 
 type ReducerState = {
@@ -32,7 +31,7 @@ type ReducerState = {
   brand: BrandVariants;
   theme: Theme;
   isDark: boolean;
-  overrides: ColorOverrides;
+  overrides: Partial<Theme>;
 };
 
 export const useThemeDesignerReducer = () => {
