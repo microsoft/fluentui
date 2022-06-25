@@ -7,9 +7,13 @@ import {
   PropertiesTableSet,
 } from '@fluentui/react-docsite-components';
 
-import { TreeChartBasicExample } from './TreeChart.Basic.Example';
+import { TreeChartTwoLayerExample } from './TreeChart.TwoLayer.Example';
+import { TreeChartThreeLayerLongExample } from './TreeChart.ThreeLayerLong.Example';
+import { TreeChartThreeLayerCompactExample } from './TreeChart.ThreeLayerCompact.Example';
 
-const TreeChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.Basic.Example.tsx') as string;
+const TreeChartTwoLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
+const TreeChartThreeLayerLongExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerLong.Example.tsx') as string;
+const TreeChartThreeLayerCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
 
 export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -19,8 +23,14 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="TreeChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="TreeChart Two-Layer" code={TreeChartBasicExampleCode}>
-              <TreeChartBasicExample />
+            <ExampleCard title="TreeChart Two-Layer" code={TreeChartTwoLayerExampleCode}>
+              <TreeChartTwoLayerExample />
+            </ExampleCard>
+            <ExampleCard title="TreeChart Three-Layer long" code={TreeChartThreeLayerLongExampleCode}>
+              <TreeChartThreeLayerLongExample />
+            </ExampleCard>
+            <ExampleCard title="TreeChart Three-Layer compact" code={TreeChartThreeLayerCompactExampleCode}>
+              <TreeChartThreeLayerCompactExample />
             </ExampleCard>
           </div>
         }

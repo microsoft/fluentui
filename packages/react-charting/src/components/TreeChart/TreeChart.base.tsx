@@ -7,58 +7,94 @@
 /* eslint-disable no-console */
 /* eslint-disable prefer-const */
 import * as React from 'react';
+import { createRef } from 'react';
 import { select } from 'd3-selection';
 import * as d3 from 'd3';
 
-import { ITreeProps, ITreeState, ITreeDataStructure } from '../../index';
-import { createRef } from 'react';
+import { ITreeProps, ITreeState, ITreeDataStructure, IDataStructure } from '../../index';
 
-export class TreeBase extends React.Component<ITreeProps, ITreeState> {
-  public svgRef = createRef<SVGSVGElement>();
-  private margin = {
-    top: 30,
-    right: 20,
-    bottom: 30,
-    left: 50,
-  };
-
-  private width: number;
-  private height: number;
-  private treeData;
-
-  constructor(props: ITreeProps) {
-    super(props);
-    // this.state = {
-    //   data: this.props.treeData,
-    // };
-    this.width = 800 - this.margin.left - this.margin.right;
-    this.height = 500 - this.margin.top - this.margin.bottom;
-    this.treeData = this.props.treeData;
+// Create a parent class for common tree components
+class StandardTree {
+  public treeData: IDataStructure;
+  public svg: d3.Selection<SVGSVGElement | null, unknown, null, undefined>;
+  constructor(treeData: IDataStructure, svg: d3.Selection<SVGSVGElement | null, unknown, null, undefined>) {
+    this.treeData = treeData;
+    this.svg = svg;
   }
 
-  public componentDidMount() {
-    console.log('componentDidMount');
-    console.log('data->', this.treeData);
-    this.createTree();
-    // this.setState({
-    //   data: this.treeData,
-    // });
-  }
+  public addNodeShapetoSVG(
+    name: string,
+    subname: string,
+    xCoordinate: number,
+    yCoordinate: number,
+    fillColor: string,
+    rectangleWidth: number,
+    rectangleHeight: number,
+  ) {
+    this.svg
+      .append('rect')
+      .attr('width', rectangleWidth)
+      .attr('height', rectangleHeight)
+      .attr('x', xCoordinate)
+      .attr('y', yCoordinate)
+      .attr('padding', '10px')
+      .attr('rx', '3')
+      .style('stroke', fillColor)
+      .style('stroke-width', '2px')
+      .style('fill', 'white');
 
+    this.svg
+      .append('text')
+      .style('fill', 'black')
+      .attr('dy', yCoordinate + rectangleHeight / 2)
+      .attr('x', () => {
+        return xCoordinate + rectangleWidth / 3.5;
+      })
+      .attr('text-anchor', () => {
+        return 'start';
+      })
+      .text(function () {
+        return name;
+      })
+      .append('tspan')
+      .attr('dy', '1.4em')
+      .attr('x', () => {
+        return xCoordinate + rectangleWidth / 3.4;
+      })
+      .text(() => {
+        return subname;
+      });
+  }
+  // Creates a rectangular path from parent to the child nodes
+  public addLinktoNodes(child: any, parent: any, leaf: boolean, rectWidth: number, gap: number): any {
+    let path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
+    let leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${child.y - gap} H${parent.x - gap / 2} H${
+      parent.x + rectWidth
+    }`;
+    return leaf ? leafpath : path;
+  }
+}
+
+class LayeredTree extends StandardTree {
+  public composition: number | undefined;
+  constructor(
+    treeData: IDataStructure,
+    composition: number | undefined,
+    svg: d3.Selection<SVGSVGElement | null, unknown, null, undefined>,
+  ) {
+    super(treeData, svg);
+    this.composition = composition;
+  }
   public createTree() {
-    console.log(this.svgRef.current);
-    let svg = select(this.svgRef.current);
-    svg.selectAll('*').remove();
-    svg.attr('width', this.width).attr('height', this.height).append('g');
-
-    // Create tree layout, for 2 layered width is 150, 3 layered width is 75
-    let treemap = d3.tree().nodeSize([150, 50]);
-
     let root = d3.hierarchy(this.treeData, function (d: any) {
       return d.children;
     });
+    console.log('child composition: ', this.composition);
 
-    // let TreeHeight = root?.height + 1;
+    let treeHeight = root?.height + 1;
+
+    // Create tree layout, for 2 layered width is 150, 3 layered width is 75
+    let treemap = d3.tree().nodeSize([treeHeight === 2 ? 150 : 60, 50]);
 
     // Assigns the x and y position for the nodes
     let treeData = treemap(root);
@@ -66,24 +102,20 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
     // Compute the new tree layout.
     let nodes = treeData.descendants();
 
-    console.log('inside createtree', nodes);
     // Normalize for fixed-depth and width
-
     nodes.forEach(function (d) {
-      d.y = d.depth * 120;
-      d.x += 250;
+      d.y = d.depth * 120 + 10;
+      d.x += 350;
     });
 
     // <------------------ Nodes section ------------------>
 
-    // Create data structure
+    // Create tree data structure
     const BFS: Array<ITreeDataStructure> = [];
     let TreeID: number = 0;
     root.eachBefore((d: any) => {
       // make id to find parentID from parent object
-
       d['id'] = TreeID;
-
       BFS.push({
         id: `${TreeID}`,
         children: d.children,
@@ -98,66 +130,85 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
       TreeID++;
     });
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    // eslint-disable-next-line @fluentui/max-len
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    function AddNodetoSVG(
-      name: string,
-      subname: string,
-      xCoordinate: number,
-      yCoordinate: number,
-      fillColor: string,
-      rectangleWidth: number,
-      rectangleHeight: number,
-    ) {
-      svg
-        .append('rect')
-        .attr('width', rectangleWidth)
-        .attr('height', rectangleHeight)
-        .attr('x', xCoordinate)
-        .attr('y', yCoordinate)
-        .attr('padding', '10px')
-        .attr('rx', '3') // roundness
-        .style('stroke', fillColor)
-        .style('fill', 'white');
-
-      svg
-        .append('text')
-        .style('fill', 'black')
-        .attr('dy', yCoordinate + rectangleHeight / 2)
-        .attr('x', () => {
-          return xCoordinate + rectangleWidth / 3.5;
-        })
-        .attr('text-anchor', () => {
-          return 'start';
-        })
-        .text(function () {
-          return name;
-        })
-        .append('tspan')
-        .attr('dy', '1.4em')
-        .attr('x', () => {
-          return xCoordinate + rectangleWidth / 3.4;
-        })
-        .text(() => {
-          return subname;
-        });
-    }
-
     let rectHeight = 60,
-      rectWidth = 120;
-    // let parentSet = new Set();
-    let gap: number = 20;
+      rectWidth = 120,
+      gap: number = 20;
+    let parentSet = new Set();
 
     for (const d of BFS) {
-      console.log(d);
-      AddNodetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight);
+      // check for leaf nodes
+      if (!d.children && !parentSet.has(d.parentID) && treeHeight === 3) {
+        const newWidth = 70,
+          newHeight = 50;
+        parentSet.add(d.parentID);
+
+        let children: any = BFS[d.parentID]?.children;
+        // if the parent has 1 child
+        if (children.length === 1) {
+          this.addNodeShapetoSVG(d.dataName, d.subName, d.x + gap, d.y, d.fill, rectWidth, newHeight);
+        }
+
+        // if the parent has more than 2 child
+
+        let dx1: number = BFS[d.parentID]?.x - newWidth * 1.6,
+          dy: number = children[0]?.y,
+          dx2: number = BFS[d.parentID]?.x;
+
+        if (children.length >= 2) {
+          for (let itr = 0; itr < children.length; ++itr) {
+            const child = children[itr];
+            // For compact compostion
+            if (this.composition === 0) {
+              if (itr % 2 === 0) {
+                this.addNodeShapetoSVG(
+                  child.data.name,
+                  child.data.subname,
+                  dx1 + gap * 4,
+                  dy,
+                  child.data.fill,
+                  newWidth,
+                  newHeight,
+                );
+              }
+              if (itr % 2 === 1) {
+                this.addNodeShapetoSVG(
+                  child.data.name,
+                  child.data.subname,
+                  dx2 + gap * 4,
+                  dy,
+                  child.data.fill,
+                  newWidth,
+                  newHeight,
+                );
+                dy += newHeight + gap / 2;
+              }
+            }
+            // For long compostion
+            else {
+              this.addNodeShapetoSVG(
+                child.data.name,
+                child.data.subname,
+                dx1 + gap * 5,
+                dy,
+                child.data.fill,
+                newWidth + 50,
+                newHeight,
+              );
+              dy += newHeight + gap / 2;
+            }
+          }
+        }
+      }
+
+      if (d.children || treeHeight === 2) {
+        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight);
+      }
     }
 
     // <------------------ Links section ------------------>
 
     // Create path element
-    let link = svg.selectAll('path.link').data(nodes.slice(1), function (d: any) {
+    let link = this.svg.selectAll('path.link').data(nodes.slice(1), function (d: any) {
       return d.id;
     });
 
@@ -170,29 +221,77 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
       .style('stroke', 'black')
       .style('stroke-width', '2px');
 
-    // let linkParentSet = new Set();
-    linkUpdate.attr('d', function (d: any): string {
-      return AddLinktoNodes(d, d.parent, false);
+    let linkParentSet = new Set();
+    linkUpdate.attr('d', (d: any) => {
+      if (treeHeight === 3) {
+        // leaf nodes with more than 2 sibling nodes
+        if (!d.children && !linkParentSet.has(d?.parent.id)) {
+          linkParentSet.add(d?.parent.id);
+          if (d.parent.children?.length >= 2) {
+            return this.addLinktoNodes(BFS[d.id], BFS[d.parent.id], true, rectWidth, gap);
+          }
+        }
+        // non-leaf node
+        if (d.children || d.parent.children?.length <= 1) {
+          return this.addLinktoNodes(d, d.parent, false, rectWidth, gap);
+        }
+      } else {
+        return this.addLinktoNodes(d, d.parent, false, rectWidth, gap);
+      }
+      return '';
     });
+  }
+}
 
-    // Creates a rectangular path from parent to the child nodes
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    function AddLinktoNodes(child: any, parent: any, leaf: boolean): string {
-      let path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
-      let leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${child.y - gap} H${parent.x - gap / 2} H${
-        parent.x + rectWidth
-      }`;
-      return leaf ? leafpath : path;
-    }
+export class TreeBase extends React.Component<ITreeProps, ITreeState> {
+  public svgRef = createRef<SVGSVGElement>();
+  private margin = {
+    top: 30,
+    right: 20,
+    bottom: 30,
+    left: 50,
+  };
+
+  private width: number;
+  private height: number;
+  private treeData: IDataStructure;
+  private composition: number | undefined;
+
+  constructor(props: ITreeProps) {
+    super(props);
+    // this.state = {
+    //   data: this.props.treeData,
+    // };
+    this.width = 900 - this.margin.left - this.margin.right;
+    this.height = 700 - this.margin.top - this.margin.bottom;
+    this.treeData = this.props.treeData;
+    this.composition = this.props?.composition;
+  }
+
+  public componentDidMount() {
+    console.log('componentDidMount composition: ', this.props.composition);
+    console.log('data->', this.treeData);
+    this.createTree();
+    // this.setState({
+    //   data: this.treeData,
+    // });
+  }
+
+  public createTree() {
+    let svg = select(this.svgRef.current);
+    svg.selectAll('*').remove();
+    svg.attr('width', this.width).attr('height', this.height).append('g');
+    let twoLayerTree = new LayeredTree(this.treeData, this.composition, svg);
+    let threeLayerTree = new LayeredTree(this.treeData, this.composition, svg);
+    twoLayerTree.createTree();
+    threeLayerTree.createTree();
   }
 
   public render() {
     // eslint-disable-next-line react/self-closing-comp
     return (
       <div>
-        {/* {this.state.data ?  */}
         <svg ref={this.svgRef}></svg>
-        {/* : null} */}
       </div>
     );
   }

@@ -7,9 +7,8 @@ export interface IDataStructure {
   children?: Array<IDataStructure>;
 }
 export interface ITreeProps {
-  treeData: IDataStructure | null;
-  // composition: number;
-  // layer: number;
+  treeData: IDataStructure;
+  composition?: number | undefined;
 }
 export interface ITreeState {
   data: IDataStructure | null;
