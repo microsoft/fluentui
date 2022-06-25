@@ -85,6 +85,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Sankey Chart',
           url: '#/examples/sankeychart',
         },
+        {
+          component: require<any>('../TreeChart/TreeChartPage').TreeChartPage,
+          key: 'TreeChart',
+          name: 'Tree Chart',
+          url: '#/examples/treechart',
+        },
       ],
     },
   ],
