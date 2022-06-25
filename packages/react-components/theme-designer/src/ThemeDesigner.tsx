@@ -16,12 +16,20 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
 
   const [state, dispatchState] = useThemeDesignerReducer();
 
+  const { brand, theme, isDark, overrides } = state;
+
   return (
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
-        <Nav className={styles.nav} brand={state.brand} />
+        <Nav className={styles.nav} brand={brand} isDark={isDark} overrides={overrides} />
         <Sidebar className={styles.sidebar} dispatchState={dispatchState} />
-        <Content className={styles.content} brand={state.brand} theme={state.theme} />
+        <Content
+          className={styles.content}
+          brand={brand}
+          theme={{ ...theme, ...overrides }}
+          isDark={state.isDark}
+          dispatchState={dispatchState}
+        />
       </div>
     </FluentProvider>
   );

@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 export interface UseTabProps {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  dispatchState: DispatchTheme;
+  dispatchState: React.Dispatch<DispatchTheme>;
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
 }
@@ -49,7 +49,7 @@ export const UseTab: React.FC<UseTabProps> = props => {
     if (newTheme === 'Custom') {
       props.setTab('edit');
     } else {
-      dispatchState({ type: newTheme });
+      dispatchState({ type: newTheme, overrides: {} });
     }
     setTheme(newTheme);
   };

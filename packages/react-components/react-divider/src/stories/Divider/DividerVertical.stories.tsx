@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { Divider } from '../../Divider';
+import { Divider } from '@fluentui/react-divider';
 
 const useStyles = makeStyles({
   root: {

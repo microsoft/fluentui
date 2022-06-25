@@ -3,10 +3,12 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
+
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
-import { TokenBoxes } from '../TokenBoxes/TokenBoxes';
+import { ColorTokens } from '../ColorTokens/ColorTokens';
 
 import { Theme, BrandVariants } from '@fluentui/react-theme';
 
@@ -14,6 +16,8 @@ export interface ContentProps {
   className?: string;
   brand: BrandVariants;
   theme: Theme;
+  isDark: boolean;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -29,7 +33,7 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { brand, className, theme } = props;
+  const { className, brand, theme, isDark, dispatchState } = props;
 
   return (
     <FluentProvider theme={theme}>
@@ -42,7 +46,7 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <TokenBoxes theme={theme} />
+        <ColorTokens isDark={isDark} brand={brand} dispatchState={dispatchState} />
       </div>
     </FluentProvider>
   );

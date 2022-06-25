@@ -20,10 +20,19 @@ export type CustomAttributes = {
   isDark: boolean;
 };
 
-export type DispatchTheme = React.Dispatch<{
+export type DispatchTheme = {
   type: string;
   customAttributes?: CustomAttributes;
-}>;
+  overrides: Partial<Theme>;
+};
+
+type ReducerState = {
+  themeLabel: string;
+  brand: BrandVariants;
+  theme: Theme;
+  isDark: boolean;
+  overrides: Partial<Theme>;
+};
 
 export const useThemeDesignerReducer = () => {
   const createCustomTheme = ({
@@ -44,43 +53,47 @@ export const useThemeDesignerReducer = () => {
     };
   };
 
-  const initialState = {
+  const initialState: ReducerState = {
     themeLabel: 'Teams Light',
     brand: brandTeams,
     theme: teamsLightTheme,
+    isDark: false,
+    overrides: {},
   };
 
-  const stateReducer = (
-    state: { themeLabel: string; brand: BrandVariants; theme: Theme },
-    action: {
-      type: string;
-      customAttributes?: CustomAttributes;
-    },
-  ) => {
+  const stateReducer = (state: ReducerState, action: DispatchTheme) => {
     switch (action.type) {
       case 'Teams Light':
         return {
           themeLabel: 'Teams Light',
           brand: brandTeams,
           theme: teamsLightTheme,
+          isDark: false,
+          overrides: action.overrides,
         };
       case 'Teams Dark':
         return {
           themeLabel: 'Teams Dark',
           brand: brandTeams,
           theme: teamsDarkTheme,
+          isDark: true,
+          overrides: action.overrides,
         };
       case 'Web Light':
         return {
           themeLabel: 'Web Light',
           brand: brandWeb,
           theme: webLightTheme,
+          isDark: false,
+          overrides: action.overrides,
         };
       case 'Web Dark':
         return {
           themeLabel: 'Web Dark',
           brand: brandWeb,
           theme: webDarkTheme,
+          isDark: true,
+          overrides: action.overrides,
         };
       case 'Custom':
         if (!action.customAttributes) {
@@ -91,6 +104,16 @@ export const useThemeDesignerReducer = () => {
           themeLabel: 'Custom',
           brand: custom.brand,
           theme: custom.theme,
+          isDark: action.customAttributes.isDark,
+          overrides: action.overrides,
+        };
+      case 'Overrides':
+        return {
+          themeLabel: state.themeLabel,
+          brand: state.brand,
+          theme: state.theme,
+          isDark: state.isDark,
+          overrides: action.overrides,
         };
       default:
         return state;

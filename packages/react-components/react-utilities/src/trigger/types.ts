@@ -1,4 +1,5 @@
 /**
+ * @internal
  * Allows a component to be tagged as a FluentUI trigger component.
  *
  * Triggers are special-case components: they attach event listeners and other props on their child,

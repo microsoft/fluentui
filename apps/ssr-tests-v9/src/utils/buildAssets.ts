@@ -15,10 +15,12 @@ type BuildConfig = {
   cjsOutfile: string;
   esmEntryPoint: string;
   esmOutfile: string;
+
+  chromeVersion: number;
 };
 
 export async function buildAssets(config: BuildConfig): Promise<void> {
-  const { cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
+  const { chromeVersion, cjsEntryPoint, cjsOutfile, esmEntryPoint, esmOutfile } = config;
 
   try {
     // Used for SSR rendering, see renderToHTML.js
@@ -47,7 +49,7 @@ export async function buildAssets(config: BuildConfig): Promise<void> {
         require.resolve('../shims/module'),
       ],
       format: 'iife',
-      target: 'chrome101',
+      target: `chrome${chromeVersion}`,
     });
   } catch (e) {
     throw new Error(

@@ -278,6 +278,7 @@ function usePopperOptions(options: PositioningOptions, popperOriginalPositionRef
 }
 
 /**
+ * @internal
  * Exposes Popper positioning API via React hook. Contains few important differences between an official "react-popper"
  * package:
  * - style attributes are applied directly on DOM to avoid re-renders

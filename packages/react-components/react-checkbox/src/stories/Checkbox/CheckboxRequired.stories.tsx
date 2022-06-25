@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '../../index';
+import { Checkbox } from '@fluentui/react-checkbox';
 
 export const Required = () => <Checkbox required label="Required" />;
 Required.parameters = {

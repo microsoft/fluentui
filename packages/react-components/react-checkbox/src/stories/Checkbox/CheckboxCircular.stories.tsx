@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '../../index';
+import { Checkbox } from '@fluentui/react-checkbox';
 
 export const Circular = () => <Checkbox shape="circular" label="Circular" />;
 Circular.parameters = {
