@@ -24,7 +24,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
           transform: translateZ(0);
           transition: opacity 200ms;
         }
-        & > * {
+        & > div:last-child {
           transform: translateZ(0);
         }
         @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
@@ -287,7 +287,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
           transform: translateZ(0);
           transition: opacity 200ms;
         }
-        & > * {
+        & > div:last-child {
           transform: translateZ(0);
         }
         @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
