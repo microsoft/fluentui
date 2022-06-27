@@ -8,7 +8,7 @@ export { Multiselect } from './ListboxMultiselect.stories';
 export { GroupedOptions } from './ListboxGrouped.stories';
 
 export default {
-  title: 'Components/Listbox',
+  title: 'Preview Components/Listbox',
   component: Listbox,
   parameters: {
     docs: {

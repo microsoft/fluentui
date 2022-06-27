@@ -12,7 +12,7 @@ export { Appearance } from './ComboboxAppearance.stories';
 export { Size } from './ComboboxSize.stories';
 
 export default {
-  title: 'Components/Combobox',
+  title: 'Preview Components/Combobox',
   component: Combobox,
   parameters: {
     docs: {
