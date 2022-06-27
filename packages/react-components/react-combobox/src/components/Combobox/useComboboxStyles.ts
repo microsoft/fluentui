@@ -108,6 +108,7 @@ const useInputStyles = makeStyles({
 
     '&::placeholder': {
       color: tokens.colorNeutralForeground4,
+      opacity: 1,
     },
   },
 
