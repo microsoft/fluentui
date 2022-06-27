@@ -2,28 +2,24 @@ import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { iconSizes } from '../../utils/internalTokens';
-import type { ComboboxSlots, ComboboxState } from './Combobox.types';
+import type { DropdownSlots, DropdownState } from './Dropdown.types';
 
-export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
-  root: 'fui-Combobox',
-  input: 'fui-Combobox__input',
-  expandIcon: 'fui-Combobox__expandIcon',
-  listbox: 'fui-Combobox__listbox',
+export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
+  root: 'fui-Dropdown',
+  button: 'fui-Dropdown__button',
+  expandIcon: 'fui-Dropdown__expandIcon',
+  listbox: 'fui-Dropdown__listbox',
 };
 
 /**
- * Styles for Combobox
+ * Styles for Dropdown
  */
 const useStyles = makeStyles({
   root: {
-    alignItems: 'center',
     ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
-    display: 'inline-grid',
-    gridTemplateColumns: '1fr auto',
-    justifyContent: 'space-between',
+    display: 'inline-block',
     minWidth: '160px',
     position: 'relative',
 
@@ -65,16 +61,44 @@ const useStyles = makeStyles({
 
   listbox: {},
 
+  button: {
+    alignItems: 'center',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('0'),
+    boxSizing: 'border-box',
+    columnGap: tokens.spacingHorizontalXXS,
+    display: 'grid',
+    fontFamily: tokens.fontFamilyBase,
+    gridTemplateColumns: '1fr auto',
+    justifyContent: 'space-between',
+    textAlign: 'left',
+    width: '100%',
+
+    '&:focus': {
+      outlineStyle: 'none',
+    },
+  },
+
+  placeholder: {
+    color: tokens.colorNeutralForeground4,
+  },
+
   // size variants
   small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
   },
   medium: {
-    paddingRight: tokens.spacingHorizontalMNudge,
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalM,
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    ...shorthands.padding('7px', tokens.spacingHorizontalM),
   },
 
   // appearance variants
@@ -93,40 +117,6 @@ const useStyles = makeStyles({
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-  },
-});
-
-const useInputStyles = makeStyles({
-  input: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
-    fontFamily: tokens.fontFamilyBase,
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-
-    '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
-      opacity: 1,
-    },
-  },
-
-  // size variants
-  small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', 0, '3px', tokens.spacingHorizontalSNudge),
-  },
-  medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', 0, '5px', tokens.spacingHorizontalMNudge),
-  },
-  large: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', 0, '7px', tokens.spacingHorizontalM),
   },
 });
 
@@ -157,32 +147,26 @@ const useIconStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Combobox slots based on the state
+ * Apply styling to the Dropdown slots based on the state
  */
-export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, size } = state;
+export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
+  const { appearance, placeholderVisible, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
-  const inputStyles = useInputStyles();
 
-  state.root.className = mergeClasses(
-    comboboxClassNames.root,
-    styles.root,
-    styles[appearance],
+  state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
+  state.listbox.className = mergeClasses(dropdownClassNames.listbox, styles.listbox, state.listbox.className);
+  state.button.className = mergeClasses(
+    dropdownClassNames.button,
+    styles.button,
     styles[size],
-    state.root.className,
-  );
-  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
-  state.input.className = mergeClasses(
-    comboboxClassNames.input,
-    inputStyles.input,
-    inputStyles[size],
-    state.input.className,
+    placeholderVisible && styles.placeholder,
+    state.button.className,
   );
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
-      comboboxClassNames.expandIcon,
+      dropdownClassNames.expandIcon,
       iconStyles.icon,
       iconStyles[size],
       state.expandIcon.className,

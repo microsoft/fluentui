@@ -5,31 +5,31 @@ import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
-import type { ComboboxProps, ComboboxState } from './Combobox.types';
+import type { DropdownProps, DropdownState } from './Dropdown.types';
 
 /**
- * Create the state required to render Combobox.
+ * Create the state required to render Dropdown.
  *
- * The returned state can be modified with hooks such as useComboboxStyles_unstable,
- * before being passed to renderCombobox_unstable.
+ * The returned state can be modified with hooks such as useDropdownStyles_unstable,
+ * before being passed to renderDropdown_unstable.
  *
- * @param props - props from this instance of Combobox
- * @param ref - reference to root HTMLElement of Combobox
+ * @param props - props from this instance of Dropdown
+ * @param ref - reference to root HTMLElement of Dropdown
  */
-export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   const baseState = useComboboxBaseState(props);
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['children', 'size'],
+    primarySlotTagName: 'button',
+    excludedPropNames: ['children'],
   });
 
-  const triggerShorthand = resolveShorthand(props.input, {
+  const triggerShorthand = resolveShorthand(props.button, {
     required: true,
     defaultProps: {
-      type: 'text',
-      value: baseState.value,
+      type: 'button',
+      children: baseState.value || props.placeholder,
       ...triggerNativeProps,
     },
   });
@@ -39,10 +39,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
   const [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
 
-  const state: ComboboxState = {
+  const state: DropdownState = {
     components: {
       root: 'div',
-      input: 'input',
+      button: 'button',
       expandIcon: 'span',
       listbox: Listbox,
     },
@@ -53,7 +53,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         ...rootNativeProps,
       },
     }),
-    input: triggerSlot,
+    button: triggerSlot,
     listbox: listboxSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
@@ -61,6 +61,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         children: <ChevronDownIcon />,
       },
     }),
+    placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
 

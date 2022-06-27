@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Combobox } from './Combobox';
+import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../common/isConformant';
 
-describe('Combobox', () => {
+describe('Dropdown', () => {
   isConformant({
-    Component: Combobox,
-    displayName: 'Combobox',
-    primarySlot: 'input',
+    Component: Dropdown,
+    displayName: 'Dropdown',
+    primarySlot: 'button',
     // don't test deprecated className export on new components
     disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
@@ -26,33 +26,33 @@ describe('Combobox', () => {
 
   it('renders a default state', () => {
     const result = render(
-      <Combobox>
+      <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
   });
 
   it('renders an open listbox', () => {
     const result = render(
-      <Combobox open inlinePopup>
+      <Dropdown open inlinePopup>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
   });
 
   it('renders the popup under document.body by default', () => {
     const { container } = render(
-      <Combobox open>
+      <Dropdown open>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).toBeNull();
     expect(document.body.querySelector('[role=listbox]')).not.toBeNull();
@@ -60,11 +60,11 @@ describe('Combobox', () => {
 
   it('renders the popup inline when specified', () => {
     const { container } = render(
-      <Combobox open inlinePopup>
+      <Dropdown open inlinePopup>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
@@ -72,11 +72,11 @@ describe('Combobox', () => {
   /* open/close tests */
   it('opens the popup on click', () => {
     const { getByRole } = render(
-      <Combobox>
+      <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByRole('combobox'));
@@ -87,11 +87,11 @@ describe('Combobox', () => {
 
   it('closes the popup on click with defaultOpen', () => {
     const { getByRole, queryByRole } = render(
-      <Combobox defaultOpen>
+      <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const combobox = getByRole('combobox');
@@ -107,11 +107,11 @@ describe('Combobox', () => {
 
   it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
-      <Combobox open>
+      <Dropdown open>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     expect(getByRole('listbox')).not.toBeNull();
@@ -123,11 +123,11 @@ describe('Combobox', () => {
 
   it('opens the popup on enter', () => {
     const { getByRole } = render(
-      <Combobox>
+      <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'Enter' });
@@ -138,11 +138,11 @@ describe('Combobox', () => {
 
   it('opens and closes the popup with alt + arrow keys', () => {
     const { getByRole, queryByRole } = render(
-      <Combobox>
+      <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowDown', altKey: true });
@@ -156,11 +156,11 @@ describe('Combobox', () => {
 
   it('closes the popup with escape', () => {
     const { getByRole, queryByRole } = render(
-      <Combobox defaultOpen>
+      <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'Escape' });
@@ -172,11 +172,11 @@ describe('Combobox', () => {
     const onOpen = jest.fn();
 
     const { getByRole } = render(
-      <Combobox onOpenChange={onOpen}>
+      <Dropdown onOpenChange={onOpen}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByRole('combobox'));
@@ -188,11 +188,11 @@ describe('Combobox', () => {
   /* Selection */
   it('should set defaultSelectedOptions', () => {
     const { getByTestId } = render(
-      <Combobox open defaultSelectedOptions={['Green']}>
+      <Dropdown open defaultSelectedOptions={['Green']}>
         <Option>Red</Option>
         <Option data-testid="green">Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
@@ -200,11 +200,11 @@ describe('Combobox', () => {
 
   it('should set multiple defaultSelectedOptions', () => {
     const { getByTestId } = render(
-      <Combobox open multiselect defaultSelectedOptions={['Green', 'Red']}>
+      <Dropdown open multiselect defaultSelectedOptions={['Green', 'Red']}>
         <Option data-testid="red">Red</Option>
         <Option data-testid="green">Green</Option>
         <Option data-testid="blue">Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
@@ -214,11 +214,11 @@ describe('Combobox', () => {
 
   it('should set selectedOptions', () => {
     const { getByTestId } = render(
-      <Combobox open selectedOptions={['Green']}>
+      <Dropdown open selectedOptions={['Green']}>
         <Option>Red</Option>
         <Option data-testid="green">Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('true');
@@ -226,11 +226,11 @@ describe('Combobox', () => {
 
   it('should change defaultSelectedOptions on click', () => {
     const { getByTestId } = render(
-      <Combobox open defaultSelectedOptions={['Green']}>
+      <Dropdown open defaultSelectedOptions={['Green']}>
         <Option data-testid="red">Red</Option>
         <Option data-testid="green">Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByTestId('red'));
@@ -241,61 +241,61 @@ describe('Combobox', () => {
 
   it('selects an option on click', () => {
     const { getByTestId, getByRole } = render(
-      <Combobox defaultOpen>
+      <Dropdown defaultOpen>
         <Option data-testid="red">Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByTestId('red'));
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
+    expect(getByRole('combobox').textContent).toEqual('Red');
   });
 
   it('selects an option on enter and space', () => {
     const { getByTestId, getByRole } = render(
-      <Combobox open data-testid="combobox">
+      <Dropdown open data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const combobox = getByTestId('combobox');
 
     fireEvent.keyDown(combobox, { key: 'Enter' });
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
+    expect(getByRole('combobox').textContent).toEqual('Red');
 
     fireEvent.keyDown(combobox, { key: 'ArrowDown' });
     fireEvent.keyDown(combobox, { key: ' ' });
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+    expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
   it('selects an option when tabbing away from an open combobox', () => {
     const { getByTestId, getByRole } = render(
-      <Combobox defaultOpen data-testid="combobox">
+      <Dropdown defaultOpen data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const combobox = getByTestId('combobox');
     fireEvent.keyDown(combobox, { key: 'Tab' });
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
+    expect(getByRole('combobox').textContent).toEqual('Red');
   });
 
   it('adds to selection for multiselect', () => {
     const { getByText } = render(
-      <Combobox open multiselect defaultSelectedOptions={['Red']}>
+      <Dropdown open multiselect defaultSelectedOptions={['Red']}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByText('Green'));
@@ -307,11 +307,11 @@ describe('Combobox', () => {
 
   it('stays open on click for multiselect', () => {
     const { getByText, getByRole } = render(
-      <Combobox defaultOpen multiselect>
+      <Dropdown defaultOpen multiselect>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByText('Green'));
@@ -321,52 +321,52 @@ describe('Combobox', () => {
 
   it('should respect value over selected options', () => {
     const { getByRole } = render(
-      <Combobox value="foo" selectedOptions={['Green']}>
+      <Dropdown value="foo" selectedOptions={['Green']}>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
+    expect(getByRole('combobox').textContent).toEqual('foo');
   });
 
   it('should change defaultValue on select', () => {
     const { getByRole, getByText } = render(
-      <Combobox defaultValue="foo" defaultOpen>
+      <Dropdown defaultValue="foo" defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByText('Green'));
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+    expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
   it('should not change value on select', () => {
     const { getByRole, getByText } = render(
-      <Combobox value="Red" defaultOpen>
+      <Dropdown value="Red" defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     fireEvent.click(getByText('Green'));
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
+    expect(getByRole('combobox').textContent).toEqual('Red');
   });
 
   /* Active option */
   it('should set active option on click', () => {
     const { getByTestId } = render(
-      <Combobox open data-testid="combobox">
+      <Dropdown open data-testid="combobox">
         <Option>Red</Option>
         <Option data-testid="clicked">Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const option = getByTestId('clicked');
@@ -377,11 +377,11 @@ describe('Combobox', () => {
 
   it('should move active option with arrow down', () => {
     const { getByTestId, getByText } = render(
-      <Combobox defaultOpen data-testid="combobox">
+      <Dropdown defaultOpen data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const combobox = getByTestId('combobox');
@@ -392,11 +392,11 @@ describe('Combobox', () => {
 
   it('should move active option with arrow up', () => {
     const { getByTestId, getByText } = render(
-      <Combobox open data-testid="combobox">
+      <Dropdown open data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
-      </Combobox>,
+      </Dropdown>,
     );
 
     const combobox = getByTestId('combobox');

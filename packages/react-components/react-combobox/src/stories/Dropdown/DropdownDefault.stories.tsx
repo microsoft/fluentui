@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Combobox, ComboboxProps, Option } from '@fluentui/react-combobox';
+import { Dropdown, DropdownProps, Option } from '@fluentui/react-combobox';
 
 const useStyles = makeStyles({
   root: {
@@ -14,28 +14,20 @@ const useStyles = makeStyles({
   },
 });
 
-export const Multiselect = (props: Partial<ComboboxProps>) => {
-  const comboId = useId('combo-multi');
+export const Default = (props: Partial<DropdownProps>) => {
+  const dropdownId = useId('dropdown-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} multiselect={true} placeholder="Select an animal" {...props}>
+      <label id={dropdownId}>Best pet</label>
+      <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}
           </Option>
         ))}
-      </Combobox>
+      </Dropdown>
     </div>
   );
-};
-
-Multiselect.parameters = {
-  docs: {
-    description: {
-      story: 'Combobox supports multiselect, and options within a multiselect will display checkbox icons.',
-    },
-  },
 };

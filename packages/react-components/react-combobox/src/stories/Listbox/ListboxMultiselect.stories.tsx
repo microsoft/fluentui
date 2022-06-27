@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { Listbox, Option } from '@fluentui/react-combobox';
-import type { ListboxProps } from '@fluentui/react-combobox';
+import { Listbox, Option, ListboxProps } from '@fluentui/react-combobox';
 
 export const Multiselect = (props: Partial<ListboxProps>) => {
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];

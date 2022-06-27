@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
 import { getSlots } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
-import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Combobox.types';
+import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 
 /**
- * Render the final JSX of Combobox
+ * Render the final JSX of Dropdown
  */
-export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
-  const { slots, slotProps } = getSlots<ComboboxSlots>(state);
+export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues) => {
+  const { slots, slotProps } = getSlots<DropdownSlots>(state);
 
   const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
   const popup = state.inlinePopup ? listbox : <Portal>{listbox}</Portal>;
@@ -16,8 +16,10 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
   return (
     <slots.root {...slotProps.root}>
       <ComboboxContext.Provider value={contextValues.combobox}>
-        <slots.input {...slotProps.input} />
-        {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+        <slots.button {...slotProps.button}>
+          {slotProps.button.children}
+          {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+        </slots.button>
         {state.open ? popup : null}
       </ComboboxContext.Provider>
     </slots.root>
