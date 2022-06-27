@@ -32,21 +32,34 @@ function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: Use
       return packageJson;
     }
 
-    Object.entries(packageJson.dependencies).forEach(([dependency, dependencyRange]) => {
-      const range = semver.validRange(dependencyRange);
-      const minVersion = semver.minVersion(dependencyRange);
+    function convertDependenciesToCaret(dependencies: Record<string, string>) {
+      Object.entries(dependencies).forEach(([dependency, dependencyRange]) => {
+        const range = semver.validRange(dependencyRange);
+        const minVersion = semver.minVersion(dependencyRange);
 
-      if (!minVersion) {
-        throw new Error(`${dependency} range ${dependencyRange} cannot be parsed to a min version`);
-      }
+        if (!minVersion) {
+          throw new Error(`${dependency} range ${dependencyRange} cannot be parsed to a min version`);
+        }
 
-      if (!isPackageVersionConverged(minVersion.raw) || minVersion.prerelease[0] !== 'rc' || range !== minVersion.raw) {
-        return packageJson;
-      }
+        if (
+          !isPackageVersionConverged(minVersion.raw) ||
+          minVersion.prerelease[0] !== 'rc' ||
+          range !== minVersion.raw
+        ) {
+          return;
+        }
 
-      packageJson.dependencies ??= {};
-      packageJson.dependencies[dependency] = `^${minVersion}`;
-    });
+        dependencies[dependency] = `^${minVersion}`;
+      });
+    }
+
+    if (packageJson.dependencies) {
+      convertDependenciesToCaret(packageJson.dependencies);
+    }
+
+    if (packageJson.devDependencies) {
+      convertDependenciesToCaret(packageJson.devDependencies);
+    }
 
     return packageJson;
   });
