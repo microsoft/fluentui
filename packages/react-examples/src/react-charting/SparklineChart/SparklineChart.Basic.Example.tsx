@@ -19,6 +19,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -61,6 +62,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -95,6 +97,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -129,6 +132,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '464.64',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -163,6 +167,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '46.49',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -197,6 +202,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -231,6 +237,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
@@ -265,6 +272,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '541.44',
+          color: `${DefaultPalette.green}`,
           data: [
             {
               x: 1,
