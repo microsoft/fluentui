@@ -21,8 +21,8 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
-    display: 'inline-flex',
-    flexWrap: 'nowrap',
+    display: 'inline-grid',
+    gridTemplateColumns: '1fr auto',
     justifyContent: 'space-between',
     minWidth: '160px',
     position: 'relative',
@@ -101,7 +101,6 @@ const useInputStyles = makeStyles({
     backgroundColor: tokens.colorTransparentBackground,
     ...shorthands.border('0'),
     fontFamily: tokens.fontFamilyBase,
-    width: '100%',
 
     '&:focus': {
       outlineStyle: 'none',
@@ -135,8 +134,6 @@ const useIconStyles = makeStyles({
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
-    flexGrow: 0,
-    flexShrink: 0,
     fontSize: tokens.fontSizeBase500,
 
     // the SVG must have display: block for accurate positioning

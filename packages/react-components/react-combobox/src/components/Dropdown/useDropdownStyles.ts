@@ -67,9 +67,9 @@ const useStyles = makeStyles({
     ...shorthands.border('0'),
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
-    display: 'flex',
-    flexWrap: 'nowrap',
+    display: 'grid',
     fontFamily: tokens.fontFamilyBase,
+    gridTemplateColumns: '1fr auto',
     justifyContent: 'space-between',
     textAlign: 'left',
     width: '100%',
@@ -125,8 +125,6 @@ const useIconStyles = makeStyles({
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
-    flexGrow: 0,
-    flexShrink: 0,
     fontSize: tokens.fontSizeBase500,
 
     // the SVG must have display: block for accurate positioning
