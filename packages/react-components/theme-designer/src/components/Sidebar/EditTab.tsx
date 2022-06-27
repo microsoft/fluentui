@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Label, Input, Switch, Slider, tokens } from '@fluentui/react-components';
+import { useDebounce } from '../../utils/useDebounce';
 
 import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
 
@@ -60,11 +61,18 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const [form, dispatchForm] = React.useReducer(formReducer, initialForm);
 
+  const [lastForm, setLastForm] = React.useState<CustomAttributes>(initialForm);
+
+  const debouncedForm = useDebounce(lastForm, 10);
+  React.useEffect(() => {
+    dispatchForm({ attributes: debouncedForm, type: 'keyColor' });
+  }, [debouncedForm]);
+
   const toggleTheme = () => {
     dispatchForm({ attributes: { ...form, isDark: !form.isDark }, type: 'isDark' });
   };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, keyColor: e.target.value }, type: 'keyColor' });
+    setLastForm({ ...form, keyColor: e.target.value });
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatchForm({ attributes: { ...form, hueTorsion: parseInt(e.target.value, 10) / 10 }, type: 'hueTorsion' });
