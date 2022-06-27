@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Combobox } from '../index';
+import { Combobox } from '@fluentui/react-combobox';
 
 import descriptionMd from './ComboboxDescription.md';
 import bestPracticesMd from './ComboboxBestPractices.md';

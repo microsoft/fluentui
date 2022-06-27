@@ -1,4 +1,4 @@
-import { Listbox } from '../index';
+import { Listbox } from '@fluentui/react-combobox';
 
 import descriptionMd from './ListboxDescription.md';
 import bestPracticesMd from './ListboxBestPractices.md';

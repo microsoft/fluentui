@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
-import { Listbox, Option, ListboxProps } from '../index';
+import { Listbox, Option, ListboxProps } from '@fluentui/react-combobox';
 
 export const Default = (props: Partial<ListboxProps>) => {
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];

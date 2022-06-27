@@ -1,6 +1,6 @@
 import { useId } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { Listbox, Option, ListboxProps } from '../index';
+import { Listbox, Option, ListboxProps } from '@fluentui/react-combobox';
 import { OptionGroup } from '../OptionGroup';
 
 export const GroupedOptions = (props: Partial<ListboxProps>) => {

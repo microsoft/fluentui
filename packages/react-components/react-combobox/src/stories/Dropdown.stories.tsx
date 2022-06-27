@@ -1,4 +1,4 @@
-import { Dropdown } from '../index';
+import { Dropdown } from '@fluentui/react-combobox';
 
 export { Default } from './DropdownDefault.stories';
 

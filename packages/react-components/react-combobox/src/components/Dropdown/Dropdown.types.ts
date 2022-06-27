@@ -9,7 +9,7 @@ import type {
 import { Listbox } from '../Listbox/Listbox';
 
 export type DropdownSlots = {
-  /* The root combobox slot */
+  /* The root dropdown slot */
   root: NonNullable<Slot<'div'>>;
 
   /* The dropdown arrow icon */

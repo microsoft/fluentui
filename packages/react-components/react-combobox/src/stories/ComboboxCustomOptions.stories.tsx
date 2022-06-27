@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useId } from '@fluentui/react-utilities';
 import { CheckmarkCircle20Filled } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Combobox, ComboboxProps, Option, OptionProps, OptionGroup, OptionGroupProps } from '../index';
+import { Combobox, ComboboxProps, Option, OptionProps, OptionGroup, OptionGroupProps } from '@fluentui/react-combobox';
 
 const CustomOption = (props: OptionProps) => {
   return <Option {...props} checkIcon={<CheckmarkCircle20Filled />} />;
