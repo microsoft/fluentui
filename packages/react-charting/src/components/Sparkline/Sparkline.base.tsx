@@ -5,7 +5,6 @@ import { area as d3Area, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { ILineChartPoints } from '../../types/IDataPoint';
 import { ISparklineProps } from '../../index';
-// @ts-ignore
 
 export interface ISparklineState {
   data: ILineChartPoints[] | null;
@@ -32,7 +31,10 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
 
   private width: number;
   private height: number;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private x: any;
+
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   private y: any;
   private area: any;
 
@@ -48,26 +50,29 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   public componentDidMount() {
     console.log('componentDidMount');
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const area = d3Area()
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       .x((d: any) => this.x(d.x))
       .y0(this.height)
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       .y1((d: any) => this.y(d.y))
       .curve(d3CurveBasis);
     this.area = area;
 
     const rawData = this.props.data!.lineChartData!;
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     const [xMin, xMax] = d3Extent(rawData, (d: any) => d.x);
 
     this.x = d3ScaleLinear().domain([xMin, xMax]).range([0, this.width]);
     this.y = d3ScaleLinear()
+      /* eslint-disable @typescript-eslint/no-explicit-any */
       .domain([0, d3Max(rawData, (d: any) => d.y)])
       .range([this.height - 4, 0]); //ToDo: handle RTL
-    //ToDo: Use utils
+    // ToDo: Use utils
     // ToDo: Map domain and range properly.
     // ToDo: Assign ids to each sparkline properly.
-
-    console.log('data->', rawData);
 
     this.setState({
       data: rawData,
