@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Sparkline, ISparklineProps } from '@fluentui/react-charting';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
+import { IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface ISparklineState {}
@@ -18,36 +18,41 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '10.21',
       lineChartData: [
         {
-          x: 1,
-          y: 58.13,
-        },
-        {
-          x: 2,
-          y: 140.98,
-        },
-        {
-          x: 3,
-          y: 20,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 99,
-        },
-        {
-          x: 6,
-          y: 13.28,
-        },
-        {
-          x: 7,
-          y: 31.32,
-        },
-        {
-          x: 8,
-          y: 10.21,
+          legend: '19.64',
+          data: [
+            {
+              x: 1,
+              y: 58.13,
+            },
+            {
+              x: 2,
+              y: 140.98,
+            },
+            {
+              x: 3,
+              y: 20,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 99,
+            },
+            {
+              x: 6,
+              y: 13.28,
+            },
+            {
+              x: 7,
+              y: 31.32,
+            },
+            {
+              x: 8,
+              y: 10.21,
+            },
+          ],
         },
       ],
     };
@@ -55,28 +60,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '19.64',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -84,28 +94,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '19.64',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -113,28 +128,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '464.64',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -142,28 +162,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '46.49',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -171,28 +196,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '49.44',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -200,28 +230,33 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '49.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 19,
-        },
-        {
-          x: 6,
-          y: 49.44,
+          legend: '49.44',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 19,
+            },
+            {
+              x: 6,
+              y: 49.44,
+            },
+          ],
         },
       ],
     };
@@ -229,36 +264,41 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       chartTitle: '541.44',
       lineChartData: [
         {
-          x: 1,
-          y: 29.13,
-        },
-        {
-          x: 2,
-          y: 70.98,
-        },
-        {
-          x: 3,
-          y: 60,
-        },
-        {
-          x: 4,
-          y: 89.7,
-        },
-        {
-          x: 5,
-          y: 664,
-        },
-        {
-          x: 6,
-          y: 66.44,
-        },
-        {
-          x: 7,
-          y: 541.44,
-        },
-        {
-          x: 8,
-          y: 32.44,
+          legend: '541.44',
+          data: [
+            {
+              x: 1,
+              y: 29.13,
+            },
+            {
+              x: 2,
+              y: 70.98,
+            },
+            {
+              x: 3,
+              y: 60,
+            },
+            {
+              x: 4,
+              y: 89.7,
+            },
+            {
+              x: 5,
+              y: 664,
+            },
+            {
+              x: 6,
+              y: 66.44,
+            },
+            {
+              x: 7,
+              y: 541.44,
+            },
+            {
+              x: 8,
+              y: 32.44,
+            },
+          ],
         },
       ],
     };

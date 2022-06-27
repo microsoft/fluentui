@@ -3,11 +3,11 @@ import * as React from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
-import { ILineChartPoints } from '../../types/IDataPoint';
+import { ILineChartDataPoint } from '../../types/IDataPoint';
 import { ISparklineProps } from '../../index';
 
 export interface ISparklineState {
-  data: ILineChartPoints[] | null;
+  data: ILineChartDataPoint[] | null;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -58,7 +58,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       .curve(d3CurveBasis);
     this.area = area;
 
-    const rawData = this.props.data!.lineChartData!;
+    const rawData = this.props.data!.lineChartData![0].data;
 
     /* eslint-disable @typescript-eslint/no-explicit-any */
     const [xMin, xMax] = d3Extent(rawData, (d: any) => d.x);
@@ -97,7 +97,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
         <svg width={this.width} height={this.height}>
           {this.state.data ? this.areaPath() : null}
         </svg>
-        <span style={{ marginLeft: '8px' }}>{this.props.data!.chartTitle!}</span>
+        <span style={{ marginLeft: '8px' }}>{this.props.data!.lineChartData![0].legend!}</span>
       </>
     );
   }
