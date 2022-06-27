@@ -14,7 +14,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
   }
 
   private _createSparklineTable(): JSX.Element {
-    const sl_1: IChartProps = {
+    const sl1: IChartProps = {
       chartTitle: '10.21',
       lineChartData: [
         {
@@ -57,7 +57,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_2: IChartProps = {
+    const sl2: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -92,7 +92,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_3: IChartProps = {
+    const sl3: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -127,7 +127,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_4: IChartProps = {
+    const sl4: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -162,7 +162,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_5: IChartProps = {
+    const sl5: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -197,7 +197,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_6: IChartProps = {
+    const sl6: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -232,7 +232,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_7: IChartProps = {
+    const sl7: IChartProps = {
       chartTitle: '49.44',
       lineChartData: [
         {
@@ -267,7 +267,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         },
       ],
     };
-    const sl_8: IChartProps = {
+    const sl8: IChartProps = {
       chartTitle: '541.44',
       lineChartData: [
         {
@@ -317,49 +317,49 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
           <tr style={{ borderBottom: '1pt solid black' }}>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
             <td>
-              <Sparkline data={sl_1} color={'#627CEF'}></Sparkline>
+              <Sparkline data={sl1} color={'#627CEF'} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
             <td>
-              <Sparkline data={sl_2} color={DefaultPalette.green}></Sparkline>
+              <Sparkline data={sl2} color={DefaultPalette.green} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
             <td>
-              <Sparkline data={sl_3} color={'#00A2AD'}></Sparkline>
+              <Sparkline data={sl3} color={'#00A2AD'} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
             <td>
-              <Sparkline data={sl_4} color={DefaultPalette.red}></Sparkline>
+              <Sparkline data={sl4} color={DefaultPalette.red} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
             <td>
-              <Sparkline data={sl_5} color={'#E3008C'}></Sparkline>
+              <Sparkline data={sl5} color={'#E3008C'} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
             <td>
-              <Sparkline data={sl_6} color={'#627CEF'}></Sparkline>
+              <Sparkline data={sl6} color={'#627CEF'} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
             <td>
-              <Sparkline data={sl_7} color={'#627CEF'}></Sparkline>
+              <Sparkline data={sl7} color={'#627CEF'} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
             <td>
-              <Sparkline data={sl_8} color={'#627CEF'}></Sparkline>
+              <Sparkline data={sl8} color={'#627CEF'} />
             </td>
           </tr>
         </tbody>
