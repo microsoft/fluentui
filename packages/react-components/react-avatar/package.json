@@ -33,15 +33,15 @@
     "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
-    "@fluentui/react-badge": "9.0.0-rc.13",
-    "@fluentui/react-context-selector": "9.0.0-rc.10",
+    "@fluentui/react-badge": "^9.0.0-rc.13",
+    "@fluentui/react-context-selector": "^9.0.0-rc.10",
     "@fluentui/react-icons": "^2.0.172-rc.8",
-    "@fluentui/react-popover": "9.0.0-rc.14",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.11",
-    "@fluentui/react-tabster": "9.0.0-rc.14",
-    "@fluentui/react-theme": "9.0.0-rc.10",
-    "@fluentui/react-tooltip": "9.0.0-rc.14",
-    "@fluentui/react-utilities": "9.0.0-rc.10",
+    "@fluentui/react-popover": "^9.0.0-rc.14",
+    "@fluentui/react-shared-contexts": "^9.0.0-rc.11",
+    "@fluentui/react-tabster": "^9.0.0-rc.14",
+    "@fluentui/react-theme": "^9.0.0-rc.10",
+    "@fluentui/react-tooltip": "^9.0.0-rc.14",
+    "@fluentui/react-utilities": "^9.0.0-rc.10",
     "@griffel/react": "1.2.0",
     "tslib": "^2.1.0"
   },
