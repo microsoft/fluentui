@@ -2,6 +2,21 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 14:25:31 GMT",
+      "tag": "@fluentui/react-divider_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.10",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 May 2022 21:28:39 GMT",
       "tag": "@fluentui/react-divider_v9.0.0-rc.11",
       "version": "9.0.0-rc.11",
