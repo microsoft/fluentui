@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "@fluentui/priority-overflow": "^9.0.0-beta.1",
-    "@fluentui/react-context-selector": "9.0.0-rc.10",
-    "@fluentui/react-theme": "9.0.0-rc.10",
-    "@fluentui/react-utilities": "9.0.0-rc.10",
+    "@fluentui/react-context-selector": "^9.0.0-rc.10",
+    "@fluentui/react-theme": "^9.0.0-rc.10",
+    "@fluentui/react-utilities": "^9.0.0-rc.10",
     "@griffel/react": "1.2.0",
     "tslib": "^2.1.0"
   },

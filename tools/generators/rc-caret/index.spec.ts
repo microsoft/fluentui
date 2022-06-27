@@ -27,7 +27,7 @@ describe('rc-caret generator', () => {
     npmScope = readWorkspaceConfiguration(tree).npmScope ?? '@proj';
   });
 
-  it('should work', () => {
+  it('should work for dependencies', () => {
     setupDummyPackage(tree, {
       dependencies: {
         [`@${npmScope}/react-button`]: '9.0.0-rc.1',
@@ -38,6 +38,19 @@ describe('rc-caret generator', () => {
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
+  });
+
+  it('should work for dev dependencies', () => {
+    setupDummyPackage(tree, {
+      devDependencies: {
+        [`@${npmScope}/react-button`]: '9.0.0-rc.1',
+      },
+    });
+
+    generator(tree, { name: `@${npmScope}/react-components` });
+    const packageJson = readJson(tree, 'packages/react-components/package.json');
+
+    expect(packageJson.devDependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
   });
 
   it('should ignore dependencies already carets', () => {
