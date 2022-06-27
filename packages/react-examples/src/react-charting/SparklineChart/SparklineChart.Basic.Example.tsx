@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Sparkline, ISparklineProps } from '@fluentui/react-charting';
+import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface ISparklineState {}
 
@@ -12,107 +14,308 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
   }
 
   private _createSparklineTable(): JSX.Element {
+    const sl_1: IChartProps = {
+      chartTitle: '10.21',
+      lineChartData: [
+        {
+          x: 1,
+          y: 58.13,
+        },
+        {
+          x: 2,
+          y: 140.98,
+        },
+        {
+          x: 3,
+          y: 20,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 99,
+        },
+        {
+          x: 6,
+          y: 13.28,
+        },
+        {
+          x: 7,
+          y: 31.32,
+        },
+        {
+          x: 8,
+          y: 10.21,
+        },
+      ],
+    };
+    const sl_2: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_3: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_4: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_5: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_6: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_7: IChartProps = {
+      chartTitle: '49.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 19,
+        },
+        {
+          x: 6,
+          y: 49.44,
+        },
+      ],
+    };
+    const sl_8: IChartProps = {
+      chartTitle: '541.44',
+      lineChartData: [
+        {
+          x: 1,
+          y: 29.13,
+        },
+        {
+          x: 2,
+          y: 70.98,
+        },
+        {
+          x: 3,
+          y: 60,
+        },
+        {
+          x: 4,
+          y: 89.7,
+        },
+        {
+          x: 5,
+          y: 664,
+        },
+        {
+          x: 6,
+          y: 66.44,
+        },
+        {
+          x: 7,
+          y: 541.44,
+        },
+        {
+          x: 8,
+          y: 32.44,
+        },
+      ],
+    };
+
     return (
-      <>
-        <tr>
-          <td>Row 1</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,58.13
-              2,140.98
-              3,20.00
-              4,89.70
-              5,99.00
-              6,13.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 2</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,29.13
-              2,70.98
-              3,10.00
-              4,46.70
-              5,55.00
-              6,45.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 3</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,86.21
-              2,101.98
-              3,10.00
-              4,87.70
-              5,3.00
-              6,42.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 4</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,12.13
-              2,340.98
-              3,25.00
-              4,68.70
-              5,54.00
-              6,22.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 5</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,87.13
-              2,24.98
-              3,63.00
-              4,6.70
-              5,14.00
-              6,103.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 6</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,73.13
-              2,125.98
-              3,86.00
-              4,49.70
-              5,252.00
-              6,23.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-        <tr>
-          <td>Row 7</td>
-          <td>
-            <Sparkline
-              inpData={`xVal,close
-              1,10.13
-              2,51.98
-              3,210.00
-              4,46.70
-              5,305.00
-              6,12.28`}
-            ></Sparkline>
-          </td>
-        </tr>
-      </>
+      <table>
+        <tbody>
+          <tr style={{ borderBottom: '1pt solid black' }}>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
+            <td>
+              <Sparkline data={sl_1} color={'#627CEF'}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
+            <td>
+              <Sparkline data={sl_2} color={DefaultPalette.green}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
+            <td>
+              <Sparkline data={sl_3} color={'#00A2AD'}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
+            <td>
+              <Sparkline data={sl_4} color={DefaultPalette.red}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
+            <td>
+              <Sparkline data={sl_5} color={'#E3008C'}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
+            <td>
+              <Sparkline data={sl_6} color={'#627CEF'}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
+            <td>
+              <Sparkline data={sl_7} color={'#627CEF'}></Sparkline>
+            </td>
+          </tr>
+          <tr>
+            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
+            <td>
+              <Sparkline data={sl_8} color={'#627CEF'}></Sparkline>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 }

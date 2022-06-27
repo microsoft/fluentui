@@ -3,12 +3,12 @@ import { createRef } from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
-import { csvParse as d3CsvParse } from 'd3-dsv';
+import { ILineChartPoints } from '../../types/IDataPoint';
 import { ISparklineProps } from '../../index';
 // @ts-ignore
 
 export interface ISparklineState {
-  data: any[] | null;
+  data: ILineChartPoints[] | null;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -22,6 +22,14 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     left: 50,
   };
 
+  // Todo: Async shimmer loading
+  // Load text after the chart
+  // Making color configurable
+  // UI redlining
+  // Aria label and accessibility
+  // Styling
+  // Use FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}
+
   private width: number;
   private height: number;
   private x: any;
@@ -33,34 +41,32 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     this.state = {
       data: null,
     };
-    this.width = 380 - this.margin.left - this.margin.right;
-    this.height = 140 - this.margin.top - this.margin.bottom;
+    this.width = 80;
+    this.height = 20;
   }
 
   public componentDidMount() {
     console.log('componentDidMount');
 
-    // set the ranges
-    this.x = d3ScaleLinear().range([this.margin.left, this.width - this.margin.right]);
-    this.y = d3ScaleLinear().range([this.height - this.margin.bottom, this.margin.top]);
-
     const area = d3Area()
-      .x((d: any) => this.x(d.xVal))
+      .x((d: any) => this.x(d.x))
       .y0(this.height)
-      .y1((d: any) => this.y(d.close))
+      .y1((d: any) => this.y(d.y))
       .curve(d3CurveBasis);
     this.area = area;
 
-    const rawData = d3CsvParse(this.props.inpData);
-    rawData.forEach((d: any) => {
-      d.xVal = d.xVal;
-      d.yVal = +d.yVal;
-    });
-    this.x.domain(d3Extent(rawData, (d: any) => d.xVal));
-    this.y.domain([0, d3Max(rawData, (d: any) => d.close)]);
+    const rawData = this.props.data!.lineChartData!;
+
+    const [xMin, xMax] = d3Extent(rawData, (d: any) => d.x);
+
+    this.x = d3ScaleLinear().domain([xMin, xMax]).range([0, this.width]);
+    this.y = d3ScaleLinear()
+      .domain([0, d3Max(rawData, (d: any) => d.y)])
+      .range([this.height - 4, 0]); //ToDo: handle RTL
+    //ToDo: Use utils
     // ToDo: Map domain and range properly.
     // ToDo: Assign ids to each sparkline properly.
-    // ToDo: Create a sparkline controller.
+
     console.log('data->', rawData);
 
     this.setState({
@@ -69,25 +75,27 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   }
 
   public areaPath() {
-    // @ts-ignore
     return (
       <path
         className="area"
         d={this.area(this.state.data)}
         opacity={1}
-        fillOpacity={0.7}
-        fill={'#627CEF'}
-        strokeWidth={3}
-        stroke={'#437C95'}
+        fillOpacity={0.4}
+        fill={this.props.color}
+        strokeWidth={2}
+        stroke={this.props.color}
       />
     );
   }
 
   public render() {
     return (
-      <svg width={this.width} height={this.height}>
-        {this.state.data ? this.areaPath() : null}
-      </svg>
+      <>
+        <svg width={this.width} height={this.height}>
+          {this.state.data ? this.areaPath() : null}
+        </svg>
+        <span style={{ marginLeft: '8px' }}>{this.props.data!.chartTitle!}</span>
+      </>
     );
   }
 }
