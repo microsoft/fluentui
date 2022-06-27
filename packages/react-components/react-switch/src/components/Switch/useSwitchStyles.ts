@@ -18,9 +18,9 @@ export const switchClassName = switchClassNames.root;
 
 // Thumb and track sizes used by the component.
 const spaceBetweenThumbAndTrack = 2;
-const thumbSize = 14;
 const trackHeight = 20;
 const trackWidth = 40;
+const thumbSize = trackHeight - spaceBetweenThumbAndTrack;
 
 const useRootStyles = makeStyles({
   base: {
@@ -47,7 +47,7 @@ const useIndicatorStyles = makeStyles({
     boxSizing: 'border-box',
     fill: 'currentColor',
     flexShrink: 0,
-    fontSize: `${thumbSize + spaceBetweenThumbAndTrack}px`,
+    fontSize: `${thumbSize}px`,
     height: `${trackHeight}px`,
     pointerEvents: 'none',
     transitionDuration: '200ms',
@@ -79,7 +79,7 @@ const useInputStyles = makeStyles({
     ':checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
         '> *': {
-          transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack * 2}px)`,
+          transform: `translateX(${trackWidth - thumbSize - spaceBetweenThumbAndTrack}px)`,
         },
       },
     },

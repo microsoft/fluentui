@@ -1,7 +1,6 @@
 import { useId } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { Listbox, Option, ListboxProps } from '@fluentui/react-combobox';
-import { OptionGroup } from '../OptionGroup';
+import { Listbox, Option, OptionGroup, ListboxProps } from '@fluentui/react-combobox';
 
 export const GroupedOptions = (props: Partial<ListboxProps>) => {
   const land = ['Cat', 'Dog', 'Ferret', 'Hamster'];

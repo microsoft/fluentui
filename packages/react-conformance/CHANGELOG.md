@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 29 Mar 2022 07:39:04 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jun 2022 07:43:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.14.0)
+
+Fri, 24 Jun 2022 07:43:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.13.0..@fluentui/react-conformance_v0.14.0)
+
+### Minor changes
+
+- feat: Adding getPortalElement option to static classnames object test. ([PR #23631](https://github.com/microsoft/fluentui/pull/23631) by esteban.230@hotmail.com)
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.13.0)
 
