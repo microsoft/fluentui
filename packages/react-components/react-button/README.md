@@ -1,6 +1,6 @@
 # @fluentui/react-button
 
-**Button components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Button components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
 - Buttons enable users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 - CompoundButtons are buttons that can have secondary content that adds extra information to the user.

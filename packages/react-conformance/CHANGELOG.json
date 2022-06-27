@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 24 Jun 2022 07:43:32 GMT",
+      "tag": "@fluentui/react-conformance_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "52f6f9da2687560b5f165309c6c54c63878379f8",
+            "comment": "feat: Adding getPortalElement option to static classnames object test."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Apr 2022 07:38:09 GMT",
       "tag": "@fluentui/react-conformance_v0.13.0",
       "version": "0.13.0",

@@ -2,6 +2,131 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:42 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.13",
+      "version": "9.0.0-rc.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "eb3bf4d3f06fef632a98e1e354d92689dae218d6",
+            "comment": "BREAKING: FluentProvider now adds `line-height` by default"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components, removes re-export to provider"
+          },
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/react-provider",
+            "commit": "4ed24c29ddf8de037e4402d67c820b7398eaa265",
+            "comment": "remove export useTheme"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8da715ea657e5124f56450426b8052ef49a20180",
+            "comment": "chore: replace useConst() usage"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.13",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 21:01:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.12",
+      "version": "9.0.0-rc.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "200be4ce33d4c57fbce1cfed87dd110f289de3af",
+            "comment": "add description for the component"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.12",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 18:56:47 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-rc.11",
+      "version": "9.0.0-rc.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5ed22515a7542b432ed694f22606ac3718d501cb",
+            "comment": "Removing <componentName>ClassName exports."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.11",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:35 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",

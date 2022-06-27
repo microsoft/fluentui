@@ -498,14 +498,15 @@ describe('migrate-converged-pkg generator', () => {
 
       const normalizedProjectNameNamesVariants = names(normalizedProjectName);
       const paths = {
-        storyOne: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
-        storyTwo: `${projectConfig.root}/src/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
+        storyOne: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}.stories.tsx`,
+        storyTwo: `${projectConfig.root}/src/stories/${normalizedProjectNameNamesVariants.className}Other.stories.tsx`,
         tsconfig: {
           storybook: `${projectStorybookConfigPath}/tsconfig.json`,
           main: `${projectConfig.root}/tsconfig.json`,
           lib: `${projectConfig.root}/tsconfig.lib.json`,
           test: `${projectConfig.root}/tsconfig.spec.json`,
         },
+        packageJson: `${projectConfig.root}/package.json`,
       };
 
       if (config.createDummyStories) {
@@ -544,6 +545,13 @@ describe('migrate-converged-pkg generator', () => {
 
       expect(tree.exists(projectStorybookConfigPath)).toBeTruthy();
 
+      expect(readJson(tree, paths.packageJson).scripts).toEqual(
+        expect.objectContaining({
+          start: 'yarn storybook',
+          storybook: 'node ../../scripts/storybook/runner',
+        }),
+      );
+
       expect(readJson(tree, paths.tsconfig.storybook)).toEqual({
         extends: '../tsconfig.json',
         compilerOptions: {
@@ -570,7 +578,7 @@ describe('migrate-converged-pkg generator', () => {
 
         module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
         const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -665,6 +673,38 @@ describe('migrate-converged-pkg generator', () => {
       // Why not inline snapshot? -> this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
+
+    it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
+      const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
+      const componentName = names(normalizedProjectName).className.replace('React', '');
+      const oldStoriesPath = `${projectConfig.root}/src/stories`;
+      const newStoriesPath = `${oldStoriesPath}/${componentName}`;
+      const storyFiles: string[] = [];
+
+      visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+        if (treePath.includes('.stories.')) {
+          storyFiles.push(path.basename(treePath));
+        }
+      });
+
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${oldStoriesPath}/${story}`)).toBeTruthy();
+      });
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${newStoriesPath}/${story}`)).toBeFalsy();
+      });
+
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, sourceRoot: `${projectConfig.root}/src` });
+
+      await generator(tree, { name: options.name });
+
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${oldStoriesPath}/${story}`)).toBeFalsy();
+      });
+      storyFiles.forEach(story => {
+        expect(tree.exists(`${newStoriesPath}/${story}`)).toBeTruthy();
+      });
+    });
   });
 
   describe(`e2e config`, () => {
@@ -736,7 +776,9 @@ describe('migrate-converged-pkg generator', () => {
 
       // package.json updates
       const packageJson: PackageJson = readJson(tree, paths.packageJson);
-      expect(packageJson.scripts).toEqual(expect.objectContaining({ e2e: 'e2e' }));
+      expect(packageJson.scripts).toEqual(
+        expect.objectContaining({ e2e: 'cypress run --component', 'e2e:local': 'cypress open --component' }),
+      );
     });
   });
 
@@ -814,8 +856,6 @@ describe('migrate-converged-pkg generator', () => {
         'code-style': 'just-scripts code-style',
         just: 'just-scripts',
         lint: 'just-scripts lint',
-        start: 'yarn storybook',
-        storybook: 'node ../../../scripts/storybook/runner',
         test: 'jest --passWithNoTests',
         'type-check': 'tsc -b tsconfig.json',
       });

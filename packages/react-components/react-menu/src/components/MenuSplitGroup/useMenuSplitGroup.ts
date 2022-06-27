@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
 import { ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 

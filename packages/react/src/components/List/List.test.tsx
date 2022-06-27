@@ -172,13 +172,17 @@ describe('List', () => {
     });
 
     it("sets optional className to List's root", done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const data = mockData(100);
 
-      wrapper.setProps({ items: mockData(100), className: 'foo', onPagesUpdated: (pages: IPage[]) => done() });
+      const wrapper = mount(<List items={data} />);
+
+      wrapper.setProps({ items: data, className: 'foo' });
 
       const listRoot = wrapper.find(List);
 
       expect(listRoot.getDOMNode().className).toContain('foo');
+
+      done();
     });
 
     it('renders the return value of optional onRenderCell prop per row', done => {

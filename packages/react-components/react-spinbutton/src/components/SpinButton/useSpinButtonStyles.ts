@@ -152,6 +152,7 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '2',
     gridRowStart: '1',
     gridRowEnd: '3',
+    outlineStyle: 'none',
     ...shorthands.padding(0),
   },
 });

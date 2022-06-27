@@ -2,6 +2,69 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Tue, 31 May 2022 21:28:42 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd",
+            "comment": "updates import to react-shared-components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.14",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 21:01:32 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.13",
+            "commit": "3cf55ce998048554bf6a550de44403843ea8ede0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 18:56:51 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.12",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.0.0-rc.9",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 12:13:33 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.0-rc.3",
       "version": "9.0.0-rc.3",

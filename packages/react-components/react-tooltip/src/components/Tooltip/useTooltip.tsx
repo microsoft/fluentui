@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
+import {
+  useTooltipVisibility_unstable as useTooltipVisibility,
+  useFluent_unstable as useFluent,
+} from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
   resolveShorthand,
@@ -25,7 +28,7 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
-  const context = React.useContext(TooltipContext);
+  const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();

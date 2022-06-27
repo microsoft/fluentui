@@ -1,8 +1,17 @@
 import * as React from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-export const ThemeContext = React.createContext<Theme | Partial<Theme> | undefined>(undefined);
+/**
+ * @internal
+ */
+export type ThemeContextValue = Theme | Partial<Theme> | undefined;
 
-export function useTheme(): Theme | Partial<Theme> | undefined {
-  return React.useContext(ThemeContext);
-}
+/**
+ * @internal
+ */
+export const ThemeContext = React.createContext<ThemeContextValue>(undefined);
+
+/**
+ * @internal
+ */
+export const ThemeProvider = ThemeContext.Provider;

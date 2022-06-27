@@ -65,7 +65,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
                   border-color: WindowText;
                   border-width: 2px;
                 }
@@ -543,7 +543,7 @@ exports[`ChoiceGroup renders ChoiceGroup with label correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
+                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:after {
                   border-color: WindowText;
                   border-width: 2px;
                 }

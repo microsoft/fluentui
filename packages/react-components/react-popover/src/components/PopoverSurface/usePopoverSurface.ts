@@ -23,16 +23,17 @@ export const usePopoverSurface_unstable = (
   const mountNode = usePopoverContext_unstable(context => context.mountNode);
   const arrowRef = usePopoverContext_unstable(context => context.arrowRef);
   const size = usePopoverContext_unstable(context => context.size);
-  const noArrow = usePopoverContext_unstable(context => context.noArrow);
+  const withArrow = usePopoverContext_unstable(context => context.withArrow);
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
+  const legacyTrapFocus = usePopoverContext_unstable(context => context.legacyTrapFocus);
   const inline = usePopoverContext_unstable(context => context.inline);
-  const { modalAttributes } = useModalAttributes({ trapFocus });
+  const { modalAttributes } = useModalAttributes({ trapFocus, legacyTrapFocus });
 
   const state: PopoverSurfaceState = {
     inline,
     appearance,
-    noArrow,
+    withArrow,
     size,
     arrowRef,
     mountNode,

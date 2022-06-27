@@ -75,12 +75,17 @@ const useRootStyles = makeStyles({
       },
 
       ':hover': {
+        backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
 
       ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
     },
   },
@@ -333,17 +338,21 @@ const useRootFocusStyles = makeStyles({
     zIndex: 1,
   }),
 
+  // Shape variations
   circular: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   }),
-  rounded: {},
+  rounded: {
+    /* The rounded styles are exactly the same as the base styles. */
+  },
+  square: createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  }),
+
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
     boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-  }),
-  square: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
   }),
 
   // Size variations

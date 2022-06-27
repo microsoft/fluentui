@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING: Exports of react context objects were removed, replaced with provider compoennts and hooks",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

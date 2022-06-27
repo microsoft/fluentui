@@ -21,14 +21,16 @@ import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState
  */
 export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverTriggerState => {
   const { children } = props;
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = React.isValidElement(children)
+    ? getTriggerChild<Partial<PopoverTriggerChildProps>>(children)
+    : undefined;
 
+  const open = usePopoverContext_unstable(context => context.open);
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
-  const trapFocus = usePopoverContext_unstable(context => context.trapFocus);
   const { triggerAttributes } = useModalAttributes();
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
@@ -70,7 +72,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   return {
     children: applyTriggerPropsToChildren<PopoverTriggerChildProps>(props.children, {
       ...triggerAttributes,
-      'aria-haspopup': trapFocus ? 'dialog' : 'true',
+      'aria-expanded': `${open}`,
       ...child?.props,
       onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
       onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),

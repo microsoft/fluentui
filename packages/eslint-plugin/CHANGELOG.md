@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 18 May 2022 07:41:14 GMT and should not be manually modified.
+This log was last generated on Fri, 27 May 2022 07:39:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.1)
+
+Fri, 27 May 2022 07:39:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.9.0..@fluentui/eslint-plugin_v1.9.1)
+
+### Patches
+
+- fix(eslint-plugin): move ban-context to react config from base ([PR #23240](https://github.com/microsoft/fluentui/pull/23240) by martinhochel@microsoft.com)
 
 ## [1.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.0)
 
