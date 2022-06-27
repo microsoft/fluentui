@@ -74,13 +74,13 @@ export const EditTab: React.FC<EditTabProps> = props => {
     setLastForm({ ...form, keyColor: e.target.value });
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLastForm({ ...form, hueTorsion: parseInt(e.target.value, 10) / 10 });
+    setLastForm({ ...form, hueTorsion: parseInt(e.target.value, 10) });
   };
   const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLastForm({ ...form, lightCp: parseInt(e.target.value, 10) / 100 });
+    setLastForm({ ...form, lightCp: parseInt(e.target.value, 10) });
   };
   const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLastForm({ ...form, darkCp: parseInt(e.target.value, 10) / 100 });
+    setLastForm({ ...form, darkCp: parseInt(e.target.value, 10) });
   };
 
   return (
@@ -102,32 +102,11 @@ export const EditTab: React.FC<EditTabProps> = props => {
         </div>
       </div>
       <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
-      <Slider
-        size="small"
-        min={-50}
-        max={50}
-        id={sidebarId + 'hueTorsion'}
-        value={form.hueTorsion * 10}
-        onChange={handleHueTorsionChange}
-      />
+      <Slider size="small" min={-15} max={15} id={sidebarId + 'hueTorsion'} onChange={handleHueTorsionChange} />
       <Label htmlFor={sidebarId + 'lightCp'}>Light Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={sidebarId + 'lightCp'}
-        value={form.lightCp * 100}
-        onChange={handleLightCpChange}
-      />
+      <Slider size="small" min={0} max={100} id={sidebarId + 'lightCp'} onChange={handleLightCpChange} />
       <Label htmlFor={sidebarId + 'darkCp'}>Dark Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={sidebarId + 'darkCp'}
-        value={form.darkCp * 100}
-        onChange={handleDarkCpChange}
-      />
+      <Slider size="small" min={0} max={100} id={sidebarId + 'darkCp'} onChange={handleDarkCpChange} />
       <Switch checked={form.isDark} onChange={toggleTheme} label={form.isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
