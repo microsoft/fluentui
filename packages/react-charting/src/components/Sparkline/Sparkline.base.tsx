@@ -48,8 +48,6 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   }
 
   public componentDidMount() {
-    console.log('componentDidMount');
-
     /* eslint-disable @typescript-eslint/no-explicit-any */
     const area = d3Area()
       /* eslint-disable @typescript-eslint/no-explicit-any */
