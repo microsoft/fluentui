@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, BrandVariants, Theme, createDarkTheme, createLightTheme } from '@fluentui/react-components';
+import { Link, BrandVariants, Theme } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 
@@ -248,7 +248,7 @@ export const Example: React.FC<ContentProps> = props => {
 
 const indexHtmlContent = '<div id="root"></div>';
 
-const createIndexContent = (brand: BrandVariants, overrides: Theme, isDark: boolean) => dedent`
+const createIndexContent = (brand: BrandVariants, overrides: Partial<Theme>, isDark: boolean) => dedent`
 import * as ReactDOM from 'react-dom';
 import { FluentProvider, ${isDark ? 'createDarkTheme' : 'createLightTheme'} } from '@fluentui/react-components';
 import type { BrandVariants, Theme } from '@fluentui/react-theme';
@@ -278,7 +278,6 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
   const { brand, isDark, overrides } = props;
 
   const link = React.useMemo(() => {
-    const theme = isDark ? createDarkTheme(brand) : createLightTheme(brand);
     const codeSandboxParameters = getParameters({
       files: {
         'example.tsx': {
@@ -291,7 +290,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         },
         'index.tsx': {
           isBinary: false,
-          content: createIndexContent(brand, { ...theme, ...overrides }, isDark),
+          content: createIndexContent(brand, overrides, isDark),
         },
         'package.json': {
           isBinary: false,
