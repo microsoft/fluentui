@@ -1,4 +1,4 @@
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { IChartProps } from '../../types/IDataPoint';
 
 export interface ISparklineStyleProps {}

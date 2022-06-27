@@ -12,7 +12,7 @@ export interface ISparklineState {
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
-  private xRef: React.RefObject<any> = createRef();
+  /*private xRef: React.RefObject<any> = createRef();
   private yRef: React.RefObject<any> = createRef();
 
   private margin = {
@@ -20,7 +20,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     right: 20,
     bottom: 30,
     left: 50,
-  };
+  };*/
 
   // Todo: Async shimmer loading
   // Load text after the chart
