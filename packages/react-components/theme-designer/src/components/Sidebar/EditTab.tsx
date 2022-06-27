@@ -53,7 +53,7 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const initialForm: CustomAttributes = formState;
 
-  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
+  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
     dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
     return action.attributes;
@@ -62,26 +62,25 @@ export const EditTab: React.FC<EditTabProps> = props => {
   const [form, dispatchForm] = React.useReducer(formReducer, initialForm);
 
   const [lastForm, setLastForm] = React.useState<CustomAttributes>(initialForm);
-
   const debouncedForm = useDebounce(lastForm, 10);
   React.useEffect(() => {
-    dispatchForm({ attributes: debouncedForm, type: 'keyColor' });
+    dispatchForm({ attributes: debouncedForm });
   }, [debouncedForm]);
 
   const toggleTheme = () => {
-    dispatchForm({ attributes: { ...form, isDark: !form.isDark }, type: 'isDark' });
+    setLastForm({ ...form, ...form, isDark: !form.isDark });
   };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLastForm({ ...form, keyColor: e.target.value });
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, hueTorsion: parseInt(e.target.value, 10) / 10 }, type: 'hueTorsion' });
+    setLastForm({ ...form, hueTorsion: parseInt(e.target.value, 10) / 10 });
   };
   const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, lightCp: parseInt(e.target.value, 10) / 100 }, type: 'lightCp' });
+    setLastForm({ ...form, lightCp: parseInt(e.target.value, 10) / 100 });
   };
   const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, darkCp: parseInt(e.target.value, 10) / 100 }, type: 'darkCp' });
+    setLastForm({ ...form, darkCp: parseInt(e.target.value, 10) / 100 });
   };
 
   return (
