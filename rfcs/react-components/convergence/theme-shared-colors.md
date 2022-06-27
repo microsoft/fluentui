@@ -2,7 +2,7 @@
 
 ---
 
-@miroslavstastny, Daisy
+@miroslavstastny, @daisygeng
 
 ## Summary
 
@@ -52,7 +52,7 @@ As an experiment we tried to reduce the tokens to 200, the test time degradation
 
 | Theme structure               | WLT degradation [ms] |
 | ----------------------------- | -------------------: |
-| 1200 tokens, alias references |                   70 |
+| 1200 tokens, alias references |                   80 |
 | 600 tokens                    |                   20 |
 | 200 tokens                    |                    7 |
 
@@ -108,7 +108,30 @@ That might cause partner confusion - releasing the first final version with depr
 ### Other possible optimization
 
 There is still a longer term plan to explore partial themes, theme splitting and lazy loading. Those do not conflict with reducing the number of tokens now.
+#### Option: ColorSetProvider
+1. Take the color palettes (16 color ramps) from global and define each in an exported module and const objects.
+2. Remove color palettes (9 color ramps) from theme
+3. Add a ColorSetProvider component that can define a set of CSS vars with a pattern.
+This component would take a palette array of colors and a name.
+It would set cssVars for use in colorful scenarios:
+- color`name`Background1
+- color`name`Background2
+- color`name`Background3
+- color`name`BorderActive
+- color`name`Border1
+- color`name`Border2
+- color`name`Foreground1
+- color`name`Foreground2
+- color`name`Foreground3
+4. Update Avatar and other components that want to support color components to replace the colorful boolean property with a colorSetName.  This would cause them to reference the colors set by a ColorSetProvider upstream.
 
+Pros and Cons
+(Y) Color palettes in own modules should tree shake out if not used.
+(Y) Default case does not add any of the color set CSS vars, keeping the theme CSS vars minimal.
+(Y) ColorSetProvider can map to position in the palette based on theme if necessary -or- we can leave updating the color palette array at the top level when the theme changes.
+(Y) With reduces impact on the system, could extend the color sets to include hover, active, and selected states.  Could also go to 1 background, border, and foreground color.  Note: Should rename border to stroke!
+(N) There is some fragility for consumers that have extensions that reference color sets and have to rely on their host to have provided them.  
+(N) Unsure of the setting of color sets at scopes lower in the hierarchy.  Option: Could integrate colorSets as a property into FluentProvider to encourage setting at higher levels.
 ## Open Issues
 
 Is this doable before the Final release? If not, is this a valid reason to delay the Final release?
