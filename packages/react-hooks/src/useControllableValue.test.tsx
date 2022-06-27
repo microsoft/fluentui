@@ -4,6 +4,10 @@ import { useControllableValue } from './useControllableValue';
 import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useControllableValue', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('respects controlled value', () => {
     let resultValue: boolean | undefined;
     const TestComponent: React.FunctionComponent<{ value?: boolean; defaultValue?: boolean }> = ({
@@ -72,7 +76,6 @@ describe('useControllableValue', () => {
 
     wrapper.setProps({ value: 'A' });
     expect(spy).toHaveBeenCalledTimes(1);
-    jest.clearAllMocks();
   });
 
   it('logs an error when a value switches controlled to uncontrolled', () => {
@@ -89,7 +92,6 @@ describe('useControllableValue', () => {
 
     wrapper.setProps({ value: undefined });
     expect(spy).toHaveBeenCalledTimes(1);
-    jest.clearAllMocks();
   });
 
   validateHookValueNotChanged('returns the same setter callback', () => {
