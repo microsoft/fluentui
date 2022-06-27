@@ -11,7 +11,7 @@ export { Color } from './CounterBadgeColor.stories';
 export { Dot } from './CounterBadgeDot.stories';
 
 export default {
-  title: 'Components/Counter Badge',
+  title: 'Components/Badge/Counter Badge',
   component: CounterBadge,
   parameters: {
     docs: {
