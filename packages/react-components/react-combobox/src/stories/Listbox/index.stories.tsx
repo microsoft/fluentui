@@ -1,3 +1,4 @@
+import { Meta } from '@storybook/react';
 import { Listbox } from '@fluentui/react-combobox';
 
 import descriptionMd from './ListboxDescription.md';
@@ -17,4 +18,4 @@ export default {
       },
     },
   },
-};
+} as Meta;
