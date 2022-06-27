@@ -12,7 +12,7 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "yarn storybook:docs",
     "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
     "storybook:docs": "yarn storybook --docs"
   },
