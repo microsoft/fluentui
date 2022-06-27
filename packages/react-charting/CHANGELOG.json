@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 27 Jun 2022 07:37:20 GMT",
+      "tag": "@fluentui/react-charting_v5.9.52",
+      "version": "5.9.52",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c5c4ca05e04672bb488fa22dbb75cbde67678321",
+            "comment": "Hover state aren't paired with cursor_New"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Jun 2022 07:43:32 GMT",
       "tag": "@fluentui/react-charting_v5.9.51",
       "version": "5.9.51",

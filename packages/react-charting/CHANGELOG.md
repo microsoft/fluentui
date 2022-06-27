@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 24 Jun 2022 07:43:32 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jun 2022 07:37:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.52)
+
+Mon, 27 Jun 2022 07:37:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.51..@fluentui/react-charting_v5.9.52)
+
+### Patches
+
+- Hover state aren't paired with cursor_New ([PR #23685](https://github.com/microsoft/fluentui/pull/23685) by v-hannapared@microsoft.com)
 
 ## [5.9.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.51)
 
