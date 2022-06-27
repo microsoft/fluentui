@@ -294,7 +294,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
 
   return (
     <div>
-      <Link appearance="subtle" href={link}>
+      <Link appearance="subtle" href={link} target="_blank">
         Preview theme in CodeSandbox
       </Link>
     </div>
