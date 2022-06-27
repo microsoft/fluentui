@@ -145,7 +145,7 @@
     "@types/react-is": "16.7.1",
     "@types/react-test-renderer": "16.9.5",
     "@types/scheduler": "0.16.2",
-    "@types/semver": "^5.5.0",
+    "@types/semver": "^6.2.0",
     "@types/tmp": "0.2.0",
     "@types/webpack-dev-middleware": "4.1.0",
     "@types/webpack-env": "1.16.0",
