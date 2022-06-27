@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cx from 'classnames';
-import { createSvgIcon, iconClassNames } from '@fluentui/react-icons-northstar';
+import { createSvgIcon } from '../utils/createSvgIcon';
+import { iconClassNames } from '../utils/iconClassNames';
 
 export const GlobeIcon = createSvgIcon({
   svg: ({ classes }) => (
