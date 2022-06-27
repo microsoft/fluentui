@@ -105,15 +105,50 @@ Instead of breaking the current theme we can just deprecate it and add `_v2` ver
 
 That might cause partner confusion - releasing the first final version with deprecated things which, when used, would result in degraded performance. The breaking change should not affect partners much - the colors which we are removing are not supposed to be used anywhere. If those are, there will be a build time (TS) error to catch the problem quickly.
 
-### Other possible optimization
+## Other possible optimizations
 
-There is still a longer term plan to explore partial themes, theme splitting and lazy loading. Those do not conflict with reducing the number of tokens now.
-#### Option: ColorSetProvider
+There is still a longer term plan to explore partial themes, theme splitting and lazy loading. Those do not conflict with reducing the number of tokens now. This section describes different optimizations we are considering.
+
+### Use partial theme in the application
+
+The current theme (`master`, Apr 27, 2022) contains 623 tokens. Out of that 600 tokens, only ~200 tokens are used by the library.
+
+Instead of using the full theme, application can only inject the tokens in use.
+
+This can be done manually, or automatically during build time.
+
+#### 👍 Pros
+
+- Significantly reduces the number of tokens -> improves WLT.
+
+#### 👎 Cons
+
+- Manual way is hard to maintain and error prone. _This problem can be minimized by splitting tokens to groups and allowing just per-group opt-in (instead of per-token)._
+- Automated way is complex (how about processed styles in dependencies - "manifests"?).
+- Hard for parts (shared components) which are not part of the application bundle (OTA).
+
+### Theme splitting, lazy loading
+
+Similar to previous approach, but find a way to "lazy inject" (perhaps not lazy load, all the tokens are part of the initial bundle?) more tokens when needed.
+
+#### 👍 Pros
+
+- Significantly reduces the number of tokens -> improves WLT.
+- Any token can be used.
+
+#### 👎 Cons
+
+- Complex, a lot of unknowns.
+- Adding variables would cause reflows -> perf hit later.
+
+### `ColorSetProvider`
+
 1. Take the color palettes (16 color ramps) from global and define each in an exported module and const objects.
 2. Remove color palettes (9 color ramps) from theme
 3. Add a ColorSetProvider component that can define a set of CSS vars with a pattern.
-This component would take a palette array of colors and a name.
-It would set cssVars for use in colorful scenarios:
+   This component would take a palette array of colors and a name.
+   It would set cssVars for use in colorful scenarios:
+
 - color`name`Background1
 - color`name`Background2
 - color`name`Background3
@@ -123,15 +158,17 @@ It would set cssVars for use in colorful scenarios:
 - color`name`Foreground1
 - color`name`Foreground2
 - color`name`Foreground3
-4. Update Avatar and other components that want to support color components to replace the colorful boolean property with a colorSetName.  This would cause them to reference the colors set by a ColorSetProvider upstream.
 
-Pros and Cons
-(Y) Color palettes in own modules should tree shake out if not used.
-(Y) Default case does not add any of the color set CSS vars, keeping the theme CSS vars minimal.
-(Y) ColorSetProvider can map to position in the palette based on theme if necessary -or- we can leave updating the color palette array at the top level when the theme changes.
-(Y) With reduces impact on the system, could extend the color sets to include hover, active, and selected states.  Could also go to 1 background, border, and foreground color.  Note: Should rename border to stroke!
-(N) There is some fragility for consumers that have extensions that reference color sets and have to rely on their host to have provided them.  
-(N) Unsure of the setting of color sets at scopes lower in the hierarchy.  Option: Could integrate colorSets as a property into FluentProvider to encourage setting at higher levels.
-## Open Issues
+4. Update Avatar and other components that want to support color components to replace the colorful boolean property with a colorSetName. This would cause them to reference the colors set by a ColorSetProvider upstream.
 
-Is this doable before the Final release? If not, is this a valid reason to delay the Final release?
+#### 👍 Pros
+
+- Color palettes in own modules should tree shake out if not used.
+- Default case does not add any of the color set CSS vars, keeping the theme CSS vars minimal.
+- ColorSetProvider can map to position in the palette based on theme if necessary -or- we can leave updating the color palette array at the top level when the theme changes.
+- With reduces impact on the system, could extend the color sets to include hover, active, and selected states. Could also go to 1 background, border, and foreground color. Note: Should rename border to stroke!
+
+#### 👎 Cons
+
+- There is some fragility for consumers that have extensions that reference color sets and have to rely on their host to have provided them.
+- Unsure of the setting of color sets at scopes lower in the hierarchy. Option: Could integrate colorSets as a property into FluentProvider to encourage setting at higher levels.
