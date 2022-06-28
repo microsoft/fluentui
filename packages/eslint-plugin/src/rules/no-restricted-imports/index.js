@@ -4,9 +4,10 @@ const createRule = require('../../utils/createRule');
 
 /**
  * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportClause} ImportClause
+ * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportDeclaration} ImportDeclaration
  *
  * Lookup for insertion point for new imports when moving a restricted import to a preferred import.
- * @typedef {{[preferredPkgName: string] : ImportClause}} FixMap
+ * @typedef {{[preferredPkgName: string] : ImportDeclaration}} FixMap
  *
  * @typedef {{
  *   forbidden: string[],
@@ -106,7 +107,7 @@ module.exports = createRule({
 
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      ImportDeclaration: imprt => {
+      ImportDeclaration: (/** @type {ImportDeclaration} */ imprt) => {
         if (!imprt.source || (imprt.source && imprt.source.type !== AST_NODE_TYPES.Literal)) {
           return;
         }
@@ -116,10 +117,29 @@ module.exports = createRule({
         }
 
         const packageName = imprt.source.value;
-        const specifiers = imprt.specifiers;
 
         if (!forbiddenPkgs.has(packageName) && !preferredPkgNames.has(packageName)) {
           return;
+        }
+
+        /**
+         * @param {FixMap} fixMap object mapping to track if a restricted package's preferred import is
+         * already present in the file.
+         * @param {string} preferredImportForCurrentPkg is the preferred import for current invalid import declaration.
+         * @return {string} returns an updated string import statement with new specifiers added when a pre-existing
+         * import source already exists.
+         */
+        function getUpdatedImportStatement(fixMap, preferredImportForCurrentPkg) {
+          const isTypeImport = imprt.importKind === 'type';
+          const currentSpecifiers = fixMap[preferredImportForCurrentPkg].specifiers.map(
+            (/** @type {ImportClause} */ specifier) => specifier.local.name,
+          );
+          const specifiersToAdd = imprt.specifiers.map((/** @type {ImportClause} */ specifier) => specifier.local.name);
+          const combinedSpecifiers = currentSpecifiers.concat(specifiersToAdd).join(', ');
+
+          return `import${
+            isTypeImport ? ' type' : ''
+          } { ${combinedSpecifiers} } from '${preferredImportForCurrentPkg}';`;
         }
 
         /**
@@ -129,7 +149,7 @@ module.exports = createRule({
         function runLintRule(fixMap) {
           const preferredImportForCurrentPkg = forbiddenPkgs.get(packageName);
           if (preferredPkgNames.has(packageName) && !fixMap[packageName]) {
-            fixMap[packageName] = specifiers[specifiers.length - 1];
+            fixMap[packageName] = imprt;
           }
 
           if (forbiddenPkgs.has(packageName)) {
@@ -138,7 +158,7 @@ module.exports = createRule({
               (preferredImportForCurrentPkg && !fixMap[preferredImportForCurrentPkg])
             ) {
               if (preferredImportForCurrentPkg) {
-                fixMap[preferredImportForCurrentPkg] = specifiers[specifiers.length - 1];
+                fixMap[preferredImportForCurrentPkg] = imprt;
               }
               context.report({
                 node: imprt,
@@ -157,13 +177,11 @@ module.exports = createRule({
                 messageId: 'restrictedImport',
                 data: { packageName },
                 fix: fixer => {
-                  const importsToAdd = `, ${imprt.specifiers.map(specifier => specifier.local.name).join(', ')}`;
-                  return preferredImportForCurrentPkg
-                    ? [
-                        fixer.insertTextAfterRange(fixMap[preferredImportForCurrentPkg].range, importsToAdd),
-                        fixer.remove(imprt),
-                      ]
-                    : null;
+                  const newImport = getUpdatedImportStatement(fixMap, preferredImportForCurrentPkg);
+                  return [
+                    fixer.replaceTextRange(fixMap[preferredImportForCurrentPkg].range, newImport),
+                    fixer.remove(imprt),
+                  ];
                 },
               });
             }
