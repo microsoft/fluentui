@@ -74,7 +74,7 @@ class StandardTree {
     return leaf ? leafpath : path;
   }
 }
-
+// Create child class to Add Tree component based on treeHeight
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
   constructor(
