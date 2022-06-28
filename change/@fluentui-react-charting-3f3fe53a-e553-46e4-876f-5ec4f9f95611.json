@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed issue screen reader is not announcing state (Selected) when focus is on legends",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
