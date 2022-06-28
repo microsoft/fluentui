@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Initial 9.0.0 release",
+  "packageName": "@fluentui/react-link",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
