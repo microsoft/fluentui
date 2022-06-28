@@ -8,8 +8,8 @@
 /* eslint-disable prefer-const */
 import * as React from 'react';
 import { createRef } from 'react';
-import { select } from 'd3-selection';
-import { hierarchy, tree, Selection } from 'd3';
+import { select, Selection } from 'd3-selection';
+import { hierarchy, tree } from 'd3-hierarchy';
 
 import { ITreeProps, ITreeState, ITreeDataStructure, IDataStructure } from '../../index';
 
