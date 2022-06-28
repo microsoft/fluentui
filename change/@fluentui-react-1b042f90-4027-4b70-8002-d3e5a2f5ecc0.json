@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Dropdown): narrator announcing hidden items as selectable",
+  "packageName": "@fluentui/react",
+  "email": "marcosmoura@microsoft.com",
+  "dependentChangeType": "patch"
+}
