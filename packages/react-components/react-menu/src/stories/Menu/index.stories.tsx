@@ -24,6 +24,7 @@ export { RenderFunctionTrigger } from './MenuRenderFunctionTrigger.stories';
 export { MemoizedMenuItems } from './MenuMemoizedMenuItems.stories';
 export { SplitMenuItem } from './MenuSplitMenuItem.stories';
 export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
+export { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
 
 export default {
   title: 'Components/Menu',
