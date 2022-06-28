@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Label stories to folder with index entry.",
-  "packageName": "@fluentui/react-label",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

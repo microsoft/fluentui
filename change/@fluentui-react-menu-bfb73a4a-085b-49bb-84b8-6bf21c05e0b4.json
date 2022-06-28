@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Chore: convert menu stories to new index based approach",
-  "packageName": "@fluentui/react-menu",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

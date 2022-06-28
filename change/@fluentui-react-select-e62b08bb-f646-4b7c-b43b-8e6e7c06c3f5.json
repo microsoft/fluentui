@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove inline prop from Select",
-  "packageName": "@fluentui/react-select",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

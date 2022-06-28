@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: improve internal typings",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

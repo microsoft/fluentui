@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: Added upgrade guide for divider.",
-  "packageName": "@fluentui/react-divider",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

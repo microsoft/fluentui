@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Update Textarea stories to use index approach",
-  "packageName": "@fluentui/react-textarea",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

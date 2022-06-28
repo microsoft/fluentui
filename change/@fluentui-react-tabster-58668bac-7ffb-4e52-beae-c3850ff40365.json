@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add new `legacyTrapFocus` option to `useModalAttributes`",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector.",
-  "packageName": "@fluentui/react-overflow",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

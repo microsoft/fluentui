@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Popover stories to folder with index entry.",
-  "packageName": "@fluentui/react-popover",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

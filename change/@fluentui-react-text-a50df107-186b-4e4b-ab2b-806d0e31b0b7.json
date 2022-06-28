@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Convert Text to index based stories",
-  "packageName": "@fluentui/react-text",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

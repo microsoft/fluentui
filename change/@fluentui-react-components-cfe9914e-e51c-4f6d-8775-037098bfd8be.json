@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add combobox to preview components",
-  "packageName": "@fluentui/react-components",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

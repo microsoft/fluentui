@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: handle \"defaultValue\"",
-  "packageName": "@fluentui/react-select",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
