@@ -21,6 +21,7 @@ const restStreamOpacity: number = 0.6;
 const nonSelectedOpacity: number = 0.2;
 const nonSelectedNodeLabelOpacity: number = 0.6;
 const selectedStreamOpacity: number = 0.8;
+const selectedNodeWidth: number = 6;
 
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
@@ -84,10 +85,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <svg width={width} height={height} id={getId('sankeyChart')}>
-          <g className={this._classNames.nodes}>{nodeData}</g>
           <g className={this._classNames.links} strokeOpacity={0.2}>
             {linkData}
           </g>
+          <g className={this._classNames.nodes}>{nodeData}</g>
         </svg>
       </div>
     );
@@ -152,7 +153,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               height={height}
               width={
                 this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) !== -1
-                  ? 6
+                  ? selectedNodeWidth
                   : singleNode.x1 - singleNode.x0
               }
               fill={singleNode.color}
@@ -230,6 +231,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     if (!this.state.selectedState) {
       const selectedLinks = this._getSelectedLinks(singleNode);
       const selectedNodes = this._getSelectedNodes(selectedLinks);
+      selectedNodes.push(singleNode);
       this.setState({
         selectedState: true,
         selectedNodes: selectedNodes,
@@ -259,7 +261,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedState: false,
         selectedNodes: [],
         selectedLinks: [],
-        selectedNode: '',
       });
     }
   }
