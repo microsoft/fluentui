@@ -837,7 +837,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           role: 'option',
           ...({
             'data-index': item.index,
-            'data-is-focusable': !item.disabled,
+            'data-is-focusable': !(item.disabled || item.hidden),
           } as any),
         }}
         label={item.text}
@@ -847,8 +847,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         className={itemClassName}
         checked={isItemSelected}
         styles={multiSelectItemStyles}
-        ariaPositionInSet={this._sizePosCache.positionInSet(item.index)}
-        ariaSetSize={this._sizePosCache.optionSetSize}
+        ariaPositionInSet={!item.hidden ? this._sizePosCache.positionInSet(item.index) : undefined}
+        ariaSetSize={!item.hidden ? this._sizePosCache.optionSetSize : undefined}
         ariaLabel={item.ariaLabel}
       />
     );
