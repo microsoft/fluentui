@@ -1687,17 +1687,6 @@
     ajv "^8.4.0"
     tslib "^2.1.0"
 
-"@griffel/core@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.4.0.tgz#09f772cfe4c8dfbedd81a7b6a4ebed27bd2d3770"
-  integrity sha512-FxgUJYaL2KZkgpr1uDdgt5hSmgPrhwOYrrnnF8CM5JOWS4wLN/ajwxi38InKy4iCRO9l3iHIjGOes2Jm+OpRIQ==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    csstype "^3.0.10"
-    rtl-css-js "^1.15.0"
-    stylis "^4.0.13"
-    tslib "^2.1.0"
-
 "@griffel/core@^1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.4.1.tgz#5ae960efd71897bfdb748ec4551da99d1eb8652c"
