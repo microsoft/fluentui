@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Label, Input, Switch, Slider, tokens } from '@fluentui/react-components';
+import { useDebounce } from '../../utils/useDebounce';
 
 import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
 
@@ -52,7 +53,7 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const initialForm: CustomAttributes = formState;
 
-  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
+  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
     dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
     return action.attributes;
@@ -60,20 +61,26 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const [form, dispatchForm] = React.useReducer(formReducer, initialForm);
 
+  const [lastForm, setLastForm] = React.useState<CustomAttributes>(initialForm);
+  const debouncedForm = useDebounce(lastForm, 10);
+  React.useEffect(() => {
+    dispatchForm({ attributes: debouncedForm });
+  }, [debouncedForm]);
+
   const toggleTheme = () => {
-    dispatchForm({ attributes: { ...form, isDark: !form.isDark }, type: 'isDark' });
+    setLastForm({ ...form, ...form, isDark: !form.isDark });
   };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, keyColor: e.target.value }, type: 'keyColor' });
+    setLastForm({ ...form, keyColor: e.target.value });
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, hueTorsion: parseInt(e.target.value, 10) / 10 }, type: 'hueTorsion' });
+    setLastForm({ ...form, hueTorsion: parseInt(e.target.value, 10) });
   };
   const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, lightCp: parseInt(e.target.value, 10) / 100 }, type: 'lightCp' });
+    setLastForm({ ...form, lightCp: parseInt(e.target.value, 10) });
   };
   const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatchForm({ attributes: { ...form, darkCp: parseInt(e.target.value, 10) / 100 }, type: 'darkCp' });
+    setLastForm({ ...form, darkCp: parseInt(e.target.value, 10) });
   };
 
   return (
@@ -95,32 +102,11 @@ export const EditTab: React.FC<EditTabProps> = props => {
         </div>
       </div>
       <Label htmlFor={sidebarId + 'hueTorsion'}>Hue Torsion</Label>
-      <Slider
-        size="small"
-        min={-50}
-        max={50}
-        id={sidebarId + 'hueTorsion'}
-        value={form.hueTorsion * 10}
-        onChange={handleHueTorsionChange}
-      />
+      <Slider size="small" min={-15} max={15} id={sidebarId + 'hueTorsion'} onChange={handleHueTorsionChange} />
       <Label htmlFor={sidebarId + 'lightCp'}>Light Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={sidebarId + 'lightCp'}
-        value={form.lightCp * 100}
-        onChange={handleLightCpChange}
-      />
+      <Slider size="small" min={0} max={100} id={sidebarId + 'lightCp'} onChange={handleLightCpChange} />
       <Label htmlFor={sidebarId + 'darkCp'}>Dark Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={sidebarId + 'darkCp'}
-        value={form.darkCp * 100}
-        onChange={handleDarkCpChange}
-      />
+      <Slider size="small" min={0} max={100} id={sidebarId + 'darkCp'} onChange={handleDarkCpChange} />
       <Switch checked={form.isDark} onChange={toggleTheme} label={form.isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
