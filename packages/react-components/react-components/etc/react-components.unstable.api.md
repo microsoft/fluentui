@@ -40,9 +40,41 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { Combobox } from '@fluentui/react-combobox';
+import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
+import { ComboboxOpenEvents } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxState } from '@fluentui/react-combobox';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { Dropdown } from '@fluentui/react-combobox';
+import { dropdownClassNames } from '@fluentui/react-combobox';
+import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownOpenChangeData } from '@fluentui/react-combobox';
+import { DropdownOpenEvents } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownState } from '@fluentui/react-combobox';
+import { Listbox } from '@fluentui/react-combobox';
+import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
+import { Option as Option_2 } from '@fluentui/react-combobox';
+import { optionClassNames } from '@fluentui/react-combobox';
+import { OptionGroup } from '@fluentui/react-combobox';
+import { optionGroupClassNames } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
+import { OptionState } from '@fluentui/react-combobox';
 import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
@@ -54,6 +86,11 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderOption_unstable } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
@@ -100,8 +137,18 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useDropdown_unstable } from '@fluentui/react-combobox';
+import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionGroup_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -183,11 +230,75 @@ export { CardSlots }
 
 export { CardState }
 
+export { Combobox }
+
+export { comboboxClassNames }
+
+export { ComboboxContextValues }
+
+export { ComboboxOpenChangeData }
+
+export { ComboboxOpenEvents }
+
+export { ComboboxProps }
+
+export { ComboboxSlots }
+
+export { ComboboxState }
+
 export { DATA_OVERFLOW_ITEM }
 
 export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
+
+export { Dropdown }
+
+export { dropdownClassNames }
+
+export { DropdownContextValues }
+
+export { DropdownOpenChangeData }
+
+export { DropdownOpenEvents }
+
+export { DropdownProps }
+
+export { DropdownSlots }
+
+export { DropdownState }
+
+export { Listbox }
+
+export { listboxClassNames }
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxSlots }
+
+export { ListboxState }
+
+export { Option_2 as Option }
+
+export { optionClassNames }
+
+export { OptionGroup }
+
+export { optionGroupClassNames }
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
 
 export { Overflow }
 
@@ -210,6 +321,16 @@ export { renderCardFooter_unstable }
 export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
+
+export { renderCombobox_unstable }
+
+export { renderDropdown_unstable }
+
+export { renderListbox_unstable }
+
+export { renderOption_unstable }
+
+export { renderOptionGroup_unstable }
 
 export { renderSelect_unstable }
 
@@ -303,9 +424,29 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
+export { useCombobox_unstable }
+
+export { useComboboxStyles_unstable }
+
+export { useDropdown_unstable }
+
+export { useDropdownStyles_unstable }
+
 export { useIsOverflowGroupVisible }
 
 export { useIsOverflowItemVisible }
+
+export { useListbox_unstable }
+
+export { useListboxStyles_unstable }
+
+export { useOption_unstable }
+
+export { useOptionGroup_unstable }
+
+export { useOptionGroupStyles_unstable }
+
+export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
 
