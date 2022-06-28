@@ -41,8 +41,13 @@ describe('Alert', () => {
     expect(screen.getByTestId('foo')).toBeTruthy();
   });
 
+  it('renders an avatar', () => {
+    render(<Alert avatar={{ name: 'John Doe' }}>Test</Alert>);
+    expect(screen.getByText('JD')).toBeTruthy();
+  });
+
   it('renders a button', () => {
-    render(<Alert action={{ appearance: 'transparent', children: 'Undo' }}>Test</Alert>);
+    render(<Alert action={{ children: 'Undo' }}>Test</Alert>);
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 
