@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing screen reader legends selected issue",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
