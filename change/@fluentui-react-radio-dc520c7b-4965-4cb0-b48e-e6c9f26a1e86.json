@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Use caret dependency range for Griffel",
+  "packageName": "@fluentui/react-radio",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
