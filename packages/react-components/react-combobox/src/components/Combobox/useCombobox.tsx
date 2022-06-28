@@ -28,6 +28,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const triggerShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
+      onChange: () => {
+        /* Combobox does not yet support allowFreeForm */
+      },
       type: 'text',
       value: baseState.value,
       ...triggerNativeProps,
