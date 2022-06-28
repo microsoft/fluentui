@@ -1,14 +1,18 @@
 # @fluentui/react-label
 
-**React Label components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**Label components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
 
 Labels provide a name or title to a component or group of components, e.g., text fields, checkboxes, radio buttons, and dropdown menus.
 
 ## Usage
 
-To use the `Label` component import it from `@fluentui/react-components` and use it as shown below.
+To import `Label`:
+
+```js
+import { Label } from '@fluentui/react-components';
+```
+
+### Examples
 
 ```tsx
 import * as React from 'react';
@@ -39,3 +43,7 @@ Alternatively, run Storybook locally with:
 ### Specification
 
 See [Spec.md](./Spec.md).
+
+### Migration Guide
+
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Label implementation.

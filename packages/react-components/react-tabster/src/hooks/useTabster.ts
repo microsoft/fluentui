@@ -1,4 +1,4 @@
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster';
 
 /**

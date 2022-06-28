@@ -105,13 +105,11 @@
   position: absolute;
   content: '•';
   color: #8d8d8d;
-  font-size: 16px;
-  line-height: 6px;
-  top: calc(50% - 3px);
-  left: -25px;
+  top: 0;
+  left: -15px;
 }
 
-#docs-root .sbdocs-ol .sbdocs-li {
+#docs-root .sbdocs-ol .sbdocs-li::marker {
   color: #8d8d8d;
 }
 
@@ -355,6 +353,10 @@
 
 #docs-root .docblock-argstable tr > :nth-child(2) {
   width: 100%;
+}
+
+#docs-root .os-padding {
+  z-index: 0;
 }
 
 @font-face {

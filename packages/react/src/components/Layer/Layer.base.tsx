@@ -4,7 +4,7 @@ import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { classNamesFunction, setPortalAttribute, setVirtualParent } from '../../Utilities';
+import { classNamesFunction, getDocument, setPortalAttribute, setVirtualParent } from '../../Utilities';
 import {
   registerLayer,
   getDefaultTarget,
@@ -13,7 +13,6 @@ import {
   createDefaultLayerHost,
 } from './Layer.notification';
 import { useIsomorphicLayoutEffect, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { useDocument } from '../../WindowProvider';
 import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
@@ -29,8 +28,6 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // Tracks if the layer mount events need to be raised.
     // Required to allow the DOM to render after the layer element is added.
     const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
-
-    const doc = useDocument();
 
     const {
       eventBubblingEnabled,
@@ -54,7 +51,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (): Node | null => {
+    const getHost = (doc: Document): Node | null => {
       if (hostId) {
         const layerHost = getLayerHost(hostId);
 
@@ -62,16 +59,16 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
           return layerHost.rootRef.current ?? null;
         }
 
-        return doc?.getElementById(hostId) ?? null;
+        return doc.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
 
         // Find the host.
-        let host: Node | null = defaultHostSelector ? (doc?.querySelector(defaultHostSelector) as Node) : null;
+        let host: Node | null = defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : null;
 
         // If no host is available, create a container for injecting layers in.
         // Having a container scopes layout computation.
-        if (!host && doc) {
+        if (!host) {
           host = createDefaultLayerHost(doc);
         }
 
@@ -95,7 +92,13 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // If a doc or host exists, it will remove and update layer parentNodes.
     const createLayerElement = () => {
-      const host = getHost();
+      const doc = getDocument(rootRef.current);
+
+      if (!doc) {
+        return;
+      }
+
+      const host = getHost(doc);
 
       if (!host) {
         return;
@@ -104,17 +107,15 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();
 
-      const el = (host.ownerDocument ?? doc)?.createElement('div');
+      const el = (host.ownerDocument ?? doc).createElement('div');
 
-      if (el) {
-        el.className = classNames.root!;
-        setPortalAttribute(el);
-        setVirtualParent(el, rootRef.current!);
+      el.className = classNames.root!;
+      setPortalAttribute(el);
+      setVirtualParent(el, rootRef.current!);
 
-        insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
-        layerRef.current = el;
-        setNeedRaiseLayerMount(true);
-      }
+      insertFirst ? host.insertBefore(el, host.firstChild) : host.appendChild(el);
+      layerRef.current = el;
+      setNeedRaiseLayerMount(true);
     };
 
     useIsomorphicLayoutEffect(() => {

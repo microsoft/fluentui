@@ -12,11 +12,15 @@ import * as React_2 from 'react';
 export class FocusZone extends React_2.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
+    get activeElement(): HTMLElement | null;
+    // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
     componentWillUnmount(): void;
+    // (undocumented)
+    get defaultFocusElement(): HTMLElement | null;
     // (undocumented)
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;

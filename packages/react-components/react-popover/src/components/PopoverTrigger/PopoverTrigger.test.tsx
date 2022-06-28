@@ -64,7 +64,7 @@ describe('PopoverTrigger', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should set aria-haspopup on trigger element', () => {
+  it('should set aria-expanded on trigger element', () => {
     // Arrange
     const { getByRole } = render(
       <PopoverTrigger>
@@ -73,19 +73,33 @@ describe('PopoverTrigger', () => {
     );
 
     // Assert
-    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('true');
+    expect(getByRole('button').getAttribute('aria-expanded')).toEqual('false');
   });
 
-  it('should allow user to override aria-haspopoup on trigger element', () => {
+  it('should set aria-expanded to context value on trigger element', () => {
+    mockPopoverContext({ open: true });
+
     // Arrange
     const { getByRole } = render(
       <PopoverTrigger>
-        <button aria-haspopup="false">Trigger</button>
+        <button>Trigger</button>
       </PopoverTrigger>,
     );
 
     // Assert
-    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('false');
+    expect(getByRole('button').getAttribute('aria-expanded')).toEqual('true');
+  });
+
+  it('should allow user to override aria-expanded on trigger element', () => {
+    // Arrange
+    const { getByRole } = render(
+      <PopoverTrigger>
+        <button aria-expanded={undefined}>Trigger</button>
+      </PopoverTrigger>,
+    );
+
+    // Assert
+    expect(getByRole('button').getAttribute('aria-expanded')).toBeNull();
   });
 
   it('should retain original child callback ref', () => {
@@ -102,7 +116,7 @@ describe('PopoverTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="true"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
@@ -132,25 +146,12 @@ describe('PopoverTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          aria-haspopup="true"
+          aria-expanded="false"
           data-tabster="{\\"deloser\\":{}}"
         >
           Trigger
         </button>,
       ]
     `);
-  });
-
-  it('should use aria-haspopup="dialog" if focus trapped', () => {
-    // Arrange
-    mockPopoverContext({ trapFocus: true });
-    const { getByRole } = render(
-      <PopoverTrigger>
-        <button>Trigger</button>
-      </PopoverTrigger>,
-    );
-
-    // Assert
-    expect(getByRole('button').getAttribute('aria-haspopup')).toEqual('dialog');
   });
 });

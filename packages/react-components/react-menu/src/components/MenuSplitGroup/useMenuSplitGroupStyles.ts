@@ -21,7 +21,7 @@ const useStyles = makeStyles({
       borderBottomLeftRadius: 0,
       paddingLeft: 0,
       marginLeft: 'auto',
-      ':before': {
+      '::before': {
         content: '""',
         width: tokens.strokeWidthThin,
         height: '24px',

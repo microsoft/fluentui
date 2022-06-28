@@ -27,7 +27,7 @@ exports[`ScrollablePane renders correctly 1`] = `
           top: 0px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           border-bottom: 1px solid WindowText;
         }
     style={
@@ -61,7 +61,7 @@ exports[`ScrollablePane renders correctly 1`] = `
           pointer-events: none;
           position: absolute;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           border-top: 1px solid WindowText;
         }
     style={

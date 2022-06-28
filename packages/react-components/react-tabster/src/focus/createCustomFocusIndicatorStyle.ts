@@ -16,7 +16,7 @@ export const createCustomFocusIndicatorStyle = (
   style: GriffelStyle,
   { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): GriffelStyle => ({
-  ':focus-visible': {
+  ':focus': {
     outlineStyle: 'none',
   },
   [`${KEYBOARD_NAV_SELECTOR} :${selector}`]: style,

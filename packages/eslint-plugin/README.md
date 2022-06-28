@@ -17,6 +17,36 @@ Helpers for customizing configuration are exported under a `configHelpers` objec
 
 ## Rules
 
+### `ban-context-export`
+
+Exporting context objects as a part of the public API can lead to unexpected usages of context by customers and might
+impede future refactoring. To allow customers use context while encapsulating our internals correctly, the developer
+should export a provider and hook.
+
+**❌ Don't**
+
+```ts
+// src/context.ts
+import * as React from 'react';
+export const MyContext = React.createContext();
+
+// src/index.ts
+export { MyContext } from './context';
+```
+
+**✅ Do**
+
+```ts
+// src/context.ts
+import * as React from 'react';
+const MyContext = React.createContext();
+export const MyContextProvider = MyContext.Provider;
+export const useMyContext = () => React.useContext(MyContext);
+
+// src/index.ts
+export { MyContextProvider, useMyContext } from './context';
+```
+
 ### `ban-imports`
 
 Ban importing or re-exporting from certain paths or modules. You can either ban the entire path, or only certain names. (Inspired by TSLint's [`import-blacklist`](https://palantir.github.io/tslint/rules/import-blacklist/).)
