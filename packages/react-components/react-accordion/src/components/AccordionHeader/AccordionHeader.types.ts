@@ -23,28 +23,28 @@ export type AccordionHeaderSlots = {
    */
   button: NonNullable<Slot<ARIAButtonSlotProps>>;
   /**
-   * Expand icon slot rendered before (or after) children content in heading
+   * Expand icon slot rendered before (or after) children content in heading.
    */
   expandIcon: Slot<'span'>;
   /**
-   * Expand icon slot rendered before (or after) children content in heading
+   * Expand icon slot rendered before (or after) children content in heading.
    */
   icon?: Slot<'div'>;
 };
 
 export type AccordionHeaderProps = ComponentProps<Partial<AccordionHeaderSlots>> & {
   /**
-   * The position of the expand  icon slot in heading
+   * The position of the expand  icon slot in heading.
    */
   expandIconPosition?: AccordionHeaderExpandIconPosition;
 
   /**
-   * Indicates if the AccordionHeader should be rendered inline
+   * Indicates if the AccordionHeader should be rendered inline.
    */
   inline?: boolean;
 
   /**
-   * Size of spacing in the heading
+   * Size of spacing in the heading.
    */
   size?: AccordionHeaderSize;
 };

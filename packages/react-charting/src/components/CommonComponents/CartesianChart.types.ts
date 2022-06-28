@@ -313,6 +313,12 @@ export interface ICartesianChartProps {
   wrapXAxisLables?: boolean;
 
   /**
+   * @default false
+   * Used to rotate x axis labels by 45 degrees
+   */
+  rotateXAxisLables?: boolean; // check for RTL
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;

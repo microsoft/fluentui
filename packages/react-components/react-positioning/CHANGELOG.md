@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 23 May 2022 12:13:34 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.12)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.11..@fluentui/react-positioning_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.11 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.11)
+
+Tue, 31 May 2022 21:28:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.10..@fluentui/react-positioning_v9.0.0-rc.11)
+
+### Changes
+
+- updates import to react-shared-components ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by bernardo.sunderhus@gmail.com)
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.10)
+
+Mon, 23 May 2022 18:56:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.0.0-rc.9..@fluentui/react-positioning_v9.0.0-rc.10)
+
+### Changes
+
+- BREAKING CHANGE: Encapsulate Popper API ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-rc.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.0.0-rc.9)
 

@@ -1,4 +1,5 @@
 /**
+ * @internal
  * Clamps `value` to a number between the min and max.
  *
  * @param value - the value to be clamped

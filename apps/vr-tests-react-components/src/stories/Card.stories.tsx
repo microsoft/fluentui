@@ -38,7 +38,7 @@ const SampleCardContent = () => (
 storiesOf('Card Converged', module)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
-      <div className="testWrapper" style={{ width: '300px' }}>
+      <div className="testWrapper" style={{ width: '600px' }}>
         {story()}
       </div>
     </Screener>
@@ -96,7 +96,36 @@ storiesOf('Card Converged', module)
       includeHighContrast: true,
       includeDarkMode: true,
     },
-  );
+  )
+  .addStory('size', () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <Card size="small">
+        <SampleCardContent />
+      </Card>
+      <Card size="medium">
+        <SampleCardContent />
+      </Card>
+      <Card size="large">
+        <SampleCardContent />
+      </Card>
+    </div>
+  ))
+  .addStory('orientation', () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <h1>Vertical</h1>
+        <Card orientation="vertical">
+          <SampleCardContent />
+        </Card>
+      </div>
+      <div>
+        <h1>Horizontal</h1>
+        <Card orientation="horizontal">
+          <SampleCardContent />
+        </Card>
+      </div>
+    </div>
+  ));
 
 storiesOf('Card Converged', module)
   .addDecorator(story => (

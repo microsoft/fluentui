@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Mon, 23 May 2022 12:13:54 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.6)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-rc.5..@fluentui/react-textarea_v9.0.0-rc.6)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+
+## [9.0.0-rc.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.5)
+
+Tue, 31 May 2022 21:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-rc.4..@fluentui/react-textarea_v9.0.0-rc.5)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.4)
+
+Thu, 26 May 2022 21:01:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-rc.3..@fluentui/react-textarea_v9.0.0-rc.4)
+
+### Changes
+
+- Removing additional focus ring in native textarea for macOS safari. ([PR #23197](https://github.com/microsoft/fluentui/pull/23197) by esteban.230@hotmail.com)
+
+## [9.0.0-rc.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.3)
+
+Mon, 23 May 2022 18:56:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.0.0-rc.2..@fluentui/react-textarea_v9.0.0-rc.3)
+
+### Changes
+
+- BREAKING: update string unions to use spinal-case ([PR #23092](https://github.com/microsoft/fluentui/pull/23092) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-rc.9 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.7 ([PR #23146](https://github.com/microsoft/fluentui/pull/23146) by beachball)
 
 ## [9.0.0-rc.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.0.0-rc.2)
 

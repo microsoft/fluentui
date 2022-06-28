@@ -203,7 +203,7 @@ const PositionedComponent = (props: {
   const { positioning, targetContent = 'Click me', targetClassName } = props;
   const styles = useExampleStyles();
   return (
-    <Popover positioning={positioning} noArrow>
+    <Popover positioning={positioning}>
       <PopoverTrigger>
         <Button appearance="primary" className={mergeClasses(styles.target, targetClassName)}>
           <div>{targetContent}</div>

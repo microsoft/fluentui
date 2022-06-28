@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useConst } from './useConst';
 
 /**
+ * @internal
  * Helper to manage a browser timeout.
  * Ensures that the timeout isn't set multiple times at once,
  * and is cleaned up when the component is unloaded.
@@ -9,7 +9,7 @@ import { useConst } from './useConst';
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
 export function useTimeout() {
-  const timeout = useConst(() => ({
+  const [timeout] = React.useState(() => ({
     id: undefined as ReturnType<typeof setTimeout> | undefined,
     set: (fn: () => void, delay: number) => {
       timeout.clear();

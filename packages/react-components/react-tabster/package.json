@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.0.0-rc.10",
+  "version": "9.0.0-rc.14",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,7 +15,8 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "e2e",
+    "e2e": "yarn cypress run --component",
+    "e2e:local": "yarn cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "storybook": "node ../../../scripts/storybook/runner",
@@ -30,12 +31,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "1.0.5",
-    "@fluentui/react-shared-contexts": "9.0.0-rc.8",
-    "@fluentui/react-theme": "9.0.0-rc.8",
-    "@fluentui/react-utilities": "9.0.0-rc.9",
+    "@griffel/react": "1.2.0",
+    "@fluentui/react-shared-contexts": "^9.0.0-rc.11",
+    "@fluentui/react-theme": "^9.0.0-rc.10",
+    "@fluentui/react-utilities": "^9.0.0-rc.10",
     "keyborg": "^1.1.0",
-    "tabster": "^1.4.0",
+    "tabster": "^1.4.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -46,9 +47,7 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
+      "major"
     ]
   },
   "exports": {

@@ -119,7 +119,7 @@ Common buttons now all map to `Button`:
 
 ## Property mapping
 
-| v8 `Button`                        | v0 `Button`         | Converged `Button`     |
+| v8 `Button`                        | v0 `Button`         | v9 `Button`            |
 | ---------------------------------- | ------------------- | ---------------------- |
 |                                    | `accessibility`     |                        |
 | `allowDisabledFocus`               | `disabledFocusable` | `disabledFocusable`    |

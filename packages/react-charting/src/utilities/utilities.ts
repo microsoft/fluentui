@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
-import { select as d3Select, event as d3Event } from 'd3-selection';
+import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
@@ -42,6 +42,11 @@ export interface IWrapLabelProps {
   xAxis: NumericAxis | StringAxis;
   noOfCharsToTruncate: number;
   showXAxisLablesTooltip: boolean;
+}
+
+export interface IRotateLabelProps {
+  node: SVGElement | null;
+  xAxis: NumericAxis | StringAxis;
 }
 
 export interface IAxisData {
@@ -962,3 +967,89 @@ export const convertToLocaleString = (data: LocaleStringDataProps, culture?: str
   }
   return data;
 };
+
+export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
+  const { node, xAxis } = rotateLabelProps;
+  if (node === null || xAxis === null) {
+    return;
+  }
+
+  let maxHeight: number = 0;
+  const xAxisTranslations: string[] = [];
+  d3Select(node)
+    .call(xAxis)
+    .selectAll('.tick')
+    .each(function () {
+      const translateValue = (this as SVGElement).getAttribute('transform');
+      if (translateValue?.indexOf('rotate') === -1) {
+        const translatePair = translateValue
+          .substring(translateValue.indexOf('(') + 1, translateValue.indexOf(')'))
+          .split(',');
+        if (translatePair.length === 2) {
+          xAxisTranslations.push(translatePair[0]);
+          (this as SVGElement).setAttribute('transform', `translate(${translatePair[0]},0)rotate(-45)`);
+        }
+      }
+
+      const BoxCordinates = (this as HTMLElement).getBoundingClientRect();
+      const boxHeight = BoxCordinates && BoxCordinates.height;
+      if (boxHeight > maxHeight) {
+        maxHeight = boxHeight;
+      }
+    });
+
+  let idx = 0;
+  d3Select(node)
+    .call(xAxis)
+    .selectAll('.tick')
+    .each(function () {
+      if (xAxisTranslations.length > idx) {
+        (this as SVGElement).setAttribute(
+          'transform',
+          `translate(${xAxisTranslations[idx]},${maxHeight / 2})rotate(-45)`,
+        ); // Translate y by max height/2
+        idx += 1;
+      }
+    });
+
+  return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
+}
+
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
+  let idx: number = 0;
+  d3SelectAll(`.${selectorClass}`).each(function () {
+    const text = d3Select(this);
+    const words = text.text().split(/\s+/).reverse();
+    let word: string = '';
+    let line: string[] = [];
+    let lineNumber: number = 0;
+    const lineHeight = 1.1; // ems
+    const y = text.attr('y');
+
+    let tspan = text
+      .text(null)
+      .append('tspan')
+      .attr('id', `WordBreakId-${idx}-${lineNumber}`)
+      .attr('x', 0)
+      .attr('y', y)
+      .attr('dy', lineNumber++ * lineHeight + 'em');
+
+    while ((word = words.pop()!)) {
+      line.push(word);
+      tspan.text(line.join(' ') + ' ');
+      if (tspan.node()!.getComputedTextLength() > maxWidth && line.length > 1) {
+        line.pop();
+        tspan.text(line.join(' ') + ' ');
+        line = [word];
+        tspan = text
+          .append('tspan')
+          .attr('id', `WordBreakId-${idx}-${lineNumber}`)
+          .attr('x', 0)
+          .attr('y', y)
+          .attr('dy', lineNumber++ * lineHeight + 'em')
+          .text(word);
+      }
+    }
+    idx += 1;
+  });
+}

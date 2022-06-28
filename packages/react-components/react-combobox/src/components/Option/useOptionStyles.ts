@@ -17,11 +17,12 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXS,
-    cursor: 'default',
+    cursor: 'pointer',
     display: 'flex',
+    fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalS),
     position: 'relative',
 
     '&:hover': {
@@ -74,6 +75,10 @@ const useStyles = makeStyles({
 
   checkIcon: {
     fontSize: tokens.fontSizeBase400,
+    // Shift icon(s) to the left to give text content extra spacing without needing an extra node
+    // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
+    marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
+    marginRight: tokens.spacingHorizontalXXS,
     visibility: 'hidden',
 
     '& svg': {

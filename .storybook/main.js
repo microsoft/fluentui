@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+const { getAllPackageInfo, isConvergedPackage } = require('@fluentui/scripts/monorepo');
+const semver = require('semver');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -33,7 +35,15 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     '@storybook/addon-a11y',
     '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
+
+    // external custom addons
+
+    /**  @see https://github.com/microsoft/fluentui-storybook-addons */
     'storybook-addon-export-to-codesandbox',
+
+    // internal monorepo custom addons
+
+    /**  @see ../packages/react-components/react-storybook-addon */
     '@fluentui/react-storybook-addon',
   ],
   webpackFinal: config => {
@@ -54,7 +64,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
+            plugins: [[require('storybook-addon-export-to-codesandbox').babelPlugin, getCodesandboxBabelOptions()]],
           },
         },
       });
@@ -69,6 +79,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   core: {
     builder: 'webpack5',
+    lazyCompilation: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
@@ -107,4 +118,23 @@ function overrideDefaultBabelLoader(rules) {
   }
 
   loader.options.customize = customLoaderPath;
+}
+
+/**
+ * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
+ */
+function getCodesandboxBabelOptions() {
+  const allPackageInfo = getAllPackageInfo();
+
+  return Object.values(allPackageInfo).reduce((acc, cur) => {
+    if (isConvergedPackage(cur.packageJson)) {
+      const prereleaseTags = semver.prerelease(cur.packageJson.version);
+      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
+      acc[cur.packageJson.name] = isNonRcPrerelease
+        ? { replace: '@fluentui/react-components/unstable' }
+        : { replace: '@fluentui/react-components' };
+    }
+
+    return acc;
+  }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
 }

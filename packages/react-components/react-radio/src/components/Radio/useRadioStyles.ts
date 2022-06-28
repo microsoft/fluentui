@@ -141,7 +141,6 @@ const useIndicatorStyles = makeStyles({
 const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
-    userSelect: 'none',
   },
 
   after: {

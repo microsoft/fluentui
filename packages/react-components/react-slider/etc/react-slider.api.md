@@ -21,6 +21,13 @@ export const Slider: ForwardRefComponent<SliderProps>;
 export const sliderClassNames: SlotClassNames<SliderSlots>;
 
 // @public (undocumented)
+export const sliderCSSVars: {
+    sliderDirectionVar: string;
+    sliderProgressVar: string;
+    sliderStepsPercentVar: string;
+};
+
+// @public (undocumented)
 export type SliderOnChangeData = {
     value: number;
 };
@@ -31,7 +38,6 @@ export type SliderProps = Omit<ComponentProps<Partial<SliderSlots>, 'input'>, 'd
     disabled?: boolean;
     max?: number;
     min?: number;
-    origin?: number;
     size?: 'small' | 'medium';
     step?: number;
     value?: number;

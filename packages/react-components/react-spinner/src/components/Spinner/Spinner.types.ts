@@ -41,16 +41,10 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
    * @default 'medium'
    */
   size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
-
-  /**
-   * The status of the Spinner.
-   * @default 'active'
-   */
-  status?: 'active' | 'inactive';
 };
 
 /**
  * State used in rendering Spinner
  */
 export type SpinnerState = ComponentState<SpinnerSlots> &
-  Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size' | 'status'>>;
+  Required<Pick<SpinnerProps, 'appearance' | 'labelPosition' | 'size'>>;

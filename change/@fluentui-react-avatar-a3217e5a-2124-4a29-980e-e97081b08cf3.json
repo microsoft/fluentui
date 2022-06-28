@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adding layout styles and overflow button styles to AvatarGroup.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

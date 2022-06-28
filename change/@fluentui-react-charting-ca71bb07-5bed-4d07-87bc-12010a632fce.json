@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "added aria-valuetext attribute",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}
