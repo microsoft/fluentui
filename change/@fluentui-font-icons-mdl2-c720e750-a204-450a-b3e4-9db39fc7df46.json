@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "add a bunch of missing peers on react/react-dom",
+  "comment": "chore: add a bunch of missing peers on react/react-dom",
   "packageName": "@fluentui/font-icons-mdl2",
   "email": "stuartwilcox@microsoft.com",
   "dependentChangeType": "patch"
