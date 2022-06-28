@@ -16,20 +16,23 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param props - props from this instance of Combobox
  * @param ref - reference to root HTMLElement of Combobox
  */
-export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLButtonElement>): ComboboxState => {
+export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   const baseState = useComboboxBaseState(props);
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['children'],
+    primarySlotTagName: 'input',
+    excludedPropNames: ['children', 'size'],
   });
 
-  const triggerShorthand = resolveShorthand(props.button, {
+  const triggerShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
-      type: 'button',
-      children: baseState.value || props.placeholder,
+      onChange: () => {
+        /* Combobox does not yet support allowFreeForm */
+      },
+      type: 'text',
+      value: baseState.value,
       ...triggerNativeProps,
     },
   });
@@ -37,13 +40,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
   const listboxShorthand = resolveShorthand(props.listbox, { required: true });
 
   const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
-
   const [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
 
   const state: ComboboxState = {
     components: {
       root: 'div',
-      button: 'button',
+      input: 'input',
       expandIcon: 'span',
       listbox: Listbox,
     },
@@ -54,7 +56,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         ...rootNativeProps,
       },
     }),
-    button: triggerSlot,
+    input: triggerSlot,
     listbox: listboxSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
@@ -62,7 +64,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLBu
         children: <ChevronDownIcon />,
       },
     }),
-    placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
 

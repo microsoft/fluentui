@@ -1,31 +1,23 @@
 export const twoLayerChart = {
-  name: 'University',
-  subname: 'VIT Vellore',
+  name: 'Root Node',
+  subname: 'subtext',
   fill: '#0099BC',
   children: [
-    {
-      name: 'Professor',
-      subname: 'subtext',
-      fill: 'pink',
-    },
-    { name: 'Student', subname: 'subtext', fill: 'pink' },
-    { name: 'Placement', subname: 'subtext', fill: 'pink' },
-    {
-      name: 'Management',
-      subname: 'subtext',
-      fill: 'pink',
-    },
+    { name: 'Child 1', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 2', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 3', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 4', subname: 'subtext', fill: 'pink' },
   ],
 };
 
 export const threeLayerChart = {
-  name: 'University',
-  subname: 'sub-text',
+  name: 'Root Node',
+  subname: 'subtext',
   fill: '#0099BC',
   children: [
     {
-      name: 'Professor',
-      subname: 'sub-text',
+      name: 'Child 1',
+      subname: 'subtext',
       fill: 'pink',
       children: [
         {
@@ -51,8 +43,8 @@ export const threeLayerChart = {
       ],
     },
     {
-      name: 'Student',
-      subname: 'sub-text',
+      name: 'Child 2',
+      subname: 'subtext',
       fill: 'pink',
       children: [
         {
@@ -68,8 +60,8 @@ export const threeLayerChart = {
       ],
     },
     {
-      name: 'Management',
-      subname: 'sub-text',
+      name: 'Child 3',
+      subname: 'subtext',
       fill: 'pink',
       children: [
         {
@@ -90,8 +82,8 @@ export const threeLayerChart = {
       ],
     },
     {
-      name: 'Placement',
-      subname: 'sub-text',
+      name: 'Child 4',
+      subname: 'subtext',
       fill: 'pink',
       children: [
         {

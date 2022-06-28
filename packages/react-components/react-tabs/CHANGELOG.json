@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 14:25:31 GMT",
+      "tag": "@fluentui/react-tabs_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-tabster to v9.0.0-rc.14",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabs",
+            "comment": "Bump @fluentui/react-theme to v9.0.0-rc.10",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 May 2022 21:28:48 GMT",
       "tag": "@fluentui/react-tabs_v9.0.0-rc.5",
       "version": "9.0.0-rc.5",

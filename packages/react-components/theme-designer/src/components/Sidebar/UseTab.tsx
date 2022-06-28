@@ -15,7 +15,7 @@ import {
   TabValue,
 } from '@fluentui/react-components';
 
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
+import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
   root: {
@@ -37,17 +37,19 @@ export interface UseTabProps {
   dispatchState: React.Dispatch<DispatchTheme>;
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
+  formState: CustomAttributes;
 }
 
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
-  const { theme, setTheme, dispatchState, sidebarId } = props;
+  const { theme, setTheme, dispatchState, sidebarId, formState } = props;
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
     if (newTheme === 'Custom') {
       props.setTab('edit');
+      dispatchState({ type: newTheme, customAttributes: formState, overrides: {} });
     } else {
       dispatchState({ type: newTheme, overrides: {} });
     }

@@ -1,3 +1,4 @@
+import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 export interface ITreeStyleProps {}
 
 export interface IDataStructure {
@@ -9,6 +10,7 @@ export interface IDataStructure {
 export interface ITreeProps {
   treeData: IDataStructure;
   composition?: number | undefined;
+  styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
 }
 export interface ITreeState {
   data: IDataStructure | null;

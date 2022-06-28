@@ -41,31 +41,24 @@ const useStyles = makeStyles({
 export interface EditTabProps {
   sidebarId: string;
   dispatchState: React.Dispatch<DispatchTheme>;
+  formState: CustomAttributes;
+  setFormState: React.Dispatch<CustomAttributes>;
 }
 
 export const EditTab: React.FC<EditTabProps> = props => {
   const styles = useStyles();
 
-  const { sidebarId, dispatchState } = props;
+  const { sidebarId, dispatchState, formState, setFormState } = props;
 
-  const initialForm = {
-    keyColor: '#006bc7',
-    hueTorsion: 0,
-    darkCp: 2 / 3,
-    lightCp: 1 / 3,
-    isDark: false,
-  };
+  const initialForm: CustomAttributes = formState;
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes; type: string }) => {
+    setFormState(action.attributes);
     dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
     return action.attributes;
   };
 
   const [form, dispatchForm] = React.useReducer(formReducer, initialForm);
-
-  React.useEffect(() => {
-    dispatchState({ type: 'Custom', customAttributes: form, overrides: {} });
-  }, [dispatchState, form]);
 
   const toggleTheme = () => {
     dispatchForm({ attributes: { ...form, isDark: !form.isDark }, type: 'isDark' });
