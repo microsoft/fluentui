@@ -124,6 +124,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         children: <ChevronUp16Regular />,
         disabled: nativeProps.primary.disabled,
         'aria-label': 'Increment value',
+        type: 'button',
       },
     }),
     decrementButton: resolveShorthand(decrementButton, {
@@ -133,6 +134,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         children: <ChevronDown16Regular />,
         disabled: nativeProps.primary.disabled,
         'aria-label': 'Decrement value',
+        type: 'button',
       },
     }),
   };

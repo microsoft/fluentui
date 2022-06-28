@@ -1,36 +1,15 @@
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import {
-  Menu,
-  MenuTrigger,
-  Button,
-  MenuPopover,
-  MenuList,
-  MenuItemRadio,
-  MenuDivider,
-  MenuProps,
-  TabValue,
-  TabList,
-  Tab,
-  Label,
-  Input,
-  useId,
-  tokens,
-  Slider,
-} from '@fluentui/react-components';
+import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
+
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
+import { UseTab } from './UseTab';
+import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  keyColor: string;
-  setKeyColor: React.Dispatch<React.SetStateAction<string>>;
-  hueTorsion: number;
-  setHueTorsion: React.Dispatch<React.SetStateAction<number>>;
-  darkCp: number;
-  setDarkCp: React.Dispatch<React.SetStateAction<number>>;
-  lightCp: number;
-  setLightCp: React.Dispatch<React.SetStateAction<number>>;
-  theme: string;
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -96,105 +75,12 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
+  const sidebarId = useId();
+
   const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = React.useCallback(
-    (event, data) => {
-      props.setTheme('Custom');
-      setTab(data.value);
-    },
-    [props],
-  );
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => setTab(data.value);
 
-  const keyColorId = useId();
-  const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
-
-  const hueTorsionId = useId();
-  const handleHueTorsionChange = React.useCallback(e => props.setHueTorsion(e.target.value / 10), [props]);
-
-  const lightCpId = useId();
-  const handleLightCpChange = React.useCallback(e => props.setLightCp(e.target.value / 100), [props]);
-
-  const darkCpId = useId();
-  const handleDarkCpChange = React.useCallback(e => props.setDarkCp(e.target.value / 100), [props]);
-
-  const themeId = useId();
-  const handleThemeChange: MenuProps['onCheckedValueChange'] = React.useCallback(
-    (e, data) => {
-      props.setTheme(data.checkedItems[0] as string);
-    },
-    [props],
-  );
-
-  const Use = React.memo(() => (
-    <div className={styles.content} role="tabpanel" aria-labelledby="Use">
-      <div className={styles.inlineInputs}>
-        <Label htmlFor={themeId}>Theme</Label>
-        <Menu onCheckedValueChange={handleThemeChange}>
-          <MenuTrigger>
-            <Button>{props.theme}</Button>
-          </MenuTrigger>
-          <MenuPopover>
-            <MenuList>
-              <MenuItemRadio name="Teams" value="Teams">
-                Teams
-              </MenuItemRadio>
-              <MenuItemRadio name="Web" value="Web">
-                Web
-              </MenuItemRadio>
-              <MenuItemRadio name="Office" value="Office">
-                Office
-              </MenuItemRadio>
-              <MenuDivider />
-              <MenuItemRadio name="Custom" value="Custom">
-                Custom
-              </MenuItemRadio>
-            </MenuList>
-          </MenuPopover>
-        </Menu>
-      </div>
-    </div>
-  ));
-
-  const Edit = React.memo(() => (
-    <div className={styles.content} role="tabpanel" aria-labelledby="Edit">
-      <div className={styles.inputs}>
-        <Label htmlFor={keyColorId}>Key color value</Label>
-        <div className={styles.labels}>
-          <Input
-            className={styles.keyColor}
-            size="large"
-            appearance="underline"
-            id={keyColorId}
-            value={props.keyColor}
-            onChange={handleOnChange}
-          />
-          <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
-            <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
-          </div>
-        </div>
-      </div>
-      <Label htmlFor={hueTorsionId}>Hue Torsion</Label>
-      <Slider
-        size="small"
-        min={-50}
-        max={50}
-        id={hueTorsionId}
-        value={props.hueTorsion * 10}
-        onChange={handleHueTorsionChange}
-      />
-      <Label htmlFor={lightCpId}>Light Control Point</Label>
-      <Slider
-        size="small"
-        min={0}
-        max={100}
-        id={lightCpId}
-        value={props.lightCp * 100}
-        onChange={handleLightCpChange}
-      />
-      <Label htmlFor={darkCpId}>Dark Control Point</Label>
-      <Slider size="small" min={0} max={100} id={darkCpId} value={props.darkCp * 100} onChange={handleDarkCpChange} />
-    </div>
-  ));
+  const [theme, setTheme] = React.useState<string>('Teams Light');
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
@@ -206,8 +92,16 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           Edit
         </Tab>
       </TabList>
-      {tab === 'use' && <Use />}
-      {tab === 'edit' && <Edit />}
+      {tab === 'use' && (
+        <UseTab
+          sidebarId={sidebarId}
+          theme={theme}
+          setTheme={setTheme}
+          dispatchState={props.dispatchState}
+          setTab={setTab}
+        />
+      )}
+      {tab === 'edit' && <EditTab sidebarId={sidebarId} dispatchState={props.dispatchState} />}
     </div>
   );
 };

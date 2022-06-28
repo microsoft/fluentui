@@ -8,12 +8,14 @@ import {
   MenuPopover,
   MenuList,
   MenuItem,
+  Theme,
 } from '@fluentui/react-components';
 import { ExportLink } from './ExportLink';
 
 export interface ExportProps {
-  className?: string;
   brand: BrandVariants;
+  isDark: boolean;
+  overrides: Partial<Theme>;
 }
 
 const useStyles = makeStyles({
@@ -27,6 +29,9 @@ const useStyles = makeStyles({
 
 export const ExportButton: React.FC<ExportProps> = props => {
   const styles = useStyles();
+
+  const { brand, isDark, overrides } = props;
+
   return (
     <div className={styles.root}>
       <Menu>
@@ -39,10 +44,7 @@ export const ExportButton: React.FC<ExportProps> = props => {
         <MenuPopover>
           <MenuList>
             <MenuItem>
-              <ExportLink brand={props.brand} isLightTheme={true} />
-            </MenuItem>
-            <MenuItem>
-              <ExportLink brand={props.brand} isLightTheme={false} />
+              <ExportLink brand={brand} isDark={isDark} overrides={overrides} />
             </MenuItem>
           </MenuList>
         </MenuPopover>

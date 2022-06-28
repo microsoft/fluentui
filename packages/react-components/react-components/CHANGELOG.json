@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 23 Jun 2022 14:25:31 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-rc.15",
+      "version": "9.0.0-rc.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed",
+            "comment": "BREAKING: reduce shared colors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 May 2022 21:28:34 GMT",
       "tag": "@fluentui/react-components_v9.0.0-rc.14",
       "version": "9.0.0-rc.14",

@@ -5,6 +5,7 @@ import type {
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
 import type { PortalProps } from '@fluentui/react-portal';
+import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 /**
  * Determines popover padding and arrow size
@@ -104,7 +105,18 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    *
    * @default false
    */
-  trapFocus?: boolean;
+  trapFocus?: UseModalAttributesOptions['trapFocus'];
+
+  /**
+   * Must be used with the `trapFocus` prop
+   * Enables older Fluent UI focus trap behavior where the user
+   * cannot tab into the window outside of the document. This is now
+   * non-standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
 };
 
 /**
@@ -112,7 +124,14 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
  */
 export type PopoverState = Pick<
   PopoverProps,
-  'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow'
+  | 'appearance'
+  | 'mountNode'
+  | 'onOpenChange'
+  | 'openOnContext'
+  | 'openOnHover'
+  | 'trapFocus'
+  | 'withArrow'
+  | 'legacyTrapFocus'
 > &
   Required<Pick<PopoverProps, 'inline' | 'open'>> &
   Pick<PopoverProps, 'children'> & {

@@ -8,7 +8,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 const useStyles = makeStyles({
   box: {
     ...shorthands.border('5px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBlueBorder2),
+    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBerryBorder2),
 
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
   container: {
     ...shorthands.border('5px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBlueBorder2),
+    ...shorthands.borderLeft('20px', 'solid', tokens.colorPaletteBerryBorder2),
 
     ...shorthands.margin('5px'),
     ...shorthands.padding('5px'),

@@ -1,6 +1,7 @@
 import { useEventCallback } from './useEventCallback';
 
 /**
+ * @internal
  * Combine two event callbacks into a single callback function that calls each one in order.
  *
  * This is useful to add an event listener to an existing element without overwriting the current listener, if any.

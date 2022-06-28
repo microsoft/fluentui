@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Adding bundle size fixtures for AvatarGroup and AvatarGroupItem.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "none"
+}

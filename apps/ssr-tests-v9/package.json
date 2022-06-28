@@ -9,15 +9,15 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node -r @fluentui/scripts/ts-node-register ./src/build.ts",
+    "build": "ts-node --transpile-only ./src/build.ts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
+    "test": "jest && ts-node --transpile-only ./src/test.ts",
     "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.0.0-rc.14"
+    "@fluentui/react-components": "^9.0.0-rc.15"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

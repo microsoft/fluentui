@@ -3,6 +3,7 @@ import { createVirtualElementFromClick } from './createVirtualElementFromClick';
 import { PositioningVirtualElement } from './types';
 
 /**
+ * @internal
  * A state hook that manages a popper virtual element from mouseevents.
  * Useful for scenarios where a component needs to be positioned by mouse click (e.g. contextmenu)
  * React synthetic events are not persisted by this hook

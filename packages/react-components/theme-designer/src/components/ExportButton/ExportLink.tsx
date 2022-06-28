@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { Link, BrandVariants } from '@fluentui/react-components';
+import { Link, BrandVariants, Theme } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 
 export interface ExportLinkProps {
-  className?: string;
   brand: BrandVariants;
-  isLightTheme: boolean;
+  isDark: boolean;
+  overrides: Partial<Theme>;
 }
 
 export const ExportLink: React.FC<ExportLinkProps> = props => {
-  const defaultFileToPreview = encodeURIComponent('/example.tsx');
+  const { brand, isDark, overrides } = props;
+  const defaultFileToPreview = encodeURIComponent('/index.tsx');
   const codeSandboxParameters = getParameters({
     files: {
       'example.tsx': {
         isBinary: false,
         content: dedent`
           import * as React from 'react';
-          import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+          import { makeStyles, makeStaticStyles, mergeClasses, shorthands } from '@griffel/react';
           import {
             tokens,
             Body1,
@@ -63,8 +64,19 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
             theme: Theme;
           }
 
+          const useStaticStyles = makeStaticStyles({
+            body: {
+              position: "fixed",
+              margin: "0px",
+              top: "0px",
+              left: "0px",
+              height: "100vh"
+            }
+          });
+
           const useStyles = makeStyles({
             root: {
+              height: "100vh",
               display: 'grid',
               alignItems: 'start',
               justifyContent: 'center',
@@ -117,6 +129,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
 
           export const Column1 = () => {
             const styles = useStyles();
+            useStaticStyles();
             return (
               <div className={styles.col1}>
                 <Title3 block>Make an impression</Title3>
@@ -249,13 +262,16 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
         content: dedent`
           import * as ReactDOM from 'react-dom';
           import { FluentProvider, ${
-            props.isLightTheme ? 'createLightTheme' : 'createDarkTheme'
+            isDark ? 'createDarkTheme' : 'createLightTheme'
           } } from '@fluentui/react-components';
+          import type { BrandVariants, Theme } from '@fluentui/react-theme';
           import { Example } from './example';
 
-          const brand = ${JSON.stringify(props.brand)};
+          const brand: BrandVariants = ${JSON.stringify(brand)};
 
-          ${props.isLightTheme ? 'const theme = createLightTheme(brand);' : 'const theme = createDarkTheme(brand);'}
+          const overrides: Partial<Theme> = ${JSON.stringify(overrides)};
+
+          const theme: Theme = { ...${isDark ? 'createDarkTheme' : 'createLightTheme'}(brand), ...overrides };
 
           ReactDOM.render(
               <FluentProvider theme={theme}>
@@ -279,7 +295,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
   return (
     <div>
       <Link appearance="subtle" href={link}>
-        {props.isLightTheme ? 'Preview light theme in CodeSandbox' : 'Preview dark theme in CodeSandbox'}
+        Preview theme in CodeSandbox
       </Link>
     </div>
   );
