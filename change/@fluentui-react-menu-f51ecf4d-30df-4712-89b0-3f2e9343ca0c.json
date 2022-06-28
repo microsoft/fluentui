@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Close context menu on scroll, new closeOnScroll prop",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

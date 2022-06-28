@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Convert card to index based stories",
-  "packageName": "@fluentui/react-card",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -23,7 +23,6 @@ const useStyles = makeStyles({
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     WebkitAppearance: 'button',
-    userSelect: 'none',
     textAlign: 'unset',
   },
   focusIndicator: createFocusOutlineStyle(),

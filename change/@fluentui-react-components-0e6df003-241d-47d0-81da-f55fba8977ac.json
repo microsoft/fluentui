@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Griffel dependencies",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

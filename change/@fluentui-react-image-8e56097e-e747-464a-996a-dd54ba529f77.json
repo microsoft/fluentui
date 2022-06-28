@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Image stories to folder with index entry.",
-  "packageName": "@fluentui/react-image",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

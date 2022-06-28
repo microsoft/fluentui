@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 07:39:03 GMT",
+      "tag": "@fluentui/style-utilities_v8.7.1",
+      "version": "8.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "1c4cd1ba3a4bbbdf6bbf4e12a668b10dc6f7c883",
+            "comment": "fix high contrast media query selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Jun 2022 07:48:03 GMT",
       "tag": "@fluentui/style-utilities_v8.7.0",
       "version": "8.7.0",

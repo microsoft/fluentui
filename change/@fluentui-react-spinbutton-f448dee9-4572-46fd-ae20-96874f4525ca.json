@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Making increment and decrement buttons of SpinButton have 'type=button' instead of 'type=submit'.",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

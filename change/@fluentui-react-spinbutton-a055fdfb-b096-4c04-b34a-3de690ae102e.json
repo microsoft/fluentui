@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Griffel dependencies",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

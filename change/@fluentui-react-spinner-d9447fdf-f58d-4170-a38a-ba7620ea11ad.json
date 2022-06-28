@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: README, spec and migration guide cleanup.",
-  "packageName": "@fluentui/react-spinner",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: do not throw in SSR",
-  "packageName": "@fluentui/react-overflow",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

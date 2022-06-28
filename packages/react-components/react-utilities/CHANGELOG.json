@@ -2,6 +2,59 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 15:13:25 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e0aabd850b15adf9c151ebd4e332f7c50ad6cfdf",
+            "comment": "Update 9.0.0-rc dependencies to use caret range"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "710a1cbae145b770a486946cc54eba494aef812c",
+            "comment": "fix: useOnClickOutside should trigger for webviews"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "12e5d1ab44f2500ef4363435689b3374368a23d5",
+            "comment": "feat: add void function component support to slots"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2da4428ae7d6e464c538b7ed10e425ce0e531144",
+            "comment": "chore: Mark teams-prg owned APIs with @internal"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ab7380ea15a9a8f0b33b2d31454044d3bb255a63",
+            "comment": "chore: moves trigger methods to separate folder"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "c7b1348bdad7aa883c29bfbc96ef2a32e6ebc7dd",
+            "comment": "feat: Initial 9.0.0 release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 May 2022 21:28:50 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-rc.10",
       "version": "9.0.0-rc.10",
