@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
   focusIndicator: createCustomFocusIndicatorStyle(
     {
@@ -50,6 +53,11 @@ const useOverflowButtonStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.padding(0),
+
+    // match color to Avatar's outline color
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('CanvasText'),
+    },
   },
 
   // These styles match the default button styles
@@ -121,7 +129,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const groupChildClassName = useGroupChildClassName(layout, size);
+  const groupChildClassName = useGroupChildClassName(layout, size, true);
 
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,

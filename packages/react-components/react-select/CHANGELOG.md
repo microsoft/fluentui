@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Tue, 31 May 2022 21:28:44 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.3)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.2..@fluentui/react-select_v9.0.0-beta.3)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.2)
 

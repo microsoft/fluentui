@@ -6,37 +6,53 @@
 
 import * as React_2 from 'react';
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "Context" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export type Context<Value> = React_2.Context<Value> & {
     Provider: React_2.FC<React_2.ProviderProps<Value>>;
     Consumer: never;
 };
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "ContextSelector" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedValue;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "ContextValue" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export type ContextValue<Value> = {
     listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
     value: React_2.MutableRefObject<Value>;
     version: React_2.MutableRefObject<ContextVersion>;
 };
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "ContextValues" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export type ContextValues<Value> = ContextValue<Value> & {
     listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
 };
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "ContextVersion" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export type ContextVersion = number;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "createContext" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export const createContext: <Value>(defaultValue: Value) => Context<Value>;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "useContextSelector" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const useContextSelector: <Value, SelectedValue>(context: Context<Value>, selector: ContextSelector<Value, SelectedValue>) => SelectedValue;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "useHasParentContext" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function useHasParentContext<Value>(context: Context<Value>): boolean;
 
 // (No @packageDocumentation comment for this package)

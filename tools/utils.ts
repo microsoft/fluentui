@@ -11,6 +11,7 @@ import {
   readJson,
 } from '@nrwl/devkit';
 import { PackageJson } from './types';
+import * as semver from 'semver';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -183,9 +184,17 @@ export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema 
   return Boolean(schema[flag]);
 }
 
+export function isPackageVersionConverged(versionString: string) {
+  const version = semver.parse(versionString);
+  if (version === null) {
+    throw new Error(`${versionString} is not a valid semver version`);
+  }
+  return version.major === 9;
+}
+
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
-  return packageJson.version.startsWith('9.');
+  return isPackageVersionConverged(packageJson.version);
 }
 
 export function isV8Package(tree: Tree, project: ProjectConfiguration) {

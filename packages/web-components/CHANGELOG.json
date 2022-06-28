@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 16 Jun 2022 23:03:44 GMT",
+      "tag": "@fluentui/web-components_v2.5.3",
+      "version": "2.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5d8b70afcccb439ffb41c4442860b61212da2492",
+            "comment": "update to latest stable versions of FAST packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Jun 2022 07:52:10 GMT",
       "tag": "@fluentui/web-components_v2.5.2",
       "version": "2.5.2",

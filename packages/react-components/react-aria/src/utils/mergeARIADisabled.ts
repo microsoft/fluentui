@@ -1,4 +1,5 @@
 /**
+ * @internal
  * Merges disabled declaration with `aria-disabled`
  */
 export function mergeARIADisabled(shorthand: { 'aria-disabled'?: string | boolean; disabled?: boolean }) {

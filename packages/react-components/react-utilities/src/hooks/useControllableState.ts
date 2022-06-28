@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+/**
+ * @internal
+ */
 export type UseControllableStateOptions<State> = {
   /**
    * User-provided default state or initializer, for uncontrolled usage.
@@ -21,6 +24,8 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 }
 
 /**
+ * @internal
+ *
  * A `useState`-like hook to manage a value that could be either controlled or uncontrolled,
  * such as a checked state or text input string.
  *
