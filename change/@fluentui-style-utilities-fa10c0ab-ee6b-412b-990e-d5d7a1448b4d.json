@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix high contrast media query selector",
-  "packageName": "@fluentui/style-utilities",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
