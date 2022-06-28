@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Use caret dependency range for Griffel",
-  "packageName": "@fluentui/react-slider",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

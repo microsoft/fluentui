@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 17:39:53 GMT",
+      "tag": "@fluentui/react-tabster_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b",
+            "comment": "fix: Use caret dependency range for Griffel"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:13:17 GMT",
       "tag": "@fluentui/react-tabster_v9.0.0",
       "version": "9.0.0",

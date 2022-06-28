@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 28 Jun 2022 15:13:17 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.0..@fluentui/react-tabster_v9.0.1)
+
+### Patches
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.0)
 

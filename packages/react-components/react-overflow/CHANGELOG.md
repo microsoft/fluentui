@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Tue, 28 Jun 2022 15:13:44 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.6)
+
+Tue, 28 Jun 2022 17:39:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.5..@fluentui/react-overflow_v9.0.0-beta.6)
+
+### Changes
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.5)
 

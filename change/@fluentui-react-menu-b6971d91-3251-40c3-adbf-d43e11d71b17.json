@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Use caret dependency range for Griffel",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

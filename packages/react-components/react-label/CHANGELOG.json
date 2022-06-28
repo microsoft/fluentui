@@ -2,6 +2,27 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 17:39:49 GMT",
+      "tag": "@fluentui/react-label_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b",
+            "comment": "fix: Use caret dependency range for Griffel"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:13:38 GMT",
       "tag": "@fluentui/react-label_v9.0.0",
       "version": "9.0.0",
