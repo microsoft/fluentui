@@ -48,34 +48,20 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       isUsingCustomLabelRender: !!props.onRenderLabel,
     });
 
-    const setNativeIndeterminate = (indeterminate: boolean | string) => {
-      if (!inputRef.current) {
-        return;
-      }
-
-      let value = false;
-
-      if (typeof indeterminate === 'string') {
-        value = indeterminate.trim() === 'true';
-      } else {
-        value = !!indeterminate;
-      }
-
-      inputRef.current.indeterminate = value;
-      setIsIndeterminate(value);
-    };
-
-    const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
-      if (isIndeterminate) {
-        // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
-        // controlled, lets the consumer know to change it by calling onChange). It doesn't
-        // change the checked state.
-        setIsChecked(!!isChecked, ev);
-        setIsIndeterminate(false);
-      } else {
-        setIsChecked(!isChecked, ev);
-      }
-    };
+    const onChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLElement>): void => {
+        if (isIndeterminate) {
+          // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
+          // controlled, lets the consumer know to change it by calling onChange). It doesn't
+          // change the checked state.
+          setIsChecked(!!isChecked, event);
+          setIsIndeterminate(false);
+        } else {
+          setIsChecked(!isChecked, event);
+        }
+      },
+      [setIsChecked, setIsIndeterminate, isIndeterminate, isChecked],
+    );
 
     const defaultLabelRenderer = React.useCallback(
       (checkboxProps?: ICheckboxProps): JSX.Element | null => {
@@ -91,9 +77,28 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       [classNames.text],
     );
 
-    React.useEffect(() => setNativeIndeterminate(isIndeterminate), [isIndeterminate]);
+    const setNativeIndeterminate = React.useCallback(
+      (indeterminate: boolean | string) => {
+        if (!inputRef.current) {
+          return;
+        }
+
+        let value = false;
+
+        if (typeof indeterminate === 'string') {
+          value = indeterminate.trim() === 'true';
+        } else {
+          value = !!indeterminate;
+        }
+
+        inputRef.current.indeterminate = value;
+        setIsIndeterminate(value);
+      },
+      [setIsIndeterminate],
+    );
 
     useComponentRef(props, isChecked, isIndeterminate, setNativeIndeterminate, inputRef);
+    React.useEffect(() => setNativeIndeterminate(isIndeterminate), [setNativeIndeterminate, isIndeterminate]);
 
     const onRenderLabel = props.onRenderLabel || defaultLabelRenderer;
 
@@ -176,6 +181,6 @@ function useComponentRef(
         }
       },
     }),
-    [checkBoxRef, isChecked, isIndeterminate],
+    [checkBoxRef, isChecked, isIndeterminate, setIndeterminate],
   );
 }
