@@ -225,7 +225,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="Execllent (0-200)"
+                  aria-label="Execllent (0-200) selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -538,7 +538,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                 role="none"
               >
                 <button
-                  aria-label="Execllent (0-200)"
+                  aria-label="Execllent (0-200) selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -627,7 +627,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                 role="none"
               >
                 <button
-                  aria-label="Nasty"
+                  aria-label="Nasty selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1108,7 +1108,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="Execllent (0-200)"
+                  aria-label="Execllent (0-200) selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -1421,7 +1421,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="Execllent (0-200)"
+                  aria-label="Execllent (0-200) selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
