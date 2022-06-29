@@ -56,7 +56,7 @@ export const Appearance = () => {
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled darker appearance </Label>
+        <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={filledDarkerId} />
       </div>
     </div>
