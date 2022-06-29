@@ -78,7 +78,7 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     );
 
     const setNativeIndeterminate = React.useCallback(
-      (indeterminate: boolean | string) => {
+      (indeterminate: boolean | string | undefined) => {
         if (!inputRef.current) {
           return;
         }
