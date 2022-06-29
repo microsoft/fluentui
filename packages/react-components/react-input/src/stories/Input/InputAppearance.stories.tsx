@@ -46,7 +46,7 @@ export const Appearance = () => {
       </div>
 
       <div className={styles.field}>
-        <Label htmlFor={underlineId}>Underline appearance </Label>
+        <Label htmlFor={underlineId}>Underline appearance</Label>
         <Input appearance="underline" id={underlineId} />
       </div>
 
