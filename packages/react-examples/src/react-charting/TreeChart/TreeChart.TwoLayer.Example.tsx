@@ -1,7 +1,17 @@
 /* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 import { TreeChart, ITreeProps } from '@fluentui/react-charting';
-import { twoLayerChart } from './TreeChartData';
+const twoLayerChart = {
+  name: 'Root Node',
+  subname: 'subtext',
+  fill: '#0099BC',
+  children: [
+    { name: 'Child 1', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 2', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 3', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 4', subname: 'subtext', fill: 'pink' },
+  ],
+};
 
 interface ITreeState {}
 
