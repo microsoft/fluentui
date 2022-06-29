@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: d3-hierarchy version",
+  "packageName": "@fluentui/react-charting",
+  "email": "apurva.sharma866@gmail.com",
+  "dependentChangeType": "patch"
+}
