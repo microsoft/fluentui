@@ -85,6 +85,8 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     setActiveOption(option?: OptionValue): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
+
+    setValue(newValue: string): void;
   };
 
 /**

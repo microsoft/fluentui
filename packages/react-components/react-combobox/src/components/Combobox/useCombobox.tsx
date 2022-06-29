@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
@@ -18,6 +19,7 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   const baseState = useComboboxBaseState(props);
+  const { getOptionsMatchingValue, selectOption, setActiveOption, setValue, value } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -25,15 +27,50 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
+  // set active option and selection based on typing
+  const getOptionFromInput = (value: string): OptionValue | null => {
+    // if there are commas in the value string, take the text after the last comma
+    const searchString = value.split(',').pop();
+
+    if (!searchString || searchString.trim().length === 0) {
+      return null;
+    }
+
+    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.trim().toLowerCase()) === 0;
+    return getOptionsMatchingValue(matcher)[0] ?? null;
+  };
+
+  /* Handle typed input */
+
+  // reset any typed value when an option is selected
+  baseState.selectOption = useMergedEventCallbacks(selectOption, () => {
+    setValue(undefined);
+  });
+
+  // reset typed value when the input loses focus
+  const onBlur = useMergedEventCallbacks(triggerNativeProps.onBlur, () => {
+    setValue(undefined);
+  });
+
+  const onInput = useMergedEventCallbacks(triggerNativeProps.onInput, (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    const inputValue = (ev.target as HTMLInputElement).value;
+    // update uncontrolled value
+    baseState.setValue(inputValue);
+
+    // handle updating active option based on input
+    const matchingOption = getOptionFromInput(inputValue);
+    matchingOption && setActiveOption(matchingOption);
+  });
+
+  // resolve input and listbox slot props
   const triggerShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
-      onChange: () => {
-        /* Combobox does not yet support allowFreeForm */
-      },
       type: 'text',
-      value: baseState.value,
+      value,
       ...triggerNativeProps,
+      onBlur,
+      onInput,
     },
   });
 
