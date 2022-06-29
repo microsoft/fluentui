@@ -1,7 +1,7 @@
 import { Tree, updateJson, getProjects, formatFiles, readJson } from '@nrwl/devkit';
 import * as semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
-import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
+import { getProjectConfig, isPackageVersionConverged, printUserLogs, UserLog } from '../../utils';
 import { PackageJson } from '../../types';
 
 export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
@@ -63,7 +63,7 @@ function updatePackageDependent(
     if (packageJson.dependencies?.[dependencyName]) {
       userLog.push({
         type: 'info',
-        message: `bumping dependendcy ${dependencyName} in ${packageJsonPath}`,
+        message: `bumping dependency ${dependencyName} in ${packageJsonPath}`,
       });
 
       bumpDependency(packageJson.dependencies, dependencyName, nextVersion);
@@ -147,10 +147,8 @@ function isPackageConverged(packageName: string, host: Tree) {
   }
 
   const packageJson = readJson(host, config.paths.packageJson);
-  return packageJson.version.startsWith('9.');
+  return isPackageVersionConverged(packageJson.version);
 }
-
-type NormalizedSchema = ReturnType<typeof normalizeOptions>;
 
 function normalizeOptions(host: Tree, options: ValidatedSchema) {
   const defaults = {};
