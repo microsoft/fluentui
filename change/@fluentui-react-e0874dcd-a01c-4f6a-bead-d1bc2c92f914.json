@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Updating Slider to support ariaLabel prop.",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
