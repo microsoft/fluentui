@@ -98,9 +98,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-
-
-
       </g>
     </svg>
   </div>
