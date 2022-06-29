@@ -37,7 +37,6 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
 
     useFocusRects(rootRef);
     useDebugWarning(props);
-    useComponentRef(props, isChecked, isIndeterminate, inputRef);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -48,6 +47,23 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       reversed: boxSide !== 'start',
       isUsingCustomLabelRender: !!props.onRenderLabel,
     });
+
+    const setNativeIndeterminate = (indeterminate: boolean | string) => {
+      if (!inputRef.current) {
+        return;
+      }
+
+      let value = false;
+
+      if (typeof indeterminate === 'string') {
+        value = indeterminate.trim() === 'true';
+      } else {
+        value = !!indeterminate;
+      }
+
+      inputRef.current.indeterminate = value;
+      setIsIndeterminate(value);
+    };
 
     const onChange = (ev: React.ChangeEvent<HTMLElement>): void => {
       if (isIndeterminate) {
@@ -75,11 +91,9 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       [classNames.text],
     );
 
-    React.useEffect(() => {
-      if (inputRef.current) {
-        inputRef.current.indeterminate = !!isIndeterminate;
-      }
-    }, [isIndeterminate]);
+    React.useEffect(() => setNativeIndeterminate(isIndeterminate), [isIndeterminate]);
+
+    useComponentRef(props, isChecked, isIndeterminate, setNativeIndeterminate, inputRef);
 
     const onRenderLabel = props.onRenderLabel || defaultLabelRenderer;
 
@@ -141,6 +155,7 @@ function useComponentRef(
   props: ICheckboxProps,
   isChecked: boolean | undefined,
   isIndeterminate: boolean | undefined,
+  setIndeterminate: (indeterminate: boolean | string) => void,
   checkBoxRef: React.RefObject<HTMLInputElement>,
 ) {
   React.useImperativeHandle(
@@ -151,6 +166,9 @@ function useComponentRef(
       },
       get indeterminate() {
         return !!isIndeterminate;
+      },
+      set indeterminate(indeterminate: boolean | string) {
+        setIndeterminate(indeterminate);
       },
       focus() {
         if (checkBoxRef.current) {
