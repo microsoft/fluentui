@@ -47,7 +47,7 @@ describe('Slider', () => {
     expect(getByRole('slider').getAttribute('aria-label')).toBe('test');
   });
 
-  it('can sets ariaLabel as an aria-label attribute', () => {
+  it('can set ariaLabel as an aria-label attribute', () => {
     const { getByRole } = render(<Slider ariaLabel="test" />);
     expect(getByRole('slider').getAttribute('aria-label')).toBe('test');
   });
