@@ -21,7 +21,7 @@ export const useButton_unstable = (
     icon,
     iconPosition = 'before',
     shape = 'rounded',
-    size = 'medium',
+    size = 'small',
   } = props;
   const iconShorthand = resolveShorthand(icon);
 
