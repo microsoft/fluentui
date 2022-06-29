@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
+    backgroundColor: tokens.colorTransparentStroke,
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
     },

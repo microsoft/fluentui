@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Adds `legacyTrapFocus` prop",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

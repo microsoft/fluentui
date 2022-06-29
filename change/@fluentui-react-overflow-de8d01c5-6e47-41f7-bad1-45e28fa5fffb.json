@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Overflow stories to folder with index entry.",
-  "packageName": "@fluentui/react-overflow",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

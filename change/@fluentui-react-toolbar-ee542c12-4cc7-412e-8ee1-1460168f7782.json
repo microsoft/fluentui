@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: convert toolbar to use index based stories",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

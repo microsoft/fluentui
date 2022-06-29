@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update 9.0.0-rc dependencies to use caret range",
-  "packageName": "@fluentui/react-avatar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Use modern `::before` pseudoelement",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

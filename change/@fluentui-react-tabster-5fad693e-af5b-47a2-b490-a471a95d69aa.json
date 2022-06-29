@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Mark teams-prg owned APIs with @internal",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

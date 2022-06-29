@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Checkbox stories to folder with index entry.",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
