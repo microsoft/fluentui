@@ -46,17 +46,17 @@ export const Appearance = () => {
       </div>
 
       <div className={styles.field}>
-        <Label htmlFor={underlineId}>Underline appearance </Label>
+        <Label htmlFor={underlineId}>Underline appearance</Label>
         <Input appearance="underline" id={underlineId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled lighter appearance </Label>
+        <Label htmlFor={filledLighterId}>Filled lighter appearance</Label>
         <Input appearance="filled-lighter" id={filledLighterId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled darker appearance </Label>
+        <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={filledDarkerId} />
       </div>
     </div>
