@@ -16,12 +16,12 @@ interface ISankeyChartState {
 }
 /*eslint-disable @typescript-eslint/no-explicit-any */
 
-const restNodeOpacity: number = 1;
-const restStreamOpacity: number = 0.6;
-const nonSelectedOpacity: number = 0.2;
-const nonSelectedNodeLabelOpacity: number = 0.6;
-const selectedStreamOpacity: number = 0.8;
-const selectedNodeWidth: number = 6;
+const REST_NODE_OPACITY: number = 1;
+const REST_STREAM_OPACITY: number = 0.6;
+const NON_SELECTED_OPACITY: number = 0.2;
+const NON_SELECTED_NODE_LABEL_OPACITY: number = 0.6;
+const SELECTED_STREAM_OPACITY: number = 0.8;
+const SELECTED_NODE_WIDTH: number = 6;
 
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private _classNames: IProcessedStyleSet<ISankeyChartStyles>;
@@ -153,7 +153,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               height={height}
               width={
                 this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) !== -1
-                  ? selectedNodeWidth
+                  ? SELECTED_NODE_WIDTH
                   : singleNode.x1 - singleNode.x0
               }
               fill={singleNode.color}
@@ -185,9 +185,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getOpacityNode(singleNode: any): number {
     if (this.state.selectedState && this.state.selectedNodes.indexOf(singleNode) === -1) {
-      return nonSelectedOpacity;
+      return NON_SELECTED_OPACITY;
     } else {
-      return restNodeOpacity;
+      return REST_NODE_OPACITY;
     }
   }
 
@@ -195,24 +195,24 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _getOpacityNodeLabel(singleNode: any): number {
     if (this.state.selectedState) {
       if (this.state.selectedNodes.indexOf(singleNode) === -1) {
-        return nonSelectedNodeLabelOpacity;
+        return NON_SELECTED_NODE_LABEL_OPACITY;
       } else {
-        return restNodeOpacity;
+        return REST_NODE_OPACITY;
       }
     }
-    return restNodeOpacity;
+    return REST_NODE_OPACITY;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getOpacityStream(singleLink: any): number {
     if (this.state.selectedState) {
       if (this.state.selectedLinks.indexOf(singleLink) === -1) {
-        return nonSelectedOpacity;
+        return NON_SELECTED_OPACITY;
       } else {
-        return selectedStreamOpacity;
+        return SELECTED_STREAM_OPACITY;
       }
     }
-    return restStreamOpacity;
+    return REST_STREAM_OPACITY;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
