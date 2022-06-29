@@ -75,6 +75,12 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       [classNames.text],
     );
 
+    React.useEffect(() => {
+      if (inputRef.current) {
+        inputRef.current.indeterminate = !!isIndeterminate;
+      }
+    }, [isIndeterminate]);
+
     const onRenderLabel = props.onRenderLabel || defaultLabelRenderer;
 
     const ariaChecked: React.InputHTMLAttributes<HTMLInputElement>['aria-checked'] = isIndeterminate
