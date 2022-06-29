@@ -2,6 +2,21 @@
   "name": "@fluentui/react-storybook",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 17:39:54 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.1",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:14:23 GMT",
       "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

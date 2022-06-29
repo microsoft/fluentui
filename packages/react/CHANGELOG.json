@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 29 Jun 2022 07:42:20 GMT",
+      "tag": "@fluentui/react_v8.77.2",
+      "version": "8.77.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "267e10e8adb913ba4151054d5b805ac1fe513e35",
+            "comment": "feat: Bump @fluentui/react-portal-compat-context to 9.0.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 07:39:04 GMT",
       "tag": "@fluentui/react_v8.77.2",
       "version": "8.77.2",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Tue, 28 Jun 2022 15:13:33 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.10)
+
+Tue, 28 Jun 2022 17:39:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.9..@fluentui/react-conformance-griffel_v9.0.0-beta.10)
+
+### Changes
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-conformance to v0.14.0 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.9)
 
