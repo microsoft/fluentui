@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: alphabetize prop destructure",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
