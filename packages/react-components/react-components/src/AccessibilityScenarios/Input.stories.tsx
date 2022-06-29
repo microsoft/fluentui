@@ -19,12 +19,14 @@ const regexes = {
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
+  validDate: /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/,
 };
 
 interface FormInputs {
   fullName: string;
   nickname: string;
   password: string;
+  birthDate: string;
 }
 
 interface FormValidation {
@@ -302,6 +304,47 @@ const RegistrationFormInputsAccessibility = () => {
                       </li>
                     )}
                   </ul>
+                </>
+              )}
+            </ValidationMessage>
+          )}
+
+          <Label htmlFor="birthDate">Birth date:</Label>
+          <Controller
+            name="birthDate"
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="birthDate"
+                name="birthDate"
+                placeholder="Type in the MM/DD/YYYY format"
+                aria-required="true"
+                aria-invalid={!!errors.birthDate}
+                aria-describedby="birthDateErrors"
+              />
+            }
+            rules={{
+              required: true,
+              validate: {
+                validDate: value => regexes.validDate.test(value),
+                always: () => {
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('birthDate');
+                  }
+                  return true;
+                },
+              },
+            }}
+          />
+          {errors.birthDate?.types && (
+            <ValidationMessage id="birthDate" formValidation={formValidation}>
+              {'required' in errors.birthDate.types ? (
+                <p>Birth date is required.</p>
+              ) : (
+                <>
+                  <p>Birth date is invalid. It must:</p>
+                  <ul>{'validDate' in errors.birthDate.types && <li>Be in the MM/DD/YYYY format.</li>}</ul>
                 </>
               )}
             </ValidationMessage>
