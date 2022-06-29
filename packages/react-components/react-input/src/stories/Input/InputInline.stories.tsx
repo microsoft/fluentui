@@ -9,7 +9,7 @@ export const Inline = () => {
   return (
     <div>
       <Label htmlFor={inputId} style={{ paddingInlineEnd: '12px' }}>
-        Sample Inline Input
+        Sample inline input
       </Label>
       <Input id={inputId} />
 
