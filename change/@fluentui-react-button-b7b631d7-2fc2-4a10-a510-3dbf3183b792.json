@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Small change just to trigger a full build.",
+  "packageName": "@fluentui/react-button",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
