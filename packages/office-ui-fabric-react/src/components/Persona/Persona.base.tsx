@@ -22,6 +22,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
     imageAlt: '',
+    showOverflowTooltip: true,
   };
 
   constructor(props: IPersonaProps) {
@@ -34,10 +35,10 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
 
   public render(): JSX.Element {
     // wrapping default render behavior based on various this.props properties
-    const _onRenderPrimaryText = this._onRenderText(this._getText());
-    const _onRenderSecondaryText = this._onRenderText(this.props.secondaryText);
-    const _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText);
-    const _onRenderOptionalText = this._onRenderText(this.props.optionalText);
+    const _onRenderPrimaryText = this._onRenderText(this._getText(), this.props.showOverflowTooltip);
+    const _onRenderSecondaryText = this._onRenderText(this.props.secondaryText, this.props.showOverflowTooltip);
+    const _onRenderTertiaryText = this._onRenderText(this.props.tertiaryText, this.props.showOverflowTooltip);
+    const _onRenderOptionalText = this._onRenderText(this.props.optionalText, this.props.showOverflowTooltip);
 
     const {
       hidePersonaDetails,
@@ -171,21 +172,23 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
    * to make it independent of the type of text passed
    * @param text - text to render
    */
-  private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
-    // return default render behaviour for valid text or undefined
+  private _onRenderText(text: string | undefined, tooltip = true): IRenderFunction<IPersonaProps> | undefined {
+    // return default render behavior for valid text or undefined
     return text
-      ? (): JSX.Element => {
-          // default onRender behaviour
-          return (
-            <TooltipHost
-              content={text}
-              overflowMode={TooltipOverflowMode.Parent}
-              directionalHint={DirectionalHint.topLeftEdge}
-            >
-              {text}
-            </TooltipHost>
-          );
-        }
+      ? tooltip
+        ? (): JSX.Element => {
+            // default onRender behavior
+            return (
+              <TooltipHost
+                content={text}
+                overflowMode={TooltipOverflowMode.Parent}
+                directionalHint={DirectionalHint.topLeftEdge}
+              >
+                {text}
+              </TooltipHost>
+            );
+          }
+        : () => <>{text}</>
       : undefined;
   }
 
