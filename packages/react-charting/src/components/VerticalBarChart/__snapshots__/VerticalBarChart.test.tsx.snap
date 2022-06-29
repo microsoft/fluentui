@@ -164,7 +164,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 role="none"
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -253,7 +253,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 role="none"
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -342,7 +342,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                 role="none"
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -577,7 +577,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="none"
         >
           <button
-            aria-label="First"
+            aria-label="First selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={3}
@@ -666,7 +666,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="none"
         >
           <button
-            aria-label="Second"
+            aria-label="Second selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={3}
@@ -755,7 +755,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="none"
         >
           <button
-            aria-label="Third"
+            aria-label="Third selected"
             aria-posinset={3}
             aria-selected={false}
             aria-setsize={3}
@@ -1111,7 +1111,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1200,7 +1200,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1289,7 +1289,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1541,7 +1541,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 role="none"
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1630,7 +1630,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 role="none"
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1719,7 +1719,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                 role="none"
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1971,7 +1971,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2060,7 +2060,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2149,7 +2149,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2401,7 +2401,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2490,7 +2490,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2579,7 +2579,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}

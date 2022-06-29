@@ -161,7 +161,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -250,7 +250,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -482,7 +482,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           role="none"
         >
           <button
-            aria-label="Metadata1"
+            aria-label="Metadata1 selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={2}
@@ -571,7 +571,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
           role="none"
         >
           <button
-            aria-label="Metadata2"
+            aria-label="Metadata2 selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={2}
@@ -921,7 +921,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1010,7 +1010,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1259,7 +1259,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1348,7 +1348,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1597,7 +1597,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1686,7 +1686,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1935,7 +1935,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2024,7 +2024,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2273,7 +2273,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                 role="none"
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2362,7 +2362,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                 role="none"
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}

@@ -295,7 +295,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 role="none"
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -384,7 +384,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 role="none"
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -473,7 +473,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 role="none"
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -839,7 +839,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           role="none"
         >
           <button
-            aria-label="MetaData1"
+            aria-label="MetaData1 selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={3}
@@ -928,7 +928,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           role="none"
         >
           <button
-            aria-label="MetaData2"
+            aria-label="MetaData2 selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={3}
@@ -1017,7 +1017,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           role="none"
         >
           <button
-            aria-label="MetaData3"
+            aria-label="MetaData3 selected"
             aria-posinset={3}
             aria-selected={false}
             aria-setsize={3}
@@ -1635,7 +1635,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 role="none"
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1724,7 +1724,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 role="none"
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1813,7 +1813,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 role="none"
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2196,7 +2196,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 role="none"
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2285,7 +2285,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 role="none"
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2374,7 +2374,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 role="none"
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2757,7 +2757,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2846,7 +2846,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2935,7 +2935,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3318,7 +3318,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3407,7 +3407,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3496,7 +3496,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 role="none"
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}

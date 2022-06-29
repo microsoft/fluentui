@@ -188,7 +188,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="first"
+                  aria-label="first selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -277,7 +277,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="second"
+                  aria-label="second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -553,7 +553,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 role="none"
               >
                 <button
-                  aria-label="first"
+                  aria-label="first selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -642,7 +642,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                 role="none"
               >
                 <button
-                  aria-label="second"
+                  aria-label="second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1049,7 +1049,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="first"
+                  aria-label="first selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1138,7 +1138,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="second"
+                  aria-label="second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1418,7 +1418,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="first"
+                  aria-label="first selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1507,7 +1507,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="second"
+                  aria-label="second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}

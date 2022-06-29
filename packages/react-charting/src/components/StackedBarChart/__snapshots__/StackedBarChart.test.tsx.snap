@@ -1231,7 +1231,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 role="none"
               >
                 <button
-                  aria-label="first Lorem ipsum dolor sit amet"
+                  aria-label="first Lorem ipsum dolor sit amet selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1320,7 +1320,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 role="none"
               >
                 <button
-                  aria-label="Winter is coming"
+                  aria-label="Winter is coming selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
