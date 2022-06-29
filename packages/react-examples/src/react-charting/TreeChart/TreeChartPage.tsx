@@ -11,9 +11,9 @@ import { TreeChartTwoLayerExample } from './TreeChart.TwoLayer.Example';
 import { TreeChartThreeLayerLongExample } from './TreeChart.ThreeLayerLong.Example';
 import { TreeChartThreeLayerCompactExample } from './TreeChart.ThreeLayerCompact.Example';
 
-const TreeChartTwoLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
-const TreeChartThreeLayerLongExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerLong.Example.tsx') as string;
-const TreeChartThreeLayerCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
+// const TreeChartTwoLayerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
+// const TreeChartThreeLayerLongExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerLong.Example.tsx') as string;
+// const TreeChartThreeLayerCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
 
 export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -23,13 +23,13 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="TreeChartExample"
         exampleCards={
           <div>
-            <ExampleCard title="TreeChart Two-Layer" code={TreeChartTwoLayerExampleCode}>
+            <ExampleCard title="TreeChart Two-Layer">
               <TreeChartTwoLayerExample />
             </ExampleCard>
-            <ExampleCard title="TreeChart Three-Layer long" code={TreeChartThreeLayerLongExampleCode}>
+            <ExampleCard title="TreeChart Three-Layer long">
               <TreeChartThreeLayerLongExample />
             </ExampleCard>
-            <ExampleCard title="TreeChart Three-Layer compact" code={TreeChartThreeLayerCompactExampleCode}>
+            <ExampleCard title="TreeChart Three-Layer compact">
               <TreeChartThreeLayerCompactExample />
             </ExampleCard>
           </div>
