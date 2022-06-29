@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Adding optional way to show tooltip in Persona, and removing tooltip within suggestions dropdown in PeoplePicker.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -22,7 +22,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
+   * @default PersonaSize.size48
    */
   size?: PersonaSize;
 
@@ -45,7 +45,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   /**
    * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
    * it is successfully loaded. This disables imageShouldFadeIn.
-   * @defaultvalue false
+   * @default false
    */
   imageShouldStartVisible?: boolean;
 
@@ -61,14 +61,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * The user's initials to display in the image area when there is no image.
-   * @defaultvalue [Derived from text]
+   * @default [Derived from text]
    */
   imageInitials?: string;
 
   /**
    * Whether initials are calculated for phone numbers and number sequences.
    * Example: Set property to true to get initials for project names consisting of numbers only.
-   * @defaultvalue false
+   * @default false
    */
   allowPhoneInitials?: boolean;
 
@@ -84,7 +84,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue [Derived from text]
+   * @default [Derived from text]
    */
   initialsColor?: PersonaInitialsColor | string;
 
@@ -106,7 +106,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
+   * @default PersonaPresence.none
    */
   presence?: PersonaPresence;
 
@@ -156,7 +156,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   /**
    * If true renders the initials while the image is loading.
    * This only applies when an imageUrl is provided.
-   * @defaultvalue false
+   * @default false
    */
   showInitialsUntilImageLoads?: boolean;
 
@@ -180,6 +180,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    * @deprecated Use `text` instead.
    */
   primaryText?: string;
+
+  /**
+   * Controls whether clipped overflow text should render in a tooltip.
+   * @default true
+   */
+  showOverflowTooltip?: boolean;
 }
 
 /**
@@ -244,13 +250,13 @@ export interface IPersonaStyleProps {
 
   /**
    * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
+   * @default PersonaSize.size48
    */
   size?: PersonaSize;
 
   /**
    * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
+   * @default PersonaPresence.none
    */
   presence?: PersonaPresence;
 
@@ -289,7 +295,7 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
 
   /**
    * Additional css class to apply to the PersonaCoin
-   * @defaultvalue undefined
+   * @default undefined
    */
   className?: string;
 }
@@ -310,7 +316,7 @@ export interface IPersonaCoinStyleProps {
 
   /**
    * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
+   * @default PersonaSize.size48
    */
   size?: PersonaSize;
 

@@ -6606,6 +6606,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     primaryText?: string;
     secondaryText?: string;
     showInitialsUntilImageLoads?: boolean;
+    showOverflowTooltip?: boolean;
     // (undocumented)
     showSecondaryText?: boolean;
     showUnknownPersonaCoin?: boolean;
