@@ -1,6 +1,6 @@
 # @fluentui/react-label
 
-**Label components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Label components for [Fluent UI React](https://react.fluentui.dev/)**
 
 Labels provide a name or title to a component or group of components, e.g., text fields, checkboxes, radio buttons, and dropdown menus.
 
@@ -33,7 +33,7 @@ export const labelExample = () => {
 };
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

@@ -1,6 +1,6 @@
 # @fluentui/react-badge
 
-**Badge components for [Fluent UI](https://aka.ms/fluentui-storybook)**
+**Badge components for [Fluent UI](https://react.fluentui.dev/)**
 
 A badge is an additional visual descriptor for UI elements. It can be used to denote numerical value, status or general information.
 
@@ -27,7 +27,7 @@ import { Badge, CounterBadge, PresenceBadge } from '@fluentui/react-components';
 <PresenceBadge outOfOffice status="do-not-disturb" />
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 
