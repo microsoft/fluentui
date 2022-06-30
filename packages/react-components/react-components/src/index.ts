@@ -59,6 +59,7 @@ export {
   useFocusFinders,
   useKeyboardNavAttribute,
   useModalAttributes,
+  useModalTriggerAttributes,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,

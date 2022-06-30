@@ -480,6 +480,7 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useModalTriggerAttributes } from '@fluentui/react-tabster';
 import { usePopover_unstable } from '@fluentui/react-popover';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { usePopoverSurface_unstable } from '@fluentui/react-popover';
@@ -1472,6 +1473,8 @@ export { useModalAttributes }
 
 export { UseModalAttributesOptions }
 
+export { useModalTriggerAttributes }
+
 export { usePopover_unstable }
 
 export { usePopoverContext_unstable }
@@ -1529,7 +1532,6 @@ export { useTextarea_unstable }
 export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
-
 
 export { useThemeClassName }
 

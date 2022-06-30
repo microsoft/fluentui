@@ -7,7 +7,7 @@ import {
   useMergedEventCallbacks,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { useModalAttributes } from '@fluentui/react-tabster';
+import { useModalTriggerAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger.types';
 
@@ -31,7 +31,7 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
   const openOnHover = usePopoverContext_unstable(context => context.openOnHover);
   const openOnContext = usePopoverContext_unstable(context => context.openOnContext);
-  const { triggerAttributes } = useModalAttributes();
+  const triggerAttributes = useModalTriggerAttributes();
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnContext) {
