@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 30 Jun 2022 12:20:33 GMT",
+      "tag": "@uifabric/charting_v4.20.24",
+      "version": "4.20.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing horizontal bar chart styles",
+            "author": "v-hannapared@microsoft.com",
+            "commit": "9d4c158f6b94ab24e76986f994700666f1147cc7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jun 2022 12:23:22 GMT",
       "tag": "@uifabric/charting_v4.20.23",
       "version": "4.20.23",

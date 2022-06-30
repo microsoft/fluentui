@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 30 Jun 2022 12:20:33 GMT",
+      "tag": "office-ui-fabric-react_v7.188.0",
+      "version": "7.188.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: Adding optional way to show tooltip in Persona, and removing tooltip within suggestions dropdown in PeoplePicker.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "49fd50de025798b16193e5f47f7251d02f2f6943",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jun 2022 12:23:22 GMT",
       "tag": "office-ui-fabric-react_v7.187.0",
       "version": "7.187.0",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 23 Jun 2022 12:23:22 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jun 2022 12:20:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.20.24](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.24)
+
+Thu, 30 Jun 2022 12:20:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.20.23..@uifabric/charting_v4.20.24)
+
+### Patches
+
+- fixing horizontal bar chart styles ([PR #23718](https://github.com/microsoft/fluentui/pull/23718) by v-hannapared@microsoft.com)
 
 ## [4.20.23](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.23)
 
