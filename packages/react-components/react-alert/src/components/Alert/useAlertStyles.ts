@@ -17,12 +17,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     minHeight: '44px',
     ...shorthands.padding('0', '12px'),
-    backgroundColor: tokens.colorNeutralBackground1, // todo - there is no bg10, used bg1
     ...shorthands.borderColor('transparent'),
     ...shorthands.borderRadius('4px'),
     boxShadow: tokens.shadow8,
-    fontSize: tokens.fontSizeBase300, // todo - lineheight in tokens
+    fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: tokens.colorNeutralBackground1, // todo - there is no bg10, used bg1
   },
   icon: {
     height: '16px',
@@ -36,11 +36,11 @@ const useStyles = makeStyles({
     ...shorthands.padding('0'),
     minWidth: 0,
     marginLeft: 'auto',
-    color: tokens.colorBrandForeground2, // todo - foreground3 doesn't exist
+    color: tokens.colorBrandForegroundLink,
   },
 });
 
-const useIntentIconStyles = makeStyles({
+const usePrimaryIconStyles = makeStyles({
   success: {
     color: tokens.colorPaletteGreenBackground3,
   },
@@ -55,12 +55,29 @@ const useIntentIconStyles = makeStyles({
   },
 });
 
+const useInvertedIconStyles = makeStyles({
+  success: {
+    color: tokens.colorPaletteGreenBackground3,
+  },
+  error: {
+    color: tokens.colorPaletteRedBackground3,
+  },
+  warning: {
+    color: tokens.colorPaletteYellowForeground2,
+  },
+  info: {
+    color: tokens.colorNeutralForeground2,
+  },
+});
 /**
  * Apply styling to the Alert slots based on the state
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
-  const intentIconStyles = useIntentIconStyles();
+  const appearance = state.appearance || 'primary';
+  const primaryIconStyles = usePrimaryIconStyles();
+  const invertedIconStyles = useInvertedIconStyles();
+  const intentIconStyles = appearance === 'primary' ? primaryIconStyles : invertedIconStyles;
 
   state.root.className = mergeClasses(alertClassNames.root, styles.root, state.root.className);
 
