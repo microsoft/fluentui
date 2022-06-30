@@ -179,6 +179,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -268,6 +269,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -500,6 +502,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -589,6 +592,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -939,6 +943,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1028,6 +1033,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1277,6 +1283,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1366,6 +1373,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1615,6 +1623,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1704,6 +1713,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1953,6 +1963,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2042,6 +2053,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2291,6 +2303,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2380,6 +2393,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
