@@ -34,6 +34,7 @@ completed as part of converging a component. More info can be found here: https:
   - [ ] VR tests
   - [ ] Accessibility behavior tests
   - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): (issue link)
+  - [ ] Performance test scenario
 - [ ] README.md covering basic usage
 - [ ] MIGRATION.md guide (include v8 and v0)
 
