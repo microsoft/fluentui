@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Splits useModalAttributes into useModalTriggerAttributes",
+  "packageName": "@fluentui/react-tabster",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
