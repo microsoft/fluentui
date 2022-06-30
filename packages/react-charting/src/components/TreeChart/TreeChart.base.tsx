@@ -277,7 +277,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   public render() {
     return (
       <div>
-        <svg ref={this.svgRef} className={'svgTree'} />
+        <svg ref={this.svgRef} />
       </div>
     );
   }
