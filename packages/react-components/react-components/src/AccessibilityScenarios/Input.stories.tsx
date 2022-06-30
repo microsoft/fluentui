@@ -19,7 +19,29 @@ const regexes = {
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
-  validDate: /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/,
+  validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
+  validEmail: new RegExp(
+    "(([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*]))?",
+  ),
+};
+
+const generateSecurityCode = (): string => {
+  let ret;
+  const random = Math.random().toString();
+  var hash = 0,
+    i,
+    chr;
+  if (random.length === 0) {
+    ret = hash;
+  } else {
+    for (i = 0; i < random.length; i++) {
+      chr = random.charCodeAt(i);
+      hash = (hash << 5) - hash + chr;
+      hash |= 0; // Convert to 32bit integer
+    }
+    ret = hash;
+  }
+  return (hash + 2147483647).toString().padStart(8, '0').substring(2);
 };
 
 interface FormInputs {
@@ -27,6 +49,7 @@ interface FormInputs {
   nickname: string;
   password: string;
   birthDate: string;
+  email: string;
 }
 
 interface FormValidation {
@@ -113,6 +136,7 @@ const RegistrationFormInputsAccessibility = () => {
   const formValidation = useFormValidation(handleSubmit);
 
   const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+  const [isSendNewsletter, setIsSendNewsletter] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
   React.useEffect(() => {
@@ -145,6 +169,10 @@ const RegistrationFormInputsAccessibility = () => {
 
   const onShowPasswordChange = (event: React.ChangeEvent) => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const onSendNewsletterChange = (event: React.ChangeEvent) => {
+    setIsSendNewsletter(!isSendNewsletter);
   };
 
   return (
@@ -318,7 +346,7 @@ const RegistrationFormInputsAccessibility = () => {
                 type="text"
                 id="birthDate"
                 name="birthDate"
-                placeholder="Type in the MM/DD/YYYY format"
+                placeholder="E.g. 3/21/1995"
                 aria-required="true"
                 aria-invalid={!!errors.birthDate}
                 aria-describedby="birthDateErrors"
@@ -349,6 +377,54 @@ const RegistrationFormInputsAccessibility = () => {
               )}
             </ValidationMessage>
           )}
+
+          <Checkbox label="Send me newsletter" onChange={onSendNewsletterChange} />
+
+          <Label htmlFor="email">E-mail:</Label>
+          <Controller
+            name="email"
+            control={control}
+            as={
+              <Input
+                type="text"
+                id="email"
+                name="email"
+                disabled={!isSendNewsletter}
+                aria-required={isSendNewsletter}
+                aria-invalid={!!errors.email}
+                aria-describedby="emailErrors"
+              />
+            }
+            rules={{
+              required: isSendNewsletter,
+              validate: {
+                validEmail: value => regexes.validEmail.test(value),
+                always: () => {
+                  if (!formState.isSubmitting) {
+                    formValidation.onFieldValidated('birthDate');
+                  }
+                  return true;
+                },
+              },
+            }}
+          />
+          {errors.email?.types && (
+            <ValidationMessage id="email" formValidation={formValidation}>
+              {'required' in errors.email.types ? (
+                <p>E-mail is required.</p>
+              ) : (
+                <>
+                  <p>E-mail is invalid. It must:</p>
+                  <ul>
+                    {'validEmail' in errors.email.types && <li>Be a valid e-mail address, like name@example.com.</li>}
+                  </ul>
+                </>
+              )}
+            </ValidationMessage>
+          )}
+
+          <Label htmlFor="securityCode">Your security code:</Label>
+          <Input type="text" id="securityCode" name="securityCode" value={generateSecurityCode()} />
 
           <Button type="submit">Register</Button>
         </form>
