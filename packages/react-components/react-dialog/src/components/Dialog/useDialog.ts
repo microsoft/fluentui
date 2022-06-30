@@ -5,7 +5,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import type { DialogOpenChangeArgs, DialogProps, DialogState, DialogType } from './Dialog.types';
+import type { DialogOpenChangeArgs, DialogProps, DialogState, DialogModalType } from './Dialog.types';
 import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -20,7 +20,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
-  const { children, overlay, type = 'modal', onOpenChange, as = 'div' } = props;
+  const { children, overlay, modalType = 'modal', onOpenChange, as = 'div' } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -36,7 +36,7 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
   });
 
   const overlayShorthand = resolveShorthand(overlay, {
-    required: type !== 'non-modal',
+    required: modalType !== 'non-modal',
     defaultProps: {
       'aria-hidden': 'true',
     },
@@ -62,18 +62,18 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     }
   });
 
-  const { contentRef, triggerRef } = useFocusFirstElement({ open, type, requestOpenChange });
+  const { contentRef, triggerRef } = useFocusFirstElement({ open, modalType, requestOpenChange });
 
   const handleOverLayClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     overlayShorthand?.onClick?.(event);
-    if (isOverlayClickDismiss(event, type)) {
+    if (isOverlayClickDismiss(event, modalType)) {
       requestOpenChange({ event, open: false, type: 'overlayClick' });
     }
   });
 
   const handleRootKeyDown = useEventCallback((event: React.KeyboardEvent) => {
     rootShorthand.onKeyDown?.(event);
-    if (isEscapeKeyDismiss(event, type)) {
+    if (isEscapeKeyDismiss(event, modalType)) {
       requestOpenChange({ event, open: false, type: 'escapeKeyDown' });
     }
   });
@@ -92,7 +92,7 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
       onKeyDown: handleRootKeyDown,
     },
     open,
-    type,
+    modalType,
     content,
     trigger,
     triggerRef,
@@ -150,7 +150,7 @@ function normalizeDefaultPrevented(event: React.SyntheticEvent | Event) {
 /**
  * Checks if keydown event is a proper Escape key dismiss
  */
-function isEscapeKeyDismiss(event: React.KeyboardEvent | KeyboardEvent, type: DialogType): boolean {
+function isEscapeKeyDismiss(event: React.KeyboardEvent | KeyboardEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return event.key === Escape && type !== 'alert' && !isDefaultPrevented();
 }
@@ -158,7 +158,7 @@ function isEscapeKeyDismiss(event: React.KeyboardEvent | KeyboardEvent, type: Di
 /**
  * Checks is click event is a proper Overlay click dismiss
  */
-function isOverlayClickDismiss(event: React.MouseEvent, type: DialogType): boolean {
+function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return type === 'modal' && !isDefaultPrevented();
 }
@@ -171,8 +171,8 @@ function isOverlayClickDismiss(event: React.MouseEvent, type: DialogType): boole
 function useFocusFirstElement({
   open,
   requestOpenChange,
-  type,
-}: Pick<DialogState, 'open' | 'requestOpenChange' | 'type'>) {
+  modalType,
+}: Pick<DialogState, 'open' | 'requestOpenChange' | 'modalType'>) {
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent_unstable();
   const contentRef = React.useRef<HTMLElement>(null);
@@ -188,21 +188,24 @@ function useFocusFirstElement({
       // eslint-disable-next-line no-console
       console.warn('A Dialog should have at least one focusable element inside DialogContent');
 
-      triggerRef.current?.blur();
-      const listener = (event: KeyboardEvent) => {
-        if (isEscapeKeyDismiss(event, type)) {
-          requestOpenChange({
-            event,
-            open: false,
-            type: 'documentEscapeKeyDown',
-          });
-          triggerRef.current?.focus();
-        }
-      };
-      targetDocument?.addEventListener('keydown', listener);
-      return () => targetDocument?.removeEventListener('keydown', listener);
+      if (triggerRef.current && targetDocument) {
+        const trigger = triggerRef.current;
+        trigger.blur();
+        const listener = (event: KeyboardEvent) => {
+          if (isEscapeKeyDismiss(event, modalType)) {
+            requestOpenChange({
+              event,
+              open: false,
+              type: 'documentEscapeKeyDown',
+            });
+            trigger.focus();
+          }
+        };
+        targetDocument.addEventListener('keydown', listener);
+        return () => targetDocument.removeEventListener('keydown', listener);
+      }
     }
-  }, [findFirstFocusable, requestOpenChange, open, type, targetDocument]);
+  }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
 
   return { contentRef, triggerRef };
 }

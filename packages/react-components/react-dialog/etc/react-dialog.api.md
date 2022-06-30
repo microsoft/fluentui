@@ -13,7 +13,6 @@ import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { Types } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export const Dialog: ForwardRefComponent<DialogProps>;
@@ -40,7 +39,7 @@ export type DialogContentState = ComponentState<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
-    type?: DialogType;
+    modalType?: DialogModalType;
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?(...args: DialogOpenChangeArgs): void;
@@ -79,6 +78,9 @@ export type DialogTitleState = ComponentState<DialogTitleSlots>;
 // @public
 export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
 
+// @public (undocumented)
+export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+
 // @public
 export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'aria-haspopup'>> & {
     ref?: React_2.Ref<never>;
@@ -86,7 +88,7 @@ export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLE
 
 // @public (undocumented)
 export type DialogTriggerProps = {
-    type?: DialogTriggerType;
+    action?: DialogTriggerAction;
     children: (React_2.ReactElement & {
         ref?: React_2.Ref<unknown>;
     }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
@@ -96,9 +98,6 @@ export type DialogTriggerProps = {
 export type DialogTriggerState = {
     children: React_2.ReactElement | null;
 };
-
-// @public (undocumented)
-export type DialogTriggerType = 'open' | 'close' | 'toggle';
 
 // @public
 export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;

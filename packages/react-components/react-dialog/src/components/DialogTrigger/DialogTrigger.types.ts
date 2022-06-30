@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type DialogTriggerType = 'open' | 'close' | 'toggle';
+export type DialogTriggerAction = 'open' | 'close' | 'toggle';
 
 export type DialogTriggerProps = {
   /**
@@ -8,7 +8,7 @@ export type DialogTriggerProps = {
    * closing or toggling a Dialog visibility state.
    * @default 'toggle'
    */
-  type?: DialogTriggerType;
+  action?: DialogTriggerAction;
   /**
    * Explicitly require single child or render function
    * to inject properties

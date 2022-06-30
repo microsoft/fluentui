@@ -2,23 +2,16 @@ import { DialogContextValue } from '../../contexts/dialogContext';
 import type { DialogContextValues, DialogState } from './Dialog.types';
 
 export function useDialogContextValues_unstable(state: DialogState): DialogContextValues {
-  const {
-    type,
-    open,
-    requestOpenChange,
-    triggerTabsterAttributes,
-    contentTabsterAttributes,
-    triggerRef,
-    contentRef,
-  } = state;
+  const { modalType, open, requestOpenChange, triggerRef, contentRef } = state;
 
-  // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
+  /**
+   * This context is created with "@fluentui/react-context-selector",
+   * there is no sense to memoize it
+   */
   const dialog: DialogContextValue = {
-    type,
+    modalType,
     open,
     requestOpenChange,
-    triggerTabsterAttributes,
-    contentTabsterAttributes,
     triggerRef,
     contentRef,
   };

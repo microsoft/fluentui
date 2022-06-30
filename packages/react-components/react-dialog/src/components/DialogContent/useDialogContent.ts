@@ -20,7 +20,7 @@ export const useDialogContent_unstable = (
   const { as = 'div' } = props;
 
   const contentRef = useDialogContext_unstable(ctx => ctx.contentRef);
-  const type = useDialogContext_unstable(ctx => ctx.type);
+  const type = useDialogContext_unstable(ctx => ctx.modalType);
 
   const { modalAttributes } = useModalAttributes({
     trapFocus: type !== 'non-modal',

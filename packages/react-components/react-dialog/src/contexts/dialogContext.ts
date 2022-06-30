@@ -1,6 +1,6 @@
 import { createContext, ContextSelector, useContextSelector } from '@fluentui/react-context-selector';
 import type { Context } from '@fluentui/react-context-selector';
-import type { DialogOpenChangeArgs, DialogType } from '../Dialog';
+import type { DialogOpenChangeArgs, DialogModalType } from '../Dialog';
 import * as React from 'react';
 
 export type DialogRequestOpenChangeData = {
@@ -11,7 +11,7 @@ export type DialogRequestOpenChangeData = {
 export type DialogContextValue = {
   triggerRef: React.Ref<HTMLElement>;
   contentRef: React.Ref<HTMLElement>;
-  type: DialogType;
+  modalType: DialogModalType;
   open: boolean;
   /**
    * Requests dialog main component to update it's internal open state
@@ -21,7 +21,7 @@ export type DialogContextValue = {
 
 export const DialogContext: Context<DialogContextValue> = createContext<DialogContextValue>({
   open: false,
-  type: 'modal',
+  modalType: 'modal',
   triggerRef: { current: null },
   contentRef: { current: null },
   requestOpenChange() {

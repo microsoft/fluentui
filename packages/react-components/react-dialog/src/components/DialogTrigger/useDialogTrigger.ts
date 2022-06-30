@@ -11,7 +11,7 @@ import {
   DialogTriggerChildProps,
   DialogTriggerProps,
   DialogTriggerState,
-  DialogTriggerType,
+  DialogTriggerAction,
 } from './DialogTrigger.types';
 
 /**
@@ -21,7 +21,7 @@ import {
  * @param props - props from this instance of DialogTrigger
  */
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
-  const { children, type = 'toggle' } = props;
+  const { children, action = 'toggle' } = props;
 
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
@@ -31,7 +31,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
     child?.props.onClick?.(event);
-    requestOpenChange({ event, type: 'triggerClick', open: updateOpen(type) });
+    requestOpenChange({ event, type: 'triggerClick', open: updateOpen(action) });
   });
 
   return {
@@ -44,7 +44,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   };
 };
 
-function updateOpen(type: DialogTriggerType): React.SetStateAction<boolean> {
+function updateOpen(type: DialogTriggerAction): React.SetStateAction<boolean> {
   switch (type) {
     case 'close':
       return false;

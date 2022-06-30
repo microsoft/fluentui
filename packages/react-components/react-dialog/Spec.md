@@ -106,8 +106,10 @@ type DialogProps = ComponentProps<DialogSlots> & {
    * `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
    *
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or escape key.
+   *
+   * @default 'modal'
    */
-  type?: 'modal' | 'non-modal' | 'alert';
+  modalType?: 'modal' | 'non-modal' | 'alert';
   /**
    * Controls the open state of the dialog
    * @default undefined
@@ -148,9 +150,10 @@ export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening,
    * closing or toggling a Dialog visibility state.
+   *
    * @default 'toggle'
    */
-  type?: 'open' | 'close' | 'toggle';
+  action?: 'open' | 'close' | 'toggle';
   /**
    * Explicitly require single child or render function
    * to inject properties

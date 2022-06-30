@@ -12,7 +12,7 @@ export type {
   DialogTriggerProps,
   DialogTriggerChildProps,
   DialogTriggerState,
-  DialogTriggerType,
+  DialogTriggerAction,
 } from './DialogTrigger';
 
 export {

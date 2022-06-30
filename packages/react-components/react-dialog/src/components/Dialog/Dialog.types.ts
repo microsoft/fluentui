@@ -22,7 +22,7 @@ export type DialogOpenChangeArgs =
   | [event: React.MouseEvent, data: { type: 'overlayClick'; open: boolean }]
   | [event: React.MouseEvent, data: { type: 'triggerClick'; open: boolean }];
 
-export type DialogType = 'modal' | 'non-modal' | 'alert';
+export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
@@ -44,8 +44,10 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * to communicate an important message or ask for a decision.
    * Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog,
    * and it cannot be dismissed through the dimmed background or escape key.
+   *
+   * @default 'modal'
    */
-  type?: DialogType;
+  modalType?: DialogModalType;
   /**
    * Controls the open state of the dialog
    * @default undefined
