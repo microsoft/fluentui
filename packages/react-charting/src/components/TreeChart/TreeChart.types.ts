@@ -1,14 +1,14 @@
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 export interface ITreeStyleProps {}
 
-export interface IChartDataPoint {
+export interface ITreeChartDataPoint {
   name: string;
   subname: string;
   fill: string;
-  children?: Array<IChartDataPoint>;
+  children?: Array<ITreeChartDataPoint>;
 }
 export interface ITreeProps {
-  treeData: IChartDataPoint;
+  treeData: ITreeChartDataPoint;
   composition?: number | undefined;
   styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
   width: number;
@@ -16,7 +16,7 @@ export interface ITreeProps {
   margin: { left: number; right: number; top: number; bottom: number };
 }
 export interface ITreeState {
-  data: IChartDataPoint | null;
+  data: ITreeChartDataPoint | null;
 }
 
 export interface ITreeDataStructure {

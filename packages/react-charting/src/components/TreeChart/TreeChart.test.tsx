@@ -2,9 +2,9 @@ jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { IChartDataPoint, TreeChart } from './index';
+import { ITreeChartDataPoint, TreeChart } from './index';
 
-const twoLayerChart: IChartDataPoint = {
+const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
   subname: 'subtext',
   fill: '#0099BC',
@@ -16,7 +16,7 @@ const twoLayerChart: IChartDataPoint = {
   ],
 };
 
-const threeLayerChart: IChartDataPoint = {
+const threeLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
   subname: 'subtext',
   fill: '#0099BC',

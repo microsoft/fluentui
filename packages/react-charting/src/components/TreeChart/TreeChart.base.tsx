@@ -3,13 +3,13 @@ import { createRef } from 'react';
 import { select, Selection } from 'd3-selection';
 import { hierarchy, tree } from 'd3-hierarchy';
 
-import { ITreeProps, ITreeState, ITreeDataStructure, IChartDataPoint } from '../../index';
+import { ITreeProps, ITreeState, ITreeDataStructure, ITreeChartDataPoint } from '../../index';
 
 // Create a parent class for common tree components
 class StandardTree {
-  public treeData: IChartDataPoint;
+  public treeData: ITreeChartDataPoint;
   public svg: Selection<SVGSVGElement | null, unknown, null, undefined>;
-  constructor(treeData: IChartDataPoint, svg: Selection<SVGSVGElement | null, unknown, null, undefined>) {
+  constructor(treeData: ITreeChartDataPoint, svg: Selection<SVGSVGElement | null, unknown, null, undefined>) {
     this.treeData = treeData;
     this.svg = svg;
   }
@@ -65,7 +65,7 @@ class StandardTree {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public addLinktoNodes(parent: any, child: any, leaf: boolean, rectWidth: number, gap: number): any {
-    // gap lays ratio for parent.y to child.y
+    // gap adds ratio for parent.y to child.y
     const path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
     const leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${parent.y + gap * 5} H${parent.x - gap / 2} H${
       parent.x + rectWidth + gap / 2
@@ -77,8 +77,9 @@ class StandardTree {
 // Create child class to Add Tree component based on treeHeight
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
+
   constructor(
-    treeData: IChartDataPoint,
+    treeData: ITreeChartDataPoint,
     composition: number | undefined,
     svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
   ) {
@@ -95,6 +96,7 @@ class LayeredTree extends StandardTree {
     const treeHeight = root?.height + 1;
 
     // Create tree layout, for two-layered width is 150, three-layered width is 60; height = 50
+    // for treeheight == 1, width = 60
     // nodeSize([width, height])
     const treemap = tree().nodeSize([treeHeight === 2 ? 150 : 60, 50]);
 
@@ -195,7 +197,7 @@ class LayeredTree extends StandardTree {
         }
       }
 
-      if (d.children || treeHeight === 2) {
+      if (d.children || treeHeight <= 2) {
         this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight);
       }
     }
@@ -275,7 +277,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   public render() {
     return (
       <div>
-        <svg ref={this.svgRef} />
+        <svg ref={this.svgRef} className={'svgTree'} />
       </div>
     );
   }
