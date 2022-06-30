@@ -55,10 +55,18 @@ const useIndicatorStyles = makeStyles({
     transitionProperty: 'background, border, color',
     width: `${trackWidth}px`,
 
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+
     '> *': {
       transitionDuration: '200ms',
       transitionTimingFunction: 'cubic-bezier(0.33, 0, 0.67, 1)',
       transitionProperty: 'transform',
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+      },
     },
   },
 });
