@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Provider stories to folder with index entry.",
-  "packageName": "@fluentui/react-provider",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Input stories to folder with index entry.",
-  "packageName": "@fluentui/react-input",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

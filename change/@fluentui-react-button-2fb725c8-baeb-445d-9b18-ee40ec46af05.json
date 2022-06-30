@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Moving button stories to folder with index entry.",
-  "packageName": "@fluentui/react-button",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

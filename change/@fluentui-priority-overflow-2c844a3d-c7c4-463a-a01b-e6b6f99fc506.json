@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Mark internal APIs with @internal",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

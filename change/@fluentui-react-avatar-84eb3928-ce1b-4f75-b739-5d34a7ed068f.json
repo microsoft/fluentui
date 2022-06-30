@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "PresenceBadge accessibility: fix placement of aria-label, sort out Avatar usage and examples",
-  "packageName": "@fluentui/react-avatar",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

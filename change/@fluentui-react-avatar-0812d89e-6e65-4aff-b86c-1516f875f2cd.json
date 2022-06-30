@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update component template to use nested stories and index file",
-  "packageName": "@fluentui/react-avatar",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

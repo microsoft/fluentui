@@ -394,7 +394,7 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
-  const { appearance, atBound, size } = state;
+  const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
   const filled = appearance.startsWith('filled');
 
@@ -439,7 +439,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
 
   state.incrementButton.className = mergeClasses(
     spinButtonClassNames.incrementButton,
-    state.spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
+    spinState === 'up' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.incrementButton,
     buttonStyles[appearance],
@@ -450,7 +450,7 @@ export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButton
   );
   state.decrementButton.className = mergeClasses(
     spinButtonClassNames.decrementButton,
-    state.spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
+    spinState === 'down' && `${spinButtonExtraClassNames.buttonActive}`,
     buttonStyles.base,
     buttonStyles.decrementButton,
     buttonStyles[appearance],

@@ -3,7 +3,7 @@ import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
-import type { ComboboxBaseProps, ComboboxOpenEvents } from './ComboboxBase.types';
+import type { ComboboxBaseProps, ComboboxBaseOpenEvents } from './ComboboxBase.types';
 
 /**
  * State shared between Combobox and Dropdown components
@@ -43,7 +43,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     initialState: false,
   });
 
-  const setOpen = (event: ComboboxOpenEvents, newState: boolean) => {
+  const setOpen = (event: ComboboxBaseOpenEvents, newState: boolean) => {
     onOpenChange?.(event, { open: newState });
     setOpenState(newState);
   };

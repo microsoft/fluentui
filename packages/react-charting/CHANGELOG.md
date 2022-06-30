@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 24 Jun 2022 07:43:32 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Jun 2022 07:40:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.54)
+
+Thu, 30 Jun 2022 07:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.53..@fluentui/react-charting_v5.9.54)
+
+### Patches
+
+- Bump @fluentui/react to v8.77.3 ([PR #23768](https://github.com/microsoft/fluentui/pull/23768) by beachball)
+
+## [5.9.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.53)
+
+Tue, 28 Jun 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.52..@fluentui/react-charting_v5.9.53)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.7.2 ([PR #23683](https://github.com/microsoft/fluentui/pull/23683) by beachball)
+- Bump @fluentui/react to v8.77.2 ([PR #23683](https://github.com/microsoft/fluentui/pull/23683) by beachball)
+
+## [5.9.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.52)
+
+Mon, 27 Jun 2022 07:37:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.51..@fluentui/react-charting_v5.9.52)
+
+### Patches
+
+- Hover state aren't paired with cursor_New ([PR #23685](https://github.com/microsoft/fluentui/pull/23685) by v-hannapared@microsoft.com)
 
 ## [5.9.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.51)
 

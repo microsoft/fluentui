@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Re-exporting AvatarGroup and AvatarGroupItem in unstable.",
-  "packageName": "@fluentui/react-components",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

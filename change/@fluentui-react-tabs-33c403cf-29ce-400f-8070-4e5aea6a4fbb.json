@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Convert tabs to index based stories",
-  "packageName": "@fluentui/react-tabs",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

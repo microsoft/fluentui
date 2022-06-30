@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
+import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
 
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
 import { UseTab } from './UseTab';
 import { EditTab } from './EditTab';
 
@@ -78,9 +78,24 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const sidebarId = useId();
 
   const [tab, setTab] = React.useState<TabValue>('use');
-  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => setTab(data.value);
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    if (data.value === 'edit') {
+      props.dispatchState({ type: 'Custom', customAttributes: formState, overrides: {} });
+    } else if (data.value === 'use') {
+      setTheme('Custom');
+    }
+    setTab(data.value);
+  };
 
   const [theme, setTheme] = React.useState<string>('Teams Light');
+
+  const [formState, setFormState] = React.useState<CustomAttributes>({
+    keyColor: '#006bc7',
+    hueTorsion: 0,
+    darkCp: 2 / 3,
+    lightCp: 1 / 3,
+    isDark: false,
+  });
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
@@ -99,9 +114,17 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           setTheme={setTheme}
           dispatchState={props.dispatchState}
           setTab={setTab}
+          formState={formState}
         />
       )}
-      {tab === 'edit' && <EditTab sidebarId={sidebarId} dispatchState={props.dispatchState} />}
+      {tab === 'edit' && (
+        <EditTab
+          sidebarId={sidebarId}
+          dispatchState={props.dispatchState}
+          formState={formState}
+          setFormState={setFormState}
+        />
+      )}
     </div>
   );
 };
