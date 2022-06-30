@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "legends & labels are capitalized",
+  "packageName": "@fluentui/react-charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
