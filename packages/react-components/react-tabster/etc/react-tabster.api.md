@@ -69,10 +69,7 @@ export const useFocusFinders: () => {
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @public
-export const useModalAttributes: (options?: UseModalAttributesOptions) => {
-    modalAttributes: Types.TabsterDOMAttribute;
-    triggerAttributes: Types.TabsterDOMAttribute;
-};
+export const useModalAttributes: (options?: UseModalAttributesOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseModalAttributesOptions {
@@ -80,6 +77,9 @@ export interface UseModalAttributesOptions {
     legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }
+
+// @public
+export const useModalTriggerAttributes: () => Types.TabsterDOMAttribute;
 
 // Warning: (ae-internal-missing-underscore) The name "useTabsterAttributes" should be prefixed with an underscore because the declaration is marked as @internal
 //

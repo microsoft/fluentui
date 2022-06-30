@@ -4,6 +4,7 @@ export {
   useFocusFinders,
   useKeyboardNavAttribute,
   useModalAttributes,
+  useModalTriggerAttributes,
   useTabsterAttributes,
 } from './hooks/index';
 export type {

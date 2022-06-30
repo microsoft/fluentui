@@ -27,15 +27,12 @@ export interface UseModalAttributesOptions {
 }
 
 /**
- * Applies modal dialog behaviour through DOM attributes
+ * Applies modal dialog behavior through DOM attributes
  * Modal element will focus trap and hide other content on the page
- * The trigger element will be focused if focus is lost after the modal element is removed
  *
- * @returns DOM attributes to apply to the modal element and its trigger
+ * @returns DOM attributes to apply to the modal element
  */
-export const useModalAttributes = (
-  options: UseModalAttributesOptions = {},
-): { modalAttributes: TabsterTypes.TabsterDOMAttribute; triggerAttributes: TabsterTypes.TabsterDOMAttribute } => {
+export const useModalAttributes = (options: UseModalAttributesOptions = {}): TabsterTypes.TabsterDOMAttribute => {
   const { trapFocus, alwaysFocusable, legacyTrapFocus } = options;
   const tabster = useTabster();
   // Initializes the modalizer and deloser APIs
@@ -45,7 +42,8 @@ export const useModalAttributes = (
   }
 
   const id = useId('modal-');
-  const modalAttributes = useTabsterAttributes({
+
+  return useTabsterAttributes({
     deloser: {},
     modalizer: {
       id,
@@ -54,10 +52,22 @@ export const useModalAttributes = (
       isTrapped: legacyTrapFocus,
     },
   });
+};
 
-  const triggerAttributes = useTabsterAttributes({
+/**
+ * Applies trigger behavior through DOM attributes
+ * element will be focused if focus is lost after a modal element is removed
+ *
+ * @returns DOM attributes to apply to the trigger element
+ */
+export const useModalTriggerAttributes = (): TabsterTypes.TabsterDOMAttribute => {
+  const tabster = useTabster();
+  // Initializes the deloser APIs
+  if (tabster) {
+    getDeloser(tabster);
+  }
+
+  return useTabsterAttributes({
     deloser: {},
   });
-
-  return { modalAttributes, triggerAttributes };
 };
