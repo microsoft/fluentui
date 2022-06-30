@@ -1,23 +1,15 @@
-/* eslint-disable dot-notation */
-/* eslint-disable one-var */
-/* eslint-disable @fluentui/max-len */
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-console */
-/* eslint-disable prefer-const */
 import * as React from 'react';
 import { createRef } from 'react';
 import { select, Selection } from 'd3-selection';
 import { hierarchy, tree } from 'd3-hierarchy';
 
-import { ITreeProps, ITreeState, ITreeDataStructure, IDataStructure } from '../../index';
+import { ITreeProps, ITreeState, ITreeDataStructure, IChartDataPoint } from '../../index';
 
 // Create a parent class for common tree components
 class StandardTree {
-  public treeData: IDataStructure;
+  public treeData: IChartDataPoint;
   public svg: Selection<SVGSVGElement | null, unknown, null, undefined>;
-  constructor(treeData: IDataStructure, svg: Selection<SVGSVGElement | null, unknown, null, undefined>) {
+  constructor(treeData: IChartDataPoint, svg: Selection<SVGSVGElement | null, unknown, null, undefined>) {
     this.treeData = treeData;
     this.svg = svg;
   }
@@ -46,31 +38,39 @@ class StandardTree {
     this.svg
       .append('text')
       .style('fill', 'black')
+      // Text position y = y + rectHeight/2.5, 2.5 is ratio for depth
       .attr('dy', yCoordinate + rectangleHeight / 2.5)
+      // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .attr('x', () => {
-        return xCoordinate + rectangleWidth / 3.6;
+        return xCoordinate + rectangleWidth / 3.5;
       })
       .attr('text-anchor', () => {
         return 'start';
       })
-      .text(function () {
+      .text(() => {
         return name;
       })
       .append('tspan')
       .attr('dy', '1.4em')
+      // Sub-text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .attr('x', () => {
-        return xCoordinate + rectangleWidth / 3.4;
+        return xCoordinate + rectangleWidth / 3.5;
       })
       .text(() => {
         return subname;
       });
   }
+
   // Creates a rectangular path from parent to the child nodes
-  public addLinktoNodes(child: any, parent: any, leaf: boolean, rectWidth: number, gap: number): any {
-    let path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
-    let leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${parent.y + gap * 5} H${parent.x - gap / 2} H${
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  public addLinktoNodes(parent: any, child: any, leaf: boolean, rectWidth: number, gap: number): any {
+    // gap lays ratio for parent.y to child.y
+    const path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
+    const leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${parent.y + gap * 5} H${parent.x - gap / 2} H${
       parent.x + rectWidth + gap / 2
     }`;
+    // based on the type of node return leafpath or path element
     return leaf ? leafpath : path;
   }
 }
@@ -78,7 +78,7 @@ class StandardTree {
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
   constructor(
-    treeData: IDataStructure,
+    treeData: IChartDataPoint,
     composition: number | undefined,
     svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
   ) {
@@ -86,39 +86,45 @@ class LayeredTree extends StandardTree {
     this.composition = composition;
   }
   public createTree() {
-    let root = hierarchy(this.treeData, function (d: any) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const root = hierarchy(this.treeData, (d: any) => {
       return d.children;
     });
 
-    let treeHeight = root?.height + 1;
+    // Find tree Height
+    const treeHeight = root?.height + 1;
 
-    // Create tree layout, for 2 layered width is 150, 3 layered width is 75
-    let treemap = tree().nodeSize([treeHeight === 2 ? 150 : 60, 50]);
+    // Create tree layout, for two-layered width is 150, three-layered width is 60; height = 50
+    // nodeSize([width, height])
+    const treemap = tree().nodeSize([treeHeight === 2 ? 150 : 60, 50]);
 
     // Assigns the x and y position for the nodes
-    let treeData = treemap(root);
+    const treeData = treemap(root);
 
     // Compute the new tree layout.
-    let nodes = treeData.descendants();
+    const nodes = treeData.descendants();
 
     // Normalize for fixed-depth and width
-    nodes.forEach(function (d) {
-      d.y = d.depth * 120 + 6;
+    nodes.forEach(d => {
+      // Normalise y coordinate by depth of each node by a factor of 130
+      d.y = d.depth === 0 ? 10 : d.depth * 130;
+      // Normalise x coordinate by start coordinate 0 with 400
       d.x += 400;
     });
 
     // <------------------ Nodes section ------------------>
 
     // Create tree data structure
-    const BFS: Array<ITreeDataStructure> = [];
+    const treeDataStructure: Array<ITreeDataStructure> = [];
     let TreeID: number = 0;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     root.eachBefore((d: any) => {
       // make id to find parentID from parent object
+      // eslint-disable-next-line dot-notation
       d['id'] = TreeID;
-      BFS.push({
+      treeDataStructure.push({
         id: `${TreeID}`,
         children: d.children,
-        visualID: `depth: ${d.depth}`,
         dataName: `${d.data.name}`,
         subName: `${d.data.subname}`,
         fill: d.data.fill,
@@ -129,19 +135,20 @@ class LayeredTree extends StandardTree {
       TreeID++;
     });
 
-    let rectHeight = 60,
-      rectWidth = 120,
-      gap: number = 20;
-    let parentSet = new Set();
+    const rectHeight = 60;
+    const rectWidth = 120;
+    const gap: number = 20;
+    const parentSet = new Set();
 
-    for (const d of BFS) {
+    for (const d of treeDataStructure) {
       // check for leaf nodes
       if (!d.children && !parentSet.has(d.parentID) && treeHeight === 3) {
-        const newWidth = 70,
-          newHeight = 60;
+        const newWidth = 70;
+        const newHeight = 60;
         parentSet.add(d.parentID);
 
-        let children: any = BFS[d.parentID]?.children;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const children: any = treeDataStructure[d.parentID]?.children;
         // if the parent has 1 child
         if (children.length === 1) {
           this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight);
@@ -149,36 +156,25 @@ class LayeredTree extends StandardTree {
 
         // if the parent has more than 2 child
 
-        let dx1: number = BFS[d.parentID]?.x - newWidth * 1.6,
-          dy: number = children[0]?.y,
-          dx2: number = BFS[d.parentID]?.x;
-
         if (children.length >= 2) {
+          const dx1: number = treeDataStructure[d.parentID]?.x - newWidth * 1.6;
+          let dy: number = children[0]?.y;
+          const dx2: number = treeDataStructure[d.parentID]?.x;
+
           for (let itr = 0; itr < children.length; ++itr) {
             const child = children[itr];
             // For compact compostion
             if (this.composition === 0) {
-              if (itr % 2 === 0) {
-                this.addNodeShapetoSVG(
-                  child.data.name,
-                  child.data.subname,
-                  dx1 + gap * 4,
-                  dy,
-                  child.data.fill,
-                  newWidth,
-                  newHeight,
-                );
-              }
+              this.addNodeShapetoSVG(
+                child.data.name,
+                child.data.subname,
+                (itr % 2 === 0 ? dx1 : dx2) + gap * 4,
+                dy,
+                child.data.fill,
+                newWidth,
+                newHeight,
+              );
               if (itr % 2 === 1) {
-                this.addNodeShapetoSVG(
-                  child.data.name,
-                  child.data.subname,
-                  dx2 + gap * 4,
-                  dy,
-                  child.data.fill,
-                  newWidth,
-                  newHeight,
-                );
                 dy += newHeight + gap / 2;
               }
             }
@@ -207,12 +203,13 @@ class LayeredTree extends StandardTree {
     // <------------------ Links section ------------------>
 
     // Create path element
-    let link = this.svg.selectAll('path.link').data(nodes.slice(1), function (d: any) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const link = this.svg.selectAll('path.link').data(nodes.slice(1), (d: any) => {
       return d.id;
     });
 
     // UPDATE the link
-    let linkUpdate = link
+    const linkUpdate = link
       .enter()
       .insert('path', 'g')
       .attr('class', 'link')
@@ -220,20 +217,21 @@ class LayeredTree extends StandardTree {
       .style('stroke', 'black')
       .style('stroke-width', '2px');
 
-    let linkParentSet = new Set();
+    const linkParentSet = new Set();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     linkUpdate.attr('d', (d: any) => {
       if (treeHeight === 3) {
         // leaf nodes with more than 2 sibling nodes
         if (!d.children && !linkParentSet.has(d?.parent.id)) {
           linkParentSet.add(d?.parent.id);
-          return this.addLinktoNodes(BFS[d.id], BFS[d.parent.id], true, rectWidth, gap);
+          return this.addLinktoNodes(treeDataStructure[d.parent.id], treeDataStructure[d.id], true, rectWidth, gap);
         }
         // non-leaf node
         if (d.children || d.parent.children?.length <= 1) {
-          return this.addLinktoNodes(d, d.parent, false, rectWidth, gap);
+          return this.addLinktoNodes(d.parent, d, false, rectWidth, gap);
         }
       } else {
-        return this.addLinktoNodes(d, d.parent, false, rectWidth, gap);
+        return this.addLinktoNodes(d.parent, d, false, rectWidth, gap);
       }
       return '';
     });
@@ -242,43 +240,34 @@ class LayeredTree extends StandardTree {
 
 export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   public svgRef = createRef<SVGSVGElement>();
-  private margin = {
-    top: 30,
-    right: 20,
-    bottom: 30,
-    left: 50,
-  };
+  private margin: { left: number; right: number; top: number; bottom: number };
 
   private width: number;
   private height: number;
-  private treeData: IDataStructure;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private treeData: any;
   private composition: number | undefined;
 
   constructor(props: ITreeProps) {
     super(props);
-    // this.state = {
-    //   data: this.props.treeData,
-    // };
-    this.width = 1000 - this.margin.left - this.margin.right;
-    this.height = 700 - this.margin.top - this.margin.bottom;
+    this.margin = this.props.margin;
+    this.width = this.props.width - this.margin.left - this.margin.right;
+    this.height = this.props.height - this.margin.top - this.margin.bottom;
     this.treeData = this.props.treeData;
     this.composition = this.props?.composition;
   }
 
   public componentDidMount() {
     this.createTreeChart();
-    // this.setState({
-    //   data: this.treeData,
-    // });
   }
 
   public createTreeChart() {
-    let svg = select(this.svgRef.current);
+    const svg = select(this.svgRef.current);
     svg.selectAll('*').remove();
     svg.attr('width', this.width).attr('height', this.height).append('g');
 
-    let twoLayerTree = new LayeredTree(this.treeData, this.composition, svg);
-    let threeLayerTree = new LayeredTree(this.treeData, this.composition, svg);
+    const twoLayerTree = new LayeredTree(this.treeData, this.composition, svg);
+    const threeLayerTree = new LayeredTree(this.treeData, this.composition, svg);
     twoLayerTree.createTree();
     threeLayerTree.createTree();
   }
@@ -286,7 +275,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   public render() {
     return (
       <div>
-        <svg ref={this.svgRef}></svg>
+        <svg ref={this.svgRef} />
       </div>
     );
   }

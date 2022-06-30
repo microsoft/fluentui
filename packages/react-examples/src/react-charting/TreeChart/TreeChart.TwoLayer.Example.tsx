@@ -26,7 +26,12 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={twoLayerChart}></TreeChart>
+        <TreeChart
+          treeData={twoLayerChart}
+          width={1000}
+          height={700}
+          margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
+        ></TreeChart>
       </>
     );
   }
