@@ -8336,6 +8336,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React_2.ReactNode;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
     shimmerElements?: IShimmerElement[];
@@ -8347,6 +8348,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
 // @public
 export interface IShimmerStyleProps {
     className?: string;
+    improveCSSPerf?: boolean;
     isDataLoaded?: boolean;
     shimmerColor?: string;
     shimmerWaveColor?: string;
