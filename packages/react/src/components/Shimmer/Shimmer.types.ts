@@ -164,7 +164,7 @@ export interface IShimmerStyleProps {
   shimmerWaveColor?: string;
 
   /** Boolean flag to apply a more efficient CSS selector */
-  improveCSSPerf?: boolean;
+  improveCSSPerformance?: boolean;
 }
 
 /**

@@ -37,7 +37,7 @@ export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forward
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
       shimmerColor: shimmerColors && shimmerColors.shimmer,
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave,
-      improveCSSPerf: improveCSSPerformance || !customElementsGroup,
+      improveCSSPerformance: improveCSSPerformance || !customElementsGroup,
     });
 
     const internalState = useConst({

@@ -47,7 +47,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     transitionAnimationInterval,
     shimmerColor,
     shimmerWaveColor,
-    improveCSSPerf,
+    improveCSSPerformance,
   } = props;
 
   const { semanticColors } = theme;
@@ -95,7 +95,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         left: '0',
         right: '0',
       },
-      improveCSSPerf
+      improveCSSPerformance
         ? {
             selectors: {
               '> div:last-child': {
