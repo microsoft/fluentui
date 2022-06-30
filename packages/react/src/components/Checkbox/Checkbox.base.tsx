@@ -78,18 +78,12 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
     );
 
     const setNativeIndeterminate = React.useCallback(
-      (indeterminate: boolean | string | undefined) => {
+      (indeterminate: boolean | undefined) => {
         if (!inputRef.current) {
           return;
         }
 
-        let value = false;
-
-        if (typeof indeterminate === 'string') {
-          value = indeterminate.trim() === 'true';
-        } else {
-          value = !!indeterminate;
-        }
+        const value = !!indeterminate;
 
         inputRef.current.indeterminate = value;
         setIsIndeterminate(value);
@@ -160,7 +154,7 @@ function useComponentRef(
   props: ICheckboxProps,
   isChecked: boolean | undefined,
   isIndeterminate: boolean | undefined,
-  setIndeterminate: (indeterminate: boolean | string) => void,
+  setIndeterminate: (indeterminate: boolean) => void,
   checkBoxRef: React.RefObject<HTMLInputElement>,
 ) {
   React.useImperativeHandle(
@@ -172,7 +166,7 @@ function useComponentRef(
       get indeterminate() {
         return !!isIndeterminate;
       },
-      set indeterminate(indeterminate: boolean | string) {
+      set indeterminate(indeterminate: boolean) {
         setIndeterminate(indeterminate);
       },
       focus() {
