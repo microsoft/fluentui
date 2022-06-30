@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 30 Jun 2022 07:40:48 GMT",
+      "tag": "@fluentui/react_v8.77.3",
+      "version": "8.77.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e81a3de6b292b226e09ad8526ae5856131ff0736",
+            "comment": "feat: Updating Slider to support ariaLabel prop."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Jun 2022 07:42:20 GMT",
       "tag": "@fluentui/react_v8.77.2",
       "version": "8.77.2",
