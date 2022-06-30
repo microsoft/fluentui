@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing horizontal bar chart styles",
+  "packageName": "@uifabric/charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
