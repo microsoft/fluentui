@@ -73,5 +73,5 @@ yarn nx workspace-generator dependency-mismatch --dry-run
 ### Examples
 
 ```sh
-yarn nx workspace-generatordependency-mismatch
+yarn nx workspace-generator dependency-mismatch
 ```
