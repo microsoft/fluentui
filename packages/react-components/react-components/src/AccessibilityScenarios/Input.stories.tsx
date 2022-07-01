@@ -19,8 +19,10 @@ const regexes = {
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
+  // eslint-disable-next-line @fluentui/max-len
   validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
   validEmail: new RegExp(
+    // eslint-disable-next-line @fluentui/max-len
     "(([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*]))?",
   ),
 };
