@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 01 Jul 2022 07:35:10 GMT",
+      "tag": "@fluentui/react-charting_v5.9.55",
+      "version": "5.9.55",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0c292a7f35103752b40f2872d31e83b77f7a053",
+            "comment": "fixed legends selected screen reader issue"
+          },
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d502fd532fd1783d744809eb4182240583fac734",
+            "comment": "legends & labels are capitalized"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 07:40:48 GMT",
       "tag": "@fluentui/react-charting_v5.9.54",
       "version": "5.9.54",

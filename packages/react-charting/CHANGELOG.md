@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 30 Jun 2022 07:40:48 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Jul 2022 07:35:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.9.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.55)
+
+Fri, 01 Jul 2022 07:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.9.54..@fluentui/react-charting_v5.9.55)
+
+### Patches
+
+- fixed legends selected screen reader issue ([PR #23768](https://github.com/microsoft/fluentui/pull/23768) by v-hannapared@microsoft.com)
+- legends & labels are capitalized ([PR #23783](https://github.com/microsoft/fluentui/pull/23783) by v-hannapared@microsoft.com)
 
 ## [5.9.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.9.54)
 
