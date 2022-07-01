@@ -4,7 +4,7 @@ import { Tree, addProjectConfiguration, serializeJson, readWorkspaceConfiguratio
 import generator from './index';
 import { PackageJson } from '../../types';
 
-describe('release-dependency-mismatch generator', () => {
+describe('dependency-mismatch generator', () => {
   let appTree: Tree;
   let workspaceNpmScope: string;
 
