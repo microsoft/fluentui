@@ -64,8 +64,8 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const [keyColor, setKeyColor] = React.useState<string>(formState.keyColor);
   const [hueTorsion, setHueTorsion] = React.useState<number>(formState.hueTorsion);
-  const [darkCp, setDarkCp] = React.useState<number>(formState.darkCp);
-  const [lightCp, setLightCp] = React.useState<number>(formState.lightCp);
+  const [darkCp, setDarkCp] = React.useState<number>(formState.darkCp * 100);
+  const [lightCp, setLightCp] = React.useState<number>(formState.lightCp * 100);
   const [isDark, setIsDark] = React.useState<boolean>(formState.isDark);
 
   const [form, dispatchForm] = React.useReducer(formReducer, formState);
