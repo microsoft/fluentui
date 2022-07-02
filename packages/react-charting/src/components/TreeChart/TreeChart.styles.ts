@@ -7,5 +7,13 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
       stroke: 'black',
       strokeWidth: '2px',
     },
+    rectNode: {
+      strokeWidth: '2px',
+      fill: 'white',
+      padding: '10px',
+    },
+    rectText: {
+      fill: 'black',
+    },
   };
 };

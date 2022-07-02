@@ -1,5 +1,5 @@
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-export interface ITreeStyleProps {}
 
 export interface ITreeChartDataPoint {
   name: string;
@@ -10,10 +10,12 @@ export interface ITreeChartDataPoint {
 export interface ITreeProps {
   treeData: ITreeChartDataPoint;
   composition?: number | undefined;
-  styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
   width: number;
   height: number;
   margin: { left: number; right: number; top: number; bottom: number };
+  styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
+  className?: string;
+  theme?: ITheme;
 }
 export interface ITreeState {
   data: ITreeChartDataPoint | null;
@@ -30,4 +32,12 @@ export interface ITreeDataStructure {
   parentID: number;
 }
 
-export interface ITreeStyles {}
+export interface ITreeStyleProps {
+  theme: ITheme;
+  className?: string;
+}
+export interface ITreeStyles {
+  link: IStyle;
+  rectNode: IStyle;
+  rectText: IStyle;
+}

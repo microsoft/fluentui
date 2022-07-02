@@ -3,17 +3,26 @@ import { createRef } from 'react';
 import { select, Selection } from 'd3-selection';
 import { hierarchy, tree } from 'd3-hierarchy';
 
-import { ITreeProps, ITreeState, ITreeDataStructure, ITreeChartDataPoint } from '../../index';
+import {
+  ITreeProps,
+  ITreeState,
+  ITreeDataStructure,
+  ITreeChartDataPoint,
+  ITreeStyleProps,
+  ITreeStyles,
+} from '../../index';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
+const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 // Create a parent class for common tree components
 class StandardTree {
   public treeData: ITreeChartDataPoint;
-  public svg: Selection<SVGSVGElement | null, unknown, null, undefined>;
-  constructor(treeData: ITreeChartDataPoint, svg: Selection<SVGSVGElement | null, unknown, null, undefined>) {
+  public styleClassNames: { link: string; rectNode: string; rectText: string };
+  constructor(treeData: ITreeChartDataPoint, styleClassNames: { link: string; rectNode: string; rectText: string }) {
     this.treeData = treeData;
-    this.svg = svg;
+    this.styleClassNames = styleClassNames;
   }
-
   public addNodeShapetoSVG(
     name: string,
     subname: string,
@@ -22,35 +31,32 @@ class StandardTree {
     fillColor: string,
     rectangleWidth: number,
     rectangleHeight: number,
+    svg: Selection<SVGGElement | null, unknown, null, undefined>,
   ) {
-    this.svg
+    svg
       .append('rect')
       .attr('width', rectangleWidth)
       .attr('height', rectangleHeight)
       .attr('x', xCoordinate)
       .attr('y', yCoordinate)
-      .attr('padding', '10px')
+      .attr('class', this.styleClassNames.rectNode)
       .attr('rx', '1')
-      .style('stroke', fillColor)
-      .style('stroke-width', '2px')
-      .style('fill', 'white');
+      .style('stroke', fillColor);
 
-    this.svg
+    svg
       .append('text')
-      .style('fill', 'black')
+      .attr('class', this.styleClassNames.rectText)
       // Text position y = y + rectHeight/2.5, 2.5 is ratio for depth
       .attr('dy', yCoordinate + rectangleHeight / 2.5)
       // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .attr('x', () => {
         return xCoordinate + rectangleWidth / 3.5;
       })
-      .attr('text-anchor', () => {
-        return 'start';
-      })
       .text(() => {
         return name;
       })
       .append('tspan')
+      .attr('class', 'rectSubText')
       .attr('dy', '1.4em')
       // Sub-text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .attr('x', () => {
@@ -63,13 +69,25 @@ class StandardTree {
 
   // Creates a rectangular path from parent to the child nodes
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public addLinktoNodes(parent: any, child: any, leaf: boolean, rectWidth: number, gap: number): any {
+  public addLinktoNodes(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    parent: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    child: any,
+    leaf: boolean,
+    rectWidth: number,
+    rectHeight: number,
+    gap: number,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): any {
     // gap adds ratio for parent.y to child.y
-    const path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${parent.y}`;
-    const leafpath = `M${parent.x + rectWidth / 2},${parent.y} V${parent.y + gap * 5} H${parent.x - gap / 2} H${
-      parent.x + rectWidth + gap / 2
+    const path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${
+      parent.y + rectHeight + gap / 2
     }`;
+    const leafpath = `M${parent.x + rectWidth / 2},${parent.y + rectHeight + gap / 2} V${parent.y + gap * 5} H${
+      parent.x - gap / 2
+    } H${parent.x + rectWidth + gap / 2}`;
+
     // based on the type of node return leafpath or path element
     return leaf ? leafpath : path;
   }
@@ -77,14 +95,16 @@ class StandardTree {
 // Create child class to Add Tree component based on treeHeight
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
-
+  public svg: Selection<SVGSVGElement | null, unknown, null, undefined>;
   constructor(
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
+    styleClassNames: { link: string; rectNode: string; rectText: string },
   ) {
-    super(treeData, svg);
+    super(treeData, styleClassNames);
     this.composition = composition;
+    this.svg = svg;
   }
   public createTree() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -141,6 +161,7 @@ class LayeredTree extends StandardTree {
     const rectWidth = 120;
     const gap: number = 20;
     const parentSet = new Set();
+    const svgNode = this.svg.append('g').attr('class', 'svgNode');
 
     for (const d of treeDataStructure) {
       // check for leaf nodes
@@ -153,11 +174,10 @@ class LayeredTree extends StandardTree {
         const children: any = treeDataStructure[d.parentID]?.children;
         // if the parent has 1 child
         if (children.length === 1) {
-          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight);
+          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode);
         }
 
         // if the parent has more than 2 child
-
         if (children.length >= 2) {
           const dx1: number = treeDataStructure[d.parentID]?.x - newWidth * 1.6;
           let dy: number = children[0]?.y;
@@ -175,6 +195,7 @@ class LayeredTree extends StandardTree {
                 child.data.fill,
                 newWidth,
                 newHeight,
+                svgNode,
               );
               if (itr % 2 === 1) {
                 dy += newHeight + gap / 2;
@@ -190,6 +211,7 @@ class LayeredTree extends StandardTree {
                 child.data.fill,
                 rectWidth,
                 newHeight,
+                svgNode,
               );
               dy += newHeight + gap / 2;
             }
@@ -198,26 +220,21 @@ class LayeredTree extends StandardTree {
       }
 
       if (d.children || treeHeight <= 2) {
-        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight);
+        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode);
       }
     }
 
     // <------------------ Links section ------------------>
 
     // Create path element
+    const svgLink = this.svg.append('g').attr('class', 'svgLink');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const link = this.svg.selectAll('path.link').data(nodes.slice(1), (d: any) => {
+    const link = svgLink.selectAll('path.link').data(nodes.slice(1), (d: any) => {
       return d.id;
     });
 
     // UPDATE the link
-    const linkUpdate = link
-      .enter()
-      .insert('path', 'g')
-      .attr('class', 'link')
-      .style('fill', 'none')
-      .style('stroke', 'black')
-      .style('stroke-width', '2px');
+    const linkUpdate = link.enter().insert('path', 'g').attr('class', this.styleClassNames.link);
 
     const linkParentSet = new Set();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -226,16 +243,22 @@ class LayeredTree extends StandardTree {
         // leaf nodes with more than 2 sibling nodes
         if (!d.children && !linkParentSet.has(d?.parent.id)) {
           linkParentSet.add(d?.parent.id);
-          return this.addLinktoNodes(treeDataStructure[d.parent.id], treeDataStructure[d.id], true, rectWidth, gap);
+          return this.addLinktoNodes(
+            treeDataStructure[d.parent.id],
+            treeDataStructure[d.id],
+            true,
+            rectWidth,
+            rectHeight,
+            gap,
+          );
         }
         // non-leaf node
         if (d.children || d.parent.children?.length <= 1) {
-          return this.addLinktoNodes(d.parent, d, false, rectWidth, gap);
+          return this.addLinktoNodes(d.parent, d, false, rectWidth, rectHeight, gap);
         }
       } else {
-        return this.addLinktoNodes(d.parent, d, false, rectWidth, gap);
+        return this.addLinktoNodes(d.parent, d, false, rectWidth, rectHeight, gap);
       }
-      return '';
     });
   }
 }
@@ -249,6 +272,7 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private treeData: any;
   private composition: number | undefined;
+  private classNames: IProcessedStyleSet<ITreeStyles>;
 
   constructor(props: ITreeProps) {
     super(props);
@@ -260,24 +284,36 @@ export class TreeBase extends React.Component<ITreeProps, ITreeState> {
   }
 
   public componentDidMount() {
+    const { theme, className, styles } = this.props;
+    this.classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+    });
     this.createTreeChart();
   }
 
   public createTreeChart() {
     const svg = select(this.svgRef.current);
     svg.selectAll('*').remove();
-    svg.attr('width', this.width).attr('height', this.height).append('g');
-
-    const twoLayerTree = new LayeredTree(this.treeData, this.composition, svg);
-    const threeLayerTree = new LayeredTree(this.treeData, this.composition, svg);
-    twoLayerTree.createTree();
-    threeLayerTree.createTree();
+    svg.attr('width', this.width).attr('height', this.height);
+    const styleClassNames = {
+      link: this.classNames.link,
+      rectNode: this.classNames.rectNode,
+      rectText: this.classNames.rectText,
+    };
+    if (this.composition === undefined) {
+      const twoLayerTree = new LayeredTree(this.treeData, this.composition, svg, styleClassNames);
+      twoLayerTree.createTree();
+    } else {
+      const threeLayerTree = new LayeredTree(this.treeData, this.composition, svg, styleClassNames);
+      threeLayerTree.createTree();
+    }
   }
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div>
-        <svg ref={this.svgRef} />
+      <div className="svgTreeDiv">
+        <svg ref={this.svgRef} className="svgTree" />
       </div>
     );
   }

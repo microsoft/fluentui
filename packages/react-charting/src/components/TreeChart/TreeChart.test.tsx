@@ -1,8 +1,11 @@
 jest.mock('react-dom');
+import { resetIds } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount, ReactWrapper } from 'enzyme';
 
-import { ITreeChartDataPoint, TreeChart } from './index';
+import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
+import { TreeBase } from './TreeChart.base';
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -60,6 +63,27 @@ const threeLayerChart: ITreeChartDataPoint = {
   ],
 };
 
+// Wrapper of the DonutChart to be tested.
+let wrapper: ReactWrapper<ITreeProps, TreeBase> | undefined;
+
+function sharedBeforeEach() {
+  resetIds();
+}
+
+function sharedAfterEach() {
+  if (wrapper) {
+    wrapper.unmount();
+    wrapper = undefined;
+  }
+
+  // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
+  // cleaned up in fake timers world
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((global.setTimeout as any).mock) {
+    jest.useRealTimers();
+  }
+}
+
 describe('TreeChart snapshot testing', () => {
   it('renders treechart two layer correctly', () => {
     const component = renderer.create(
@@ -97,6 +121,26 @@ describe('TreeChart snapshot testing', () => {
       />,
     );
     const tree = component.toJSON();
+    // console.log(tree);
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Tree Chart - basic props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should mount legend when hideLegend false ', () => {
+    wrapper = mount(
+      <TreeChart
+        treeData={threeLayerChart}
+        composition={0}
+        width={1000}
+        height={700}
+        margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
+      />,
+    );
+    const svgObject = wrapper.getDOMNode().querySelectorAll('[class^="link"]');
+    expect(svgObject).toBeDefined();
   });
 });

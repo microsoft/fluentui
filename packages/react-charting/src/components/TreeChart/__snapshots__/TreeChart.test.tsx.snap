@@ -1,19 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TreeChart snapshot testing renders treechart three layer compact composition correctly 1`] = `
-<div>
-  <svg />
+<div
+  className="svgTreeDiv"
+>
+  <svg
+    className="svgTree"
+  />
 </div>
 `;
 
 exports[`TreeChart snapshot testing renders treechart three layer long composition correctly 1`] = `
-<div>
-  <svg />
+<div
+  className="svgTreeDiv"
+>
+  <svg
+    className="svgTree"
+  />
 </div>
 `;
 
 exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = `
-<div>
-  <svg />
+<div
+  className="svgTreeDiv"
+>
+  <svg
+    className="svgTree"
+  />
 </div>
 `;
