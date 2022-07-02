@@ -1,11 +1,10 @@
 jest.mock('react-dom');
-import { resetIds } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
-import { TreeBase } from './TreeChart.base';
+import { TreeChartBase } from './TreeChart.base';
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -64,25 +63,25 @@ const threeLayerChart: ITreeChartDataPoint = {
 };
 
 // Wrapper of the DonutChart to be tested.
-let wrapper: ReactWrapper<ITreeProps, TreeBase> | undefined;
+let wrapper: ReactWrapper<ITreeProps, TreeChartBase> | undefined;
 
-function sharedBeforeEach() {
-  resetIds();
-}
+// function sharedBeforeEach() {
+//   resetIds();
+// }
 
-function sharedAfterEach() {
-  if (wrapper) {
-    wrapper.unmount();
-    wrapper = undefined;
-  }
+// function sharedAfterEach() {
+//   if (wrapper) {
+//     wrapper.unmount();
+//     wrapper = undefined;
+//   }
 
-  // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-  // cleaned up in fake timers world
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if ((global.setTimeout as any).mock) {
-    jest.useRealTimers();
-  }
-}
+//   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
+//   // cleaned up in fake timers world
+//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//   if ((global.setTimeout as any).mock) {
+//     jest.useRealTimers();
+//   }
+// }
 
 describe('TreeChart snapshot testing', () => {
   it('renders treechart two layer correctly', () => {
@@ -120,17 +119,12 @@ describe('TreeChart snapshot testing', () => {
         margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
       />,
     );
-    const tree = component.toJSON();
-    // console.log(tree);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tree: any = component.toJSON();
+    // console.log(tree.props);
     expect(tree).toMatchSnapshot();
   });
-});
-
-describe('Tree Chart - basic props', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
-
-  it('Should mount legend when hideLegend false ', () => {
+  it('Should mount component ', () => {
     wrapper = mount(
       <TreeChart
         treeData={threeLayerChart}
@@ -140,7 +134,13 @@ describe('Tree Chart - basic props', () => {
         margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
       />,
     );
-    const svgObject = wrapper.getDOMNode().querySelectorAll('[class^="link"]');
-    expect(svgObject).toBeDefined();
+    const svgObject = wrapper.getDOMNode().querySelector('[class="svgTree"]');
+    console.log(svgObject?.innerHTML);
+    expect(svgObject?.innerHTML).toBeDefined();
   });
 });
+
+// describe('Tree Chart - basic props', () => {
+//   // beforeEach(sharedBeforeEach);
+//   // afterEach(sharedAfterEach);
+// });

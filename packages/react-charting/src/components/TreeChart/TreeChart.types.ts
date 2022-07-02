@@ -18,7 +18,8 @@ export interface ITreeProps {
   theme?: ITheme;
 }
 export interface ITreeState {
-  data: ITreeChartDataPoint | null;
+  _width: number;
+  _height: number;
 }
 
 export interface ITreeDataStructure {

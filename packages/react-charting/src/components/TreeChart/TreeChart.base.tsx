@@ -2,6 +2,8 @@ import * as React from 'react';
 import { createRef } from 'react';
 import { select, Selection } from 'd3-selection';
 import { hierarchy, tree } from 'd3-hierarchy';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
 import {
   ITreeProps,
@@ -11,8 +13,6 @@ import {
   ITreeStyleProps,
   ITreeStyles,
 } from '../../index';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
 const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 // Create a parent class for common tree components
@@ -263,57 +263,78 @@ class LayeredTree extends StandardTree {
   }
 }
 
-export class TreeBase extends React.Component<ITreeProps, ITreeState> {
-  public svgRef = createRef<SVGSVGElement>();
-  private margin: { left: number; right: number; top: number; bottom: number };
+export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
+  private _svgRef = createRef<SVGSVGElement>();
+  // private _margin: { left: number; right: number; top: number; bottom: number };
 
-  private width: number;
-  private height: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private treeData: any;
-  private composition: number | undefined;
-  private classNames: IProcessedStyleSet<ITreeStyles>;
+  private _treeData: any;
+  // private _width: number;
+  // private _height: number;
+  private _composition: number | undefined;
+  private _classNames: IProcessedStyleSet<ITreeStyles>;
+  private _rootElem: HTMLElement | null;
+
+  public static getDerivedStateFromProps(
+    nextProps: Readonly<ITreeProps>,
+    prevState: Readonly<ITreeState>,
+  ): Partial<ITreeState> | null {
+    if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
+      const reducedHeight = nextProps.height / 5;
+      return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
+    }
+    return null;
+  }
 
   constructor(props: ITreeProps) {
     super(props);
-    this.margin = this.props.margin;
-    this.width = this.props.width - this.margin.left - this.margin.right;
-    this.height = this.props.height - this.margin.top - this.margin.bottom;
-    this.treeData = this.props.treeData;
-    this.composition = this.props?.composition;
+    // this._margin = this.props.margin;
+    // this._width = this.props.width - this._margin.left - this._margin.right;
+    // this._height = this.props.height - this._margin.top - this._margin.bottom;
+    this._treeData = this.props.treeData;
+    this._composition = this.props?.composition;
+    this.state = {
+      _width: this.props.width || 800,
+      _height: this.props.height || 600,
+    };
   }
 
   public componentDidMount() {
     const { theme, className, styles } = this.props;
-    this.classNames = getClassNames(styles!, {
+    this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
     });
     this.createTreeChart();
+    const reducedHeight = this._rootElem && this._rootElem.offsetHeight / 5;
+    this.setState({
+      _width: (this._rootElem && this._rootElem!.offsetWidth)!,
+      _height: (this._rootElem && this._rootElem!.offsetHeight - reducedHeight!)!,
+    });
   }
 
   public createTreeChart() {
-    const svg = select(this.svgRef.current);
-    svg.selectAll('*').remove();
-    svg.attr('width', this.width).attr('height', this.height);
+    const svg = select(this._svgRef.current);
+    svg.attr('width', this.state._width).attr('height', this.state._height);
     const styleClassNames = {
-      link: this.classNames.link,
-      rectNode: this.classNames.rectNode,
-      rectText: this.classNames.rectText,
+      link: this._classNames.link,
+      rectNode: this._classNames.rectNode,
+      rectText: this._classNames.rectText,
     };
-    if (this.composition === undefined) {
-      const twoLayerTree = new LayeredTree(this.treeData, this.composition, svg, styleClassNames);
+
+    if (this._composition === undefined) {
+      const twoLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames);
       twoLayerTree.createTree();
     } else {
-      const threeLayerTree = new LayeredTree(this.treeData, this.composition, svg, styleClassNames);
+      const threeLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames);
       threeLayerTree.createTree();
     }
   }
 
   public render(): JSX.Element {
     return (
-      <div className="svgTreeDiv">
-        <svg ref={this.svgRef} className="svgTree" />
+      <div className="svgTreeDiv" ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
+        <svg ref={this._svgRef} className="svgTree" />
       </div>
     );
   }
