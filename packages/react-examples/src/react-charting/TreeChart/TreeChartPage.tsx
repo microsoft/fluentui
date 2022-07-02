@@ -37,7 +37,7 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/Tree/TreeChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/TreeChart/TreeChart.types.ts'),
             ]}
           />
         }
