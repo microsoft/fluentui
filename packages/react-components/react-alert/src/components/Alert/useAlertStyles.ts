@@ -8,6 +8,7 @@ export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
   icon: 'fui-Alert__icon',
   action: 'fui-Alert__action',
+  avatar: 'fui-Alert__avatar',
 };
 
 const useStyles = makeStyles({
@@ -27,6 +28,9 @@ const useStyles = makeStyles({
     height: '16px',
     fontSize: '16px',
     ...shorthands.padding('0', '8px', '0', '0'),
+  },
+  avatar: {
+    ...shorthands.margin('0', '8px', '0', '0'),
   },
   action: {
     ...shorthands.padding('0'),
@@ -67,6 +71,10 @@ export const useAlertStyles_unstable = (state: AlertState): AlertState => {
       state.intent && intentIconStyles[state.intent],
       state.icon.className,
     );
+  }
+
+  if (state.avatar) {
+    state.avatar.className = mergeClasses(alertClassNames.avatar, styles.avatar, state.avatar.className);
   }
 
   if (state.action) {

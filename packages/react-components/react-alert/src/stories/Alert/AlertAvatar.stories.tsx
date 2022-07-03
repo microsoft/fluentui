@@ -1,34 +1,34 @@
 import * as React from 'react';
 import { DismissCircleRegular } from '@fluentui/react-icons';
 
-import { Alert } from '@fluentui/react-alert';
+import { Alert } from '../../index';
 
-export const Action = () => (
+export const Avatar = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     <Alert
-      intent="success"
       action={{
         children: 'Undo',
       }}
+      avatar={{ name: 'Jane Doe', size: 24, color: 'dark-red' }}
     >
-      Message sent
+      sent you a message
     </Alert>
     <Alert
-      intent="error"
       action={{
         icon: <DismissCircleRegular />,
       }}
+      avatar={{ name: 'John Smith', size: 24, color: 'dark-green' }}
     >
-      Save failed
+      mentioned you
     </Alert>
   </div>
 );
 
-Action.storyName = 'Action';
-Action.parameters = {
+Avatar.storyName = 'Avatar';
+Avatar.parameters = {
   docs: {
     description: {
-      story: 'An alert can have an action button to prompt the user to act on it.',
+      story: 'An alert can render a given Avatar instead of an icon.',
     },
   },
 };

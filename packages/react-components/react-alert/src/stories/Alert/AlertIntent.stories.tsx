@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { Alert } from '@fluentui/react-alert';
 
 export const Intent = () => (
@@ -7,7 +6,6 @@ export const Intent = () => (
     <Alert
       intent="success"
       action={{
-        appearance: 'transparent',
         children: 'Undo',
       }}
     >
@@ -16,7 +14,6 @@ export const Intent = () => (
     <Alert
       intent="error"
       action={{
-        appearance: 'transparent',
         children: 'Retry',
       }}
     >
@@ -25,7 +22,6 @@ export const Intent = () => (
     <Alert
       intent="warning"
       action={{
-        appearance: 'transparent',
         children: 'Review',
       }}
     >
@@ -34,7 +30,6 @@ export const Intent = () => (
     <Alert
       intent="info"
       action={{
-        appearance: 'transparent',
         children: 'Dismiss',
       }}
     >
