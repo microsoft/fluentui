@@ -359,7 +359,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
     ];
     return (
       <>
-        <label htmlFor="ChangeWidth_Custom">change Width:</label>
+        <label htmlFor="ChangeWidth_Custom">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -369,7 +369,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="ChangeHeight_Custom">change Height:</label>
+        <label htmlFor="ChangeHeight_Custom">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

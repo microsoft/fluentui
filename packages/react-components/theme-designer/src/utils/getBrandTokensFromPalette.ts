@@ -1,5 +1,5 @@
 import { BrandVariants } from '@fluentui/react-theme';
-import { Palette, PaletteConfig, hexColorsFromPalette, hex_to_LCH } from '@fluent-blocks/colors';
+import { Palette, hexColorsFromPalette, hex_to_LCH } from '@fluent-blocks/colors';
 
 type Options = {
   darkCp?: number;
@@ -30,18 +30,7 @@ export function getBrandTokensFromPalette(keyColor: string, options: Options = {
     lightCp: lightCp,
     hueTorsion: hueTorsion,
   };
-  const defaultPaletteConfig: PaletteConfig = {
-    // The nShades and range values are based on a brand color audit
-    nShades: 16,
-    range: [1.42, 83.57],
-    linearity: 0.77,
-  };
-  const hexColors = hexColorsFromPalette(
-    brandPalette,
-    defaultPaletteConfig.nShades,
-    defaultPaletteConfig.range,
-    defaultPaletteConfig.linearity,
-  );
+  const hexColors = hexColorsFromPalette(brandPalette, 16, [0, 100], 1);
   return hexColors.reduce((acc: Record<string, string>, hexColor, h) => {
     acc[`${(h + 1) * 10}`] = hexColor;
     return acc;

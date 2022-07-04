@@ -16,16 +16,22 @@ export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | '
 // @public (undocumented)
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "createArrowHeightStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function createArrowHeightStyles(arrowHeight: number): {
     width: string;
     height: string;
 };
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "createArrowStyles" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function createArrowStyles(options: CreateArrowStylesOptions): GriffelStyle;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "CreateArrowStylesOptions" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
     borderWidth?: GriffelStyle['borderBottomWidth'];
@@ -36,7 +42,9 @@ export type CreateArrowStylesOptions = {
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "mergeArrowOffset" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
 
 // @public (undocumented)
@@ -101,14 +109,18 @@ export type PositioningVirtualElement = {
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "usePositioning" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function usePositioning(options?: UsePopperOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;
 };
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "usePositioningMouseTarget" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const usePositioningMouseTarget: (initialState?: PositioningVirtualElement | (() => PositioningVirtualElement) | undefined) => readonly [PositioningVirtualElement | undefined, (event: React_2.MouseEvent | MouseEvent | undefined | null) => void];
 
 // (No @packageDocumentation comment for this package)

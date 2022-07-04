@@ -354,5 +354,29 @@ describe('Popover', () => {
           });
         });
     });
+
+    describe('legacy focus trap behaviour', () => {
+      it('Tab should not go to the window', () => {
+        mount(
+          <Popover trapFocus legacyTrapFocus>
+            <PopoverTrigger>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <button>One</button>
+              <button>Two</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get(popoverTriggerSelector).focus().realPress('Enter');
+
+        cy.contains('One').should('have.focus').realPress('Tab');
+        cy.contains('Two').should('have.focus').realPress('Tab');
+        cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
+        cy.contains('Two').should('have.focus');
+      });
+    });
   });
 });

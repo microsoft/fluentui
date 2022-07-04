@@ -12,7 +12,7 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
+    "start": "yarn storybook:docs",
     "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
     "storybook:docs": "yarn storybook --docs"
   },
@@ -21,13 +21,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.72.2",
+    "@fluentui/react": "^8.77.3",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/storybook": "^1.0.0",
-    "@fluentui/react-components": "^9.0.0-rc.14",
-    "@fluentui/react-storybook-addon": "9.0.0-rc.1",
-    "@fluentui/react-theme": "9.0.0-rc.9",
-    "@griffel/react": "1.1.0",
+    "@fluentui/react-components": "^9.0.1",
+    "@fluentui/react-storybook-addon": "^9.0.0-rc.1",
+    "@fluentui/react-theme": "^9.0.0",
+    "@griffel/react": "^1.2.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "tslib": "^2.1.0"

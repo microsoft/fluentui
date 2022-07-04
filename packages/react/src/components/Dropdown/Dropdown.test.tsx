@@ -30,6 +30,8 @@ const RENDER_OPTIONS: IDropdownOption[] = [
 describe('Dropdown', () => {
   beforeEach(() => {
     resetIds();
+    const win = window as any;
+    Object.defineProperty(win.HTMLHtmlElement.prototype, 'clientWidth', { configurable: true, value: 1024 });
   });
 
   afterEach(() => {

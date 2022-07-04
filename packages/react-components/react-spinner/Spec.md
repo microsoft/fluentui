@@ -68,8 +68,6 @@ The Spinner is represented as a circle with an arc of a darker shade rotating th
 
 ## API
 
-From [Spinner.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-spinner/src/components/Spinner/Spinner.types.ts)
-
 ### Slots
 
 - `root` - The root element of the Spinner. The html element is a `span`
@@ -78,18 +76,7 @@ From [Spinner.types.tsx](https://github.com/microsoft/fluentui/blob/master/packa
 
 ### Props
 
-```jsx
-export type SpinnerProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
-    /* The appearance of the Spinner*/
-    appearance?: 'primary' | 'inverted',
-    /* The labelPosition prop allows user to set the location of the label*/
-    labelPosition?: 'above' | 'below' | 'before' | 'after',
-    /* The size prop sets the size of the Spinner
-     * @defaultValue "medium"*/
-    size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge',
-  };
-```
+See API at [Spinner.types.tsx](./src/components/Spinner/Spinner.types.ts).
 
 ## Structure
 
@@ -109,7 +96,7 @@ export type SpinnerProps = ComponentProps &
 
 ## Migration
 
-See [MIGRATION.md]().
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 

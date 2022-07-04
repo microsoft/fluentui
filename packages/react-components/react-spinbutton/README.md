@@ -4,7 +4,7 @@
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
-SpinButtons are used to allow numeric input bounded between minimum and maximum values with button controls to increment and decrement the input value by some step amount. Values can also be manipulated via the keyboard.
+SpinButtons are used to allow numeric input bounded between minimum and maximum values with buttons to increment and decrement the input value. Values can also be manipulated via the keyboard.
 
 ### Usage
 

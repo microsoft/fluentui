@@ -4,7 +4,7 @@ export { DATA_OVERFLOWING, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './cons
 export type { UseOverflowContainerReturn } from './types';
 export { useIsOverflowGroupVisible } from './useIsOverflowGroupVisible';
 export { useIsOverflowItemVisible } from './useIsOverflowItemVisible';
-export { updateVisibilityAttribute, useOverflowContainer } from './useOverflowContainer';
+export { useOverflowContainer } from './useOverflowContainer';
 export { useOverflowCount } from './useOverflowCount';
 export { useOverflowItem } from './useOverflowItem';
 export { useOverflowMenu } from './useOverflowMenu';
