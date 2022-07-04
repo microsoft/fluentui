@@ -22,7 +22,7 @@ export interface ITreeState {
 }
 
 export interface ITreeDataStructure {
-  id: string;
+  id: number;
   children: unknown;
   dataName: string;
   subName: string;

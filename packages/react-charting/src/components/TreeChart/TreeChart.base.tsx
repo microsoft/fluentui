@@ -33,6 +33,7 @@ class StandardTree {
     rectangleWidth: number,
     rectangleHeight: number,
     svg: Selection<SVGGElement | null, unknown, null, undefined>,
+    tabIndex: number,
   ) {
     svg
       .append('rect')
@@ -40,6 +41,8 @@ class StandardTree {
       .attr('height', rectangleHeight)
       .attr('x', xCoordinate)
       .attr('y', yCoordinate)
+      .attr('tabindex', 0)
+      .attr('aria-label', name)
       .attr('class', this.styleClassNames.rectNode)
       .attr('rx', '1')
       .style('stroke', fillColor);
@@ -143,7 +146,7 @@ class LayeredTree extends StandardTree {
       // eslint-disable-next-line dot-notation
       d['id'] = TreeID;
       treeDataStructure.push({
-        id: `${TreeID}`,
+        id: TreeID,
         children: d.children,
         dataName: `${d.data.name}`,
         subName: `${d.data.subname}`,
@@ -172,7 +175,7 @@ class LayeredTree extends StandardTree {
         const children: any = treeDataStructure[d.parentID]?.children;
         // if the parent has 1 child
         if (children.length === 1) {
-          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode);
+          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode, d.id);
         }
 
         // if the parent has more than 2 child
@@ -194,6 +197,7 @@ class LayeredTree extends StandardTree {
                 newWidth,
                 newHeight,
                 svgNode,
+                child.id,
               );
               if (itr % 2 === 1) {
                 dy += newHeight + gap / 2;
@@ -210,6 +214,7 @@ class LayeredTree extends StandardTree {
                 rectWidth,
                 newHeight,
                 svgNode,
+                child.id,
               );
               dy += newHeight + gap / 2;
             }
@@ -218,7 +223,7 @@ class LayeredTree extends StandardTree {
       }
 
       if (d.children || treeHeight <= 2) {
-        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode);
+        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode, d.id);
       }
     }
 
