@@ -29,6 +29,7 @@ import { CardFooterSlots } from '@fluentui/react-card';
 import { CardFooterState } from '@fluentui/react-card';
 import { CardHeader } from '@fluentui/react-card';
 import { cardHeaderClassNames } from '@fluentui/react-card';
+import { cardHeaderCSSVars } from '@fluentui/react-card';
 import { CardHeaderProps } from '@fluentui/react-card';
 import { CardHeaderSlots } from '@fluentui/react-card';
 import { CardHeaderState } from '@fluentui/react-card';
@@ -207,6 +208,8 @@ export { CardFooterState }
 export { CardHeader }
 
 export { cardHeaderClassNames }
+
+export { cardHeaderCSSVars }
 
 export { CardHeaderProps }
 
