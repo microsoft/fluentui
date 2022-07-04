@@ -100,13 +100,7 @@ export class TreeChartThreeLayerCompactExample extends React.Component<{}, ITree
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart
-          treeData={threeLayerChart}
-          composition={0}
-          width={1000}
-          height={700}
-          margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
-        ></TreeChart>
+        <TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700}></TreeChart>
       </>
     );
   }

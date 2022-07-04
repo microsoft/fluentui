@@ -15,6 +15,7 @@ import {
 } from '../../index';
 
 const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
+
 // Create a parent class for common tree components
 class StandardTree {
   public treeData: ITreeChartDataPoint;
@@ -43,22 +44,20 @@ class StandardTree {
       .attr('rx', '1')
       .style('stroke', fillColor);
 
+    // Text position y = y + rectHeight/2.5, 2.5 is ratio for depth
+    // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
     svg
       .append('text')
       .attr('class', this.styleClassNames.rectText)
-      // Text position y = y + rectHeight/2.5, 2.5 is ratio for depth
       .attr('dy', yCoordinate + rectangleHeight / 2.5)
-      // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
-      .attr('x', () => {
-        return xCoordinate + rectangleWidth / 3.5;
-      })
+      .attr('x', xCoordinate + rectangleWidth / 3.5)
       .text(() => {
         return name;
       })
+      // Sub-text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .append('tspan')
       .attr('class', 'rectSubText')
       .attr('dy', '1.4em')
-      // Sub-text position x = x + rectWidth/3.5, 3.5 is ratio for length
       .attr('x', () => {
         return xCoordinate + rectangleWidth / 3.5;
       })
@@ -67,7 +66,7 @@ class StandardTree {
       });
   }
 
-  // Creates a rectangular path from parent to the child nodes
+  // Create a rectangular path from parent to the child nodes
 
   public addLinktoNodes(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -78,8 +77,7 @@ class StandardTree {
     rectWidth: number,
     rectHeight: number,
     gap: number,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ): any {
+  ): string {
     // gap adds ratio for parent.y to child.y
     const path = `M${child.x + rectWidth / 2},${child.y - gap} H${parent.x + rectWidth / 2} V${
       parent.y + rectHeight + gap / 2
@@ -238,7 +236,7 @@ class LayeredTree extends StandardTree {
 
     const linkParentSet = new Set();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    linkUpdate.attr('d', (d: any) => {
+    linkUpdate.attr('d', (d: any): any => {
       if (treeHeight === 3) {
         // leaf nodes with more than 2 sibling nodes
         if (!d.children && !linkParentSet.has(d?.parent.id)) {
@@ -264,38 +262,26 @@ class LayeredTree extends StandardTree {
 }
 
 export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
+  private _treeData: ITreeChartDataPoint;
   private _svgRef = createRef<SVGSVGElement>();
-  // private _margin: { left: number; right: number; top: number; bottom: number };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _treeData: any;
-  // private _width: number;
-  // private _height: number;
+  private _width: number | undefined;
+  private _height: number | undefined;
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _rootElem: HTMLElement | null;
-
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ITreeProps>,
-    prevState: Readonly<ITreeState>,
-  ): Partial<ITreeState> | null {
-    if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
-      const reducedHeight = nextProps.height / 5;
-      return { _width: nextProps.width, _height: nextProps.height - reducedHeight };
-    }
-    return null;
-  }
+  private _margin: { left: number; right: number; top: number; bottom: number };
 
   constructor(props: ITreeProps) {
     super(props);
-    // this._margin = this.props.margin;
-    // this._width = this.props.width - this._margin.left - this._margin.right;
-    // this._height = this.props.height - this._margin.top - this._margin.bottom;
+    this._margin = { top: 30, right: 20, bottom: 30, left: 50 };
+    this._width = this.props.width;
+    this._height = this.props.height;
     this._treeData = this.props.treeData;
     this._composition = this.props?.composition;
+
     this.state = {
-      _width: this.props.width || 800,
-      _height: this.props.height || 600,
+      _width: this._width || 900,
+      _height: this._height || 700,
     };
   }
 
@@ -315,7 +301,10 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
 
   public createTreeChart() {
     const svg = select(this._svgRef.current);
-    svg.attr('width', this.state._width).attr('height', this.state._height);
+
+    svg
+      .attr('width', this.state._width - this._margin.left - this._margin.right)
+      .attr('height', this.state._height - this._margin.top - this._margin.bottom);
     const styleClassNames = {
       link: this._classNames.link,
       rectNode: this._classNames.rectNode,

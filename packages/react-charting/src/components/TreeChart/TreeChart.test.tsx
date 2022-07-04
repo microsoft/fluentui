@@ -2,9 +2,9 @@ jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-
 import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
 import { TreeChartBase } from './TreeChart.base';
+import { resetIds } from '@fluentui/react/lib/Utilities';
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -62,85 +62,92 @@ const threeLayerChart: ITreeChartDataPoint = {
   ],
 };
 
-// Wrapper of the DonutChart to be tested.
+// Wrapper of the TreeChart to be tested.
 let wrapper: ReactWrapper<ITreeProps, TreeChartBase> | undefined;
 
-// function sharedBeforeEach() {
-//   resetIds();
-// }
+function sharedBeforeEach() {
+  resetIds();
+}
 
-// function sharedAfterEach() {
-//   if (wrapper) {
-//     wrapper.unmount();
-//     wrapper = undefined;
-//   }
+function sharedAfterEach() {
+  if (wrapper) {
+    wrapper.unmount();
+    wrapper = undefined;
+  }
 
-//   // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
-//   // cleaned up in fake timers world
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   if ((global.setTimeout as any).mock) {
-//     jest.useRealTimers();
-//   }
-// }
+  // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
+  // cleaned up in fake timers world
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((global.setTimeout as any).mock) {
+    jest.useRealTimers();
+  }
+}
 
 describe('TreeChart snapshot testing', () => {
   it('renders treechart two layer correctly', () => {
-    const component = renderer.create(
-      <TreeChart
-        treeData={twoLayerChart}
-        width={1000}
-        height={700}
-        margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
-      />,
-    );
+    const component = renderer.create(<TreeChart treeData={twoLayerChart} width={1000} height={700} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders treechart three layer long composition correctly', () => {
     const component = renderer.create(
-      <TreeChart
-        treeData={threeLayerChart}
-        composition={1}
-        width={1000}
-        height={700}
-        margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
-      />,
+      <TreeChart treeData={threeLayerChart} composition={1} width={1000} height={700} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders treechart three layer compact composition correctly', () => {
     const component = renderer.create(
-      <TreeChart
-        treeData={threeLayerChart}
-        composition={0}
-        width={1000}
-        height={700}
-        margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
-      />,
+      <TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700} />,
     );
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const tree: any = component.toJSON();
-    // console.log(tree.props);
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('Should mount component ', () => {
-    wrapper = mount(
-      <TreeChart
-        treeData={threeLayerChart}
-        composition={0}
-        width={1000}
-        height={700}
-        margin={{ top: 30, right: 20, bottom: 30, left: 50 }}
-      />,
-    );
-    const svgObject = wrapper.getDOMNode().querySelector('[class="svgTree"]');
-    console.log(svgObject?.innerHTML);
+});
+
+describe('TreeChart - basic props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('svgNode innerHTML should not be null ', () => {
+    wrapper = mount(<TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700} />);
+    const svgObject = wrapper.getDOMNode().querySelector('[class="svgNode"]');
+    expect(svgObject?.innerHTML).toBeDefined();
+  });
+
+  it('svgLink innerHTML should not be null ', () => {
+    wrapper = mount(<TreeChart treeData={twoLayerChart} width={1000} height={700} />);
+    const svgObject = wrapper.getDOMNode().querySelector('[class^="svgLink"]');
     expect(svgObject?.innerHTML).toBeDefined();
   });
 });
 
-// describe('Tree Chart - basic props', () => {
-//   // beforeEach(sharedBeforeEach);
-//   // afterEach(sharedAfterEach);
-// });
+describe('Render calling with respective to props', () => {
+  it('No prop changes', () => {
+    const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
+    const props = {
+      treeData: twoLayerChart,
+      width: 1000,
+      height: 700,
+      margin: { top: 30, right: 20, bottom: 30, left: 50 },
+    };
+
+    const component = mount(<TreeChart {...props} />);
+    component.setProps({ ...props });
+    expect(renderMock).toHaveBeenCalledTimes(3);
+    renderMock.mockRestore();
+  });
+  it('prop changes', () => {
+    const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
+    const props = {
+      treeData: threeLayerChart,
+      composition: 0,
+      height: 700,
+      margin: { top: 30, right: 20, bottom: 30, left: 50 },
+    };
+
+    const component = mount(<TreeChart {...props} />);
+    component.setProps({ ...props, width: 800 });
+    expect(renderMock).toHaveBeenCalledTimes(3);
+    renderMock.mockRestore();
+  });
+});

@@ -10,9 +10,8 @@ export interface ITreeChartDataPoint {
 export interface ITreeProps {
   treeData: ITreeChartDataPoint;
   composition?: number | undefined;
-  width: number;
-  height: number;
-  margin: { left: number; right: number; top: number; bottom: number };
+  width?: number;
+  height?: number;
   styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
   className?: string;
   theme?: ITheme;
