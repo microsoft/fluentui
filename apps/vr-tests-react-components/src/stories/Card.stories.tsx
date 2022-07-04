@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
-import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { MoreHorizontal24Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body1, Caption1 } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { action } from '@storybook/addon-actions';
@@ -15,7 +15,7 @@ const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 const SampleCardContent = () => (
   <>
     <CardHeader
-      image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+      image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
       header={
         <Body1>
           <b>App Name</b>
@@ -50,7 +50,7 @@ storiesOf('Card Converged', module)
           <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
         </CardPreview>
         <CardHeader
-          image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+          image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
           header={
             <Body1>
               <b>Sales analysis 2019 presentation</b>
@@ -125,6 +125,70 @@ storiesOf('Card Converged', module)
         </Card>
       </div>
     </div>
+  ))
+  .addStory('CardHeader', () => (
+    <Card>
+      <CardHeader
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        description={<Caption1>Developer</Caption1>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      />
+      <CardHeader
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        description={<Caption1>Developer</Caption1>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      />
+      <CardHeader
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      />
+      <CardHeader
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        description={<Caption1>Developer</Caption1>}
+      />
+      <CardHeader
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        action={<Button appearance="transparent" icon={<MoreHorizontal24Filled />} />}
+      />
+      <CardHeader
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+      />
+      <CardHeader
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+      />
+    </Card>
   ));
 
 storiesOf('Card Converged', module)

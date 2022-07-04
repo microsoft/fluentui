@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.16)
+
+Tue, 28 Jun 2022 17:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.15..@fluentui/react-spinbutton_v9.0.0-beta.16)
+
+### Changes
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-input to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-label to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.15)
+
+Tue, 28 Jun 2022 15:14:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.14..@fluentui/react-spinbutton_v9.0.0-beta.15)
+
+### Changes
+
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- fix: Making increment and decrement buttons of SpinButton have 'type=button' instead of 'type=submit'. ([PR #23710](https://github.com/microsoft/fluentui/pull/23710) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-input to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-label to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
 
 ## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.14)
 

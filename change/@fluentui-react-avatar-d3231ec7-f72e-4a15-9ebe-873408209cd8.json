@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Added warning for AvatarGroup to check if children are of type AvatarGroupItem and for AvatarGroupItem to check if it's being used inside an AvatarGroup.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

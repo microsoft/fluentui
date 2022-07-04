@@ -1657,10 +1657,10 @@
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.172-rc.8.tgz#5daa62d1b11df87cdf26cbfd5e3aa7328e367e74"
   integrity sha512-vXhOcnlsYA/XgiaiPo4Cyp5GeI+CZE2zRVBNLkygemrafKnboLwUh9dLb/qC4YLsQ4DTaYPrvFq4cKujXBhl4w==
 
-"@griffel/babel-preset@1.3.2", "@griffel/babel-preset@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.3.2.tgz#1c5da002ff0228e74e7ae21fa99dfef5aed8bc93"
-  integrity sha512-/Da1atik/snorWTcjR2fchBmmhyzVEeonxeaL6ndM3CG3/YPs64lrnYkXOzP7NS+s4rGP22HR5+coOfZKnbboQ==
+"@griffel/babel-preset@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.3.3.tgz#0002040fef02369fc5aec9d4670f9aca3288c3b3"
+  integrity sha512-TejpfwGg8x2N/sHhee2uf+F9Q9f1dUTlOOypCKEHylB/QjZcBNrt+bvHw5Eaf46zTdpjMrqDTFjvC5VGiVKYOw==
   dependencies:
     "@babel/core" "^7.12.13"
     "@babel/generator" "^7.12.13"
@@ -1672,10 +1672,10 @@
     ajv "^8.4.0"
     tslib "^2.1.0"
 
-"@griffel/core@1.4.0", "@griffel/core@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.4.0.tgz#09f772cfe4c8dfbedd81a7b6a4ebed27bd2d3770"
-  integrity sha512-FxgUJYaL2KZkgpr1uDdgt5hSmgPrhwOYrrnnF8CM5JOWS4wLN/ajwxi38InKy4iCRO9l3iHIjGOes2Jm+OpRIQ==
+"@griffel/core@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.4.1.tgz#5ae960efd71897bfdb748ec4551da99d1eb8652c"
+  integrity sha512-PSVZiRJYIvKCt5V5PqkMuOEGyvq/L/lSArEmVVz9h8jkX0Zf7SRpjCDluHd43mRQZ6wFzYeK4aKa6DwIxomZIA==
   dependencies:
     "@emotion/hash" "^0.8.0"
     csstype "^3.0.10"
@@ -1691,28 +1691,28 @@
     "@typescript-eslint/utils" "^5.20.0"
     csstype "^3.0.10"
 
-"@griffel/jest-serializer@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.0.5.tgz#881df460bb73033c23d424daba282a34d2ebd0dc"
-  integrity sha512-Vv0rNWLWhYjVzzN4diikOIvGVEp55kheCHyyyLuiBPQusjfEK/KFknTf0V6yDCaMTmv1SpVw7DCurzCmu4ivBg==
+"@griffel/jest-serializer@^1.0.5":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.0.7.tgz#020c82e89114e01b2490a78d48f0ace7bc2769e5"
+  integrity sha512-tdej68yWhrJ0n7IRMTe1hBvh4mMBP0WjgD6inhZfPj3uUtu8yNAp4LlMZkuALENM4uygEESFx0UYlJZUUgthUg==
   dependencies:
     tslib "^2.1.0"
 
-"@griffel/react@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.2.0.tgz#8d9f1b6bb7b3f5b2de56cb3ebaef318418ecfba0"
-  integrity sha512-1J8Wz84LQgl8sjEiO+D1PgvHbkyC9d9RwVtsEPI2VyxN2VVgu03bKy5G3CQ9JdqQpgwG1BVGJkfhpFemIANIwg==
+"@griffel/react@^1.2.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.2.1.tgz#8150d6582dafad14815a3d7831839d98bf30c85e"
+  integrity sha512-A5fFXl9GvwEETCrT2hapTaoRAmY8JzZXpO6WnfCPHat6R74GP9i3PyJft6OT+XGEi+/vW/Owyp2IpX+PKiY7CQ==
   dependencies:
-    "@griffel/core" "^1.4.0"
+    "@griffel/core" "^1.4.1"
     tslib "^2.1.0"
 
-"@griffel/webpack-loader@2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.0.7.tgz#fd771748dd06d751242978fba97d9ffbd4a5b5b9"
-  integrity sha512-0YUscdvF/RPxwsoR18lU6iNQ+wwyxOiTyMXMcWdblIkDe4pixjZg+8MQzegphH0xK9mAsvjLT6cORTr72wMvAg==
+"@griffel/webpack-loader@^2.0.7":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.0.8.tgz#5ca6ffc8714bab89babd9374e0c1e4f8796a97c0"
+  integrity sha512-i0GJcykzxhbex5bd1dNErsNOdjBG1S18ocfYajOQbNM/gFxrd2htrff4TI0lGMVfGWdIQ5YRblBtjp2AyLq6Vg==
   dependencies:
     "@babel/core" "^7.12.13"
-    "@griffel/babel-preset" "^1.3.2"
+    "@griffel/babel-preset" "^1.3.3"
     enhanced-resolve "^5.8.2"
     loader-utils "^2.0.0"
     schema-utils "^3.1.1"

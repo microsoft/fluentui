@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "export change data type from select",
-  "packageName": "@fluentui/react-select",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

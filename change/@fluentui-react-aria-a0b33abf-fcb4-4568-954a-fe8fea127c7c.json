@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Update Aria storybook config to index.stories.tsx entrypoint.",
-  "packageName": "@fluentui/react-aria",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

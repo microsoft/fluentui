@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixing mention of SpinButton in README.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

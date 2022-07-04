@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding AvatarGroupItem implementation and AvatarGroup context.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

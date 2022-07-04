@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix:Make AvatarGroup's pie layout dividers white for HCM.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "none"
-}

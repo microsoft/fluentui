@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Move role attribute to root slot and update Spinner documentation",
-  "packageName": "@fluentui/react-spinner",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: update to create new stacking context",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

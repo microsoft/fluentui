@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Making thumb be vertically centered in Switch.",
-  "packageName": "@fluentui/react-switch",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

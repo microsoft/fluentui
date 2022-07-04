@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Using ::before and ::after instead of :before and :after.",
-  "packageName": "@fluentui/react-divider",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
