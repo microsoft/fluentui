@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { DismissCircleRegular } from '@fluentui/react-icons';
 
 import { Alert } from '@fluentui/react-alert';
@@ -9,7 +8,6 @@ export const Action = () => (
     <Alert
       intent="success"
       action={{
-        appearance: 'transparent',
         children: 'Undo',
       }}
     >
@@ -18,7 +16,6 @@ export const Action = () => (
     <Alert
       intent="error"
       action={{
-        appearance: 'transparent',
         icon: <DismissCircleRegular />,
       }}
     >

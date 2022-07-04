@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Convert switch to index based stories",
-  "packageName": "@fluentui/react-switch",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

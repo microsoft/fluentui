@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: beta release",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

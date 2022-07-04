@@ -1406,7 +1406,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 role="none"
               >
                 <button
-                  aria-label="Debit card numbers (EU and USA)"
+                  aria-label="Debit card numbers (EU and USA) selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1424,6 +1424,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1495,7 +1496,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 role="none"
               >
                 <button
-                  aria-label="Passport numbers (USA)"
+                  aria-label="Passport numbers (USA) selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1513,6 +1514,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update tooltip to index based stories",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

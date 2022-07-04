@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Change story entry point to index.stories.tsx",
-  "packageName": "@fluentui/react-badge",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

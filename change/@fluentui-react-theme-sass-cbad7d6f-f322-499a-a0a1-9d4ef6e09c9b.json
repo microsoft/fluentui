@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(react-theme-sass): Remove color palette tokens which are no longer present in react-theme",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

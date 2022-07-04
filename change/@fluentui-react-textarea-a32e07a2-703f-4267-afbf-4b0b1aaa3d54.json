@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Griffel dependencies",
-  "packageName": "@fluentui/react-textarea",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

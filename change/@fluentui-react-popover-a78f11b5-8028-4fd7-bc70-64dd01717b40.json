@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Add arrow padding to Popover arrrow",
-  "packageName": "@fluentui/react-popover",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

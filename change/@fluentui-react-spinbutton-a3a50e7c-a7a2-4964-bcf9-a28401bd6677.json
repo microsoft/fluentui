@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: convert SpinButton to index based stories approach",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}
