@@ -19,13 +19,8 @@ export interface IDetailsListBasicExampleItem {
   value: number;
 }
 
-export interface IDetailsListBasicExampleState {
-  items: IDetailsListBasicExampleItem[];
-  selectionDetails: string;
-}
-
 // Populate with items for demos.
-const allItems: any[] = [];
+const allItems: IDetailsListBasicExampleItem[] = [];
 
 for (let i = 0; i < 200; i++) {
   allItems.push({
@@ -41,51 +36,43 @@ const columns: IColumn[] = [
 ];
 
 export const DetailsListBasicExample = () => {
-  const [state, setState] = React.useState<any>({
-    items: allItems,
-    selectionDetails: getSelectionDetails(),
-  });
+  const [items, setItems] = React.useState<IDetailsListBasicExampleItem[]>(allItems);
+  const [selectionDetails, setSelectionDetails] = React.useState<string>('');
 
-  const selection = new Selection({
-    onSelectionChanged: () => setState({ selectionDetails: getSelectionDetails() }),
-  });
+  const selection = React.useMemo(
+    () =>
+      new Selection({
+        onSelectionChanged: () => setSelectionDetails(getSelectionDetails(selection)),
+      }),
+    [],
+  );
 
-  function onFilter(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void {
-    setState({
-      items: text ? allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : allItems,
-    });
-  }
+  const onFilter = React.useCallback(
+    (_ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+      setItems(text ? allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : allItems);
+    },
+    [],
+  );
 
-  function onItemInvoked(item: IDetailsListBasicExampleItem): void {
+  const onItemInvoked = React.useCallback((item: IDetailsListBasicExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  }
-
-  function getSelectionDetails(): string {
-    const selectionCount = selection?.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
+  }, []);
 
   return (
     <div>
-      <div className={exampleChildClass}>{state.selectionDetails}</div>
+      <div className={exampleChildClass}>{selectionDetails}</div>
       <Text>
         Note: While focusing a row, pressing enter or double clicking will execute onItemInvoked, which in this example
         will show an alert.
       </Text>
-      <Announced message={state.selectionDetails} />
+
+      <Announced message={selectionDetails} />
       <TextField className={exampleChildClass} label="Filter by name:" onChange={onFilter} styles={textFieldStyles} />
-      <Announced message={`Number of items after filter applied: ${state.items.length}.`} />
+      <Announced message={`Number of items after filter applied: ${items.length}.`} />
+
       <MarqueeSelection selection={selection}>
         <DetailsList
-          items={state.items}
+          items={items}
           columns={columns}
           setKey="set"
           layoutMode={DetailsListLayoutMode.justified}
@@ -100,3 +87,16 @@ export const DetailsListBasicExample = () => {
     </div>
   );
 };
+
+function getSelectionDetails(selection: any): string {
+  const selectionCount = selection?.getSelectedCount();
+
+  switch (selectionCount) {
+    case 0:
+      return 'No items selected';
+    case 1:
+      return '1 item selected: ' + (selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
+    default:
+      return `${selectionCount} items selected`;
+  }
+}
