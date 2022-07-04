@@ -13,15 +13,23 @@ export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   action: 'fui-CardHeader__action',
 };
 
+/**
+ * CSS variable names used internally for uniform styling in CardHeader.
+ */
+export const cardHeaderCSSVars = {
+  cardHeaderGapVar: '--fui-CardHeader--gap',
+};
+
 const useStyles = makeStyles({
   root: {
+    [cardHeaderCSSVars.cardHeaderGapVar]: '12px',
     display: 'grid',
     gridAutoColumns: 'min-content 1fr min-content',
     gridAutoRows: '1fr min-content',
     alignItems: 'center',
   },
   image: {
-    marginRight: '12px',
+    marginRight: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
     gridColumnStart: '1',
     gridRowStart: 'span 2',
   },
@@ -34,7 +42,7 @@ const useStyles = makeStyles({
     gridRowStart: '2',
   },
   action: {
-    marginLeft: '12px',
+    marginLeft: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
     gridColumnStart: '3',
     gridRowStart: 'span 2',
   },

@@ -17,6 +17,7 @@ export {
   cardCSSVars,
   cardFooterClassNames,
   cardHeaderClassNames,
+  cardHeaderCSSVars,
   cardPreviewClassNames,
   renderCard_unstable,
   renderCardFooter_unstable,
