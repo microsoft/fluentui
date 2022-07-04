@@ -287,10 +287,12 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
 
   public componentDidMount() {
     const { theme, className, styles } = this.props;
+    // Get classNames to create component styling
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
     });
+    // Call createTreeChart function in componentDidMount
     this.createTreeChart();
     const reducedHeight = this._rootElem && this._rootElem.offsetHeight / 5;
     this.setState({
@@ -302,15 +304,19 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   public createTreeChart() {
     const svg = select(this._svgRef.current);
 
+    // Set SVG width and height
     svg
       .attr('width', this.state._width - this._margin.left - this._margin.right)
       .attr('height', this.state._height - this._margin.top - this._margin.bottom);
+
+    // Create styleClass object to access it in parent class
     const styleClassNames = {
       link: this._classNames.link,
       rectNode: this._classNames.rectNode,
       rectText: this._classNames.rectText,
     };
 
+    // Instantiate inherited class and call createTree function for the object
     if (this._composition === undefined) {
       const twoLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames);
       twoLayerTree.createTree();
