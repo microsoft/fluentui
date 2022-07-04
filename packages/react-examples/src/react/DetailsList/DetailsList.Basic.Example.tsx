@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Announced } from '@fluentui/react/lib/Announced';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from '@fluentui/react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, ISelection, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { Text } from '@fluentui/react/lib/Text';
@@ -13,33 +13,42 @@ const exampleChildClass = mergeStyles({
 
 const textFieldStyles: Partial<ITextFieldStyles> = { root: { maxWidth: '300px' } };
 
-export interface IDetailsListBasicExampleItem {
+interface IDetailsListBasicExampleItem {
   key: number;
   name: string;
   value: number;
 }
 
 // Populate with items for demos.
-const allItems: IDetailsListBasicExampleItem[] = [];
-
-for (let i = 0; i < 200; i++) {
-  allItems.push({
-    key: i,
-    name: 'Item ' + i,
-    value: i,
-  });
-}
+const allItems: IDetailsListBasicExampleItem[] = [...Array(200)].map((_, i) => ({
+  key: i,
+  name: `Item ${i}`,
+  value: i,
+}));
 
 const columns: IColumn[] = [
   { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
   { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
 ];
 
-export const DetailsListBasicExample = () => {
-  const [items, setItems] = React.useState<IDetailsListBasicExampleItem[]>(allItems);
-  const [selectionDetails, setSelectionDetails] = React.useState<string>('');
+const getSelectionDetails = (selection: ISelection): string => {
+  const selectionCount = selection.getSelectedCount();
 
-  const selection = React.useMemo(
+  switch (selectionCount) {
+    case 0:
+      return 'No items selected';
+    case 1:
+      return '1 item selected: ' + (selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
+    default:
+      return `${selectionCount} items selected`;
+  }
+};
+
+export const DetailsListBasicExample = () => {
+  const [items, setItems] = React.useState(allItems);
+  const [selectionDetails, setSelectionDetails] = React.useState('');
+
+  const selection: ISelection = React.useMemo(
     () =>
       new Selection({
         onSelectionChanged: () => setSelectionDetails(getSelectionDetails(selection)),
@@ -87,16 +96,3 @@ export const DetailsListBasicExample = () => {
     </div>
   );
 };
-
-function getSelectionDetails(selection: any): string {
-  const selectionCount = selection?.getSelectedCount();
-
-  switch (selectionCount) {
-    case 0:
-      return 'No items selected';
-    case 1:
-      return '1 item selected: ' + (selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
-    default:
-      return `${selectionCount} items selected`;
-  }
-}
