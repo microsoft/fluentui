@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "add defaultTabbableElement support for Nav",
   "packageName": "@fluentui/react",
   "email": "cqc@cuiqingcai.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "minor"
 }
