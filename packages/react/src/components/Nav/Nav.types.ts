@@ -102,6 +102,13 @@ export interface INavProps {
   initialSelectedKey?: string;
 
   /**
+   * (Optional) Defines the initial tabbable nav item inside the Nav.
+   * If a string is passed then it is treated as a selector for identifying the initial tabbable nav item.
+   * If a function is passed then it uses the root element as a parameter to return the initial tabbable nav item.
+   */
+  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
+
+  /**
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;

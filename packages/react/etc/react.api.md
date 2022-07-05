@@ -6949,6 +6949,7 @@ export interface INavProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<INav>;
+    defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
     // @deprecated
     expandButtonAriaLabel?: string;
     groups: INavLinkGroup[] | null;
