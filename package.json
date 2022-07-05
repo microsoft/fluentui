@@ -309,7 +309,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/*/package.json",
+      "apps/!(react18-test)/package.json",
       "packages/!(web-components)/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
