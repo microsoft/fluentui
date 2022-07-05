@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "add defaultTabbableElement support for Nav",
+  "comment": "add focusZoneProps support for Nav",
   "packageName": "@fluentui/react",
   "email": "cqc@cuiqingcai.com",
   "dependentChangeType": "minor"
