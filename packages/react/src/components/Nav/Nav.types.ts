@@ -3,7 +3,7 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IIconProps } from '../Icon/Icon.types';
 import type { IButtonProps } from '../../Button';
-import { IFocusZoneProps } from '@fluentui/react-focus';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@doccategory Nav}
