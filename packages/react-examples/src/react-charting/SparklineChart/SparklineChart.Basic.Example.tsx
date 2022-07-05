@@ -331,7 +331,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         <div style={{ display: 'inline' }}>
           A sparkline <Sparkline data={sl1} showLegend={true} /> - is a very small line chart, typically drawn without
           axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement,{' '}
-          <Sparkline data={sl2} /> - such as temperature or stock market price, in a simple and highly condensed way.{' '}
+          <Sparkline data={sl2} /> - such as temperature or stock market price, in a simple and highly condensed way.
           <br />
           <br />
           Below table shows sparklines in one of its columns.
