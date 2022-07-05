@@ -93,22 +93,12 @@ import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderSelect_unstable } from '@fluentui/react-select';
-import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
-import { SpinButton } from '@fluentui/react-spinbutton';
-import { SpinButtonBounds } from '@fluentui/react-spinbutton';
-import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
-import { spinButtonClassNames } from '@fluentui/react-spinbutton';
-import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
-import { SpinButtonProps } from '@fluentui/react-spinbutton';
-import { SpinButtonSlots } from '@fluentui/react-spinbutton';
-import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
-import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarButtonState } from '@fluentui/react-toolbar';
@@ -153,8 +143,6 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
-import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
@@ -337,8 +325,6 @@ export { renderOptionGroup_unstable }
 
 export { renderSelect_unstable }
 
-export { renderSpinButton_unstable }
-
 export { renderToolbar_unstable }
 
 export { Select }
@@ -350,24 +336,6 @@ export { SelectProps }
 export { SelectSlots }
 
 export { SelectState }
-
-export { SpinButton }
-
-export { SpinButtonBounds }
-
-export { SpinButtonChangeEvent }
-
-export { spinButtonClassNames }
-
-export { SpinButtonOnChangeData }
-
-export { SpinButtonProps }
-
-export { SpinButtonSlots }
-
-export { SpinButtonSpinState }
-
-export { SpinButtonState }
 
 export { Toolbar }
 
@@ -456,10 +424,6 @@ export { useOverflowMenu }
 export { useSelect_unstable }
 
 export { useSelectStyles_unstable }
-
-export { useSpinButton_unstable }
-
-export { useSpinButtonStyles_unstable }
 
 export { useToolbar_unstable }
 
