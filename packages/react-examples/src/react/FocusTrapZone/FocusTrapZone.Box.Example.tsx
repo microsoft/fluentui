@@ -8,7 +8,7 @@ import { Text } from '@fluentui/react/lib/Text';
 import { TextField, ITextFieldStyles } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggle } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({
@@ -64,7 +64,7 @@ export const FocusTrapZoneBoxExample: React.FunctionComponent = () => {
 };
 
 const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
-  const { onClick } = props;
+  const onClick = useEventCallback(props.onClick);
 
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
 
@@ -79,7 +79,7 @@ const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
         ReactDOM.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>, root);
       }
     }
-  }, []);
+  }, [onClick]);
 
   return <iframe style={{ width: '400px', height: '100px' }} ref={iframeRef} />;
 };

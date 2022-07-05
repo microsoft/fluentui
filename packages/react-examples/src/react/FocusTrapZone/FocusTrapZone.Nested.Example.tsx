@@ -5,7 +5,7 @@ import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({
@@ -68,7 +68,7 @@ export const FocusTrapZoneNestedExample = () => (
 );
 
 const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
-  const { onClick } = props;
+  const onClick = useEventCallback(props.onClick);
 
   const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
 
@@ -83,7 +83,7 @@ const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
         ReactDOM.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>, root);
       }
     }
-  }, []);
+  }, [onClick]);
 
   return <iframe style={{ width: '400px', height: '100px' }} ref={iframeRef} />;
 };
