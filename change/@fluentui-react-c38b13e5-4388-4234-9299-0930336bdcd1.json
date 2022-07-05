@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Checkbox): add indeterminate value to inputRef",
+  "packageName": "@fluentui/react",
+  "email": "marcosmoura@microsoft.com",
+  "dependentChangeType": "patch"
+}

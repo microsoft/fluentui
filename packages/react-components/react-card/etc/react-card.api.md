@@ -48,13 +48,17 @@ export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
 
 // @public
+export const cardHeaderCSSVars: {
+    cardHeaderGapVar: string;
+};
+
+// @public
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public
 export type CardHeaderSlots = {
     root: Slot<'div'>;
-    image: Slot<'div'>;
-    content?: Slot<'div'>;
+    image: Slot<'div', 'img'>;
     header: Slot<'span'>;
     description: Slot<'span'>;
     action?: Slot<'div'>;

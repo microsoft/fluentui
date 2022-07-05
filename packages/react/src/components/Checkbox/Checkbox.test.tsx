@@ -201,4 +201,34 @@ describe('Checkbox', () => {
 
     expect(checkbox!.indeterminate).toEqual(true);
   });
+
+  it('set indeterminate value to native checkbox', () => {
+    const checkboxComponent = render(
+      <Checkbox title="indeterminate-title" indeterminate={true} checked={false} componentRef={checkboxRef} />,
+    );
+    const { getAllByTitle } = checkboxComponent;
+    const [, checkboxInput] = getAllByTitle('indeterminate-title') as HTMLInputElement[];
+
+    expect(checkbox!.indeterminate).toEqual(true);
+    expect(checkboxInput.indeterminate).toEqual(true);
+
+    checkboxComponent.rerender(
+      <Checkbox title="indeterminate-title" indeterminate={false} checked={false} componentRef={checkboxRef} />,
+    );
+
+    expect(checkbox!.indeterminate).toEqual(false);
+    expect(checkboxInput.indeterminate).toEqual(false);
+
+    checkboxComponent.rerender(<Checkbox title="indeterminate-title" checked={true} componentRef={checkboxRef} />);
+
+    expect(checkbox!.indeterminate).toEqual(false);
+    expect(checkboxInput.indeterminate).toEqual(false);
+
+    checkboxComponent.rerender(
+      <Checkbox title="indeterminate-title" indeterminate={true} checked={false} componentRef={checkboxRef} />,
+    );
+
+    expect(checkbox!.indeterminate).toEqual(true);
+    expect(checkboxInput.indeterminate).toEqual(true);
+  });
 });
