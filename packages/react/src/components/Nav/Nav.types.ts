@@ -3,6 +3,7 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IIconProps } from '../Icon/Icon.types';
 import type { IButtonProps } from '../../Button';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 
 /**
  * {@doccategory Nav}
@@ -102,13 +103,6 @@ export interface INavProps {
   initialSelectedKey?: string;
 
   /**
-   * (Optional) Defines the initial tabbable nav item inside the Nav.
-   * If a string is passed then it is treated as a selector for identifying the initial tabbable nav item.
-   * If a function is passed then it uses the root element as a parameter to return the initial tabbable nav item.
-   */
-  defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
-
-  /**
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;
@@ -130,6 +124,11 @@ export interface INavProps {
    * @deprecated Use ariaCurrent on links instead
    */
   selectedAriaLabel?: string;
+
+  /**
+   * (Optional) Used to define the props of FocusZone which is a wrapper of Nav
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

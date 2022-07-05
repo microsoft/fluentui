@@ -75,11 +75,12 @@ const navLinkGroups: INavLinkGroup[] = [
 export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
     <Nav
-      defaultTabbableElement="a[title='MarqueeSelection']"
-      initialSelectedKey="MarqueeSelection"
       styles={navStyles}
       ariaLabel="Nav example similar to one found in this demo page"
       groups={navLinkGroups}
+      focusZoneProps={{
+        defaultTabbableElement: "a[title='MarqueeSelection']",
+      }}
     />
   );
 };
