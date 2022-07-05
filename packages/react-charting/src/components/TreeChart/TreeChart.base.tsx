@@ -33,7 +33,6 @@ class StandardTree {
     rectangleWidth: number,
     rectangleHeight: number,
     svg: Selection<SVGGElement | null, unknown, null, undefined>,
-    tabIndex: number,
   ) {
     svg
       .append('rect')
@@ -41,6 +40,10 @@ class StandardTree {
       .attr('height', rectangleHeight)
       .attr('x', xCoordinate)
       .attr('y', yCoordinate)
+      .attr('focusable', false)
+      .attr('role', 'document')
+      .attr('aria-hidden', true)
+      .attr('data-name', name)
       .attr('tabindex', 0)
       .attr('aria-label', name)
       .attr('class', this.styleClassNames.rectNode)
@@ -51,9 +54,10 @@ class StandardTree {
     // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
     svg
       .append('text')
+      .attr('text-anchor', 'middle')
       .attr('class', this.styleClassNames.rectText)
       .attr('dy', yCoordinate + rectangleHeight / 2.5)
-      .attr('x', xCoordinate + rectangleWidth / 3.5)
+      .attr('x', xCoordinate + rectangleWidth / 2)
       .text(() => {
         return name;
       })
@@ -62,7 +66,7 @@ class StandardTree {
       .attr('class', 'rectSubText')
       .attr('dy', '1.4em')
       .attr('x', () => {
-        return xCoordinate + rectangleWidth / 3.5;
+        return xCoordinate + rectangleWidth / 2;
       })
       .text(() => {
         return subname;
@@ -175,7 +179,7 @@ class LayeredTree extends StandardTree {
         const children: any = treeDataStructure[d.parentID]?.children;
         // if the parent has 1 child
         if (children.length === 1) {
-          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode, d.id);
+          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode);
         }
 
         // if the parent has more than 2 child
@@ -197,7 +201,6 @@ class LayeredTree extends StandardTree {
                 newWidth,
                 newHeight,
                 svgNode,
-                child.id,
               );
               if (itr % 2 === 1) {
                 dy += newHeight + gap / 2;
@@ -214,7 +217,6 @@ class LayeredTree extends StandardTree {
                 rectWidth,
                 newHeight,
                 svgNode,
-                child.id,
               );
               dy += newHeight + gap / 2;
             }
@@ -223,7 +225,7 @@ class LayeredTree extends StandardTree {
       }
 
       if (d.children || treeHeight <= 2) {
-        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode, d.id);
+        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode);
       }
     }
 

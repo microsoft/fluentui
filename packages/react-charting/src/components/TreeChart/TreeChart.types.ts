@@ -12,6 +12,7 @@ export interface ITreeProps {
   composition?: number | undefined;
   width?: number;
   height?: number;
+  marign?: { left: number; right: number; top: number; bottom: number };
   styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
   className?: string;
   theme?: ITheme;

@@ -170,7 +170,7 @@ const styleClassNames = {
 
 # Testing
 
-## Snapshoting Testing
+## Snapshot Testing
 
 - The test verifies if the UI renders each component correctly.
 - The behavior matches the expected behavior.
