@@ -168,7 +168,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -186,6 +186,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -256,7 +257,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -274,6 +275,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -495,7 +497,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               }
         >
           <button
-            aria-label="Metadata1"
+            aria-label="Metadata1 selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={2}
@@ -513,6 +515,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -583,7 +586,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               }
         >
           <button
-            aria-label="Metadata2"
+            aria-label="Metadata2 selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={2}
@@ -601,6 +604,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -940,7 +944,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -958,6 +962,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1028,7 +1033,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1046,6 +1051,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1284,7 +1290,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1302,6 +1308,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1372,7 +1379,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1390,6 +1397,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1628,7 +1636,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1646,6 +1654,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1716,7 +1725,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1734,6 +1743,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1972,7 +1982,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -1990,6 +2000,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2060,7 +2071,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2078,6 +2089,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2316,7 +2328,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     }
               >
                 <button
-                  aria-label="Metadata1"
+                  aria-label="Metadata1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2334,6 +2346,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2404,7 +2417,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                     }
               >
                 <button
-                  aria-label="Metadata2"
+                  aria-label="Metadata2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={2}
@@ -2422,6 +2435,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
