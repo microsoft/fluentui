@@ -20,9 +20,15 @@ const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 class StandardTree {
   public treeData: ITreeChartDataPoint;
   public styleClassNames: { link: string; rectNode: string; rectText: string };
-  constructor(treeData: ITreeChartDataPoint, styleClassNames: { link: string; rectNode: string; rectText: string }) {
+  public nodeElement: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
+  constructor(
+    treeData: ITreeChartDataPoint,
+    styleClassNames: { link: string; rectNode: string; rectText: string },
+    nodeElement: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
+  ) {
     this.treeData = treeData;
     this.styleClassNames = styleClassNames;
+    this.nodeElement = nodeElement;
   }
   public addNodeShapetoSVG(
     name: string,
@@ -32,49 +38,47 @@ class StandardTree {
     fillColor: string,
     rectangleWidth: number,
     rectangleHeight: number,
-    svg: Selection<SVGGElement | null, unknown, null, undefined>,
+    nodeId: number,
   ) {
-    svg
-      .append('rect')
-      .attr('width', rectangleWidth)
-      .attr('height', rectangleHeight)
-      .attr('x', xCoordinate)
-      .attr('y', yCoordinate)
-      .attr('focusable', false)
-      .attr('role', 'document')
-      .attr('aria-hidden', true)
-      .attr('data-name', name)
-      .attr('tabindex', 0)
-      .attr('aria-label', name)
-      .attr('class', this.styleClassNames.rectNode)
-      .attr('rx', '1')
-      .style('stroke', fillColor);
+    this.nodeElement.push(
+      <rect
+        width={rectangleWidth}
+        height={rectangleHeight}
+        x={xCoordinate}
+        y={yCoordinate}
+        focusable={false}
+        role={'document'}
+        aria-hidden={true}
+        data-name={name}
+        tabIndex={0}
+        aria-label={name}
+        className={this.styleClassNames.rectNode}
+        rx={1}
+        stroke={fillColor}
+        key={`${nodeId}${this.styleClassNames.rectNode}`}
+      />,
+    );
 
     // Text position y = y + rectHeight/2.5, 2.5 is ratio for depth
-    // Text position x = x + rectWidth/3.5, 3.5 is ratio for length
-    svg
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .attr('class', this.styleClassNames.rectText)
-      .attr('dy', yCoordinate + rectangleHeight / 2.5)
-      .attr('x', xCoordinate + rectangleWidth / 2)
-      .text(() => {
-        return name;
-      })
-      // Sub-text position x = x + rectWidth/3.5, 3.5 is ratio for length
-      .append('tspan')
-      .attr('class', 'rectSubText')
-      .attr('dy', '1.4em')
-      .attr('x', () => {
-        return xCoordinate + rectangleWidth / 2;
-      })
-      .text(() => {
-        return subname;
-      });
+    // Text position x = x + rectWidth/2, 2 is ratio for length
+    // Sub-text position x = x + rectWidth/2, 2 is ratio for length
+    this.nodeElement.push(
+      <text
+        textAnchor="middle"
+        className={this.styleClassNames.rectText}
+        dy={yCoordinate + rectangleHeight / 2.5}
+        x={xCoordinate + rectangleWidth / 2}
+        key={`${nodeId}${this.styleClassNames.rectText}`}
+      >
+        {name}
+        <tspan className={'rectSubtext'} dy="1.4em" x={xCoordinate + rectangleWidth / 2}>
+          {subname}
+        </tspan>
+      </text>,
+    );
   }
 
   // Create a rectangular path from parent to the child nodes
-
   public addLinktoNodes(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     parent: any,
@@ -106,8 +110,9 @@ class LayeredTree extends StandardTree {
     composition: number | undefined,
     svg: Selection<SVGSVGElement | null, unknown, null, undefined>,
     styleClassNames: { link: string; rectNode: string; rectText: string },
+    nodeElement: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
   ) {
-    super(treeData, styleClassNames);
+    super(treeData, styleClassNames, nodeElement);
     this.composition = composition;
     this.svg = svg;
   }
@@ -166,7 +171,6 @@ class LayeredTree extends StandardTree {
     const rectWidth = 120;
     const gap: number = 20;
     const parentSet = new Set();
-    const svgNode = this.svg.append('g').attr('class', 'svgNode');
 
     for (const d of treeDataStructure) {
       // check for leaf nodes
@@ -179,7 +183,7 @@ class LayeredTree extends StandardTree {
         const children: any = treeDataStructure[d.parentID]?.children;
         // if the parent has 1 child
         if (children.length === 1) {
-          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, svgNode);
+          this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, newHeight, d.id);
         }
 
         // if the parent has more than 2 child
@@ -200,7 +204,7 @@ class LayeredTree extends StandardTree {
                 child.data.fill,
                 newWidth,
                 newHeight,
-                svgNode,
+                child.id,
               );
               if (itr % 2 === 1) {
                 dy += newHeight + gap / 2;
@@ -216,7 +220,7 @@ class LayeredTree extends StandardTree {
                 child.data.fill,
                 rectWidth,
                 newHeight,
-                svgNode,
+                child.id,
               );
               dy += newHeight + gap / 2;
             }
@@ -225,7 +229,7 @@ class LayeredTree extends StandardTree {
       }
 
       if (d.children || treeHeight <= 2) {
-        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, svgNode);
+        this.addNodeShapetoSVG(d.dataName, d.subName, d.x, d.y, d.fill, rectWidth, rectHeight, d.id);
       }
     }
 
@@ -277,6 +281,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _rootElem: HTMLElement | null;
   private _margin: { left: number; right: number; top: number; bottom: number };
+  private _nodeElement: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
 
   constructor(props: ITreeProps) {
     super(props);
@@ -325,10 +330,16 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
 
     // Instantiate inherited class and call createTree function for the object
     if (this._composition === undefined) {
-      const twoLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames);
+      const twoLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames, this._nodeElement);
       twoLayerTree.createTree();
     } else {
-      const threeLayerTree = new LayeredTree(this._treeData, this._composition, svg, styleClassNames);
+      const threeLayerTree = new LayeredTree(
+        this._treeData,
+        this._composition,
+        svg,
+        styleClassNames,
+        this._nodeElement,
+      );
       threeLayerTree.createTree();
     }
   }
@@ -336,7 +347,9 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   public render(): JSX.Element {
     return (
       <div className="svgTreeDiv" ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
-        <svg ref={this._svgRef} className="svgTree" />
+        <svg ref={this._svgRef} className="svgTree">
+          <g className="svgNode">{this._nodeElement.map(element => element)}</g>
+        </svg>
       </div>
     );
   }
