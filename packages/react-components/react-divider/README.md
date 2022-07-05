@@ -1,6 +1,6 @@
 # @fluentui/react-divider
 
-**Divider components for [Fluent UI](https://aka.ms/fluentui-storybook)**
+**Divider components for [Fluent UI](https://react.fluentui.dev/)**
 
 The Divider component represents a visual separator, that may contain content. A Divider can be vertical or horizontal.
 
@@ -23,7 +23,7 @@ import { Divider } from '@fluentui/react-components';
 <Divider vertical>This is a divider</Divider>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

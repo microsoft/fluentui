@@ -1,6 +1,6 @@
 # @fluentui/react-switch
 
-**Switch components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Switch components for [Fluent UI React](https://react.fluentui.dev/)**
 
 The `Switch` control enables users to trigger an option on or off through interacting with the component.
 
@@ -22,7 +22,7 @@ import { Switch } from '@fluentui/react-components';
 <Switch label="Enable dark mode" labelPosition="after" />
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 
