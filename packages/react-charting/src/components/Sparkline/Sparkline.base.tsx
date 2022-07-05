@@ -33,8 +33,8 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     super(props);
     this.state = {
       _points: null,
-      _width: this.props.width! | 80,
-      _height: this.props.height! | (20 + this.margin.bottom + this.margin.top),
+      _width: this.props.width! || 80,
+      _height: this.props.height! || 20 + this.margin.bottom + this.margin.top,
     };
   }
 
