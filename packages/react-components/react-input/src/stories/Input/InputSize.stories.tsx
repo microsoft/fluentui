@@ -25,21 +25,21 @@ export const Size = () => {
     <div className={styles.root}>
       <div>
         <Label size="small" htmlFor={smallId}>
-          Small Input
+          Small input
         </Label>
         <Input size="small" id={smallId} />
       </div>
 
       <div>
         <Label size="medium" htmlFor={mediumId}>
-          Medium Input
+          Medium input
         </Label>
         <Input size="medium" id={mediumId} />
       </div>
 
       <div>
         <Label size="large" htmlFor={largeId}>
-          Large Input
+          Large input
         </Label>
         <Input size="large" id={largeId} />
       </div>

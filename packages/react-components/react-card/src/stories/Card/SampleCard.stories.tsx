@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { Button } from '@fluentui/react-button';
-import { Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { MoreHorizontal20Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Body1, Caption1, Subtitle1 } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
@@ -18,13 +18,14 @@ export const SampleCard = (props: CardProps) => (
       <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
     </CardPreview>
     <CardHeader
-      image={<img src={powerpointLogoURL} alt="Microsoft PowerPoint logo" />}
+      image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
       header={
         <Body1>
           <b>App Name</b>
         </Body1>
       }
       description={<Caption1>Developer</Caption1>}
+      action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
     />
     <div>
       Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.

@@ -46,8 +46,8 @@ export const parameters = {
       'react-scripts': 'latest',
     },
     optionalDependencies: {
-      '@fluentui/react-components': 'rc', // necessary for FluentProvider
-      '@fluentui/react-icons': 'beta',
+      '@fluentui/react-components': '^9.0.0', // necessary for FluentProvider
+      '@fluentui/react-icons': 'rc',
     },
     indexTsx: dedent`
           import * as ReactDOM from 'react-dom';

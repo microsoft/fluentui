@@ -17,7 +17,7 @@ export type AlertSlots = {
    */
   action?: Slot<typeof Button>;
   /**
-   * The avatar slot renders the Avatar component passed in as a prop
+   * The avatar slot renders an avatar before the contents of the alert
    */
   avatar?: Slot<typeof Avatar>;
 };
