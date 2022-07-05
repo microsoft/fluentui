@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { area as d3Area, curveMonotoneX as d3CurveBasis } from 'd3-shape';
+import { area as d3Area, curveMonotoneX as d3CurveMonotoneX } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
@@ -45,7 +45,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       .y0(this.state._height)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .y1((d: any) => this.y(d.y))
-      .curve(d3CurveBasis);
+      .curve(d3CurveMonotoneX);
     this.area = area;
 
     const points = this.props.data!.lineChartData![0].data;

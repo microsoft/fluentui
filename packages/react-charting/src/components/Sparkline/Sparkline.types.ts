@@ -7,23 +7,24 @@ export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
 
 export interface ISparklineProps {
   /**
-   * An array of chart data points for the Horizontal bar chart
+   * An array of chart data points for the Sparkline chart
    */
   data?: IChartProps;
 
   /**
-   * Width of bar chart
+   * Width of chart
+   * * @default 80
    */
   width?: number;
 
   /**
-   * Height of bar chart
-   * @default 15
+   * Height of chart
+   * @default 20
    */
   height?: number;
 
   /**
-   * Additional CSS class(es) to apply to the StackedBarChart.
+   * Additional CSS class(es) to apply to the SparklineChart.
    */
   className?: string;
 
@@ -37,6 +38,9 @@ export interface ISparklineProps {
    */
   culture?: string;
 
+  /**
+   * Prop used to determine whether to show the legend or not
+   */
   showLegend?: boolean;
 
   /**

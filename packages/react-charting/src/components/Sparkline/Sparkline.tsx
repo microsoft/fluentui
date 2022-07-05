@@ -4,7 +4,7 @@ import { ISparklineStyles, ISparklineProps, ISparklineStyleProps } from '../../i
 import { SparklineBase } from './Sparkline.base';
 import { getStyles } from './Sparkline.styles';
 
-// Create a AreaChart variant which uses these default styles and this styled subcomponent.
+// Create a Sparkline variant which uses these default styles and this styled subcomponent.
 export const Sparkline: React.FunctionComponent<ISparklineProps> = styled<
   ISparklineProps,
   ISparklineStyleProps,
