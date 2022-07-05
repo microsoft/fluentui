@@ -19,7 +19,16 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   const baseState = useComboboxBaseState(props);
-  const { getOptionsMatchingValue, selectOption, setActiveOption, setValue, value } = baseState;
+  const {
+    activeOption,
+    getIndexOfId,
+    getOptionsMatchingValue,
+    selectOption,
+    setActiveOption,
+    setValue,
+    value,
+  } = baseState;
+  const { allowFreeform } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -37,7 +46,16 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }
 
     const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.trim().toLowerCase()) === 0;
-    return getOptionsMatchingValue(matcher)[0] ?? null;
+    const matches = getOptionsMatchingValue(matcher);
+
+    // return first matching option after the current active option, looping back to the top
+    if (matches.length > 1 && activeOption) {
+      const startIndex = getIndexOfId(activeOption.id);
+      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
+      return nextMatch ?? matches[0];
+    }
+
+    return matches[0] ?? null;
   };
 
   /* Handle typed input */
@@ -47,15 +65,18 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue(undefined);
   });
 
-  // reset typed value when the input loses focus
+  // reset typed value when the input loses focus while collapsed
   const onBlur = useMergedEventCallbacks(triggerNativeProps.onBlur, () => {
-    setValue(undefined);
+    if (!baseState.open) {
+      setValue(undefined);
+    }
   });
 
-  const onInput = useMergedEventCallbacks(triggerNativeProps.onInput, (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    const inputValue = (ev.target as HTMLInputElement).value;
-    // update uncontrolled value
-    baseState.setValue(inputValue);
+  // update value and active option based on input
+  const onChange = useMergedEventCallbacks(triggerNativeProps.onChange, (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = ev.target.value;
+    // update uncontrolled value if allowFreeform is true
+    allowFreeform && baseState.setValue(inputValue);
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
@@ -67,10 +88,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     required: true,
     defaultProps: {
       type: 'text',
-      value,
+      value: value ?? '',
       ...triggerNativeProps,
       onBlur,
-      onInput,
+      onChange,
     },
   });
 
