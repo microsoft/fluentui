@@ -7,12 +7,21 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
       &:focus {
         outline: none;
       }
+      {
+        display: inline;
+      }
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
 >
-  <div>
+  <div
+    className=
+
+        {
+          display: inline;
+        }
+  >
     <svg
       height={22}
       tabIndex={0}
@@ -56,12 +65,21 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
       &:focus {
         outline: none;
       }
+      {
+        display: inline;
+      }
   data-focuszone-id="FocusZone1"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
 >
-  <div>
+  <div
+    className=
+
+        {
+          display: inline;
+        }
+  >
     <svg
       height={22}
       tabIndex={0}
