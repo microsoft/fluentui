@@ -785,6 +785,11 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/react18-test": {
+      "root": "apps/react18-test",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/ts-minbar-test-react": {
       "root": "apps/ts-minbar-test-react",
       "projectType": "application"
