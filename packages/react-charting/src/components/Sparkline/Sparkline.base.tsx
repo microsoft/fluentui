@@ -86,8 +86,12 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       theme: this.props.theme!,
     });
     return (
-      <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
-        <div>
+      <FocusZone
+        direction={FocusZoneDirection.horizontal}
+        isCircularNavigation={true}
+        className={classNames.inlineBlock}
+      >
+        <div className={classNames.inlineBlock}>
           {this.state._width >= 50 && this.state._height >= 16 ? (
             <svg width={this.state._width} height={this.state._height} tabIndex={0}>
               {this.state._points ? this.drawSparkline() : null}

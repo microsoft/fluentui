@@ -46,5 +46,6 @@ export interface ISparklineProps {
 }
 
 export interface ISparklineStyles {
+  inlineBlock?: IStyle;
   titleText?: IStyle;
 }

@@ -327,58 +327,70 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
     };
 
     return (
-      <table>
-        <tbody>
-          <tr style={{ borderBottom: '1pt solid black' }}>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
-            <td>
-              <Sparkline data={sl1} showLegend={true} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
-            <td>
-              <Sparkline data={sl2} showLegend={true} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
-            <td>
-              <Sparkline data={sl3} showLegend={false} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
-            <td>
-              <Sparkline data={sl4} showLegend={false} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
-            <td>
-              <Sparkline data={sl5} showLegend={false} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
-            <td>
-              <Sparkline data={sl6} showLegend={true} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
-            <td>
-              <Sparkline data={sl7} showLegend={true} />
-            </td>
-          </tr>
-          <tr>
-            <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
-            <td>
-              <Sparkline data={sl8} showLegend={true} />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <>
+        <div style={{ display: 'inline' }}>
+          A sparkline <Sparkline data={sl1} showLegend={true} /> - is a very small line chart, typically drawn without
+          axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement,{' '}
+          <Sparkline data={sl2} /> - such as temperature or stock market price, in a simple and highly condensed way.{' '}
+          <br />
+          <br />
+          Below table shows sparklines in one of its columns.
+          <br />
+          <br />
+        </div>
+        <table>
+          <tbody>
+            <tr style={{ borderBottom: '1pt solid black' }}>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
+              <td>
+                <Sparkline data={sl1} showLegend={true} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
+              <td>
+                <Sparkline data={sl2} showLegend={true} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
+              <td>
+                <Sparkline data={sl3} showLegend={false} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
+              <td>
+                <Sparkline data={sl4} showLegend={false} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
+              <td>
+                <Sparkline data={sl5} showLegend={false} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
+              <td>
+                <Sparkline data={sl6} showLegend={true} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
+              <td>
+                <Sparkline data={sl7} showLegend={true} />
+              </td>
+            </tr>
+            <tr>
+              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
+              <td>
+                <Sparkline data={sl8} showLegend={true} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </>
     );
   }
 }
