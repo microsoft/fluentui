@@ -420,4 +420,69 @@ describe('Combobox', () => {
     fireEvent.keyDown(combobox, { key: 'ArrowUp' });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
   });
+
+  it('should move active option based on typing', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.change(combobox, { target: { value: 'g' } });
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should not move active option based on typing if the current option matches', () => {
+    const { getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Gold</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.click(getByText('Gold'));
+
+    fireEvent.change(combobox, { target: { value: 'g' } });
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Gold').id);
+  });
+
+  /* freeform input */
+  it('should allow text input with allowFreeform', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox open allowFreeform data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.change(combobox, { target: { value: 'foo' } });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
+  });
+
+  it('should revert value to selection on blur', () => {
+    const { getByRole, getByTestId, getByText } = render(
+      <Combobox defaultOpen allowFreeform data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.click(getByText('Green'));
+    fireEvent.change(combobox, { target: { value: 'foo' } });
+    fireEvent.blur(combobox);
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
 });

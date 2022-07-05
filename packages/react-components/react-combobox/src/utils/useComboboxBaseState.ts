@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableState } from '@fluentui/react-utilities';
+import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
@@ -18,20 +18,21 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { selectedOptions, selectOption } = useSelection(props);
 
   // calculate value based on props, internal value changes, and selected options
+  const isFirstMount = useFirstMount();
   const [controllableValue, setValue] = useControllableState({
     state: props.value,
-    defaultState: props.defaultValue,
     initialState: undefined,
   });
 
   const value = React.useMemo(() => {
-    // don't compute value if it is defined through props,
-    if (props.value !== undefined) {
+    // don't compute the value if it is defined through props or setValue,
+    if (controllableValue !== undefined) {
       return controllableValue;
     }
 
-    if (controllableValue !== undefined) {
-      return controllableValue;
+    // handle defaultValue here, so it is overridden by selection
+    if (isFirstMount && props.defaultValue !== undefined) {
+      return props.defaultValue;
     }
 
     if (multiselect) {
@@ -39,7 +40,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     }
 
     return selectedOptions[0];
-  }, [controllableValue, multiselect, props.defaultValue, props.value, selectedOptions]);
+  }, [controllableValue, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({

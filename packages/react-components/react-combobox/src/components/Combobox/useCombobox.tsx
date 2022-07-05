@@ -37,9 +37,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
 
   // set active option and selection based on typing
-  const getOptionFromInput = (value: string): OptionValue | null => {
+  const getOptionFromInput = (inputValue: string): OptionValue | null => {
     // if there are commas in the value string, take the text after the last comma
-    const searchString = value.split(',').pop();
+    const searchString = inputValue.split(',').pop();
 
     if (!searchString || searchString.trim().length === 0) {
       return null;
