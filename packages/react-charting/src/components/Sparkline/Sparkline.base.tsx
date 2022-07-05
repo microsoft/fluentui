@@ -1,36 +1,27 @@
 import * as React from 'react';
-//import { createRef } from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { area as d3Area, curveMonotoneX as d3CurveBasis } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { ISparklineProps } from '../../index';
+import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
+const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
 
 export interface ISparklineState {
-  data: ILineChartDataPoint[] | null;
+  _points: ILineChartDataPoint[] | null;
+  _width: number;
+  _height: number;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
-  /*private xRef: React.RefObject<any> = createRef();
-  private yRef: React.RefObject<any> = createRef();
-
   private margin = {
-    top: 30,
-    right: 20,
-    bottom: 30,
-    left: 50,
-  };*/
+    top: 2,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  };
 
-  // Todo: Async shimmer loading
-  // Load text after the chart
-  // Making color configurable
-  // UI redlining
-  // Aria label and accessibility
-  // Styling
-  // Use FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}
-
-  private width: number;
-  private height: number;
   /* eslint-disable @typescript-eslint/no-explicit-any */
   private x: any;
 
@@ -41,64 +32,78 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   constructor(props: ISparklineProps) {
     super(props);
     this.state = {
-      data: null,
+      _points: null,
+      _width: this.props.width! | 80,
+      _height: this.props.height! | (20 + this.margin.bottom + this.margin.top),
     };
-    this.width = 80;
-    this.height = 20;
   }
 
   public componentDidMount() {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     const area = d3Area()
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .x((d: any) => this.x(d.x))
-      .y0(this.height)
+      .y0(this.state._height)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .y1((d: any) => this.y(d.y))
       .curve(d3CurveBasis);
     this.area = area;
 
-    const rawData = this.props.data!.lineChartData![0].data;
+    const points = this.props.data!.lineChartData![0].data;
 
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    const [xMin, xMax] = d3Extent(rawData, (d: any) => d.x);
+    const [xMin, xMax] = d3Extent(points, (d: any) => d.x);
 
-    this.x = d3ScaleLinear().domain([xMin, xMax]).range([0, this.width]);
+    this.x = d3ScaleLinear()
+      .domain([xMin, xMax])
+      .range([this.margin.left!, this.state._width - this.margin.right!]);
     this.y = d3ScaleLinear()
       /* eslint-disable @typescript-eslint/no-explicit-any */
-      .domain([0, d3Max(rawData, (d: any) => d.y)])
-      .range([this.height - 4, 0]); //ToDo: handle RTL
-    // ToDo: Use utils
-    // ToDo: Map domain and range properly.
-    // ToDo: Assign ids to each sparkline properly.
+      .domain([0, d3Max(points, (d: any) => d.y)])
+      .range([this.state._height - this.margin.bottom!, this.margin.top!]);
 
     this.setState({
-      data: rawData,
+      _points: points,
     });
   }
 
-  public areaPath() {
+  public drawSparkline() {
     return (
       <path
         className="area"
-        d={this.area(this.state.data)}
+        d={this.area(this.state._points)}
         opacity={1}
-        fillOpacity={0.4}
-        fill={this.props.color}
+        fillOpacity={0.2}
+        fill={this.props.data!.lineChartData![0].color!}
         strokeWidth={2}
-        stroke={this.props.color}
+        stroke={this.props.data!.lineChartData![0].color!}
+        aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
       />
     );
   }
 
   public render() {
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
     return (
-      <>
-        <svg width={this.width} height={this.height}>
-          {this.state.data ? this.areaPath() : null}
-        </svg>
-        <span style={{ marginLeft: '8px' }}>{this.props.data!.lineChartData![0].legend!}</span>
-      </>
+      <FocusZone direction={FocusZoneDirection.horizontal} isCircularNavigation={true}>
+        <div>
+          {this.state._width >= 50 && this.state._height >= 16 ? (
+            <svg width={this.state._width} height={this.state._height} tabIndex={0}>
+              {this.state._points ? this.drawSparkline() : null}
+            </svg>
+          ) : (
+            <></>
+          )}
+          {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
+            <span className={classNames.titleText} tabIndex={0}>
+              {this.props.data!.lineChartData![0].legend!}
+            </span>
+          ) : (
+            <></>
+          )}
+        </div>
+      </FocusZone>
     );
   }
 }

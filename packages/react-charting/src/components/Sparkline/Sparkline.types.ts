@@ -1,8 +1,9 @@
-import { ITheme } from '@fluentui/react/lib/Styling';
+import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChartProps } from '../../types/IDataPoint';
+import { ICartesianChartStyleProps } from '../CommonComponents/index';
 
-export interface ISparklineStyleProps {}
+export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
 
 export interface ISparklineProps {
   /**
@@ -36,7 +37,7 @@ export interface ISparklineProps {
    */
   culture?: string;
 
-  color?: string;
+  showLegend?: boolean;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -44,4 +45,6 @@ export interface ISparklineProps {
   styles?: IStyleFunctionOrObject<ISparklineStyleProps, ISparklineStyles>;
 }
 
-export interface ISparklineStyles {}
+export interface ISparklineStyles {
+  titleText?: IStyle;
+}

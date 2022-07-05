@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Sparkline, ISparklineProps } from '@fluentui/react-charting';
 import { IChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface ISparklineState {}
 
@@ -19,7 +18,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: `${DefaultPalette.green}`,
+          color: '#00AA00',
           data: [
             {
               x: 1,
@@ -62,7 +61,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: `${DefaultPalette.green}`,
+          color: '#E60000',
           data: [
             {
               x: 1,
@@ -97,7 +96,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: `${DefaultPalette.green}`,
+          color: '#00AA00',
           data: [
             {
               x: 1,
@@ -132,7 +131,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '464.64',
-          color: `${DefaultPalette.green}`,
+          color: '#E60000',
           data: [
             {
               x: 1,
@@ -167,7 +166,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '46.49',
-          color: `${DefaultPalette.green}`,
+          color: '#E3008C',
           data: [
             {
               x: 1,
@@ -202,30 +201,30 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
-          color: `${DefaultPalette.green}`,
+          color: '#627CEF',
           data: [
             {
-              x: 1,
+              x: new Date('2020-03-03T00:00:00.000Z'),
               y: 29.13,
             },
             {
-              x: 2,
+              x: new Date('2020-03-04T00:00:00.000Z'),
               y: 70.98,
             },
             {
-              x: 3,
+              x: new Date('2020-03-05T00:00:00.000Z'),
               y: 60,
             },
             {
-              x: 4,
+              x: new Date('2020-03-07T00:00:00.000Z'),
               y: 89.7,
             },
             {
-              x: 5,
+              x: new Date('2020-03-12T00:00:00.000Z'),
               y: 19,
             },
             {
-              x: 6,
+              x: new Date('2020-03-15T00:00:00.000Z'),
               y: 49.44,
             },
           ],
@@ -237,7 +236,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
-          color: `${DefaultPalette.green}`,
+          color: '#0078D4',
           data: [
             {
               x: 1,
@@ -272,19 +271,19 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '541.44',
-          color: `${DefaultPalette.green}`,
+          color: '#0078D4',
           data: [
             {
               x: 1,
-              y: 29.13,
+              y: 291.13,
             },
             {
               x: 2,
-              y: 70.98,
+              y: 170.98,
             },
             {
               x: 3,
-              y: 60,
+              y: 260,
             },
             {
               x: 4,
@@ -306,6 +305,22 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
               x: 8,
               y: 32.44,
             },
+            {
+              x: 9,
+              y: 499.14,
+            },
+            {
+              x: 10,
+              y: 350.48,
+            },
+            {
+              x: 11,
+              y: 32.44,
+            },
+            {
+              x: 12,
+              y: 400.44,
+            },
           ],
         },
       ],
@@ -317,49 +332,49 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
           <tr style={{ borderBottom: '1pt solid black' }}>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
             <td>
-              <Sparkline data={sl1} color={'#627CEF'} />
+              <Sparkline data={sl1} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
             <td>
-              <Sparkline data={sl2} color={DefaultPalette.green} />
+              <Sparkline data={sl2} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
             <td>
-              <Sparkline data={sl3} color={'#00A2AD'} />
+              <Sparkline data={sl3} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
             <td>
-              <Sparkline data={sl4} color={DefaultPalette.red} />
+              <Sparkline data={sl4} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
             <td>
-              <Sparkline data={sl5} color={'#E3008C'} />
+              <Sparkline data={sl5} showLegend={false} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
             <td>
-              <Sparkline data={sl6} color={'#627CEF'} />
+              <Sparkline data={sl6} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
             <td>
-              <Sparkline data={sl7} color={'#627CEF'} />
+              <Sparkline data={sl7} showLegend={true} />
             </td>
           </tr>
           <tr>
             <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
             <td>
-              <Sparkline data={sl8} color={'#627CEF'} />
+              <Sparkline data={sl8} showLegend={true} />
             </td>
           </tr>
         </tbody>
