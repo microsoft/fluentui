@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react18-test",
-  "description": "Theming designer for @fluentui/react.",
+  "description": "React 18 test application",
   "version": "1.0.0",
   "private": true,
   "scripts": {
