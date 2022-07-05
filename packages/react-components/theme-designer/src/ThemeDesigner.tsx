@@ -27,7 +27,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
           className={styles.content}
           brand={brand}
           theme={{ ...theme, ...overrides }}
-          isDark={state.isDark}
+          isDark={isDark}
           dispatchState={dispatchState}
         />
       </div>

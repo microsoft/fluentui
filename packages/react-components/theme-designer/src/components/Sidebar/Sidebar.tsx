@@ -77,17 +77,25 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const sidebarId = useId();
 
+  const [theme, setTheme] = React.useState<string>('Teams Light');
+
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     if (data.value === 'edit') {
-      props.dispatchState({ type: 'Custom', customAttributes: formState, overrides: {} });
+      if (theme === 'Custom Dark') {
+        props.dispatchState({ type: 'Custom Dark', customAttributes: formState, overrides: {} });
+      } else {
+        props.dispatchState({ type: 'Custom Light', customAttributes: formState, overrides: {} });
+      }
     } else if (data.value === 'use') {
-      setTheme('Custom');
+      if (theme === 'Custom Dark') {
+        setTheme('Custom Dark');
+      } else {
+        setTheme('Custom Light');
+      }
     }
     setTab(data.value);
   };
-
-  const [theme, setTheme] = React.useState<string>('Teams Light');
 
   const [formState, setFormState] = React.useState<CustomAttributes>({
     keyColor: '#006bc7',
@@ -115,6 +123,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           dispatchState={props.dispatchState}
           setTab={setTab}
           formState={formState}
+          setFormState={setFormState}
         />
       )}
       {tab === 'edit' && (

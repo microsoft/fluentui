@@ -38,18 +38,22 @@ export interface UseTabProps {
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
   formState: CustomAttributes;
+  setFormState: React.Dispatch<CustomAttributes>;
 }
 
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
-  const { theme, setTheme, dispatchState, sidebarId, formState } = props;
+  const { theme, setTheme, dispatchState, sidebarId, formState, setFormState } = props;
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
-    if (newTheme === 'Custom') {
+    if (newTheme === 'Custom Light' || newTheme === 'Custom Dark') {
+      const isDark = newTheme === 'Custom Dark';
+      const newAttributes: CustomAttributes = { ...formState, isDark: isDark };
       props.setTab('edit');
-      dispatchState({ type: newTheme, customAttributes: formState, overrides: {} });
+      setFormState(newAttributes);
+      dispatchState({ type: newTheme, customAttributes: newAttributes, overrides: {} });
     } else {
       dispatchState({ type: newTheme, overrides: {} });
     }
@@ -79,8 +83,11 @@ export const UseTab: React.FC<UseTabProps> = props => {
                 Web Dark
               </MenuItemRadio>
               <MenuDivider />
-              <MenuItemRadio name="Custom" value="Custom">
-                Custom
+              <MenuItemRadio name="Custom Light" value="Custom Light">
+                Custom Light
+              </MenuItemRadio>
+              <MenuItemRadio name="Custom Dark" value="Custom Dark">
+                Custom Dark
               </MenuItemRadio>
             </MenuList>
           </MenuPopover>

@@ -95,16 +95,28 @@ export const useThemeDesignerReducer = () => {
           isDark: true,
           overrides: action.overrides,
         };
-      case 'Custom':
+      case 'Custom Light':
         if (!action.customAttributes) {
           return state;
         }
-        const custom = createCustomTheme(action.customAttributes);
+        const customLight = createCustomTheme(action.customAttributes);
         return {
-          themeLabel: 'Custom',
-          brand: custom.brand,
-          theme: custom.theme,
-          isDark: action.customAttributes.isDark,
+          themeLabel: 'Custom Light',
+          brand: customLight.brand,
+          theme: customLight.theme,
+          isDark: false,
+          overrides: action.overrides,
+        };
+      case 'Custom Dark':
+        if (!action.customAttributes) {
+          return state;
+        }
+        const customDark = createCustomTheme({ ...action.customAttributes, isDark: true });
+        return {
+          themeLabel: 'Custom Dark',
+          brand: customDark.brand,
+          theme: customDark.theme,
+          isDark: true,
           overrides: action.overrides,
         };
       case 'Overrides':

@@ -1,10 +1,17 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Label, Input, Switch, Slider, tokens } from '@fluentui/react-components';
+import { Label, Input, Slider, tokens } from '@fluentui/react-components';
 import { useDebounce } from '../../utils/useDebounce';
 
 import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
+
+type CustomPaletteAttributes = {
+  keyColor: string;
+  hueTorsion: number;
+  darkCp: number;
+  lightCp: number;
+};
 
 const useStyles = makeStyles({
   root: {
@@ -56,9 +63,15 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const { sidebarId, dispatchState, formState, setFormState } = props;
 
-  const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
-    setFormState(action.attributes);
-    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
+  const formReducer = (state: CustomPaletteAttributes, action: { attributes: CustomPaletteAttributes }) => {
+    const newAttributes = { ...action.attributes, isDark: formState.isDark };
+    setFormState(newAttributes);
+    dispatchState({
+      ...form,
+      type: formState.isDark ? 'Custom Dark' : 'Custom Light',
+      customAttributes: newAttributes,
+      overrides: {},
+    });
     return action.attributes;
   };
 
@@ -66,20 +79,16 @@ export const EditTab: React.FC<EditTabProps> = props => {
   const [hueTorsion, setHueTorsion] = React.useState<number>(formState.hueTorsion);
   const [darkCp, setDarkCp] = React.useState<number>(formState.darkCp * 100);
   const [lightCp, setLightCp] = React.useState<number>(formState.lightCp * 100);
-  const [isDark, setIsDark] = React.useState<boolean>(formState.isDark);
 
   const [form, dispatchForm] = React.useReducer(formReducer, formState);
   const debouncedForm = useDebounce(
-    { keyColor, hueTorsion: hueTorsion / 100, darkCp: darkCp / 100, lightCp: lightCp / 100, isDark },
+    { keyColor, hueTorsion: hueTorsion / 100, darkCp: darkCp / 100, lightCp: lightCp / 100 },
     10,
   );
   React.useEffect(() => {
     dispatchForm({ attributes: debouncedForm });
   }, [debouncedForm]);
 
-  const handleIsDarkChange = () => {
-    setIsDark(!form.isDark);
-  };
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyColor(e.target.value);
   };
@@ -172,7 +181,6 @@ export const EditTab: React.FC<EditTabProps> = props => {
           onChange={handleDarkCpChange}
         />
       </div>
-      <Switch checked={form.isDark} onChange={handleIsDarkChange} label={form.isDark ? 'dark theme' : 'light theme'} />
     </div>
   );
 };
