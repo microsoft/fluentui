@@ -20,6 +20,7 @@
     "@types/react-dom": "18.0.6"
   },
   "dependencies": {
+    "@fluentui/react-badge": "9.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.1.0"
