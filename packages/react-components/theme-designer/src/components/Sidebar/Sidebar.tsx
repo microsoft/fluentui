@@ -92,8 +92,8 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [formState, setFormState] = React.useState<CustomAttributes>({
     keyColor: '#006bc7',
     hueTorsion: 0,
-    darkCp: 2 / 3,
-    lightCp: 1 / 3,
+    darkCp: 0.66,
+    lightCp: 0.33,
     isDark: false,
   });
 
