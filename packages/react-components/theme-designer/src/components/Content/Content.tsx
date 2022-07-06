@@ -3,21 +3,18 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
+import type { ReducerState } from '../../useThemeDesignerReducer';
+import type { DispatchOverride } from '../../useOverrideReducer';
 
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 
-import { Theme, BrandVariants } from '@fluentui/react-theme';
-
 export interface ContentProps {
   className?: string;
-  brand: BrandVariants;
-  theme: Theme;
-  isDark: boolean;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  state: ReducerState;
+  dispatchOverrideState: React.Dispatch<DispatchOverride>;
 }
 
 const useStyles = makeStyles({
@@ -33,7 +30,8 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, brand, theme, isDark, dispatchState } = props;
+  const { className, state, dispatchOverrideState } = props;
+  const theme = { ...state.theme, ...state.overrides };
 
   return (
     <FluentProvider theme={theme}>
@@ -41,12 +39,12 @@ export const Content: React.FC<ContentProps> = props => {
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
       <div className={mergeClasses(styles.root, className)}>
-        <Palette brandColors={brand} />
+        <Palette brandColors={state.brand} />
         <Demo theme={theme} />
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <ColorTokens isDark={isDark} brand={brand} dispatchState={dispatchState} />
+        <ColorTokens state={state} dispatchOverrideState={dispatchOverrideState} />
       </div>
     </FluentProvider>
   );

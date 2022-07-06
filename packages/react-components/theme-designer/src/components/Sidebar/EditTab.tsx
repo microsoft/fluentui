@@ -58,7 +58,7 @@ export const EditTab: React.FC<EditTabProps> = props => {
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes, overrides: {} });
+    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes });
     return action.attributes;
   };
 

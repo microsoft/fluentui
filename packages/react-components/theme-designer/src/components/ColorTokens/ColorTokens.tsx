@@ -2,17 +2,17 @@ import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsLightTheme, Theme } from '@fluentui/react-theme';
+import { Brands, teamsLightTheme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
+import type { ReducerState } from '../../useThemeDesignerReducer';
+import type { DispatchOverride } from '../../useOverrideReducer';
 
 export interface ColorTokensProps {
   className?: string;
-  isDark: boolean;
-  brand: BrandVariants;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  state: ReducerState;
+  dispatchOverrideState: React.Dispatch<DispatchOverride>;
 }
 
 const useStyles = makeStyles({
@@ -29,18 +29,20 @@ const brandColors: Record<string, Brands> = OverridableTokenBrandColors(teamsLig
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, dispatchState } = props;
-
-  const [overrideList, setOverrideList] = React.useState<Partial<Theme>>({});
+  const { dispatchOverrideState } = props;
+  const { themeLabel, brand, isDark } = props.state;
 
   const colorOverrideReducer: (
     state: Record<string, Brands>,
     action: { colorToken: string; newValue: Brands },
   ) => Record<string, Brands> = (state, action) => {
-    const overrides = { ...state, [action.colorToken]: action.newValue };
-    setOverrideList({ ...overrideList, [action.colorToken]: brand[action.newValue] });
-    dispatchState({ type: 'Overrides', overrides: overrideList });
-    return overrides;
+    const newOverride = { [action.colorToken]: brand[action.newValue] };
+    if (themeLabel === 'Custom') {
+      dispatchOverrideState({ type: isDark ? 'Custom Dark' : 'Custom Light', overrides: newOverride });
+    } else {
+      dispatchOverrideState({ type: themeLabel, overrides: newOverride });
+    }
+    return { ...state, [action.colorToken]: action.newValue };
   };
 
   const [colorOverrides, dispatchColorOverrides] = React.useReducer(colorOverrideReducer, {});

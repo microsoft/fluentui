@@ -11,6 +11,7 @@ import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams, brandWeb } from './utils/brandColors';
 
 import type { BrandVariants, Theme } from '@fluentui/react-components';
+import type { OverrideState } from './useOverrideReducer';
 
 export type CustomAttributes = {
   keyColor: string;
@@ -23,10 +24,10 @@ export type CustomAttributes = {
 export type DispatchTheme = {
   type: string;
   customAttributes?: CustomAttributes;
-  overrides: Partial<Theme>;
+  overrides?: Partial<Theme>;
 };
 
-type ReducerState = {
+export type ReducerState = {
   themeLabel: string;
   brand: BrandVariants;
   theme: Theme;
@@ -34,7 +35,7 @@ type ReducerState = {
   overrides: Partial<Theme>;
 };
 
-export const useThemeDesignerReducer = () => {
+export const useThemeDesignerReducer = (overrideState: OverrideState) => {
   const createCustomTheme = ({
     darkCp,
     hueTorsion,
@@ -69,7 +70,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandTeams,
           theme: teamsLightTheme,
           isDark: false,
-          overrides: action.overrides,
+          overrides: overrideState.teamsLight,
         };
       case 'Teams Dark':
         return {
@@ -77,7 +78,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandTeams,
           theme: teamsDarkTheme,
           isDark: true,
-          overrides: action.overrides,
+          overrides: overrideState.teamsDark,
         };
       case 'Web Light':
         return {
@@ -85,7 +86,7 @@ export const useThemeDesignerReducer = () => {
           brand: brandWeb,
           theme: webLightTheme,
           isDark: false,
-          overrides: action.overrides,
+          overrides: overrideState.webLight,
         };
       case 'Web Dark':
         return {
@@ -93,27 +94,20 @@ export const useThemeDesignerReducer = () => {
           brand: brandWeb,
           theme: webDarkTheme,
           isDark: true,
-          overrides: action.overrides,
+          overrides: overrideState.webDark,
         };
       case 'Custom':
         if (!action.customAttributes) {
           return state;
         }
+        const isDark = action.customAttributes.isDark;
         const custom = createCustomTheme(action.customAttributes);
         return {
           themeLabel: 'Custom',
           brand: custom.brand,
           theme: custom.theme,
-          isDark: action.customAttributes.isDark,
-          overrides: action.overrides,
-        };
-      case 'Overrides':
-        return {
-          themeLabel: state.themeLabel,
-          brand: state.brand,
-          theme: state.theme,
-          isDark: state.isDark,
-          overrides: action.overrides,
+          isDark: isDark,
+          overrides: isDark ? overrideState.customDark : overrideState.customLight,
         };
       default:
         return state;

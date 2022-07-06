@@ -68,8 +68,8 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
-  const { brand, brandColors, colorOverrides, dispatchColorOverrides } = props;
 
+  const { brand, brandColors, colorOverrides, dispatchColorOverrides } = props;
   const newColors = { ...brandColors, ...colorOverrides };
 
   return (
