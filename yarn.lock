@@ -1652,10 +1652,13 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-icons@^2.0.172-rc.8":
-  version "2.0.172-rc.8"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.172-rc.8.tgz#5daa62d1b11df87cdf26cbfd5e3aa7328e367e74"
-  integrity sha512-vXhOcnlsYA/XgiaiPo4Cyp5GeI+CZE2zRVBNLkygemrafKnboLwUh9dLb/qC4YLsQ4DTaYPrvFq4cKujXBhl4w==
+"@fluentui/react-icons@^2.0.175":
+  version "2.0.175"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.175.tgz#70f60989b5792c1770253beeb0a1f4dc9329e59d"
+  integrity sha512-GQpG7aTHVh8Pesq8rJcgKoe8kb28T4OENgpg6ZKbNibVYAM/UKFLb+kzw/amj0kdKl5/OWV/og5kv0be+nnH+Q==
+  dependencies:
+    "@griffel/react" "^1.0.0"
+    tslib "^2.1.0"
 
 "@griffel/babel-preset@^1.3.3":
   version "1.3.3"
@@ -1698,7 +1701,7 @@
   dependencies:
     tslib "^2.1.0"
 
-"@griffel/react@^1.2.0":
+"@griffel/react@^1.0.0", "@griffel/react@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.2.1.tgz#8150d6582dafad14815a3d7831839d98bf30c85e"
   integrity sha512-A5fFXl9GvwEETCrT2hapTaoRAmY8JzZXpO6WnfCPHat6R74GP9i3PyJft6OT+XGEi+/vW/Owyp2IpX+PKiY7CQ==

@@ -28,6 +28,7 @@ exports[`Listbox renders a default state 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
@@ -54,6 +55,7 @@ exports[`Listbox renders a default state 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
@@ -80,6 +82,7 @@ exports[`Listbox renders a default state 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
@@ -117,6 +120,7 @@ exports[`Listbox renders with a selected option 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
@@ -143,6 +147,7 @@ exports[`Listbox renders with a selected option 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
@@ -169,6 +174,7 @@ exports[`Listbox renders with a selected option 1`] = `
         >
           <path
             d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+            fill="currentColor"
           />
         </svg>
       </span>
