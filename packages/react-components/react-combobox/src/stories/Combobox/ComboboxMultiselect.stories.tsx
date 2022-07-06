@@ -21,7 +21,7 @@ export const Multiselect = (props: Partial<ComboboxProps>) => {
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} allowFreeform multiselect={true} placeholder="Select an animal" {...props}>
+      <Combobox aria-labelledby={comboId} multiselect={true} placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

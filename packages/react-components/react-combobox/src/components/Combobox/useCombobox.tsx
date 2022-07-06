@@ -21,14 +21,16 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const baseState = useComboboxBaseState(props);
   const {
     activeOption,
+    clearSelection,
     getIndexOfId,
     getOptionsMatchingValue,
     selectOption,
+    selectedOptions,
     setActiveOption,
     setValue,
     value,
   } = baseState;
-  const { allowFreeform } = props;
+  const { allowFreeform, multiselect } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -65,9 +67,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue(undefined);
   });
 
-  // reset typed value when the input loses focus while collapsed
+  // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
   const onBlur = useMergedEventCallbacks(triggerNativeProps.onBlur, () => {
-    if (!baseState.open) {
+    if (!baseState.open && !allowFreeform) {
       setValue(undefined);
     }
   });
@@ -75,12 +77,21 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // update value and active option based on input
   const onChange = useMergedEventCallbacks(triggerNativeProps.onChange, (ev: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target.value;
-    // update uncontrolled value if allowFreeform is true
-    allowFreeform && baseState.setValue(inputValue);
+    // update uncontrolled value
+    baseState.setValue(inputValue);
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
     matchingOption && setActiveOption(matchingOption);
+
+    // clear selection for single-select if the input value no longer matches the selection
+    if (
+      !multiselect &&
+      selectedOptions.length === 1 &&
+      (inputValue.length < 1 || selectedOptions[0].indexOf(inputValue) !== 0)
+    ) {
+      clearSelection(ev);
+    }
   });
 
   // resolve input and listbox slot props

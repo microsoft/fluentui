@@ -31,6 +31,7 @@ export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
+    allowFreeform?: boolean;
     children: React_2.ReactNode;
 };
 

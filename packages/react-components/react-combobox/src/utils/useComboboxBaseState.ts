@@ -15,7 +15,9 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { getOptionAtIndex, getOptionById, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-  const { selectedOptions, selectOption } = useSelection(props);
+
+  const selectionState = useSelection(props);
+  const { selectedOptions, selectOption } = selectionState;
 
   // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
@@ -89,13 +91,12 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   return {
     ...optionCollection,
+    ...selectionState,
     activeOption,
     appearance,
     inlinePopup,
     onOptionClick,
     open,
-    selectedOptions,
-    selectOption,
     setActiveOption,
     setOpen,
     setValue,

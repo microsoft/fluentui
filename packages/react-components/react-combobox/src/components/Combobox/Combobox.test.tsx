@@ -453,10 +453,10 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Gold').id);
   });
 
-  /* freeform input */
-  it('should allow text input with allowFreeform', () => {
+  /* typing text */
+  it('should allow text input', () => {
     const { getByRole, getByTestId } = render(
-      <Combobox open allowFreeform data-testid="combobox">
+      <Combobox open data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
@@ -469,7 +469,58 @@ describe('Combobox', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
   });
 
-  it('should revert value to selection on blur', () => {
+  it('should revert value to matching selection on blur', () => {
+    const { getByRole, getByTestId, getByText } = render(
+      <Combobox defaultOpen data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.click(getByText('Green'));
+    fireEvent.change(combobox, { target: { value: 'G' } });
+    fireEvent.blur(combobox);
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('should clear selection with an empty/unmatching string', () => {
+    const { getByRole, getByTestId, getByText } = render(
+      <Combobox open data-testid="combobox">
+        <Option>Red</Option>
+        <Option data-testid="green">Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.click(getByText('Green'));
+    fireEvent.change(combobox, { target: { value: '' } });
+    fireEvent.blur(combobox);
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
+    expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('should revert value to the empty string on blur with no selected options', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.change(combobox, { target: { value: 'foo' } });
+    fireEvent.blur(combobox);
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
+  });
+
+  it('should not revert value on blur with allowFreeform', () => {
     const { getByRole, getByTestId, getByText } = render(
       <Combobox defaultOpen allowFreeform data-testid="combobox">
         <Option>Red</Option>
@@ -483,6 +534,6 @@ describe('Combobox', () => {
     fireEvent.change(combobox, { target: { value: 'foo' } });
     fireEvent.blur(combobox);
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
   });
 });
