@@ -100,7 +100,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
             <></>
           )}
           {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
-            <span className={classNames.titleText} tabIndex={0}>
+            <span role="text" className={classNames.titleText} tabIndex={0}>
               {this.props.data!.lineChartData![0].legend!}
             </span>
           ) : (
