@@ -3,8 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 
-import type { ReducerState } from '../../useThemeDesignerReducer';
-import type { DispatchOverride } from '../../useOverrideReducer';
+import type { ReducerState, DispatchTheme } from '../../useThemeDesignerReducer';
 
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
@@ -14,7 +13,7 @@ import { ColorTokens } from '../ColorTokens/ColorTokens';
 export interface ContentProps {
   className?: string;
   state: ReducerState;
-  dispatchOverrideState: React.Dispatch<DispatchOverride>;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, state, dispatchOverrideState } = props;
+  const { className, state, dispatchState } = props;
   const theme = { ...state.theme, ...state.overrides };
 
   return (
@@ -44,7 +43,7 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <ColorTokens state={state} dispatchOverrideState={dispatchOverrideState} />
+        <ColorTokens brand={state.brand} dispatchState={dispatchState} />
       </div>
     </FluentProvider>
   );

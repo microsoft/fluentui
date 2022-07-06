@@ -2,17 +2,16 @@ import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Caption1 } from '@fluentui/react-components';
-import { Brands, teamsLightTheme } from '@fluentui/react-theme';
+import { Brands, BrandVariants, teamsLightTheme, Theme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 
-import type { ReducerState } from '../../useThemeDesignerReducer';
-import type { DispatchOverride } from '../../useOverrideReducer';
+import type { DispatchTheme } from '../../useThemeDesignerReducer';
 
 export interface ColorTokensProps {
   className?: string;
-  state: ReducerState;
-  dispatchOverrideState: React.Dispatch<DispatchOverride>;
+  brand: BrandVariants;
+  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -29,19 +28,14 @@ const brandColors: Record<string, Brands> = OverridableTokenBrandColors(teamsLig
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { dispatchOverrideState } = props;
-  const { themeLabel, brand, isDark } = props.state;
+  const { brand, dispatchState } = props;
 
   const colorOverrideReducer: (
     state: Record<string, Brands>,
     action: { colorToken: string; newValue: Brands },
   ) => Record<string, Brands> = (state, action) => {
-    const newOverride = { [action.colorToken]: brand[action.newValue] };
-    if (themeLabel === 'Custom') {
-      dispatchOverrideState({ type: isDark ? 'Custom Dark' : 'Custom Light', overrides: newOverride });
-    } else {
-      dispatchOverrideState({ type: themeLabel, overrides: newOverride });
-    }
+    const newOverride: Partial<Theme> = { [action.colorToken]: brand[action.newValue] };
+    dispatchState({ type: 'Override', overrides: newOverride });
     return { ...state, [action.colorToken]: action.newValue };
   };
 
