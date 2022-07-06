@@ -59,4 +59,20 @@ describe('useOnClickOutside', () => {
     // Assert
     expect(callback).toHaveBeenCalledTimes(1);
   });
+
+  it('should invoke callback when active element is a webview', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const iframe = document.createElement('webview');
+    const callback = jest.fn();
+    document.body.appendChild(iframe);
+    renderHook(() => useOnClickOutside({ element: document, callback, refs: [] }));
+
+    // Act
+    iframe.focus();
+    jest.runOnlyPendingTimers();
+
+    // Assert
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
 });

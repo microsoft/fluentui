@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Handle when FocusTrapZone wraps an iframe",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}

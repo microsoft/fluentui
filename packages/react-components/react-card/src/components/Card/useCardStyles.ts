@@ -5,6 +5,7 @@ import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles';
 import type { CardSlots, CardState } from './Card.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -18,6 +19,7 @@ export const cardClassNames: SlotClassNames<CardSlots> = {
  */
 export const cardCSSVars = {
   cardSizeVar: '--fui-Card--size',
+  cardBorderRadiusVar: '--fui-Card--border-radius',
 };
 
 const useStyles = makeStyles({
@@ -39,8 +41,10 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
+      ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
     },
 
+    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
     ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
     ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
 
@@ -52,6 +56,14 @@ const useStyles = makeStyles({
     [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
       flexGrow: 1,
     },
+
+    ...createFocusOutlineStyle({
+      style: {
+        outlineRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
+        outlineWidth: tokens.strokeWidthThick,
+      },
+      selector: 'focus',
+    }),
   },
 
   orientationHorizontal: {
@@ -88,15 +100,15 @@ const useStyles = makeStyles({
 
   sizeSmall: {
     [cardCSSVars.cardSizeVar]: '8px',
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusSmall,
   },
   sizeMedium: {
     [cardCSSVars.cardSizeVar]: '12px',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusMedium,
   },
   sizeLarge: {
     [cardCSSVars.cardSizeVar]: '16px',
-    ...shorthands.borderRadius(tokens.borderRadiusLarge),
+    [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
   },
 
   interactiveNoOutline: {

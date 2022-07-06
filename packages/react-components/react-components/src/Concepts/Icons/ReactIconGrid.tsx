@@ -55,7 +55,7 @@ const reactIcons: React.FC<ReactIcons.FluentIconsProps>[] = Object.keys(ReactIco
 
 const ReactIconGrid = () => {
   const [search, setSearch] = React.useState('');
-  const [size, setSize] = React.useState('');
+  const [size, setSize] = React.useState<string | number>(24);
   const styles = useStyles();
 
   const _onSearchQueryChanged = (ev?: React.FormEvent<HTMLInputElement>) => {
@@ -81,7 +81,7 @@ const ReactIconGrid = () => {
       reactIcons.filter(
         icon =>
           icon.displayName?.toLowerCase().indexOf(search.toLowerCase()) !== -1 &&
-          icon.displayName?.indexOf(size) !== -1,
+          icon.displayName?.indexOf(String(size)) !== -1,
       ),
     [search, size],
   );
@@ -99,7 +99,14 @@ const ReactIconGrid = () => {
       />
       {[16, 20, 24, 28, 32, 48, 'All'].map(option => (
         <>
-          <input id={`option-${option}`} type="radio" value={option} name="size" onChange={_filterBySize} />
+          <input
+            id={`option-${option}`}
+            defaultChecked={option === 24}
+            type="radio"
+            value={option}
+            name="size"
+            onChange={_filterBySize}
+          />
           <label htmlFor={`option-${option}`} className={styles.radio}>
             {option}
           </label>

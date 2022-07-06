@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { resolveShorthand } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
 /**
@@ -18,12 +19,24 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
+  const nonOverflowAvatarsCount = useContextSelector(AvatarGroupContext, ctx => ctx.nonOverflowAvatarsCount);
   const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
+  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
   const { style, className, ...avatarSlotProps } = props;
+  const size = groupSize ?? defaultAvatarGroupSize;
+  const hasAvatarGroupContext = useHasParentContext(AvatarGroupContext);
+
+  if (process.env.NODE_ENV !== 'production' && !hasAvatarGroupContext) {
+    // eslint-disable-next-line no-console
+    console.warn('AvatarGroupItem must only be used inside an AvatarGroup component.');
+  }
 
   return {
+    nonOverflowAvatarsCount: nonOverflowAvatarsCount ?? 1,
+    layout,
+    size,
     isOverflowItem: groupIsOverflow,
     components: {
       root: 'div',
@@ -35,7 +48,6 @@ export const useAvatarGroupItem_unstable = (
       defaultProps: {
         style,
         className,
-        as: groupIsOverflow ? 'li' : 'div',
         role: groupIsOverflow ? 'listitem' : undefined,
       },
     }),
@@ -43,7 +55,7 @@ export const useAvatarGroupItem_unstable = (
       required: true,
       defaultProps: {
         ref,
-        size: groupSize,
+        size,
         color: 'colorful',
         ...avatarSlotProps,
       },

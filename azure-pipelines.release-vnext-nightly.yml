@@ -42,6 +42,11 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
+        # Deletes all existing changefiles so that only bump that happens is for nightly
+      - script: |
+          rm change/*
+        displayName: 'Delete existing changefiles'
+
         # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
       - script: |
           date=$(date +"%Y%m%d-%H%M")
@@ -49,7 +54,7 @@ jobs:
           yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
           git add .
           git commit -m "bump nightly versions"
-          yarn change --type prerelease --message "Release nightly v9"
+          yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
         displayName: 'Bump and commit nightly versions'
 
       # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)

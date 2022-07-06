@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Button, useId, Input, Switch, Caption1, tokens } from '@fluentui/react-components';
+import { tokens, useId, Button, Caption1, Input } from '@fluentui/react-components';
 import { Theme } from '@fluentui/react-theme';
 import { SearchRegular } from '@fluentui/react-icons';
 
 export interface TokenBoxesProps {
   className?: string;
   theme: Theme;
-  isDark: boolean;
-  toggleTheme: () => void;
 }
 
 export interface TokenBoxProps {
@@ -73,14 +71,14 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
     if (!themeColor) {
       return;
     }
-    return themeColor.includes(filter);
+    return themeColor.includes(filter) || color.toLowerCase().includes(filter.toLowerCase());
   });
 
   const changeFilter = React.useCallback((ev, data) => setFilter(ev.target.value), [setFilter]);
 
   return (
     <div>
-      <Caption1> Color Tokens </Caption1>
+      <Caption1> Color tokens </Caption1>
       <div className={styles.topbar}>
         <Input
           placeholder="Search"
@@ -89,7 +87,6 @@ export const TokenBoxes: React.FC<TokenBoxesProps> = props => {
           id={useId('input-outline')}
           onChange={changeFilter}
         />
-        <Switch onChange={props.toggleTheme} label={props.isDark ? 'dark theme' : 'light theme'} />
       </div>
       <div className={styles.root}>
         {filteredColors.map(color => {

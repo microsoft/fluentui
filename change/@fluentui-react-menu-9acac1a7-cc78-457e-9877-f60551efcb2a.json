@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: submenu indicator should be filled on hover",
-  "packageName": "@fluentui/react-menu",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

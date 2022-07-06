@@ -16,6 +16,7 @@ export type UsePortalMountNodeOptions = {
 
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
     zIndex: 1000000,
   },
 });

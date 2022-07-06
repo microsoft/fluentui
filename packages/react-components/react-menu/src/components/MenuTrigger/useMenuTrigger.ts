@@ -44,7 +44,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const { dir } = useFluent();
   const OpenArrowKey = dir === 'ltr' ? ArrowRight : ArrowLeft;
 
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = React.isValidElement(children) ? getTriggerChild<Partial<MenuTriggerChildProps>>(children) : undefined;
 
   const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
     if (isTargetDisabled(e)) {

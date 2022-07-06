@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Select } from './Select';
 import { isConformant } from '../../common/isConformant';
 
@@ -35,6 +35,18 @@ describe('Select', () => {
     expect(result.container).toMatchSnapshot();
   });
 
+  it('handles the defaultValue attribute', () => {
+    const { getByTestId } = render(
+      <Select defaultValue="B">
+        <option>A</option>
+        <option data-testid="option-b">B</option>
+        <option>C</option>
+      </Select>,
+    );
+
+    expect((getByTestId('option-b') as HTMLOptionElement).selected).toBeTruthy();
+  });
+
   it('handles the disabled attribute', () => {
     const { getByTestId } = render(<Select data-testid="select" disabled />);
     expect((getByTestId('select') as HTMLSelectElement).disabled).toBeTruthy();
@@ -52,5 +64,38 @@ describe('Select', () => {
 
     expect(select.id).toEqual('select');
     expect(select.getAttribute('aria-label')).toEqual('test');
+  });
+
+  it('calls onChange with new value', () => {
+    const onChange = jest.fn();
+    const { getByTestId } = render(
+      <Select onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    fireEvent.change(getByTestId('select'), { target: { value: 'B' } });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange.mock.calls[0][1]).toEqual({ value: 'B' });
+  });
+
+  it('does not call onChange with value changes', () => {
+    const onChange = jest.fn();
+    const component = render(
+      <Select value="B" onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    component.rerender(
+      <Select value="C" onChange={onChange} data-testid="select">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </Select>,
+    );
+    expect(onChange).toHaveBeenCalledTimes(0);
   });
 });
