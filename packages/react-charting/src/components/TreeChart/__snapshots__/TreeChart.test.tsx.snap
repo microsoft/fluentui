@@ -656,6 +656,90 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
         </tspan>
       </text>
     </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,200 V230 H75 H215"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,200 V230 H315 H455"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,200 V230 H525 H665"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,200 V230 H705 H845"
+      />
+    </g>
   </svg>
 </div>
 `;
@@ -1316,6 +1400,90 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
         </tspan>
       </text>
     </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,200 V230 H75 H215"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,200 V230 H315 H455"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,200 V230 H525 H665"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,200 V230 H705 H845"
+      />
+    </g>
   </svg>
 </div>
 `;
@@ -1545,6 +1713,50 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
           subtext
         </tspan>
       </text>
+    </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M235,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M535,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M685,110 H460 V80"
+      />
     </g>
   </svg>
 </div>
