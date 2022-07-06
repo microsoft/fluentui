@@ -1,6 +1,6 @@
 # @fluentui/react-image
 
-**Image components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Image components for [Fluent UI React](https://react.fluentui.dev/)**
 
 Usage of Image component ensures consistent styling and behaviour of images in your application based on the Fluent UI Design System.
 
@@ -23,7 +23,7 @@ import { Image } from '@fluentui/react-components';
 <Image src="example_image.png" shape="circular" />;
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 
