@@ -1,3 +1,4 @@
+import { HighContrastSelector, HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 import { ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 
 export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => {
@@ -17,6 +18,20 @@ export const getStyles = (props: ISankeyChartStyleProps): ISankeyChartStyles => 
     links: {
       stroke: pathColor ? pathColor : theme.palette.blue,
       fill: 'none',
+      selectors: {
+        [HighContrastSelector]: {
+          forcedColorAdjust: 'none',
+        },
+      },
+    },
+    nodes: {
+      text: {
+        selectors: {
+          [HighContrastSelectorBlack]: {
+            fill: 'rgb(255, 255, 255)',
+          },
+        },
+      },
     },
   };
 };
