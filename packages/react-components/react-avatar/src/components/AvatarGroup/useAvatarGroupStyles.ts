@@ -10,6 +10,7 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
   overflowContent: 'fui-AvatarGroup__overflowContent',
   overflowButton: 'fui-AvatarGroup__overflowButton',
+  overflowSurface: 'fui-AvatarGroup__overflowSurface',
 };
 
 /**
@@ -108,9 +109,9 @@ const useOverflowButtonStyles = makeStyles({
 });
 
 /**
- * Styles for overflow list slot.
+ * Styles for overflow surface slot.
  */
-const useOverflowContentStyles = makeStyles({
+const useOverflowSurfaceStyles = makeStyles({
   base: {
     maxHeight: '220px',
     minHeight: '80px',
@@ -127,7 +128,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   const { layout, overflowIndicator, size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
-  const overflowContentStyles = useOverflowContentStyles();
+  const overflowSurfaceStyles = useOverflowSurfaceStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
   const groupChildClassName = useGroupChildClassName(layout, size, true);
@@ -144,8 +145,15 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   if (state.overflowContent) {
     state.overflowContent.className = mergeClasses(
       avatarGroupClassNames.overflowContent,
-      overflowContentStyles.base,
       state.overflowContent.className,
+    );
+  }
+
+  if (state.overflowSurface) {
+    state.overflowSurface.className = mergeClasses(
+      avatarGroupClassNames.overflowSurface,
+      overflowSurfaceStyles.base,
+      state.overflowSurface.className,
     );
   }
 
