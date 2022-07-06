@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add sparkline chart to repo",
+  "packageName": "@fluentui/react-charting",
+  "email": "atishay.jain@microsoft.com",
+  "dependentChangeType": "patch"
+}

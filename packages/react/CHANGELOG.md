@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 30 Jun 2022 07:40:48 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Jul 2022 07:38:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.78.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.0)
+
+Wed, 06 Jul 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.3..@fluentui/react_v8.78.0)
+
+### Minor changes
+
+- feat: Adding focusZoneProps support for Nav. ([PR #23806](https://github.com/microsoft/fluentui/pull/23806) by cqc@cuiqingcai.com)
+
+### Patches
+
+- fix(Checkbox): add indeterminate value to inputRef ([PR #23772](https://github.com/microsoft/fluentui/pull/23772) by marcosmoura@microsoft.com)
 
 ## [8.77.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.3)
 
