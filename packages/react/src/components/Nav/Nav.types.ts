@@ -126,7 +126,7 @@ export interface INavProps {
   selectedAriaLabel?: string;
 
   /**
-   * (Optional) Used to define the props of FocusZone which is a wrapper of Nav
+   * (Optional) Used to define the props of the FocusZone wrapper.
    */
   focusZoneProps?: IFocusZoneProps;
 }
