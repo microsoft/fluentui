@@ -241,8 +241,17 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     if (internalState.focusStackId === FocusTrapZone.focusStack!.slice(-1)[0]) {
       const targetElement = ev.target as HTMLElement | null;
       if (targetElement && !elementContains(root.current, targetElement)) {
-        focusFTZ();
-        internalState.hasFocus = true; // set focus here since we stop event propagation
+        if (doc && doc.activeElement === doc.body) {
+          setTimeout(() => {
+            if (doc && doc.activeElement === doc.body) {
+              focusFTZ();
+              internalState.hasFocus = true; // set focus here since we stop event propagation
+            }
+          }, 0);
+        } else {
+          focusFTZ();
+          internalState.hasFocus = true; // set focus here since we stop event propagation
+        }
         ev.preventDefault();
         ev.stopPropagation();
       }
