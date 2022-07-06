@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "add focusZoneProps support for Nav",
+  "comment": "feat: Adding focusZoneProps support for Nav.",
   "packageName": "@fluentui/react",
   "email": "cqc@cuiqingcai.com",
   "dependentChangeType": "minor"
