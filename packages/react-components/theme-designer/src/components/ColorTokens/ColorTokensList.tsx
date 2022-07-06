@@ -18,12 +18,13 @@ import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
+import { DispatchColorOverrides } from './ColorTokens';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
   brandColors: Record<string, Brands>;
-  colorOverrides: Record<string, Brands>;
-  dispatchColorOverrides: React.Dispatch<{ colorToken: string; newValue: Brands }>;
+  colorOverride: Record<string, Brands>;
+  dispatchColorOverride: React.Dispatch<DispatchColorOverrides>;
 }
 
 export interface ColorTokenRowProps {
@@ -69,8 +70,8 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverrides, dispatchColorOverrides } = props;
-  const newColors = { ...brandColors, ...colorOverrides };
+  const { brand, brandColors, colorOverride, dispatchColorOverride } = props;
+  const newColors = { ...brandColors, ...colorOverride };
 
   return (
     <div>
@@ -80,7 +81,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          dispatchColorOverrides({ colorToken: color, newValue: newColor });
+          dispatchColorOverride({ colorToken: color, newValue: newColor });
         };
 
         return (

@@ -43,7 +43,7 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <ColorTokens brand={state.brand} dispatchState={dispatchState} />
+        <ColorTokens brand={state.brand} appState={state} dispatchState={dispatchState} />
       </div>
     </FluentProvider>
   );
