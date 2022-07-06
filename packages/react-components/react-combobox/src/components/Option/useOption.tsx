@@ -4,6 +4,7 @@ import { useContextSelector } from '@fluentui/react-context-selector';
 import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
 function getValueString(value: string | undefined, children: React.ReactNode) {
@@ -41,7 +42,11 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   }, [props.id, defaultId]);
 
   // data used for context registration & events
-  const optionData = { id, disabled, value: optionValue };
+  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
+    id,
+    disabled,
+    optionValue,
+  ]);
 
   // context values
   const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
@@ -92,7 +97,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     if (id && optionRef.current) {
       return registerOption(optionData, optionRef.current);
     }
-  }, [registerOption, id, disabled, optionValue]);
+  }, [id, optionData, registerOption]);
 
   return {
     components: {

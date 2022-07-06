@@ -1,4 +1,3 @@
-import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { OptionValue, OptionCollectionState } from '../../utils/OptionCollection.types';
 import { SelectionEvents, SelectionProps, SelectionState } from '../../utils/Selection.types';

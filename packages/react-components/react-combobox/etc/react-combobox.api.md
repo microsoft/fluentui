@@ -99,7 +99,8 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
+    selectOption(event: SelectionEvents, optionValue: string): void;
+    setActiveOption(option?: OptionValue): void;
 };
 
 // @public
