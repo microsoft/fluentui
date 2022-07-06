@@ -57,6 +57,7 @@ class StandardTree {
         y={yCoordinate}
         tabIndex={0}
         data-is-focusable={true}
+        role={'text'}
         aria-label={ariaLabel}
         className={this.styleClassNames.rectNode}
         rx={1.5}
