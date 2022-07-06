@@ -27,6 +27,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     selectOption,
     selectedOptions,
     setActiveOption,
+    setOpen,
     setValue,
     value,
   } = baseState;
@@ -70,6 +71,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
   const onBlur = useMergedEventCallbacks(triggerNativeProps.onBlur, () => {
     if (!baseState.open && !allowFreeform) {
+      setValue(undefined);
+    }
+  });
+
+  baseState.setOpen = useMergedEventCallbacks(setOpen, (ev, newState: boolean) => {
+    if (!newState && !allowFreeform) {
       setValue(undefined);
     }
   });
@@ -134,6 +141,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
+    setOpen,
   };
 
   return state;

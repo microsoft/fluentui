@@ -12,12 +12,12 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionById, getOptionsMatchingValue } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
   const selectionState = useSelection(props);
-  const { selectedOptions, selectOption } = selectionState;
+  const { selectedOptions } = selectionState;
 
   // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
@@ -56,17 +56,6 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     setOpenState(newState);
   };
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
-    // clicked option should always become active option
-    setActiveOption(getOptionById(option.id));
-
-    // close on option click for single-select
-    !multiselect && setOpen(event, false);
-
-    // handle selection change
-    selectOption(event, option);
-  };
-
   // update active option based on change in open state
   React.useEffect(() => {
     if (open) {
@@ -95,7 +84,6 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     activeOption,
     appearance,
     inlinePopup,
-    onOptionClick,
     open,
     setActiveOption,
     setOpen,
