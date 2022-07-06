@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { getCurrentTabster, createTabster, Types as TabsterTypes } from 'tabster';
+import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
@@ -12,12 +13,19 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
 
   const defaultView = targetDocument?.defaultView || undefined;
-  const tabsterOptions: TabsterTypes.TabsterCoreProps = { autoRoot: {}, controlTab: false };
 
-  if (!defaultView) {
-    return null;
-  }
+  const tabster = React.useMemo(
+    () => (defaultView ? createTabster(defaultView, { autoRoot: {}, controlTab: false }) : null),
+    [defaultView],
+  );
 
-  // TODO: worth memoizing once more tabster options are used
-  return getCurrentTabster(defaultView) ?? createTabster(defaultView, tabsterOptions);
+  React.useEffect(() => {
+    return () => {
+      if (tabster) {
+        disposeTabster(tabster);
+      }
+    };
+  }, [tabster]);
+
+  return tabster;
 };
