@@ -6,7 +6,741 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
 >
   <svg
     className="svgTree"
-  />
+  >
+    <g
+      className="svgNode"
+    >
+      <rect
+        aria-hidden={true}
+        aria-label="Root Node"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Root Node"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#0099BC"
+        tabIndex={0}
+        width={120}
+        x={400}
+        y={10}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={34}
+        textAnchor="middle"
+        x={460}
+      >
+        Root Node
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={460}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 1"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 1"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={85}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={145}
+      >
+        Child 1
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={145}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf1"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf1"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={53}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={88}
+      >
+        leaf1
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={88}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf2"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf2"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={165}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={200}
+      >
+        leaf2
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={200}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf3"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf3"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={53}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={88}
+      >
+        leaf3
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={88}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf4"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf4"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={165}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={200}
+      >
+        leaf4
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={200}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 2"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 2"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={325}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={385}
+      >
+        Child 2
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={385}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf5"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf5"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={293}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={328}
+      >
+        leaf5
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={328}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf6"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf6"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={405}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={440}
+      >
+        leaf6
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={440}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 3"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 3"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={535}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={595}
+      >
+        Child 3
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={595}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf7"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf7"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={503}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={538}
+      >
+        leaf7
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={538}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf8"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf8"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={615}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={650}
+      >
+        leaf8
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={650}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf9"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf9"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={70}
+        x={503}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={538}
+      >
+        leaf9
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={538}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 4"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 4"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={715}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={775}
+      >
+        Child 4
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={775}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf10"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf10"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={715}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={775}
+      >
+        leaf10
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={775}
+        >
+          sub
+        </tspan>
+      </text>
+    </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,200 V230 H75 H215"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,200 V230 H315 H455"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,200 V230 H525 H665"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,200 V230 H705 H845"
+      />
+    </g>
+  </svg>
 </div>
 `;
 
@@ -16,7 +750,741 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
 >
   <svg
     className="svgTree"
-  />
+  >
+    <g
+      className="svgNode"
+    >
+      <rect
+        aria-hidden={true}
+        aria-label="Root Node"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Root Node"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#0099BC"
+        tabIndex={0}
+        width={120}
+        x={400}
+        y={10}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={34}
+        textAnchor="middle"
+        x={460}
+      >
+        Root Node
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={460}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 1"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 1"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={85}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={145}
+      >
+        Child 1
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={145}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf1"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf1"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={83}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={143}
+      >
+        leaf1
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={143}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf2"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf2"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={83}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={143}
+      >
+        leaf2
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={143}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf3"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf3"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={83}
+        y={400}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={424}
+        textAnchor="middle"
+        x={143}
+      >
+        leaf3
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={143}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf4"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf4"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={83}
+        y={470}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={494}
+        textAnchor="middle"
+        x={143}
+      >
+        leaf4
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={143}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 2"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 2"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={325}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={385}
+      >
+        Child 2
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={385}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf5"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf5"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={323}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={383}
+      >
+        leaf5
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={383}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf6"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf6"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={323}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={383}
+      >
+        leaf6
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={383}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 3"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 3"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={535}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={595}
+      >
+        Child 3
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={595}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf7"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf7"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={533}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={593}
+      >
+        leaf7
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={593}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf8"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf8"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={533}
+        y={330}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={354}
+        textAnchor="middle"
+        x={593}
+      >
+        leaf8
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={593}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf9"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf9"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={533}
+        y={400}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={424}
+        textAnchor="middle"
+        x={593}
+      >
+        leaf9
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={593}
+        >
+          sub
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 4"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 4"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={715}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={775}
+      >
+        Child 4
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={775}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="leaf10"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="leaf10"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#4F6BED"
+        tabIndex={0}
+        width={120}
+        x={715}
+        y={260}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={284}
+        textAnchor="middle"
+        x={775}
+      >
+        leaf10
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={775}
+        >
+          sub
+        </tspan>
+      </text>
+    </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M145,200 V230 H75 H215"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,200 V230 H315 H455"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M595,200 V230 H525 H665"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M775,200 V230 H705 H845"
+      />
+    </g>
+  </svg>
 </div>
 `;
 
@@ -26,6 +1494,270 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
 >
   <svg
     className="svgTree"
-  />
+  >
+    <g
+      className="svgNode"
+    >
+      <rect
+        aria-hidden={true}
+        aria-label="Root Node"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Root Node"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="#0099BC"
+        tabIndex={0}
+        width={120}
+        x={400}
+        y={10}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={34}
+        textAnchor="middle"
+        x={460}
+      >
+        Root Node
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={460}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 1"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 1"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={175}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={235}
+      >
+        Child 1
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={235}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 2"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 2"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={325}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={385}
+      >
+        Child 2
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={385}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 3"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 3"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={475}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={535}
+      >
+        Child 3
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={535}
+        >
+          subtext
+        </tspan>
+      </text>
+      <rect
+        aria-hidden={true}
+        aria-label="Child 4"
+        className=
+
+            {
+              fill: white;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              stroke-width: 2px;
+            }
+        data-name="Child 4"
+        focusable={false}
+        height={60}
+        role="document"
+        rx={1}
+        stroke="pink"
+        tabIndex={0}
+        width={120}
+        x={625}
+        y={130}
+      />
+      <text
+        className=
+
+            {
+              fill: black;
+            }
+        dy={154}
+        textAnchor="middle"
+        x={685}
+      >
+        Child 4
+        <tspan
+          className="rectSubtext"
+          dy="1.4em"
+          x={685}
+        >
+          subtext
+        </tspan>
+      </text>
+    </g>
+    <g
+      className="svgLink"
+    >
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M235,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M385,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M535,110 H460 V80"
+      />
+      <path
+        className=
+
+            {
+              fill: none;
+              stroke-width: 2px;
+              stroke: black;
+            }
+        d="M685,110 H460 V80"
+      />
+    </g>
+  </svg>
 </div>
 `;

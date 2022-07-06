@@ -103,24 +103,6 @@ describe('TreeChart snapshot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  // Test snapshot with string snapshot value using innerHTML
-  // it('renders all treechart element, two layer composition correctly', () => {
-  //   wrapper = mount(<TreeChart treeData={twoLayerChart} width={1000} height={700} />);
-  //   const svgObject = wrapper.getDOMNode().querySelector('[class="svgTree"]');
-  //   expect(svgObject?.innerHTML).toMatchSnapshot();
-  // });
-
-  // it('renders all treechart element, three layer long composition correctly', () => {
-  //   wrapper = mount(<TreeChart treeData={threeLayerChart} composition={1} width={1000} height={700} />);
-  //   const svgObject = wrapper.getDOMNode().querySelector('[class="svgTree"]');
-  //   expect(svgObject?.innerHTML).toMatchSnapshot();
-  // });
-
-  // it('renders all treechart element, three layer compact composition correctly', () => {
-  //   wrapper = mount(<TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700} />);
-  //   const svgObject = wrapper.getDOMNode().querySelector('[class="svgTree"]');
-  //   expect(svgObject?.innerHTML).toMatchSnapshot();
-  // });
 });
 
 describe('TreeChart - basic props', () => {
