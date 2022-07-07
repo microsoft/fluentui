@@ -60,6 +60,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
   const overflowContent = resolveShorthand(props.overflowContent, {
     required: true,
     defaultProps: {
+      'aria-label': 'Overflow',
       children: overflowChildren,
       role: 'list',
       tabIndex: 0,
@@ -68,9 +69,6 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
   const overflowSurface = resolveShorthand(props.overflowSurface, {
     required: true,
-    defaultProps: {
-      'aria-label': 'Overflow',
-    },
   });
 
   return {
