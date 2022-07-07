@@ -32,6 +32,18 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     );
   });
 
+  const sortedOverrideableColorTokens = overridableColorTokens.sort((a, b) => {
+    if (a.includes('Inverted') && b.includes('Inverted')) {
+      return a.localeCompare(b);
+    } else if (a.includes('Inverted')) {
+      return 1;
+    } else if (b.includes('Inverted')) {
+      return -1;
+    } else {
+      return a.localeCompare(b);
+    }
+  });
+
   // Flips the brand ramp to use the hex values as keys and the brand ramp colors as values for O(1) indexing
   const hexColorToBrand: Record<string, Brands> = brandRamp.reduce((a: Record<string, Brands>, c, i) => {
     a[brand[c]] = c;
@@ -40,8 +52,8 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
 
   // Create an assignment of color tokens to brand ramp colors given the hex value
   const brandColors: Record<string, Brands> = {};
-  for (let i = 0; i < overridableColorTokens.length; i++) {
-    const key = overridableColorTokens[i];
+  for (let i = 0; i < sortedOverrideableColorTokens.length; i++) {
+    const key = sortedOverrideableColorTokens[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];
     brandColors[key] = hexColorToBrand[themeColor];
   }
