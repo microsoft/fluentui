@@ -19,7 +19,7 @@ import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
-import { DispatchColorOverrides } from './ColorTokens';
+import { DispatchColorOverrides } from './useColorOverrideReducer';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;

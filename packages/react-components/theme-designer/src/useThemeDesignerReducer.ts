@@ -9,7 +9,6 @@ import {
 } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams, brandWeb } from './utils/brandColors';
-
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 
 export type CustomAttributes = {
