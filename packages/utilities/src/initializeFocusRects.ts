@@ -9,6 +9,8 @@ type AppWindow =
     })
   | undefined;
 
+let lastInteraction = '';
+
 /**
  * Initializes the logic which:
  *
@@ -35,21 +37,44 @@ export function initializeFocusRects(window?: Window): void {
     win.__hasInitializeFocusRects__ = true;
     win.addEventListener('mousedown', _onMouseDown, true);
     win.addEventListener('pointerdown', _onPointerDown, true);
-    win.addEventListener('keydown', _onKeyDown as () => void, true);
+    win.addEventListener('keydown', _onKeyDown, true);
+    win.addEventListener('focus', _onFocus, true);
   }
 }
 
 function _onMouseDown(ev: MouseEvent): void {
+  lastInteraction = 'mouse';
   setFocusVisibility(false, ev.target as Element);
 }
 
 function _onPointerDown(ev: PointerEvent): void {
   if (ev.pointerType !== 'mouse') {
+    lastInteraction = 'pointer';
     setFocusVisibility(false, ev.target as Element);
   }
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
   // eslint-disable-next-line deprecation/deprecation
-  isDirectionalKeyCode(ev.which) && setFocusVisibility(true, ev.target as Element);
+  if (isDirectionalKeyCode(ev.which)) {
+    lastInteraction = 'keyboard';
+  }
+}
+
+function _onFocus(ev: FocusEvent): void {
+  if (ev.target) {
+    const classNameList = (ev.target as Element).classList;
+    const length = classNameList.length;
+    let isFluentElement = false;
+    for (let i = 0; i < length; i++) {
+      if (/^ms-[a-zA-Z-0-9]+$/gm.test(classNameList[i])) {
+        isFluentElement = true;
+        break;
+      }
+    }
+
+    if (isFluentElement && lastInteraction === 'keyboard') {
+      setFocusVisibility(true, ev.target as Element);
+    }
+  }
 }

@@ -4,10 +4,11 @@ import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
 /**
- * Counter for mounted component that uses focus rectangle.
- * We want to cleanup the listners before last component that uses focus rectangle unmounts.
+ * Counter for mounted components that use focus rectangles.
+ * We want to cleanup the listeners before the last component that uses focus rectangles unmounts.
  */
 let mountCounters = new WeakMap<Window, number>();
+let lastInteraction = '';
 
 function setMountCounters(key: Window, delta: number): number {
   let newValue;
@@ -52,6 +53,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       win.addEventListener('mousedown', _onMouseDown, true);
       win.addEventListener('pointerdown', _onPointerDown, true);
       win.addEventListener('keydown', _onKeyDown, true);
+      win.addEventListener('focus', _onFocus, true);
     }
 
     return () => {
@@ -64,6 +66,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         win.removeEventListener('mousedown', _onMouseDown, true);
         win.removeEventListener('pointerdown', _onPointerDown, true);
         win.removeEventListener('keydown', _onKeyDown, true);
+        win.removeEventListener('focus', _onFocus, true);
       }
     };
   }, [rootRef]);
@@ -79,11 +82,13 @@ export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTM
 };
 
 function _onMouseDown(ev: MouseEvent): void {
+  lastInteraction = 'mouse';
   setFocusVisibility(false, ev.target as Element);
 }
 
 function _onPointerDown(ev: PointerEvent): void {
   if (ev.pointerType !== 'mouse') {
+    lastInteraction = 'pointer';
     setFocusVisibility(false, ev.target as Element);
   }
 }
@@ -91,6 +96,24 @@ function _onPointerDown(ev: PointerEvent): void {
 function _onKeyDown(ev: KeyboardEvent): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
-    setFocusVisibility(true, ev.target as Element);
+    lastInteraction = 'keyboard';
+  }
+}
+
+function _onFocus(ev: FocusEvent): void {
+  if (ev.target) {
+    const classNameList = (ev.target as Element).classList;
+    const length = classNameList.length;
+    let isFluentElement = false;
+    for (let i = 0; i < length; i++) {
+      if (/^ms-[a-zA-Z-0-9]+$/gm.test(classNameList[i])) {
+        isFluentElement = true;
+        break;
+      }
+    }
+
+    if (isFluentElement && lastInteraction === 'keyboard') {
+      setFocusVisibility(true, ev.target as Element);
+    }
   }
 }
