@@ -95,6 +95,8 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
           default:
             return state;
         }
+      case 'Reset Custom Overrides':
+        return { ...state, customLight: {}, customDark: {} };
       default:
         return state;
     }
