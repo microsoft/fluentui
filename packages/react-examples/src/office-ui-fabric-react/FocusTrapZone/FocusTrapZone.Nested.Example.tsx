@@ -85,5 +85,5 @@ const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
     }
   }, [onClick]);
 
-  return <iframe style={{ width: '400px', height: '100px' }} ref={iframeRef} />;
+  return <iframe title="Demo frame" style={{ width: '400px', height: '100px' }} ref={iframeRef} />;
 };
