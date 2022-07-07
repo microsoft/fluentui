@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme } from '@fluentui/react-theme';
+import {
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+  teamsLightTheme,
+  webLightTheme,
+  webDarkTheme,
+} from '@fluentui/react-theme';
 import { Theme } from '@fluentui/react-theme';
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme
 const theme = {
-  light: teamsLightTheme,
+  light: webLightTheme,
   dark: webDarkTheme,
+  teamsLight: teamsLightTheme,
   teamsDark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
 };
@@ -135,7 +142,7 @@ export const Colors = () => {
       <div
         style={{
           display: 'inline-grid',
-          gridTemplateColumns: '24em repeat(4, auto)',
+          gridTemplateColumns: '24em repeat(5, auto)',
           columnGap: '1em',
           alignItems: 'stretch',
         }}
@@ -148,6 +155,9 @@ export const Colors = () => {
         </h3>
         <h3 key="hrDark" style={{ padding: '1em', margin: 0 }}>
           Dark
+        </h3>
+        <h3 key="hrTeamsLight" style={{ padding: '1em', margin: 0 }}>
+          Teams Light
         </h3>
         <h3 key="hrTeamsDark" style={{ padding: '1em', margin: 0 }}>
           Teams Dark
@@ -164,6 +174,7 @@ export const Colors = () => {
           </div>,
           <ColorRampItem key={`${name}Light`} value={theme.light[name]} />,
           <ColorRampItem key={`${name}Dark`} value={theme.dark[name]} />,
+          <ColorRampItem key={`${name}TeamsLight`} value={theme.teamsLight[name]} />,
           <ColorRampItem key={`${name}TeamsDark`} value={theme.teamsDark[name]} />,
           <ColorRampItem key={`${name}HC`} value={theme.highContrast[name]} />,
         ])}
