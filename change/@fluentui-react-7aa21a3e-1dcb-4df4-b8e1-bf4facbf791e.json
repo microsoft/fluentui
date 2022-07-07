@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add optional improveCSSPerformance prop to Shimmer",
+  "packageName": "@fluentui/react",
+  "email": "conniechen@microsoft.com",
+  "dependentChangeType": "minor"
+}
