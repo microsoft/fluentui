@@ -62,6 +62,7 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     required: true,
     defaultProps: {
       children: overflowButtonChildren,
+      type: 'button',
     },
   });
 
@@ -75,6 +76,10 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     },
   });
 
+  const overflowSurface = resolveShorthand(props.overflowSurface, {
+    required: true,
+  });
+
   return {
     nonOverflowAvatarsCount: rootChildren.length,
     hasOverflow: !!overflowChildren,
@@ -85,13 +90,15 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     components: {
       root: 'div',
-      overflowContent: PopoverSurface,
+      overflowContent: 'div',
       overflowButton: 'button',
+      overflowSurface: PopoverSurface,
     },
 
     root,
     overflowButton,
     overflowContent,
+    overflowSurface,
   };
 };
 
