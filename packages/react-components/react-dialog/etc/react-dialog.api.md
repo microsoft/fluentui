@@ -31,7 +31,7 @@ export type DialogContentProps = ComponentProps<DialogContentSlots>;
 
 // @public (undocumented)
 export type DialogContentSlots = {
-    root: Slot<'div'>;
+    root: Slot<'div', 'main'>;
 };
 
 // @public

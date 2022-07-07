@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@fluentui/react-dialog';
 import type { DialogProps } from '@fluentui/react-dialog';
-import { Button } from "@fluentui/react-components";
+import { Button } from '@fluentui/react-components';
 
 export const Default = (props: Partial<DialogProps>) => {
   const dialogRef = React.useRef<HTMLDialogElement>(null);
