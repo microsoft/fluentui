@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Trigger addition of isFocusVisible classname only when Fluent elements are focused.",
+  "packageName": "@fluentui/utilities",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

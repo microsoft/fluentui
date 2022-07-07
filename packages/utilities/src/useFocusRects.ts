@@ -101,7 +101,7 @@ function _onKeyDown(ev: KeyboardEvent): void {
 }
 
 function _onFocus(ev: FocusEvent): void {
-  if (ev.target) {
+  if (ev.target && lastInteraction === 'keyboard') {
     const classNameList = (ev.target as Element).classList;
     const length = classNameList.length;
     let isFluentElement = false;
@@ -112,7 +112,7 @@ function _onFocus(ev: FocusEvent): void {
       }
     }
 
-    if (isFluentElement && lastInteraction === 'keyboard') {
+    if (isFluentElement) {
       setFocusVisibility(true, ev.target as Element);
     }
   }

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Adding default class name to container wrapper of SplitButtons.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
