@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 07 Jul 2022 07:37:21 GMT",
+      "tag": "@fluentui/react-charting_v5.10.1",
+      "version": "5.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6faffd280a37636c7917752693b7bf627caec32d",
+            "comment": "Add sparkline chart to repo"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.78.1",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Jul 2022 07:38:24 GMT",
       "tag": "@fluentui/react-charting_v5.10.0",
       "version": "5.10.0",

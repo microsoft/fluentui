@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 07 Jul 2022 07:37:21 GMT",
+      "tag": "@fluentui/react_v8.78.1",
+      "version": "8.78.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d092c483fb340758f864ae788a7c46bf129f653b",
+            "comment": "Handle when FocusTrapZone wraps an iframe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Jul 2022 07:38:24 GMT",
       "tag": "@fluentui/react_v8.78.0",
       "version": "8.78.0",
