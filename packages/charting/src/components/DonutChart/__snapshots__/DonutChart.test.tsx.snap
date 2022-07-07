@@ -75,7 +75,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -114,7 +114,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -228,7 +228,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -251,7 +251,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
@@ -316,7 +316,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -339,7 +339,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
@@ -446,7 +446,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -485,7 +485,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -599,7 +599,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -622,7 +622,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
@@ -687,7 +687,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -710,7 +710,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
@@ -817,7 +817,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -856,7 +856,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -948,7 +948,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -987,7 +987,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1101,7 +1101,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1124,7 +1124,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
@@ -1189,7 +1189,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1212,7 +1212,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
@@ -1319,7 +1319,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1360,7 +1360,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     fill: #323130;
                     font-size: 18px;
                   }
-                  @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& {
+                  @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
                     fill: rgb(179, 179, 179);
                   }
               textAnchor="middle"
@@ -1476,7 +1476,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1499,7 +1499,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
@@ -1564,7 +1564,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1587,7 +1587,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
