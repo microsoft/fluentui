@@ -58,6 +58,8 @@ function _onKeyDown(ev: KeyboardEvent): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     lastInteraction = 'keyboard';
+  } else {
+    lastInteraction = '';
   }
 }
 
