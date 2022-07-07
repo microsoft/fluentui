@@ -35,7 +35,7 @@ export type OverrideState = {
   customDark: Partial<Theme>;
 };
 
-export type DispatchOverride = { type: string; overrides: Partial<Theme> };
+export type DispatchOverride = { type: string; overrides?: Partial<Theme> };
 
 export type ReducerState = {
   themeLabel: string;
@@ -45,22 +45,41 @@ export type ReducerState = {
   overrides: Partial<Theme>;
 };
 
-const overrideReducer = (state: OverrideState, action: DispatchOverride) => {
-  switch (action.type) {
-    case 'Teams Light':
-      return { ...state, teamsLight: { ...state.teamsLight, ...action.overrides } };
-    case 'Teams Dark':
-      return { ...state, teamsDark: { ...state.teamsDark, ...action.overrides } };
-    case 'Web Light':
-      return { ...state, webLight: { ...state.webLight, ...action.overrides } };
-    case 'Web Dark':
-      return { ...state, webDark: { ...state.webDark, ...action.overrides } };
-    case 'Custom Light':
-      return { ...state, customLight: { ...state.customLight, ...action.overrides } };
-    case 'Custom Dark':
-      return { ...state, customDark: { ...state.customDark, ...action.overrides } };
-    default:
-      return state;
+const overrideReducer = (state: OverrideState, action: { type: string; overrides?: Partial<Theme> }) => {
+  if (!action.overrides) {
+    switch (action.type) {
+      case 'Teams Light':
+        return { ...state, teamsLight: {} };
+      case 'Teams Dark':
+        return { ...state, teamsDark: {} };
+      case 'Web Light':
+        return { ...state, webLight: {} };
+      case 'Web Dark':
+        return { ...state, webDark: {} };
+      case 'Custom Light':
+        return { ...state, customLight: {} };
+      case 'Custom Dark':
+        return { ...state, customDark: {} };
+      default:
+        return state;
+    }
+  } else {
+    switch (action.type) {
+      case 'Teams Light':
+        return { ...state, teamsLight: { ...state.teamsLight, ...action.overrides } };
+      case 'Teams Dark':
+        return { ...state, teamsDark: { ...state.teamsDark, ...action.overrides } };
+      case 'Web Light':
+        return { ...state, webLight: { ...state.webLight, ...action.overrides } };
+      case 'Web Dark':
+        return { ...state, webDark: { ...state.webDark, ...action.overrides } };
+      case 'Custom Light':
+        return { ...state, customLight: { ...state.customLight, ...action.overrides } };
+      case 'Custom Dark':
+        return { ...state, customDark: { ...state.customDark, ...action.overrides } };
+      default:
+        return state;
+    }
   }
 };
 
@@ -93,11 +112,19 @@ export const useThemeDesignerReducer = () => {
   });
 
   const stateReducer = (state: ReducerState, action: DispatchTheme) => {
-    if (action.type === 'Override' && action.overrides) {
-      if (state.themeLabel === 'Custom') {
-        dispatchOverrideState({ type: state.isDark ? 'Custom Dark' : 'Custom Light', overrides: action.overrides });
+    if (action.type === 'Override') {
+      if (action.overrides) {
+        if (state.themeLabel === 'Custom') {
+          dispatchOverrideState({ type: state.isDark ? 'Custom Dark' : 'Custom Light', overrides: action.overrides });
+        } else {
+          dispatchOverrideState({ type: state.themeLabel, overrides: action.overrides });
+        }
       } else {
-        dispatchOverrideState({ type: state.themeLabel, overrides: action.overrides });
+        if (state.themeLabel === 'Custom') {
+          dispatchOverrideState({ type: state.isDark ? 'Custom Dark' : 'Custom Light' });
+        } else {
+          dispatchOverrideState({ type: state.themeLabel });
+        }
       }
       action.type = state.themeLabel;
     }

@@ -47,10 +47,10 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1.5fr',
     alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXXXL,
-    paddingBottom: tokens.spacingVerticalXXXL,
+    paddingTop: tokens.spacingVerticalXL,
+    paddingBottom: tokens.spacingVerticalXL,
   },
 });
 
@@ -81,7 +81,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          dispatchColorOverride({ colorToken: color, newValue: newColor });
+          dispatchColorOverride({ type: 'Add Override', colorToken: color, newValue: newColor });
         };
 
         return (
