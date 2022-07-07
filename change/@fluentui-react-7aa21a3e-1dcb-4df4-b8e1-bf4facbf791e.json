@@ -1,7 +1,7 @@
 {
-  "type": "patch",
-  "comment": "update shimmerWrapper selector to be more specific",
+  "type": "minor",
+  "comment": "Add optional improveCSSPerformance prop to Shimmer",
   "packageName": "@fluentui/react",
   "email": "conniechen@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "minor"
 }
