@@ -19,15 +19,13 @@ import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
-import { ColorOverrideBrands, DispatchColorOverrides } from './useColorOverrideReducer';
-import { DispatchTheme } from '../../useThemeDesignerReducer';
+import { ColorOverrideBrands } from './useColorOverrideReducer';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
   brandColors: ColorOverrideBrands;
   colorOverride: ColorOverrideBrands;
-  dispatchColorOverride: React.Dispatch<DispatchColorOverrides>;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
+  onNewOverride: (color: string, newColor: Brands) => void;
 }
 
 export interface ColorTokenRowProps {
@@ -73,7 +71,7 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverride, dispatchColorOverride, dispatchAppState } = props;
+  const { brand, brandColors, colorOverride, onNewOverride } = props;
   const newColors = { ...brandColors, ...colorOverride };
 
   return (
@@ -84,8 +82,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          dispatchAppState({ type: 'Override', overrides: { [color]: brand[newColor] } });
-          dispatchColorOverride({ type: 'Add Override', colorToken: color, newValue: newColor });
+          onNewOverride?.(color, newColor);
         };
 
         const overridenTokens = Object.keys(colorOverride);

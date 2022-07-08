@@ -3,7 +3,7 @@ import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Button, Caption1 } from '@fluentui/react-components';
-import { BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
+import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import { ColorOverrideBrands, getCurrentOverride, useColorOverrideReducer } from './useColorOverrideReducer';
@@ -34,6 +34,11 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const [colorOverride, dispatchColorOverride] = useColorOverrideReducer(appState, brand);
 
+  const onNewOverride = (color: string, newColor: Brands) => {
+    dispatchAppState({ type: 'Override', overrides: { [color]: brand[newColor] } });
+    dispatchColorOverride({ type: 'Add Override', colorToken: color, newValue: newColor });
+  };
+
   const handleResetClick = () => {
     dispatchAppState({ type: 'Override' });
     dispatchColorOverride({ type: 'Reset Overrides' });
@@ -53,8 +58,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         brand={brand}
         brandColors={brandColors}
         colorOverride={getCurrentOverride(appState, colorOverride)}
-        dispatchColorOverride={dispatchColorOverride}
-        dispatchAppState={dispatchAppState}
+        onNewOverride={onNewOverride}
       />
     </div>
   );
