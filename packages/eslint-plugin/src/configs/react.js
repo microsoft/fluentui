@@ -2,7 +2,6 @@
 
 const path = require('path');
 const configHelpers = require('../utils/configHelpers');
-const getPackageJson = require('../utils/getPackageJson');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -10,7 +9,9 @@ const typeAwareRules = {
 };
 
 const root = configHelpers.findGitRoot();
-const v9PackageDeps = Object.keys(getPackageJson({ root, name: '@fluentui/react-components' }).dependencies);
+const v9PackageDeps = Object.keys(
+  configHelpers.getPackageJson({ root, name: '@fluentui/react-components' }).dependencies,
+);
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
