@@ -11,8 +11,6 @@ import {
   Radio,
   Body1,
   mergeClasses,
-  Title1,
-  Subtitle1,
   Avatar,
 } from '@fluentui/react-components';
 import {
@@ -23,9 +21,6 @@ import {
   CircleHalfFill16Regular,
   Comment16Regular,
   MoreHorizontal16Filled,
-  MoreHorizontal16Regular,
-  MoreHorizontal24Regular,
-  MoreHorizontal32Regular,
   MoreHorizontal48Regular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader } from '@fluentui/react-card';
