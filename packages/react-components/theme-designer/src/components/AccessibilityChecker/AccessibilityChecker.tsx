@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AccessibilityList } from './AccessibilityList';
-import { contrast, hex_to_sRGB, Vec3 } from '@fluent-blocks/colors';
+import { hex_to_sRGB, Vec3 } from '@fluent-blocks/colors';
+import { contrast } from '../../utils/csswg';
 import { Caption1, Theme } from '@fluentui/react-components';
 
 export interface AccessibilityCheckerProps {
