@@ -9,7 +9,7 @@ import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -80,7 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     if (data.value === 'edit') {
-      props.dispatchState({ type: 'Custom', customAttributes: formState, overrides: {} });
+      props.dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
       setTheme('Custom');
     }
@@ -112,7 +112,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           sidebarId={sidebarId}
           theme={theme}
           setTheme={setTheme}
-          dispatchState={props.dispatchState}
+          dispatchAppState={props.dispatchAppState}
           setTab={setTab}
           formState={formState}
         />
@@ -120,7 +120,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
       {tab === 'edit' && (
         <EditTab
           sidebarId={sidebarId}
-          dispatchState={props.dispatchState}
+          dispatchAppState={props.dispatchAppState}
           formState={formState}
           setFormState={setFormState}
         />

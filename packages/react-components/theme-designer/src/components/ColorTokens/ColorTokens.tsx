@@ -7,13 +7,13 @@ import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import { getCurrentOverride, useColorOverrideReducer } from './useColorOverrideReducer';
-import type { DispatchTheme, ReducerState } from '../../useThemeDesignerReducer';
+import type { DispatchTheme, AppState } from '../../useThemeDesignerReducer';
 
 export interface ColorTokensProps {
   className?: string;
   brand: BrandVariants;
-  appState: ReducerState;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  appState: AppState;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -30,12 +30,12 @@ const brandColors: Record<string, Brands> = OverridableTokenBrandColors(teamsLig
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, appState, dispatchState } = props;
+  const { brand, appState, dispatchAppState } = props;
 
   const [colorOverride, dispatchColorOverride] = useColorOverrideReducer(appState, brand);
 
   const handleResetClick = () => {
-    dispatchState({ type: 'Override' });
+    dispatchAppState({ type: 'Override' });
     dispatchColorOverride({ type: 'Reset Overrides' });
   };
 
@@ -54,7 +54,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         brandColors={brandColors}
         colorOverride={getCurrentOverride(appState, colorOverride)}
         dispatchColorOverride={dispatchColorOverride}
-        dispatchState={dispatchState}
+        dispatchAppState={dispatchAppState}
       />
     </div>
   );

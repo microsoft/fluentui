@@ -36,7 +36,7 @@ export type OverrideState = {
 
 export type DispatchOverride = { type: string; overrides?: Partial<Theme> };
 
-export type ReducerState = {
+export type AppState = {
   themeLabel: string;
   brand: BrandVariants;
   theme: Theme;
@@ -110,7 +110,7 @@ export const useThemeDesignerReducer = () => {
     customDark: {},
   });
 
-  const stateReducer = (state: ReducerState, action: DispatchTheme) => {
+  const stateReducer = (state: AppState, action: DispatchTheme) => {
     if (action.type === 'Override') {
       if (action.overrides) {
         if (state.themeLabel === 'Custom') {

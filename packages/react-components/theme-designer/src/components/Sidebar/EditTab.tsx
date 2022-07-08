@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 
 export interface EditTabProps {
   sidebarId: string;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
   formState: CustomAttributes;
   setFormState: React.Dispatch<CustomAttributes>;
 }
@@ -54,11 +54,11 @@ export interface EditTabProps {
 export const EditTab: React.FC<EditTabProps> = props => {
   const styles = useStyles();
 
-  const { sidebarId, dispatchState, formState, setFormState } = props;
+  const { sidebarId, dispatchAppState, formState, setFormState } = props;
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
     return action.attributes;
   };
 

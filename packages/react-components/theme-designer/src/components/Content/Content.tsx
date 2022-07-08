@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 
-import type { ReducerState, DispatchTheme } from '../../useThemeDesignerReducer';
+import type { AppState, DispatchTheme } from '../../useThemeDesignerReducer';
 
 import { Demo } from '../Demo/Demo';
 import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
@@ -12,8 +12,8 @@ import { ColorTokens } from '../ColorTokens/ColorTokens';
 
 export interface ContentProps {
   className?: string;
-  state: ReducerState;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  appState: AppState;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -29,8 +29,8 @@ const useStyles = makeStyles({
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, state, dispatchState } = props;
-  const theme = { ...state.theme, ...state.overrides };
+  const { className, appState, dispatchAppState } = props;
+  const theme = { ...appState.theme, ...appState.overrides };
 
   return (
     <FluentProvider theme={theme}>
@@ -38,12 +38,12 @@ export const Content: React.FC<ContentProps> = props => {
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
       <div className={mergeClasses(styles.root, className)}>
-        <Palette brandColors={state.brand} />
+        <Palette brandColors={appState.brand} />
         <Demo theme={theme} />
         <Divider />
         <AccessibilityChecker theme={theme} />
         <Divider />
-        <ColorTokens brand={state.brand} appState={state} dispatchState={dispatchState} />
+        <ColorTokens brand={appState.brand} appState={appState} dispatchAppState={dispatchAppState} />
       </div>
     </FluentProvider>
   );
