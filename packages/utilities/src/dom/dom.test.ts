@@ -1,4 +1,3 @@
-import { setSSR } from './setSSR';
 import { portalContainsElement } from './portalContainsElement';
 import { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './setPortalAttribute';
 import { elementContains } from './elementContains';
@@ -49,17 +48,13 @@ describe('getParent', () => {
 
 describe('getWindow', () => {
   it('returns undefined in server environment', () => {
-    setSSR(true);
     expect(getWindow()).toEqual(undefined);
-    setSSR(false);
   });
 });
 
 describe('getDocument', () => {
   it('returns undefined in server environment', () => {
-    setSSR(true);
     expect(getDocument()).toEqual(undefined);
-    setSSR(false);
   });
 });
 

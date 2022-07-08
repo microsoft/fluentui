@@ -1,4 +1,3 @@
-import { setSSR } from './dom/setSSR';
 import { modalize } from './modalize';
 
 function getHiddenElements() {
@@ -17,7 +16,6 @@ function getHiddenElements() {
 describe('modalize', () => {
   afterEach(() => {
     document.body.innerHTML = '';
-    setSSR(false);
   });
 
   const modalizeId = 'childToModalize';
@@ -144,9 +142,6 @@ describe('modalize', () => {
   });
 
   it('does nothing in SSR', () => {
-    // can't fully simulate SSR but at least set the variable
-    setSSR(true);
-
     document.body.innerHTML = `
       <div id="siblingBefore"></div>
       <div id="${modalizeId}"></div>

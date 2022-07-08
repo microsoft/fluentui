@@ -1,4 +1,4 @@
-import { _isSSR } from './setSSR';
+import { canUseDOM } from './canUseDOM';
 
 /**
  * Helper to get the document object. Note that in popup window cases, document
@@ -9,7 +9,7 @@ import { _isSSR } from './setSSR';
  * @public
  */
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
-  if (_isSSR || typeof document === 'undefined') {
+  if (!canUseDOM() || typeof document === 'undefined') {
     return undefined;
   } else {
     const el = rootElement as Element;

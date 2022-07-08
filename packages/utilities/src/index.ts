@@ -221,7 +221,7 @@ export type { ISettingsMap, IWarnControlledUsageParams } from './warn';
 export { isIE11 } from './ie11Detector';
 export { getPropsWithDefaults } from './getPropsWithDefaults';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
-export { setSSR } from './dom/setSSR';
+export { canUseDOM } from './dom/canUseDOM';
 export { createMergedRef } from './createMergedRef';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 

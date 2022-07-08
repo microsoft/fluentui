@@ -30,6 +30,7 @@ import { baseElementProperties } from '@fluentui/utilities';
 import { buildClassMap } from '@fluentui/style-utilities';
 import { buttonProperties } from '@fluentui/utilities';
 import { calculatePrecision } from '@fluentui/utilities';
+import { canUseDOM } from '@fluentui/utilities';
 import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
@@ -343,7 +344,6 @@ import { setMemoizeWeakMap } from '@fluentui/utilities';
 import { setMonth } from '@fluentui/date-time-utilities';
 import { setPortalAttribute } from '@fluentui/utilities';
 import { setRTL } from '@fluentui/utilities';
-import { setSSR } from '@fluentui/utilities';
 import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
@@ -907,6 +907,8 @@ export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+export { canUseDOM }
 
 // @public (undocumented)
 export const Check: React_2.FunctionComponent<ICheckProps>;
@@ -10495,8 +10497,6 @@ export { setPortalAttribute }
 export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
 
 export { setRTL }
-
-export { setSSR }
 
 export { Settings }
 

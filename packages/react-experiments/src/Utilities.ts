@@ -152,7 +152,7 @@ export {
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
-  setSSR,
+  canUseDOM,
   setVirtualParent,
   setWarningCallback,
   shallowCompare,
