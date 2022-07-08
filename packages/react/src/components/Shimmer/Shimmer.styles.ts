@@ -40,7 +40,15 @@ const shimmerAnimationRTL = memoizeFunction(() =>
 );
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const { isDataLoaded, className, theme, transitionAnimationInterval, shimmerColor, shimmerWaveColor } = props;
+  const {
+    isDataLoaded,
+    className,
+    theme,
+    transitionAnimationInterval,
+    shimmerColor,
+    shimmerWaveColor,
+    improveCSSPerformance,
+  } = props;
 
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -66,9 +74,6 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         backgroundColor: shimmerColor || semanticColors.disabledBackground,
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
-          '> *': {
-            transform: 'translateZ(0)',
-          },
           [HighContrastSelector]: {
             background: `WindowText
                         linear-gradient(
@@ -90,6 +95,21 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         left: '0',
         right: '0',
       },
+      improveCSSPerformance
+        ? {
+            selectors: {
+              '> div:last-child': {
+                transform: 'translateZ(0)',
+              },
+            },
+          }
+        : {
+            selectors: {
+              '> *': {
+                transform: 'translateZ(0)',
+              },
+            },
+          },
     ],
     shimmerGradient: [
       classNames.shimmerGradient,

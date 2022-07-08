@@ -85,6 +85,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Sankey Chart',
           url: '#/examples/sankeychart',
         },
+        {
+          component: require<any>('../SparklineChart/SparklineChartPage').SparklineChartPage,
+          key: 'SparklineChart',
+          name: 'Sparkline Chart',
+          url: '#/examples/sparkline',
+        },
       ],
     },
   ],
