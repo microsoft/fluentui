@@ -2,6 +2,131 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@fluentui/react-examples_v0.15.15",
+      "version": "0.15.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v0.20.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/experiments to v7.43.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/react-cards to v0.118.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v0.9.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/date-time to v7.23.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/charting to v4.21.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/mdl2-theme to v0.7.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.5.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v0.19.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.8.10",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.5",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.7.10",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "@fluentui/react-examples_v0.15.15",
       "version": "0.15.15",

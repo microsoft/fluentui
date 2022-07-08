@@ -2,6 +2,65 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "office-ui-fabric-react_v7.189.0",
+      "version": "7.189.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat: Handle when FocusTrapZone wraps an iframe",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.5",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Update high-contrast mixins to support forced-colors (#23285)",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "feat: Adding focusZoneProps support for Nav.",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "39346d4205e497c0772dd694a7e9b1f6b0897bbb",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "office-ui-fabric-react_v7.188.0",
       "version": "7.188.0",

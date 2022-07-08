@@ -1,8 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Jun 2022 12:20:33 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.189.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.189.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.188.0..office-ui-fabric-react_v7.189.0)
+
+### Minor changes
+
+- Update high-contrast mixins to support forced-colors (#23285) ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- feat: Adding focusZoneProps support for Nav. ([PR #23838](https://github.com/microsoft/fluentui/pull/23838) by cqc@cuiqingcai.com)
+
+### Patches
+
+- feat: Handle when FocusTrapZone wraps an iframe ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
+- Bump @uifabric/react-hooks to v7.15.0 ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
+- Bump @uifabric/styling to v7.21.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/foundation to v7.10.4 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/icons to v7.7.3 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.5 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [7.188.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.188.0)
 

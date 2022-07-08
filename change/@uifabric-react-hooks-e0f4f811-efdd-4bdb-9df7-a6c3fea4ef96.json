@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Port useEventCallback from master",
-  "packageName": "@uifabric/react-hooks",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.19.4",
+      "version": "0.19.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@fluentui/react-theme-provider_v0.19.3",
       "version": "0.19.3",

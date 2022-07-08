@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.20.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.4)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.20.3..@fluentui/react-button_v0.20.4)
+
+### Patches
+
+- Update high-contrast mixins to support forced-colors (#23285) ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [0.20.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.20.3)
 

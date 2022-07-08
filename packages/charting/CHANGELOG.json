@@ -2,6 +2,47 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/charting_v4.21.0",
+      "version": "4.21.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high-contrast mixins to support forced-colors (#23285)",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.5",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "@uifabric/charting_v4.20.24",
       "version": "4.20.24",

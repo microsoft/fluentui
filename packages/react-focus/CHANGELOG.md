@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.5)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.18.4..@fluentui/react-focus_v7.18.5)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [7.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.18.4)
 

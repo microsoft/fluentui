@@ -1,8 +1,24 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 30 Jun 2022 12:20:33 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.20.24..@uifabric/charting_v4.21.0)
+
+### Minor changes
+
+- Bump office-ui-fabric-react to v7.189.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+
+### Patches
+
+- Update high-contrast mixins to support forced-colors (#23285) ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @uifabric/icons to v7.7.3 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.5 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [4.20.24](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.20.24)
 

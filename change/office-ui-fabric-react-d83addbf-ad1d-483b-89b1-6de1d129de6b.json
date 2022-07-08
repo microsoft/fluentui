@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Adding focusZoneProps support for Nav.",
-  "packageName": "office-ui-fabric-react",
-  "email": "cqc@cuiqingcai.com",
-  "dependentChangeType": "minor"
-}

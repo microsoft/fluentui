@@ -2,6 +2,71 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/react-cards_v0.118.0",
+      "version": "0.118.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high-contrast mixins to support forced-colors (#23285)",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.5.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/file-type-icons to v7.8.10",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.4",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "@uifabric/react-cards_v0.117.35",
       "version": "0.117.35",

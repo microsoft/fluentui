@@ -2,6 +2,71 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.7.10",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @fluentui/react-examples to v0.15.15",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/mdl2-theme to v0.7.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/theme-samples to v7.5.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/tsx-editor to v0.17.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.10.15",
       "version": "7.10.15",

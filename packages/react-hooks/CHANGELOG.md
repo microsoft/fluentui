@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.15.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-hooks_v7.14.2..@uifabric/react-hooks_v7.15.0)
+
+### Minor changes
+
+- feat: Port useEventCallback from master ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
 
 ## [7.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/react-hooks_v7.14.2)
 

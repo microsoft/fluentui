@@ -2,6 +2,29 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/azure-themes_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/azure-themes"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Jun 2022 12:20:33 GMT",
       "tag": "@uifabric/azure-themes_v7.9.33",
       "version": "7.9.33",

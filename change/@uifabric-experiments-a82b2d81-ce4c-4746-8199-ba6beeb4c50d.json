@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update high-contrast mixins to support forced-colors (#23285)",
-  "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

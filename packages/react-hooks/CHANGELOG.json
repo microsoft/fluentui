@@ -2,6 +2,21 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/react-hooks_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: Port useEventCallback from master",
+            "author": "tmichon@microsoft.com",
+            "commit": "24ce005fc17a9e056dff9aa57fa4f3a5a49b5ad4",
+            "package": "@uifabric/react-hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@uifabric/react-hooks_v7.14.2",
       "version": "7.14.2",

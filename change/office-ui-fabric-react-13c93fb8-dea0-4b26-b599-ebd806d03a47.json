@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update high-contrast mixins to support forced-colors (#23285)",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

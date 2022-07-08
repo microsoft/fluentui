@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 08 Jul 2022 12:23:25 GMT",
+      "tag": "@uifabric/file-type-icons_v7.8.10",
+      "version": "7.8.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "8af82b8d27be6989321e4c80e9b2221d280d21da",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 May 2022 12:29:07 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.9",
       "version": "7.8.9",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Handle when FocusTrapZone wraps an iframe",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

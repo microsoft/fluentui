@@ -21,14 +21,14 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.117.35",
+    "@uifabric/react-cards": "^0.118.0",
     "@uifabric/merge-styles": "^7.19.2",
-    "@uifabric/example-app-base": "^7.21.32",
+    "@uifabric/example-app-base": "^7.22.0",
     "@uifabric/variants": "^7.2.37",
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/icons": "^7.7.2",
+    "@uifabric/icons": "^7.7.3",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "office-ui-fabric-react": "^7.188.0",
+    "office-ui-fabric-react": "^7.189.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

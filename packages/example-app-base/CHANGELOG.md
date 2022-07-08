@@ -1,8 +1,22 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 30 Jun 2022 12:20:33 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.22.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.22.0)
+
+Fri, 08 Jul 2022 12:23:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.21.32..@uifabric/example-app-base_v7.22.0)
+
+### Minor changes
+
+- Bump office-ui-fabric-react to v7.189.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/react-hooks to v7.15.0 ([PR #23835](https://github.com/microsoft/fluentui/pull/23835) by tmichon@microsoft.com)
+- Bump @uifabric/tsx-editor to v0.17.0 ([PR #23465](https://github.com/microsoft/fluentui/pull/23465) by tmichon@microsoft.com)
 
 ## [7.21.32](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.21.32)
 
