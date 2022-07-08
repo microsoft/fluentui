@@ -18,6 +18,7 @@ responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 const { initializeIcons } = require('@fluentui/react/lib/Icons');
 initializeIcons('dist/', { disableWarnings: true });
 
+let assert = require('assert');
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
 let AppDefinition = require('@fluentui/public-docsite-resources/lib/AppDefinition').AppDefinition;
@@ -32,6 +33,33 @@ describe('Fabric components', () => {
     }
   }
 });
+
+describe('Utilities', () => {
+  describe('getWindow', () => {
+    it('returns undefined in server environment', () => {
+      assert.equal(library.getWindow(), undefined);
+    });
+  });
+
+  describe('getDocument', () => {
+    it('returns undefined in server environment', () => {
+      assert.equal(library.getDocument(), undefined);
+    });
+  });
+});
+
+function getHiddenElements() {
+  function walkTree(el) {
+    if (el.getAttribute('aria-hidden') === 'true') {
+      hiddenIds.push(el.id);
+    }
+    Array.from(el.children).forEach(walkTree);
+  }
+
+  const hiddenIds = [];
+  walkTree(document.body);
+  return hiddenIds;
+}
 
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, done => {
