@@ -141,21 +141,6 @@ describe('modalize', () => {
     expect(getHiddenElements()).toStrictEqual([]);
   });
 
-  it('does nothing in SSR', () => {
-    document.body.innerHTML = `
-      <div id="siblingBefore"></div>
-      <div id="${modalizeId}"></div>
-      <div id="siblingAfter"></div>
-    `;
-
-    const child = document.getElementById(modalizeId)!;
-    const unmodalize = modalize(child);
-    expect(getHiddenElements()).toStrictEqual([]);
-
-    unmodalize();
-    expect(getHiddenElements()).toStrictEqual([]);
-  });
-
   it('ignores template, script, and style tags', () => {
     document.body.innerHTML = `
       <script></script>
