@@ -41,8 +41,10 @@ const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 
 const useStyles = makeStyles({
   mainContainer: {
+    height: '600px',
+    width: 'fit-content',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     ...shorthands.gap('16px'),
   },
