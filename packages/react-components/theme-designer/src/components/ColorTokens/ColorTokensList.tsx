@@ -19,13 +19,13 @@ import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
-import { DispatchColorOverrides } from './useColorOverrideReducer';
+import { ColorOverrideBrands, DispatchColorOverrides } from './useColorOverrideReducer';
 import { DispatchTheme } from '../../useThemeDesignerReducer';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
-  brandColors: Record<string, Brands>;
-  colorOverride: Record<string, Brands>;
+  brandColors: ColorOverrideBrands;
+  colorOverride: ColorOverrideBrands;
   dispatchColorOverride: React.Dispatch<DispatchColorOverrides>;
   dispatchAppState: React.Dispatch<DispatchTheme>;
 }

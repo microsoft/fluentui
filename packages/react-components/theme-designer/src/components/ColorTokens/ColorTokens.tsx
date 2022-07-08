@@ -3,10 +3,10 @@ import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { ColorTokensList } from './ColorTokensList';
 import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
+import { BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
-import { getCurrentOverride, useColorOverrideReducer } from './useColorOverrideReducer';
+import { ColorOverrideBrands, getCurrentOverride, useColorOverrideReducer } from './useColorOverrideReducer';
 import type { DispatchTheme, AppState } from '../../useThemeDesignerReducer';
 
 export interface ColorTokensProps {
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const brandColors: Record<string, Brands> = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
+const brandColors: ColorOverrideBrands = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();

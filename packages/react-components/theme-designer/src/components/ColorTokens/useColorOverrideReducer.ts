@@ -2,13 +2,15 @@ import * as React from 'react';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import type { AppState } from '../../useThemeDesignerReducer';
 
+export type ColorOverrideBrands = Record<string, Brands>;
+
 export type ColorOverrides = {
-  teamsLight: Record<string, Brands>;
-  teamsDark: Record<string, Brands>;
-  webLight: Record<string, Brands>;
-  webDark: Record<string, Brands>;
-  customLight: Record<string, Brands>;
-  customDark: Record<string, Brands>;
+  teamsLight: ColorOverrideBrands;
+  teamsDark: ColorOverrideBrands;
+  webLight: ColorOverrideBrands;
+  webDark: ColorOverrideBrands;
+  customLight: ColorOverrideBrands;
+  customDark: ColorOverrideBrands;
 };
 
 export type DispatchColorOverrides = {
