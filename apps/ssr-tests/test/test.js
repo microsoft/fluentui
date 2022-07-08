@@ -6,7 +6,7 @@ themeLoader.configureLoadStyles(styles => {
   // noop
 });
 
-// Set ssr mode to true, and rtl to false.
+// Set rtl to false.
 let library = require('@fluentui/react/lib/Utilities');
 library.setRTL(false);
 
