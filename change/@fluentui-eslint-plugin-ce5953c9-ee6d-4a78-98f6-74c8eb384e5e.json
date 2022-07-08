@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add custom no-restricted-imports rule with fixer",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
