@@ -1168,6 +1168,9 @@ export { setPortalAttribute }
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
+// @public @deprecated
+export function setSSR(isEnabled: boolean): void;
+
 // @public @deprecated (undocumented)
 export type Settings = ISettings;
 

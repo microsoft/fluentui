@@ -48,19 +48,6 @@ describe('Utilities', () => {
   });
 });
 
-function getHiddenElements() {
-  function walkTree(el) {
-    if (el.getAttribute('aria-hidden') === 'true') {
-      hiddenIds.push(el.id);
-    }
-    Array.from(el.children).forEach(walkTree);
-  }
-
-  const hiddenIds = [];
-  walkTree(document.body);
-  return hiddenIds;
-}
-
 function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, done => {
     let elem = React.createElement(component);

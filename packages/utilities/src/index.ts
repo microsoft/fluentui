@@ -222,6 +222,8 @@ export { isIE11 } from './ie11Detector';
 export { getPropsWithDefaults } from './getPropsWithDefaults';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
 export { canUseDOM } from './dom/canUseDOM';
+// eslint-disable-next-line deprecation/deprecation
+export { setSSR } from './dom/setSSR';
 export { createMergedRef } from './createMergedRef';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 

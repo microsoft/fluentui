@@ -344,6 +344,7 @@ import { setMemoizeWeakMap } from '@fluentui/utilities';
 import { setMonth } from '@fluentui/date-time-utilities';
 import { setPortalAttribute } from '@fluentui/utilities';
 import { setRTL } from '@fluentui/utilities';
+import { setSSR } from '@fluentui/utilities';
 import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
@@ -10497,6 +10498,8 @@ export { setPortalAttribute }
 export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
 
 export { setRTL }
+
+export { setSSR }
 
 export { Settings }
 
