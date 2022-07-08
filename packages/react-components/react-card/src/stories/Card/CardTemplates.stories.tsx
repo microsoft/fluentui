@@ -62,6 +62,7 @@ const useStyles = makeStyles({
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
     ...shorthands.gap('4px'),
   },
   appIcon: {
@@ -214,7 +215,7 @@ export const Templates = () => {
           <img alt="file preview" src={Office2} />
         </CardPreview>
         <CardHeader
-          image={<Avatar image={{ src: AvatarColin }}></Avatar>}
+          image={<Avatar image={{ src: AvatarColin }} />}
           header={<Body1 weight="semibold">Classroom Collaboration</Body1>}
           description={
             <Caption1 className={mergeClasses(styles.flexContainer, styles.caption)}>
