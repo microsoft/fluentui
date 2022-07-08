@@ -52,7 +52,6 @@ export const useColorOverrideReducer = (
         if (!action.colorToken || !action.newValue) {
           return state;
         }
-        dispatchState({ type: 'Override', overrides: { [action.colorToken]: brand[action.newValue] } });
         switch (appState.themeLabel) {
           case 'Teams Light':
             return { ...state, teamsLight: { ...state.teamsLight, [action.colorToken]: action.newValue } };
@@ -72,7 +71,6 @@ export const useColorOverrideReducer = (
             return state;
         }
       case 'Reset Overrides':
-        dispatchState({ type: 'Override' });
         switch (appState.themeLabel) {
           case 'Teams Light':
             return { ...state, teamsLight: {} };
