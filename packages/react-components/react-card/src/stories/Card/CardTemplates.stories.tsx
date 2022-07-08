@@ -11,6 +11,9 @@ import {
   Radio,
   Body1,
   mergeClasses,
+  Title1,
+  Subtitle1,
+  Avatar,
 } from '@fluentui/react-components';
 import {
   AlertUrgent16Filled,
@@ -20,11 +23,21 @@ import {
   CircleHalfFill16Regular,
   Comment16Regular,
   MoreHorizontal16Filled,
+  MoreHorizontal16Regular,
+  MoreHorizontal24Regular,
+  MoreHorizontal32Regular,
+  MoreHorizontal48Regular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader } from '@fluentui/react-card';
 import AppLogo from '../../../assets/app_logo.svg';
 import Logo1 from '../../../assets/logo.svg';
 import Logo2 from '../../../assets/logo2.svg';
+import Logo3 from '../../../assets/logo3.svg';
+import ExcelLogo from '../../../assets/excel_logo.svg';
+import Office1 from '../../../assets/office1.png';
+import Office2 from '../../../assets/office2.png';
+import AvatarColin from '../../../assets/avatar_colin.svg';
+import { CardPreview } from '../../components/CardPreview/CardPreview';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
@@ -66,6 +79,21 @@ const useStyles = makeStyles({
   taskHeader: {
     display: 'flex',
   },
+  spacedPreview: {
+    ...shorthands.padding('25px'),
+  },
+  smallRadius: {
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+  },
+  grayBackground: {
+    backgroundColor: tokens.colorNeutralBackground3,
+  },
+  logoBadge: {
+    backgroundColor: '#FFF',
+    ...shorthands.padding('5px'),
+    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
+  },
 });
 
 export const Templates = () => {
@@ -87,6 +115,7 @@ export const Templates = () => {
           }
         />
       </Card>
+
       <Card className={styles.fixedWidth}>
         <CardHeader
           image={{ as: 'img', className: styles.headerImage, src: AppLogo }}
@@ -105,6 +134,7 @@ export const Templates = () => {
           plum.
         </span>
       </Card>
+
       <Card className={styles.fixedWidth}>
         <div className={styles.flexContainer}>
           <img className={styles.appIcon} src={Logo1} />
@@ -161,6 +191,49 @@ export const Templates = () => {
             <Body1>2/12</Body1>
           </div>
         </div>
+      </Card>
+
+      <Card className={styles.fixedWidth}>
+        <CardPreview
+          className={mergeClasses(styles.spacedPreview, styles.grayBackground)}
+          logo={<img className={styles.logoBadge} alt="app logo" src={Logo3} />}
+        >
+          <img alt="presentation preview" src={Office1} className={styles.smallRadius} />
+        </CardPreview>
+        <CardHeader
+          header={<Body1 weight="semibold">iOS App Prototype</Body1>}
+          description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
+          action={
+            <Button
+              appearance="transparent"
+              icon={<MoreHorizontal48Regular />}
+              onClick={action('Example 5 button pressed')}
+            />
+          }
+        />
+      </Card>
+
+      <Card className={styles.fixedWidth}>
+        <CardPreview logo={<img alt="app logo" src={ExcelLogo} className={styles.logoBadge} />}>
+          <img alt="file preview" src={Office2} />
+        </CardPreview>
+        <CardHeader
+          image={<Avatar image={{ src: AvatarColin }}></Avatar>}
+          header={<Body1 weight="semibold">Classroom Collaboration</Body1>}
+          description={
+            <Caption1 className={mergeClasses(styles.flexContainer, styles.caption)}>
+              <Comment16Regular color="#D83B01" />
+              <span>Colin replied to a comment</span>
+            </Caption1>
+          }
+          action={
+            <Button
+              appearance="transparent"
+              icon={<MoreHorizontal48Regular />}
+              onClick={action('Example 6 button pressed')}
+            />
+          }
+        />
       </Card>
     </div>
   );
