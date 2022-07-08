@@ -32,7 +32,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.172-rc.8",
+    "@fluentui/react-icons": "^2.0.175",
     "@griffel/react": "^1.2.0",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.0",

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Remove override of role=list in AvatarGroup's PopoverSurface and fix trapFocus when Popover is triggered.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

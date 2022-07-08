@@ -34,7 +34,7 @@
   "dependencies": {
     "@fluentui/react-avatar": "^9.0.1",
     "@fluentui/react-button": "^9.0.1",
-    "@fluentui/react-icons": "^2.0.172-rc.8",
+    "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.0",
     "@griffel/react": "^1.2.0",

@@ -26,6 +26,7 @@ exports[`Combobox renders a default state 1`] = `
       >
         <path
           d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 11.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z"
+          fill="currentColor"
         />
       </svg>
     </span>
@@ -60,6 +61,7 @@ exports[`Combobox renders an open listbox 1`] = `
       >
         <path
           d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 11.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z"
+          fill="currentColor"
         />
       </svg>
     </span>
@@ -89,6 +91,7 @@ exports[`Combobox renders an open listbox 1`] = `
           >
             <path
               d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              fill="currentColor"
             />
           </svg>
         </span>
@@ -115,6 +118,7 @@ exports[`Combobox renders an open listbox 1`] = `
           >
             <path
               d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              fill="currentColor"
             />
           </svg>
         </span>
@@ -141,6 +145,7 @@ exports[`Combobox renders an open listbox 1`] = `
           >
             <path
               d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              fill="currentColor"
             />
           </svg>
         </span>

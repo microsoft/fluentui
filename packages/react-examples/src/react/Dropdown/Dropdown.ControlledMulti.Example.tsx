@@ -9,6 +9,7 @@ const DropdownControlledMultiExampleOptions = [
   { key: 'banana', text: 'Banana' },
   { key: 'orange', text: 'Orange', disabled: true },
   { key: 'grape', text: 'Grape' },
+  { key: 'watermelon', text: 'Watermelon', hidden: true },
   { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
   { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
   { key: 'broccoli', text: 'Broccoli' },
