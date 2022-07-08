@@ -9,7 +9,7 @@ import { NavFocusZoneExample } from './Nav.FocusZone.Example';
 const NavBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.Basic.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
 const NavNestedExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.Nested.Example.tsx') as string;
-const NavFocusZoneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FocusZone.Example.tsx') as string;
+const NavFocusZoneExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.FocusZone.Example.tsx') as string;
 const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/react-examples/src/office-ui-fabric-react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
