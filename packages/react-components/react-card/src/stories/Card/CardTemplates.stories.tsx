@@ -23,7 +23,7 @@ import {
   MoreHorizontal16Filled,
   MoreHorizontal48Regular,
 } from '@fluentui/react-icons';
-import { Card, CardHeader } from '@fluentui/react-card';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import AppLogo from '../../../assets/app_logo.svg';
 import Logo1 from '../../../assets/logo.svg';
 import Logo2 from '../../../assets/logo2.svg';
@@ -32,7 +32,6 @@ import ExcelLogo from '../../../assets/excel_logo.svg';
 import Office1 from '../../../assets/office1.png';
 import Office2 from '../../../assets/office2.png';
 import AvatarColin from '../../../assets/avatar_colin.svg';
-import { CardPreview } from '../../components/CardPreview/CardPreview';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
