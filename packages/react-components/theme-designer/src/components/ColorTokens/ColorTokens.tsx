@@ -32,7 +32,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
 
   const { brand, appState, dispatchState } = props;
 
-  const [colorOverride, dispatchColorOverride] = useColorOverrideReducer(appState, brand, dispatchState);
+  const [colorOverride, dispatchColorOverride] = useColorOverrideReducer(appState, brand);
 
   const handleResetClick = () => {
     dispatchState({ type: 'Override' });

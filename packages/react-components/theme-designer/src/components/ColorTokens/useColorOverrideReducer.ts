@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
-import type { DispatchTheme, ReducerState } from '../../useThemeDesignerReducer';
+import type { ReducerState } from '../../useThemeDesignerReducer';
 
 export type ColorOverrides = {
   teamsLight: Record<string, Brands>;
@@ -38,11 +38,7 @@ export const getCurrentOverride = (appState: ReducerState, colorOverride: ColorO
   }
 };
 
-export const useColorOverrideReducer = (
-  appState: ReducerState,
-  brand: BrandVariants,
-  dispatchState: React.Dispatch<DispatchTheme>,
-) => {
+export const useColorOverrideReducer = (appState: ReducerState, brand: BrandVariants) => {
   const colorOverrideReducer: (
     state: ColorOverrides,
     action: { type: string; colorToken?: string; newValue?: Brands },
