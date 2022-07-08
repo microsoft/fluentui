@@ -10,6 +10,7 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
   overflowContent: 'fui-AvatarGroup__overflowContent',
   overflowButton: 'fui-AvatarGroup__overflowButton',
+  overflowSurface: 'fui-AvatarGroup__overflowSurface',
 };
 
 /**
@@ -36,6 +37,16 @@ const useStyles = makeStyles({
     },
     { selector: 'focus-within' },
   ),
+  overflowSurface: {
+    ...shorthands.padding(0),
+  },
+  overflowContent: {
+    maxHeight: '220px',
+    minHeight: '80px',
+    ...shorthands.overflow('hidden', 'scroll'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    width: '220px',
+  },
 });
 
 /**
@@ -108,26 +119,12 @@ const useOverflowButtonStyles = makeStyles({
 });
 
 /**
- * Styles for overflow list slot.
- */
-const useOverflowContentStyles = makeStyles({
-  base: {
-    maxHeight: '220px',
-    minHeight: '80px',
-    ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    width: '220px',
-  },
-});
-
-/**
  * Apply styling to the AvatarGroup slots based on the state
  */
 export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGroupState => {
   const { layout, overflowIndicator, size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
-  const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
   const groupChildClassName = useGroupChildClassName(layout, size, true);
@@ -144,8 +141,16 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
   if (state.overflowContent) {
     state.overflowContent.className = mergeClasses(
       avatarGroupClassNames.overflowContent,
-      overflowContentStyles.base,
+      styles.overflowContent,
       state.overflowContent.className,
+    );
+  }
+
+  if (state.overflowSurface) {
+    state.overflowSurface.className = mergeClasses(
+      avatarGroupClassNames.overflowSurface,
+      styles.overflowSurface,
+      state.overflowSurface.className,
     );
   }
 

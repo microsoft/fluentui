@@ -64,7 +64,8 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
     overflowButton?: NonNullable<Slot<'button'>>;
-    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
+    overflowContent?: NonNullable<Slot<'div'>>;
+    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public

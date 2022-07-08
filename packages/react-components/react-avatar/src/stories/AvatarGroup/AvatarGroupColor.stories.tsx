@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup } from '../../AvatarGroup';
-import { AvatarGroupItem } from '../../AvatarGroupItem';
+import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
 
 export const Color = () => {
   return (
