@@ -2,11 +2,16 @@
 
 const path = require('path');
 const configHelpers = require('../utils/configHelpers');
+const { findGitRoot } = require('../utils/configHelpers');
+const getPackageJson = require('../utils/getPackageJson');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
   '@fluentui/ban-context-export': ['error', { exclude: ['**/react-shared-contexts/**'] }],
 };
+
+const root = findGitRoot();
+const v9PackageDeps = Object.keys(getPackageJson({ root, name: '@fluentui/react-components' }).dependencies);
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -15,5 +20,21 @@ module.exports = {
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
     ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
+    {
+      files: '**/*.stories.tsx',
+      rules: {
+        '@fluentui/no-restricted-imports': [
+          'warn',
+          {
+            paths: [
+              {
+                forbidden: v9PackageDeps,
+                preferred: '@fluentui/react-components',
+              },
+            ],
+          },
+        ],
+      },
+    },
   ],
 };
