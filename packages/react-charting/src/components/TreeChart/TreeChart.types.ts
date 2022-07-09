@@ -4,6 +4,7 @@ import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 export interface ITreeChartDataPoint {
   name: string;
   subname: string;
+  metric?: string | undefined;
   fill: string;
   children?: Array<ITreeChartDataPoint>;
 }
@@ -27,6 +28,7 @@ export interface ITreeDataStructure {
   children: unknown;
   dataName: string;
   subName: string;
+  metricName?: string | undefined;
   fill: string;
   x: number;
   y: number;
@@ -41,4 +43,6 @@ export interface ITreeStyles {
   link: IStyle;
   rectNode: IStyle;
   rectText: IStyle;
+  rectSubText: IStyle;
+  rectmetricText: IStyle;
 }

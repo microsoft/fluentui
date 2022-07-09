@@ -4,16 +4,26 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
   return {
     link: {
       fill: 'none',
-      stroke: 'black',
+      stroke: '#A1A1A1',
       strokeWidth: '2px',
     },
     rectNode: {
       strokeWidth: '2px',
       fill: 'white',
       padding: '10px',
+      rx: '2px',
     },
     rectText: {
       fill: 'black',
+      ...props.theme!.fonts.large,
+    },
+    rectSubText: {
+      fill: '#484644',
+      ...props.theme!.fonts.medium,
+    },
+    rectmetricText: {
+      fill: 'black',
+      ...props.theme!.fonts.medium,
     },
   };
 };

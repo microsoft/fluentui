@@ -6,10 +6,10 @@ const twoLayerChart = {
   subname: 'subtext',
   fill: '#0099BC',
   children: [
-    { name: 'Child 1', subname: 'subtext', fill: 'pink' },
-    { name: 'Child 2', subname: 'subtext', fill: 'pink' },
-    { name: 'Child 3', subname: 'subtext', fill: 'pink' },
-    { name: 'Child 4', subname: 'subtext', fill: 'pink' },
+    { name: 'Child 1', subname: 'subtext', fill: '#4F6BED' },
+    { name: 'Child 2', subname: 'subtext', fill: '#881798' },
+    { name: 'Child 3', subname: 'subtext', fill: '#AE8C00' },
+    { name: 'Child 4', subname: 'subtext', fill: '#FF00FF' },
   ],
 };
 
@@ -26,7 +26,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={twoLayerChart} width={1000} height={700}></TreeChart>
+        <TreeChart treeData={twoLayerChart}></TreeChart>
       </>
     );
   }

@@ -88,10 +88,9 @@ const threeLayerChart = {
     },
   ],
 };
-
 interface ITreeState {}
 
-export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeState> {
+export class TreeChartThreeLayerExample extends React.Component<{}, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
   }
@@ -102,7 +101,7 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={threeLayerChart} composition={1}></TreeChart>
+        <TreeChart treeData={threeLayerChart}></TreeChart>
       </>
     );
   }

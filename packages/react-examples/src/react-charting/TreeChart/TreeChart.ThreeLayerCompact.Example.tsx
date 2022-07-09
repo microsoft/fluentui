@@ -9,7 +9,8 @@ const threeLayerChart = {
     {
       name: 'Child 1',
       subname: 'subtext',
-      fill: 'pink',
+      metric: '100%',
+      fill: '#4F6BED',
       children: [
         {
           name: 'leaf1',
@@ -36,57 +37,57 @@ const threeLayerChart = {
     {
       name: 'Child 2',
       subname: 'subtext',
-      fill: 'pink',
+      fill: '#881798',
       children: [
         {
           name: 'leaf5',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#881798',
         },
         {
           name: 'leaf6',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#881798',
         },
       ],
     },
     {
       name: 'Child 3',
       subname: 'subtext',
-      fill: 'pink',
+      fill: '#AE8C00',
       children: [
         {
           name: 'leaf7',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#AE8C00',
         },
         {
           name: 'leaf8',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#AE8C00',
         },
         {
           name: 'leaf9',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#AE8C00',
         },
       ],
     },
     {
       name: 'Child 4',
       subname: 'subtext',
-      fill: 'pink',
+      metric: '90%',
+      fill: '#FF00FF',
       children: [
         {
           name: 'leaf10',
           subname: 'sub',
-          fill: '#4F6BED',
+          fill: '#FF00FF',
         },
       ],
     },
   ],
 };
-
 interface ITreeState {}
 
 export class TreeChartThreeLayerCompactExample extends React.Component<{}, ITreeState> {
@@ -100,7 +101,7 @@ export class TreeChartThreeLayerCompactExample extends React.Component<{}, ITree
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700}></TreeChart>
+        <TreeChart treeData={threeLayerChart} composition={0}></TreeChart>
       </>
     );
   }
