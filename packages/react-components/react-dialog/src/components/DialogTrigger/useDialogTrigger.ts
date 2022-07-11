@@ -31,7 +31,13 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
     child?.props.onClick?.(event);
-    requestOpenChange({ event, type: 'triggerClick', open: updateOpen(action) });
+    if (!event.isDefaultPrevented()) {
+      requestOpenChange({
+        event,
+        type: 'triggerClick',
+        open: updateOpen(action),
+      });
+    }
   });
 
   return {

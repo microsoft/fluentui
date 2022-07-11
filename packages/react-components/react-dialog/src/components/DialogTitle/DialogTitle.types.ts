@@ -1,7 +1,12 @@
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type DialogTitleSlots = {
-  root: Slot<'div'>;
+  /**
+   * By default this is a div, but can be a heading.
+   */
+  root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+  closeButton?: Slot<ARIAButtonSlotProps>;
 };
 
 /**
@@ -13,5 +18,3 @@ export type DialogTitleProps = ComponentProps<DialogTitleSlots> & {};
  * State used in rendering DialogTitle
  */
 export type DialogTitleState = ComponentState<DialogTitleSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from DialogTitleProps.
-// & Required<Pick<DialogTitleProps, 'propName'>>

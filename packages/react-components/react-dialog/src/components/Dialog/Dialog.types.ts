@@ -9,8 +9,8 @@ export type DialogSlots = {
    * This slot expects a `<div>` element which will replace the default overlay.
    * The overlay should have `aria-hidden="true"`.
    */
-  overlay: Slot<'div'>;
-  root: Slot<'div'>;
+  overlay?: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 export type DialogOpenChangeArgs =

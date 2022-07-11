@@ -183,27 +183,30 @@ function useFocusFirstElement({
       const element = contentRef.current && findFirstFocusable(contentRef.current);
       if (element) {
         element.focus();
-        return;
+        if (modalType !== 'non-modal') {
+          return;
+        }
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('A Dialog should have at least one focusable element inside DialogContent');
       }
-      // eslint-disable-next-line no-console
-      console.warn('A Dialog should have at least one focusable element inside DialogContent');
 
-      if (triggerRef.current && targetDocument) {
-        const trigger = triggerRef.current;
-        trigger.blur();
-        const listener = (event: KeyboardEvent) => {
-          if (isEscapeKeyDismiss(event, modalType)) {
-            requestOpenChange({
-              event,
-              open: false,
-              type: 'documentEscapeKeyDown',
-            });
-            trigger.focus();
-          }
-        };
-        targetDocument.addEventListener('keydown', listener);
-        return () => targetDocument.removeEventListener('keydown', listener);
-      }
+      // if (triggerRef.current && targetDocument) {
+      //   const trigger = triggerRef.current;
+      //   trigger.blur();
+      //   const listener = (event: KeyboardEvent) => {
+      //     if (isEscapeKeyDismiss(event, modalType)) {
+      //       requestOpenChange({
+      //         event,
+      //         open: false,
+      //         type: 'documentEscapeKeyDown',
+      //       });
+      //       trigger.focus();
+      //     }
+      //   };
+      //   targetDocument.addEventListener('keydown', listener);
+      //   return () => targetDocument.removeEventListener('keydown', listener);
+      // }
     }
   }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
 

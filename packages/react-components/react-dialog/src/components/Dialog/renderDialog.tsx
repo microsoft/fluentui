@@ -17,7 +17,7 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
       {open && (
         <Portal>
           <slots.root {...slotProps.root}>
-            <slots.overlay {...slotProps.overlay} />
+            {slots.overlay && <slots.overlay {...slotProps.overlay} />}
             {content}
           </slots.root>
         </Portal>
