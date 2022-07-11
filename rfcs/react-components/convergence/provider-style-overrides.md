@@ -118,12 +118,12 @@ const App = () => {
 
 #### Pros and Cons
 
-👍 Add styles the same way as the `FluentProvider` currently does it
-👍 No need to know about provider internals
-👍 One time thing to do for `FluenProvider` only if really necessary
+- 👍 Add styles the same way as the `FluentProvider` currently does it
+- 👍 No need to know about provider internals
+- 👍 One time thing to do for `FluenProvider` only if really necessary
 
-👎 slightly different API to `makeStyles`
-👎 something 'special' to do for one component
+- 👎 slightly different API to `makeStyles`
+- 👎 something 'special' to do for one component
 
 ## Discarded Solutions
 
