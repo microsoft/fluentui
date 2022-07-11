@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Image } from '@fluentui/react-components';
 import type { ImageProps } from '@fluentui/react-components';
 import type { ArgTypes, Parameters } from '@storybook/react';
-import { Image } from '@fluentui/react-components';
 
 export const Default = (props: ImageProps) => {
   return <Image {...props} />;
