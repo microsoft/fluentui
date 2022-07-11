@@ -41,8 +41,8 @@ subText subtext Root Node"
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={240}
-          x={450}
+          width={220}
+          x={400}
           y={10}
         />
         <text
@@ -58,7 +58,7 @@ subText subtext Root Node"
               }
           dy={45}
           textAnchor="middle"
-          x={570}
+          x={510}
         >
           Root Node
           <tspan
@@ -73,7 +73,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={570}
+            x={510}
           >
             subtext
           </tspan>
@@ -100,8 +100,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
+          width={220}
+          x={6.25}
           y={130}
         />
         <text
@@ -117,7 +117,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={176.25}
+          x={116.25}
         >
           Child 1
           <tspan
@@ -132,7 +132,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={116.25}
           >
             100%
           </tspan>
@@ -159,8 +159,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={110}
-          x={56.25}
+          width={100}
+          x={6.25}
           y={260}
         />
         <text
@@ -176,7 +176,7 @@ subText sub Parent info parentId: 1
               }
           dy={295}
           textAnchor="middle"
-          x={111.25}
+          x={56.25}
         >
           leaf1
           <tspan
@@ -191,7 +191,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={111.25}
+            x={56.25}
           >
             sub
           </tspan>
@@ -218,8 +218,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={110}
-          x={186.25}
+          width={100}
+          x={126.25}
           y={260}
         />
         <text
@@ -235,7 +235,7 @@ subText sub Parent info parentId: 1
               }
           dy={295}
           textAnchor="middle"
-          x={241.25}
+          x={176.25}
         >
           leaf2
           <tspan
@@ -250,7 +250,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={241.25}
+            x={176.25}
           >
             sub
           </tspan>
@@ -277,8 +277,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={110}
-          x={56.25}
+          width={100}
+          x={6.25}
           y={350}
         />
         <text
@@ -294,7 +294,7 @@ subText sub Parent info parentId: 1
               }
           dy={385}
           textAnchor="middle"
-          x={111.25}
+          x={56.25}
         >
           leaf3
           <tspan
@@ -309,7 +309,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={111.25}
+            x={56.25}
           >
             sub
           </tspan>
@@ -336,8 +336,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={110}
-          x={186.25}
+          width={100}
+          x={126.25}
           y={350}
         />
         <text
@@ -353,7 +353,7 @@ subText sub Parent info parentId: 1
               }
           dy={385}
           textAnchor="middle"
-          x={241.25}
+          x={176.25}
         >
           leaf4
           <tspan
@@ -368,7 +368,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={241.25}
+            x={176.25}
           >
             sub
           </tspan>
@@ -395,8 +395,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={240}
-          x={318.75}
+          width={220}
+          x={268.75}
           y={130}
         />
         <text
@@ -412,7 +412,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={438.75}
+          x={378.75}
         >
           Child 2
           <tspan
@@ -427,7 +427,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={378.75}
           >
             subtext
           </tspan>
@@ -454,8 +454,8 @@ subText sub Parent info parentId: 6
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={110}
-          x={318.75}
+          width={100}
+          x={268.75}
           y={260}
         />
         <text
@@ -471,7 +471,7 @@ subText sub Parent info parentId: 6
               }
           dy={295}
           textAnchor="middle"
-          x={373.75}
+          x={318.75}
         >
           leaf5
           <tspan
@@ -486,7 +486,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={373.75}
+            x={318.75}
           >
             sub
           </tspan>
@@ -513,8 +513,8 @@ subText sub Parent info parentId: 6
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={110}
-          x={448.75}
+          width={100}
+          x={388.75}
           y={260}
         />
         <text
@@ -530,7 +530,7 @@ subText sub Parent info parentId: 6
               }
           dy={295}
           textAnchor="middle"
-          x={503.75}
+          x={438.75}
         >
           leaf6
           <tspan
@@ -545,7 +545,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={503.75}
+            x={438.75}
           >
             sub
           </tspan>
@@ -572,8 +572,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
+          width={220}
+          x={531.25}
           y={130}
         />
         <text
@@ -589,7 +589,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={701.25}
+          x={641.25}
         >
           Child 3
           <tspan
@@ -604,7 +604,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={641.25}
           >
             subtext
           </tspan>
@@ -631,8 +631,8 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={110}
-          x={581.25}
+          width={100}
+          x={531.25}
           y={260}
         />
         <text
@@ -648,7 +648,7 @@ subText sub Parent info parentId: 9
               }
           dy={295}
           textAnchor="middle"
-          x={636.25}
+          x={581.25}
         >
           leaf7
           <tspan
@@ -663,7 +663,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={636.25}
+            x={581.25}
           >
             sub
           </tspan>
@@ -690,8 +690,8 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={110}
-          x={711.25}
+          width={100}
+          x={651.25}
           y={260}
         />
         <text
@@ -707,7 +707,7 @@ subText sub Parent info parentId: 9
               }
           dy={295}
           textAnchor="middle"
-          x={766.25}
+          x={701.25}
         >
           leaf8
           <tspan
@@ -722,7 +722,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={766.25}
+            x={701.25}
           >
             sub
           </tspan>
@@ -749,8 +749,8 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={110}
-          x={581.25}
+          width={100}
+          x={531.25}
           y={350}
         />
         <text
@@ -766,7 +766,7 @@ subText sub Parent info parentId: 9
               }
           dy={385}
           textAnchor="middle"
-          x={636.25}
+          x={581.25}
         >
           leaf9
           <tspan
@@ -781,7 +781,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={636.25}
+            x={581.25}
           >
             sub
           </tspan>
@@ -808,8 +808,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={240}
-          x={843.75}
+          width={220}
+          x={793.75}
           y={130}
         />
         <text
@@ -825,7 +825,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={963.75}
+          x={903.75}
         >
           Child 4
           <tspan
@@ -840,7 +840,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={963.75}
+            x={903.75}
           >
             90%
           </tspan>
@@ -867,8 +867,8 @@ subText sub Parent info parentId: 13
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={240}
-          x={843.75}
+          width={220}
+          x={793.75}
           y={260}
         />
         <text
@@ -884,7 +884,7 @@ subText sub Parent info parentId: 13
               }
           dy={295}
           textAnchor="middle"
-          x={963.75}
+          x={903.75}
         >
           leaf10
           <tspan
@@ -899,7 +899,7 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={963.75}
+            x={903.75}
           >
             sub
           </tspan>
@@ -916,7 +916,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M176.25,110 H570 V90"
+          d="M116.25,110 H510 V90"
         />
         <path
           className=
@@ -926,7 +926,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M176.25,210 V230 H56.25 H296.25"
+          d="M116.25,210 V230 H6.25 H226.25"
         />
         <path
           className=
@@ -936,7 +936,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M438.75,110 H570 V90"
+          d="M378.75,110 H510 V90"
         />
         <path
           className=
@@ -946,7 +946,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M438.75,210 V230 H318.75 H558.75"
+          d="M378.75,210 V230 H268.75 H488.75"
         />
         <path
           className=
@@ -956,7 +956,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M701.25,110 H570 V90"
+          d="M641.25,110 H510 V90"
         />
         <path
           className=
@@ -966,7 +966,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M701.25,210 V230 H581.25 H821.25"
+          d="M641.25,210 V230 H531.25 H751.25"
         />
         <path
           className=
@@ -976,7 +976,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M963.75,110 H570 V90"
+          d="M903.75,110 H510 V90"
         />
         <path
           className=
@@ -986,7 +986,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M963.75,210 V230 H843.75 H1083.75"
+          d="M903.75,210 V230 H793.75 H1013.75"
         />
       </g>
     </svg>
@@ -1035,8 +1035,8 @@ subText subtext Root Node"
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={240}
-          x={450}
+          width={220}
+          x={400}
           y={10}
         />
         <text
@@ -1052,7 +1052,7 @@ subText subtext Root Node"
               }
           dy={45}
           textAnchor="middle"
-          x={570}
+          x={510}
         >
           Root Node
           <tspan
@@ -1067,7 +1067,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={570}
+            x={510}
           >
             subtext
           </tspan>
@@ -1094,8 +1094,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
+          width={220}
+          x={6.25}
           y={130}
         />
         <text
@@ -1111,7 +1111,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={176.25}
+          x={116.25}
         >
           Child 1
           <tspan
@@ -1126,7 +1126,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={116.25}
           >
             100%
           </tspan>
@@ -1153,8 +1153,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
+          width={220}
+          x={6.25}
           y={260}
         />
         <text
@@ -1170,7 +1170,7 @@ subText sub Parent info parentId: 1
               }
           dy={295}
           textAnchor="middle"
-          x={176.25}
+          x={116.25}
         >
           leaf1
           <tspan
@@ -1185,7 +1185,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={116.25}
           >
             sub
           </tspan>
@@ -1212,8 +1212,8 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
+          width={220}
+          x={6.25}
           y={350}
         />
         <text
@@ -1228,6 +1228,1000 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          textAnchor="middle"
+          x={116.25}
+        >
+          leaf2
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={116.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 4 
+nodeMainText: leaf3
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={220}
+          x={6.25}
+          y={440}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={475}
+          textAnchor="middle"
+          x={116.25}
+        >
+          leaf3
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={116.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 5 
+nodeMainText: leaf4
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={220}
+          x={6.25}
+          y={530}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={565}
+          textAnchor="middle"
+          x={116.25}
+        >
+          leaf4
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={116.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 6 
+nodeMainText: Child 2
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={220}
+          x={268.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={165}
+          textAnchor="middle"
+          x={378.75}
+        >
+          Child 2
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={378.75}
+          >
+            subtext
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 7 
+nodeMainText: leaf5
+subText sub Parent info parentId: 6
+      Child 2
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={220}
+          x={268.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={295}
+          textAnchor="middle"
+          x={378.75}
+        >
+          leaf5
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={378.75}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 8 
+nodeMainText: leaf6
+subText sub Parent info parentId: 6
+      Child 2
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={220}
+          x={268.75}
+          y={350}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={385}
+          textAnchor="middle"
+          x={378.75}
+        >
+          leaf6
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={378.75}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 9 
+nodeMainText: Child 3
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={220}
+          x={531.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={165}
+          textAnchor="middle"
+          x={641.25}
+        >
+          Child 3
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={641.25}
+          >
+            subtext
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 10 
+nodeMainText: leaf7
+subText sub Parent info parentId: 9
+      Child 3
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={220}
+          x={531.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={295}
+          textAnchor="middle"
+          x={641.25}
+        >
+          leaf7
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={641.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 11 
+nodeMainText: leaf8
+subText sub Parent info parentId: 9
+      Child 3
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={220}
+          x={531.25}
+          y={350}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={385}
+          textAnchor="middle"
+          x={641.25}
+        >
+          leaf8
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={641.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 12 
+nodeMainText: leaf9
+subText sub Parent info parentId: 9
+      Child 3
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={220}
+          x={531.25}
+          y={440}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={475}
+          textAnchor="middle"
+          x={641.25}
+        >
+          leaf9
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={641.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 13 
+nodeMainText: Child 4
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={220}
+          x={793.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={165}
+          textAnchor="middle"
+          x={903.75}
+        >
+          Child 4
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: black;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={903.75}
+          >
+            90%
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 14 
+nodeMainText: leaf10
+subText sub Parent info parentId: 13
+      Child 4
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={220}
+          x={793.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={295}
+          textAnchor="middle"
+          x={903.75}
+        >
+          leaf10
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={903.75}
+          >
+            sub
+          </tspan>
+        </text>
+      </g>
+      <g
+        className="svgLink"
+      >
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M116.25,110 H510 V90"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M116.25,210 V230 H6.25 H226.25"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M378.75,110 H510 V90"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M378.75,210 V230 H268.75 H488.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M641.25,110 H510 V90"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M641.25,210 V230 H531.25 H751.25"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M903.75,110 H510 V90"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M903.75,210 V230 H793.75 H1013.75"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`TreeChart snapshot testing renders treechart three layer without composition correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone3"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className="svgTreeDiv"
+  >
+    <svg
+      className="svgTree"
+    >
+      <g
+        className="svgNode"
+      >
+        <rect
+          aria-label="nodeId: 0 
+nodeMainText: Root Node
+subText subtext Root Node"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#0099BC"
+          tabIndex={0}
+          width={220}
+          x={400}
+          y={10}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={45}
+          textAnchor="middle"
+          x={510}
+        >
+          Root Node
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={510}
+          >
+            subtext
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 1 
+nodeMainText: Child 1
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={220}
+          x={6.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={165}
+          textAnchor="middle"
+          x={116.25}
+        >
+          Child 1
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: black;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={116.25}
+          >
+            100%
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 2 
+nodeMainText: leaf1
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={100}
+          x={6.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={295}
+          textAnchor="middle"
+          x={56.25}
+        >
+          leaf1
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={56.25}
+          >
+            sub
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 3 
+nodeMainText: leaf2
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={70}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={100}
+          x={126.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={295}
           textAnchor="middle"
           x={176.25}
         >
@@ -1271,9 +2265,9 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
-          y={440}
+          width={100}
+          x={6.25}
+          y={350}
         />
         <text
           className=
@@ -1286,9 +2280,9 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={385}
           textAnchor="middle"
-          x={176.25}
+          x={56.25}
         >
           leaf3
           <tspan
@@ -1303,7 +2297,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={56.25}
           >
             sub
           </tspan>
@@ -1330,9 +2324,9 @@ subText sub Parent info parentId: 1
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
-          y={530}
+          width={100}
+          x={126.25}
+          y={350}
         />
         <text
           className=
@@ -1345,7 +2339,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={565}
+          dy={385}
           textAnchor="middle"
           x={176.25}
         >
@@ -1389,8 +2383,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={240}
-          x={318.75}
+          width={220}
+          x={268.75}
           y={130}
         />
         <text
@@ -1406,7 +2400,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={438.75}
+          x={378.75}
         >
           Child 2
           <tspan
@@ -1421,7 +2415,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={378.75}
           >
             subtext
           </tspan>
@@ -1448,8 +2442,8 @@ subText sub Parent info parentId: 6
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={240}
-          x={318.75}
+          width={220}
+          x={268.75}
           y={260}
         />
         <text
@@ -1465,7 +2459,7 @@ subText sub Parent info parentId: 6
               }
           dy={295}
           textAnchor="middle"
-          x={438.75}
+          x={378.75}
         >
           leaf5
           <tspan
@@ -1480,7 +2474,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={378.75}
           >
             sub
           </tspan>
@@ -1507,8 +2501,8 @@ subText sub Parent info parentId: 6
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={240}
-          x={318.75}
+          width={220}
+          x={268.75}
           y={350}
         />
         <text
@@ -1524,7 +2518,7 @@ subText sub Parent info parentId: 6
               }
           dy={385}
           textAnchor="middle"
-          x={438.75}
+          x={378.75}
         >
           leaf6
           <tspan
@@ -1539,7 +2533,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={378.75}
           >
             sub
           </tspan>
@@ -1566,8 +2560,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
+          width={220}
+          x={531.25}
           y={130}
         />
         <text
@@ -1583,7 +2577,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={701.25}
+          x={641.25}
         >
           Child 3
           <tspan
@@ -1598,7 +2592,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={641.25}
           >
             subtext
           </tspan>
@@ -1625,8 +2619,8 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
+          width={100}
+          x={531.25}
           y={260}
         />
         <text
@@ -1642,7 +2636,7 @@ subText sub Parent info parentId: 9
               }
           dy={295}
           textAnchor="middle"
-          x={701.25}
+          x={581.25}
         >
           leaf7
           <tspan
@@ -1657,7 +2651,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={581.25}
           >
             sub
           </tspan>
@@ -1684,9 +2678,9 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
-          y={350}
+          width={100}
+          x={651.25}
+          y={260}
         />
         <text
           className=
@@ -1699,7 +2693,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={295}
           textAnchor="middle"
           x={701.25}
         >
@@ -1743,9 +2737,9 @@ subText sub Parent info parentId: 9
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
-          y={440}
+          width={100}
+          x={531.25}
+          y={350}
         />
         <text
           className=
@@ -1758,9 +2752,9 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={385}
           textAnchor="middle"
-          x={701.25}
+          x={581.25}
         >
           leaf9
           <tspan
@@ -1775,7 +2769,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={581.25}
           >
             sub
           </tspan>
@@ -1802,8 +2796,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={240}
-          x={843.75}
+          width={220}
+          x={793.75}
           y={130}
         />
         <text
@@ -1819,7 +2813,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={963.75}
+          x={903.75}
         >
           Child 4
           <tspan
@@ -1834,7 +2828,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={963.75}
+            x={903.75}
           >
             90%
           </tspan>
@@ -1861,8 +2855,8 @@ subText sub Parent info parentId: 13
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={240}
-          x={843.75}
+          width={220}
+          x={793.75}
           y={260}
         />
         <text
@@ -1878,7 +2872,7 @@ subText sub Parent info parentId: 13
               }
           dy={295}
           textAnchor="middle"
-          x={963.75}
+          x={903.75}
         >
           leaf10
           <tspan
@@ -1893,7 +2887,7 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={963.75}
+            x={903.75}
           >
             sub
           </tspan>
@@ -1910,7 +2904,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M176.25,110 H570 V90"
+          d="M116.25,110 H510 V90"
         />
         <path
           className=
@@ -1920,7 +2914,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M176.25,210 V230 H56.25 H296.25"
+          d="M116.25,210 V230 H6.25 H226.25"
         />
         <path
           className=
@@ -1930,7 +2924,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M438.75,110 H570 V90"
+          d="M378.75,110 H510 V90"
         />
         <path
           className=
@@ -1940,7 +2934,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M438.75,210 V230 H318.75 H558.75"
+          d="M378.75,210 V230 H268.75 H488.75"
         />
         <path
           className=
@@ -1950,7 +2944,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M701.25,110 H570 V90"
+          d="M641.25,110 H510 V90"
         />
         <path
           className=
@@ -1960,7 +2954,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M701.25,210 V230 H581.25 H821.25"
+          d="M641.25,210 V230 H531.25 H751.25"
         />
         <path
           className=
@@ -1970,7 +2964,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M963.75,110 H570 V90"
+          d="M903.75,110 H510 V90"
         />
         <path
           className=
@@ -1980,7 +2974,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M963.75,210 V230 H843.75 H1083.75"
+          d="M903.75,210 V230 H793.75 H1013.75"
         />
       </g>
     </svg>
@@ -2029,8 +3023,8 @@ subText subtext Root Node"
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={240}
-          x={450}
+          width={220}
+          x={400}
           y={10}
         />
         <text
@@ -2046,7 +3040,7 @@ subText subtext Root Node"
               }
           dy={45}
           textAnchor="middle"
-          x={570}
+          x={510}
         >
           Root Node
           <tspan
@@ -2061,7 +3055,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={570}
+            x={510}
           >
             subtext
           </tspan>
@@ -2088,8 +3082,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={240}
-          x={56.25}
+          width={220}
+          x={6.25}
           y={130}
         />
         <text
@@ -2105,7 +3099,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={176.25}
+          x={116.25}
         >
           Child 1
           <tspan
@@ -2120,7 +3114,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={116.25}
           >
             subtext
           </tspan>
@@ -2147,8 +3141,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={240}
-          x={318.75}
+          width={220}
+          x={268.75}
           y={130}
         />
         <text
@@ -2164,7 +3158,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={438.75}
+          x={378.75}
         >
           Child 2
           <tspan
@@ -2179,7 +3173,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={378.75}
           >
             subtext
           </tspan>
@@ -2206,8 +3200,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={240}
-          x={581.25}
+          width={220}
+          x={531.25}
           y={130}
         />
         <text
@@ -2223,7 +3217,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={701.25}
+          x={641.25}
         >
           Child 3
           <tspan
@@ -2238,7 +3232,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={641.25}
           >
             subtext
           </tspan>
@@ -2265,8 +3259,8 @@ subText subtext Parent info parentId: 0
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={240}
-          x={843.75}
+          width={220}
+          x={793.75}
           y={130}
         />
         <text
@@ -2282,7 +3276,7 @@ subText subtext Parent info parentId: 0
               }
           dy={165}
           textAnchor="middle"
-          x={963.75}
+          x={903.75}
         >
           Child 4
           <tspan
@@ -2297,7 +3291,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={963.75}
+            x={903.75}
           >
             subtext
           </tspan>
@@ -2314,7 +3308,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M176.25,110 H570 V90"
+          d="M116.25,110 H510 V90"
         />
         <path
           className=
@@ -2324,7 +3318,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M438.75,110 H570 V90"
+          d="M378.75,110 H510 V90"
         />
         <path
           className=
@@ -2334,7 +3328,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M701.25,110 H570 V90"
+          d="M641.25,110 H510 V90"
         />
         <path
           className=
@@ -2344,7 +3338,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M963.75,110 H570 V90"
+          d="M903.75,110 H510 V90"
         />
       </g>
     </svg>

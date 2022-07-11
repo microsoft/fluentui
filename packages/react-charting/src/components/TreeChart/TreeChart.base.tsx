@@ -43,6 +43,7 @@ class StandardTree {
   }
 
   // Append node elements
+  // nodeId to create unique key
   public addNodeShapetoSVG(
     name: string,
     subname: string,
@@ -52,7 +53,6 @@ class StandardTree {
     fillColor: string,
     rectangleWidth: number,
     rectangleHeight: number,
-    // nodeId to create unique key
     nodeId: number,
     parentInfo: string,
   ) {
@@ -146,18 +146,22 @@ class StandardTree {
     );
   }
 }
+
 // Create child class to Add Tree component based on treeHeight
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
+  private _nodeTraversal: number | undefined;
   constructor(
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     styleClassNames: { link: string; rectNode: string; rectText: string; rectSubText: string; rectmetricText: string },
     _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
     _linkElements: Array<React.SVGProps<SVGPathElement>> = [],
+    _nodeTraversal: number | undefined,
   ) {
     super(treeData, styleClassNames, _nodeElements, _linkElements);
     this.composition = composition;
+    this._nodeTraversal = _nodeTraversal;
   }
   public createTree() {
     const root = hierarchy(this.treeData, d => {
@@ -181,11 +185,11 @@ class LayeredTree extends StandardTree {
     const nodes = treeData.descendants();
 
     // Normalize for fixed-depth and width
+    // Normalise y coordinate by depth of each node by a factor of 130
+    // Normalise x coordinate by start coordinate 0 with 450
     nodes.forEach(d => {
-      // Normalise y coordinate by depth of each node by a factor of 130
       d.y = d.depth === 0 ? 10 : d.depth * 130;
-      // Normalise x coordinate by start coordinate 0 with 450
-      d.x += 450;
+      d.x += 400;
     });
 
     // <------------------ Traversal section ------------------>
@@ -193,11 +197,10 @@ class LayeredTree extends StandardTree {
     // Create tree data structure
     const treeDataStructure: Array<ITreeDataStructure> = [];
     let TreeID: number = 0;
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    root.eachBefore((d: any) => {
-      // make id to find parentID from parent object
-      // eslint-disable-next-line dot-notation
-      d['id'] = TreeID;
+    const createTreeDataStructure = (d: any) => {
+      d.id = TreeID;
       treeDataStructure.push({
         id: TreeID,
         children: d.children,
@@ -210,10 +213,18 @@ class LayeredTree extends StandardTree {
         parentID: d.parent?.id,
       });
       TreeID++;
-    });
+    };
+
+    this._nodeTraversal === 0
+      ? root.each(d => {
+          createTreeDataStructure(d);
+        })
+      : root.eachBefore(d => {
+          createTreeDataStructure(d);
+        });
 
     const rectHeight = 70;
-    const rectWidth = 240;
+    const rectWidth = 220;
     const gap: number = 20;
     const parentSet = new Set();
 
@@ -256,7 +267,7 @@ class LayeredTree extends StandardTree {
         for (let itr = 0; itr < children.length; ++itr) {
           const child = children[itr];
 
-          // Selected Composition
+          // Given Composition
           if (this.composition !== undefined) {
             // For compact compostion
             if (this.composition === 0) {
@@ -375,6 +386,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _margin: { left: number; right: number; top: number; bottom: number };
   private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
   private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
+  private _nodeTraversal: number | undefined;
 
   constructor(props: ITreeProps) {
     super(props);
@@ -383,6 +395,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
     this._composition = this.props?.composition;
+    this._nodeTraversal = this.props.nodeTraversal;
 
     this.state = {
       _width: this._width || 1000,
@@ -424,25 +437,15 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     };
 
     // Instantiate inherited class and call createTree function for the object
-    if (this._composition === undefined) {
-      const twoLayerTree = new LayeredTree(
-        this._treeData,
-        this._composition,
-        styleClassNames,
-        this._nodeElements,
-        this._linkElements,
-      );
-      twoLayerTree.createTree();
-    } else {
-      const threeLayerTree = new LayeredTree(
-        this._treeData,
-        this._composition,
-        styleClassNames,
-        this._nodeElements,
-        this._linkElements,
-      );
-      threeLayerTree.createTree();
-    }
+    const treeObject = new LayeredTree(
+      this._treeData,
+      this._composition,
+      styleClassNames,
+      this._nodeElements,
+      this._linkElements,
+      this._nodeTraversal,
+    );
+    treeObject.createTree();
   }
 
   public render(): JSX.Element {

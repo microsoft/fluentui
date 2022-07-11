@@ -129,21 +129,22 @@ function sharedAfterEach() {
 
 describe('TreeChart snapshot testing', () => {
   it('renders treechart two layer correctly', () => {
-    const component = renderer.create(<TreeChart treeData={twoLayerChart} width={1000} height={700} />);
+    const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders treechart three layer long composition correctly', () => {
-    const component = renderer.create(
-      <TreeChart treeData={threeLayerChart} composition={1} width={1000} height={700} />,
-    );
+    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={1} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders treechart three layer compact composition correctly', () => {
-    const component = renderer.create(
-      <TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700} />,
-    );
+    const component = renderer.create(<TreeChart treeData={threeLayerChart} composition={0} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('renders treechart three layer without composition correctly', () => {
+    const component = renderer.create(<TreeChart treeData={threeLayerChart} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -153,13 +154,13 @@ describe('TreeChart - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   it('svgNode innerHTML should not be null ', () => {
-    wrapper = mount(<TreeChart treeData={threeLayerChart} composition={0} width={1000} height={700} />);
+    wrapper = mount(<TreeChart treeData={threeLayerChart} composition={0} />);
     const svgObject = wrapper.getDOMNode().querySelector('[class="svgNode"]');
     expect(svgObject?.innerHTML).toBeDefined();
   });
 
   it('svgLink innerHTML should not be null ', () => {
-    wrapper = mount(<TreeChart treeData={twoLayerChart} width={1000} height={700} />);
+    wrapper = mount(<TreeChart treeData={twoLayerChart} />);
     const svgObject = wrapper.getDOMNode().querySelector('[class="svgLink"]');
     expect(svgObject?.innerHTML).toBeDefined();
   });

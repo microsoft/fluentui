@@ -8,14 +8,55 @@ export interface ITreeChartDataPoint {
   fill: string;
   children?: Array<ITreeChartDataPoint>;
 }
+
+export enum NodesComposition {
+  long = 1,
+  compact = 0,
+}
+
+export enum NodeTraverse {
+  preOrder = 1,
+  levelOrder = 0,
+}
+
 export interface ITreeProps {
+  /**
+   * An object of chart data points for the Tree chart
+   */
   treeData: ITreeChartDataPoint;
-  composition?: number | undefined;
+  /**
+   * compostion for three layer chart, long: composition = 1; compact: composition = 0
+   */
+  composition?: NodesComposition.long | NodesComposition.compact | undefined;
+  /**
+   * traversal order for tree chart, preOrder = 1, levelOrder = 0
+   */
+  nodeTraversal?: NodeTraverse.preOrder | NodeTraverse.levelOrder;
+  /**
+   * Width of SVG tree chart
+   * * @default 1200
+   */
   width?: number;
+  /**
+   * Height of SVG tree chart
+   * * @default 700
+   */
   height?: number;
+  /**
+   * Margin for the SVG tree chart
+   */
   marign?: { left: number; right: number; top: number; bottom: number };
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
   styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
+  /**
+   * Additional CSS class(es) to apply to the TreeChart.
+   */
   className?: string;
+  /**
+   * Theme (provided through customization.)
+   */
   theme?: ITheme;
 }
 export interface ITreeState {
