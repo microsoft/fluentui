@@ -9,9 +9,10 @@ const typeAwareRules = {
 };
 
 const root = configHelpers.findGitRoot();
+const unstableV9Packages = configHelpers.getV9UnstablePackages(root);
 const v9PackageDeps = Object.keys(
   configHelpers.getPackageJson({ root, name: '@fluentui/react-components' }).dependencies,
-);
+).filter(pkg => !unstableV9Packages.has(pkg));
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
