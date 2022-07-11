@@ -1,22 +1,12 @@
 # @fluentui/react-avatar
 
-**React Avatar components for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**React Avatar components for [Fluent UI](https://react.fluentui.dev/)**
 
 The Avatar component represents a person or entity. It displays the person's image, initials, or an icon, and can be either circular or square.
-
-## STATUS: WIP 🚧
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 ## Usage
 
 To import Avatar:
-
-```js
-import { Avatar } from '@fluentui/react-avatar';
-```
-
-Once the Avatar component graduates to a production release, the component will be available at:
 
 ```js
 import { Avatar } from '@fluentui/react-components';
@@ -42,3 +32,18 @@ With active state indication:
 <Avatar name="Daisy Phillips" active={true} activeAppearance="ring-shadow" />
 <Avatar name="Robin Counts" active={false} activeAppearance="ring-shadow" />
 ```
+
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
+
+Alternatively, run Storybook locally with:
+
+1. `yarn start`
+2. Select `react-avatar` from the list.
+
+### Specification
+
+See [SPEC.md](./SPEC.md).
+
+### Migration Guide
+
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Avatar implementation.

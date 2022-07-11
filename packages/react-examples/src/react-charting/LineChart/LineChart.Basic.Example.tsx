@@ -141,7 +141,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
 
     return (
       <>
-        <label htmlFor="changeWidth_basic">change Width:</label>
+        <label htmlFor="changeWidth_basic">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -151,7 +151,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Basic">change Height:</label>
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

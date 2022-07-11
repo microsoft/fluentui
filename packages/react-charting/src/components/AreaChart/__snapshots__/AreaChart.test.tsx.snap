@@ -239,7 +239,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="metaData1"
+                  aria-label="metaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -257,6 +257,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -549,7 +550,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           role="none"
         >
           <button
-            aria-label="metaData1"
+            aria-label="metaData1 selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={1}
@@ -567,6 +568,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1055,7 +1057,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="metaData1"
+                  aria-label="metaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -1073,6 +1075,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1382,7 +1385,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                 role="none"
               >
                 <button
-                  aria-label="metaData1"
+                  aria-label="metaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -1400,6 +1403,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1709,7 +1713,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="metaData1"
+                  aria-label="metaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -1727,6 +1731,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2036,7 +2041,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                 role="none"
               >
                 <button
-                  aria-label="metaData1"
+                  aria-label="metaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={1}
@@ -2054,6 +2059,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;

@@ -1,8 +1,52 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 28 Jun 2022 07:39:04 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Jul 2022 07:36:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.79.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.79.0)
+
+Fri, 08 Jul 2022 07:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.1..@fluentui/react_v8.79.0)
+
+### Minor changes
+
+- Add optional improveCSSPerformance prop to Shimmer ([PR #23728](https://github.com/microsoft/fluentui/pull/23728) by conniechen@microsoft.com)
+
+### Patches
+
+- fix(Dropdown): narrator announcing hidden items as selectable ([PR #23755](https://github.com/microsoft/fluentui/pull/23755) by marcosmoura@microsoft.com)
+
+## [8.78.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.1)
+
+Thu, 07 Jul 2022 07:37:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.0..@fluentui/react_v8.78.1)
+
+### Patches
+
+- Handle when FocusTrapZone wraps an iframe ([PR #23792](https://github.com/microsoft/fluentui/pull/23792) by tmichon@microsoft.com)
+
+## [8.78.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.0)
+
+Wed, 06 Jul 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.3..@fluentui/react_v8.78.0)
+
+### Minor changes
+
+- feat: Adding focusZoneProps support for Nav. ([PR #23806](https://github.com/microsoft/fluentui/pull/23806) by cqc@cuiqingcai.com)
+
+### Patches
+
+- fix(Checkbox): add indeterminate value to inputRef ([PR #23772](https://github.com/microsoft/fluentui/pull/23772) by marcosmoura@microsoft.com)
+
+## [8.77.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.3)
+
+Thu, 30 Jun 2022 07:40:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.2..@fluentui/react_v8.77.3)
+
+### Patches
+
+- feat: Updating Slider to support ariaLabel prop. ([PR #23776](https://github.com/microsoft/fluentui/pull/23776) by sarah.higley@microsoft.com)
 
 ## [8.77.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.2)
 

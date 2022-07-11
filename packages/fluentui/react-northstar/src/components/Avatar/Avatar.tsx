@@ -42,7 +42,7 @@ export interface AvatarProps extends UIComponentProps {
   square?: boolean;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 
   /** Shorthand for the status of the user. */
   status?: ShorthandValue<AvatarStatusProps>;
@@ -51,6 +51,7 @@ export interface AvatarProps extends UIComponentProps {
   getInitials?: (name: string) => string;
 }
 
+export type AvatarSizeValue = SizeValue | 'medium-large';
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 export const avatarClassName = 'ui-avatar';
 

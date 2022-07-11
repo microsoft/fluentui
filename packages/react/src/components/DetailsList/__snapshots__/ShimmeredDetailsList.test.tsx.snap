@@ -422,9 +422,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -436,6 +433,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -608,9 +608,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -622,6 +619,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -794,9 +794,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -808,6 +805,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -980,9 +980,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -994,6 +991,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -1166,9 +1166,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -1180,6 +1177,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -1352,9 +1352,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -1366,6 +1363,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -1538,9 +1538,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -1552,6 +1549,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -1724,9 +1724,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -1738,6 +1735,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -1910,9 +1910,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -1924,6 +1921,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
@@ -2096,9 +2096,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                               transform: translateZ(0);
                               transition: opacity 200ms;
                             }
-                            & > * {
-                              transform: translateZ(0);
-                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               -ms-high-contrast-adjust: none;
                               background: WindowText
@@ -2110,6 +2107,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                     0 0 / 90% 100%
                                                     no-repeat;
                               forced-color-adjust: none;
+                            }
+                            & > * {
+                              transform: translateZ(0);
                             }
                         style={
                           Object {
