@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 11 Jul 2022 07:37:12 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.10.0",
+      "version": "1.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b2fa23f1083b77f8a73667db10cbe1553f893af1",
+            "comment": "feat: add custom no-restricted-imports rule with fixer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 May 2022 07:39:11 GMT",
       "tag": "@fluentui/eslint-plugin_v1.9.1",
       "version": "1.9.1",
