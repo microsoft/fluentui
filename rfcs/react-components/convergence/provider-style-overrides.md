@@ -72,11 +72,11 @@ const AppWrapper = () => {
 
 #### Pros and Cons
 
-👍 No extra code changes necessary
-👍 Users will understand what the problem is
-👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
+- 👍 No extra code changes necessary
+ -👍 Users will understand what the problem is
+ -👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
 
-👎 Extra effort to override one single component
+- 👎 Extra effort to override one single component
 
 ### Specific API for overriding provider styles
 
