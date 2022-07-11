@@ -8,20 +8,23 @@ import {
   MenuPopover,
   MenuList,
   MenuItemRadio,
-  MenuDivider,
   MenuProps,
   tokens,
   Label,
   TabValue,
+  Switch,
 } from '@fluentui/react-components';
 
 import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
+import { themeList } from '../../utils/themes/themeList';
+import { Form } from './Form';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
     ...shorthands.gap(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL),
+    alignItems: 'center',
   },
   inlineInputs: {
     display: 'flex',
@@ -38,17 +41,19 @@ export interface UseTabProps {
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
   formState: CustomAttributes;
+  setFormState: React.Dispatch<CustomAttributes>;
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
-  const { theme, setTheme, dispatchAppState, sidebarId, formState } = props;
+  const { theme, setTheme, dispatchAppState, sidebarId, formState, setFormState, isDark, setIsDark } = props;
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
-    if (newTheme === 'Custom') {
-      props.setTab('edit');
+    if (!themeList[newTheme].brand) {
       dispatchAppState({ type: newTheme, customAttributes: formState, overrides: {} });
     } else {
       dispatchAppState({ type: newTheme, overrides: {} });
@@ -56,9 +61,14 @@ export const UseTab: React.FC<UseTabProps> = props => {
     setTheme(newTheme);
   };
 
+  const handleIsDarkChange = () => {
+    setIsDark(!isDark);
+    dispatchAppState({ type: 'isDark', isDark: !isDark });
+  };
+
   return (
-    <div className={styles.root}>
-      <div className={styles.inlineInputs} role="tabpanel" aria-labelledby="Use">
+    <div className={styles.root} role="tabpanel" aria-labelledby="Use">
+      <div className={styles.inlineInputs}>
         <Label htmlFor={sidebarId + 'theme'}>Theme</Label>
         <Menu>
           <MenuTrigger>
@@ -66,26 +76,28 @@ export const UseTab: React.FC<UseTabProps> = props => {
           </MenuTrigger>
           <MenuPopover>
             <MenuList onCheckedValueChange={handleThemeChange}>
-              <MenuItemRadio name="Teams Light" value="Teams Light">
-                Teams Light
-              </MenuItemRadio>
-              <MenuItemRadio name="Teams Dark" value="Teams Dark">
-                Teams Dark
-              </MenuItemRadio>
-              <MenuItemRadio name="Web Light" value="Web Light">
-                Web Light
-              </MenuItemRadio>
-              <MenuItemRadio name="Web Dark" value="Web Dark">
-                Web Dark
-              </MenuItemRadio>
-              <MenuDivider />
-              <MenuItemRadio name="Custom" value="Custom">
-                Custom
-              </MenuItemRadio>
+              {Object.keys(themeList).map(currTheme => (
+                <div key={currTheme}>
+                  <MenuItemRadio name={currTheme} value={currTheme}>
+                    {currTheme}
+                  </MenuItemRadio>
+                </div>
+              ))}
             </MenuList>
           </MenuPopover>
         </Menu>
       </div>
+      <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
+      {!themeList[theme].brand ? (
+        <Form
+          sidebarId={sidebarId}
+          dispatchAppState={props.dispatchAppState}
+          formState={formState}
+          setFormState={setFormState}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

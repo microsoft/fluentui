@@ -87,14 +87,14 @@ export const Sidebar: React.FC<SidebarProps> = props => {
     setTab(data.value);
   };
 
-  const [theme, setTheme] = React.useState<string>('Teams Light');
+  const [theme, setTheme] = React.useState<string>('Teams');
+  const [isDark, setIsDark] = React.useState<boolean>(false);
 
   const [formState, setFormState] = React.useState<CustomAttributes>({
     keyColor: '#006bc7',
     hueTorsion: 0,
     darkCp: 0.66,
     lightCp: 0.33,
-    isDark: false,
   });
 
   return (
@@ -115,16 +115,12 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           dispatchAppState={props.dispatchAppState}
           setTab={setTab}
           formState={formState}
-        />
-      )}
-      {tab === 'edit' && (
-        <EditTab
-          sidebarId={sidebarId}
-          dispatchAppState={props.dispatchAppState}
-          formState={formState}
           setFormState={setFormState}
+          isDark={isDark}
+          setIsDark={setIsDark}
         />
       )}
+      {tab === 'edit' && <EditTab />}
     </div>
   );
 };
