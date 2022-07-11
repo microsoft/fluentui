@@ -16,7 +16,7 @@ export { Disabled } from './MenuButtonDisabled.stories';
 export { WithLongText } from './MenuButtonWithLongText.stories';
 
 export default {
-  title: 'Components/MenuButton',
+  title: 'Components/Button/MenuButton',
   component: MenuButton,
   parameters: {
     docs: {

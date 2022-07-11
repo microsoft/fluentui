@@ -59,4 +59,24 @@ describe('Alert', () => {
     );
     expect(screen.getByTestId('foo')).toBeTruthy();
   });
+
+  it('sets alert role based on intent', () => {
+    render(
+      <>
+        <Alert intent="error" data-testid="error">
+          Test
+        </Alert>
+        <Alert intent="error" data-testid="warning">
+          Test
+        </Alert>
+      </>,
+    );
+    expect(screen.getByTestId('error').getAttribute('role')).toBe('alert');
+    expect(screen.getByTestId('warning').getAttribute('role')).toBe('alert');
+  });
+
+  it('sets status role by default', () => {
+    render(<Alert data-testid="default">Test</Alert>);
+    expect(screen.getByTestId('default').getAttribute('role')).toBe('status');
+  });
 });

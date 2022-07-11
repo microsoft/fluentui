@@ -5,7 +5,7 @@ export { Default } from './MenuListDefault.stories';
 export { MenuListWithNestedSubmenus } from './MenuListNestedSubmenus.stories';
 
 export default {
-  title: 'Components/MenuList',
+  title: 'Components/Menu/MenuList',
   component: MenuList,
   parameters: {
     docs: {

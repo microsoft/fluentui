@@ -30,6 +30,7 @@ import { baseElementProperties } from '@fluentui/utilities';
 import { buildClassMap } from '@fluentui/style-utilities';
 import { buttonProperties } from '@fluentui/utilities';
 import { calculatePrecision } from '@fluentui/utilities';
+import { canUseDOM } from '@fluentui/utilities';
 import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
@@ -907,6 +908,8 @@ export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+export { canUseDOM }
 
 // @public (undocumented)
 export const Check: React_2.FunctionComponent<ICheckProps>;

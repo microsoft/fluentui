@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Re-export canUseDOM from @fluentui/utilities.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

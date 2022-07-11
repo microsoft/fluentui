@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Re-export canUseDOM from @fluentui/utilities and remove setSSR from withResponsiveMode tests.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
