@@ -72,6 +72,7 @@ const useOverflowButtonStyles = makeStyles({
     outlineStyle: 'solid',
   }),
 
+  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
   pieFocusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
