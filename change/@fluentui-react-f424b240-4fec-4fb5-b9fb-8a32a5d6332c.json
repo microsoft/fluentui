@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Combobox: only set newPendingValue if there is not a matching option and the pendingValue changed",
+  "comment": "fix(Combobox): Only set newPendingValue if there is not a matching option and the pendingValue changed.",
   "packageName": "@fluentui/react",
   "email": "jspurlin@microsoft.com",
   "dependentChangeType": "patch"
