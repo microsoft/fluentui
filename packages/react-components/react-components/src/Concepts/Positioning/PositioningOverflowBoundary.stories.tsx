@@ -46,7 +46,7 @@ export const OverflowBoundary = () => {
           <PopoverTrigger>
             <Button className={styles.trigger}>Align: end</Button>
           </PopoverTrigger>
-          <PopoverSurface>Overflows the boundary boundary</PopoverSurface>
+          <PopoverSurface>Overflows the overflow boundary</PopoverSurface>
         </Popover>
       </div>
     </>
