@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { SplitButton } from '@fluentui/react-button';
+import { SplitButton } from '@fluentui/react-components';
 import descriptionMd from './SplitButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 
