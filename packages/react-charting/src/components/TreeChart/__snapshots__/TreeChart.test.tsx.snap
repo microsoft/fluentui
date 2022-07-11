@@ -110,12 +110,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={116.25}
         >
@@ -126,10 +126,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={116.25}
@@ -818,12 +818,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={903.75}
         >
@@ -834,10 +834,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={903.75}
@@ -1104,12 +1104,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={116.25}
         >
@@ -1120,10 +1120,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={116.25}
@@ -1812,12 +1812,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={903.75}
         >
@@ -1828,10 +1828,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={903.75}
@@ -2098,12 +2098,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={116.25}
         >
@@ -2114,10 +2114,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={116.25}
@@ -2806,12 +2806,12 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #484644;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={158}
           textAnchor="middle"
           x={903.75}
         >
@@ -2822,10 +2822,10 @@ subText subtext Parent info parentId: 0
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  fill: black;
+                  fill: #000000;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  font-size: 20px;
+                  font-weight: 600;
                 }
             dy="1.4em"
             x={903.75}
