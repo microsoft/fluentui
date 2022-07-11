@@ -68,7 +68,7 @@ export const useThemeDesignerReducer = () => {
 
   const appStateReducer = (state: AppState, action: DispatchTheme): AppState => {
     // check if isDark is changed
-    if (action.type === 'isDark' && typeof action.isDark != 'undefined') {
+    if (action.type === 'isDark' && typeof action.isDark !== 'undefined') {
       const isDark = action.isDark;
       const themeLabel = state.themeName + ' ' + (isDark ? 'Dark' : 'Light');
       return {
