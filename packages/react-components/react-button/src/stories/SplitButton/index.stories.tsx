@@ -16,7 +16,7 @@ export { Disabled } from './SplitButtonDisabled.stories';
 export { WithLongText } from './SplitButtonWithLongText.stories';
 
 export default {
-  title: 'Components/SplitButton',
+  title: 'Components/Button/SplitButton',
   component: SplitButton,
   parameters: {
     docs: {
