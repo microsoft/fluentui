@@ -3,7 +3,7 @@ import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
-import { themeList, themeNames } from './utils/themes/themeList';
+import { themeList, themeNames } from './utils/themeList';
 
 export type CustomAttributes = {
   keyColor: string;
@@ -24,6 +24,7 @@ export type OverrideState = Record<string, Partial<Theme>>;
 export type DispatchOverride = { type: string; overrides?: Partial<Theme> };
 
 export type AppState = {
+  themeName: string;
   themeLabel: string;
   brand: BrandVariants;
   theme: Theme;
@@ -57,6 +58,7 @@ export const useThemeDesignerReducer = () => {
   const [overrideState, dispatchOverrideState] = React.useReducer(overrideReducer, initialOverrideState);
 
   const initialAppState = {
+    themeName: 'Teams',
     themeLabel: 'Teams Light',
     brand: brandTeams,
     theme: createLightTheme(brandTeams),
@@ -66,13 +68,20 @@ export const useThemeDesignerReducer = () => {
 
   const appStateReducer = (state: AppState, action: DispatchTheme): AppState => {
     // check if isDark is changed
-    let isDark = state.isDark;
     if (action.type === 'isDark' && typeof action.isDark != 'undefined') {
-      isDark = action.isDark;
-      return { ...state, theme: isDark ? createDarkTheme(state.brand) : createLightTheme(state.brand), isDark };
+      const isDark = action.isDark;
+      const themeLabel = state.themeName + ' ' + (isDark ? 'Dark' : 'Light');
+      return {
+        ...state,
+        themeLabel: themeLabel,
+        theme: isDark ? createDarkTheme(state.brand) : createLightTheme(state.brand),
+        isDark,
+        overrides: overrideState[themeLabel],
+      };
     }
 
-    const theme = action.type;
+    let theme = action.type;
+    const isDark = state.isDark;
     const themeLabel = theme + ' ' + (isDark ? 'Dark' : 'Light');
 
     // check for override modifications
@@ -85,10 +94,10 @@ export const useThemeDesignerReducer = () => {
       } else {
         dispatchOverrideState({ type: themeLabel });
       }
-      action.type = state.themeLabel;
+      theme = state.themeName;
     }
 
-    const brand = themeList[theme].brand;
+    let brand = themeList[theme].brand;
 
     // If the theme does not have an associated brand, it must be a custom theme
     if (!brand) {
@@ -96,17 +105,11 @@ export const useThemeDesignerReducer = () => {
       if (!action.customAttributes) {
         return state;
       }
-      const customBrand = createCustomTheme(action.customAttributes);
-      return {
-        themeLabel,
-        brand: customBrand,
-        theme: isDark ? createDarkTheme(customBrand) : createLightTheme(customBrand),
-        isDark,
-        overrides: overrideState[themeLabel],
-      };
+      brand = createCustomTheme(action.customAttributes);
     }
 
     return {
+      themeName: theme,
       themeLabel,
       brand,
       theme: isDark ? createDarkTheme(brand) : createLightTheme(brand),

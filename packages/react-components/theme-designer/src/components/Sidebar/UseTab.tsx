@@ -16,7 +16,7 @@ import {
 } from '@fluentui/react-components';
 
 import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
-import { themeList } from '../../utils/themes/themeList';
+import { themeList } from '../../utils/themeList';
 import { Form } from './Form';
 
 const useStyles = makeStyles({

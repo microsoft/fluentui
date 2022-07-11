@@ -7,6 +7,7 @@ import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
 import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import type { DispatchTheme, AppState } from '../../useThemeDesignerReducer';
+import { themeNames } from '../../utils/themeList';
 
 export interface ColorTokensProps {
   className?: string;
@@ -17,14 +18,7 @@ export interface ColorTokensProps {
 
 export type ColorOverrideBrands = Record<string, Brands>;
 
-export type ColorOverrides = {
-  teamsLight: ColorOverrideBrands;
-  teamsDark: ColorOverrideBrands;
-  webLight: ColorOverrideBrands;
-  webDark: ColorOverrideBrands;
-  customLight: ColorOverrideBrands;
-  customDark: ColorOverrideBrands;
-};
+export type ColorOverrides = Record<string, ColorOverrideBrands>;
 
 export type DispatchColorOverrides = {
   type: string;
@@ -33,35 +27,11 @@ export type DispatchColorOverrides = {
 };
 
 const getCurrentOverride = (appState: AppState, colorOverride: ColorOverrides) => {
-  switch (appState.themeLabel) {
-    case 'Teams Light':
-      return colorOverride.teamsLight;
-    case 'Teams Dark':
-      return colorOverride.teamsDark;
-    case 'Web Light':
-      return colorOverride.webLight;
-    case 'Web Dark':
-      return colorOverride.webDark;
-    case 'Custom':
-      if (!appState.isDark) {
-        return colorOverride.customLight;
-      } else {
-        return colorOverride.customDark;
-      }
-    default:
-      return colorOverride.customLight;
-  }
+  return colorOverride[appState.themeLabel];
 };
 
 const useColorOverrideReducer = (appState: AppState, brand: BrandVariants) => {
-  const initialColorOverride = {
-    teamsLight: {},
-    teamsDark: {},
-    webLight: {},
-    webDark: {},
-    customLight: {},
-    customDark: {},
-  };
+  const initialColorOverride: ColorOverrides = Object.fromEntries(themeNames.map(currTheme => [currTheme, {}]));
 
   const colorOverrideReducer: (
     state: ColorOverrides,
@@ -72,43 +42,12 @@ const useColorOverrideReducer = (appState: AppState, brand: BrandVariants) => {
         if (!action.colorToken || !action.newValue) {
           return state;
         }
-        switch (appState.themeLabel) {
-          case 'Teams Light':
-            return { ...state, teamsLight: { ...state.teamsLight, [action.colorToken]: action.newValue } };
-          case 'Teams Dark':
-            return { ...state, teamsDark: { ...state.teamsDark, [action.colorToken]: action.newValue } };
-          case 'Web Light':
-            return { ...state, webLight: { ...state.webLight, [action.colorToken]: action.newValue } };
-          case 'Web Dark':
-            return { ...state, webDark: { ...state.webDark, [action.colorToken]: action.newValue } };
-          case 'Custom':
-            if (!appState.isDark) {
-              return { ...state, customLight: { ...state.customLight, [action.colorToken]: action.newValue } };
-            } else {
-              return { ...state, customDark: { ...state.customDark, [action.colorToken]: action.newValue } };
-            }
-          default:
-            return state;
-        }
+        return {
+          ...state,
+          [appState.themeLabel]: { ...state[appState.themeLabel], [action.colorToken]: action.newValue },
+        };
       case 'Reset Overrides':
-        switch (appState.themeLabel) {
-          case 'Teams Light':
-            return { ...state, teamsLight: {} };
-          case 'Teams Dark':
-            return { ...state, teamsDark: {} };
-          case 'Web Light':
-            return { ...state, webLight: {} };
-          case 'Web Dark':
-            return { ...state, webDark: {} };
-          case 'Custom':
-            if (!appState.isDark) {
-              return { ...state, customLight: {} };
-            } else {
-              return { ...state, customDark: {} };
-            }
-          default:
-            return state;
-        }
+        return { ...state, [appState.themeLabel]: {} };
       case 'Reset Custom Overrides':
         return { ...state, customLight: {}, customDark: {} };
       default:
