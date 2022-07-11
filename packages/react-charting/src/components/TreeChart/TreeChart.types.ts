@@ -14,7 +14,7 @@ export enum NodesComposition {
   compact = 0,
 }
 
-export enum NodeTraverse {
+export enum TreeTraverse {
   preOrder = 1,
   levelOrder = 0,
 }
@@ -31,7 +31,7 @@ export interface ITreeProps {
   /**
    * traversal order for tree chart, preOrder = 1, levelOrder = 0
    */
-  nodeTraversal?: NodeTraverse.preOrder | NodeTraverse.levelOrder;
+  treeTraversal?: TreeTraverse.preOrder | TreeTraverse.levelOrder;
   /**
    * Width of SVG tree chart
    * * @default 1200
@@ -85,5 +85,5 @@ export interface ITreeStyles {
   rectNode: IStyle;
   rectText: IStyle;
   rectSubText: IStyle;
-  rectmetricText: IStyle;
+  rectMetricText: IStyle;
 }

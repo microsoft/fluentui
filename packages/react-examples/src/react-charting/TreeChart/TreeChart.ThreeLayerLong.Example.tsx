@@ -1,6 +1,6 @@
 /* eslint-disable react/self-closing-comp */
 import * as React from 'react';
-import { TreeChart, ITreeProps, NodeTraverse, NodesComposition } from '@fluentui/react-charting';
+import { TreeChart, ITreeProps, TreeTraverse, NodesComposition } from '@fluentui/react-charting';
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
@@ -105,7 +105,7 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
         <TreeChart
           treeData={threeLayerChart}
           composition={NodesComposition.long}
-          nodeTraversal={NodeTraverse.preOrder}
+          treeTraversal={TreeTraverse.preOrder}
         ></TreeChart>
       </>
     );

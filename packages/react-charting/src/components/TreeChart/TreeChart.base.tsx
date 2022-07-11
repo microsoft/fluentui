@@ -91,8 +91,8 @@ class StandardTree {
     this._nodeElements.push(
       <text
         textAnchor="middle"
-        className={this.styleClassNames.rectText}
-        dy={yCoordinate + rectangleHeight / 2}
+        className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
+        dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
         x={xCoordinate + rectangleWidth / 2}
         key={`${nodeId}${this.styleClassNames.rectText}`}
       >
@@ -150,18 +150,18 @@ class StandardTree {
 // Create child class to Add Tree component based on treeHeight
 class LayeredTree extends StandardTree {
   public composition: number | undefined;
-  private _nodeTraversal: number | undefined;
+  private _treeTraversal: number | undefined;
   constructor(
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     styleClassNames: { link: string; rectNode: string; rectText: string; rectSubText: string; rectmetricText: string },
     _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
     _linkElements: Array<React.SVGProps<SVGPathElement>> = [],
-    _nodeTraversal: number | undefined,
+    _treeTraversal: number | undefined,
   ) {
     super(treeData, styleClassNames, _nodeElements, _linkElements);
     this.composition = composition;
-    this._nodeTraversal = _nodeTraversal;
+    this._treeTraversal = _treeTraversal;
   }
   public createTree() {
     const root = hierarchy(this.treeData, d => {
@@ -215,7 +215,7 @@ class LayeredTree extends StandardTree {
       TreeID++;
     };
 
-    this._nodeTraversal === 0
+    this._treeTraversal === 0
       ? root.each(d => {
           createTreeDataStructure(d);
         })
@@ -386,7 +386,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _margin: { left: number; right: number; top: number; bottom: number };
   private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
   private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
-  private _nodeTraversal: number | undefined;
+  private _treeTraversal: number | undefined;
 
   constructor(props: ITreeProps) {
     super(props);
@@ -395,7 +395,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
     this._composition = this.props?.composition;
-    this._nodeTraversal = this.props.nodeTraversal;
+    this._treeTraversal = this.props.treeTraversal;
 
     this.state = {
       _width: this._width || 1000,
@@ -433,7 +433,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       rectNode: this._classNames.rectNode,
       rectText: this._classNames.rectText,
       rectSubText: this._classNames.rectSubText,
-      rectmetricText: this._classNames.rectmetricText,
+      rectmetricText: this._classNames.rectMetricText,
     };
 
     // Instantiate inherited class and call createTree function for the object
@@ -443,7 +443,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       styleClassNames,
       this._nodeElements,
       this._linkElements,
-      this._nodeTraversal,
+      this._treeTraversal,
     );
     treeObject.createTree();
   }
