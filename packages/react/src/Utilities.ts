@@ -154,6 +154,7 @@ export {
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line deprecation/deprecation
   setSSR,
   setVirtualParent,
   setWarningCallback,
