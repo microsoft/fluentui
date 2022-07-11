@@ -16,7 +16,7 @@ exports[`Rating renders correctly 1`] = `
       &:hover .ms-RatingStar-back {
         color: #323130;
       }
-      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-RatingStar-back {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-RatingStar-back {
         color: Highlight;
       }
       {
@@ -104,13 +104,13 @@ exports[`Rating renders correctly 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -204,7 +204,7 @@ exports[`Rating renders correctly 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
@@ -262,13 +262,13 @@ exports[`Rating renders correctly 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -361,7 +361,7 @@ exports[`Rating renders correctly 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
@@ -419,13 +419,13 @@ exports[`Rating renders correctly 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -518,7 +518,7 @@ exports[`Rating renders correctly 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
@@ -576,13 +576,13 @@ exports[`Rating renders correctly 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -675,7 +675,7 @@ exports[`Rating renders correctly 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
@@ -733,13 +733,13 @@ exports[`Rating renders correctly 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -832,7 +832,7 @@ exports[`Rating renders correctly 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
@@ -866,7 +866,7 @@ exports[`Rating renders correctly with half star 1`] = `
       &:hover .ms-RatingStar-back {
         color: #323130;
       }
-      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover .ms-RatingStar-back {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-RatingStar-back {
         color: Highlight;
       }
       {
@@ -954,13 +954,13 @@ exports[`Rating renders correctly with half star 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -1053,7 +1053,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
@@ -1111,13 +1111,13 @@ exports[`Rating renders correctly with half star 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -1210,7 +1210,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
@@ -1268,13 +1268,13 @@ exports[`Rating renders correctly with half star 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -1368,7 +1368,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStarFill"
@@ -1426,13 +1426,13 @@ exports[`Rating renders correctly with half star 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -1525,7 +1525,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"
@@ -1583,13 +1583,13 @@ exports[`Rating renders correctly with half star 1`] = `
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
           }
           &:hover .ms-RatingStar-back {
@@ -1682,7 +1682,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 top: 0;
                 vertical-align: middle;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: Highlight;
               }
           data-icon-name="FavoriteStar"

@@ -2,6 +2,92 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 17:39:50 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b",
+            "comment": "fix: Use caret dependency range for Griffel"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:13:44 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e0aabd850b15adf9c151ebd4e332f7c50ad6cfdf",
+            "comment": "Update 9.0.0-rc dependencies to use caret range"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "795427199eae1e792f85b6faf0783edfccd3c738",
+            "comment": "fix: do not throw in SSR"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "2da4428ae7d6e464c538b7ed10e425ce0e531144",
+            "comment": "chore: Mark teams-prg owned APIs with @internal"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "ddf16d80c50d80bc07331b478f567629775f2898",
+            "comment": "chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "675acea49c97f10837ddee9b8c4350ca27750125",
+            "comment": "Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.0.0-beta.2",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e0c1dd07dd4772941273c9ac66422bc743fbe7d9",
+            "comment": "chore: Move Overflow stories to folder with index entry."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jun 2022 14:25:31 GMT",
       "tag": "@fluentui/react-overflow_v9.0.0-beta.4",
       "version": "9.0.0-beta.4",

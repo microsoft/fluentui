@@ -19,7 +19,7 @@ export const Placeholder = () => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={inputId}>Input With a Placeholder</Label>
+      <Label htmlFor={inputId}>Input with a placeholder</Label>
       <Input placeholder="This is a placeholder" id={inputId} />
     </div>
   );

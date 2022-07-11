@@ -267,7 +267,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -313,7 +313,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -1103,7 +1103,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -1149,7 +1149,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -1933,7 +1933,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
                 vertical-align: middle;
                 width: 18px;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 color: WindowText;
               }
           data-icon-name="CircleRing"
@@ -1979,7 +1979,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               &:hover {
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 forced-color-adjust: none;
               }
@@ -2459,7 +2459,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -2505,7 +2505,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -3295,7 +3295,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -3341,7 +3341,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }

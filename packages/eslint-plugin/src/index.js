@@ -16,6 +16,7 @@ module.exports = {
     'no-global-react': require('./rules/no-global-react'),
     'no-tslint-comments': require('./rules/no-tslint-comments'),
     'no-visibility-modifiers': require('./rules/no-visibility-modifiers'),
+    'no-restricted-imports': require('./rules/no-restricted-imports'),
   },
 
   // Not a standard eslint thing, just exported for convenience

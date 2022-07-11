@@ -30,7 +30,7 @@ export const DisplayValue = () => {
       return NaN;
     }
 
-    return parseFloat(formattedValue);
+    return parseFloat(formattedValue.replace('$', ''));
   };
 
   const onSpinButtonChange: SpinButtonProps['onChange'] = (_ev, data) => {

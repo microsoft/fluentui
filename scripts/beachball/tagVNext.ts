@@ -22,7 +22,7 @@ function tagPackages(npmToken: string) {
 function tagPackage(name: string, version: string, npmToken: string): boolean {
   const prerelease = semver.parse(version).prerelease;
   if (prerelease.length == 0) {
-    return false;
+    return true;
   }
 
   const prereleaseTag = prerelease[0];

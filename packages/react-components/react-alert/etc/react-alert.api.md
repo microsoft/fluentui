@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -30,6 +31,7 @@ export type AlertSlots = {
     root: NonNullable<Slot<'div'>>;
     icon?: Slot<'span'>;
     action?: Slot<typeof Button>;
+    avatar?: Slot<typeof Avatar>;
 };
 
 // @public

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Fixing focus indicator and adding a focus ring to root for the pie layout.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "none"
-}

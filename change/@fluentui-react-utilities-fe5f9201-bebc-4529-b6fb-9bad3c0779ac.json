@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: moves trigger methods to separate folder",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -6,7 +6,7 @@ import type { ComboboxSlots, ComboboxState } from './Combobox.types';
 
 export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
-  button: 'fui-Combobox__button',
+  input: 'fui-Combobox__input',
   expandIcon: 'fui-Combobox__expandIcon',
   listbox: 'fui-Combobox__listbox',
 };
@@ -16,10 +16,14 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    alignItems: 'center',
     ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
-    display: 'inline-block',
+    columnGap: tokens.spacingHorizontalXXS,
+    display: 'inline-grid',
+    gridTemplateColumns: '1fr auto',
+    justifyContent: 'space-between',
     minWidth: '160px',
     position: 'relative',
 
@@ -61,44 +65,16 @@ const useStyles = makeStyles({
 
   listbox: {},
 
-  button: {
-    alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
-    boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
-    display: 'flex',
-    flexWrap: 'nowrap',
-    fontFamily: tokens.fontFamilyBase,
-    justifyContent: 'space-between',
-    textAlign: 'left',
-    width: '100%',
-
-    '&:focus': {
-      outlineStyle: 'none',
-    },
-  },
-
-  placeholder: {
-    color: tokens.colorNeutralForeground4,
-  },
-
   // size variants
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
+    paddingRight: tokens.spacingHorizontalSNudge,
   },
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
+    paddingRight: tokens.spacingHorizontalMNudge,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', tokens.spacingHorizontalM),
+    paddingRight: tokens.spacingHorizontalM,
   },
 
   // appearance variants
@@ -120,13 +96,45 @@ const useStyles = makeStyles({
   },
 });
 
+const useInputStyles = makeStyles({
+  input: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('0'),
+    fontFamily: tokens.fontFamilyBase,
+
+    '&:focus': {
+      outlineStyle: 'none',
+    },
+
+    '&::placeholder': {
+      color: tokens.colorNeutralForeground4,
+      opacity: 1,
+    },
+  },
+
+  // size variants
+  small: {
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    ...shorthands.padding('3px', 0, '3px', tokens.spacingHorizontalSNudge),
+  },
+  medium: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+    ...shorthands.padding('5px', 0, '5px', tokens.spacingHorizontalMNudge),
+  },
+  large: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+    ...shorthands.padding('7px', 0, '7px', tokens.spacingHorizontalM),
+  },
+});
+
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
-    flexGrow: 0,
-    flexShrink: 0,
     fontSize: tokens.fontSizeBase500,
 
     // the SVG must have display: block for accurate positioning
@@ -152,18 +160,24 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, placeholderVisible, size } = state;
+  const { appearance, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
+  const inputStyles = useInputStyles();
 
-  state.root.className = mergeClasses(comboboxClassNames.root, styles.root, styles[appearance], state.root.className);
-  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
-  state.button.className = mergeClasses(
-    comboboxClassNames.button,
-    styles.button,
+  state.root.className = mergeClasses(
+    comboboxClassNames.root,
+    styles.root,
+    styles[appearance],
     styles[size],
-    placeholderVisible && styles.placeholder,
-    state.button.className,
+    state.root.className,
+  );
+  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
+  state.input.className = mergeClasses(
+    comboboxClassNames.input,
+    inputStyles.input,
+    inputStyles[size],
+    state.input.className,
   );
 
   if (state.expandIcon) {

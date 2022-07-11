@@ -12,13 +12,12 @@ import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
  * @param ref - reference to root HTMLElement of CardHeader
  */
 export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HTMLElement>): CardHeaderState => {
-  const { image, content, header, description, action } = props;
+  const { image, header, description, action } = props;
 
   return {
     components: {
       root: 'div',
       image: 'div',
-      content: 'div',
       header: 'span',
       description: 'span',
       action: 'div',
@@ -28,16 +27,11 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
       ref,
       ...props,
     }),
-    image: resolveShorthand(image, {
-      required: true,
-    }),
-    content: resolveShorthand(content || {}),
+    image: resolveShorthand(image),
     header: resolveShorthand(header, {
       required: true,
     }),
-    description: resolveShorthand(description, {
-      required: true,
-    }),
+    description: resolveShorthand(description),
     action: resolveShorthand(action),
   };
 };

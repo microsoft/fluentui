@@ -1,6 +1,6 @@
 # @fluentui/react-tabs
 
-**Tabs components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Tabs components for [Fluent UI React](https://react.fluentui.dev/)**
 
 - A `TabList` provides single selection from a list of tabs.
 - When a `Tab` is selected, the content associated with the selected tab is displayed and other content is hidden.
@@ -54,7 +54,7 @@ export const TabExample = () => {
 };
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

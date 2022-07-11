@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.21)
+
+Tue, 28 Jun 2022 17:39:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.20..@fluentui/react-card_v9.0.0-beta.21)
+
+### Changes
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-text to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-button to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.20)
+
+Tue, 28 Jun 2022 15:13:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.0-beta.19..@fluentui/react-card_v9.0.0-beta.20)
+
+### Changes
+
+- feat: add `orientation` prop ([PR #23037](https://github.com/microsoft/fluentui/pull/23037) by 39736248+andrefcdias@users.noreply.github.com)
+- chore: add basic API documentation ([PR #23410](https://github.com/microsoft/fluentui/pull/23410) by 39736248+andrefcdias@users.noreply.github.com)
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- feat: Add focus indicators ([PR #23456](https://github.com/microsoft/fluentui/pull/23456) by 39736248+andrefcdias@users.noreply.github.com)
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-text to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-button to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
 
 ## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.0-beta.19)
 

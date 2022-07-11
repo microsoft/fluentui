@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup } from '../../AvatarGroup';
-import { AvatarGroupItem } from '../../AvatarGroupItem';
+import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
 import { makeStyles } from '@griffel/react';
 
 const useStyles = makeStyles({

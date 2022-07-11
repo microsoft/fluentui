@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Removing user-select: 'none' from AccordionHeader styles.",
-  "packageName": "@fluentui/react-accordion",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

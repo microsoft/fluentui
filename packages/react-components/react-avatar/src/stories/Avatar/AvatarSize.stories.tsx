@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '../../index';
+import { Avatar } from '@fluentui/react-avatar';
 
 export const Size = () => (
   <>

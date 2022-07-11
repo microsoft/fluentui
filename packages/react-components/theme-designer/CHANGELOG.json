@@ -2,6 +2,60 @@
   "name": "@fluentui/theme-designer",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 17:39:54 GMT",
+      "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-components to v9.0.1",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-alert to v9.0.0-beta.5",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:14:23 GMT",
+      "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-theme to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-components to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-designer",
+            "comment": "Bump @fluentui/react-alert to v9.0.0-beta.4",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 23 Jun 2022 14:25:31 GMT",
       "tag": "@fluentui/theme-designer_v9.0.0-alpha.0",
       "version": "9.0.0-alpha.0",

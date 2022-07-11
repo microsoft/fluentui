@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: convert radio group to index based stories import",
-  "packageName": "@fluentui/react-radio",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}
