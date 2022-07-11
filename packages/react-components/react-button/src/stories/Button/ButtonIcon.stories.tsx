@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Tooltip, Button } from '@fluentui/react-components';
+import { Button, Tooltip } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
