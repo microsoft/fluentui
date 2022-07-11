@@ -1,4 +1,4 @@
-import { Accordion } from '../../Accordion';
+import { Accordion } from '@fluentui/react-accordion';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
 export { Multiple } from './AccordionMultiple.stories';

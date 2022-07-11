@@ -10,6 +10,7 @@ export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots> = {
   root: 'fui-AvatarGroup',
   overflowContent: 'fui-AvatarGroup__overflowContent',
   overflowButton: 'fui-AvatarGroup__overflowButton',
+  overflowSurface: 'fui-AvatarGroup__overflowSurface',
 };
 
 /**
@@ -22,6 +23,29 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
+    backgroundColor: tokens.colorTransparentStroke,
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
+  },
+  focusIndicator: createCustomFocusIndicatorStyle(
+    {
+      ...shorthands.borderColor('transparent'),
+      outlineColor: tokens.colorStrokeFocus2,
+      outlineWidth: tokens.strokeWidthThick,
+      outlineStyle: 'solid',
+    },
+    { selector: 'focus-within' },
+  ),
+  overflowSurface: {
+    ...shorthands.padding(0),
+  },
+  overflowContent: {
+    maxHeight: '220px',
+    minHeight: '80px',
+    ...shorthands.overflow('hidden', 'scroll'),
+    ...shorthands.padding(tokens.spacingHorizontalS),
+    width: '220px',
   },
 });
 
@@ -41,16 +65,19 @@ const useOverflowButtonStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
     ...shorthands.borderStyle('solid'),
     ...shorthands.padding(0),
+
+    // match color to Avatar's outline color
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('CanvasText'),
+    },
   },
 
   // These styles match the default button styles
   focusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
+    outlineColor: tokens.colorStrokeFocus2,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
-    boxShadow: `${tokens.shadow4} 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-    zIndex: 1,
   }),
 
   states: {
@@ -92,43 +119,38 @@ const useOverflowButtonStyles = makeStyles({
 });
 
 /**
- * Styles for overflow list slot.
- */
-const useOverflowContentStyles = makeStyles({
-  base: {
-    maxHeight: '220px',
-    minHeight: '80px',
-    ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    width: '220px',
-  },
-});
-
-/**
  * Apply styling to the AvatarGroup slots based on the state
  */
 export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGroupState => {
   const { layout, overflowIndicator, size } = state;
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
-  const overflowContentStyles = useOverflowContentStyles();
   const overflowButtonStyles = useOverflowButtonStyles();
 
-  const groupChildClassName = useGroupChildClassName(layout, size);
+  const groupChildClassName = useGroupChildClassName(layout, size, true);
 
   state.root.className = mergeClasses(
     avatarGroupClassNames.root,
     styles.base,
     layout === 'pie' && styles.pie,
     layout === 'pie' && sizeStyles[size],
+    layout === 'pie' && styles.focusIndicator,
     state.root.className,
   );
 
   if (state.overflowContent) {
     state.overflowContent.className = mergeClasses(
       avatarGroupClassNames.overflowContent,
-      overflowContentStyles.base,
+      styles.overflowContent,
       state.overflowContent.className,
+    );
+  }
+
+  if (state.overflowSurface) {
+    state.overflowSurface.className = mergeClasses(
+      avatarGroupClassNames.overflowSurface,
+      styles.overflowSurface,
+      state.overflowSurface.className,
     );
   }
 
@@ -181,8 +203,9 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       avatarGroupClassNames.overflowButton,
       sizeStyles[size],
       overflowButtonStyles.base,
-      overflowButtonStyles.focusIndicator,
+      ...overflowButtonClasses,
       layout !== 'pie' && overflowButtonStyles.states,
+      layout !== 'pie' && overflowButtonStyles.focusIndicator,
       layout === 'pie' && overflowButtonStyles.pie,
       groupChildClassName,
       state.overflowButton.className,

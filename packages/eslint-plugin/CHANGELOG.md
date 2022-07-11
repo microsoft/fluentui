@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 27 May 2022 07:39:11 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Jul 2022 07:37:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.10.0)
+
+Mon, 11 Jul 2022 07:37:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.9.1..@fluentui/eslint-plugin_v1.10.0)
+
+### Minor changes
+
+- feat: add custom no-restricted-imports rule with fixer ([PR #23613](https://github.com/microsoft/fluentui/pull/23613) by tristan.watanabe@gmail.com)
 
 ## [1.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.1)
 

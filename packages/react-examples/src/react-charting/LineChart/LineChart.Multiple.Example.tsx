@@ -22,7 +22,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
   public render(): JSX.Element {
     return (
       <>
-        <label htmlFor="changeWidth_Multiple">change Width:</label>
+        <label htmlFor="changeWidth_Multiple">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -32,7 +32,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Multiple">change Height:</label>
+        <label htmlFor="changeHeight_Multiple">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

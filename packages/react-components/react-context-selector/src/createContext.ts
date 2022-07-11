@@ -44,6 +44,9 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
   return (Provider as unknown) as React.Provider<ContextValue<Value>>;
 };
 
+/**
+ * @internal
+ */
 export const createContext = <Value>(defaultValue: Value): Context<Value> => {
   const context = React.createContext<ContextValue<Value>>({
     value: { current: defaultValue },

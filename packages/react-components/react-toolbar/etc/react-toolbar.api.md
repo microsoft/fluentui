@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';

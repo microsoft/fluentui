@@ -13,6 +13,7 @@ import {
   updateProjectConfiguration,
   serializeJson,
   offsetFromRoot,
+  names,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
@@ -302,7 +303,7 @@ const templates = {
 
       module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
           const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -643,6 +644,8 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
       return json;
     });
+
+    moveStories(tree, options);
   }
 
   if (sbAction === 'remove') {
@@ -711,6 +714,43 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   }
 
   return tree;
+}
+
+function moveStories(tree: Tree, options: NormalizedSchema) {
+  const componentName = names(options.normalizedPkgName).className.replace('React', '');
+  const sourceRoot = options.projectConfig.sourceRoot ?? '';
+  const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
+  const newStoriesPath = joinPathFragments(oldStoriesPath, componentName);
+  const storiesExistInNewPath = tree.exists(newStoriesPath);
+
+  if (storiesExistInNewPath) {
+    return;
+  }
+
+  visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
+    if (treePath.includes('.stories.') || treePath.includes('.md')) {
+      const storyFileName = path.basename(treePath);
+      const shouldBeMigratedToIndexFile = storyFileName.toLowerCase() === `${componentName.toLowerCase()}.stories.tsx`;
+
+      const newStoryPath = joinPathFragments(
+        newStoriesPath,
+        shouldBeMigratedToIndexFile ? 'index.stories.tsx' : storyFileName,
+      );
+
+      tree.rename(treePath, newStoryPath);
+      updateStoryFileImports(tree, options, newStoryPath);
+    }
+  });
+}
+
+function updateStoryFileImports(tree: Tree, options: NormalizedSchema, storyPath: string) {
+  if (!tree.exists(storyPath)) {
+    return;
+  }
+
+  const storyFile = tree.read(storyPath, 'utf8') as string;
+  const updatedStoryFile = storyFile.replace('../index', options.name);
+  tree.write(storyPath, updatedStoryFile);
 }
 
 function shouldSetupStorybook(tree: Tree, options: NormalizedSchema) {

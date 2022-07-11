@@ -25,7 +25,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
   public render(): JSX.Element {
     return (
       <>
-        <label htmlFor="changeWidth_Custom">change Width:</label>
+        <label htmlFor="changeWidth_Custom">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -35,7 +35,7 @@ export class LineChartCustomAccessibilityExample extends React.Component<
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Custom">change Height:</label>
+        <label htmlFor="changeHeight_Custom">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

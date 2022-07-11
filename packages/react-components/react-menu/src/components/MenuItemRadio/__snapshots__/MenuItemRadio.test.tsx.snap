@@ -25,6 +25,7 @@ exports[`MenuItemRadio renders a default state 1`] = `
     >
       <path
         d="M14.05 3.49c.28.3.27.77-.04 1.06l-7.93 7.47A.85.85 0 014.9 12L2.22 9.28a.75.75 0 111.06-1.06l2.24 2.27 7.47-7.04a.75.75 0 011.06.04z"
+        fill="currentColor"
       />
     </svg>
   </span>

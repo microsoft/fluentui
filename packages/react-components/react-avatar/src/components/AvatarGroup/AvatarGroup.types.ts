@@ -14,7 +14,12 @@ export type AvatarGroupSlots = {
   /**
    * List that contains the overflow AvatarGroupItems.
    */
-  overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowContent?: NonNullable<Slot<'div'>>;
+
+  /**
+   * PopoverSurface that contains the overflow content.
+   */
+  overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**
@@ -63,4 +68,6 @@ export type AvatarGroupState = ComponentState<AvatarGroupSlots> &
      * Tooltip content for the overflow indicator.
      */
     tooltipContent: TooltipProps['content'];
+
+    nonOverflowAvatarsCount: number;
   };

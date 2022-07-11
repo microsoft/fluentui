@@ -81,11 +81,11 @@ Select with grouped options:
 </Select>
 ```
 
-Inline Select with appearance and size set:
+Select with appearance and size set:
 
 ```tsx
 <label htmlFor="selectID">Choose a color</label>
-<Select id="selectID" appearance="filledDarker" size="small" inline>
+<Select id="selectID" appearance="filledDarker" size="small">
   <option>Red</option>
   <option>Green</option>
   <option>Blue</option>
@@ -104,11 +104,6 @@ Disabled Select with second option selected:
 ```
 
 ## Variants
-
-### Layout
-
-- Block (default)
-- Inline
 
 ### Size
 
@@ -219,7 +214,7 @@ The Select component is a new approach that was not present in `@fluentui/react`
 | n/a                  | headerMessage             | optgroup child with `name`        |
 | n/a                  | highlightFirstItemOnOpen  | n/a                               |
 | n/a                  | highlightedIndex          | n/a                               |
-| n/a                  | inline                    | inline                            |
+| n/a                  | inline                    | use custom styles                 |
 | n/a                  | inverted                  | n/a                               |
 | n/a                  | loading                   | n/a                               |
 | n/a                  | noResultsMessage          | use children                      |

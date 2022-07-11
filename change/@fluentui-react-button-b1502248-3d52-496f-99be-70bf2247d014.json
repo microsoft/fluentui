@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Fixing hover styles in High Contrast mode.",
-  "packageName": "@fluentui/react-button",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
