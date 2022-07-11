@@ -37,6 +37,7 @@ export {
   baseElementProperties,
   buttonProperties,
   calculatePrecision,
+  canUseDOM,
   classNamesFunction,
   colGroupProperties,
   colProperties,
@@ -153,6 +154,7 @@ export {
   setMemoizeWeakMap,
   setPortalAttribute,
   setRTL,
+  // eslint-disable-next-line deprecation/deprecation
   setSSR,
   setVirtualParent,
   setWarningCallback,

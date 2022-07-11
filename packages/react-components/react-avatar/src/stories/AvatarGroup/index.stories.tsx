@@ -1,4 +1,4 @@
-import { AvatarGroup } from '../../index';
+import { AvatarGroup } from '@fluentui/react-avatar';
 
 import descriptionMd from './AvatarGroupDescription.md';
 import bestPracticesMd from './AvatarGroupBestPractices.md';

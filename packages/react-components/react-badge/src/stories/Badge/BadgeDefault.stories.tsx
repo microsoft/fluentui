@@ -1,5 +1,6 @@
 import * as React from 'react';
 
-import { Badge, BadgeProps } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-components';
+import type { BadgeProps } from '@fluentui/react-components';
 
 export const Default = (props: BadgeProps) => <Badge {...props} />;

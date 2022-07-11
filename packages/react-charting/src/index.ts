@@ -13,6 +13,7 @@ export * from './types/index';
 export * from './utilities/ChartHoverCard/index';
 export * from './HeatMapChart';
 export * from './SankeyChart';
+export * from './TreeChart';
 export * from './Sparkline';
 
 import './version';

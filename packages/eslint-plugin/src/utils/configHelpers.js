@@ -1,8 +1,14 @@
 // @ts-check
 
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const jju = require('jju');
+
+/**
+ *  @typedef {{root: string, name: string}} Options
+ *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
+ *  @typedef {import("@nrwl/tao/src/shared/workspace").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ */
 
 const testFiles = [
   '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
@@ -217,5 +223,21 @@ module.exports = {
       cwd = path.dirname(cwd);
     }
     return cwd;
+  },
+
+  /**
+   * Gets package.json of provided package name.
+   * @param {Options} options Takes provided root folder of git repo and package name.
+   * @returns {PackageJson} package.json file of the provided package name.
+   */
+  getPackageJson: (/** @type {Options} */ options) => {
+    /** @type {WorkspaceJsonConfiguration} */
+    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(options.root, 'workspace.json'), 'utf-8'));
+    const projectMetaData = nxWorkspace.projects[options.name];
+    const packagePath = path.join(options.root, projectMetaData.root);
+    /** @type {PackageJson} */
+    const packageJson = fs.readJSONSync(path.join(packagePath, 'package.json'));
+
+    return packageJson;
   },
 };

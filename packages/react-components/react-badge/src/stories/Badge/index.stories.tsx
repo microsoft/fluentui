@@ -11,7 +11,7 @@ export { Color } from './BadgeColor.stories';
 export { Icon } from './BadgeIcon.stories';
 
 export default {
-  title: 'Components/Badge',
+  title: 'Components/Badge/Badge',
   component: Badge,
   parameters: {
     docs: {

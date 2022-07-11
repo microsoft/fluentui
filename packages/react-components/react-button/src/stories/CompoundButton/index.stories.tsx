@@ -14,7 +14,7 @@ export { WithLongText } from './CompoundButtonWithLongText.stories';
 export { AsToggleButton } from './CompoundButtonAsToggleButton.stories';
 
 export default {
-  title: 'Components/CompoundButton',
+  title: 'Components/Button/CompoundButton',
   component: CompoundButton,
   parameters: {
     docs: {

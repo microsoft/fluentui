@@ -26,7 +26,7 @@ export { SplitMenuItem } from './MenuSplitMenuItem.stories';
 export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Menu/Menu',
   component: Menu,
   parameters: {
     docs: {

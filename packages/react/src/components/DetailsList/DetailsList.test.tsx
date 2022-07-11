@@ -67,6 +67,16 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  let spy: jest.SpyInstance;
+  beforeAll(() => {
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+    spy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    spy.mockRestore();
+  });
+
   beforeEach(() => {
     resetIds();
   });

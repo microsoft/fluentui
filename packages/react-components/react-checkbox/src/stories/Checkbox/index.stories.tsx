@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, Checkbox } from '@fluentui/react-components';
 
 export { Default } from './CheckboxDefault.stories';
 export { Checked } from './CheckboxChecked.stories';
