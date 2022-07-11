@@ -13,9 +13,9 @@ import {
   useDisabledStyles as useToggleButtonDisabledStyles,
 } from '../../components/ToggleButton/useToggleButtonStyles';
 import type {
-  ForwardRefComponent,
   CompoundButtonProps,
   CompoundButtonState,
+  ForwardRefComponent,
   ToggleButtonProps,
   ToggleButtonState,
 } from '@fluentui/react-components';
