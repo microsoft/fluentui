@@ -6,6 +6,8 @@ const commonOptions: BuildOptions = {
   bundle: true,
   jsx: 'transform',
   loader: {
+    '.jpg': 'dataurl',
+    '.png': 'dataurl',
     '.svg': 'dataurl',
   },
 };
