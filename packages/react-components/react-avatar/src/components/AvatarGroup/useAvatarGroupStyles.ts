@@ -23,7 +23,6 @@ const useStyles = makeStyles({
   },
   pie: {
     clipPath: 'circle(50%)',
-    boxSizing: 'border-box',
     backgroundColor: tokens.colorTransparentStroke,
     '@media (forced-colors: active)': {
       backgroundColor: 'CanvasText',
@@ -132,7 +131,6 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
     styles.base,
     layout === 'pie' && styles.pie,
     layout === 'pie' && sizeStyles[size],
-    // layout === 'pie' && styles.focusIndicator,
     state.root.className,
   );
 
