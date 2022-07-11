@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { Divider } from '@fluentui/react-divider';
+import { makeStyles, shorthands, tokens, Divider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
