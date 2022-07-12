@@ -146,7 +146,7 @@ describe('Nav', () => {
   it('sets ARIA label on the nav element', () => {
     const label = 'The navigation label';
     const nav = mount<NavBase>(<Nav ariaLabel={label} groups={[]} />);
-    expect(nav.find('[role="navigation"]').prop('aria-label')).toEqual(label);
+    expect(nav.find('nav').prop('aria-label')).toEqual(label);
   });
 
   it('uses location.href to determine link selected status if state/props is not set', () => {

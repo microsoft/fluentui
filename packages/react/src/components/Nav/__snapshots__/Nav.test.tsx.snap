@@ -25,7 +25,6 @@ exports[`Nav render Nav with overrides correctly 1`] = `
           overflow-y: auto;
           user-select: none;
         }
-    role="navigation"
   >
     <div
       className="ms-Nav-group is-expanded"
@@ -488,7 +487,6 @@ exports[`Nav renders Nav correctly 1`] = `
           overflow-y: auto;
           user-select: none;
         }
-    role="navigation"
   >
     <div
       className="ms-Nav-group is-expanded"
