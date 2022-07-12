@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Allow SelectionZone attributes to disallow behaviors",
+  "comment": "feat: Allow SelectionZone attributes to disallow behaviors.",
   "packageName": "@fluentui/react",
   "email": "tmichon@microsoft.com",
   "dependentChangeType": "patch"
