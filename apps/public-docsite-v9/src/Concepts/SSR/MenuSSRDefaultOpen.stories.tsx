@@ -1,14 +1,31 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
-import { useIsSSR, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  Menu,
+  MenuTrigger,
+  MenuList,
+  MenuItem,
+  MenuPopover,
+  useIsSSR,
+  Button,
+  Checkbox,
+} from '@fluentui/react-components';
 
-import { Button } from '@fluentui/react-button';
+export const SSRDefaultOpen = () => {
+  const [mounted, setMounted] = React.useState(false);
 
-export const SSRDefaultOpen = (props: Partial<MenuProps>) => {
+  return (
+    <>
+      <Checkbox label="Mount component" checked={mounted} onChange={(e, data) => setMounted(data.checked as boolean)} />
+      {mounted && <DefaultOpenMenu />}
+    </>
+  );
+};
+
+const DefaultOpenMenu = () => {
   const [open, setOpen] = React.useState(false);
   const isSSR = useIsSSR();
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     if (!isSSR) {
       setOpen(true);
     }
