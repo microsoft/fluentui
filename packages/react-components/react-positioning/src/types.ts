@@ -62,10 +62,10 @@ export interface PositioningOptions {
   align?: Alignment;
 
   /** The element which will define the boundaries of the positioned element for the flip behavior. */
-  flipBoundary?: Boundary;
+  flipBoundary?: Boundary | null;
 
   /** The element which will define the boundaries of the positioned element for the overflow behavior. */
-  overflowBoundary?: Boundary;
+  overflowBoundary?: Boundary | null;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
