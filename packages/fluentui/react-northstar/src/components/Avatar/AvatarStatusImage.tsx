@@ -13,14 +13,15 @@ import {
 import * as customPropTypes from '@fluentui/react-proptypes';
 
 import { FluentComponentStaticProps } from '../../types';
-import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarStatusImageProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ImageBehaviorProps>;
 
   /** Size multiplier */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 
   /** AvatarImage source URL. */
   src?: string;

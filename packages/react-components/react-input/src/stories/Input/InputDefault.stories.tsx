@@ -25,7 +25,7 @@ export const Default = (props: InputProps) => {
   return (
     <div className={styles.root}>
       <Label htmlFor={inputId} size={props.size} disabled={props.disabled}>
-        Sample Input
+        Sample input
       </Label>
       <Input id={inputId} {...props} />
     </div>

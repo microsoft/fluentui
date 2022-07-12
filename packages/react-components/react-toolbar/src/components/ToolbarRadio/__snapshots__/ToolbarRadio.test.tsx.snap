@@ -25,6 +25,7 @@ exports[`ToolbarRadio renders a default state 1`] = `
       >
         <path
           d="M10 2a8 8 0 100 16 8 8 0 000-16z"
+          fill="currentColor"
         />
       </svg>
     </div>

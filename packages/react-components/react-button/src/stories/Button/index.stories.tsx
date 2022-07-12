@@ -13,7 +13,7 @@ export { Disabled } from './ButtonDisabled.stories';
 export { WithLongText } from './ButtonWithLongText.stories';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Button',
   component: Button,
   parameters: {
     docs: {

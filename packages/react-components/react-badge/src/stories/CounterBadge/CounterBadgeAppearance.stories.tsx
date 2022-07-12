@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CounterBadge } from '@fluentui/react-badge';
+import { CounterBadge } from '@fluentui/react-components';
 
 export const Appearance = () => {
   return (
