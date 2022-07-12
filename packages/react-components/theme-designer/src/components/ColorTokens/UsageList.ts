@@ -1,3 +1,7 @@
+/**
+ * Usages are as defined in this spreadsheet:
+ * https://microsoft-my.sharepoint.com/:x:/p/t-emmajiang/Ec_h-Eb-fd9LmXNWgFmNwBYBZNaHRQFoUFVxsfCeB2YCAQ?e=Q9S6z9
+ */
 export const usageList = {
   colorNeutralForeground2BrandHover: 'Button subtle hover, Button transparent hover',
   colorNeutralForeground2BrandPressed: 'Button subtle pressed, Button transparent pressed',
