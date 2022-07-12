@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
   root: 'fui-DialogTitle',
@@ -12,21 +13,37 @@ export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
-  closeButton: {},
-  focusIndicator: createFocusOutlineStyle(),
+  root: {
+    display: 'flex',
+    alignItems: 'start',
+    columnGap: '8px',
+    justifyContent: 'space-between',
+    ...typographyStyles.subtitle1,
+  },
+  rootWithoutCloseButton: {
+    ...shorthands.padding('24px', '24px', '8px', '24px'),
+  },
+  rootWithCloseButton: {
+    ...shorthands.padding('24px', '20px', '8px', '24px'),
+  },
+  closeButton: {
+    position: 'relative',
+    lineHeight: '0',
+  },
+  closeButtonFocusIndicator: createFocusOutlineStyle(),
   // TODO: this should be extracted to another package
   resetButton: {
-    // boxSizing: 'content-box',
-    // backgroundColor: 'inherit',
-    // color: 'inherit',
-    // fontFamily: 'inherit',
-    // fontSize: 'inherit',
-    // lineHeight: 'normal',
-    // ...shorthands.overflow('visible'),
-    // ...shorthands.padding(0),
-    // WebkitAppearance: 'button',
-    // textAlign: 'unset',
+    boxSizing: 'content-box',
+    backgroundColor: 'inherit',
+    color: 'inherit',
+    fontFamily: 'inherit',
+    fontSize: 'inherit',
+    lineHeight: 'normal',
+    ...shorthands.overflow('visible'),
+    ...shorthands.padding(0),
+    ...shorthands.borderStyle('none'),
+    WebkitAppearance: 'button',
+    textAlign: 'unset',
   },
 });
 
@@ -35,13 +52,19 @@ const useStyles = makeStyles({
  */
 export const useDialogTitleStyles_unstable = (state: DialogTitleState): DialogTitleState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogTitleClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    dialogTitleClassNames.root,
+    styles.root,
+    state.closeButton && styles.rootWithCloseButton,
+    !state.closeButton && styles.rootWithoutCloseButton,
+    state.root.className,
+  );
   if (state.closeButton) {
     state.closeButton.className = mergeClasses(
       dialogTitleClassNames.closeButton,
-      styles.closeButton,
       styles.resetButton,
-      styles.focusIndicator,
+      styles.closeButton,
+      styles.closeButtonFocusIndicator,
       state.closeButton.className,
     );
   }

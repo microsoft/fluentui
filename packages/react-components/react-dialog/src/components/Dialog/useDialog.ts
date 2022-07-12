@@ -10,6 +10,8 @@ import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 import { Escape } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
+import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
 
 /**
  * Create the state required to render Dialog.
@@ -62,7 +64,11 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     }
   });
 
-  const { contentRef, triggerRef } = useFocusFirstElement({ open, modalType, requestOpenChange });
+  const { contentRef, triggerRef } = useFocusFirstElement({
+    open,
+    modalType,
+    requestOpenChange,
+  });
 
   const handleOverLayClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     overlayShorthand?.onClick?.(event);
@@ -75,6 +81,7 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     rootShorthand.onKeyDown?.(event);
     if (isEscapeKeyDismiss(event, modalType)) {
       requestOpenChange({ event, open: false, type: 'escapeKeyDown' });
+      event.preventDefault();
     }
   });
 
@@ -131,23 +138,6 @@ function childrenToTriggerAndContent(
 }
 
 /**
- * Normalizes a set state action into a setter function
- */
-function normalizeSetStateAction(setOpen: React.SetStateAction<boolean>): (prev: boolean) => boolean {
-  return typeof setOpen === 'function' ? setOpen : () => setOpen;
-}
-
-/**
- * normalizes defaultPrevented to work the same way between synthetic events and regular event
- */
-function normalizeDefaultPrevented(event: React.SyntheticEvent | Event) {
-  if (event instanceof Event) {
-    return () => event.defaultPrevented;
-  }
-  return event.isDefaultPrevented;
-}
-
-/**
  * Checks if keydown event is a proper Escape key dismiss
  */
 function isEscapeKeyDismiss(event: React.KeyboardEvent | KeyboardEvent, type: DialogModalType): boolean {
@@ -191,22 +181,27 @@ function useFocusFirstElement({
         console.warn('A Dialog should have at least one focusable element inside DialogContent');
       }
 
-      // if (triggerRef.current && targetDocument) {
-      //   const trigger = triggerRef.current;
-      //   trigger.blur();
-      //   const listener = (event: KeyboardEvent) => {
-      //     if (isEscapeKeyDismiss(event, modalType)) {
-      //       requestOpenChange({
-      //         event,
-      //         open: false,
-      //         type: 'documentEscapeKeyDown',
-      //       });
-      //       trigger.focus();
-      //     }
-      //   };
-      //   targetDocument.addEventListener('keydown', listener);
-      //   return () => targetDocument.removeEventListener('keydown', listener);
-      // }
+      if (triggerRef.current && targetDocument) {
+        const trigger = triggerRef.current;
+        if (targetDocument.activeElement === trigger) {
+          trigger.blur();
+        }
+        const listener = (event: KeyboardEvent) => {
+          if (isEscapeKeyDismiss(event, modalType)) {
+            requestOpenChange({
+              event,
+              open: false,
+              type: 'documentEscapeKeyDown',
+            });
+            trigger.focus();
+            event.stopImmediatePropagation();
+          }
+        };
+        targetDocument.addEventListener('keydown', listener, { passive: false });
+        return () => {
+          targetDocument.removeEventListener('keydown', listener);
+        };
+      }
     }
   }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
 

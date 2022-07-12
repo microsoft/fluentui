@@ -6,6 +6,7 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { useDialogContentContext_unstable } from '../../contexts/dialogContentContext';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import {
   DialogTriggerChildProps,
@@ -27,6 +28,8 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const triggerRef = useDialogContext_unstable(ctx => ctx.triggerRef);
+  const { isInsideDialogContent } = useDialogContentContext_unstable();
+
   const { triggerAttributes } = useModalAttributes();
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
@@ -43,7 +46,8 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
       'aria-haspopup': 'dialog',
-      ref: useMergedRefs(child?.ref, triggerRef),
+      // NOTE: if trigger is inside DialogContent, then do not merge ref
+      ref: useMergedRefs(...(isInsideDialogContent ? [child?.ref] : [child?.ref, triggerRef])),
       onClick: handleClick,
       ...triggerAttributes,
     }),

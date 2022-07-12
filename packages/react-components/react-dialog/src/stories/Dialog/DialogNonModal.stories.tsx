@@ -3,10 +3,10 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@fluentui/rea
 import type { DialogProps } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
-export const Default = (props: Partial<DialogProps>) => {
+export const NonModal = (props: Partial<DialogProps>) => {
   return (
     <>
-      <Dialog {...props}>
+      <Dialog modalType="non-modal" {...props}>
         <DialogTrigger>
           <Button>Open dialog</Button>
         </DialogTrigger>
@@ -14,7 +14,7 @@ export const Default = (props: Partial<DialogProps>) => {
           <DialogTitle>Dialog Title</DialogTitle>
           Dialog Content
           <DialogTrigger>
-            <Button>Close dialog</Button>
+            <Button>Close</Button>
           </DialogTrigger>
         </DialogContent>
       </Dialog>

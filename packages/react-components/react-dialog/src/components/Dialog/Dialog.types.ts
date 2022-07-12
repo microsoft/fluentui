@@ -1,6 +1,7 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { DialogContextValue } from '../../contexts/dialogContext';
+import { DialogContentContextValue } from '../../contexts/dialogContentContext';
 
 export type DialogSlots = {
   /**
@@ -26,7 +27,10 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
+  dialogContent: DialogContentContextValue;
 };
+
+export type DialogOnOpenChange = (...args: DialogOpenChangeArgs) => void;
 
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
   /**
@@ -62,7 +66,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Callback fired when the component changes value from open state.
    * @default undefined
    */
-  onOpenChange?(...args: DialogOpenChangeArgs): void;
+  onOpenChange?: DialogOnOpenChange;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogContent}.
    * Alternatively can only contain {@link DialogContent} if using trigger outside dialog, or controlling state.

@@ -1,3 +1,4 @@
+import { DialogContentContextValue } from '../../contexts/dialogContentContext';
 import { DialogContextValue } from '../../contexts/dialogContext';
 import type { DialogContextValues, DialogState } from './Dialog.types';
 
@@ -16,5 +17,9 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     contentRef,
   };
 
-  return { dialog };
+  return { dialog, dialogContent: defaultDialogContentContextValue };
 }
+
+const defaultDialogContentContextValue: DialogContentContextValue = {
+  isInsideDialogContent: false,
+};

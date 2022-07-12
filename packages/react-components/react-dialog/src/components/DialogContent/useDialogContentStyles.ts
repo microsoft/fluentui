@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
   root: 'fui-DialogContent',
@@ -21,6 +22,10 @@ const useStyles = makeStyles({
     maxHeight: '100vh',
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      maxWidth: '100vw',
+      width: '100%',
+    },
     ...shorthands.borderRadius('8px'),
     ...shorthands.margin('auto'),
   },
