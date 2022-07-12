@@ -67,7 +67,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     hideDelay,
     relationship,
     visible,
-    shouldRenderTooltip: visible,
+    shouldRenderTooltip: visible && !isServerSideRender,
     appearance,
     mountNode,
     // Slots

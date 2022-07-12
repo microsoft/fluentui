@@ -20,7 +20,6 @@ export type PortalProps = {
 
 // @public (undocumented)
 export type PortalState = Pick<PortalProps, 'children'> & Required<Pick<PortalProps, 'mountNode'>> & {
-    shouldRender: boolean;
     virtualParentRootRef: React_2.MutableRefObject<HTMLSpanElement | null>;
 };
 
