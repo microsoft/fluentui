@@ -69,7 +69,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone} {...this.props.focusZoneProps}>
-        <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
+        <nav className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
       </FocusZone>
