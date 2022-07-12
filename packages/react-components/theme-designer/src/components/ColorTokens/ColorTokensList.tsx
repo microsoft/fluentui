@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import {
+  Badge,
   Divider,
   Menu,
   MenuButton,
@@ -18,12 +19,13 @@ import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
+import { ColorOverrideBrands } from './ColorTokens';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
-  brandColors: Record<string, Brands>;
-  colorOverrides: Record<string, Brands>;
-  dispatchColorOverrides: React.Dispatch<{ colorToken: string; newValue: Brands }>;
+  brandColors: ColorOverrideBrands;
+  colorOverride: ColorOverrideBrands;
+  onNewOverride: (color: string, newColor: Brands) => void;
 }
 
 export interface ColorTokenRowProps {
@@ -46,10 +48,10 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
     alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXXXL,
-    paddingBottom: tokens.spacingVerticalXXXL,
+    paddingTop: tokens.spacingVerticalXL,
+    paddingBottom: tokens.spacingVerticalXL,
   },
 });
 
@@ -68,9 +70,9 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
-  const { brand, brandColors, colorOverrides, dispatchColorOverrides } = props;
 
-  const newColors = { ...brandColors, ...colorOverrides };
+  const { brand, brandColors, colorOverride, onNewOverride } = props;
+  const newColors = { ...brandColors, ...colorOverride };
 
   return (
     <div>
@@ -80,12 +82,17 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
           const newColor = parseInt(data.checkedItems[0] as string, 10) as Brands;
-          dispatchColorOverrides({ colorToken: color, newValue: newColor });
+          onNewOverride?.(color, newColor);
         };
+
+        const overridenTokens = Object.keys(colorOverride);
 
         return (
           <div key={color.toString()}>
             <div className={styles.row}>
+              <div className={styles.col}>
+                {overridenTokens.includes(color) ? <Badge appearance="filled" color="success" size="tiny" /> : <> </>}
+              </div>
               <div className={styles.col}>
                 <Subtitle2 className={styles.colorLabel}>{color}</Subtitle2>
                 <Subtitle2>Global.Color.Brand.{colorValue}</Subtitle2>
