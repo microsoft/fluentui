@@ -13,12 +13,41 @@ const stackTokens: IStackTokens = { childrenGap: 40 };
 
 export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
+  const [button1, setButton1] = React.useState(true);
+  const [button2, setButton2] = React.useState(true);
 
   return (
-    <Stack horizontal tokens={stackTokens}>
-      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
-      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
-    </Stack>
+    <>
+      <Stack horizontal tokens={stackTokens}>
+        {button1 && (
+          <DefaultButton
+            text="Standard"
+            onClick={_alertClicked}
+            allowDisabledFocus
+            disabled={disabled}
+            checked={checked}
+          />
+        )}
+        {button2 && (
+          <PrimaryButton
+            text="Primary"
+            onClick={_alertClicked}
+            allowDisabledFocus
+            disabled={disabled}
+            checked={checked}
+          />
+        )}
+      </Stack>
+      <br />
+      <br />
+      <br />
+      <br />
+      Content outside of Fluent code/components <br />
+      Click inside input box then use an arrow key <br />
+      <input value="test text here" className="test" />
+      <button onClick={() => setButton1(false)}>Erase button 1</button>
+      <button onClick={() => setButton2(false)}>Erase button 2</button>
+    </>
   );
 };
 

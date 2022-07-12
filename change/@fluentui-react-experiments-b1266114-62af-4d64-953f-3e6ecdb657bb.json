@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Sending rootRef to <FocusRects /> in components using it so that the change in focus rectangles' visibility is scoped to Fluent components.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
