@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { Add20Filled, Subtract20Filled } from '@fluentui/react-icons';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionToggleEventHandler } from '../../index';
+import {
+  AccordionItem,
+  AccordionHeader,
+  AccordionPanel,
+  Accordion,
+  AccordionToggleEventHandler,
+} from '@fluentui/react-accordion';
 
 export const ExpandIcon = () => {
   const [openItem, setOpenItems] = React.useState(0);

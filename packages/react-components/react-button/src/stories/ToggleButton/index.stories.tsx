@@ -14,7 +14,7 @@ export { Checked } from './ToggleButtonChecked.stories';
 export { WithLongText } from './ToggleButtonWithLongText.stories';
 
 export default {
-  title: 'Components/ToggleButton',
+  title: 'Components/Button/ToggleButton',
   component: ToggleButton,
   parameters: {
     docs: {
