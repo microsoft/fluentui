@@ -2,6 +2,41 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 12 Jul 2022 07:40:58 GMT",
+      "tag": "@fluentui/react-charting_v5.12.0",
+      "version": "5.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "16495a93e0f4eb4cf793f6462e3546eb101dae82",
+            "comment": "feat: Re-export canUseDOM from @fluentui/utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.7.3",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.80.0",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          }
+        ],
+        "none": [
+          {
+            "author": "apurva.sharma866@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0921b7fba7a077bd0e191ee0bb9f4133ab710d00",
+            "comment": "add: tree chart component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 07:36:29 GMT",
       "tag": "@fluentui/react-charting_v5.11.0",
       "version": "5.11.0",

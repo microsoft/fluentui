@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add list utilities for reading and writing scroll values",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

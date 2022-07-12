@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.11.0",
+      "version": "1.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9d99c66f0a0fedc1757ea44accc09f9c07d5845a",
+            "comment": "chore: use no-restricted-import rule for v9 lint config."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Jul 2022 07:37:12 GMT",
       "tag": "@fluentui/eslint-plugin_v1.10.0",
       "version": "1.10.0",
