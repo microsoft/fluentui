@@ -9,5 +9,31 @@ These are not production-ready components and **should never be used in product*
 To import React Card components:
 
 ```js
-import { ComponentName } from '@fluentui/react-card';
+import { Card, CardPreview, CardHeader, CardFooter } from '@fluentui/react-components';
 ```
+
+## Usage
+
+### Card
+
+...
+
+### CardPreview
+
+...
+
+### CardHeader
+
+...
+
+### CardFooter
+
+...
+
+## API
+
+For more information about the components, please refer to the [API documentation](https://react.fluentui.dev/).
+
+## Migration
+
+For migration information, have a look at the [migration guide](./MIGRATION.md).
