@@ -18,6 +18,7 @@ Nodes
 
 ![image](https://user-images.githubusercontent.com/59837325/177205565-cfb22522-ba11-4db3-8664-816387f7d66a.png)
 
+
 Branch
 
 - The branches have flexibility to support 1-4 child nodes
@@ -27,9 +28,9 @@ Branch
 ```ts
 M${child.x + rectWidth / 2}, ${child.y - gap} H${parent.x + rectWidth / 2} V${ parent.y + rectHeight + gap / 2}
 ```
-
 ![image](https://user-images.githubusercontent.com/59837325/177205587-727bcb6e-805c-4ed8-b9a9-0f00ec7e4d35.png)
 ![image](https://user-images.githubusercontent.com/59837325/177205597-d852e37b-c1f6-4dec-ba7d-0219c2e8e00b.png)
+
 
 ## Structure
 
