@@ -80,28 +80,27 @@ export const useThemeDesignerReducer = () => {
       };
     }
 
-    let theme = action.type;
-    const isDark = state.isDark;
-    const themeLabel = theme + ' ' + (isDark ? 'Dark' : 'Light');
-
     // check for override modifications
     if (action.type === 'Override') {
       if (action.overrides) {
         dispatchOverrideState({
-          type: themeLabel,
+          type: state.themeLabel,
           overrides: action.overrides,
         });
       } else {
-        dispatchOverrideState({ type: themeLabel });
+        dispatchOverrideState({ type: state.themeLabel });
       }
-      theme = state.themeName;
+      return { ...state, overrides: overrideState[state.themeLabel] };
     }
 
+    const theme = action.type;
+    const isDark = state.isDark;
     let brand = themeList[theme].brand;
+    const themeLabel = theme + ' ' + (isDark ? 'Dark' : 'Light');
 
     // If the theme does not have an associated brand, it must be a custom theme
     if (!brand) {
-      // If no theme attributes are given, the theme does not change
+      // If no theme attributes are given, the theme does not change (though overrides may)
       if (!action.customAttributes) {
         return state;
       }
