@@ -1,6 +1,6 @@
 # @fluentui/react-spinner
 
-**Spinner components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Spinner components for [Fluent UI React](https://react.fluentui.dev/)**
 
 The Spinner is an outline of a circle which animates around itself indicating to the user that things are processing. Spinners are typically indeterminate progress indicators that is used when it is unknown how long a task will take to complete. They can be various sizes, located inline with content or centered. They generally appear while an action is being processed or committed. They are subtle and generally do not take up much space, but are transitions from the completed task.
 
@@ -20,7 +20,7 @@ import { Spinner } from '@fluentui/react-components';
 <Spinner label="Loading..." size="large" />
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

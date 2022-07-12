@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 /**
@@ -8,46 +8,43 @@ import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots> = {
   root: 'fui-CardHeader',
   image: 'fui-CardHeader__image',
-  content: 'fui-CardHeader__content',
   header: 'fui-CardHeader__header',
   description: 'fui-CardHeader__description',
   action: 'fui-CardHeader__action',
 };
 
+/**
+ * CSS variable names used internally for uniform styling in CardHeader.
+ */
+export const cardHeaderCSSVars = {
+  cardHeaderGapVar: '--fui-CardHeader--gap',
+};
+
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
+    [cardHeaderCSSVars.cardHeaderGapVar]: '12px',
+    display: 'grid',
+    gridAutoColumns: 'min-content 1fr min-content',
+    gridAutoRows: '1fr min-content',
     alignItems: 'center',
-    ...shorthands.gap('12px'),
-    height: '32px',
   },
   image: {
-    minWidth: '24px',
-    minHeight: '24px',
-    maxWidth: '32px',
-    maxHeight: '32px',
-
-    display: 'flex',
-    alignItems: 'center',
-
-    '> *': {
-      minWidth: 'inherit',
-      minHeight: 'inherit',
-      maxWidth: '100%',
-      maxHeight: '100%',
-    },
+    marginRight: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
+    gridColumnStart: '1',
+    gridRowStart: 'span 2',
   },
-
-  textContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexGrow: 1,
-    height: 'inherit',
-
-    '> *': {
-      height: '50%',
-    },
+  header: {
+    gridColumnStart: '2',
+    gridRowStart: '1',
+  },
+  description: {
+    gridColumnStart: '2',
+    gridRowStart: '2',
+  },
+  action: {
+    marginLeft: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,
+    gridColumnStart: '3',
+    gridRowStart: 'span 2',
   },
 });
 
@@ -62,20 +59,20 @@ export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeader
     state.image.className = mergeClasses(cardHeaderClassNames.image, styles.image, state.image.className);
   }
 
-  if (state.content) {
-    state.content.className = mergeClasses(cardHeaderClassNames.content, styles.textContainer, state.content.className);
-  }
-
   if (state.header) {
-    state.header.className = mergeClasses(cardHeaderClassNames.header, state.header.className);
+    state.header.className = mergeClasses(cardHeaderClassNames.header, styles.header, state.header.className);
   }
 
   if (state.description) {
-    state.description.className = mergeClasses(cardHeaderClassNames.description, state.description.className);
+    state.description.className = mergeClasses(
+      cardHeaderClassNames.description,
+      styles.description,
+      state.description.className,
+    );
   }
 
   if (state.action) {
-    state.action.className = mergeClasses(cardHeaderClassNames.action, state.action.className);
+    state.action.className = mergeClasses(cardHeaderClassNames.action, styles.action, state.action.className);
   }
 
   return state;

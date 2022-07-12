@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Removing user-select: 'none' from label.",
-  "packageName": "@fluentui/react-switch",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

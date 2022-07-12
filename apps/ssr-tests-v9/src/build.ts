@@ -28,6 +28,7 @@ async function build() {
   const generateStartTime = process.hrtime();
 
   const rawStoriesGlobs = getVnextStories() as string[];
+  rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
     .map(pattern => path.resolve(__dirname, pattern));

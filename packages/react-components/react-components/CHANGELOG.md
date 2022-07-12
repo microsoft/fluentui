@@ -1,8 +1,370 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0..@fluentui/react-components_v9.0.1)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-input`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-radio`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-spinner`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-textarea`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-card`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-combobox`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-overflow`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-select`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0)
+
+Tue, 28 Jun 2022 15:13:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.0-rc.15..@fluentui/react-components_v9.0.0)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-textarea`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-theme`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-button`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-components`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-image`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-input`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-portal-compat`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-portal-compat-context`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-radio`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-spinner`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-switch`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/keyboard-keys`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- `@fluentui/react-badge`
+  - feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-tabster`
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - feat: Add new `legacyTrapFocus` option to `useModalAttributes` ([PR #23598](https://github.com/microsoft/fluentui/pull/23598) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-textarea`
+  - fix: Adding missing spacing to top+bottom padding, font family to large variant, and min-height to size variants. ([PR #23478](https://github.com/microsoft/fluentui/pull/23478) by esteban.230@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-theme-sass`
+  - Add SASS variables mapped to CSS variables provided by react-theme ([PR #22964](https://github.com/microsoft/fluentui/pull/22964) by miroslav.stastny@microsoft.com)
+  - fix(react-theme-sass): Remove color palette tokens which are no longer present in react-theme ([PR #23691](https://github.com/microsoft/fluentui/pull/23691) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-toolbar`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-tooltip`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - fix: useOnClickOutside should trigger for webviews ([PR #23535](https://github.com/microsoft/fluentui/pull/23535) by jukapsia@microsoft.com)
+  - feat: add void function component support to slots ([PR #23408](https://github.com/microsoft/fluentui/pull/23408) by 39736248+andrefcdias@users.noreply.github.com)
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - chore: moves trigger methods to separate folder ([PR #23574](https://github.com/microsoft/fluentui/pull/23574) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - README and migration guide cleanup. ([PR #23395](https://github.com/microsoft/fluentui/pull/23395) by Humberto.Morimoto@microsoft.com)
+  - Button: Adding missing forced color adjust overrides. ([PR #23387](https://github.com/microsoft/fluentui/pull/23387) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Button: Fixing hover styles in High Contrast mode. ([PR #23384](https://github.com/microsoft/fluentui/pull/23384) by Humberto.Morimoto@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+- `@fluentui/react-card`
+  - feat: add `orientation` prop ([PR #23037](https://github.com/microsoft/fluentui/pull/23037) by 39736248+andrefcdias@users.noreply.github.com)
+  - chore: add basic API documentation ([PR #23410](https://github.com/microsoft/fluentui/pull/23410) by 39736248+andrefcdias@users.noreply.github.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - feat: Add focus indicators ([PR #23456](https://github.com/microsoft/fluentui/pull/23456) by 39736248+andrefcdias@users.noreply.github.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-checkbox`
+  - README, spec and migration guide cleanup. ([PR #23395](https://github.com/microsoft/fluentui/pull/23395) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-combobox`
+  - add combobox to preview components ([PR #23744](https://github.com/microsoft/fluentui/pull/23744) by sarah.higley@microsoft.com)
+- `@fluentui/react-components`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on packages that use @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Re-exporting AvatarGroup and AvatarGroupItem in unstable. ([PR #23573](https://github.com/microsoft/fluentui/pull/23573) by esteban.230@hotmail.com)
+  - add combobox to preview components ([PR #23744](https://github.com/microsoft/fluentui/pull/23744) by sarah.higley@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-context-selector`
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-divider`
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - README, spec and migration guide cleanup. ([PR #23439](https://github.com/microsoft/fluentui/pull/23439) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-image`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - README, spec and migration guide cleanup for react-image. ([PR #23447](https://github.com/microsoft/fluentui/pull/23447) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-input`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-label`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-link`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Fixing mention of SpinButton in README. ([PR #23424](https://github.com/microsoft/fluentui/pull/23424) by Humberto.Morimoto@microsoft.com)
+  - README and migration guide cleanup. ([PR #23395](https://github.com/microsoft/fluentui/pull/23395) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-menu`
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - fix: improve internal typings ([PR #23574](https://github.com/microsoft/fluentui/pull/23574) by bernardo.sunderhus@gmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - fix: submenu indicator should be filled on hover ([PR #23331](https://github.com/microsoft/fluentui/pull/23331) by yuanboxue@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - fix: Use modern `::before` pseudoelement ([PR #23357](https://github.com/microsoft/fluentui/pull/23357) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - feat: Close context menu on scroll, new closeOnScroll prop ([PR #23351](https://github.com/microsoft/fluentui/pull/23351) by lingfangao@hotmail.com)
+- `@fluentui/react-overflow`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - fix: do not throw in SSR ([PR #23372](https://github.com/microsoft/fluentui/pull/23372) by olfedias@microsoft.com)
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - feat: Adds `legacyTrapFocus` prop ([PR #23598](https://github.com/microsoft/fluentui/pull/23598) by lingfangao@hotmail.com)
+  - Updates getTriggerChild internal usage ([PR #23574](https://github.com/microsoft/fluentui/pull/23574) by bernardo.sunderhus@gmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - fix: Add arrow padding to Popover arrrow ([PR #23607](https://github.com/microsoft/fluentui/pull/23607) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-portal`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - feat: apply zIndex to Portal ([PR #22933](https://github.com/microsoft/fluentui/pull/22933) by olfedias@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - fix: update to create new stacking context ([PR #23507](https://github.com/microsoft/fluentui/pull/23507) by olfedias@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - fix: properly handle text direction in styles ([PR #22936](https://github.com/microsoft/fluentui/pull/22936) by olfedias@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-radio`
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-select`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - export change data type from select ([PR #23701](https://github.com/microsoft/fluentui/pull/23701) by sarah.higley@microsoft.com)
+  - fix: handle "defaultValue" ([PR #23463](https://github.com/microsoft/fluentui/pull/23463) by olfedias@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - add custom onChange with value data to react-select ([PR #23399](https://github.com/microsoft/fluentui/pull/23399) by sarah.higley@microsoft.com)
+  - Remove inline prop from Select ([PR #23416](https://github.com/microsoft/fluentui/pull/23416) by sarah.higley@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: Mark teams-prg owned APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-slider`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - README, spec and migration guide cleanup. ([PR #23398](https://github.com/microsoft/fluentui/pull/23398) by Humberto.Morimoto@microsoft.com)
+  - README update. ([PR #23439](https://github.com/microsoft/fluentui/pull/23439) by Humberto.Morimoto@microsoft.com)
+  - fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - fix: Making increment and decrement buttons of SpinButton have 'type=button' instead of 'type=submit'. ([PR #23710](https://github.com/microsoft/fluentui/pull/23710) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-spinner`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - fix: Move role attribute to root slot and update Spinner documentation ([PR #23385](https://github.com/microsoft/fluentui/pull/23385) by ololubek@microsoft.com)
+  - undefined ([PR #23503](https://github.com/microsoft/fluentui/pull/23503) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-switch`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+  - README update. ([PR #23439](https://github.com/microsoft/fluentui/pull/23439) by Humberto.Morimoto@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - fix: Making thumb be vertically centered in Switch. ([PR #23712](https://github.com/microsoft/fluentui/pull/23712) by Humberto.Morimoto@microsoft.com)
+  - README, spec and migration guide cleanup. ([PR #23396](https://github.com/microsoft/fluentui/pull/23396) by Humberto.Morimoto@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/babel-preset-global-context`
+  - feat: beta release ([PR #23623](https://github.com/microsoft/fluentui/pull/23623) by lingfangao@hotmail.com)
+- `@fluentui/global-context`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - feat: beta release ([PR #23623](https://github.com/microsoft/fluentui/pull/23623) by lingfangao@hotmail.com)
+- `@fluentui/priority-overflow`
+  - chore: Mark internal APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - fix: Removing user-select: 'none' from AccordionHeader styles. ([PR #23713](https://github.com/microsoft/fluentui/pull/23713) by Humberto.Morimoto@microsoft.com)
+  - chore: updates AccordionHeader to follow design spec tokens ([PR #23295](https://github.com/microsoft/fluentui/pull/23295) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-alert`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+- `@fluentui/react-aria`
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Mark internal APIs with @internal ([PR #23689](https://github.com/microsoft/fluentui/pull/23689) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - fix: Fix wrong border radius for outline in webkit browsers. ([PR #23576](https://github.com/microsoft/fluentui/pull/23576) by esteban.230@hotmail.com)
+  - Adding AvatarGroupItem implementation and AvatarGroup context. ([PR #23310](https://github.com/microsoft/fluentui/pull/23310) by esteban.230@hotmail.com)
+  - chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+  - docs: Adding AvatarGroup stories. ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by esteban.230@hotmail.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - PresenceBadge accessibility: fix placement of aria-label, sort out Avatar usage and examples ([PR #23256](https://github.com/microsoft/fluentui/pull/23256) by sarah.higley@microsoft.com)
+  - Adding layout styles to AvatarGroupItem. ([PR #23468](https://github.com/microsoft/fluentui/pull/23468) by esteban.230@hotmail.com)
+  - chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+  - Adding layout styles and overflow button styles to AvatarGroup. ([PR #23437](https://github.com/microsoft/fluentui/pull/23437) by esteban.230@hotmail.com)
+  - fix: Fixing focus indicator and adding a focus ring to root for the pie layout. ([PR #23528](https://github.com/microsoft/fluentui/pull/23528) by esteban.230@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - chore: Added warning for AvatarGroup to check if children are of type AvatarGroupItem and for AvatarGroupItem to check if it's being used inside an AvatarGroup. ([PR #23498](https://github.com/microsoft/fluentui/pull/23498) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - README, spec and migration guide cleanup. ([PR #23424](https://github.com/microsoft/fluentui/pull/23424) by Humberto.Morimoto@microsoft.com)
+  - Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+  - Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+  - PresenceBadge accessibility: fix placement of aria-label, sort out Avatar usage and examples ([PR #23256](https://github.com/microsoft/fluentui/pull/23256) by sarah.higley@microsoft.com)
+  - chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
 
 ## [9.0.0-rc.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.0-rc.15)
 

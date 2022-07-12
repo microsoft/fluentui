@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move alert stories into folder and use index entry point.",
-  "packageName": "@fluentui/react-alert",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

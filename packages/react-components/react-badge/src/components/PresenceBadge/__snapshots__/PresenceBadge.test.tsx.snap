@@ -20,6 +20,7 @@ exports[`PresenceBadge renders a default state 1`] = `
     >
       <path
         d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.7-9.3l-4 4a1 1 0 01-1.41 0l-2-2a1 1 0 111.42-1.4L7 8.58l3.3-3.3a1 1 0 011.4 1.42z"
+        fill="currentColor"
       />
     </svg>
   </span>

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0..@fluentui/react-portal_v9.0.1)
+
+### Patches
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0)
+
+Tue, 28 Jun 2022 15:13:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.0.0-rc.14..@fluentui/react-portal_v9.0.0)
+
+### Patches
+
+- feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+
+### Changes
+
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- feat: apply zIndex to Portal ([PR #22933](https://github.com/microsoft/fluentui/pull/22933) by olfedias@microsoft.com)
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- fix: update to create new stacking context ([PR #23507](https://github.com/microsoft/fluentui/pull/23507) by olfedias@microsoft.com)
 
 ## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.0.0-rc.14)
 

@@ -22,6 +22,11 @@ export const Select: ForwardRefComponent<SelectProps>;
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
 
+// @public
+export type SelectOnChangeData = {
+    value: string;
+};
+
 // @public (undocumented)
 export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, 'size' | 'onChange'> & {
     appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';

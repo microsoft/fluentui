@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PresenceBadge } from '@fluentui/react-badge';
+import { PresenceBadge } from '@fluentui/react-components';
 
 export const Sizes = () => {
   return (

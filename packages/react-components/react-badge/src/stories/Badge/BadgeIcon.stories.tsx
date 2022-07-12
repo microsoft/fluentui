@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-components';
 import { ClipboardPasteRegular as PasteIcon } from '@fluentui/react-icons';
 
 export const Icon = () => {

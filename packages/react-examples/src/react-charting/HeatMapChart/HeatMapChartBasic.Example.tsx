@@ -298,7 +298,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
     ];
     return (
       <>
-        <label htmlFor="changeWidth_Example">change Width:</label>
+        <label htmlFor="changeWidth_Example">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -308,7 +308,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
           id="changeWidth_Example"
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Example">change Height:</label>
+        <label htmlFor="changeHeight_Example">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Move Link stories to folder with index entry.",
-  "packageName": "@fluentui/react-link",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

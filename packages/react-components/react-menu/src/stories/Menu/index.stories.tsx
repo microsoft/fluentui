@@ -27,7 +27,7 @@ export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
 export { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
 
 export default {
-  title: 'Components/Menu',
+  title: 'Components/Menu/Menu',
   component: Menu,
   parameters: {
     docs: {

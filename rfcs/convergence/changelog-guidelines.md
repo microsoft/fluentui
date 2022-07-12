@@ -50,13 +50,14 @@ an issue, but has an incredibly vague meaning with applied to the changelog of a
 ### Semantic labels for changefile entries
 
 Each changefile entry should have a message that has a semantic label that is inspired by [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
-This RFC proposes four labels in the following form:
+This RFC proposes five labels in the following form:
 
 ```
 feat:  This label communicates that a feature was added to the package
 fix:   This label communicates that a fix was applied to the package
 chore: This label communicates that changes which should not have an affect on the user were applied
 docs:  This label communicates that documentation was changed
+BREAKING CHANGE: This label communicates that a breaking change was applied to the package
 ```
 
 We can configure [danger.js](https://danger.systems/js/) to validate changefile entries in the PR that a correct
@@ -75,7 +76,7 @@ Here is a sample beachball changefile:
 ```json
 {
   "type": "patch",
-  "comment": "This comment is the message used in the changelog entry",
+  "comment": "[label]: This comment is the message used in the changelog entry",
   "packageName": "@fluentui/babel-make-styles",
   "email": "jane.doe@contoso.com",
   "dependentChangeType": "patch"

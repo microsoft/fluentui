@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 23 Jun 2022 14:25:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0..@fluentui/react-avatar_v9.0.1)
+
+### Patches
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-popover to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-tabster to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0)
+
+Tue, 28 Jun 2022 15:14:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-rc.13..@fluentui/react-avatar_v9.0.0)
+
+### Patches
+
+- feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- Bump @fluentui/react-badge to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-popover to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tooltip to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+
+### Changes
+
+- fix: Fix wrong border radius for outline in webkit browsers. ([PR #23576](https://github.com/microsoft/fluentui/pull/23576) by esteban.230@hotmail.com)
+- Adding AvatarGroupItem implementation and AvatarGroup context. ([PR #23310](https://github.com/microsoft/fluentui/pull/23310) by esteban.230@hotmail.com)
+- chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+- chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+- docs: Adding AvatarGroup stories. ([PR #23493](https://github.com/microsoft/fluentui/pull/23493) by esteban.230@hotmail.com)
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- PresenceBadge accessibility: fix placement of aria-label, sort out Avatar usage and examples ([PR #23256](https://github.com/microsoft/fluentui/pull/23256) by sarah.higley@microsoft.com)
+- Adding layout styles to AvatarGroupItem. ([PR #23468](https://github.com/microsoft/fluentui/pull/23468) by esteban.230@hotmail.com)
+- chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector. ([PR #23681](https://github.com/microsoft/fluentui/pull/23681) by Humberto.Morimoto@microsoft.com)
+- Adding layout styles and overflow button styles to AvatarGroup. ([PR #23437](https://github.com/microsoft/fluentui/pull/23437) by esteban.230@hotmail.com)
+- fix: Fixing focus indicator and adding a focus ring to root for the pie layout. ([PR #23528](https://github.com/microsoft/fluentui/pull/23528) by esteban.230@hotmail.com)
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- chore: Added warning for AvatarGroup to check if children are of type AvatarGroupItem and for AvatarGroupItem to check if it's being used inside an AvatarGroup. ([PR #23498](https://github.com/microsoft/fluentui/pull/23498) by esteban.230@hotmail.com)
 
 ## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-rc.13)
 

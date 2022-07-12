@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updates getTriggerChild internal usage",
-  "packageName": "@fluentui/react-popover",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

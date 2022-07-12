@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "add custom onChange with value data to react-select",
-  "packageName": "@fluentui/react-select",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Badge } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-components';
 
 export const Color = () => {
   return (
@@ -39,7 +39,7 @@ Color.parameters = {
       story:
         'A badge can have different colors.' +
         ' The available colors are `brand`, `danger`, `important`, `informative`, ' +
-        '`severe`, `severe`, `success` or `warning`.' +
+        '`severe`, `subtle`, `success` or `warning`.' +
         ' The default is `brand`.',
     },
   },

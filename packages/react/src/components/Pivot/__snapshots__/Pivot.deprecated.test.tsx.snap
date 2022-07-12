@@ -83,7 +83,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -95,7 +95,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -104,7 +104,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -146,7 +146,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -252,7 +252,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -264,7 +264,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -272,7 +272,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {

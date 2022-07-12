@@ -2,6 +2,219 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/react_v8.80.0",
+      "version": "8.80.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d1f223054dba804964e010518ec0d09dbca2c584",
+            "comment": "fix(Combobox): Only set newPendingValue if there is not a matching option and the pendingValue changed."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "aa20bde638dc27d24dbc221a6d4bfe3487a78bbb",
+            "comment": "feat: add list utilities for reading and writing scroll values"
+          },
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742",
+            "comment": "feat: Allow SelectionZone attributes to disallow behaviors."
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "16495a93e0f4eb4cf793f6462e3546eb101dae82",
+            "comment": "feat: Re-export canUseDOM from @fluentui/utilities and remove setSSR from withResponsiveMode tests."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.10",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.3",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.3",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.1",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.2",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.7",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.9.0",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.1.2",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Jul 2022 07:36:28 GMT",
+      "tag": "@fluentui/react_v8.79.0",
+      "version": "8.79.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosmoura@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0c253f07740875cae8d0b3c93007620236a51eaa",
+            "comment": "fix(Dropdown): narrator announcing hidden items as selectable"
+          }
+        ],
+        "minor": [
+          {
+            "author": "conniechen@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ea986100088f2572e5311a6b572d0dbcf6327d98",
+            "comment": "Add optional improveCSSPerformance prop to Shimmer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Jul 2022 07:37:21 GMT",
+      "tag": "@fluentui/react_v8.78.1",
+      "version": "8.78.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d092c483fb340758f864ae788a7c46bf129f653b",
+            "comment": "Handle when FocusTrapZone wraps an iframe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Jul 2022 07:38:24 GMT",
+      "tag": "@fluentui/react_v8.78.0",
+      "version": "8.78.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosmoura@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "682fb6c9c678e848a6225f801321e6b2eb6a4461",
+            "comment": "fix(Checkbox): add indeterminate value to inputRef"
+          }
+        ],
+        "minor": [
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@fluentui/react",
+            "commit": "33c89d8c4bfcd1b50a7aa23e70eedde6e9cb08df",
+            "comment": "feat: Adding focusZoneProps support for Nav."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jun 2022 07:40:48 GMT",
+      "tag": "@fluentui/react_v8.77.3",
+      "version": "8.77.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e81a3de6b292b226e09ad8526ae5856131ff0736",
+            "comment": "feat: Updating Slider to support ariaLabel prop."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Jun 2022 07:42:20 GMT",
+      "tag": "@fluentui/react_v8.77.2",
+      "version": "8.77.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "267e10e8adb913ba4151054d5b805ac1fe513e35",
+            "comment": "feat: Bump @fluentui/react-portal-compat-context to 9.0.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 07:39:04 GMT",
+      "tag": "@fluentui/react_v8.77.2",
+      "version": "8.77.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.9",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.2",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.2",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.1",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.1.1",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Jun 2022 07:43:32 GMT",
       "tag": "@fluentui/react_v8.77.1",
       "version": "8.77.1",

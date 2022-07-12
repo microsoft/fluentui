@@ -1,10 +1,11 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
 import { Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useEventCallback } from '@fluentui/react-hooks';
 
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({
@@ -21,6 +22,8 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
     alert(`Button ${zoneNumber} clicked`);
   };
 
+  const [showIFrame, { toggle: toggleShowIFrame }] = useBoolean(false);
+
   return (
     <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
       <Stack horizontalAlign="start" tokens={stackTokens} styles={getStackStyles(isActive)}>
@@ -33,6 +36,14 @@ const FocusTrapComponent: React.FunctionComponent<React.PropsWithChildren<{ zone
           // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
           styles={zoneNumber >= 2 && zoneNumber <= 4 ? fixedWidthToggleStyles : undefined}
         />
+        <Toggle
+          checked={showIFrame}
+          onChange={toggleShowIFrame}
+          label="Show IFrame"
+          onText="On (toggle to close)"
+          offText="Off"
+        />
+        {showIFrame ? <IFrameWrapper onClick={toggleShowIFrame} /> : null}
         <DefaultButton
           // eslint-disable-next-line react/jsx-no-bind
           onClick={onStringButtonClicked}
@@ -55,3 +66,24 @@ export const FocusTrapZoneNestedExample = () => (
     </FocusTrapComponent>
   </div>
 );
+
+const IFrameWrapper = (props: { onClick: () => void }): JSX.Element => {
+  const onClick = useEventCallback(props.onClick);
+
+  const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
+
+  React.useEffect(() => {
+    if (iframeRef.current) {
+      const contentWindow = iframeRef.current.contentWindow;
+
+      if (contentWindow) {
+        const root = contentWindow.document.createElement('div');
+        contentWindow.document.body.appendChild(root);
+
+        ReactDOM.render(<DefaultButton onClick={onClick}>Button in IFrame</DefaultButton>, root);
+      }
+    }
+  }, [onClick]);
+
+  return <iframe style={{ width: '400px', height: '100px' }} ref={iframeRef} />;
+};

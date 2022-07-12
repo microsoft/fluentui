@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Update @fluentui/react-icons to latest version",
-  "packageName": "@fluentui/react-switch",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
