@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Adding default class name to container wrapper of SplitButtons.",
+  "comment": "chore: Sending rootRef to <FocusRects /> in components using it so that the change in focus rectangles' visibility is scoped to Fluent components.",
   "packageName": "@fluentui/react",
   "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"

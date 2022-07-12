@@ -290,10 +290,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   public focus(): void {
     if (this._isSplitButton && this._splitButtonContainer.current) {
-      setFocusVisibility(true);
       this._splitButtonContainer.current.focus();
     } else if (this._buttonElement.current) {
-      setFocusVisibility(true);
       this._buttonElement.current.focus();
     }
   }
@@ -368,7 +366,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     return (
       <>
         {Content}
-        <FocusRects />
+        <FocusRects rootRef={this.props.split ? this._splitButtonContainer : this._buttonElement} />
       </>
     );
   }

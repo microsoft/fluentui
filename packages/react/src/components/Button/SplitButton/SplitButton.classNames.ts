@@ -10,10 +10,6 @@ export interface ISplitButtonClassNames {
   divider?: string;
 }
 
-const SplitButtonGlobalClassNames = {
-  msSplitButtonContainer: 'ms-SplitButton-container',
-};
-
 export const getSplitButtonClassNames = memoizeFunction(
   (
     styles: IButtonStyles,
@@ -39,7 +35,6 @@ export const getSplitButtonClassNames = memoizeFunction(
       ),
 
       splitButtonContainer: mergeStyles(
-        SplitButtonGlobalClassNames.msSplitButtonContainer,
         styles.splitButtonContainer,
         !disabled &&
           checked && [

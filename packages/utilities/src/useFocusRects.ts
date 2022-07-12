@@ -7,10 +7,11 @@ import { setFocusVisibility } from './setFocusVisibility';
  * Counter for mounted components that use focus rectangles.
  * We want to cleanup the listeners before the last component that uses focus rectangles unmounts.
  */
-let mountCounters = new WeakMap<Window, number>();
+let mountCounters = new WeakMap<Window | HTMLElement, number>();
 let lastInteraction = '';
+let focusEventCounters = 0;
 
-function setMountCounters(key: Window, delta: number): number {
+function setMountCounters(key: Window | HTMLElement, delta: number): number {
   let newValue;
   const currValue = mountCounters.get(key);
   if (currValue) {
@@ -48,12 +49,29 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       return undefined;
     }
 
-    let count = setMountCounters(win, 1);
-    if (count <= 1) {
+    let el: HTMLElement | undefined = undefined;
+    if (rootRef && rootRef.current) {
+      el = rootRef.current;
+    }
+
+    let elCount;
+    if (el && el.addEventListener && typeof el.addEventListener === 'function') {
+      elCount = setMountCounters(el, 1);
+      if (elCount <= 1) {
+        el.addEventListener('focus', _onFocus, true);
+      }
+    } else {
+      focusEventCounters += 1;
+      if (focusEventCounters <= 1) {
+        win.addEventListener('focus', _onFocus, true);
+      }
+    }
+
+    let winCount = setMountCounters(win, 1);
+    if (winCount <= 1) {
       win.addEventListener('mousedown', _onMouseDown, true);
       win.addEventListener('pointerdown', _onPointerDown, true);
       win.addEventListener('keydown', _onKeyDown, true);
-      win.addEventListener('focus', _onFocus, true);
     }
 
     return () => {
@@ -61,12 +79,23 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         return;
       }
 
-      count = setMountCounters(win, -1);
-      if (count === 0) {
+      if (el && el.removeEventListener && typeof el.removeEventListener === 'function') {
+        elCount = setMountCounters(el, -1);
+        if (elCount === 0) {
+          el.removeEventListener('focus', _onFocus, true);
+        }
+      } else {
+        focusEventCounters -= 1;
+        if (focusEventCounters === 0) {
+          win.removeEventListener('focus', _onFocus, true);
+        }
+      }
+
+      winCount = setMountCounters(win, -1);
+      if (winCount === 0) {
         win.removeEventListener('mousedown', _onMouseDown, true);
         win.removeEventListener('pointerdown', _onPointerDown, true);
         win.removeEventListener('keydown', _onKeyDown, true);
-        win.removeEventListener('focus', _onFocus, true);
       }
     };
   }, [rootRef]);
@@ -104,18 +133,6 @@ function _onKeyDown(ev: KeyboardEvent): void {
 
 function _onFocus(ev: FocusEvent): void {
   if (ev.target && lastInteraction === 'keyboard') {
-    const classNameList = (ev.target as Element).classList;
-    const length = classNameList.length;
-    let isFluentElement = false;
-    for (let i = 0; i < length; i++) {
-      if (/^ms-[a-zA-Z-0-9]+$/gm.test(classNameList[i])) {
-        isFluentElement = true;
-        break;
-      }
-    }
-
-    if (isFluentElement) {
-      setFocusVisibility(true, ev.target as Element);
-    }
+    setFocusVisibility(true, ev.target as Element);
   }
 }

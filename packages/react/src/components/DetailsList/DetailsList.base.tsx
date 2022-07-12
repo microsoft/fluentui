@@ -669,7 +669,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       data-is-scrollable="false"
       {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
     >
-      <FocusRects />
+      <FocusRects rootRef={rootRef} />
       <div
         role={role}
         // ariaLabel is a legacy prop that used to be applied on the root node, which has poor AT support

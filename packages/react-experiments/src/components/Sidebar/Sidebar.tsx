@@ -28,6 +28,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
   private _classNames: ISidebarClassNames;
   private _colors: SidebarColors;
   private _buttonStyles: IButtonStyles;
+  private _rootRef = React.createRef<HTMLDivElement>();
 
   constructor(props: ISidebarProps) {
     super(props);
@@ -82,6 +83,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
         role="menu"
         aria-orientation={'vertical'}
         aria-expanded={!this.state.isCollapsed}
+        ref={this._rootRef}
       >
         <ScrollablePane
           className={this._classNames.content}
@@ -115,7 +117,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
             {footerItems.map((item: ISidebarItemProps) => this._renderItemInSidebar(item))}
           </FocusZone>
         )}
-        <FocusRects />
+        <FocusRects rootRef={this._rootRef} />
       </div>
     );
   }

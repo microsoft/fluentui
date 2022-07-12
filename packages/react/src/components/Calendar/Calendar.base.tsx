@@ -390,7 +390,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
         ) : (
           renderGoToTodayButton()
         )}
-        <FocusRects />
+        <FocusRects rootRef={forwardedRef && typeof forwardedRef !== 'function' ? forwardedRef : undefined} />
       </div>
     );
   },

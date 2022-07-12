@@ -230,7 +230,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         data-selection-is-modal={isModal ? true : undefined}
       >
         {this.props.children}
-        <FocusRects />
+        <FocusRects rootRef={this._root} />
       </div>
     );
   }

@@ -42,7 +42,9 @@ export const SliderBase: React.FunctionComponent<ISliderProps> = React.forwardRe
             ? slotProps.lowerValueLabel && <Label {...slotProps.lowerValueLabel} />
             : slotProps.valueLabel && <Label {...slotProps.valueLabel} />}
         </div>
-        <FocusRects />
+        <FocusRects
+          rootRef={slotProps.root.ref && typeof slotProps.root.ref !== 'function' ? slotProps.root.ref : undefined}
+        />
       </div>
     ) as React.ReactElement<{}>;
   },

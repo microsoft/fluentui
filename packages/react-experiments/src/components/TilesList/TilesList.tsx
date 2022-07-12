@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TilesGridMode } from './TilesList.types';
 import { List, ScrollToMode } from '@fluentui/react/lib/List';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { css, FocusRects, composeRenderFunction } from '@fluentui/react/lib/Utilities';
+import { css, FocusRects, composeRenderFunction, createMergedRef } from '@fluentui/react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from '@fluentui/react/lib/Shimmer';
 import type {
@@ -106,6 +106,8 @@ interface IPageSpecificationCache<TItem> {
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
   private listRef: React.RefObject<List>;
+  private _rootRef = React.createRef<HTMLDivElement>();
+  private _mergedRef = createMergedRef<HTMLDivElement | FocusZone>();
 
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
@@ -158,13 +160,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     return (
       <FocusZone
         {...divProps}
-        ref={ref as (element: FocusZone | null) => void}
+        ref={this._mergedRef(ref as (element: FocusZone | null) => void, this._rootRef)}
         componentRef={focusZoneComponentRef}
         className={css('ms-TilesList', className)}
         direction={FocusZoneDirection.bidirectional}
         onActiveElementChanged={this.props.onActiveElementChanged}
       >
-        <FocusRects />
+        <FocusRects rootRef={this._rootRef} />
         <List
           items={cells}
           role={role}

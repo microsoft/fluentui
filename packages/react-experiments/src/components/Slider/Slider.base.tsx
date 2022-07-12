@@ -51,6 +51,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _onKeyDownTimer = -1;
   private _hostId: string = getId('tooltipHost');
   private _buttonId: string = getId('targetButton');
+  private _rootRef = React.createRef<HTMLDivElement>();
 
   private _async: Async;
   private _events: EventGroup;
@@ -150,6 +151,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
             role="slider"
             tabIndex={disabled ? undefined : 0}
             data-is-focusable={!disabled}
+            ref={this._rootRef}
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
@@ -219,7 +221,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
           </div>
         </div>
         <div />
-        <FocusRects />
+        <FocusRects rootRef={this._rootRef} />
       </div>
     ) as React.ReactElement<{}>;
   }
