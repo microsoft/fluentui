@@ -10482,6 +10482,9 @@ export { setIconOptions }
 
 export { setLanguage }
 
+// @public
+export function setLayerHostSelector(selector?: string): void;
+
 export { setMemoizeWeakMap }
 
 export { setMonth }
