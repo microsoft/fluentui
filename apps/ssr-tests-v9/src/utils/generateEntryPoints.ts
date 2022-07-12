@@ -15,7 +15,7 @@ type GenerateEntryPointsConfig = {
 export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<void> {
   const storiesFiles = config.storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
 
-  const indexStoriesFiles = storiesFiles.filter(filename => !filename.includes('index.stories.tsx'));
+  const indexStoriesFiles = storiesFiles.filter(filename => filename.includes('index.stories.tsx'));
 
   const distDir = path.dirname(config.cjsEntryPoint);
   const imports = (
