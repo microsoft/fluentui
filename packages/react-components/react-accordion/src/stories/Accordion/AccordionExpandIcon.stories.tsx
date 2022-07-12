@@ -6,7 +6,7 @@ import {
   AccordionPanel,
   Accordion,
   AccordionToggleEventHandler,
-} from '@fluentui/react-accordion';
+} from '@fluentui/react-components';
 
 export const ExpandIcon = () => {
   const [openItem, setOpenItems] = React.useState(0);

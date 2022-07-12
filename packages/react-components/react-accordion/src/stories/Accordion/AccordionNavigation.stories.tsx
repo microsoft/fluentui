@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-components';
 
 export const Navigation = () => (
   <Accordion navigation="linear">
