@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand, useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
@@ -64,25 +64,30 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   /* Handle typed input */
 
   // reset any typed value when an option is selected
-  baseState.selectOption = useMergedEventCallbacks(selectOption, () => {
+  baseState.selectOption = (ev, optionValue) => {
     setValue(undefined);
-  });
+    selectOption(ev, optionValue);
+  };
 
   // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
-  const onBlur = useMergedEventCallbacks(triggerNativeProps.onBlur, () => {
+  const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     if (!baseState.open && !allowFreeform) {
       setValue(undefined);
     }
-  });
 
-  baseState.setOpen = useMergedEventCallbacks(setOpen, (ev, newState: boolean) => {
+    triggerNativeProps.onBlur?.(ev);
+  };
+
+  baseState.setOpen = (ev, newState: boolean) => {
     if (!newState && !allowFreeform) {
       setValue(undefined);
     }
-  });
+
+    setOpen(ev, newState);
+  };
 
   // update value and active option based on input
-  const onChange = useMergedEventCallbacks(triggerNativeProps.onChange, (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target.value;
     // update uncontrolled value
     baseState.setValue(inputValue);
@@ -99,7 +104,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ) {
       clearSelection(ev);
     }
-  });
+
+    triggerNativeProps.onChange?.(ev);
+  };
 
   // resolve input and listbox slot props
   const triggerShorthand = resolveShorthand(props.input, {
