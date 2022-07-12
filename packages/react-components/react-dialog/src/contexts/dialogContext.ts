@@ -9,8 +9,12 @@ export type DialogRequestOpenChangeData = {
 } & Pick<DialogOpenChangeArgs[1], 'type'>;
 
 export type DialogContextValue = {
-  triggerRef: React.Ref<HTMLElement>;
-  contentRef: React.Ref<HTMLElement>;
+  /**
+   * Reference to trigger element that opened the Dialog
+   * null if Dialog is closed
+   */
+  triggerRef: React.RefObject<HTMLElement>;
+  contentRef: React.RefObject<HTMLElement>;
   modalType: DialogModalType;
   open: boolean;
   /**

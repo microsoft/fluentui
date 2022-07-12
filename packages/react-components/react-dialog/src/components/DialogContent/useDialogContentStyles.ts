@@ -13,7 +13,10 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    position: 'relative',
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     display: 'flex',
     flexDirection: 'column',
     width: 'fit-content',

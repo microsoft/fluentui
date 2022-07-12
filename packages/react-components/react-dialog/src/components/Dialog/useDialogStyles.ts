@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
 export const dialogClassNames: SlotClassNames<DialogSlots> = {
@@ -10,21 +10,11 @@ export const dialogClassNames: SlotClassNames<DialogSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    position: 'fixed',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  root: {},
   overlay: {
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
+    position: 'fixed',
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    ...shorthands.inset('0px'),
   },
 });
 

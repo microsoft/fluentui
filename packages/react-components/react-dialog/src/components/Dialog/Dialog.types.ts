@@ -1,7 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { DialogContextValue } from '../../contexts/dialogContext';
-import { DialogContentContextValue } from '../../contexts/dialogContentContext';
 
 export type DialogSlots = {
   /**
@@ -27,7 +26,6 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
-  dialogContent: DialogContentContextValue;
 };
 
 export type DialogOnOpenChange = (...args: DialogOpenChangeArgs) => void;

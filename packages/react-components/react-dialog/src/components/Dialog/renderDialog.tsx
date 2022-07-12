@@ -3,7 +3,6 @@ import { getSlots } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
 import type { DialogState, DialogSlots, DialogContextValues } from './Dialog.types';
 import { DialogProvider } from '../../contexts/dialogContext';
-import { DialogContentProvider } from '../../contexts/dialogContentContext';
 
 /**
  * Render the final JSX of Dialog
@@ -14,17 +13,15 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
 
   return (
     <DialogProvider value={contextValues.dialog}>
-      <DialogContentProvider value={contextValues.dialogContent}>
-        {trigger}
-        {open && (
-          <Portal>
-            <slots.root {...slotProps.root}>
-              {slots.overlay && <slots.overlay {...slotProps.overlay} />}
-              {content}
-            </slots.root>
-          </Portal>
-        )}
-      </DialogContentProvider>
+      {trigger}
+      {open && (
+        <Portal>
+          <slots.root {...slotProps.root}>
+            {slots.overlay && <slots.overlay {...slotProps.overlay} />}
+            {content}
+          </slots.root>
+        </Portal>
+      )}
     </DialogProvider>
   );
 };

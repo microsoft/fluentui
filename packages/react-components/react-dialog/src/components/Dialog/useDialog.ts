@@ -60,6 +60,11 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
 
     // if user prevents default then do not change state value
     if (!isDefaultPrevented()) {
+      // updates trigger reference
+      (triggerRef as React.MutableRefObject<HTMLElement | null>).current = isOpening(open, getNextOpen)
+        ? (data.event.currentTarget as HTMLElement)
+        : null;
+      // updates value
       setOpen(getNextOpen);
     }
   });
@@ -154,6 +159,13 @@ function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): 
 }
 
 /**
+ * Checks if dialog is opening
+ */
+function isOpening(current: boolean, next: Extract<React.SetStateAction<boolean>, Function>) {
+  return !current && next(current) === true;
+}
+
+/**
  * Focus first element on content when dialog is opened,
  * in case there's no focusable element, then a eventlistener is added to document
  * to ensure Escape keydown functionality
@@ -173,6 +185,7 @@ function useFocusFirstElement({
       const element = contentRef.current && findFirstFocusable(contentRef.current);
       if (element) {
         element.focus();
+        // NOTE: if it's non-modal global listener to escape is necessary
         if (modalType !== 'non-modal') {
           return;
         }
