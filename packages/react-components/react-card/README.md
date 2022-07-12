@@ -4,35 +4,81 @@
 
 **⚠️ Please note that functionality is still being added to this package. Due to lockstep versioning, the version of this package is aligned with the others in _react-components_.**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+These are not production-ready components and **should never be used in a product**. This space is useful for testing new components whose APIs might change before final release.
+
+![example of a Card component in usage](./assets/card-example.png)
+
+## Usage
 
 To import React Card components:
 
 ```js
-import { Card, CardPreview, CardHeader, CardFooter } from '@fluentui/react-components';
+import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components/unstable';
 ```
 
-## Usage
+Example Card usage, shown above:
 
-### Card
+<!-- prettier-ignore-start -->
 
-...
+```jsx
+import { Share16Regular, ArrowReply16Regular } from "@fluentui/react-icons";
+import {
+  Button,
+  Body1,
+  Caption1
+} from "@fluentui/react-components";
+import {
+  Card,
+  CardHeader,
+  CardPreview,
+  CardFooter
+} from "@fluentui/react-components/unstable";
 
-### CardPreview
+const App = () => <>
+  <Card>
+    <CardHeader
+      image={
+        <img
+          src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/avatar_elvia.svg"
+          alt="Face of a person"
+        />
+      }
+      header={
+        <Body1>
+          <b>Elvia Atkins</b> mentioned you
+        </Body1>
+      }
+      description={<Caption1>5h ago · About us - Overview</Caption1>}
+    />
+    <CardPreview
+      logo={
+        <img
+          src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/word_logo.svg"
+          alt="Microsoft Word logo"
+        />
+      }
+    >
+      <img
+        src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/doc_template.png"
+        alt="Preview of a Word document"
+      />
+    </CardPreview>
+    <CardFooter>
+      <Button icon={<ArrowReply16Regular />}>Reply</Button>
+      <Button icon={<Share16Regular />}>Share</Button>
+    </CardFooter>
+  </Card>
+</>
+```
+<!-- prettier-ignore-end -->
 
-...
+## Specification
 
-### CardHeader
-
-...
-
-### CardFooter
-
-...
+See the [Spec.md](./Spec.md) file for background information on the design/engineering decisions of the component.
 
 ## API
 
-For more information about the components, please refer to the [API documentation](https://react.fluentui.dev/).
+For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/preview-components-card--default).
 
 ## Migration
 
