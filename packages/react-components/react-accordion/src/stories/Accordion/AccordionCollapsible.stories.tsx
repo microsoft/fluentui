@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '../../index';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
 
 export const Collapsible = () => (
   <Accordion collapsible>

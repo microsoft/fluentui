@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: boundary postitioning options can accept `null`",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
