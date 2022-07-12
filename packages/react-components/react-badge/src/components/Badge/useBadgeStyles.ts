@@ -1,5 +1,5 @@
 import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { BadgeSlots, BadgeState } from './Badge.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -8,17 +8,22 @@ export const badgeClassNames: SlotClassNames<BadgeSlots> = {
   icon: 'fui-Badge__icon',
 };
 
+// The text content of the badge has additional horizontal padding, but there is no `text` slot to add that padding to.
+// Instead, add extra padding to the root, and a negative margin on the icon to "remove" the extra padding on the icon.
+const textPadding = tokens.spacingHorizontalXXS;
+
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-flex',
     boxSizing: 'border-box',
     alignItems: 'center',
     justifyContent: 'center',
-    fontWeight: tokens.fontWeightSemibold,
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
-    ...shorthands.borderStyle('solid'),
-    fontFamily: tokens.fontFamilyBase,
     position: 'relative',
+    ...typographyStyles.caption1Strong,
+  },
+
+  fontSmallToTiny: {
+    ...typographyStyles.caption2Strong,
   },
 
   // size
@@ -27,46 +32,39 @@ const useRootStyles = makeStyles({
     width: '6px',
     height: '6px',
     fontSize: '4px',
+    lineHeight: '4px',
   },
   'extra-small': {
     width: '10px',
     height: '10px',
     fontSize: '6px',
+    lineHeight: '6px',
   },
   small: {
     minWidth: '16px',
     height: '16px',
-    ...shorthands.padding('2px'),
-    ...shorthands.gap('4px'),
-    fontSize: '8px',
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`),
   },
   medium: {
     height: '20px',
     minWidth: '20px',
-    ...shorthands.gap('4px'),
-    ...shorthands.padding('4px'),
-    fontSize: '10px',
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
   },
   large: {
     minWidth: '24px',
     height: '24px',
-    ...shorthands.padding('4px'),
-    fontSize: '12px',
-    ...shorthands.gap('4px'),
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalXS} + ${textPadding})`),
   },
   'extra-large': {
     minWidth: '32px',
     height: '32px',
-    ...shorthands.padding('6px'),
-    ...shorthands.gap('6px'),
-    fontSize: '12px',
-    ...shorthands.borderWidth(tokens.strokeWidthThick),
+    ...shorthands.padding(0, `calc(${tokens.spacingHorizontalSNudge} + ${textPadding})`),
   },
 
   // shape
 
   square: {
-    // Default border radius
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -75,23 +73,41 @@ const useRootStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   circular: {
-    ...shorthands.borderRadius('99px'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+
+  // border (all appearances except ghost)
+
+  border: {
+    // The border is applied in an :after pseudo-element because it should not affect layout.
+    // The padding and size of the badge should be the same regardless of whether or not it has a border.
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      ...shorthands.borderStyle('solid'),
+      ...shorthands.borderWidth(tokens.strokeWidthThin),
+      ...shorthands.borderColor('inherit'),
+      ...shorthands.borderRadius('inherit'),
+    },
   },
 
   // appearance: filled
 
   filled: {
+    // Use a transparent stroke (rather than no border) so the border is visible in high contrast
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   'filled-brand': {
     backgroundColor: tokens.colorBrandBackground,
     color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorBrandBackground),
   },
   'filled-danger': {
     backgroundColor: tokens.colorPaletteRedBackground3,
     color: tokens.colorNeutralForegroundOnBrand,
-    ...shorthands.borderColor(tokens.colorPaletteRedBackground3),
   },
   'filled-important': {
     backgroundColor: tokens.colorNeutralForeground1,
@@ -115,17 +131,16 @@ const useRootStyles = makeStyles({
   },
   'filled-warning': {
     backgroundColor: tokens.colorPaletteYellowBackground3,
-    color: tokens.colorNeutralForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBackground3),
+    color: tokens.colorNeutralForeground1Static,
   },
 
   // appearance: ghost
 
   ghost: {
-    ...shorthands.borderStyle('none'),
+    // No shared colors between ghost appearances
   },
   'ghost-brand': {
-    color: tokens.colorBrandBackground,
+    color: tokens.colorBrandForeground1,
   },
   'ghost-danger': {
     color: tokens.colorPaletteRedForeground3,
@@ -155,7 +170,7 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('currentColor'),
   },
   'outline-brand': {
-    color: tokens.colorBrandBackground,
+    color: tokens.colorBrandForeground1,
   },
   'outline-danger': {
     color: tokens.colorPaletteRedForeground3,
@@ -209,7 +224,7 @@ const useRootStyles = makeStyles({
   'tint-severe': {
     backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
     color: tokens.colorPaletteDarkOrangeForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeForeground2),
+    ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder1),
   },
   'tint-subtle': {
     backgroundColor: tokens.colorNeutralBackground1,
@@ -219,21 +234,34 @@ const useRootStyles = makeStyles({
   'tint-success': {
     backgroundColor: tokens.colorPaletteGreenBackground1,
     color: tokens.colorPaletteGreenForeground1,
-    ...shorthands.borderColor(tokens.colorPaletteGreenBackground2),
+    ...shorthands.borderColor(tokens.colorPaletteGreenBorder1),
   },
   'tint-warning': {
     backgroundColor: tokens.colorPaletteYellowBackground1,
     color: tokens.colorPaletteYellowForeground2,
-    ...shorthands.borderColor(tokens.colorPaletteYellowBackground2),
+    ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
   },
 });
 
 const useIconStyles = makeStyles({
   base: {
     display: 'flex',
-    alignContent: 'center',
-    alignItems: 'center',
-    height: '100%',
+    lineHeight: '1',
+    ...shorthands.margin(0, `calc(-1 * ${textPadding})`), // Remove text padding added to root
+  },
+
+  beforeText: {
+    marginRight: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
+  },
+  afterText: {
+    marginLeft: `calc(${tokens.spacingHorizontalXXS} + ${textPadding})`,
+  },
+
+  beforeTextXL: {
+    marginRight: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
+  },
+  afterTextXL: {
+    marginLeft: `calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
   },
 
   // size
@@ -264,14 +292,16 @@ const useIconStyles = makeStyles({
 export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
   const rootStyles = useRootStyles();
 
+  const smallToTiny = state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny';
+
   state.root.className = mergeClasses(
     badgeClassNames.root,
     rootStyles.base,
+    smallToTiny && rootStyles.fontSmallToTiny,
     rootStyles[state.size],
     rootStyles[state.shape],
-    state.shape === 'rounded' &&
-      (state.size === 'small' || state.size === 'extra-small' || state.size === 'tiny') &&
-      rootStyles.roundedSmallToTiny,
+    state.shape === 'rounded' && smallToTiny && rootStyles.roundedSmallToTiny,
+    state.appearance !== 'ghost' && rootStyles.border,
     rootStyles[state.appearance],
     rootStyles[`${state.appearance}-${state.color}` as const],
     state.root.className,
@@ -279,9 +309,19 @@ export const useBadgeStyles_unstable = (state: BadgeState): BadgeState => {
 
   const iconStyles = useIconStyles();
   if (state.icon) {
+    let iconPositionClass;
+    if (state.root.children) {
+      if (state.size === 'extra-large') {
+        iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterTextXL : iconStyles.beforeTextXL;
+      } else {
+        iconPositionClass = state.iconPosition === 'after' ? iconStyles.afterText : iconStyles.beforeText;
+      }
+    }
+
     state.icon.className = mergeClasses(
       badgeClassNames.icon,
       iconStyles.base,
+      iconPositionClass,
       iconStyles[state.size],
       state.icon.className,
     );
