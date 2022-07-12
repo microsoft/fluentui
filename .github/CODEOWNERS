@@ -169,6 +169,7 @@ packages/react-components/react-theme-sass @microsoft/teams-prg
 packages/react-components/theme-designer @microsoft/cxe-coastal
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
+packages/react-components/react-table @microsoft/teams-prg
 ## <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
