@@ -19,7 +19,6 @@ const regexes = {
   hasLowercaseLetter: /^\S*[a-z]\S*$/,
   hasUppercaseLetter: /^\S*[A-Z]\S*$/,
   hasSpecialChar: /^\S*[^0-9a-zA-ZÀ-ÖØ-öø-ÿěščřžďťňůĚŠČŘŽĎŤŇŮ\s]\S*$/,
-  // eslint-disable-next-line @fluentui/max-len
   validDate: /^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/,
   validEmail: new RegExp(
     // eslint-disable-next-line @fluentui/max-len
@@ -28,22 +27,18 @@ const regexes = {
 };
 
 const generateSecurityCode = (): string => {
-  let ret;
+  let char;
+  let hash = 0;
   const random = Math.random().toString();
-  var hash = 0,
-    i,
-    chr;
-  if (random.length === 0) {
-    ret = hash;
-  } else {
-    for (i = 0; i < random.length; i++) {
-      chr = random.charCodeAt(i);
-      hash = (hash << 5) - hash + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    ret = hash;
+  for (let i = 0; i < random.length; i++) {
+    char = random.charCodeAt(i);
+    //eslint-disable-next-line no-bitwise
+    hash = (hash << 5) - hash + char;
+    //eslint-disable-next-line no-bitwise
+    hash |= 0; // Convert to 32bit integer
   }
-  return (hash + 2147483647).toString().padStart(8, '0').substring(2);
+  hash += 2147483647; // Convert to positive integer
+  return hash.toString().padStart(8, '0').substring(2);
 };
 
 interface FormInputs {
@@ -426,7 +421,13 @@ const RegistrationFormInputsAccessibility = () => {
           )}
 
           <Label htmlFor="securityCode">Your security code:</Label>
-          <Input type="text" id="securityCode" name="securityCode" value={generateSecurityCode()} />
+          <Input
+            type="text"
+            id="securityCode"
+            name="securityCode"
+            value={generateSecurityCode()}
+            input={{ readOnly: true }}
+          />
 
           <Button type="submit">Register</Button>
         </form>
