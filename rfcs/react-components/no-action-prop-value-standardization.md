@@ -85,24 +85,6 @@ const state = {
   font,
   // {...}
 };
-
-// useTextStyles.ts
-const { font } = state;
-
-const fontLookup = {
-  _default: undefined,
-  base: styles.fontBase,
-  monospace: styles.fontMonospace,
-  numeric: styles.fontNumeric,
-} as const;
-
-state.root.className = mergeClasses(
-  cardClassNames.root,
-  styles.root,
-  fontLookup[font ?? '_default'], // Applying a default to keep usage of a lookup
-  // {...}
-  state.root.className,
-);
 ```
 
 ### Usage differences
@@ -129,27 +111,6 @@ state.root.className = mergeClasses(
 ### Cons
 
 - Using the lookup object pattern for styling will require changes as `undefined` can't be used as an index type
-
-  Proposal:
-
-  ```js
-  const state = { align: undefined } as const;
-
-  const alignMap = {
-    _default: undefined,
-    start: styles.alignStart,
-    center: styles.alignCenter,
-    end: styles.alignEnd,
-    justify: styles.alignJustify,
-  } as const;
-
-  const className = mergeClasses(
-    classNames.root,
-    styles.root,
-    alignMap[props.align ?? '_default']
-  );
-  ```
-
 - Dynamically setting a property value requires explicit usage of `undefined`:
   ```jsx
   <Text font={isNumeric ? 'numeric' : undefined}>
