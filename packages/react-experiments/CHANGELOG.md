@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Fri, 08 Jul 2022 07:36:29 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jul 2022 07:40:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.0)
+
+Tue, 12 Jul 2022 07:40:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.11.0..@fluentui/react-experiments_v8.12.0)
+
+### Minor changes
+
+- feat: Re-export canUseDOM from @fluentui/utilities. ([PR #23847](https://github.com/microsoft/fluentui/pull/23847) by esteban.230@hotmail.com)
+- Bump @fluentui/react to v8.80.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/theme to v2.6.7 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.10 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.3 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-hooks to v8.6.1 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/style-utilities to v8.7.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/utilities to v8.9.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/common-styles to v1.1.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
 
 ## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.11.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Re-export canUseDOM from @fluentui/utilities.",
-  "packageName": "@fluentui/react-charting",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

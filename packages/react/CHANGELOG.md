@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 08 Jul 2022 07:36:28 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jul 2022 07:40:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.80.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.80.0)
+
+Tue, 12 Jul 2022 07:40:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.79.0..@fluentui/react_v8.80.0)
+
+### Minor changes
+
+- feat: Re-export canUseDOM from @fluentui/utilities and remove setSSR from withResponsiveMode tests. ([PR #23847](https://github.com/microsoft/fluentui/pull/23847) by esteban.230@hotmail.com)
+- Bump @fluentui/foundation-legacy to v8.2.10 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.3 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-focus to v8.7.3 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-hooks to v8.6.1 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/style-utilities to v8.7.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/theme to v2.6.7 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/utilities to v8.9.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/common-styles to v1.1.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+
+### Patches
+
+- fix(Combobox): Only set newPendingValue if there is not a matching option and the pendingValue changed. ([PR #23824](https://github.com/microsoft/fluentui/pull/23824) by jspurlin@microsoft.com)
+- feat: add list utilities for reading and writing scroll values ([PR #23813](https://github.com/microsoft/fluentui/pull/23813) by seanmonahan@microsoft.com)
+- feat: Allow SelectionZone attributes to disallow behaviors. ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by tmichon@microsoft.com)
 
 ## [8.79.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.79.0)
 
