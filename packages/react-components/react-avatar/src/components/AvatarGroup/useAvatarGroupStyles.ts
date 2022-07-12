@@ -27,15 +27,6 @@ const useStyles = makeStyles({
       backgroundColor: 'CanvasText',
     },
   },
-  focusIndicator: createCustomFocusIndicatorStyle(
-    {
-      ...shorthands.borderColor('transparent'),
-      outlineColor: tokens.colorStrokeFocus2,
-      outlineWidth: tokens.strokeWidthThick,
-      outlineStyle: 'solid',
-    },
-    { selector: 'focus-within' },
-  ),
   overflowSurface: {
     ...shorthands.padding(0),
   },
@@ -77,6 +68,11 @@ const useOverflowButtonStyles = makeStyles({
     outlineColor: tokens.colorStrokeFocus2,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
+  }),
+
+  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
+  pieFocusIndicator: createCustomFocusIndicatorStyle({
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
   }),
 
   states: {
@@ -133,7 +129,6 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
     styles.base,
     layout === 'pie' && styles.pie,
     layout === 'pie' && sizeStyles[size],
-    layout === 'pie' && styles.focusIndicator,
     state.root.className,
   );
 
@@ -205,6 +200,7 @@ export const useAvatarGroupStyles_unstable = (state: AvatarGroupState): AvatarGr
       ...overflowButtonClasses,
       layout !== 'pie' && overflowButtonStyles.states,
       layout !== 'pie' && overflowButtonStyles.focusIndicator,
+      layout === 'pie' && overflowButtonStyles.pieFocusIndicator,
       layout === 'pie' && overflowButtonStyles.pie,
       groupChildClassName,
       state.overflowButton.className,
