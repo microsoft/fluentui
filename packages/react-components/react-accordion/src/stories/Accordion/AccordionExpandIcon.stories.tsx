@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Add20Filled, Subtract20Filled } from '@fluentui/react-icons';
 import {
-  AccordionItem,
-  AccordionHeader,
-  AccordionPanel,
   Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
   AccordionToggleEventHandler,
 } from '@fluentui/react-components';
 
