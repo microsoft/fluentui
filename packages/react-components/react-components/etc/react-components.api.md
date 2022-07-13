@@ -4,6 +4,7 @@
 
 ```ts
 
+import { __css } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -519,6 +520,8 @@ import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
+
+export { __css }
 
 export { __styles }
 
@@ -1529,7 +1532,6 @@ export { useTextarea_unstable }
 export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
-
 
 export { useThemeClassName }
 
