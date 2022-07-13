@@ -421,13 +421,7 @@ const RegistrationFormInputsAccessibility = () => {
           )}
 
           <Label htmlFor="securityCode">Your security code:</Label>
-          <Input
-            type="text"
-            id="securityCode"
-            name="securityCode"
-            value={generateSecurityCode()}
-            input={{ readOnly: true }}
-          />
+          <Input type="text" id="securityCode" name="securityCode" value={generateSecurityCode()} readOnly />
 
           <Button type="submit">Register</Button>
         </form>
