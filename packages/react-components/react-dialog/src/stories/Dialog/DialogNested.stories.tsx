@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@fluentui/react-dialog';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogActions } from '@fluentui/react-dialog';
 import type { DialogProps } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
@@ -12,19 +12,21 @@ export const Nested = (props: Partial<DialogProps>) => {
         </DialogTrigger>
         <DialogContent aria-label="label">
           <DialogTitle>Dialog Title</DialogTitle>
-          Dialog Content
-          <Dialog onOpenChange={console.log}>
-            <DialogTrigger>
-              <Button>Open inner dialog</Button>
-            </DialogTrigger>
-            <DialogContent aria-label="label">
-              <DialogTitle>Inner Dialog Title</DialogTitle>
-              Dialog Content
-              {/* <DialogTrigger action="close">
-                <Button>Close dialog</Button>
-              </DialogTrigger> */}
-            </DialogContent>
-          </Dialog>
+          <DialogActions>
+            <Dialog onOpenChange={console.log}>
+              <DialogTrigger>
+                <Button>Open inner dialog</Button>
+              </DialogTrigger>
+              <DialogContent aria-label="label">
+                <DialogTitle>Inner Dialog Title</DialogTitle>
+                <DialogActions>
+                  <DialogTrigger action="close">
+                    <Button>Close dialog</Button>
+                  </DialogTrigger>
+                </DialogActions>
+              </DialogContent>
+            </Dialog>
+          </DialogActions>
         </DialogContent>
       </Dialog>
     </>

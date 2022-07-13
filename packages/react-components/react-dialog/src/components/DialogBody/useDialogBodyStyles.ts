@@ -14,12 +14,13 @@ export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    flexDirection: 'row',
+    // display: 'flex',
+    // flexDirection: 'row',
     alignItems: 'start',
     width: '100%',
     height: 'fit-content',
     minHeight: '32px',
+    boxSizing: 'border-box',
     ...shorthands.padding('0', DIALOG_CONTENT_PADDING),
     ...typographyStyles.body1,
   },

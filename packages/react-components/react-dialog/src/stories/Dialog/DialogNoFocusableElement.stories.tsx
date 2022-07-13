@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from '@fluentui/react-dialog';
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogBody } from '@fluentui/react-dialog';
 import type { DialogProps } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
@@ -12,8 +12,10 @@ export const NoFocusableElement = (props: Partial<DialogProps>) => {
         </DialogTrigger>
         <DialogContent aria-label="label">
           <DialogTitle>Dialog Title</DialogTitle>
-          <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
-          <p>Escape key and overlay click still works to ensure this modal can be closed</p>
+          <DialogBody>
+            <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
+            <p>Escape key and overlay click still works to ensure this modal can be closed</p>
+          </DialogBody>
         </DialogContent>
       </Dialog>
       <Dialog modalType="non-modal" {...props}>
@@ -22,8 +24,10 @@ export const NoFocusableElement = (props: Partial<DialogProps>) => {
         </DialogTrigger>
         <DialogContent aria-label="label">
           <DialogTitle closeButton={null}>Dialog Title</DialogTitle>
-          <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
-          <p>Escape key still works to ensure this modal can be closed</p>
+          <DialogBody>
+            <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
+            <p>Escape key still works to ensure this modal can be closed</p>
+          </DialogBody>
         </DialogContent>
       </Dialog>
     </>

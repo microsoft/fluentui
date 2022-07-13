@@ -7,6 +7,7 @@ export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { Nested } from './DialogNested.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
+export { ChangeFocus } from './DialogChangeFocus.stories';
 
 export default {
   title: 'Components/Dialog',
