@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix cherry-pick of FocusTrapZone changes",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
