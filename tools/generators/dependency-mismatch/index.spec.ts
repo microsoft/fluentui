@@ -117,7 +117,7 @@ describe('dependency-mismatch generator', () => {
     `);
   });
 
-  it('should ignore dependencies not in workspace', async () => {
+  it('should ignore 3rd party packages/dependencies', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(appTree, {
       name: 'react',
       version: '8.0.0',
