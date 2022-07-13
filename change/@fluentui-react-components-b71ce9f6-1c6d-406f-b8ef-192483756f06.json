@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "feat: re-export `__css` from Griffel",
   "packageName": "@fluentui/react-components",
   "email": "olfedias@microsoft.com",
