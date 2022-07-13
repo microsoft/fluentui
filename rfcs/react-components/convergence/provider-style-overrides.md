@@ -77,6 +77,7 @@ const AppWrapper = () => {
 - 👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
 
 - 👎 Extra effort to override one single component
+- 👍/👎 `TextDirectionProvider` should be re-exported
 
 ### Specific API for overriding provider styles
 
