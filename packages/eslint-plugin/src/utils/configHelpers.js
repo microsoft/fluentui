@@ -240,4 +240,27 @@ module.exports = {
 
     return packageJson;
   },
+
+  /**
+   * Gets a set of v9 packages that are currently being exported as unstable from @fluentui/react-components.
+   * @param {string} root folder of git repo.
+   * @returns {Set<string>} Returns a set of v9 packages that are currently unstable.
+   */
+  getV9UnstablePackages: (/** @type {string} */ root) => {
+    const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
+    const v9ProjectMetaData = nxWorkspace.projects['@fluentui/react-components'];
+    const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot, 'unstable', 'index.ts');
+    const unstableV9Packages = new Set();
+    fs.readFileSync(v9PackagePath)
+      .toString()
+      .split(' ')
+      .forEach(str => {
+        if (str.includes('@fluentui')) {
+          const pkgName = str.split(';')[0].slice(1, -1);
+          unstableV9Packages.add(pkgName);
+        }
+      });
+
+    return unstableV9Packages;
+  },
 };

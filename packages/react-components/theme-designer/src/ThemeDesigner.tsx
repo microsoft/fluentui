@@ -14,22 +14,16 @@ import { Content } from './components/Content/Content';
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
 
-  const [state, dispatchState] = useThemeDesignerReducer();
+  const [appState, dispatchAppState] = useThemeDesignerReducer();
 
-  const { brand, theme, isDark, overrides } = state;
+  const { brand, isDark, overrides } = appState;
 
   return (
     <FluentProvider theme={teamsLightTheme}>
       <div className={styles.root}>
         <Nav className={styles.nav} brand={brand} isDark={isDark} overrides={overrides} />
-        <Sidebar className={styles.sidebar} dispatchState={dispatchState} />
-        <Content
-          className={styles.content}
-          brand={brand}
-          theme={{ ...theme, ...overrides }}
-          isDark={state.isDark}
-          dispatchState={dispatchState}
-        />
+        <Sidebar className={styles.sidebar} dispatchAppState={dispatchAppState} />
+        <Content className={styles.content} appState={appState} dispatchAppState={dispatchAppState} />
       </div>
     </FluentProvider>
   );

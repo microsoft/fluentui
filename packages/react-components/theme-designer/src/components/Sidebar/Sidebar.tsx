@@ -9,7 +9,7 @@ import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  dispatchState: React.Dispatch<DispatchTheme>;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -80,21 +80,21 @@ export const Sidebar: React.FC<SidebarProps> = props => {
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     if (data.value === 'edit') {
-      props.dispatchState({ type: 'Custom', customAttributes: formState, overrides: {} });
+      props.dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
       setTheme('Custom');
     }
     setTab(data.value);
   };
 
-  const [theme, setTheme] = React.useState<string>('Teams Light');
+  const [theme, setTheme] = React.useState<string>('Teams');
+  const [isDark, setIsDark] = React.useState<boolean>(false);
 
   const [formState, setFormState] = React.useState<CustomAttributes>({
     keyColor: '#006bc7',
     hueTorsion: 0,
     darkCp: 0.66,
     lightCp: 0.33,
-    isDark: false,
   });
 
   return (
@@ -112,19 +112,15 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           sidebarId={sidebarId}
           theme={theme}
           setTheme={setTheme}
-          dispatchState={props.dispatchState}
+          dispatchAppState={props.dispatchAppState}
           setTab={setTab}
           formState={formState}
-        />
-      )}
-      {tab === 'edit' && (
-        <EditTab
-          sidebarId={sidebarId}
-          dispatchState={props.dispatchState}
-          formState={formState}
           setFormState={setFormState}
+          isDark={isDark}
+          setIsDark={setIsDark}
         />
       )}
+      {tab === 'edit' && <EditTab />}
     </div>
   );
 };

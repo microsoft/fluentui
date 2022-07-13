@@ -14,25 +14,25 @@ const ShadowBox: React.FunctionComponent<
     shadow: string;
     isBrand: boolean;
   }
-> = props => (
+> = ({ shadow, isBrand, ...rest }) => (
   <div
-    {...props}
+    {...rest}
     style={{
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
-      boxShadow: props.shadow,
+      boxShadow: shadow,
       minHeight: '2rem',
       fontFamily: 'monospace',
       fontSize: 10,
-      ...(props.isBrand && {
+      ...(isBrand && {
         backgroundColor: theme.light.colorBrandBackground,
         color: theme.light.colorNeutralForegroundOnBrand,
       }),
     }}
   >
-    {props.shadow.split('),').map((line, index, arr) => {
+    {shadow.split('),').map((line, index, arr) => {
       const value = index < arr.length - 1 ? line + ')' : line;
       return <div key={value}>{value}</div>;
     })}

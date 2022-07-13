@@ -128,15 +128,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       },
     };
     return (
-      <OverflowSet
-        {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}
-        items={data.primary}
-        overflowItems={data.overflow}
-        onRenderItem={this._renderButton}
-        onRenderOverflowButton={this._renderOverflowItems}
-        {...overflowProps}
-        styles={{ ...rootStyles, ...overflowProps?.styles }}
-      />
+      <FocusZone {...(allowFocusOnLegends && { role: 'listbox', 'aria-label': 'Legends' })}>
+        <OverflowSet
+          items={data.primary}
+          overflowItems={data.overflow}
+          onRenderItem={this._renderButton}
+          onRenderOverflowButton={this._renderOverflowItems}
+          {...overflowProps}
+          styles={{ ...rootStyles, ...overflowProps?.styles }}
+        />
+      </FocusZone>
     );
   };
 

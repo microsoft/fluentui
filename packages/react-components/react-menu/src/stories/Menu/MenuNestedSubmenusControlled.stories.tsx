@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
-
-import { Button } from '@fluentui/react-button';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import type { MenuProps } from '@fluentui/react-components';
 
 const EditorLayoutSubMenu = () => {
   const [open, setOpen] = React.useState(false);

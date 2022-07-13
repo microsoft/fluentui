@@ -1,4 +1,4 @@
-import { Image } from '@fluentui/react-image';
+import { Image } from '@fluentui/react-components';
 import type { Meta } from '@storybook/react';
 import descriptionMd from './ImageDescription.md';
 import bestPracticesMd from './ImageBestPractices.md';

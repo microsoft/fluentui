@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { Menu, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
-
-import { Button } from '@fluentui/react-button';
-import { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { Button, Menu, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import type { MenuProps, PositioningImperativeRef } from '@fluentui/react-components';
 
 export const AnchorToCustomTarget = () => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);

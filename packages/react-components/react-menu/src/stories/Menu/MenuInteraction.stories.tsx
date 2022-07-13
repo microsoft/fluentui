@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 import {
   bundleIcon,
   ClipboardPasteRegular,
@@ -10,6 +9,7 @@ import {
   CopyRegular,
   CopyFilled,
 } from '@fluentui/react-icons';
+import type { MenuProps } from '@fluentui/react-components';
 
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
