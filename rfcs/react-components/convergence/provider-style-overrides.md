@@ -4,7 +4,7 @@
 
 ## Summary
 
-Proposes two methods of overriding the default styles on the `FluentProvider`
+Proposes two methods of overriding the default styles on the `FluentProvider`.
 
 ## Problem statement
 
