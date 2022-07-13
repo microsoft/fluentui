@@ -21,6 +21,26 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Dialog: ForwardRefComponent<DialogProps>;
 
 // @public
+export const DialogActions: ForwardRefComponent<DialogActionsProps>;
+
+// @public (undocumented)
+export const dialogActionsClassName = "fui-DialogActions";
+
+// @public (undocumented)
+export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
+
+// @public
+export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {};
+
+// @public (undocumented)
+export type DialogActionsSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type DialogActionsState = ComponentState<DialogActionsSlots>;
+
+// @public
 export const DialogBody: ForwardRefComponent<DialogBodyProps>;
 
 // @public (undocumented)
@@ -124,6 +144,9 @@ export type DialogTriggerState = {
 export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
 
 // @public
+export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.Element;
+
+// @public
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
@@ -137,6 +160,12 @@ export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactE
 
 // @public
 export const useDialog_unstable: (props: DialogProps, ref: React_2.Ref<HTMLElement>) => DialogState;
+
+// @public
+export const useDialogActions_unstable: (props: DialogActionsProps, ref: React_2.Ref<HTMLElement>) => DialogActionsState;
+
+// @public
+export const useDialogActionsStyles_unstable: (state: DialogActionsState) => DialogActionsState;
 
 // @public
 export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<HTMLElement>) => DialogBodyState;

@@ -42,3 +42,12 @@ export {
   renderDialogBody_unstable,
 } from './DialogBody';
 export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './DialogBody';
+
+export {
+  DialogActions,
+  dialogActionsClassNames,
+  useDialogActionsStyles_unstable,
+  useDialogActions_unstable,
+  renderDialogActions_unstable,
+} from './DialogActions';
+export type { DialogActionsProps, DialogActionsSlots, DialogActionsState } from './DialogActions';
