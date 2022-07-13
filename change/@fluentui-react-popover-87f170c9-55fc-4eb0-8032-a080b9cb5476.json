@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "use \"useId\" in stories for id generation",
-  "packageName": "@fluentui/react-popover",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -3,6 +3,7 @@ import { createPriorityQueue } from './priorityQueue';
 import type { OverflowGroupState, OverflowItemEntry, OverflowManager, ObserveOptions } from './types';
 
 /**
+ * @internal
  * @returns overflow manager instance
  */
 export function createOverflowManager(): OverflowManager {

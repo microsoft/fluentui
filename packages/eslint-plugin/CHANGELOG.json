@@ -2,6 +2,66 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.11.0",
+      "version": "1.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9d99c66f0a0fedc1757ea44accc09f9c07d5845a",
+            "comment": "chore: use no-restricted-import rule for v9 lint config."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Jul 2022 07:37:12 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.10.0",
+      "version": "1.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b2fa23f1083b77f8a73667db10cbe1553f893af1",
+            "comment": "feat: add custom no-restricted-imports rule with fixer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.1",
+      "version": "1.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "680885f2f33f62bc891d1abaa0ad8e6196903481",
+            "comment": "fix(eslint-plugin): move ban-context to react config from base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 07:42:24 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "chore: new eslint rule: `ban-context-export`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 May 2022 07:41:14 GMT",
       "tag": "@fluentui/eslint-plugin_v1.9.0",
       "version": "1.9.0",

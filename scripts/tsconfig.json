@@ -13,5 +13,5 @@
     "types": ["node", "webpack-env"]
   },
   "include": ["."],
-  "exclude": ["./create-package/plop-templates*"]
+  "exclude": ["./create-package/plop-templates*", "cypress.config.ts"]
 }

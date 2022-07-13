@@ -1,6 +1,6 @@
 # @fluentui/react-link
 
-**Link components for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**Link components for [Fluent UI](https://react.fluentui.dev/)**
 
 Links reference data that a user can follow by clicking or tapping it.
 
@@ -23,7 +23,7 @@ import { Link } from '@fluentui/react-components';
 <Link as="button" appearance="subtle">This is a link</Link>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 
@@ -36,4 +36,4 @@ See [SPEC.md](./SPEC.md).
 
 ### Migration Guide
 
-If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest SpinButton implementation.
+If you're upgrading to Fluent UI v9 see [MIGRATION.md](./MIGRATION.md) for guidance on updating to the latest Link implementation.

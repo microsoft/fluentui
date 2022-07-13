@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jul 2022 07:40:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.9.0)
+
+Tue, 12 Jul 2022 07:40:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.8.3..@fluentui/utilities_v8.9.0)
+
+### Minor changes
+
+- feat: Add canUseDOM, deprecate setSRR, replace setSSR's functionality with a warning, and replace all _isSSR checks with canUseDOM. ([PR #23847](https://github.com/microsoft/fluentui/pull/23847) by esteban.230@hotmail.com)
 
 ## [8.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.8.3)
 

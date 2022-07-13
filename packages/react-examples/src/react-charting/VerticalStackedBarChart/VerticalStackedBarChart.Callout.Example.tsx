@@ -189,7 +189,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
 
     return (
       <>
-        <label htmlFor="changeWidth_Callout">change Width:</label>
+        <label htmlFor="changeWidth_Callout">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -199,7 +199,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Callout">change Height:</label>
+        <label htmlFor="changeHeight_Callout">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
@@ -244,7 +244,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             }
             yMaxValue={120}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             margins={{ left: 50 }}
             colors={['red', 'white', 'green', 'black']}

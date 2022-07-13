@@ -24,10 +24,10 @@ export type LabelProps = Omit<ComponentProps<LabelSlots>, 'required'> & {
   size?: 'small' | 'medium' | 'large';
 
   /**
-   * A label supports semibold/strong fontweight.
-   * @default false
+   * A label supports regular and semibold fontweight.
+   * @default regular
    */
-  strong?: boolean;
+  weight?: 'regular' | 'semibold';
 };
 
 export type LabelSlots = {
@@ -38,4 +38,4 @@ export type LabelSlots = {
 /**
  * State used in rendering Label
  */
-export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'strong'>>;
+export type LabelState = ComponentState<LabelSlots> & Required<Pick<LabelProps, 'disabled' | 'size' | 'weight'>>;

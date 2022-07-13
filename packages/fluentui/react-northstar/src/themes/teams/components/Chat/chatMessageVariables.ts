@@ -40,7 +40,7 @@ export interface ChatMessageVariables {
 }
 
 export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
-  actionMenuBoxShadow: siteVars.shadowLevel1,
+  actionMenuBoxShadow: siteVars.shadow8,
   actionMenuPositionRight: pxToRem(5),
   actionMenuPositionTop: pxToRem(-30),
   authorColor: siteVars.colorScheme.default.foreground,

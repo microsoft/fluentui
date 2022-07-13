@@ -1,10 +1,25 @@
 import * as React from 'react';
-import type { ProviderContextValue } from './ProviderContext.types';
 
-export const ProviderContext = React.createContext<ProviderContextValue>({
+export type ProviderContextValue = {
+  /** Sets the direction of text & generated styles. */
+  dir: 'ltr' | 'rtl';
+
+  /** Provides the document, can be undefined during SSR render. */
+  targetDocument?: Document;
+};
+
+/**
+ * @internal
+ */
+const ProviderContext = React.createContext<ProviderContextValue>({
   targetDocument: typeof document === 'object' ? document : undefined,
   dir: 'ltr',
 });
+
+/**
+ * @internal
+ */
+export const Provider = ProviderContext.Provider;
 
 export function useFluent(): ProviderContextValue {
   return React.useContext(ProviderContext);

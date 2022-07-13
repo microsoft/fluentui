@@ -424,15 +424,10 @@ export class AppColorBlock extends FASTElement {
 
   @attr color: string;
   private colorChanged(): void {
-    this.updateColor();
+    DOM.queueUpdate(() => this.updateColor());
   }
 
   @attr({ attribute: 'layer-name' }) layerName?: string;
-
-  public connectedCallback() {
-    super.connectedCallback();
-    DOM.queueUpdate(() => this.updateColor());
-  }
 
   private updateColor(): void {
     if (this.color && this.$fastController.isConnected) {

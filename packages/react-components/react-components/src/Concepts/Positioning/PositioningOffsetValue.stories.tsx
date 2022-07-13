@@ -17,17 +17,14 @@ export const OffsetValue = () => {
         <input onChange={e => setMainAxis(parseInt(e.target.value, 10))} value={mainAxis} type="number" />
       </label>
 
-      <Popover positioning={{ position: 'after', offset: { crossAxis, mainAxis } }} noArrow>
+      <Popover positioning={{ position: 'after', offset: { crossAxis, mainAxis } }}>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
-      <Popover
-        positioning={{ position: 'after', offset: () => ({ crossAxis: crossAxis, mainAxis: mainAxis }) }}
-        noArrow
-      >
+      <Popover positioning={{ position: 'after', offset: () => ({ crossAxis: crossAxis, mainAxis: mainAxis }) }}>
         <PopoverTrigger>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>

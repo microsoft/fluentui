@@ -114,7 +114,6 @@ import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
@@ -319,6 +318,7 @@ import { ShadowTokens } from '@fluentui/react-theme';
 import { shorthands } from '@griffel/react';
 import { Slider } from '@fluentui/react-slider';
 import { sliderClassNames } from '@fluentui/react-slider';
+import { sliderCSSVars } from '@fluentui/react-slider';
 import { SliderOnChangeData } from '@fluentui/react-slider';
 import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
@@ -429,7 +429,7 @@ import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
@@ -499,7 +499,6 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
-import { useSSRContext } from '@fluentui/react-utilities';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -510,12 +509,13 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
-import { useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -739,8 +739,6 @@ export { FontWeightTokens }
 export { ForwardRefComponent }
 
 export { getNativeElementProps }
-
-export { getNativeProps }
 
 export { getPartitionedNativeProps }
 
@@ -1150,6 +1148,8 @@ export { Slider }
 
 export { sliderClassNames }
 
+export { sliderCSSVars }
+
 export { SliderOnChangeData }
 
 export { SliderProps }
@@ -1510,8 +1510,6 @@ export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
 
-export { useSSRContext }
-
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
@@ -1532,6 +1530,7 @@ export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
 
+
 export { useThemeClassName }
 
 export { useToggleButton_unstable }
@@ -1543,6 +1542,8 @@ export { useToggleState }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
+
+export { useTooltipVisibility }
 
 export { VerticalSpacingTokens }
 

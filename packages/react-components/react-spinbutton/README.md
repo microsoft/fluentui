@@ -1,10 +1,10 @@
 # @fluentui/react-spinbutton
 
-**SpinButton component for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**SpinButton component for [Fluent UI React](https://react.fluentui.dev/)**
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
-SpinButtons are used to allow numeric input bounded between minimum and maximum values with button controls to increment and decrement the input value by some step amount. Values can also be manipulated via the keyboard.
+SpinButtons are used to allow numeric input bounded between minimum and maximum values with buttons to increment and decrement the input value. Values can also be manipulated via the keyboard.
 
 ### Usage
 
@@ -21,7 +21,7 @@ import { SpinButton } from '@fluentui/react-spinbutton';
 <SpinButton value={value} onChange={onSpinButtonChange}/>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

@@ -9,13 +9,35 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 export {
+  AvatarGroup,
+  AvatarGroupItem,
+  avatarGroupClassNames,
+  avatarGroupItemClassNames,
+  renderAvatarGroup_unstable,
+  renderAvatarGroupItem_unstable,
+  useAvatarGroup_unstable,
+  useAvatarGroupItem_unstable,
+  useAvatarGroupStyles_unstable,
+  useAvatarGroupItemStyles_unstable,
+} from '@fluentui/react-avatar';
+export type {
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+  AvatarGroupItemProps,
+  AvatarGroupItemSlots,
+  AvatarGroupItemState,
+} from '@fluentui/react-avatar';
+export {
   Card,
   CardFooter,
   CardHeader,
   CardPreview,
   cardClassNames,
+  cardCSSVars,
   cardFooterClassNames,
   cardHeaderClassNames,
+  cardHeaderCSSVars,
   cardPreviewClassNames,
   renderCard_unstable,
   renderCardFooter_unstable,
@@ -45,6 +67,57 @@ export type {
   CardState,
 } from '@fluentui/react-card';
 export {
+  Combobox,
+  renderCombobox_unstable,
+  comboboxClassNames,
+  useComboboxStyles_unstable,
+  useCombobox_unstable,
+  Dropdown,
+  renderDropdown_unstable,
+  dropdownClassNames,
+  useDropdownStyles_unstable,
+  useDropdown_unstable,
+  Listbox,
+  renderListbox_unstable,
+  listboxClassNames,
+  useListboxStyles_unstable,
+  useListbox_unstable,
+  Option,
+  renderOption_unstable,
+  optionClassNames,
+  useOptionStyles_unstable,
+  useOption_unstable,
+  OptionGroup,
+  renderOptionGroup_unstable,
+  optionGroupClassNames,
+  useOptionGroupStyles_unstable,
+  useOptionGroup_unstable,
+} from '@fluentui/react-combobox';
+export type {
+  ComboboxProps,
+  ComboboxContextValues,
+  ComboboxOpenChangeData,
+  ComboboxOpenEvents,
+  ComboboxSlots,
+  ComboboxState,
+  DropdownProps,
+  DropdownContextValues,
+  DropdownOpenChangeData,
+  DropdownOpenEvents,
+  DropdownSlots,
+  DropdownState,
+  ListboxContextValues,
+  ListboxProps,
+  ListboxSlots,
+  ListboxState,
+  OptionProps,
+  OptionSlots,
+  OptionState,
+  OptionGroupProps,
+  OptionGroupSlots,
+  OptionGroupState,
+} from '@fluentui/react-combobox';
+export {
   Select,
   renderSelect_unstable,
   selectClassNames,
@@ -69,3 +142,41 @@ export type {
   SpinButtonSpinState,
   SpinButtonBounds,
 } from '@fluentui/react-spinbutton';
+
+export {
+  Toolbar,
+  ToolbarDivider,
+  ToolbarToggleButton,
+  renderToolbar_unstable,
+  toolbarClassNames,
+  useToolbar_unstable,
+  useToolbarDividerStyles_unstable,
+  useToolbarStyles_unstable,
+} from '@fluentui/react-toolbar';
+
+export type {
+  ToolbarButtonProps,
+  ToolbarButtonState,
+  ToolbarContextValue,
+  ToolbarContextValues,
+  ToolbarDividerProps,
+  ToolbarDividerState,
+  ToolbarProps,
+  ToolbarSlots,
+  ToolbarState,
+  ToolbarToggleButtonProps,
+  ToolbarToggleButtonState,
+} from '@fluentui/react-toolbar';
+
+export {
+  Overflow,
+  OverflowItem,
+  useIsOverflowGroupVisible,
+  useIsOverflowItemVisible,
+  useOverflowMenu,
+  DATA_OVERFLOWING,
+  DATA_OVERFLOW_MENU,
+  DATA_OVERFLOW_ITEM,
+} from '@fluentui/react-overflow';
+
+export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

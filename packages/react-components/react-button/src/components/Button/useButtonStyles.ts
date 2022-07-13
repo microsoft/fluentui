@@ -75,12 +75,17 @@ const useRootStyles = makeStyles({
       },
 
       ':hover': {
+        backgroundColor: 'HighlightText',
         ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
 
       ':hover:active': {
+        backgroundColor: 'HighlightText',
+        ...shorthands.borderColor('Highlight'),
         color: 'Highlight',
+        forcedColorAdjust: 'none',
       },
     },
   },

@@ -1,8 +1,78 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Mon, 23 May 2022 18:56:51 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jun 2022 17:39:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0..@fluentui/react-switch_v9.0.1)
+
+### Patches
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-label to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-tabster to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0)
+
+Tue, 28 Jun 2022 15:14:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.14..@fluentui/react-switch_v9.0.0)
+
+### Patches
+
+- feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- Bump @fluentui/react-label to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+
+### Changes
+
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+- README update. ([PR #23439](https://github.com/microsoft/fluentui/pull/23439) by Humberto.Morimoto@microsoft.com)
+- chore: Update @fluentui/react-icons to latest version ([PR #23459](https://github.com/microsoft/fluentui/pull/23459) by olfedias@microsoft.com)
+- fix: Making thumb be vertically centered in Switch. ([PR #23712](https://github.com/microsoft/fluentui/pull/23712) by Humberto.Morimoto@microsoft.com)
+- README, spec and migration guide cleanup. ([PR #23396](https://github.com/microsoft/fluentui/pull/23396) by Humberto.Morimoto@microsoft.com)
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+
+## [9.0.0-rc.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.14)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.13..@fluentui/react-switch_v9.0.0-rc.14)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-rc.6 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.14 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+
+## [9.0.0-rc.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.13)
+
+Tue, 31 May 2022 21:28:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.12..@fluentui/react-switch_v9.0.0-rc.13)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-label to v9.0.0-rc.5 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.13 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.12)
+
+Thu, 26 May 2022 21:01:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.0.0-rc.11..@fluentui/react-switch_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.0.0-rc.4 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.12 ([PR #23267](https://github.com/microsoft/fluentui/pull/23267) by beachball)
 
 ## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.0.0-rc.11)
 

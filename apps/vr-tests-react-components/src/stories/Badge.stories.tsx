@@ -3,20 +3,18 @@ import * as React from 'react';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-const badgeColors: Required<BadgeProps>['color'][] = [
-  'brand',
-  'danger',
-  'important',
-  'informative',
-  'severe',
-  'subtle',
-  'success',
-  'warning',
-];
+type ValueArrays<T> = {
+  [K in keyof T]: T[K][];
+};
 
-const badgeAppearances: Required<BadgeProps>['appearance'][] = ['filled', 'outline', 'tint', 'ghost'];
+const propValues: ValueArrays<Pick<Required<BadgeProps>, 'size' | 'color' | 'appearance' | 'shape'>> = {
+  size: ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'],
+  color: ['brand', 'danger', 'severe', 'warning', 'success', 'important', 'informative', 'subtle'],
+  appearance: ['filled', 'outline', 'tint', 'ghost'],
+  shape: ['circular', 'rounded', 'square'],
+};
 
 const useStyles = makeStyles({
   container: {
@@ -38,6 +36,30 @@ const useStyles = makeStyles({
   brandContainer: {
     backgroundColor: tokens.colorBrandBackgroundStatic,
   },
+
+  groupSet: {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    ...shorthands.padding(0, tokens.spacingHorizontalL),
+    rowGap: tokens.spacingVerticalL,
+  },
+
+  group: {
+    display: 'inline-flex',
+    flexDirection: 'column',
+    alignItems: 'start',
+    rowGap: tokens.spacingVerticalS,
+  },
+
+  groupLabel: {
+    ...typographyStyles.subtitle2Stronger,
+  },
+
+  row: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    columnGap: tokens.spacingHorizontalS,
+  },
 });
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
@@ -53,7 +75,7 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
   badges.set('informative', []);
   badges.set('subtle', []);
 
-  badgeColors.forEach(color => {
+  propValues.color.forEach(color => {
     const circularWithText = (
       <Badge color={color} appearance={appearance}>
         1
@@ -109,24 +131,66 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
   );
 };
 
-const appearanceStories = storiesOf('Badge Converged', module);
+const BadgeSampleRow: React.FC<BadgeProps> = props => {
+  const styles = useStyles();
 
-badgeAppearances.forEach(appearance => {
-  appearanceStories.addStory(appearance, () => <BadgeAppearanceTemplate appearance={appearance} />, {
-    includeRtl: true,
+  // Text content is not supported for tiny and extra-small
+  if (props.size === 'tiny' || props.size === 'extra-small') {
+    return (
+      <div className={styles.row}>
+        <Badge {...props} icon={props.size === 'tiny' ? null : <CircleRegular />} />
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.row}>
+      <Badge {...props}>1</Badge>
+      <Badge {...props} icon={<CircleRegular />} />
+      <Badge {...props}>BADGE</Badge>
+      <Badge {...props} icon={<CircleRegular />}>
+        BADGE
+      </Badge>
+      <Badge {...props} icon={<CircleRegular />} iconPosition="after">
+        BADGE
+      </Badge>
+      {props.children}
+    </div>
+  );
+};
+
+const badgeStories = storiesOf('Badge Converged', module);
+
+// appearance stories
+propValues.appearance.forEach(appearance => {
+  badgeStories.addStory(appearance, () => <BadgeAppearanceTemplate appearance={appearance} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   });
 });
 
-storiesOf('Badge Converged - sizes', module).addStory(
-  'default',
-  () => (
-    <div style={{ display: 'flex', gap: 10 }}>
-      {(['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as BadgeProps['size'][]).map(size => (
-        <Badge key={size} size={size} />
-      ))}
-    </div>
+// size stories
+propValues.size.forEach(size =>
+  badgeStories.addStory(
+    `size: ${size}`,
+    () => {
+      const styles = useStyles();
+      return (
+        <div className={styles.groupSet}>
+          {propValues.appearance.map(appearance =>
+            // tiny + ghost is not supported
+            size === 'tiny' && appearance === 'ghost' ? null : (
+              <div key={appearance} className={styles.group}>
+                <span className={styles.groupLabel}>appearance: {appearance}</span>
+                {propValues.shape.map(shape => (
+                  <BadgeSampleRow key={shape} shape={shape} appearance={appearance} size={size} />
+                ))}
+              </div>
+            ),
+          )}
+        </div>
+      );
+    },
+    { includeRtl: true },
   ),
-  { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
 );

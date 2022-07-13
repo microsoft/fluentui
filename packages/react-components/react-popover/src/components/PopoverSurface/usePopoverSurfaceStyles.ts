@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   root: {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow16,
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
 

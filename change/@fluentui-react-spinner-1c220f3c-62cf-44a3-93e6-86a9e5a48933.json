@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix Spinner on Firefox: add px units to r values",
-  "packageName": "@fluentui/react-spinner",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "none"
-}

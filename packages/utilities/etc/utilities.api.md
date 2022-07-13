@@ -126,6 +126,9 @@ export const buttonProperties: Record<string, number>;
 export function calculatePrecision(value: number | string): number;
 
 // @public
+export function canUseDOM(): boolean;
+
+// @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
@@ -1165,7 +1168,7 @@ export { setPortalAttribute }
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
-// @public
+// @public @deprecated
 export function setSSR(isEnabled: boolean): void;
 
 // @public @deprecated (undocumented)
