@@ -1,5 +1,7 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { useHasParentContext } from '@fluentui/react-context-selector';
+import { DialogContext } from '../../contexts/dialogContext';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
 export const dialogClassNames: SlotClassNames<DialogSlots> = {
@@ -24,12 +26,13 @@ const useStyles = makeStyles({
  */
 export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
+  const isSubDialog = useHasParentContext(DialogContext);
 
   if (state.overlay) {
     state.overlay.className = mergeClasses(
       dialogClassNames.overlay,
       styles.overlay,
-      state.isSubDialog && styles.subDialogOverlay,
+      isSubDialog && styles.subDialogOverlay,
       state.overlay.className,
     );
   }

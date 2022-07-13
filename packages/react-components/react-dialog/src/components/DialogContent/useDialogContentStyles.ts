@@ -25,6 +25,7 @@ const useStyles = makeStyles({
     maxHeight: '100vh',
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...shorthands.borderRadius('8px'),
     ...shorthands.margin('auto'),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {

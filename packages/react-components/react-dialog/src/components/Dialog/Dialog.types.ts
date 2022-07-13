@@ -75,5 +75,4 @@ export type DialogState = ComponentState<DialogSlots> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;
-    isSubDialog: boolean;
   };

@@ -6,7 +6,8 @@ import type { DialogActionsProps } from './DialogActions.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DialogActions component - TODO: add more docs
+ * `DialogActions` is a container for the actions of the dialog.
+ * Apart from styling, this component does not have other behavior.
  */
 export const DialogActions: ForwardRefComponent<DialogActionsProps> = React.forwardRef((props, ref) => {
   const state = useDialogActions_unstable(props, ref);
