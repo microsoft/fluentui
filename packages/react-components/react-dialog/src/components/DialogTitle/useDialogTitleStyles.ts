@@ -3,6 +3,7 @@ import type { DialogTitleSlots, DialogTitleState } from './DialogTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { typographyStyles } from '@fluentui/react-theme';
+import { DIALOG_CONTENT_PADDING } from '../../contexts/constants';
 
 export const dialogTitleClassNames: SlotClassNames<DialogTitleSlots> = {
   root: 'fui-DialogTitle',
@@ -21,10 +22,10 @@ const useStyles = makeStyles({
     ...typographyStyles.subtitle1,
   },
   rootWithoutCloseButton: {
-    ...shorthands.padding('24px', '24px', '8px', '24px'),
+    ...shorthands.padding(DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING, '8px', DIALOG_CONTENT_PADDING),
   },
   rootWithCloseButton: {
-    ...shorthands.padding('24px', '20px', '8px', '24px'),
+    ...shorthands.padding(DIALOG_CONTENT_PADDING, '20px', '8px', DIALOG_CONTENT_PADDING),
   },
   closeButton: {
     position: 'relative',

@@ -33,3 +33,12 @@ export {
   renderDialogTitle_unstable,
 } from './DialogTitle';
 export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './DialogTitle';
+
+export {
+  DialogBody,
+  dialogBodyClassNames,
+  useDialogBodyStyles_unstable,
+  useDialogBody_unstable,
+  renderDialogBody_unstable,
+} from './DialogBody';
+export type { DialogBodyProps, DialogBodySlots, DialogBodyState } from './DialogBody';

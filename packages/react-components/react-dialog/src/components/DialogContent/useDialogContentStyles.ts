@@ -19,18 +19,18 @@ const useStyles = makeStyles({
     transform: 'translate(-50%, -50%)',
     display: 'flex',
     flexDirection: 'column',
-    width: 'fit-content',
+    width: '100%',
     height: 'fit-content',
     maxWidth: '600px',
     maxHeight: '100vh',
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.borderRadius('8px'),
+    ...shorthands.margin('auto'),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
       width: '100%',
     },
-    ...shorthands.borderRadius('8px'),
-    ...shorthands.margin('auto'),
   },
 });
 
