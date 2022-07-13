@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { DialogOpenChangeArgs, DialogProps, DialogState, DialogModalType } from './Dialog.types';
-import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
-import { Escape } from '@fluentui/keyboard-keys';
+import { DialogContext, DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
 import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
 import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 
 /**
  * Create the state required to render Dialog.
@@ -87,6 +87,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     triggerRef,
     contentRef,
+    isSubDialog: useHasParentContext(DialogContext),
     requestOpenChange,
   };
 };

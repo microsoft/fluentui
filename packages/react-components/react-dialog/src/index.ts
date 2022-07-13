@@ -5,7 +5,7 @@ export {
   useDialogStyles_unstable,
   useDialog_unstable,
 } from './Dialog';
-export type { DialogProps, DialogSlots, DialogState } from './Dialog';
+export type { DialogProps, DialogOpenChangeListener, DialogSlots, DialogState } from './Dialog';
 
 export { DialogTrigger, useDialogTrigger_unstable, renderDialogTrigger_unstable } from './DialogTrigger';
 export type {

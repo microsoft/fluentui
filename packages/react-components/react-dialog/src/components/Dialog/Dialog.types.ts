@@ -27,7 +27,7 @@ export type DialogContextValues = {
   dialog: DialogContextValue;
 };
 
-export type DialogOnOpenChange = (...args: DialogOpenChangeArgs) => void;
+export type DialogOpenChangeListener = (...args: DialogOpenChangeArgs) => void;
 
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
   /**
@@ -63,7 +63,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Callback fired when the component changes value from open state.
    * @default undefined
    */
-  onOpenChange?: DialogOnOpenChange;
+  onOpenChange?: DialogOpenChangeListener;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogContent}.
    * Alternatively can only contain {@link DialogContent} if using trigger outside dialog, or controlling state.
@@ -75,4 +75,5 @@ export type DialogState = ComponentState<DialogSlots> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;
+    isSubDialog: boolean;
   };

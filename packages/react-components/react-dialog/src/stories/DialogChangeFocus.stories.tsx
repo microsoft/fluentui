@@ -1,10 +1,17 @@
 import * as React from 'react';
-import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogBody, DialogActions } from '@fluentui/react-dialog';
+import {
+  Dialog,
+  DialogOpenChangeListener,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogBody,
+  DialogActions,
+} from '@fluentui/react-dialog';
 import type { DialogProps } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
 import { makeStyles } from '@griffel/react';
-import { DialogOnOpenChange } from '../../Dialog';
 
 const useStyles = makeStyles({
   thirdAction: {
@@ -19,10 +26,10 @@ export const ChangeFocus = (props: Partial<DialogProps>) => {
   const styles = useStyles();
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: DialogOnOpenChange = (_, data) => setOpen(data.open);
+  const handleOpenChange: DialogOpenChangeListener = (_, data) => setOpen(data.open);
   React.useEffect(() => {
-    if (open) {
-      buttonRef.current?.focus();
+    if (open && buttonRef.current) {
+      buttonRef.current.focus();
     }
   }, [open]);
   return (
@@ -32,8 +39,8 @@ export const ChangeFocus = (props: Partial<DialogProps>) => {
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogContent aria-label="label">
-          <DialogTitle>Dialog Title</DialogTitle>
-          <DialogBody>Dialog Content</DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogBody>This dialog focus on the second button instead of first</DialogBody>
           <DialogActions>
             <Button className={styles.thirdAction} appearance="outline">
               Third Action

@@ -3,19 +3,18 @@ import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogBody, DialogAc
 import type { DialogProps } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
 
-export const Default = (props: Partial<DialogProps>) => {
+export const Alert = (props: Partial<DialogProps>) => {
   return (
     <>
-      <Dialog {...props}>
+      <Dialog {...props} modalType="alert">
         <DialogTrigger>
-          <Button>Open dialog</Button>
+          <Button>Open Alert dialog</Button>
         </DialogTrigger>
         <DialogContent aria-label="label">
-          <DialogTitle>Dialog title</DialogTitle>
+          <DialogTitle>Alert dialog title</DialogTitle>
           <DialogBody>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
-            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
-            cumque eaque?
+            This dialog cannot be dismissed by clicking on the overlay nor by pressing Escape. Close button should be
+            pressed to dismiss this Alert
           </DialogBody>
           <DialogActions>
             <DialogTrigger>

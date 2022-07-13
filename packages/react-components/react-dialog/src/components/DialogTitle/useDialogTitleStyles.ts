@@ -30,6 +30,7 @@ const useStyles = makeStyles({
   closeButton: {
     position: 'relative',
     lineHeight: '0',
+    cursor: 'pointer',
   },
   closeButtonFocusIndicator: createFocusOutlineStyle(),
   // TODO: this should be extracted to another package

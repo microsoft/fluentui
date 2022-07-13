@@ -21,11 +21,10 @@ const useStyles = makeStyles({
     width: '100%',
     boxSizing: 'border-box',
     ...shorthands.gap('8px'),
-    ...shorthands.padding('8px', DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING),
+    ...shorthands.padding('0', DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING, DIALOG_CONTENT_PADDING),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       flexDirection: 'column',
       alignItems: 'stretch',
-      paddingTop: '12px',
       '> .fui-Button': {
         maxWidth: '100%',
       },

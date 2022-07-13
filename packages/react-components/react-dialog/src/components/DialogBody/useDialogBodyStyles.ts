@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     height: 'fit-content',
     minHeight: '32px',
     boxSizing: 'border-box',
-    ...shorthands.padding('0', DIALOG_CONTENT_PADDING),
+    ...shorthands.padding('0', DIALOG_CONTENT_PADDING, '12px'),
     ...typographyStyles.body1,
   },
 });

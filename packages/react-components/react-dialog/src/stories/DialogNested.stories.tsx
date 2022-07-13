@@ -6,22 +6,22 @@ import { Button } from '@fluentui/react-components';
 export const Nested = (props: Partial<DialogProps>) => {
   return (
     <>
-      <Dialog {...props} onOpenChange={console.log}>
+      <Dialog {...props}>
         <DialogTrigger>
           <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogContent aria-label="label">
-          <DialogTitle>Dialog Title</DialogTitle>
+          <DialogTitle>Dialog title</DialogTitle>
           <DialogActions>
-            <Dialog onOpenChange={console.log}>
+            <Dialog>
               <DialogTrigger>
-                <Button>Open inner dialog</Button>
+                <Button appearance="primary">Open inner dialog</Button>
               </DialogTrigger>
               <DialogContent aria-label="label">
-                <DialogTitle>Inner Dialog Title</DialogTitle>
+                <DialogTitle>Inner dialog title</DialogTitle>
                 <DialogActions>
                   <DialogTrigger action="close">
-                    <Button>Close dialog</Button>
+                    <Button appearance="primary">Close</Button>
                   </DialogTrigger>
                 </DialogActions>
               </DialogContent>
