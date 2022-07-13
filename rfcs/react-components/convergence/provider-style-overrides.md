@@ -123,7 +123,8 @@ const App = () => {
 - 👍 No need to know about provider internals
 - 👍 One time thing to do for `FluentProvider` only if really necessary
 
-- 👎 slightly different API to `makeStyles`
+- 👎 Slightly different API to `makeStyles`
+- 👎 `className` prop will be still exposed so users would be still able to pass classes from `makeStyles()` call
 - 👎 something 'special' to do for one component
 
 ## Discarded Solutions
