@@ -64,9 +64,12 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   messageBars: [
     {
       path: '#',
-      text: <span>🎉 Announcing Fluent UI React v9 stable release! To see more</span>,
-      linkText: 'Fluent Web React v9.',
-      linkUrl: 'https://react.fluentui.dev/',
+      text: (
+        <span>
+          🎉 Announcing Fluent UI React v9 stable release! Visit{' '}
+          <a href="https://react.fluentui.dev/">Fluent UI React v9</a> to see more.
+        </span>
+      ),
       sessionStoragePrefix: 'FluentUI9',
     },
   ],
