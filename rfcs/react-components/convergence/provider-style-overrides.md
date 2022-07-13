@@ -29,9 +29,9 @@ const App = () => {
 };
 ```
 
-The above example is problematic because the `TextDirectionProvider` is rendered
-internally inside the `FluentProvider`. The provider is required to let `makeStyles` know to resolve and apply RTL
-styles to DOM.
+`FluentProvider` renders internally `TextDirectionProvider` (from `@griffel/react`). The `TextDirectionProvider` is required to let `makeStyles` know to when to return RTL classes.
+
+In the example above `makeStyles` is called *outside* `FluentProvider` (and `TextDirectionProvider`) thus will have a wrong value for text direction. This problem is not specific to Fluent UI React and can be faced in other React applications.
 
 While it is possible to override these styles using global CSS in a stylesheet by targeting the provider, that would
 not handle portals which use the same default styles as the closest `FluentProvider` ancestor.
