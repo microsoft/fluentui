@@ -120,7 +120,7 @@ const App = () => {
 
 - 👍 Add styles the same way as the `FluentProvider` currently does it
 - 👍 No need to know about provider internals
-- 👍 One time thing to do for `FluenProvider` only if really necessary
+- 👍 One time thing to do for `FluentProvider` only if really necessary
 
 - 👎 slightly different API to `makeStyles`
 - 👎 something 'special' to do for one component
