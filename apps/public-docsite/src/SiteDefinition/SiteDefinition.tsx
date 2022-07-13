@@ -61,7 +61,23 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/web/fluent-theme', to: '#/controls/web/themes' },
     { from: '#/examples', to: '#/controls/web' },
   ],
-  messageBars: [],
+  messageBars: [
+    {
+      path: '#',
+      text: (
+        <span>
+          <p>🎉 Announcing Fluent UI React v9 stable release!</p>After nearly two years of development today Fluent Team
+          are proud to announce the release of Fluent UI Web-React stable version 9.0!
+          <br />
+          <br />
+          To see more
+        </span>
+      ),
+      linkText: 'Fluent Web React v9.',
+      linkUrl: 'https://react.fluentui.dev/',
+      sessionStoragePrefix: 'FluentUI9',
+    },
+  ],
   // This is defined by loadSite() from @fluentui/public-docsite-setup
   versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };
