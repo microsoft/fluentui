@@ -125,7 +125,8 @@ const App = () => {
 
 - 👎 Slightly different API to `makeStyles`
 - 👎 `className` prop will be still exposed so users would be still able to pass classes from `makeStyles()` call
-- 👎 something 'special' to do for one component
+- 👎 Something 'special' to do for one component i.e. one time API
+- 👎 Additional handling for build time transforms
 
 ## Discarded Solutions
 
