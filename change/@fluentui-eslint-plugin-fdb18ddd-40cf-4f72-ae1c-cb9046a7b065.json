@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: don't forbid package imports from components being exported from react-components/unstable.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}
