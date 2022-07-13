@@ -95,7 +95,7 @@ import { makeStyles, GriffelStyle } from '@griffel/core';
 
 const makeProviderStyles = (providerStyles: GriffelStyle) => {
   return makeStyles({
-    providerOverrides,
+    providerStyles,
   });
 };
 ```
