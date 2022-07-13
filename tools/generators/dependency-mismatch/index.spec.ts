@@ -10,7 +10,7 @@ describe('dependency-mismatch generator', () => {
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();
-    workspaceNpmScope = readWorkspaceConfiguration(appTree).npmScope!;
+    workspaceNpmScope = readWorkspaceConfiguration(appTree).npmScope as string;
   });
 
   it('should fix dependency mismatch', async () => {
