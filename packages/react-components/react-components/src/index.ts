@@ -1,6 +1,7 @@
 // Utilities
 export {
   RendererProvider,
+  __css,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
