@@ -29,7 +29,6 @@ class StandardTree {
 
   private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
   private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
-
   constructor(
     treeData: ITreeChartDataPoint,
     styleClassNames: { link: string; rectNode: string; rectText: string; rectSubText: string; rectmetricText: string },
@@ -220,7 +219,8 @@ class LayeredTree extends StandardTree {
     this.composition = composition;
     this._treeTraversal = _treeTraversal;
   }
-  public createTree() {
+  public createTree(givenLayoutWidth: number | undefined, screenWidth: number) {
+    const layoutWidth = givenLayoutWidth || 75;
     const root = hierarchy(this.treeData, d => {
       return d.children;
     });
@@ -230,7 +230,7 @@ class LayeredTree extends StandardTree {
 
     // Create tree layout, width: 70, height: 90 and add node separation
     const treemap = tree()
-      .nodeSize([75, 50])
+      .nodeSize([layoutWidth, layoutWidth / 1.5])
       .separation((a, b) => {
         return a.parent === root && b.parent === root ? 3.5 : 1;
       });
@@ -246,7 +246,7 @@ class LayeredTree extends StandardTree {
     // Normalise x coordinate by start coordinate 0 with 450
     nodes.forEach(d => {
       d.y = d.depth === 0 ? 10 : d.depth * 130;
-      d.x += 400;
+      d.x += screenWidth / 3;
     });
 
     // <------------------ Traversal section ------------------>
@@ -280,8 +280,8 @@ class LayeredTree extends StandardTree {
           createTreeDataStructure(d);
         });
 
-    const rectHeight = 70;
-    const rectWidth = 220;
+    const rectWidth = layoutWidth * 3;
+    const rectHeight = rectWidth / 3.45;
     const gap: number = 20;
     const parentSet = new Set();
 
@@ -435,8 +435,8 @@ class LayeredTree extends StandardTree {
 
 export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _treeData: ITreeChartDataPoint;
-  private _width: number | undefined;
-  private _height: number | undefined;
+  private _width: number;
+  private _height: number;
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
   private _margin: { left: number; right: number; top: number; bottom: number };
@@ -447,7 +447,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
     this._margin = { top: 30, right: 20, bottom: 30, left: 50 };
-    this._width = this.props.width || 1100;
+    this._width = this.props.width || 1500;
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
     this._composition = this.props?.composition;
@@ -472,12 +472,30 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
     this.createTreeChart();
 
     this.setState({
-      _width: this.props.width || 1100,
+      _width: this.props.width || 1500,
       _height: this.props.height || 700,
     });
   }
 
+  public componentDidUpdate(prevProps: ITreeProps): void {
+    if (prevProps.layoutWidth !== this.props.layoutWidth) {
+      const svgText = selectAll('text');
+      const svgRect = selectAll('rect');
+      const svgLink = selectAll('path');
+
+      if (this._nodeElements.length === 0 && this._linkElements.length === 0) {
+        svgText.remove();
+        svgRect.remove();
+        svgLink.remove();
+      }
+
+      this.createTreeChart();
+    }
+  }
   public createTreeChart() {
+    const nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
+    const linkElements: Array<React.SVGProps<SVGPathElement>> = [];
+
     // Create styleClass object to access it in parent class
     const styleClassNames = {
       link: this._classNames.link,
@@ -486,17 +504,18 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       rectSubText: this._classNames.rectSubText,
       rectmetricText: this._classNames.rectMetricText,
     };
-
     // Instantiate inherited class and call createTree function for the object
     const treeObject = new LayeredTree(
       this._treeData,
       this._composition,
       styleClassNames,
-      this._nodeElements,
-      this._linkElements,
+      nodeElements,
+      linkElements,
       this._treeTraversal,
     );
-    treeObject.createTree();
+    treeObject.createTree(this.props.layoutWidth, this._width);
+    this._nodeElements = nodeElements;
+    this._linkElements = linkElements;
   }
 
   public render(): JSX.Element {

@@ -27,7 +27,7 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
     <svg
       className="svgTree"
       height={640}
-      width={1030}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -48,12 +48,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -67,10 +67,10 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           id="0"
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
           Root Node 
           <tspan
@@ -85,7 +85,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
             subtext 
           </tspan>
@@ -108,12 +108,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -127,10 +127,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="1"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           Child 1 
           <tspan
@@ -145,7 +145,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             100% 
           </tspan>
@@ -168,12 +168,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={260}
         />
         <text
@@ -187,10 +187,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="2"
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
           leaf1 
           <tspan
@@ -205,7 +205,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
             sub 
           </tspan>
@@ -228,12 +228,12 @@ subText undefined Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={260}
         />
         <text
@@ -247,9 +247,9 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={303.75}
+          dy={300.7608695652174}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
           leaf2 
         </text>
@@ -271,12 +271,12 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={350}
         />
         <text
@@ -290,10 +290,10 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="4"
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
           leaf3 
           <tspan
@@ -308,7 +308,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
             The subtext is as follows: sub 
           </tspan>
@@ -331,12 +331,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={350}
         />
         <text
@@ -350,10 +350,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="5"
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
           leaf4 
           <tspan
@@ -368,7 +368,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={280}
           >
             sub 
           </tspan>
@@ -391,12 +391,12 @@ subText undefined Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -410,9 +410,9 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={173.75}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           Child 2 is the child name 
         </text>
@@ -434,12 +434,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={100}
-          x={268.75}
+          width={102.5}
+          x={368.75}
           y={260}
         />
         <text
@@ -453,10 +453,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="7"
           textAnchor="middle"
-          x={318.75}
+          x={420}
         >
           leaf5 
           <tspan
@@ -471,7 +471,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={318.75}
+            x={420}
           >
             sub 
           </tspan>
@@ -494,12 +494,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={100}
-          x={388.75}
+          width={102.5}
+          x={491.25}
           y={260}
         />
         <text
@@ -513,10 +513,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="8"
           textAnchor="middle"
-          x={438.75}
+          x={542.5}
         >
           leaf6 
           <tspan
@@ -531,7 +531,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={542.5}
           >
             sub 
           </tspan>
@@ -554,12 +554,12 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -573,10 +573,10 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="9"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           Child 3 
           <tspan
@@ -591,7 +591,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -614,12 +614,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={260}
         />
         <text
@@ -633,10 +633,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="10"
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
           leaf7 
           <tspan
@@ -651,7 +651,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
             sub 
           </tspan>
@@ -674,12 +674,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={651.25}
+          width={102.5}
+          x={753.75}
           y={260}
         />
         <text
@@ -693,10 +693,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="11"
           textAnchor="middle"
-          x={701.25}
+          x={805}
         >
           leaf8 
           <tspan
@@ -711,7 +711,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={805}
           >
             sub 
           </tspan>
@@ -734,12 +734,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={350}
         />
         <text
@@ -753,10 +753,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="12"
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
           leaf9 
           <tspan
@@ -771,7 +771,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
             sub 
           </tspan>
@@ -794,12 +794,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -813,10 +813,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="13"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           Child 4 
           <tspan
@@ -831,7 +831,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             90% 
           </tspan>
@@ -854,12 +854,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -873,10 +873,10 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="14"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           leaf10 
           <tspan
@@ -891,7 +891,7 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             sub 
           </tspan>
@@ -908,7 +908,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -918,7 +918,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -928,7 +928,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -938,7 +938,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -948,7 +948,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -958,7 +958,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -968,7 +968,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -978,7 +978,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -1013,7 +1013,7 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
     <svg
       className="svgTree"
       height={640}
-      width={1030}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -1034,12 +1034,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -1053,10 +1053,10 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           id="0"
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
           Root Node 
           <tspan
@@ -1071,7 +1071,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
             subtext 
           </tspan>
@@ -1094,12 +1094,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -1113,10 +1113,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="1"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           Child 1 
           <tspan
@@ -1131,7 +1131,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             100% 
           </tspan>
@@ -1154,12 +1154,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={260}
         />
         <text
@@ -1173,10 +1173,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="2"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           leaf1 
           <tspan
@@ -1191,7 +1191,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             sub 
           </tspan>
@@ -1214,12 +1214,12 @@ subText undefined Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={350}
         />
         <text
@@ -1233,9 +1233,9 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={393.75}
+          dy={390.7608695652174}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           leaf2 
         </text>
@@ -1257,12 +1257,12 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={440}
         />
         <text
@@ -1276,10 +1276,10 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={472.60869565217394}
           id="4"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           leaf3 
           <tspan
@@ -1294,7 +1294,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             The subtext is as follows: sub 
           </tspan>
@@ -1317,12 +1317,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={530}
         />
         <text
@@ -1336,10 +1336,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={565}
+          dy={562.6086956521739}
           id="5"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           leaf4 
           <tspan
@@ -1354,7 +1354,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             sub 
           </tspan>
@@ -1377,12 +1377,12 @@ subText undefined Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -1396,9 +1396,9 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={173.75}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           Child 2 is the child name 
         </text>
@@ -1420,12 +1420,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={260}
         />
         <text
@@ -1439,10 +1439,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="7"
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           leaf5 
           <tspan
@@ -1457,7 +1457,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
             sub 
           </tspan>
@@ -1480,12 +1480,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={350}
         />
         <text
@@ -1499,10 +1499,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="8"
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           leaf6 
           <tspan
@@ -1517,7 +1517,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
             sub 
           </tspan>
@@ -1540,12 +1540,12 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -1559,10 +1559,10 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="9"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           Child 3 
           <tspan
@@ -1577,7 +1577,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -1600,12 +1600,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={260}
         />
         <text
@@ -1619,10 +1619,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="10"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           leaf7 
           <tspan
@@ -1637,7 +1637,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             sub 
           </tspan>
@@ -1660,12 +1660,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={350}
         />
         <text
@@ -1679,10 +1679,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="11"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           leaf8 
           <tspan
@@ -1697,7 +1697,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             sub 
           </tspan>
@@ -1720,12 +1720,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={440}
         />
         <text
@@ -1739,10 +1739,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={472.60869565217394}
           id="12"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           leaf9 
           <tspan
@@ -1757,7 +1757,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             sub 
           </tspan>
@@ -1780,12 +1780,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -1799,10 +1799,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="13"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           Child 4 
           <tspan
@@ -1817,7 +1817,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             90% 
           </tspan>
@@ -1840,12 +1840,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -1859,10 +1859,10 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="14"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           leaf10 
           <tspan
@@ -1877,7 +1877,7 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             sub 
           </tspan>
@@ -1894,7 +1894,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1904,7 +1904,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -1914,7 +1914,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1924,7 +1924,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -1934,7 +1934,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1944,7 +1944,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -1954,7 +1954,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1964,7 +1964,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -1999,7 +1999,7 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
     <svg
       className="svgTree"
       height={640}
-      width={1030}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -2020,12 +2020,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -2039,10 +2039,10 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           id="0"
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
           Root Node 
           <tspan
@@ -2057,7 +2057,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
             subtext 
           </tspan>
@@ -2080,12 +2080,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -2099,10 +2099,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="1"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           Child 1 
           <tspan
@@ -2117,7 +2117,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             100% 
           </tspan>
@@ -2140,12 +2140,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={260}
         />
         <text
@@ -2159,10 +2159,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="2"
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
           leaf1 
           <tspan
@@ -2177,7 +2177,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
             sub 
           </tspan>
@@ -2200,12 +2200,12 @@ subText undefined Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={260}
         />
         <text
@@ -2219,9 +2219,9 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={303.75}
+          dy={300.7608695652174}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
           leaf2 
         </text>
@@ -2243,12 +2243,12 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={350}
         />
         <text
@@ -2262,10 +2262,10 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="4"
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
           leaf3 
           <tspan
@@ -2280,7 +2280,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
             The subtext is as follows: sub 
           </tspan>
@@ -2303,12 +2303,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={350}
         />
         <text
@@ -2322,10 +2322,10 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="5"
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
           leaf4 
           <tspan
@@ -2340,7 +2340,7 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={280}
           >
             sub 
           </tspan>
@@ -2363,12 +2363,12 @@ subText undefined Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -2382,9 +2382,9 @@ subText undefined Parent info parentId: 0
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={173.75}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           Child 2 is the child name 
         </text>
@@ -2406,12 +2406,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={260}
         />
         <text
@@ -2425,10 +2425,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="7"
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           leaf5 
           <tspan
@@ -2443,7 +2443,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
             sub 
           </tspan>
@@ -2466,12 +2466,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={350}
         />
         <text
@@ -2485,10 +2485,10 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="8"
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           leaf6 
           <tspan
@@ -2503,7 +2503,7 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
             sub 
           </tspan>
@@ -2526,12 +2526,12 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -2545,10 +2545,10 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="9"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           Child 3 
           <tspan
@@ -2563,7 +2563,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             The subtext is as follows: subtext 
           </tspan>
@@ -2586,12 +2586,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={260}
         />
         <text
@@ -2605,10 +2605,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="10"
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
           leaf7 
           <tspan
@@ -2623,7 +2623,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
             sub 
           </tspan>
@@ -2646,12 +2646,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={651.25}
+          width={102.5}
+          x={753.75}
           y={260}
         />
         <text
@@ -2665,10 +2665,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="11"
           textAnchor="middle"
-          x={701.25}
+          x={805}
         >
           leaf8 
           <tspan
@@ -2683,7 +2683,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={805}
           >
             sub 
           </tspan>
@@ -2706,12 +2706,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={350}
         />
         <text
@@ -2725,10 +2725,10 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={382.60869565217394}
           id="12"
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
           leaf9 
           <tspan
@@ -2743,7 +2743,7 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
             sub 
           </tspan>
@@ -2766,12 +2766,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -2785,10 +2785,10 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           id="13"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           Child 4 
           <tspan
@@ -2803,7 +2803,7 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             90% 
           </tspan>
@@ -2826,12 +2826,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -2845,10 +2845,10 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           id="14"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           leaf10 
           <tspan
@@ -2863,7 +2863,7 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             sub 
           </tspan>
@@ -2880,7 +2880,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2890,7 +2890,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -2900,7 +2900,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2910,7 +2910,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -2920,7 +2920,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2930,7 +2930,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -2940,7 +2940,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2950,7 +2950,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -2985,7 +2985,7 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
     <svg
       className="svgTree"
       height={640}
-      width={1030}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -3006,12 +3006,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -3025,10 +3025,10 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           id="0"
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
           Root Node 
           <tspan
@@ -3043,7 +3043,7 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
             subtext 
           </tspan>
@@ -3066,12 +3066,12 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -3085,10 +3085,10 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="1"
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
           Child 1 
           <tspan
@@ -3103,7 +3103,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
             Subtext val is subtext 
           </tspan>
@@ -3126,12 +3126,12 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -3145,10 +3145,10 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="2"
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
           Child 2 
           <tspan
@@ -3163,7 +3163,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
             Subtext val is subtext 
           </tspan>
@@ -3186,12 +3186,12 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -3205,10 +3205,10 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="3"
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
           Child 3 
           <tspan
@@ -3223,7 +3223,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
             Subtext val is subtext 
           </tspan>
@@ -3246,12 +3246,12 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -3265,10 +3265,10 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           id="4"
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
           Child 4 
           <tspan
@@ -3283,7 +3283,7 @@ subText Subtext val is subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
             Subtext val is subtext 
           </tspan>
@@ -3300,7 +3300,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3310,7 +3310,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3320,7 +3320,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3330,7 +3330,7 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
       </g>
     </svg>
