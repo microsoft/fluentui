@@ -302,7 +302,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     }
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -320,6 +320,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -390,7 +391,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     }
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -408,6 +409,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -478,7 +480,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                     }
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -496,6 +498,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -851,7 +854,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               }
         >
           <button
-            aria-label="MetaData1"
+            aria-label="MetaData1 selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={3}
@@ -869,6 +872,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -939,7 +943,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               }
         >
           <button
-            aria-label="MetaData2"
+            aria-label="MetaData2 selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={3}
@@ -957,6 +961,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1027,7 +1032,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               }
         >
           <button
-            aria-label="MetaData3"
+            aria-label="MetaData3 selected"
             aria-posinset={3}
             aria-selected={false}
             aria-setsize={3}
@@ -1045,6 +1050,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1652,7 +1658,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     }
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1670,6 +1676,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1740,7 +1747,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     }
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1758,6 +1765,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1828,7 +1836,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                     }
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1846,6 +1854,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2218,7 +2227,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     }
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2236,6 +2245,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2306,7 +2316,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     }
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2324,6 +2334,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2394,7 +2405,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                     }
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2412,6 +2423,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2784,7 +2796,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     }
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2802,6 +2814,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2872,7 +2885,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     }
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2890,6 +2903,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2960,7 +2974,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                     }
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2978,6 +2992,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3350,7 +3365,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     }
               >
                 <button
-                  aria-label="MetaData1"
+                  aria-label="MetaData1 selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3368,6 +3383,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3438,7 +3454,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     }
               >
                 <button
-                  aria-label="MetaData2"
+                  aria-label="MetaData2 selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3456,6 +3472,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -3526,7 +3543,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                     }
               >
                 <button
-                  aria-label="MetaData3"
+                  aria-label="MetaData3 selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -3544,6 +3561,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;

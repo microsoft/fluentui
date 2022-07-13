@@ -171,7 +171,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     }
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -189,6 +189,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -259,7 +260,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     }
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -277,6 +278,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -347,7 +349,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     }
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -365,6 +367,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -589,7 +592,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               }
         >
           <button
-            aria-label="First"
+            aria-label="First selected"
             aria-posinset={1}
             aria-selected={false}
             aria-setsize={3}
@@ -607,6 +610,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -677,7 +681,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               }
         >
           <button
-            aria-label="Second"
+            aria-label="Second selected"
             aria-posinset={2}
             aria-selected={false}
             aria-setsize={3}
@@ -695,6 +699,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -765,7 +770,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               }
         >
           <button
-            aria-label="Third"
+            aria-label="Third selected"
             aria-posinset={3}
             aria-selected={false}
             aria-setsize={3}
@@ -783,6 +788,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   padding-right: 8px;
                   padding-top: 8px;
                   position: relative;
+                  text-transform: capitalize;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1128,7 +1134,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     }
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1146,6 +1152,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1216,7 +1223,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     }
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1234,6 +1241,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1304,7 +1312,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     }
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1322,6 +1330,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1563,7 +1572,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     }
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1581,6 +1590,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1651,7 +1661,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     }
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1669,6 +1679,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1739,7 +1750,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     }
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -1757,6 +1768,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1998,7 +2010,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     }
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2016,6 +2028,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2086,7 +2099,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     }
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2104,6 +2117,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2174,7 +2188,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     }
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2192,6 +2206,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2433,7 +2448,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     }
               >
                 <button
-                  aria-label="First"
+                  aria-label="First selected"
                   aria-posinset={1}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2451,6 +2466,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2521,7 +2537,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     }
               >
                 <button
-                  aria-label="Second"
+                  aria-label="Second selected"
                   aria-posinset={2}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2539,6 +2555,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2609,7 +2626,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     }
               >
                 <button
-                  aria-label="Third"
+                  aria-label="Third selected"
                   aria-posinset={3}
                   aria-selected={false}
                   aria-setsize={3}
@@ -2627,6 +2644,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         padding-right: 8px;
                         padding-top: 8px;
                         position: relative;
+                        text-transform: capitalize;
                       }
                       &::-moz-focus-inner {
                         border: 0;

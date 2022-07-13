@@ -379,7 +379,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         {...(allowFocusOnLegends && {
           'aria-selected': this.state.selectedLegend === legend.title,
           role: 'option',
-          'aria-label': legend.title,
+          'aria-label': `${legend.title} selected`,
           'aria-setsize': data['aria-setsize'],
           'aria-posinset': data['aria-posinset'],
         })}
