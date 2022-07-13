@@ -7,14 +7,14 @@ import {
   FilterRegular,
 } from '@fluentui/react-icons';
 import {
+  makeStyles,
   Menu,
+  MenuButton,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
   Tooltip,
-  makeStyles,
-  MenuButton,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
