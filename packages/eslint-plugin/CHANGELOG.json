@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 13 Jul 2022 07:47:44 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.11.1",
+      "version": "1.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "06add4426b1362a21b32a037a982e842504cd8f2",
+            "comment": "chore: don't forbid package imports from components being exported from react-components/unstable."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 07:40:59 GMT",
       "tag": "@fluentui/eslint-plugin_v1.11.0",
       "version": "1.11.0",
