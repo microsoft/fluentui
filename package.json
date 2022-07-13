@@ -293,10 +293,6 @@
     ]
   },
   "resolutions": {
-    "@fluentui/react18-test/**/@types/react": "18.0.14",
-    "@fluentui/react18-test/**/@types/react-dom": "18.0.6",
-    "@fluentui/react18-test/**/react": "18.2.0",
-    "@fluentui/react18-test/**/react-dom": "18.2.0",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
