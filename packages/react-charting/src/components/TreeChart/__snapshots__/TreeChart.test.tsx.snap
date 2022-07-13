@@ -13,10 +13,21 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1030}
     >
       <g
         className="svgNode"
@@ -57,6 +68,7 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={45}
+          id="0"
           textAnchor="middle"
           x={510}
         >
@@ -116,6 +128,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="1"
           textAnchor="middle"
           x={116.25}
         >
@@ -175,6 +188,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={295}
+          id="2"
           textAnchor="middle"
           x={56.25}
         >
@@ -234,6 +248,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={295}
+          id="3"
           textAnchor="middle"
           x={176.25}
         >
@@ -293,6 +308,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          id="4"
           textAnchor="middle"
           x={56.25}
         >
@@ -352,6 +368,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          id="5"
           textAnchor="middle"
           x={176.25}
         >
@@ -411,6 +428,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="6"
           textAnchor="middle"
           x={378.75}
         >
@@ -470,6 +488,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={295}
+          id="7"
           textAnchor="middle"
           x={318.75}
         >
@@ -529,6 +548,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={295}
+          id="8"
           textAnchor="middle"
           x={438.75}
         >
@@ -588,6 +608,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="9"
           textAnchor="middle"
           x={641.25}
         >
@@ -647,6 +668,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={295}
+          id="10"
           textAnchor="middle"
           x={581.25}
         >
@@ -706,6 +728,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={295}
+          id="11"
           textAnchor="middle"
           x={701.25}
         >
@@ -765,6 +788,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={385}
+          id="12"
           textAnchor="middle"
           x={581.25}
         >
@@ -824,6 +848,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="13"
           textAnchor="middle"
           x={903.75}
         >
@@ -883,6 +908,7 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={295}
+          id="14"
           textAnchor="middle"
           x={903.75}
         >
@@ -1007,10 +1033,21 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1030}
     >
       <g
         className="svgNode"
@@ -1051,6 +1088,7 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={45}
+          id="0"
           textAnchor="middle"
           x={510}
         >
@@ -1110,6 +1148,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="1"
           textAnchor="middle"
           x={116.25}
         >
@@ -1169,6 +1208,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={295}
+          id="2"
           textAnchor="middle"
           x={116.25}
         >
@@ -1228,6 +1268,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          id="3"
           textAnchor="middle"
           x={116.25}
         >
@@ -1287,6 +1328,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={475}
+          id="4"
           textAnchor="middle"
           x={116.25}
         >
@@ -1346,6 +1388,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={565}
+          id="5"
           textAnchor="middle"
           x={116.25}
         >
@@ -1405,6 +1448,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="6"
           textAnchor="middle"
           x={378.75}
         >
@@ -1464,6 +1508,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={295}
+          id="7"
           textAnchor="middle"
           x={378.75}
         >
@@ -1523,6 +1568,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={385}
+          id="8"
           textAnchor="middle"
           x={378.75}
         >
@@ -1582,6 +1628,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="9"
           textAnchor="middle"
           x={641.25}
         >
@@ -1641,6 +1688,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={295}
+          id="10"
           textAnchor="middle"
           x={641.25}
         >
@@ -1700,6 +1748,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={385}
+          id="11"
           textAnchor="middle"
           x={641.25}
         >
@@ -1759,6 +1808,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={475}
+          id="12"
           textAnchor="middle"
           x={641.25}
         >
@@ -1818,6 +1868,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="13"
           textAnchor="middle"
           x={903.75}
         >
@@ -1877,6 +1928,7 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={295}
+          id="14"
           textAnchor="middle"
           x={903.75}
         >
@@ -2001,10 +2053,21 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1030}
     >
       <g
         className="svgNode"
@@ -2045,6 +2108,7 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={45}
+          id="0"
           textAnchor="middle"
           x={510}
         >
@@ -2104,6 +2168,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="1"
           textAnchor="middle"
           x={116.25}
         >
@@ -2163,6 +2228,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={295}
+          id="2"
           textAnchor="middle"
           x={56.25}
         >
@@ -2222,6 +2288,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={295}
+          id="3"
           textAnchor="middle"
           x={176.25}
         >
@@ -2281,6 +2348,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          id="4"
           textAnchor="middle"
           x={56.25}
         >
@@ -2340,6 +2408,7 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={385}
+          id="5"
           textAnchor="middle"
           x={176.25}
         >
@@ -2399,6 +2468,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="6"
           textAnchor="middle"
           x={378.75}
         >
@@ -2458,6 +2528,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={295}
+          id="7"
           textAnchor="middle"
           x={378.75}
         >
@@ -2517,6 +2588,7 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={385}
+          id="8"
           textAnchor="middle"
           x={378.75}
         >
@@ -2576,6 +2648,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="9"
           textAnchor="middle"
           x={641.25}
         >
@@ -2635,6 +2708,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={295}
+          id="10"
           textAnchor="middle"
           x={581.25}
         >
@@ -2694,6 +2768,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={295}
+          id="11"
           textAnchor="middle"
           x={701.25}
         >
@@ -2753,6 +2828,7 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={385}
+          id="12"
           textAnchor="middle"
           x={581.25}
         >
@@ -2812,6 +2888,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={158}
+          id="13"
           textAnchor="middle"
           x={903.75}
         >
@@ -2871,6 +2948,7 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={295}
+          id="14"
           textAnchor="middle"
           x={903.75}
         >
@@ -2995,10 +3073,21 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1030}
     >
       <g
         className="svgNode"
@@ -3039,6 +3128,7 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={45}
+          id="0"
           textAnchor="middle"
           x={510}
         >
@@ -3098,6 +3188,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="1"
           textAnchor="middle"
           x={116.25}
         >
@@ -3157,6 +3248,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="2"
           textAnchor="middle"
           x={378.75}
         >
@@ -3216,6 +3308,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="3"
           textAnchor="middle"
           x={641.25}
         >
@@ -3275,6 +3368,7 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={165}
+          id="4"
           textAnchor="middle"
           x={903.75}
         >

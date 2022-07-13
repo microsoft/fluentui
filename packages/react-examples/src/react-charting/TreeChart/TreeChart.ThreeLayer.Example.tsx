@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 import { TreeChart, ITreeProps } from '@fluentui/react-charting';
 const threeLayerChart = {
@@ -19,7 +18,6 @@ const threeLayerChart = {
         },
         {
           name: 'leaf2',
-          subname: 'sub',
           fill: '#4F6BED',
         },
         {
@@ -36,7 +34,6 @@ const threeLayerChart = {
     },
     {
       name: 'Child 2',
-      subname: 'subtext',
       fill: '#881798',
       children: [
         {
@@ -101,7 +98,7 @@ export class TreeChartThreeLayerExample extends React.Component<{}, ITreeState> 
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={threeLayerChart}></TreeChart>
+        <TreeChart treeData={threeLayerChart} />
       </>
     );
   }

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { select } from 'd3-selection';
 import { hierarchy, tree } from 'd3-hierarchy';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { FocusZone } from '@fluentui/react-focus';
+// import { wrapTextInsideNode } from '../../utilities/utilities';
 
 import {
   ITreeProps,
@@ -46,7 +46,7 @@ class StandardTree {
   // nodeId to create unique key
   public addNodeShapetoSVG(
     name: string,
-    subname: string,
+    subname: string | undefined,
     metricName: string | undefined,
     xCoordinate: number,
     yCoordinate: number,
@@ -88,20 +88,34 @@ class StandardTree {
         </tspan>
       );
 
-    this._nodeElements.push(
-      <text
-        textAnchor="middle"
-        className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
-        dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
-        x={xCoordinate + rectangleWidth / 2}
-        key={`${nodeId}${this.styleClassNames.rectText}`}
-      >
-        {name}
-        {subValue}
-      </text>,
-    );
+    if (subname === undefined && metricName === undefined) {
+      this._nodeElements.push(
+        <text
+          textAnchor="middle"
+          className={this.styleClassNames.rectmetricText}
+          dy={yCoordinate + rectangleHeight / 1.6}
+          x={xCoordinate + rectangleWidth / 2}
+          key={`${nodeId}${this.styleClassNames.rectText}`}
+        >
+          {name}
+        </text>,
+      );
+    } else {
+      this._nodeElements.push(
+        <text
+          textAnchor="middle"
+          className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
+          id={`${nodeId}`}
+          dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
+          x={xCoordinate + rectangleWidth / 2}
+          key={`${nodeId}${this.styleClassNames.rectText}`}
+        >
+          {name}
+          {subValue}
+        </text>,
+      );
+    }
   }
-
   // Create a rectangular path from parent to the child nodes
   public createPathLink(
     parentX: number,
@@ -382,7 +396,6 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _height: number | undefined;
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
-  private _rootElem: HTMLElement | null;
   private _margin: { left: number; right: number; top: number; bottom: number };
   private _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [];
   private _linkElements: Array<React.SVGProps<SVGPathElement>> = [];
@@ -391,42 +404,38 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
     this._margin = { top: 30, right: 20, bottom: 30, left: 50 };
-    this._width = this.props.width || 1200;
+    this._width = this.props.width || 1100;
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
     this._composition = this.props?.composition;
     this._treeTraversal = this.props.treeTraversal;
 
     this.state = {
-      _width: this._width || 1000,
-      _height: this._height || 700,
+      _width: this._width,
+      _height: this._height,
     };
   }
 
   public componentDidMount() {
     const { theme, className, styles } = this.props;
+
     // Get classNames to create component styling
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
     });
+
     // Call createTreeChart function in componentDidMount
     this.createTreeChart();
-    const reducedHeight = this._rootElem && this._rootElem.offsetHeight / 5;
+
     this.setState({
-      _width: (this._rootElem && this._rootElem!.offsetWidth)!,
-      _height: (this._rootElem && this._rootElem!.offsetHeight - reducedHeight!)!,
+      _width: this.props.width || 1100,
+      _height: this.props.height || 700,
     });
+    // wrapTextInsideNode(`text`, 30);
   }
 
   public createTreeChart() {
-    const svg = select('.svgTree');
-
-    // Set SVG width and height
-    svg
-      .attr('width', this.state._width - this._margin.left - this._margin.right)
-      .attr('height', this.state._height - this._margin.top - this._margin.bottom);
-
     // Create styleClass object to access it in parent class
     const styleClassNames = {
       link: this._classNames.link,
@@ -451,8 +460,12 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   public render(): JSX.Element {
     return (
       <FocusZone>
-        <div className="svgTreeDiv" ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
-          <svg className="svgTree">
+        <div className={this._classNames?.root}>
+          <svg
+            className="svgTree"
+            width={this.state._width - this._margin.left - this._margin.right}
+            height={this.state._height - this._margin.top - this._margin.bottom}
+          >
             <g className="svgNode">{this._nodeElements.map(element => element)}</g>
             <g className="svgLink">{this._linkElements.map(element => element)}</g>
           </svg>

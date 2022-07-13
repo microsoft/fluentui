@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
 import { TreeChart, ITreeProps } from '@fluentui/react-charting';
 const twoLayerChart = {
@@ -26,7 +25,7 @@ export class TreeChartTwoLayerExample extends React.Component<{}, ITreeState> {
   private _createTreeChart(): JSX.Element {
     return (
       <>
-        <TreeChart treeData={twoLayerChart}></TreeChart>
+        <TreeChart treeData={twoLayerChart} />
       </>
     );
   }
