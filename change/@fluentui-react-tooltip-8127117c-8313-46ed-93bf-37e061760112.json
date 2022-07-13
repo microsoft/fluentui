@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix `shouldRenderTooltip` to handle SSR",
+  "comment": "fix: update `shouldRenderTooltip` to handle SSR",
   "packageName": "@fluentui/react-tooltip",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
