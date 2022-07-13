@@ -1,5 +1,6 @@
 const resources = require('../../scripts/webpack/webpack-resources');
 const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
+const path = require('path');
 
 module.exports = resources.createServeConfig(
   {
@@ -9,7 +10,11 @@ module.exports = resources.createServeConfig(
     },
 
     resolve: {
-      alias: getResolveAlias(),
+      alias: {
+        ...getResolveAlias(),
+        react: path.resolve(__dirname, './node_modules/react'),
+        'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+      },
     },
   },
   'dist',
