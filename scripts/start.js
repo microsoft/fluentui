@@ -25,22 +25,45 @@ const projectsWithStartCommand = Object.entries(allPackages)
 
 const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.includes(input)));
 
-(async () => {
-  const response = await prompts({
+const getArgs = (args = [], hasPackage = false) => {
+  let finalArgs = args;
+
+  if (hasPackage) {
+    finalArgs = args.slice(1);
+  }
+
+  return finalArgs.length > 0 ? finalArgs : [];
+};
+const getProject = async (choices = []) => {
+  const firstArg = extraArgs[0];
+  const firstArgChoice = choices.find(({ value: { pkg } }) => pkg === firstArg);
+  const finalArgs = getArgs(extraArgs, !!firstArgChoice);
+
+  if (firstArgChoice) {
+    return [firstArgChoice.value, finalArgs];
+  }
+
+  const answer = await prompts({
     type: 'autocomplete',
     name: 'project',
 
     message: 'Which project to start (select or type partial name)?',
     suggest,
-    choices: [...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
+    choices,
   });
 
-  spawnSync(
-    'yarn',
-    ['workspace', response.project.pkg, response.project.command, ...(extraArgs.length > 0 ? [extraArgs] : [])],
-    {
-      shell: true,
-      stdio: 'inherit',
-    },
-  );
+  return [answer.project, finalArgs];
+};
+
+(async () => {
+  const choices = [
+    ...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })),
+    ...projectsWithStartCommand,
+  ];
+  const [{ pkg, command }, args] = await getProject(choices);
+
+  spawnSync('yarn', ['workspace', pkg, command, ...args], {
+    shell: true,
+    stdio: 'inherit',
+  });
 })();
