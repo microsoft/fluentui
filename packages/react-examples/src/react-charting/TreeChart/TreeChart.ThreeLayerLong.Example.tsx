@@ -22,7 +22,7 @@ const threeLayerChart = {
         },
         {
           name: 'leaf3',
-          subname: 'sub',
+          subname: 'The subtext is as follows: sub',
           fill: '#4F6BED',
         },
         {
@@ -33,7 +33,7 @@ const threeLayerChart = {
       ],
     },
     {
-      name: 'Child 2',
+      name: 'Child 2 is the child name',
       fill: '#881798',
       children: [
         {
@@ -50,7 +50,7 @@ const threeLayerChart = {
     },
     {
       name: 'Child 3',
-      subname: 'subtext',
+      subname: 'The subtext is as follows: subtext',
       fill: '#AE8C00',
       children: [
         {

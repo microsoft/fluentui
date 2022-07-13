@@ -2,8 +2,8 @@ import * as React from 'react';
 import { hierarchy, tree } from 'd3-hierarchy';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import { select, selectAll } from 'd3-selection';
 import { FocusZone } from '@fluentui/react-focus';
-// import { wrapTextInsideNode } from '../../utilities/utilities';
 
 import {
   ITreeProps,
@@ -42,6 +42,36 @@ class StandardTree {
     this._linkElements = _linkElements;
   }
 
+  public createEllipsisText(text: string, rectangleWidth: number, padding: number, styleClass: string | undefined) {
+    let truncatedText = '';
+    const words = text.split(/\s+/).reverse();
+    let word: string = '';
+    const tspan = select('.svgTree').append('text').attr('class', 'tempText').append('tspan').text(null);
+
+    if (styleClass !== undefined) {
+      tspan.attr('class', styleClass);
+    }
+
+    const line: string[] = [];
+    while ((word = words.pop()!)) {
+      line.push(word);
+      tspan.text(line.join(' ') + ' ');
+      if (tspan.node() !== null) {
+        const w = tspan.node()!.getComputedTextLength();
+        if (w > rectangleWidth - padding) {
+          line.pop();
+          line.push('...');
+          break;
+        }
+      }
+    }
+
+    truncatedText = line.join(' ') + ' ';
+    tspan.text(null);
+    selectAll('.tempText').remove();
+    return truncatedText;
+  }
+
   // Append node elements
   // nodeId to create unique key
   public addNodeShapetoSVG(
@@ -72,6 +102,19 @@ class StandardTree {
         key={`${nodeId}${this.styleClassNames.rectNode}`}
       />,
     );
+
+    if (subname !== undefined) {
+      subname = this.createEllipsisText(subname, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectSubText);
+    }
+    if (metricName !== undefined) {
+      metricName = this.createEllipsisText(
+        metricName,
+        rectangleWidth,
+        rectangleWidth / 4,
+        this.styleClassNames.rectmetricText,
+      );
+    }
+    name = this.createEllipsisText(name, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectText);
 
     // Text position y = y + rectHeight/2, 2 is ratio for depth
     // Text position x = x + rectWidth/2, 2 is ratio for length
@@ -432,7 +475,6 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       _width: this.props.width || 1100,
       _height: this.props.height || 700,
     });
-    // wrapTextInsideNode(`text`, 30);
   }
 
   public createTreeChart() {

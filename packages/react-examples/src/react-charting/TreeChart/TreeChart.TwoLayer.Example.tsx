@@ -5,10 +5,10 @@ const twoLayerChart = {
   subname: 'subtext',
   fill: '#0099BC',
   children: [
-    { name: 'Child 1', subname: 'subtext', fill: '#4F6BED' },
-    { name: 'Child 2', subname: 'subtext', fill: '#881798' },
-    { name: 'Child 3', subname: 'subtext', fill: '#AE8C00' },
-    { name: 'Child 4', subname: 'subtext', fill: '#FF00FF' },
+    { name: 'Child 1', subname: 'Subtext val is subtext', fill: '#4F6BED' },
+    { name: 'Child 2', subname: 'Subtext val is subtext', fill: '#881798' },
+    { name: 'Child 3', subname: 'Subtext val is subtext', fill: '#AE8C00' },
+    { name: 'Child 4', subname: 'Subtext val is subtext', fill: '#FF00FF' },
   ],
 };
 

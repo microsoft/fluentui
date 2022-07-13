@@ -72,7 +72,7 @@ subText subtext Root Node"
           textAnchor="middle"
           x={510}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -87,7 +87,7 @@ subText subtext Root Node"
             dy="1.4em"
             x={510}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -132,7 +132,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={116.25}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -147,7 +147,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={116.25}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -192,7 +192,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={56.25}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -207,13 +207,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={56.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -242,38 +242,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={295}
-          id="3"
+          dy={303.75}
           textAnchor="middle"
           x={176.25}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={176.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -312,7 +295,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={56.25}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -327,7 +310,7 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={56.25}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -372,7 +355,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={176.25}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -387,13 +370,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={176.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -422,40 +405,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
-          id="6"
+          dy={173.75}
           textAnchor="middle"
           x={378.75}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -492,7 +458,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={318.75}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -507,15 +473,15 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={318.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -552,7 +518,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={438.75}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -567,13 +533,13 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={438.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -612,7 +578,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={641.25}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -627,7 +593,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={641.25}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -635,7 +601,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -672,7 +638,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={581.25}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -687,7 +653,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={581.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -695,7 +661,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -732,7 +698,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={701.25}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -747,7 +713,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={701.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -755,7 +721,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -792,7 +758,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={581.25}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -807,7 +773,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={581.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -852,7 +818,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={903.75}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -867,7 +833,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={903.75}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -912,7 +878,7 @@ subText sub Parent info parentId: 13
           textAnchor="middle"
           x={903.75}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -927,7 +893,7 @@ subText sub Parent info parentId: 13
             dy="1.4em"
             x={903.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -1092,7 +1058,7 @@ subText subtext Root Node"
           textAnchor="middle"
           x={510}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -1107,7 +1073,7 @@ subText subtext Root Node"
             dy="1.4em"
             x={510}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -1152,7 +1118,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={116.25}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -1167,7 +1133,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={116.25}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -1212,7 +1178,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={116.25}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -1227,13 +1193,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={116.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -1262,38 +1228,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={385}
-          id="3"
+          dy={393.75}
           textAnchor="middle"
           x={116.25}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={116.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -1332,7 +1281,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={116.25}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -1347,7 +1296,7 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={116.25}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -1392,7 +1341,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={116.25}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -1407,13 +1356,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={116.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -1442,40 +1391,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
-          id="6"
+          dy={173.75}
           textAnchor="middle"
           x={378.75}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -1512,7 +1444,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={378.75}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -1527,15 +1459,15 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={378.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -1572,7 +1504,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={378.75}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -1587,13 +1519,13 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={378.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -1632,7 +1564,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={641.25}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -1647,7 +1579,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={641.25}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -1655,7 +1587,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1692,7 +1624,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={641.25}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -1707,7 +1639,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={641.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1715,7 +1647,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1752,7 +1684,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={641.25}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -1767,7 +1699,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={641.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1775,7 +1707,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1812,7 +1744,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={641.25}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -1827,7 +1759,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={641.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1872,7 +1804,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={903.75}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -1887,7 +1819,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={903.75}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -1932,7 +1864,7 @@ subText sub Parent info parentId: 13
           textAnchor="middle"
           x={903.75}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -1947,7 +1879,7 @@ subText sub Parent info parentId: 13
             dy="1.4em"
             x={903.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -2112,7 +2044,7 @@ subText subtext Root Node"
           textAnchor="middle"
           x={510}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -2127,7 +2059,7 @@ subText subtext Root Node"
             dy="1.4em"
             x={510}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -2172,7 +2104,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={116.25}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -2187,7 +2119,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={116.25}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -2232,7 +2164,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={56.25}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -2247,13 +2179,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={56.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -2282,38 +2214,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={295}
-          id="3"
+          dy={303.75}
           textAnchor="middle"
           x={176.25}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={176.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -2352,7 +2267,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={56.25}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -2367,7 +2282,7 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={56.25}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -2412,7 +2327,7 @@ subText sub Parent info parentId: 1
           textAnchor="middle"
           x={176.25}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -2427,13 +2342,13 @@ subText sub Parent info parentId: 1
             dy="1.4em"
             x={176.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -2462,40 +2377,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
-          id="6"
+          dy={173.75}
           textAnchor="middle"
           x={378.75}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -2532,7 +2430,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={378.75}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -2547,15 +2445,15 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={378.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -2592,7 +2490,7 @@ subText sub Parent info parentId: 6
           textAnchor="middle"
           x={378.75}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -2607,13 +2505,13 @@ subText sub Parent info parentId: 6
             dy="1.4em"
             x={378.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -2652,7 +2550,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={641.25}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -2667,7 +2565,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={641.25}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -2675,7 +2573,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2712,7 +2610,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={581.25}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -2727,7 +2625,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={581.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2735,7 +2633,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2772,7 +2670,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={701.25}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -2787,7 +2685,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={701.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2795,7 +2693,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2832,7 +2730,7 @@ subText sub Parent info parentId: 9
           textAnchor="middle"
           x={581.25}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -2847,7 +2745,7 @@ subText sub Parent info parentId: 9
             dy="1.4em"
             x={581.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2892,7 +2790,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={903.75}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -2907,7 +2805,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={903.75}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -2952,7 +2850,7 @@ subText sub Parent info parentId: 13
           textAnchor="middle"
           x={903.75}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -2967,7 +2865,7 @@ subText sub Parent info parentId: 13
             dy="1.4em"
             x={903.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -3132,7 +3030,7 @@ subText subtext Root Node"
           textAnchor="middle"
           x={510}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -3147,13 +3045,13 @@ subText subtext Root Node"
             dy="1.4em"
             x={510}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 1 
 nodeMainText: Child 1
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3192,7 +3090,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={116.25}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -3207,13 +3105,13 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={116.25}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 2 
 nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3252,7 +3150,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={378.75}
         >
-          Child 2
+          Child 2 
           <tspan
             className=
 
@@ -3267,13 +3165,13 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={378.75}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3312,7 +3210,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={641.25}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -3327,13 +3225,13 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={641.25}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: Child 4
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3372,7 +3270,7 @@ subText subtext Parent info parentId: 0
           textAnchor="middle"
           x={903.75}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -3387,7 +3285,7 @@ subText subtext Parent info parentId: 0
             dy="1.4em"
             x={903.75}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
       </g>

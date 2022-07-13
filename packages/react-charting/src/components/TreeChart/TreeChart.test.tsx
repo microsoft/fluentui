@@ -11,10 +11,10 @@ const twoLayerChart: ITreeChartDataPoint = {
   subname: 'subtext',
   fill: '#0099BC',
   children: [
-    { name: 'Child 1', subname: 'subtext', fill: '#4F6BED' },
-    { name: 'Child 2', subname: 'subtext', fill: '#881798' },
-    { name: 'Child 3', subname: 'subtext', fill: '#AE8C00' },
-    { name: 'Child 4', subname: 'subtext', fill: '#FF00FF' },
+    { name: 'Child 1', subname: 'Subtext val is subtext', fill: '#4F6BED' },
+    { name: 'Child 2', subname: 'Subtext val is subtext', fill: '#881798' },
+    { name: 'Child 3', subname: 'Subtext val is subtext', fill: '#AE8C00' },
+    { name: 'Child 4', subname: 'Subtext val is subtext', fill: '#FF00FF' },
   ],
 };
 
@@ -36,12 +36,11 @@ const threeLayerChart: ITreeChartDataPoint = {
         },
         {
           name: 'leaf2',
-          subname: 'sub',
           fill: '#4F6BED',
         },
         {
           name: 'leaf3',
-          subname: 'sub',
+          subname: 'The subtext is as follows: sub',
           fill: '#4F6BED',
         },
         {
@@ -52,8 +51,7 @@ const threeLayerChart: ITreeChartDataPoint = {
       ],
     },
     {
-      name: 'Child 2',
-      subname: 'subtext',
+      name: 'Child 2 is the child name',
       fill: '#881798',
       children: [
         {
@@ -70,7 +68,7 @@ const threeLayerChart: ITreeChartDataPoint = {
     },
     {
       name: 'Child 3',
-      subname: 'subtext',
+      subname: 'The subtext is as follows: subtext',
       fill: '#AE8C00',
       children: [
         {
