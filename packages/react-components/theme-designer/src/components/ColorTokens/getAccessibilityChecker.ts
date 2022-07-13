@@ -18,13 +18,8 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     const compHex: string = currTheme[comp];
 
     if (!currHex || !compHex || currHex === 'transparent' || compHex === 'transparent') {
-      return { pass: true };
+      return { isPass: true };
     }
-    console.log(curr);
-    console.log(comp);
-
-    console.log(currHex);
-    console.log(compHex);
 
     const currSRGB: Vec3 = hex_to_sRGB(currHex);
     const compSRGB: Vec3 = hex_to_sRGB(compHex);
@@ -32,7 +27,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     const contrastRatio = contrast(currSRGB, compSRGB);
 
     return {
-      pass: contrastRatio >= desiredRatio,
+      isPass: contrastRatio >= desiredRatio,
       failInfo: {
         compHex: compHex,
         ratio: contrastRatio.toFixed(1),
@@ -50,8 +45,8 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     // Go through all comparisons for each token
     for (let i = 0; i < accessiblePairs[token].length; i++) {
       const [compToken, ratio] = accessiblePairs[token][i];
-      const { pass, failInfo } = calculateContrastRatio(token, compToken, ratio);
-      if (!pass && failInfo) {
+      const { isPass, failInfo } = calculateContrastRatio(token, compToken, ratio);
+      if (!isPass && failInfo) {
         failList.push(failInfo);
       }
     }
@@ -62,6 +57,8 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     } else {
       pass.push(token);
     }
+
+    return failList;
   });
 
   return { pass, fail };
