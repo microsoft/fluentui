@@ -1,15 +1,7 @@
 import * as React from 'react';
-import {
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuItemCheckbox,
-  MenuPopover,
-  MenuItemCheckboxProps,
-} from '@fluentui/react-menu';
-
-import { Button } from '@fluentui/react-button';
+import { Button, Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from '@fluentui/react-components';
 import { EditFilled, EditRegular, bundleIcon } from '@fluentui/react-icons';
+import type { MenuItemCheckboxProps } from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 

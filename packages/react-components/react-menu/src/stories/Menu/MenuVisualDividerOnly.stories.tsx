@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuDivider, MenuPopover } from '@fluentui/react-menu';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuDivider, MenuPopover } from '@fluentui/react-components';
 
-import { Button } from '@fluentui/react-button';
 import {
   bundleIcon,
   CutRegular,

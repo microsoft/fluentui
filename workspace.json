@@ -633,6 +633,13 @@
       "tags": ["vNext", "platform:web"],
       "implicitDependencies": []
     },
+    "@fluentui/react-table": {
+      "root": "packages/react-components/react-table",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-table/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-tabs": {
       "root": "packages/react-components/react-tabs",
       "projectType": "library",

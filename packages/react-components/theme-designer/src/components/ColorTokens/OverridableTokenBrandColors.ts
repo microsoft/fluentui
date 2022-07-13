@@ -1,4 +1,5 @@
 import type { Brands, BrandVariants, Theme } from '@fluentui/react-theme';
+import { ColorOverrideBrands } from './ColorTokens';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
@@ -12,7 +13,7 @@ export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110
  * @param brand The brand that the theme uses
  * @returns A list of color tokens whos values are overridable by the user
  */
-export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): Record<string, Brands> => {
+export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): ColorOverrideBrands => {
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
@@ -32,16 +33,28 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     );
   });
 
+  const sortedOverrideableColorTokens = overridableColorTokens.sort((a, b) => {
+    if (a.includes('Inverted') && b.includes('Inverted')) {
+      return a.localeCompare(b);
+    } else if (a.includes('Inverted')) {
+      return 1;
+    } else if (b.includes('Inverted')) {
+      return -1;
+    } else {
+      return a.localeCompare(b);
+    }
+  });
+
   // Flips the brand ramp to use the hex values as keys and the brand ramp colors as values for O(1) indexing
-  const hexColorToBrand: Record<string, Brands> = brandRamp.reduce((a: Record<string, Brands>, c, i) => {
+  const hexColorToBrand: ColorOverrideBrands = brandRamp.reduce((a: ColorOverrideBrands, c, i) => {
     a[brand[c]] = c;
     return a;
   }, {});
 
   // Create an assignment of color tokens to brand ramp colors given the hex value
-  const brandColors: Record<string, Brands> = {};
-  for (let i = 0; i < overridableColorTokens.length; i++) {
-    const key = overridableColorTokens[i];
+  const brandColors: ColorOverrideBrands = {};
+  for (let i = 0; i < sortedOverrideableColorTokens.length; i++) {
+    const key = sortedOverrideableColorTokens[i];
     const themeColor = ((theme as unknown) as Record<string, string>)[key];
     brandColors[key] = hexColorToBrand[themeColor];
   }
