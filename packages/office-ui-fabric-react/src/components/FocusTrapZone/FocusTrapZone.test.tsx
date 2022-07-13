@@ -388,13 +388,13 @@ describe('FocusTrapZone', () => {
       expect(lastFocusedElement).toBe(buttonA);
     });
 
-    it('focuses first focusable element when focusing outside of FTZ with 0 tabbable items', async () => {
+    it('focuses last focusable element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonZ2 } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
-      expect(lastFocusedElement).toBe(buttonB);
+      ReactTestUtils.Simulate.focus(buttonA);
+      expect(lastFocusedElement).toBe(buttonA);
 
       // Directly call window listener to simulate focus leaving FTZ.
       componentEventListeners.focus({
@@ -476,10 +476,10 @@ describe('FocusTrapZone', () => {
     it('Restores focus to FTZ when clicking outside FTZ', async () => {
       expect.assertions(2);
 
-      const { buttonA, buttonB, buttonZ2 } = setupTest({});
+      const { buttonA, buttonZ2 } = setupTest({});
 
-      ReactTestUtils.Simulate.focus(buttonB);
-      expect(lastFocusedElement).toBe(buttonB);
+      ReactTestUtils.Simulate.focus(buttonA);
+      expect(lastFocusedElement).toBe(buttonA);
 
       // Directly call window listener to simulate focus leaving FTZ.
       componentEventListeners.click({
