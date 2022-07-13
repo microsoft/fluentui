@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RocketRegular } from '@fluentui/react-icons';
 
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 
 export const WithIcon = () => (
   <Accordion>
