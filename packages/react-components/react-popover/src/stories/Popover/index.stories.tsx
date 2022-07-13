@@ -1,4 +1,4 @@
-import { Popover } from '@fluentui/react-popover';
+import { Popover } from '@fluentui/react-components';
 import { Meta } from '@storybook/react';
 import descriptionMd from './PopoverDescription.md';
 import bestPracticesMd from './PopoverBestPractices.md';
