@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { MenuButton } from '@fluentui/react-button';
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
 export const Default = () => {
   return (

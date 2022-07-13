@@ -6,10 +6,17 @@ import {
   FilterFilled,
   FilterRegular,
 } from '@fluentui/react-icons';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { Tooltip } from '@fluentui/react-tooltip';
-import { makeStyles } from '@griffel/react';
-import { SplitButton, MenuButtonProps } from '@fluentui/react-button';
+import {
+  makeStyles,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  SplitButton,
+  Tooltip,
+} from '@fluentui/react-components';
+import type { MenuButtonProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   longText: {

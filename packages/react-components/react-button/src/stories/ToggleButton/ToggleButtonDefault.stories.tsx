@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButton } from '@fluentui/react-components';
+import type { ToggleButtonProps } from '@fluentui/react-components';
 
 export const Default = (props: ToggleButtonProps) => {
   return <ToggleButton {...props}>Example</ToggleButton>;
