@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "7.0 latest fixes",
-  "packageName": "@uifabric/charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}
