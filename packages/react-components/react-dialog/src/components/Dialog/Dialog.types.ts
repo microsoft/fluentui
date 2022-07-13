@@ -10,7 +10,6 @@ export type DialogSlots = {
    * The overlay should have `aria-hidden="true"`.
    */
   overlay?: Slot<'div'>;
-  root: NonNullable<Slot<'div'>>;
 };
 
 export type DialogOpenChangeArgs =

@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  getNativeElementProps,
-  resolveShorthand,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { DialogOpenChangeArgs, DialogProps, DialogState, DialogModalType } from './Dialog.types';
 import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 import { Escape } from '@fluentui/keyboard-keys';
@@ -12,6 +7,7 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
 import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
+import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
 
 /**
  * Create the state required to render Dialog.
@@ -21,8 +17,8 @@ import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
  *
  * @param props - props from this instance of Dialog
  */
-export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElement>): DialogState => {
-  const { children, overlay, modalType = 'modal', onOpenChange, as = 'div' } = props;
+export const useDialog_unstable = (props: DialogProps): DialogState => {
+  const { children, overlay, modalType = 'modal', onOpenChange } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -30,11 +26,6 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     state: props.open,
     defaultState: props.defaultOpen,
     initialState: false,
-  });
-
-  const rootShorthand = getNativeElementProps(as, {
-    ...props,
-    ref,
   });
 
   const overlayShorthand = resolveShorthand(overlay, {
@@ -82,26 +73,13 @@ export const useDialog_unstable = (props: DialogProps, ref: React.Ref<HTMLElemen
     }
   });
 
-  const handleRootKeyDown = useEventCallback((event: React.KeyboardEvent) => {
-    rootShorthand.onKeyDown?.(event);
-    if (isEscapeKeyDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'escapeKeyDown' });
-      event.preventDefault();
-    }
-  });
-
   return {
     components: {
       overlay: 'div',
-      root: 'div',
     },
     overlay: overlayShorthand && {
       ...overlayShorthand,
       onClick: handleOverLayClick,
-    },
-    root: {
-      ...rootShorthand,
-      onKeyDown: handleRootKeyDown,
     },
     open,
     modalType,
@@ -140,14 +118,6 @@ function childrenToTriggerAndContent(
     default:
       return [undefined, undefined];
   }
-}
-
-/**
- * Checks if keydown event is a proper Escape key dismiss
- */
-function isEscapeKeyDismiss(event: React.KeyboardEvent | KeyboardEvent, type: DialogModalType): boolean {
-  const isDefaultPrevented = normalizeDefaultPrevented(event);
-  return event.key === Escape && type !== 'alert' && !isDefaultPrevented();
 }
 
 /**
