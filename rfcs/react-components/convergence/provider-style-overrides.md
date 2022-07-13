@@ -29,7 +29,7 @@ const App = () => {
 };
 ```
 
-The above example is provlematic because the `TextDirectionProvider` is rendered
+The above example is problematic because the `TextDirectionProvider` is rendered
 internally inside the `FluentProvider`. The provider is required to let `makeStyles` know to resolve and apply RTL
 styles to DOM.
 
