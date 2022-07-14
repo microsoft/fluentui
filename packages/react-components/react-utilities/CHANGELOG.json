@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 17:06:25 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.1-0",
+      "version": "9.0.1-0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a9a6e9a4255acdaf9020f8edec609be8667bbf3f",
+            "comment": "chore: improve error message in useIsSSR()"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:13:25 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0",
       "version": "9.0.0",

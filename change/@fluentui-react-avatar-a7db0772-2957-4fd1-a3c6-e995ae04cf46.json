@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing focus indicator for pie layouts.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

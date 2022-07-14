@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 28 Jun 2022 17:39:45 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 17:06:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.0)
+
+Thu, 14 Jul 2022 17:06:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.0.1..@fluentui/react-components_v9.1.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat(react-card): Added CardHeader CSS variable to control gap ([PR #23449](https://github.com/microsoft/fluentui/pull/23449) by 39736248+andrefcdias@users.noreply.github.com)
+  - feat: re-export `__css` from Griffel ([PR #23891](https://github.com/microsoft/fluentui/pull/23891) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: boundary postitioning options can accept `null` ([PR #23839](https://github.com/microsoft/fluentui/pull/23839) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-avatar`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+  - fix: Remove override of role=list in AvatarGroup's PopoverSurface and fix trapFocus when Popover is triggered. ([PR #23823](https://github.com/microsoft/fluentui/pull/23823) by esteban.230@hotmail.com)
+  - fix: Fixing focus indicator for pie layouts. ([PR #23860](https://github.com/microsoft/fluentui/pull/23860) by esteban.230@hotmail.com)
+- `@fluentui/react-badge`
+  - Fix font sizes, padding, and colors to align with visual design. ([PR #23379](https://github.com/microsoft/fluentui/pull/23379) by behowell@microsoft.com)
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-components`
+  - fix: Moving slider version to stable. ([PR #23790](https://github.com/microsoft/fluentui/pull/23790) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: `Portal` does not use useIsSSR hook ([PR #23612](https://github.com/microsoft/fluentui/pull/23612) by lingfangao@hotmail.com)
+- `@fluentui/react-radio`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: Moving slider version to stable. ([PR #23790](https://github.com/microsoft/fluentui/pull/23790) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: update `shouldRenderTooltip` to handle SSR ([PR #23612](https://github.com/microsoft/fluentui/pull/23612) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+  - update Alert with live region attributes ([PR #23284](https://github.com/microsoft/fluentui/pull/23284) by sarah.higley@microsoft.com)
+  - feat: Adding avatar slot support to Alert ([PR #23591](https://github.com/microsoft/fluentui/pull/23591) by rohitpag@microsoft.com)
+- `@fluentui/react-card`
+  - BREAKING CHANGE: new structural and styling approach applied to CardHeader ([PR #23449](https://github.com/microsoft/fluentui/pull/23449) by 39736248+andrefcdias@users.noreply.github.com)
+  - feat: add `img` as allowed element for CardPreview's logo slot ([PR #23902](https://github.com/microsoft/fluentui/pull/23902) by 39736248+andrefcdias@users.noreply.github.com)
+- `@fluentui/react-combobox`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: Bump react-conformance in react-conformance-griffel to 0.14.0 ([PR #23909](https://github.com/microsoft/fluentui/pull/23909) by lingfangao@hotmail.com)
+- `@fluentui/react-select`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+  - fix: decrease number of react renders ([PR #23714](https://github.com/microsoft/fluentui/pull/23714) by seanmonahan@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: improve error message in useIsSSR() ([PR #23750](https://github.com/microsoft/fluentui/pull/23750) by olfedias@microsoft.com)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.0.1)
 
