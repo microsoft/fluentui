@@ -192,6 +192,11 @@ export function isPackageVersionConverged(versionString: string) {
   return version.major === 9;
 }
 
+export function isPackageVersionPrerelease(versionString: string) {
+  const version = semver.parse(versionString);
+  return version?.prerelease?.length && version?.prerelease?.length > 0;
+}
+
 export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
   return isPackageVersionConverged(packageJson.version);
