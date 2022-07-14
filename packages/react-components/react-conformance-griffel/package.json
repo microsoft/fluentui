@@ -29,7 +29,7 @@
     "@types/react": ">=16.8.0 <18.0.0",
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "typescript": "^4.3.0",
-    "@fluentui/react-conformance": "^0.13.1"
+    "@fluentui/react-conformance": "^0.14.0"
   },
   "dependencies": {
     "@griffel/react": "^1.2.0",
