@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add `img` as allowed element for CardPreview's logo slot",
+  "packageName": "@fluentui/react-card",
+  "email": "39736248+andrefcdias@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
