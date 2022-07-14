@@ -6,8 +6,6 @@
 
 These are not production-ready components and **should never be used in a product**. This space is useful for testing new components whose APIs might change before final release.
 
-![example of a Card component in usage](./assets/card-example.png)
-
 ## Usage
 
 To import React Card components:
@@ -16,7 +14,9 @@ To import React Card components:
 import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components/unstable';
 ```
 
-Example Card usage, shown above:
+Example Card usage:
+
+![example of a Card component in usage](./assets/card-example.png)
 
 ```jsx
 import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';
