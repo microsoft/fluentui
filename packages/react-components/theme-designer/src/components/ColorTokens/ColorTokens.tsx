@@ -1,19 +1,17 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
+import { ColorTokensList } from './ColorTokensList';
 import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsDarkTheme, teamsLightTheme, Theme } from '@fluentui/react-theme';
-import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
+import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
+import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import type { DispatchTheme } from '../../useThemeDesignerReducer';
 import { themeNames } from '../../utils/themeList';
-import { AccessibilityList } from './AccessibilityList';
 
 export interface ColorTokensProps {
   className?: string;
   brand: BrandVariants;
-  isDark: boolean;
-  theme: Theme;
   themeLabel: string;
   dispatchAppState: React.Dispatch<DispatchTheme>;
 }
@@ -43,15 +41,12 @@ const useStyles = makeStyles({
   },
 });
 
-const lightBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(teamsLightTheme, brandTeams);
-const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(teamsDarkTheme, brandTeams);
+const brandColors: ColorOverrideBrands = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, isDark, theme, themeLabel, dispatchAppState } = props;
-
-  const brandColors = isDark ? darkBrandColors : lightBrandColors;
+  const { brand, themeLabel, dispatchAppState } = props;
 
   const colorOverrideReducer: (
     state: ColorOverrides,
@@ -97,12 +92,11 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
           Reset Customizations
         </Button>
       </div>
-      <AccessibilityList
+      <ColorTokensList
         brand={brand}
         brandColors={brandColors}
         colorOverride={getCurrentOverride(themeLabel, colorOverride)}
         onNewOverride={onNewOverride}
-        theme={theme}
       />
     </div>
   );
