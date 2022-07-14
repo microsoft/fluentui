@@ -3,6 +3,20 @@ import { ColorOverrideBrands } from './ColorTokens';
 
 export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 
+export const sortOverrideableColorTokens = (overridableColorTokens: string[]) => {
+  return overridableColorTokens.sort((a, b) => {
+    if (a.includes('Inverted') && b.includes('Inverted')) {
+      return a.localeCompare(b);
+    } else if (a.includes('Inverted')) {
+      return 1;
+    } else if (b.includes('Inverted')) {
+      return -1;
+    } else {
+      return a.localeCompare(b);
+    }
+  });
+};
+
 /**
  * This function returns a list of the accent colors in the theme that use brand colors. We specifically look for color
  * tokens, hence including 'color', and exclude color palette tokens, hence removing 'palette'. We are not looking for
@@ -13,7 +27,7 @@ export const brandRamp: Brands[] = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110
  * @param brand The brand that the theme uses
  * @returns A list of color tokens whos values are overridable by the user
  */
-export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): ColorOverrideBrands => {
+export const getOverridableTokenBrandColors = (theme: Theme, brand: BrandVariants): ColorOverrideBrands => {
   const addList: string[] = ['colorNeutralStrokeAccessibleSelected'];
   const removeList: string[] = ['colorBrandBackgroundInverted', 'colorNeutralForegroundOnBrand'];
 
@@ -33,17 +47,7 @@ export const OverridableTokenBrandColors = (theme: Theme, brand: BrandVariants):
     );
   });
 
-  const sortedOverrideableColorTokens = overridableColorTokens.sort((a, b) => {
-    if (a.includes('Inverted') && b.includes('Inverted')) {
-      return a.localeCompare(b);
-    } else if (a.includes('Inverted')) {
-      return 1;
-    } else if (b.includes('Inverted')) {
-      return -1;
-    } else {
-      return a.localeCompare(b);
-    }
-  });
+  const sortedOverrideableColorTokens = sortOverrideableColorTokens(overridableColorTokens);
 
   // Flips the brand ramp to use the hex values as keys and the brand ramp colors as values for O(1) indexing
   const hexColorToBrand: ColorOverrideBrands = brandRamp.reduce((a: ColorOverrideBrands, c, i) => {

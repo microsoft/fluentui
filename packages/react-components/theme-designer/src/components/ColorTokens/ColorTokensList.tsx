@@ -14,18 +14,21 @@ import {
   tokens,
   Subtitle2,
 } from '@fluentui/react-components';
-import { brandRamp } from './OverridableTokenBrandColors';
+import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
-import { CircleFilled } from '@fluentui/react-icons';
+import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
 import { ColorOverrideBrands } from './ColorTokens';
+import { ContrastRatioList } from './getAccessibilityChecker';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
   brandColors: ColorOverrideBrands;
   colorOverride: ColorOverrideBrands;
+  coveredTokens: string[];
   onNewOverride: (color: string, newColor: Brands) => void;
+  failList?: ContrastRatioList;
 }
 
 export interface ColorTokenRowProps {
@@ -49,9 +52,13 @@ const useStyles = makeStyles({
     paddingRight: '5px',
     display: 'grid',
     gridTemplateColumns: '15px 1fr 1fr 1.5fr',
+    gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
     paddingBottom: tokens.spacingVerticalXL,
+  },
+  row2: {
+    gridColumnStart: '3',
   },
 });
 
@@ -71,12 +78,12 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverride, onNewOverride } = props;
+  const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
   const newColors = { ...brandColors, ...colorOverride };
 
   return (
     <div>
-      {Object.keys(newColors).map(color => {
+      {coveredTokens.map(color => {
         const colorValue = newColors[color];
         const usage = ((usageList as unknown) as Record<string, string>)[color];
 
@@ -119,6 +126,20 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 </Menu>
               </div>
               <div className={styles.col}>{usage}</div>
+              <div className={styles.row2}>
+                {failList ? (
+                  failList[color].map(fail => {
+                    const { compHex, ratio, desiredRatio } = fail;
+                    return (
+                      <div key={color + ' ' + compHex}>
+                        <WarningRegular color="red" /> Contrast against {compHex} is {ratio} - expected {desiredRatio}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
             <Divider />
           </div>
