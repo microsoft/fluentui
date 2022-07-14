@@ -6,12 +6,23 @@ import {
   MenuList,
   MenuItem,
   MenuPopover,
-  MenuProps,
   useIsSSR,
   Button,
+  Checkbox,
 } from '@fluentui/react-components';
 
-export const DefaultOpen = (props: Partial<MenuProps>) => {
+export const SSRDefaultOpen = () => {
+  const [mounted, setMounted] = React.useState(false);
+
+  return (
+    <>
+      <Checkbox label="Mount component" checked={mounted} onChange={(e, data) => setMounted(data.checked as boolean)} />
+      {mounted && <DefaultOpenMenu />}
+    </>
+  );
+};
+
+const DefaultOpenMenu = () => {
   const [open, setOpen] = React.useState(false);
   const isSSR = useIsSSR();
   React.useEffect(() => {

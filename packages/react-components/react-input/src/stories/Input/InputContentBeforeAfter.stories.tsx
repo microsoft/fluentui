@@ -1,12 +1,7 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands, useId, Body1, Button, Input, Label, Text } from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-button';
-import type { ButtonProps } from '@fluentui/react-button';
-import { Body1, Text } from '@fluentui/react-text';
-import { Input } from '@fluentui/react-input';
+import type { ButtonProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

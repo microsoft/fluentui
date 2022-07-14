@@ -61,7 +61,18 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/web/fluent-theme', to: '#/controls/web/themes' },
     { from: '#/examples', to: '#/controls/web' },
   ],
-  messageBars: [],
+  messageBars: [
+    {
+      path: '#',
+      text: (
+        <span>
+          🎉 Announcing Fluent UI React v9 stable release! Visit{' '}
+          <a href="https://react.fluentui.dev/">Fluent UI React v9</a> to see more.
+        </span>
+      ),
+      sessionStoragePrefix: 'FluentUI9',
+    },
+  ],
   // This is defined by loadSite() from @fluentui/public-docsite-setup
   versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };

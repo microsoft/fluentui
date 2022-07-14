@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed not able to navigate through Legends in browse mode",
-  "packageName": "@fluentui/react-charting",
-  "email": "v-hannapared@microsoft.com",
-  "dependentChangeType": "patch"
-}

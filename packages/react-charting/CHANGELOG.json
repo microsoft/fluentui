@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 07:45:34 GMT",
+      "tag": "@fluentui/react-charting_v5.12.1",
+      "version": "5.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "v-hannapared@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c7afa32e9fe9edde421b0f3208eeb9b3cf4c4323",
+            "comment": "Fixed not able to navigate through Legends in browse mode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.81.0",
+            "commit": "6ff3fb3cfb5d81d3db822f675a4ab0fb8be9559a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 07:40:58 GMT",
       "tag": "@fluentui/react-charting_v5.12.0",
       "version": "5.12.0",

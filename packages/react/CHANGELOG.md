@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Jul 2022 07:40:59 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 07:45:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.81.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.0)
+
+Thu, 14 Jul 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.80.0..@fluentui/react_v8.81.0)
+
+### Minor changes
+
+- Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body. ([PR #23753](https://github.com/microsoft/fluentui/pull/23753) by email not defined)
 
 ## [8.80.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.80.0)
 
