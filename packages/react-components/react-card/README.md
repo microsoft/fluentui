@@ -1,6 +1,6 @@
 # @fluentui/react-card [ALPHA]
 
-**React Card components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**React Card components for [Fluent UI React](https://react.fluentui.dev)**
 
 **⚠️ Please note that functionality is still being added to this package. Due to lockstep versioning, the version of this package is aligned with the others in _react-components_.**
 
