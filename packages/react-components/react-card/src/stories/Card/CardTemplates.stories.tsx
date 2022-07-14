@@ -24,14 +24,14 @@ import {
   MoreHorizontal48Regular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import AppLogo from '../../../assets/app_logo.svg';
-import Logo1 from '../../../assets/logo.svg';
-import Logo2 from '../../../assets/logo2.svg';
-import Logo3 from '../../../assets/logo3.svg';
-import ExcelLogo from '../../../assets/excel_logo.svg';
-import Office1 from '../../../assets/office1.png';
-import Office2 from '../../../assets/office2.png';
-import AvatarColin from '../../../assets/avatar_colin.svg';
+import appLogo from '../../../assets/app_logo.svg';
+import logo1 from '../../../assets/logo.svg';
+import logo2 from '../../../assets/logo2.svg';
+import logo3 from '../../../assets/logo3.svg';
+import excelLogo from '../../../assets/excel_logo.svg';
+import office1 from '../../../assets/office1.png';
+import office2 from '../../../assets/office2.png';
+import avatarColin from '../../../assets/avatar_colin.svg';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';
@@ -115,7 +115,7 @@ export const Templates = () => {
 
       <Card className={styles.fixedWidth}>
         <CardHeader
-          image={{ as: 'img', className: styles.headerImage, src: AppLogo }}
+          image={{ as: 'img', className: styles.headerImage, src: appLogo }}
           header={<Text weight="semibold">App Name</Text>}
           description={<Caption1 className={styles.caption}>Developer</Caption1>}
           action={
@@ -134,8 +134,8 @@ export const Templates = () => {
 
       <Card className={styles.fixedWidth}>
         <div className={styles.flexContainer}>
-          <img className={styles.appIcon} src={Logo1} />
-          <img className={styles.appIcon} src={Logo2} />
+          <img className={styles.appIcon} src={logo1} />
+          <img className={styles.appIcon} src={logo2} />
         </div>
         <CardHeader
           header={<Text weight="semibold">Alert in Teams when a new document is uploaded in channel</Text>}
@@ -193,9 +193,9 @@ export const Templates = () => {
       <Card className={styles.fixedWidth}>
         <CardPreview
           className={mergeClasses(styles.spacedPreview, styles.grayBackground)}
-          logo={<img className={styles.logoBadge} alt="app logo" src={Logo3} />}
+          logo={<img className={styles.logoBadge} alt="app logo" src={logo3} />}
         >
-          <img alt="presentation preview" src={Office1} className={styles.smallRadius} />
+          <img alt="presentation preview" src={office1} className={styles.smallRadius} />
         </CardPreview>
         <CardHeader
           header={<Body1 weight="semibold">iOS App Prototype</Body1>}
@@ -211,11 +211,11 @@ export const Templates = () => {
       </Card>
 
       <Card className={styles.fixedWidth}>
-        <CardPreview logo={<img alt="app logo" src={ExcelLogo} className={styles.logoBadge} />}>
-          <img alt="file preview" src={Office2} />
+        <CardPreview logo={<img alt="app logo" src={excelLogo} className={styles.logoBadge} />}>
+          <img alt="file preview" src={office2} />
         </CardPreview>
         <CardHeader
-          image={<Avatar image={{ src: AvatarColin }} />}
+          image={<Avatar image={{ src: avatarColin }} />}
           header={<Body1 weight="semibold">Classroom Collaboration</Body1>}
           description={
             <Caption1 className={mergeClasses(styles.flexContainer, styles.caption)}>
