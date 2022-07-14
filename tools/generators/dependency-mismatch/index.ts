@@ -1,5 +1,5 @@
 import * as semver from 'semver';
-import { Tree, formatFiles, updateJson, readJson } from '@nrwl/devkit';
+import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration } from '@nrwl/devkit';
 
 import { getProjectConfig, getProjects, isPackageVersionConverged } from '../../utils';
 import { PackageJson } from '../../types';
@@ -7,37 +7,16 @@ import { PackageJson } from '../../types';
 export default async function (tree: Tree) {
   const projects = getProjects(tree);
 
-  projects.forEach((project, projectName) => {
+  projects.forEach((_project, projectName) => {
     const config = getProjectConfig(tree, { packageName: projectName });
-
-    const checkDependencies = (dependencies: Record<string, string>) => {
-      Object.entries(dependencies).forEach(([dependencyName, versionRange]) => {
-        try {
-          const depPackageConfig = getProjectConfig(tree, { packageName: dependencyName });
-          const minVersion = semver.minVersion(versionRange);
-
-          if (minVersion && !isPackageVersionConverged(minVersion.raw)) {
-            return;
-          }
-
-          dependencies![dependencyName] = `^${readJson<PackageJson>(tree, depPackageConfig.paths.packageJson).version}`;
-        } catch (err) {
-          if (err instanceof Error && err.message.includes('Cannot find configuration for')) {
-            return;
-          }
-
-          throw err;
-        }
-      });
-    };
 
     updateJson(tree, config.paths.packageJson, (packageJson: PackageJson) => {
       if (packageJson.dependencies) {
-        checkDependencies(packageJson.dependencies);
+        packageJson.dependencies = getUpdatedDependencies(tree, packageJson.dependencies);
       }
 
       if (packageJson.devDependencies) {
-        checkDependencies(packageJson.devDependencies);
+        packageJson.devDependencies = getUpdatedDependencies(tree, packageJson.devDependencies);
       }
 
       return packageJson;
@@ -45,4 +24,33 @@ export default async function (tree: Tree) {
   });
 
   await formatFiles(tree);
+}
+
+function isProjectInWorkspace(tree: Tree, projectName: string) {
+  try {
+    readProjectConfiguration(tree, projectName);
+
+    return true;
+  } catch (err: unknown) {
+    return false;
+  }
+}
+
+function getUpdatedDependencies(tree: Tree, dependencies: Record<string, string>) {
+  return Object.entries(dependencies).reduce((acc, [dependencyName, versionRange]) => {
+    if (!isProjectInWorkspace(tree, dependencyName)) {
+      return acc;
+    }
+
+    const minVersion = semver.minVersion(versionRange);
+
+    if (minVersion && !isPackageVersionConverged(minVersion.raw)) {
+      return acc;
+    }
+
+    const depPackageConfig = getProjectConfig(tree, { packageName: dependencyName });
+    acc[dependencyName] = `^${readJson<PackageJson>(tree, depPackageConfig.paths.packageJson).version}`;
+
+    return acc;
+  }, dependencies);
 }

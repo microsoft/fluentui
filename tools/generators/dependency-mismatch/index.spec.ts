@@ -170,6 +170,6 @@ function setupDummyPackage(
   });
 
   return {
-    readPackageJson: () => readJson(tree, packageJsonPath),
+    readPackageJson: () => readJson<PackageJson>(tree, packageJsonPath),
   };
 }
