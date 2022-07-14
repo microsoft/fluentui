@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing bad version bump of @fluentui/react-utilities.",
-  "packageName": "@fluentui/react-radio",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
