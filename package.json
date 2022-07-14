@@ -297,6 +297,7 @@
     "@types/jest-axe/axe-core": "4.2.1",
     "@types/react": "16.14.23",
     "@types/react-dom": "16.9.14",
+    "json-schema": "0.4.0",
     "eslint": "7.25.0",
     "workspace-tools": "0.18.4",
     "requestretry": "7.0.0"
