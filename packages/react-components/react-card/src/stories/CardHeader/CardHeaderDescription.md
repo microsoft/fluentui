@@ -1,4 +1,4 @@
-The CardHeader component used inside of a Card to represent a Fluent UI compliant card header.
+The CardHeader component, used inside of a Card, represents a Fluent UI compliant card header.
 
 <!-- Don't allow prettier to collapse code block into single line -->
 <!-- prettier-ignore -->
