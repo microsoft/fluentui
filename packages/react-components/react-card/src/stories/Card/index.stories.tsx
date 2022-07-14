@@ -8,7 +8,7 @@ export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';
 
 export default {
-  title: 'Preview Components/Card',
+  title: 'Preview Components/Card/Card',
   component: Card,
   parameters: {
     docs: {
