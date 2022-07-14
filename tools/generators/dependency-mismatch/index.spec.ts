@@ -91,6 +91,40 @@ describe('dependency-mismatch generator', () => {
     `);
   });
 
+  it('should not add carets to prerelease dependencies that do not already have it specified', async () => {
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(appTree, {
+      name: 'public-docsite-v9',
+      version: '9.0.0',
+      dependencies: {
+        [`${workspaceNpmScope}/react-select`]: '^9.0.0-beta.1',
+        [`${workspaceNpmScope}/react-spinbutton`]: '9.0.0-beta.1',
+      },
+      devDependencies: {},
+    });
+
+    setupDummyPackage(appTree, {
+      name: 'react-select',
+      version: '9.0.0-beta.2',
+      dependencies: {},
+      devDependencies: {},
+    });
+    setupDummyPackage(appTree, {
+      name: 'react-spinbutton',
+      version: '9.0.0-beta.2',
+      dependencies: {},
+      devDependencies: {},
+    });
+    await generator(appTree);
+
+    const packageJson: PackageJson = await readTargetPackageJson();
+    expect(packageJson.dependencies).toMatchInlineSnapshot(`
+      Object {
+        "proj/react-select": "^9.0.0-beta.2",
+        "proj/react-spinbutton": "9.0.0-beta.2",
+      }
+    `);
+  });
+
   it('should run non-converged package', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(appTree, {
       name: 'react',

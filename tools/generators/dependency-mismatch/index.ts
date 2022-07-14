@@ -1,7 +1,7 @@
 import * as semver from 'semver';
 import { Tree, formatFiles, updateJson, readJson, readProjectConfiguration } from '@nrwl/devkit';
 
-import { getProjectConfig, getProjects, isPackageVersionConverged } from '../../utils';
+import { getProjectConfig, getProjects, isPackageVersionConverged, isPackageVersionPrerelease } from '../../utils';
 import { PackageJson } from '../../types';
 
 export default async function (tree: Tree) {
@@ -44,12 +44,21 @@ function getUpdatedDependencies(tree: Tree, dependencies: Record<string, string>
 
     const minVersion = semver.minVersion(versionRange);
 
-    if (minVersion && !isPackageVersionConverged(minVersion.raw)) {
+    if (!minVersion) {
       return acc;
     }
 
+    if (!isPackageVersionConverged(minVersion.raw)) {
+      return acc;
+    }
+
+    const shouldHaveCaret = !isPackageVersionPrerelease(minVersion.raw) || versionRange[0] === '^';
+
     const depPackageConfig = getProjectConfig(tree, { packageName: dependencyName });
-    acc[dependencyName] = `^${readJson<PackageJson>(tree, depPackageConfig.paths.packageJson).version}`;
+
+    acc[dependencyName] = `${shouldHaveCaret ? '^' : ''}${
+      readJson<PackageJson>(tree, depPackageConfig.paths.packageJson).version
+    }`;
 
     return acc;
   }, dependencies);
