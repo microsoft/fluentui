@@ -132,7 +132,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                     const { compHex, ratio, desiredRatio } = fail;
                     return (
                       <div key={color + ' ' + compHex}>
-                        <WarningRegular color="red" /> Contrast against {compHex} is {ratio} - desire {desiredRatio}
+                        <WarningRegular color="red" /> Contrast against {compHex} is {ratio} - expected {desiredRatio}
                       </div>
                     );
                   })
