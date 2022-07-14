@@ -4,13 +4,13 @@ import { Tree, addProjectConfiguration, serializeJson, readWorkspaceConfiguratio
 import generator from './index';
 import { PackageJson } from '../../types';
 
-describe('release-dependency-mismatch generator', () => {
+describe('dependency-mismatch generator', () => {
   let appTree: Tree;
   let workspaceNpmScope: string;
 
   beforeEach(() => {
     appTree = createTreeWithEmptyWorkspace();
-    workspaceNpmScope = readWorkspaceConfiguration(appTree).npmScope!;
+    workspaceNpmScope = readWorkspaceConfiguration(appTree).npmScope as string;
   });
 
   it('should fix dependency mismatch', async () => {
@@ -117,7 +117,7 @@ describe('release-dependency-mismatch generator', () => {
     `);
   });
 
-  it('should ignore dependencies not in workspace', async () => {
+  it('should ignore 3rd party packages/dependencies', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(appTree, {
       name: 'react',
       version: '8.0.0',

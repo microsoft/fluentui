@@ -61,7 +61,7 @@ After running generator:
 ## Usage
 
 ```sh
-yarn nx workspace-generator dependency-mismatch ...
+yarn nx workspace-generator dependency-mismatch 
 ```
 
 Show what will be generated without writing to disk:
@@ -73,5 +73,5 @@ yarn nx workspace-generator dependency-mismatch --dry-run
 ### Examples
 
 ```sh
-yarn nx workspace-generatordependency-mismatch
+yarn nx workspace-generator dependency-mismatch
 ```
