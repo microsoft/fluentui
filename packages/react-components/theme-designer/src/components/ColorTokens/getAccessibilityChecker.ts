@@ -36,6 +36,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     };
   };
 
+  //whee
   const checkDuplicate = (failList: ContrastRatio[], failInfo: ContrastRatio): ContrastRatio[] => {
     let exists = false;
     const newFailList = failList.map(ratio => {
