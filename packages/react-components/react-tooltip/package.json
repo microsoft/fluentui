@@ -36,7 +36,7 @@
     "@fluentui/react-positioning": "^9.1.0",
     "@fluentui/react-shared-contexts": "^9.0.0",
     "@fluentui/react-theme": "^9.0.0",
-    "@fluentui/react-utilities": "^9.0.1-0",
+    "@fluentui/react-utilities": "^9.0.1",
     "@griffel/react": "^1.2.0",
     "tslib": "^2.1.0"
   },

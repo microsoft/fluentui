@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Fixing bad version bump of @fluentui/react-utilities.",
+  "packageName": "@fluentui/react-select",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

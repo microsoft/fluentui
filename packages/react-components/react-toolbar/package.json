@@ -34,7 +34,7 @@
     "@fluentui/react-button": "^9.0.2",
     "@fluentui/react-divider": "^9.0.2",
     "@fluentui/react-theme": "^9.0.0",
-    "@fluentui/react-utilities": "^9.0.1-0",
+    "@fluentui/react-utilities": "^9.0.1",
     "@fluentui/react-radio": "^9.0.2",
     "@fluentui/react-tabster": "^9.0.2",
     "@griffel/react": "^1.2.0",
