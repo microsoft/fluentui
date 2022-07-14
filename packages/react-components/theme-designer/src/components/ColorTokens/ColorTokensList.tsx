@@ -16,7 +16,7 @@ import {
 } from '@fluentui/react-components';
 import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
-import { CheckmarkCircleRegular, CircleFilled, WarningRegular } from '@fluentui/react-icons';
+import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 
 import { usageList } from './UsageList';
 import { ColorOverrideBrands } from './ColorTokens';
