@@ -228,7 +228,7 @@ class LayeredTree extends StandardTree {
     // Find tree Height
     const treeHeight = root?.height + 1;
 
-    // Create tree layout, width: 70, height: 90 and add node separation
+    // Create tree layout, width: layoutWidth, height: layoutWidth/1.5 and add node separation
     const treemap = tree()
       .nodeSize([layoutWidth, layoutWidth / 1.5])
       .separation((a, b) => {
@@ -243,7 +243,7 @@ class LayeredTree extends StandardTree {
 
     // Normalize for fixed-depth and width
     // Normalise y coordinate by depth of each node by a factor of 130
-    // Normalise x coordinate by start coordinate 0 with 450
+    // Normalise x coordinate by start coordinate 0 with screenSize/3
     nodes.forEach(d => {
       d.y = d.depth === 0 ? 10 : d.depth * 130;
       d.x += screenWidth / 3;
@@ -296,7 +296,7 @@ class LayeredTree extends StandardTree {
       // check for leaf nodes
       if (!d.children && !parentSet.has(d.parentID) && treeHeight === 3) {
         const newWidth = (rectWidth - gap) / 2;
-        const newHeight = 70;
+        const newHeight = rectHeight;
         parentSet.add(d.parentID);
 
         // <------------------ Links section ------------------>
