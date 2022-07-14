@@ -36,6 +36,27 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
     };
   };
 
+  const checkDuplicate = (failList: ContrastRatio[], failInfo: ContrastRatio): ContrastRatio[] => {
+    let exists = false;
+    const newFailList = failList.map(ratio => {
+      if (ratio.compHex === failInfo.compHex) {
+        exists = true;
+        ratio = {
+          ...ratio,
+          desiredRatio: ratio.desiredRatio > failInfo.desiredRatio ? ratio.desiredRatio : failInfo.desiredRatio,
+        };
+      }
+      return ratio;
+    });
+
+    if (exists) {
+      return newFailList;
+    } else {
+      failList.push(failInfo);
+      return failList;
+    }
+  };
+
   const pass: string[] = [];
   const fail: ContrastRatioList = {};
 
@@ -47,7 +68,7 @@ export const getAccessibilityChecker = (theme: Partial<Theme>) => {
       const [compToken, ratio] = accessiblePairs[token][i];
       const { isPass, failInfo } = calculateContrastRatio(token, compToken, ratio);
       if (!isPass && failInfo) {
-        failList.push(failInfo);
+        checkDuplicate(failList, failInfo);
       }
     }
 
