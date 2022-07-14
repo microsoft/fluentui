@@ -41,7 +41,7 @@ class StandardTree {
     this._linkElements = _linkElements;
   }
 
-  public createEllipsisText(text: string, rectangleWidth: number, padding: number, styleClass: string | undefined) {
+  public truncateText(text: string, rectangleWidth: number, padding: number, styleClass: string | undefined) {
     let truncatedText = '';
     const words = text.split(/\s+/).reverse();
     let word: string = '';
@@ -103,17 +103,17 @@ class StandardTree {
     );
 
     if (subname !== undefined) {
-      subname = this.createEllipsisText(subname, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectSubText);
+      subname = this.truncateText(subname, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectSubText);
     }
     if (metricName !== undefined) {
-      metricName = this.createEllipsisText(
+      metricName = this.truncateText(
         metricName,
         rectangleWidth,
         rectangleWidth / 4,
         this.styleClassNames.rectmetricText,
       );
     }
-    name = this.createEllipsisText(name, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectText);
+    name = this.truncateText(name, rectangleWidth, rectangleWidth / 4, this.styleClassNames.rectText);
 
     // Text position y = y + rectHeight/2, 2 is ratio for depth
     // Text position x = x + rectWidth/2, 2 is ratio for length
@@ -147,7 +147,6 @@ class StandardTree {
         <text
           textAnchor="middle"
           className={metricName !== undefined ? this.styleClassNames.rectSubText : this.styleClassNames.rectText}
-          id={`${nodeId}`}
           dy={metricName !== undefined ? yCoordinate + rectangleHeight / 2.5 : yCoordinate + rectangleHeight / 2}
           x={xCoordinate + rectangleWidth / 2}
           key={`${nodeId}${this.styleClassNames.rectText}`}
@@ -220,6 +219,9 @@ class LayeredTree extends StandardTree {
     this._treeTraversal = _treeTraversal;
   }
   public createTree(givenLayoutWidth: number | undefined, screenWidth: number) {
+    if (givenLayoutWidth !== undefined && (givenLayoutWidth < 65 || givenLayoutWidth > 90)) {
+      givenLayoutWidth = 65;
+    }
     const layoutWidth = givenLayoutWidth || 75;
     const root = hierarchy(this.treeData, d => {
       return d.children;

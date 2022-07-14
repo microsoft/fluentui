@@ -68,7 +68,6 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={42.608695652173914}
-          id="0"
           textAnchor="middle"
           x={612.5}
         >
@@ -128,7 +127,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="1"
           textAnchor="middle"
           x={218.75}
         >
@@ -188,7 +186,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="2"
           textAnchor="middle"
           x={157.5}
         >
@@ -291,7 +288,6 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="4"
           textAnchor="middle"
           x={157.5}
         >
@@ -351,7 +347,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="5"
           textAnchor="middle"
           x={280}
         >
@@ -454,7 +449,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="7"
           textAnchor="middle"
           x={420}
         >
@@ -514,7 +508,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="8"
           textAnchor="middle"
           x={542.5}
         >
@@ -574,7 +567,6 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="9"
           textAnchor="middle"
           x={743.75}
         >
@@ -634,7 +626,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="10"
           textAnchor="middle"
           x={682.5}
         >
@@ -694,7 +685,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="11"
           textAnchor="middle"
           x={805}
         >
@@ -754,7 +744,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="12"
           textAnchor="middle"
           x={682.5}
         >
@@ -814,7 +803,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="13"
           textAnchor="middle"
           x={1006.25}
         >
@@ -874,7 +862,6 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="14"
           textAnchor="middle"
           x={1006.25}
         >
@@ -1054,7 +1041,6 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={42.608695652173914}
-          id="0"
           textAnchor="middle"
           x={612.5}
         >
@@ -1114,7 +1100,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="1"
           textAnchor="middle"
           x={218.75}
         >
@@ -1174,7 +1159,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="2"
           textAnchor="middle"
           x={218.75}
         >
@@ -1277,7 +1261,6 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={463.04347826086956}
-          id="4"
           textAnchor="middle"
           x={218.75}
         >
@@ -1337,7 +1320,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={548.2608695652174}
-          id="5"
           textAnchor="middle"
           x={218.75}
         >
@@ -1440,7 +1422,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="7"
           textAnchor="middle"
           x={481.25}
         >
@@ -1500,7 +1481,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="8"
           textAnchor="middle"
           x={481.25}
         >
@@ -1560,7 +1540,6 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="9"
           textAnchor="middle"
           x={743.75}
         >
@@ -1620,7 +1599,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="10"
           textAnchor="middle"
           x={743.75}
         >
@@ -1680,7 +1658,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="11"
           textAnchor="middle"
           x={743.75}
         >
@@ -1740,7 +1717,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={463.04347826086956}
-          id="12"
           textAnchor="middle"
           x={743.75}
         >
@@ -1800,7 +1776,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="13"
           textAnchor="middle"
           x={1006.25}
         >
@@ -1860,7 +1835,6 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="14"
           textAnchor="middle"
           x={1006.25}
         >
@@ -2040,7 +2014,6 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={42.608695652173914}
-          id="0"
           textAnchor="middle"
           x={612.5}
         >
@@ -2100,7 +2073,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="1"
           textAnchor="middle"
           x={218.75}
         >
@@ -2160,7 +2132,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="2"
           textAnchor="middle"
           x={157.5}
         >
@@ -2263,7 +2234,6 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="4"
           textAnchor="middle"
           x={157.5}
         >
@@ -2323,7 +2293,6 @@ subText sub Parent info parentId: 1
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="5"
           textAnchor="middle"
           x={280}
         >
@@ -2426,7 +2395,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="7"
           textAnchor="middle"
           x={481.25}
         >
@@ -2486,7 +2454,6 @@ subText sub Parent info parentId: 6
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="8"
           textAnchor="middle"
           x={481.25}
         >
@@ -2546,7 +2513,6 @@ subText The subtext is as follows: subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="9"
           textAnchor="middle"
           x={743.75}
         >
@@ -2606,7 +2572,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="10"
           textAnchor="middle"
           x={682.5}
         >
@@ -2666,7 +2631,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="11"
           textAnchor="middle"
           x={805}
         >
@@ -2726,7 +2690,6 @@ subText sub Parent info parentId: 9
                 font-weight: 400;
               }
           dy={377.82608695652175}
-          id="12"
           textAnchor="middle"
           x={682.5}
         >
@@ -2786,7 +2749,6 @@ subText subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={156.08695652173913}
-          id="13"
           textAnchor="middle"
           x={1006.25}
         >
@@ -2846,7 +2808,6 @@ subText sub Parent info parentId: 13
                 font-weight: 400;
               }
           dy={292.60869565217394}
-          id="14"
           textAnchor="middle"
           x={1006.25}
         >
@@ -3026,7 +2987,6 @@ subText subtext Root Node"
                 font-weight: 400;
               }
           dy={42.608695652173914}
-          id="0"
           textAnchor="middle"
           x={612.5}
         >
@@ -3086,7 +3046,6 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="1"
           textAnchor="middle"
           x={218.75}
         >
@@ -3146,7 +3105,6 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="2"
           textAnchor="middle"
           x={481.25}
         >
@@ -3206,7 +3164,6 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="3"
           textAnchor="middle"
           x={743.75}
         >
@@ -3266,7 +3223,6 @@ subText Subtext val is subtext Parent info parentId: 0
                 font-weight: 400;
               }
           dy={162.6086956521739}
-          id="4"
           textAnchor="middle"
           x={1006.25}
         >

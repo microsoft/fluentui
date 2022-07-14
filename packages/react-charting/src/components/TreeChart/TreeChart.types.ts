@@ -59,7 +59,7 @@ export interface ITreeProps {
    * Node Width Size for the Tree Layout
    * * @default 75
    */
-  layoutWidth?: NodesComposition.long | NodesComposition.compact | undefined;
+  layoutWidth?: number | undefined;
   /**
    * traversal order for tree chart, preOrder = 1, levelOrder = 0
    */
@@ -94,7 +94,7 @@ export interface ITreeProps {
 export interface ITreeState {
   /**
    * Width of SVG tree chart
-   * * @default 1200
+   * * @default 1500
    */
   _width: number;
   /**
