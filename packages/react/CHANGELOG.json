@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 07:45:34 GMT",
+      "tag": "@fluentui/react_v8.81.0",
+      "version": "8.81.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "e1efdc9264ab9a14ab2837dc6b0bc2e1495f5b13",
+            "comment": "Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 07:40:59 GMT",
       "tag": "@fluentui/react_v8.80.0",
       "version": "8.80.0",
