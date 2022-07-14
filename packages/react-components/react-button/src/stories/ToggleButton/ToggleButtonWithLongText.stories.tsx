@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToggleButton } from '@fluentui/react-button';
+import { ToggleButton } from '@fluentui/react-components';
 
 export const WithLongText = () => (
   <>

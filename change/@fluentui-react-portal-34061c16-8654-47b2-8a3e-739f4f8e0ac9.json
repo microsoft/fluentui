@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: `Portal` does not use useIsSSR hook",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
