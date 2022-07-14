@@ -219,8 +219,13 @@ class LayeredTree extends StandardTree {
     this._treeTraversal = _treeTraversal;
   }
   public createTree(givenLayoutWidth: number | undefined, screenWidth: number) {
-    if (givenLayoutWidth !== undefined && (givenLayoutWidth < 65 || givenLayoutWidth > 90)) {
-      givenLayoutWidth = 65;
+    if (givenLayoutWidth !== undefined) {
+      if (givenLayoutWidth < 65) {
+        givenLayoutWidth = 65;
+      }
+      if (givenLayoutWidth > 90) {
+        givenLayoutWidth = 90;
+      }
     }
     const layoutWidth = givenLayoutWidth || 75;
     const root = hierarchy(this.treeData, d => {
