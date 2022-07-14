@@ -18,59 +18,49 @@ import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-compo
 
 Example Card usage, shown above:
 
-<!-- prettier-ignore-start -->
-
 ```jsx
-import { Share16Regular, ArrowReply16Regular } from "@fluentui/react-icons";
-import {
-  Button,
-  Body1,
-  Caption1
-} from "@fluentui/react-components";
-import {
-  Card,
-  CardHeader,
-  CardPreview,
-  CardFooter
-} from "@fluentui/react-components/unstable";
+import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';
+import { Button, Body1, Caption1 } from '@fluentui/react-components';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
 
-const App = () => <>
-  <Card>
-    <CardHeader
-      image={
-        <img
-          src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/avatar_elvia.svg"
-          alt="Face of a person"
-        />
-      }
-      header={
-        <Body1>
-          <b>Elvia Atkins</b> mentioned you
-        </Body1>
-      }
-      description={<Caption1>5h ago · About us - Overview</Caption1>}
-    />
-    <CardPreview
-      logo={
-        <img
-          src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/word_logo.svg"
-          alt="Microsoft Word logo"
-        />
-      }
-    >
-      <img
-        src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/doc_template.png"
-        alt="Preview of a Word document"
+const App = () => (
+  <>
+    <Card>
+      <CardHeader
+        image={
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/avatar_elvia.svg"
+            alt="Face of a person"
+          />
+        }
+        header={
+          <Body1>
+            <b>Elvia Atkins</b> mentioned you
+          </Body1>
+        }
+        description={<Caption1>5h ago · About us - Overview</Caption1>}
       />
-    </CardPreview>
-    <CardFooter>
-      <Button icon={<ArrowReply16Regular />}>Reply</Button>
-      <Button icon={<Share16Regular />}>Share</Button>
-    </CardFooter>
-  </Card>
-</>
+      <CardPreview
+        logo={
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/word_logo.svg"
+            alt="Microsoft Word logo"
+          />
+        }
+      >
+        <img
+          src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/doc_template.png"
+          alt="Preview of a Word document"
+        />
+      </CardPreview>
+      <CardFooter>
+        <Button icon={<ArrowReply16Regular />}>Reply</Button>
+        <Button icon={<Share16Regular />}>Share</Button>
+      </CardFooter>
+    </Card>
+  </>
+);
 ```
-<!-- prettier-ignore-end -->
 
 ## Specification
 
