@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label, tokens, useId, Radio, RadioGroup } from '@fluentui/react-components';
+import { tokens, useId, Label, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const ControlledValue = () => {
   const [value, setValue] = React.useState('banana');
