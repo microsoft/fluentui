@@ -6,15 +6,46 @@
 
 Usage: in your [ESLint config file](https://eslint.org/docs/user-guide/configuring), add `{ "extends": ["plugin:@fluentui/<name>"] }` or `{ "extends": ["plugin:@fluentui/eslint-plugin/<name>"] }` (the two are equivalent).
 
-- `react`: For `@fluentui/react` and related packages
-  - `react--legacy`: Like `react` but requiring an `I` prefix for interfaces
-  - `node`: Like `react` but for packages which run in a Node environment (not the browser)
-  - `node--legacy`: Like `node` but requiring an `I` prefix for interfaces
+- `react`: react specific configuration for fluentui vNext
+- `node`: node specific configuration for fluentui vNext
+- `react--legacy`: react specific configuration for fluentui v7,8
+- `node--legacy`: node specific configuration for fluentui v7,8
 - `react-northstar`: For `@fluentui/react-northstar` and related packages
+- `imports`: auto import statements sorting configuration
 
 Helpers for customizing configuration are exported under a `configHelpers` object.
 
 ## Rules
+
+### `ban-context-export`
+
+Exporting context objects as a part of the public API can lead to unexpected usages of context by customers and might
+impede future refactoring. To allow customers use context while encapsulating our internals correctly, the developer
+should export a provider and hook.
+
+**❌ Don't**
+
+```ts
+// src/context.ts
+import * as React from 'react';
+export const MyContext = React.createContext();
+
+// src/index.ts
+export { MyContext } from './context';
+```
+
+**✅ Do**
+
+```ts
+// src/context.ts
+import * as React from 'react';
+const MyContext = React.createContext();
+export const MyContextProvider = MyContext.Provider;
+export const useMyContext = () => React.useContext(MyContext);
+
+// src/index.ts
+export { MyContextProvider, useMyContext } from './context';
+```
 
 ### `ban-imports`
 
@@ -65,6 +96,41 @@ The rule requires an options object containing:
 ### `no-global-react`
 
 Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
+
+### `no-restricted-imports`
+
+Prevents imports from `forbidden` packages. If a corresponding `preferred` import is provided, the lint error will be automatically fixable.
+
+**Example Configuration:**
+
+```
+"@fluentui/no-restricted-imports": [
+  'error',
+  {
+    paths: [
+      {
+        forbidden: ['@fluentui/react-theme', '@griffel/react`],
+        preferred: '@fluentui/react-components',
+      },
+    ],
+  },
+  ],
+```
+
+**❌ Don't**
+
+```ts
+import * as React from 'react';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+```
+
+**✅ Do**
+
+```ts
+import * as React from 'react';
+import { makeStyles, webDarkTheme } from '@fluentui/react-components';
+```
 
 ### `no-tslint-comments`
 

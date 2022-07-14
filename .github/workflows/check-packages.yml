@@ -51,5 +51,4 @@ jobs:
             core.exportVariable('BEACHBALL_VERSION', beachballVersion);
 
       - run: |
-          cp scripts/beachball/.beachballrc.base.json .beachballrc.json
           npx beachball@$BEACHBALL_VERSION check

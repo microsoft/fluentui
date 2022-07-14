@@ -7,7 +7,11 @@ import {
   readWorkspaceConfiguration,
   Tree,
   getProjects as getAllProjects,
+  ProjectConfiguration,
+  readJson,
 } from '@nrwl/devkit';
+import { PackageJson } from './types';
+import * as semver from 'semver';
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -140,6 +144,10 @@ export const workspacePaths = {
 
 export type UserLog = Array<{ type: keyof typeof logger; message: string }>;
 export function printUserLogs(logs: UserLog) {
+  if (logs.length === 0) {
+    return;
+  }
+
   logger.log(`${'='.repeat(80)}\n`);
 
   logs.forEach(log => logger[log.type](log.message));
@@ -170,4 +178,26 @@ export function getProjects(tree: Tree, projectNames?: string[]) {
   }
 
   return allProjects;
+}
+
+export function hasSchemaFlag<T, K extends keyof T>(schema: T, flag: K): schema is T & Record<K, NonNullable<T[K]>> {
+  return Boolean(schema[flag]);
+}
+
+export function isPackageVersionConverged(versionString: string) {
+  const version = semver.parse(versionString);
+  if (version === null) {
+    throw new Error(`${versionString} is not a valid semver version`);
+  }
+  return version.major === 9;
+}
+
+export function isPackageConverged(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return isPackageVersionConverged(packageJson.version);
+}
+
+export function isV8Package(tree: Tree, project: ProjectConfiguration) {
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(project.root, 'package.json'));
+  return packageJson.version.startsWith('8.');
 }

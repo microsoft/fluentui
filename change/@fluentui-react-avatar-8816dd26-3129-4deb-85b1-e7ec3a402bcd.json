@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Avatar: Fix style for sizes 20 and 24 to have semibold fontWeight instead of regular.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -165,21 +165,25 @@ function useSubMenuState(
 ) {
   const [expandedMenuItemKey, setExpandedMenuItemKey] = React.useState<string>();
   const [submenuTarget, setSubmenuTarget] = React.useState<HTMLElement>();
+  /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
+  const [shouldFocusOnContainer, setShouldFocusOnContainer] = React.useState<boolean>();
   const subMenuId = useId(COMPONENT_NAME, id);
 
   const closeSubMenu = React.useCallback(() => {
+    setShouldFocusOnContainer(undefined);
     setExpandedMenuItemKey(undefined);
     setSubmenuTarget(undefined);
   }, []);
 
   const openSubMenu = React.useCallback(
-    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement) => {
+    ({ key: submenuItemKey }: IContextualMenuItem, target: HTMLElement, focusContainer?: boolean) => {
       if (expandedMenuItemKey === submenuItemKey) {
         return;
       }
 
       target.focus();
 
+      setShouldFocusOnContainer(focusContainer);
       setExpandedMenuItemKey(submenuItemKey);
       setSubmenuTarget(target);
     },
@@ -206,6 +210,7 @@ function useSubMenuState(
         isSubMenu: true,
         id: subMenuId,
         shouldFocusOnMount: true,
+        shouldFocusOnContainer,
         directionalHint: getRTL(theme) ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className,
         gapSpace: 0,
@@ -504,7 +509,7 @@ function useMouseHandlers(
   hostElement: React.RefObject<HTMLDivElement>,
   startSubmenuTimer: (onTimerExpired: () => void) => void,
   cancelSubMenuTimer: () => void,
-  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement) => void,
+  openSubMenu: (submenuItemKey: IContextualMenuItem, target: HTMLElement, openedByMouseClick?: boolean) => void,
   onSubMenuDismiss: (ev?: any, dismissAll?: boolean) => void,
   dismiss: (ev?: any, dismissAll?: boolean) => void,
 ) {
@@ -603,7 +608,7 @@ function useMouseHandlers(
       ev.stopPropagation();
       startSubmenuTimer(() => {
         targetElement.focus();
-        openSubMenu(item, targetElement);
+        openSubMenu(item, targetElement, true);
       });
     } else {
       startSubmenuTimer(() => {
@@ -637,7 +642,14 @@ function useMouseHandlers(
     } else {
       if (item.key !== expandedMenuItemKey) {
         // This has a collapsed sub menu. Expand it.
-        openSubMenu(item, target);
+
+        // focus on the container by default when the menu is opened with a click event
+        // this differentiates from a keyboard interaction triggering the click event
+        const shouldFocusOnContainer =
+          typeof props.shouldFocusOnContainer === 'boolean'
+            ? props.shouldFocusOnContainer
+            : (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
+        openSubMenu(item, target, shouldFocusOnContainer);
       }
     }
 

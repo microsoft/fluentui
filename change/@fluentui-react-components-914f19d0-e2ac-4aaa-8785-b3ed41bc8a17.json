@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Updated exports for react-tabs unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

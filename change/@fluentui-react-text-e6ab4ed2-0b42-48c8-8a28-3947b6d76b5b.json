@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor: autofix no export star at index file for cxe-prg packages",
-  "packageName": "@fluentui/react-text",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

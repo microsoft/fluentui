@@ -50,7 +50,7 @@ describe('Toolbar with popup and Tooltip', () => {
     cy.visible(firstPopup);
     cy.waitForSelectorAndPressKey(firstPopup, '{esc}');
 
-    cy.hover(secondItem);
+    cy.hoverOn(secondItem);
     cy.visible(secondPopup);
   });
 });

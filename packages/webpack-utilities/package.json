@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/webpack-utilities",
-  "version": "8.1.6",
+  "version": "8.1.7",
   "description": "Fluent UI React utilities for Webpack bundler.",
   "repository": {
     "type": "git",

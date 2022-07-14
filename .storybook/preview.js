@@ -25,7 +25,7 @@ window.__setCurrentStory = function (categorization, story) {
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
 export const decorators = [withFluentProvider, withStrictMode];
 
-/** @type {import('@storybook/react').Parameters} */
+/** @type {import('@storybook/addons').Parameters} */
 export const parameters = {
   viewMode: 'docs',
   controls: {
@@ -39,10 +39,15 @@ export const parameters = {
   },
   exportToCodeSandbox: {
     requiredDependencies: {
-      'react-dom': 'latest', // for React
-      'react-scripts': 'latest', // necessary when using typescript in CodeSandbox
-      '@fluentui/react-components': 'rc', // necessary for FluentProvider
-      '@fluentui/react-icons': 'beta',
+      // for React
+      react: '^17',
+      'react-dom': '^17',
+      // necessary when using typescript in CodeSandbox
+      'react-scripts': 'latest',
+    },
+    optionalDependencies: {
+      '@fluentui/react-components': '^9.0.0', // necessary for FluentProvider
+      '@fluentui/react-icons': 'latest',
     },
     indexTsx: dedent`
           import * as ReactDOM from 'react-dom';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from './types';
+import { makeStyles, mergeClasses } from '@griffel/react';
 
 export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
@@ -41,3 +42,31 @@ export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnRet
     </div>
   </div>
 );
+
+const useNoAnimationStyles = makeStyles({
+  root: {
+    animationDuration: '0s !important',
+    transitionDuration: '0s !important',
+    '& *': {
+      animationDuration: '0s !important',
+      transitionDuration: '0s !important',
+    },
+  },
+});
+export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
+  const noAnimationStyles = useNoAnimationStyles();
+  const className = mergeClasses(noAnimationStyles.root, 'testWrapper');
+  return (
+    <div style={{ display: 'flex' }}>
+      <div
+        className={className}
+        style={{
+          padding: '10px',
+          overflow: 'hidden',
+        }}
+      >
+        {story()}
+      </div>
+    </div>
+  );
+};

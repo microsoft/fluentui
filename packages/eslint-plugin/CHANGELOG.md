@@ -1,8 +1,62 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 16 Mar 2022 07:38:50 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Jul 2022 07:47:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.1)
+
+Wed, 13 Jul 2022 07:47:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.11.0..@fluentui/eslint-plugin_v1.11.1)
+
+### Patches
+
+- chore: don't forbid package imports from components being exported from react-components/unstable. ([PR #23858](https://github.com/microsoft/fluentui/pull/23858) by tristan.watanabe@gmail.com)
+
+## [1.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.0)
+
+Tue, 12 Jul 2022 07:40:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.10.0..@fluentui/eslint-plugin_v1.11.0)
+
+### Minor changes
+
+- chore: use no-restricted-import rule for v9 lint config. ([PR #23845](https://github.com/microsoft/fluentui/pull/23845) by tristan.watanabe@gmail.com)
+
+## [1.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.10.0)
+
+Mon, 11 Jul 2022 07:37:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.9.1..@fluentui/eslint-plugin_v1.10.0)
+
+### Minor changes
+
+- feat: add custom no-restricted-imports rule with fixer ([PR #23613](https://github.com/microsoft/fluentui/pull/23613) by tristan.watanabe@gmail.com)
+
+## [1.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.1)
+
+Fri, 27 May 2022 07:39:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.9.0..@fluentui/eslint-plugin_v1.9.1)
+
+### Patches
+
+- fix(eslint-plugin): move ban-context to react config from base ([PR #23240](https://github.com/microsoft/fluentui/pull/23240) by martinhochel@microsoft.com)
+
+## [1.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.0)
+
+Wed, 18 May 2022 07:41:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.8.0..@fluentui/eslint-plugin_v1.9.0)
+
+### Minor changes
+
+- feat: create core base for react/node/legacy lint configs ([PR #22128](https://github.com/microsoft/fluentui/pull/22128) by martinhochel@microsoft.com)
+
+## [1.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.8.0)
+
+Fri, 13 May 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.7.0..@fluentui/eslint-plugin_v1.8.0)
+
+### Minor changes
+
+- feat: add new rules covering usage of Griffel ([PR #22961](https://github.com/microsoft/fluentui/pull/22961) by olfedias@microsoft.com)
 
 ## [1.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.7.0)
 

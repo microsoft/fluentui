@@ -21,11 +21,17 @@ export async function typings() {
   const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(config.paths.base('package.json'));
   const { typescript: tsVersion } = rootPkgJson.devDependencies;
 
-  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
+  const dependencies = [
+    '@types/react@17',
+    '@types/react-dom@17',
+    'react@17',
+    'react-dom@17',
+    `typescript@${tsVersion}`,
+  ].join(' ');
   await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger, config.paths.packages(), ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, config.paths.base(), ['@fluentui/react-northstar']);
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);

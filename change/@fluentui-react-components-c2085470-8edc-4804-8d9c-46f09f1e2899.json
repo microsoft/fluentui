@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update classNames exports from react-components.",
-  "packageName": "@fluentui/react-components",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
