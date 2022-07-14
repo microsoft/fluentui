@@ -277,7 +277,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           tabIndex={0}
           width={102.5}
           x={106.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -290,7 +290,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="4"
           textAnchor="middle"
           x={157.5}
@@ -337,7 +337,7 @@ subText sub Parent info parentId: 1
           tabIndex={0}
           width={102.5}
           x={228.75}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -350,7 +350,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="5"
           textAnchor="middle"
           x={280}
@@ -740,7 +740,7 @@ subText sub Parent info parentId: 9
           tabIndex={0}
           width={102.5}
           x={631.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -753,7 +753,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="12"
           textAnchor="middle"
           x={682.5}
@@ -1220,7 +1220,7 @@ subText undefined Parent info parentId: 1
           tabIndex={0}
           width={225}
           x={106.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1233,7 +1233,7 @@ subText undefined Parent info parentId: 1
                 font-size: 20px;
                 font-weight: 600;
               }
-          dy={390.7608695652174}
+          dy={385.9782608695652}
           textAnchor="middle"
           x={218.75}
         >
@@ -1263,7 +1263,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           tabIndex={0}
           width={225}
           x={106.25}
-          y={440}
+          y={430.4347826086956}
         />
         <text
           className=
@@ -1276,7 +1276,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={472.60869565217394}
+          dy={463.04347826086956}
           id="4"
           textAnchor="middle"
           x={218.75}
@@ -1323,7 +1323,7 @@ subText sub Parent info parentId: 1
           tabIndex={0}
           width={225}
           x={106.25}
-          y={530}
+          y={515.6521739130435}
         />
         <text
           className=
@@ -1336,7 +1336,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={562.6086956521739}
+          dy={548.2608695652174}
           id="5"
           textAnchor="middle"
           x={218.75}
@@ -1486,7 +1486,7 @@ subText sub Parent info parentId: 6
           tabIndex={0}
           width={225}
           x={368.75}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1499,7 +1499,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="8"
           textAnchor="middle"
           x={481.25}
@@ -1666,7 +1666,7 @@ subText sub Parent info parentId: 9
           tabIndex={0}
           width={225}
           x={631.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1679,7 +1679,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="11"
           textAnchor="middle"
           x={743.75}
@@ -1726,7 +1726,7 @@ subText sub Parent info parentId: 9
           tabIndex={0}
           width={225}
           x={631.25}
-          y={440}
+          y={430.4347826086956}
         />
         <text
           className=
@@ -1739,7 +1739,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={472.60869565217394}
+          dy={463.04347826086956}
           id="12"
           textAnchor="middle"
           x={743.75}
@@ -2249,7 +2249,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           tabIndex={0}
           width={102.5}
           x={106.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2262,7 +2262,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="4"
           textAnchor="middle"
           x={157.5}
@@ -2309,7 +2309,7 @@ subText sub Parent info parentId: 1
           tabIndex={0}
           width={102.5}
           x={228.75}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2322,7 +2322,7 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="5"
           textAnchor="middle"
           x={280}
@@ -2472,7 +2472,7 @@ subText sub Parent info parentId: 6
           tabIndex={0}
           width={225}
           x={368.75}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2485,7 +2485,7 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="8"
           textAnchor="middle"
           x={481.25}
@@ -2712,7 +2712,7 @@ subText sub Parent info parentId: 9
           tabIndex={0}
           width={102.5}
           x={631.25}
-          y={350}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2725,7 +2725,7 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={382.60869565217394}
+          dy={377.82608695652175}
           id="12"
           textAnchor="middle"
           x={682.5}
