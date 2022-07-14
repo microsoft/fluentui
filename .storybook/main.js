@@ -129,6 +129,7 @@ function getCodesandboxBabelOptions() {
   return Object.values(allPackageInfo).reduce((acc, cur) => {
     if (isConvergedPackage(cur.packageJson)) {
       const prereleaseTags = semver.prerelease(cur.packageJson.version);
+      console.log(prereleaseTags, cur.packageJson.name);
       const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
       acc[cur.packageJson.name] = isNonRcPrerelease
         ? { replace: '@fluentui/react-components/unstable' }
