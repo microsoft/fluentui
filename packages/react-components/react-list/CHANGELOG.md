@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-list
 
-This log was last generated on Thu, 14 Jul 2022 17:06:26 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.0.0-alpha.0)
+
+Thu, 14 Jul 2022 21:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list_v9.0.0-alpha.0..@fluentui/react-list_v9.0.0-alpha.0)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
 
 ## [9.0.0-alpha.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list_v9.0.0-alpha.0)
 

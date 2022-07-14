@@ -2,6 +2,233 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:00 GMT",
+      "tag": "@fluentui/react-components_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 17:06:12 GMT",
       "tag": "@fluentui/react-components_v9.1.0",
       "version": "9.1.0",
