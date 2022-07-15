@@ -475,7 +475,6 @@ describe('FocusTrapZone', () => {
       return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2, firstBumper, lastBumper };
     }
 
-    /*
     it('Restores focus to FTZ when clicking outside FTZ', async () => {
       expect.assertions(2);
 
@@ -488,15 +487,14 @@ describe('FocusTrapZone', () => {
       componentEventListeners.click({
         target: buttonZ2,
         preventDefault: () => {
-
+          /*noop*/
         },
         stopPropagation: () => {
-
+          /*noop*/
         },
       });
       expect(lastFocusedElement).toBe(buttonA);
     });
-    */
 
     it('Does not restore focus to FTZ when clicking outside FTZ with isClickableOutsideFocusTrap', async () => {
       expect.assertions(1);
