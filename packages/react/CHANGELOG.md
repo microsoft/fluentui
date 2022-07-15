@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 14 Jul 2022 07:45:34 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jul 2022 20:03:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.81.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.1)
+
+Fri, 15 Jul 2022 20:03:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.0..@fluentui/react_v8.81.1)
+
+### Patches
+
+- chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump. ([PR #23945](https://github.com/microsoft/fluentui/pull/23945) by Humberto.Morimoto@microsoft.com)
 
 ## [8.81.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.0)
 
