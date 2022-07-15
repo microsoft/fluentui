@@ -1,5 +1,18 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  tokens,
+  Button,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Tab,
+  TabList,
+} from '@fluentui/react-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import {
   Calendar3DayRegular,
@@ -13,11 +26,7 @@ import {
   CalendarWorkWeekRegular,
   MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-button';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { Overflow, OverflowItem, useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
-import { tokens } from '@fluentui/react-theme';
-import { Tab, TabList } from '@fluentui/react-tabs';
+import { useIsOverflowItemVisible, useOverflowMenu, Overflow, OverflowItem } from '@fluentui/react-overflow';
 
 //----- Example Tab Data -----//
 
