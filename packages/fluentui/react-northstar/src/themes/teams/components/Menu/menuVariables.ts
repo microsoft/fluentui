@@ -95,6 +95,8 @@ export interface MenuVariables {
   indicatorColor: string;
   primaryIndicatorColorHover: string;
   indicatorColorHover: string;
+
+  subMenuBorderColor: string;
 }
 
 export const menuVariables = (siteVars: any): MenuVariables => {
@@ -155,7 +157,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
 
     verticalBackgroundColor: siteVars.colorScheme.default.background,
     verticalItemPadding: `${pxToRem(7)} ${pxToRem(12)}`,
-    verticalBoxShadow: siteVars.shadow8,
+    verticalBoxShadow: siteVars.shadow16,
     verticalDividerMargin: `${pxToRem(8)} 0`,
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
@@ -199,5 +201,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     activePrimaryVerticalIndicatorColor: siteVars.colors.black,
     primaryIndicatorColorHover: siteVars.colors.black,
     indicatorColorHover: siteVars.colors.grey[500],
+
+    subMenuBorderColor: siteVars.colorScheme.default.borderTransparent,
   };
 };

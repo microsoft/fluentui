@@ -41,7 +41,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
           borderRadius: siteVariables.borderRadiusMedium,
           ...(submenu && {
-            borderColor: 'transparent',
+            borderColor: v.subMenuBorderColor,
           }),
         }),
       ...(underlined && {

@@ -27,7 +27,7 @@ export const popupContentVariables = (siteVars: any): PopupContentVariables => {
 
     backgroundColor: siteVars.colorScheme.default.background,
     color: siteVars.colorScheme.default.foreground,
-    boxShadow: siteVars.shadow8,
+    boxShadow: siteVars.shadow16,
 
     padding: `${pxToRem(16)}`,
 
