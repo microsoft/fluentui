@@ -17,6 +17,7 @@ import {
   ILineChartStyleProps,
   ILineChartStyles,
   ILineChartGap,
+  ILineChartDataPoint,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
@@ -535,12 +536,28 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
       let gapIndex = 0;
       const gaps = this._points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
+      let firstXPos = this._xAxisScale(this._points[i].data[0].x);
+      let firstYPos = this._yAxisScale(this._points[i].data[0].y);
+      let ctr = 0;
 
-      for (let j = 1; j < this._points[i].data.length; j++) {
+      /*for (let j = 1; j < this._points[i].data.length; j++) {
         const gapResult = this._checkInGap(j, gaps, gapIndex);
         const isInGap = gapResult.isInGap;
         gapIndex = gapResult.gapIndex;
 
+        const nextXPos = this._xAxisScale(this._points[i].data[j].x)
+      const nextYPos = this._yAxisScale(this._points[i].data[j].y)
+
+      if ((Math.floor(firstXPos) === Math.floor(nextXPos))
+       && (Math.floor(firstYPos) === Math.floor(nextYPos)))
+      {
+        continue;
+      }
+      firstXPos = nextXPos;
+      firstYPos = nextYPos;
+      ctr+=1;
+      console.log(nextXPos, nextYPos, ctr)
+      
         const lineId = `${this._lineId}${i}${j}`;
         const borderId = `${this._borderId}${i}${j}`;
         const circleId = `${this._circleId}${i}${j}`;
@@ -554,7 +571,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
 
         const currentPointHidden = this._points[i].hideNonActiveDots && activePoint !== circleId;
-        pointsForLine.push(
+        /*pointsForLine.push(
           <path
             id={circleId}
             key={circleId}
@@ -640,9 +657,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             />,
           );
           /* eslint-enable react/jsx-no-bind */
-        }
+      //}
 
-        if (isLegendSelected) {
+      /*  if (isLegendSelected) {
           // don't draw line if it is in a gap
           if (!isInGap) {
             const lineBorderWidth = this._points[i].lineOptions?.lineBorderWidth
@@ -725,7 +742,22 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             );
           }
         }
-      }
+      }*/
+      const lineId = `${this._lineId}${i}`;
+      const strokeWidth =
+        this._points[i].lineOptions?.strokeWidth || this.props.strokeWidth || DEFAULT_LINE_STROKE_SIZE;
+      pointsForLine.push(
+        <path
+          id={lineId}
+          key={lineId}
+          d={this.constructPath(this._points[i].data)}
+          fill="transparent"
+          stroke={lineColor}
+          strokeWidth={strokeWidth}
+          strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
+        />,
+      );
+
       lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
     }
     const classNames = getClassNames(this.props.styles!, {
@@ -754,6 +786,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
     return lines;
   }
+
+  private constructPath = (data: ILineChartDataPoint[]) => {
+    let path: string;
+    path = `M ${this._xAxisScale(data[0].x)} ${this._yAxisScale(data[0].y)}`;
+    for (let k = 1; k < data.length; k++) {
+      path = `${path} L ${this._xAxisScale(data[k].x)} ${this._yAxisScale(data[k].y)}`;
+    }
+
+    return path;
+  };
 
   private _createColorFillBars = (containerHeight: number) => {
     const colorFillBars: JSX.Element[] = [];

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
+import { IChartProps, ILineChartProps, LineChart, ILineChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -33,61 +33,27 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     this.setState({ allowMultipleShapes: checked });
   };
 
+  private _getdata = () => {
+    let data: ILineChartDataPoint[] = [];
+    let startdate = new Date('2020-03-01T00:00:00.000Z');
+    let i = 0;
+    for (i = 0; i < 10000; i++) {
+      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: i * i - 5 * i });
+    }
+
+    return data;
+  };
+
   private _basicExample(): JSX.Element {
     const data: IChartProps = {
       chartTitle: 'Line Chart',
       lineChartData: [
         {
           legend: 'From_Legacy_to_O365',
-          data: [
-            {
-              x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 216000,
-              onDataPointClick: () => alert('click on 217000'),
-            },
-            {
-              x: new Date('2020-03-03T10:00:00.000Z'),
-              y: 218123,
-              onDataPointClick: () => alert('click on 217123'),
-            },
-            {
-              x: new Date('2020-03-03T11:00:00.000Z'),
-              y: 217124,
-              onDataPointClick: () => alert('click on 217124'),
-            },
-            {
-              x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 248000,
-              onDataPointClick: () => alert('click on 248000'),
-            },
-            {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 252000,
-              onDataPointClick: () => alert('click on 252000'),
-            },
-            {
-              x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 274000,
-              onDataPointClick: () => alert('click on 274000'),
-            },
-            {
-              x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 260000,
-              onDataPointClick: () => alert('click on 260000'),
-            },
-            {
-              x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 304000,
-              onDataPointClick: () => alert('click on 300000'),
-            },
-            {
-              x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 218000,
-              onDataPointClick: () => alert('click on 218000'),
-            },
-          ],
+          data: this._getdata(),
           color: DefaultPalette.blue,
           onLineClick: () => console.log('From_Legacy_to_O365'),
+          hideNonActiveDots: true,
         },
         {
           legend: 'All',
