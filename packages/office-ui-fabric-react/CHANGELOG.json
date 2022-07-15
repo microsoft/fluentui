@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 12:21:53 GMT",
+      "tag": "office-ui-fabric-react_v7.189.1",
+      "version": "7.189.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Handle when FocusTrapZone wraps an iframe",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "ebef2bb545a317d3997706a6e03010fc0798bad2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "office-ui-fabric-react_v7.189.0",
       "version": "7.189.0",

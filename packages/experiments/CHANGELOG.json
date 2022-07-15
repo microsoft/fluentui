@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 12:21:53 GMT",
+      "tag": "@uifabric/experiments_v7.43.1",
+      "version": "7.43.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @uifabric/azure-themes to v7.10.1",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "ebef2bb545a317d3997706a6e03010fc0798bad2",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@uifabric/experiments_v7.43.0",
       "version": "7.43.0",

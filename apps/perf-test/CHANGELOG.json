@@ -2,6 +2,21 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 12:21:53 GMT",
+      "tag": "perf-test_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.189.1",
+            "author": "cqc@cuiqingcai.com",
+            "commit": "ebef2bb545a317d3997706a6e03010fc0798bad2",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "perf-test_v7.0.0",
       "version": "7.0.0",
