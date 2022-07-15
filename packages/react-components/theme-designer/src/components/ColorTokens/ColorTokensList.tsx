@@ -35,12 +35,16 @@ export interface ColorTokenRowProps {
   brand: BrandVariants;
   brandValue: Brands;
   brandValueString: string;
+  selected: boolean;
 }
 
 const useStyles = makeStyles({
   root: {},
   colorLabel: {
     color: tokens.colorBrandForeground1,
+  },
+  selected: {
+    fontWeight: 'bold',
   },
   col: {
     display: 'flex',
@@ -69,14 +73,15 @@ const useStyles = makeStyles({
 });
 
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
-  const { brand, brandValue, brandValueString } = props;
+  const styles = useStyles();
+  const { brand, brandValue, brandValueString, selected } = props;
   return (
     <MenuItemRadio
       icon={<CircleFilled primaryFill={brand[brandValue]} />}
       name={brandValueString}
       value={brandValueString}
     >
-      Untitled {brandValueString}
+      <span className={selected ? styles.selected : ''}>Untitled {brandValueString}</span>
     </MenuItemRadio>
   );
 };
@@ -120,10 +125,16 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                   <MenuPopover>
                     <MenuList onCheckedValueChange={handleColorChange}>
                       {brandRamp.map(brandValue => {
+                        const selected = colorValue === brandValue;
                         const brandValueString = brandValue.toString();
                         return (
                           <div key={brandValueString}>
-                            <ColorTokenRow brand={brand} brandValue={brandValue} brandValueString={brandValueString} />
+                            <ColorTokenRow
+                              brand={brand}
+                              brandValue={brandValue}
+                              brandValueString={brandValueString}
+                              selected={selected}
+                            />
                           </div>
                         );
                       })}
