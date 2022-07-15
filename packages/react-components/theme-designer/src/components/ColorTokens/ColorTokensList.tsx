@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
   Divider,
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
+    gridTemplateColumns: '10px 1fr 1fr 1.5fr',
     gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
@@ -59,6 +59,12 @@ const useStyles = makeStyles({
   },
   row2: {
     gridColumnStart: '3',
+  },
+  colorPreview: {
+    display: 'inline',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    ...shorthands.borderRadius('10px'),
   },
 });
 
@@ -132,7 +138,14 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                     const { compHex, ratio, desiredRatio } = fail;
                     return (
                       <div key={color + ' ' + compHex}>
-                        <WarningRegular color="red" /> Contrast against {compHex} is {ratio} - expected {desiredRatio}
+                        <WarningRegular color="red" /> Contrast against{' '}
+                        <div
+                          className={styles.colorPreview}
+                          style={{ backgroundColor: brand[newColors[color]], color: compHex }}
+                        >
+                          {compHex}
+                        </div>{' '}
+                        is {ratio} - expected {desiredRatio}
                       </div>
                     );
                   })
