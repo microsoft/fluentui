@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 14 Jul 2022 07:45:34 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jul 2022 07:44:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.2)
+
+Fri, 15 Jul 2022 07:44:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.1..@fluentui/react-charting_v5.12.2)
+
+### Patches
+
+- fix: production issue (width-height of SVG) ([PR #23895](https://github.com/microsoft/fluentui/pull/23895) by apurva.sharma866@gmail.com)
 
 ## [5.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.1)
 
