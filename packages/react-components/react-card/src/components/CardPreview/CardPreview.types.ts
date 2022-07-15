@@ -12,7 +12,7 @@ export type CardPreviewSlots = {
   /**
    * Container that holds a logo related to the image preview provided.
    */
-  logo?: Slot<'div'>;
+  logo?: Slot<'div', 'img'>;
 };
 
 /**

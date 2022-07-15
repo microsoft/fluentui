@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 12 Jul 2022 07:40:58 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jul 2022 07:44:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.2)
+
+Fri, 15 Jul 2022 07:44:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.1..@fluentui/react-charting_v5.12.2)
+
+### Patches
+
+- fix: production issue (width-height of SVG) ([PR #23895](https://github.com/microsoft/fluentui/pull/23895) by apurva.sharma866@gmail.com)
+
+## [5.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.1)
+
+Thu, 14 Jul 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.0..@fluentui/react-charting_v5.12.1)
+
+### Patches
+
+- Fixed not able to navigate through Legends in browse mode ([PR #23885](https://github.com/microsoft/fluentui/pull/23885) by v-hannapared@microsoft.com)
+- Bump @fluentui/react to v8.81.0 ([PR #23612](https://github.com/microsoft/fluentui/pull/23612) by beachball)
 
 ## [5.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.0)
 

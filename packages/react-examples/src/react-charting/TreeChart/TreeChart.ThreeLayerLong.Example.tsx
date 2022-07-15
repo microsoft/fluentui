@@ -1,6 +1,5 @@
-/* eslint-disable react/self-closing-comp */
 import * as React from 'react';
-import { TreeChart, ITreeProps, TreeTraverse, NodesComposition } from '@fluentui/react-charting';
+import { TreeChart, ITreeProps, TreeTraverse, NodesComposition, ITreeState } from '@fluentui/react-charting';
 const threeLayerChart = {
   name: 'Root Node',
   subname: 'subtext',
@@ -19,12 +18,11 @@ const threeLayerChart = {
         },
         {
           name: 'leaf2',
-          subname: 'sub',
           fill: '#4F6BED',
         },
         {
           name: 'leaf3',
-          subname: 'sub',
+          subname: 'The subtext is as follows: sub',
           fill: '#4F6BED',
         },
         {
@@ -35,8 +33,7 @@ const threeLayerChart = {
       ],
     },
     {
-      name: 'Child 2',
-      subname: 'subtext',
+      name: 'Child 2 is the child name',
       fill: '#881798',
       children: [
         {
@@ -53,7 +50,7 @@ const threeLayerChart = {
     },
     {
       name: 'Child 3',
-      subname: 'subtext',
+      subname: 'The subtext is as follows: subtext',
       fill: '#AE8C00',
       children: [
         {
@@ -89,8 +86,6 @@ const threeLayerChart = {
   ],
 };
 
-interface ITreeState {}
-
 export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
@@ -98,15 +93,28 @@ export class TreeChartThreeLayerLongExample extends React.Component<{}, ITreeSta
   public render(): JSX.Element {
     return <div>{this._createTreeChart()}</div>;
   }
-
+  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ _layoutWidth: parseInt(e.target.value, 10) });
+  };
   private _createTreeChart(): JSX.Element {
     return (
       <>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={this.state?._layoutWidth}
+          min={65}
+          max={90}
+          id="changeWidth_Basic"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state?._layoutWidth}`}
+        />
         <TreeChart
           treeData={threeLayerChart}
           composition={NodesComposition.long}
           treeTraversal={TreeTraverse.preOrder}
-        ></TreeChart>
+          layoutWidth={this.state?._layoutWidth}
+        />
       </>
     );
   }

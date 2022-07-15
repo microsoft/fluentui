@@ -13,10 +13,21 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -37,12 +48,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -56,11 +67,11 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -73,9 +84,9 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -96,12 +107,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -115,11 +126,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -132,9 +143,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -155,12 +166,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={260}
         />
         <text
@@ -174,11 +185,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -191,15 +202,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -214,12 +225,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={260}
         />
         <text
@@ -228,37 +239,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={295}
+          dy={300.7608695652174}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={176.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -273,13 +268,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
-          y={350}
+          width={102.5}
+          x={106.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -292,11 +287,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -309,9 +304,9 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -332,13 +327,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
-          y={350}
+          width={102.5}
+          x={228.75}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -351,11 +346,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -368,15 +363,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={280}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -391,12 +386,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -405,39 +400,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -450,12 +429,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={100}
-          x={268.75}
+          width={102.5}
+          x={368.75}
           y={260}
         />
         <text
@@ -469,11 +448,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={318.75}
+          x={420}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -486,17 +465,17 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={318.75}
+            x={420}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -509,12 +488,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={100}
-          x={388.75}
+          width={102.5}
+          x={491.25}
           y={260}
         />
         <text
@@ -528,11 +507,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={438.75}
+          x={542.5}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -545,15 +524,15 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={438.75}
+            x={542.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -568,12 +547,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -587,11 +566,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -604,9 +583,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -614,7 +593,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -627,12 +606,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={260}
         />
         <text
@@ -646,11 +625,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -663,9 +642,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -673,7 +652,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -686,12 +665,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={651.25}
+          width={102.5}
+          x={753.75}
           y={260}
         />
         <text
@@ -705,11 +684,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={701.25}
+          x={805}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -722,9 +701,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={805}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -732,7 +711,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -745,13 +724,13 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
-          y={350}
+          width={102.5}
+          x={631.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -764,11 +743,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -781,9 +760,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -804,12 +783,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -823,11 +802,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -840,9 +819,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -863,12 +842,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -882,11 +861,11 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -899,9 +878,9 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -916,7 +895,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -926,7 +905,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -936,7 +915,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -946,7 +925,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -956,7 +935,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -966,7 +945,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -976,7 +955,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -986,7 +965,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -1007,10 +986,21 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -1031,12 +1021,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -1050,11 +1040,11 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -1067,9 +1057,9 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -1090,12 +1080,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -1109,11 +1099,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -1126,9 +1116,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -1149,12 +1139,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={260}
         />
         <text
@@ -1168,11 +1158,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -1185,15 +1175,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -1208,13 +1198,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
-          y={350}
+          width={225}
+          x={106.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1222,37 +1212,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={385}
+          dy={385.9782608695652}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={116.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -1267,13 +1241,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
-          y={440}
+          width={225}
+          x={106.25}
+          y={430.4347826086956}
         />
         <text
           className=
@@ -1286,11 +1260,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={463.04347826086956}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -1303,9 +1277,9 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -1326,13 +1300,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
-          y={530}
+          width={225}
+          x={106.25}
+          y={515.6521739130435}
         />
         <text
           className=
@@ -1345,11 +1319,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={565}
+          dy={548.2608695652174}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -1362,15 +1336,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -1385,12 +1359,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -1399,39 +1373,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -1444,12 +1402,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={260}
         />
         <text
@@ -1463,11 +1421,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -1480,17 +1438,17 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -1503,13 +1461,13 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
-          y={350}
+          width={225}
+          x={368.75}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1522,11 +1480,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -1539,15 +1497,15 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -1562,12 +1520,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -1581,11 +1539,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -1598,9 +1556,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -1608,7 +1566,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1621,12 +1579,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={260}
         />
         <text
@@ -1640,11 +1598,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -1657,9 +1615,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1667,7 +1625,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1680,13 +1638,13 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
-          y={350}
+          width={225}
+          x={631.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -1699,11 +1657,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -1716,9 +1674,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1726,7 +1684,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -1739,13 +1697,13 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
-          y={440}
+          width={225}
+          x={631.25}
+          y={430.4347826086956}
         />
         <text
           className=
@@ -1758,11 +1716,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={475}
+          dy={463.04347826086956}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -1775,9 +1733,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -1798,12 +1756,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -1817,11 +1775,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -1834,9 +1792,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -1857,12 +1815,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -1876,11 +1834,11 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -1893,9 +1851,9 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -1910,7 +1868,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1920,7 +1878,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -1930,7 +1888,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1940,7 +1898,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -1950,7 +1908,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1960,7 +1918,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -1970,7 +1928,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1980,7 +1938,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -2001,10 +1959,21 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -2025,12 +1994,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -2044,11 +2013,11 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -2061,9 +2030,9 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
@@ -2084,12 +2053,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -2103,11 +2072,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -2120,9 +2089,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            100%
+            100% 
           </tspan>
         </text>
         <rect
@@ -2143,12 +2112,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
+          width={102.5}
+          x={106.25}
           y={260}
         />
         <text
@@ -2162,11 +2131,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
-          leaf1
+          leaf1 
           <tspan
             className=
 
@@ -2179,15 +2148,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: leaf2
-subText sub Parent info parentId: 1
+subText undefined Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -2202,12 +2171,12 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
+          width={102.5}
+          x={228.75}
           y={260}
         />
         <text
@@ -2216,37 +2185,21 @@ subText sub Parent info parentId: 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={295}
+          dy={300.7608695652174}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
-          leaf2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={176.25}
-          >
-            sub
-          </tspan>
+          leaf2 
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: leaf3
-subText sub Parent info parentId: 1
+subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
           className=
@@ -2261,13 +2214,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={6.25}
-          y={350}
+          width={102.5}
+          x={106.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2280,11 +2233,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={56.25}
+          x={157.5}
         >
-          leaf3
+          leaf3 
           <tspan
             className=
 
@@ -2297,9 +2250,9 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={56.25}
+            x={157.5}
           >
-            sub
+            The subtext is as follows: sub 
           </tspan>
         </text>
         <rect
@@ -2320,13 +2273,13 @@ subText sub Parent info parentId: 1
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={100}
-          x={126.25}
-          y={350}
+          width={102.5}
+          x={228.75}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2339,11 +2292,11 @@ subText sub Parent info parentId: 1
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={176.25}
+          x={280}
         >
-          leaf4
+          leaf4 
           <tspan
             className=
 
@@ -2356,15 +2309,15 @@ subText sub Parent info parentId: 1
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={176.25}
+            x={280}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 6 
-nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -2379,12 +2332,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -2393,39 +2346,23 @@ subText subtext Parent info parentId: 0
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                fill: black;
+                fill: #000000;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 600;
               }
-          dy={165}
+          dy={170.76086956521738}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          Child 2
-          <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #484644;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            dy="1.4em"
-            x={378.75}
-          >
-            subtext
-          </tspan>
+          Child 2 is the child name 
         </text>
         <rect
           aria-label="nodeId: 7 
 nodeMainText: leaf5
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -2438,12 +2375,12 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={260}
         />
         <text
@@ -2457,11 +2394,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          leaf5
+          leaf5 
           <tspan
             className=
 
@@ -2474,17 +2411,17 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 8 
 nodeMainText: leaf6
 subText sub Parent info parentId: 6
-      Child 2
-      subtext"
+      Child 2 is the child name
+      undefined"
           className=
 
               {
@@ -2497,13 +2434,13 @@ subText sub Parent info parentId: 6
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
-          y={350}
+          width={225}
+          x={368.75}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2516,11 +2453,11 @@ subText sub Parent info parentId: 6
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          leaf6
+          leaf6 
           <tspan
             className=
 
@@ -2533,15 +2470,15 @@ subText sub Parent info parentId: 6
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 9 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -2556,12 +2493,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -2575,11 +2512,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -2592,9 +2529,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            subtext
+            The subtext is as follows: subtext 
           </tspan>
         </text>
         <rect
@@ -2602,7 +2539,7 @@ subText subtext Parent info parentId: 0
 nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2615,12 +2552,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
+          width={102.5}
+          x={631.25}
           y={260}
         />
         <text
@@ -2634,11 +2571,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
-          leaf7
+          leaf7 
           <tspan
             className=
 
@@ -2651,9 +2588,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2661,7 +2598,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2674,12 +2611,12 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={651.25}
+          width={102.5}
+          x={753.75}
           y={260}
         />
         <text
@@ -2693,11 +2630,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={701.25}
+          x={805}
         >
-          leaf8
+          leaf8 
           <tspan
             className=
 
@@ -2710,9 +2647,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={701.25}
+            x={805}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2720,7 +2657,7 @@ subText sub Parent info parentId: 9
 nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
-      subtext"
+      The subtext is as follows: subtext"
           className=
 
               {
@@ -2733,13 +2670,13 @@ subText sub Parent info parentId: 9
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={100}
-          x={531.25}
-          y={350}
+          width={102.5}
+          x={631.25}
+          y={345.2173913043478}
         />
         <text
           className=
@@ -2752,11 +2689,11 @@ subText sub Parent info parentId: 9
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={385}
+          dy={377.82608695652175}
           textAnchor="middle"
-          x={581.25}
+          x={682.5}
         >
-          leaf9
+          leaf9 
           <tspan
             className=
 
@@ -2769,9 +2706,9 @@ subText sub Parent info parentId: 9
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={581.25}
+            x={682.5}
           >
-            sub
+            sub 
           </tspan>
         </text>
         <rect
@@ -2792,12 +2729,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -2811,11 +2748,11 @@ subText subtext Parent info parentId: 0
                 font-size: 14px;
                 font-weight: 400;
               }
-          dy={158}
+          dy={156.08695652173913}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -2828,9 +2765,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 600;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            90%
+            90% 
           </tspan>
         </text>
         <rect
@@ -2851,12 +2788,12 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={260}
         />
         <text
@@ -2870,11 +2807,11 @@ subText sub Parent info parentId: 13
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={295}
+          dy={292.60869565217394}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          leaf10
+          leaf10 
           <tspan
             className=
 
@@ -2887,9 +2824,9 @@ subText sub Parent info parentId: 13
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            sub
+            sub 
           </tspan>
         </text>
       </g>
@@ -2904,7 +2841,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2914,7 +2851,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,210 V230 H6.25 H226.25"
+          d="M218.75,205.2173913043478 V230 H106.25 H331.25"
         />
         <path
           className=
@@ -2924,7 +2861,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2934,7 +2871,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,210 V230 H268.75 H488.75"
+          d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
           className=
@@ -2944,7 +2881,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2954,7 +2891,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,210 V230 H531.25 H751.25"
+          d="M743.75,205.2173913043478 V230 H631.25 H856.25"
         />
         <path
           className=
@@ -2964,7 +2901,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2974,7 +2911,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,210 V230 H793.75 H1013.75"
+          d="M1006.25,205.2173913043478 V230 H893.75 H1118.75"
         />
       </g>
     </svg>
@@ -2995,10 +2932,21 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
   onMouseDownCapture={[Function]}
 >
   <div
-    className="svgTreeDiv"
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
   >
     <svg
       className="svgTree"
+      height={640}
+      width={1430}
     >
       <g
         className="svgNode"
@@ -3019,12 +2967,12 @@ subText subtext Root Node"
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#0099BC"
           tabIndex={0}
-          width={220}
-          x={400}
+          width={225}
+          x={500}
           y={10}
         />
         <text
@@ -3038,11 +2986,11 @@ subText subtext Root Node"
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={45}
+          dy={42.608695652173914}
           textAnchor="middle"
-          x={510}
+          x={612.5}
         >
-          Root Node
+          Root Node 
           <tspan
             className=
 
@@ -3055,15 +3003,15 @@ subText subtext Root Node"
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={510}
+            x={612.5}
           >
-            subtext
+            subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 1 
 nodeMainText: Child 1
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3078,12 +3026,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#4F6BED"
           tabIndex={0}
-          width={220}
-          x={6.25}
+          width={225}
+          x={106.25}
           y={130}
         />
         <text
@@ -3097,11 +3045,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={116.25}
+          x={218.75}
         >
-          Child 1
+          Child 1 
           <tspan
             className=
 
@@ -3114,15 +3062,15 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={116.25}
+            x={218.75}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 2 
 nodeMainText: Child 2
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3137,12 +3085,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#881798"
           tabIndex={0}
-          width={220}
-          x={268.75}
+          width={225}
+          x={368.75}
           y={130}
         />
         <text
@@ -3156,11 +3104,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={378.75}
+          x={481.25}
         >
-          Child 2
+          Child 2 
           <tspan
             className=
 
@@ -3173,15 +3121,15 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={378.75}
+            x={481.25}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 3 
 nodeMainText: Child 3
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3196,12 +3144,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#AE8C00"
           tabIndex={0}
-          width={220}
-          x={531.25}
+          width={225}
+          x={631.25}
           y={130}
         />
         <text
@@ -3215,11 +3163,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={641.25}
+          x={743.75}
         >
-          Child 3
+          Child 3 
           <tspan
             className=
 
@@ -3232,15 +3180,15 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={641.25}
+            x={743.75}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
         <rect
           aria-label="nodeId: 4 
 nodeMainText: Child 4
-subText subtext Parent info parentId: 0
+subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
           className=
@@ -3255,12 +3203,12 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
               }
           data-is-focusable={true}
-          height={70}
+          height={65.21739130434783}
           role="text"
           stroke="#FF00FF"
           tabIndex={0}
-          width={220}
-          x={793.75}
+          width={225}
+          x={893.75}
           y={130}
         />
         <text
@@ -3274,11 +3222,11 @@ subText subtext Parent info parentId: 0
                 font-size: 18px;
                 font-weight: 400;
               }
-          dy={165}
+          dy={162.6086956521739}
           textAnchor="middle"
-          x={903.75}
+          x={1006.25}
         >
-          Child 4
+          Child 4 
           <tspan
             className=
 
@@ -3291,9 +3239,9 @@ subText subtext Parent info parentId: 0
                   font-weight: 400;
                 }
             dy="1.4em"
-            x={903.75}
+            x={1006.25}
           >
-            subtext
+            Subtext val is subtext 
           </tspan>
         </text>
       </g>
@@ -3308,7 +3256,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M116.25,110 H510 V90"
+          d="M218.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3318,7 +3266,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M378.75,110 H510 V90"
+          d="M481.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3328,7 +3276,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M641.25,110 H510 V90"
+          d="M743.75,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3338,7 +3286,7 @@ subText subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M903.75,110 H510 V90"
+          d="M1006.25,110 H612.5 V85.21739130434783"
         />
       </g>
     </svg>

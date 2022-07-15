@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Adding avatar slot support to Alert",
-  "packageName": "@fluentui/react-alert",
-  "email": "rohitpag@microsoft.com",
-  "dependentChangeType": "patch"
-}

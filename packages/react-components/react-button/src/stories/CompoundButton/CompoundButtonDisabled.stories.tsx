@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CompoundButton } from '@fluentui/react-button';
+import { CompoundButton } from '@fluentui/react-components';
 
 export const Disabled = () => {
   const groupStyles: React.CSSProperties = { display: 'flex', flexWrap: 'wrap', gap: '0.5em' };
