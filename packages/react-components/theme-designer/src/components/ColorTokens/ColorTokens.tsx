@@ -38,8 +38,11 @@ const useStyles = makeStyles({
   root: {},
   row: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr .5fr',
+    gridTemplateColumns: '15px 1fr 1fr 1fr .5fr',
     alignItems: 'center',
+  },
+  col: {
+    gridColumnStart: '2',
   },
 });
 
@@ -90,7 +93,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   return (
     <div className={props.className}>
       <div className={styles.row}>
-        <Caption1>Color tokens</Caption1>
+        <Caption1 className={styles.col}>Color tokens</Caption1>
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
         <Button size="small" onClick={handleResetClick}>
