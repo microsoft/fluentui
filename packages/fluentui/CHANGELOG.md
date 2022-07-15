@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
 - Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
 - Fix `Datepicker` hover background for HC theme @chpalac ([#23798](https://github.com/microsoft/fluentui/pull/23798))
+- Fix box-shadow for `Menu` and `Dropdown` component to make it consistent with other components @vitthalr ([#23937](https://github.com/microsoft/fluentui/pull/23937))
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->
 ## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
