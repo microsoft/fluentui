@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump.",
+  "packageName": "@fluentui/react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
