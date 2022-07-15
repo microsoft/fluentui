@@ -28,6 +28,10 @@ describe('SwatchColorPicker', () => {
     resetIds();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders SwatchColorPicker correctly', () => {
     const component = create(<SwatchColorPicker colorCells={DEFAULT_OPTIONS} columnCount={4} />);
     const tree = component.toJSON();
@@ -146,8 +150,8 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.at(0).prop('aria-checked')).toEqual(true);
     expect(tableElements.at(1).prop('aria-checked')).toEqual(false);
 
-    // Update the props to set selected to undefined
-    wrapper.setProps({ selectedId: undefined });
+    // Update the props to set selected to an empty string
+    wrapper.setProps({ selectedId: '' });
 
     tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(2);
@@ -158,6 +162,9 @@ describe('SwatchColorPicker', () => {
   });
 
   it('Cannot clear the selectedID if uncontrolled', () => {
+    // handle console error for uncontrolled > controlled change
+    jest.spyOn(console, 'error').mockImplementation(jest.fn());
+
     const props: ISwatchColorPickerProps = {
       colorCells: DEFAULT_OPTIONS,
       columnCount: 4,
