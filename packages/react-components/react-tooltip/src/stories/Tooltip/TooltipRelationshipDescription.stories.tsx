@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Button, Tooltip } from '@fluentui/react-components';
 
 export const RelationshipDescription = () => (
   <Tooltip content="This is the description of the button" relationship="description">
