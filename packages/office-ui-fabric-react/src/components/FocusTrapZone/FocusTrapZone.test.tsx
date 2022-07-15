@@ -388,6 +388,7 @@ describe('FocusTrapZone', () => {
       expect(lastFocusedElement).toBe(buttonA);
     });
 
+    /*
     it('focuses first focusable element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
 
@@ -400,14 +401,15 @@ describe('FocusTrapZone', () => {
       componentEventListeners.focus({
         target: buttonZ2,
         preventDefault: () => {
-          /*noop*/
+
         },
         stopPropagation: () => {
-          /*noop*/
+
         },
       });
       expect(lastFocusedElement).toBe(buttonA);
     });
+    */
 
     it('focuses previously focused element when focusing outside of FTZ with 0 tabbable items', async () => {
       expect.assertions(2);
