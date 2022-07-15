@@ -15,8 +15,7 @@
 Nodes
 
 - Contains main text and subtext, positioned in the middle of rectangle.
-
-![image](https://user-images.githubusercontent.com/59837325/177205565-cfb22522-ba11-4db3-8664-816387f7d66a.png)
+![image](https://user-images.githubusercontent.com/59837325/179209802-e5211059-b144-449f-9160-a98589d34a7e.png)
 
 
 Branch
@@ -114,8 +113,8 @@ interface ITreeProps {
 - The main text and subtext are added consecutively, and rectangle shapes with specific width and height are added for both parents.
 - The Node border color is extracted from the JSON Data Structure.
 - Example of the two-layer structure:
+- ![image](https://user-images.githubusercontent.com/59837325/179209918-0769a3b4-ac04-4c3c-95a9-1c7590f89889.png)
 
-![image](https://user-images.githubusercontent.com/59837325/177205659-1a6ff078-37c6-4d75-8d4e-5ea6bea8c6f0.png)
 
 ## Structure
 
@@ -133,28 +132,32 @@ interface ITreeProps {
 
 - The compact composition positions nodes in the form of two stacks, left stack and right stack.
 - The links are generated differently for the leaf nodes.
-
-![image](https://user-images.githubusercontent.com/59837325/177205690-d98a1d4c-6f86-4bb0-9e05-781d4ab8e70c.png)
+![image](https://user-images.githubusercontent.com/59837325/179210047-bcdc5774-8d44-4f93-aaa8-a5ea5285b275.png)
 
 - The long compositions positions nodes in form of a single stack in the middle.
+![image](https://user-images.githubusercontent.com/59837325/179210095-1d9abbe9-e1ff-417d-81ef-e1d8bea3e0d4.png)
 
-![image](https://user-images.githubusercontent.com/59837325/177205723-5b6c3ca5-9393-442e-a434-158dd644e7c4.png)
 
 ## Structure
 
 **For compact composition:**
+![Group 4](https://user-images.githubusercontent.com/59837325/179210243-09b11e61-9c46-4946-9283-673605419b65.png)
 
 - We add visited parents to a set and add all the children of that parent at once, and never visit children of that parent again.
 - Stack the even/left leaf nodes i.e., leaf1, and leaf2 are positioned at dx1, and similarly stack right nodes at dx2, and increment dy.
 
-![image](https://user-images.githubusercontent.com/59837325/177205763-ab02d924-c404-4503-8210-b36ecf29be91.png)
-
 **For long composition:**
+![Group 3](https://user-images.githubusercontent.com/59837325/179210275-3a612028-9c05-4a6f-ae15-59ed49f520ed.png)
 
 - We stack the nodes one by one, for long composition.
 - Link implementation is similar to compact composition.
 
-![image](https://user-images.githubusercontent.com/59837325/177205788-83659fd0-f34e-4056-8b54-340337612d9b.png)
+**Automatic composition:**
+![image](https://user-images.githubusercontent.com/59837325/179210543-bae398da-e87a-41bd-a033-f007781c77d2.png)
+
+- When there is constraint on the space for each leaf node.
+- Example:
+![Group 5](https://user-images.githubusercontent.com/59837325/179210459-1dda7117-83ee-4445-9641-74705489b676.png)
 
 # Component Styling
 

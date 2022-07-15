@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: production issue (width-height of SVG)",
+  "packageName": "@fluentui/react-charting",
+  "email": "apurva.sharma866@gmail.com",
+  "dependentChangeType": "patch"
+}
