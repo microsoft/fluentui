@@ -43,6 +43,9 @@ const useStyles = makeStyles({
   colorLabel: {
     color: tokens.colorBrandForeground1,
   },
+  selected: {
+    fontWeight: 'bold',
+  },
   col: {
     display: 'flex',
     flexDirection: 'column',
@@ -70,6 +73,7 @@ const useStyles = makeStyles({
 });
 
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
+  const styles = useStyles();
   const { brand, brandValue, brandValueString, selected } = props;
   return (
     <MenuItemRadio
@@ -77,7 +81,7 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
       name={brandValueString}
       value={brandValueString}
     >
-      {selected ? <b>Untitled {brandValueString}</b> : <>Untitled {brandValueString}</>}
+      <span className={selected ? styles.selected : ''}>Untitled {brandValueString}</span>
     </MenuItemRadio>
   );
 };
