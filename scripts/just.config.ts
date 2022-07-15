@@ -34,9 +34,6 @@ function basicPreset() {
 
   option('webpackConfig', { alias: 'w' });
 
-  // Build only commonjs (not other TS variants) but still run other tasks
-  option('commonjs');
-
   option('cached', { default: false } as any);
 
   option('registry', { default: 'https://registry.npmjs.org' } as any);
@@ -64,7 +61,6 @@ export function preset() {
   task('ts:esm', ts.esm);
   task('ts:amd', series(ts.amd, 'postprocess:amd'));
   task('eslint', eslint);
-  task('ts:commonjs-only', ts.commonjsOnly);
   task('webpack', webpack);
   task('webpack-dev-server', webpackDevServer(args));
   task('api-extractor', apiExtractor());
@@ -77,14 +73,20 @@ export function preset() {
   task('babel:postprocess', babel);
 
   task('ts:compile', () => {
-    return args.commonjs
-      ? series('ts:commonjs-only')
-      : parallel(
-          // Converged packages must always build commonjs because of babel-make-styles transforms
-          condition('ts:commonjs', () => !args.min || isConvergedPackage()),
-          'ts:esm',
-          condition('ts:amd', () => isCompatibilityPackage() || (!!args.production && !isConvergedPackage())),
-        );
+    // default behaviour
+    if (!args.module) {
+      return parallel(
+        'ts:commonjs',
+        'ts:esm',
+        condition('ts:amd', () => isCompatibilityPackage() || (!!args.production && !isConvergedPackage())),
+      );
+    }
+
+    return parallel(
+      condition('ts:commonjs', () => args.module.cjs),
+      condition('ts:esm', () => args.module.esm),
+      condition('ts:amd', () => args.module.amd),
+    );
   });
 
   task('ts', () => {
@@ -107,7 +109,7 @@ export function preset() {
   task('dev:storybook', series('storybook:start'));
   task('dev', series('copy', 'sass', 'webpack-dev-server'));
 
-  task('build:node-lib', series('clean', 'copy', 'ts:commonjs-only')).cached();
+  task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached();
 
   task(
     'build',
@@ -117,7 +119,7 @@ export function preset() {
       'sass',
       'ts',
       // v9 needs to run api-extractor which generates rolluped .d.ts files that are shipped to npm
-      condition('api-extractor', () => isConvergedPackage() || !args.min),
+      condition('api-extractor', () => isConvergedPackage()),
     ),
   ).cached();
 
