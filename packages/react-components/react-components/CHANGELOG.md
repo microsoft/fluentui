@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 14 Jul 2022 21:21:00 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jul 2022 18:27:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.1)
+
+Fri, 15 Jul 2022 18:27:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.1.1..@fluentui/react-components_v9.1.1)
+
+### Patches
+
+- `@fluentui/react-portal-compat-context`
+  - Added mechanism for marking fluent-compatibility packages ([PR #23923](https://github.com/microsoft/fluentui/pull/23923) by gcox@microsoft.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.1)
 

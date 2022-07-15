@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added mechanism for marking fluent-compatibility packages",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

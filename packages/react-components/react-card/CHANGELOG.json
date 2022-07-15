@@ -2,6 +2,27 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 18:27:26 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "none": [
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "447b211fec38e4320b13c5ee2f7449c188f8183c",
+            "comment": "docs: add missing info to README"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "640408c5aef9c3037f5f6bc08069ff9d9141a7ee",
+            "comment": "chore: add templates to stories"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:09 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.23",
       "version": "9.0.0-beta.23",
