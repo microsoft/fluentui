@@ -79,7 +79,7 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 // @public
 export type CardPreviewSlots = {
     root: Slot<'div'>;
-    logo?: Slot<'div'>;
+    logo?: Slot<'div', 'img'>;
 };
 
 // @public

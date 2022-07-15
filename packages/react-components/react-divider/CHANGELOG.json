@@ -2,6 +2,56 @@
   "name": "@fluentui/react-divider",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:11 GMT",
+      "tag": "@fluentui/react-divider_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:18 GMT",
+      "tag": "@fluentui/react-divider_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "422636fffd66758c1a6dd617063582d902b61927",
+            "comment": "docs: Replacing https://aka.ms/fluentui-storybook with https://react.fluentui.dev/ to point to the official documentation site."
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-divider",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:48 GMT",
       "tag": "@fluentui/react-divider_v9.0.1",
       "version": "9.0.1",

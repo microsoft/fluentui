@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 07:44:26 GMT",
+      "tag": "@fluentui/react-examples_v8.34.4",
+      "version": "8.34.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-examples",
+            "comment": "Bump @fluentui/react-charting to v5.12.2",
+            "commit": "447b211fec38e4320b13c5ee2f7449c188f8183c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 07:45:35 GMT",
       "tag": "@fluentui/react-examples_v8.34.4",
       "version": "8.34.4",

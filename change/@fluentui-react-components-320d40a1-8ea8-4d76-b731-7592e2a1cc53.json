@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(react-card): Added CardHeader CSS variable to control gap",
-  "packageName": "@fluentui/react-components",
-  "email": "39736248+andrefcdias@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

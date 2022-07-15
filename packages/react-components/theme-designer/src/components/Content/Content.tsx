@@ -6,7 +6,6 @@ import { Alert } from '@fluentui/react-alert';
 import type { AppState, DispatchTheme } from '../../useThemeDesignerReducer';
 
 import { Demo } from '../Demo/Demo';
-import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
 
@@ -41,9 +40,13 @@ export const Content: React.FC<ContentProps> = props => {
         <Palette brandColors={appState.brand} />
         <Demo theme={theme} />
         <Divider />
-        <AccessibilityChecker theme={theme} />
-        <Divider />
-        <ColorTokens brand={appState.brand} themeLabel={appState.themeLabel} dispatchAppState={dispatchAppState} />
+        <ColorTokens
+          brand={appState.brand}
+          isDark={appState.isDark}
+          theme={theme}
+          themeLabel={appState.themeLabel}
+          dispatchAppState={dispatchAppState}
+        />
       </div>
     </FluentProvider>
   );

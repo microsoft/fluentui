@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 17:06:24 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "769bfa3d797cb79aa6594aa8589e382403287a9d",
+            "comment": "Organize left navigation, add theme entries"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 15:13:21 GMT",
       "tag": "@fluentui/react-theme_v9.0.0",
       "version": "9.0.0",

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 28 Jun 2022 17:39:54 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.6)
+
+Thu, 14 Jul 2022 21:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.6..@fluentui/react-dialog_v9.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.6)
+
+Thu, 14 Jul 2022 17:06:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.0.0-beta.6..@fluentui/react-dialog_v9.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.0.0-beta.6)
 

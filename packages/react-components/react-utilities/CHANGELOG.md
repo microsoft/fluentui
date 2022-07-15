@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 28 Jun 2022 15:13:25 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.2)
+
+Thu, 14 Jul 2022 21:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.1-0..@fluentui/react-utilities_v9.0.2)
+
+### Patches
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+
+## [9.0.1-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.1-0)
+
+Thu, 14 Jul 2022 17:06:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0..@fluentui/react-utilities_v9.0.1-0)
+
+### Changes
+
+- chore: improve error message in useIsSSR() ([PR #23750](https://github.com/microsoft/fluentui/pull/23750) by olfedias@microsoft.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0)
 

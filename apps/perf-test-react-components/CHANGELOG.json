@@ -2,6 +2,72 @@
   "name": "@fluentui/perf-test-react-components",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:13 GMT",
+      "tag": "@fluentui/perf-test-react-components_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-avatar to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-button to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-provider to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-spinbutton to v9.0.0-beta.18",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:26 GMT",
+      "tag": "@fluentui/perf-test-react-components_v9.0.0-rc.0",
+      "version": "9.0.0-rc.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-avatar to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-button to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-provider to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/perf-test-react-components",
+            "comment": "Bump @fluentui/react-spinbutton to v9.0.0-beta.17",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:54 GMT",
       "tag": "@fluentui/perf-test-react-components_v9.0.0-rc.0",
       "version": "9.0.0-rc.0",

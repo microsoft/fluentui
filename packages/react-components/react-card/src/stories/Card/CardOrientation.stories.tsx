@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands, Avatar, Body1, Button, Caption1 } from '@fluentui/react-components';
+import { MoreHorizontal24Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { SampleCard, Title } from './SampleCard.stories';
-import { Avatar, Body1, Button, Caption1 } from '@fluentui/react-components';
 import Logo from '../../../assets/logo.svg';
-import { MoreHorizontal24Regular } from '@fluentui/react-icons';
 
 export const ASSET_URL =
   'https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card';

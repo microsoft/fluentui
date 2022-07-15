@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Tue, 28 Jun 2022 17:39:52 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.18)
+
+Thu, 14 Jul 2022 21:21:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.17..@fluentui/react-spinbutton_v9.0.0-beta.18)
+
+### Changes
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-input to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-label to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.17)
+
+Thu, 14 Jul 2022 17:06:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.0.0-beta.16..@fluentui/react-spinbutton_v9.0.0-beta.17)
+
+### Changes
+
+- chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- fix: decrease number of react renders ([PR #23714](https://github.com/microsoft/fluentui/pull/23714) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-input to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-label to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.0.0-beta.16)
 

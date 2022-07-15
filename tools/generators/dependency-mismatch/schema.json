@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "dependency-mismatch",
+  "type": "object",
+  "properties": {}
+}
