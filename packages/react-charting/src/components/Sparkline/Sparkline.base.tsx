@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { area as d3Area, curveMonotoneX as d3CurveMonotoneX } from 'd3-shape';
+import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
@@ -12,6 +12,7 @@ export interface ISparklineState {
   _points: ILineChartDataPoint[] | null;
   _width: number;
   _height: number;
+  _valueTextWidth: number;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -28,13 +29,15 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   /* eslint-disable @typescript-eslint/no-explicit-any */
   private y: any;
   private area: any;
+  private line: any;
 
   constructor(props: ISparklineProps) {
     super(props);
     this.state = {
       _points: null,
       _width: this.props.width! || 80,
-      _height: this.props.height! || 20 + this.margin.bottom + this.margin.top,
+      _height: this.props.height! || 20,
+      _valueTextWidth: this.props.valueTextWidth! || 80,
     };
   }
 
@@ -45,8 +48,16 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       .y0(this.state._height)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .y1((d: any) => this.y(d.y))
-      .curve(d3CurveMonotoneX);
+      .curve(d3curveLinear);
     this.area = area;
+
+    const line = d3Line()
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      .x((d: any) => this.x(d.x))
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      .y((d: any) => this.y(d.y))
+      .curve(d3curveLinear);
+    this.line = line;
 
     const points = this.props.data!.lineChartData![0].data;
 
@@ -68,16 +79,24 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
 
   public drawSparkline() {
     return (
-      <path
-        className="area"
-        d={this.area(this.state._points)}
-        opacity={1}
-        fillOpacity={0.2}
-        fill={this.props.data!.lineChartData![0].color!}
-        strokeWidth={2}
-        stroke={this.props.data!.lineChartData![0].color!}
-        aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
-      />
+      <>
+        <path
+          className="line"
+          d={this.line(this.state._points)}
+          fill={'transparent'}
+          opacity={1}
+          strokeWidth={2}
+          stroke={this.props.data!.lineChartData![0].color!}
+        />
+        <path
+          className="area"
+          d={this.area(this.state._points)}
+          opacity={1}
+          fillOpacity={0.2}
+          fill={this.props.data!.lineChartData![0].color!}
+          aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
+        />
+      </>
     );
   }
 
@@ -93,16 +112,18 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       >
         <div className={classNames.inlineBlock}>
           {this.state._width >= 50 && this.state._height >= 16 ? (
-            <svg width={this.state._width} height={this.state._height} tabIndex={0}>
+            <svg width={this.state._width} height={this.state._height} data-is-focusable={true}>
               {this.state._points ? this.drawSparkline() : null}
             </svg>
           ) : (
             <></>
           )}
           {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
-            <span role="text" className={classNames.titleText} tabIndex={0}>
-              {this.props.data!.lineChartData![0].legend!}
-            </span>
+            <svg width={this.state._valueTextWidth} height={this.state._height} data-is-focusable={true}>
+              <text x="0%" dx={8} y="100%" dy={-5} className={classNames.valueText}>
+                {this.props.data!.lineChartData![0].legend!}
+              </text>
+            </svg>
           ) : (
             <></>
           )}
