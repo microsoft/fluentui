@@ -24,11 +24,10 @@ jobs:
     - name: Log environment variables (Linux)
       if: runner.os == 'Linux'
       run: |
-        printenv | sort \
-        echo "SHELLOPTS $SHELLOPTS" \
-        echo 'deployBasePath "$(deployBasePath)"' \
-        echo 'deployUrl "$(deployUrl)"' \
-        echo 'isPR "$(isPR)"' \
+        echo "SHELLOPTS $SHELLOPTS" ;\
+        echo 'deployBasePath "$(deployBasePath)"' ;\
+        echo 'deployUrl "$(deployUrl)"' ;\
+        echo 'isPR "$(isPR)"' ;\
         echo 'targetBranch "$(targetBranch)"' \
 
     - name: yarn
