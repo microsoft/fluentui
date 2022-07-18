@@ -1,4 +1,4 @@
-import { createLightTheme } from '@fluentui/react-theme';
+import { createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
 import { ColorTokens } from './ColorTokens';
 export default { component: ColorTokens };
