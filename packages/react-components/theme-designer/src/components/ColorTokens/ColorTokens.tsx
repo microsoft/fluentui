@@ -1,9 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { Button, Caption1 } from '@fluentui/react-components';
 import { makeStyles, teamsDarkTheme, teamsLightTheme, Button, Caption1 } from '@fluentui/react-components';
-import type { Brands, Theme } from '@fluentui/react-components';
+import type { Brands, Theme } from '@fluentui/react-theme';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import { themeNames } from '../../utils/themeList';

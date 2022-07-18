@@ -90,12 +90,12 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
   const styles = useStyles();
 
   const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
-  const newColors = { ...brandColors, ...colorOverride };
+  const newColors: ColorOverrideBrands = { ...brandColors, ...colorOverride };
 
   return (
     <div>
       {coveredTokens.map(color => {
-        const colorValue = newColors[color];
+        const colorValue: Brands = newColors[color];
         const usage = ((usageList as unknown) as Record<string, string>)[color];
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
@@ -152,7 +152,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                         <WarningRegular color="red" /> Contrast against{' '}
                         <div
                           className={styles.colorPreview}
-                          style={{ backgroundColor: brand[newColors[color]], color: compHex }}
+                          style={{ backgroundColor: brand[colorValue], color: compHex }}
                         >
                           {compHex}
                         </div>{' '}
