@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import {
-  FluentProvider,
-  teamsLightTheme,
   tokens,
   Body1,
   Title3,
@@ -21,8 +19,10 @@ import {
   Badge,
   Switch,
   Radio,
+  RadioGroup,
   Checkbox,
   Avatar,
+  Theme,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
@@ -42,6 +42,7 @@ import {
 
 export interface ContentProps {
   className?: string;
+  theme: Theme;
 }
 
 const useStyles = makeStyles({
@@ -63,8 +64,8 @@ const useStyles = makeStyles({
   },
   col2: {
     display: 'flex',
-    justifyContent: 'space-between',
     flexDirection: 'column',
+    alignItems: 'center',
     ...shorthands.gap(tokens.spacingVerticalL),
   },
   col3: {
@@ -194,8 +195,10 @@ export const Column3 = () => {
         <Checkbox label="Option 2" />
       </div>
       <div className={styles.twoRow}>
-        <Radio defaultChecked={true} label="Option 1" />
-        <Radio label="Option 2" />
+        <RadioGroup>
+          <Radio defaultChecked={true} label="Option 1" />
+          <Radio label="Option 2" />
+        </RadioGroup>
       </div>
     </div>
   );
@@ -204,13 +207,13 @@ export const Column3 = () => {
 export const Demo: React.FC<ContentProps> = props => {
   const styles = useStyles();
   return (
-    <FluentProvider theme={teamsLightTheme}>
+    <div>
       <Caption1>Examples</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
         <Column1 />
         <Column2 />
         <Column3 />
       </div>
-    </FluentProvider>
+    </div>
   );
 };

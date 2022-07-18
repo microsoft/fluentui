@@ -73,18 +73,16 @@ n/a
 
 ## API proposal
 
-See [react-image/Image.types.ts] for the API.
-
-[react-image/image.types.ts]: https://github.com/microsoft/fluentui/blob/master/packages/react-image/src/components/Image/Image.types.ts
+See API at [Image.types.ts](./src/components/Image/Image.types.ts).
 
 Proposed component props:
 
 | Name       | Type      | Default value | Comments                                     |
 | ---------- | --------- | ------------- | -------------------------------------------- |
 | `bordered` | `boolean` | `false`       |                                              |
-| `fit`      | `string`  | "`none`"      | One of: `none`, `center`, `contain`, `cover` |
+| `fit`      | `string`  | `"none"`      | One of: `none`, `center`, `contain`, `cover` |
 | `block`    | `boolean` | `false`       |                                              |
-| `shape `   | `string ` | `false`       | One of: `square`, `circular` , `rounded`     |
+| `shape `   | `string ` | `"square"`    | One of: `square`, `circular` , `rounded`     |
 | `shadow`   | `boolean` | `false`       |                                              |
 
 All native html attributes of the `<img />` will be available to be used as props of the Image component.
@@ -153,12 +151,9 @@ Sample code based on the proposed API:
 <img src="..." class="...">
 ```
 
-<!-- ## Migration -->
+## Migration
 
-<!-- _Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_ -->
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Accessibility
 

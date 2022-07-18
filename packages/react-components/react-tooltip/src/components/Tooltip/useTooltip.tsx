@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
-import { TooltipContext, useFluent } from '@fluentui/react-shared-contexts';
+import {
+  useTooltipVisibility_unstable as useTooltipVisibility,
+  useFluent_unstable as useFluent,
+} from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
   resolveShorthand,
@@ -25,7 +28,7 @@ import { arrowHeight, tooltipBorderRadius } from './private/constants';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
-  const context = React.useContext(TooltipContext);
+  const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
@@ -196,17 +199,20 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content.children === 'string') {
       triggerAriaProps['aria-label'] = state.content.children;
-    } else if (!isServerSideRender) {
+    } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
-    if (!isServerSideRender) {
-      triggerAriaProps['aria-describedby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-      state.shouldRenderTooltip = true;
-    }
+    triggerAriaProps['aria-describedby'] = state.content.id;
+    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+    state.shouldRenderTooltip = true;
+  }
+
+  // Don't render the Tooltip in SSR to avoid hydration errors
+  if (isServerSideRender) {
+    state.shouldRenderTooltip = false;
   }
 
   const childTargetRef = useMergedRefs(child?.ref, targetRef);

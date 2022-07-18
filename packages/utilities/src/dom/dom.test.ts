@@ -1,10 +1,7 @@
-import { setSSR } from './setSSR';
 import { portalContainsElement } from './portalContainsElement';
 import { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './setPortalAttribute';
 import { elementContains } from './elementContains';
 import { getParent } from './getParent';
-import { getWindow } from './getWindow';
-import { getDocument } from './getDocument';
 
 let unattachedSvg = document.createElement('svg');
 let unattachedDiv = document.createElement('div');
@@ -44,22 +41,6 @@ describe('getParent', () => {
 
     expect(getParent(svgRectangle)).toEqual(childSvg);
     expect(getParent(childSvg)).toEqual(parentDiv);
-  });
-});
-
-describe('getWindow', () => {
-  it('returns undefined in server environment', () => {
-    setSSR(true);
-    expect(getWindow()).toEqual(undefined);
-    setSSR(false);
-  });
-});
-
-describe('getDocument', () => {
-  it('returns undefined in server environment', () => {
-    setSSR(true);
-    expect(getDocument()).toEqual(undefined);
-    setSSR(false);
   });
 });
 

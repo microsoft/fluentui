@@ -3,6 +3,7 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IIconProps } from '../Icon/Icon.types';
 import type { IButtonProps } from '../../Button';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@doccategory Nav}
@@ -123,6 +124,11 @@ export interface INavProps {
    * @deprecated Use ariaCurrent on links instead
    */
   selectedAriaLabel?: string;
+
+  /**
+   * (Optional) Used to define the props of the FocusZone wrapper.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

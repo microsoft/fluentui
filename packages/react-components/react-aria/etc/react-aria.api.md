@@ -14,7 +14,9 @@ export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
     disabledFocusable?: boolean;
 };
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "mergeARIADisabled" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function mergeARIADisabled(shorthand: {
     'aria-disabled'?: string | boolean;
     disabled?: boolean;

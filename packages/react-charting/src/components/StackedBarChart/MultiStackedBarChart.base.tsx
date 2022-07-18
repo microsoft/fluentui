@@ -104,7 +104,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           target={this.state.refSelected}
           setInitialFocus={true}
           hidden={!(!this.props.hideTooltip && isCalloutVisible)}
-          directionalHint={DirectionalHint.topRightEdge}
+          directionalHint={DirectionalHint.topAutoEdge}
           id={this._calloutId}
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}

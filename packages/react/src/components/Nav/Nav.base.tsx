@@ -68,7 +68,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone} {...this.props.focusZoneProps}>
         <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>

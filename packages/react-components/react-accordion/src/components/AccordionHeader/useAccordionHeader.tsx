@@ -6,7 +6,7 @@ import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHead
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
 import { ChevronRightRegular } from '@fluentui/react-icons';
-import { useFluent } from '@fluentui/react-shared-contexts';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Returns the props and state required to render the component

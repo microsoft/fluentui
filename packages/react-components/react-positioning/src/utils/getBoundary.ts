@@ -6,7 +6,7 @@ import type { Boundary } from '../types';
 /**
  * Allows to mimic a behavior from V1 of Popper and accept `window` and `scrollParent` as strings.
  */
-export function getBoundary(element: HTMLElement | null, boundary?: Boundary): PopperJs.Boundary | undefined {
+export function getBoundary(element: HTMLElement | null, boundary?: Boundary | null): PopperJs.Boundary | undefined {
   if (boundary === 'window') {
     return element?.ownerDocument!.documentElement;
   }
@@ -21,5 +21,5 @@ export function getBoundary(element: HTMLElement | null, boundary?: Boundary): P
     return boundariesNode;
   }
 
-  return boundary;
+  return boundary ?? undefined;
 }

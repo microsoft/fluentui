@@ -154,7 +154,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
 
     return (
       <>
-        <label htmlFor="changeWidth_Basic">change Width:</label>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -164,7 +164,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Basic">change Height:</label>
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
         <input
           type="range"
           value={this.state.height}
