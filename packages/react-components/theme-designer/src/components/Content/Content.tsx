@@ -2,17 +2,13 @@ import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
-
-import type { AppState, DispatchTheme } from '../../useThemeDesignerReducer';
-
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
+import { AppStateContext } from '../../ThemeDesigner';
 
 export interface ContentProps {
   className?: string;
-  appState: AppState;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -21,14 +17,16 @@ const useStyles = makeStyles({
     alignItems: 'left',
     justifyContent: 'center',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '5%', '0px', '5%'),
+    ...shorthands.padding('40px', '5%', '40px', '5%'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, appState, dispatchAppState } = props;
+
+  const { appState } = React.useContext(AppStateContext);
+  const { className } = props;
   const theme = { ...appState.theme, ...appState.overrides };
 
   return (
@@ -40,13 +38,7 @@ export const Content: React.FC<ContentProps> = props => {
         <Palette brandColors={appState.brand} />
         <Demo theme={theme} />
         <Divider />
-        <ColorTokens
-          brand={appState.brand}
-          isDark={appState.isDark}
-          theme={theme}
-          themeLabel={appState.themeLabel}
-          dispatchAppState={dispatchAppState}
-        />
+        <ColorTokens theme={theme} />
       </div>
     </FluentProvider>
   );

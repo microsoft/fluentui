@@ -2,20 +2,15 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsDarkTheme, teamsLightTheme, Theme } from '@fluentui/react-theme';
+import { Brands, teamsDarkTheme, teamsLightTheme, Theme } from '@fluentui/react-theme';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
 import { themeNames } from '../../utils/themeList';
 import { AccessibilityList } from './AccessibilityList';
+import { AppStateContext } from '../../ThemeDesigner';
 
 export interface ColorTokensProps {
-  className?: string;
-  brand: BrandVariants;
-  isDark: boolean;
   theme: Theme;
-  themeLabel: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 export type ColorOverrideBrands = Record<string, Brands>;
@@ -52,8 +47,9 @@ const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(team
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, isDark, theme, themeLabel, dispatchAppState } = props;
-
+  const { theme } = props;
+  const { appState, dispatchAppState } = React.useContext(AppStateContext);
+  const { brand, isDark, themeLabel } = appState;
   const brandColors = isDark ? darkBrandColors : lightBrandColors;
 
   const colorOverrideReducer: (
@@ -91,7 +87,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   };
 
   return (
-    <div className={props.className}>
+    <div className={styles.root}>
       <div className={styles.row}>
         <Caption1 className={styles.col}>Color tokens</Caption1>
         <Caption1>Assigned values</Caption1>

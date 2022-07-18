@@ -1,18 +1,14 @@
 import * as React from 'react';
-import { Link, BrandVariants, Theme } from '@fluentui/react-components';
+import { Link } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
-
-export interface ExportLinkProps {
-  brand: BrandVariants;
-  isDark: boolean;
-  overrides: Partial<Theme>;
-}
+import { AppStateContext } from '../../ThemeDesigner';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
-export const ExportLink: React.FC<ExportLinkProps> = props => {
-  const { brand, isDark, overrides } = props;
+export const ExportLink = () => {
+  const { appState } = React.useContext(AppStateContext);
+  const { brand, isDark, overrides } = appState;
 
   const content = dedent`
     import * as React from 'react';
@@ -216,7 +212,7 @@ export const ExportLink: React.FC<ExportLinkProps> = props => {
           <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
             Learn More
           </Button>
-          <Slider className={styles.twoCol} defaultValue={20} />
+          <Slider className={styles.twoCol} defaultValue={50} />
           <DemoIcons />
           <div className={styles.twoRow}>
             <Switch defaultChecked={true} label="On" />

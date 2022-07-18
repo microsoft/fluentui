@@ -6,10 +6,10 @@ import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerRedu
 
 import { UseTab } from './UseTab';
 import { EditTab } from './EditTab';
+import { AppStateContext } from '../../ThemeDesigner';
 
 export interface SidebarProps {
   className?: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -75,12 +75,14 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
+  const dispatchAppState: React.Dispatch<DispatchTheme> = React.useContext(AppStateContext).dispatchAppState;
+
   const sidebarId = useId();
 
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     if (data.value === 'edit') {
-      props.dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
+      dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
       setTheme('Custom');
     }
@@ -112,7 +114,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           sidebarId={sidebarId}
           theme={theme}
           setTheme={setTheme}
-          dispatchAppState={props.dispatchAppState}
           setTab={setTab}
           formState={formState}
           setFormState={setFormState}

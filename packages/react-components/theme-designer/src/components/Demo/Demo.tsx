@@ -184,7 +184,7 @@ export const Column3 = () => {
       <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
         Learn More
       </Button>
-      <Slider className={styles.twoCol} defaultValue={20} />
+      <Slider className={styles.twoCol} defaultValue={50} />
       <DemoIcons />
       <div className={styles.twoRow}>
         <Switch defaultChecked={true} label="On" />
