@@ -27,10 +27,10 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         echo "SHELLOPTS $SHELLOPTS" ;\
-        echo 'deployBasePath "$(deployBasePath)"' ;\
-        echo 'deployUrl "$(deployUrl)"' ;\
-        echo 'isPR "$(isPR)"' ;\
-        echo 'targetBranch "$(targetBranch)"' \
+        echo 'deployBasePath $deployBasePath' ;\
+        echo 'deployUrl $deployUrl' ;\
+        echo 'isPR $isPR' ;\
+        echo 'targetBranch $targetBranch' \
 
     - name: yarn
       run: ./yarn-ci.sh
@@ -45,8 +45,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch -d '$web' -s 'apps/vr-tests/dist/storybook' --connection-string '$AZURE_STORAGE_CONNECTION_STRING'
-
+          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string '$AZURE_STORAGE_CONNECTION_STRING'
 
     - name: Start @fluentui/react-northstar VR Test
       run: yarn workspace @fluentui/docs vr:test
