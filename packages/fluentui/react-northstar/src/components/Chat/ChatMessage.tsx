@@ -61,6 +61,7 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
+import { Tooltip } from '../Tooltip/Tooltip';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
 import { ChatItemContext } from './chatItemContext';
@@ -73,6 +74,9 @@ export interface ChatMessageSlotClassNames {
   author: string;
   badge: string;
   bar: string;
+  bubble: string;
+  bubbleInset: string;
+  body: string;
   compactBody: string;
   content: string;
   reactionGroup: string;
@@ -175,11 +179,44 @@ export interface ChatMessageProps
 
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
+
+  /**
+   * Properties that are only available to the v2 (refresh) version of
+   * ChatMessage because they only have an effect there. Enabling this property
+   * will opt into the new layout.
+   */
+  v2?: ChatMessageV2Props;
+}
+
+interface ChatMessageV2Props {
+  /** Indicates whether the message is in a failure state. */
+  failed?: boolean;
+
+  /** Label that describes message importance. */
+  importantLabel?: React.ReactNode;
+
+  /** Additional label slot for message importance, scheduled messages, etc. */
+  infoLabel?: React.ReactNode;
+
+  /**
+   * Hook that can be used to customize the element rendered for the message bubble.
+   * This is required for external, platform-specific implementations that need to
+   * wrap the bubble in order to inject animations et al.
+   */
+  customizeBubble?(element: React.ReactNode): React.ReactNode;
+
+  /** Slot for elements that sit next to the message bubble. */
+  bubbleInset?: React.ReactNode;
+
+  /** More refined version of the original `timestamp` property that guarantees certain fields exist. */
+  timestampTooltip?: string;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
   hasBadge: boolean;
   hasHeaderReactionGroup: boolean;
+  hasReactions: boolean;
+  isV2Enabled: boolean;
 
   // focused, hasActionMenu and showActionMenu controls the visibility of action menu
   focused: boolean;
@@ -193,6 +230,9 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
   author: `${chatMessageClassName}__author`,
   badge: `${chatMessageClassName}__badge`,
   bar: `${chatMessageClassName}__bar`,
+  body: `${chatMessageClassName}__body`,
+  bubble: `${chatMessageClassName}__bubble`,
+  bubbleInset: `${chatMessageClassName}__bubble-inset`,
   compactBody: `${chatMessageClassName}__compact-body`,
   content: `${chatMessageClassName}__content`,
   reactionGroup: `${chatMessageClassName}__reactions`,
@@ -259,7 +299,10 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     timestamp,
     unstable_overflow: overflow,
     variables,
+    v2,
   } = props;
+
+  const isV2Enabled = !!v2 && density === 'comfy';
 
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
   const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
@@ -293,7 +336,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
-  const { targetRef: messageRef, containerRef: actionsMenuRef } = usePopper({
+  const actionsMenuPopper = usePopper({
     align: 'end',
     position: 'above',
     positionFixed: overflow,
@@ -320,8 +363,9 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       },
 
       focus: event => {
-        if (messageRef.current) {
-          messageRef.current.focus();
+        const target = actionsMenuPopper.targetRef.current;
+        if (target) {
+          target.focus();
           event.stopPropagation();
         }
       },
@@ -347,6 +391,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       hasHeaderReactionGroup,
       mine,
       showActionMenu,
+      hasReactions: !!reactionGroup,
+      isV2Enabled,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -405,7 +451,11 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       },
     });
 
-    const content = actionMenuElement ? <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref> : actionMenuElement;
+    const content = actionMenuElement ? (
+      <Ref innerRef={actionsMenuPopper.containerRef}>{actionMenuElement}</Ref>
+    ) : (
+      actionMenuElement
+    );
 
     return inlineActionMenu || !content ? content : <PortalInner>{content}</PortalInner>;
   };
@@ -415,8 +465,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       // reference: https://github.com/microsoft/fluentui/pull/17329
 
       const toFocusItemInActionMenu =
-        actionsMenuRef.current?.querySelector('[tabindex="0"]') ??
-        actionsMenuRef.current?.querySelectorAll('[tabindex="-1"]:not([data-is-focusable="false"])')[0];
+        actionsMenuPopper.containerRef.current?.querySelector('[tabindex="0"]') ??
+        actionsMenuPopper.containerRef.current?.querySelectorAll('[tabindex="-1"]:not([data-is-focusable="false"])')[0];
 
       if (e.keyCode === keyboardKey.Enter) {
         toFocusItemInActionMenu?.focus();
@@ -549,6 +599,110 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         {readStatusElement}
       </>
     );
+  } else if (isV2Enabled) {
+    const headerElement = createShorthand(ChatMessageHeader, header || {}, {
+      overrideProps: () => ({
+        styles: resolvedStyles.header,
+        content: (
+          <>
+            {authorElement}
+            {v2.infoLabel}
+            {v2.importantLabel}
+            {detailsElement}
+          </>
+        ),
+      }),
+    });
+
+    let bubbleElement = Box.create(
+      {},
+      {
+        defaultProps: () =>
+          getA11Props('bubble', {
+            className: chatMessageSlotClassNames.bubble,
+            styles: resolvedStyles.bubble,
+          }),
+        overrideProps: () => ({
+          ref: actionsMenuPopper.targetRef,
+          content: (
+            <>
+              {actionMenuElement}
+              {messageContent}
+              {reactionGroupElement}
+              {readStatusElement}
+            </>
+          ),
+          onMouseEnter(e: React.SyntheticEvent) {
+            popperRef.current?.updatePosition();
+            handleMouseEnter(e);
+          },
+          onMouseLeave(e: React.SyntheticEvent) {
+            handleMouseLeave(e);
+          },
+        }),
+      },
+    );
+    if (v2.customizeBubble) {
+      bubbleElement = v2.customizeBubble(bubbleElement);
+    }
+
+    const timestampElement = (
+      <Tooltip
+        content={v2.timestampTooltip}
+        trigger={Text.create(timestamp, {
+          defaultProps: () => ({
+            size: 'small',
+            styles: resolvedStyles.timestamp,
+            timestamp: true,
+            className: chatMessageSlotClassNames.timestamp,
+          }),
+        })}
+      />
+    );
+
+    const bubbleInset = Box.create(
+      { as: 'span' },
+      {
+        defaultProps: () => ({
+          className: chatMessageSlotClassNames.bubbleInset,
+          styles: resolvedStyles.bubbleInset,
+        }),
+        overrideProps: () => ({
+          content: (
+            <>
+              {badgeElement}
+              {v2.bubbleInset}
+              {timestampElement}
+            </>
+          ),
+        }),
+      },
+    );
+
+    const bodyElement = Box.create(
+      {},
+      {
+        defaultProps: () =>
+          getA11Props('body', {
+            className: chatMessageSlotClassNames.body,
+            styles: resolvedStyles.body,
+          }),
+        overrideProps: () => ({
+          content: (
+            <>
+              {bubbleElement}
+              {bubbleInset}
+            </>
+          ),
+        }),
+      },
+    );
+    elements = (
+      <>
+        {headerElement}
+        {bodyElement}
+      </>
+    );
   } else {
     const headerElement = createShorthand(ChatMessageHeader, header || {}, {
       overrideProps: () => ({
@@ -578,7 +732,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   }
 
   const element = (
-    <Ref innerRef={messageRef}>
+    <Ref innerRef={!isV2Enabled && actionsMenuPopper.targetRef}>
       {getA11Props.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11Props('root', {
@@ -635,6 +789,14 @@ ChatMessage.propTypes = {
   readStatus: customPropTypes.itemShorthand,
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
+  v2: PropTypes.shape({
+    failed: PropTypes.bool,
+    importantLabel: PropTypes.node,
+    infoLabel: PropTypes.node,
+    customizeBubble: PropTypes.func,
+    bubbleInset: PropTypes.node,
+    timestampTooltip: PropTypes.string,
+  }),
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;

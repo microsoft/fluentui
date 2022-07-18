@@ -37,6 +37,10 @@ export interface ChatMessageVariables {
   reactionGroupMarginLeft: string;
   showActionMenu?: boolean;
   zIndex: number;
+  // these properties are prefixed because they only affect the v2 layout.
+  v2_isFailed: boolean;
+  v2_isNarrow: boolean;
+  v2_isFullWidth: boolean;
 }
 
 export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
@@ -76,4 +80,7 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   showActionMenu: undefined,
   zIndex: siteVars.zIndexes.foreground,
+  v2_isFailed: false,
+  v2_isNarrow: false,
+  v2_isFullWidth: false,
 });
