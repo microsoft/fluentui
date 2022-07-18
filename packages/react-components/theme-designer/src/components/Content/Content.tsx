@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands, tokens, Divider, FluentProvider } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
