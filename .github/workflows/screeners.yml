@@ -21,3 +21,37 @@ jobs:
     - name: Install yarn
       run: npm install --global yarn
 
+    - name: Log environment variables (Linux)
+      if: ${{ variables['Agent.OS'] == 'Linux'}}
+      run: |
+        printenv | sort \
+        echo "SHELLOPTS $SHELLOPTS" \
+        echo 'deployBasePath "$(deployBasePath)"' \
+        echo 'deployUrl "$(deployUrl)"' \
+        echo 'isPR "$(isPR)"' \
+        echo 'targetBranch "$(targetBranch)"' \
+
+    - name: yarn
+      run: ./yarn-ci.sh
+      shell: bash
+
+    - name: build FUI N* VR Test
+      run: yarn workspace @fluentui/docs vr:build
+      env:
+        SCREENER_BUILD: 1
+
+    - name: Upload N* VR test site
+      uses: LanceMcCarthy/Action-AzureBlobUpload@v1.12.0
+      with:
+        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        container_name: $web
+        source_folder: packages/fluentui/docs/dist
+        destination_folder: $(deployBasePath)/react-screener
+
+    - name: Start @fluentui/react-northstar VR Test
+      run: yarn workspace @fluentui/docs vr:test
+      env:
+        SCREENER_ENDPOINT: $(screenerApiUri)
+        SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
+        SCREENER_API_KEY: $(screener.key)
+
