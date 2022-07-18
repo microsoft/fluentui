@@ -1213,6 +1213,23 @@ describe('Dropdown', () => {
         expect(searchInputNode).toHaveValue('item0');
       });
 
+      it(`highlights first item matching prefix and selects it on ${key}`, () => {
+        const items = ['item0', 'item1', 'itemA1', 'itemB1'];
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+          items,
+        });
+
+        changeSearchInput('itemA');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemA1');
+      });
+
       it(`keeps search query value when there is no match on ${key}`, () => {
         const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
           search: items => items,
