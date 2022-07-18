@@ -27,10 +27,10 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         echo "SHELLOPTS $SHELLOPTS" ;\
-        echo 'deployBasePath "$(deployBasePath)"' ;\
-        echo 'deployUrl "$(deployUrl)"' ;\
-        echo 'isPR "$(isPR)"' ;\
-        echo 'targetBranch "$(targetBranch)"' \
+        echo 'deployBasePath $deployBasePath' ;\
+        echo 'deployUrl $deployUrl' ;\
+        echo 'isPR $isPR' ;\
+        echo 'targetBranch $targetBranch' \
 
     - name: yarn
       run: ./yarn-ci.sh
