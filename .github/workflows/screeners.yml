@@ -1,5 +1,4 @@
-on: pull_request_target
-
+on: pull_request
 jobs:
   TestJob:
     runs-on: ubuntu-latest
