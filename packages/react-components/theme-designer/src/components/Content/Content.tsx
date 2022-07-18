@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     alignItems: 'left',
     justifyContent: 'center',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '5%', '40px', '5%'),
+    ...shorthands.padding('40px', '5%'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });
