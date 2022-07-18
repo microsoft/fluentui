@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, teamsDarkTheme, teamsLightTheme, Theme } from '@fluentui/react-theme';
+import { makeStyles, teamsDarkTheme, teamsLightTheme, Button, Caption1 } from '@fluentui/react-components';
+import type { Brands, Theme } from '@fluentui/react-components';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
 import { themeNames } from '../../utils/themeList';
