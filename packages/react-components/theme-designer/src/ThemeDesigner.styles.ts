@@ -1,4 +1,4 @@
-import { makeStaticStyles, makeStyles } from '@griffel/react';
+import { makeStaticStyles, makeStyles } from '@fluentui/react-components';
 
 export const useStaticStyles = makeStaticStyles({
   '#docs-root .sbdocs-content > div:last-child': {
