@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: README, spec and migration guide cleanup for react-tabs.",
-  "packageName": "@fluentui/react-tabs",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "none"
-}

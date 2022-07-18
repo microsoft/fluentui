@@ -9,6 +9,7 @@ import { buildAssets } from './utils/buildAssets';
 import { generateEntryPoints } from './utils/generateEntryPoints';
 import { hrToSeconds } from './utils/helpers';
 import { renderToHTML } from './utils/renderToHTML';
+import { getChromeVersion } from './utils/getChromeVersion';
 
 async function build() {
   const distDirectory = path.resolve(__dirname, '..', 'dist');
@@ -27,6 +28,7 @@ async function build() {
   const generateStartTime = process.hrtime();
 
   const rawStoriesGlobs = getVnextStories() as string[];
+  rawStoriesGlobs.push(path.resolve(path.join(__dirname, './stories/**/index.stories.tsx')));
   const storiesGlobs = rawStoriesGlobs
     // TODO: Find a better way for this. Pass the path via params? 👇
     .map(pattern => path.resolve(__dirname, pattern));
@@ -41,9 +43,12 @@ async function build() {
 
   // ---
 
+  const chromeVersion = await getChromeVersion();
   const buildStartTime = process.hrtime();
 
   await buildAssets({
+    chromeVersion,
+
     esmEntryPoint,
     cjsEntryPoint,
 

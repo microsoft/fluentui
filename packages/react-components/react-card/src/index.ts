@@ -18,6 +18,7 @@ export type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFo
 export {
   CardHeader,
   cardHeaderClassNames,
+  cardHeaderCSSVars,
   renderCardHeader_unstable,
   useCardHeaderStyles_unstable,
   useCardHeader_unstable,

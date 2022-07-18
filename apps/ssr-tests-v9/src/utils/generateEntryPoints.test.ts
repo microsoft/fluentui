@@ -40,7 +40,7 @@ describe('generateEntryPoints', () => {
 
       export const App = () => (
         <SSRProvider>
-          <FluentProvider theme={teamsLightTheme}>
+          <FluentProvider id=\\"root-provider\\" theme={teamsLightTheme}>
             <ModuleDefault />
             <ModuleFoo />
           </FluentProvider>

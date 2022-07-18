@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '../../index';
+import { Avatar } from '@fluentui/react-avatar';
 import { PeopleTeamRegular } from '@fluentui/react-icons';
 
 export const Square = () => <Avatar shape="square" aria-label="square avatar" icon={<PeopleTeamRegular />} />;

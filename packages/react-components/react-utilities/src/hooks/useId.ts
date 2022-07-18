@@ -3,8 +3,6 @@ import { defaultSSRContextValue, useSSRContext } from '../ssr/index';
 
 /**
  * Resets generated IDs, should be used only in tests.
- *
- * @private
  */
 export function resetIdsForTests(): void {
   defaultSSRContextValue.current = 0;

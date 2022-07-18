@@ -23,6 +23,7 @@ type InternalState = {
   spinTime: number;
   spinDelay: number;
   previousTextValue?: string;
+  atBound: SpinButtonBounds;
 };
 
 const DEFAULT_SPIN_DELAY_MS = 150;
@@ -77,99 +78,35 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     defaultState: defaultValue,
     initialState: 0,
   });
-  const [textValue, setTextValue] = React.useState(
-    value !== undefined && displayValue !== undefined ? displayValue : String(currentValue),
-  );
-  const [spinState, setSpinState] = React.useState<SpinButtonSpinState>('rest');
-  const [atBound, setAtBound] = React.useState<SpinButtonBounds>('none');
+
+  const isControlled = value !== undefined;
+
+  const [textValue, setTextValue] = React.useState<string | undefined>(undefined);
+  const [keyboardSpinState, setKeyboardSpinState] = React.useState<SpinButtonSpinState>('rest');
 
   const internalState = React.useRef<InternalState>({
     value: currentValue,
-    spinState,
+    spinState: 'rest',
     spinTime: 0,
     spinDelay: DEFAULT_SPIN_DELAY_MS,
+    atBound: currentValue !== null ? getBound(precisionRound(currentValue, precision), min, max) : 'none',
   });
-
-  const state: SpinButtonState = {
-    size,
-    appearance,
-    spinState,
-    atBound,
-
-    components: {
-      root: 'span',
-      input: 'input',
-      incrementButton: 'button',
-      decrementButton: 'button',
-    },
-    root: resolveShorthand(root, {
-      required: true,
-      defaultProps: nativeProps.root,
-    }),
-    input: resolveShorthand(input, {
-      required: true,
-      defaultProps: {
-        ref,
-        autoComplete: 'off',
-        role: 'spinbutton',
-        appearance: appearance,
-        type: 'text',
-        ...nativeProps.primary,
-      },
-    }),
-    incrementButton: resolveShorthand(incrementButton, {
-      required: true,
-      defaultProps: {
-        tabIndex: -1,
-        children: <ChevronUp16Regular />,
-        disabled: nativeProps.primary.disabled,
-        'aria-label': 'Increment value',
-      },
-    }),
-    decrementButton: resolveShorthand(decrementButton, {
-      required: true,
-      defaultProps: {
-        tabIndex: -1,
-        children: <ChevronDown16Regular />,
-        disabled: nativeProps.primary.disabled,
-        'aria-label': 'Decrement value',
-      },
-    }),
-  };
 
   const [setStepTimeout, clearStepTimeout] = useTimeout();
 
-  React.useEffect(() => {
-    let newTextValue;
-    if (value === null || currentValue === null) {
-      newTextValue = displayValue ?? '';
-      internalState.current.value = null;
-      setAtBound('none');
-    } else if (value !== undefined) {
-      const roundedValue = precisionRound(value, precision);
-      newTextValue = displayValue ?? String(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
-    } else {
-      const roundedValue = precisionRound(currentValue, precision);
-      newTextValue = String(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
+  const stepValue = (
+    e: SpinButtonChangeEvent,
+    direction: 'up' | 'down' | 'upPage' | 'downPage',
+    startFrom?: string,
+  ) => {
+    let startValue = internalState.current.value;
+    if (startFrom) {
+      const num = parseFloat(startFrom);
+      if (!isNaN(num)) {
+        startValue = num;
+      }
     }
-    setTextValue(newTextValue);
-  }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!internalState.current.previousTextValue) {
-      internalState.current.previousTextValue = textValue;
-    }
-
-    const newValue = e.target.value;
-    setTextValue(newValue);
-  };
-
-  const stepValue = (e: SpinButtonChangeEvent, direction: 'up' | 'down' | 'upPage' | 'downPage') => {
-    const val = internalState.current.value;
+    const val = startValue;
     const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
     const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
 
@@ -201,6 +138,14 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!internalState.current.previousTextValue) {
+      internalState.current.previousTextValue = textValue;
+    }
+    const newValue = e.target.value;
+    setTextValue(newValue);
+  };
+
   const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
     internalState.current.spinState = 'up';
     stepValue(e, 'up');
@@ -224,43 +169,48 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
+
     if (e.key === Keys.ArrowUp) {
-      stepValue(e, 'up');
-      setSpinState('up');
+      stepValue(e, 'up', textValue);
+      nextKeyboardSpinState = 'up';
     } else if (e.key === Keys.ArrowDown) {
-      stepValue(e, 'down');
-      setSpinState('down');
+      stepValue(e, 'down', textValue);
+      nextKeyboardSpinState = 'down';
     } else if (e.key === Keys.PageUp) {
       e.preventDefault();
-      stepValue(e, 'upPage');
-      setSpinState('up');
+      stepValue(e, 'upPage', textValue);
+      nextKeyboardSpinState = 'up';
     } else if (e.key === Keys.PageDown) {
       e.preventDefault();
-      stepValue(e, 'downPage');
-      setSpinState('down');
+      stepValue(e, 'downPage', textValue);
+      nextKeyboardSpinState = 'down';
     } else if (!e.shiftKey && e.key === Keys.Home && min !== undefined) {
       commit(e, min);
-      setSpinState('down');
+      nextKeyboardSpinState = 'down';
     } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
       commit(e, max);
-      setSpinState('up');
+      nextKeyboardSpinState = 'up';
     } else if (e.key === Keys.Enter) {
       commit(e, currentValue, textValue);
       internalState.current.previousTextValue = undefined;
-      setSpinState('rest');
     } else if (e.key === Keys.Escape) {
       if (internalState.current.previousTextValue) {
-        setTextValue(internalState.current.previousTextValue);
+        setTextValue(undefined);
         internalState.current.previousTextValue = undefined;
       }
-      setSpinState('rest');
-    } else {
-      setSpinState('rest');
+    }
+
+    if (keyboardSpinState !== nextKeyboardSpinState) {
+      setKeyboardSpinState(nextKeyboardSpinState);
     }
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setSpinState('rest');
+    if (keyboardSpinState !== 'rest') {
+      setKeyboardSpinState('rest');
+      internalState.current.spinState = 'rest';
+    }
   };
 
   const commit = (e: SpinButtonChangeEvent, newValue?: number | null, newDisplayValue?: string) => {
@@ -274,14 +224,88 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     if (valueChanged) {
       roundedValue = precisionRound(newValue!, precision);
       setCurrentValue(roundedValue);
+    } else if (displayValueChanged && !isControlled) {
+      const nextValue = parseFloat(newDisplayValue as string);
+      if (!isNaN(nextValue)) {
+        setCurrentValue(precisionRound(nextValue, precision));
+      }
     }
 
     if (valueChanged || displayValueChanged) {
       onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
     }
+
+    setTextValue(undefined);
   };
 
-  state.input.value = textValue;
+  const state: SpinButtonState = {
+    size,
+    appearance,
+    spinState: keyboardSpinState,
+    atBound: internalState.current.atBound,
+
+    components: {
+      root: 'span',
+      input: 'input',
+      incrementButton: 'button',
+      decrementButton: 'button',
+    },
+    root: resolveShorthand(root, {
+      required: true,
+      defaultProps: nativeProps.root,
+    }),
+    input: resolveShorthand(input, {
+      required: true,
+      defaultProps: {
+        ref,
+        autoComplete: 'off',
+        role: 'spinbutton',
+        appearance: appearance,
+        type: 'text',
+        ...nativeProps.primary,
+      },
+    }),
+    incrementButton: resolveShorthand(incrementButton, {
+      required: true,
+      defaultProps: {
+        tabIndex: -1,
+        children: <ChevronUp16Regular />,
+        disabled: nativeProps.primary.disabled,
+        'aria-label': 'Increment value',
+        type: 'button',
+      },
+    }),
+    decrementButton: resolveShorthand(decrementButton, {
+      required: true,
+      defaultProps: {
+        tabIndex: -1,
+        children: <ChevronDown16Regular />,
+        disabled: nativeProps.primary.disabled,
+        'aria-label': 'Decrement value',
+        type: 'button',
+      },
+    }),
+  };
+
+  let valueToDisplay;
+  if (textValue !== undefined) {
+    valueToDisplay = textValue;
+  } else if (value === null || currentValue === null) {
+    valueToDisplay = displayValue ?? '';
+    internalState.current.value = null;
+    internalState.current.atBound = 'none';
+  } else {
+    const roundedValue = precisionRound(currentValue, precision);
+    internalState.current.value = roundedValue;
+    internalState.current.atBound = getBound(roundedValue, min, max);
+    if (isControlled) {
+      valueToDisplay = displayValue ?? String(roundedValue);
+    } else {
+      valueToDisplay = String(roundedValue);
+    }
+  }
+
+  state.input.value = valueToDisplay;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue ?? undefined;

@@ -1,8 +1,77 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Tue, 31 May 2022 21:28:46 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.2)
+
+Thu, 14 Jul 2022 21:21:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.1..@fluentui/react-slider_v9.0.2)
+
+### Patches
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-label to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.1)
+
+Thu, 14 Jul 2022 17:06:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.21..@fluentui/react-slider_v9.0.1)
+
+### Patches
+
+- fix: Moving slider version to stable. ([PR #23790](https://github.com/microsoft/fluentui/pull/23790) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-tabster to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-label to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.21)
+
+Tue, 28 Jun 2022 17:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.20..@fluentui/react-slider_v9.0.0-beta.21)
+
+### Changes
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-tabster to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+- Bump @fluentui/react-label to v9.0.1 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.20)
+
+Tue, 28 Jun 2022 15:13:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.19..@fluentui/react-slider_v9.0.0-beta.20)
+
+### Changes
+
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+- README, spec and migration guide cleanup. ([PR #23398](https://github.com/microsoft/fluentui/pull/23398) by Humberto.Morimoto@microsoft.com)
+- README update. ([PR #23439](https://github.com/microsoft/fluentui/pull/23439) by Humberto.Morimoto@microsoft.com)
+- fix: Removing user-select: 'none' from label. ([PR #23590](https://github.com/microsoft/fluentui/pull/23590) by Humberto.Morimoto@microsoft.com)
+- chore: Using ::before and ::after instead of :before and :after. ([PR #23469](https://github.com/microsoft/fluentui/pull/23469) by Humberto.Morimoto@microsoft.com)
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-label to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+
+## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.19)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.0.0-beta.18..@fluentui/react-slider_v9.0.0-beta.19)
+
+### Changes
+
+- Bump @fluentui/react-shared-contexts to v9.0.0-rc.11 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-tabster to v9.0.0-rc.14 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+- Bump @fluentui/react-label to v9.0.0-rc.6 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
 
 ## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.0.0-beta.18)
 

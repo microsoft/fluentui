@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as prettier from 'prettier';
 
+import { PROVIDER_ID } from './constants';
 import { getImportsFromIndexFile } from './getImportsFromIndexFile';
 
 type GenerateEntryPointsConfig = {
@@ -14,10 +15,7 @@ type GenerateEntryPointsConfig = {
 export async function generateEntryPoints(config: GenerateEntryPointsConfig): Promise<void> {
   const storiesFiles = config.storiesGlobs.map(pattern => glob.sync(pattern)).flatMap(pattern => pattern);
 
-  // TODO: Can removed after the issue will be solved https://github.com/microsoft/fluentui/issues/23393
-  const indexStoriesFiles = storiesFiles.filter(filename =>
-    fs.readFileSync(filename, { encoding: 'utf8' }).includes('export { Default } from'),
-  );
+  const indexStoriesFiles = storiesFiles.filter(filename => filename.includes('index.stories.ts'));
 
   const distDir = path.dirname(config.cjsEntryPoint);
   const imports = (
@@ -50,7 +48,7 @@ export async function generateEntryPoints(config: GenerateEntryPointsConfig): Pr
 
   export const App = () => (
       <SSRProvider>
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider id="${PROVIDER_ID}" theme={teamsLightTheme}>
       ${imports.map(entry => `<${entry.imported} />`).join('\n')}
     </FluentProvider>
     </SSRProvider>

@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Tue, 28 Jun 2022 15:14:09 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c7b1348bdad7aa883c29bfbc96ef2a32e6ebc7dd",
+            "comment": "feat: Initial 9.0.0 release"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 May 2022 18:26:28 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.0-rc.6",
       "version": "9.0.0-rc.6",

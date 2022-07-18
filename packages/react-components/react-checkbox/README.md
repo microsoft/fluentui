@@ -1,6 +1,6 @@
 # @fluentui/react-checkbox
 
-**Checkbox component for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Checkbox component for [Fluent UI React](https://react.fluentui.dev/)**
 
 Checkboxes give people a way to select one or more items from a group, or switch between
 two mutually exclusive options (checked or unchecked).
@@ -21,7 +21,7 @@ import { Checkbox } from '@fluentui/react-components';
 <Checkbox shape="circular" label="Circular" />
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

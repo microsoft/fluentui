@@ -3,6 +3,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { GriffelStyle } from '@griffel/react';
 
 /**
+ * @internal
  * Options parameter for the createArrowStyles function
  */
 export type CreateArrowStylesOptions = {
@@ -37,6 +38,7 @@ export type CreateArrowStylesOptions = {
 };
 
 /**
+ * @internal
  * Helper that creates a makeStyles rule for an arrow element.
  * For runtime arrow size toggling simply create extra classnames to apply to the arrow element
  *
@@ -113,6 +115,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
 }
 
 /**
+ * @internal
  * Creates CSS styles to size the arrow created by createArrowStyles to the given height.
  *
  * Use this when you need to create classes for several different arrow sizes. If you only need a

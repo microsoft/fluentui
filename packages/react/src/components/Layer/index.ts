@@ -3,4 +3,4 @@ export * from './Layer.base';
 export * from './Layer.types';
 export * from './LayerHost';
 export * from './LayerHost.types';
-export { createDefaultLayerHost, cleanupDefaultLayerHost } from './Layer.notification';
+export { createDefaultLayerHost, cleanupDefaultLayerHost, setDefaultTarget as setLayerHostSelector } from './Layer.notification';

@@ -1,12 +1,15 @@
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Button, TabList, Tab, Label, Input, useId, Subtitle2, tokens } from '@fluentui/react-components';
-import { AddCircleRegular } from '@fluentui/react-icons';
+import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
+import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
+
+import { UseTab } from './UseTab';
+import { EditTab } from './EditTab';
 
 export interface SidebarProps {
   className?: string;
-  keyColor: string;
-  setKeyColor: React.Dispatch<React.SetStateAction<string>>;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -41,6 +44,12 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     alignItems: 'flex-start',
   },
+  inlineInputs: {
+    display: 'flex',
+    columnGap: '1em',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   keyColor: {
     paddingLeft: '0px',
   },
@@ -66,88 +75,52 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
-  const keyColorId = useId();
-  const lightThemeId = useId();
-  const darkThemeId = useId();
+  const sidebarId = useId();
 
-  const [lightTheme, setLightTheme] = React.useState<string>('#FFFFFF');
-  const changeLightTheme = React.useCallback(e => setLightTheme(e.target.value), [setLightTheme]);
+  const [tab, setTab] = React.useState<TabValue>('use');
+  const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    if (data.value === 'edit') {
+      props.dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
+    } else if (data.value === 'use') {
+      setTheme('Custom');
+    }
+    setTab(data.value);
+  };
 
-  const [darkTheme, setDarkTheme] = React.useState<string>('#000000');
-  const changeDarkTheme = React.useCallback(e => setDarkTheme(e.target.value), [setDarkTheme]);
+  const [theme, setTheme] = React.useState<string>('Teams');
+  const [isDark, setIsDark] = React.useState<boolean>(false);
 
-  const handleOnChange = React.useCallback(e => props.setKeyColor(e.target.value), [props]);
+  const [formState, setFormState] = React.useState<CustomAttributes>({
+    keyColor: '#006bc7',
+    hueTorsion: 0,
+    darkCp: 0.66,
+    lightCp: 0.33,
+  });
 
   return (
     <div className={mergeClasses(styles.root, props.className)}>
-      <TabList className={styles.tabs} size="medium" defaultSelectedValue="use">
+      <TabList className={styles.tabs} size="medium" selectedValue={tab} onTabSelect={handleTabChange}>
         <Tab className={styles.tab} value="use">
           Use
         </Tab>
-        <Tab disabled className={styles.tab} value="edit">
+        <Tab className={styles.tab} value="edit">
           Edit
         </Tab>
       </TabList>
-      <div className={styles.content}>
-        <div className={styles.inputs}>
-          <Label htmlFor={keyColorId}>Key Color Value</Label>
-          <div className={styles.labels}>
-            <Input
-              className={styles.keyColor}
-              size="large"
-              appearance="underline"
-              id={keyColorId}
-              value={props.keyColor}
-              onChange={handleOnChange}
-            />
-            <div className={styles.colorPicker} style={{ backgroundColor: props.keyColor }}>
-              <input className={styles.color} type="color" id={keyColorId} onChange={handleOnChange} />
-            </div>
-          </div>
-        </div>
-        <Subtitle2>Contrast References</Subtitle2>
-        <div className={styles.inputs}>
-          <Label htmlFor={lightThemeId}>Light Theme</Label>
-          <div className={styles.labels}>
-            <Input
-              size="small"
-              appearance="underline"
-              id={lightThemeId}
-              value={lightTheme}
-              onChange={changeLightTheme}
-            />
-            <div className={styles.colorPicker} style={{ backgroundColor: lightTheme }}>
-              <input
-                disabled={true}
-                className={styles.color}
-                type="color"
-                id={lightThemeId}
-                value={lightTheme}
-                onChange={changeLightTheme}
-              />
-            </div>
-          </div>
-        </div>
-        <div className={styles.inputs}>
-          <Label htmlFor={darkThemeId}>Dark Theme</Label>
-          <div className={styles.labels}>
-            <Input size="small" appearance="underline" id={darkThemeId} value={darkTheme} onChange={changeDarkTheme} />
-            <div className={styles.colorPicker} style={{ backgroundColor: darkTheme }}>
-              <input
-                disabled={true}
-                className={styles.color}
-                type="color"
-                id={darkThemeId}
-                value={darkTheme}
-                onChange={changeDarkTheme}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Button appearance="transparent" icon={<AddCircleRegular />} iconPosition="before">
-        Add Background Colors
-      </Button>
+      {tab === 'use' && (
+        <UseTab
+          sidebarId={sidebarId}
+          theme={theme}
+          setTheme={setTheme}
+          dispatchAppState={props.dispatchAppState}
+          setTab={setTab}
+          formState={formState}
+          setFormState={setFormState}
+          isDark={isDark}
+          setIsDark={setIsDark}
+        />
+      )}
+      {tab === 'edit' && <EditTab />}
     </div>
   );
 };

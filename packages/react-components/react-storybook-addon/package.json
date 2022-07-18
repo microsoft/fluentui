@@ -30,8 +30,8 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react-theme": "9.0.0-rc.9",
-    "@fluentui/react-provider": "9.0.0-rc.13",
+    "@fluentui/react-theme": "^9.0.0",
+    "@fluentui/react-provider": "^9.0.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
@@ -47,9 +47,7 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
+      "major"
     ]
   },
   "exports": {
@@ -57,6 +55,9 @@
       "types": "./lib/index.d.ts",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
+    },
+    "./preset": {
+      "require": "./preset.js"
     }
   }
 }

@@ -64,7 +64,8 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
     overflowButton?: NonNullable<Slot<'button'>>;
-    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
+    overflowContent?: NonNullable<Slot<'div'>>;
+    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
@@ -105,7 +106,9 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
 };
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "getInitials" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
     allowPhoneInitials?: boolean;
     firstInitialOnly?: boolean;

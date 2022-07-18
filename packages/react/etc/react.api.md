@@ -30,6 +30,7 @@ import { baseElementProperties } from '@fluentui/utilities';
 import { buildClassMap } from '@fluentui/style-utilities';
 import { buttonProperties } from '@fluentui/utilities';
 import { calculatePrecision } from '@fluentui/utilities';
+import { canUseDOM } from '@fluentui/utilities';
 import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
@@ -907,6 +908,8 @@ export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+export { canUseDOM }
 
 // @public (undocumented)
 export const Check: React_2.FunctionComponent<ICheckProps>;
@@ -2074,8 +2077,10 @@ export { IAnimationStyles }
 
 export { IAnimationVariables }
 
+// Warning: (ae-forgotten-export) The symbol "IReactProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface IAnnouncedProps extends React_2.Props<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React_2.HTMLAttributes<HTMLDivElement> {
     'aria-live'?: 'off' | 'polite' | 'assertive';
     as?: React_2.ElementType;
     message?: string;
@@ -2243,7 +2248,7 @@ export interface IBasePicker<T> {
 }
 
 // @public
-export interface IBasePickerProps<T> extends React_2.Props<any> {
+export interface IBasePickerProps<T> extends IReactProps<any> {
     ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
@@ -3302,7 +3307,7 @@ export interface IChoiceGroupProps extends React_2.InputHTMLAttributes<HTMLEleme
     label?: string;
     onChange?: (ev?: React_2.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
     options?: IChoiceGroupOption[];
-    selectedKey?: string | number;
+    selectedKey?: string | number | null;
     styles?: IStyleFunctionOrObject<IChoiceGroupStyleProps, IChoiceGroupStyles>;
     theme?: ITheme;
 }
@@ -4916,7 +4921,7 @@ export interface IDialogFooter {
 }
 
 // @public (undocumented)
-export interface IDialogFooterProps extends React_2.Props<DialogFooterBase> {
+export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
     className?: string;
     componentRef?: IRefObject<IDialogFooter>;
     styles?: IStyleFunctionOrObject<IDialogFooterStyleProps, IDialogFooterStyles>;
@@ -5113,7 +5118,7 @@ export interface IDocumentCardDetails {
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IDocumentCardDetailsProps extends React_2.Props<DocumentCardDetailsBase> {
+export interface IDocumentCardDetailsProps extends IReactProps<DocumentCardDetailsBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardDetails>;
     styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
@@ -5306,7 +5311,7 @@ export interface IDocumentCardStatus {
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export interface IDocumentCardStatusProps extends React_2.Props<DocumentCardStatusBase> {
+export interface IDocumentCardStatusProps extends IReactProps<DocumentCardStatusBase> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardStatus>;
     status: string;
@@ -6846,6 +6851,7 @@ export interface IModalProps extends React_2.RefAttributes<HTMLDivElement>, IAcc
     dragOptions?: IDragOptions;
     // @deprecated
     enableAriaHiddenSiblings?: boolean;
+    focusTrapZoneProps?: IFocusTrapZoneProps;
     isAlert?: boolean;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
@@ -6948,6 +6954,7 @@ export interface INavProps {
     componentRef?: IRefObject<INav>;
     // @deprecated
     expandButtonAriaLabel?: string;
+    focusZoneProps?: IFocusZoneProps;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -8122,9 +8129,11 @@ export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZo
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnEscapePress?: boolean;
     selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode_2;
     selectionPreservedOnEmptyClick?: boolean;
+    toggleWithoutModifierPressed?: boolean;
 }
 
 // @public (undocumented)
@@ -8331,6 +8340,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React_2.ReactNode;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
     shimmerElements?: IShimmerElement[];
@@ -8342,6 +8352,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
 // @public
 export interface IShimmerStyleProps {
     className?: string;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColor?: string;
     shimmerWaveColor?: string;
@@ -8646,7 +8657,7 @@ export interface IStackTokens {
 }
 
 // @public (undocumented)
-export interface IStickyProps extends React_2.Props<Sticky> {
+export interface IStickyProps extends IReactProps<Sticky> {
     componentRef?: IRefObject<IStickyProps>;
     isScrollSynced?: boolean;
     stickyBackgroundColor?: string;
@@ -8792,7 +8803,7 @@ export interface ISuggestionsItemStyles {
 }
 
 // @public
-export interface ISuggestionsProps<T> extends React_2.Props<any> {
+export interface ISuggestionsProps<T> extends IReactProps<any> {
     className?: string;
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
@@ -10435,7 +10446,9 @@ export class SelectionZone extends React_2.Component<ISelectionZoneProps, ISelec
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
+        toggleWithoutModifierPressed: boolean;
         selectionMode: SelectionMode_2;
+        selectionClearedOnEscapePress: boolean;
     };
     // (undocumented)
     static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
@@ -10474,6 +10487,9 @@ export { setFocusVisibility }
 export { setIconOptions }
 
 export { setLanguage }
+
+// @public
+export function setLayerHostSelector(selector?: string): void;
 
 export { setMemoizeWeakMap }
 

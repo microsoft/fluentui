@@ -16,9 +16,6 @@ export type PortalProps = {
 
 export type PortalState = Pick<PortalProps, 'children'> &
   Required<Pick<PortalProps, 'mountNode'>> & {
-    /** Indicates if a Portal should be rendered. */
-    shouldRender: boolean;
-
     /**
      * Ref to the root span element as virtual parent
      */

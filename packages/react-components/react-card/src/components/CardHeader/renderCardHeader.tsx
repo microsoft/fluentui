@@ -10,13 +10,9 @@ export const renderCardHeader_unstable = (state: CardHeaderState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.image {...slotProps.image} />
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          <slots.header {...slotProps.header} />
-          <slots.description {...slotProps.description} />
-        </slots.content>
-      )}
+      {slots.image && <slots.image {...slotProps.image} />}
+      <slots.header {...slotProps.header} />
+      {slots.description && <slots.description {...slotProps.description} />}
       {slots.action && <slots.action {...slotProps.action} />}
     </slots.root>
   );

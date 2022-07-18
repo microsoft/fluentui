@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding layout styles to AvatarGroupItem.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

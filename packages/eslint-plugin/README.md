@@ -97,6 +97,41 @@ The rule requires an options object containing:
 
 Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
 
+### `no-restricted-imports`
+
+Prevents imports from `forbidden` packages. If a corresponding `preferred` import is provided, the lint error will be automatically fixable.
+
+**Example Configuration:**
+
+```
+"@fluentui/no-restricted-imports": [
+  'error',
+  {
+    paths: [
+      {
+        forbidden: ['@fluentui/react-theme', '@griffel/react`],
+        preferred: '@fluentui/react-components',
+      },
+    ],
+  },
+  ],
+```
+
+**❌ Don't**
+
+```ts
+import * as React from 'react';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+```
+
+**✅ Do**
+
+```ts
+import * as React from 'react';
+import { makeStyles, webDarkTheme } from '@fluentui/react-components';
+```
+
 ### `no-tslint-comments`
 
 Ban `tslint:disable` and `tslint:enable` comments.
