@@ -2,14 +2,14 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
-import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
-
+import type { CustomAttributes } from '../../useThemeDesignerReducer';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import { UseTab } from './UseTab';
 import { EditTab } from './EditTab';
+import { AppContext } from '../../ThemeDesigner';
 
 export interface SidebarProps {
   className?: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -75,12 +75,14 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
+
   const sidebarId = useId();
 
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
     if (data.value === 'edit') {
-      props.dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
+      dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
       setTheme('Custom');
     }
@@ -112,7 +114,6 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           sidebarId={sidebarId}
           theme={theme}
           setTheme={setTheme}
-          dispatchAppState={props.dispatchAppState}
           setTab={setTab}
           formState={formState}
           setFormState={setFormState}

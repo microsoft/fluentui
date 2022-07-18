@@ -1,22 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
-import {
-  BrandVariants,
-  Menu,
-  MenuTrigger,
-  MenuButton,
-  MenuPopover,
-  MenuList,
-  MenuItem,
-  Theme,
-} from '@fluentui/react-components';
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger} from '@fluentui/react-components';
 import { ExportLink } from './ExportLink';
-
-export interface ExportProps {
-  brand: BrandVariants;
-  isDark: boolean;
-  overrides: Partial<Theme>;
-}
 
 const useStyles = makeStyles({
   root: {
@@ -27,10 +12,8 @@ const useStyles = makeStyles({
   },
 });
 
-export const ExportButton: React.FC<ExportProps> = props => {
+export const ExportButton = () => {
   const styles = useStyles();
-
-  const { brand, isDark, overrides } = props;
 
   return (
     <div className={styles.root}>
@@ -44,7 +27,7 @@ export const ExportButton: React.FC<ExportProps> = props => {
         <MenuPopover>
           <MenuList>
             <MenuItem>
-              <ExportLink brand={brand} isDark={isDark} overrides={overrides} />
+              <ExportLink />
             </MenuItem>
           </MenuList>
         </MenuPopover>

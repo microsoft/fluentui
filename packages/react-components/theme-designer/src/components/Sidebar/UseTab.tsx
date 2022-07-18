@@ -2,22 +2,23 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import {
-  Menu,
-  MenuTrigger,
   Button,
-  MenuPopover,
-  MenuList,
-  MenuItemRadio,
-  MenuProps,
-  tokens,
   Label,
-  TabValue,
+  Menu,
+  MenuItemRadio,
+  MenuList,
+  MenuPopover,
+  MenuProps,
+  MenuTrigger,
   Switch,
+  TabValue,
+  tokens,
 } from '@fluentui/react-components';
-
-import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
 import { themeList } from '../../utils/themeList';
 import { Form } from './Form';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import type { CustomAttributes } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
   root: {
@@ -37,7 +38,6 @@ const useStyles = makeStyles({
 export interface UseTabProps {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
   sidebarId: string;
   setTab: React.Dispatch<TabValue>;
   formState: CustomAttributes;
@@ -49,7 +49,8 @@ export interface UseTabProps {
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
-  const { theme, setTheme, dispatchAppState, sidebarId, formState, setFormState, isDark, setIsDark } = props;
+  const { formState, isDark, setFormState, setIsDark, setTheme, sidebarId, theme } = props;
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;
@@ -89,12 +90,7 @@ export const UseTab: React.FC<UseTabProps> = props => {
       </div>
       <Switch checked={isDark} onChange={handleIsDarkChange} label={isDark ? 'dark theme' : 'light theme'} />
       {!themeList[theme].brand ? (
-        <Form
-          sidebarId={sidebarId}
-          dispatchAppState={props.dispatchAppState}
-          formState={formState}
-          setFormState={setFormState}
-        />
+        <Form sidebarId={sidebarId} formState={formState} setFormState={setFormState} />
       ) : (
         <></>
       )}

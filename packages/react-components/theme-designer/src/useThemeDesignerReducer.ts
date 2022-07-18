@@ -32,6 +32,15 @@ export type AppState = {
   overrides: Partial<Theme>;
 };
 
+export const initialAppState = {
+  themeName: 'Teams',
+  themeLabel: 'Teams Light',
+  brand: brandTeams,
+  theme: createLightTheme(brandTeams),
+  isDark: false,
+  overrides: {},
+};
+
 export const useThemeDesignerReducer = () => {
   const createCustomTheme = ({ darkCp, hueTorsion, keyColor, lightCp }: CustomAttributes): BrandVariants => {
     const brand = getBrandTokensFromPalette(keyColor, {
@@ -56,15 +65,6 @@ export const useThemeDesignerReducer = () => {
   };
 
   const [overrideState, dispatchOverrideState] = React.useReducer(overrideReducer, initialOverrideState);
-
-  const initialAppState = {
-    themeName: 'Teams',
-    themeLabel: 'Teams Light',
-    brand: brandTeams,
-    theme: createLightTheme(brandTeams),
-    isDark: false,
-    overrides: {},
-  };
 
   const appStateReducer = (state: AppState, action: DispatchTheme): AppState => {
     // check if isDark is changed
