@@ -48,7 +48,7 @@ export interface UseTabProps {
 export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
-  const { theme, setTheme, sidebarId, formState, setFormState, isDark, setIsDark } = props;
+  const { formState, isDark, setFormState, setIsDark, setTheme, sidebarId, theme } = props;
   const { dispatchAppState } = React.useContext(AppStateContext);
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
