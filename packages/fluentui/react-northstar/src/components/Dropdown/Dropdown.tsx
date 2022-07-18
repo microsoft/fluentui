@@ -480,6 +480,10 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
   const [isFromKeyboard, setIsFromKeyboard] = React.useState(false);
   const [itemIsFromKeyboard, setItemIsFromKeyboard] = React.useState(false);
   const [startingString, setStartingString] = React.useState<string | undefined>(search ? undefined : '');
+  // used for keeping track of the source of the input, as Downshift does not pass events to the handlers
+  // for free form dropdown:
+  // - if the value is changed based on search query change (from input), accept any value even if not in the list
+  // - if the value is changed based on selection from list, use the value from the list item
   const inListbox = React.useRef(false);
 
   const { filteredItems, filteredItemStrings } = getFilteredValues({
@@ -890,13 +894,14 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
       case Downshift.stateChangeTypes.changeInput: {
         const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
 
-        if (!allowFreeform) {
-          newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
-        } else {
+        if (allowFreeform) {
+          // set highlighted index to first item starting with search query
           const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(changes.inputValue));
           if (itemIndex !== -1) {
             newState.highlightedIndex = itemIndex;
           }
+        } else {
+          newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
         }
 
         if (shouldValueChange) {
@@ -927,7 +932,7 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
 
           // if there is an item that starts with searchQuery, still apply the search query
-          // to do auto complete
+          // to do auto complete (you enter '12:', can be completed to '12:00')
           if (itemIndex === -1) {
             delete newState.searchQuery;
           }
