@@ -4,7 +4,8 @@ import { Alert } from '@fluentui/react-alert';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
-import { AppStateContext } from '../../ThemeDesigner';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface ContentProps {
   className?: string;
@@ -24,8 +25,7 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
 
-  const { appState } = React.useContext(AppStateContext);
-  const { className } = props;
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const theme = { ...appState.theme, ...appState.overrides };
 
   return (
@@ -33,7 +33,7 @@ export const Content: React.FC<ContentProps> = props => {
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
-      <div className={mergeClasses(styles.root, className)}>
+      <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={appState.brand} />
         <Demo theme={theme} />
         <Divider />

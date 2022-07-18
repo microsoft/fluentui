@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Link } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
-import { AppStateContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AppContext } from '../../ThemeDesigner';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
-  const { appState } = React.useContext(AppStateContext);
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const { brand, isDark, overrides } = appState;
 
   const content = dedent`

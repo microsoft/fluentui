@@ -2,11 +2,11 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { TabValue, TabList, Tab, SelectTabEvent, SelectTabData, useId, tokens } from '@fluentui/react-components';
-import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
-
+import type { CustomAttributes } from '../../useThemeDesignerReducer';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import { UseTab } from './UseTab';
 import { EditTab } from './EditTab';
-import { AppStateContext } from '../../ThemeDesigner';
+import { AppContext } from '../../ThemeDesigner';
 
 export interface SidebarProps {
   className?: string;
@@ -75,7 +75,7 @@ const useStyles = makeStyles({
 export const Sidebar: React.FC<SidebarProps> = props => {
   const styles = useStyles();
 
-  const dispatchAppState: React.Dispatch<DispatchTheme> = React.useContext(AppStateContext).dispatchAppState;
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
   const sidebarId = useId();
 

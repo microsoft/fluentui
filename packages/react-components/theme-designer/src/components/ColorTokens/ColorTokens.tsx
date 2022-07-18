@@ -6,7 +6,8 @@ import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors
 import { brandTeams } from '../../utils/brandColors';
 import { themeNames } from '../../utils/themeList';
 import { AccessibilityList } from './AccessibilityList';
-import { AppStateContext } from '../../ThemeDesigner';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface ColorTokensProps {
   theme: Theme;
@@ -47,7 +48,8 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
   const { theme } = props;
-  const { appState, dispatchAppState } = React.useContext(AppStateContext);
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
   const { brand, isDark, themeLabel } = appState;
   const brandColors = isDark ? darkBrandColors : lightBrandColors;
 

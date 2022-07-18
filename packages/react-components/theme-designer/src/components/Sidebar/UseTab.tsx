@@ -16,7 +16,8 @@ import {
 } from '@fluentui/react-components';
 import { themeList } from '../../utils/themeList';
 import { Form } from './Form';
-import { AppStateContext } from '../../ThemeDesigner';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import type { CustomAttributes } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
@@ -49,7 +50,7 @@ export const UseTab: React.FC<UseTabProps> = props => {
   const styles = useStyles();
 
   const { formState, isDark, setFormState, setIsDark, setTheme, sidebarId, theme } = props;
-  const { dispatchAppState } = React.useContext(AppStateContext);
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
   const handleThemeChange: MenuProps['onCheckedValueChange'] = (e, data) => {
     const newTheme = data.checkedItems[0] as string;

@@ -3,7 +3,8 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Label, Input, Slider, tokens } from '@fluentui/react-components';
 import { useDebounce } from '../../utils/useDebounce';
-import { AppStateContext } from '../../ThemeDesigner';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 import type { CustomAttributes } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
@@ -54,7 +55,7 @@ export const Form: React.FC<FormProps> = props => {
   const styles = useStyles();
 
   const { formState, setFormState, sidebarId } = props;
-  const { dispatchAppState } = React.useContext(AppStateContext);
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
