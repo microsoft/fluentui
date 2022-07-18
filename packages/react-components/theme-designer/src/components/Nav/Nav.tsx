@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
-import { Text, FluentProvider, webDarkTheme } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, webDarkTheme, FluentProvider, Text } from '@fluentui/react-components';
 import { CircleRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { ExportButton } from '../ExportButton/ExportButton';
 
