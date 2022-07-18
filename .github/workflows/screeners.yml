@@ -1,0 +1,8 @@
+on: pull_request
+
+jobs:
+  TestJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there"
+
