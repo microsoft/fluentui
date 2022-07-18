@@ -46,11 +46,11 @@ jobs:
       with:
         inlineScript: |
           az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string '$AZURE_STORAGE_CONNECTION_STRING'
-
-    - name: Start @fluentui/react-northstar VR Test
-      run: yarn workspace @fluentui/docs vr:test
-      env:
-        SCREENER_ENDPOINT: $(screenerApiUri)
-        SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
-        SCREENER_API_KEY: $(screener.key)
+#
+#    - name: Start @fluentui/react-northstar VR Test
+#      run: yarn workspace @fluentui/docs vr:test
+#      env:
+#        SCREENER_ENDPOINT: $(screenerApiUri)
+#        SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
+#        SCREENER_API_KEY: $(screener.key)
 
