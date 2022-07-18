@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '@fluentui/react-components';
+import { Link, makeStyles } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -7,7 +7,15 @@ import { AppContext } from '../../ThemeDesigner';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
+const useStyles = makeStyles({
+  root: {
+    display: 'none',
+  },
+});
+
 export const ExportLink = () => {
+  const styles = useStyles();
+
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const { brand, isDark, overrides } = appState;
 
@@ -300,7 +308,7 @@ export const ExportLink = () => {
   }, [content, createIndexContent, packageContent]);
 
   return (
-    <div>
+    <div className={styles.root}>
       <Link appearance="subtle" href={link} target="_blank">
         Preview theme in CodeSandbox
       </Link>
