@@ -169,7 +169,7 @@ export interface INavLinkGroup {
    * ARIA label when group is collapsed and can be expanded.
    * WARNING: using separate labels for expanded and collapsed state is not recommended.
    *
-   * @deprecated Use `expandAriaLabel` instead.
+   * @deprecated Use `expandAriaLabel` on its own instead.
    */
   collapseAriaLabel?: string;
 
