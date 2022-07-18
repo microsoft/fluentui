@@ -44,7 +44,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string $AZURE_STORAGE_CONNECTION_STRING
+          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string
 #
 #    - name: Start @fluentui/react-northstar VR Test
 #      run: yarn workspace @fluentui/docs vr:test
