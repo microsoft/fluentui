@@ -1196,6 +1196,54 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('allowFreeForm', () => {
+    ['Enter', 'Tab'].forEach(key => {
+      it(`selects item that starts with query prefix on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('it');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(0)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item0');
+      });
+
+      it(`keeps search query value when there is no match on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('itemX');
+        expect(searchInputNode).not.toHaveAttribute('aria-activedescendant');
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemX');
+      });
+
+      it(`keeps search query value when when selected by arrow key on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('item1');
+        keyDownOnSearchInput('ArrowDown');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item2');
+      });
+      return true;
+    });
+  });
+
   describe('getA11ySelectionMessage', () => {
     afterEach(() => {
       jest.runAllTimers();
