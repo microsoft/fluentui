@@ -21,9 +21,9 @@ jobs:
     steps:
     - script: |
         node -e "require('fs').writeFileSync('.github/vars.txt', JSON.stringify(process.env, null, 2))"
-    - task: PublishBuildAritfacts@1
+    - task: PublishPipelineArtifact@1
       inputs:
-        pathToPublish: .github
+        targetPath: .github
         artifactName: Vars
 
   - job: BuildTestLint
