@@ -14,7 +14,7 @@ export type StateContext = {
 
 export const AppStateContext = React.createContext<StateContext>({
   appState: initialAppState,
-  dispatchAppState: (value: DispatchTheme) => {},
+  dispatchAppState: () => null,
 });
 
 /**
