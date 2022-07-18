@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update CommandBar cacheKey computation to include farItems",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
