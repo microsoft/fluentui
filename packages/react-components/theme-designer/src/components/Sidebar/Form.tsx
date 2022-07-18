@@ -53,7 +53,7 @@ export interface FormProps {
 export const Form: React.FC<FormProps> = props => {
   const styles = useStyles();
 
-  const { sidebarId, formState, setFormState } = props;
+  const { formState, setFormState, sidebarId } = props;
   const { dispatchAppState } = React.useContext(AppStateContext);
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
