@@ -41,11 +41,17 @@ jobs:
       env:
         SCREENER_BUILD: 1
 
-    - name: Upload to blob storage
-      uses: azure/CLI@v1
+#    - name: Upload to blob storage
+#      uses: azure/CLI@v1
+#      with:
+#        inlineScript: |
+#          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string '$AZURE_STORAGE_CONNECTION_STRING'
+    - name: Azure Blob Storage Upload
+      uses: bacongobbler/azure-blob-storage-upload@v1.1.1
       with:
-        inlineScript: |
-          az storage blob upload-batch -d '$web' -s ''packages/fluentui/docs/dist' --connection-string '$AZURE_STORAGE_CONNECTION_STRING'
+          source_dir: 'packages/fluentui/docs/dist'
+          container_name: '$web'
+          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
 
 
     - name: Start @fluentui/react-northstar VR Test
