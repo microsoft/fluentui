@@ -85,7 +85,7 @@ export const dropdownVariables = (siteVars): DropdownVariables => ({
   belowListBorderRadius: `0 0 ${siteVars.borderRadiusMedium} ${siteVars.borderRadiusMedium}`,
   listBackgroundColor: siteVars.colorScheme.default.background,
   listBorderColor: 'transparent',
-  listBorderWidth: '0.1rem',
+  listBorderWidth: pxToRem(1),
   listPadding: `${pxToRem(8)} 0 ${pxToRem(6)}`,
   listBoxShadow: siteVars.shadow16,
   listMaxHeight: pxToRem(296),
