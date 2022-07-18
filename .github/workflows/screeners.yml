@@ -39,13 +39,14 @@ jobs:
       env:
         SCREENER_BUILD: 1
 
-    - name: Upload N* VR test site
-      uses: LanceMcCarthy/Action-AzureBlobUpload@v1.12.0
+    - name: Upload to blob storage
+      uses: azure/CLI@v1
       with:
-        connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        container_name: $web
-        source_folder: packages/fluentui/docs/dist
-        destination_folder: $(deployBasePath)/react-screener
+        inlineScript: |
+          az storage blob upload-batch -d '$web' -s 'apps/vr-tests/dist/storybook' --connection-string $Connection_String
+      env:
+        Connection_String: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
+
 
     - name: Start @fluentui/react-northstar VR Test
       run: yarn workspace @fluentui/docs vr:test
