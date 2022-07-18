@@ -22,7 +22,7 @@ jobs:
       run: npm install --global yarn
 
     - name: Log environment variables (Linux)
-      if: ${{ variables['Agent.OS'] == 'Linux'}}
+      if: runner.os == 'Linux'
       run: |
         printenv | sort \
         echo "SHELLOPTS $SHELLOPTS" \
