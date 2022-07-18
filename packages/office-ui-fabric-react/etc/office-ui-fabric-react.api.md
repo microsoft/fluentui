@@ -7321,9 +7321,11 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
     selection: ISelection;
+    selectionClearedOnEscapePress?: boolean;
     selectionClearedOnSurfaceClick?: boolean;
     selectionMode?: SelectionMode;
     selectionPreservedOnEmptyClick?: boolean;
+    toggleWithoutModifierPressed?: boolean;
 }
 
 // @public (undocumented)
@@ -9643,7 +9645,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
+        toggleWithoutModifierPressed: boolean;
         selectionMode: SelectionMode;
+        selectionClearedOnEscapePress: boolean;
     };
     // (undocumented)
     static getDerivedStateFromProps(nextProps: ISelectionZoneProps, prevState: ISelectionZoneState): ISelectionZoneState;
