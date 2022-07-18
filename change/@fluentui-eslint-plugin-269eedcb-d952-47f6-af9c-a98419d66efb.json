@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: use no-restricted-import rule for v9 lint config.",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}

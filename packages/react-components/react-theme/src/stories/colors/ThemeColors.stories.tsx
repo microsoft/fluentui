@@ -5,8 +5,9 @@ import {
   teamsLightTheme,
   webLightTheme,
   webDarkTheme,
-} from '@fluentui/react-theme';
-import { Theme } from '@fluentui/react-theme';
+  Theme,
+} from '@fluentui/react-components';
+
 import { ColorRampItem } from './ColorRamp.stories';
 
 // FIXME: hardcoded theme

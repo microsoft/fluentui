@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { makeStyles, shorthands } from '@griffel/react';
-import { teamsDarkTheme, teamsLightTheme, tokens, webLightTheme } from '@fluentui/react-theme';
-
-import { FluentProvider } from '@fluentui/react-provider';
+import {
+  makeStyles,
+  shorthands,
+  teamsDarkTheme,
+  teamsLightTheme,
+  tokens,
+  webLightTheme,
+  Button,
+  FluentProvider,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   button: {

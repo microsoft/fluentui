@@ -2,20 +2,47 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 export interface ITreeChartDataPoint {
+  /**
+   * Node main text
+   */
   name: string;
-  subname: string;
+  /**
+   * Subtext value (optional)
+   */
+  subname?: string | undefined;
+  /**
+   * Metric text value (optional)
+   */
   metric?: string | undefined;
+  /**
+   * Color of the rectangular box
+   */
   fill: string;
+  /**
+   * Recursive datastructure for child node object
+   */
   children?: Array<ITreeChartDataPoint>;
 }
 
 export enum NodesComposition {
+  /**
+   * NodeComposition enum val for long: number = 1
+   */
   long = 1,
+  /**
+   * NodeComposition enum val for compact: number = 0
+   */
   compact = 0,
 }
 
 export enum TreeTraverse {
+  /**
+   * TreeTraverse enum val for preOrder: number = 1
+   */
   preOrder = 1,
+  /**
+   * TreeTraverse enum val for levelOrder: number = 0
+   */
   levelOrder = 0,
 }
 
@@ -29,12 +56,17 @@ export interface ITreeProps {
    */
   composition?: NodesComposition.long | NodesComposition.compact | undefined;
   /**
+   * Node Width Size for the Tree Layout
+   * * @default 75
+   */
+  layoutWidth?: number | undefined;
+  /**
    * traversal order for tree chart, preOrder = 1, levelOrder = 0
    */
   treeTraversal?: TreeTraverse.preOrder | TreeTraverse.levelOrder;
   /**
    * Width of SVG tree chart
-   * * @default 1200
+   * * @default 1500
    */
   width?: number;
   /**
@@ -60,30 +92,95 @@ export interface ITreeProps {
   theme?: ITheme;
 }
 export interface ITreeState {
+  /**
+   * Width of SVG tree chart
+   * * @default 1500
+   */
   _width: number;
+  /**
+   * Height of SVG tree chart
+   * * @default 700
+   */
   _height: number;
+  /**
+   * Layout Width of SVG tree chart
+   * * @default 75
+   */
+  _layoutWidth?: number;
 }
 
 export interface ITreeDataStructure {
+  /**
+   * Node id of each node
+   */
   id: number;
+  /**
+   * Children node object
+   */
   children: unknown;
+  /**
+   * Node main text
+   */
   dataName: string;
-  subName: string;
+  /**
+   * Subtext value (optional)
+   */
+  subName?: string | undefined;
+  /**
+   * Metric text value (optional)
+   */
   metricName?: string | undefined;
+  /**
+   * Color of the rectangular box
+   */
   fill: string;
+  /**
+   * X-coordindate of node
+   */
   x: number;
+  /**
+   * Y-coordindate of node
+   */
   y: number;
+  /**
+   * Node id of each node's parent
+   */
   parentID: number;
 }
 
 export interface ITreeStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
   theme: ITheme;
+  /**
+   * Additional CSS class(es) to apply to the TreeChart.
+   */
   className?: string;
 }
 export interface ITreeStyles {
+  /**
+   *  Style for the root element.
+   */
+  root: IStyle;
+  /**
+   *  Style for the Link/Path element.
+   */
   link: IStyle;
+  /**
+   *  Style for rectangular Node
+   */
   rectNode: IStyle;
+  /**
+   *  Style for the node main Text
+   */
   rectText: IStyle;
+  /**
+   *  Style for the node sub Text
+   */
   rectSubText: IStyle;
+  /**
+   *  Style for the node metric value Text
+   */
   rectMetricText: IStyle;
 }

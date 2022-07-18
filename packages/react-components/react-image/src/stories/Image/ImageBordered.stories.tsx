@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '@fluentui/react-image';
+import { Image } from '@fluentui/react-components';
 
 export const Bordered = () => (
   <div>

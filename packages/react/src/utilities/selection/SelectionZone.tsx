@@ -775,7 +775,12 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     let isToggle = false;
 
     while (!isToggle && element !== this._root.current) {
-      isToggle = element.getAttribute(attributeName) === 'true';
+      const value = element.getAttribute(attributeName);
+      if (value === 'false') {
+        isToggle = false;
+        break;
+      }
+      isToggle = value === 'true';
       element = getParent(element) as HTMLElement;
     }
 

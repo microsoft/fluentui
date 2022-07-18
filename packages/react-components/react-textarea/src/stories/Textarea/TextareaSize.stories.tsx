@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
-import { useId } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
-import { Textarea } from '@fluentui/react-textarea';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, shorthands, tokens, useId, Label, Textarea } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {

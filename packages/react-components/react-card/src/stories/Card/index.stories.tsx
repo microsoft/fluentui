@@ -6,6 +6,7 @@ export { Appearance } from './CardAppearance.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';
+export { Templates } from './CardTemplates.stories';
 
 export default {
   title: 'Preview Components/Card',

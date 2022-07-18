@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Tooltip } from '@fluentui/react-tooltip';
-import type { TooltipProps } from '@fluentui/react-tooltip';
-import { Button } from '@fluentui/react-button';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextRegular } from '@fluentui/react-icons';
+import type { TooltipProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<TooltipProps>) => (
   <Tooltip content="Example tooltip" relationship="label" {...props}>

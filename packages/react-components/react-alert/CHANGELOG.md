@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-alert
 
-This log was last generated on Tue, 28 Jun 2022 17:39:46 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.7)
+
+Thu, 14 Jul 2022 21:21:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.6..@fluentui/react-alert_v9.0.0-beta.7)
+
+### Changes
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-button to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.6)
+
+Thu, 14 Jul 2022 17:06:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-alert_v9.0.0-beta.5..@fluentui/react-alert_v9.0.0-beta.6)
+
+### Changes
+
+- chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- update Alert with live region attributes ([PR #23284](https://github.com/microsoft/fluentui/pull/23284) by sarah.higley@microsoft.com)
+- feat: Adding avatar slot support to Alert ([PR #23591](https://github.com/microsoft/fluentui/pull/23591) by rohitpag@microsoft.com)
+- Bump @fluentui/react-avatar to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-button to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-alert_v9.0.0-beta.5)
 

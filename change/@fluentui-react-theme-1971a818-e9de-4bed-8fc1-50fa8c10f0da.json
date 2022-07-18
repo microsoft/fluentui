@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Organize left navigation, add theme entries",
-  "packageName": "@fluentui/react-theme",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

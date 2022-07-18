@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Fri, 08 Jul 2022 07:36:29 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jul 2022 20:03:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.9.3)
+
+Fri, 15 Jul 2022 20:03:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.9.2..@fluentui/react-docsite-components_v8.9.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.81.1 ([PR #23940](https://github.com/microsoft/fluentui/pull/23940) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.3 ([PR #23940](https://github.com/microsoft/fluentui/pull/23940) by beachball)
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.9.2)
+
+Thu, 14 Jul 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.9.1..@fluentui/react-docsite-components_v8.9.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.81.0 ([PR #23612](https://github.com/microsoft/fluentui/pull/23612) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.2 ([PR #23612](https://github.com/microsoft/fluentui/pull/23612) by beachball)
+
+## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.9.1)
+
+Tue, 12 Jul 2022 07:41:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.9.0..@fluentui/react-docsite-components_v8.9.1)
+
+### Patches
+
+- Bump @fluentui/react to v8.80.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/theme to v2.6.7 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-hooks to v8.6.1 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.1 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/common-styles to v1.1.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
 
 ## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.9.0)
 

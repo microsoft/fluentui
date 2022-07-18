@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, MenuProps } from '@fluentui/react-menu';
-
-import { Button } from '@fluentui/react-button';
-import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
+import { Button, Checkbox, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import type { CheckboxProps, MenuProps } from '@fluentui/react-components';
 
 export const ControllingOpenAndClose = () => {
   const [open, setOpen] = React.useState(false);
