@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 20:03:47 GMT",
+      "tag": "@fluentui/react-charting_v5.12.3",
+      "version": "5.12.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "apurva.sharma866@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "46367c1b21a4622ce10db25a037355e502f47b0c",
+            "comment": "fix: production issue (width-height of SVG)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.81.1",
+            "commit": "7989de0234d8faaba0e6d4fa945d6d70827696f3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 07:44:26 GMT",
       "tag": "@fluentui/react-charting_v5.12.2",
       "version": "5.12.2",

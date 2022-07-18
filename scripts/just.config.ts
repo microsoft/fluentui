@@ -23,6 +23,7 @@ import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
 import { isConvergedPackage } from './monorepo/index';
 import { getJustArgv } from './tasks/argv';
+import isCompatibilityPackage from './monorepo/isCompatibilityPackage';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -82,7 +83,7 @@ export function preset() {
           // Converged packages must always build commonjs because of babel-make-styles transforms
           condition('ts:commonjs', () => !args.min || isConvergedPackage()),
           'ts:esm',
-          condition('ts:amd', () => !!args.production && !isConvergedPackage()),
+          condition('ts:amd', () => isCompatibilityPackage() || (!!args.production && !isConvergedPackage())),
         );
   });
 

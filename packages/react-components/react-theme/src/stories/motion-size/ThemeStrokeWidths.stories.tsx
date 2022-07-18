@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { teamsLightTheme } from '@fluentui/react-theme';
-import type { StrokeWidthTokens } from '@fluentui/react-theme';
+import { teamsLightTheme } from '@fluentui/react-components';
+import type { StrokeWidthTokens } from '@fluentui/react-components';
 
 const theme = teamsLightTheme;
 

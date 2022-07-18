@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 15 Jul 2022 18:27:26 GMT",
+      "tag": "@fluentui/react-components_v9.1.1",
+      "version": "9.1.1",
+      "comments": {
+        "none": [
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "447b211fec38e4320b13c5ee2f7449c188f8183c",
+            "comment": "docs: add missing info to README"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "640408c5aef9c3037f5f6bc08069ff9d9141a7ee",
+            "comment": "chore: add templates to stories"
+          }
+        ],
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "9252601953bb2462fec25d22748149665868fb89",
+            "comment": "Added mechanism for marking fluent-compatibility packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:00 GMT",
       "tag": "@fluentui/react-components_v9.1.1",
       "version": "9.1.1",
