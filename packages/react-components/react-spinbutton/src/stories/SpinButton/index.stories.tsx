@@ -15,7 +15,7 @@ export { Appearance } from './SpinButtonAppearance.stories';
 export { Disabled } from './SpinButtonDisabled.stories';
 
 const meta: Meta = {
-  title: 'Preview Components/SpinButton',
+  title: 'Components/SpinButton',
   component: SpinButton,
   parameters: {
     docs: {
