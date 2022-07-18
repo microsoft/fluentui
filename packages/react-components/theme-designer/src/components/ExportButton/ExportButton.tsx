@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
-import { Menu, MenuTrigger, MenuButton, MenuPopover, MenuList, MenuItem } from '@fluentui/react-components';
+import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger} from '@fluentui/react-components';
 import { ExportLink } from './ExportLink';
 
 const useStyles = makeStyles({
