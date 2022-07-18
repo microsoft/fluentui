@@ -308,10 +308,9 @@ export const ExportLink = () => {
   }, [content, createIndexContent, packageContent]);
 
   return (
-    <div className={styles.root}>
-      <Link appearance="subtle" href={link} target="_blank">
-        Preview theme in CodeSandbox
-      </Link>
+    <div>
+      <Link className={styles.root} appearance="subtle" href={link} target="_blank" />
+      Preview theme in CodeSandbox
     </div>
   );
 };
