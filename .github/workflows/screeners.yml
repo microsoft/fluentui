@@ -17,8 +17,6 @@ jobs:
         BROWSERSLIST_IGNORE_OLD_DATA: true
 
         deployHost: 'fluentuipr.z22.web.core.windows.net'
-
-        deployUrl: 'https://$(deployHost)/$(deployBasePath)'
     steps:
     - uses: actions/checkout@v3
 
@@ -29,8 +27,9 @@ jobs:
     - name: Set env variables if there is a PR
       run: |
        echo "isPR=true" >> $GITHUB_ENV
-       echo "targetBranch=origin/$BRANCH" >> $GITHUB_ENV ;\
+       echo "targetBranch=origin/$BRANCH" >> $GITHUB_ENV
        echo "deployBasePath='pull/$PR_NUMBER'}}" >> $GITHUB_ENV
+
       env:
         BRANCH: ${{ github.event.pull_request.base.ref }}
         PR_NUMBER: ${{ github.event.number }}
@@ -52,11 +51,15 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         echo "SHELLOPTS $SHELLOPTS" ;\
-        echo 'deployBasePath $deployBasePath' ;\
+        echo 'deployBasePath $depBasePath' ;\
         echo 'deployUrl $deployUrl' ;\
         echo 'isPR $isPR' ;\
-        echo 'targetBranch $targetBranch' \
-
+        echo 'targetBranch ${{env.targetBranch}}' ;\
+        echo $deployUrl
+      env:
+        depBasePath: ${{env.deployBasePath}}
+        deployUrl: 'https://$deployHost/$depBasePath'
+        PR: ${{env.isPR}}
     - name: yarn
       run: ./yarn-ci.sh
       shell: bash
