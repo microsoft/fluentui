@@ -1018,9 +1018,17 @@ export const Dropdown = (React.forwardRef<HTMLDivElement, DropdownProps>((props,
           if (!search) {
             listRef.current.focus();
           }
-        } else {
-          newState.highlightedIndex = null;
-        }
+        } else if (allowFreeform) {
+            const itemIndex = items.findIndex(i => itemToString(i)?.startsWith(searchQuery));
+
+            // if there is an item that starts with searchQuery, still apply the search query
+            // to do auto complete (you enter '12:', can be completed to '12:00')
+            if (itemIndex !== -1) {
+              newState.searchQuery = itemToString(items[itemIndex]);
+            }
+          } else {
+            newState.highlightedIndex = null;
+          }
         break;
       case Downshift.stateChangeTypes.itemMouseEnter:
         newState.highlightedIndex = changes.highlightedIndex;

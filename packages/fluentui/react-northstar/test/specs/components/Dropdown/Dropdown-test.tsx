@@ -1259,6 +1259,18 @@ describe('Dropdown', () => {
       });
       return true;
     });
+
+    it('selects item that starts with query prefix when user clicks on toggle', () => {
+      const { clickOnToggleIndicator, changeSearchInput, searchInputNode } = renderDropdown({
+        search: items => items,
+        allowFreeform: true,
+      });
+
+      changeSearchInput('it');
+      expect(searchInputNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
+      clickOnToggleIndicator();
+      expect(searchInputNode).toHaveValue('item0');
+    });
   });
 
   describe('getA11ySelectionMessage', () => {
