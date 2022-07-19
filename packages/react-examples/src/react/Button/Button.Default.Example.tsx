@@ -38,6 +38,26 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
           />
         )}
       </Stack>
+      <Stack horizontal tokens={stackTokens}>
+        {button1 && (
+          <DefaultButton
+            text="Standard"
+            onClick={_alertClicked}
+            allowDisabledFocus
+            disabled={disabled}
+            checked={checked}
+          />
+        )}
+        {button2 && (
+          <PrimaryButton
+            text="Primary"
+            onClick={_alertClicked}
+            allowDisabledFocus
+            disabled={disabled}
+            checked={checked}
+          />
+        )}
+      </Stack>
       <br />
       <br />
       <br />

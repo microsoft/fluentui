@@ -129,7 +129,7 @@ export {
 } from './initializeFocusRects';
 export { FocusRects, useFocusRects } from './useFocusRects';
 export { getInitials } from './initials';
-export { addDirectionalKeyCode, isDirectionalKeyCode } from './keyboard';
+export { addDirectionalKeyCode, isDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 export {
   getLanguage,
   // eslint-disable-next-line deprecation/deprecation

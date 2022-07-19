@@ -34,13 +34,14 @@ const focusSelectedOption = (
   options: IChoiceGroupOption[],
   keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
+  rootRef?: React.RefObject<HTMLDivElement>,
 ) => {
   const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
   const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
 
   if (elementToFocus) {
     elementToFocus.focus();
-    setFocusVisibility(true, elementToFocus as Element);
+    setFocusVisibility(true, elementToFocus as Element, rootRef?.current ?? undefined);
   }
 };
 
@@ -53,6 +54,7 @@ const useComponentRef = (
   keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
   componentRef?: IRefObject<IChoiceGroup>,
+  rootRef?: React.RefObject<HTMLDivElement>,
 ) => {
   React.useImperativeHandle(
     componentRef,
@@ -61,10 +63,10 @@ const useComponentRef = (
         return findOption(options, keyChecked);
       },
       focus() {
-        focusSelectedOption(options, keyChecked, id);
+        focusSelectedOption(options, keyChecked, id, rootRef);
       },
     }),
-    [options, keyChecked, id],
+    [id, keyChecked, options, rootRef],
   );
 };
 
@@ -111,7 +113,7 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   const mergedRootRefs: React.Ref<HTMLDivElement> = useMergedRefs(rootRef, forwardedRef);
 
   useDebugWarnings(props);
-  useComponentRef(options, keyChecked, id, componentRef);
+  useComponentRef(options, keyChecked, id, componentRef, rootRef);
   useFocusRects(rootRef);
 
   const onFocus = React.useCallback((ev?: React.FocusEvent<HTMLElement>, option?: IChoiceGroupOptionProps) => {

@@ -1042,6 +1042,9 @@ export type RefObject<T> = {
 };
 
 // @public
+export function removeDirectionalKeyCode(which: number): void;
+
+// @public
 export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
@@ -1150,7 +1153,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, classNameTarget?: Element): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;

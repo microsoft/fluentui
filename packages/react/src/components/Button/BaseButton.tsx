@@ -837,7 +837,11 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       // We manually set the focus visibility to true if opening via Enter or Space to account for the scenario where
       // a user clicks on the button, closes the menu and then opens it via keyboard. In this scenario our default logic
       // for setting focus visibility is not triggered since there is no keyboard navigation present beforehand.
-      setFocusVisibility(true, ev.target as Element);
+      setFocusVisibility(
+        true,
+        ev.target as Element,
+        (this.props.split ? this._splitButtonContainer.current : this._buttonElement.current) ?? undefined,
+      );
     }
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {

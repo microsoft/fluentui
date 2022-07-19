@@ -7,24 +7,52 @@ import { setFocusVisibility } from './setFocusVisibility';
  * Counter for mounted components that use focus rectangles.
  * We want to cleanup the listeners before the last component that uses focus rectangles unmounts.
  */
-let mountCounters = new WeakMap<Window | HTMLElement, number>();
+let mountCounters = new WeakMap<Window | HTMLElement, WeakMap<Window | HTMLElement, number> | number>();
 let lastInteraction = '';
 let focusEventCounters = 0;
 
-function setMountCounters(key: Window | HTMLElement, delta: number): number {
+function setMountCounters(key: Window | HTMLElement, delta: number, relatedTarget?: Window | HTMLElement): number {
   let newValue;
-  const currValue = mountCounters.get(key);
+  let currValue = mountCounters.get(key);
   if (currValue) {
-    newValue = currValue + delta;
+    if (typeof currValue === 'number') {
+      newValue = currValue + delta;
+      mountCounters.set(key, newValue);
+    } else {
+      if (relatedTarget) {
+        const currValueOfTarget = currValue.get(relatedTarget);
+        if (currValueOfTarget) {
+          newValue = currValueOfTarget + delta;
+        } else {
+          newValue = 1;
+        }
+        currValue.set(relatedTarget, newValue);
+      }
+    }
   } else {
     newValue = 1;
+    if (relatedTarget) {
+      mountCounters.set(key, new WeakMap<Window | HTMLElement, number>());
+      currValue = mountCounters.get(key);
+      if (currValue && typeof currValue !== 'number') {
+        currValue.set(relatedTarget, newValue);
+      }
+    } else {
+      mountCounters.set(key, newValue);
+    }
   }
 
-  mountCounters.set(key, newValue);
-  return newValue;
+  return newValue ?? NaN;
 }
 
-type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+type AppWindow =
+  | (Window & {
+      FabricConfig?: {
+        applyFocusClassNamesToTarget?: boolean;
+        disableFocusRects?: boolean;
+      };
+    })
+  | undefined;
 
 /**
  * Initializes the logic which:
@@ -54,23 +82,40 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       el = rootRef.current;
     }
 
+    const applyFocusClassNamesToTarget = win.FabricConfig?.applyFocusClassNamesToTarget;
+    const onFocus = (ev: FocusEvent) =>
+      _onFocusWithClassNameTarget(
+        ev,
+        applyFocusClassNamesToTarget && el?.parentElement ? el?.parentElement : undefined,
+      );
+    const onMouseDown = (ev: MouseEvent) =>
+      _onMouseDownWithClassNameTarget(
+        ev,
+        applyFocusClassNamesToTarget && el?.parentElement ? el?.parentElement : undefined,
+      );
+    const onPointerDown = (ev: PointerEvent) =>
+      _onPointerDownWithClassNameTarget(
+        ev,
+        applyFocusClassNamesToTarget && el?.parentElement ? el?.parentElement : undefined,
+      );
+
     let elCount;
     if (el && el.addEventListener && typeof el.addEventListener === 'function') {
       elCount = setMountCounters(el, 1);
       if (elCount <= 1) {
-        el.addEventListener('focus', _onFocus, true);
+        el.addEventListener('focus', onFocus, true);
       }
     } else {
       focusEventCounters += 1;
       if (focusEventCounters <= 1) {
-        win.addEventListener('focus', _onFocus, true);
+        win.addEventListener('focus', onFocus, true);
       }
     }
 
-    let winCount = setMountCounters(win, 1);
+    let winCount = setMountCounters(win, 1, (applyFocusClassNamesToTarget && el) || win);
     if (winCount <= 1) {
-      win.addEventListener('mousedown', _onMouseDown, true);
-      win.addEventListener('pointerdown', _onPointerDown, true);
+      win.addEventListener('mousedown', onMouseDown, true);
+      win.addEventListener('pointerdown', onPointerDown, true);
       win.addEventListener('keydown', _onKeyDown, true);
     }
 
@@ -82,19 +127,19 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       if (el && el.removeEventListener && typeof el.removeEventListener === 'function') {
         elCount = setMountCounters(el, -1);
         if (elCount === 0) {
-          el.removeEventListener('focus', _onFocus, true);
+          el.removeEventListener('focus', onFocus, true);
         }
       } else {
         focusEventCounters -= 1;
         if (focusEventCounters === 0) {
-          win.removeEventListener('focus', _onFocus, true);
+          win.removeEventListener('focus', onFocus, true);
         }
       }
 
-      winCount = setMountCounters(win, -1);
+      winCount = setMountCounters(win, -1, (applyFocusClassNamesToTarget && el) || win);
       if (winCount === 0) {
-        win.removeEventListener('mousedown', _onMouseDown, true);
-        win.removeEventListener('pointerdown', _onPointerDown, true);
+        win.removeEventListener('mousedown', onMouseDown, true);
+        win.removeEventListener('pointerdown', onPointerDown, true);
         win.removeEventListener('keydown', _onKeyDown, true);
       }
     };
@@ -110,15 +155,15 @@ export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTM
   return null;
 };
 
-function _onMouseDown(ev: MouseEvent): void {
+function _onMouseDownWithClassNameTarget(ev: MouseEvent, classNameTarget?: Element): void {
   lastInteraction = 'mouse';
-  setFocusVisibility(false, ev.target as Element);
+  setFocusVisibility(false, ev.target as Element, classNameTarget);
 }
 
-function _onPointerDown(ev: PointerEvent): void {
+function _onPointerDownWithClassNameTarget(ev: PointerEvent, classNameTarget?: Element): void {
   if (ev.pointerType !== 'mouse') {
     lastInteraction = 'pointer';
-    setFocusVisibility(false, ev.target as Element);
+    setFocusVisibility(false, ev.target as Element, classNameTarget);
   }
 }
 
@@ -131,8 +176,8 @@ function _onKeyDown(ev: KeyboardEvent): void {
   }
 }
 
-function _onFocus(ev: FocusEvent): void {
+function _onFocusWithClassNameTarget(ev: FocusEvent, classNameTarget?: Element): void {
   if (ev.target && lastInteraction === 'keyboard') {
-    setFocusVisibility(true, ev.target as Element);
+    setFocusVisibility(true, ev.target as Element, classNameTarget);
   }
 }

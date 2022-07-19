@@ -5,7 +5,9 @@ import { setFocusVisibility } from './setFocusVisibility';
 type AppWindow =
   | (Window & {
       __hasInitializeFocusRects__: boolean;
-      FabricConfig?: { disableFocusRects?: boolean };
+      FabricConfig?: {
+        disableFocusRects?: boolean;
+      };
     })
   | undefined;
 
