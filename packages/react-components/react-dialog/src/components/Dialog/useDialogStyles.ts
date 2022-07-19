@@ -26,7 +26,7 @@ const useStyles = makeStyles({
  */
 export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
-  const isSubDialog = useHasParentContext(DialogContext);
+  const isNestedDialog = useHasParentContext(DialogContext);
 
   if (state.overlay) {
     state.overlay.className = mergeClasses(
