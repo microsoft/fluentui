@@ -37,7 +37,8 @@
     "@fluent-blocks/colors": "9.2.0",
     "codesandbox-import-utils": "2.2.3",
     "@types/dedent": "0.7.0",
-    "@fluentui/react-alert": "9.0.0-beta.7"
+    "@fluentui/react-alert": "9.0.0-beta.7",
+    "@fluentui/react-context-selector": "^9.0.2"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

@@ -1,21 +1,16 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsDarkTheme, teamsLightTheme, Theme } from '@fluentui/react-theme';
+import { makeStyles, teamsDarkTheme, teamsLightTheme, Button, Caption1 } from '@fluentui/react-components';
+import type { Brands, Theme } from '@fluentui/react-theme';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { brandTeams } from '../../utils/brandColors';
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
 import { themeNames } from '../../utils/themeList';
 import { AccessibilityList } from './AccessibilityList';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface ColorTokensProps {
-  className?: string;
-  brand: BrandVariants;
-  isDark: boolean;
   theme: Theme;
-  themeLabel: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 export type ColorOverrideBrands = Record<string, Brands>;
@@ -38,8 +33,11 @@ const useStyles = makeStyles({
   root: {},
   row: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr .5fr',
+    gridTemplateColumns: '15px 1fr 1fr 1fr .5fr',
     alignItems: 'center',
+  },
+  col: {
+    gridColumnStart: '2',
   },
 });
 
@@ -49,8 +47,10 @@ const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(team
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, isDark, theme, themeLabel, dispatchAppState } = props;
-
+  const { theme } = props;
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
+  const { brand, isDark, themeLabel } = appState;
   const brandColors = isDark ? darkBrandColors : lightBrandColors;
 
   const colorOverrideReducer: (
@@ -88,9 +88,9 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   };
 
   return (
-    <div className={props.className}>
+    <div className={styles.root}>
       <div className={styles.row}>
-        <Caption1>Color tokens</Caption1>
+        <Caption1 className={styles.col}>Color tokens</Caption1>
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
         <Button size="small" onClick={handleResetClick}>

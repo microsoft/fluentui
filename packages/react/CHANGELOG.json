@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/react_v8.82.0",
+      "version": "8.82.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84",
+            "comment": "fix: Update Nav to not use separate labels for expand/collapse state."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:47 GMT",
+      "tag": "@fluentui/react_v8.81.1",
+      "version": "8.81.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "702440cc0cd2303dd87093583b251418cca3d871",
+            "comment": "chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 07:45:34 GMT",
       "tag": "@fluentui/react_v8.81.0",
       "version": "8.81.0",

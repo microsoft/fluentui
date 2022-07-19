@@ -1,18 +1,14 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands, tokens, Divider, FluentProvider } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
-
-import type { AppState, DispatchTheme } from '../../useThemeDesignerReducer';
-
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface ContentProps {
   className?: string;
-  appState: AppState;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -21,14 +17,15 @@ const useStyles = makeStyles({
     alignItems: 'left',
     justifyContent: 'center',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '5%', '0px', '5%'),
+    ...shorthands.padding('40px', '5%'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, appState, dispatchAppState } = props;
+
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const theme = { ...appState.theme, ...appState.overrides };
 
   return (
@@ -36,17 +33,11 @@ export const Content: React.FC<ContentProps> = props => {
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
-      <div className={mergeClasses(styles.root, className)}>
+      <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={appState.brand} />
         <Demo theme={theme} />
         <Divider />
-        <ColorTokens
-          brand={appState.brand}
-          isDark={appState.isDark}
-          theme={theme}
-          themeLabel={appState.themeLabel}
-          dispatchAppState={dispatchAppState}
-        />
+        <ColorTokens theme={theme} />
       </div>
     </FluentProvider>
   );

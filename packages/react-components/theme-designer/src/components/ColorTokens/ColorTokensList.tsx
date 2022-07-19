@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
   Divider,
@@ -35,12 +35,16 @@ export interface ColorTokenRowProps {
   brand: BrandVariants;
   brandValue: Brands;
   brandValueString: string;
+  selected: boolean;
 }
 
 const useStyles = makeStyles({
   root: {},
   colorLabel: {
     color: tokens.colorBrandForeground1,
+  },
+  selected: {
+    fontWeight: 'bold',
   },
   col: {
     display: 'flex',
@@ -51,7 +55,7 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
+    gridTemplateColumns: '10px 1fr 1fr 1.5fr',
     gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
@@ -60,17 +64,24 @@ const useStyles = makeStyles({
   row2: {
     gridColumnStart: '3',
   },
+  colorPreview: {
+    display: 'inline',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    ...shorthands.borderRadius('10px'),
+  },
 });
 
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
-  const { brand, brandValue, brandValueString } = props;
+  const styles = useStyles();
+  const { brand, brandValue, brandValueString, selected } = props;
   return (
     <MenuItemRadio
       icon={<CircleFilled primaryFill={brand[brandValue]} />}
       name={brandValueString}
       value={brandValueString}
     >
-      Untitled {brandValueString}
+      <span className={selected ? styles.selected : ''}>Untitled {brandValueString}</span>
     </MenuItemRadio>
   );
 };
@@ -79,12 +90,12 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
   const styles = useStyles();
 
   const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
-  const newColors = { ...brandColors, ...colorOverride };
+  const newColors: ColorOverrideBrands = { ...brandColors, ...colorOverride };
 
   return (
     <div>
       {coveredTokens.map(color => {
-        const colorValue = newColors[color];
+        const colorValue: Brands = newColors[color];
         const usage = ((usageList as unknown) as Record<string, string>)[color];
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
@@ -114,10 +125,16 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                   <MenuPopover>
                     <MenuList onCheckedValueChange={handleColorChange}>
                       {brandRamp.map(brandValue => {
+                        const selected = colorValue === brandValue;
                         const brandValueString = brandValue.toString();
                         return (
                           <div key={brandValueString}>
-                            <ColorTokenRow brand={brand} brandValue={brandValue} brandValueString={brandValueString} />
+                            <ColorTokenRow
+                              brand={brand}
+                              brandValue={brandValue}
+                              brandValueString={brandValueString}
+                              selected={selected}
+                            />
                           </div>
                         );
                       })}
@@ -132,7 +149,14 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                     const { compHex, ratio, desiredRatio } = fail;
                     return (
                       <div key={color + ' ' + compHex}>
-                        <WarningRegular color="red" /> Contrast against {compHex} is {ratio} - expected {desiredRatio}
+                        <WarningRegular color="red" /> Contrast against{' '}
+                        <div
+                          className={styles.colorPreview}
+                          style={{ backgroundColor: brand[colorValue], color: compHex }}
+                        >
+                          {compHex}
+                        </div>{' '}
+                        is {ratio} - expected {desiredRatio}
                       </div>
                     );
                   })
