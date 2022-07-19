@@ -138,16 +138,13 @@ const RegistrationFormInputsAccessibility = () => {
 
   React.useEffect(() => {
     // If the form is submitted and has errors, focus the first error fiel, otherwise do nothing
-    if (!formState.isSubmitting || formState.isValid) {
+    if (!formState.isSubmitted || formState.isValid) {
       return;
     }
     const firstErrorName = Object.keys(errors)[0] as keyof FormInputs;
     const firstErrorField = document.getElementById(firstErrorName);
-
-    setTimeout(() => formValidation.notifyFormFieldError(firstErrorName), 200);
-
     if (firstErrorField) {
-      firstErrorField.focus();
+      setTimeout(() => firstErrorField.focus(), 500);
     }
   }, [errors, formState, formValidation]);
 
@@ -185,7 +182,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type="text"
                 id="fullName"
-                name="fullName"
                 aria-required="true"
                 aria-invalid={!!errors.fullName}
                 aria-describedby="fullNameErrors"
@@ -232,15 +228,7 @@ const RegistrationFormInputsAccessibility = () => {
           <Controller
             name="nickname"
             control={control}
-            as={
-              <Input
-                type="text"
-                id="nickname"
-                name="nickname"
-                aria-invalid={!!errors.nickname}
-                aria-describedby="nicknameErrors"
-              />
-            }
+            as={<Input type="text" id="nickname" aria-invalid={!!errors.nickname} aria-describedby="nicknameErrors" />}
             rules={{
               minLength: 2,
               maxLength: 20,
@@ -279,7 +267,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type={isPasswordVisible ? 'text' : 'password'}
                 id="password"
-                name="password"
                 aria-required="true"
                 aria-invalid={!!errors.password}
                 aria-describedby="passwordErrors"
@@ -342,7 +329,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type="text"
                 id="birthDate"
-                name="birthDate"
                 placeholder="E.g. 3/21/1995"
                 aria-required="true"
                 aria-invalid={!!errors.birthDate}
@@ -385,7 +371,6 @@ const RegistrationFormInputsAccessibility = () => {
               <Input
                 type="text"
                 id="email"
-                name="email"
                 disabled={!isSendNewsletter}
                 aria-required={isSendNewsletter}
                 aria-invalid={!!errors.email}
@@ -421,7 +406,7 @@ const RegistrationFormInputsAccessibility = () => {
           )}
 
           <Label htmlFor="securityCode">Your security code:</Label>
-          <Input type="text" id="securityCode" name="securityCode" value={generateSecurityCode()} readOnly />
+          <Input type="text" id="securityCode" value={generateSecurityCode()} readOnly />
 
           <Button type="submit">Register</Button>
         </form>
