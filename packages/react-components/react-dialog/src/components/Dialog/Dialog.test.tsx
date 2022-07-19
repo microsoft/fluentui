@@ -19,7 +19,7 @@ describe('Dialog', () => {
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
       'consistent-callback-args',
-      // Menu does not have own styles
+      // Dialog does not have own styles
       'make-styles-overrides-win',
     ],
   });
