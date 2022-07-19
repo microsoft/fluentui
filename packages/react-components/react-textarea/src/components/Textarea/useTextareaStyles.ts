@@ -120,19 +120,6 @@ const useRootStyles = makeStyles({
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
-
-  small: {
-    height: textareaHeight.small,
-    minHeight: textareaHeight.small,
-  },
-  medium: {
-    height: textareaHeight.medium,
-    minHeight: textareaHeight.medium,
-  },
-  large: {
-    height: textareaHeight.large,
-    minHeight: textareaHeight.large,
-  },
 });
 
 /**
@@ -166,6 +153,8 @@ const useTextareaStyles = makeStyles({
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
+    height: textareaHeight.small,
+    minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -173,6 +162,8 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.caption1,
   },
   medium: {
+    height: textareaHeight.medium,
+    minHeight: '52px',
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -180,6 +171,8 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.body1,
   },
   large: {
+    height: textareaHeight.large,
+    minHeight: '64px',
     ...shorthands.padding(
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
@@ -219,7 +212,6 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
-    rootStyles[size],
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
