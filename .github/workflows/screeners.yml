@@ -33,7 +33,7 @@ jobs:
        echo "ISPR=true" >> $GITHUB_ENV
        echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-       echo "DEPLOYURL=https://$deployHost/pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{startsWith(github.ref, 'refs/pull/')}}
@@ -43,7 +43,7 @@ jobs:
        echo "ISPR=false" >> $GITHUB_ENV
        echo "TARGETBRANCH=''" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-       echo "DEPLOYURL=https://$deployHost/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Install yarn
