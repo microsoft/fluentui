@@ -9,11 +9,16 @@ const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, isDark, overrides } = appState;
+  const { brand, lightOverrides, darkOverrides } = appState;
 
   const content = dedent`
-    import * as React from 'react';
-    import { makeStyles, makeStaticStyles, mergeClasses, shorthands } from '@griffel/react';
+    import * as React from "react";
+    import {
+      makeStyles,
+      makeStaticStyles,
+      mergeClasses,
+      shorthands
+    } from "@griffel/react";
     import {
       tokens,
       Body1,
@@ -23,6 +28,7 @@ export const ExportLink = () => {
       Input,
       Button,
       Caption1,
+      FluentProvider,
       Menu,
       MenuTrigger,
       MenuList,
@@ -36,8 +42,8 @@ export const ExportLink = () => {
       RadioGroup,
       Checkbox,
       Avatar,
-      Theme,
-    } from '@fluentui/react-components';
+      Theme
+    } from "@fluentui/react-components";
     import {
       SearchRegular,
       bundleIcon,
@@ -51,12 +57,12 @@ export const ExportLink = () => {
       MeetNowRegular,
       MeetNowFilled,
       CalendarLtrFilled,
-      CalendarLtrRegular,
-    } from '@fluentui/react-icons';
+      CalendarLtrRegular
+    } from "@fluentui/react-icons";
 
     export interface ContentProps {
-      className?: string;
-      theme: Theme;
+      lightTheme: Theme;
+      darkTheme: Theme;
     }
 
     const useStaticStyles = makeStaticStyles({
@@ -71,55 +77,59 @@ export const ExportLink = () => {
 
     const useStyles = makeStyles({
       root: {
-        height: "100vh",
-        display: 'grid',
-        alignItems: 'start',
-        justifyContent: 'center',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gridTemplateRows: 'auto',
-        gridColumnGap: tokens.spacingHorizontalXXXL,
+        display: "grid",
+        gridTemplateRows: "50vh 50vh"
+      },
+      row: {
+        height: "50vh",
+        display: "grid",
+        alignItems: "start",
+        justifyContent: "center",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateRows: "auto",
+        gridColumnGap: tokens.spacingHorizontalXXXL
       },
       col1: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'left',
-        flexDirection: 'column',
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "left",
+        flexDirection: "column",
         flexGrow: 1,
-        ...shorthands.gap(tokens.spacingVerticalL),
+        ...shorthands.gap(tokens.spacingVerticalL)
       },
       col2: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        ...shorthands.gap(tokens.spacingVerticalL),
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        ...shorthands.gap(tokens.spacingVerticalL)
       },
       col3: {
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gridTemplateRows: 'repeat(4, auto)',
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gridTemplateRows: "repeat(4, auto)",
         gridRowGap: tokens.spacingVerticalS,
         gridColumnGap: tokens.spacingHorizontalS,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: "center",
+        alignItems: "center"
       },
       twoCol: {
         gridColumnStart: 1,
-        gridColumnEnd: 3,
+        gridColumnEnd: 3
       },
       icons: {
-        display: 'grid',
-        gridTemplateColumns: 'auto auto',
-        gridTemplateRows: 'auto auto',
+        display: "grid",
+        gridTemplateColumns: "auto auto",
+        gridTemplateRows: "auto auto",
         gridRowGap: tokens.spacingVerticalS,
         gridColumnGap: tokens.spacingHorizontalS,
-        justifyContent: 'center',
+        justifyContent: "center"
       },
       twoRow: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }
     });
 
     export const Column1 = () => {
@@ -129,16 +139,16 @@ export const ExportLink = () => {
         <div className={styles.col1}>
           <Title3 block>Make an impression</Title3>
           <Body1 block>
-            Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate
-            information to people inside or outside your team. Share your ideas, results, and more in this
-            visually compelling format.
+            Make a big impression with this clean, modern, and mobile-friendly site.
+            Use it to communicate information to people inside or outside your team.
+            Share your ideas, results, and more in this visually compelling format.
           </Body1>
           <Avatar
             color="brand"
             initials="DF"
             badge={{
-              status: 'available',
-              'aria-label': 'available',
+              status: "available",
+              "aria-label": "available"
             }}
           />
         </div>
@@ -183,7 +193,12 @@ export const ExportLink = () => {
           <Input
             placeholder="Find"
             contentAfter={
-              <Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />
+              <Button
+                aria-label="Find"
+                appearance="transparent"
+                icon={<SearchRegular />}
+                size="small"
+              />
             }
           />
           <DemoMenu />
@@ -210,7 +225,11 @@ export const ExportLink = () => {
       return (
         <div className={styles.col3}>
           <Button appearance="primary">Sign Up</Button>
-          <Button appearance="transparent" icon={<ChevronRightRegular />} iconPosition="after">
+          <Button
+            appearance="transparent"
+            icon={<ChevronRightRegular />}
+            iconPosition="after"
+          >
             Learn More
           </Button>
           <Slider className={styles.twoCol} defaultValue={50} />
@@ -233,40 +252,51 @@ export const ExportLink = () => {
       );
     };
 
-    export const Example: React.FC<ContentProps> = props => {
+    export const Example: React.FC<ContentProps> = (props) => {
       const styles = useStyles();
+      useStaticStyles();
       return (
-        <div>
-          <Caption1>Examples</Caption1>
-          <div className={mergeClasses(styles.root, props.className)}>
-            <Column1 />
-            <Column2 />
-            <Column3 />
-          </div>
+        <div className={styles.root}>
+          <FluentProvider theme={props.lightTheme}>
+            <Caption1>Light Theme</Caption1>
+            <div className={styles.row}>
+              <Column1 />
+              <Column2 />
+              <Column3 />
+            </div>
+          </FluentProvider>
+          <FluentProvider theme={props.darkTheme}>
+            <Caption1>Dark Theme</Caption1>
+            <div className={styles.row}>
+              <Column1 />
+              <Column2 />
+              <Column3 />
+            </div>
+          </FluentProvider>
         </div>
       );
     };
-    `;
+  `;
 
   const indexHtmlContent = '<div id="root"></div>';
 
   const createIndexContent = dedent`
     import * as ReactDOM from 'react-dom';
-    import { FluentProvider, ${isDark ? 'createDarkTheme' : 'createLightTheme'} } from '@fluentui/react-components';
+    import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
     import type { BrandVariants, Theme } from '@fluentui/react-theme';
     import { Example } from './example';
 
     const brand: BrandVariants = ${JSON.stringify(brand)};
 
-    const overrides: Partial<Theme> = ${JSON.stringify(overrides)};
+    const lightOverrides: Partial<Theme> = ${JSON.stringify(lightOverrides)};
+    const lightTheme: Theme = { ...createLightTheme(brand), ...lightOverrides };
 
-    const theme: Theme = { ...${isDark ? 'createDarkTheme' : 'createLightTheme'}(brand), ...overrides };
+    const darkOverrides: Partial<Theme> = ${JSON.stringify(darkOverrides)};
+    const darkTheme: Theme = { ...createDarkTheme(brand), ...darkOverrides };
 
     ReactDOM.render(
-        <FluentProvider theme={theme}>
-            <Example />
-        </FluentProvider>,
-        document.getElementById('root'),
+      <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
+      document.getElementById('root'),
     );
   `;
 

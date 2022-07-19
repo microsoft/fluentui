@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
-import { Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger} from '@fluentui/react-components';
+import {
+  Button,
+  FluentProvider,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  webLightTheme,
+} from '@fluentui/react-components';
 import { ExportLink } from './ExportLink';
 
 const useStyles = makeStyles({
@@ -17,21 +24,18 @@ export const ExportButton = () => {
 
   return (
     <div className={styles.root}>
-      <Menu>
-        <MenuTrigger>
-          <MenuButton size="small" appearance="outline">
+      <Popover trapFocus={true}>
+        <PopoverTrigger>
+          <Button size="small" appearance="outline">
             Save
-          </MenuButton>
-        </MenuTrigger>
-
-        <MenuPopover>
-          <MenuList>
-            <MenuItem>
-              <ExportLink />
-            </MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
+          </Button>
+        </PopoverTrigger>
+        <FluentProvider theme={webLightTheme}>
+          <PopoverSurface>
+            <ExportLink />
+          </PopoverSurface>
+        </FluentProvider>
+      </Popover>
     </div>
   );
 };

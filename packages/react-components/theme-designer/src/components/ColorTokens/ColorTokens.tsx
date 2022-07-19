@@ -50,8 +50,10 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const { theme } = props;
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
-  const { brand, isDark, themeLabel } = appState;
+  const { brand, isDark, themeName } = appState;
   const brandColors = isDark ? darkBrandColors : lightBrandColors;
+
+  const themeLabel = themeName + (isDark ? 'Dark' : 'Light');
 
   const colorOverrideReducer: (
     state: ColorOverrides,
