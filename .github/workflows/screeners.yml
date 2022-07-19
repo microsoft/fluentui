@@ -17,6 +17,10 @@ jobs:
         BROWSERSLIST_IGNORE_OLD_DATA: true
 
         deployHost: 'fluentuipr.z22.web.core.windows.net'
+
+        SYSTEM_PULLREQUEST_TARGETBRANCH: ${{ github.event.pull_request.base.ref }}
+
+        BUILD_SOURCEBRANCH: ${{ github.ref }}
     steps:
     - uses: actions/checkout@v3
 
@@ -40,7 +44,7 @@ jobs:
        echo "isPR=false" >> $GITHUB_ENV ;\
        echo "targetBranch=''" >> $GITHUB_ENV ;\
        echo "deployBasePath='pull/$PR_NUMBER/merge' }}" >> $GITHUB_ENV
-       echo "deployUrl=https://$deployHost/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
+       echo "deployUrl=https://$deployHost/heads/$PR_NUMBER/merge" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
@@ -71,11 +75,11 @@ jobs:
       with:
         inlineScript: |
           az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string $ConnectionString
-#
-#    - name: Start @fluentui/react-northstar VR Test
-#      run: yarn workspace @fluentui/docs vr:test
-#      env:
-#        SCREENER_ENDPOINT: $(screenerApiUri)
-#        SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
-#        SCREENER_API_KEY: $(screener.key)
+
+    - name: Start @fluentui/react-northstar VR Test
+      run: yarn workspace @fluentui/docs vr:test
+      env:
+        SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+        SCREENER_PROXY_ENDPOINT: ${{SCREENER_PROXY_ENDPOINT}}
+        SCREENER_API_KEY: ${{SCREENER_API_KEY}}
 
