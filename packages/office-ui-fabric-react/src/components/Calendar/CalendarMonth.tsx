@@ -203,7 +203,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
           </div>
         </div>
         <FocusZone>
-          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid" aria-readonly="true">
+          <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid">
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (

@@ -124,7 +124,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -586,7 +585,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -700,7 +698,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -814,7 +811,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -928,7 +924,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -1042,7 +1037,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -1156,7 +1150,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -1270,7 +1263,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -1389,7 +1381,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
         >
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -1519,7 +1510,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -1649,7 +1639,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -1779,7 +1768,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -1910,7 +1898,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-current="date"
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={true}
             className=
                 
@@ -2083,7 +2070,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -2209,7 +2195,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -2351,7 +2336,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -2461,7 +2445,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -2571,7 +2554,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -2681,7 +2663,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -2791,7 +2772,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -2901,7 +2881,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -3011,7 +2990,6 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -3332,7 +3310,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
     <table
       aria-activedescendant="id__0"
       aria-multiselectable="false"
-      aria-readonly="true"
       className=
 
           {
@@ -3794,7 +3771,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -3908,7 +3884,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4022,7 +3997,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4136,7 +4110,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4250,7 +4223,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4364,7 +4336,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4478,7 +4449,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -4597,7 +4567,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
         >
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -4727,7 +4696,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -4858,7 +4826,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-current="date"
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={true}
             className=
                 
@@ -5031,7 +4998,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -5157,7 +5123,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -5283,7 +5248,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -5409,7 +5373,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           </td>
           <td
             aria-disabled={false}
-            aria-readonly="true"
             aria-selected={false}
             className=
                 
@@ -5551,7 +5514,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -5661,7 +5623,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -5771,7 +5732,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -5881,7 +5841,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -5991,7 +5950,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -6101,7 +6059,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 
@@ -6211,7 +6168,6 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           <td
             aria-disabled={false}
             aria-hidden={true}
-            aria-readonly="true"
             aria-selected={false}
             className=
 

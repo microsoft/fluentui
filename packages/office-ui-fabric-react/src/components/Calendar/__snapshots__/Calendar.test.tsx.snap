@@ -1208,7 +1208,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               onMouseDownCapture={[Function]}
             >
               <div
-                aria-readonly="true"
                 className="ms-DatePicker-optionGrid"
                 role="grid"
               >

@@ -112,7 +112,6 @@ const CalendarYearGridCell = React.forwardRef(
         aria-label={String(year)}
         aria-selected={selected}
         ref={mergedRef}
-        aria-readonly={true} // prevent grid from being "editable"
       >
         {onRenderYear?.(year) ?? year}
       </button>
