@@ -12,11 +12,15 @@ jobs:
     env:
         skipComponentGovernanceDetection: true
 
+        SKIPCOMPONENTGOVERNANCEDETECTION: true
+
         ConnectionString: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
         BROWSERSLIST_IGNORE_OLD_DATA: true
 
         deployHost: 'fluentuipr.z22.web.core.windows.net'
+
+        DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
 
         SYSTEM_PULLREQUEST_TARGETBRANCH: ${{ github.event.pull_request.base.ref }}
 
@@ -31,8 +35,12 @@ jobs:
     - name: Set env variables if there is a PR
       run: |
        echo "isPR=true" >> $GITHUB_ENV
+       echo "ISPR=true" >> $GITHUB_ENV
        echo "targetBranch=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-       echo "deployBasePath='pull/$PR_NUMBER'" >> $GITHUB_ENV
+       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "deployBasePath=pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$deployHost/pull/$PR_NUMBER" >> $GITHUB_ENV
        echo "deployUrl=https://$deployHost/pull/$PR_NUMBER" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
@@ -40,9 +48,13 @@ jobs:
 
     - name: Set env variables if there is not a PR
       run: |
-       echo "isPR=false" >> $GITHUB_ENV ;\
-       echo "targetBranch=''" >> $GITHUB_ENV ;\
-       echo "deployBasePath='heads/$SYSTEM_PULLREQUEST_TARGETBRANCH'" >> $GITHUB_ENV
+       echo "isPR=false" >> $GITHUB_ENV
+       echo "ISPR=false" >> $GITHUB_ENV
+       echo "targetBranch=''" >> $GITHUB_ENV
+       echo "TARGETBRANCH=''" >> $GITHUB_ENV
+       echo "deployBasePath=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$deployHost/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "deployUrl=https://$deployHost/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
@@ -55,9 +67,10 @@ jobs:
         printenv | sort ;\
         echo "SHELLOPTS $SHELLOPTS" ;\
         echo 'deployBasePath ${{env.deployBasePath}}' ;\
-        echo 'deployUrl ${{env.deployUrl}}' ;\
+        echo 'DEPLOYURL ${{env.DEPLOYURL}}' ;\
         echo 'isPR ${{env.isPR}}' ;\
         echo 'targetBranch ${{env.targetBranch}}' ;\
+
     - name: yarn
       run: ./yarn-ci.sh
       shell: bash
