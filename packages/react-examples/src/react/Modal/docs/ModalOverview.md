@@ -2,4 +2,4 @@ Modals are temporary pop-ups that take focus from the page or app and requi
 
 ### React 17 event delegation
 
-Changes to event delegation in React 17 can cause issues with event bubbling when using Modal. [See `Layer` documentation](#/controls/web/layer) for details on how to resolve eventing issues with this control in React 17.
+[Changes to event delegation in React 17](https://reactjs.org/blog/2020/08/10/react-v17-rc.html#changes-to-event-delegation) can cause issues with event bubbling when using Modal. [See `Layer` documentation](#/controls/web/layer) for details on how to resolve eventing issues with this control in React 17.
