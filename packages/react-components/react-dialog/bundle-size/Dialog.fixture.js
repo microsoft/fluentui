@@ -4,5 +4,5 @@ import { Dialog } from '@fluentui/react-dialog';
 console.log(Dialog);
 
 export default {
-  name: 'Dialog (including children components)',
+  name: 'Dialog',
 };
