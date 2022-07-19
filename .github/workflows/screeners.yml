@@ -80,6 +80,6 @@ jobs:
       run: yarn workspace @fluentui/docs vr:test
       env:
         SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
-        SCREENER_PROXY_ENDPOINT: ${{SCREENER_PROXY_ENDPOINT}}
-        SCREENER_API_KEY: ${{SCREENER_API_KEY}}
+        SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+        SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
