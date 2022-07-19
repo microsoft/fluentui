@@ -4,7 +4,7 @@ import type { DialogOpenChangeEvent } from './Dialog.types';
 
 import { useDialog_unstable } from './useDialog';
 
-describe('useAccordion_unstable', () => {
+describe('useDialog_unstable', () => {
   it('handle open behavior', () => {
     const { result } = renderHook(() =>
       useDialog_unstable({ children: [React.createElement('div'), React.createElement('div')] }),
