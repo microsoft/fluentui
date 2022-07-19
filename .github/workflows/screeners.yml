@@ -10,14 +10,40 @@ jobs:
 
     name: Screener @fluentui/react-northstar
     env:
+        skipComponentGovernanceDetection: true
+
         ConnectionString: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
+        BROWSERSLIST_IGNORE_OLD_DATA: true
+
+        deployHost: 'fluentuipr.z22.web.core.windows.net'
+
+        deployUrl: 'https://$(deployHost)/$(deployBasePath)'
     steps:
     - uses: actions/checkout@v3
 
     - uses: actions/setup-node@v3
       with:
         node-version: 14.18.1
+
+    - name: Set env variables if there is a PR
+      run: |
+       echo "isPR=true" >> $GITHUB_ENV
+       echo "targetBranch=origin/$BRANCH" >> $GITHUB_ENV ;\
+       echo "deployBasePath='pull/$PR_NUMBER'}}" >> $GITHUB_ENV
+      env:
+        BRANCH: ${{ github.event.pull_request.base.ref }}
+        PR_NUMBER: ${{ github.event.number }}
+      if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+    - name: Set env variables if there is not a PR
+      run: |
+       echo "isPR=false" >> $GITHUB_ENV ;\
+       echo "targetBranch=''" >> $GITHUB_ENV ;\
+       echo "deployBasePath='pull/$PR_NUMBER/merge' }}" >> $GITHUB_ENV
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+      if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Install yarn
       run: npm install --global yarn
