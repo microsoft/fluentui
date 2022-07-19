@@ -23,6 +23,7 @@ import * as dedent from 'dedent';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AppContext } from '../../ThemeDesigner';
 import { ChevronDownRegular } from '@fluentui/react-icons';
+import { getBrandValues } from './getBrandValues';
 
 const useStyles = makeStyles({
   root: {
@@ -34,15 +35,9 @@ const useStyles = makeStyles({
   popover: {
     width: '300px',
   },
-  tabs: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    width: '100%',
-  },
   text: {
     display: 'flex',
-    height: '300px',
+    height: '31em',
   },
 });
 
@@ -61,16 +56,13 @@ export const ExportButton = () => {
   const codeValue = dedent`
   const brand = ${JSON.stringify(brand, null, 2)};
 
-  const lightOverrides = ${JSON.stringify(lightOverrides, null, 2)};
-  const darkOverrides = ${JSON.stringify(darkOverrides, null, 2)};
-
   const lightTheme = {
-    ...createLightTheme(brand),
-    ...lightOverrides
+    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')}
   };
+
   const darkTheme = {
-    ...createDarkTheme(brand),
-    ...darkOverrides };
+    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')}
+  };
   `;
 
   const jsonValue = dedent`
@@ -82,6 +74,7 @@ export const ExportButton = () => {
     null,
     2,
   )};
+
   const darkTheme = ${JSON.stringify(
     {
       ...createDarkTheme(brand),
@@ -122,13 +115,7 @@ export const ExportButton = () => {
               examples below.
             </Body1>
             <br />
-            <br />
-            <TabList
-              className={styles.tabs}
-              defaultSelectedValue="Code"
-              selectedValue={selectedValue}
-              onTabSelect={onTabSelect}
-            >
+            <TabList defaultSelectedValue="Code" selectedValue={selectedValue} onTabSelect={onTabSelect}>
               <Tab id="Code" value="Code">
                 Code
               </Tab>
@@ -146,7 +133,6 @@ export const ExportButton = () => {
               </Tab>
             </TabList>
             <Textarea className={styles.text} size="small" value={exportedValue()} id={'textArea'} resize="both" />
-            <br />
             <br />
             <ExportLink />
           </PopoverSurface>

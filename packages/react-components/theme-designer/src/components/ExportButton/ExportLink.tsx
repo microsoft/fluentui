@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
+import { Link } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AppContext } from '../../ThemeDesigner';
-import { OpenRegular } from '@fluentui/react-icons';
+import { getBrandValues } from './getBrandValues';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
@@ -289,11 +289,13 @@ export const ExportLink = () => {
 
   const brand: BrandVariants = ${JSON.stringify(brand, null, 2)};
 
-  const lightOverrides: Partial<Theme> = ${JSON.stringify(lightOverrides, null, 2)};
-  const darkOverrides: Partial<Theme> = ${JSON.stringify(darkOverrides, null, 2)};
+  const lightTheme: Theme = {
+    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')}
+  };
 
-  const lightTheme: Theme = { ...createLightTheme(brand), ...lightOverrides };
-  const darkTheme: Theme = { ...createDarkTheme(brand), ...darkOverrides };
+  const darkTheme: Theme = {
+    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')}
+  };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
@@ -332,9 +334,9 @@ export const ExportLink = () => {
 
   return (
     <div>
-      <Button appearance="primary" href={link} icon={<OpenRegular />} iconPosition="after" target="_blank">
+      <Link href={link} target="_blank">
         Preview theme in CodeSandbox
-      </Button>
+      </Link>
     </div>
   );
 };
