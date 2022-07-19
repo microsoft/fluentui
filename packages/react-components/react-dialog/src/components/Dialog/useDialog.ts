@@ -95,7 +95,7 @@ function childrenToTriggerAndContent(
   children: React.ReactNode,
 ): readonly [trigger: React.ReactNode, content: React.ReactNode] {
   const childrenArray = React.Children.toArray(children) as React.ReactElement[];
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV !== 'production') {
     if (childrenArray.length !== 1 && childrenArray.length !== 2) {
       // eslint-disable-next-line no-console
       console.warn(
@@ -148,42 +148,46 @@ function useFocusFirstElement({
   const triggerRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
-    if (open) {
-      const element = contentRef.current && findFirstFocusable(contentRef.current);
-      if (element) {
-        element.focus();
-        // NOTE: if it's non-modal global listener to escape is necessary
-        if (modalType !== 'non-modal') {
-          return;
-        }
-      } else {
-        if (process.env.NODE_ENV === 'development') {
-          // eslint-disable-next-line no-console
-          console.warn('A Dialog should have at least one focusable element inside DialogContent');
-        }
-      }
+    if (!open) {
+      return;
+    }
 
-      if (triggerRef.current && targetDocument) {
-        const trigger = triggerRef.current;
-        if (targetDocument.activeElement === trigger) {
-          trigger.blur();
-        }
-        const listener = (event: KeyboardEvent) => {
-          if (isEscapeKeyDismiss(event, modalType)) {
-            requestOpenChange({
-              event,
-              open: false,
-              type: 'documentEscapeKeyDown',
-            });
-            trigger.focus();
-            event.stopImmediatePropagation();
-          }
-        };
-        targetDocument.addEventListener('keydown', listener, { passive: false });
-        return () => {
-          targetDocument.removeEventListener('keydown', listener);
-        };
+    const element = contentRef.current && findFirstFocusable(contentRef.current);
+    if (element) {
+      element.focus();
+      // NOTE: if it's non-modal global listener to escape is necessary
+      if (modalType !== 'non-modal') {
+        return;
       }
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
+        console.warn('A Dialog should have at least one focusable element inside DialogContent');
+      }
+    }
+
+    if (triggerRef.current && targetDocument) {
+      const trigger = triggerRef.current;
+      // if the trigger is still the active element, the default behavior is to return focus to document.body,
+      // which can be achived by blurring
+      if (targetDocument.activeElement === trigger) {
+        trigger.blur();
+      }
+      const listener = (event: KeyboardEvent) => {
+        if (isEscapeKeyDismiss(event, modalType)) {
+          requestOpenChange({
+            event,
+            open: false,
+            type: 'documentEscapeKeyDown',
+          });
+          trigger.focus();
+          event.stopImmediatePropagation();
+        }
+      };
+      targetDocument.addEventListener('keydown', listener, { passive: false });
+      return () => {
+        targetDocument.removeEventListener('keydown', listener);
+      };
     }
   }, [findFirstFocusable, requestOpenChange, open, modalType, targetDocument]);
 

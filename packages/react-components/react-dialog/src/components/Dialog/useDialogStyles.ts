@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     ...shorthands.inset('0px'),
   },
-  subDialogOverlay: {
+  nestedDialogOverlay: {
     backgroundColor: 'transparent',
   },
 });
@@ -32,7 +32,7 @@ export const useDialogStyles_unstable = (state: DialogState): DialogState => {
     state.overlay.className = mergeClasses(
       dialogClassNames.overlay,
       styles.overlay,
-      isSubDialog && styles.subDialogOverlay,
+      isNestedDialog && styles.nestedDialogOverlay,
       state.overlay.className,
     );
   }
