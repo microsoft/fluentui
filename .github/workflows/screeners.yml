@@ -10,7 +10,7 @@ jobs:
 
     name: Screener @fluentui/react-northstar
     env:
-        $AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
+        ConnectionString: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
     steps:
     - uses: actions/checkout@v3
@@ -44,7 +44,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string
+          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string $ConnectionString
 #
 #    - name: Start @fluentui/react-northstar VR Test
 #      run: yarn workspace @fluentui/docs vr:test
