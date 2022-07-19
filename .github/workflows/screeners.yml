@@ -54,7 +54,7 @@ jobs:
         echo "SHELLOPTS $SHELLOPTS" ;\
         echo 'deployBasePath ${{env.deployBasePath}}' ;\
         echo 'deployUrl $deployUrl' ;\
-        echo 'isPR ${{env.isPR}' ;\
+        echo 'isPR ${{env.isPR}}' ;\
         echo 'targetBranch ${{env.targetBranch}}' ;\
         echo $deployUrl
       env:
