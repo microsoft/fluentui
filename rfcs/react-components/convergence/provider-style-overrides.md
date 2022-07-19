@@ -11,7 +11,7 @@ Proposes two methods of overriding the default styles on the `FluentProvider`.
 The `FluentProvider` ships with [default styles](https://github.com/microsoft/fluentui/blob/656f002f3062c0a7962fb23eb165dec64ecc1509/packages/react-components/react-provider/src/components/FluentProvider/useFluentProviderStyles.ts#L11-L18) which can be too opinionated for some customers, especially those who have
 strict requirements on global styles in their application.
 
-If the FluentProvider is styled using a `makeStyle` call to override these default styles, it can result in unexpected issues since styles will not be RTL safe by default. See the example below:
+If the FluentProvider is styled using a `makeStyles` call to override these default styles, it can result in unexpected issues since styles will not be RTL safe by default. See the example below:
 
 ```tsx
 import { makeStyles } from '@fluentui/react-components';
