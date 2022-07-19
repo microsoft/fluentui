@@ -31,11 +31,10 @@ jobs:
     - name: Set env variables if there is a PR
       run: |
        echo "isPR=true" >> $GITHUB_ENV
-       echo "targetBranch=origin/$BRANCH" >> $GITHUB_ENV
-       echo "deployBasePath='pull/$PR_NUMBER'}}" >> $GITHUB_ENV
+       echo "targetBranch=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "deployBasePath='pull/$PR_NUMBER'" >> $GITHUB_ENV
        echo "deployUrl=https://$deployHost/pull/$PR_NUMBER" >> $GITHUB_ENV
       env:
-        BRANCH: ${{ github.event.pull_request.base.ref }}
         PR_NUMBER: ${{ github.event.number }}
       if: ${{startsWith(github.ref, 'refs/pull/')}}
 
@@ -43,10 +42,8 @@ jobs:
       run: |
        echo "isPR=false" >> $GITHUB_ENV ;\
        echo "targetBranch=''" >> $GITHUB_ENV ;\
-       echo "deployBasePath='pull/$PR_NUMBER/merge' }}" >> $GITHUB_ENV
-       echo "deployUrl=https://$deployHost/heads/$PR_NUMBER/merge" >> $GITHUB_ENV
-      env:
-        PR_NUMBER: ${{ github.event.number }}
+       echo "deployBasePath='heads/$SYSTEM_PULLREQUEST_TARGETBRANCH'" >> $GITHUB_ENV
+       echo "deployUrl=https://$deployHost/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Install yarn
