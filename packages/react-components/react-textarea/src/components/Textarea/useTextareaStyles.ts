@@ -121,8 +121,6 @@ const useRootStyles = makeStyles({
     },
   },
 
-  // The padding style adds both content and regular padding (from design spec), this is because the handle is not
-  // affected by changing the padding of the root.
   small: {
     height: textareaHeight.small,
     minHeight: textareaHeight.small,
@@ -145,6 +143,7 @@ const useTextareaStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     ...shorthands.margin('0'),
     backgroundColor: 'transparent',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
@@ -220,6 +219,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
+    rootStyles[size],
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
