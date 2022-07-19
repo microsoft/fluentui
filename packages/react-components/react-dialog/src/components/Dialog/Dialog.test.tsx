@@ -9,7 +9,7 @@ describe('Dialog', () => {
     Component: Dialog,
     displayName: 'Dialog',
     disabledTests: [
-      // Menu does not render DOM elements
+      // Dialog does not render DOM elements
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
