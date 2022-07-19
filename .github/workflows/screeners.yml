@@ -29,7 +29,7 @@ jobs:
        echo "isPR=true" >> $GITHUB_ENV
        echo "targetBranch=origin/$BRANCH" >> $GITHUB_ENV
        echo "deployBasePath='pull/$PR_NUMBER'}}" >> $GITHUB_ENV
-
+       echo "deployUrl=https://$deployHost/pull/$PR_NUMBER" >> $GITHUB_ENV
       env:
         BRANCH: ${{ github.event.pull_request.base.ref }}
         PR_NUMBER: ${{ github.event.number }}
@@ -40,6 +40,7 @@ jobs:
        echo "isPR=false" >> $GITHUB_ENV ;\
        echo "targetBranch=''" >> $GITHUB_ENV ;\
        echo "deployBasePath='pull/$PR_NUMBER/merge' }}" >> $GITHUB_ENV
+       echo "deployUrl=https://$deployHost/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
@@ -53,12 +54,9 @@ jobs:
         printenv | sort ;\
         echo "SHELLOPTS $SHELLOPTS" ;\
         echo 'deployBasePath ${{env.deployBasePath}}' ;\
-        echo 'deployUrl $deployUrl' ;\
+        echo 'deployUrl ${{env.deployUrl}}' ;\
         echo 'isPR ${{env.isPR}}' ;\
         echo 'targetBranch ${{env.targetBranch}}' ;\
-        echo $deployUrl
-      env:
-        deployUrl: ${{ format('{0}//{1}/{2}', 'https:', $deployHost, ${{env.deployBasePath}}) }}
     - name: yarn
       run: ./yarn-ci.sh
       shell: bash
