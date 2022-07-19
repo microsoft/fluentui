@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Remove explicit readonly semantics from Calendar grid",
+  "comment": "fix: Remove explicit readonly semantics from Calendar grid.",
   "packageName": "@uifabric/date-time",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
