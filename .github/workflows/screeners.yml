@@ -50,16 +50,15 @@ jobs:
     - name: Log environment variables (Linux)
       if: runner.os == 'Linux'
       run: |
+        printenv | sort ;\
         echo "SHELLOPTS $SHELLOPTS" ;\
-        echo 'deployBasePath $depBasePath' ;\
+        echo 'deployBasePath ${{env.deployBasePath}}' ;\
         echo 'deployUrl $deployUrl' ;\
-        echo 'isPR $isPR' ;\
+        echo 'isPR ${{env.isPR}' ;\
         echo 'targetBranch ${{env.targetBranch}}' ;\
         echo $deployUrl
       env:
-        depBasePath: ${{env.deployBasePath}}
-        deployUrl: 'https://$deployHost/$depBasePath'
-        PR: ${{env.isPR}}
+        deployUrl: ${{ format('{0}//{1}/{2}', 'https:', $deployHost, ${{env.deployBasePath}}) }}
     - name: yarn
       run: ./yarn-ci.sh
       shell: bash
