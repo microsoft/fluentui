@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Jul 2022 12:21:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.190.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.190.0)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.189.0..@fluentui/react_v7.190.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.190.0 ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
 
 ## [7.189.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.189.0)
 

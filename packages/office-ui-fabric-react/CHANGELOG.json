@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 19 Jul 2022 12:21:01 GMT",
+      "tag": "office-ui-fabric-react_v7.190.0",
+      "version": "7.190.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "4a5c25a3552854a1ff872092817ef38af55301c2",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 12:21:53 GMT",
       "tag": "office-ui-fabric-react_v7.189.1",
       "version": "7.189.1",

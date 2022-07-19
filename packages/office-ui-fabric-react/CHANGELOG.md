@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Jul 2022 12:21:53 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Jul 2022 12:21:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.190.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.0)
+
+Tue, 19 Jul 2022 12:21:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.189.1..office-ui-fabric-react_v7.190.0)
+
+### Minor changes
+
+- feat: adds keyboard overrides to SelectionZone and DetailsList ([PR #23572](https://github.com/microsoft/fluentui/pull/23572) by seanmonahan@microsoft.com)
 
 ## [7.189.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.189.1)
 

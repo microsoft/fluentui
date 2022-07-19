@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 19 Jul 2022 12:21:01 GMT",
+      "tag": "@fluentui/react_v7.190.0",
+      "version": "7.190.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: adds keyboard overrides to SelectionZone and DetailsList",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "4a5c25a3552854a1ff872092817ef38af55301c2",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.190.0",
+            "author": "seanmonahan@microsoft.com",
+            "commit": "4a5c25a3552854a1ff872092817ef38af55301c2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@fluentui/react_v7.189.0",
       "version": "7.189.0",
