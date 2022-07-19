@@ -120,6 +120,21 @@ const useRootStyles = makeStyles({
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
+
+  // The padding style adds both content and regular padding (from design spec), this is because the handle is not
+  // affected by changing the padding of the root.
+  small: {
+    height: textareaHeight.small,
+    minHeight: textareaHeight.small,
+  },
+  medium: {
+    height: textareaHeight.medium,
+    minHeight: textareaHeight.medium,
+  },
+  large: {
+    height: textareaHeight.large,
+    minHeight: textareaHeight.large,
+  },
 });
 
 /**
@@ -133,6 +148,8 @@ const useTextareaStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
+    height: '100%',
+    width: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -150,8 +167,6 @@ const useTextareaStyles = makeStyles({
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
-    height: textareaHeight.small,
-    minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -159,8 +174,6 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.caption1,
   },
   medium: {
-    height: textareaHeight.medium,
-    minHeight: '52px',
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -168,8 +181,6 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.body1,
   },
   large: {
-    height: textareaHeight.large,
-    minHeight: '64px',
     ...shorthands.padding(
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
