@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Update Nav to not use separate labels for expand/collapse state.",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

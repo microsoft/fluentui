@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 15 Jul 2022 20:03:47 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Jul 2022 07:41:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.82.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.0)
+
+Tue, 19 Jul 2022 07:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.1..@fluentui/react_v8.82.0)
+
+### Minor changes
+
+- fix: Update Nav to not use separate labels for expand/collapse state. ([PR #23968](https://github.com/microsoft/fluentui/pull/23968) by sarah.higley@microsoft.com)
 
 ## [8.81.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.1)
 
