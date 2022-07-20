@@ -1,3 +1,5 @@
+name: Screeners workflow
+
 on: pull_request
 
 env:
