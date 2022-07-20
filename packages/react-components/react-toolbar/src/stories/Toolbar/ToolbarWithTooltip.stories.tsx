@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Toolbar, ToolbarButton, ToolbarDivider } from '@fluentui/react-toolbar';
 import type { ToolbarProps } from '@fluentui/react-toolbar';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Tooltip } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 export const WithTooltip = (props: Partial<ToolbarProps>) => (
