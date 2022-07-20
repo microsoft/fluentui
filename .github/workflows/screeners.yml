@@ -1,15 +1,6 @@
 on: pull_request
-jobs:
-  TestJob:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello there"
 
-  ScreenerNorthStar:
-    runs-on: 'ubuntu-latest'
-
-    name: Screener @fluentui/react-northstar
-    env:
+env:
         SKIPCOMPONENTGOVERNANCEDETECTION: true
 
         ConnectionString: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
@@ -21,6 +12,18 @@ jobs:
         SYSTEM_PULLREQUEST_TARGETBRANCH: ${{ github.event.pull_request.base.ref }}
 
         BUILD_SOURCEBRANCH: ${{ github.ref }}
+
+jobs:
+  TestJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there"
+
+  ScreenerNorthStar:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-northstar
+
     steps:
     - uses: actions/checkout@v3
 
@@ -64,7 +67,7 @@ jobs:
       env:
         SCREENER_BUILD: 1
 
-    - name: Upload to blob storage
+    - name: Upload N* VR test site
       uses: azure/CLI@v1
       with:
         inlineScript: |
@@ -76,4 +79,123 @@ jobs:
         SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
         SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
         SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
+  Screener:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14.18.1
+
+    - name: Set env variables if there is a PR
+      run: |
+       echo "ISPR=true" >> $GITHUB_ENV
+       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+      if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+    - name: Set env variables if there is not a PR
+      run: |
+       echo "ISPR=false" >> $GITHUB_ENV
+       echo "TARGETBRANCH=''" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+      if: ${{!startsWith(github.ref, 'refs/pull/')}}
+
+    - name: Install yarn
+      run: npm install --global yarn
+
+    - name: Log environment variables (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        printenv | sort ;\
+        echo "SHELLOPTS $SHELLOPTS" ;\
+
+    - name: yarn
+      run: ./yarn-ci.sh
+      shell: bash
+
+    - name: build vr-tests storybook
+      run: yarn workspace @fluentui/vr-tests screener:build
+
+    - name: Upload @fluentui/react VR test site
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch -d '$web' -s 'apps/vr-tests/dist/storybook' --connection-string $ConnectionString
+
+    - name: Start @fluentui/react VR Test
+      run: yarn workspace @fluentui/vr-tests screener
+      env:
+        SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+        SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+        SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
+  ScreenerVNext:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-components
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14.18.1
+
+    - name: Set env variables if there is a PR
+      run: |
+       echo "ISPR=true" >> $GITHUB_ENV
+       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+      env:
+        PR_NUMBER: ${{ github.event.number }}
+      if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+    - name: Set env variables if there is not a PR
+      run: |
+       echo "ISPR=false" >> $GITHUB_ENV
+       echo "TARGETBRANCH=''" >> $GITHUB_ENV
+       echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+      if: ${{!startsWith(github.ref, 'refs/pull/')}}
+
+    - name: Install yarn
+      run: npm install --global yarn
+
+    - name: Log environment variables (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        printenv | sort ;\
+        echo "SHELLOPTS $SHELLOPTS" ;\
+
+    - name: yarn
+      run: ./yarn-ci.sh
+      shell: bash
+
+    - name: build vr-tests-react-components storybook
+      run: yarn workspace @fluentui/vr-tests-react-components screener:build
+
+    - name: Upload @fluentui/react-components VR test site
+      uses: azure/CLI@v1
+      with:
+        inlineScript: |
+          az storage blob upload-batch -d '$web' -s 'apps/vr-tests-react-components/dist/storybook' --connection-string $ConnectionString
+
+    - name: Start @fluentui/react-components VR Test
+      run: yarn workspace @fluentui/vr-tests-react-components screener
+      env:
+        SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+        SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+        SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
 
