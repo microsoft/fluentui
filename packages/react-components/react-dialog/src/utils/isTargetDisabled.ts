@@ -7,7 +7,7 @@ export function isTargetDisabled(event: React.SyntheticEvent | Event) {
     return true;
   }
 
-  return event.currentTarget instanceof HTMLElement && isDisabled(event.currentTarget);
+  return isHTMLElement(event.currentTarget) && isDisabled(event.currentTarget);
 }
 
 function isHTMLElement(element: object | null): element is HTMLElement {

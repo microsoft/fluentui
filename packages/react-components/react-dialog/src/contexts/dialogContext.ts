@@ -22,7 +22,7 @@ export type DialogContextValue = {
   requestOpenChange: (data: DialogRequestOpenChangeData) => void;
 };
 
-export const DialogContext: Context<DialogContextValue> = createContext<DialogContextValue>({
+const defaultContextValue: DialogContextValue = {
   open: false,
   modalType: 'modal',
   triggerRef: { current: null },
@@ -30,8 +30,13 @@ export const DialogContext: Context<DialogContextValue> = createContext<DialogCo
   requestOpenChange() {
     /* noop */
   },
-});
+};
+
+// Contexts should default to undefined
+export const DialogContext: Context<DialogContextValue | undefined> = createContext<DialogContextValue | undefined>(
+  undefined,
+);
 
 export const DialogProvider = DialogContext.Provider;
 export const useDialogContext_unstable = <T>(selector: ContextSelector<DialogContextValue, T>): T =>
-  useContextSelector(DialogContext, selector);
+  useContextSelector(DialogContext, (ctx = defaultContextValue) => selector(ctx));
