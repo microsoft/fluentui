@@ -86,7 +86,7 @@ export const ExportButton = () => {
   )};
   `;
 
-  const exportedValue = () => {
+  const exportedValue = React.useMemo(() => {
     switch (selectedValue) {
       case 'Code':
         return codeValue;
@@ -95,7 +95,7 @@ export const ExportButton = () => {
       default:
         return '';
     }
-  };
+  }, [selectedValue]);
 
   return (
     <div className={styles.root}>
@@ -117,23 +117,19 @@ export const ExportButton = () => {
             </Body1>
             <br />
             <TabList defaultSelectedValue="Code" selectedValue={selectedValue} onTabSelect={onTabSelect}>
-              <Tab id="Code" value="Code">
-                Code
-              </Tab>
-              <Tab id="JSON" value="JSON">
-                JSON
-              </Tab>
-              <Tab id="Swift" value="Swift" disabled>
+              <Tab value="Code">Code</Tab>
+              <Tab value="JSON">JSON</Tab>
+              <Tab value="Swift" disabled>
                 Swift
               </Tab>
-              <Tab id="KT" value="KT" disabled>
+              <Tab value="KT" disabled>
                 KT
               </Tab>
-              <Tab id="XAML" value="XAML" disabled>
+              <Tab value="XAML" disabled>
                 XAML
               </Tab>
             </TabList>
-            <Textarea className={styles.text} size="small" value={exportedValue()} id={'textArea'} resize="both" />
+            <Textarea className={styles.text} size="small" value={exportedValue} id={'textArea'} resize="both" />
             <br />
             <ExportLink />
           </PopoverSurface>
