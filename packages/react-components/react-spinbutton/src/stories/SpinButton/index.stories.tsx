@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { SpinButton } from '@fluentui/react-spinbutton';
+import { SpinButton } from '@fluentui/react-components';
 
 import descriptionMd from './SpinButtonDescription.md';
 import bestPracticesMd from './SpinButtonBestPractices.md';
