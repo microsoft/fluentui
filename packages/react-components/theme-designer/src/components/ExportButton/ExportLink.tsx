@@ -10,7 +10,7 @@ const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, lightOverrides, darkOverrides } = appState;
+  const { brand, darkOverrides, lightOverrides } = appState;
 
   const content = dedent`
   import * as React from "react";
