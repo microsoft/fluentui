@@ -6,6 +6,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     '& > label': {
+      display: 'block',
       marginBottom: tokens.spacingVerticalMNudge,
     },
   },
@@ -20,9 +21,7 @@ export const Height = () => {
 
   return (
     <div className={styles.base}>
-      <Label htmlFor={textareaId} style={{ display: 'block' }}>
-        Textarea with a height of 200px
-      </Label>
+      <Label htmlFor={textareaId}>Textarea with a height of 200px</Label>
       <Textarea resize="both" textarea={{ className: styles.textarea }} id={textareaId} />
     </div>
   );
