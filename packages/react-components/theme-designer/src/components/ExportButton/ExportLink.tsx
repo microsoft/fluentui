@@ -15,36 +15,34 @@ export const ExportLink = () => {
   const content = dedent`
   import * as React from "react";
   import {
-    makeStyles,
     makeStaticStyles,
+    makeStyles,
     mergeClasses,
-    shorthands
-  } from "@griffel/react";
-  import {
+    shorthands,
     tokens,
+    Avatar,
+    Badge,
     Body1,
-    Title3,
-    TabList,
-    Tab,
-    Input,
     Button,
     Caption1,
+    Checkbox,
     FluentProvider,
+    Input,
     Menu,
-    MenuTrigger,
-    MenuList,
     MenuButton,
     MenuItemCheckbox,
+    MenuList,
     MenuPopover,
-    Slider,
-    Badge,
-    Switch,
+    MenuTrigger,
     Radio,
     RadioGroup,
-    Checkbox,
-    Avatar,
-    Theme
+    Slider,
+    Switch,
+    Tab,
+    TabList,
+    Title3,
   } from "@fluentui/react-components";
+  import type { Theme } from "@fluentui/react-components";
   import {
     bundleIcon,
      CalendarLtrFilled,
