@@ -2,10 +2,11 @@
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import {
-  Body1,
-  Button,
   createDarkTheme,
   createLightTheme,
+  webLightTheme,
+  Body1,
+  Button,
   FluentProvider,
   Popover,
   PopoverSurface,
@@ -17,7 +18,6 @@ import {
   TabValue,
   Text,
   Textarea,
-  webLightTheme,
 } from '@fluentui/react-components';
 import { ExportLink } from './ExportLink';
 import * as dedent from 'dedent';
