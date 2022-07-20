@@ -4,7 +4,7 @@ import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 import * as dedent from 'dedent';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AppContext } from '../../ThemeDesigner';
-import { getBrandValues } from './getBrandValues';
+import { getBrandValues, objectToString } from '../../utils/toString';
 
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
@@ -285,15 +285,13 @@ export const ExportLink = () => {
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
-  const brand: BrandVariants = ${JSON.stringify(brand, null, 2)};
+  const brand = { ${objectToString(brand, '\u00A0\u00A0')} };
 
-  const lightTheme: Theme = {
-    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')}
-  };
+  const lightTheme = {
+    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
 
-  const darkTheme: Theme = {
-    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')}
-  };
+  const darkTheme = {
+    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,

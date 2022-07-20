@@ -23,7 +23,7 @@ import * as dedent from 'dedent';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AppContext } from '../../ThemeDesigner';
 import { ChevronDownRegular } from '@fluentui/react-icons';
-import { getBrandValues } from './getBrandValues';
+import { getBrandValues, objectToString, themeToString } from '../../utils/toString';
 
 const useStyles = makeStyles({
   root: {
@@ -58,35 +58,19 @@ export const ExportButton = () => {
   };
 
   const codeValue = dedent`
-  const brand = ${JSON.stringify(brand, null, 2)};
+  const brand = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme = {
-    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')}
-  };
+    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
 
   const darkTheme = {
-    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')}
-  };
+    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
   `;
 
   const jsonValue = dedent`
-  const lightTheme = ${JSON.stringify(
-    {
-      ...createLightTheme(brand),
-      ...lightOverrides,
-    },
-    null,
-    2,
-  )};
+  const lightTheme = { ${themeToString({ ...createLightTheme(brand), ...lightOverrides }, '\u00A0\u00A0')} };
 
-  const darkTheme = ${JSON.stringify(
-    {
-      ...createDarkTheme(brand),
-      ...darkOverrides,
-    },
-    null,
-    2,
-  )};
+  const darkTheme = { ${themeToString({ ...createDarkTheme(brand), ...darkOverrides }, '\u00A0\u00A0')} };
   `;
 
   const exportedValue = React.useMemo(() => {
