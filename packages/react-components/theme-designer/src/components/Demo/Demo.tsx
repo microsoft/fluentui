@@ -22,7 +22,6 @@ import {
   RadioGroup,
   Checkbox,
   Avatar,
-  Theme,
 } from '@fluentui/react-components';
 import {
   SearchRegular,
@@ -42,7 +41,6 @@ import {
 
 export interface ContentProps {
   className?: string;
-  theme: Theme;
 }
 
 const useStyles = makeStyles({

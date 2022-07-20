@@ -25,19 +25,20 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
 
-  const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const theme = { ...appState.theme, ...appState.overrides };
+  const { brand, darkOverrides, isDark, lightOverrides, theme } = useContextSelector(AppContext, ctx => ctx.appState);
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
 
   return (
-    <FluentProvider theme={theme}>
+    <FluentProvider theme={overridenTheme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
       <div className={mergeClasses(styles.root, props.className)}>
-        <Palette brandColors={appState.brand} />
-        <Demo theme={theme} />
+        <Palette brandColors={brand} />
+        <Demo />
         <Divider />
-        <ColorTokens theme={theme} />
+        <ColorTokens theme={overridenTheme} />
       </div>
     </FluentProvider>
   );

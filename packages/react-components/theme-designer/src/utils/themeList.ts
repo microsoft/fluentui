@@ -10,10 +10,10 @@ export const themeList: ThemeList = {
 };
 
 const lightThemes = Object.keys(themeList).map(currTheme => {
-  return currTheme + ' Light';
+  return currTheme + 'Light';
 });
 const darkThemes = Object.keys(themeList).map(currTheme => {
-  return currTheme + ' Dark';
+  return currTheme + 'Dark';
 });
 
 const allThemes = [];
