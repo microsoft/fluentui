@@ -107,7 +107,7 @@ export const ExportButton = () => {
             <TabList
               defaultSelectedValue="Code"
               selectedValue={selectedValue}
-              onTabSelect={onTabSelect} // eslint-disable-line jsx-no-bind
+              onTabSelect={onTabSelect} // eslint-disable-line react/jsx-no-bind
             >
               {' '}
               <Tab value="Code">Code</Tab>
