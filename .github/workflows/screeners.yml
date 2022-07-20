@@ -16,7 +16,7 @@ jobs:
 
         BROWSERSLIST_IGNORE_OLD_DATA: true
 
-        DEPLOYHOST: 'testraluca.z6.web.core.windows.net'
+        DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
 
         SYSTEM_PULLREQUEST_TARGETBRANCH: ${{ github.event.pull_request.base.ref }}
 
