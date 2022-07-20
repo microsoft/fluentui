@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react-text';
+import { Text } from '@fluentui/react-components';
 
 export const Truncate = () => (
   <Text truncate style={{ width: 100, overflow: 'hidden', whiteSpace: 'nowrap' }} block>

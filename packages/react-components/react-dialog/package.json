@@ -16,12 +16,15 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "bundle-size": "bundle-size measure",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
+    "e2e": "yarn cypress run --component",
+    "e2e:local": "yarn cypress open --component",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-dialog/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-dialog/src && yarn docs",
     "storybook": "node ../../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
@@ -34,6 +37,14 @@
   "dependencies": {
     "@griffel/react": "^1.2.0",
     "@fluentui/react-utilities": "^9.0.2",
+    "@fluentui/keyboard-keys": "^9.0.0",
+    "@fluentui/react-context-selector": "^9.0.2",
+    "@fluentui/react-shared-contexts": "^9.0.0",
+    "@fluentui/react-aria": "^9.0.2",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-tabster": "^9.0.3",
+    "@fluentui/react-theme": "^9.0.0",
+    "@fluentui/react-portal": "^9.0.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
