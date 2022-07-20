@@ -203,7 +203,7 @@ interface ChatMessageV2Props {
    * This is required for external, platform-specific implementations that need to
    * wrap the bubble in order to inject animations et al.
    */
-  customizeBubble?(element: React.ReactNode): React.ReactNode;
+  customizeBubbleElement?(element: React.ReactElement): React.ReactElement;
 
   /** Slot for elements that sit next to the message bubble. */
   bubbleInset?: React.ReactNode;
@@ -642,8 +642,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         }),
       },
     );
-    if (v2.customizeBubble) {
-      bubbleElement = v2.customizeBubble(bubbleElement);
+    if (v2.customizeBubbleElement) {
+      bubbleElement = v2.customizeBubbleElement(bubbleElement);
     }
 
     const timestampElement = (
@@ -793,7 +793,7 @@ ChatMessage.propTypes = {
     failed: PropTypes.bool,
     importantLabel: PropTypes.node,
     infoLabel: PropTypes.node,
-    customizeBubble: PropTypes.func,
+    customizeBubbleElement: PropTypes.func,
     bubbleInset: PropTypes.node,
     timestampTooltip: PropTypes.string,
   }),

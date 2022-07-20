@@ -44,7 +44,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       theme: { siteVariables },
     } = componentStyleFunctionParam;
 
-    if (p.v2 && p.density === 'comfy') {
+    if (p.isV2Enabled && p.density === 'comfy') {
       return chatMessageStylesComfyV2.root(componentStyleFunctionParam);
     }
     return {

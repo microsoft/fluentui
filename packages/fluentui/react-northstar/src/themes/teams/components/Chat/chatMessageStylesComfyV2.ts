@@ -21,8 +21,8 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
     });
 
     // Fixes the bubble focus border rendering on top of the user avatar
-    delete borderFocusStyles[':focus-visible'][':before'].zIndex;
-    delete borderFocusStyles[':focus-visible'][':after'].zIndex;
+    delete (borderFocusStyles[':focus-visible'][':before'] as ICSSInJSStyle).zIndex;
+    delete (borderFocusStyles[':focus-visible'][':after'] as ICSSInJSStyle).zIndex;
 
     return {
       display: 'flex',
