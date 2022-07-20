@@ -11,6 +11,7 @@ export const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '250px auto',
     gridTemplateRows: '40px auto',
+    minHeight: '100vh',
   },
   nav: {
     gridColumnStart: 1,

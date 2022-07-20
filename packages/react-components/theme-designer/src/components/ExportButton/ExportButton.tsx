@@ -12,10 +12,10 @@ import {
   PopoverTrigger,
   SelectTabData,
   SelectTabEvent,
-  Subtitle1,
   Tab,
   TabList,
   TabValue,
+  Text,
   Textarea,
   webLightTheme,
 } from '@fluentui/react-components';
@@ -38,7 +38,11 @@ const useStyles = makeStyles({
   },
   text: {
     display: 'flex',
-    height: '31em',
+    height: '50vh',
+  },
+  textarea: {
+    height: '100%',
+    boxSizing: 'border-box',
   },
 });
 
@@ -106,8 +110,10 @@ export const ExportButton = () => {
           </Button>
         </PopoverTrigger>
         <FluentProvider theme={webLightTheme}>
-          <PopoverSurface className={styles.popover}>
-            <Subtitle1>Export Theme</Subtitle1>
+          <PopoverSurface aria-labelledby="headingID" className={styles.popover}>
+            <Text as="h1" id="headingID" size={500}>
+              Export Theme
+            </Text>
             <br />
             <br />
             <Body1>
@@ -129,7 +135,14 @@ export const ExportButton = () => {
                 XAML
               </Tab>
             </TabList>
-            <Textarea className={styles.text} size="small" value={exportedValue} id={'textArea'} resize="both" />
+            <Textarea
+              className={styles.text}
+              size="small"
+              value={exportedValue}
+              id={'textArea'}
+              textarea={{ className: styles.textarea }}
+              readOnly
+            />
             <br />
             <ExportLink />
           </PopoverSurface>
