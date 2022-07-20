@@ -5,4 +5,4 @@ export {
   useDialogStyles_unstable,
   useDialog_unstable,
 } from './Dialog';
-export type { DialogProps, DialogSlots, DialogState } from './Dialog';
+export type { DialogProps, DialogOpenChangeData, DialogOpenChangeEvent, DialogSlots, DialogState } from './Dialog';

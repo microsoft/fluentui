@@ -85,10 +85,6 @@ The root level component serves as an interface for interaction with all possibl
 ```tsx
 type DialogSlots = {
   /**
-   * The dialog element itself
-   */
-  root: Slot<'div'>;
-  /**
    * Dimmed background of dialog.
    * The default overlay is rendered as a `<div>` with styling.
    * This slot expects a `<div>` element which will replace the default overlay.
@@ -110,8 +106,10 @@ type DialogProps = ComponentProps<DialogSlots> & {
    * `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
    *
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or escape key.
+   *
+   * @default 'modal'
    */
-  type?: 'modal' | 'non-modal' | 'alert';
+  modalType?: 'modal' | 'non-modal' | 'alert';
   /**
    * Controls the open state of the dialog
    * @default undefined
@@ -152,9 +150,10 @@ export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening,
    * closing or toggling a Dialog visibility state.
+   *
    * @default 'toggle'
    */
-  type?: 'open' | 'close' | 'toggle';
+  action?: 'open' | 'close' | 'toggle';
   /**
    * Explicitly require single child or render function
    * to inject properties
@@ -166,7 +165,6 @@ export type DialogTriggerProps = {
 ### DialogContent
 
 The `DialogContent` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
-By itself it has no style, but it's responsible of showing/hiding content when `Dialog` visibility state changes, also it'll ensure a `Portal` is properly created for the content being provided as well as for the `overlay` element provided by `Dialog`
 
 ```tsx
 type DialogTitleSlots = {
