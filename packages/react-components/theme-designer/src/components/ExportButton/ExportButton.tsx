@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles } from '@griffel/react';
 import {
@@ -99,7 +98,7 @@ export const ExportButton = () => {
       default:
         return '';
     }
-  }, [selectedValue]);
+  }, [codeValue, jsonValue, selectedValue]);
 
   return (
     <div className={styles.root}>
@@ -117,9 +116,8 @@ export const ExportButton = () => {
             <br />
             <br />
             <Body1>
-              Passing this theme to a FluentProvider will automatically apply it to any Fluent
-              components below it. You can also export this to CodeSandbox with a few component
-              examples below.
+              Passing this theme to a FluentProvider will automatically apply it to any Fluent components below it. You
+              can also export this to CodeSandbox with a few component examples below.
             </Body1>
             <br />
             <TabList defaultSelectedValue="Code" selectedValue={selectedValue} onTabSelect={onTabSelect}>
