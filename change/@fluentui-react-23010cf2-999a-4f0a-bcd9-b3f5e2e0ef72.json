@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Improve step handling for invalid intermediate SpinButton values",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

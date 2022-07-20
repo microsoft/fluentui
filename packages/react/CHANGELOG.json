@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/react_v8.82.1",
+      "version": "8.82.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33",
+            "comment": "fix: Improve step handling for invalid intermediate SpinButton values"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fb6ee6b7d255499a234cad77f47678240792655d",
+            "comment": "fix: update CommandBar cacheKey computation to include farItems"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Jul 2022 07:41:07 GMT",
       "tag": "@fluentui/react_v8.82.0",
       "version": "8.82.0",
