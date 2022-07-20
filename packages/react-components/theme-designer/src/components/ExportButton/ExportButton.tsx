@@ -118,7 +118,7 @@ export const ExportButton = () => {
             <br />
             <Body1>
               Passing this theme to a FluentProvider will automatically apply it to any Fluent
-              components used within the app. You can also export this example to CodeSandbox with a few component
+              components below it. You can also export this to CodeSandbox with a few component
               examples below.
             </Body1>
             <br />
