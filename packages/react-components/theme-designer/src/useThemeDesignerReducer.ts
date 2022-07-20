@@ -4,6 +4,7 @@ import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { themeList, themeNames } from './utils/themeList';
+import { brandRamp } from './components/ColorTokens/getOverridableTokenBrandColors';
 
 export type CustomAttributes = {
   keyColor: string;
@@ -89,7 +90,9 @@ export const useThemeDesignerReducer = () => {
           overrides: action.overrides,
         });
       } else {
-        dispatchOverrideState({ type: stateThemeLabel });
+        dispatchOverrideState({
+          type: stateThemeLabel,
+        });
       }
       return { ...state, [state.isDark ? 'darkOverrides' : 'lightOverrides']: overrideState[stateThemeLabel] };
     }
@@ -104,7 +107,23 @@ export const useThemeDesignerReducer = () => {
       if (!action.customAttributes) {
         return state;
       }
-      brand = createCustomTheme(action.customAttributes);
+      const newBrand = createCustomTheme(action.customAttributes);
+
+      const sameBrand = brandRamp
+        .map(num => {
+          return state.brand[num] === newBrand[num];
+        })
+        .reduce((prev, curr) => {
+          return prev && curr;
+        });
+
+      // check if the previous theme is also custom, if it is but the brand changes, clear overrides
+      if (!themeList[state.themeName].brand && !sameBrand) {
+        dispatchOverrideState({ type: themeName + 'Light' });
+        dispatchOverrideState({ type: themeName + 'Dark' });
+      }
+
+      brand = newBrand;
     }
 
     return {
