@@ -108,7 +108,7 @@ export const useThemeDesignerReducer = () => {
     }
 
     return {
-      themeName: themeName,
+      themeName,
       brand,
       theme: isDark ? createDarkTheme(brand) : createLightTheme(brand),
       isDark,
