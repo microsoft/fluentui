@@ -304,7 +304,7 @@ export const ExportLink = () => {
   `;
 
   const packageContent = dedent`
-  {"dependencies":{"@fluentui/react-components":"rc","react":"^17","react-dom":"^17","react-scripts":"latest"}}
+  {"dependencies":{"@fluentui/react-components":"^9","react":"^17","react-dom":"^17","react-scripts":"latest"}}
   `;
 
   const link = React.useMemo(() => {
