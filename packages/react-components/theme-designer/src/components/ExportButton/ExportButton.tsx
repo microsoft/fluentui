@@ -50,7 +50,7 @@ export const ExportButton = () => {
   const styles = useStyles();
 
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, lightOverrides, darkOverrides } = appState;
+  const { brand, darkOverrides, lightOverrides } = appState;
 
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('Code');
 
