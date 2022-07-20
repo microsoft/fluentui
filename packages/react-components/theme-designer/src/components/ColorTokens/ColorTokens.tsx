@@ -100,7 +100,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
       dispatchAppState({ type: 'Override' });
       dispatchColorOverride({ type: 'Reset Custom Overrides' });
     }
-  }, [appState]);
+  }, [appState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={styles.root}>
