@@ -284,7 +284,7 @@ export const ExportLink = () => {
   const createIndexContent = dedent`
   import * as ReactDOM from 'react-dom';
   import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
-  import type { BrandVariants, Theme } from '@fluentui/react-theme';
+  import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
   const brand: BrandVariants = ${JSON.stringify(brand, null, 2)};
