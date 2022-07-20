@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
 
-  const { brand, theme, isDark, lightOverrides, darkOverrides } = useContextSelector(AppContext, ctx => ctx.appState);
+  const { brand, darkOverrides, isDark, lightOverrides, theme } = useContextSelector(AppContext, ctx => ctx.appState);
   const overrides = isDark ? darkOverrides : lightOverrides;
   const overridenTheme = { ...theme, ...overrides };
 

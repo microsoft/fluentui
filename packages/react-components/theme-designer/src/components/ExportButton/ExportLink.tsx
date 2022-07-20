@@ -10,55 +10,53 @@ const defaultFileToPreview = encodeURIComponent('/index.tsx');
 
 export const ExportLink = () => {
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, lightOverrides, darkOverrides } = appState;
+  const { brand, darkOverrides, lightOverrides } = appState;
 
   const content = dedent`
   import * as React from "react";
   import {
-    makeStyles,
     makeStaticStyles,
+    makeStyles,
     mergeClasses,
-    shorthands
-  } from "@griffel/react";
-  import {
+    shorthands,
     tokens,
+    Avatar,
+    Badge,
     Body1,
-    Title3,
-    TabList,
-    Tab,
-    Input,
     Button,
     Caption1,
+    Checkbox,
     FluentProvider,
+    Input,
     Menu,
-    MenuTrigger,
-    MenuList,
     MenuButton,
     MenuItemCheckbox,
+    MenuList,
     MenuPopover,
-    Slider,
-    Badge,
-    Switch,
+    MenuTrigger,
     Radio,
     RadioGroup,
-    Checkbox,
-    Avatar,
-    Theme
+    Slider,
+    Switch,
+    Tab,
+    TabList,
+    Title3,
   } from "@fluentui/react-components";
+  import type { Theme } from "@fluentui/react-components";
   import {
-    SearchRegular,
     bundleIcon,
-    CutRegular,
-    CutFilled,
-    ClipboardPasteRegular,
-    ClipboardPasteFilled,
-    EditRegular,
-    EditFilled,
+     CalendarLtrFilled,
+    CalendarLtrRegular,
     ChevronRightRegular,
-    MeetNowRegular,
+    ClipboardPasteFilled,
+    ClipboardPasteRegular,
+    CutFilled,
+    CutRefular,
+    EditFilled,
+    EditRegular,
     MeetNowFilled,
-    CalendarLtrFilled,
-    CalendarLtrRegular
+    MeetNowRegular,
+    SearchRegular,
   } from "@fluentui/react-icons";
 
   export interface ContentProps {
@@ -284,7 +282,7 @@ export const ExportLink = () => {
   const createIndexContent = dedent`
   import * as ReactDOM from 'react-dom';
   import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
-  import type { BrandVariants, Theme } from '@fluentui/react-theme';
+  import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
   const brand: BrandVariants = ${JSON.stringify(brand, null, 2)};
@@ -304,7 +302,7 @@ export const ExportLink = () => {
   `;
 
   const packageContent = dedent`
-  {"dependencies":{"@fluentui/react-components":"rc","react":"^17","react-dom":"^17","react-scripts":"latest"}}
+  {"dependencies":{"@fluentui/react-components":"^9","react":"^17","react-dom":"^17","react-scripts":"latest"}}
   `;
 
   const link = React.useMemo(() => {

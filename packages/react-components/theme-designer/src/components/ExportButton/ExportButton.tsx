@@ -50,7 +50,7 @@ export const ExportButton = () => {
   const styles = useStyles();
 
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
-  const { brand, lightOverrides, darkOverrides } = appState;
+  const { brand, darkOverrides, lightOverrides } = appState;
 
   const [selectedValue, setSelectedValue] = React.useState<TabValue>('Code');
 
@@ -117,8 +117,8 @@ export const ExportButton = () => {
             <br />
             <br />
             <Body1>
-              Applying this theme to a FluentProvider will automatically apply the configured theming to any Fluent
-              components used within the app. You can also export this example to CodeSandbox with a few component
+              Passing this theme to a FluentProvider will automatically apply it to any Fluent
+              components below it. You can also export this to CodeSandbox with a few component
               examples below.
             </Body1>
             <br />
