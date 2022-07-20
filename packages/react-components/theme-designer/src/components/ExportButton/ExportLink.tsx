@@ -46,19 +46,19 @@ export const ExportLink = () => {
     Theme
   } from "@fluentui/react-components";
   import {
-    SearchRegular,
     bundleIcon,
-    CutRegular,
-    CutFilled,
-    ClipboardPasteRegular,
-    ClipboardPasteFilled,
-    EditRegular,
-    EditFilled,
+     CalendarLtrFilled,
+    CalendarLtrRegular,
     ChevronRightRegular,
-    MeetNowRegular,
+    ClipboardPasteFilled,
+    ClipboardPasteRegular,
+    CutFilled,
+    CutRefular,
+    EditFilled,
+    EditRegular,
     MeetNowFilled,
-    CalendarLtrFilled,
-    CalendarLtrRegular
+    MeetNowRegular,
+    SearchRegular,
   } from "@fluentui/react-icons";
 
   export interface ContentProps {
