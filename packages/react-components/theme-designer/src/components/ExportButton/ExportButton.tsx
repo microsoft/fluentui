@@ -58,19 +58,19 @@ export const ExportButton = () => {
   };
 
   const codeValue = dedent`
-  const brand = { ${objectToString(brand, '\u00A0\u00A0')} };
+  const brand: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
-  const lightTheme = {
+  const lightTheme: Theme = {
     ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
 
-  const darkTheme = {
+  const darkTheme: Theme = {
     ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
   `;
 
   const jsonValue = dedent`
-  const lightTheme = { ${themeToString({ ...createLightTheme(brand), ...lightOverrides }, '\u00A0\u00A0')} };
+  const lightTheme: Theme = { ${themeToString({ ...createLightTheme(brand), ...lightOverrides }, '\u00A0\u00A0')} };
 
-  const darkTheme = { ${themeToString({ ...createDarkTheme(brand), ...darkOverrides }, '\u00A0\u00A0')} };
+  const darkTheme: Theme = { ${themeToString({ ...createDarkTheme(brand), ...darkOverrides }, '\u00A0\u00A0')} };
   `;
 
   const exportedValue = React.useMemo(() => {

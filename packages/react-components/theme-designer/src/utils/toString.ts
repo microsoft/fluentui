@@ -32,7 +32,7 @@ export const themeToString = (theme: Theme, spacer: string) => {
     // don't put quotes around numbers
     Object.keys(theme).map(key => {
       if (!Number(indexableTheme[key])) {
-        return '\n' + spacer + key + ": '" + indexableTheme[key] + "'";
+        return '\n' + spacer + key + ': "' + indexableTheme[key] + '"';
       } else {
         return '\n' + spacer + key + ': ' + indexableTheme[key];
       }

@@ -45,13 +45,13 @@ export const ExportLink = () => {
   import type { Theme } from "@fluentui/react-components";
   import {
     bundleIcon,
-     CalendarLtrFilled,
+    CalendarLtrFilled,
     CalendarLtrRegular,
     ChevronRightRegular,
     ClipboardPasteFilled,
     ClipboardPasteRegular,
     CutFilled,
-    CutRefular,
+    CutRegular,
     EditFilled,
     EditRegular,
     MeetNowFilled,
@@ -285,12 +285,12 @@ export const ExportLink = () => {
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
-  const brand = { ${objectToString(brand, '\u00A0\u00A0')} };
+  const brand: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
-  const lightTheme = {
+  const lightTheme: Theme = {
     ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
 
-  const darkTheme = {
+  const darkTheme: Theme = {
     ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
 
   ReactDOM.render(
