@@ -120,7 +120,12 @@ export const ExportButton = () => {
               can also export this to CodeSandbox with a few component examples below.
             </Body1>
             <br />
-            <TabList defaultSelectedValue="Code" selectedValue={selectedValue} onTabSelect={onTabSelect}>
+            <TabList
+              defaultSelectedValue="Code"
+              selectedValue={selectedValue}
+              onTabSelect={onTabSelect} // eslint-disable-line jsx-no-bind
+            >
+              {' '}
               <Tab value="Code">Code</Tab>
               <Tab value="JSON">JSON</Tab>
               <Tab value="Swift" disabled>
