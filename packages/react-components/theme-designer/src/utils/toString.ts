@@ -27,7 +27,7 @@ export const objectToString = (input: Record<string, string>, spacer: string) =>
 };
 
 export const themeToString = (theme: Theme, spacer: string) => {
-  const indexableTheme: Record<string, any> = theme;
+  const indexableTheme: Record<string, string | number> = theme;
   return (
     // don't put quotes around numbers
     Object.keys(theme).map(key => {
