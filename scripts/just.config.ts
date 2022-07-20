@@ -21,9 +21,8 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { isConvergedPackage } from './monorepo/index';
+import { isConvergedPackage, isCompatibilityPackage } from './monorepo';
 import { getJustArgv } from './tasks/argv';
-import isCompatibilityPackage from './monorepo/isCompatibilityPackage';
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
