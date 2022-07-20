@@ -120,6 +120,22 @@ const useRootStyles = makeStyles({
       borderBottomColor: tokens.colorCompoundBrandStroke,
     },
   },
+
+  small: {
+    height: textareaHeight.small,
+    maxHeight: '200px',
+    minHeight: '40px',
+  },
+  medium: {
+    height: textareaHeight.medium,
+    maxHeight: '260px',
+    minHeight: '52px',
+  },
+  large: {
+    height: textareaHeight.large,
+    maxHeight: '320px',
+    minHeight: '64px',
+  },
 });
 
 /**
@@ -135,7 +151,7 @@ const useTextareaStyles = makeStyles({
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
     height: '100%',
-    width: '100%',
+    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -153,8 +169,6 @@ const useTextareaStyles = makeStyles({
   // The padding style adds both content and regular padding (from design spec), this is because the handle is not
   // affected by changing the padding of the root.
   small: {
-    height: textareaHeight.small,
-    minHeight: '40px',
     ...shorthands.padding(
       tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -162,8 +176,6 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.caption1,
   },
   medium: {
-    height: textareaHeight.medium,
-    minHeight: '52px',
     ...shorthands.padding(
       tokens.spacingVerticalSNudge,
       `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
@@ -171,8 +183,6 @@ const useTextareaStyles = makeStyles({
     ...typographyStyles.body1,
   },
   large: {
-    height: textareaHeight.large,
-    minHeight: '64px',
     ...shorthands.padding(
       tokens.spacingVerticalS,
       `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
@@ -212,6 +222,7 @@ export const useTextareaStyles_unstable = (state: TextareaState): TextareaState 
     textareaClassNames.root,
     rootStyles.base,
     rootStyles[appearance],
+    rootStyles[size],
     disabled && rootStyles.disabled,
     !disabled && rootStyles.interactive,
     !disabled && appearance === 'outline' && rootStyles.outlineInteractive,
