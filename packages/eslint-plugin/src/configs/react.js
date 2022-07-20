@@ -25,7 +25,7 @@ module.exports = {
       files: '**/*.stories.tsx',
       rules: {
         '@fluentui/no-restricted-imports': [
-          'warn',
+          'error',
           {
             paths: [
               {
