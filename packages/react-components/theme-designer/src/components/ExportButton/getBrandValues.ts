@@ -1,4 +1,4 @@
-import { BrandVariants, Theme } from '@fluentui/react-components';
+import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { brandRamp } from '../ColorTokens/getOverridableTokenBrandColors';
 
 export const getBrandValues = (brand: BrandVariants, overrideList: Partial<Theme>, spacer: string) => {
