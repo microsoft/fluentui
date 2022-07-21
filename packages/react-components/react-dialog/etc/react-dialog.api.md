@@ -64,24 +64,8 @@ export type DialogBodyState = ComponentState<DialogBodySlots>;
 // @public (undocumented)
 export const dialogClassNames: SlotClassNames<DialogSlots>;
 
-// @public
-export const DialogContent: ForwardRefComponent<DialogContentProps>;
-
 // @public (undocumented)
-export const dialogContentClassNames: SlotClassNames<DialogContentSlots>;
-
-// @public
-export type DialogContentProps = ComponentProps<DialogContentSlots> & {
-    trapFocus?: boolean;
-};
-
-// @public (undocumented)
-export type DialogContentSlots = {
-    root: Slot<'div', 'main'>;
-};
-
-// @public
-export type DialogContentState = ComponentState<DialogContentSlots>;
+export const dialogContentClassNames: SlotClassNames<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogOpenChangeData = {
@@ -128,6 +112,22 @@ export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
     content: React_2.ReactNode;
     trigger: React_2.ReactNode;
 };
+
+// @public
+export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
+
+// @public
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
+    trapFocus?: boolean;
+};
+
+// @public (undocumented)
+export type DialogSurfaceSlots = {
+    root: Slot<'div', 'main'>;
+};
+
+// @public
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
@@ -181,7 +181,7 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
-export const renderDialogContent_unstable: (state: DialogContentState) => JSX.Element;
+export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSX.Element;
 
 // @public
 export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;
@@ -205,13 +205,13 @@ export const useDialogBody_unstable: (props: DialogBodyProps, ref: React_2.Ref<H
 export const useDialogBodyStyles_unstable: (state: DialogBodyState) => DialogBodyState;
 
 // @public
-export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2.Ref<HTMLElement>) => DialogContentState;
-
-// @public
-export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
-
-// @public
 export const useDialogStyles_unstable: (state: DialogState) => DialogState;
+
+// @public
+export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<HTMLElement>) => DialogSurfaceState;
+
+// @public
+export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
 
 // @public
 export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;

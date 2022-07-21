@@ -1,13 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type DialogContentSlots = {
+export type DialogSurfaceSlots = {
   root: Slot<'div', 'main'>;
 };
 
 /**
- * DialogContent Props
+ * DialogSurface Props
  */
-export type DialogContentProps = ComponentProps<DialogContentSlots> & {
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
   /**
    * Declares if focus will be trapped inside Dialog.
    * @default modalType !== 'non-modal'
@@ -16,6 +16,6 @@ export type DialogContentProps = ComponentProps<DialogContentSlots> & {
 };
 
 /**
- * State used in rendering DialogContent
+ * State used in rendering DialogSurface
  */
-export type DialogContentState = ComponentState<DialogContentSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;

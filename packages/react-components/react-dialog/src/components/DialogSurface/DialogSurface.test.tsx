@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { DialogContent } from './DialogContent';
+import { DialogSurface } from './DialogSurface';
 import { isConformant } from '../../common/isConformant';
-import type { DialogContentProps } from './DialogContent.types';
+import type { DialogSurfaceProps } from './DialogSurface.types';
 
-describe('DialogContent', () => {
-  isConformant<DialogContentProps>({
-    Component: DialogContent,
-    displayName: 'DialogContent',
+describe('DialogSurface', () => {
+  isConformant<DialogSurfaceProps>({
+    Component: DialogSurface,
+    displayName: 'DialogSurface',
     disabledTests: ['component-has-static-classname-exported'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<DialogContent>Default DialogContent</DialogContent>);
+    const result = render(<DialogSurface>Default DialogSurface</DialogSurface>);
     expect(result.container).toMatchSnapshot();
   });
 });

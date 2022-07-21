@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
+import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
@@ -10,8 +10,8 @@ import {
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
 } from '../../contexts/constants';
 
-export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
-  root: 'fui-DialogContent',
+export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
+  root: 'fui-DialogSurface',
 };
 
 /**
@@ -57,10 +57,10 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the DialogContent slots based on the state
+ * Apply styling to the DialogSurface slots based on the state
  */
-export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
+export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogContentClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(dialogSurfaceClassNames.root, styles.root, state.root.className);
   return state;
 };

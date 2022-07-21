@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { DialogContentProps, DialogContentState } from './DialogContent.types';
+import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
 
 /**
- * Create the state required to render DialogContent.
+ * Create the state required to render DialogSurface.
  *
- * The returned state can be modified with hooks such as useDialogContentStyles_unstable,
- * before being passed to renderDialogContent_unstable.
+ * The returned state can be modified with hooks such as useDialogSurfaceStyles_unstable,
+ * before being passed to renderDialogSurface_unstable.
  *
- * @param props - props from this instance of DialogContent
- * @param ref - reference to root HTMLElement of DialogContent
+ * @param props - props from this instance of DialogSurface
+ * @param ref - reference to root HTMLElement of DialogSurface
  */
-export const useDialogContent_unstable = (
-  props: DialogContentProps,
+export const useDialogSurface_unstable = (
+  props: DialogSurfaceProps,
   ref: React.Ref<HTMLElement>,
-): DialogContentState => {
+): DialogSurfaceState => {
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const { as = 'div', trapFocus = modalType !== 'non-modal' } = props;
 

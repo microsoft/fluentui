@@ -67,8 +67,8 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    */
   onOpenChange?: (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
   /**
-   * Can contain two children including {@link DialogTrigger} and {@link DialogContent}.
-   * Alternatively can only contain {@link DialogContent} if using trigger outside dialog, or controlling state.
+   * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.
+   * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
 };

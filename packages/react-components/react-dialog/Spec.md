@@ -80,7 +80,7 @@ Sample usages will be give in the following section of this document [Sample cod
 
 ### Dialog
 
-The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogContent` or a `DialogTrigger` and a `DialogContent` (or some component that will eventually render one of those compound components) in this specific order
+The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogSurface` or a `DialogTrigger` and a `DialogSurface` (or some component that will eventually render one of those compound components) in this specific order
 
 ```tsx
 type DialogSlots = {
@@ -162,9 +162,9 @@ export type DialogTriggerProps = {
 };
 ```
 
-### DialogContent
+### DialogSurface
 
-The `DialogContent` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
+The `DialogSurface` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
 
 ```tsx
 type DialogTitleSlots = {
@@ -228,9 +228,9 @@ const dialog = <Dialog>
   <DialogTrigger>
     <Button>Open Dialog</Button>
   <DialogTrigger>
-  <DialogContent>
+  <DialogSurface>
     This is as basic as it gets.
-  </DialogContent>
+  </DialogSurface>
 </Dialog>
 ```
 
@@ -251,7 +251,7 @@ const dialog = <Dialog type="alert">
   <DialogTrigger>
     <Button>Open Dialog</Button>
   <DialogTrigger>
-  <DialogContent>
+  <DialogSurface>
     <DialogTitle>
         This is an alert
     </DialogTitle>
@@ -264,7 +264,7 @@ const dialog = <Dialog type="alert">
       </DialogTrigger>
       <Button>Action</Button>
     </DialogActions>
-  </DialogContent>
+  </DialogSurface>
 </Dialog>
 ```
 
@@ -310,7 +310,7 @@ const CustomDialog = () => {
         <Button onClick={handleOpen}>Button outside Dialog Context</Button>
       </DialogTrigger>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-        <DialogContent>
+        <DialogSurface>
           <DialogTitle>This is an alert</DialogTitle>
           <DialogBody>This is going to be inside the dialog</DialogBody>
           <DialogActions>
@@ -323,7 +323,7 @@ const CustomDialog = () => {
             </DialogTrigger>
             <Button>Action</Button>
           </DialogActions>
-        </DialogContent>
+        </DialogSurface>
       </Dialog>
     </>
   );
@@ -379,7 +379,7 @@ function AsyncConfirmDialog() {
         <DialogTrigger>
           <Button>Open Dialog</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogSurface>
           <DialogTitle>This is a dialog</DialogTitle>
           <DialogBody>
             <form id="form-id" onSubmit={handleSubmit}>
@@ -395,7 +395,7 @@ function AsyncConfirmDialog() {
               {state === 'submitting' && 'Submitting...'}
             </Button>
           </DialogActions>
-        </DialogContent>
+        </DialogSurface>
       </Dialog>
     </>
   );

@@ -48,10 +48,10 @@ export {
 export type { DialogTitleProps, DialogTitleSlots, DialogTitleState } from './DialogTitle';
 
 export {
-  DialogContent,
-  dialogContentClassNames,
-  useDialogContent_unstable,
-  useDialogContentStyles_unstable,
-  renderDialogContent_unstable,
-} from './DialogContent';
-export type { DialogContentProps, DialogContentSlots, DialogContentState } from './DialogContent';
+  DialogSurface,
+  dialogSurfaceClassNames,
+  useDialogSurface_unstable,
+  useDialogSurfaceStyles_unstable,
+  renderDialogSurface_unstable,
+} from './DialogSurface';
+export type { DialogSurfaceProps, DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface';
