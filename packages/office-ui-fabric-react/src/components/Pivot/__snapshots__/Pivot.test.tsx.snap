@@ -85,7 +85,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -102,7 +102,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -142,14 +142,14 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content="test"
@@ -198,7 +198,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             test
           </span>
         </span>
@@ -251,7 +251,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -268,7 +268,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -354,7 +354,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link
           </span>
           <span
@@ -475,7 +475,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -492,7 +492,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -532,14 +532,14 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content="Test Link 1"
@@ -588,7 +588,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -641,7 +641,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -658,7 +658,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -744,7 +744,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 2
           </span>
         </span>
@@ -854,7 +854,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -871,7 +871,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -911,14 +911,14 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content=" (12)"
@@ -1020,7 +1020,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1037,7 +1037,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -1123,7 +1123,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link
           </span>
           <span
@@ -1188,7 +1188,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1205,7 +1205,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -1312,7 +1312,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Text with icon
           </span>
         </span>
@@ -1421,7 +1421,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1438,7 +1438,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -1478,14 +1478,14 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content="Test Link 1"
@@ -1534,7 +1534,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -1587,7 +1587,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1604,7 +1604,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -1690,8 +1690,8 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
-            
+
+
           </span>
         </span>
       </span>
@@ -1801,7 +1801,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1818,7 +1818,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -1864,14 +1864,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             height: auto;
             transition: none;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
@@ -1924,7 +1924,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -1978,7 +1978,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1995,7 +1995,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -2088,8 +2088,8 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
-            
+
+
           </span>
         </span>
       </span>
@@ -2196,7 +2196,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2213,7 +2213,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -2253,14 +2253,14 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content="Test Link 1"
@@ -2309,7 +2309,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -2362,7 +2362,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2379,7 +2379,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -2465,8 +2465,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
-            
+
+
           </span>
         </span>
       </span>
@@ -2575,7 +2575,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2592,7 +2592,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -2638,14 +2638,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             height: auto;
             transition: none;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
@@ -2698,7 +2698,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -2752,7 +2752,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2769,7 +2769,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -2862,8 +2862,8 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-             
-            
+
+
           </span>
         </span>
       </span>
@@ -2969,7 +2969,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2986,7 +2986,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -3072,7 +3072,7 @@ exports[`Pivot supports JSX expressions 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 1
           </span>
         </span>
@@ -3126,7 +3126,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3143,7 +3143,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -3183,14 +3183,14 @@ exports[`Pivot supports JSX expressions 1`] = `
           .ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){&:before {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
             left: 0px;
             right: 0px;
           }
-          @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Highlight;
           }
       data-content="Test Link 3"
@@ -3239,7 +3239,7 @@ exports[`Pivot supports JSX expressions 1`] = `
                   vertical-align: top;
                 }
           >
-             
+
             Test Link 3
           </span>
         </span>

@@ -51,7 +51,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -59,7 +59,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -80,7 +80,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -90,7 +90,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -202,7 +202,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -225,7 +225,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -291,7 +291,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -314,7 +314,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -397,7 +397,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -405,7 +405,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -426,7 +426,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -436,7 +436,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -531,7 +531,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -554,7 +554,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
@@ -620,7 +620,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -643,7 +643,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
@@ -723,7 +723,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -731,7 +731,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -752,7 +752,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -762,7 +762,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -827,7 +827,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -835,7 +835,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -856,7 +856,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -866,7 +866,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -978,7 +978,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1001,7 +1001,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1067,7 +1067,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1090,7 +1090,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1173,7 +1173,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1181,7 +1181,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1202,7 +1202,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1212,7 +1212,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1324,7 +1324,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1347,7 +1347,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1413,7 +1413,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1436,7 +1436,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1519,7 +1519,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1527,7 +1527,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1548,7 +1548,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1558,7 +1558,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1670,7 +1670,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1693,7 +1693,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1759,7 +1759,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1782,7 +1782,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1865,7 +1865,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1873,7 +1873,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1894,7 +1894,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1904,7 +1904,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2016,7 +2016,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2039,7 +2039,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2105,7 +2105,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2128,7 +2128,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -2211,7 +2211,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2219,7 +2219,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2240,7 +2240,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -2250,7 +2250,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2362,7 +2362,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2385,7 +2385,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2451,7 +2451,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2474,7 +2474,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }

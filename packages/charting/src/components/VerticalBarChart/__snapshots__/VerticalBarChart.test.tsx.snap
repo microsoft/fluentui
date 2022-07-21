@@ -51,7 +51,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -59,7 +59,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -80,7 +80,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -90,7 +90,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -98,9 +98,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -205,7 +205,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -228,7 +228,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -294,7 +294,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -317,7 +317,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -383,7 +383,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -406,7 +406,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -489,7 +489,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -497,7 +497,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -518,7 +518,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -528,7 +528,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -536,9 +536,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -626,7 +626,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -649,7 +649,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
@@ -715,7 +715,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -738,7 +738,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, #002050, #002050);
                     opacity: ;
                   }
@@ -804,7 +804,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -827,7 +827,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
@@ -907,7 +907,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -915,7 +915,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -936,7 +936,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -946,7 +946,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -954,9 +954,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -1014,7 +1014,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1022,7 +1022,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1043,7 +1043,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1053,7 +1053,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1061,9 +1061,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -1168,7 +1168,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1191,7 +1191,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1257,7 +1257,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1280,7 +1280,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -1346,7 +1346,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1369,7 +1369,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1452,7 +1452,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1460,7 +1460,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1481,7 +1481,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1491,7 +1491,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1499,9 +1499,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -1606,7 +1606,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1629,7 +1629,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1695,7 +1695,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1718,7 +1718,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -1784,7 +1784,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1807,7 +1807,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1890,7 +1890,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1898,7 +1898,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1919,7 +1919,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1929,7 +1929,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1937,9 +1937,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -2044,7 +2044,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2067,7 +2067,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2133,7 +2133,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2156,7 +2156,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -2222,7 +2222,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2245,7 +2245,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -2328,7 +2328,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2336,7 +2336,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2357,7 +2357,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -2367,7 +2367,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2375,9 +2375,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+
+
+
       </g>
     </svg>
   </div>
@@ -2482,7 +2482,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2505,7 +2505,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2571,7 +2571,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2594,7 +2594,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
@@ -2660,7 +2660,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2683,7 +2683,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
