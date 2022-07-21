@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 const MenuGroupContext = React.createContext<MenuGroupContextValue>({ headerId: '' });
 
 /**

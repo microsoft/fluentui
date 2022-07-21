@@ -21,7 +21,7 @@ module.exports = {
     '@fluentui/no-context-default-value': [
       'error',
       {
-        imports: ['react', '@fluentui/react-context-selector'],
+        imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
       },
     ],
   },
