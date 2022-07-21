@@ -66,6 +66,34 @@ ruleTester.run('no-context-default-value', rule, {
       code: `
         import {createContext as createContext1} from 'react'
         import {createContext as createContext2} from '@fluenui/react-context-selector'
+        const context1 = createContext1(null);
+        const context2 = createContext2(null);
+      `,
+      options: [
+        {
+          imports: ['react', '@fluenui/react-context-selector'],
+        },
+      ],
+      errors: [{ messageId: 'invalidDefaultValue' }, { messageId: 'invalidDefaultValue' }],
+    },
+    {
+      code: `
+        import {createContext as createContext1} from 'react'
+        import {createContext as createContext2} from '@fluenui/react-context-selector'
+        const context1 = createContext1({});
+        const context2 = createContext2({});
+      `,
+      options: [
+        {
+          imports: ['react', '@fluenui/react-context-selector'],
+        },
+      ],
+      errors: [{ messageId: 'invalidDefaultValue' }, { messageId: 'invalidDefaultValue' }],
+    },
+    {
+      code: `
+        import {createContext as createContext1} from 'react'
+        import {createContext as createContext2} from '@fluenui/react-context-selector'
         const context1 = createContext1(defaultValue);
         const context2 = createContext2(defaultValue);
       `,
