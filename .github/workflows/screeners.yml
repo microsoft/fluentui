@@ -1,6 +1,6 @@
 name: Screeners workflow
 
-on: [workflow_dispatch]
+on: pull_request
 
 env:
         SKIPCOMPONENTGOVERNANCEDETECTION: true
