@@ -20,12 +20,20 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '0.5em auto',
     gridTemplateRows: '0.5em 1fr 1fr 0.5em',
+    flexGrow: 1,
+    flexShrink: 0,
+    ':hover': {
+      flexShrink: 1,
+    },
+    ':hover > div': {
+      justifyContent: 'space-between',
+      gridColumnStart: 2,
+      gridRowStart: 2,
+      display: 'flex',
+    },
   },
   hexCopy: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    gridColumnStart: 2,
-    gridRowStart: 2,
+    display: 'none',
   },
   brandKey: {
     justifyContent: 'left',
@@ -43,8 +51,6 @@ const getBrands = (colors: BrandVariants): Brands[] => {
 export const Palette: React.FC<PaletteProps> = props => {
   const styles = useStyles();
 
-  const [shownHex, setShownHex] = React.useState<number>(0);
-
   return (
     <div>
       <Caption1>Generated palette</Caption1>
@@ -59,24 +65,17 @@ export const Palette: React.FC<PaletteProps> = props => {
               style={{
                 backgroundColor: brandColor,
                 color: textColor,
-                flex: shownHex === brandKey ? '1 0 auto' : '1 1 auto',
               }}
-              onMouseEnter={() => setShownHex(brandKey)}
-              onMouseLeave={() => setShownHex(0)}
             >
-              {shownHex === brandKey ? (
-                <div className={styles.hexCopy}>
-                  <Text>{brandColor}</Text>
-                  <Button
-                    size="small"
-                    appearance="transparent"
-                    icon={<CopyRegular color={textColor} />}
-                    onClick={() => navigator.clipboard.writeText(brandColor)} // eslint-disable-line react/jsx-no-bind
-                  />
-                </div>
-              ) : (
-                <div />
-              )}
+              <div className={styles.hexCopy}>
+                <Text>{brandColor}</Text>
+                <Button
+                  size="small"
+                  appearance="transparent"
+                  icon={<CopyRegular color={textColor} />}
+                  onClick={() => navigator.clipboard.writeText(brandColor)} // eslint-disable-line react/jsx-no-bind
+                />
+              </div>
               <Text className={styles.brandKey}>{brandKey}</Text>
             </div>
           );
