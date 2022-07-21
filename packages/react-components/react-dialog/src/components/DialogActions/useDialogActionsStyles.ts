@@ -22,11 +22,11 @@ const useStyles = makeStyles({
       justifySelf: 'stretch',
     },
   },
-  gridPositionRight: {
+  gridPositionEnd: {
     justifySelf: 'end',
     ...localShorthands.gridArea('actions-right'),
   },
-  gridPositionLeft: {
+  gridPositionStart: {
     justifySelf: 'start',
     ...localShorthands.gridArea('actions-left'),
   },
@@ -40,8 +40,8 @@ export const useDialogActionsStyles_unstable = (state: DialogActionsState): Dial
   state.root.className = mergeClasses(
     dialogActionsClassNames.root,
     styles.root,
-    state.position === 'left' && styles.gridPositionLeft,
-    state.position === 'right' && styles.gridPositionRight,
+    state.position === 'start' && styles.gridPositionStart,
+    state.position === 'end' && styles.gridPositionEnd,
     state.root.className,
   );
   return state;

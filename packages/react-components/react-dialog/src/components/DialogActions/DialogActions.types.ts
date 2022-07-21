@@ -4,7 +4,7 @@ export type DialogActionsSlots = {
   root: Slot<'div'>;
 };
 
-export type DialogActionsPosition = 'left' | 'right';
+export type DialogActionsPosition = 'start' | 'end';
 
 /**
  * DialogActions Props
@@ -12,7 +12,7 @@ export type DialogActionsPosition = 'left' | 'right';
 export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
   /**
    * defines the position on the dialog grid of the actions
-   * @default 'right'
+   * @default 'end'
    */
   position?: DialogActionsPosition;
 };

@@ -15,7 +15,7 @@ export const useDialogActions_unstable = (
   props: DialogActionsProps,
   ref: React.Ref<HTMLElement>,
 ): DialogActionsState => {
-  const { position = 'right' } = props;
+  const { position = 'end' } = props;
   return {
     components: {
       root: 'div',

@@ -27,7 +27,7 @@ export const DialogActions: ForwardRefComponent<DialogActionsProps>;
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots>;
 
 // @public (undocumented)
-export type DialogActionsPosition = 'left' | 'right';
+export type DialogActionsPosition = 'start' | 'end';
 
 // @public
 export type DialogActionsProps = ComponentProps<DialogActionsSlots> & {
