@@ -26,14 +26,14 @@ const useStyles = makeStyles({
       flexShrink: 1,
     },
     ':hover > div': {
-      justifyContent: 'space-between',
-      gridColumnStart: 2,
-      gridRowStart: 2,
       display: 'flex',
     },
   },
   hexCopy: {
     display: 'none',
+    justifyContent: 'space-between',
+    gridColumnStart: 2,
+    gridRowStart: 2,
   },
   brandKey: {
     justifyContent: 'left',
