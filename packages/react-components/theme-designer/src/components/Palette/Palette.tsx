@@ -17,23 +17,15 @@ const useStyles = makeStyles({
     justifyContent: 'space-evenly',
   },
   block: {
-    justifyContent: 'left',
     display: 'grid',
     gridTemplateColumns: '0.5em auto',
     gridTemplateRows: '0.5em 1fr 1fr 0.5em',
   },
   hexCopy: {
+    display: 'flex',
     justifyContent: 'space-between',
     gridColumnStart: 2,
     gridRowStart: 2,
-  },
-  hexColor: {
-    justifyContent: 'left',
-    alignItems: 'flex-start',
-  },
-  copyButton: {
-    justifyContent: 'right',
-    alignItems: 'flex-end',
   },
   brandKey: {
     justifyContent: 'left',
@@ -67,17 +59,16 @@ export const Palette: React.FC<PaletteProps> = props => {
               style={{
                 backgroundColor: brandColor,
                 color: textColor,
-                flexGrow: shownHex === brandKey ? 0 : 1,
+                flex: shownHex === brandKey ? '1 0 auto' : '1 1 auto',
               }}
               onMouseEnter={() => setShownHex(brandKey)}
               onMouseLeave={() => setShownHex(0)}
             >
               {shownHex === brandKey ? (
                 <div className={styles.hexCopy}>
-                  <Text className={styles.hexColor}>{brandColor}</Text>
+                  <Text>{brandColor}</Text>
                   <Button
                     size="small"
-                    className={styles.copyButton}
                     appearance="transparent"
                     icon={<CopyRegular color={textColor} />}
                     onClick={() => navigator.clipboard.writeText(brandColor)} // eslint-disable-line react/jsx-no-bind
