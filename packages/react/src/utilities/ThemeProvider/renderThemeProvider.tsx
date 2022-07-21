@@ -12,9 +12,7 @@ export const renderThemeProvider = (state: ThemeProviderState) => {
     <ThemeContext.Provider value={theme}>
       <CustomizerContext.Provider value={customizerContext}>
         <FocusRectsProvider value={focusRectsContext}>
-          <div>
-            <Root {...rootProps} />
-          </div>
+          <Root {...rootProps} />
         </FocusRectsProvider>
       </CustomizerContext.Provider>
     </ThemeContext.Provider>

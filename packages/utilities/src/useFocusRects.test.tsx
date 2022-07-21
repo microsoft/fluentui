@@ -135,7 +135,7 @@ describe('useFocusRects', () => {
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
-      expect(mockWindow.addEventListenerCallCount).toBe(3);
+      expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
@@ -144,7 +144,7 @@ describe('useFocusRects', () => {
       ReactTestUtils.act(() => {
         focusRects2.unmount();
       });
-      expect(mockWindow.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to show focus when you press a directional key with multi-window', () => {
@@ -172,19 +172,19 @@ describe('useFocusRects', () => {
       expect(mockWindow2.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow2.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
-      expect(mockWindow.addEventListenerCallCount).toBe(3);
+      expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
-      expect(mockWindow.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow.removeEventListenerCallCount).toBe(4);
 
-      expect(mockWindow2.addEventListenerCallCount).toBe(3);
+      expect(mockWindow2.addEventListenerCallCount).toBe(4);
       expect(mockWindow2.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects2.unmount();
       });
-      expect(mockWindow2.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow2.removeEventListenerCallCount).toBe(4);
     });
 
     it('no-ops when you press a non-directional key', () => {
@@ -198,7 +198,7 @@ describe('useFocusRects', () => {
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       // don't care about the state of the "hidden" class in this case
 
-      expect(mockWindow.addEventListenerCallCount).toBe(3);
+      expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
@@ -207,7 +207,7 @@ describe('useFocusRects', () => {
       ReactTestUtils.act(() => {
         focusRects2.unmount();
       });
-      expect(mockWindow.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to hide focus on mouse click', () => {
@@ -225,12 +225,12 @@ describe('useFocusRects', () => {
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeTruthy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
 
-      expect(mockWindow.addEventListenerCallCount).toBe(3);
+      expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
-      expect(mockWindow.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow.removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to show focus when you press a custom directional key', () => {
@@ -250,7 +250,7 @@ describe('useFocusRects', () => {
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
-      expect(mockWindow.addEventListenerCallCount).toBe(3);
+      expect(mockWindow.addEventListenerCallCount).toBe(4);
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
@@ -259,7 +259,7 @@ describe('useFocusRects', () => {
       ReactTestUtils.act(() => {
         focusRects2.unmount();
       });
-      expect(mockWindow.removeEventListenerCallCount).toBe(3);
+      expect(mockWindow.removeEventListenerCallCount).toBe(4);
 
       removeDirectionalKeyCode(KeyCodes.f6);
     });
@@ -290,7 +290,7 @@ describe('useFocusRects', () => {
     type MockProviderRef = {
       addEventListener: (name: string, callback: Function) => void;
       removeEventListener: (name: string, callback: Function) => void;
-      eventListeners: { keyup?: Function; mousedown?: Function; pointerdown?: Function };
+      eventListeners: { keydown?: Function; keyup?: Function; mousedown?: Function; pointerdown?: Function };
       classList: {
         add: (name: string) => void;
         contains: (name: string) => void;
@@ -458,13 +458,13 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       expect(mockWindow.addEventListenerCallCount).toBe(0);
-      expect(addEventListenerCallCount).toBe(3);
+      expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      expect(removeEventListenerCallCount).toBe(3);
+      expect(removeEventListenerCallCount).toBe(4);
     });
 
     it('no-ops when you press a non-directional key', () => {
@@ -484,13 +484,13 @@ describe('useFocusRects', () => {
       // don't care about the state of the "hidden" class in this case
 
       expect(mockWindow.addEventListenerCallCount).toBe(0);
-      expect(addEventListenerCallCount).toBe(3);
+      expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      expect(removeEventListenerCallCount).toBe(3);
+      expect(removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to hide focus on mouse click', () => {
@@ -520,13 +520,13 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeFalsy();
 
       expect(mockWindow.addEventListenerCallCount).toBe(0);
-      expect(addEventListenerCallCount).toBe(3);
+      expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      expect(removeEventListenerCallCount).toBe(3);
+      expect(removeEventListenerCallCount).toBe(4);
     });
 
     it('can hint to show focus when you press a custom directional key', () => {
@@ -556,13 +556,13 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       expect(mockWindow.addEventListenerCallCount).toBe(0);
-      expect(addEventListenerCallCount).toBe(3);
+      expect(addEventListenerCallCount).toBe(4);
       expect(removeEventListenerCallCount).toBe(0);
       ReactTestUtils.act(() => {
         focusRects1.unmount();
       });
       expect(mockWindow.removeEventListenerCallCount).toBe(0);
-      expect(removeEventListenerCallCount).toBe(3);
+      expect(removeEventListenerCallCount).toBe(4);
 
       removeDirectionalKeyCode(KeyCodes.f6);
     });
