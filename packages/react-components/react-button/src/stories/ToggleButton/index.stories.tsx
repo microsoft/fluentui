@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { ToggleButton } from '@fluentui/react-button';
+import { ToggleButton } from '@fluentui/react-components';
 import descriptionMd from './ToggleButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 
@@ -14,7 +14,7 @@ export { Checked } from './ToggleButtonChecked.stories';
 export { WithLongText } from './ToggleButtonWithLongText.stories';
 
 export default {
-  title: 'Components/ToggleButton',
+  title: 'Components/Button/ToggleButton',
   component: ToggleButton,
   parameters: {
     docs: {

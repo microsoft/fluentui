@@ -19,17 +19,20 @@ import type { AlertProps, AlertState } from './Alert.types';
 export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>): AlertState => {
   const { appearance = 'primary', intent } = props;
 
-  /** Determine the icon to render based on the intent */
+  /** Determine the role and icon to render based on the intent */
   let defaultIcon;
+  let defaultRole = 'status';
   switch (intent) {
     case 'success':
       defaultIcon = <CheckmarkCircleFilled />;
       break;
     case 'error':
       defaultIcon = <DismissCircleFilled />;
+      defaultRole = 'alert';
       break;
     case 'warning':
       defaultIcon = <WarningFilled />;
+      defaultRole = 'alert';
       break;
     case 'info':
       defaultIcon = <InfoFilled />;
@@ -62,6 +65,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
     intent,
     root: getNativeElementProps('div', {
       ref,
+      role: defaultRole,
       children: props.children,
       ...props,
     }),

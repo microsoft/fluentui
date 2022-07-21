@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { CounterBadge, CounterBadgeProps } from '@fluentui/react-badge';
+import { CounterBadge } from '@fluentui/react-components';
+import type { CounterBadgeProps } from '@fluentui/react-components';
 
 export const Default = (args: CounterBadgeProps) => <CounterBadge {...args} />;
 

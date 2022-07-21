@@ -1,8 +1,112 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 30 Jun 2022 07:40:48 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jul 2022 07:49:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.82.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.2)
+
+Thu, 21 Jul 2022 07:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.1..@fluentui/react_v8.82.2)
+
+### Patches
+
+- fix: TagPicker no longer reads remove when narrating list of selected tags ([PR #24009](https://github.com/microsoft/fluentui/pull/24009) by sarah.higley@microsoft.com)
+
+## [8.82.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.1)
+
+Wed, 20 Jul 2022 07:42:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.0..@fluentui/react_v8.82.1)
+
+### Patches
+
+- fix: Improve step handling for invalid intermediate SpinButton values ([PR #23993](https://github.com/microsoft/fluentui/pull/23993) by seanmonahan@microsoft.com)
+- fix: update CommandBar cacheKey computation to include farItems ([PR #23973](https://github.com/microsoft/fluentui/pull/23973) by seanmonahan@microsoft.com)
+
+## [8.82.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.0)
+
+Tue, 19 Jul 2022 07:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.1..@fluentui/react_v8.82.0)
+
+### Minor changes
+
+- fix: Update Nav to not use separate labels for expand/collapse state. ([PR #23968](https://github.com/microsoft/fluentui/pull/23968) by sarah.higley@microsoft.com)
+
+## [8.81.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.1)
+
+Fri, 15 Jul 2022 20:03:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.0..@fluentui/react_v8.81.1)
+
+### Patches
+
+- chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump. ([PR #23945](https://github.com/microsoft/fluentui/pull/23945) by Humberto.Morimoto@microsoft.com)
+
+## [8.81.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.0)
+
+Thu, 14 Jul 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.80.0..@fluentui/react_v8.81.0)
+
+### Minor changes
+
+- Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body. ([PR #23753](https://github.com/microsoft/fluentui/pull/23753) by email not defined)
+
+## [8.80.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.80.0)
+
+Tue, 12 Jul 2022 07:40:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.79.0..@fluentui/react_v8.80.0)
+
+### Minor changes
+
+- feat: Re-export canUseDOM from @fluentui/utilities and remove setSSR from withResponsiveMode tests. ([PR #23847](https://github.com/microsoft/fluentui/pull/23847) by esteban.230@hotmail.com)
+- Bump @fluentui/foundation-legacy to v8.2.10 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.3 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-focus to v8.7.3 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/react-hooks to v8.6.1 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/style-utilities to v8.7.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/theme to v2.6.7 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/utilities to v8.9.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+- Bump @fluentui/common-styles to v1.1.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+
+### Patches
+
+- fix(Combobox): Only set newPendingValue if there is not a matching option and the pendingValue changed. ([PR #23824](https://github.com/microsoft/fluentui/pull/23824) by jspurlin@microsoft.com)
+- feat: add list utilities for reading and writing scroll values ([PR #23813](https://github.com/microsoft/fluentui/pull/23813) by seanmonahan@microsoft.com)
+- feat: Allow SelectionZone attributes to disallow behaviors. ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by tmichon@microsoft.com)
+
+## [8.79.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.79.0)
+
+Fri, 08 Jul 2022 07:36:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.1..@fluentui/react_v8.79.0)
+
+### Minor changes
+
+- Add optional improveCSSPerformance prop to Shimmer ([PR #23728](https://github.com/microsoft/fluentui/pull/23728) by conniechen@microsoft.com)
+
+### Patches
+
+- fix(Dropdown): narrator announcing hidden items as selectable ([PR #23755](https://github.com/microsoft/fluentui/pull/23755) by marcosmoura@microsoft.com)
+
+## [8.78.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.1)
+
+Thu, 07 Jul 2022 07:37:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.78.0..@fluentui/react_v8.78.1)
+
+### Patches
+
+- Handle when FocusTrapZone wraps an iframe ([PR #23792](https://github.com/microsoft/fluentui/pull/23792) by tmichon@microsoft.com)
+
+## [8.78.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.78.0)
+
+Wed, 06 Jul 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.77.3..@fluentui/react_v8.78.0)
+
+### Minor changes
+
+- feat: Adding focusZoneProps support for Nav. ([PR #23806](https://github.com/microsoft/fluentui/pull/23806) by cqc@cuiqingcai.com)
+
+### Patches
+
+- fix(Checkbox): add indeterminate value to inputRef ([PR #23772](https://github.com/microsoft/fluentui/pull/23772) by marcosmoura@microsoft.com)
 
 ## [8.77.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.77.3)
 

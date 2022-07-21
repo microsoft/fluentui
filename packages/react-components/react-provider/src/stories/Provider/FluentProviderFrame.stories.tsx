@@ -1,10 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from '@fluentui/react-button';
-import { createDOMRenderer, makeStyles, RendererProvider, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-
-import { FluentProvider } from '@fluentui/react-provider';
+import {
+  createDOMRenderer,
+  makeStyles,
+  shorthands,
+  tokens,
+  Button,
+  FluentProvider,
+  RendererProvider,
+} from '@fluentui/react-components';
 
 const useExampleStyles = makeStyles({
   button: {

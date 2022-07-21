@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { SplitButton } from '@fluentui/react-button';
+import { SplitButton } from '@fluentui/react-components';
 import descriptionMd from './SplitButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 
@@ -16,7 +16,7 @@ export { Disabled } from './SplitButtonDisabled.stories';
 export { WithLongText } from './SplitButtonWithLongText.stories';
 
 export default {
-  title: 'Components/SplitButton',
+  title: 'Components/Button/SplitButton',
   component: SplitButton,
   parameters: {
     docs: {

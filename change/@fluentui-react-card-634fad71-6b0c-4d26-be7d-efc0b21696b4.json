@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "BREAKING CHANGE: new structural and styling approach applied to CardHeader",
-  "packageName": "@fluentui/react-card",
-  "email": "39736248+andrefcdias@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

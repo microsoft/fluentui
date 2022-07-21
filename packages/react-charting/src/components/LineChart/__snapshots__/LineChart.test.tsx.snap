@@ -208,104 +208,117 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             <div
               aria-label="Legends"
               className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
                   }
+              data-focuszone-id="FocusZone8"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
                 className=
-                    ms-OverflowSet-item
+                    ms-OverflowSet
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
-                role="none"
+                role="group"
               >
-                <button
-                  aria-label="metaData1 selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
+                  role="none"
                 >
-                  <div
+                  <button
+                    aria-label="metaData1 selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={1}
                     className=
 
                         {
-                          background-color: red;
-                          border-color: red;
-                          border: 1px solid;
-                          content: ;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, red, red);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    metaData1
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: red;
+                            border-color: red;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, red, red);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      metaData1
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -332,7 +345,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_30"
+  id="chart_32"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -342,7 +355,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone31"
+    data-focuszone-id="FocusZone33"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -383,7 +396,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             & path {
               display: none;
             }
-        id="xAxisGElementchart_30"
+        id="xAxisGElementchart_32"
         transform="translate(0, -35)"
       />
       <g
@@ -411,12 +424,12 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_30"
+        id="yAxisGElementchart_32"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine27"
+          id="verticalLine29"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -427,7 +440,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g>
           <line
-            id="lineID2501"
+            id="lineID2701"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -449,7 +462,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle2401"
+            id="circle2601"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -468,7 +481,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
      "
             data-is-focusable={true}
             fill="red"
-            id="circle24011L"
+            id="circle26011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -507,104 +520,117 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       <div
         aria-label="Legends"
         className=
-            ms-OverflowSet
-            {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: unset;
-              position: relative;
+            ms-FocusZone
+            &:focus {
+              outline: none;
             }
+        data-focuszone-id="FocusZone34"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
         role="listbox"
       >
         <div
           className=
-              ms-OverflowSet-item
+              ms-OverflowSet
               {
-                display: inherit;
-                flex-shrink: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: unset;
+                position: relative;
               }
-          role="none"
+          role="group"
         >
-          <button
-            aria-label="metaData1 selected"
-            aria-posinset={1}
-            aria-selected={false}
-            aria-setsize={1}
+          <div
             className=
-
+                ms-OverflowSet-item
                 {
-                  align-items: center;
-                  background: none;
-                  border: none;
-                  cursor: pointer;
-                  display: flex;
-                  outline: transparent;
-                  padding-bottom: 8px;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 8px;
-                  position: relative;
-                  text-transform: capitalize;
+                  display: inherit;
+                  flex-shrink: 0;
                 }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  outline-color: #605e5c;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
+            role="none"
           >
-            <div
+            <button
+              aria-label="metaData1 selected"
+              aria-posinset={1}
+              aria-selected={false}
+              aria-setsize={1}
               className=
 
                   {
-                    background-color: red;
-                    border-color: red;
-                    border: 1px solid;
-                    content: ;
-                    height: 12px;
-                    margin-right: 8px;
-                    width: 12px;
+                    align-items: center;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    display: flex;
+                    outline: transparent;
+                    padding-bottom: 8px;
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    padding-top: 8px;
+                    position: relative;
+                    text-transform: capitalize;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    content: linear-gradient(to right, red, red);
-                    opacity: ;
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
-            />
-            <div
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #323130;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: ;
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              role="option"
             >
-              metaData1
-            </div>
-          </button>
+              <div
+                className=
+
+                    {
+                      background-color: red;
+                      border-color: red;
+                      border: 1px solid;
+                      content: ;
+                      height: 12px;
+                      margin-right: 8px;
+                      width: 12px;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                      content: linear-gradient(to right, red, red);
+                      opacity: ;
+                    }
+              />
+              <div
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      line-height: 16px;
+                      opacity: ;
+                    }
+              >
+                metaData1
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -628,7 +654,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_14"
+  id="chart_15"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -638,7 +664,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone15"
+    data-focuszone-id="FocusZone16"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -679,7 +705,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_14"
+        id="xAxisGElementchart_15"
         transform="translate(0, -35)"
       />
       <g
@@ -707,12 +733,12 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_14"
+        id="yAxisGElementchart_15"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine11"
+          id="verticalLine12"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -723,7 +749,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         />
         <g>
           <line
-            id="lineID901"
+            id="lineID1001"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -745,7 +771,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle801"
+            id="circle901"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -764,7 +790,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle8011L"
+            id="circle9011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -798,7 +824,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_22"
+  id="chart_23"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -808,7 +834,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone24"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -849,7 +875,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_22"
+        id="xAxisGElementchart_23"
         transform="translate(0, -35)"
       />
       <g
@@ -877,12 +903,12 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_22"
+        id="yAxisGElementchart_23"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine19"
+          id="verticalLine20"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -893,7 +919,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g>
           <line
-            id="lineID1701"
+            id="lineID1801"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -915,7 +941,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle1601"
+            id="circle1701"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -934,7 +960,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle16011L"
+            id="circle17011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -990,104 +1016,117 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             <div
               aria-label="Legends"
               className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
                   }
+              data-focuszone-id="FocusZone25"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
                 className=
-                    ms-OverflowSet-item
+                    ms-OverflowSet
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
-                role="none"
+                role="group"
               >
-                <button
-                  aria-label="metaData1 selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
+                  role="none"
                 >
-                  <div
+                  <button
+                    aria-label="metaData1 selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={1}
                     className=
 
                         {
-                          background-color: red;
-                          border-color: red;
-                          border: 1px solid;
-                          content: ;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, red, red);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    metaData1
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: red;
+                            border-color: red;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, red, red);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      metaData1
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1114,7 +1153,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_38"
+  id="chart_41"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1124,7 +1163,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone42"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1165,7 +1204,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_38"
+        id="xAxisGElementchart_41"
         transform="translate(0, -35)"
       />
       <g
@@ -1193,12 +1232,12 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_38"
+        id="yAxisGElementchart_41"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine35"
+          id="verticalLine38"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1209,7 +1248,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g>
           <line
-            id="lineID3301"
+            id="lineID3601"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1231,7 +1270,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle3201"
+            id="circle3501"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1250,7 +1289,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
      "
             data-is-focusable={true}
             fill="red"
-            id="circle32011L"
+            id="circle35011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1306,104 +1345,117 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             <div
               aria-label="Legends"
               className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
                   }
+              data-focuszone-id="FocusZone43"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
                 className=
-                    ms-OverflowSet-item
+                    ms-OverflowSet
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
-                role="none"
+                role="group"
               >
-                <button
-                  aria-label="metaData1 selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
+                  role="none"
                 >
-                  <div
+                  <button
+                    aria-label="metaData1 selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={1}
                     className=
 
                         {
-                          background-color: red;
-                          border-color: red;
-                          border: 1px solid;
-                          content: ;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, red, red);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    metaData1
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: red;
+                            border-color: red;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, red, red);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      metaData1
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1430,7 +1482,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_46"
+  id="chart_50"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1440,7 +1492,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone47"
+    data-focuszone-id="FocusZone51"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1481,7 +1533,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_46"
+        id="xAxisGElementchart_50"
         transform="translate(0, -35)"
       />
       <g
@@ -1509,12 +1561,12 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_46"
+        id="yAxisGElementchart_50"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine43"
+          id="verticalLine47"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1525,7 +1577,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         />
         <g>
           <line
-            id="lineID4101"
+            id="lineID4501"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1547,7 +1599,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle4001"
+            id="circle4401"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1566,7 +1618,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle40011L"
+            id="circle44011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1622,104 +1674,117 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             <div
               aria-label="Legends"
               className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
                   }
+              data-focuszone-id="FocusZone52"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
                 className=
-                    ms-OverflowSet-item
+                    ms-OverflowSet
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
-                role="none"
+                role="group"
               >
-                <button
-                  aria-label="metaData1 selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
+                  role="none"
                 >
-                  <div
+                  <button
+                    aria-label="metaData1 selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={1}
                     className=
 
                         {
-                          background-color: red;
-                          border-color: red;
-                          border: 1px solid;
-                          content: ;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, red, red);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    metaData1
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: red;
+                            border-color: red;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, red, red);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      metaData1
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1746,7 +1811,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_54"
+  id="chart_59"
   onMouseLeave={[Function]}
   role="presentation"
 >
@@ -1756,7 +1821,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone55"
+    data-focuszone-id="FocusZone60"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1797,7 +1862,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_54"
+        id="xAxisGElementchart_59"
         transform="translate(0, -35)"
       />
       <g
@@ -1825,12 +1890,12 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_54"
+        id="yAxisGElementchart_59"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine51"
+          id="verticalLine56"
           stroke="#C8C8C8"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1841,7 +1906,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g>
           <line
-            id="lineID4901"
+            id="lineID5401"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1863,7 +1928,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle4801"
+            id="circle5301"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1882,7 +1947,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
      "
             data-is-focusable={true}
             fill="red"
-            id="circle48011L"
+            id="circle53011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1938,104 +2003,117 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             <div
               aria-label="Legends"
               className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
                   }
+              data-focuszone-id="FocusZone61"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
               role="listbox"
             >
               <div
                 className=
-                    ms-OverflowSet-item
+                    ms-OverflowSet
                     {
-                      display: inherit;
-                      flex-shrink: 0;
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: unset;
+                      position: relative;
                     }
-                role="none"
+                role="group"
               >
-                <button
-                  aria-label="metaData1 selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
+                <div
                   className=
-
+                      ms-OverflowSet-item
                       {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
+                        display: inherit;
+                        flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
+                  role="none"
                 >
-                  <div
+                  <button
+                    aria-label="metaData1 selected"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={1}
                     className=
 
                         {
-                          background-color: red;
-                          border-color: red;
-                          border: 1px solid;
-                          content: ;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, red, red);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
                   >
-                    metaData1
-                  </div>
-                </button>
+                    <div
+                      className=
+
+                          {
+                            background-color: red;
+                            border-color: red;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, red, red);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      metaData1
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

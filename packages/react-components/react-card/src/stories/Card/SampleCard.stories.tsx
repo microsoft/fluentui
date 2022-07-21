@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { Button } from '@fluentui/react-button';
+import { makeStyles, Body1, Caption1, Subtitle1, Button } from '@fluentui/react-components';
 import { MoreHorizontal20Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
-import { Body1, Caption1, Subtitle1 } from '@fluentui/react-text';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
 

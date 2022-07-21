@@ -1,15 +1,6 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-
-import {
-  Menu,
-  MenuProps,
-  MenuTrigger,
-  MenuList,
-  MenuItem,
-  MenuPopover,
-  MenuTriggerChildProps,
-} from '@fluentui/react-menu';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import type { MenuProps, MenuTriggerChildProps } from '@fluentui/react-components';
 
 const CustomMenuTrigger = React.forwardRef<HTMLButtonElement, Partial<MenuTriggerChildProps>>((props, ref) => {
   return (

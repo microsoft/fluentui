@@ -199,17 +199,20 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     // aria-label only works if the content is a string. Otherwise, need to use aria-labelledby.
     if (typeof state.content.children === 'string') {
       triggerAriaProps['aria-label'] = state.content.children;
-    } else if (!isServerSideRender) {
+    } else {
       triggerAriaProps['aria-labelledby'] = state.content.id;
       // Always render the tooltip even if hidden, so that aria-labelledby refers to a valid element
       state.shouldRenderTooltip = true;
     }
   } else if (relationship === 'description') {
-    if (!isServerSideRender) {
-      triggerAriaProps['aria-describedby'] = state.content.id;
-      // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
-      state.shouldRenderTooltip = true;
-    }
+    triggerAriaProps['aria-describedby'] = state.content.id;
+    // Always render the tooltip even if hidden, so that aria-describedby refers to a valid element
+    state.shouldRenderTooltip = true;
+  }
+
+  // Don't render the Tooltip in SSR to avoid hydration errors
+  if (isServerSideRender) {
+    state.shouldRenderTooltip = false;
   }
 
   const childTargetRef = useMergedRefs(child?.ref, targetRef);

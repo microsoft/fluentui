@@ -30,6 +30,7 @@ import { baseElementProperties } from '@fluentui/utilities';
 import { buildClassMap } from '@fluentui/style-utilities';
 import { buttonProperties } from '@fluentui/utilities';
 import { calculatePrecision } from '@fluentui/utilities';
+import { canUseDOM } from '@fluentui/utilities';
 import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
@@ -907,6 +908,8 @@ export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+export { canUseDOM }
 
 // @public (undocumented)
 export const Check: React_2.FunctionComponent<ICheckProps>;
@@ -6934,6 +6937,7 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    // @deprecated
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
@@ -6951,6 +6955,7 @@ export interface INavProps {
     componentRef?: IRefObject<INav>;
     // @deprecated
     expandButtonAriaLabel?: string;
+    focusZoneProps?: IFocusZoneProps;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -6959,6 +6964,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
@@ -8336,6 +8342,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React_2.ReactNode;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
     shimmerElements?: IShimmerElement[];
@@ -8347,6 +8354,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
 // @public
 export interface IShimmerStyleProps {
     className?: string;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColor?: string;
     shimmerWaveColor?: string;
@@ -10481,6 +10489,9 @@ export { setFocusVisibility }
 export { setIconOptions }
 
 export { setLanguage }
+
+// @public
+export function setLayerHostSelector(selector?: string): void;
 
 export { setMemoizeWeakMap }
 

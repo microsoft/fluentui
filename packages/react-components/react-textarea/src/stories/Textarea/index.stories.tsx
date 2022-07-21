@@ -1,4 +1,4 @@
-import { Textarea } from '@fluentui/react-textarea';
+import { Textarea } from '@fluentui/react-components';
 
 import descriptionMd from './TextareaDescription.md';
 import bestPracticesMd from './TextareaBestPractices.md';
@@ -11,6 +11,7 @@ export { Resize } from './TextareaResize.stories';
 export { Size } from './TextareaSize.stories';
 export { Uncontrolled } from './TextareaUncontrolled.stories';
 export { Controlled } from './TextareaControlled.stories';
+export { Height } from './TextareaHeight.stories';
 
 export default {
   title: 'Components/Textarea',
