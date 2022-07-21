@@ -18,8 +18,10 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
+    "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
+    "storybook": "node ../../../scripts/storybook/runner",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-progress/src && yarn docs",
     "type-check": "tsc -b tsconfig.json"
   },
@@ -30,8 +32,10 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-label": "9.0.3",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
+    "@fluentui/react-shared-contexts": "9.0.0",
     "@griffel/react": "^1.2.0",
     "tslib": "^2.1.0"
   },
