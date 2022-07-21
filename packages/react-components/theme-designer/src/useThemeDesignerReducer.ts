@@ -4,7 +4,6 @@ import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
 import { brandTeams } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { themeList, themeNames } from './utils/themeList';
-import { brandRamp } from './components/ColorTokens/getOverridableTokenBrandColors';
 
 export type CustomAttributes = {
   keyColor: string;
@@ -107,23 +106,10 @@ export const useThemeDesignerReducer = () => {
       if (!action.customAttributes) {
         return state;
       }
-      const newBrand = createCustomTheme(action.customAttributes);
+      brand = createCustomTheme(action.customAttributes);
 
-      const sameBrand = brandRamp
-        .map(num => {
-          return state.brand[num] === newBrand[num];
-        })
-        .reduce((prev, curr) => {
-          return prev && curr;
-        });
-
-      // check if the previous theme is also custom, if it is but the brand changes, clear overrides
-      if (!themeList[state.themeName].brand && !sameBrand) {
-        dispatchOverrideState({ type: themeName + 'Light' });
-        dispatchOverrideState({ type: themeName + 'Dark' });
-      }
-
-      brand = newBrand;
+      dispatchOverrideState({ type: themeName + 'Light' });
+      dispatchOverrideState({ type: themeName + 'Dark' });
     }
 
     return {
