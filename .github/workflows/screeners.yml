@@ -19,11 +19,15 @@ env:
 
         BUILD_SOURCEBRANCH: ${{ github.ref }}
 
-        SYSTEM_PULLREQUEST_SOURCECOMMITID: ${{ github.sha }}
+        SYSTEM_PULLREQUEST_SOURCECOMMITID: ${{ github.event.pull_request.head.sha }}
 
-        BUILD_BUILDID: $GITHUB_RUN_ID
+        BUILD_BUILDID: ${{ github.run_id }}
 
         SYSTEM_PULLREQUEST_PULLREQUESTID: ${{ github.event.pull_request.id }}
+
+        BUILD_BUILDNUMBER: ${{ github.run_number }}
+
+        BUILD_ARTIFACTSTAGINGDIRECTORY: ${{ github.env }}
 
 jobs:
   TestJob:
