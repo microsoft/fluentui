@@ -10,6 +10,8 @@ export interface PaletteProps {
   brandColors: BrandVariants;
 }
 
+const hexCopyClassName = 'hexCopy';
+
 const useStyles = makeStyles({
   root: {
     display: 'flex',
@@ -25,7 +27,7 @@ const useStyles = makeStyles({
     ':hover': {
       flexShrink: 1,
     },
-    ':hover > div': {
+    [`:hover .${hexCopyClassName}`]: {
       display: 'flex',
     },
   },
@@ -67,7 +69,7 @@ export const Palette: React.FC<PaletteProps> = props => {
                 color: textColor,
               }}
             >
-              <div className={styles.hexCopy}>
+              <div className={`${styles.hexCopy} ${hexCopyClassName}`}>
                 <Text>{brandColor}</Text>
                 <Button
                   size="small"
