@@ -16,7 +16,7 @@ describe('addDirectionalKeyCode', () => {
   });
 });
 
-describe('addDirectionalKeyCode', () => {
+describe('removeDirectionalKeyCode', () => {
   it('can remove a custom keycode', () => {
     expect(isDirectionalKeyCode(KeyCodes.up)).toBe(true);
     removeDirectionalKeyCode(KeyCodes.up);
