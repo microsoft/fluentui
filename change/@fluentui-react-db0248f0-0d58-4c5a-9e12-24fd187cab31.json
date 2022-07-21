@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: TagPicker no longer reads remove when narrating list of selected tags",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
