@@ -6,7 +6,10 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { FluentTriggerComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -63,13 +66,43 @@ export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
 };
 
 // @public
+export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
+
+// @public (undocumented)
+export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+
+// @public
+export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>> & {
+    ref?: React_2.Ref<never>;
+};
+
+// @public (undocumented)
+export type DialogTriggerProps = {
+    action?: DialogTriggerAction;
+    children: (React_2.ReactElement & {
+        ref?: React_2.Ref<unknown>;
+    }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+};
+
+// @public (undocumented)
+export type DialogTriggerState = {
+    children: React_2.ReactElement | null;
+};
+
+// @public
 export const renderDialog_unstable: (state: DialogState, contextValues: DialogContextValues) => JSX.Element;
+
+// @public
+export const renderDialogTrigger_unstable: (state: DialogTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
 export const useDialog_unstable: (props: DialogProps) => DialogState;
 
 // @public
 export const useDialogStyles_unstable: (state: DialogState) => DialogState;
+
+// @public
+export const useDialogTrigger_unstable: (props: DialogTriggerProps) => DialogTriggerState;
 
 // (No @packageDocumentation comment for this package)
 
