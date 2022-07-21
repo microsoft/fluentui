@@ -111,17 +111,7 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached();
 
-  task(
-    'build',
-    series(
-      'clean',
-      'copy',
-      'sass',
-      'ts',
-      // v9 needs to run api-extractor which generates rolluped .d.ts files that are shipped to npm
-      condition('api-extractor', () => isConvergedPackage()),
-    ),
-  ).cached();
+  task('build', series('clean', 'copy', 'sass', 'ts', 'api-extractor')).cached();
 
   task(
     'bundle',
