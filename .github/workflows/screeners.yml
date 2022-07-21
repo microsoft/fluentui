@@ -13,7 +13,17 @@ env:
 
         SYSTEM_PULLREQUEST_TARGETBRANCH: ${{ github.event.pull_request.base.ref }}
 
+        SYSTEM_PULLREQUEST_SOURCEBRANCH: ${{ github.event.pull_request.head.ref }}
+
+        BUILD_SOURCEBRANCHNAME: 'merge'
+
         BUILD_SOURCEBRANCH: ${{ github.ref }}
+
+        SYSTEM_PULLREQUEST_SOURCECOMMITID: ${{ github.sha }}
+
+        BUILD_BUILDID: $GITHUB_RUN_ID
+
+        SYSTEM_PULLREQUEST_PULLREQUESTID: ${{ github.event.pull_request.id }}
 
 jobs:
   TestJob:
