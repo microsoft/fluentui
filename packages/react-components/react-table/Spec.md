@@ -182,11 +182,18 @@ The table supports the following sizes that affect the layout and size of its ch
 
 ## API
 
-Current proposed API, will be eventually be replaced with a hard link to the `Component.types.ts` file
-more mature into development.
+> Current proposed API, will be eventually be replaced with a hard link to the `Component.types.ts` file
+> more mature into development.
+
+### Table
+
+The `Table` component is intended to present data in a tabular format. Apart from sortable headers, the component
+is intended to be presentational and not interactive. This component can also be a bail out for end users if
+overriding the default interaction behaviour of the `DataGrid` component is too difficult.
 
 ```ts
 interface TableProps {
+  root: Slot<'table' | 'div'>;
   /**
    * Determines sizes of child components
    */
@@ -204,7 +211,21 @@ interface TableProps {
   navigationMode?: 'none' | 'cell' | 'row' | 'composite';
 }
 
-interface TableHeaderCell {
+interface TableHeaderProps {
+  root: Slot<'thead' | 'div'>;
+}
+
+interface TableBodyProps {
+  root: Slot<'tbody' | 'div'>;
+}
+
+interface TableRowProps {
+  root: Slot<'tr' | 'div'>;
+}
+
+interface TableHeaderCellProps {
+  root: Slot<'th' | 'div'>;
+  sortButton: Slot<'button'>;
   /**
    * Whether the column is sortable overrides the top level table prop
    */
@@ -218,15 +239,68 @@ interface TableHeaderCell {
 /**
  * Layout and design sugar for the primary column of a table
  */
-interface TablePrimaryCell {
+interface TablePrimaryCellProps {
+  root: Slot<'td' | 'div'>;
   secondaryContent: Slot<'span'>;
   icon: Slot<'span'>;
+}
+
+interface TableRowProps {
+  root: Slot<'tr' | 'div'>;
+}
+
+interface TableCellProps {
+  root: Slot<'td' | 'div'>;
+}
+```
+
+### DataGrid
+
+The DataGrid component is an extension of the Table component through composition. This component will
+be interactive and support further scenarios such as row selection and different keyboard navigation modes.
+
+```ts
+interface DataGridProps extends TableProps {
+  root: Slot<'div'>;
+  /**
+   * Determines if/how the table can be navigated by keyboard
+   *
+   * @default none
+   */
+  navigationMode?: 'none' | 'cell' | 'row' | 'composite';
+}
+
+interface DataGridHeaderProps extends TableHeaderProps {
+  root: Slot<'div'>;
+}
+
+interface DataGridBodyProps extends TableBodyProps {
+  root: Slot<'div'>;
+}
+
+interface DataGridRowProps extends TableRowProps {
+  root: Slot<'div'>;
+}
+
+interface DataGridHeaderCellProps extends TableHeaderCellProps {
+  root: Slot<'div'>;
+}
+
+/**
+ * Layout and design sugar for the primary column of a table
+ */
+interface DataGridPrimaryCellProps extends DataGridPrimaryCellProps {
+  root: Slot<'div'>;
+}
+
+interface DataGridCellProps extends DataGridCellProps {
+  root: Slot<'div'>;
 }
 ```
 
 ## Structure
 
-### Basic
+### Table
 
 ```tsx
 <Table>
@@ -245,27 +319,30 @@ interface TablePrimaryCell {
 ```
 
 ```html
-<div role="table">
-  <div role="rowgroup">
-    <div role="row">
-      <div role="columnheader"></div>
-    </div>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
 
-    <div role="row"></div>
-  </div>
-
-  <div role="rowgroup">
-    <div role="row">
-      <div role="cell"></div>
-    </div>
-  </div>
-</div>
+  <tbody>
+    <tr>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 ```
+
+### Table without semantic elements
 
 ### Sortable
 
+NOTE: while each component supports `div` as a root slot, setting `as` of the top level `Table` component to `div`
+will automatically affect all child components for simplicity.
+
 ```tsx
-<Table sortable>
+<Table sortable as="div">
   <TableHeader>
     <TableRow>
       <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
@@ -278,7 +355,7 @@ interface TablePrimaryCell {
 <div role="table">
   <div role="rowgroup">
     <div role="row">
-      <div role="columnheader" aria-sort="ascending"><button>Header</button></div>
+      <div role="columnheader"><button>Header</button></div>
     </div>
   </div>
 </div>
@@ -299,12 +376,44 @@ interface TablePrimaryCell {
 ```
 
 ```html
-<div role="table">
+<table>
+  <tbody>
+    <tr>
+      <td><span aria-hidden="true">icon</span><span>Primary content</span> <span>Secondary content</span></td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### DataGrid
+
+```tsx
+<DataGrid>
+  <DataGridHeader>
+    <DataGridRow>
+      <DataGridCell> </DataGridCell>
+    <DataGridRow>
+  </DataGridHeader>
+
+  <DataGridBody>
+    <DataGridRow>
+      <DataGridCell> </DataGridCell>
+    </DataGridRow>
+  </DataGridBody>
+</DataGrid>
+```
+
+```html
+<div role="grid">
   <div role="rowgroup">
     <div role="row">
-      <div role="cell">
-        <span aria-hidden="true">icon</span><span>Primary content</span> <span>Secondary content</span>
-      </div>
+      <div role="columnheader"></div>
+    </div>
+  </div>
+
+  <div role="rowgroup">
+    <div role="row">
+      <div role="gridcell"></div>
     </div>
   </div>
 </div>
@@ -321,6 +430,10 @@ interface TablePrimaryCell {
 Table header cells are only focusable when they are sortable. Focus when tabbing into the Table control should
 focus on the first sortable header, if any.
 
+<img src="./etc/images/table-interactions/Slide2.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide3.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide4.PNG" width="700" />
+
 ### Navigation modes
 
 The below are the different navigation modes that are possible on a table
@@ -336,17 +449,35 @@ This is the most accessible and screenreader friendly navigation mode. This is w
 [WAI APG examples](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids). Navigation happsn only
 on the level of the cell in both directions.
 
+<img src="./etc/images/table-interactions/Slide6.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide7.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide8.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide9.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide10.PNG" width="700" />
+
 #### row
 
 This navigation mode can cause screen reader issues since tables are not intended to be navigated by row in any mode.
 This mode only navigates the table by row and can be useful when row selection is the only interactive feature of
 the component
 
+<img src="./etc/images/table-interactions/Slide12.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide13.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide14.PNG" width="700" />
+
 #### composite
 
 This navigation mode can cause screen reader issues since it is a combination of `row` and `cell` navigation modes.
 There is also no real standardized pattern for any 2 dimenstional navigation that supports both rows and cells. However
 to support existing legacy and product needs, it will be supported in the Table component.
+
+<img src="./etc/images/table-interactions/Slide16.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide17.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide18.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide19.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide20.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide21.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide22.PNG" width="700" />
 
 ### Nested focusables in cells
 
@@ -356,11 +487,18 @@ When there is a single focusable element inside a cell, users are recommended to
 `composite` navigation mode is also possible. In this scenario, cells will be focused on navigation, but the focusable
 element inside the cell should be focused if it exists.
 
+<img src="./etc/images/table-interactions/Slide24.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide25.PNG" width="700" />
+
 #### Nested focusable
 
 When there are multile focusable elemnts inside a cell, we implement a pattern similar to the [WAI grid pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/).
 Pressing `Enter` on a cell will move focus and trap focus inside until the user presses `Escape` to revert back to grid navigation.
 
+<img src="./etc/images/table-interactions/Slide27.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide28.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide29.PNG" width="700" />
+<img src="./etc/images/table-interactions/Slide30.PNG" width="700" />
 ## Accessibility
 
 The spec aims to use the accessibility section as little as possible and building an accessible component by default.
