@@ -175,9 +175,9 @@ description.
 
 The table supports the following sizes that affect the layout and size of its child components:
 
-- default
 - small
 - smaller
+- medium
 - large
 
 ## API
@@ -196,8 +196,9 @@ interface TableProps {
   root: Slot<'table' | 'div'>;
   /**
    * Determines sizes of child components
+   * @default medium
    */
-  size: 'small' | 'smaller' | 'large';
+  size: 'small' | 'smaller' | 'medium' | 'large';
   /**
    * Whether the columns are sortable
    */
