@@ -15,9 +15,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Progress: ForwardRefComponent<ProgressProps>;
 
 // @public (undocumented)
-export const progressClassName = "fui-Progress";
-
-// @public (undocumented)
 export const progressClassNames: SlotClassNames<ProgressSlots>;
 
 // @public
