@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
-import { useFocusRects } from '@fluentui/utilities';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { ThemeProviderProps } from './ThemeProvider.types';
 
