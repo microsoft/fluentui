@@ -11,9 +11,15 @@ export const progressClassNames: SlotClassNames<ProgressSlots> = {
   description: 'fui-Progress__description',
 };
 
-// Internal CSS variables
+// Internal variables
 const progressBarColor = tokens.colorBrandStroke1;
 const progressBarGradientColor = tokens.colorNeutralStrokeOnBrand2;
+
+// Internal CSS vars
+export const progressCssVars = {
+  percentageCssVar: '--fui-Progress--percentage',
+  transitionCssVar: '--fui-Progress--transition',
+};
 
 const IndeterminateProgress = {
   '0%': {
@@ -84,7 +90,7 @@ const useIndicatorStyles = makeStyles({
         backgroundColor: tokens.colorNeutralBackground1,
 
         '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px solid WindowText'),
+          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
         },
       },
 
@@ -92,8 +98,8 @@ const useIndicatorStyles = makeStyles({
         backgroundColor: progressBarColor,
         height: bar,
         position: 'absolute',
-        width: 0,
-        transitionProperty: 'width .3s ease',
+        width: `var(${progressCssVars.percentageCssVar})`,
+        transitionProperty: `var(${progressCssVars.transitionCssVar})`,
 
         '@media screen and (forced-colors: active)': {
           backgroundColor: 'Highlight',
@@ -116,7 +122,7 @@ const useIndicatorStyles = makeStyles({
         backgroundColor: tokens.colorNeutralBackground1,
 
         '@media (forced-colors: active)': {
-          ...shorthands.borderBottom('1px solid CanvasText'),
+          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
         },
       },
 
@@ -137,12 +143,7 @@ const useIndicatorStyles = makeStyles({
         animationIterationCount: 'infinite',
 
         '@media (forced-colors: active)': {
-          backgroundImage: `linear-gradient(
-            to right,
-            Canvas 0%,
-            CanvasText 50%,
-            Canvas 100%
-          )`,
+          backgroundColor: 'Highlight',
         },
       },
     },
@@ -162,7 +163,7 @@ const useIndicatorStyles = makeStyles({
         backgroundColor: tokens.colorNeutralBackground1,
 
         '@media screen and (forced-colors: active)': {
-          ...shorthands.borderBottom('1px solid WindowText'),
+          ...shorthands.borderBottom('1px', 'solid', 'CanvasText'),
         },
       },
 
@@ -183,12 +184,7 @@ const useIndicatorStyles = makeStyles({
         animationIterationCount: 'infinite',
 
         '@media screen and (forced-colors: active)': {
-          backgroundImage: `linear-gradient(
-            to left,
-            ${progressBarGradientColor} 0%,
-            ${progressBarColor} 50%,
-            ${progressBarGradientColor} 100%
-          )`,
+          backgroundColor: 'Highlight',
         },
       },
     },

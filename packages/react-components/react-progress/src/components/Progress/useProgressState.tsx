@@ -1,4 +1,5 @@
 import type { ProgressState, ProgressProps } from './Progress.types';
+import { progressCssVars } from './useProgressStyles';
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios
@@ -12,8 +13,9 @@ export const useProgressState_unstable = (state: ProgressState, props: ProgressP
   const valuePercent = determinate ? Math.min(100, Math.max(0, percentComplete)) : undefined;
 
   const progressBarStyles = {
-    width: determinate ? valuePercent + '%' : undefined,
-    transition: valuePercent && determinate && valuePercent < ZERO_THRESHOLD ? 'none' : undefined,
+    [`${progressCssVars.percentageCssVar}`]: determinate ? valuePercent + '%' : '0',
+    [`${progressCssVars.transitionCssVar}`]:
+      valuePercent && determinate && valuePercent < ZERO_THRESHOLD ? 'none' : 'width .3s ease',
   };
 
   const ariaValueMin = determinate ? 0 : undefined;
