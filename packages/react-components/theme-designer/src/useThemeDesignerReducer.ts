@@ -89,7 +89,9 @@ export const useThemeDesignerReducer = () => {
           overrides: action.overrides,
         });
       } else {
-        dispatchOverrideState({ type: stateThemeLabel });
+        dispatchOverrideState({
+          type: stateThemeLabel,
+        });
       }
       return { ...state, [state.isDark ? 'darkOverrides' : 'lightOverrides']: overrideState[stateThemeLabel] };
     }
@@ -105,6 +107,9 @@ export const useThemeDesignerReducer = () => {
         return state;
       }
       brand = createCustomTheme(action.customAttributes);
+
+      dispatchOverrideState({ type: themeName + 'Light' });
+      dispatchOverrideState({ type: themeName + 'Dark' });
     }
 
     return {

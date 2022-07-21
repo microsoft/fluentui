@@ -81,6 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    // this is outdated, but i'm going to leave it until arman gives me more clarity on what the sidebar will look like
     if (data.value === 'edit') {
       dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
