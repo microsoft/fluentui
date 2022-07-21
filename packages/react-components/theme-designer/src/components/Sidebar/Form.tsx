@@ -59,7 +59,18 @@ export const Form: React.FC<FormProps> = props => {
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+
+    // returns true if form is the same
+    const sameForm =
+      state.keyColor === action.attributes.keyColor &&
+      state.hueTorsion === action.attributes.hueTorsion &&
+      state.darkCp === action.attributes.darkCp &&
+      state.lightCp === action.attributes.lightCp;
+
+    // only dispatch if form changes
+    if (!sameForm) {
+      dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    }
     return action.attributes;
   };
 

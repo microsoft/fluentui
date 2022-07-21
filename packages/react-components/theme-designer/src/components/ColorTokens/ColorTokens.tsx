@@ -71,7 +71,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
       case 'Reset Overrides':
         return { ...state, [themeLabel]: {} };
       case 'Reset Custom Overrides':
-        return { ...state, customLight: {}, customDark: {} };
+        return { ...state, [themeName + 'Light']: {}, [themeName + 'Dark']: {} };
       default:
         return state;
     }
@@ -88,6 +88,19 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
     dispatchAppState({ type: 'Override' });
     dispatchColorOverride({ type: 'Reset Overrides' });
   };
+
+  React.useEffect(() => {
+    // if app state overrides are reset (no entries), we want to reset local overrides if they exist
+    if (
+      (Object.keys(colorOverride[themeName + 'Light']).length > 0 ||
+        Object.keys(colorOverride[themeName + 'Dark']).length > 0) &&
+      Object.keys(appState.lightOverrides).length === 0 &&
+      Object.keys(appState.darkOverrides).length === 0
+    ) {
+      dispatchAppState({ type: 'Override' });
+      dispatchColorOverride({ type: 'Reset Custom Overrides' });
+    }
+  }, [appState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className={styles.root}>
