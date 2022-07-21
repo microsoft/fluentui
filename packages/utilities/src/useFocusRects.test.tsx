@@ -90,48 +90,48 @@ describe('useFocusRects', () => {
       focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
 
       const { eventListeners } = mockWindow;
-      expect(eventListeners.keydown).toBeDefined();
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.up });
+      expect(eventListeners.keyup).toBeDefined();
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.down });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.left });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.left });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.right });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.right });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.tab });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.tab });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.pageUp });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageUp });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.pageDown });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageDown });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.home });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.home });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      mockWindow.eventListeners.keydown!({ target: mockTarget, which: KeyCodes.end });
+      mockWindow.eventListeners.keyup!({ target: mockTarget, which: KeyCodes.end });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
@@ -151,24 +151,24 @@ describe('useFocusRects', () => {
       focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
       focusRects2 = mount(<FocusRects rootRef={mockRefObject2} />);
 
-      expect(mockWindow.eventListeners.keydown).toBeDefined();
-      mockWindow.eventListeners.keydown!({ target: mockTarget, which: KeyCodes.up });
+      expect(mockWindow.eventListeners.keyup).toBeDefined();
+      mockWindow.eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow.classNames = [];
-      mockWindow.eventListeners.keydown!({ target: mockTarget, which: KeyCodes.down });
+      mockWindow.eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow2.classNames = [];
-      expect(mockWindow2.eventListeners.keydown).toBeDefined();
-      mockWindow2.eventListeners.keydown!({ target: mockTarget2, which: KeyCodes.left });
+      expect(mockWindow2.eventListeners.keyup).toBeDefined();
+      mockWindow2.eventListeners.keyup!({ target: mockTarget2, which: KeyCodes.left });
       expect(mockWindow2.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow2.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
       mockWindow2.classNames = [];
-      mockWindow2.eventListeners.keydown!({ target: mockTarget2, which: KeyCodes.right });
+      mockWindow2.eventListeners.keyup!({ target: mockTarget2, which: KeyCodes.right });
       expect(mockWindow2.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow2.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
@@ -193,8 +193,8 @@ describe('useFocusRects', () => {
 
       const { eventListeners } = mockWindow;
 
-      expect(eventListeners.keydown).toBeDefined();
-      eventListeners.keydown!({ target: mockTarget, which: 127 });
+      expect(eventListeners.keyup).toBeDefined();
+      eventListeners.keyup!({ target: mockTarget, which: 127 });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       // don't care about the state of the "hidden" class in this case
 
@@ -215,8 +215,8 @@ describe('useFocusRects', () => {
 
       const { eventListeners } = mockWindow;
 
-      expect(eventListeners.keydown).toBeDefined();
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.down });
+      expect(eventListeners.keyup).toBeDefined();
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
@@ -239,14 +239,14 @@ describe('useFocusRects', () => {
 
       const { eventListeners } = mockWindow;
 
-      expect(eventListeners.keydown).toBeDefined();
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.f6 });
+      expect(eventListeners.keyup).toBeDefined();
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       // don't care about the state of the "hidden" class in this case
 
       addDirectionalKeyCode(KeyCodes.f6);
 
-      eventListeners.keydown!({ target: mockTarget, which: KeyCodes.f6 });
+      eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeTruthy();
 
@@ -272,7 +272,7 @@ describe('useFocusRects', () => {
 
       const { eventListeners } = mockWindow;
 
-      expect(eventListeners.keydown).toBeUndefined();
+      expect(eventListeners.keyup).toBeUndefined();
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
 
@@ -290,7 +290,7 @@ describe('useFocusRects', () => {
     type MockProviderRef = {
       addEventListener: (name: string, callback: Function) => void;
       removeEventListener: (name: string, callback: Function) => void;
-      eventListeners: { keydown?: Function; mousedown?: Function; pointerdown?: Function };
+      eventListeners: { keyup?: Function; mousedown?: Function; pointerdown?: Function };
       classList: {
         add: (name: string) => void;
         contains: (name: string) => void;
@@ -382,10 +382,10 @@ describe('useFocusRects', () => {
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
-      expect(eventListeners.keydown).toBeDefined();
+      expect(eventListeners.keyup).toBeDefined();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.up });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.up });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -394,7 +394,7 @@ describe('useFocusRects', () => {
 
       classNames = [];
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.down });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -402,7 +402,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.left });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.left });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -410,7 +410,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.right });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.right });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -418,7 +418,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.tab });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.tab });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -426,7 +426,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.pageUp });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageUp });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -434,7 +434,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.pageDown });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.pageDown });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -442,7 +442,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.home });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.home });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -450,7 +450,7 @@ describe('useFocusRects', () => {
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.end });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.end });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -474,10 +474,10 @@ describe('useFocusRects', () => {
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
-      expect(eventListeners.keydown).toBeDefined();
+      expect(eventListeners.keyup).toBeDefined();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: 127 });
+        eventListeners.keyup!({ target: mockTarget, which: 127 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeFalsy();
@@ -500,11 +500,11 @@ describe('useFocusRects', () => {
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
-      expect(eventListeners.keydown).toBeDefined();
+      expect(eventListeners.keyup).toBeDefined();
       expect(eventListeners.mousedown).toBeDefined();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.down });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.down });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -536,10 +536,10 @@ describe('useFocusRects', () => {
 
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
-      expect(eventListeners.keydown).toBeDefined();
+      expect(eventListeners.keyup).toBeDefined();
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.f6 });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusVisibleClassName)).toBeFalsy();
@@ -548,7 +548,7 @@ describe('useFocusRects', () => {
       addDirectionalKeyCode(KeyCodes.f6);
 
       ReactTestUtils.act(() => {
-        eventListeners.keydown!({ target: mockTarget, which: KeyCodes.f6 });
+        eventListeners.keyup!({ target: mockTarget, which: KeyCodes.f6 });
       });
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
@@ -579,7 +579,7 @@ describe('useFocusRects', () => {
       const providerElem = providerRef.current as MockProviderRef;
       const { eventListeners } = providerElem;
 
-      expect(eventListeners.keydown).toBeUndefined();
+      expect(eventListeners.keyup).toBeUndefined();
       expect(mockWindow.classNames.indexOf(IsFocusHiddenClassName) > -1).toBeFalsy();
       expect(mockWindow.classNames.indexOf(IsFocusVisibleClassName) > -1).toBeFalsy();
       expect(providerElem.classList.contains(IsFocusHiddenClassName)).toBeFalsy();

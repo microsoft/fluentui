@@ -10,7 +10,7 @@ import { setFocusVisibility } from './setFocusVisibility';
 export type ListenerCallbacks = {
   onMouseDown: (ev: MouseEvent) => void;
   onPointerDown: (ev: PointerEvent) => void;
-  onKeyDown: (ev: KeyboardEvent) => void;
+  onKeyUp: (ev: KeyboardEvent) => void;
 };
 let mountCounters = new WeakMap<Window | HTMLElement, number>();
 let callbackMap = new WeakMap<HTMLElement, ListenerCallbacks>();
@@ -36,8 +36,8 @@ function setCallBackMap(key: HTMLElement): ListenerCallbacks {
 
   const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, key);
   const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, key);
-  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, key);
-  callbacks = { onMouseDown, onPointerDown, onKeyDown };
+  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, key);
+  callbacks = { onMouseDown, onPointerDown, onKeyUp };
 
   callbackMap.set(key, callbacks);
   return callbacks;
@@ -79,24 +79,24 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let el: Window | HTMLElement = win;
     let onMouseDown: (ev: MouseEvent) => void;
     let onPointerDown: (ev: PointerEvent) => void;
-    let onKeyDown: (ev: KeyboardEvent) => void;
-    if (providerRef && providerRef.current && providerRef.current !== null) {
+    let onKeyUp: (ev: KeyboardEvent) => void;
+    if (providerRef && providerRef.current) {
       el = providerRef.current;
       const callbacks = setCallBackMap(el as HTMLElement);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
-      onKeyDown = callbacks.onKeyDown;
+      onKeyUp = callbacks.onKeyUp;
     } else {
       onMouseDown = _onMouseDown;
       onPointerDown = _onPointerDown;
-      onKeyDown = _onKeyDown;
+      onKeyUp = _onKeyUp;
     }
 
     let count = setMountCounters(el, 1);
     if (count <= 1) {
       el.addEventListener('mousedown', onMouseDown, true);
       el.addEventListener('pointerdown', onPointerDown, true);
-      el.addEventListener('keydown', onKeyDown, true);
+      el.addEventListener('keyup', onKeyUp, true);
     }
 
     return () => {
@@ -107,7 +107,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       if (count === 0) {
         el.removeEventListener('mousedown', onMouseDown, true);
         el.removeEventListener('pointerdown', onPointerDown, true);
-        el.removeEventListener('keydown', onKeyDown, true);
+        el.removeEventListener('keyup', onKeyUp, true);
       }
     };
   }, [providerRef, rootRef]);
@@ -132,7 +132,7 @@ function _onPointerDown(ev: PointerEvent, providerElem?: Element): void {
   }
 }
 
-function _onKeyDown(ev: KeyboardEvent, providerElem?: Element): void {
+function _onKeyUp(ev: KeyboardEvent, providerElem?: Element): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, providerElem);

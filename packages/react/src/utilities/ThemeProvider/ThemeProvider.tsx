@@ -22,9 +22,6 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.
   // Render styles.
   useThemeProviderClasses(state);
 
-  // Apply focus rect class on key presses.
-  useFocusRects(state.ref);
-
   // Return the rendered content.
   return render(state);
 });
