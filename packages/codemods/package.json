@@ -2,8 +2,8 @@
   "name": "@fluentui/codemods",
   "version": "8.4.1",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "bin": {
     "upgrade": "./bin/upgrade.js"
   },
