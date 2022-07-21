@@ -38,10 +38,34 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     let startdate = new Date('2020-03-01T00:00:00.000Z');
     let i = 0;
     for (i = 0; i < 10000; i++) {
-      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: i * i - 5 * i });
+      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: i * i - 5 * i });
+      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
     }
 
     return data;
+  };
+
+  private _getdata2 = () => {
+    let data: ILineChartDataPoint[] = [];
+    let startdate = new Date('2020-03-01T00:00:00.000Z');
+    let i = 0;
+    for (i = 1000; i < 9000; i++) {
+      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 100000000 - i * i });
+      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 5000000 + i * i - 5 * i });
+      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: this.getY(i) });
+    }
+
+    return data;
+  };
+
+  private getY = (i: number) => {
+    let res: number = 0;
+    const newN = i % 1000;
+    if (newN < 500) res = newN * newN;
+    else res = 1000000 - newN * newN;
+
+    console.log(res, newN);
+    return res;
   };
 
   private _basicExample(): JSX.Element {
@@ -57,36 +81,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         },
         {
           legend: 'All',
-          data: [
-            {
-              x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297000,
-            },
-            {
-              x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284000,
-            },
-            {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282000,
-            },
-            {
-              x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294000,
-            },
-            {
-              x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 224000,
-            },
-            {
-              x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300000,
-            },
-            {
-              x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298000,
-            },
-          ],
+          data: this._getdata2(),
           color: DefaultPalette.green,
         },
         {
