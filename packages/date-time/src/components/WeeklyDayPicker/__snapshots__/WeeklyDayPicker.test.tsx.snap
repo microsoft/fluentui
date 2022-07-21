@@ -1392,7 +1392,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1522,7 +1522,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1652,7 +1652,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1782,7 +1782,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -1913,7 +1913,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={true}
             className=
-
+                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -2086,7 +2086,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -2212,7 +2212,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4600,7 +4600,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4730,7 +4730,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -4861,7 +4861,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={true}
             className=
-
+                
                 ms-CalendarDay-daySelected
                 {
                   border-radius: 100%!important;
@@ -5034,7 +5034,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5160,7 +5160,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5286,7 +5286,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
@@ -5412,7 +5412,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             aria-readonly="true"
             aria-selected={false}
             className=
-
+                
                 {
                   border-radius: 100%!important;
                   color: #323130;
