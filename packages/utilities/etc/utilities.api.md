@@ -301,6 +301,12 @@ export const FocusRects: React_2.FunctionComponent<{
     rootRef?: React_2.RefObject<HTMLElement>;
 }>;
 
+// @public (undocumented)
+export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
+
+// @public (undocumented)
+export const FocusRectsProvider: React_2.Provider<IFocusRectsContext>;
+
 // @public
 export function format(s: string, ...values: any[]): string;
 
@@ -590,6 +596,11 @@ export interface IFitContentToBoundsOptions {
     maxScale?: number;
     mode: FitMode;
 }
+
+// @public (undocumented)
+export type IFocusRectsContext = {
+    providerRef?: React_2.RefObject<HTMLElement>;
+};
 
 // @public
 export const iframeProperties: Record<string, number>;

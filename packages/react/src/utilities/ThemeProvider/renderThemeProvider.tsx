@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CustomizerContext, getNativeElementProps, omit } from '@fluentui/utilities';
+import { CustomizerContext, FocusRectsProvider, getNativeElementProps, omit } from '@fluentui/utilities';
 import { ThemeContext } from './ThemeContext';
 import type { ThemeProviderState } from './ThemeProvider.types';
 
@@ -11,7 +11,9 @@ export const renderThemeProvider = (state: ThemeProviderState) => {
   return (
     <ThemeContext.Provider value={theme}>
       <CustomizerContext.Provider value={customizerContext}>
-        <Root {...rootProps} />
+        <FocusRectsProvider value={{ providerRef: state.ref }}>
+          <Root {...rootProps} />
+        </FocusRectsProvider>
       </CustomizerContext.Provider>
     </ThemeContext.Provider>
   );
