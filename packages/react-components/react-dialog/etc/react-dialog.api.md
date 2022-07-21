@@ -72,7 +72,7 @@ export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerCompon
 export type DialogTriggerAction = 'open' | 'close' | 'toggle';
 
 // @public
-export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'aria-haspopup'>> & {
+export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>> & {
     ref?: React_2.Ref<never>;
 };
 

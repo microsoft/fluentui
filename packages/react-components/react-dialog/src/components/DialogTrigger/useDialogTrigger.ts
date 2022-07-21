@@ -1,4 +1,5 @@
 import { useModalAttributes } from '@fluentui/react-tabster';
+import { Enter, Space } from '@fluentui/keyboard-keys';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
@@ -19,7 +20,7 @@ import {
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
   const { children, action = 'toggle' } = props;
 
-  const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
+  const child = React.isValidElement(children) ? getTriggerChild<DialogTriggerChildProps>(children) : undefined;
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
 
@@ -39,11 +40,22 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
     }
   });
 
+  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
+    if (isTargetDisabled(event)) {
+      return;
+    }
+    child?.props.onKeyDown?.(event);
+    if (!event.isDefaultPrevented() && (event.key === Enter || event.key === Space)) {
+      event.currentTarget.click();
+    }
+  });
+
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
       'aria-haspopup': 'dialog',
       ref: child?.ref as React.Ref<never>,
       onClick: handleClick,
+      onKeyDown: handleKeyDown,
       ...triggerAttributes,
     }),
   };

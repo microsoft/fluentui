@@ -21,7 +21,9 @@ export type DialogTriggerProps = {
 /**
  * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behaviour for the Dialog
  */
-export type DialogTriggerChildProps = Required<Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'aria-haspopup'>> & {
+export type DialogTriggerChildProps = Required<
+  Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>
+> & {
   ref?: React.Ref<never>;
 };
 
