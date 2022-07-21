@@ -31,7 +31,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       required: modalType === 'non-modal',
       defaultProps: {
         type: 'button', // This is added because the default for type is 'submit'
-        'aria-label': 'close',
+        'aria-label': 'close', // TODO: find a better way to add internal labels
         children: <Dismiss24Regular />,
       },
     }),

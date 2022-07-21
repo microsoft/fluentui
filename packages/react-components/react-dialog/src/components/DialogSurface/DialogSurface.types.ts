@@ -7,13 +7,7 @@ export type DialogSurfaceSlots = {
 /**
  * DialogSurface Props
  */
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
-  /**
-   * Declares if focus will be trapped inside Dialog.
-   * @default modalType !== 'non-modal'
-   */
-  trapFocus?: boolean;
-};
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {};
 
 /**
  * State used in rendering DialogSurface
