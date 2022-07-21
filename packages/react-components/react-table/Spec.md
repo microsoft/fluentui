@@ -204,6 +204,14 @@ interface TableProps {
   sortable?: boolean;
 
   /**
+   * Renders all table components as `div` with appropriate roles.
+   * Avoids manual `as` overrides for all table components
+   *
+   * @default true
+   */
+  nativeElements?: boolean;
+
+  /**
    * Determines if/how the table can be navigated by keyboard
    *
    * @default none
@@ -260,7 +268,7 @@ The DataGrid component is an extension of the Table component through compositio
 be interactive and support further scenarios such as row selection and different keyboard navigation modes.
 
 ```ts
-interface DataGridProps extends TableProps {
+interface DataGridProps extends Omit<TableProps, 'nativeElements'> {
   root: Slot<'div'>;
   /**
    * Determines if/how the table can be navigated by keyboard
@@ -336,16 +344,21 @@ interface DataGridCellProps extends DataGridCellProps {
 
 ### Table without semantic elements
 
-### Sortable
-
-NOTE: while each component supports `div` as a root slot, setting `as` of the top level `Table` component to `div`
-will automatically affect all child components for simplicity.
-
 ```tsx
-<Table sortable as="div">
+<Table nativeElements={false}>
   <TableHeader>
     <TableRow>
       <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
+    </TableRow>
+  </TableHeader>
+</Table>
+
+// OR
+
+<Table as="div">
+  <TableHeader as="div">
+    <TableRow as="div">
+      <TableHeaderCell as="div" sortDirection="ascending">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -359,6 +372,28 @@ will automatically affect all child components for simplicity.
     </div>
   </div>
 </div>
+```
+
+### Sortable
+
+```tsx
+<Table sortable>
+  <TableHeader>
+    <TableRow>
+      <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
+    </TableRow>
+  </TableHeader>
+</Table>
+```
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th aria-sort="ascending"><button>Header</button></th>
+    </tr>
+  </thead>
+</table>
 ```
 
 ### Primary column
