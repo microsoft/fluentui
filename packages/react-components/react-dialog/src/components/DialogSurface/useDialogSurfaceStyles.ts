@@ -3,11 +3,16 @@ import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.typ
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import {
-  DIALOG_BORDER_RADIUS,
-  DIALOG_BORDER_WIDTH,
-  DIALOG_CONTENT_PADDING,
+  TITLE_GRID_AREA,
+  ACTIONS_END_GRID_AREA,
+  ACTIONS_START_GRID_AREA,
+  SURFACE_BORDER_RADIUS,
+  SURFACE_BORDER_WIDTH,
+  SURFACE_PADDING,
   DIALOG_GAP,
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
+  BODY_GRID_AREA,
+  CLOSE_BUTTON_GRID_AREA,
 } from '../../contexts/constants';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
@@ -31,26 +36,26 @@ const useStyles = makeStyles({
     boxShadow: tokens.shadow64,
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.gap(DIALOG_GAP),
-    ...shorthands.border(DIALOG_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
-    ...shorthands.borderRadius(DIALOG_BORDER_RADIUS),
+    ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
+    ...shorthands.borderRadius(SURFACE_BORDER_RADIUS),
     ...shorthands.margin('auto'),
     display: 'grid',
     gridTemplateRows: 'auto 1fr auto',
     gridTemplateColumns: '1fr 1fr auto',
     gridTemplateAreas: `
-    "title        title         close-button"
-    "body         body          body"
-    "actions-left actions-right actions-right"
+      "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+      "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
+      "${ACTIONS_START_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
     `,
-    ...shorthands.padding(DIALOG_CONTENT_PADDING),
+    ...shorthands.padding(SURFACE_PADDING),
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       maxWidth: '100vw',
       gridTemplateRows: 'auto 1fr auto auto',
       gridTemplateAreas: `
-        "title         title         close-button"
-        "body          body          body"
-        "actions-left  actions-left  actions-left"
-        "actions-right actions-right actions-right"
+        "${TITLE_GRID_AREA} ${TITLE_GRID_AREA} ${CLOSE_BUTTON_GRID_AREA}"
+        "${BODY_GRID_AREA} ${BODY_GRID_AREA} ${BODY_GRID_AREA}"
+        "${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA} ${ACTIONS_START_GRID_AREA}"
+        "${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA} ${ACTIONS_END_GRID_AREA}"
       `,
     },
   },

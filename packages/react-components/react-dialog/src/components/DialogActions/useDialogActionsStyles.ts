@@ -1,7 +1,12 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
+import {
+  DIALOG_GAP,
+  ACTIONS_END_GRID_AREA,
+  ACTIONS_START_GRID_AREA,
+  MEDIA_QUERY_BREAKPOINT_SELECTOR,
+} from '../../contexts/constants';
 import * as localShorthands from '../../utils/localShorthands';
 
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
@@ -24,11 +29,11 @@ const useStyles = makeStyles({
   },
   gridPositionEnd: {
     justifySelf: 'end',
-    ...localShorthands.gridArea('actions-right'),
+    ...localShorthands.gridArea(ACTIONS_END_GRID_AREA),
   },
   gridPositionStart: {
     justifySelf: 'start',
-    ...localShorthands.gridArea('actions-left'),
+    ...localShorthands.gridArea(ACTIONS_START_GRID_AREA),
   },
 });
 
