@@ -87,9 +87,9 @@ async function notifyIntegration(payload: ScreenerProxyPayload) {
     body: JSON.stringify(payload),
   });
 
-  if(res.status !== 200){
+ /* if(res.status !== 200){
     throw new Error(`Notify integration failed: ${res.status}`);
-  }
+  }*/
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
