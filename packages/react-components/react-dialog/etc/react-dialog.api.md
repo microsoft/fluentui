@@ -65,9 +65,6 @@ export type DialogBodyState = ComponentState<DialogBodySlots>;
 export const dialogClassNames: SlotClassNames<DialogSlots>;
 
 // @public (undocumented)
-export const dialogContentClassNames: SlotClassNames<DialogSurfaceSlots>;
-
-// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
@@ -116,10 +113,11 @@ export type DialogState = ComponentState<DialogSlots> & DialogContextValue & {
 // @public
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 
+// @public (undocumented)
+export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
+
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {
-    trapFocus?: boolean;
-};
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & {};
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
