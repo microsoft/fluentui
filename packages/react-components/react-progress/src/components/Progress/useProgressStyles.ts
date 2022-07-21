@@ -2,7 +2,6 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { ProgressSlots, ProgressState } from './Progress.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const progressClassName = 'fui-Progress';
 export const progressClassNames: SlotClassNames<ProgressSlots> = {
   root: 'fui-Progress',
   // TODO: add class names for all slots on ProgressSlots.
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
  */
 export const useProgressStyles_unstable = (state: ProgressState): ProgressState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(progressClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(progressClassNames.root, styles.root, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
