@@ -25,8 +25,7 @@ module.exports = createRule({
       recommended: false,
     },
     messages: {
-      invalidDefaultValue: 'Invalid default value {{argumentValue}} for context declaration',
-      // restrictedImport: 'Import from {{ packageName }} detected which is not allowed.',
+      invalidDefaultValue: 'Invalid default value for context declaration, default value should be undefined',
     },
     fixable: 'code',
     schema: [
@@ -104,7 +103,6 @@ module.exports = createRule({
           context.report({
             node: firstArgument,
             messageId: 'invalidDefaultValue',
-            data: { argumentName: firstArgument.name },
           });
         }
       },
