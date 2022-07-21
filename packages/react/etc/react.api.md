@@ -6964,6 +6964,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
