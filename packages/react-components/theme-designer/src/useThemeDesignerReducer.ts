@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
-import { brandTeams } from './utils/brandColors';
+import { brandWeb } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { themeList, themeNames } from './utils/themeList';
 
@@ -33,9 +33,9 @@ export type AppState = {
 };
 
 export const initialAppState = {
-  themeName: 'Teams',
-  brand: brandTeams,
-  theme: createLightTheme(brandTeams),
+  themeName: 'Web',
+  brand: brandWeb,
+  theme: createLightTheme(brandWeb),
   isDark: false,
   lightOverrides: {},
   darkOverrides: {},

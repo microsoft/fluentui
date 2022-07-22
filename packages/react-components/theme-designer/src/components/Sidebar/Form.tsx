@@ -89,7 +89,9 @@ export const Form: React.FC<FormProps> = props => {
   }, [debouncedForm]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
+    // check if the newly inputted hex code has a #
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
@@ -113,6 +115,7 @@ export const Form: React.FC<FormProps> = props => {
             id={sidebarId + 'keyColor'}
             value={form.keyColor}
             onChange={handleKeyColorChange}
+            maxLength={7}
           />
           <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
             <input

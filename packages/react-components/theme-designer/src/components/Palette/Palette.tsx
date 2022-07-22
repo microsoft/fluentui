@@ -4,10 +4,11 @@ import { Button, Caption1, Text } from '@fluentui/react-components';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { contrast, hex_to_sRGB } from '@fluent-blocks/colors';
 import { CopyRegular } from '@fluentui/react-icons';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface PaletteProps {
   className?: string;
-  brandColors: BrandVariants;
 }
 
 const hexCopyClassName = 'hexCopy';
@@ -53,12 +54,14 @@ const getBrands = (colors: BrandVariants): Brands[] => {
 export const Palette: React.FC<PaletteProps> = props => {
   const styles = useStyles();
 
+  const { brand } = useContextSelector(AppContext, ctx => ctx.appState);
+
   return (
     <div>
       <Caption1>Generated palette</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
-        {getBrands(props.brandColors).map(brandKey => {
-          const brandColor = props.brandColors[brandKey];
+        {getBrands(brand).map(brandKey => {
+          const brandColor = brand[brandKey].toUpperCase();
           const textColor = contrast(hex_to_sRGB(brandColor), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white';
           return (
             <div
