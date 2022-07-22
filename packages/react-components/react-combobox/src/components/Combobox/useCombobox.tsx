@@ -115,7 +115,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
-    matchingOption && setActiveOption(matchingOption);
+    setActiveOption(matchingOption);
 
     // clear selection for single-select if the input value no longer matches the selection
     if (
