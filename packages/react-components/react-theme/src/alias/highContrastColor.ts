@@ -52,7 +52,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundOnBrand: hcButtonText, // ButtonText Global.Color.hcButtonText
-  colorNeutralForegroundInvertedStatic: hcButtonText, // ButtonText Global.Color.hcButtonText
+  colorNeutralForegroundInvertedStatic: hcCanvasText, // ButtonText Global.Color.hcCanvasText
   colorNeutralForegroundInvertedLink: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
