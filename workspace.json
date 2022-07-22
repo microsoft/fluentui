@@ -4,7 +4,8 @@
     "@fluentui/a11y-testing": {
       "root": "packages/a11y-testing",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["platform:node"]
     },
     "@fluentui/ability-attributes": {
       "root": "packages/fluentui/ability-attributes",
@@ -19,7 +20,8 @@
     "@fluentui/api-docs": {
       "root": "packages/api-docs",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/azure-themes": {
       "root": "packages/azure-themes",
@@ -53,7 +55,8 @@
     "@fluentui/codemods": {
       "root": "packages/codemods",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/common-styles": {
       "root": "packages/common-styles",
@@ -125,7 +128,8 @@
     "@fluentui/jest-serializer-merge-styles": {
       "root": "packages/jest-serializer-merge-styles",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/keyboard-key": {
       "root": "packages/keyboard-key",
@@ -359,7 +363,8 @@
     "@fluentui/react-conformance": {
       "root": "packages/react-conformance",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/react-conformance-griffel": {
       "root": "packages/react-components/react-conformance-griffel",
@@ -775,7 +780,8 @@
     "@fluentui/test-utilities": {
       "root": "packages/test-utilities",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     },
     "@fluentui/theme": {
       "root": "packages/theme",
@@ -836,7 +842,8 @@
     "@fluentui/webpack-utilities": {
       "root": "packages/webpack-utilities",
       "projectType": "library",
-      "implicitDependencies": []
+      "implicitDependencies": [],
+      "tags": ["v8", "platform:node"]
     }
   }
 }
