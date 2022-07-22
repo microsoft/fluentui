@@ -90,7 +90,7 @@ export const Form: React.FC<FormProps> = props => {
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // check if the newly inputted hex code has a #
-    const newHexColor = '#' + e.target.value.replace(/\W/g, '');
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
     setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {

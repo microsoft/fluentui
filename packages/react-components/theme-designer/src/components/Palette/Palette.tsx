@@ -58,7 +58,7 @@ export const Palette: React.FC<PaletteProps> = props => {
       <Caption1>Generated palette</Caption1>
       <div className={mergeClasses(styles.root, props.className)}>
         {getBrands(props.brandColors).map(brandKey => {
-          const brandColor = props.brandColors[brandKey];
+          const brandColor = props.brandColors[brandKey].toUpperCase();
           const textColor = contrast(hex_to_sRGB(brandColor), hex_to_sRGB('#FFFFFF')) <= 4.5 ? 'black' : 'white';
           return (
             <div
