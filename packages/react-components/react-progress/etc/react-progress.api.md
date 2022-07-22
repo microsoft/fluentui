@@ -7,6 +7,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -18,15 +19,22 @@ export const Progress: ForwardRefComponent<ProgressProps>;
 export const progressClassNames: SlotClassNames<ProgressSlots>;
 
 // @public
-export type ProgressProps = ComponentProps<ProgressSlots> & {};
+export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
+    appearance?: 'primary' | 'inverted';
+    barHeight?: number;
+    percentComplete?: number;
+};
 
 // @public (undocumented)
 export type ProgressSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    label?: Slot<typeof Label>;
+    indicator?: Slot<'span'>;
+    description?: Slot<typeof Label>;
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'appearance' | 'barHeight' | 'percentComplete'>>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;
