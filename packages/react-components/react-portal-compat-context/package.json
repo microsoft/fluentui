@@ -11,9 +11,8 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "fluent-compatibility": true,
   "scripts": {
-    "build": "just-scripts build",
+    "build": "just-scripts build --module esm,cjs,amd",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",

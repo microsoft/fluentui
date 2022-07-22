@@ -77,7 +77,7 @@ export function preset() {
       return parallel(
         'ts:commonjs',
         'ts:esm',
-        condition('ts:amd', () => isCompatibilityPackage() || (!!args.production && !isConvergedPackage())),
+        condition('ts:amd', () => !!args.production && !isConvergedPackage()),
       );
     }
 
