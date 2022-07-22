@@ -2050,7 +2050,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
     <div
       aria-colindex={3}
@@ -2107,7 +2107,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
     <div
       aria-colindex={4}
@@ -2164,7 +2164,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         }
       }
     >
-
+      
     </div>
   </div>
   <span

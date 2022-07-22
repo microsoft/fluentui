@@ -75,7 +75,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
         }
     title=""
   >
-
+    
   </div>
   <div
     className=
@@ -216,7 +216,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               white-space: nowrap;
             }
       >
-
+        
       </span>
       <span
         className=
@@ -232,7 +232,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               white-space: nowrap;
             }
       >
-
+        
       </span>
     </div>
   </div>

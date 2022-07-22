@@ -198,7 +198,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-
+             
             Test Link 1
           </span>
         </span>
@@ -354,8 +354,8 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                   vertical-align: top;
                 }
           >
-
-
+             
+            
           </span>
         </span>
       </span>
