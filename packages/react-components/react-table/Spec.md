@@ -171,6 +171,10 @@ A primary column is generally the first column of the table, however there is no
 column has some design differences and supports secondary content which can contain extra instructions or
 description.
 
+#### Cell media
+
+A cell can also include a media item such as an icon or an avatar positioned at the start of the cell.
+
 ### Sizes
 
 The table supports the following sizes that affect the layout and size of its child components:
@@ -260,6 +264,7 @@ interface TableRowProps {
 
 interface TableCellProps {
   root: Slot<'td' | 'div'>;
+  media: Slot<'span'>;
 }
 ```
 
@@ -341,6 +346,20 @@ interface DataGridCellProps extends DataGridCellProps {
     </tr>
   </tbody>
 </table>
+```
+
+### Table cell with media
+
+```tsx
+<TableRow>
+  <TableCell media={<FileIcon />}>Cell</TableCell>
+<TableRow>
+```
+
+```html
+<tr>
+  <td><span>FileIcon</span> Cell</td>
+</tr>
 ```
 
 ### Table without semantic elements
