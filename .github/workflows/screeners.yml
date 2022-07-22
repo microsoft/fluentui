@@ -21,8 +21,6 @@ env:
 
         BUILD_BUILDID: ${{ github.run_id }}
 
-        BUILD_SOURCEBRANCHNAME: 'merge'
-
         BUILD_SOURCEBRANCH: ${{ github.ref }}
 
 jobs:
@@ -45,9 +43,14 @@ jobs:
 
     - name: Set env variables if there is a PR
       run: |
+       echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
        echo "ISPR=true" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{startsWith(github.ref, 'refs/pull/')}}
@@ -57,6 +60,7 @@ jobs:
        echo "ISPR=false" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Log environment variables (Linux)
@@ -101,10 +105,15 @@ jobs:
 
     - name: Set env variables if there is a PR
       run: |
+       echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
        echo "ISPR=true" >> $GITHUB_ENV
-       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{startsWith(github.ref, 'refs/pull/')}}
@@ -112,9 +121,9 @@ jobs:
     - name: Set env variables if there is not a PR
       run: |
        echo "ISPR=false" >> $GITHUB_ENV
-       echo "TARGETBRANCH=''" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Log environment variables (Linux)
@@ -157,10 +166,14 @@ jobs:
 
     - name: Set env variables if there is a PR
       run: |
+       echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+       echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
        echo "ISPR=true" >> $GITHUB_ENV
-       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
       env:
         PR_NUMBER: ${{ github.event.number }}
       if: ${{startsWith(github.ref, 'refs/pull/')}}
@@ -168,9 +181,9 @@ jobs:
     - name: Set env variables if there is not a PR
       run: |
        echo "ISPR=false" >> $GITHUB_ENV
-       echo "TARGETBRANCH=''" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+       echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
     - name: Log environment variables (Linux)
