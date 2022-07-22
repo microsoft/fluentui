@@ -76,7 +76,7 @@ jobs:
         shell: bash
 
       - name: debug
-        run: git log -10 yarn lage info --since origin/master
+        run: git log -10 && yarn lage info --since origin/master
 
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
