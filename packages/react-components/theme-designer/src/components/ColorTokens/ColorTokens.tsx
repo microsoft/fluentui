@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, teamsDarkTheme, teamsLightTheme, Button, Caption1 } from '@fluentui/react-components';
+import { makeStyles, webDarkTheme, webLightTheme, Button, Caption1 } from '@fluentui/react-components';
 import type { Brands, Theme } from '@fluentui/react-theme';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
-import { brandTeams } from '../../utils/brandColors';
 import { themeNames } from '../../utils/themeList';
 import { AccessibilityList } from './AccessibilityList';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { brandWeb } from '../../utils/brandColors';
 
 export interface ColorTokensProps {
   theme: Theme;
@@ -41,8 +41,8 @@ const useStyles = makeStyles({
   },
 });
 
-const lightBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(teamsLightTheme, brandTeams);
-const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(teamsDarkTheme, brandTeams);
+const lightBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(webLightTheme, brandWeb);
+const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(webDarkTheme, brandWeb);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
