@@ -367,7 +367,6 @@ export const CalendarDayGridBase = React.forwardRef(
       <FocusZone className={classNames.wrapper} ref={forwardedRef}>
         <table
           className={classNames.table}
-          aria-readonly="true"
           aria-multiselectable="false"
           aria-labelledby={labelledBy}
           aria-activedescendant={activeDescendantId}
