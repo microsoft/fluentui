@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
 import { AppState, DispatchTheme, initialAppState, useThemeDesignerReducer } from './useThemeDesignerReducer';
-import { teamsLightTheme, FluentProvider } from '@fluentui/react-components';
+import { FluentProvider } from '@fluentui/react-components';
 import { createContext } from '@fluentui/react-context-selector';
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -27,8 +27,12 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
 
   const [appState, dispatchAppState] = useThemeDesignerReducer();
 
+  const { darkOverrides, isDark, lightOverrides, theme } = appState;
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
+
   return (
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider theme={overridenTheme}>
       <AppContext.Provider value={{ appState, dispatchAppState }}>
         <div className={styles.root}>
           <Nav className={styles.nav} />

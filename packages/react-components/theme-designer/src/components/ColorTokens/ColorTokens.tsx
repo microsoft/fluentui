@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { makeStyles, webDarkTheme, webLightTheme, Button, Caption1 } from '@fluentui/react-components';
-import type { Brands, Theme } from '@fluentui/react-theme';
+import type { Brands } from '@fluentui/react-theme';
 import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { themeNames } from '../../utils/themeList';
 import { AccessibilityList } from './AccessibilityList';
@@ -9,9 +9,7 @@ import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { brandWeb } from '../../utils/brandColors';
 
-export interface ColorTokensProps {
-  theme: Theme;
-}
+export interface ColorTokensProps {}
 
 export type ColorOverrideBrands = Record<string, Brands>;
 
@@ -47,11 +45,13 @@ const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(webD
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { theme } = props;
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
+  const { brand, darkOverrides, isDark, lightOverrides, theme, themeName } = appState;
   const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
-  const { brand, isDark, themeName } = appState;
   const brandColors = isDark ? darkBrandColors : lightBrandColors;
+
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
 
   const themeLabel = themeName + (isDark ? 'Dark' : 'Light');
 
@@ -117,7 +117,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
         brandColors={brandColors}
         colorOverride={getCurrentOverride(themeLabel, colorOverride)}
         onNewOverride={onNewOverride}
-        theme={theme}
+        theme={overridenTheme}
       />
     </div>
   );
