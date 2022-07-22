@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(Nav): Add role property to override navigation ARIA role.",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

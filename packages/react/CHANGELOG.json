@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/react_v8.83.0",
+      "version": "8.83.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7597b05cc64da5d2613a02ff157bfcbff8693f0e",
+            "comment": "feat(Nav): Add role property to override navigation ARIA role."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jul 2022 07:49:17 GMT",
       "tag": "@fluentui/react_v8.82.2",
       "version": "8.82.2",

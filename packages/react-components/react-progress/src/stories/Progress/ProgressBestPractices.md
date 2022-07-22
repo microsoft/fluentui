@@ -1,10 +1,5 @@
-<details>
-<summary>
- Best Practices
-</summary>
+## Best practices
 
 ### Do
 
 ### Don't
-
-</details>

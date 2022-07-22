@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Progress } from '../../components/Progress/Progress';
-import { ProgressProps } from '../../components/Progress/Progress.types';
+import { Progress, ProgressProps } from '@fluentui/react-progress';
 
 export const Default = (props: Partial<ProgressProps>) => <Progress {...props} />;

@@ -7,15 +7,13 @@ describe('Progress', () => {
   isConformant({
     Component: Progress,
     displayName: 'Progress',
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {
-            label: 'Test Label',
-          },
-        },
-      ],
-    },
     disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
+  });
+
+  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+
+  it('renders a default state', () => {
+    const result = render(<Progress>Default Progress</Progress>);
+    expect(result.container).toMatchSnapshot();
   });
 });

@@ -1,4 +1,4 @@
-import { Progress } from '../../components/Progress/Progress';
+import { Progress } from '@fluentui/react-progress';
 
 import descriptionMd from './ProgressDescription.md';
 import bestPracticesMd from './ProgressBestPractices.md';
