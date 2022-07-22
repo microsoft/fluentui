@@ -176,7 +176,7 @@ const useLoaderStyles = makeStyles({
 const useTrackStyles = makeStyles({
   inverted: {
     ['& > svg > circle.fui-Spinner__Tail']: {
-      stroke: tokens.colorNeutralStrokeOnBrand2,
+      stroke: tokens.colorNeutralForegroundInvertedStatic,
       animationName: {
         '0%': {
           strokeDasharray: '1,150',
@@ -208,6 +208,7 @@ const useTrackStyles = makeStyles({
 
     ['& > svg > circle.fui-Spinner__Track']: {
       stroke: tokens.colorNeutralBackgroundInverted,
+      opacity: 0.2,
     },
   },
   primary: {
