@@ -14,7 +14,7 @@ There have been multiple efforts into trying to unify the way we track, assign, 
 
 ## Problem statement
 
-We currently have 8 project boards that span across all teams and v-teams. This creates redundancy when sharing statuses and makes it hard to have a common backlog that we can groom and prioritize. Besides this, having separate boards for each team creates desynchronized sprint timelines and different types of estimations.
+We currently have 8 project boards that span across all teams and v-teams. This creates redundancy when sharing statuses and makes it hard to have a common [backlog](#backlog) that we can groom and prioritize. Besides this, having separate boards for each team creates desynchronized [sprint](#sprints) timelines and different types of [estimations](#difficulty).
 
 With this RFC we're hoping to solve most of these issues by creating a process on how we should use the unified board and its "ceremonies".
 
@@ -25,11 +25,17 @@ Our solution to these problems is to start using a [common, unified project boar
 1. All teams will run under the same [sprint](#sprints). We will start with 2 weeks long sprints.
    - Planning and other sprint related ceremonies (ie retrospective) are up to each team.
 1. Ideally all issues assigned to a sprint should be [prioritized](#prioritization) and [estimated](#difficulty).
-1. The managers of each team will have weekly meetings to groom the backlog and prioritize items.
+1. The managers of each team will have weekly meetings to groom the [backlog](#backlog) and prioritize items.
    - Teams will have full ownership of breaking down big tasks and planning accordingly
 1. Each team will set up [milestones](#milestones) which will reflect their 4 sprints long road map.
 1. Teams should try to use [labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) instead of creating new fields.
    - Separate views can be created to display specific labels (ie "Known intermittent issues")
+
+### Backlog
+
+The backlog is a collection of items that are not included in a sprint. Backlog items can be prioritized, which means that EMs / PMs have already checked them, but also unprioritized, which means that they must be checked by EMs / PMs in the following grooming sessions.
+
+Once items in the backlog are groomed, they can also be assigned to specific teams. Items such as PRs can be assigned to boards without being prioritized.
 
 ### Sprints
 
