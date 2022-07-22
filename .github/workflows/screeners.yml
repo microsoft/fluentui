@@ -89,7 +89,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist'
+            az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --overwrite
 
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
