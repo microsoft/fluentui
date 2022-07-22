@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import { makeStyles, tokens, MenuList, MenuItem, Menu, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
 export const useMenuListContainerStyles = makeStyles({
   container: {

@@ -14,7 +14,12 @@ export type AvatarGroupSlots = {
   /**
    * List that contains the overflow AvatarGroupItems.
    */
-  overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
+  overflowContent?: NonNullable<Slot<'div'>>;
+
+  /**
+   * PopoverSurface that contains the overflow content.
+   */
+  overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 /**

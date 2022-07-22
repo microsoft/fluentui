@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-components';
 
 export const Size = () => {
   return (

@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover, MenuProps } from '@fluentui/react-menu';
-
-import { Button } from '@fluentui/react-button';
+import { Button, Menu, MenuTrigger, MenuList, MenuItemCheckbox, MenuPopover } from '@fluentui/react-components';
 import {
   bundleIcon,
   CutRegular,
@@ -12,6 +10,7 @@ import {
   EditRegular,
   EditFilled,
 } from '@fluentui/react-icons';
+import type { MenuProps } from '@fluentui/react-components';
 
 const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Label } from '@fluentui/react-label';
+import { Label } from '@fluentui/react-components';
 
 import descriptionMd from './LabelDescription.md';
 export { Default } from './LabelDefault.stories';

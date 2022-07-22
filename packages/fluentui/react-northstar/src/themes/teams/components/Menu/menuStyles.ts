@@ -40,6 +40,9 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
           borderRadius: siteVariables.borderRadiusMedium,
+          ...(submenu && {
+            borderColor: v.subMenuBorderColor,
+          }),
         }),
       ...(underlined && {
         borderBottom: `${v.underlinedBottomBorderWidth} solid ${v.underlinedBorderColor}`,

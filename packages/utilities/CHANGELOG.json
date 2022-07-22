@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/utilities_v8.9.0",
+      "version": "8.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "16495a93e0f4eb4cf793f6462e3546eb101dae82",
+            "comment": "feat: Add canUseDOM, deprecate setSRR, replace setSSR's functionality with a warning, and replace all _isSSR checks with canUseDOM."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/utilities_v8.8.3",
       "version": "8.8.3",

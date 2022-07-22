@@ -24,6 +24,10 @@
   "features": {
     "github-cli": "latest"
   },
+  "containerEnv": {
+    "DISPLAY": "host.docker.internal:0.0",
+    "LIBGL_ALWAYS_INDIRECT": "0"
+  },
 
   // https://code.visualstudio.com/docs/remote/devcontainerjson-reference#_lifecycle-scripts
   "onCreateCommand": "yarn && yarn build"

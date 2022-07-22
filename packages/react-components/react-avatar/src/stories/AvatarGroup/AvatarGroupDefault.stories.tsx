@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { AvatarGroup } from '../../AvatarGroup';
-import { AvatarGroupItem } from '../../AvatarGroupItem';
-import type { AvatarGroupProps } from '../../AvatarGroup';
+import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import type { AvatarGroupProps } from '@fluentui/react-avatar';
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
   return (

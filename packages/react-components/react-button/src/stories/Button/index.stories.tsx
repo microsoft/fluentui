@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { Button } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-components';
 import descriptionMd from './ButtonDescription.md';
 import bestPracticesMd from './ButtonBestPractices.md';
 
@@ -13,7 +13,7 @@ export { Disabled } from './ButtonDisabled.stories';
 export { WithLongText } from './ButtonWithLongText.stories';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components/Button/Button',
   component: Button,
   parameters: {
     docs: {

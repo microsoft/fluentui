@@ -13,11 +13,14 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "test": "jest && ts-node --transpile-only ./src/test.ts",
+    "storybook": "node ../../scripts/storybook/runner",
+    "test:unit": "jest",
+    "test:ssr": "ts-node --transpile-only ./src/test.ts",
+    "test": "yarn test:unit && yarn test:ssr",
     "type-check": "tsc -b tsconfig.json"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.0.1"
+    "@fluentui/react-components": "^9.1.1"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

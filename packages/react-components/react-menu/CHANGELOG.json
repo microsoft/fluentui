@@ -2,6 +2,110 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:01 GMT",
+      "tag": "@fluentui/react-menu_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.1.1",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:20 GMT",
+      "tag": "@fluentui/react-menu_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42",
+            "comment": "chore: Update @fluentui/react-icons dependency to v2.0.175"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.1",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.1.0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ],
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "769bfa3d797cb79aa6594aa8589e382403287a9d",
+            "comment": "Organize left navigation, add theme entries"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:50 GMT",
       "tag": "@fluentui/react-menu_v9.0.1",
       "version": "9.0.1",

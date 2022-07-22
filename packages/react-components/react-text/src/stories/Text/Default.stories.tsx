@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { Text } from '@fluentui/react-text';
-import type { TextProps } from '@fluentui/react-text';
+import { makeStyles, Text } from '@fluentui/react-components';
+import type { TextProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

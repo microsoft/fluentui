@@ -1,23 +1,14 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Divider, FluentProvider, tokens } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands, tokens, Divider, FluentProvider } from '@fluentui/react-components';
 import { Alert } from '@fluentui/react-alert';
-
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
-
 import { Demo } from '../Demo/Demo';
-import { AccessibilityChecker } from '../AccessibilityChecker/AccessibilityChecker';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
-
-import { Theme, BrandVariants } from '@fluentui/react-theme';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 export interface ContentProps {
   className?: string;
-  brand: BrandVariants;
-  theme: Theme;
-  isDark: boolean;
-  dispatchState: React.Dispatch<DispatchTheme>;
 }
 
 const useStyles = makeStyles({
@@ -26,27 +17,28 @@ const useStyles = makeStyles({
     alignItems: 'left',
     justifyContent: 'center',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '5%', '0px', '5%'),
+    ...shorthands.padding('40px', '5%'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });
 
 export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
-  const { className, brand, theme, isDark, dispatchState } = props;
+
+  const { brand, darkOverrides, isDark, lightOverrides, theme } = useContextSelector(AppContext, ctx => ctx.appState);
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
 
   return (
-    <FluentProvider theme={theme}>
+    <FluentProvider theme={overridenTheme}>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
-      <div className={mergeClasses(styles.root, className)}>
+      <div className={mergeClasses(styles.root, props.className)}>
         <Palette brandColors={brand} />
-        <Demo theme={theme} />
+        <Demo />
         <Divider />
-        <AccessibilityChecker theme={theme} />
-        <Divider />
-        <ColorTokens isDark={isDark} brand={brand} dispatchState={dispatchState} />
+        <ColorTokens theme={overridenTheme} />
       </div>
     </FluentProvider>
   );

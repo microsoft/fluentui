@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/babel-preset-global-context",
-  "version": "9.0.0-beta.1",
+  "version": "9.0.0-beta.3",
   "description": "Babel preset that transforms createContext calls to use global context shims",
   "main": "lib/index.js",
   "typings": "dist/index.d.ts",
@@ -38,7 +38,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/global-context": "9.0.0-beta.1"
+    "@fluentui/global-context": "9.0.0-beta.3"
   },
   "beachball": {
     "disallowedChangeTypes": [

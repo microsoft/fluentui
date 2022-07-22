@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { SpinButton, SpinButtonProps } from '@fluentui/react-spinbutton';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { tokens } from '@fluentui/react-theme';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
+import type { SpinButtonProps } from '@fluentui/react-components';
 
 const useLayoutStyles = makeStyles({
   base: {
