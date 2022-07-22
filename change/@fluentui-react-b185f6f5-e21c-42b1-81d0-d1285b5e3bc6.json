@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update TooltipHost to use onRenderContent in description text",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
