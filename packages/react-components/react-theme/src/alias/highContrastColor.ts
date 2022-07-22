@@ -52,6 +52,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundOnBrand: hcButtonText, // ButtonText Global.Color.hcButtonText
+  colorNeutralForegroundInvertedStatic: hcButtonText, // ButtonText Global.Color.hcButtonText
   colorNeutralForegroundInvertedLink: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
@@ -84,6 +85,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground5Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground5Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground6: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight

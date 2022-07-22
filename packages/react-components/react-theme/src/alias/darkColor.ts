@@ -42,6 +42,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralForegroundInvertedPressed: grey[14], // #242424 Global.Color.Grey.14
   colorNeutralForegroundInvertedSelected: grey[14], // #242424 Global.Color.Grey.14
   colorNeutralForegroundOnBrand: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedStatic: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLink: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkPressed: white, // #ffffff Global.Color.White
@@ -74,6 +75,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground5Pressed: grey[2], // #050505 Global.Color.Grey.2
   colorNeutralBackground5Selected: grey[6], // #0f0f0f Global.Color.Grey.6
   colorNeutralBackground6: grey[20], // #333333 Global.Color.Grey.20
+  colorNeutralBackgroundStatic: grey[24], // #3d3d3d Global.Color.Grey.24
   colorNeutralBackgroundInverted: white, // #ffffff Global.Color.White
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: grey[22], // #383838 Global.Color.Grey.22
