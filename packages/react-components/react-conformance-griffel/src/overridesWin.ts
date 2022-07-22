@@ -60,7 +60,7 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
     container = null;
   });
 
-  xit('"className" passed last wins', async () => {
+  it('"className" passed last wins', async () => {
     // To mock mergeClasses() we need require a component again, this could be done via "jest.isolateModules()"
     // but a bug that prevents it was fixed only in Jest 27.
     // https://github.com/facebook/jest/pull/10963
