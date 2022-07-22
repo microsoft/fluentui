@@ -43,14 +43,10 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
    * the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
-  /**
-   * Overrideable render for the Progress track
-  onRenderProgress?:
-  */
 };
 
 /**
  * State used in rendering Progress
  */
 export type ProgressState = ComponentState<ProgressSlots> &
-  Required<Pick<ProgressProps, 'barHeight' | 'percentComplete'>>;
+  Required<Pick<ProgressProps, 'appearance' | 'barHeight' | 'percentComplete'>>;
