@@ -58,7 +58,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   // update active option based on change in open state
   React.useEffect(() => {
-    if (open) {
+    if (open && !activeOption) {
       // if there is a selection, start at the most recently selected item
       if (selectedOptions.length > 0) {
         const lastSelectedOption = getOptionsMatchingValue(
@@ -70,7 +70,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
       else {
         setActiveOption(getOptionAtIndex(0));
       }
-    } else {
+    } else if (!open) {
       // reset the active option when closing
       setActiveOption(undefined);
     }

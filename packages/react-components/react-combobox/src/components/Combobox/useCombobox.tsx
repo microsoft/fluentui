@@ -39,16 +39,30 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
-  // set active option and selection based on typing
-  const getOptionFromInput = (inputValue: string): OptionValue | null => {
+  // track focused state to conditionally render collapsed listbox
+  const [hasFocus, setHasFocus] = React.useState(false);
+  const onFocus = (ev: React.FocusEvent<HTMLInputElement>) => {
+    setHasFocus(true);
+
+    triggerNativeProps.onFocus?.(ev);
+  };
+
+  const getSearchString = (inputValue: string): string => {
     // if there are commas in the value string, take the text after the last comma
     const searchString = inputValue.split(',').pop();
 
-    if (!searchString || searchString.trim().length === 0) {
+    return searchString?.trim().toLowerCase() || '';
+  };
+
+  // set active option and selection based on typing
+  const getOptionFromInput = (inputValue: string): OptionValue | null => {
+    const searchString = getSearchString(inputValue);
+
+    if (searchString.length === 0) {
       return null;
     }
 
-    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.trim().toLowerCase()) === 0;
+    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
     const matches = getOptionsMatchingValue(matcher);
 
     // return first matching option after the current active option, looping back to the top
@@ -69,12 +83,19 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     selectOption(ev, optionValue);
   };
 
-  // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
+    // handle selection and updating value if allowFreeform is false
     if (!baseState.open && !allowFreeform) {
+      // select matching option, if the value fully matches
+      if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
+        baseState.selectOption(ev, activeOption.value);
+      }
+
+      // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
       setValue(undefined);
     }
 
+    setHasFocus(false);
     triggerNativeProps.onBlur?.(ev);
   };
 
@@ -117,6 +138,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       ...triggerNativeProps,
       onBlur,
       onChange,
+      onFocus,
     },
   });
 
@@ -148,6 +170,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
+    hasFocus,
     setOpen,
   };
 

@@ -514,10 +514,27 @@ describe('Combobox', () => {
     );
 
     const combobox = getByTestId('combobox');
-    fireEvent.change(combobox, { target: { value: 'foo' } });
+    fireEvent.change(combobox, { target: { value: 'gr' } });
     fireEvent.blur(combobox);
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
+  });
+
+  it('selects an option on blur from a closed combobox when the full value is typed', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox data-testid="combobox">
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+    fireEvent.focus(combobox);
+    fireEvent.change(combobox, { target: { value: 'blue' } });
+    fireEvent.blur(combobox);
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Blue');
   });
 
   it('should not revert value on blur with allowFreeform', () => {
