@@ -37,9 +37,13 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const overrides = isDark ? darkOverrides : lightOverrides;
   const overridenTheme = { ...theme, ...overrides };
 
+  const { darkOverrides, isDark, lightOverrides, theme } = appState;
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
+
   return (
     <FluentProvider theme={webLightTheme}>
-      <AppContext.Provider value={{ appState, dispatchAppState, name, setName }}>
+      <AppContext.Provider value={{ appState, dispatchAppState }}>
         <div className={styles.root}>
           <Nav className={styles.nav} />
           <Sidebar className={styles.sidebar} />
