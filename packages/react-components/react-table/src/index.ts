@@ -1,2 +1,2 @@
-// TODO: replace with real exports
-export {};
+export { TableCell } from './TableCell';
+export { TableRow } from './TableRow';
