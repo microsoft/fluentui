@@ -111,3 +111,5 @@ export {
 export type { ComponentStyles, ComponentsStyles, PartialTheme, Theme } from './Theme';
 
 import './version';
+
+export const test = 'test';

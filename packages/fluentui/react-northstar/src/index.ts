@@ -287,3 +287,5 @@ export const FocusZoneUtilities = {
   getPreviousElement,
   focusAsync,
 };
+
+export const test = 'test';
