@@ -94,6 +94,9 @@ jobs:
         SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
         SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
+    - name: 'check: modified files'
+      run: yarn check:modified-files
+
   Screener:
     runs-on: 'ubuntu-latest'
 
@@ -155,6 +158,9 @@ jobs:
         SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
         SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
+    - name: 'check: modified files'
+      run: yarn check:modified-files
+
   ScreenerVNext:
     runs-on: 'ubuntu-latest'
 
@@ -214,5 +220,8 @@ jobs:
         SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
         SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
         SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
+    - name: 'check: modified files'
+      run: yarn check:modified-files
 
 
