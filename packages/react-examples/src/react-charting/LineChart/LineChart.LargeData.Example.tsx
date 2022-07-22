@@ -9,7 +9,7 @@ interface ILineChartBasicState {
   allowMultipleShapes: boolean;
 }
 
-export class LineChartBasicExample extends React.Component<{}, ILineChartBasicState> {
+export class LineChartLargeDataExample extends React.Component<{}, ILineChartBasicState> {
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -38,7 +38,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     let startdate = new Date('2020-03-01T00:00:00.000Z');
     let i = 0;
     for (i = 0; i < 10000; i++) {
-      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: i * i - 5 * i });
       data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
     }
 
@@ -50,8 +49,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     let startdate = new Date('2020-03-01T00:00:00.000Z');
     let i = 0;
     for (i = 1000; i < 9000; i++) {
-      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 100000000 - i * i });
-      //data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 5000000 + i * i - 5 * i });
       data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: this.getY(i) });
     }
 
@@ -82,6 +79,9 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           legend: 'All',
           data: this._getdata2(),
           color: DefaultPalette.green,
+          lineOptions: {
+            lineBorderWidth: '5',
+          },
         },
         {
           legend: 'single point',
