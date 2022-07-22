@@ -22,33 +22,35 @@ With this RFC we're hoping to solve most of these issues by creating a process o
 
 Our solution to these problems is to start using a [common, unified project board](https://github.com/orgs/microsoft/projects/395/views/2) across all teams and v-teams with the following processes:
 
-1. All teams will run under the same [sprint](Sprints). We will start with 2 weeks long sprints.
+1. All teams will run under the same [sprint](#sprints). We will start with 2 weeks long sprints.
    - Planning and other sprint related ceremonies (ie retrospective) are up to each team.
-1. Ideally all issues assigned to a sprint should be [prioritized](Prioritization) and [estimated](Difficulty).
+1. Ideally all issues assigned to a sprint should be [prioritized](#prioritization) and [estimated](#difficulty).
 1. The managers of each team will have weekly meetings to groom the backlog and prioritize items.
    - Teams will have full ownership of breaking down big tasks and planning accordingly
-1. Each team will set up milestones which will reflect their [increment](Increments) outcome.
+1. Each team will set up [milestones](#milestones) which will reflect their 4 sprints long road map.
+1. Teams should try to use [labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) instead of creating new fields.
+   - Separate views can be created to display specific labels (ie "Known intermittent issues")
 
 ### Sprints
 
 Sprints are 2 week long chunks in which each team works on a specific, ideally predefined (planned) list of issues. There's no strict rule about the number of items or the capacity of a sprint, so items can be added or removed at will.
 
-We use sprints to better correlate [estimations](Difficulty) with a specific timeline and offer a sneak peek into what a team is supposed to work on in the upcoming weeks, using a single board view.
+We use sprints to better correlate [estimations](#difficulty) with a specific timeline and offer a sneak peek into what a team is supposed to work on in the upcoming weeks, using a single board view.
 
-### Increments
+### Milestones
 
-An increment is a group of 4 sprints. We use increments to see the planning and progress on a long term fashion. Increments should be tied to milestones which can be shared with anyone interested in seeing the short term road map.
+A milestone is a group of 4 sprints. We use milestones to see the planning and progress on a longer term fashion. Milestones can be shared with anyone interested in seeing the road map.
 
 ### Prioritization
 
 | Priority  | Description                            |
 | :-------- | :------------------------------------- |
 | 🌋 Urgent | to be done in current sprint           |
-| 🏔 High    | to be done in the current increment    |
-| 🏕 Medium  | to be done in the next 2 increments    |
-| 🏝 Low     | to be done in the following increments |
+| 🏔 High    | to be done in the current milestone    |
+| 🏕 Medium  | to be done in the next 2 milestones    |
+| 🏝 Low     | to be done in the following milestones |
 
-_The priority descriptions have ballpark values and are subject to change based on the progress of our increments._
+_The priority descriptions have ballpark values and are subject to change based on the progress of our milestones._
 
 ### Difficulty
 
@@ -61,6 +63,8 @@ Estimations are based on Fibonacci numbers and are relative to sprint length.
 | 🐓 Medium (3)  | between 1 - 3 days long  |
 | 🦅 Hard (5)    | half or more of a sprint |
 | 🛩 Heroic (8)   | full sprint              |
+
+_Estimations are dependent on sprint length._
 
 ## Pros and Cons
 
