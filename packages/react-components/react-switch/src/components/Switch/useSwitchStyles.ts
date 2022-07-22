@@ -135,7 +135,7 @@ const useInputStyles = makeStyles({
     ':enabled:checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
         backgroundColor: tokens.colorBrandBackground,
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundInverted,
         ...shorthands.borderColor(tokens.colorTransparentStroke),
       },
 
