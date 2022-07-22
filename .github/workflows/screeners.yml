@@ -3,10 +3,10 @@ name: Screeners workflow
 on: pull_request
 
 env:
-        SKIPCOMPONENTGOVERNANCEDETECTION: true
 
         ConnectionString: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
+        # Prevents failures on CI when "caniuse-lite" becomes outdated
         BROWSERSLIST_IGNORE_OLD_DATA: true
 
         DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
@@ -50,7 +50,6 @@ jobs:
     - name: Set env variables if there is a PR
       run: |
        echo "ISPR=true" >> $GITHUB_ENV
-       echo "TARGETBRANCH=origin/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
       env:
@@ -60,13 +59,10 @@ jobs:
     - name: Set env variables if there is not a PR
       run: |
        echo "ISPR=false" >> $GITHUB_ENV
-       echo "TARGETBRANCH=''" >> $GITHUB_ENV
        echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
        echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
       if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
-    - name: Install yarn
-      run: npm install --global yarn
 
     - name: Log environment variables (Linux)
       if: runner.os == 'Linux'
