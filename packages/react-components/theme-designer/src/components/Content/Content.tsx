@@ -24,7 +24,7 @@ export const Content: React.FC<ContentProps> = props => {
   const styles = useStyles();
 
   return (
-    <div>
+    <>
       <Alert intent="warning" action={{ appearance: 'transparent' }}>
         This tool is still a work in progress - colors are still subject to adjustment.
       </Alert>
@@ -34,6 +34,6 @@ export const Content: React.FC<ContentProps> = props => {
         <Divider />
         <ColorTokens />
       </div>
-    </div>
+    </>
   );
 };

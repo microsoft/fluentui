@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
 import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
 import { AppState, DispatchTheme, initialAppState, useThemeDesignerReducer } from './useThemeDesignerReducer';
-import { FluentProvider } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { createContext } from '@fluentui/react-context-selector';
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
@@ -32,12 +32,14 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const overridenTheme = { ...theme, ...overrides };
 
   return (
-    <FluentProvider theme={overridenTheme}>
+    <FluentProvider theme={webLightTheme}>
       <AppContext.Provider value={{ appState, dispatchAppState }}>
         <div className={styles.root}>
           <Nav className={styles.nav} />
           <Sidebar className={styles.sidebar} />
-          <Content className={styles.content} />
+          <FluentProvider theme={overridenTheme}>
+            <Content className={styles.content} />
+          </FluentProvider>
         </div>
       </AppContext.Provider>
     </FluentProvider>
