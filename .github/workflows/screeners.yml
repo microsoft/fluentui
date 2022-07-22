@@ -1,7 +1,10 @@
 name: Screeners workflow
 
-on: pull_request
-
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 env:
 
         AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
@@ -82,7 +85,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist' --connection-string $AZURE_STORAGE_CONNECTION_STRING
+          az storage blob upload-batch -d '$web' -s 'packages/fluentui/docs/dist'
 
     - name: Start @fluentui/react-northstar VR Test
       run: yarn workspace @fluentui/docs vr:test
@@ -143,7 +146,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az storage blob upload-batch -d '$web' -s 'apps/vr-tests/dist/storybook' --connection-string $AZURE_STORAGE_CONNECTION_STRING
+          az storage blob upload-batch -d '$web' -s 'apps/vr-tests/dist/storybook' --connection-string
 
     - name: Start @fluentui/react VR Test
       run: yarn workspace @fluentui/vr-tests screener
