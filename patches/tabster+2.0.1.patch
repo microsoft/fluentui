@@ -1,0 +1,12 @@
+diff --git a/node_modules/tabster/dist/index.js b/node_modules/tabster/dist/index.js
+index d9fc06a..c83a2dd 100644
+--- a/node_modules/tabster/dist/index.js
++++ b/node_modules/tabster/dist/index.js
+@@ -1081,6 +1081,7 @@ class DummyInputManagerCore {
+     const wrappers = this._wrappers = this._wrappers.filter(w => w.manager !== manager && !force);
+ 
+     if (wrappers.length === 0) {
++       delete this._element?.get().__tabsterDummy;
+       if (this._unobserve) {
+         this._unobserve();
+ 
