@@ -14,10 +14,13 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
 
   const defaultView = targetDocument?.defaultView || undefined;
 
-  const tabster = React.useMemo(
-    () => (defaultView ? createTabster(defaultView, { autoRoot: {}, controlTab: false }) : null),
-    [defaultView],
-  );
+  const tabster = React.useMemo(() => {
+    if (defaultView) {
+      return createTabster(defaultView, { autoRoot: {}, controlTab: false });
+    }
+
+    return null;
+  }, []);
 
   React.useEffect(() => {
     return () => {
