@@ -20,7 +20,7 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
     }
 
     return null;
-  }, []);
+  }, [defaultView]);
 
   React.useEffect(() => {
     return () => {
