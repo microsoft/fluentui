@@ -23,7 +23,6 @@ const insertSheet = (tag: HTMLStyleElement, rule: string) => {
 
   if (sheet) {
     if (sheet.cssRules.length > 0) {
-      console.log('delete');
       sheet.deleteRule(0);
     }
     sheet.insertRule(rule, 0);
