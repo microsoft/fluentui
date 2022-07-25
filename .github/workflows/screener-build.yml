@@ -20,6 +20,7 @@ jobs:
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment.sh
+          echo "HELLO"
           echo "BROWSERSLIST_IGNORE_OLD_DATA=true" >> $GITHUB_ENV
           echo "DEPLOYHOST='fluentuipr.z22.web.core.windows.net'" >> $GITHUB_ENV
           echo "BUILD_BUILDID=${{ github.run_id }}" >> $GITHUB_ENV
