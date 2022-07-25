@@ -21,7 +21,7 @@ jobs:
         run: |
           curl \
            -H "Accept: application/vnd.github+json" \
-           https://api.github.com/repos/microsoft/fluentui/actions/artifacts
+            https://api.github.com/repos/microsoft/fluentui/actions/artifacts/308582298
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
