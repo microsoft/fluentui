@@ -1,10 +1,9 @@
 import { BrandVariants } from '@fluentui/react-components';
-import { brandTeams, brandWeb } from './brandColors';
+import { brandWeb } from './brandColors';
 
 export type ThemeList = Record<string, { brand?: BrandVariants }>;
 
 export const themeList: ThemeList = {
-  Teams: { brand: brandTeams },
   Web: { brand: brandWeb },
   Custom: {},
 };

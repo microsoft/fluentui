@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/web-components_v2.5.3",
+      "version": "2.5.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5aa33cbb283143f8dda9a836faa1b69d94c1ca64",
+            "comment": "chore(storybook): remove deprecated --static-dir CLI flag usage"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Jun 2022 23:03:44 GMT",
       "tag": "@fluentui/web-components_v2.5.3",
       "version": "2.5.3",

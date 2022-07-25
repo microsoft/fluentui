@@ -36,20 +36,6 @@ export declare function findRepoDeps(options?: {
 export declare function getAllPackageInfo(): AllPackageInfo;
 
 /**
- * Determines whether a package is a compatibility package
- * between current and next versions.
- *
- * Compatibility packages are typicallv9 packages that provide
- * backwards compatibility for v8.
- *
- * They may need special handling in the build.
- * @param {PathOrPackageJson} [packagePathOrJson] optional different package path to run in OR previously-read package.json
- * (defaults to reading package.json from `process.cwd()`)
- * @returns {boolean} true if the package.json has the fluent-compatibility set to true.
- */
-export declare function isCompatibilityPackage(packagePathOrJson?: string | PackageJson): boolean;
-
-/**
  * Determines whether a package is converged, based on its version.
  * @param packagePathOrJson optional different package path to run in OR previously-read package.json
  * (defaults to reading package.json from `process.cwd()`)

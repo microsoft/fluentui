@@ -21,7 +21,7 @@ export const getBrandValues = (brand: BrandVariants, overrideList: Partial<Theme
 export const objectToString = (input: Record<string, string>, spacer: string) => {
   return (
     Object.keys(input).map(key => {
-      return '\n' + spacer + key + ': "' + input[key] + '"';
+      return '\n' + spacer + key + ': "' + input[key].toUpperCase() + '"';
     }) + '\n'
   );
 };
