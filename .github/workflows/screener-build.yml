@@ -31,7 +31,6 @@ jobs:
       - name: Set env variables if there is a PR
         run: |
           cat <<EOT >> artifacts/environment.sh
-          echo "PR_NUMBER=${{ github.event.number }}" >> $GITHUB_ENV
           echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
           echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
           echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
@@ -41,6 +40,8 @@ jobs:
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
           EOT
+        env:
+          PR_NUMBER: ${{ github.event.number }}
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Set env variables if there is not a PR
