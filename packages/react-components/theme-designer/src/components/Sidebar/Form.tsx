@@ -59,7 +59,18 @@ export const Form: React.FC<FormProps> = props => {
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+
+    // returns true if form is the same
+    const sameForm =
+      state.keyColor === action.attributes.keyColor &&
+      state.hueTorsion === action.attributes.hueTorsion &&
+      state.darkCp === action.attributes.darkCp &&
+      state.lightCp === action.attributes.lightCp;
+
+    // only dispatch if form changes
+    if (!sameForm) {
+      dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    }
     return action.attributes;
   };
 
@@ -78,7 +89,9 @@ export const Form: React.FC<FormProps> = props => {
   }, [debouncedForm]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
+    // check if the newly inputted hex code has a #
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
@@ -102,6 +115,7 @@ export const Form: React.FC<FormProps> = props => {
             id={sidebarId + 'keyColor'}
             value={form.keyColor}
             onChange={handleKeyColorChange}
+            maxLength={7}
           />
           <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
             <input

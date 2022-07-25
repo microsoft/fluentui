@@ -81,6 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
 
   const [tab, setTab] = React.useState<TabValue>('use');
   const handleTabChange = (event: SelectTabEvent, data: SelectTabData) => {
+    // this is outdated, but i'm going to leave it until arman gives me more clarity on what the sidebar will look like
     if (data.value === 'edit') {
       dispatchAppState({ type: 'Custom', customAttributes: formState, overrides: {} });
     } else if (data.value === 'use') {
@@ -89,11 +90,11 @@ export const Sidebar: React.FC<SidebarProps> = props => {
     setTab(data.value);
   };
 
-  const [theme, setTheme] = React.useState<string>('Teams');
+  const [theme, setTheme] = React.useState<string>('Web');
   const [isDark, setIsDark] = React.useState<boolean>(false);
 
   const [formState, setFormState] = React.useState<CustomAttributes>({
-    keyColor: '#006bc7',
+    keyColor: '#0F6CBD',
     hueTorsion: 0,
     darkCp: 0.66,
     lightCp: 0.33,
