@@ -1,11 +1,10 @@
-name: Screener run
+name: Screeners workflow
 
 on:
   push:
     branches:
       - master
   pull_request:
-
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
@@ -19,10 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        run: |
-          curl \
-           -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/microsoft/fluentui/actions/artifacts/308582298/zip
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: env-artifact
+          path: artifacts
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
@@ -41,7 +42,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
   Screener:
     runs-on: 'ubuntu-latest'
 
@@ -59,7 +59,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
   ScreenerVNext:
     runs-on: 'ubuntu-latest'
 
