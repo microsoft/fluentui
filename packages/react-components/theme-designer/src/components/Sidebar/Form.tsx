@@ -3,8 +3,9 @@ import * as React from 'react';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Label, Input, Slider, tokens } from '@fluentui/react-components';
 import { useDebounce } from '../../utils/useDebounce';
-
-import type { CustomAttributes, DispatchTheme } from '../../useThemeDesignerReducer';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import type { CustomAttributes } from '../../useThemeDesignerReducer';
 
 const useStyles = makeStyles({
   root: {
@@ -46,7 +47,6 @@ const useStyles = makeStyles({
 
 export interface FormProps {
   sidebarId: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
   formState: CustomAttributes;
   setFormState: React.Dispatch<CustomAttributes>;
 }
@@ -54,11 +54,23 @@ export interface FormProps {
 export const Form: React.FC<FormProps> = props => {
   const styles = useStyles();
 
-  const { sidebarId, dispatchAppState, formState, setFormState } = props;
+  const { formState, setFormState, sidebarId } = props;
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+
+    // returns true if form is the same
+    const sameForm =
+      state.keyColor === action.attributes.keyColor &&
+      state.hueTorsion === action.attributes.hueTorsion &&
+      state.darkCp === action.attributes.darkCp &&
+      state.lightCp === action.attributes.lightCp;
+
+    // only dispatch if form changes
+    if (!sameForm) {
+      dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    }
     return action.attributes;
   };
 
@@ -77,7 +89,9 @@ export const Form: React.FC<FormProps> = props => {
   }, [debouncedForm]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
+    // check if the newly inputted hex code has a #
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
@@ -101,6 +115,7 @@ export const Form: React.FC<FormProps> = props => {
             id={sidebarId + 'keyColor'}
             value={form.keyColor}
             onChange={handleKeyColorChange}
+            maxLength={7}
           />
           <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
             <input

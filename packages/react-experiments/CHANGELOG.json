@@ -2,6 +2,96 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:56 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.7",
+      "version": "8.12.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.83.1",
+            "commit": "3a4adc9678288e62d86487b84c6e3a4ce55cfae5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.6",
+      "version": "8.12.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.83.0",
+            "commit": "cc1dc504692525db9106e00dc65133ecfcfc35fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jul 2022 07:49:17 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.5",
+      "version": "8.12.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.82.2",
+            "commit": "4ddf5a7467dc9540f21c4968495dd9a09afb69bc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.4",
+      "version": "8.12.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.82.1",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.3",
+      "version": "8.12.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.82.0",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:48 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.2",
+      "version": "8.12.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.81.1",
+            "commit": "7989de0234d8faaba0e6d4fa945d6d70827696f3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 07:45:35 GMT",
       "tag": "@fluentui/react-experiments_v8.12.1",
       "version": "8.12.1",

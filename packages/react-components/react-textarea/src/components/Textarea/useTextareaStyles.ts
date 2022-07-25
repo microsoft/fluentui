@@ -130,9 +130,12 @@ const useTextareaStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     ...shorthands.margin('0'),
     backgroundColor: 'transparent',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
+    height: '100%',
+    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,

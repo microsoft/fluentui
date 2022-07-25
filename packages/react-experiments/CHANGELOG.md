@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 14 Jul 2022 07:45:35 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Jul 2022 07:36:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.7)
+
+Mon, 25 Jul 2022 07:36:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.6..@fluentui/react-experiments_v8.12.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.83.1 ([PR #24031](https://github.com/microsoft/fluentui/pull/24031) by beachball)
+
+## [8.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.6)
+
+Fri, 22 Jul 2022 07:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.5..@fluentui/react-experiments_v8.12.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.83.0 ([PR #24024](https://github.com/microsoft/fluentui/pull/24024) by beachball)
+
+## [8.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.5)
+
+Thu, 21 Jul 2022 07:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.4..@fluentui/react-experiments_v8.12.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.82.2 ([PR #23995](https://github.com/microsoft/fluentui/pull/23995) by beachball)
+
+## [8.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.4)
+
+Wed, 20 Jul 2022 07:42:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.3..@fluentui/react-experiments_v8.12.4)
+
+### Patches
+
+- Bump @fluentui/react to v8.82.1 ([PR #23993](https://github.com/microsoft/fluentui/pull/23993) by beachball)
+
+## [8.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.3)
+
+Tue, 19 Jul 2022 07:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.2..@fluentui/react-experiments_v8.12.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.82.0 ([PR #23968](https://github.com/microsoft/fluentui/pull/23968) by beachball)
+
+## [8.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.2)
+
+Fri, 15 Jul 2022 20:03:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.1..@fluentui/react-experiments_v8.12.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.81.1 ([PR #23940](https://github.com/microsoft/fluentui/pull/23940) by beachball)
 
 ## [8.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.1)
 

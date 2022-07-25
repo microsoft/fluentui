@@ -127,23 +127,6 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  SpinButton,
-  renderSpinButton_unstable,
-  spinButtonClassNames,
-  useSpinButtonStyles_unstable,
-  useSpinButton_unstable,
-} from '@fluentui/react-spinbutton';
-export type {
-  SpinButtonOnChangeData,
-  SpinButtonChangeEvent,
-  SpinButtonProps,
-  SpinButtonSlots,
-  SpinButtonState,
-  SpinButtonSpinState,
-  SpinButtonBounds,
-} from '@fluentui/react-spinbutton';
-
-export {
   Toolbar,
   ToolbarDivider,
   ToolbarToggleButton,

@@ -2,6 +2,54 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:03 GMT",
+      "tag": "@fluentui/react-select_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:21 GMT",
+      "tag": "@fluentui/react-select_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42",
+            "comment": "chore: Update @fluentui/react-icons dependency to v2.0.175"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:51 GMT",
       "tag": "@fluentui/react-select_v9.0.0-beta.5",
       "version": "9.0.0-beta.5",

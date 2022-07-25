@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TextBoldRegular, TextItalicRegular, TextUnderlineRegular } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-button';
-import { Tooltip } from '@fluentui/react-tooltip';
+import { Button, Tooltip } from '@fluentui/react-components';
 
 export const RelationshipLabel = () => (
   <>

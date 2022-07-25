@@ -1,13 +1,25 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
-import type { DialogState, DialogSlots } from './Dialog.types';
+import { Portal } from '@fluentui/react-portal';
+import type { DialogState, DialogSlots, DialogContextValues } from './Dialog.types';
+import { DialogProvider } from '../../contexts/dialogContext';
 
 /**
  * Render the final JSX of Dialog
  */
-export const renderDialog_unstable = (state: DialogState) => {
+export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
+  const { content, trigger, open } = state;
   const { slots, slotProps } = getSlots<DialogSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <DialogProvider value={contextValues.dialog}>
+      {trigger}
+      {open && (
+        <Portal>
+          {slots.overlay && <slots.overlay {...slotProps.overlay} />}
+          {content}
+        </Portal>
+      )}
+    </DialogProvider>
+  );
 };

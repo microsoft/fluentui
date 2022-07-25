@@ -6937,6 +6937,7 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    // @deprecated
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
@@ -6963,6 +6964,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;

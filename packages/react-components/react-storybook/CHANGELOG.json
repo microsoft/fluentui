@@ -2,6 +2,36 @@
   "name": "@fluentui/react-storybook",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:13 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:26 GMT",
+      "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-storybook",
+            "comment": "Bump @fluentui/react-provider to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:54 GMT",
       "tag": "@fluentui/react-storybook_v9.0.0-rc.1",
       "version": "9.0.0-rc.1",

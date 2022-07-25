@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix font sizes, padding, and colors to align with visual design.",
-  "packageName": "@fluentui/react-badge",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

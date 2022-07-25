@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Moving slider version to stable.",
-  "packageName": "@fluentui/react-slider",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,102 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.83.1",
+      "version": "8.83.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "70c03a62a18accc5a1903d89e4625600796d09e9",
+            "comment": "fix: update TooltipHost to use onRenderContent in description text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/react_v8.83.0",
+      "version": "8.83.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7597b05cc64da5d2613a02ff157bfcbff8693f0e",
+            "comment": "feat(Nav): Add role property to override navigation ARIA role."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jul 2022 07:49:17 GMT",
+      "tag": "@fluentui/react_v8.82.2",
+      "version": "8.82.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8e81a8871d36f3574467f4cb49103072aaa6fddb",
+            "comment": "fix: TagPicker no longer reads remove when narrating list of selected tags"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/react_v8.82.1",
+      "version": "8.82.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33",
+            "comment": "fix: Improve step handling for invalid intermediate SpinButton values"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fb6ee6b7d255499a234cad77f47678240792655d",
+            "comment": "fix: update CommandBar cacheKey computation to include farItems"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/react_v8.82.0",
+      "version": "8.82.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84",
+            "comment": "fix: Update Nav to not use separate labels for expand/collapse state."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:47 GMT",
+      "tag": "@fluentui/react_v8.81.1",
+      "version": "8.81.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "702440cc0cd2303dd87093583b251418cca3d871",
+            "comment": "chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 07:45:34 GMT",
       "tag": "@fluentui/react_v8.81.0",
       "version": "8.81.0",

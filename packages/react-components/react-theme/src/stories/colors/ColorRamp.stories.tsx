@@ -6,7 +6,7 @@
 // @ts-nocheck
 
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-components';
 import { TinyColor } from '@ctrl/tinycolor';
 
 export type ColorRampProps = {

@@ -1,0 +1,41 @@
+{
+  "name": "@fluentui/react-table",
+  "entries": [
+    {
+      "date": "Thu, 14 Jul 2022 21:21:13 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:26 GMT",
+      "tag": "@fluentui/react-table_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    }
+  ]
+}

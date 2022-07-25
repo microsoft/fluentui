@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands } from '@fluentui/react-components';
 import { SampleCard, Title } from './SampleCard.stories';
 
 const useStyles = makeStyles({

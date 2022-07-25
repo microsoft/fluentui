@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Tue, 28 Jun 2022 17:39:54 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.4)
+
+Thu, 14 Jul 2022 21:21:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.3..@fluentui/react-toolbar_v9.0.0-beta.4)
+
+### Changes
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-button to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-divider to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-radio to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-tabster to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.3)
+
+Thu, 14 Jul 2022 17:06:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.0.0-beta.2..@fluentui/react-toolbar_v9.0.0-beta.3)
+
+### Changes
+
+- Bump @fluentui/react-button to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-divider to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-radio to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-tabster to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.0.0-beta.2)
 

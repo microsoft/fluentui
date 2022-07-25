@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update Alert with live region attributes",
-  "packageName": "@fluentui/react-alert",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
