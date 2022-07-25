@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 22 Jul 2022 07:54:16 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Jul 2022 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.83.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.1)
+
+Mon, 25 Jul 2022 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.83.0..@fluentui/react_v8.83.1)
+
+### Patches
+
+- fix: update TooltipHost to use onRenderContent in description text ([PR #24037](https://github.com/microsoft/fluentui/pull/24037) by sarah.higley@microsoft.com)
 
 ## [8.83.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.0)
 
