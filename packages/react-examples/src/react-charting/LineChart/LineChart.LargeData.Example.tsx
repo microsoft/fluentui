@@ -74,6 +74,9 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
           color: DefaultPalette.blue,
           onLineClick: () => console.log('From_Legacy_to_O365'),
           hideNonActiveDots: true,
+          lineOptions: {
+            lineBorderWidth: '5',
+          },
         },
         {
           legend: 'All',
