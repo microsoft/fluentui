@@ -101,7 +101,13 @@ export function preset() {
     condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
-  task('lint', parallel('lint-imports', 'eslint'));
+  task(
+    'lint',
+    parallel(
+      condition('lint-imports', () => !isConvergedPackage()),
+      'eslint',
+    ),
+  );
 
   task('code-style', series('prettier', 'lint'));
 
