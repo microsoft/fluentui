@@ -33,7 +33,7 @@ export type AppState = {
 };
 
 export const initialAppState = {
-  themeName: 'Web',
+  themeName: 'Custom',
   brand: brandWeb,
   theme: createLightTheme(brandWeb),
   isDark: false,
