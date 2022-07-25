@@ -5,17 +5,9 @@
 ```ts
 
 import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
-
-// @public
-export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 
 // @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
@@ -27,17 +19,6 @@ export const tableCellClassName = "fui-TableCell";
 export const tableCellClassNames: SlotClassNames<TableCellSlots>;
 
 // @public
-export type TableCellProps = ComponentProps<TableCellSlots> & {};
-
-// @public (undocumented)
-export type TableCellSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type TableCellState = ComponentState<TableCellSlots>;
-
-// @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
 
 // @public (undocumented)
@@ -45,29 +26,6 @@ export const tableRowClassName = "fui-TableRow";
 
 // @public (undocumented)
 export const tableRowClassNames: SlotClassNames<TableRowSlots>;
-
-// @public
-export type TableRowProps = ComponentProps<TableRowSlots> & {};
-
-// @public (undocumented)
-export type TableRowSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type TableRowState = ComponentState<TableRowSlots>;
-
-// @public
-export const useTableCell_unstable: (props: TableCellProps, ref: React_2.Ref<HTMLElement>) => TableCellState;
-
-// @public
-export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
-
-// @public
-export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
-
-// @public
-export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
 
 // (No @packageDocumentation comment for this package)
 
