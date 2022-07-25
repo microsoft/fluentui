@@ -35,6 +35,9 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
         disposeTabster(tabster);
       }
     };
+    // Missing deps:
+    // firstMount - Should never change after mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabster, defaultView]);
 
   return tabster;
