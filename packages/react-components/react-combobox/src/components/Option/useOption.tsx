@@ -36,10 +36,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const optionValue = getValueString(value, props.children);
 
   // use the id if provided, otherwise use a generated id
-  const defaultId = useId('fluent-option');
-  const id = React.useMemo(() => {
-    return props.id || defaultId;
-  }, [props.id, defaultId]);
+  const id = useId('fluent-option', props.id);
 
   // data used for context registration & events
   const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
@@ -49,7 +46,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   ]);
 
   // context values
-  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selected = useContextSelector(ListboxContext, ctx => {
@@ -57,19 +53,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-
-  const onOptionClick = useContextSelector(ListboxContext, ctx => {
-    return (ev: React.MouseEvent<HTMLDivElement>) => {
-      // clicked option should always become active option
-      ctx.setActiveOption(optionData);
-
-      // close on option click for single-select options in a combobox
-      !multiselect && setOpen?.(ev, false);
-
-      // handle selection change
-      ctx.selectOption(ev, optionValue);
-    };
-  });
+  const selectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
+  const setActiveOption = useContextSelector(ComboboxContext, ctx => ctx.setActiveOption);
+  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
 
   // current active option?
   const active = useContextSelector(ListboxContext, ctx => {
@@ -88,7 +74,17 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(event);
+    // clicked option should always become active option
+    setActiveOption(optionData);
+
+    // close on option click for single-select options in a combobox
+    if (!multiselect) {
+      setOpen?.(event, false);
+    }
+
+    // handle selection change
+    selectOption(event, optionValue);
+
     props.onClick?.(event);
   };
 
