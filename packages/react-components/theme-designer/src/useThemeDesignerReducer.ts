@@ -8,8 +8,7 @@ import { themeList, themeNames } from './utils/themeList';
 export type CustomAttributes = {
   keyColor: string;
   hueTorsion: number;
-  darkCp: number;
-  lightCp: number;
+  vibrancy: number;
 };
 
 export type DispatchTheme = {
@@ -42,11 +41,11 @@ export const initialAppState = {
 };
 
 export const useThemeDesignerReducer = () => {
-  const createCustomTheme = ({ darkCp, hueTorsion, keyColor, lightCp }: CustomAttributes): BrandVariants => {
+  const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes): BrandVariants => {
     const brand = getBrandTokensFromPalette(keyColor, {
-      hueTorsion: hueTorsion,
-      darkCp: darkCp,
-      lightCp: lightCp,
+      hueTorsion,
+      darkCp: vibrancy,
+      lightCp: vibrancy + 0.5,
     });
     return brand;
   };
