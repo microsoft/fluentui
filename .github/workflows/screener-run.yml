@@ -1,0 +1,81 @@
+name: Screeners workflow
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+env:
+  AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
+
+jobs:
+  TestJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there"
+
+  DownloadArtifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: env-artifact
+          # Optional, directory where to extract artifact(s), defaults to current directory
+          path: artifacts
+
+  ScreenerNorthStar:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-northstar
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+  Screener:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+  ScreenerVNext:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-components
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
