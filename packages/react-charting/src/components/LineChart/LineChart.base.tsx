@@ -43,6 +43,7 @@ enum PointSize {
   invisibleSize = 1,
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
 
 const DEFAULT_LINE_STROKE_SIZE = 4;
@@ -565,7 +566,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         const isLegendSelected: boolean =
           this.state.activeLegend === legendVal || this.state.activeLegend === '' || this.state.isSelectedLegend;
 
-        let lineData: [number, number][] = [];
+        const lineData: [number, number][] = [];
         for (let k = 0; k < this._points[i].data.length; k++) {
           lineData.push([
             this._points[i].data[k].x instanceof Date
@@ -1049,8 +1050,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activePoint: '',
         activeLine: linenumber,
       });
-    } else {
     }
+
     if (!found) {
       this.setState({
         isCalloutVisible: false,
