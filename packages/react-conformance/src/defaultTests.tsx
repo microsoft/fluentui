@@ -246,7 +246,7 @@ export const defaultTests: TestObject = {
     });
   },
 
-  /** Component file has assigned and exported static class */
+  /** Component file has assigned and exported static classnames object */
   'component-has-static-classnames-object': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     const { componentPath, Component, requiredProps, renderOptions } = testInfo;
 
