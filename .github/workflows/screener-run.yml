@@ -25,8 +25,8 @@ jobs:
           name: env-artifact
       - name: Define env variables
         run: |
-          sudo ./environment.sh
           ls
+          sudo ./environment.sh
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
