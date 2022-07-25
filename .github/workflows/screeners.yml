@@ -1,8 +1,10 @@
 name: Screeners workflow
 
 on:
-  workflow_dispatch:
-
+  push:
+    branches:
+      - master
+  pull_request:
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
