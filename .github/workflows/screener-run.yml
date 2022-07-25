@@ -2,7 +2,8 @@ name: Screener run
 
 on:
   workflow_run:
-    workflows: ['Screener build']
+    workflows:
+      - Screener build
     types:
       - completed
     branches:
