@@ -18,7 +18,7 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
       media: 'span',
     },
     media: resolveShorthand(props.media),
-    root: getNativeElementProps('td', {
+    root: getNativeElementProps(props.as ?? 'td', {
       ref,
       ...props,
     }),

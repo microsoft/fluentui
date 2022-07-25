@@ -16,7 +16,7 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
     components: {
       root: 'tr',
     },
-    root: getNativeElementProps('tr', {
+    root: getNativeElementProps(props.as ?? 'tr', {
       ref,
       ...props,
     }),
