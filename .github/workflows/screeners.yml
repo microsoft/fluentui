@@ -76,7 +76,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/$(DEPLOYBASEPATH)/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
+            az storage blob upload-batch -d '$web/$DEPLOYBASEPATH/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
 
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
@@ -140,7 +140,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/$(DEPLOYBASEPATH)/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
+            az storage blob upload-batch -d '$web/$DEPLOYBASEPATH/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
 
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
@@ -203,7 +203,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/$(DEPLOYBASEPATH)/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
+            az storage blob upload-batch -d '$web/$DEPLOYBASEPATH/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
 
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
