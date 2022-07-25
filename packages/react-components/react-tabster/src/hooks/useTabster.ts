@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
+import { useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
+import { createTabster as createTabsterBase, disposeTabster, Types as TabsterTypes } from 'tabster';
+
+const createTabster = (win: Window | undefined) => {
+  if (!win) {
+    return null;
+  }
+
+  return createTabsterBase(win, { autoRoot: {}, controlTab: false });
+};
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
@@ -11,18 +20,16 @@ import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
  */
 export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
+  const firstMount = useFirstMount();
 
   const defaultView = targetDocument?.defaultView || undefined;
+  const [tabster, setTabster] = React.useState(() => createTabster(defaultView));
 
-  const tabster = React.useMemo(() => {
-    if (defaultView) {
-      return createTabster(defaultView, { autoRoot: {}, controlTab: false });
+  useIsomorphicLayoutEffect(() => {
+    if (!firstMount) {
+      setTabster(createTabster(defaultView));
     }
 
-    return null;
-  }, [defaultView]);
-
-  React.useEffect(() => {
     return () => {
       if (tabster) {
         disposeTabster(tabster);
