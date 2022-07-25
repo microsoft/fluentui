@@ -6,10 +6,14 @@ import { TableCellProps } from './TableCell.types';
 
 const tr = document.createElement('tr');
 describe('TableCell', () => {
+  beforeEach(() => {
+    document.body.appendChild(tr);
+  });
+
   isConformant({
     Component: TableCell as React.FunctionComponent<TableCellProps>,
     renderOptions: {
-      container: document.body.appendChild(tr),
+      container: tr,
     },
     testOptions: {
       'has-static-classnames': [
