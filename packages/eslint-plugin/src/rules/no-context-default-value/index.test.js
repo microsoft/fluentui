@@ -11,7 +11,7 @@ ruleTester.run('no-context-default-value', rule, {
     {
       code: `
         import {createContext as createContext1} from 'react'
-        import {createContext as createContext2} from '@fluenui/react-context-selector'
+        import {createContext as createContext2} from '@fluentui/react-context-selector'
         const context1 = createContext1();
         const context2 = createContext2();
       `,
