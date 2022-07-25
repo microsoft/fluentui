@@ -5,6 +5,8 @@ on:
     workflows: ['Screener build']
     types:
       - completed
+    branches:
+      - '*'
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
