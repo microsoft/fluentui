@@ -2,6 +2,14 @@ import { ITreeStyleProps, ITreeStyles } from './TreeChart.types';
 
 export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
   return {
+    root: [
+      props.theme.spacing,
+      'ms-TreeChart',
+      props.className,
+      {
+        overflow: 'scroll',
+      },
+    ],
     link: {
       fill: 'none',
       stroke: '#A1A1A1',

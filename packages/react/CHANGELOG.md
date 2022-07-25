@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 12 Jul 2022 07:40:59 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Jul 2022 07:36:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.83.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.1)
+
+Mon, 25 Jul 2022 07:36:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.83.0..@fluentui/react_v8.83.1)
+
+### Patches
+
+- fix: update TooltipHost to use onRenderContent in description text ([PR #24037](https://github.com/microsoft/fluentui/pull/24037) by sarah.higley@microsoft.com)
+
+## [8.83.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.0)
+
+Fri, 22 Jul 2022 07:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.2..@fluentui/react_v8.83.0)
+
+### Minor changes
+
+- feat(Nav): Add role property to override navigation ARIA role. ([PR #24012](https://github.com/microsoft/fluentui/pull/24012) by sarah.higley@microsoft.com)
+
+## [8.82.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.2)
+
+Thu, 21 Jul 2022 07:49:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.1..@fluentui/react_v8.82.2)
+
+### Patches
+
+- fix: TagPicker no longer reads remove when narrating list of selected tags ([PR #24009](https://github.com/microsoft/fluentui/pull/24009) by sarah.higley@microsoft.com)
+
+## [8.82.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.1)
+
+Wed, 20 Jul 2022 07:42:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.82.0..@fluentui/react_v8.82.1)
+
+### Patches
+
+- fix: Improve step handling for invalid intermediate SpinButton values ([PR #23993](https://github.com/microsoft/fluentui/pull/23993) by seanmonahan@microsoft.com)
+- fix: update CommandBar cacheKey computation to include farItems ([PR #23973](https://github.com/microsoft/fluentui/pull/23973) by seanmonahan@microsoft.com)
+
+## [8.82.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.82.0)
+
+Tue, 19 Jul 2022 07:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.1..@fluentui/react_v8.82.0)
+
+### Minor changes
+
+- fix: Update Nav to not use separate labels for expand/collapse state. ([PR #23968](https://github.com/microsoft/fluentui/pull/23968) by sarah.higley@microsoft.com)
+
+## [8.81.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.1)
+
+Fri, 15 Jul 2022 20:03:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.81.0..@fluentui/react_v8.81.1)
+
+### Patches
+
+- chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump. ([PR #23945](https://github.com/microsoft/fluentui/pull/23945) by Humberto.Morimoto@microsoft.com)
+
+## [8.81.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.81.0)
+
+Thu, 14 Jul 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.80.0..@fluentui/react_v8.81.0)
+
+### Minor changes
+
+- Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body. ([PR #23753](https://github.com/microsoft/fluentui/pull/23753) by email not defined)
 
 ## [8.80.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.80.0)
 

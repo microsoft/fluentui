@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { shorthands, makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-
-import { FluentProvider } from '@fluentui/react-provider';
+import { makeStyles, shorthands, tokens, FluentProvider } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   example: {

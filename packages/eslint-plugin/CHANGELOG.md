@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Tue, 12 Jul 2022 07:40:59 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Jul 2022 07:47:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.1)
+
+Wed, 13 Jul 2022 07:47:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.11.0..@fluentui/eslint-plugin_v1.11.1)
+
+### Patches
+
+- chore: don't forbid package imports from components being exported from react-components/unstable. ([PR #23858](https://github.com/microsoft/fluentui/pull/23858) by tristan.watanabe@gmail.com)
 
 ## [1.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.0)
 

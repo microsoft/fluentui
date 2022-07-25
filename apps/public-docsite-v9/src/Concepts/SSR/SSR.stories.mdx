@@ -1,0 +1,143 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
+
+<Meta title="Concepts/Developer/Server-Side Rendering" />
+
+## Server-Side Rendering
+
+Fluent UI React v9 fully supports Server-Side Rendering.
+
+### Next.js
+
+For basic instructions on getting Next.js set up, see [Getting Started](https://nextjs.org/docs/getting-started).
+
+1. Get a basic next.js setup running, rendering a page from the `pages` folder, as guided by the tutorial.
+2. Add the Fluent UI dependencies: `@fluentui/react-components`.
+
+```sh
+yarn add @fluentui/react-components
+```
+
+1. Create a `_document.js` file under your `pages` folder with the following content:
+
+```tsx
+import { createDOMRenderer, renderToStyleElements } from '@fluentui/react-components';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    // 👇 creates a renderer
+    const renderer = createDOMRenderer();
+    const originalRenderPage = ctx.renderPage;
+
+    ctx.renderPage = () =>
+      originalRenderPage({
+        // 👇 this is required by pass the same instance to <App />
+        enhanceApp: App => props => <App {...props} renderer={renderer} />,
+      });
+
+    const initialProps = await Document.getInitialProps(ctx);
+    const styles = renderToStyleElements(renderer);
+
+    return {
+      ...initialProps,
+      // 👇 adding our styles elements to output
+      styles: [...initialProps.styles, ...styles],
+    };
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+```
+
+2. Create or modify a `_app.js` file under your `pages` folder with the following content:
+
+```js
+import { createDOMRenderer, RendererProvider, SSRProvider } from '@fluentui/react-components';
+
+function MyApp({ Component, pageProps, renderer }) {
+  return (
+    // 👇 accepts a renderer from <Document /> or creates a default one
+    <RendererProvider renderer={renderer || createDOMRenderer()}>
+      <SSRProvider>
+        <Component {...pageProps} />
+      </SSRProvider>
+    </RendererProvider>
+  );
+}
+
+export default MyApp;
+```
+
+3. You should now be able to server render Fluent UI React components in any of your pages:
+
+```js
+import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+
+export default function Home() {
+  return (
+    <FluentProvider theme={webLightTheme}>
+      <Button>Hello world!</Button>
+    </FluentProvider>
+  );
+}
+```
+
+### React Portals
+
+React does not support hydration for portals ([facebook/react#13097](https://github.com/facebook/react/issues/13097)). While Fluent
+UI tries to work out of the box without hydration warnings, some workarounds are required in certain edge cases.
+
+#### Default open
+
+Components like `Menu` or `Popover` have a `defaultOpen` prop that open the positioned surface on mount. These components
+are rendered with React portals. In SSR using the `defaultOpen` on server render will cause a hydration error because
+React does not support hydration for portals.
+
+The below example shows how to use the `useIsSSR` hook to implement a `Menu` that is open by default on the first render.
+Toggle the checkbox to mount/unmount the component.
+
+<SSRDefaultOpen />
+
+```tsx
+import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, useIsSSR, Button } from '@fluentui/react-components';
+
+const DefaultOpenMenu = () => {
+  const [open, setOpen] = React.useState(false);
+  const isSSR = useIsSSR();
+  React.useEffect(() => {
+    if (!isSSR) {
+      setOpen(true);
+    }
+  }, [isSSR]);
+
+  return (
+    <Menu open={open} onOpenChange={(e, data) => setOpen(data.open)}>
+      <MenuTrigger>
+        <Button>SSR Default open</Button>
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+};
+```

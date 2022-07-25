@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-storybook
 
-This log was last generated on Tue, 28 Jun 2022 17:39:54 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook_v9.0.0-rc.1)
+
+Thu, 14 Jul 2022 21:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook_v9.0.0-rc.1..@fluentui/react-storybook_v9.0.0-rc.1)
+
+### Patches
+
+- Bump @fluentui/react-provider to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook_v9.0.0-rc.1)
+
+Thu, 14 Jul 2022 17:06:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-storybook_v9.0.0-rc.1..@fluentui/react-storybook_v9.0.0-rc.1)
+
+### Patches
+
+- Bump @fluentui/react-provider to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-rc.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-storybook_v9.0.0-rc.1)
 

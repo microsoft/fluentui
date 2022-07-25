@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-import { Tooltip } from '@fluentui/react-tooltip';
-import type { TooltipProps } from '@fluentui/react-tooltip';
-import { Button } from '@fluentui/react-button';
+import { makeStyles, tokens, Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextRegular } from '@fluentui/react-icons';
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import type { TooltipProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   tooltip: {

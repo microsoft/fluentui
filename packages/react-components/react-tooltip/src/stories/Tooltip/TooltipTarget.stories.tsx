@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Tooltip } from '@fluentui/react-tooltip';
-import { Button } from '@fluentui/react-button';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { ArrowRoutingRegular } from '@fluentui/react-icons';
 
 export const Target = () => {

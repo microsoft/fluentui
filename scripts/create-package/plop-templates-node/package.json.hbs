@@ -3,15 +3,15 @@
   "version": "{{{packageVersion}}}",
   "description": "{{{description}}}",
   "private": true,
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build --commonjs",
+    "build": "just-scripts build --module cjs",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",

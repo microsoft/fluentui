@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Update @fluentui/react-icons dependency to v2.0.175",
-  "packageName": "@fluentui/react-select",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

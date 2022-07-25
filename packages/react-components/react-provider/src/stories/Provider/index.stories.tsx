@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/react';
 
-import { FluentProvider } from '@fluentui/react-provider';
+import { FluentProvider } from '@fluentui/react-components';
 import descriptionMd from './FluentProviderDescription.md';
 import bestPracticesMd from './FluentProviderBestPractices.md';
 
