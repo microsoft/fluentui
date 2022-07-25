@@ -2,6 +2,21 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 12:22:59 GMT",
+      "tag": "@uifabric/api-docs_v7.7.10",
+      "version": "7.7.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.190.1",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf31bb07e968a0385c644b394f86141e12ed940c",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Jul 2022 12:21:01 GMT",
       "tag": "@uifabric/api-docs_v7.7.10",
       "version": "7.7.10",

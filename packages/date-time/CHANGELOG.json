@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 12:22:59 GMT",
+      "tag": "@uifabric/date-time_v7.23.3",
+      "version": "7.23.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Remove explicit readonly semantics from Calendar grid.",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf31bb07e968a0385c644b394f86141e12ed940c",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Jul 2022 12:21:01 GMT",
       "tag": "@uifabric/date-time_v7.23.2",
       "version": "7.23.2",

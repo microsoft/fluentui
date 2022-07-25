@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove explicit readonly semantics from Calendar grid.",
-  "packageName": "office-ui-fabric-react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

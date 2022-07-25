@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 12:22:59 GMT",
+      "tag": "office-ui-fabric-react_v7.190.1",
+      "version": "7.190.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: Remove explicit readonly semantics from Calendar grid.",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "cf31bb07e968a0385c644b394f86141e12ed940c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Jul 2022 12:21:01 GMT",
       "tag": "office-ui-fabric-react_v7.190.0",
       "version": "7.190.0",
