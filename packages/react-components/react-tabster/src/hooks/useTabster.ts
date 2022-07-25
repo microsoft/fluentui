@@ -35,7 +35,7 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
         disposeTabster(tabster);
       }
     };
-  }, [tabster]);
+  }, [tabster, defaultView]);
 
   return tabster;
 };
