@@ -18,13 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: env-artifact
-          # Optional, directory where to extract artifact(s), defaults to current directory
-          path: artifacts
+        run: |
+          curl \
+           -H "Accept: application/vnd.github+json" \
+           https://api.github.com/repos/microsoft/fluentui/actions/artifacts
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
