@@ -139,6 +139,15 @@ function _onPointerDown(ev: PointerEvent, providerElem?: Element): void {
   }
 }
 
+// You need both a keydown and a keyup listener that sets focus visibility to true to handle two distinct scenarios when
+// attaching the listeners and classnames to the provider instead of the document body.
+// If you only have a keydown listener, then the focus rectangles will not show when moving from outside of the provider
+// to inside it. That is why a keyup listener is needed, since it will always trigger after the focus event is fired.
+// If you only have a keyup listener, then the focus rectangles will not show moving between different tabbable elements
+// if the tab key is pressed without being released. That's is why we need a keydown listener, since it will trigger for
+// every element that is being tabbed into.
+// This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
+// when focus visibility is turned on.
 function _onKeyDown(ev: KeyboardEvent, providerElem?: Element): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
