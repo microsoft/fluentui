@@ -144,7 +144,7 @@ Used in Fluent UI only by [`@fluentui/react-northstar`](https://aka.ms/fluent-ui
 
 ### `no-context-default-value`
 
-Restricts usage of default values on React context creation. Imports should be provided to declare where the `createContex` function is coming from.
+Restricts usage of default values on React context creation. Imports should be provided to declare where the `createContext` function is coming from. For more information why this is necessary please consult [#23624](https://github.com/microsoft/fluentui/issues/23624)
 
 **Example Configuration:**
 
