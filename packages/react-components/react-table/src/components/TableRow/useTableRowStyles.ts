@@ -14,7 +14,8 @@ export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    ...shorthands.padding('12px', '0px'),
+    paddingTop: '11px',
+    paddingBottom: '14px',
     color: tokens.colorNeutralForeground1,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
