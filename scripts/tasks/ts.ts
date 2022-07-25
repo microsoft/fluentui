@@ -32,7 +32,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     const hasNewCompilationSetup = tsConfigOutDir.includes('dist/out-tsc');
 
     if (hasNewCompilationSetup) {
-      options.outDir = tsConfigOutDir + options.outDir;
+      options.outDir = `${tsConfigOutDir}/${options.outDir}`;
     } else {
       // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
       options.baseUrl = '.';
