@@ -169,9 +169,12 @@ class StandardTree {
     gap: number,
   ): string {
     // gap adds ratio for parent.y to child.y
-    const path = `M${childX + rectWidth / 2},${childY - gap} H${parentX + rectWidth / 2} V${
-      parentY + rectHeight + gap / 2
-    }`;
+    const path =
+      parentX > childX
+        ? `M${childX},${childY - gap} H${parentX + rectWidth / 2}
+    V${parentY + rectHeight + gap / 2}`
+        : `M${childX + rectWidth},${childY - gap} H${parentX + rectWidth / 2}
+    V${parentY + rectHeight + gap / 2}`;
     const leafpath = `M${parentX + rectWidth / 2},${parentY + rectHeight + gap / 2} V${
       parentY + gap * 5
     } H${parentX} H${parentX + rectWidth}`;
