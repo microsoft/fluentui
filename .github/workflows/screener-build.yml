@@ -5,8 +5,6 @@ on:
     branches:
       - master
   pull_request:
-env:
-  AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
 jobs:
   TestJob:
@@ -59,3 +57,80 @@ jobs:
         with:
           name: env-artifact
           path: artifacts/environment.sh
+
+  ScreenerNorthStar:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-northstar
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: yarn
+        run: ./yarn-ci.sh
+        shell: bash
+
+      - name: build FUI N* VR Test
+        run: yarn workspace @fluentui/docs vr:build
+        env:
+          SCREENER_BUILD: 1
+
+  Screener:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: yarn
+        run: ./yarn-ci.sh
+        shell: bash
+
+      - name: build vr-tests storybook
+        run: yarn workspace @fluentui/vr-tests screener:build
+
+  ScreenerVNext:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-components
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: yarn
+        run: ./yarn-ci.sh
+        shell: bash
+
+      - name: build vr-tests-react-components storybook
+        run: yarn workspace @fluentui/vr-tests-react-components screener:build
