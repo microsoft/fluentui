@@ -1,4 +1,4 @@
-name: Screeners workflow
+name: Screener build
 
 on:
   push:
