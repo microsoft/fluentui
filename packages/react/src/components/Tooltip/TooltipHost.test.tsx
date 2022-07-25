@@ -109,4 +109,14 @@ describe('TooltipHost', () => {
     expect(onTooltipToggleCalled).toEqual(true);
     expect(calloutPropsBefore).toEqual(calloutProps);
   });
+
+  it('uses onRenderContent for description text', () => {
+    const tooltipProps = {
+      onRenderContent: () => <span>test</span>,
+    };
+
+    const component = mount(<TooltipHost content={'should not be used'} id="tooltipId" tooltipProps={tooltipProps} />);
+    const descriptionText = component.find('#tooltipId').at(0).text();
+    expect(descriptionText).toEqual('test');
+  });
 });

@@ -27,6 +27,14 @@ The following table will help you navigate the 3 projects and understand their d
 
 > Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI).
 
+## FluentUI Insights
+
+Fluent UI Insights is a series that describes the design and decisions behind the Fluent UI design system.
+
+|                                                                                    EP01: Positioning                                                                                     |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://www.youtube.com/watch?v=yhzAn4A1gbk" target="_blank"><img src="https://i.ytimg.com/vi_webp/yhzAn4A1gbk/mqdefault.webp" alt="Watch EP01: Positioning" width="240" /></a> |
+
 ## Licenses
 
 All files on the Fluent UI React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.

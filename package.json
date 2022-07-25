@@ -12,9 +12,8 @@
   },
   "scripts": {
     "build": "lage build --verbose",
-    "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components --min",
+    "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components",
     "build:fluentui:docs": "gulp build:docs",
-    "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --to @fluentui/react-components --min",
     "buildci": "lage build test lint type-check --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",

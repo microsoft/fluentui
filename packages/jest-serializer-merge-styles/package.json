@@ -2,8 +2,8 @@
   "name": "@fluentui/jest-serializer-merge-styles",
   "version": "8.0.19",
   "description": "Jest serializer for merge-styles.",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

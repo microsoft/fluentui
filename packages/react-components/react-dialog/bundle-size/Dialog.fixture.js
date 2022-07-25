@@ -1,8 +1,8 @@
-import { Dialog } from '@fluentui/react-dialog';
+import { Dialog, DialogActions, DialogBody, DialogTitle, DialogContent, DialogTrigger } from '@fluentui/react-dialog';
 
 // eslint-disable-next-line no-console
-console.log(Dialog);
+console.log(Dialog, DialogActions, DialogBody, DialogTitle, DialogContent, DialogTrigger);
 
 export default {
-  name: 'Dialog',
+  name: 'Dialog (including children components)',
 };

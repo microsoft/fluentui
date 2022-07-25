@@ -99,8 +99,8 @@ function childrenToTriggerAndContent(
     if (childrenArray.length !== 1 && childrenArray.length !== 2) {
       // eslint-disable-next-line no-console
       console.warn(
-        'Dialog must contain at least one child <DialogContent/>,\n' +
-          'and at most two children <DialogTrigger/> <DialogContent/> (in this order)',
+        'Dialog must contain at least one child <DialogSurface/>,\n' +
+          'and at most two children <DialogTrigger/> <DialogSurface/> (in this order)',
       );
     }
   }
@@ -162,7 +162,7 @@ function useFocusFirstElement({
     } else {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.warn('A Dialog should have at least one focusable element inside DialogContent');
+        console.warn('A Dialog should have at least one focusable element inside DialogSurface');
       }
     }
 
