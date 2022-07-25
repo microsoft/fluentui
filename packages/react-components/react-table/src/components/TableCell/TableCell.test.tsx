@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableCell } from './TableCell';
 import { isConformant } from '../../common/isConformant';
+import { TableCellProps } from './TableCell.types';
 
 describe('TableCell', () => {
   isConformant({
-    Component: TableCell,
+    Component: TableCell as React.FunctionComponent<TableCellProps>,
     displayName: 'TableCell',
   });
 

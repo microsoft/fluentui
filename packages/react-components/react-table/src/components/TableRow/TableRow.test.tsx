@@ -2,11 +2,12 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { TableRow } from './TableRow';
 import { isConformant } from '../../common/isConformant';
+import { TableRowProps } from './TableRow.types';
 
 const tableElement = document.createElement('table');
 describe('TableRow', () => {
   isConformant({
-    Component: TableRow,
+    Component: TableRow as React.FunctionComponent<TableRowProps>,
     renderOptions: {
       container: document.body.appendChild(tableElement),
     },
