@@ -4,7 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tableCellClassName = 'fui-TableCell';
 export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
-  root: 'fui-TableCell',
+  root: tableCellClassName,
   media: 'fui-TableCell__media',
 };
 

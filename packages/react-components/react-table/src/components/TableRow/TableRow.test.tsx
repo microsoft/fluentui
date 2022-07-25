@@ -3,9 +3,13 @@ import { render } from '@testing-library/react';
 import { TableRow } from './TableRow';
 import { isConformant } from '../../common/isConformant';
 
+const tableElement = document.createElement('table');
 describe('TableRow', () => {
   isConformant({
     Component: TableRow,
+    renderOptions: {
+      container: document.body.appendChild(tableElement),
+    },
     displayName: 'TableRow',
   });
 

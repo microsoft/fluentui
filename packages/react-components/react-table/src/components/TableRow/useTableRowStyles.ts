@@ -5,7 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
-  root: 'fui-TableRow',
+  root: tableRowClassName,
 };
 
 /**
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
  */
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableRowClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(tableRowClassNames.root, styles.root, state.root.className);
 
   return state;
 };

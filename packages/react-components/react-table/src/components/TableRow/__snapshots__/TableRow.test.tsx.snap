@@ -2,10 +2,10 @@
 
 exports[`TableRow renders a default state 1`] = `
 <div>
-  <div
+  <tr
     class="fui-TableRow"
   >
     Default TableRow
-  </div>
+  </tr>
 </div>
 `;
