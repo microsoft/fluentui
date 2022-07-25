@@ -4,8 +4,6 @@
 
 ```ts
 
-// Warning: (ae-internal-missing-underscore) The name "createOverflowManager" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export function createOverflowManager(): OverflowManager;
 
@@ -61,8 +59,6 @@ export interface OverflowItemEntry {
     priority: number;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "OverflowManager" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export interface OverflowManager {
     addItem: (items: OverflowItemEntry) => void;
