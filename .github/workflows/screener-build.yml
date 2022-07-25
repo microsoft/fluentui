@@ -22,34 +22,34 @@ jobs:
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment.sh
-          echo 'echo "BROWSERSLIST_IGNORE_OLD_DATA=true" >> $GITHUB_ENV'
-          echo 'echo "DEPLOYHOST='fluentuipr.z22.web.core.windows.net'" >> $GITHUB_ENV'
-          echo 'echo "BUILD_BUILDID=${{ github.run_id }}" >> $GITHUB_ENV'
-          echo 'echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV'
+          echo "BROWSERSLIST_IGNORE_OLD_DATA=true" >> $GITHUB_ENV
+          echo "DEPLOYHOST='fluentuipr.z22.web.core.windows.net'" >> $GITHUB_ENV
+          echo "BUILD_BUILDID=${{ github.run_id }}" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV
           EOT
 
       - name: Set env variables if there is a PR
         run: |
           cat <<EOT >> artifacts/environment.sh
-          echo 'echo "PR_NUMBER=${{ github.event.number }}" >> $GITHUB_ENV'
-          echo 'echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV'
-          echo 'echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV'
-          echo 'echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV'
-          echo 'echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV'
-          echo 'echo "ISPR=true" >> $GITHUB_ENV'
-          echo 'echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV'
-          echo 'echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV'
-          echo 'echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV'
+          echo "PR_NUMBER=${{ github.event.number }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          echo "ISPR=true" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
           EOT
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment.sh
-          echo 'echo "ISPR=false" >> $GITHUB_ENV'
-          echo 'echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV'
-          echo 'echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV'
-          echo 'echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV'
+          echo "ISPR=false" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
           EOT
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
