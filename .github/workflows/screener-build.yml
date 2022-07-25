@@ -85,6 +85,11 @@ jobs:
         env:
           SCREENER_BUILD: 1
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: northstar-artifact
+          path: packages/fluentui/docs/dist
+
   Screener:
     runs-on: 'ubuntu-latest'
 
@@ -110,6 +115,11 @@ jobs:
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: screener-artifact
+          path: apps/vr-tests/dist/storybook
+
   ScreenerVNext:
     runs-on: 'ubuntu-latest'
 
@@ -134,3 +144,8 @@ jobs:
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: vnext-artifact
+          path: apps/vr-tests-react-components/dist/storybook
