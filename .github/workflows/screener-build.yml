@@ -17,6 +17,8 @@ jobs:
   EnvironmentUpload:
     runs-on: ubuntu-latest
     steps:
+      - run: mkdir artifacts
+
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment.sh
@@ -78,8 +80,6 @@ jobs:
         env:
           SCREENER_BUILD: 1
 
-      - run: mkdir artifacts
-
       - name: Upload environment variables artifact
         uses: actions/upload-artifact@v3
         with:
@@ -113,29 +113,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
-
-      - name: Set env variables if there is a PR
-        run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
-
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
-
-      - name: Set env variables if there is not a PR
-        run: |
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -177,28 +154,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
-
-      - name: Set env variables if there is a PR
-        run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
-
-      - name: Set env variables if there is not a PR
-        run: |
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
