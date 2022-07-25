@@ -1,12 +1,11 @@
-import { useId } from '@fluentui/react-utilities';
+import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles';
 
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
   ? (React as never)['useInsertion' + 'Effect']
-  : // eslint-disable-next-line no-restricted-properties
-    React.useLayoutEffect;
+  : useIsomorphicLayoutEffect;
 
 const createStyleTag = (target: Document | undefined, id: string) => {
   if (!target) {
