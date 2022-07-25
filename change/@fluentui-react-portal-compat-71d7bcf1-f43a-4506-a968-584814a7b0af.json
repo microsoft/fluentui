@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: enable AMD compatible build",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
