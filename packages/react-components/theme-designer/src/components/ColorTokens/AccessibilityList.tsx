@@ -7,6 +7,7 @@ import {
   Theme,
   BrandVariants,
   Badge,
+  makeStyles,
 } from '@fluentui/react-components';
 import { getAccessibilityChecker } from './getAccessibilityChecker';
 import { ColorTokensList } from './ColorTokensList';
@@ -23,44 +24,46 @@ export interface AccessibilityListProps {
   theme: Theme;
 }
 
+const useStyles = makeStyles({
+  icon: {
+    marginRight: '0.5em',
+  },
+});
+
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+  const styles = useStyles();
+
   const { brand, brandColors, colorOverride, onNewOverride, theme } = props;
 
   const { all, fail } = getAccessibilityChecker(theme);
+  const failKeys = Object.keys(fail);
 
-  const failContrastNum = () => {
-    if (Object.keys(fail).length === 0) {
-      return (
-        <Badge appearance="outline" color="important">
-          <CheckmarkCircleRegular color="green" /> &nbsp; All contrast requirements met &nbsp;
-        </Badge>
-      );
-    } else if (Object.keys(fail).length === 1) {
-      return (
-        <Badge appearance="outline" color="important">
-          <WarningRegular color="red" /> &nbsp; 1 token miss required contrast &nbsp;
-        </Badge>
-      );
-    } else {
-      return (
-        <Badge appearance="outline" color="important">
-          <WarningRegular color="red" /> &nbsp; {Object.keys(fail).length} tokens miss required contrast &nbsp;
-        </Badge>
-      );
-    }
-  };
+  const failContrastNum = (
+    <Badge appearance="outline" color="important">
+      {failKeys.length > 0 ? (
+        <>
+          <WarningRegular className={styles.icon} color="red" />
+          {failKeys.length} token{failKeys.length > 1 ? 's' : ''} miss required contrast &nbsp;
+        </>
+      ) : (
+        <>
+          <CheckmarkCircleRegular className={styles.icon} color="green" /> All contrast requirements met &nbsp;
+        </>
+      )}
+    </Badge>
+  );
 
   return (
     <>
       <Accordion multiple defaultOpenItems="Fail">
         <AccordionItem value="Fail">
-          <AccordionHeader>Contrast Issues &nbsp; {failContrastNum()}</AccordionHeader>
+          <AccordionHeader>Contrast Issues &nbsp; {failContrastNum}</AccordionHeader>
           <AccordionPanel>
             <ColorTokensList
               brand={brand}
               brandColors={brandColors}
               colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(Object.keys(fail))}
+              coveredTokens={sortOverrideableColorTokens(failKeys)}
               onNewOverride={onNewOverride}
               failList={fail}
             />
