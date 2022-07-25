@@ -13,5 +13,4 @@ export type AvatarGroupOverflowProps = ComponentProps<AvatarGroupOverflowSlots> 
  * State used in rendering AvatarGroupOverflow
  */
 export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from AvatarGroupOverflowProps.
 // & Required<Pick<AvatarGroupOverflowProps, 'propName'>>
