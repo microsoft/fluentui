@@ -9,7 +9,6 @@ describe('Link', () => {
   isConformant<LinkProps>({
     Component: Link,
     displayName: 'Link',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   describe('meets accessibility requirements', () => {

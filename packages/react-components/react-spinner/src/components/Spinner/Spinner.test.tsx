@@ -16,7 +16,6 @@ describe('Spinner', () => {
         },
       ],
     },
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('has role progressbar', () => {

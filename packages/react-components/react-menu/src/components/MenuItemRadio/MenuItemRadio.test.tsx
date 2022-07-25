@@ -14,7 +14,6 @@ describe('MenuItemRadio', () => {
       name: 'radio',
       value: '1',
     },
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuItemRadio',
     testOptions: {
       'has-static-classnames': [
