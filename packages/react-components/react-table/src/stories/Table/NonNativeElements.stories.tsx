@@ -9,7 +9,7 @@ import {
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
-import { TableCell, TableRow } from '../..';
+import { TableCell, TableRow } from '../../index';
 
 export const NonNativeElements = () => {
   return (
