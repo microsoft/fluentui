@@ -90,11 +90,11 @@ export const Sidebar: React.FC<SidebarProps> = props => {
     setTab(data.value);
   };
 
-  const [theme, setTheme] = React.useState<string>('Teams');
+  const [theme, setTheme] = React.useState<string>('Web');
   const [isDark, setIsDark] = React.useState<boolean>(false);
 
   const [formState, setFormState] = React.useState<CustomAttributes>({
-    keyColor: '#006bc7',
+    keyColor: '#0F6CBD',
     hueTorsion: 0,
     darkCp: 0.66,
     lightCp: 0.33,

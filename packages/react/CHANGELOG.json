@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.83.1",
+      "version": "8.83.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "70c03a62a18accc5a1903d89e4625600796d09e9",
+            "comment": "fix: update TooltipHost to use onRenderContent in description text"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Jul 2022 07:54:16 GMT",
       "tag": "@fluentui/react_v8.83.0",
       "version": "8.83.0",
