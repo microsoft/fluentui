@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(priority-flow): re-generate api.md",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
