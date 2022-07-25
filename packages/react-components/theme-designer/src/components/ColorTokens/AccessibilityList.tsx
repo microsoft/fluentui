@@ -24,8 +24,7 @@ export interface AccessibilityListProps {
 export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
   const { brand, brandColors, colorOverride, onNewOverride, theme } = props;
 
-  const { pass, fail } = getAccessibilityChecker(theme);
-  const failList = Object.keys(fail);
+  const { all, fail } = getAccessibilityChecker(theme);
 
   return (
     <>
@@ -37,20 +36,20 @@ export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> 
               brand={brand}
               brandColors={brandColors}
               colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(failList)}
+              coveredTokens={sortOverrideableColorTokens(Object.keys(fail))}
               onNewOverride={onNewOverride}
               failList={fail}
             />
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem value="Pass">
+        <AccordionItem value="All Tokens">
           <AccordionHeader>All Tokens</AccordionHeader>
           <AccordionPanel>
             <ColorTokensList
               brand={brand}
               brandColors={brandColors}
               colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(pass)}
+              coveredTokens={sortOverrideableColorTokens(all)}
               onNewOverride={onNewOverride}
             />
           </AccordionPanel>
