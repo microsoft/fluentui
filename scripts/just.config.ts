@@ -21,7 +21,7 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { isConvergedPackage, isCompatibilityPackage } from './monorepo';
+import { isConvergedPackage } from './monorepo';
 import { getJustArgv } from './tasks/argv';
 
 /** Do only the bare minimum setup of options and resolve paths */
@@ -77,7 +77,7 @@ export function preset() {
       return parallel(
         'ts:commonjs',
         'ts:esm',
-        condition('ts:amd', () => isCompatibilityPackage() || (!!args.production && !isConvergedPackage())),
+        condition('ts:amd', () => !!args.production && !isConvergedPackage()),
       );
     }
 
