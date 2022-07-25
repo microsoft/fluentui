@@ -34,10 +34,9 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
   };
 
   private _getdata = () => {
-    let data: ILineChartDataPoint[] = [];
-    let startdate = new Date('2020-03-01T00:00:00.000Z');
-    let i = 0;
-    for (i = 0; i < 10000; i++) {
+    const data: ILineChartDataPoint[] = [];
+    const startdate = new Date('2020-03-01T00:00:00.000Z');
+    for (let i = 0; i < 10000; i++) {
       data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
     }
 
@@ -45,21 +44,23 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
   };
 
   private _getdata2 = () => {
-    let data: ILineChartDataPoint[] = [];
-    let startdate = new Date('2020-03-01T00:00:00.000Z');
-    let i = 0;
-    for (i = 1000; i < 9000; i++) {
-      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: this.getY(i) });
+    const data: ILineChartDataPoint[] = [];
+    const startdate = new Date('2020-03-01T00:00:00.000Z');
+    for (let i = 1000; i < 9000; i++) {
+      data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: this._getY(i) });
     }
 
     return data;
   };
 
-  private getY = (i: number) => {
+  private _getY = (i: number) => {
     let res: number = 0;
     const newN = i % 1000;
-    if (newN < 500) res = newN * newN;
-    else res = 1000000 - newN * newN;
+    if (newN < 500) {
+      res = newN * newN;
+    } else {
+      res = 1000000 - newN * newN;
+    }
 
     return res;
   };
@@ -75,7 +76,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
           onLineClick: () => console.log('From_Legacy_to_O365'),
           hideNonActiveDots: true,
           lineOptions: {
-            lineBorderWidth: '5',
+            lineBorderWidth: '4',
           },
         },
         {
@@ -83,7 +84,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
           data: this._getdata2(),
           color: DefaultPalette.green,
           lineOptions: {
-            lineBorderWidth: '5',
+            lineBorderWidth: '4',
           },
         },
         {
