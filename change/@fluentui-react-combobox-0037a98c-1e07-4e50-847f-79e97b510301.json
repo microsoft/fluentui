@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: prevent react-combobox keyboard selection of disabled options",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
