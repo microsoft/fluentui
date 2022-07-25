@@ -31,9 +31,9 @@ const useStyles = makeStyles({
  */
 export const useTableCellStyles_unstable = (state: TableCellState): TableCellState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableCellClassName, styles.root, state.root.className);
+  state.root.className = mergeClasses(tableCellClassNames.root, styles.root, state.root.className);
   if (state.media) {
-    state.media.className = styles.media;
+    state.media.className = mergeClasses(tableCellClassNames.media, styles.media);
   }
 
   return state;

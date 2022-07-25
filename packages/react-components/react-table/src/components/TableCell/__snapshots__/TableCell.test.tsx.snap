@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableCell renders a default state 1`] = `
-<div>
+<tr>
   <td
     class="fui-TableCell"
   >
      
     Default TableCell
   </td>
-</div>
+</tr>
 `;

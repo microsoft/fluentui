@@ -4,12 +4,12 @@ import { TableRow } from './TableRow';
 import { isConformant } from '../../common/isConformant';
 import { TableRowProps } from './TableRow.types';
 
-const tableElement = document.createElement('table');
+const tbody = document.createElement('tbody');
 describe('TableRow', () => {
   isConformant({
     Component: TableRow as React.FunctionComponent<TableRowProps>,
     renderOptions: {
-      container: document.body.appendChild(tableElement),
+      container: document.body.appendChild(tbody),
     },
     displayName: 'TableRow',
   });
@@ -17,7 +17,7 @@ describe('TableRow', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TableRow>Default TableRow</TableRow>);
+    const result = render(<TableRow>Default TableRow</TableRow>, { container: tbody });
     expect(result.container).toMatchSnapshot();
   });
 });
