@@ -3,5 +3,5 @@
   "comment": "Create no-context-default-value lint rule",
   "packageName": "@fluentui/eslint-plugin",
   "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
