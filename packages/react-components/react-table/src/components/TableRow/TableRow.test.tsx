@@ -6,10 +6,15 @@ import { TableRowProps } from './TableRow.types';
 
 const tbody = document.createElement('tbody');
 describe('TableRow', () => {
+  beforeEach(() => {
+    tbody.remove();
+    document.body.appendChild(tbody);
+  });
+
   isConformant({
     Component: TableRow as React.FunctionComponent<TableRowProps>,
     renderOptions: {
-      container: document.body.appendChild(tbody),
+      container: tbody,
     },
     displayName: 'TableRow',
   });
@@ -17,7 +22,12 @@ describe('TableRow', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TableRow>Default TableRow</TableRow>, { container: tbody });
+    const result = render(
+      <TableRow>
+        <td>Table Cell</td>
+      </TableRow>,
+      { container: tbody },
+    );
     expect(result.container).toMatchSnapshot();
   });
 });

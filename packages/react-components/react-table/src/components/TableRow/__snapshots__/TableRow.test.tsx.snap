@@ -5,7 +5,9 @@ exports[`TableRow renders a default state 1`] = `
   <tr
     class="fui-TableRow"
   >
-    Default TableRow
+    <td>
+      Table Cell
+    </td>
   </tr>
 </tbody>
 `;
