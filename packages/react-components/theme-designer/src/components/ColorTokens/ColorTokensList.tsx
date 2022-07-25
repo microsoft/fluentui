@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '10px 1fr 1fr 1.5fr',
+    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
     gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
