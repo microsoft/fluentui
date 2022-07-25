@@ -1,13 +1,11 @@
 name: Screener run
 
 on:
-  workflow_run:
-    workflows:
-      - Screener build
-    types:
-      - completed
+  push:
     branches:
-      - '*'
+      - master
+  pull_request:
+
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
