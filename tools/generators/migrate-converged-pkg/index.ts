@@ -485,7 +485,7 @@ function getPackageType(tree: Tree, options: NormalizedSchema) {
   const isNode =
     tags.includes('platform:node') ||
     Boolean(pkgJson.bin) ||
-    (scripts.build && scripts.build === 'just-scripts build --commonjs');
+    (scripts.build && scripts.build === 'just-scripts build --module cjs');
   const isWeb = tags.includes('platform:web') || !isNode;
 
   if (isNode) {

@@ -5,7 +5,7 @@
   "description": "A collection of examples demonstrating how to upgrade from v8 to v9",
   "scripts": {
     "build": "just-scripts build",
-    "build-storybook": "build-storybook -s ./public -o ./dist/storybook --docs",
+    "build-storybook": "build-storybook -o ./dist/storybook --docs",
     "chromatic:branch": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook --branch-name microsoft:master",
     "clean": "just-scripts clean",
@@ -13,7 +13,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook:docs",
-    "storybook": "node ../../scripts/storybook/runner --port 3000 -s ./public --no-manager-cache",
+    "storybook": "node ../../scripts/storybook/runner --port 3000 --no-manager-cache",
     "storybook:docs": "yarn storybook --docs"
   },
   "devDependencies": {
