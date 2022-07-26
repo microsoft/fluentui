@@ -25,8 +25,9 @@ jobs:
           name: env-artifact
       - name: Define env variables
         run: |
-          cat environment
           input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
           while read line
           do
           echo $line >> $GITHUB_ENV
