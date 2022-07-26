@@ -74,7 +74,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           printenv | sort ;\
-          "SHELLOPTS $SHELLOPTS" ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -106,7 +106,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           printenv | sort ;\
-          "SHELLOPTS $SHELLOPTS" ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: yarn
         run: ./yarn-ci.sh
