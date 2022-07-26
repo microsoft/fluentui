@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Added roundedCorner4/6 CSS vars.",
+  "packageName": "@fluentui/common-styles",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
