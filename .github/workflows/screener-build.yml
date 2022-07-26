@@ -39,6 +39,7 @@ jobs:
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
         env:
+          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
