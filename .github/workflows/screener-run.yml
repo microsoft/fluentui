@@ -24,7 +24,9 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
       - name: Define env variables
-        run: bash environment.sh
+        run: |
+          cat environment.sh
+          bash environment.sh
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
