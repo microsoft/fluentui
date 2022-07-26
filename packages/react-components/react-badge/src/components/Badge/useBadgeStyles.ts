@@ -187,7 +187,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorPaletteDarkOrangeForeground3,
   },
   'outline-subtle': {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInvertedStatic,
   },
   'outline-success': {
     color: tokens.colorPaletteGreenForeground2,
