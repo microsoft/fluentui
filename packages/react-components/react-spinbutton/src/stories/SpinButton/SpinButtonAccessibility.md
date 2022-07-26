@@ -5,7 +5,7 @@ This section documents accessibility-related behavoirs of spin buttons.
 ### Keyboarding
 
 #### Tab Order
-1. Value field
+SpinButton is a single tab stop, with focus landing on the native `<input type="text">` element.
 
 #### States
 1. Committed (Focused and value committed)
