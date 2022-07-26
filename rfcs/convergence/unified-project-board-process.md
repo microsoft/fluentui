@@ -27,7 +27,8 @@ Our solution to these problems is to start using a [common, unified project boar
 1. Ideally all issues assigned to a sprint should be [prioritized](#prioritization) and [estimated](#difficulty).
 1. The managers of each team will have weekly meetings to groom the [backlog](#backlog) and prioritize items.
    - Teams will have full ownership of breaking down big tasks and planning accordingly
-1. Each team will set up [milestones](#milestones) which will reflect their 4 sprints long road map.
+1. The goal of each [sprint](#sprints) is to have as few leftovers as possible for the next one, so making sure that you **break your work into chunks that fit in a sprint** is essential.
+1. Each team will set up [milestones](#milestones) which will reflect their 6 sprints long road map.
 1. Teams should try to use [labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels) instead of creating new fields.
    - Separate views can be created to display specific labels (ie "Known intermittent issues")
 
@@ -43,9 +44,13 @@ Sprints are 2 week long chunks in which each team works on a specific, ideally p
 
 We use sprints to better correlate [estimations](#difficulty) with a specific timeline and offer a sneak peek into what a team is supposed to work on in the upcoming weeks, using a single board view.
 
+#### Sprint goals
+
+Ideally, the work that is done in a sprint should not be transferred to the next sprint. This means that teams are responsible for breaking down big tasks into smaller ones that fit in a sprint (or less) and make sure that they get delivered.
+
 ### Milestones
 
-A milestone is a group of 4 sprints. We use milestones to see the planning and progress on a longer term fashion. Milestones can be shared with anyone interested in seeing the road map.
+A milestone is a group of 6 sprints (~3 months). We use milestones to see the planning and progress on a longer term fashion. Milestones can be shared with anyone interested in seeing the road map.
 
 ### Prioritization
 
