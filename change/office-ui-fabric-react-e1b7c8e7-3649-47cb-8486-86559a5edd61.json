@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update SelectionZone to support disallowing behaviors (#23848)",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

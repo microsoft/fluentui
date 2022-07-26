@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 19 Jul 2022 12:21:01 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jul 2022 12:27:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.190.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.190.2)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.190.0..@fluentui/react_v7.190.2)
+
+### Patches
+
+- feat: Allow SelectionZone attributes to disallow behaviors. ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
 
 ## [7.190.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.190.0)
 
