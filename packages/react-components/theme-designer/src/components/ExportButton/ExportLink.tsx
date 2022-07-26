@@ -17,7 +17,6 @@ export const ExportLink = () => {
   import {
     makeStaticStyles,
     makeStyles,
-    mergeClasses,
     shorthands,
     tokens,
     Avatar,
@@ -25,6 +24,7 @@ export const ExportLink = () => {
     Body1,
     Button,
     Caption1,
+    Caption2,
     Checkbox,
     FluentProvider,
     Input,
@@ -41,19 +41,15 @@ export const ExportLink = () => {
     Tab,
     TabList,
     Title3,
+    useId
   } from "@fluentui/react-components";
   import type { Theme } from "@fluentui/react-components";
+  import { Dropdown, Option } from '@fluentui/react-components/unstable';
   import {
     bundleIcon,
     CalendarLtrFilled,
     CalendarLtrRegular,
     ChevronRightRegular,
-    ClipboardPasteFilled,
-    ClipboardPasteRegular,
-    CutFilled,
-    CutRegular,
-    EditFilled,
-    EditRegular,
     MeetNowFilled,
     MeetNowRegular,
     SearchRegular,
@@ -88,68 +84,73 @@ export const ExportLink = () => {
       gridTemplateRows: "auto",
       gridColumnGap: tokens.spacingHorizontalXXXL
     },
-    col1: {
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "left",
-      flexDirection: "column",
-      flexGrow: 1,
-      ...shorthands.gap(tokens.spacingVerticalL)
-    },
     col2: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      ...shorthands.gap(tokens.spacingVerticalL)
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      ...shorthands.gap(tokens.spacingVerticalL),
     },
     col3: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gridTemplateRows: "repeat(4, auto)",
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gridTemplateRows: 'repeat(4, auto)',
       gridRowGap: tokens.spacingVerticalS,
       gridColumnGap: tokens.spacingHorizontalS,
-      justifyContent: "center",
-      alignItems: "center"
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     twoCol: {
       gridColumnStart: 1,
-      gridColumnEnd: 3
+      gridColumnEnd: 3,
+    },
+    controls: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     icons: {
-      display: "grid",
-      gridTemplateColumns: "auto auto",
-      gridTemplateRows: "auto auto",
+      display: 'grid',
+      gridTemplateColumns: 'auto auto',
+      gridTemplateRows: 'auto auto',
       gridRowGap: tokens.spacingVerticalS,
       gridColumnGap: tokens.spacingHorizontalS,
-      justifyContent: "center"
+      justifyContent: 'center',
     },
-    twoRow: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }
+    avatar: {
+      display: 'flex',
+      ...shorthands.gap(tokens.spacingVerticalL),
+    },
+    avatarText: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'left',
+    },
   });
 
   export const Column1 = () => {
     const styles = useStyles();
-    useStaticStyles();
     return (
       <div className={styles.col1}>
         <Title3 block>Make an impression</Title3>
         <Body1 block>
-          Make a big impression with this clean, modern, and mobile-friendly site.
-          Use it to communicate information to people inside or outside your team.
-          Share your ideas, results, and more in this visually compelling format.
+          Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to
+          people inside or outside your team. Share your ideas, results, and more in this visually compelling format.
         </Body1>
-        <Avatar
-          color="brand"
-          initials="DF"
-          badge={{
-            status: "available",
-            "aria-label": "available"
-          }}
-        />
+        <div className={styles.avatar}>
+          <Avatar
+            color="brand"
+            initials="CE"
+            badge={{
+              status: 'available',
+              'aria-label': 'available',
+            }}
+          />
+          <div className={styles.avatarText}>
+            Cameron Evans
+            <Caption2>Senior Researcher at Contoso</Caption2>
+          </div>
+        </div>
       </div>
     );
   };
@@ -182,6 +183,7 @@ export const ExportLink = () => {
 
   export const Column2 = () => {
     const styles = useStyles();
+    const dropdownId = useId('dropdown-default');
     return (
       <div className={styles.col2}>
         <TabList defaultSelectedValue="tab1">
@@ -191,16 +193,13 @@ export const ExportLink = () => {
         </TabList>
         <Input
           placeholder="Find"
-          contentAfter={
-            <Button
-              aria-label="Find"
-              appearance="transparent"
-              icon={<SearchRegular />}
-              size="small"
-            />
-          }
+          contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
         />
-        <DemoMenu />
+        <Dropdown aria-labelledby={dropdownId} placeholder="Select" inlinePopup>
+          <Option value="Action 1">Action 1</Option>
+          <Option value="Action 2">Action 2 </Option>
+          <Option value="Action 3">Action 3</Option>
+        </Dropdown>
       </div>
     );
   };
@@ -233,15 +232,15 @@ export const ExportLink = () => {
         </Button>
         <Slider className={styles.twoCol} defaultValue={50} />
         <DemoIcons />
-        <div className={styles.twoRow}>
+        <div className={styles.controls}>
           <Switch defaultChecked={true} label="On" />
           <Switch label="Off" />
         </div>
-        <div className={styles.twoRow}>
+        <div className={styles.controls}>
           <Checkbox defaultChecked={true} label="Option 1" />
           <Checkbox label="Option 2" />
         </div>
-        <div className={styles.twoRow}>
+        <div className={styles.controls}>
           <RadioGroup>
             <Radio defaultChecked={true} label="Option 1" />
             <Radio label="Option 2" />
