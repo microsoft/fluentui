@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Improve line chart performance for 10k+ datapoints",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}

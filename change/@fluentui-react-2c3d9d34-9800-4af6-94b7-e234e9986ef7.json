@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Scope focus visible classnames and event listeners to ThemeProvider by default, and to the window body as a fallback.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

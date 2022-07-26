@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 25 Jul 2022 07:36:55 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jul 2022 07:39:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.84.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.84.0)
+
+Tue, 26 Jul 2022 07:39:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.83.1..@fluentui/react_v8.84.0)
+
+### Minor changes
+
+- fix: Scope focus visible classnames and event listeners to ThemeProvider by default, and to the window body as a fallback. ([PR #24025](https://github.com/microsoft/fluentui/pull/24025) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.11 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.4 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/react-focus to v8.7.4 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/react-hooks to v8.6.2 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/style-utilities to v8.7.3 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/theme to v2.6.8 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/utilities to v8.10.0 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/common-styles to v1.1.3 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
 
 ## [8.83.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.83.1)
 

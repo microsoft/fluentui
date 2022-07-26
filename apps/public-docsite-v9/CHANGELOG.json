@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite-v9",
   "entries": [
     {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.84.0",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Jul 2022 07:36:56 GMT",
       "tag": "@fluentui/public-docsite-v9_v1.0.0",
       "version": "1.0.0",
