@@ -1,16 +1,16 @@
-- [From V0](#from-v0)
-  - [Card](#card)
+- [Migration from v0](#migration-from-v0)
+  - [Card Migration](#card-migration)
     - [Property Mapping](#property-mapping)
     - [Props that remain as is](#props-that-remain-as-is)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality)
     - [Props no longer supported](#props-no-longer-supported)
-  - [CardHeader](#cardheader)
+  - [CardHeader Migration](#cardheader-migration)
     - [Property Mapping](#property-mapping-1)
     - [Props that remain as is](#props-that-remain-as-is-1)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-1)
     - [Props no longer supported](#props-no-longer-supported-1)
-  - [CardBody](#cardbody)
-  - [CardPreview](#cardpreview)
+  - [CardBody Migration](#cardbody-migration)
+  - [CardPreview Migration](#cardpreview-migration)
     - [Property Mapping](#property-mapping-2)
     - [Props that remain as is](#props-that-remain-as-is-2)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-2)
@@ -18,19 +18,19 @@
     - [Example](#example)
       - [Before](#before)
       - [After](#after)
-  - [CardColumn](#cardcolumn)
-  - [CardExpandableBox](#cardexpandablebox)
-  - [CardTopControls](#cardtopcontrols)
-  - [CardFooter](#cardfooter)
+  - [CardColumn Migration](#cardcolumn-migration)
+  - [CardExpandableBox Migration](#cardexpandablebox-migration)
+  - [CardTopControls Migration](#cardtopcontrols-migration)
+  - [CardFooter Migration](#cardfooter-migration)
     - [Property Mapping](#property-mapping-3)
     - [Props that remain as is](#props-that-remain-as-is-3)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-3)
     - [Props no longer supported](#props-no-longer-supported-3)
-- [From v8](#from-v8)
+- [Migration from v8](#migration-from-v8)
 
-# From V0
+# Migration from v0
 
-## Card
+## Card Migration
 
 ### Property Mapping
 
@@ -131,7 +131,7 @@ export const SizedCard = () => {
 
 - `selected` => No equivalent functionality.
 
-## CardHeader
+## CardHeader Migration
 
 ### Property Mapping
 
@@ -170,7 +170,7 @@ export const SizedCard = () => {
 - `styles`
 - `variables`
 
-## CardBody
+## CardBody Migration
 
 This component is no longer supported. Instead, pass any content under the main Card component.
 Before:
@@ -201,7 +201,7 @@ export const CardBodyExample = () => (
 );
 ```
 
-## CardPreview
+## CardPreview Migration
 
 ### Property Mapping
 
@@ -271,19 +271,19 @@ export const CardPreviewExample = () => (
 );
 ```
 
-## CardColumn
+## CardColumn Migration
 
 This component is no longer supported.
 
-## CardExpandableBox
+## CardExpandableBox Migration
 
 This component is no longer supported.
 
-## CardTopControls
+## CardTopControls Migration
 
 This component is no longer supported.
 
-## CardFooter
+## CardFooter Migration
 
 ### Property Mapping
 
@@ -317,6 +317,6 @@ This component is no longer supported.
 - `styles`
 - `variables`
 
-# From v8
+# Migration from v8
 
 WIP
