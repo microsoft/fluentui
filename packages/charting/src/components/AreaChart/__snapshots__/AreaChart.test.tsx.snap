@@ -52,7 +52,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -60,7 +60,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -81,7 +81,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -91,7 +91,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -280,7 +280,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -303,7 +303,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -387,7 +387,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -395,7 +395,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -416,7 +416,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -426,7 +426,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -598,7 +598,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -621,7 +621,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     margin-right: 8px;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     content: linear-gradient(to right, red, red);
                     opacity: ;
                   }
@@ -702,7 +702,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -710,7 +710,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -731,7 +731,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -741,7 +741,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -884,7 +884,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -892,7 +892,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -913,7 +913,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -923,7 +923,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1112,7 +1112,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1135,7 +1135,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1219,7 +1219,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1227,7 +1227,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1248,7 +1248,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1258,7 +1258,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1447,7 +1447,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1470,7 +1470,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1554,7 +1554,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1562,7 +1562,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1583,7 +1583,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1593,7 +1593,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1782,7 +1782,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1805,7 +1805,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1889,7 +1889,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1897,7 +1897,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1918,7 +1918,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1928,7 +1928,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2117,7 +2117,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2140,7 +2140,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           margin-right: 8px;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active), @media screen and (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }

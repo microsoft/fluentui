@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update snaps",
+  "packageName": "@uifabric/react-cards",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}
