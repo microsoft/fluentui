@@ -20,23 +20,23 @@ jobs:
       - name: Set base env variables
         run: |
           cat <<EOT >> artifacts/environment
-          BROWSERSLIST_IGNORE_OLD_DATA=true
-          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
-          BUILD_BUILDID=${{ github.run_id }}
-          BUILD_SOURCEBRANCH=${{ github.ref }}
+          echo "BROWSERSLIST_IGNORE_OLD_DATA=true" >> $GITHUB_ENV
+          echo "DEPLOYHOST='fluentuipr.z22.web.core.windows.net'" >> $GITHUB_ENV
+          echo "BUILD_BUILDID=${{ github.run_id }}" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV
           EOT
 
       - name: Set env variables if there is a PR
         run: |
           cat <<EOT >> artifacts/environment
-          SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}
-          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
-          SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
-          SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
-          ISPR=true
-          DEPLOYBASEPATH=pull/$PR_NUMBER
-          DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
-          BUILD_SOURCEBRANCHNAME='merge'
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          echo "ISPR=true" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
           EOT
         env:
           PR_NUMBER: ${{ github.event.number }}
@@ -45,10 +45,10 @@ jobs:
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment
-          ISPR=false
-          DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
-          DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
-          BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
+          echo "ISPR=false" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
           EOT
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: env-artifact
-          path: artifacts/environment
+          path: artifacts/environment.sh
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'

@@ -35,13 +35,7 @@ jobs:
 
       - name: Define env variables
         run: |
-          input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
-          while read line
-          do
-          echo $line >> $GITHUB_ENV
-          done < "$input_file"
+          bash environment.sh
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -69,13 +63,7 @@ jobs:
 
       - name: Define env variables
         run: |
-          input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
-          while read line
-          do
-          echo $line >> $GITHUB_ENV
-          done < "$input_file"
+          bash environment.sh
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -103,13 +91,7 @@ jobs:
 
       - name: Define env variables
         run: |
-          input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
-          while read line
-          do
-          echo $line >> $GITHUB_ENV
-          done < "$input_file"
+          bash environment.sh
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
