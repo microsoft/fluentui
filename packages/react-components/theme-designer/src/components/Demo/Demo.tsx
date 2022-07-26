@@ -18,7 +18,7 @@ import {
   Avatar,
   useId,
 } from '@fluentui/react-components';
-import { Dropdown, DropdownProps, Option } from '@fluentui/react-components/unstable';
+import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import {
   SearchRegular,
   bundleIcon,
@@ -114,20 +114,12 @@ export const Column1 = () => {
 
 export const DemoMenu = () => {
   const dropdownId = useId('dropdown-default');
-  const CutIcon = bundleIcon(CutFilled, CutRegular);
-  const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
-  const EditIcon = bundleIcon(EditFilled, EditRegular);
+
   return (
     <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal">
-      <Option icon={<CutIcon />} name="cut" value="cut">
-        Cut
-      </Option>
-      <Option icon={<PasteIcon />} name="paste" value="paste">
-        Paste
-      </Option>
-      <Option icon={<EditIcon />} name="edit" value="edit">
-        Edit
-      </Option>
+      <Option value="cat">Cat</Option>
+      <Option value="dog">Dog</Option>
+      <Option value="fish">Fish</Option>
     </Dropdown>
   );
 };
