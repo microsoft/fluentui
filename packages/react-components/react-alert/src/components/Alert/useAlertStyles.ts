@@ -17,12 +17,17 @@ const useStyles = makeStyles({
     alignItems: 'center',
     minHeight: '44px',
     ...shorthands.padding('0', '12px'),
-    ...shorthands.borderColor('transparent'),
     ...shorthands.borderRadius('4px'),
+    ...shorthands.border('1px', 'solid', tokens.colorTransparentStrokeInteractive),
     boxShadow: tokens.shadow8,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightSemibold,
-    backgroundColor: tokens.colorNeutralBackground1, // todo - there is no bg10, used bg1
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackground1,
+  },
+  invertedRoot: {
+    color: tokens.colorNeutralForegroundInverted,
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
   icon: {
     height: '16px',
@@ -40,12 +45,12 @@ const useStyles = makeStyles({
   },
 });
 
-const usePrimaryIconStyles = makeStyles({
+const useIntentIconStyles = makeStyles({
   success: {
-    color: tokens.colorPaletteGreenBackground3,
+    color: tokens.colorPaletteGreenForeground3,
   },
   error: {
-    color: tokens.colorPaletteRedBackground3,
+    color: tokens.colorPaletteRedForeground3,
   },
   warning: {
     color: tokens.colorPaletteYellowForeground2,
@@ -55,31 +60,20 @@ const usePrimaryIconStyles = makeStyles({
   },
 });
 
-const useInvertedIconStyles = makeStyles({
-  success: {
-    color: tokens.colorPaletteGreenBackground3,
-  },
-  error: {
-    color: tokens.colorPaletteRedBackground3,
-  },
-  warning: {
-    color: tokens.colorPaletteYellowForeground2,
-  },
-  info: {
-    color: tokens.colorNeutralForeground2,
-  },
-});
 /**
  * Apply styling to the Alert slots based on the state
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
   const appearance = state.appearance || 'primary';
-  const primaryIconStyles = usePrimaryIconStyles();
-  const invertedIconStyles = useInvertedIconStyles();
-  const intentIconStyles = appearance === 'primary' ? primaryIconStyles : invertedIconStyles;
+  const intentIconStyles = useIntentIconStyles();
 
-  state.root.className = mergeClasses(alertClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    alertClassNames.root,
+    styles.root,
+    appearance !== 'primary' && styles.invertedRoot,
+    state.root.className,
+  );
 
   if (state.icon) {
     state.icon.className = mergeClasses(
