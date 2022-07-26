@@ -56,8 +56,10 @@ export const useFluentProviderThemeStyleTag = (options: Pick<FluentProviderState
 
   useInsertionEffect(() => {
     styleTag.current = createStyleTag(targetDocument, styleTagId);
+
     if (styleTag.current) {
       insertSheet(styleTag.current, rule);
+
       return () => {
         styleTag.current?.remove();
       };
