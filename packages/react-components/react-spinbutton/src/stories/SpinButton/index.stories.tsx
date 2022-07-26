@@ -21,7 +21,7 @@ const meta: Meta = {
   parameters: {
     docs: {
       description: {
-        component: [accessibilityMd, descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, accessibilityMd].join('\n'),
       },
     },
   },
