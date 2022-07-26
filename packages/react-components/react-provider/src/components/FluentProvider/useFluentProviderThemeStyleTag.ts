@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles';
 
+// String concatenation is used to prevent bundlers to complain with older versions of React
 const useInsertionEffect = (React as never)['useInsertion' + 'Effect']
   ? (React as never)['useInsertion' + 'Effect']
   : useIsomorphicLayoutEffect;
