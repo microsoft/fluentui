@@ -17,6 +17,8 @@ jobs:
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
 
+    needs: DownloadArtifacts
+
     name: Screener @fluentui/react-northstar
 
     steps:
@@ -35,7 +37,13 @@ jobs:
 
       - name: Define env variables
         run: |
-          bash environment.sh
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -44,6 +52,8 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
   Screener:
     runs-on: 'ubuntu-latest'
+
+    needs: DownloadArtifacts
 
     name: Screener @fluentui/react
 
@@ -63,7 +73,13 @@ jobs:
 
       - name: Define env variables
         run: |
-          bash environment.sh
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo $line >> $GITHUB_ENV
+          done < "$input_file"
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -72,6 +88,8 @@ jobs:
           echo "SHELLOPTS $SHELLOPTS" ;\
   ScreenerVNext:
     runs-on: 'ubuntu-latest'
+
+    needs: DownloadArtifacts
 
     name: Screener @fluentui/react-components
 
@@ -91,7 +109,13 @@ jobs:
 
       - name: Define env variables
         run: |
-          bash environment.sh
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo $line >> $GITHUB_ENV
+          done < "$input_file"
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
