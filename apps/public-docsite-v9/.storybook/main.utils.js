@@ -24,7 +24,7 @@ function getVnextStories() {
     .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludedDependencies.includes(pkgName))
     .map(pkgName => {
       const name = pkgName.replace('@fluentui/', '');
-      const storiesGlob = '/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+      const storiesGlob = '/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx|*.stories.tsx)';
 
       return `../../../packages/react-components/${name}${storiesGlob}`;
     });
