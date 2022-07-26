@@ -11,9 +11,8 @@ AvatarGroup and Facepile have similar APIs, but the main difference is how they 
 Avatars must not be used inside an AvatarGroup, instead AvatarGroupItems are used since it has extra functionality used only in AvatarGroups. This includes adding a label when the AvatarGroupItem is rendered in the overflow Popover and specific styling for each layout.
 
 AvatarGroup has extra functionality that Facepile does not have, this includes:
-
-- When the AvatarGroupItems are overflowing, a Popover is rendered that contains all the overflowed AvatarGroupItems. The Popover is triggered when the overflow button is clicked.
-- AvatarGroup supports three layouts: `spread` (default), `stack`, and `pie`.
+ - When the AvatarGroupItems are overflowing, a Popover is rendered that contains all the overflowed AvatarGroupItems. The Popover is triggered when the overflow button is clicked.
+ - AvatarGroup supports three layouts: `spread` (default), `stack`, and `pie`.
 
 ## Property mapping
 
