@@ -7,7 +7,7 @@ The AvatarGroup component represents a group of multiple people or entities by t
 ## STATUS: WIP 🚧
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-     
+
 ## Usage
 
 To import AvatarGroup and AvatarGroupItem:
