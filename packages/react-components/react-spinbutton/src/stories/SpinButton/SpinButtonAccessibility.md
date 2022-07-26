@@ -5,44 +5,43 @@ This section documents accessibility-related behavoirs of spin buttons.
 ### Keyboarding
 
 #### Tab Order
-SpinButton is a single tab stop, with focus landing on the native `<input type="text">` element.
+1. Value field
 
 #### States
-1. Committed (Focused and value committed)
+1. Rest (Focused)
 2. Editing (Focused and editing)
 
 #### Keyboard State Diagram
 
 | Starting state | Transition | Resulting state |
 | ---------- | ------------ | ------- |
-| Content before spin button | Tab | Committed |
-| Committed  | Tab | Content after spin button (Value committed) |
+| Content before spin button | Tab | Rest |
+| Rest  | Tab | Content after spin button |
 | Editing  | Tab | Content after spin button (Value committed) |
-| Editing (Autofill option provided)  | Tab | Content after spin button (Value committed) |
-| Editing  | Enter | Committed |
-| Committed  | Any Edit Key (that results in a change) | Editing |
+| Editing  | Enter | Rest (Value committed)|
+| Rest  | Any Edit Key (that results in a change) | Editing |
 | Editing  | Any Edit Key | Editing |
-| Content after spin button (Value committed) | Shift + Tab | Committed |
+| Content after spin button (Value committed) | Shift + Tab | Rest |
 
 ##### Edit keys
 | Edit Key | Result |
 | ---------- | ------------ |
 | Home | First item in defined range |
 | End | Last item in defined range |
-| Up arrow | One increment higher |
-| Down arrow | One increment lower |
-| Page up | Several increments higher |
-| Page down | Several increments lower |
+| Up arrow | Increments value higher, based on the step prop (defaulting to 1) |
+| Down arrow | Increments value lower, based on the step prop (defaulting to 1) |
+| Page up | Increments value higher, based on the stepPage prop (defaulting to 1) |
+| Page down | Increments value lower, based on the stepPage prop (defaulting to 1) |
 | Typing valid value | Valid value |
-| Begin typing valid value | Autofill option provided |
 
 ### High contrast mode
 
 Be careful about visibility of the spin button arrows in high contrast mode.
+TODO: Either add specifics about SVGs in high contrast and how to customize the icon color without messing up HCM or (ideally) link to the Icon section on high contrast, when it exists.
 
 ### Motion and animation
 
-Animations occur when the value changes to give the appearance of spinning. This needs to respond to user settings to turn off animations.
+There is an animation when this element receives focus. This respects reduced-motion media queries.
 
 Placeholder: Mouse press speed of value changes visual indicators
 
@@ -62,6 +61,10 @@ Mouse press quick changes to value are not announced to screen readers.
 
 SpinButtons allow someone to incrementally adjust a value in small steps.
 
+SpinButtons are a better choice than Input and Input with type: number when clear indication is needed that there are maximum and minimum allowed values.
+
+SpinButtons are a better choice than Slider when there are many valid values and Slider would not provide enough granularity to choose a precise value.
+
 ### Required props
 
 Placeholder: If there are any props or other specific work that the author must do to make the default usage of the component accessible, list those here. One example is that all form components must have a label provided by the author. If the component has any internally defined strings that should be localized, list those here.
@@ -78,12 +81,19 @@ Placeholder: Cover potential use cases not included in our storybook examples he
 
 #### Child content restrictions
 
-The following child content is allowed:
-1. Text
+The component has the following structure:
+* Input field
+* Up button
+  * Up carat symbol
+* Down button
+  * Down carat symbol
+
 
 #### Component-specific usage warnings
 
-If there are any other accessibility pitfalls specific to this component, add more sections under "Advanced Usage" for those.
+[NVDA does not read the value of spinbuttons in Chromium](https://github.com/nvaccess/nvda/issues/13195)
+
+[Narrator defaults to reading min/max as 0 when they're (intentionally) undefined](https://microsoft.visualstudio.com/Edge/_workitems/edit/39070743)
 
 ## Extending [component name]
 
