@@ -40,7 +40,7 @@ describe('Menu', () => {
     },
   });
 
-  afterEach(() => {
+  beforeEach(() => {
     resetIdsForTests();
     jest.useRealTimers();
   });
