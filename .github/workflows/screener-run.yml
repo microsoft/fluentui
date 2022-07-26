@@ -23,15 +23,6 @@ jobs:
           workflow: screener-build.yml
           workflow_conclusion: success
           name: env-artifact
-      - name: Define env variables
-        run: |
-          input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
-          while read line
-          do
-          echo $line >> $GITHUB_ENV
-          done < "$input_file"
 
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
@@ -46,6 +37,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo $line >> $GITHUB_ENV
+          done < "$input_file"
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -66,6 +67,16 @@ jobs:
         with:
           node-version: 14.18.1
 
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo $line >> $GITHUB_ENV
+          done < "$input_file"
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -84,6 +95,16 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          cat "$input_file"
+          echo "TEST=value" >> $GITHUB_ENV
+          while read line
+          do
+          echo $line >> $GITHUB_ENV
+          done < "$input_file"
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
