@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "7.0  Not able to navigate through Legends in Browse mode",
+  "packageName": "@uifabric/charting",
+  "email": "v-hannapared@microsoft.com",
+  "dependentChangeType": "patch"
+}
