@@ -22,12 +22,6 @@ import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import {
   SearchRegular,
   bundleIcon,
-  CutRegular,
-  CutFilled,
-  ClipboardPasteRegular,
-  ClipboardPasteFilled,
-  EditRegular,
-  EditFilled,
   ChevronRightRegular,
   MeetNowRegular,
   MeetNowFilled,
