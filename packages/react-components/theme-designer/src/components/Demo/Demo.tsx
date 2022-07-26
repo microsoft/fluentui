@@ -9,12 +9,6 @@ import {
   Input,
   Button,
   Caption1,
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuButton,
-  MenuItemCheckbox,
-  MenuPopover,
   Slider,
   Badge,
   Switch,
@@ -22,7 +16,9 @@ import {
   RadioGroup,
   Checkbox,
   Avatar,
+  useId,
 } from '@fluentui/react-components';
+import { Dropdown, DropdownProps, Option } from '@fluentui/react-components/unstable';
 import {
   SearchRegular,
   bundleIcon,
@@ -117,28 +113,22 @@ export const Column1 = () => {
 };
 
 export const DemoMenu = () => {
+  const dropdownId = useId('dropdown-default');
   const CutIcon = bundleIcon(CutFilled, CutRegular);
   const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
   const EditIcon = bundleIcon(EditFilled, EditRegular);
   return (
-    <Menu>
-      <MenuTrigger>
-        <MenuButton>Select </MenuButton>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
-            Cut
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
-            Paste
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
-            Edit
-          </MenuItemCheckbox>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+    <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal">
+      <Option icon={<CutIcon />} name="cut" value="cut">
+        Cut
+      </Option>
+      <Option icon={<PasteIcon />} name="paste" value="paste">
+        Paste
+      </Option>
+      <Option icon={<EditIcon />} name="edit" value="edit">
+        Edit
+      </Option>
+    </Dropdown>
   );
 };
 
