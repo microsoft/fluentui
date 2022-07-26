@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "task: useAsync: remove stored async when useEffect return is called",
+  "packageName": "@fluentui/react-hooks",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
