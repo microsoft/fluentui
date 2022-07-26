@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
-import { createTabster as createTabsterBase, disposeTabster, Types as TabsterTypes } from 'tabster';
-
-const createTabster = (win: Window | undefined) => {
-  if (!win) {
-    return null;
-  }
-
-  return createTabsterBase(win, { autoRoot: {}, controlTab: false });
-};
+import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
@@ -20,25 +12,23 @@ const createTabster = (win: Window | undefined) => {
  */
 export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
-  const firstMount = useFirstMount();
 
   const defaultView = targetDocument?.defaultView || undefined;
-  const [tabster, setTabster] = React.useState(() => createTabster(defaultView));
-
-  useIsomorphicLayoutEffect(() => {
-    if (!firstMount) {
-      setTabster(createTabster(defaultView));
+  const tabster = React.useMemo(() => {
+    if (!defaultView) {
+      return null;
     }
 
+    return createTabster(defaultView, { autoRoot: {}, controlTab: false });
+  }, [defaultView]);
+
+  useIsomorphicLayoutEffect(() => {
     return () => {
       if (tabster) {
         disposeTabster(tabster);
       }
     };
-    // Missing deps:
-    // firstMount - Should never change after mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabster, defaultView]);
+  }, [tabster]);
 
   return tabster;
 };
