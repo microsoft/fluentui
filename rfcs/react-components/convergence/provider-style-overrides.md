@@ -38,38 +38,6 @@ not handle portals which use the same default styles as the closest `FluentProvi
 
 ## Detailed Design or Proposal
 
-### Document usage of extra providers
-
-We can document how to override `FluentProvider` styles using the required extra providers so that the
-default provider styles can be overriden.
-
-```tsx
-import { makeStyles, RendererProvider, TextDirectionProvider } from '@fluentui/react-components';
-
-const useProviderOverrides = makeStyles({
-  provider: {
-    marginLeft: '1px',
-  },
-});
-
-const App = ({ dir }) => {
-  const styles = useProviderOverrides();
-  return (
-    <FluentProvider dir={dir} className={styles.provider}>
-      {children}
-    </FluentProvider>
-  );
-};
-
-const AppWrapper = () => {
-  return (
-    <TextDirectionProvider dir="rtl">
-      <App dir="rtl" />
-    </TextDirectionProvider>
-  );
-};
-```
-
 #### Pros and Cons
 
 👍 No extra code changes necessary
@@ -116,6 +84,9 @@ const App = () => {
 };
 ```
 
+Additionaly in the `FluentProvider` we can strip and classnames that are known to be created by a standard `makeStyles`
+call and trigger a warning. This will ensure that there is only **correct** way of overriding the provider styles.
+
 #### Pros and Cons
 
 👍 Add styles the same way as the `FluentProvider` currently does it
@@ -126,6 +97,38 @@ const App = () => {
 👎 something 'special' to do for one component
 
 ## Discarded Solutions
+
+### Document usage of extra providers
+
+We can document how to override `FluentProvider` styles using the required extra providers so that the
+default provider styles can be overriden.
+
+```tsx
+import { makeStyles, RendererProvider, TextDirectionProvider } from '@fluentui/react-components';
+
+const useProviderOverrides = makeStyles({
+  provider: {
+    marginLeft: '1px',
+  },
+});
+
+const App = ({ dir }) => {
+  const styles = useProviderOverrides();
+  return (
+    <FluentProvider dir={dir} className={styles.provider}>
+      {children}
+    </FluentProvider>
+  );
+};
+
+const AppWrapper = () => {
+  return (
+    <TextDirectionProvider dir="rtl">
+      <App dir="rtl" />
+    </TextDirectionProvider>
+  );
+};
+```
 
 ## Open Issues
 
