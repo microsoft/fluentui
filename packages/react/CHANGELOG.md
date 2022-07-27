@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 26 Jul 2022 07:39:34 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jul 2022 07:37:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.85.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.85.0)
+
+Wed, 27 Jul 2022 07:37:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.84.0..@fluentui/react_v8.85.0)
+
+### Minor changes
+
+- fix: Change modal isModeless to only effect pointer events, not layout. ([PR #24074](https://github.com/microsoft/fluentui/pull/24074) by mgodbolt@microsoft.com)
+- Bump @fluentui/common-styles to v1.2.0 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
 
 ## [8.84.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.84.0)
 
