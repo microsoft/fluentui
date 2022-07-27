@@ -9,12 +9,12 @@ import {
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
 import { Avatar } from '@fluentui/react-avatar';
-import { TableCell, TableRow } from '../..';
+import { TableBody, TableCell, TableRow, Table } from '../..';
 
 export const Default = () => {
   return (
-    <table style={{ width: '100%' }}>
-      <tbody>
+    <Table>
+      <TableBody>
         <TableRow>
           <TableCell media={<DocumentRegular />}>Meeting notes</TableCell>
           <TableCell media={<Avatar name="Max Mustermann" badge={{ status: 'available' }} />}>Max Mustermann</TableCell>
@@ -39,7 +39,7 @@ export const Default = () => {
           <TableCell>Tue at 9:30 AM</TableCell>
           <TableCell media={<PeopleRegular />}>You shared this in a Teams chat</TableCell>
         </TableRow>
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 };

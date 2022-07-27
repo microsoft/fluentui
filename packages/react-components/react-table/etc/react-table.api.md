@@ -10,6 +10,18 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const Table: ForwardRefComponent<TableProps>;
+
+// @public
+export const TableBody: ForwardRefComponent<TableBodyProps>;
+
+// @public (undocumented)
+export const tableBodyClassName = "fui-TableBody";
+
+// @public (undocumented)
+export const tableBodyClassNames: SlotClassNames<TableBodySlots>;
+
+// @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
 
 // @public (undocumented)
@@ -17,6 +29,12 @@ export const tableCellClassName = "fui-TableCell";
 
 // @public (undocumented)
 export const tableCellClassNames: SlotClassNames<TableCellSlots>;
+
+// @public (undocumented)
+export const tableClassName = "fui-Table";
+
+// @public (undocumented)
+export const tableClassNames: SlotClassNames<TableSlots>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
