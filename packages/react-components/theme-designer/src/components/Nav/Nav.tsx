@@ -43,8 +43,15 @@ export const Nav: React.FC<NavProps> = props => {
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newName = e.target.value;
-    if (newName.match('^[a-zA-Z0-9]*$')) {
-      setName(e.target.value);
+
+    if (newName.length === 0) {
+      setName('Untitled');
+    } else {
+      const camelizeName = e.target.value
+        .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
+        .replace(/\s+/g, '');
+
+      setName(camelizeName);
     }
   };
 
@@ -61,10 +68,10 @@ export const Nav: React.FC<NavProps> = props => {
         <Input
           appearance="underline"
           id={underlineId}
-          value={name}
           // eslint-disable-next-line react/jsx-no-bind
           onChange={handleNameChange}
           contentAfter={<EditRegular />}
+          placeholder={name}
         />
       </div>
       <ExportButton />
