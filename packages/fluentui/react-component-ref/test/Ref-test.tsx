@@ -220,9 +220,15 @@ describe('Ref', () => {
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
       expect(outerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
 
-      wrapper.childAt(0).setProps({ children: <button /> });
-
       jest.resetAllMocks();
+      wrapper.setProps({
+        children: (
+          <Ref innerRef={innerRef}>
+            <button />
+          </Ref>
+        ),
+      });
+
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
       expect(outerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'BUTTON' }));
     });
