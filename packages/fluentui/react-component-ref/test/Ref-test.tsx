@@ -183,7 +183,7 @@ describe('Ref', () => {
   });
 
   describe('kind="self"', () => {
-    it.only('works with "forwardRef" API', () => {
+    it('works with "forwardRef" API', () => {
       const forwardedRef = React.createRef<HTMLButtonElement>();
       const innerRef = React.createRef<HTMLDivElement>();
       const outerRef = React.createRef<HTMLDivElement>();
