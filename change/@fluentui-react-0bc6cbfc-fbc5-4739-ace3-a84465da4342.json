@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Change modal isModeless to only effect pointer events, not layout.",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
