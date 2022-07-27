@@ -3,7 +3,7 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import { Button, Caption1, Text } from '@fluentui/react-components';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { contrast, hex_to_sRGB } from '@fluent-blocks/colors';
-import { CopyRegular } from '@fluentui/react-icons';
+import { bundleIcon, CopyFilled, CopyRegular } from '@fluentui/react-icons';
 import { AppContext } from '../../ThemeDesigner';
 import { useContextSelector } from '@fluentui/react-context-selector';
 
@@ -55,6 +55,7 @@ export const Palette: React.FC<PaletteProps> = props => {
   const styles = useStyles();
 
   const { brand } = useContextSelector(AppContext, ctx => ctx.appState);
+  const CopyIcon = bundleIcon(CopyFilled, CopyRegular);
 
   return (
     <div>
