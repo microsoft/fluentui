@@ -30,7 +30,7 @@ export function getBrandTokensFromPalette(keyColor: string, options: Options = {
     lightCp: lightCp,
     hueTorsion: hueTorsion,
   };
-  const hexColors = hexColorsFromPalette(brandPalette, 17, [0, 100], 1).splice(1, 16);
+  const hexColors = hexColorsFromPalette(brandPalette, 16, [0, 100], 1);
   return hexColors.reduce((acc: Record<string, string>, hexColor, h) => {
     acc[`${(h + 1) * 10}`] = hexColor;
     return acc;
