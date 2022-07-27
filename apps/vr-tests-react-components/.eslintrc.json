@@ -5,6 +5,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/jsx-no-bind": "off",
     "deprecation/deprecation": "off",
+    "@fluentui/no-restricted-imports": "off",
     "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
   }
 }
