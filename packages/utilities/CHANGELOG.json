@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/utilities_v8.10.0",
+      "version": "8.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "9dfca5c711afb616147faf111504d11ec1e24856",
+            "comment": "fix: Scope focus visible classnames and event listeners to ThemeProvider by default, and to the window body as a fallback."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 07:40:59 GMT",
       "tag": "@fluentui/utilities_v8.9.0",
       "version": "8.9.0",

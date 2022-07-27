@@ -4,7 +4,14 @@ import { usePortalCompat } from '@fluentui/react-portal-compat-context';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { classNamesFunction, getDocument, setPortalAttribute, setVirtualParent } from '../../Utilities';
+import {
+  classNamesFunction,
+  getDocument,
+  setPortalAttribute,
+  setVirtualParent,
+  FocusRectsProvider,
+  IFocusRectsContext,
+} from '../../Utilities';
 import {
   registerLayer,
   getDefaultTarget,
@@ -24,6 +31,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
+    const fabricRef = React.useRef<HTMLDivElement>(null);
 
     // Tracks if the layer mount events need to be raised.
     // Required to allow the DOM to render after the layer element is added.
@@ -151,15 +159,28 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     useDebugWarnings(props);
 
+    const focusRectsContext = React.useMemo<IFocusRectsContext>(
+      () => ({
+        providerRef: fabricRef,
+      }),
+      [fabricRef],
+    );
+
     return (
       <span className="ms-layer" ref={mergedRef}>
         {layerRef.current &&
           ReactDOM.createPortal(
-            /* eslint-disable deprecation/deprecation */
-            <Fabric {...(!eventBubblingEnabled && getFilteredEvents())} className={classNames.content}>
-              {children}
-            </Fabric>,
-            /* eslint-enable deprecation/deprecation */
+            <FocusRectsProvider value={focusRectsContext}>
+              {/* eslint-disable deprecation/deprecation */}
+              <Fabric
+                {...(!eventBubblingEnabled && getFilteredEvents())}
+                className={classNames.content}
+                ref={fabricRef}
+              >
+                {children}
+              </Fabric>
+              {/* eslint-enable deprecation/deprecation */}
+            </FocusRectsProvider>,
             layerRef.current,
           )}
       </span>

@@ -89,6 +89,8 @@ import { focusAsync } from '@fluentui/utilities';
 import { focusClear } from '@fluentui/style-utilities';
 import { focusFirstChild } from '@fluentui/utilities';
 import { FocusRects } from '@fluentui/utilities';
+import { FocusRectsContext } from '@fluentui/utilities';
+import { FocusRectsProvider } from '@fluentui/utilities';
 import { FocusZone } from '@fluentui/react-focus';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusZoneTabbableElements } from '@fluentui/react-focus';
@@ -195,6 +197,7 @@ import { IEventRecord } from '@fluentui/utilities';
 import { IEventRecordList } from '@fluentui/utilities';
 import { IEventRecordsByName } from '@fluentui/utilities';
 import { IFitContentToBoundsOptions } from '@fluentui/utilities';
+import { IFocusRectsContext } from '@fluentui/utilities';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontFace } from '@fluentui/style-utilities';
@@ -311,6 +314,7 @@ import { registerDefaultFontFaces } from '@fluentui/theme';
 import { registerIconAlias } from '@fluentui/style-utilities';
 import { registerIcons } from '@fluentui/style-utilities';
 import { registerOnThemeChangeCallback } from '@fluentui/style-utilities';
+import { removeDirectionalKeyCode } from '@fluentui/utilities';
 import { removeIndex } from '@fluentui/utilities';
 import { removeOnThemeChangeCallback } from '@fluentui/style-utilities';
 import { replaceElement } from '@fluentui/utilities';
@@ -1652,6 +1656,10 @@ export { focusClear }
 export { focusFirstChild }
 
 export { FocusRects }
+
+export { FocusRectsContext }
+
+export { FocusRectsProvider }
 
 // @public
 export const FocusTrapCallout: React_2.FunctionComponent<IFocusTrapCalloutProps>;
@@ -5775,6 +5783,8 @@ export interface IFacepileStyles {
 
 export { IFitContentToBoundsOptions }
 
+export { IFocusRectsContext }
+
 // @public (undocumented)
 export interface IFocusTrapCalloutProps extends ICalloutProps {
     focusTrapProps?: IFocusTrapZoneProps;
@@ -6964,6 +6974,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
@@ -10242,6 +10253,8 @@ export { registerIconAlias }
 export { registerIcons }
 
 export { registerOnThemeChangeCallback }
+
+export { removeDirectionalKeyCode }
 
 export { removeIndex }
 

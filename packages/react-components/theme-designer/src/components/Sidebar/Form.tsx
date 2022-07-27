@@ -59,35 +59,40 @@ export const Form: React.FC<FormProps> = props => {
 
   const formReducer = (state: CustomAttributes, action: { attributes: CustomAttributes }) => {
     setFormState(action.attributes);
-    dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+
+    // returns true if form is the same
+    const sameForm =
+      state.keyColor === action.attributes.keyColor &&
+      state.hueTorsion === action.attributes.hueTorsion &&
+      state.vibrancy === action.attributes.vibrancy;
+
+    // only dispatch if form changes
+    if (!sameForm) {
+      dispatchAppState({ ...form, type: 'Custom', customAttributes: action.attributes });
+    }
     return action.attributes;
   };
 
   const [keyColor, setKeyColor] = React.useState<string>(formState.keyColor);
   const [hueTorsion, setHueTorsion] = React.useState<number>(formState.hueTorsion);
-  const [darkCp, setDarkCp] = React.useState<number>(formState.darkCp * 100);
-  const [lightCp, setLightCp] = React.useState<number>(formState.lightCp * 100);
+  const [vibrancy, setVibrancy] = React.useState<number>(formState.vibrancy * 100);
 
   const [form, dispatchForm] = React.useReducer(formReducer, formState);
-  const debouncedForm = useDebounce(
-    { keyColor, hueTorsion: hueTorsion / 100, darkCp: darkCp / 100, lightCp: lightCp / 100 },
-    10,
-  );
+  const debouncedForm = useDebounce({ keyColor, hueTorsion: hueTorsion / 100, vibrancy: vibrancy / 100 }, 10);
   React.useEffect(() => {
     dispatchForm({ attributes: debouncedForm });
   }, [debouncedForm]);
 
   const handleKeyColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyColor(e.target.value);
+    // check if the newly inputted hex code has a #
+    const newHexColor = '#' + e.target.value.replace(/\W/g, '').toUpperCase();
+    setKeyColor(newHexColor);
   };
   const handleHueTorsionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHueTorsion(parseInt(e.target.value, 10));
   };
-  const handleLightCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLightCp(parseInt(e.target.value, 10));
-  };
-  const handleDarkCpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDarkCp(parseInt(e.target.value, 10));
+  const handleVibrancyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVibrancy(parseInt(e.target.value, 10));
   };
 
   return (
@@ -102,6 +107,7 @@ export const Form: React.FC<FormProps> = props => {
             id={sidebarId + 'keyColor'}
             value={form.keyColor}
             onChange={handleKeyColorChange}
+            maxLength={7}
           />
           <div className={styles.colorPicker} style={{ backgroundColor: form.keyColor }}>
             <input
@@ -117,8 +123,8 @@ export const Form: React.FC<FormProps> = props => {
       <div className={styles.slider}>
         <Slider
           size="small"
-          min={-360}
-          max={360}
+          min={-50}
+          max={50}
           id={sidebarId + 'hueTorsion'}
           value={hueTorsion}
           onChange={handleHueTorsionChange}
@@ -126,47 +132,33 @@ export const Form: React.FC<FormProps> = props => {
         <Input
           size="small"
           type="number"
-          min={-360}
-          max={360}
+          min={-50}
+          max={50}
           appearance="outline"
           id={sidebarId + 'hueTorsion input'}
           value={hueTorsion.toString()}
           onChange={handleHueTorsionChange}
         />
       </div>
-      <Label htmlFor={sidebarId + 'lightCp'}>Light Control Point</Label>
+      <Label htmlFor={sidebarId + 'vibrancy'}>Vibrancy</Label>
       <div className={styles.slider}>
         <Slider
           size="small"
-          min={0}
-          max={100}
-          id={sidebarId + 'lightCp'}
-          value={lightCp}
-          onChange={handleLightCpChange}
+          min={-50}
+          max={50}
+          id={sidebarId + 'vibrancy'}
+          value={vibrancy}
+          onChange={handleVibrancyChange}
         />
         <Input
           size="small"
           type="number"
-          min={0}
-          max={100}
+          min={-50}
+          max={50}
           appearance="outline"
-          id={sidebarId + 'lightCp input'}
-          value={lightCp.toString()}
-          onChange={handleLightCpChange}
-        />
-      </div>
-      <Label htmlFor={sidebarId + 'darkCp'}>Dark Control Point</Label>
-      <div className={styles.slider}>
-        <Slider size="small" min={0} max={100} id={sidebarId + 'darkCp'} value={darkCp} onChange={handleDarkCpChange} />
-        <Input
-          size="small"
-          type="number"
-          min={0}
-          max={100}
-          appearance="outline"
-          id={sidebarId + 'darkCp input'}
-          value={darkCp.toString()}
-          onChange={handleDarkCpChange}
+          id={sidebarId + 'vibrancy input'}
+          value={vibrancy.toString()}
+          onChange={handleVibrancyChange}
         />
       </div>
     </div>

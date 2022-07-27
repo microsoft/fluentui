@@ -46,6 +46,9 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
           { x: new Date('2018/01/29'), y: 90 },
         ],
         legend: 'Week',
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         color: DefaultPalette.blue,
       },
     ];

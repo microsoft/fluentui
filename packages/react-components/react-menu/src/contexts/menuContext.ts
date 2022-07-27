@@ -4,6 +4,7 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { MenuListProps } from '../components/index';
 import type { MenuState } from '../components/Menu/index';
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue>({
   open: false,
   setOpen: () => false,

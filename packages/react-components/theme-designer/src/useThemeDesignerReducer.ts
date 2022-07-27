@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
-import { brandTeams } from './utils/brandColors';
+import { brandWeb } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { themeList, themeNames } from './utils/themeList';
 
 export type CustomAttributes = {
   keyColor: string;
   hueTorsion: number;
-  darkCp: number;
-  lightCp: number;
+  vibrancy: number;
 };
 
 export type DispatchTheme = {
@@ -25,28 +24,28 @@ export type DispatchOverride = { type: string; overrides?: Partial<Theme> };
 
 export type AppState = {
   themeName: string;
-  themeLabel: string;
   brand: BrandVariants;
   theme: Theme;
   isDark: boolean;
-  overrides: Partial<Theme>;
+  lightOverrides: Partial<Theme>;
+  darkOverrides: Partial<Theme>;
 };
 
 export const initialAppState = {
-  themeName: 'Teams',
-  themeLabel: 'Teams Light',
-  brand: brandTeams,
-  theme: createLightTheme(brandTeams),
+  themeName: 'Custom',
+  brand: brandWeb,
+  theme: createLightTheme(brandWeb),
   isDark: false,
-  overrides: {},
+  lightOverrides: {},
+  darkOverrides: {},
 };
 
 export const useThemeDesignerReducer = () => {
-  const createCustomTheme = ({ darkCp, hueTorsion, keyColor, lightCp }: CustomAttributes): BrandVariants => {
+  const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes): BrandVariants => {
     const brand = getBrandTokensFromPalette(keyColor, {
-      hueTorsion: hueTorsion,
-      darkCp: darkCp,
-      lightCp: lightCp,
+      hueTorsion,
+      darkCp: vibrancy,
+      lightCp: vibrancy + 0.5,
     });
     return brand;
   };
@@ -70,33 +69,35 @@ export const useThemeDesignerReducer = () => {
     // check if isDark is changed
     if (action.type === 'isDark' && typeof action.isDark !== 'undefined') {
       const isDark = action.isDark;
-      const themeLabel = state.themeName + ' ' + (isDark ? 'Dark' : 'Light');
       return {
         ...state,
-        themeLabel: themeLabel,
         theme: isDark ? createDarkTheme(state.brand) : createLightTheme(state.brand),
         isDark,
-        overrides: overrideState[themeLabel],
+        lightOverrides: overrideState[state.themeName + 'Light'],
+        darkOverrides: overrideState[state.themeName + 'Dark'],
       };
     }
+
+    const stateThemeLabel = state.themeName + (state.isDark ? 'Dark' : 'Light');
 
     // check for override modifications
     if (action.type === 'Override') {
       if (action.overrides) {
         dispatchOverrideState({
-          type: state.themeLabel,
+          type: stateThemeLabel,
           overrides: action.overrides,
         });
       } else {
-        dispatchOverrideState({ type: state.themeLabel });
+        dispatchOverrideState({
+          type: stateThemeLabel,
+        });
       }
-      return { ...state, overrides: overrideState[state.themeLabel] };
+      return { ...state, [state.isDark ? 'darkOverrides' : 'lightOverrides']: overrideState[stateThemeLabel] };
     }
 
-    const theme = action.type;
+    const themeName = action.type;
     const isDark = state.isDark;
-    let brand = themeList[theme].brand;
-    const themeLabel = theme + ' ' + (isDark ? 'Dark' : 'Light');
+    let brand = themeList[themeName].brand;
 
     // If the theme does not have an associated brand, it must be a custom theme
     if (!brand) {
@@ -105,15 +106,18 @@ export const useThemeDesignerReducer = () => {
         return state;
       }
       brand = createCustomTheme(action.customAttributes);
+
+      dispatchOverrideState({ type: themeName + 'Light' });
+      dispatchOverrideState({ type: themeName + 'Dark' });
     }
 
     return {
-      themeName: theme,
-      themeLabel,
+      themeName,
       brand,
       theme: isDark ? createDarkTheme(brand) : createLightTheme(brand),
       isDark,
-      overrides: overrideState[themeLabel],
+      lightOverrides: overrideState[themeName + 'Light'],
+      darkOverrides: overrideState[themeName + 'Dark'],
     };
   };
 
