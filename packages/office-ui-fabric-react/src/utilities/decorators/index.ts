@@ -4,10 +4,8 @@ export {
   initializeResponsiveMode,
   setResponsiveMode,
   withResponsiveMode,
+  IWithResponsiveModeState,
+  ResponsiveMode,
 } from './withResponsiveMode';
 
-export type { IWithResponsiveModeState, ResponsiveMode } from './withResponsiveMode';
-
-export { withViewport } from './withViewport';
-
-export type { IViewport, IWithViewportProps, IWithViewportState } from './withViewport';
+export { withViewport, IViewport, IWithViewportProps, IWithViewportState } from './withViewport';
