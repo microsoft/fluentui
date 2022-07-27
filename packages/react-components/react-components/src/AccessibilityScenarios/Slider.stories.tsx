@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Slider } from '@fluentui/react-slider';
-import { Label } from '@fluentui/react-label';
+import { Label, Slider } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
