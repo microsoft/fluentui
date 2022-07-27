@@ -35,6 +35,15 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
+      - name: Download N* storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: northstar-artifact
+          # downloads artifact to where it would be 'built'
+          path: packages/fluentui/docs/dist
+
       - name: Define env variables
         run: |
           input_file="environment"
@@ -48,14 +57,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - name: Download N* storybook artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: northstar-artifact
-          path: packages/fluentui/docs/dist
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -73,9 +74,6 @@ jobs:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
-
-      - name: 'check: modified files'
-        run: yarn check:modified-files
 
   Screener:
     runs-on: 'ubuntu-latest'
@@ -98,6 +96,14 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
+      - name: Download screener storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: screener-artifact
+          path: apps/vr-tests/dist/storybook
+
       - name: Define env variables
         run: |
           input_file="environment"
@@ -111,14 +117,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - name: Download screener storybook artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: screener-artifact
-          path: apps/vr-tests/dist/storybook
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -136,9 +134,6 @@ jobs:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
-
-      - name: 'check: modified files'
-        run: yarn check:modified-files
 
   ScreenerVNext:
     runs-on: 'ubuntu-latest'
@@ -161,6 +156,14 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
+      - name: Download VNext storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: vnext-artifact
+          path: apps/vr-tests-react-components/dist/storybook
+
       - name: Define env variables
         run: |
           input_file="environment"
@@ -174,14 +177,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - name: Download VNext storybook artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: vnext-artifact
-          path: apps/vr-tests-react-components/dist/storybook
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -199,6 +194,3 @@ jobs:
           SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
-
-      - name: 'check: modified files'
-        run: yarn check:modified-files
