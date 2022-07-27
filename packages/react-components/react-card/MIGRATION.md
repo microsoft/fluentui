@@ -1,16 +1,16 @@
 - [Migration from v0](#migration-from-v0)
-  - [Card Migration](#card-migration)
+  - [Card](#card)
     - [Property Mapping](#property-mapping)
     - [Props that remain as is](#props-that-remain-as-is)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality)
     - [Props no longer supported](#props-no-longer-supported)
-  - [CardHeader Migration](#cardheader-migration)
+  - [CardHeader](#cardheader)
     - [Property Mapping](#property-mapping-1)
     - [Props that remain as is](#props-that-remain-as-is-1)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-1)
     - [Props no longer supported](#props-no-longer-supported-1)
-  - [CardBody Migration](#cardbody-migration)
-  - [CardPreview Migration](#cardpreview-migration)
+  - [CardBody](#cardbody)
+  - [CardPreview](#cardpreview)
     - [Property Mapping](#property-mapping-2)
     - [Props that remain as is](#props-that-remain-as-is-2)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-2)
@@ -18,10 +18,10 @@
     - [Example](#example)
       - [Before](#before)
       - [After](#after)
-  - [CardColumn Migration](#cardcolumn-migration)
-  - [CardExpandableBox Migration](#cardexpandablebox-migration)
-  - [CardTopControls Migration](#cardtopcontrols-migration)
-  - [CardFooter Migration](#cardfooter-migration)
+  - [CardColumn](#cardcolumn)
+  - [CardExpandableBox](#cardexpandablebox)
+  - [CardTopControls](#cardtopcontrols)
+  - [CardFooter](#cardfooter)
     - [Property Mapping](#property-mapping-3)
     - [Props that remain as is](#props-that-remain-as-is-3)
     - [Props no longer supported with an equivalent functionality](#props-no-longer-supported-with-an-equivalent-functionality-3)
@@ -30,7 +30,7 @@
 
 # Migration from v0
 
-## Card Migration
+## Card
 
 ### Property Mapping
 
@@ -131,7 +131,7 @@ export const SizedCard = () => {
 
 - `selected` => No equivalent functionality.
 
-## CardHeader Migration
+## CardHeader
 
 ### Property Mapping
 
@@ -161,7 +161,7 @@ export const SizedCard = () => {
 
 ### Props no longer supported with an equivalent functionality
 
-- `accessibility` => Override accessibility behavior by composing the `Card` how you want
+- `accessibility` => Override accessibility behavior by composing the `CardHeader` how you want
 
 ### Props no longer supported
 
@@ -170,13 +170,13 @@ export const SizedCard = () => {
 - `styles`
 - `variables`
 
-## CardBody Migration
+## CardBody
 
 This component is no longer supported. Instead, pass any content under the main Card component.
 Before:
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import { Card, CardBody } from '@fluentui/react-northstar';
 
 export const CardBodyExample = () => (
@@ -201,7 +201,7 @@ export const CardBodyExample = () => (
 );
 ```
 
-## CardPreview Migration
+## CardPreview
 
 ### Property Mapping
 
@@ -229,7 +229,7 @@ export const CardBodyExample = () => (
 
 ### Props no longer supported with an equivalent functionality
 
-- `accessibility` => Override accessibility behavior by composing the `Card` how you want
+- `accessibility` => Override accessibility behavior by composing the `CardPreview` how you want
 
 ### Props no longer supported
 
@@ -244,7 +244,7 @@ export const CardBodyExample = () => (
 #### Before
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import { Card, CardPreview, Image } from '@fluentui/react-northstar';
 
 export const CardPreviewExample = () => (
@@ -271,19 +271,19 @@ export const CardPreviewExample = () => (
 );
 ```
 
-## CardColumn Migration
+## CardColumn
 
 This component is no longer supported.
 
-## CardExpandableBox Migration
+## CardExpandableBox
 
 This component is no longer supported.
 
-## CardTopControls Migration
+## CardTopControls
 
 This component is no longer supported.
 
-## CardFooter Migration
+## CardFooter
 
 ### Property Mapping
 
@@ -308,7 +308,7 @@ This component is no longer supported.
 
 ### Props no longer supported with an equivalent functionality
 
-- `accessibility` => Override accessibility behavior by composing the `Card` how you want
+- `accessibility` => Override accessibility behavior by composing the `CardFooter` how you want
 
 ### Props no longer supported
 
