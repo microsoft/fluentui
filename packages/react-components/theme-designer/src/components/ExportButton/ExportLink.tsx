@@ -289,10 +289,10 @@ export const ExportLink = () => {
   const ${name}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme: Theme = {
-    ...createLightTheme(${name}), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
+    ...createLightTheme(${name}), ${getBrandValues(brand, lightOverrides, name, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(${name}), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
+    ...createDarkTheme(${name}), ${getBrandValues(brand, darkOverrides, name, '\u00A0\u00A0')} };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,
