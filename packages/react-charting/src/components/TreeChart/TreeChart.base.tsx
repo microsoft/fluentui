@@ -171,12 +171,6 @@ class StandardTree {
     childXMax: number,
   ): string {
     // gap adds ratio for parent.y to child.y
-    // const path =
-    //   parentX > childX
-    //     ? `M${childX},${childY - gap} H${parentX + rectWidth / 2}
-    // V${parentY + rectHeight + gap / 2}`
-    //     : `M${childX + rectWidth},${childY - gap} H${parentX + rectWidth / 2}
-    // V${parentY + rectHeight + gap / 2}`;
 
     const path = `M${childX},${childY - gap} H${childXMax + rectWidth} M${parentX + rectWidth / 2},${childY - gap}
     V${parentY + rectHeight + gap / 2}`;
