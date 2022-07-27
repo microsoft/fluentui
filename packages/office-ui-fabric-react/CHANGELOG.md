@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Jul 2022 12:22:59 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jul 2022 12:27:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.190.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.2)
+
+Tue, 26 Jul 2022 12:27:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.1..office-ui-fabric-react_v7.190.2)
+
+### Patches
+
+- Update SelectionZone to support disallowing behaviors (#23848) ([PR #24069](https://github.com/microsoft/fluentui/pull/24069) by tmichon@microsoft.com)
 
 ## [7.190.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.1)
 

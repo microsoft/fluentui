@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update snaps",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 26 Jul 2022 12:27:40 GMT",
+      "tag": "@fluentui/react_v7.190.2",
+      "version": "7.190.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat: Allow SelectionZone attributes to disallow behaviors.",
+            "author": "tmichon@microsoft.com",
+            "commit": "f25e5ac1f4a6155c1aacd3bf561a1d1b0d91e213",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 19 Jul 2022 12:21:01 GMT",
       "tag": "@fluentui/react_v7.190.0",
       "version": "7.190.0",
