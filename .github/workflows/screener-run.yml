@@ -6,11 +6,6 @@ env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
 jobs:
-  TestJob:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Hello there"
-
   ScreenerNorthStar:
     runs-on: 'ubuntu-latest'
 
@@ -30,6 +25,15 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
+      - name: Download N* storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: northstar-artifact
+          # downloads artifact to where it would be 'built'
+          path: packages/fluentui/docs/dist
+
       - name: Define env variables
         run: |
           input_file="environment"
@@ -42,14 +46,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-      - name: Download N* storybook artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: northstar-artifact
-          # downloads artifact to where it would be 'built'
-          path: packages/fluentui/docs/dist
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -86,6 +82,14 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
+      - name: Download screener storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: screener-artifact
+          path: apps/vr-tests/dist/storybook
+
       - name: Define env variables
         run: |
           input_file="environment"
@@ -98,13 +102,7 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-      - name: Download screener storybook artifact
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          workflow: screener-build.yml
-          workflow_conclusion: success
-          name: screener-artifact
-          path: apps/vr-tests/dist/storybook
+
       - name: yarn
         run: ./yarn-ci.sh
         shell: bash
@@ -140,18 +138,6 @@ jobs:
           workflow_conclusion: success
           name: env-artifact
 
-      - name: Define env variables
-        run: |
-          input_file="environment"
-          while read line
-          do
-          echo "$line" >> $GITHUB_ENV
-          done < "$input_file"
-      - name: Log environment variables (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          printenv | sort ;\
-          echo "SHELLOPTS $SHELLOPTS" ;\
       - name: Download VNext storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -159,6 +145,20 @@ jobs:
           workflow_conclusion: success
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: yarn
         run: ./yarn-ci.sh
