@@ -1,8 +1,17 @@
 # Change Log - @fluentui/common-styles
 
-This log was last generated on Tue, 26 Jul 2022 07:39:35 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jul 2022 07:37:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.0)
+
+Wed, 27 Jul 2022 07:37:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.1.3..@fluentui/common-styles_v1.2.0)
+
+### Minor changes
+
+- feat: Added roundedCorner4/6 CSS vars. ([PR #24091](https://github.com/microsoft/fluentui/pull/24091) by gcox@microsoft.com)
 
 ## [1.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.1.3)
 

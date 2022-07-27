@@ -38,8 +38,6 @@ describe('Tooltip', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
-      'component-has-static-classname-exported',
     ],
   });
 

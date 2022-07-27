@@ -8,8 +8,6 @@ describe('Listbox', () => {
   isConformant({
     Component: Listbox,
     displayName: 'Listbox',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {
