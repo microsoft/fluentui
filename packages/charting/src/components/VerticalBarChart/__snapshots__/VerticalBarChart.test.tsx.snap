@@ -51,7 +51,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -59,7 +59,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -80,7 +80,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -90,7 +90,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -98,9 +98,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -163,91 +163,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="First selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={3}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #0078d4;
-                          background-image: ;
-                          border-color: #0078d4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078d4, #0078d4);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    First
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -267,30 +182,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="First selected"
@@ -313,9 +204,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #002050, #002050);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -381,30 +271,6 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="Second selected"
@@ -427,9 +293,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #00188f, #00188f);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -638,7 +503,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -646,7 +511,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -667,7 +532,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -677,7 +542,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -685,9 +550,9 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -733,91 +598,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               &:focus {
                 outline: none;
               }
-        >
-          <button
-            aria-label="First selected"
-            aria-posinset={1}
-            aria-selected={false}
-            aria-setsize={3}
-            className=
-
-                {
-                  align-items: center;
-                  background: none;
-                  border: none;
-                  cursor: pointer;
-                  display: flex;
-                  outline: transparent;
-                  padding-bottom: 8px;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 8px;
-                  position: relative;
-                  text-transform: capitalize;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  outline-color: #605e5c;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
-          >
-            <div
-              className=
-
-                  {
-                    background-color: #0078d4;
-                    background-image: ;
-                    border-color: #0078d4;
-                    border: 1px solid;
-                    height: 12px;
-                    margin-right: 8px;
-                    width: 12px;
-                  }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    content: linear-gradient(to right, #0078d4, #0078d4);
-                    opacity: ;
-                  }
-            />
-            <div
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #323130;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: ;
-                  }
-            >
-              First
-            </div>
-          </button>
-        </div>
-        <div
-          className=
-              ms-OverflowSet-item
               {
                 display: flex;
                 flex-wrap: wrap;
@@ -837,30 +617,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   display: inherit;
                   flex-shrink: 0;
                 }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  outline-color: #605e5c;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
           >
             <button
               aria-label="First selected"
@@ -883,9 +639,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     position: relative;
                     text-transform: capitalize;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    content: linear-gradient(to right, #002050, #002050);
-                    opacity: ;
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid transparent;
@@ -951,30 +706,6 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   display: inherit;
                   flex-shrink: 0;
                 }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  outline-color: #605e5c;
-                }
-            data-is-focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            role="option"
           >
             <button
               aria-label="Second selected"
@@ -997,9 +728,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                     position: relative;
                     text-transform: capitalize;
                   }
-                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                    content: linear-gradient(to right, #00188f, #00188f);
-                    opacity: ;
+                  &::-moz-focus-inner {
+                    border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid transparent;
@@ -1205,7 +935,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1213,7 +943,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1234,7 +964,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1244,7 +974,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1252,9 +982,9 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1312,7 +1042,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1320,7 +1050,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1341,7 +1071,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1351,7 +1081,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1359,9 +1089,9 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -1424,91 +1154,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="First selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={3}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #0078d4;
-                          background-image: ;
-                          border-color: #0078d4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078d4, #0078d4);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    First
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -1528,30 +1173,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="First selected"
@@ -1574,9 +1195,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #002050, #002050);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -1642,30 +1262,6 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="Second selected"
@@ -1688,9 +1284,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #00188f, #00188f);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -1899,7 +1494,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1907,7 +1502,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1928,7 +1523,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1938,7 +1533,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1946,9 +1541,9 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2011,91 +1606,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="First selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={3}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #0078d4;
-                          background-image: ;
-                          border-color: #0078d4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078d4, #0078d4);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    First
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -2115,30 +1625,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="First selected"
@@ -2161,9 +1647,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #002050, #002050);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -2229,30 +1714,6 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="Second selected"
@@ -2275,9 +1736,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #00188f, #00188f);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -2486,7 +1946,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2494,7 +1954,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2515,7 +1975,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -2525,7 +1985,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2533,9 +1993,9 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -2598,91 +2058,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="First selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={3}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #0078d4;
-                          background-image: ;
-                          border-color: #0078d4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078d4, #0078d4);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    First
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -2702,30 +2077,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="First selected"
@@ -2748,9 +2099,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #002050, #002050);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -2816,30 +2166,6 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="Second selected"
@@ -2862,9 +2188,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #00188f, #00188f);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -3073,7 +2398,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -3081,7 +2406,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3102,7 +2427,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 600;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -3112,7 +2437,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+            @media screen and (-ms-high-contrast: white-on-black), @media screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3120,9 +2445,9 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(40, 0)"
       />
       <g>
-
-
-
+         
+         
+         
       </g>
     </svg>
   </div>
@@ -3185,91 +2510,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="First selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={3}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #0078d4;
-                          background-image: ;
-                          border-color: #0078d4;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #0078d4, #0078d4);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    First
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -3289,30 +2529,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="First selected"
@@ -3335,9 +2551,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #002050, #002050);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
@@ -3403,30 +2618,6 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="Second selected"
@@ -3449,9 +2640,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #00188f, #00188f);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;

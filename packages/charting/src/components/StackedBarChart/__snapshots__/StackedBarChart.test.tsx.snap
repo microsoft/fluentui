@@ -1230,91 +1230,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                     &:focus {
                       outline: none;
                     }
-              >
-                <button
-                  aria-label="first Lorem ipsum dolor sit amet selected"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={2}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                        text-transform: capitalize;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: #5c005c;
-                          background-image: ;
-                          border-color: #5c005c;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #5c005c, #5c005c);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    first Lorem ipsum dolor sit amet
-                  </div>
-                </button>
-              </div>
-              <div
-                className=
-                    ms-OverflowSet-item
                     {
                       display: flex;
                       flex-wrap: wrap;
@@ -1334,30 +1249,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                         display: inherit;
                         flex-shrink: 0;
                       }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
                 >
                   <button
                     aria-label="first Lorem ipsum dolor sit amet selected"
@@ -1380,9 +1271,8 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           position: relative;
                           text-transform: capitalize;
                         }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                          content: linear-gradient(to right, #e81123, #e81123);
-                          opacity: ;
+                        &::-moz-focus-inner {
+                          border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
                           border: 1px solid transparent;
