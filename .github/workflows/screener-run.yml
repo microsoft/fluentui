@@ -36,8 +36,6 @@ jobs:
       - name: Define env variables
         run: |
           input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
           while read line
           do
           echo "$line" >> $GITHUB_ENV
@@ -99,11 +97,9 @@ jobs:
       - name: Define env variables
         run: |
           input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
           while read line
           do
-          echo $line >> $GITHUB_ENV
+          echo "$line" >> $GITHUB_ENV
           done < "$input_file"
 
       - name: Log environment variables (Linux)
@@ -162,11 +158,9 @@ jobs:
       - name: Define env variables
         run: |
           input_file="environment"
-          cat "$input_file"
-          echo "TEST=value" >> $GITHUB_ENV
           while read line
           do
-          echo $line >> $GITHUB_ENV
+          echo "$line" >> $GITHUB_ENV
           done < "$input_file"
 
       - name: Log environment variables (Linux)
