@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bump Griffel dependencies",
+  "packageName": "@fluentui/react-text",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
