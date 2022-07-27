@@ -45,11 +45,12 @@ export const Nav: React.FC<NavProps> = props => {
     const newName = e.target.value;
 
     if (newName.length === 0) {
-      setName('Untitled');
+      setName('myTheme');
     } else {
       const camelizeName = e.target.value
         .replace(/(?:^\w|[A-Z]|\b\w)/g, (ltr, idx) => (idx === 0 ? ltr.toLowerCase() : ltr.toUpperCase()))
-        .replace(/\s+/g, '');
+        .replace(/\s+/g, '')
+        .replace(/[^A-Za-z0-9@]*/g, ``);
 
       setName(camelizeName);
     }
@@ -71,7 +72,8 @@ export const Nav: React.FC<NavProps> = props => {
           // eslint-disable-next-line react/jsx-no-bind
           onChange={handleNameChange}
           contentAfter={<EditRegular />}
-          placeholder={name}
+          placeholder={'myTheme'}
+          value={name === 'myTheme' ? '' : name}
         />
       </div>
       <ExportButton />
