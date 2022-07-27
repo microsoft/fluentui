@@ -114,7 +114,7 @@ jobs:
           workflow: screener-build.yml
           workflow_conclusion: success
           name: screener-artifact
-          path: apps/vr-tests/dist/storybook
+          path: screener-react
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -124,7 +124,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'screener-react' --overwrite
 
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
@@ -175,7 +175,7 @@ jobs:
           workflow: screener-build.yml
           workflow_conclusion: success
           name: vnext-artifact
-          path: apps/vr-tests-react-components/dist/storybook
+          path: vnext
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -185,7 +185,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'vnext' --overwrite
 
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
