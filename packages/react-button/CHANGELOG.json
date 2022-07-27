@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 27 Jul 2022 12:27:44 GMT",
+      "tag": "@fluentui/react-button_v0.20.5",
+      "version": "0.20.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snaps",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.21.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "44b414628d8160cf6fd7803a3f769ef2553008d2",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jul 2022 12:23:25 GMT",
       "tag": "@fluentui/react-button_v0.20.4",
       "version": "0.20.4",

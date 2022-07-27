@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 08 Jul 2022 12:23:25 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jul 2022 12:27:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.21.1](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.1)
+
+Wed, 27 Jul 2022 12:27:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.0..@uifabric/styling_v7.21.1)
+
+### Patches
+
+- fix broken media queries ([PR #24022](https://github.com/microsoft/fluentui/pull/24022) by mgodbolt@microsoft.com)
 
 ## [7.21.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.0)
 

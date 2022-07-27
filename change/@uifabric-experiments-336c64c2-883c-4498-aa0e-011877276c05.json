@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "update snaps",
-  "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}
