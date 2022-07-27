@@ -173,6 +173,7 @@ export const SizedCard = () => {
 ## CardBody
 
 This component is no longer supported. Instead, pass any content under the main Card component.
+
 Before:
 
 ```jsx
