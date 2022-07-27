@@ -22,17 +22,17 @@ const useStyles = makeStyles({
 
   medium: {
     minHeight: '44px',
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStroke2),
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
   small: {
     minHeight: '34px',
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStroke2),
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
   },
 
   smaller: {
     minHeight: '24px',
-    fontSize: '12px',
+    fontSize: tokens.fontSizeBase200,
   },
 });
 
