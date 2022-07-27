@@ -48,7 +48,7 @@ export const Layout = () => {
 Layout.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports support three layouts: spread, stack, and pie. The default is spread.`,
+      story: `An AvatarGroup supports support two layouts: spread and stack. The default is spread.`,
     },
   },
 };
