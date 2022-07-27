@@ -4,14 +4,14 @@
 
 ## Summary
 
-Proposes two methods of overriding the default styles on the `FluentProvider`
+Proposes two methods of overriding the default styles on the `FluentProvider`.
 
 ## Problem statement
 
 The `FluentProvider` ships with [default styles](https://github.com/microsoft/fluentui/blob/656f002f3062c0a7962fb23eb165dec64ecc1509/packages/react-components/react-provider/src/components/FluentProvider/useFluentProviderStyles.ts#L11-L18) which can be too opinionated for some customers, especially those who have
 strict requirements on global styles in their application.
 
-Currently it's not possible to use `makeStyles` to override these default styles. See the example below:
+If the FluentProvider is styled using a `makeStyles` call to override these default styles, it can result in unexpected issues since styles will not be RTL safe by default. See the example below:
 
 ```tsx
 import { makeStyles } from '@fluentui/react-components';
@@ -29,9 +29,9 @@ const App = () => {
 };
 ```
 
-The above example is provlematic because the `TextDirectionProvider` is rendered
-internally inside the `FluentProvider`. The provider is required to let `makeStyles` know to resolve and apply RTL
-styles to DOM.
+`FluentProvider` renders internally `TextDirectionProvider` (from `@griffel/react`). The `TextDirectionProvider` is required to let `makeStyles` know to when to return RTL classes.
+
+In the example above `makeStyles` is called *outside* `FluentProvider` (and `TextDirectionProvider`) thus will have a wrong value for text direction. This problem is not specific to Fluent UI React and can be faced in other React applications.
 
 While it is possible to override these styles using global CSS in a stylesheet by targeting the provider, that would
 not handle portals which use the same default styles as the closest `FluentProvider` ancestor.
@@ -40,11 +40,12 @@ not handle portals which use the same default styles as the closest `FluentProvi
 
 #### Pros and Cons
 
-👍 No extra code changes necessary
-👍 Users will understand what the problem is
-👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
+- 👍 No extra code changes necessary
+- 👍 Users will understand what the problem is
+- 👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
 
-👎 Extra effort to override one single component
+- 👎 Extra effort to override one single component
+- 👍/👎 `TextDirectionProvider` should be re-exported
 
 ### Specific API for overriding provider styles
 
@@ -63,7 +64,7 @@ import { makeStyles, GriffelStyle } from '@griffel/core';
 
 const makeProviderStyles = (providerStyles: GriffelStyle) => {
   return makeStyles({
-    providerOverrides,
+    providerStyles,
   });
 };
 ```
@@ -89,12 +90,14 @@ call and trigger a warning. This will ensure that there is only **correct** way 
 
 #### Pros and Cons
 
-👍 Add styles the same way as the `FluentProvider` currently does it
-👍 No need to know about provider internals
-👍 One time thing to do for `FluenProvider` only if really necessary
+- 👍 Add styles the same way as the `FluentProvider` currently does it
+- 👍 No need to know about provider internals
+- 👍 One time thing to do for `FluentProvider` only if really necessary
 
-👎 slightly different API to `makeStyles`
-👎 something 'special' to do for one component
+- 👎 Slightly different API to `makeStyles`
+- 👎 `className` prop will be still exposed so users would be still able to pass classes from `makeStyles()` call
+- 👎 Something 'special' to do for one component i.e. one time API
+- 👎 Additional handling for build time transforms
 
 ## Discarded Solutions
 
