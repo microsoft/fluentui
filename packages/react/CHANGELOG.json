@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/react_v8.85.0",
+      "version": "8.85.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ad8661e299d2528a2d191469f52b2000a293dd72",
+            "comment": "fix: Change modal isModeless to only effect pointer events, not layout."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.0",
+            "commit": "e2694f89edb0aa2ee86e7e0c6c9b6354e99eabf5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jul 2022 07:39:34 GMT",
       "tag": "@fluentui/react_v8.84.0",
       "version": "8.84.0",

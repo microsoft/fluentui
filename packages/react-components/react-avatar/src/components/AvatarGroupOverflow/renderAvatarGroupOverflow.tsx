@@ -10,9 +10,10 @@ import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './Avata
  */
 export const renderAvatarGroupOverflow_unstable = (state: AvatarGroupOverflowState) => {
   const { slots, slotProps } = getSlots<AvatarGroupOverflowSlots>(state);
+  const { handleOnPopoverChange } = state;
 
   return (
-    <Popover trapFocus size="small">
+    <Popover trapFocus size="small" onOpenChange={handleOnPopoverChange}>
       <PopoverTrigger>
         <Tooltip content={state.tooltipContent} relationship="label">
           <slots.root {...slotProps.root} />

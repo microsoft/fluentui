@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { useSizeStyles } from '../../Avatar';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useSizeStyles } from '../../Avatar';
 import type { AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem.types';
 import type { AvatarGroupProps } from '../../AvatarGroup';
 import type { AvatarSizes } from '../../Avatar';
@@ -50,6 +50,9 @@ const useOverflowLabelStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for the stack layout
+ */
 const useStackStyles = makeStyles({
   base: {
     '&::after': {
@@ -136,6 +139,9 @@ const useStackStyles = makeStyles({
   l: { '&:not(:first-child)': { marginLeft: `calc(-1 * ${tokens.spacingHorizontalL})` } },
 });
 
+/**
+ * Styles for the spread layout
+ */
 const useSpreadStyles = makeStyles({
   s: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalS } },
   mNudge: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalMNudge } },

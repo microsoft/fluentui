@@ -2,6 +2,21 @@
   "name": "@fluentui/ssr-tests",
   "entries": [
     {
+      "date": "Wed, 27 Jul 2022 07:37:43 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.85.0",
+            "commit": "e2694f89edb0aa2ee86e7e0c6c9b6354e99eabf5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jul 2022 07:39:35 GMT",
       "tag": "@fluentui/ssr-tests_v1.0.0",
       "version": "1.0.0",

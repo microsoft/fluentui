@@ -15,7 +15,7 @@ describe('FluentProvider', () => {
   });
 
   isConformant({
-    disabledTests: ['component-handles-classname', 'component-has-static-classname-exported'],
+    disabledTests: ['component-handles-classname'],
     Component: FluentProvider,
     displayName: 'FluentProvider',
   });

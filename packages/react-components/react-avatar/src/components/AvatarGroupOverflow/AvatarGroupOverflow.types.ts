@@ -6,7 +6,7 @@ import type { TooltipProps } from '@fluentui/react-tooltip';
 
 export type AvatarGroupOverflowSlots = {
   /**
-   * Popover trigger slot that can be used to change the overflow indicator.
+   * Overflow indicator that triggers the Popover.
    */
   root: NonNullable<Slot<'button'>>;
 

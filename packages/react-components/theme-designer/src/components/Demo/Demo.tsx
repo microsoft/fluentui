@@ -9,12 +9,6 @@ import {
   Input,
   Button,
   Caption1,
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuButton,
-  MenuItemCheckbox,
-  MenuPopover,
   Slider,
   Badge,
   Switch,
@@ -22,16 +16,12 @@ import {
   RadioGroup,
   Checkbox,
   Avatar,
+  Caption2,
 } from '@fluentui/react-components';
+import { Dropdown, Option } from '@fluentui/react-components/unstable';
 import {
   SearchRegular,
   bundleIcon,
-  CutRegular,
-  CutFilled,
-  ClipboardPasteRegular,
-  ClipboardPasteFilled,
-  EditRegular,
-  EditFilled,
   ChevronRightRegular,
   MeetNowRegular,
   MeetNowFilled,
@@ -55,9 +45,7 @@ const useStyles = makeStyles({
   col1: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'left',
     flexDirection: 'column',
-    flexGrow: 1,
     ...shorthands.gap(tokens.spacingVerticalL),
   },
   col2: {
@@ -79,6 +67,12 @@ const useStyles = makeStyles({
     gridColumnStart: 1,
     gridColumnEnd: 3,
   },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   icons: {
     display: 'grid',
     gridTemplateColumns: 'auto auto',
@@ -87,11 +81,14 @@ const useStyles = makeStyles({
     gridColumnGap: tokens.spacingHorizontalS,
     justifyContent: 'center',
   },
-  twoRow: {
+  avatar: {
+    display: 'flex',
+    ...shorthands.gap(tokens.spacingVerticalL),
+  },
+  avatarText: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'left',
   },
 });
 
@@ -104,41 +101,21 @@ export const Column1 = () => {
         Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to
         people inside or outside your team. Share your ideas, results, and more in this visually compelling format.
       </Body1>
-      <Avatar
-        color="brand"
-        initials="DF"
-        badge={{
-          status: 'available',
-          'aria-label': 'available',
-        }}
-      />
+      <div className={styles.avatar}>
+        <Avatar
+          color="brand"
+          initials="CE"
+          badge={{
+            status: 'available',
+            'aria-label': 'available',
+          }}
+        />
+        <div className={styles.avatarText}>
+          Cameron Evans
+          <Caption2>Senior Researcher at Contoso</Caption2>
+        </div>
+      </div>
     </div>
-  );
-};
-
-export const DemoMenu = () => {
-  const CutIcon = bundleIcon(CutFilled, CutRegular);
-  const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
-  const EditIcon = bundleIcon(EditFilled, EditRegular);
-  return (
-    <Menu>
-      <MenuTrigger>
-        <MenuButton>Select </MenuButton>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut">
-            Cut
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste">
-            Paste
-          </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit">
-            Edit
-          </MenuItemCheckbox>
-        </MenuList>
-      </MenuPopover>
-    </Menu>
   );
 };
 
@@ -155,7 +132,11 @@ export const Column2 = () => {
         placeholder="Find"
         contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
       />
-      <DemoMenu />
+      <Dropdown placeholder="Select" inlinePopup>
+        <Option value="Action 1">Action 1</Option>
+        <Option value="Action 2">Action 2 </Option>
+        <Option value="Action 3">Action 3</Option>
+      </Dropdown>
     </div>
   );
 };
@@ -184,15 +165,15 @@ export const Column3 = () => {
       </Button>
       <Slider className={styles.twoCol} defaultValue={50} />
       <DemoIcons />
-      <div className={styles.twoRow}>
+      <div className={styles.controls}>
         <Switch defaultChecked={true} label="On" />
         <Switch label="Off" />
       </div>
-      <div className={styles.twoRow}>
+      <div className={styles.controls}>
         <Checkbox defaultChecked={true} label="Option 1" />
         <Checkbox label="Option 2" />
       </div>
-      <div className={styles.twoRow}>
+      <div className={styles.controls}>
         <RadioGroup>
           <Radio defaultChecked={true} label="Option 1" />
           <Radio label="Option 2" />

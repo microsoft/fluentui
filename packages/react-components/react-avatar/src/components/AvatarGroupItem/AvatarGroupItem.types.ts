@@ -1,6 +1,6 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { Avatar, AvatarSizes } from '../../Avatar';
 import { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
+import type { Avatar, AvatarSizes } from '../../Avatar';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupItemSlots = {
   root: NonNullable<Slot<'div'>>;

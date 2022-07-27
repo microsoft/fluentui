@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.0",
+      "version": "1.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "Create no-context-default-value lint rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Jul 2022 07:47:44 GMT",
       "tag": "@fluentui/eslint-plugin_v1.11.1",
       "version": "1.11.1",

@@ -1,4 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { TableCellSlots, TableCellState } from './TableCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -13,10 +14,10 @@ export const tableCellClassNames: SlotClassNames<TableCellSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding('0px', '8px'),
+    ...shorthands.padding('0px', tokens.spacingHorizontalS),
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.gap('8px'),
+    ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
 

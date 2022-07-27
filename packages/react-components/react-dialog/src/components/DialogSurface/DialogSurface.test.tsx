@@ -8,7 +8,6 @@ describe('DialogSurface', () => {
   isConformant<DialogSurfaceProps>({
     Component: DialogSurface,
     displayName: 'DialogSurface',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

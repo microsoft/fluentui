@@ -23,25 +23,23 @@ export const useAvatarGroupOverflow_unstable = (
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const size = groupSize ?? defaultAvatarGroupSize;
-  const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
-  const count = props.count ?? React.Children.count(props.children);
+  // When using getNativeElementProps, children would neeed to be ignore otherwise it would render all the Avatars as
+  // the button's children. This causes an issue where then by ignoring childre, the button won't have children at all.
+  // To avoid this, we use the props without the children and use the root's children in the content
+  const { overflowIndicator = size < 24 ? 'icon' : 'count', children, ...restOfProps } = props;
+  const count = props.count ?? React.Children.count(children);
+  const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
   let rootChildren;
+
+  const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
+    setIsPopoverOpen(data.open);
+  };
 
   if (overflowIndicator === 'icon') {
     rootChildren = <MoreHorizontalRegular />;
   } else {
     rootChildren = count > 99 ? '99+' : `+${count}`;
   }
-
-  const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-  const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
-    setIsPopoverOpen(data.open);
-  };
-
-  // When using getNativeElementProps, children would neeed to be ignore otherwise it would render all the Avatars as
-  // the button's children. This causes an issue where then by ignoring childre, the button won't have children at all.
-  // To avoid this, we use the props without the children and use the root's children in the content
-  const { children, ...restOfProps } = props;
 
   return {
     isPopoverOpen,
@@ -66,7 +64,7 @@ export const useAvatarGroupOverflow_unstable = (
       required: true,
       defaultProps: {
         'aria-label': 'Overflow',
-        children: props.children,
+        children: children,
         role: 'list',
         tabIndex: 0,
       },

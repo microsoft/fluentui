@@ -20,8 +20,8 @@ export const useAvatarGroupItem_unstable = (
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
   const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
-  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   // Since the primary slot is not an intrinsic element, getPartitionedNativeProps cannot be used here.
   const { style, className, ...avatarSlotProps } = props;
   const size = groupSize ?? defaultAvatarGroupSize;

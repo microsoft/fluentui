@@ -9,8 +9,6 @@ describe('Dropdown', () => {
     Component: Dropdown,
     displayName: 'Dropdown',
     primarySlot: 'button',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

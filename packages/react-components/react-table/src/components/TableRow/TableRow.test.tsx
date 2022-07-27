@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { TableRow } from './TableRow';
 import { isConformant } from '../../common/isConformant';
 import { TableRowProps } from './TableRow.types';
+import { TableContextProvider } from '../../contexts/tableContext';
 
 const tbody = document.createElement('tbody');
 describe('TableRow', () => {
@@ -29,5 +30,17 @@ describe('TableRow', () => {
       { container: tbody },
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders as div if `noNativeElements` is set', () => {
+    const { container } = render(
+      <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
+        <TableRow>
+          <div>Table cell</div>
+        </TableRow>
+      </TableContextProvider>,
+    );
+    expect(container.firstElementChild?.tagName).toEqual('DIV');
+    expect(container.firstElementChild?.getAttribute('role')).toEqual('row');
   });
 });
