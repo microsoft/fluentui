@@ -111,7 +111,13 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
-  await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
+  await notifyIntegration({
+    commit,
+    url: checkUrl,
+    status: 'in_progress',
+    project: screenerConfig.projectRepo,
+    branch: branchName,
+  });
 }
 
 export async function cancelScreenerRun(
