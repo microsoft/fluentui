@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: eslint-plugin: bump dependencies to versions supporting eslint v8",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
