@@ -13,6 +13,7 @@ export type AppContextValue = {
   dispatchAppState: React.Dispatch<DispatchTheme>;
 };
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const AppContext = createContext<AppContextValue>({
   appState: initialAppState,
   dispatchAppState: () => null,

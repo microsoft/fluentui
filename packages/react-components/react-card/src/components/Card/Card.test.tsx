@@ -7,7 +7,6 @@ describe('Card', () => {
   isConformant({
     Component: Card,
     displayName: 'Card',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {

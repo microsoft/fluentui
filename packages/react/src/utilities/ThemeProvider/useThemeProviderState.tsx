@@ -4,7 +4,7 @@ import { useTheme } from './useTheme';
 import { getId } from '@fluentui/utilities';
 import type { PartialTheme, Theme } from '@fluentui/theme';
 import type { ThemeProviderState } from './ThemeProvider.types';
-import type { ICustomizerContext } from '@fluentui/utilities';
+import type { ICustomizerContext, IFocusRectsContext } from '@fluentui/utilities';
 
 const themeToIdMap = new Map<Object, string>();
 
@@ -50,6 +50,13 @@ export const useThemeProviderState = (draftState: ThemeProviderState) => {
       },
     }),
     [theme],
+  );
+
+  draftState.focusRectsContext = React.useMemo<IFocusRectsContext>(
+    () => ({
+      providerRef: draftState.ref,
+    }),
+    [draftState.ref],
   );
 
   if (draftState.theme.rtl !== parentTheme.rtl) {

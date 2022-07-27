@@ -414,6 +414,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-field": {
+      "root": "packages/react-components/react-field",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-field/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-file-type-icons": {
       "root": "packages/react-file-type-icons",
       "projectType": "library",
