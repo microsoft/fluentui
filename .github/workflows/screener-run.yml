@@ -114,13 +114,13 @@ jobs:
           workflow: screener-build.yml
           workflow_conclusion: success
           name: screener-artifact
-          path: screener
+          path: react-screener
 
       - name: Upload @fluentui/react VR test site
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'screener' --overwrite
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'react-screener' --overwrite
 
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
