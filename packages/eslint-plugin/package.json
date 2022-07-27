@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.25.0",
     "eslint-plugin-jest": "^25.1.0",
     "eslint-plugin-jsdoc": "^37.9.7",
-    "eslint-plugin-jsx-a11y": "^6.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "fs-extra": "^8.1.0",
