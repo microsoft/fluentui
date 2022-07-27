@@ -53,7 +53,7 @@ jobs:
           workflow: screener-build.yml
           workflow_conclusion: success
           name: northstar-artifact
-          path: northstar
+          path: packages/fluentui/docs/dist
 
       - name: yarn
         run: ./yarn-ci.sh
@@ -63,7 +63,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'northstar' --overwrite
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
 
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
