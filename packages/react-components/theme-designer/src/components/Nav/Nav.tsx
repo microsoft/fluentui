@@ -42,7 +42,10 @@ export const Nav: React.FC<NavProps> = props => {
   const setName = useContextSelector(AppContext, ctx => ctx.setName);
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    const newName = e.target.value;
+    if (newName.match('^[a-zA-Z0-9]*$')) {
+      setName(e.target.value);
+    }
   };
 
   return (
