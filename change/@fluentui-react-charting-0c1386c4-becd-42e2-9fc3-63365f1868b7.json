@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "correcting connector length for tree diagram",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
