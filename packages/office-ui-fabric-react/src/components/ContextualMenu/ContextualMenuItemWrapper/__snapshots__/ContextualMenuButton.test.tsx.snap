@@ -2,7 +2,7 @@
 
 exports[`ContextualMenuButton creates a normal button renders the contextual menu split button correctly 1`] = `
 <button
-  aria-checked={false}
+  aria-checked={undefined}
   aria-disabled={false}
   aria-expanded={undefined}
   aria-haspopup={undefined}
