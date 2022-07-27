@@ -11,12 +11,16 @@ import { Content } from './components/Content/Content';
 export type AppContextValue = {
   appState: AppState;
   dispatchAppState: React.Dispatch<DispatchTheme>;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const AppContext = createContext<AppContextValue>({
   appState: initialAppState,
   dispatchAppState: () => null,
+  name: 'Untitled',
+  setName: () => null,
 });
 
 /**
@@ -27,6 +31,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   useStaticStyles();
 
   const [appState, dispatchAppState] = useThemeDesignerReducer();
+  const [name, setName] = React.useState<string>('Untitled');
 
   const { darkOverrides, isDark, lightOverrides, theme } = appState;
   const overrides = isDark ? darkOverrides : lightOverrides;
@@ -34,7 +39,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
 
   return (
     <FluentProvider theme={webLightTheme}>
-      <AppContext.Provider value={{ appState, dispatchAppState }}>
+      <AppContext.Provider value={{ appState, dispatchAppState, name, setName }}>
         <div className={styles.root}>
           <Nav className={styles.nav} />
           <Sidebar className={styles.sidebar} />
