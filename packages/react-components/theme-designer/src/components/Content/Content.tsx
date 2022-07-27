@@ -12,10 +12,11 @@ export interface ContentProps {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    alignItems: 'left',
-    justifyContent: 'center',
+    alignItems: 'stretch',
     flexDirection: 'column',
-    ...shorthands.padding('40px', '5%'),
+    minWidth: '750px',
+    ...shorthands.padding('40px', '10%'),
+    ...shorthands.margin('0', 'auto'),
     gridRowGap: tokens.spacingVerticalXXXL,
   },
 });

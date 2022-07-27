@@ -9,7 +9,6 @@ describe('DialogTitle', () => {
     Component: DialogTitle,
     displayName: 'DialogTitle',
     disabledTests: [
-      'component-has-static-classname-exported',
       // TODO: having problems due to the fact root of DialogTitle is Fragment
       'component-has-static-classnames-object',
     ],

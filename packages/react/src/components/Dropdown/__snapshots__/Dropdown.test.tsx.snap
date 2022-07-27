@@ -173,9 +173,7 @@ exports[`Dropdown multi-select Renders correctly 1`] = `
 `;
 
 exports[`Dropdown multi-select Renders correctly when open 1`] = `
-<body
-  class="ms-Fabric--isFocusHidden"
->
+<body>
   <div
     id="fluent-default-layer-host"
     style="position: fixed; z-index: 1000000;"

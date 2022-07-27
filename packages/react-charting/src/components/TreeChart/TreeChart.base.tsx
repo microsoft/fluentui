@@ -4,6 +4,7 @@ import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { select, selectAll } from 'd3-selection';
 import { FocusZone } from '@fluentui/react-focus';
+import { max as d3Max, min as d3Min } from 'd3-array';
 
 import {
   ITreeProps,
@@ -167,11 +168,13 @@ class StandardTree {
     rectWidth: number,
     rectHeight: number,
     gap: number,
+    childXMax: number,
   ): string {
     // gap adds ratio for parent.y to child.y
-    const path = `M${childX + rectWidth / 2},${childY - gap} H${parentX + rectWidth / 2} V${
-      parentY + rectHeight + gap / 2
-    }`;
+
+    const path = `M${childX},${childY - gap} H${childXMax + rectWidth} M${parentX + rectWidth / 2},${childY - gap}
+    V${parentY + rectHeight + gap / 2}`;
+
     const leafpath = `M${parentX + rectWidth / 2},${parentY + rectHeight + gap / 2} V${
       parentY + gap * 5
     } H${parentX} H${parentX + rectWidth}`;
@@ -191,11 +194,12 @@ class StandardTree {
     rectWidth: number,
     rectHeight: number,
     gap: number,
+    childXMax: number = 0,
   ) {
     this._linkElements.push(
       <path
         className={this.styleClassNames.link}
-        d={this.createPathLink(parentX, parentY, childX, childY, leaf, rectWidth, rectHeight, gap)}
+        d={this.createPathLink(parentX, parentY, childX, childY, leaf, rectWidth, rectHeight, gap, childXMax)}
         key={`${nodeId}${this.styleClassNames.link}`}
       />,
     );
@@ -422,18 +426,12 @@ class LayeredTree extends StandardTree {
         );
 
         // <------------------ Links section ------------------>
-        if (d.id !== 0) {
-          this.addLinktoSVG(
-            d.id,
-            treeDataStructure[d.parentID].x,
-            treeDataStructure[d.parentID].y,
-            treeDataStructure[d.id].x,
-            treeDataStructure[d.id].y,
-            false,
-            rectWidth,
-            rectHeight,
-            gap,
-          );
+        if (d.id === 0 && d.children) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const children: any = treeDataStructure[d.id]?.children;
+          const childXMin = d3Min(children, (child: ITreeDataStructure) => child.x as number)!;
+          const childXMax = d3Max(children, (child: ITreeDataStructure) => child.x as number)!;
+          this.addLinktoSVG(d.id, d.x, d.y, childXMin, d.children[0].y, false, rectWidth, rectHeight, gap, childXMax);
         }
       }
     }

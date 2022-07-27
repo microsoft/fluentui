@@ -18,9 +18,7 @@ describe('DialogTrigger', () => {
       'component-handles-ref',
       'component-has-root-ref',
       'component-handles-classname',
-      'component-has-static-classname',
       'component-has-static-classnames-object',
-      'component-has-static-classname-exported',
       // DialogTrigger does not have own styles
       'make-styles-overrides-win',
     ],

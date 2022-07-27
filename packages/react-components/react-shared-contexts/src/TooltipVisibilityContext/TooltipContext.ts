@@ -18,6 +18,7 @@ export type TooltipVisibilityContextValue = {
  * @internal
  * Context shared by all of the tooltips in the app
  */
+// eslint-disable-next-line @fluentui/no-context-default-value
 const TooltipVisibilityContext = React.createContext<TooltipVisibilityContextValue>({});
 
 /**

@@ -4,7 +4,7 @@ exports[`DialogSurface renders a default state 1`] = `
 <div>
   <div
     class="fui-DialogSurface"
-    data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-9\\",\\"isOthersAccessible\\":false}}"
+    data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-8\\",\\"isOthersAccessible\\":false}}"
   >
     Default DialogSurface
   </div>

@@ -7,7 +7,6 @@ describe('Label', () => {
   isConformant({
     Component: Label,
     displayName: 'Label',
-    disabledTests: ['component-has-static-classname-exported'],
     requiredProps: { children: "I'm a label." },
     testOptions: {
       'has-static-classnames': [

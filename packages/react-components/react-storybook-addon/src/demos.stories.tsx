@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-button';
-import { Subtitle1, Text } from '@fluentui/react-text';
+import { Button, Subtitle1, Text } from '@fluentui/react-components';
 import { action } from '@storybook/addon-actions';
 
 export const Demos = () => {
