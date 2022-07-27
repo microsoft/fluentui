@@ -180,7 +180,7 @@
     "esbuild": "0.14.27",
     "esbuild-loader": "2.18.0",
     "eslint": "7.32.0",
-    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.3.0",
     "eslint-import-resolver-typescript": "2.5.0",
     "eslint-plugin-deprecation": "1.2.1",
