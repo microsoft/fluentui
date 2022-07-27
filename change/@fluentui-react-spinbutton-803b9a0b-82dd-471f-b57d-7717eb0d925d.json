@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Merge branch 'master' of https://github.com/microsoft/fluentui into spin-button",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "jennz@microsoft.com",
+  "dependentChangeType": "none"
+}
