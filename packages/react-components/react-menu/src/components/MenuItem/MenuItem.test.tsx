@@ -13,7 +13,6 @@ jest.mock('../../contexts/menuContext');
 describe('MenuItem', () => {
   isConformant({
     Component: MenuItem,
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuItem',
     testOptions: {
       'has-static-classnames': [
