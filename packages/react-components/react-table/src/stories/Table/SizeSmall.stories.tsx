@@ -12,14 +12,14 @@ import { Avatar } from '@fluentui/react-avatar';
 import { TableCell, TableRow } from '../../index';
 import { TableContextProvider } from '../../contexts/tableContext';
 
-export const NonNativeElements = () => {
+export const SizeSmall = () => {
   return (
-    <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
-      <div role="table" style={{ width: '100%' }}>
-        <div role="rolegroup">
+    <TableContextProvider value={{ size: 'small', noNativeElements: false }}>
+      <table style={{ width: '100%' }}>
+        <tbody>
           <TableRow>
             <TableCell media={<DocumentRegular />}>Meeting notes</TableCell>
-            <TableCell media={<Avatar name="Max Mustermann" badge={{ status: 'available' }} />}>
+            <TableCell media={<Avatar name="Max Mustermann" badge={{ status: 'available' }} size={24} />}>
               Max Mustermann
             </TableCell>
             <TableCell>7h ago</TableCell>
@@ -27,7 +27,7 @@ export const NonNativeElements = () => {
           </TableRow>
           <TableRow>
             <TableCell media={<FolderRegular />}>Thursday presentation</TableCell>
-            <TableCell media={<Avatar name="Erika Mustermann" badge={{ status: 'away' }} />}>
+            <TableCell media={<Avatar name="Erika Mustermann" badge={{ status: 'away' }} size={24} />}>
               Erika Mustermann
             </TableCell>
             <TableCell>Yesterday at 1:45 PM</TableCell>
@@ -35,18 +35,18 @@ export const NonNativeElements = () => {
           </TableRow>
           <TableRow>
             <TableCell media={<VideoRegular />}>Training recording</TableCell>
-            <TableCell media={<Avatar name="John Doe" badge={{ status: 'away' }} />}>John Doe</TableCell>
+            <TableCell media={<Avatar name="John Doe" badge={{ status: 'away' }} size={24} />}>John Doe</TableCell>
             <TableCell>Yesterday at 1:45 PM</TableCell>
             <TableCell media={<OpenRegular />}>You recently opened this</TableCell>
           </TableRow>
           <TableRow>
             <TableCell media={<DocumentPdfRegular />}>Purchase order</TableCell>
-            <TableCell media={<Avatar name="Jane Doe" badge={{ status: 'away' }} />}>Jane Doe</TableCell>
+            <TableCell media={<Avatar name="Jane Doe" badge={{ status: 'away' }} size={24} />}>Jane Doe</TableCell>
             <TableCell>Tue at 9:30 AM</TableCell>
             <TableCell media={<PeopleRegular />}>You shared this in a Teams chat</TableCell>
           </TableRow>
-        </div>
-      </div>
+        </tbody>
+      </table>
     </TableContextProvider>
   );
 };
