@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Added exports for decorators missing from v7",
+  "comment": "chore: Added exports for decorators missing from v7.",
   "packageName": "office-ui-fabric-react",
   "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
