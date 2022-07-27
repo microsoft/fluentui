@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react-text';
+import { Text } from '@fluentui/react-components';
 
 export const Weight = () => (
   <div style={{ display: 'flex', gap: 20 }}>

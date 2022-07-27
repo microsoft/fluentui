@@ -8,6 +8,7 @@ export type ThemeClassNameContextValue = string;
  *
  * Useful for elements in the React tree (can read context) but not in the DOM Tree. E.g. Portals
  */
+// eslint-disable-next-line @fluentui/no-context-default-value
 const ThemeClassNameContext = React.createContext<ThemeClassNameContextValue>('');
 
 export const ThemeClassNameProvider = ThemeClassNameContext.Provider;

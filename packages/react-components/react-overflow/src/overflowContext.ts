@@ -9,6 +9,7 @@ export interface OverflowContextValue {
   updateOverflow: (padding?: number) => void;
 }
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const OverflowContext = createContext<OverflowContextValue>({
   itemVisibility: {},
   groupVisibility: {},

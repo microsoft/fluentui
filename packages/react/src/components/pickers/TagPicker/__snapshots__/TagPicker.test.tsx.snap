@@ -156,7 +156,7 @@ exports[`TagPicker renders correctly 1`] = `
             black
           </span>
           <button
-            aria-labelledby="id__1 id__1-text"
+            aria-labelledby="id__1-removeLabel id__1-text"
             className=
                 ms-Button
                 ms-Button--icon
@@ -295,6 +295,10 @@ exports[`TagPicker renders correctly 1`] = `
               </i>
             </span>
           </button>
+          <span
+            hidden={true}
+            id="id__1-removeLabel"
+          />
         </div>
       </span>
       <input
@@ -545,7 +549,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             text
           </span>
           <button
-            aria-labelledby="id__1 id__1-text"
+            aria-labelledby="id__1-removeLabel id__1-text"
             className=
                 ms-Button
                 ms-Button--icon
@@ -684,6 +688,10 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
               </i>
             </span>
           </button>
+          <span
+            hidden={true}
+            id="id__1-removeLabel"
+          />
         </div>
       </span>
       <input
