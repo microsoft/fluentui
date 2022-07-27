@@ -1,18 +1,20 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow } from '@fluentui/react-avatar';
 
 export const Color = () => {
   return (
     <AvatarGroup>
-      <AvatarGroupItem name="Wanda Howard" />
-      <AvatarGroupItem name="Mona Kane" />
-      <AvatarGroupItem name="Allan Munger" />
-      <AvatarGroupItem name="Daisy Phillips" />
-      <AvatarGroupItem name="Robert Tolbert" />
-      <AvatarGroupItem name="Kevin Sturgis" />
-      <AvatarGroupItem color="blue" name="Cameron Evans" />
-      <AvatarGroupItem color="forest" name="Elvia Atkins" />
-      <AvatarGroupItem color="red" name="Katri Athokas" />
+      <AvatarGroupItem name="Katri Athokas" />
+      <AvatarGroupItem color="seafoam" name="Elvia Atkins" />
+      <AvatarGroupItem color="red" name="Cameron Evans" />
+      <AvatarGroupItem color="forest" name="Wanda Howard" />
+      <AvatarGroupOverflow overflowIndicator="count">
+        <AvatarGroupItem name="Mona Kane" />
+        <AvatarGroupItem name="Allan Munger" />
+        <AvatarGroupItem name="Daisy Phillips" />
+        <AvatarGroupItem name="Robert Tolbert" />
+        <AvatarGroupItem name="Kevin Sturgis" />
+      </AvatarGroupOverflow>
     </AvatarGroup>
   );
 };

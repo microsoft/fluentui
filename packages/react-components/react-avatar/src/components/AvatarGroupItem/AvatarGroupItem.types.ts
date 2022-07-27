@@ -33,7 +33,6 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
    */
   isOverflowItem?: boolean;
 
-  nonOverflowAvatarsCount: number;
   layout: AvatarGroupProps['layout'];
   size: AvatarSizes;
 };

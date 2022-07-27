@@ -3,7 +3,8 @@ import type { Context } from '@fluentui/react-context-selector';
 import type { AvatarGroupContextValue } from './AvatarGroupContext.types';
 
 /**
- * AvatarGroupContext is provided by AvatarGroup, and is consumed by Avatar to determine default values of some props.
+ * AvatarGroupContext is provided by AvatarGroup, and is consumed by AvatarGroupItem to determine
+ * default values of some props.
  */
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const AvatarGroupContext: Context<AvatarGroupContextValue> = createContext({});

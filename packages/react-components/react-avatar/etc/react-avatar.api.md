@@ -9,12 +9,14 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { PopoverSurface } from '@fluentui/react-popover';
+import type { OnOpenChangeData } from '@fluentui/react-popover';
+import type { OpenPopoverEvents } from '@fluentui/react-popover';
+import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TooltipProps } from '@fluentui/react-tooltip';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -47,7 +49,6 @@ export type AvatarGroupItemSlots = {
 // @public
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
-    nonOverflowAvatarsCount: number;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
 };
@@ -56,44 +57,43 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps>;
 
 // @public (undocumented)
-export const avatarGroupOverflowClassName = "fui-AvatarGroupOverflow";
-
-// @public (undocumented)
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots>;
 
 // @public
-export type AvatarGroupOverflowProps = ComponentProps<AvatarGroupOverflowSlots> & {};
+export type AvatarGroupOverflowProps = ComponentProps<Partial<AvatarGroupOverflowSlots>> & {
+    overflowIndicator?: 'count' | 'icon';
+    count?: number;
+};
 
 // @public (undocumented)
 export type AvatarGroupOverflowSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'button'>>;
+    overflowContent: NonNullable<Slot<'div'>>;
+    overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots>;
+export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'overflowIndicator'>> & {
+    tooltipContent: TooltipProps['content'];
+    handleOnPopoverChange: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+    isPopoverOpen: boolean;
+    layout: AvatarGroupProps['layout'];
+    size: AvatarSizes;
+};
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
-    layout?: 'spread' | 'stack' | 'pie';
-    maxAvatars?: number;
-    overflowIndicator?: 'count' | 'icon';
+    layout?: 'spread' | 'stack';
     size?: AvatarSizes;
 };
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
-    overflowButton?: NonNullable<Slot<'button'>>;
-    overflowContent?: NonNullable<Slot<'div'>>;
-    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
-    hasOverflow: boolean;
-    tooltipContent: TooltipProps['content'];
-    nonOverflowAvatarsCount: number;
-};
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size'>>;
 
 // @public
 export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
@@ -169,6 +169,12 @@ export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarG
 
 // @public (undocumented)
 export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
+
+// @public
+export const useOverflowContentStyles: () => Record<"base", string>;
+
+// @public
+export const useOverflowSurfaceStyles: () => Record<"base", string>;
 
 // (No @packageDocumentation comment for this package)
 

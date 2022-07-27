@@ -19,7 +19,6 @@ export const useAvatarGroupItem_unstable = (
   props: AvatarGroupItemProps,
   ref: React.Ref<HTMLElement>,
 ): AvatarGroupItemState => {
-  const nonOverflowAvatarsCount = useContextSelector(AvatarGroupContext, ctx => ctx.nonOverflowAvatarsCount);
   const groupIsOverflow = useContextSelector(AvatarGroupContext, ctx => ctx.isOverflow);
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
@@ -34,10 +33,9 @@ export const useAvatarGroupItem_unstable = (
   }
 
   return {
-    nonOverflowAvatarsCount: nonOverflowAvatarsCount ?? 1,
+    isOverflowItem: groupIsOverflow,
     layout,
     size,
-    isOverflowItem: groupIsOverflow,
     components: {
       root: 'div',
       avatar: Avatar,

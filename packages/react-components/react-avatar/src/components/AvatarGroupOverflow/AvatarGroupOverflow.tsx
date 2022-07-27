@@ -6,7 +6,7 @@ import type { AvatarGroupOverflowProps } from './AvatarGroupOverflow.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * AvatarGroupOverflow component - TODO: add more docs
+ * The AvatarGroupOverflow component provides a button with a Popover containing the children provided.
  */
 export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps> = React.forwardRef((props, ref) => {
   const state = useAvatarGroupOverflow_unstable(props, ref);

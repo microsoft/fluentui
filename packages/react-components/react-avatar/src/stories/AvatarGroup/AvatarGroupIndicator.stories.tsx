@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
-import { makeStyles } from '@griffel/react';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow } from '@fluentui/react-avatar';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -15,27 +15,31 @@ export const Indicator = () => {
 
   return (
     <div className={styles.root}>
-      <AvatarGroup overflowIndicator="count">
+      <AvatarGroup>
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+        <AvatarGroupOverflow overflowIndicator="count">
+          <AvatarGroupItem name="Mona Kane" />
+          <AvatarGroupItem name="Allan Munger" />
+          <AvatarGroupItem name="Daisy Phillips" />
+          <AvatarGroupItem name="Robert Tolbert" />
+          <AvatarGroupItem name="Kevin Sturgis" />
+        </AvatarGroupOverflow>
       </AvatarGroup>
-      <AvatarGroup overflowIndicator="icon">
+      <AvatarGroup>
         <AvatarGroupItem name="Katri Athokas" />
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupItem name="Mona Kane" />
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
+        <AvatarGroupOverflow overflowIndicator="icon">
+          <AvatarGroupItem name="Mona Kane" />
+          <AvatarGroupItem name="Allan Munger" />
+          <AvatarGroupItem name="Daisy Phillips" />
+          <AvatarGroupItem name="Robert Tolbert" />
+          <AvatarGroupItem name="Kevin Sturgis" />
+        </AvatarGroupOverflow>
       </AvatarGroup>
     </div>
   );
