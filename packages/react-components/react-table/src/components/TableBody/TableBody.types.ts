@@ -5,11 +5,13 @@ export type TableBodySlots = {
   root: Slot<'tbody', 'div'>;
 };
 
+export type TableRowRenderFunction = (items: unknown) => React.ReactNode;
+
 /**
  * TableBody Props
  */
 export type TableBodyProps = ComponentProps<TableBodySlots> & {
-  children?: React.ReactNode | ((items: unknown) => React.ReactNode);
+  children?: React.ReactNode | TableRowRenderFunction;
 };
 
 /**
