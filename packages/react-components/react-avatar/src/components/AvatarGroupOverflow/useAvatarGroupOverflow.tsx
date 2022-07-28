@@ -42,7 +42,7 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
   return {
     isPopoverOpen,
     layout,
-    overflowIndicator: 'count',
+    overflowIndicator,
     size,
     tooltipContent: 'View more people.',
 

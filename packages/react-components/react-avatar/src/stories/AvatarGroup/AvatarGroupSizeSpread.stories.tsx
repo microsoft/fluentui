@@ -19,7 +19,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -32,7 +32,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -45,7 +45,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -58,7 +58,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -71,7 +71,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -84,7 +84,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -97,7 +97,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -110,7 +110,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -123,7 +123,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -136,7 +136,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -149,7 +149,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -162,7 +162,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -175,7 +175,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -188,7 +188,7 @@ export const SizeSpread = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow>
+        <AvatarGroupOverflow overflowIndicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
