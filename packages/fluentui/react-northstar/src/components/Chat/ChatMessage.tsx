@@ -204,6 +204,9 @@ export interface ChatMessageProps
 
   /** More refined version of the original `timestamp` property that guarantees certain fields exist. */
   timestampTooltip?: string;
+
+  /** Optional override for the content in the message header. */
+  headerContent?: React.ReactNode;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
@@ -299,6 +302,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     customizeBubbleElement,
     timestampTooltip,
     bubbleInset,
+    headerContent,
   } = props;
 
   const isV2Enabled = v2 && density === 'comfy';
@@ -602,7 +606,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     const headerElement = createShorthand(ChatMessageHeader, header || {}, {
       overrideProps: () => ({
         styles: resolvedStyles.header,
-        content: (
+        content: headerContent || (
           <>
             {authorElement}
             {infoLabel}
@@ -790,6 +794,7 @@ ChatMessage.propTypes = {
   unstable_overflow: PropTypes.bool,
   failed: PropTypes.bool,
   importantLabel: PropTypes.node,
+  headerContent: PropTypes.node,
   infoLabel: PropTypes.node,
   customizeBubbleElement: PropTypes.func,
   bubbleInset: PropTypes.node,
