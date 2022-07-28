@@ -46,9 +46,11 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
       memorizeCurrent: memorizeCurrent,
       tabbable: tabbable,
     },
-    focusable: {
-      ignoreKeydown: ignoreDefaultKeydown,
-    },
+    ...(ignoreDefaultKeydown && {
+      focusable: {
+        ignoreKeydown: ignoreDefaultKeydown,
+      },
+    }),
   });
 };
 
