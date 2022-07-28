@@ -149,10 +149,10 @@ export type DialogTitleState = ComponentState<DialogTitleSlots>;
 export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
 
 // @public (undocumented)
-export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+export type DialogTriggerAction = 'open' | 'close';
 
 // @public
-export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>> & {
+export type DialogTriggerChildProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'> & {
     ref?: React_2.Ref<never>;
 };
 

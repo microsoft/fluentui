@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { DialogContextValue } from '../../contexts/dialogContext';
+import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSlots = {
   /**
@@ -27,6 +27,11 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
+  /**
+   * dialogSurface context is provided by Dialog as false
+   * to ensure components inside Dialog but outside DialogSurface will consume this as false
+   */
+  dialogSurface: DialogSurfaceContextValue;
 };
 
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {

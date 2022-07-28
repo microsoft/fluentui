@@ -1,15 +1,15 @@
+import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
-import * as React from 'react';
-import { useDialogContext_unstable } from '../../contexts/dialogContext';
-import { isTargetDisabled } from '../../utils/isTargetDisabled';
 import {
   DialogTriggerChildProps,
   DialogTriggerProps,
   DialogTriggerState,
   DialogTriggerAction,
 } from './DialogTrigger.types';
+import { isTargetDisabled } from '../../utils';
+import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 
 /**
  * Create the state required to render DialogTrigger.
@@ -18,7 +18,10 @@ import {
  * @param props - props from this instance of DialogTrigger
  */
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
-  const { children, action = 'toggle' } = props;
+  const { children, action } = props;
+
+  const isInsideSurfaceDialog = useDialogSurfaceContext_unstable();
+  const possibleAction = action ?? isInsideSurfaceDialog ? 'close' : 'open';
 
   const child = React.isValidElement(children) ? getTriggerChild<DialogTriggerChildProps>(children) : undefined;
 
@@ -35,7 +38,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
       requestOpenChange({
         event,
         type: 'triggerClick',
-        open: updateOpen(action),
+        open: updateOpen(possibleAction),
       });
     }
   });
@@ -52,7 +55,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
-      'aria-haspopup': 'dialog',
+      'aria-haspopup': (isInsideSurfaceDialog && action !== 'open') || action === 'close' ? undefined : 'dialog',
       ref: child?.ref as React.Ref<never>,
       onClick: handleClick,
       onKeyDown: handleKeyDown,
@@ -61,13 +64,11 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   };
 };
 
-function updateOpen(type: DialogTriggerAction): React.SetStateAction<boolean> {
+function updateOpen(type: DialogTriggerAction): boolean {
   switch (type) {
     case 'close':
       return false;
     case 'open':
       return true;
-    case 'toggle':
-      return curr => !curr;
   }
 }
