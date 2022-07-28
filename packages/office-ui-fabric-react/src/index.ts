@@ -18,6 +18,7 @@ export * from './CommandBar';
 export * from './ContextualMenu';
 export * from './DatePicker';
 export * from './DateTimeUtilities';
+export * from './Decorators';
 export * from './DetailsList';
 export * from './Dialog';
 export * from './Divider';

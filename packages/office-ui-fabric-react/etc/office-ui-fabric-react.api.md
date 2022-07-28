@@ -1355,6 +1355,9 @@ export function getFullColorString(color: IColor): string;
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
+// @public (undocumented)
+export function getInitialResponsiveMode(): ResponsiveMode;
+
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
@@ -1382,6 +1385,9 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public (undocumented)
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -3335,8 +3341,6 @@ export interface IContextualMenuListProps {
     totalItemCount: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -6217,6 +6221,9 @@ export interface INavStyles {
     root: IStyle;
 }
 
+// @public
+export function initializeResponsiveMode(element?: HTMLElement): void;
+
 export { IObjectWithKey }
 
 // @public (undocumented)
@@ -8594,11 +8601,23 @@ export interface IWindowWithSegments extends Window {
     getWindowSegments?: () => DOMRect[];
 }
 
+// @public (undocumented)
+export interface IWithResponsiveModeState {
+    // (undocumented)
+    responsiveMode?: ResponsiveMode;
+}
+
 // @public
 export interface IWithViewportProps {
     delayFirstMeasure?: boolean;
     disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
+}
+
+// @public (undocumented)
+export interface IWithViewportState {
+    // (undocumented)
+    viewport?: IViewport;
 }
 
 // @public (undocumented)
@@ -9678,6 +9697,9 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 export function sequencesToID(keySequences: string[]): string;
 
 // @public
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
+
+// @public
 export enum Shade {
     // (undocumented)
     Shade1 = 1,
@@ -10363,6 +10385,16 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
     render(): JSX.Element;
     readonly selectedOptions: IComboBoxOption[];
 }
+
+// @public (undocumented)
+export function withResponsiveMode<TProps extends {
+    responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
+
+// @public
+export function withViewport<TProps extends {
+    viewport?: IViewport;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";
