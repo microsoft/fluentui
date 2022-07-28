@@ -263,9 +263,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
         // In some cases the object might exist but not be a real element.
         // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
 
-        const lastFocus = previousElementsQueue.current && previousElementsQueue.current[0];
-
-        lastFocus?.focus?.();
+        previousElementsQueue.current[0].focus?.();
       }
     },
     [onRestoreFocus],
