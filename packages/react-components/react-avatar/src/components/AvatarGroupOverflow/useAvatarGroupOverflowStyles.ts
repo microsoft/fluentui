@@ -8,6 +8,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots> = {
   root: 'fui-AvatarGroupOverflow',
+  overflowButton: 'fui-AvatarGroupOverflow__overflowButton',
   overflowContent: 'fui-AvatarGroupOverflow__overflowContent',
   overflowSurface: 'fui-AvatarGroupOverflow__overflowSurface',
 };
@@ -37,7 +38,7 @@ export const useOverflowSurfaceStyles = makeStyles({
 /**
  * Styles for the overflow button.
  */
-const useRootStyles = makeStyles({
+const useOverflowButtonStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
@@ -109,7 +110,7 @@ const useRootStyles = makeStyles({
 export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflowState): AvatarGroupOverflowState => {
   const { overflowIndicator, size, layout, isPopoverOpen } = state;
   const sizeStyles = useSizeStyles();
-  const rootStyles = useRootStyles();
+  const overflowButtonStyles = useOverflowButtonStyles();
   const overflowContentStyles = useOverflowContentStyles();
   const overflowSurfaceStyles = useOverflowSurfaceStyles();
   const groupChildClassName = useGroupChildClassName(layout, size, true);
@@ -117,60 +118,58 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
   const overflowButtonClasses = [];
 
   if (size < 36) {
-    overflowButtonClasses.push(rootStyles.borderThin);
+    overflowButtonClasses.push(overflowButtonStyles.borderThin);
   } else if (size < 56) {
-    overflowButtonClasses.push(rootStyles.borderThick);
+    overflowButtonClasses.push(overflowButtonStyles.borderThick);
   } else if (size < 72) {
-    overflowButtonClasses.push(rootStyles.borderThicker);
+    overflowButtonClasses.push(overflowButtonStyles.borderThicker);
   } else {
-    overflowButtonClasses.push(rootStyles.borderThickest);
+    overflowButtonClasses.push(overflowButtonStyles.borderThickest);
   }
 
   if (overflowIndicator === 'count') {
     if (size <= 24) {
-      overflowButtonClasses.push(rootStyles.caption2Strong);
+      overflowButtonClasses.push(overflowButtonStyles.caption2Strong);
     } else if (size <= 28) {
-      overflowButtonClasses.push(rootStyles.caption1Strong);
+      overflowButtonClasses.push(overflowButtonStyles.caption1Strong);
     } else if (size <= 40) {
-      overflowButtonClasses.push(rootStyles.body1Strong);
+      overflowButtonClasses.push(overflowButtonStyles.body1Strong);
     } else if (size <= 56) {
-      overflowButtonClasses.push(rootStyles.subtitle2);
+      overflowButtonClasses.push(overflowButtonStyles.subtitle2);
     } else if (size <= 96) {
-      overflowButtonClasses.push(rootStyles.subtitle1);
+      overflowButtonClasses.push(overflowButtonStyles.subtitle1);
     } else {
-      overflowButtonClasses.push(rootStyles.title3);
+      overflowButtonClasses.push(overflowButtonStyles.title3);
     }
   } else {
     if (size <= 16) {
-      overflowButtonClasses.push(rootStyles.icon12);
+      overflowButtonClasses.push(overflowButtonStyles.icon12);
     } else if (size <= 24) {
-      overflowButtonClasses.push(rootStyles.icon16);
+      overflowButtonClasses.push(overflowButtonStyles.icon16);
     } else if (size <= 40) {
-      overflowButtonClasses.push(rootStyles.icon20);
+      overflowButtonClasses.push(overflowButtonStyles.icon20);
     } else if (size <= 48) {
-      overflowButtonClasses.push(rootStyles.icon24);
+      overflowButtonClasses.push(overflowButtonStyles.icon24);
     } else if (size <= 56) {
-      overflowButtonClasses.push(rootStyles.icon28);
+      overflowButtonClasses.push(overflowButtonStyles.icon28);
     } else if (size <= 72) {
-      overflowButtonClasses.push(rootStyles.icon32);
+      overflowButtonClasses.push(overflowButtonStyles.icon32);
     } else {
-      overflowButtonClasses.push(rootStyles.icon48);
+      overflowButtonClasses.push(overflowButtonStyles.icon48);
     }
   }
 
-  state.root.className = mergeClasses(avatarGroupOverflowClassNames.root, state.root.className);
-
-  if (state.root) {
-    state.root.className = mergeClasses(
-      avatarGroupOverflowClassNames.root,
+  if (state.overflowButton) {
+    state.overflowButton.className = mergeClasses(
+      avatarGroupOverflowClassNames.overflowButton,
       sizeStyles[size],
-      rootStyles.base,
+      overflowButtonStyles.base,
       ...overflowButtonClasses,
       groupChildClassName,
-      rootStyles.focusIndicator,
-      rootStyles.states,
-      isPopoverOpen && rootStyles.selected,
-      state.root.className,
+      overflowButtonStyles.focusIndicator,
+      overflowButtonStyles.states,
+      isPopoverOpen && overflowButtonStyles.selected,
+      state.overflowButton.className,
     );
   }
 

@@ -1,14 +1,17 @@
+import * as React from 'react';
 import type { AvatarSizes } from '../Avatar/Avatar.types';
 import type { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { OnOpenChangeData, OpenPopoverEvents, PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
 export type AvatarGroupOverflowSlots = {
+  root: NonNullable<Slot<PopoverProps>>;
+
   /**
    * Overflow indicator that triggers the Popover.
    */
-  root: NonNullable<Slot<'button'>>;
+  overflowButton: NonNullable<Slot<'button'>>;
 
   /**
    * List that contains the overflow AvatarGroupItems.
@@ -24,7 +27,7 @@ export type AvatarGroupOverflowSlots = {
 /**
  * AvatarGroupOverflow Props
  */
-export type AvatarGroupOverflowProps = ComponentProps<Partial<AvatarGroupOverflowSlots>> & {
+export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
   /**
    * Whether the overflow indicator should render an icon instead of the number of overflowed AvatarGroupItems.
    * Note: The overflowIndicator will default to `icon` when the size is less than 24.
@@ -39,6 +42,8 @@ export type AvatarGroupOverflowProps = ComponentProps<Partial<AvatarGroupOverflo
    * children, this is not possible and therefore it has do be added manually.
    */
   count?: number;
+
+  children: React.ReactNode;
 };
 
 /**
@@ -51,7 +56,6 @@ export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> 
      */
     tooltipContent: TooltipProps['content'];
 
-    handleOnPopoverChange: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     isPopoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;

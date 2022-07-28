@@ -23,4 +23,17 @@ export {
   useAvatarGroupItem_unstable,
 } from './AvatarGroupItem';
 export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem';
-export * from './AvatarGroupOverflow';
+export {
+  AvatarGroupOverflow,
+  avatarGroupOverflowClassNames,
+  renderAvatarGroupOverflow_unstable,
+  useAvatarGroupOverflowStyles_unstable,
+  useAvatarGroupOverflow_unstable,
+  useOverflowContentStyles,
+  useOverflowSurfaceStyles,
+} from './AvatarGroupOverflow';
+export type {
+  AvatarGroupOverflowProps,
+  AvatarGroupOverflowSlots,
+  AvatarGroupOverflowState,
+} from './AvatarGroupOverflow';

@@ -9,8 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { OnOpenChangeData } from '@fluentui/react-popover';
-import type { OpenPopoverEvents } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
 import * as React_2 from 'react';
@@ -54,20 +53,22 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 };
 
 // @public
-export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps>;
+export const AvatarGroupOverflow: React_2.FC<AvatarGroupOverflowProps>;
 
 // @public (undocumented)
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots>;
 
 // @public
-export type AvatarGroupOverflowProps = ComponentProps<Partial<AvatarGroupOverflowSlots>> & {
+export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
     overflowIndicator?: 'count' | 'icon';
     count?: number;
+    children: React_2.ReactNode;
 };
 
 // @public (undocumented)
 export type AvatarGroupOverflowSlots = {
-    root: NonNullable<Slot<'button'>>;
+    root: NonNullable<Slot<PopoverProps>>;
+    overflowButton: NonNullable<Slot<'button'>>;
     overflowContent: NonNullable<Slot<'div'>>;
     overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
 };
@@ -75,7 +76,6 @@ export type AvatarGroupOverflowSlots = {
 // @public
 export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'overflowIndicator'>> & {
     tooltipContent: TooltipProps['content'];
-    handleOnPopoverChange: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
     isPopoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
@@ -159,7 +159,7 @@ export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: Rea
 export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
-export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupOverflowState;
+export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps) => AvatarGroupOverflowState;
 
 // @public
 export const useAvatarGroupOverflowStyles_unstable: (state: AvatarGroupOverflowState) => AvatarGroupOverflowState;

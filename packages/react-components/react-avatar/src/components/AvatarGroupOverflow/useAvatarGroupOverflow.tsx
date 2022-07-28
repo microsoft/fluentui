@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
-import { OnOpenChangeData, OpenPopoverEvents, PopoverSurface } from '@fluentui/react-popover';
+import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupOverflowProps, AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
 
@@ -16,49 +16,56 @@ import type { AvatarGroupOverflowProps, AvatarGroupOverflowState } from './Avata
  * @param props - props from this instance of AvatarGroupOverflow
  * @param ref - reference to root HTMLElement of AvatarGroupOverflow
  */
-export const useAvatarGroupOverflow_unstable = (
-  props: AvatarGroupOverflowProps,
-  ref: React.Ref<HTMLElement>,
-): AvatarGroupOverflowState => {
+export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps): AvatarGroupOverflowState => {
   const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const size = groupSize ?? defaultAvatarGroupSize;
-  // When using getNativeElementProps, children would neeed to be ignore otherwise it would render all the Avatars as
-  // the button's children. This causes an issue where then by ignoring childre, the button won't have children at all.
-  // To avoid this, we use the props without the children and use the root's children in the content
-  const { overflowIndicator = size < 24 ? 'icon' : 'count', children, ...restOfProps } = props;
-  const count = props.count ?? React.Children.count(children);
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-  let rootChildren;
+  const size = groupSize ?? defaultAvatarGroupSize;
+  const {
+    overflowIndicator = size < 24 ? 'icon' : 'count',
+    count = React.Children.count(props.children),
+    children,
+    ...restOfProps
+  } = props;
+  let overflowButtonChildren;
 
   const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
     setIsPopoverOpen(data.open);
   };
 
   if (overflowIndicator === 'icon') {
-    rootChildren = <MoreHorizontalRegular />;
+    overflowButtonChildren = <MoreHorizontalRegular />;
   } else {
-    rootChildren = count > 99 ? '99+' : `+${count}`;
+    overflowButtonChildren = count > 99 ? '99+' : `+${count}`;
   }
 
   return {
     isPopoverOpen,
-    handleOnPopoverChange,
     layout,
     overflowIndicator: 'count',
     size,
     tooltipContent: 'View more people.',
 
     components: {
-      root: 'button',
+      root: Popover,
+      overflowButton: 'button',
       overflowContent: 'div',
       overflowSurface: PopoverSurface,
     },
-    root: getNativeElementProps('button', {
-      ref,
-      children: rootChildren,
-      type: 'button',
+    root: {
+      // Popover expects a child for its children. The children are added in the renderAvatarGroupOverflow.
+      children: <></>,
+      onOpenChange: handleOnPopoverChange,
+      size: 'small',
+      trapFocus: true,
       ...restOfProps,
+    },
+    overflowButton: resolveShorthand(props.overflowButton, {
+      required: true,
+      defaultProps: {
+        children: overflowButtonChildren,
+        type: 'button',
+      },
     }),
     overflowContent: resolveShorthand(props.overflowContent, {
       required: true,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { getSlots } from '@fluentui/react-utilities';
-import { Popover, PopoverTrigger } from '@fluentui/react-popover';
+import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
 import { Tooltip } from '@fluentui/react-tooltip';
 import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './AvatarGroupOverflow.types';
 
@@ -10,13 +10,12 @@ import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './Avata
  */
 export const renderAvatarGroupOverflow_unstable = (state: AvatarGroupOverflowState) => {
   const { slots, slotProps } = getSlots<AvatarGroupOverflowSlots>(state);
-  const { handleOnPopoverChange } = state;
 
   return (
-    <Popover trapFocus size="small" onOpenChange={handleOnPopoverChange}>
+    <slots.root {...(slotProps.root as PopoverProps)}>
       <PopoverTrigger>
         <Tooltip content={state.tooltipContent} relationship="label">
-          <slots.root {...slotProps.root} />
+          <slots.overflowButton {...slotProps.overflowButton} />
         </Tooltip>
       </PopoverTrigger>
       {slots.overflowSurface && (
@@ -26,6 +25,6 @@ export const renderAvatarGroupOverflow_unstable = (state: AvatarGroupOverflowSta
           </AvatarGroupContext.Provider>
         </slots.overflowSurface>
       )}
-    </Popover>
+    </slots.root>
   );
 };

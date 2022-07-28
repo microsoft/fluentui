@@ -26,12 +26,19 @@ describe('AvatarGroupOverflow', () => {
   isConformant({
     Component: AvatarGroupOverflow,
     displayName: 'AvatarGroupOverflow',
+    disabledTests: [
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      'make-styles-overrides-win',
+    ],
     testOptions: {
       'has-static-classnames': [
         {
           props: {},
           expectedClassNames: {
-            root: avatarGroupOverflowClassNames.root,
+            // root shouldn't be expected since the root is a Popover
+            overflowButton: avatarGroupOverflowClassNames.overflowButton,
             overflowContent: avatarGroupOverflowClassNames.overflowContent,
             overflowSurface: avatarGroupOverflowClassNames.overflowSurface,
           },
