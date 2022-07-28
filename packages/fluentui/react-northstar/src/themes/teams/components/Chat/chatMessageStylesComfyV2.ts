@@ -161,11 +161,11 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
     position: 'absolute',
     top: pxToRem(10),
     display: 'flex',
+    paddingTop: 0,
+    paddingBottom: 0,
     // use padding instead of margin so that the bubble container's :hover
     // styles still apply when mousing over the gap between the container
     // and bubble-inset.
-    paddingTop: 0,
-    paddingBottom: 0,
     paddingLeft: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
     paddingRight: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
     ...(p.mine ? { right: '100%', flexDirection: 'row-reverse' } : { left: '100%' }),

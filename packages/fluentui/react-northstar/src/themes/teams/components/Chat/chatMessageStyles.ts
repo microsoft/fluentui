@@ -160,6 +160,13 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
     };
   },
 
+  bubbleInset: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+    return {
+      ...getChatMessageVariantStyles(p).bubbleInset?.(componentStyleFunctionParam),
+    };
+  },
+
   reactionGroup: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
     return getChatMessageVariantStyles(p).reactionGroup?.(componentStyleFunctionParam);

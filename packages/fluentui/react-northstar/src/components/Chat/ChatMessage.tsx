@@ -189,7 +189,7 @@ export interface ChatMessageProps
   /** Label that describes message importance. */
   importanceLabel?: React.ReactNode;
 
-  /** Additional label slot for message importance, scheduled messages, etc. */
+  /** Additional label slot for message details, such as a scheduled message label. */
   infoLabel?: React.ReactNode;
 
   /**
