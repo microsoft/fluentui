@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Fix tabbing from within menu",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
