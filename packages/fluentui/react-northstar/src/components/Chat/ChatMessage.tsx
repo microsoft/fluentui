@@ -180,15 +180,9 @@ export interface ChatMessageProps
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
 
-  /**
-   * Properties that are only available to the v2 (refresh) version of
-   * ChatMessage because they only have an effect there. Enabling this property
-   * will opt into the new layout.
-   */
-  v2?: ChatMessageV2Props;
-}
+  /** Opts into the V2 layout. */
+  v2?: boolean;
 
-interface ChatMessageV2Props {
   /** Indicates whether the message is in a failure state. */
   failed?: boolean;
 
@@ -300,9 +294,14 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     unstable_overflow: overflow,
     variables,
     v2,
+    infoLabel,
+    importantLabel,
+    customizeBubbleElement,
+    timestampTooltip,
+    bubbleInset,
   } = props;
 
-  const isV2Enabled = !!v2 && density === 'comfy';
+  const isV2Enabled = v2 && density === 'comfy';
 
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
   const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
@@ -606,8 +605,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         content: (
           <>
             {authorElement}
-            {v2.infoLabel}
-            {v2.importantLabel}
+            {infoLabel}
+            {importantLabel}
             {detailsElement}
           </>
         ),
@@ -642,13 +641,13 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         }),
       },
     );
-    if (v2.customizeBubbleElement) {
-      bubbleElement = v2.customizeBubbleElement(bubbleElement);
+    if (customizeBubbleElement) {
+      bubbleElement = customizeBubbleElement(bubbleElement);
     }
 
     const timestampElement = (
       <Tooltip
-        content={v2.timestampTooltip}
+        content={timestampTooltip}
         trigger={Text.create(timestamp, {
           defaultProps: () => ({
             size: 'small',
@@ -660,7 +659,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       />
     );
 
-    const bubbleInset = Box.create(
+    const bubbleInsetElement = Box.create(
       { as: 'span' },
       {
         defaultProps: () => ({
@@ -671,7 +670,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
           content: (
             <>
               {badgeElement}
-              {v2.bubbleInset}
+              {bubbleInset}
               {timestampElement}
             </>
           ),
@@ -691,7 +690,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
           content: (
             <>
               {bubbleElement}
-              {bubbleInset}
+              {bubbleInsetElement}
             </>
           ),
         }),
@@ -789,14 +788,12 @@ ChatMessage.propTypes = {
   readStatus: customPropTypes.itemShorthand,
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
-  v2: PropTypes.shape({
-    failed: PropTypes.bool,
-    importantLabel: PropTypes.node,
-    infoLabel: PropTypes.node,
-    customizeBubbleElement: PropTypes.func,
-    bubbleInset: PropTypes.node,
-    timestampTooltip: PropTypes.string,
-  }),
+  failed: PropTypes.bool,
+  importantLabel: PropTypes.node,
+  infoLabel: PropTypes.node,
+  customizeBubbleElement: PropTypes.func,
+  bubbleInset: PropTypes.node,
+  timestampTooltip: PropTypes.string,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;

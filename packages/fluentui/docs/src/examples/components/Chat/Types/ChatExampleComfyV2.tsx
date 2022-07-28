@@ -14,6 +14,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     ),
     message: (
       <Chat.Message
+        v2
         content="Hello"
         author="Robin Counts"
         timestamp="10:15 PM"
@@ -22,9 +23,7 @@ const items: ShorthandCollection<ChatItemProps> = [
             Edited <TranslationIcon size="small" />
           </>
         }
-        v2={{
-          timestampTooltip: 'Yesterday, 10:15 PM',
-        }}
+        timestampTooltip="Yesterday, 10:15 PM"
       />
     ),
     key: 'message-id-1',
@@ -34,6 +33,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     contentPosition: 'end',
     message: (
       <Chat.Message
+        v2
         content="Hi"
         author="Tim Deboer"
         timestamp="10:15 PM"
@@ -43,9 +43,7 @@ const items: ShorthandCollection<ChatItemProps> = [
           </>
         }
         mine
-        v2={{
-          timestampTooltip: 'Yesterday, 10:15 PM',
-        }}
+        timestampTooltip="Yesterday, 10:15 PM"
       />
     ),
     key: 'message-id-2',
@@ -55,14 +53,13 @@ const items: ShorthandCollection<ChatItemProps> = [
     contentPosition: 'end',
     message: (
       <Chat.Message
+        v2
         author="Tim Deboer"
         content="How are you doing?"
         details={<>Edited</>}
         mine
         timestamp="10:16 PM"
-        v2={{
-          timestampTooltip: 'Yesterday, 10:16 PM',
-        }}
+        timestampTooltip="Yesterday, 10:16 PM"
       />
     ),
     key: 'message-id-3',

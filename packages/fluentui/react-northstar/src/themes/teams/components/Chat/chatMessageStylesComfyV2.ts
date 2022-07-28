@@ -67,7 +67,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
       display: 'none',
       whiteSpace: 'nowrap',
     };
-    if (v.v2_isNarrow) {
+    if (v.isNarrow) {
       styles.fontSize = '1rem';
       styles.marginTop = pxToRem(3);
       styles.marginLeft = pxToRem(2.5);
@@ -80,12 +80,12 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
   body: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     maxWidth: '100%',
-    ...(v.v2_isFullWidth && {
+    ...(v.isFullWidth && {
       width: '100%',
     }),
 
     ...(!p.mine &&
-      v.v2_isNarrow && {
+      v.isNarrow && {
         marginRight: pxToRem(16),
       }),
   }),
@@ -107,7 +107,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
         backgroundAttachment: 'fixed',
       }),
 
-      ...(v.v2_isFailed && {
+      ...(v.isFailed && {
         backgroundImage: 'none',
         backgroundColor: theme.siteVariables.colorScheme.red.background1,
         border: `1px solid ${theme.siteVariables.colorScheme.red.border}`,
@@ -166,8 +166,8 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
     // and bubble-inset.
     paddingTop: 0,
     paddingBottom: 0,
-    paddingLeft: v.v2_isNarrow ? pxToRem(2.5) : pxToRem(5),
-    paddingRight: v.v2_isNarrow ? pxToRem(2.5) : pxToRem(5),
+    paddingLeft: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
+    paddingRight: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
     ...(p.mine ? { right: '100%', flexDirection: 'row-reverse' } : { left: '100%' }),
   }),
 
@@ -182,7 +182,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
       '&:hover': { textDecorationStyle: 'double' },
       '&:focus': { textDecorationStyle: 'double' },
     },
-    ...(v.v2_isFailed && {
+    ...(v.isFailed && {
       color: theme.siteVariables.colorScheme.default.foreground,
     }),
   }),
