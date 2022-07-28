@@ -34,7 +34,7 @@ describe('TableRow', () => {
 
   it('renders as div if `noNativeElements` is set', () => {
     const { container } = render(
-      <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
+      <TableContextProvider value={{ size: 'medium', noNativeElements: true, items: [] }}>
         <TableRow>
           <div>Table cell</div>
         </TableRow>
