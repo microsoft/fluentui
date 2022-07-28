@@ -150,8 +150,8 @@ export type DialogTriggerProps = {
   /**
    * Explicitly declare if the trigger is responsible for opening or
    * closing a Dialog visibility state.
-   *
-   * @default 'open'
+   * @default 'open' // if it's outside DialogSurface
+   * @default 'close' // if it's inside DialogSurface
    */
   action?: 'open' | 'close';
   /**
