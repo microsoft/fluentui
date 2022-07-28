@@ -53,8 +53,8 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-  const selectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
-  const setActiveOption = useContextSelector(ComboboxContext, ctx => ctx.setActiveOption);
+  const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
+  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
   const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
 
   // current active option?
