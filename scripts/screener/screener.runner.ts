@@ -81,7 +81,7 @@ async function scheduleScreenerBuild(
 }
 
 async function notifyIntegration(payload: ScreenerProxyPayload) {
-  const res = await fetch(`${environment.screener.proxyUri}/api/ci`, {
+  const res = await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
