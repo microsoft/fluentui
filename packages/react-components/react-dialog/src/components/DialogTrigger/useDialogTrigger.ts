@@ -18,10 +18,9 @@ import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../
  * @param props - props from this instance of DialogTrigger
  */
 export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTriggerState => {
-  const { children, action } = props;
-
   const isInsideSurfaceDialog = useDialogSurfaceContext_unstable();
-  const possibleAction = action ?? isInsideSurfaceDialog ? 'close' : 'open';
+
+  const { children, action = isInsideSurfaceDialog ? 'close' : 'open' } = props;
 
   const child = React.isValidElement(children) ? getTriggerChild<DialogTriggerChildProps>(children) : undefined;
 
@@ -38,7 +37,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
       requestOpenChange({
         event,
         type: 'triggerClick',
-        open: updateOpen(possibleAction),
+        open: updateOpen(action),
       });
     }
   });
@@ -55,7 +54,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
-      'aria-haspopup': (isInsideSurfaceDialog && action !== 'open') || action === 'close' ? undefined : 'dialog',
+      'aria-haspopup': action === 'close' ? undefined : 'dialog',
       ref: child?.ref as React.Ref<never>,
       onClick: handleClick,
       onKeyDown: handleKeyDown,

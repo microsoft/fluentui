@@ -179,7 +179,7 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSX.Element;
+export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
 
 // @public
 export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;
