@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: update spinbutton to stable",
+  "packageName": "@fluentui/react-components",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

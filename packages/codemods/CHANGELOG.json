@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Mon, 25 Jul 2022 07:36:54 GMT",
+      "tag": "@fluentui/codemods_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 May 2022 07:41:14 GMT",
       "tag": "@fluentui/codemods_v8.4.1",
       "version": "8.4.1",

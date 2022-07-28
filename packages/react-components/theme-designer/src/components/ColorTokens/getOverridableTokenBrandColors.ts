@@ -59,7 +59,7 @@ export const getOverridableTokenBrandColors = (theme: Theme, brand: BrandVariant
   const brandColors: ColorOverrideBrands = {};
   for (let i = 0; i < sortedOverrideableColorTokens.length; i++) {
     const key = sortedOverrideableColorTokens[i];
-    const themeColor = ((theme as unknown) as Record<string, string>)[key];
+    const themeColor = ((theme as unknown) as Record<string, string>)[key].toUpperCase();
     brandColors[key] = hexColorToBrand[themeColor];
   }
 

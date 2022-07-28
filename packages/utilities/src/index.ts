@@ -127,9 +127,10 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   initializeFocusRects,
 } from './initializeFocusRects';
-export { FocusRects, useFocusRects } from './useFocusRects';
+export { FocusRects, FocusRectsContext, FocusRectsProvider, useFocusRects } from './useFocusRects';
+export type { IFocusRectsContext } from './useFocusRects';
 export { getInitials } from './initials';
-export { addDirectionalKeyCode, isDirectionalKeyCode } from './keyboard';
+export { addDirectionalKeyCode, isDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 export {
   getLanguage,
   // eslint-disable-next-line deprecation/deprecation

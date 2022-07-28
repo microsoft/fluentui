@@ -2,6 +2,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)'],
+  staticDirs: ['../public'],
   core: {
     builder: 'webpack4',
   },
