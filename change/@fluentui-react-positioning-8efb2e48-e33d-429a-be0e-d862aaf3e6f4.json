@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: re-generate api.md files",
+  "packageName": "@fluentui/react-positioning",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
