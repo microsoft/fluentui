@@ -1,8 +1,17 @@
 # Change Log - a11y-tests
 
-This log was last generated on Wed, 27 Jul 2022 12:27:44 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jul 2022 12:21:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
+
+Thu, 28 Jul 2022 12:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/a11y-tests_v7.0.0..a11y-tests_v7.0.0)
+
+### Patches
+
+- Bump @uifabric/fabric-website-resources to v7.10.15 ([PR #24099](https://github.com/microsoft/fluentui/pull/24099) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
 
 ## [7.0.0](https://github.com/microsoft/fluentui/tree/a11y-tests_v7.0.0)
 

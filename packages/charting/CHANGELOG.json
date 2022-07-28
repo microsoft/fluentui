@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 28 Jul 2022 12:21:16 GMT",
+      "tag": "@uifabric/charting_v4.21.7",
+      "version": "4.21.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed legends not accessible in browse mode",
+            "author": "103020020+AnnapareddyHarsha@users.noreply.github.com",
+            "commit": "7b0bd7a3b2c3047776cc68e1f4bd57ce7df04ceb",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jul 2022 12:27:44 GMT",
       "tag": "@uifabric/charting_v4.21.6",
       "version": "4.21.6",

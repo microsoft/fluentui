@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 27 Jul 2022 12:27:44 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jul 2022 12:21:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.21.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.7)
+
+Thu, 28 Jul 2022 12:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.6..@uifabric/charting_v4.21.7)
+
+### Patches
+
+- fixed legends not accessible in browse mode ([PR #24099](https://github.com/microsoft/fluentui/pull/24099) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
 
 ## [4.21.6](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.6)
 
