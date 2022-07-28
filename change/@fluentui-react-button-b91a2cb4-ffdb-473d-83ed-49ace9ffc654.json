@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Bump Griffel dependencies",
+  "comment": "chore: Bump Griffel dependencies",
   "packageName": "@fluentui/react-button",
   "email": "miroslav.stastny@microsoft.com",
   "dependentChangeType": "patch"

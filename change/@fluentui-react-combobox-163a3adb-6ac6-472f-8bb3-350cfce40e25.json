@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Bump Griffel dependencies",
+  "comment": "chore: Bump Griffel dependencies",
   "packageName": "@fluentui/react-combobox",
   "email": "miroslav.stastny@microsoft.com",
   "dependentChangeType": "patch"
