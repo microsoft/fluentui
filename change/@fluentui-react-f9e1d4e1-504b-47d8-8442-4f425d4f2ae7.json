@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(TagPicker): Remove button focus border now meets required contrast ratio.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
