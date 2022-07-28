@@ -150,12 +150,6 @@ const templates = {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-        dtsRollup: {
-          enabled: true,
-          untrimmedFilePath: '',
-          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
-        },
       },
     };
   },

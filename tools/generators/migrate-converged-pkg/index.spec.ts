@@ -795,11 +795,6 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "dtsRollup": Object {
-            "enabled": true,
-            "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
-            "untrimmedFilePath": "",
-          },
           "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
         }
       `);

@@ -27,18 +27,7 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
   if (isUsingTsSolutionConfigs) {
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
 
-    const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
-
-    const hasNewCompilationSetup = tsConfigOutDir.includes('dist/out-tsc');
-
-    if (hasNewCompilationSetup) {
-      options.outDir = `${tsConfigOutDir}/${options.outDir}`;
-    } else {
-      // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
-      options.baseUrl = '.';
-      options.rootDir = './src';
-    }
-
+    options.outDir = `${tsConfig.compilerOptions.outDir}/${options.outDir}`;
     options.project = tsConfigFile;
   }
 
