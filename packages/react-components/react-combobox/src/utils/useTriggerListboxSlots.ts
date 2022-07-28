@@ -122,14 +122,14 @@ export function useTriggerListboxSlots(
         setOpen(event, false);
         break;
       case 'CloseSelect':
-        !multiselect && setOpen(event, false);
+        !multiselect && !activeOption?.disabled && setOpen(event, false);
       // fallthrough
       case 'Select':
-        activeOption && selectOption(event, activeOption.value);
+        activeOption && selectOption(event, activeOption);
         event.preventDefault();
         break;
       case 'Tab':
-        activeOption && selectOption(event, activeOption.value);
+        activeOption && selectOption(event, activeOption);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);
