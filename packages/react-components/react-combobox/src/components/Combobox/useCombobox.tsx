@@ -55,11 +55,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   // set active option and selection based on typing
-  const getOptionFromInput = (inputValue: string): OptionValue | null => {
+  const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
     const searchString = getSearchString(inputValue);
 
     if (searchString.length === 0) {
-      return null;
+      return;
     }
 
     const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString) === 0;
@@ -72,7 +72,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       return nextMatch ?? matches[0];
     }
 
-    return matches[0] ?? null;
+    return matches[0] ?? undefined;
   };
 
   /* Handle typed input */

@@ -44,7 +44,9 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    hasFocus: boolean;
+};
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
