@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Making Fabric component an element to which to attach focus rects classnames and event listeners.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
