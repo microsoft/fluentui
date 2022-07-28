@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-theme';
-import type { ShadowTokens } from '@fluentui/react-theme';
+import { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme } from '@fluentui/react-components';
+import type { ShadowTokens } from '@fluentui/react-components';
 
 // FIXME: hardcoded theme
 const theme = {

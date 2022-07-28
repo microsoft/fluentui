@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '@fluentui/react-link';
+import { Link } from '@fluentui/react-components';
 
 export const AsButton = () => <Link>Render as a button</Link>;
 

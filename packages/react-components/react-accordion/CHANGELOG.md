@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Tue, 28 Jun 2022 17:39:46 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.3)
+
+Thu, 14 Jul 2022 21:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.2..@fluentui/react-accordion_v9.0.3)
+
+### Patches
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-tabster to v9.0.3 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.2)
+
+Thu, 14 Jul 2022 17:06:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.1..@fluentui/react-accordion_v9.0.2)
+
+### Patches
+
+- chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- Bump @fluentui/react-aria to v9.0.1 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-context-selector to v9.0.1 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-tabster to v9.0.2 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.1)
 

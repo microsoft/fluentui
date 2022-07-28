@@ -1,30 +1,53 @@
 import * as React from 'react';
 import type { ThemeDesignerProps } from './ThemeDesigner.types';
-import { useStyles } from './ThemeDesigner.styles';
-import { useThemeDesignerReducer } from './useThemeDesignerReducer';
-import { teamsLightTheme, FluentProvider } from '@fluentui/react-components';
-
+import { useStaticStyles, useStyles } from './ThemeDesigner.styles';
+import { AppState, DispatchTheme, initialAppState, useThemeDesignerReducer } from './useThemeDesignerReducer';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
+import { createContext } from '@fluentui/react-context-selector';
 import { Nav } from './components/Nav/Nav';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Content } from './components/Content/Content';
+
+export type AppContextValue = {
+  appState: AppState;
+  dispatchAppState: React.Dispatch<DispatchTheme>;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+};
+
+// eslint-disable-next-line @fluentui/no-context-default-value
+export const AppContext = createContext<AppContextValue>({
+  appState: initialAppState,
+  dispatchAppState: () => null,
+  name: 'Untitled',
+  setName: () => null,
+});
 
 /**
  * ThemeDesigner component - TODO: add more docs
  */
 export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   const styles = useStyles();
+  useStaticStyles();
 
   const [appState, dispatchAppState] = useThemeDesignerReducer();
+  const [name, setName] = React.useState<string>('myTheme');
 
-  const { brand, isDark, overrides } = appState;
+  const { darkOverrides, isDark, lightOverrides, theme } = appState;
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
 
   return (
-    <FluentProvider theme={teamsLightTheme}>
-      <div className={styles.root}>
-        <Nav className={styles.nav} brand={brand} isDark={isDark} overrides={overrides} />
-        <Sidebar className={styles.sidebar} dispatchAppState={dispatchAppState} />
-        <Content className={styles.content} appState={appState} dispatchAppState={dispatchAppState} />
-      </div>
+    <FluentProvider theme={webLightTheme}>
+      <AppContext.Provider value={{ appState, dispatchAppState, name, setName }}>
+        <div className={styles.root}>
+          <Nav className={styles.nav} />
+          <Sidebar className={styles.sidebar} />
+          <FluentProvider theme={overridenTheme}>
+            <Content className={styles.content} />
+          </FluentProvider>
+        </div>
+      </AppContext.Provider>
     </FluentProvider>
   );
 };

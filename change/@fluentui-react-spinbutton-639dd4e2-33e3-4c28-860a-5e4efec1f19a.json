@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: decrease number of react renders",
-  "packageName": "@fluentui/react-spinbutton",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

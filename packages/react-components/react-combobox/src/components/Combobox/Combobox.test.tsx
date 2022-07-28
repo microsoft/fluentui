@@ -9,8 +9,6 @@ describe('Combobox', () => {
     Component: Combobox,
     displayName: 'Combobox',
     primarySlot: 'input',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

@@ -14,8 +14,8 @@ import {
   useIsOverflowItemVisible,
   useIsOverflowGroupVisible,
 } from '@fluentui/react-overflow';
-import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem, MenuItemProps, MenuDivider } from '@fluentui/react-menu';
-import { Button } from '@fluentui/react-button';
+import { Button, Menu, MenuDivider, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
+import type { MenuItemProps } from '@fluentui/react-components';
 
 export interface ToolbarOverflowMenuItemProps extends Omit<MenuItemProps, 'id'> {
   id: string;

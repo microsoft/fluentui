@@ -2,6 +2,21 @@
   "name": "@fluentui/react-window-provider",
   "entries": [
     {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/react-window-provider_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-window-provider",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 May 2022 07:45:35 GMT",
       "tag": "@fluentui/react-window-provider_v2.2.1",
       "version": "2.2.1",

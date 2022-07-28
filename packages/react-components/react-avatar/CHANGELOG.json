@@ -2,6 +2,146 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 21:21:08 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:13 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "157355880d28bb1d72726c96a6395be0a99950f3",
+            "comment": "chore: Adding unit tests for AvatarGroup. "
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "dad21ca4232d5ef93e166e6f5c6f786d131abe3b",
+            "comment": "docs: Adding readme and migration guide for AvatarGroup."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "422636fffd66758c1a6dd617063582d902b61927",
+            "comment": "docs: README and Avatar spec cleanup."
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42",
+            "comment": "chore: Update @fluentui/react-icons dependency to v2.0.175"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "7a1737f0db893a5c623c30d81745f8e41c9ef79b",
+            "comment": "fix: Remove override of role=list in AvatarGroup's PopoverSurface and fix trapFocus when Popover is triggered."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "e1b98936707f64ff4088ceba4577f76085001687",
+            "comment": "fix: Fixing focus indicator for pie layouts."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-badge to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.1",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-popover to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tabster to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-tooltip to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-avatar",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:46 GMT",
       "tag": "@fluentui/react-avatar_v9.0.1",
       "version": "9.0.1",

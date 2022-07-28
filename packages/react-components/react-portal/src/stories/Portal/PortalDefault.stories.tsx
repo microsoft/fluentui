@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 import { Portal } from '@fluentui/react-portal';
 

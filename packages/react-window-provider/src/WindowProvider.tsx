@@ -13,6 +13,7 @@ export type WindowProviderProps = {
 /**
  * Context for providing the window.
  */
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const WindowContext = React.createContext<WindowProviderProps>({
   window: typeof window === 'object' ? window : undefined,
 });

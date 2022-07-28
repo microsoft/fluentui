@@ -70,6 +70,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within::after': {
       // Animation for focus IN
@@ -77,6 +82,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
@@ -130,9 +140,12 @@ const useTextareaStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     ...shorthands.margin('0'),
     backgroundColor: 'transparent',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
     fontFamily: tokens.fontFamilyBase,
+    height: '100%',
+    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,

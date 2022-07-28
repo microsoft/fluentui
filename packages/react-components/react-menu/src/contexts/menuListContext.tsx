@@ -4,6 +4,7 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { SelectableHandler } from '../selectable/index';
 import type { MenuListProps } from '../components/index';
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue>({
   checkedValues: {},
   onCheckedValueChange: () => null,

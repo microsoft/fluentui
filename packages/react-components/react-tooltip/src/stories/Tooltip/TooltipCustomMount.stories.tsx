@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Tooltip } from '@fluentui/react-tooltip';
-import type { TooltipProps } from '@fluentui/react-tooltip';
-import { Button } from '@fluentui/react-button';
+import { Button, Tooltip } from '@fluentui/react-components';
 import { SlideTextRegular } from '@fluentui/react-icons';
+import type { TooltipProps } from '@fluentui/react-components';
 
 export const CustomMount = (props: Partial<TooltipProps>) => {
   const [ref, setRef] = React.useState<HTMLElement | null>();

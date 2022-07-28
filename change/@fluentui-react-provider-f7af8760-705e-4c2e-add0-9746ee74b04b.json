@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Move to useLayoutEffect or useInsertionEffect for Theme Provider theme insertion.",
+  "packageName": "@fluentui/react-provider",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

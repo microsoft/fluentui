@@ -1,20 +1,15 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { ColorTokensList } from './ColorTokensList';
-import { Button, Caption1 } from '@fluentui/react-components';
-import { Brands, BrandVariants, teamsLightTheme } from '@fluentui/react-theme';
-import { OverridableTokenBrandColors } from './OverridableTokenBrandColors';
-import { brandTeams } from '../../utils/brandColors';
-import type { DispatchTheme } from '../../useThemeDesignerReducer';
+import { makeStyles, webDarkTheme, webLightTheme, Button, Caption1 } from '@fluentui/react-components';
+import type { Brands } from '@fluentui/react-theme';
+import { getOverridableTokenBrandColors } from './getOverridableTokenBrandColors';
 import { themeNames } from '../../utils/themeList';
+import { AccessibilityList } from './AccessibilityList';
+import { AppContext } from '../../ThemeDesigner';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { brandWeb } from '../../utils/brandColors';
 
-export interface ColorTokensProps {
-  className?: string;
-  brand: BrandVariants;
-  themeLabel: string;
-  dispatchAppState: React.Dispatch<DispatchTheme>;
-}
+export interface ColorTokensProps {}
 
 export type ColorOverrideBrands = Record<string, Brands>;
 
@@ -36,17 +31,29 @@ const useStyles = makeStyles({
   root: {},
   row: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr .5fr',
+    gridTemplateColumns: '15px 1fr 1fr 1fr .5fr',
     alignItems: 'center',
+  },
+  col: {
+    gridColumnStart: '2',
   },
 });
 
-const brandColors: ColorOverrideBrands = OverridableTokenBrandColors(teamsLightTheme, brandTeams);
+const lightBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(webLightTheme, brandWeb);
+const darkBrandColors: ColorOverrideBrands = getOverridableTokenBrandColors(webDarkTheme, brandWeb);
 
 export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
   const styles = useStyles();
 
-  const { brand, themeLabel, dispatchAppState } = props;
+  const appState = useContextSelector(AppContext, ctx => ctx.appState);
+  const { brand, darkOverrides, isDark, lightOverrides, theme, themeName } = appState;
+  const dispatchAppState = useContextSelector(AppContext, ctx => ctx.dispatchAppState);
+  const brandColors = isDark ? darkBrandColors : lightBrandColors;
+
+  const overrides = isDark ? darkOverrides : lightOverrides;
+  const overridenTheme = { ...theme, ...overrides };
+
+  const themeLabel = themeName + (isDark ? 'Dark' : 'Light');
 
   const colorOverrideReducer: (
     state: ColorOverrides,
@@ -64,7 +71,7 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
       case 'Reset Overrides':
         return { ...state, [themeLabel]: {} };
       case 'Reset Custom Overrides':
-        return { ...state, customLight: {}, customDark: {} };
+        return { ...state, [themeName + 'Light']: {}, [themeName + 'Dark']: {} };
       default:
         return state;
     }
@@ -82,21 +89,35 @@ export const ColorTokens: React.FunctionComponent<ColorTokensProps> = props => {
     dispatchColorOverride({ type: 'Reset Overrides' });
   };
 
+  React.useEffect(() => {
+    // if app state overrides are reset (no entries), we want to reset local overrides if they exist
+    if (
+      (Object.keys(colorOverride[themeName + 'Light']).length > 0 ||
+        Object.keys(colorOverride[themeName + 'Dark']).length > 0) &&
+      Object.keys(appState.lightOverrides).length === 0 &&
+      Object.keys(appState.darkOverrides).length === 0
+    ) {
+      dispatchAppState({ type: 'Override' });
+      dispatchColorOverride({ type: 'Reset Custom Overrides' });
+    }
+  }, [appState]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <div className={props.className}>
+    <div className={styles.root}>
       <div className={styles.row}>
-        <Caption1>Color tokens</Caption1>
+        <Caption1 className={styles.col}>Color tokens</Caption1>
         <Caption1>Assigned values</Caption1>
         <Caption1>Usage examples</Caption1>
         <Button size="small" onClick={handleResetClick}>
           Reset Customizations
         </Button>
       </div>
-      <ColorTokensList
+      <AccessibilityList
         brand={brand}
         brandColors={brandColors}
         colorOverride={getCurrentOverride(themeLabel, colorOverride)}
         onNewOverride={onNewOverride}
+        theme={overridenTheme}
       />
     </div>
   );
