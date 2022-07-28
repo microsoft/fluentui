@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
@@ -160,6 +160,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _colorFillBars: IColorFillBarsProps[];
   private _colorFillBarsOpacity: number;
   private _tooltipId: string;
+  private _rectId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -188,6 +189,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
+    this._rectId = getId('containingRect');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -277,6 +279,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
+                />
+                <rect
+                  id={this._rectId}
+                  width={props.containerWidth}
+                  height={props.containerHeight}
+                  fill={'transparent'}
                 />
                 <g>
                   {this._renderedColorFillBars}
@@ -605,8 +613,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               stroke={lineColor}
               strokeWidth={strokeWidth}
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
-              onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
-              onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
+              onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, lineId)}
+              onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, lineId)}
               onMouseOut={this._handleMouseOut}
               onClick={this._onLineClick.bind(this, this._points[i].onLineClick)}
               opacity={1}
@@ -642,8 +650,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             strokeWidth={DEFAULT_LINE_STROKE_SIZE}
             stroke={lineColor}
             visibility={isPointHighlighted ? 'visibility' : 'hidden'}
-            onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
-            onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight)}
+            onMouseMove={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, lineId)}
+            onMouseOver={this._onMouseOverLargeDataset.bind(this, i, verticaLineHeight, lineId)}
             onMouseOut={this._handleMouseOut}
           />,
         );
@@ -961,6 +969,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _onMouseOverLargeDataset = (
     linenumber: number,
     lineHeight: number,
+    lineId: string,
     mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
   ) => {
     // Run this code for different scenarios. For data and numeric data. Try to satisfy undefined d0/d1 scenario.
@@ -969,7 +978,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { lineChartData } = data;
 
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisScale.invert(mouseEvent.pageX - 15); //Todo - fix this
+    const xOffset = this._xAxisScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
+    //const xOffset = this._xAxisScale.invert(mouseEvent.pageX - 15); //Todo - fix this
     const i = bisect(lineChartData![linenumber].data, xOffset);
     const d0 = lineChartData![linenumber].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![linenumber].data[i] as ILineChartDataPoint;
