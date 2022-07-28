@@ -200,10 +200,32 @@ export function hello(): void {}
 export declare function hello(): void;
 ```
 
+### Summary
+
+Access modifiers introduced in this document will create following package API patterns:
+
+```mermaid
+graph TD
+A["@alpha,@beta"] -- access from path --> U["@fluentui/pacakge-name/unstable"]
+B["@public"] -- access from path --> S["@fluentui/pacakge-name"]
+C["@internal"] -- access from path --> E((X))
+```
+
+- enforce us to not expose public/beta/internal by accident as part of public API
+- guard us from exposing public/beta shipped from package `/unstable` api to be shipped in consuming package as `stable` API
+
+### Future work:
+
+To follow all release stage types we should support also `@rc` annotation for "release candidate".
+
+Even better, to simplify differentiation between `stable` and `unstable` we would like to introduce `@unstable` annotation that would replace `@alpha`/`@beta`/`@rc` as from API access perspective there isn't any native JS tooling yet that would notify all consumers that they are using alpha/beta/rc APIs. For that reason we will go with `unstable` subpath and `@unstable` annotation for better tooling automation within our codebase.
+
 ### Open questions:
 
 - should we keep `_unstable` suffix for identifiers ?
+  - yes
 - should we prefix `@internal` apis with `_` ? (problematic with react hooks)
+  - not at this time. we might bring this up in the future with potential suffix which would work for react hooks as well.
 
 ### Pros and Cons
 
