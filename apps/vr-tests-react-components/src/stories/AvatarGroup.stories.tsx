@@ -44,18 +44,20 @@ const names = [
 
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
+const inlineAvatars = 4;
+
 const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupOverflowProps['overflowIndicator'] }
 > = props => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
       {sizes.map(size => (
         <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
-          {names.slice(0, 5).map(name => (
+          {names.slice(-inlineAvatars).map(name => (
             <AvatarGroupItem key={'inline' + name} name={name} />
           ))}
           <AvatarGroupOverflow overflowIndicator={props.overflowIndicator}>
-            {names.map(name => (
+            {names.slice(0, -inlineAvatars).map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
           </AvatarGroupOverflow>
@@ -96,11 +98,11 @@ storiesOf('AvatarGroup Converged', module)
     'overflowContent',
     () => (
       <AvatarGroup>
-        {names.slice(0, 5).map(name => (
+        {names.slice(-inlineAvatars).map(name => (
           <AvatarGroupItem key={'inline' + name} name={name} />
         ))}
         <AvatarGroupOverflow overflowButton={{ id: 'show-overflow' }}>
-          {names.map(name => (
+          {names.slice(0, -inlineAvatars).map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
         </AvatarGroupOverflow>
