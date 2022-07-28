@@ -1,6 +1,11 @@
-name: Screeners workflow
+name: Screeners run
 
-on: workflow_dispatch
+on:
+  workflow_run:
+    workflows:
+      - Screener build
+    types:
+      - completed
 
 env:
   AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
