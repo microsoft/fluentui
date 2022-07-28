@@ -1,4 +1,4 @@
-name: Screeners run
+name: Screener run
 
 on:
   workflow_run:
