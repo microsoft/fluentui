@@ -24,13 +24,9 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';
 
-// Warning: (ae-internal-missing-underscore) The name "useARIAButtonProps" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
-// Warning: (ae-internal-missing-underscore) The name "useARIAButtonShorthand" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
