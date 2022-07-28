@@ -187,7 +187,7 @@ export interface ChatMessageProps
   failed?: boolean;
 
   /** Label that describes message importance. */
-  importantLabel?: React.ReactNode;
+  importanceLabel?: React.ReactNode;
 
   /** Additional label slot for message importance, scheduled messages, etc. */
   infoLabel?: React.ReactNode;
@@ -298,7 +298,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     variables,
     v2,
     infoLabel,
-    importantLabel,
+    importanceLabel,
     customizeBubbleElement,
     timestampTooltip,
     bubbleInset,
@@ -610,7 +610,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
           <>
             {authorElement}
             {infoLabel}
-            {importantLabel}
+            {importanceLabel}
             {detailsElement}
           </>
         ),
@@ -793,7 +793,7 @@ ChatMessage.propTypes = {
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
   failed: PropTypes.bool,
-  importantLabel: PropTypes.node,
+  importanceLabel: PropTypes.node,
   headerContent: PropTypes.node,
   infoLabel: PropTypes.node,
   customizeBubbleElement: PropTypes.func,
