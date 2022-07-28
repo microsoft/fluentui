@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
-import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import { useDialogContext_unstable } from '../../contexts';
+import { isEscapeKeyDismiss } from '../../utils';
 
 /**
  * Create the state required to render DialogSurface.
@@ -40,6 +40,8 @@ export const useDialogSurface_unstable = (
     },
     root: getNativeElementProps(as, {
       ref: useMergedRefs(ref, contentRef),
+      'aria-modal': modalType !== 'non-modal',
+      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
       ...props,
       ...modalAttributes,
       onKeyDown: handleRootKeyDown,
