@@ -8,10 +8,10 @@ on:
       - completed
 
 env:
-  AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING}}
+  AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
 jobs:
-  ScreenerNorthStar:
+  screener-react-northstar:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react-northstar
@@ -54,7 +54,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 
@@ -70,7 +70,7 @@ jobs:
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
-  Screener:
+  screener-react:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react
@@ -112,7 +112,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 
@@ -128,7 +128,7 @@ jobs:
           SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
           SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
 
-  ScreenerVNext:
+  screener-react-components:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react-components
@@ -171,7 +171,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 

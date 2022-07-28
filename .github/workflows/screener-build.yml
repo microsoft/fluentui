@@ -3,7 +3,7 @@ name: Screener build
 on: workflow_dispatch
 
 jobs:
-  EnvironmentUpload:
+  environment-upload:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir artifacts
@@ -73,7 +73,7 @@ jobs:
           name: env-artifact
           path: artifacts/environment
 
-  ScreenerNorthStar:
+  screener-react-northstar:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react-northstar
@@ -93,7 +93,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 
@@ -107,7 +107,7 @@ jobs:
           name: northstar-artifact
           path: packages/fluentui/docs/dist
 
-  Screener:
+  screener-react:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react
@@ -127,7 +127,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 
@@ -139,7 +139,7 @@ jobs:
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
 
-  ScreenerVNext:
+  screener-react-components:
     runs-on: 'ubuntu-latest'
 
     name: Screener @fluentui/react-components
@@ -159,7 +159,7 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn
+      - name: yarn (install packages)
         run: ./yarn-ci.sh
         shell: bash
 

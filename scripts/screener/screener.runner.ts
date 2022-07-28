@@ -81,14 +81,14 @@ async function scheduleScreenerBuild(
 }
 
 async function notifyIntegration(payload: ScreenerProxyPayload) {
-  const res = await fetch(environment.screener.proxyUri, {
+  const fetchResponse = await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
 
-  if (res.status !== 200) {
-    throw new Error(`Notify integration failed: ${res.status}`);
+  if (fetchResponse.status !== 200) {
+    throw new Error(`Notify integration failed: ${fetchResponse.status}`);
   }
 }
 
