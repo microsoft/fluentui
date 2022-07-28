@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: update DetailsRow and GroupHeader to only expose treegrid semantics when used within GroupedList",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

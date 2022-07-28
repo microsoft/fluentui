@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 28 Jul 2022 07:41:17 GMT",
+      "tag": "@fluentui/react_v8.85.1",
+      "version": "8.85.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "66eae9024cd995473c52c08e460963df2cdd39d6",
+            "comment": "feat: Making Fabric component an element to which to attach focus rects classnames and event listeners."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.3",
+            "commit": "d02dcc168ab47640fa503b05a142c9b32f555c3f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jul 2022 07:37:42 GMT",
       "tag": "@fluentui/react_v8.85.0",
       "version": "8.85.0",

@@ -272,6 +272,22 @@ describe('Dropdown', () => {
     expect(getByRole('combobox').textContent).toEqual('Green');
   });
 
+  it('does not select a disabled option with the keyboard', () => {
+    const { getByTestId, getByRole } = render(
+      <Dropdown open data-testid="combobox">
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.keyDown(combobox, { key: ' ' });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
+  });
+
   it('selects an option when tabbing away from an open combobox', () => {
     const { getByTestId, getByRole } = render(
       <Dropdown defaultOpen data-testid="combobox">

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, IStackTokens, ThemeProvider } from '@fluentui/react';
+import { Stack, IStackTokens } from '@fluentui/react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
@@ -15,92 +15,10 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
   const { disabled, checked } = props;
 
   return (
-    <>
-      <ThemeProvider>
-        <Stack horizontal tokens={stackTokens}>
-          <DefaultButton
-            text="Standard"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <PrimaryButton
-            text="Primary"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <DefaultButton
-            text="Standard"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <PrimaryButton
-            text="Primary"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <DefaultButton
-            text="Standard"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <PrimaryButton
-            text="Primary"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <DefaultButton
-            text="Standard"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-          <PrimaryButton
-            text="Primary"
-            onClick={_alertClicked}
-            allowDisabledFocus
-            disabled={disabled}
-            checked={checked}
-          />
-        </Stack>
-      </ThemeProvider>
-      <br />
-      <br />
-      <br />
-      <br />
-      Content outside of Fluent code/components <br />
-      Click inside input box then use an arrow key <br />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-      <input className="test" />
-    </>
+    <Stack horizontal tokens={stackTokens}>
+      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+    </Stack>
   );
 };
 

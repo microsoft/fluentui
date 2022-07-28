@@ -37,7 +37,7 @@
     "@fluentui/react-utilities": "^9.0.2",
     "@fluentui/react-radio": "^9.0.3",
     "@fluentui/react-tabster": "^9.0.3",
-    "@griffel/react": "^1.2.0",
+    "@griffel/react": "^1.2.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

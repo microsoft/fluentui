@@ -12,6 +12,8 @@ export const ExportLink = () => {
   const appState = useContextSelector(AppContext, ctx => ctx.appState);
   const { brand, darkOverrides, lightOverrides } = appState;
 
+  const name = useContextSelector(AppContext, ctx => ctx.name);
+
   const content = dedent`
   import * as React from "react";
   import {
@@ -284,13 +286,13 @@ export const ExportLink = () => {
   import type { BrandVariants, Theme } from '@fluentui/react-components';
   import { Example } from './example';
 
-  const brand: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
+  const ${name}: BrandVariants = { ${objectToString(brand, '\u00A0\u00A0')} };
 
   const lightTheme: Theme = {
-    ...createLightTheme(brand), ${getBrandValues(brand, lightOverrides, '\u00A0\u00A0')} };
+    ...createLightTheme(${name}), ${getBrandValues(brand, lightOverrides, name, '\u00A0\u00A0')} };
 
   const darkTheme: Theme = {
-    ...createDarkTheme(brand), ${getBrandValues(brand, darkOverrides, '\u00A0\u00A0')} };
+    ...createDarkTheme(${name}), ${getBrandValues(brand, darkOverrides, name, '\u00A0\u00A0')} };
 
   ReactDOM.render(
     <Example lightTheme={lightTheme} darkTheme={darkTheme} />,

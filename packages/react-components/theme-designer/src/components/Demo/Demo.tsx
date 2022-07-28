@@ -16,6 +16,7 @@ import {
   RadioGroup,
   Checkbox,
   Avatar,
+  useId,
   Caption2,
 } from '@fluentui/react-components';
 import { Dropdown, Option } from '@fluentui/react-components/unstable';
@@ -121,6 +122,7 @@ export const Column1 = () => {
 
 export const Column2 = () => {
   const styles = useStyles();
+  const dropdownId = useId('dropdown-default');
   return (
     <div className={styles.col2}>
       <TabList defaultSelectedValue="tab1">
@@ -132,7 +134,7 @@ export const Column2 = () => {
         placeholder="Find"
         contentAfter={<Button aria-label="Find" appearance="transparent" icon={<SearchRegular />} size="small" />}
       />
-      <Dropdown placeholder="Select" inlinePopup>
+      <Dropdown aria-labelledby={dropdownId} placeholder="Select" inlinePopup>
         <Option value="Action 1">Action 1</Option>
         <Option value="Action 2">Action 2 </Option>
         <Option value="Action 3">Action 3</Option>
