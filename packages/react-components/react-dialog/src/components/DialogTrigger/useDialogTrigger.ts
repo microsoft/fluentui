@@ -2,12 +2,7 @@ import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
-import {
-  DialogTriggerChildProps,
-  DialogTriggerProps,
-  DialogTriggerState,
-  DialogTriggerAction,
-} from './DialogTrigger.types';
+import { DialogTriggerChildProps, DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { isTargetDisabled } from '../../utils';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 
@@ -37,7 +32,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
       requestOpenChange({
         event,
         type: 'triggerClick',
-        open: updateOpen(action),
+        open: action === 'open',
       });
     }
   });
@@ -62,12 +57,3 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
     }),
   };
 };
-
-function updateOpen(type: DialogTriggerAction): boolean {
-  switch (type) {
-    case 'close':
-      return false;
-    case 'open':
-      return true;
-  }
-}
