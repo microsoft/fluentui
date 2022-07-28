@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 14.18.1
 
-      - name: Download artifact
+      - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
@@ -84,7 +84,7 @@ jobs:
         with:
           node-version: 14.18.1
 
-      - name: Download artifact
+      - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
@@ -142,7 +142,7 @@ jobs:
         with:
           node-version: 14.18.1
 
-      - name: Download artifact
+      - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
