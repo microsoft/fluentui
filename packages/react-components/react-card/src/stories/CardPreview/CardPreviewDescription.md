@@ -1,4 +1,4 @@
-The CardHeader component, used inside of a Card, represents a Fluent UI compliant card header.
+The CardPreview component, used inside of a Card, allows the user to better visualize what the card's contents are.
 
 <!-- Don't allow prettier to collapse code block into single line -->
 <!-- prettier-ignore -->
@@ -6,7 +6,7 @@ The CardHeader component, used inside of a Card, represents a Fluent UI complian
 >
 > ```jsx
 >
-> import { CardHeader } from '@fluentui/react-components/unstable';
+> import { CardPreview } from '@fluentui/react-components/unstable';
 >
 > ```
 >

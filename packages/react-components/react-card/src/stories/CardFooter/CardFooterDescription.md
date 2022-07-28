@@ -1,4 +1,4 @@
-The CardHeader component, used inside of a Card, represents a Fluent UI compliant card header.
+The CardFooter component, used inside of a Card, uses a flex layout to organize actions the user can take with a Card, like sharing the contents or replying to a message.
 
 <!-- Don't allow prettier to collapse code block into single line -->
 <!-- prettier-ignore -->
@@ -6,7 +6,7 @@ The CardHeader component, used inside of a Card, represents a Fluent UI complian
 >
 > ```jsx
 >
-> import { CardHeader } from '@fluentui/react-components/unstable';
+> import { CardFooter } from '@fluentui/react-components/unstable';
 >
 > ```
 >
