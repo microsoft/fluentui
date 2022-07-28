@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { TableBodyProps, TableBodyState } from './TableBody.types';
 import { useTableContext } from '../../contexts/tableContext';
+import { isRenderFunction } from '../../utils';
 
 /**
  * Create the state required to render TableBody.
@@ -13,8 +14,15 @@ import { useTableContext } from '../../contexts/tableContext';
  * @param ref - reference to root HTMLElement of TableBody
  */
 export const useTableBody_unstable = (props: TableBodyProps, ref: React.Ref<HTMLElement>): TableBodyState => {
-  const { noNativeElements } = useTableContext();
+  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
+  const items = useTableContext(ctx => ctx.items);
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'tbody';
+
+  const children = props.children;
+  let childItems: unknown[] | undefined;
+  if (isRenderFunction(children)) {
+    childItems = items.map(item => children(item));
+  }
 
   return {
     components: {
@@ -24,6 +32,7 @@ export const useTableBody_unstable = (props: TableBodyProps, ref: React.Ref<HTML
       ref,
       role: rootComponent === 'div' ? 'rowgroup' : undefined,
       ...props,
+      children: childItems ?? props.children,
     }),
   };
 };

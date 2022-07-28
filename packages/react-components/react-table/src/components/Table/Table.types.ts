@@ -12,9 +12,13 @@ export type TableContextValues = {
 /**
  * Table Props
  */
-export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue>;
+export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
+    items?: unknown[];
+    columns?: unknown[];
+  };
 
 /**
  * State used in rendering Table
  */
-export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'>;
+export type TableState = ComponentState<TableSlots> &
+  Pick<Required<TableProps>, 'size' | 'noNativeElements' | 'items' | 'columns'>;

@@ -8,41 +8,70 @@ import {
   DocumentPdf16Regular as DocumentPdfRegular,
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
-import { TableCell, TableRow, TableBody, Table } from '../../index';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { TableBody, TableCell, TableRow, Table } from '../..';
+
+const items = [
+  {
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    author: { label: 'Max Mustermann', status: 'available' },
+    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdate: {
+      label: 'You edited this',
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
+    author: { label: 'Erika Mustermann', status: 'busy' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Training recording', icon: <VideoRegular /> },
+    author: { label: 'John Doe', status: 'away' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
+    author: { label: 'Jane Doe', status: 'offline' },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdate: {
+      label: 'You shared this in a Teams chat',
+      icon: <PeopleRegular />,
+    },
+  },
+];
 
 export const SizeSmaller = () => {
   return (
-    <Table size="smaller">
+    <Table items={items} size="smaller">
       <TableBody>
-        <TableRow>
-          <TableCell media={<DocumentRegular />}>Meeting notes</TableCell>
-          <TableCell media={<Avatar name="Max Mustermann" badge={{ status: 'available' }} size={20} />}>
-            Max Mustermann
-          </TableCell>
-          <TableCell>7h ago</TableCell>
-          <TableCell media={<EditRegular />}>You edited this</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell media={<FolderRegular />}>Thursday presentation</TableCell>
-          <TableCell media={<Avatar name="Erika Mustermann" badge={{ status: 'away' }} size={20} />}>
-            Erika Mustermann
-          </TableCell>
-          <TableCell>Yesterday at 1:45 PM</TableCell>
-          <TableCell media={<OpenRegular />}>You recently opened this</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell media={<VideoRegular />}>Training recording</TableCell>
-          <TableCell media={<Avatar name="John Doe" badge={{ status: 'away' }} size={20} />}>John Doe</TableCell>
-          <TableCell>Yesterday at 1:45 PM</TableCell>
-          <TableCell media={<OpenRegular />}>You recently opened this</TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell media={<DocumentPdfRegular />}>Purchase order</TableCell>
-          <TableCell media={<Avatar name="Jane Doe" badge={{ status: 'away' }} size={20} />}>Jane Doe</TableCell>
-          <TableCell>Tue at 9:30 AM</TableCell>
-          <TableCell media={<PeopleRegular />}>You shared this in a Teams chat</TableCell>
-        </TableRow>
+        {(item: typeof items[0]) => (
+          <TableRow>
+            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
+            <TableCell
+              media={
+                <Avatar
+                  size={20}
+                  name={item.author.label}
+                  badge={{ status: item.author.status as PresenceBadgeStatus }}
+                />
+              }
+            >
+              {item.author.label}
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+          </TableRow>
+        )}
       </TableBody>
     </Table>
   );

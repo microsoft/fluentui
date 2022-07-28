@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TableBodySlots = {
@@ -7,7 +8,9 @@ export type TableBodySlots = {
 /**
  * TableBody Props
  */
-export type TableBodyProps = ComponentProps<TableBodySlots>;
+export type TableBodyProps = ComponentProps<TableBodySlots> & {
+  children?: React.ReactNode | ((items: unknown) => React.ReactNode);
+};
 
 /**
  * State used in rendering TableBody
