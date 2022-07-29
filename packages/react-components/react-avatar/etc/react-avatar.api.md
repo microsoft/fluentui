@@ -74,7 +74,7 @@ export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSl
 
 // @public
 export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
-    overflowIndicator?: 'count' | 'icon';
+    indicator?: 'count' | 'icon';
     count?: number;
     children: React_2.ReactNode;
 };
@@ -82,14 +82,14 @@ export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOv
 // @public (undocumented)
 export type AvatarGroupOverflowSlots = {
     root: NonNullable<Slot<PopoverProps>>;
-    overflowButton: NonNullable<Slot<'button'>>;
-    overflowContent: NonNullable<Slot<'div'>>;
-    overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    triggerButton: NonNullable<Slot<'button'>>;
+    content: NonNullable<Slot<'div'>>;
+    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    tooltip: NonNullable<Slot<TooltipProps>>;
 };
 
 // @public
-export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'overflowIndicator'>> & {
-    tooltipContent: TooltipProps['content'];
+export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
     isPopoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
@@ -151,6 +151,12 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
     firstInitialOnly?: boolean;
 }): string;
 
+// @public
+export const getPartitionedAvatarGroupItems: (items: JSX.Element[], maxItems?: number) => {
+    inlineItems: JSX.Element[];
+    overflowItems: JSX.Element[];
+};
+
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
@@ -192,12 +198,6 @@ export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarG
 
 // @public (undocumented)
 export const useAvatarStyles_unstable: (state: AvatarState) => AvatarState;
-
-// @public
-export const useOverflowContentStyles: () => Record<"base", string>;
-
-// @public
-export const useOverflowSurfaceStyles: () => Record<"base", string>;
 
 // (No @packageDocumentation comment for this package)
 
