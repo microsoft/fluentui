@@ -12,9 +12,7 @@ const DropdownSpreadPropsFile = 'mDropdownSpreadProps.tsx';
 /* Developer will provide a mapping of Enum Values, if necessary. */
 // TODO it's not ideal that devs need to write the enum name before every token.
 const spinnerMap: ValueMap<string> = {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'SpinnerType.normal': 'SpinnerSize.medium',
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   'SpinnerType.large': 'SpinnerSize.large',
 };
 
