@@ -9,7 +9,7 @@ import {
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table } from '../..';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
 
 const items = [
   {
@@ -50,9 +50,21 @@ const items = [
   },
 ];
 
+const columns = [
+  { columnKey: 'file', label: 'File' },
+  { columnKey: 'author', label: 'Author' },
+  { columnKey: 'lastUpdated', label: 'Last updated' },
+  { columnKey: 'lastUpdate', label: 'Last update' },
+];
+
 export const SizeSmall = () => {
   return (
     <Table noNativeElements size="small">
+      <TableHeader>
+        {columns.map(column => (
+          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+        ))}
+      </TableHeader>
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
