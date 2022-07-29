@@ -35,7 +35,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban export of React context or context selector objects',
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {
@@ -125,7 +124,6 @@ module.exports = createRule({
     }
 
     return {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       ExportNamedDeclaration(exportNamedDeclaration) {
         if (exportNamedDeclaration.declaration?.type === AST_NODE_TYPES.VariableDeclaration) {
           const variableDeclaration = exportNamedDeclaration.declaration;
@@ -143,7 +141,6 @@ module.exports = createRule({
           });
         }
       },
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       ExportSpecifier(exportSpecifier) {
         if (exportSpecifier.exported.name.includes('Context')) {
           checkContextType(exportSpecifier, exportSpecifier.exported.name);

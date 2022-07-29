@@ -31,7 +31,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban importing (or re-exporting) certain identifiers from certain paths or modules.',
-      category: 'Best Practices',
       recommended: false,
     },
     messages: {

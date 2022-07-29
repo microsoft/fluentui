@@ -7,7 +7,7 @@ const createRule = require('../utils/createRule');
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} ClassProperty
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.PropertyDefinition} PropertyDefinition
  * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
  * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} MethodDefinition
  * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} Node
@@ -21,7 +21,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid visibility modifiers on class properties and methods.',
-      category: 'Best Practices',
       // Only used by v0. Omitting visibility modifiers is generally not recommended.
       recommended: false,
     },
@@ -78,16 +77,16 @@ module.exports = createRule({
 
     /**
      * Checks if property has an accessibility modifier.
-     * @param {ClassProperty} classProperty The node representing a ClassProperty.
+     * @param {PropertyDefinition} propertyDefinition The node representing a ClassProperty.
      */
-    function checkPropertyAccessibilityModifier(classProperty) {
+    function checkPropertyAccessibilityModifier(propertyDefinition) {
       const nodeType = 'class property';
 
       if (isTypeScriptFile(context.getFilename())) {
-        const propertyName = util.getNameFromMember(classProperty, sourceCode);
+        const propertyName = util.getNameFromMember(propertyDefinition, sourceCode);
 
-        if (classProperty.accessibility) {
-          reportIssue(nodeType, classProperty, propertyName);
+        if (propertyDefinition.accessibility) {
+          reportIssue(nodeType, propertyDefinition, propertyName);
         }
       }
     }
@@ -122,7 +121,7 @@ module.exports = createRule({
 
     return {
       TSParameterProperty: checkParameterPropertyAccessibilityModifier,
-      ClassProperty: checkPropertyAccessibilityModifier,
+      PropertyDefinition: checkPropertyAccessibilityModifier,
       MethodDefinition: checkMethodAccessibilityModifier,
     };
   },

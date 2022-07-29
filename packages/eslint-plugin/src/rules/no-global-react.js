@@ -8,7 +8,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Prevent accidental references to the global React namespace',
-      category: 'Best Practices',
       recommended: 'error',
     },
     messages: {

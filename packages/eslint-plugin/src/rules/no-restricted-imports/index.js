@@ -3,8 +3,8 @@ const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportClause} ImportClause
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportDeclaration} ImportDeclaration
+ * @typedef {import("@typescript-eslint/types/dist/ts-estree").TSESTree.ImportClause} ImportClause
+ * @typedef {import("@typescript-eslint/types/dist/ts-estree").TSESTree.ImportDeclaration} ImportDeclaration
  *
  * Lookup for insertion point for new imports when moving a restricted import to a preferred import.
  * @typedef {{[preferredPkgName: string] : ImportDeclaration}} FixMap
@@ -25,7 +25,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Restricts imports of certain packages',
-      category: 'Best Practices',
       recommended: false,
     },
     messages: {
@@ -106,7 +105,6 @@ module.exports = createRule({
     }
 
     return {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration: (/** @type {ImportDeclaration} */ imprt) => {
         if (!imprt.source || (imprt.source && imprt.source.type !== AST_NODE_TYPES.Literal)) {
           return;
