@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import {
+  getPartitionedNativeProps,
+  resolveShorthand,
+  useMergedEventCallbacks,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
-import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Combobox.
@@ -74,19 +78,15 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   if (state.expandIcon) {
     const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon;
 
-    state.expandIcon.onMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
+    state.expandIcon.onMouseDown = useMergedEventCallbacks(onIconMouseDown, () => {
       // do not dismiss on blur when clicking the icon
       baseState.ignoreNextBlur.current = true;
+    });
 
-      onIconMouseDown?.(event);
-    };
-
-    state.expandIcon.onClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+    state.expandIcon.onClick = useMergedEventCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
       state.setOpen(event, !state.open);
       triggerRef.current?.focus();
-
-      onIconClick?.(event);
-    };
+    });
   }
 
   return state;
