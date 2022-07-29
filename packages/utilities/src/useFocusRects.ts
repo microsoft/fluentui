@@ -99,14 +99,6 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       onKeyUp = _onKeyUp;
     }
 
-    // If the providerRef from context is defined but the current value is null, then it means that a ref has been
-    // provided to context bu the element it refers to has not been resolved yet. We abort operations here in those
-    // scenarios to ensure that we do not erroneously attach event listeners to the window while we wait for the ref to
-    // resolve.
-    // if (providerRef && providerRef.current === null) {
-    //   return;
-    // }
-
     let count = setMountCounters(el, 1);
     if (count <= 1) {
       el.addEventListener('mousedown', onMouseDown, true);
