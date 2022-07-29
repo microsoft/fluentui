@@ -20,7 +20,7 @@ export const Indicator = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow overflowIndicator="count">
+        <AvatarGroupOverflow indicator="count">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
@@ -33,7 +33,7 @@ export const Indicator = () => {
         <AvatarGroupItem name="Elvia Atkins" />
         <AvatarGroupItem name="Cameron Evans" />
         <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow overflowIndicator="icon">
+        <AvatarGroupOverflow indicator="icon">
           <AvatarGroupItem name="Mona Kane" />
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />

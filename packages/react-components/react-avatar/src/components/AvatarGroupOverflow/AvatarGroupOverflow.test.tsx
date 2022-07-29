@@ -18,8 +18,10 @@ function queryByRoleDialog(result: RenderResult) {
 
 const getOverflowSurfaceElement = (result: RenderResult) => {
   // Overflow button needs to be clicked otherwise overflowContent won't be rendered.
-  result.queryByRole('button')?.click();
-  return queryByRoleDialog(result)!;
+  result.getByRole('button').click();
+  const dialog = queryByRoleDialog(result);
+  expect(dialog).not.toBeNull();
+  return dialog!;
 };
 
 describe('AvatarGroupOverflow', () => {
@@ -38,9 +40,9 @@ describe('AvatarGroupOverflow', () => {
           props: {},
           expectedClassNames: {
             // root shouldn't be expected since the root is a Popover
-            overflowButton: avatarGroupOverflowClassNames.overflowButton,
-            overflowContent: avatarGroupOverflowClassNames.overflowContent,
-            overflowSurface: avatarGroupOverflowClassNames.overflowSurface,
+            overflowButton: avatarGroupOverflowClassNames.triggerButton,
+            overflowContent: avatarGroupOverflowClassNames.content,
+            overflowSurface: avatarGroupOverflowClassNames.popoverSurface,
           },
           getPortalElement: getOverflowSurfaceElement,
         },

@@ -35,8 +35,6 @@ export {
   renderAvatarGroupOverflow_unstable,
   useAvatarGroupOverflowStyles_unstable,
   useAvatarGroupOverflow_unstable,
-  useOverflowContentStyles,
-  useOverflowSurfaceStyles,
 } from './AvatarGroupOverflow';
 export type {
   AvatarGroupOverflowProps,

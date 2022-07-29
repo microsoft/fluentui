@@ -9,19 +9,24 @@ export type AvatarGroupOverflowSlots = {
   root: NonNullable<Slot<PopoverProps>>;
 
   /**
-   * Overflow indicator that triggers the Popover.
+   * Button that triggers the Popover.
    */
-  overflowButton: NonNullable<Slot<'button'>>;
+  triggerButton: NonNullable<Slot<'button'>>;
 
   /**
-   * List that contains the overflow AvatarGroupItems.
+   * List that contains the overflowed AvatarGroupItems.
    */
-  overflowContent: NonNullable<Slot<'div'>>;
+  content: NonNullable<Slot<'div'>>;
 
   /**
-   * PopoverSurface that contains the overflow content.
+   * PopoverSurface that contains the content.
    */
-  overflowSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+
+  /**
+   * Tooltip shown when triggerButton is hovered.
+   */
+  tooltip: NonNullable<Slot<TooltipProps>>;
 };
 
 /**
@@ -29,11 +34,11 @@ export type AvatarGroupOverflowSlots = {
  */
 export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
   /**
-   * Whether the overflow indicator should render an icon instead of the number of overflowed AvatarGroupItems.
-   * Note: The overflowIndicator will default to `icon` when the size is less than 24.
+   * Whether the indicator should render an icon instead of the number of overflowed AvatarGroupItems.
+   * Note: The indicator will default to `icon` when the size is less than 24.
    * @default count
    */
-  overflowIndicator?: 'count' | 'icon';
+  indicator?: 'count' | 'icon';
 
   /**
    * Number of AvatarGroupItems that will be rendered.
@@ -50,12 +55,7 @@ export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOv
  * State used in rendering AvatarGroupOverflow
  */
 export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> &
-  Required<Pick<AvatarGroupOverflowProps, 'overflowIndicator'>> & {
-    /**
-     * Tooltip content for the overflow button.
-     */
-    tooltipContent: TooltipProps['content'];
-
+  Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
     isPopoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;

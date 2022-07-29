@@ -8,15 +8,16 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots> = {
   root: 'fui-AvatarGroupOverflow',
-  overflowButton: 'fui-AvatarGroupOverflow__overflowButton',
-  overflowContent: 'fui-AvatarGroupOverflow__overflowContent',
-  overflowSurface: 'fui-AvatarGroupOverflow__overflowSurface',
+  triggerButton: 'fui-AvatarGroupOverflow__triggerButton',
+  content: 'fui-AvatarGroupOverflow__content',
+  popoverSurface: 'fui-AvatarGroupOverflow__popoverSurface',
+  tooltip: 'fui-AvatarGroupOverflow__tooltip',
 };
 
 /**
- * Styles for the overflowContent slot.
+ * Styles for the content slot.
  */
-export const useOverflowContentStyles = makeStyles({
+const useContentStyles = makeStyles({
   base: {
     maxHeight: '220px',
     minHeight: '80px',
@@ -27,18 +28,18 @@ export const useOverflowContentStyles = makeStyles({
 });
 
 /**
- * Styles for the overflowSurface slot.
+ * Styles for the popoverSurface slot.
  */
-export const useOverflowSurfaceStyles = makeStyles({
+const usePopoverSurfaceStyles = makeStyles({
   base: {
     ...shorthands.padding(0),
   },
 });
 
 /**
- * Styles for the overflow button.
+ * Styles for the triggerButton slot.
  */
-const useOverflowButtonStyles = makeStyles({
+const useTriggerButtonStyles = makeStyles({
   base: {
     display: 'inline-flex',
     position: 'relative',
@@ -108,86 +109,80 @@ const useOverflowButtonStyles = makeStyles({
  * Apply styling to the AvatarGroupOverflow slots based on the state
  */
 export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflowState): AvatarGroupOverflowState => {
-  const { overflowIndicator, size, layout, isPopoverOpen } = state;
+  const { indicator, size, layout, isPopoverOpen } = state;
   const sizeStyles = useSizeStyles();
-  const overflowButtonStyles = useOverflowButtonStyles();
-  const overflowContentStyles = useOverflowContentStyles();
-  const overflowSurfaceStyles = useOverflowSurfaceStyles();
+  const triggerButtonStyles = useTriggerButtonStyles();
+  const contentStyles = useContentStyles();
+  const popoverSurfaceStyles = usePopoverSurfaceStyles();
   const groupChildClassName = useGroupChildClassName(layout, size, true);
 
-  const overflowButtonClasses = [];
+  const triggerButtonClasses = [];
 
   if (size < 36) {
-    overflowButtonClasses.push(overflowButtonStyles.borderThin);
+    triggerButtonClasses.push(triggerButtonStyles.borderThin);
   } else if (size < 56) {
-    overflowButtonClasses.push(overflowButtonStyles.borderThick);
+    triggerButtonClasses.push(triggerButtonStyles.borderThick);
   } else if (size < 72) {
-    overflowButtonClasses.push(overflowButtonStyles.borderThicker);
+    triggerButtonClasses.push(triggerButtonStyles.borderThicker);
   } else {
-    overflowButtonClasses.push(overflowButtonStyles.borderThickest);
+    triggerButtonClasses.push(triggerButtonStyles.borderThickest);
   }
 
-  if (overflowIndicator === 'count') {
+  if (indicator === 'count') {
     if (size <= 24) {
-      overflowButtonClasses.push(overflowButtonStyles.caption2Strong);
+      triggerButtonClasses.push(triggerButtonStyles.caption2Strong);
     } else if (size <= 28) {
-      overflowButtonClasses.push(overflowButtonStyles.caption1Strong);
+      triggerButtonClasses.push(triggerButtonStyles.caption1Strong);
     } else if (size <= 40) {
-      overflowButtonClasses.push(overflowButtonStyles.body1Strong);
+      triggerButtonClasses.push(triggerButtonStyles.body1Strong);
     } else if (size <= 56) {
-      overflowButtonClasses.push(overflowButtonStyles.subtitle2);
+      triggerButtonClasses.push(triggerButtonStyles.subtitle2);
     } else if (size <= 96) {
-      overflowButtonClasses.push(overflowButtonStyles.subtitle1);
+      triggerButtonClasses.push(triggerButtonStyles.subtitle1);
     } else {
-      overflowButtonClasses.push(overflowButtonStyles.title3);
+      triggerButtonClasses.push(triggerButtonStyles.title3);
     }
   } else {
     if (size <= 16) {
-      overflowButtonClasses.push(overflowButtonStyles.icon12);
+      triggerButtonClasses.push(triggerButtonStyles.icon12);
     } else if (size <= 24) {
-      overflowButtonClasses.push(overflowButtonStyles.icon16);
+      triggerButtonClasses.push(triggerButtonStyles.icon16);
     } else if (size <= 40) {
-      overflowButtonClasses.push(overflowButtonStyles.icon20);
+      triggerButtonClasses.push(triggerButtonStyles.icon20);
     } else if (size <= 48) {
-      overflowButtonClasses.push(overflowButtonStyles.icon24);
+      triggerButtonClasses.push(triggerButtonStyles.icon24);
     } else if (size <= 56) {
-      overflowButtonClasses.push(overflowButtonStyles.icon28);
+      triggerButtonClasses.push(triggerButtonStyles.icon28);
     } else if (size <= 72) {
-      overflowButtonClasses.push(overflowButtonStyles.icon32);
+      triggerButtonClasses.push(triggerButtonStyles.icon32);
     } else {
-      overflowButtonClasses.push(overflowButtonStyles.icon48);
+      triggerButtonClasses.push(triggerButtonStyles.icon48);
     }
   }
 
-  if (state.overflowButton) {
-    state.overflowButton.className = mergeClasses(
-      avatarGroupOverflowClassNames.overflowButton,
-      sizeStyles[size],
-      overflowButtonStyles.base,
-      ...overflowButtonClasses,
-      groupChildClassName,
-      overflowButtonStyles.focusIndicator,
-      overflowButtonStyles.states,
-      isPopoverOpen && overflowButtonStyles.selected,
-      state.overflowButton.className,
-    );
-  }
+  state.triggerButton.className = mergeClasses(
+    avatarGroupOverflowClassNames.triggerButton,
+    sizeStyles[size],
+    triggerButtonStyles.base,
+    ...triggerButtonClasses,
+    groupChildClassName,
+    triggerButtonStyles.focusIndicator,
+    triggerButtonStyles.states,
+    isPopoverOpen && triggerButtonStyles.selected,
+    state.triggerButton.className,
+  );
 
-  if (state.overflowContent) {
-    state.overflowContent.className = mergeClasses(
-      avatarGroupOverflowClassNames.overflowContent,
-      overflowContentStyles.base,
-      state.overflowContent.className,
-    );
-  }
+  state.content.className = mergeClasses(
+    avatarGroupOverflowClassNames.content,
+    contentStyles.base,
+    state.content.className,
+  );
 
-  if (state.overflowSurface) {
-    state.overflowSurface.className = mergeClasses(
-      avatarGroupOverflowClassNames.overflowSurface,
-      overflowSurfaceStyles.base,
-      state.overflowSurface.className,
-    );
-  }
+  state.popoverSurface.className = mergeClasses(
+    avatarGroupOverflowClassNames.popoverSurface,
+    popoverSurfaceStyles.base,
+    state.popoverSurface.className,
+  );
 
   return state;
 };

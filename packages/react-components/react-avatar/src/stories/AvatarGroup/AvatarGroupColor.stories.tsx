@@ -8,7 +8,7 @@ export const Color = () => {
       <AvatarGroupItem color="seafoam" name="Elvia Atkins" />
       <AvatarGroupItem color="red" name="Cameron Evans" />
       <AvatarGroupItem color="forest" name="Wanda Howard" />
-      <AvatarGroupOverflow overflowIndicator="count">
+      <AvatarGroupOverflow indicator="count">
         <AvatarGroupItem name="Mona Kane" />
         <AvatarGroupItem name="Allan Munger" />
         <AvatarGroupItem name="Daisy Phillips" />

@@ -6,6 +6,7 @@ import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupOverflowProps, AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
+import { Tooltip } from '@fluentui/react-tooltip';
 
 /**
  * Create the state required to render AvatarGroupOverflow.
@@ -17,40 +18,39 @@ import type { AvatarGroupOverflowProps, AvatarGroupOverflowState } from './Avata
  * @param ref - reference to root HTMLElement of AvatarGroupOverflow
  */
 export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps): AvatarGroupOverflowState => {
-  const groupSize = useContextSelector(AvatarGroupContext, ctx => ctx.size);
+  const size = useContextSelector(AvatarGroupContext, ctx => ctx.size) ?? defaultAvatarGroupSize;
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
   const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-  const size = groupSize ?? defaultAvatarGroupSize;
   const {
-    overflowIndicator = size < 24 ? 'icon' : 'count',
+    indicator = size < 24 ? 'icon' : 'count',
     count = React.Children.count(props.children),
     children,
     ...restOfProps
   } = props;
-  let overflowButtonChildren;
+  let triggerButtonChildren;
 
   const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
     setIsPopoverOpen(data.open);
   };
 
-  if (overflowIndicator === 'icon') {
-    overflowButtonChildren = <MoreHorizontalRegular />;
+  if (indicator === 'icon') {
+    triggerButtonChildren = <MoreHorizontalRegular />;
   } else {
-    overflowButtonChildren = count > 99 ? '99+' : `+${count}`;
+    triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
   }
 
   return {
     isPopoverOpen,
     layout,
-    overflowIndicator,
+    indicator,
     size,
-    tooltipContent: 'View more people.',
 
     components: {
       root: Popover,
-      overflowButton: 'button',
-      overflowContent: 'div',
-      overflowSurface: PopoverSurface,
+      triggerButton: 'button',
+      content: 'div',
+      popoverSurface: PopoverSurface,
+      tooltip: Tooltip,
     },
     root: {
       // Popover expects a child for its children. The children are added in the renderAvatarGroupOverflow.
@@ -60,14 +60,14 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
       trapFocus: true,
       ...restOfProps,
     },
-    overflowButton: resolveShorthand(props.overflowButton, {
+    triggerButton: resolveShorthand(props.triggerButton, {
       required: true,
       defaultProps: {
-        children: overflowButtonChildren,
+        children: triggerButtonChildren,
         type: 'button',
       },
     }),
-    overflowContent: resolveShorthand(props.overflowContent, {
+    content: resolveShorthand(props.content, {
       required: true,
       defaultProps: {
         'aria-label': 'Overflow',
@@ -76,8 +76,15 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
         tabIndex: 0,
       },
     }),
-    overflowSurface: resolveShorthand(props.overflowSurface, {
+    popoverSurface: resolveShorthand(props.popoverSurface, {
       required: true,
+    }),
+    tooltip: resolveShorthand(props.tooltip, {
+      required: true,
+      defaultProps: {
+        content: 'View more people.',
+        relationship: 'label',
+      },
     }),
   };
 };
