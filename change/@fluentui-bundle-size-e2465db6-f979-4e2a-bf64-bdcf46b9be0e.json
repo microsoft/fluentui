@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(bundle-size): Minor eslint cleanup",
+  "packageName": "@fluentui/bundle-size",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
