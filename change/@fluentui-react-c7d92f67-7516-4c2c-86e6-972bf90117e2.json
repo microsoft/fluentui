@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "misc TS fixes for react 18",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
