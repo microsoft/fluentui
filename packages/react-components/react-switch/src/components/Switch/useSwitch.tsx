@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState } from './Switch.types';
 
 /**
@@ -49,7 +49,7 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
     },
     required: true,
   });
-  input.onChange = useMergedEventCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
+  input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
