@@ -1,5 +1,6 @@
 import type { GlobalSharedColors, ColorVariants, Greys, AlphaColors } from '../types';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 export const grey: Record<Greys, string> = {
   '0': '#000000',
   '2': '#050505',
@@ -92,6 +93,7 @@ export const grey14Alpha: Record<AlphaColors, string> = {
   '80': 'rgba(36, 36, 36, 0.8)',
   '90': 'rgba(36, 36, 36, 0.9)',
 };
+/* eslint-enable @typescript-eslint/naming-convention */
 
 export const white = '#ffffff';
 
