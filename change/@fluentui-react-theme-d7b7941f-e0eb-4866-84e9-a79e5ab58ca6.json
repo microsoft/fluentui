@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(react-cheme): Suppress eslint errors for colors",
+  "packageName": "@fluentui/react-theme",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
