@@ -39,6 +39,11 @@ const Types = () => (
       description="A dropdown can be used inline with text."
       examplePath="components/Dropdown/Types/DropdownExampleInline"
     />
+    <ComponentExample
+      title="Freeform"
+      description="A dropdown allows free form input."
+      examplePath="components/Dropdown/Types/DropdownExampleFreeform"
+    />
   </ExampleSection>
 );
 
