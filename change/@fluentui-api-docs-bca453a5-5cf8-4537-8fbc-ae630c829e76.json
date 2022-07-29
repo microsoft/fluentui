@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(api-docs): Suppress false positive from eslint",
+  "packageName": "@fluentui/api-docs",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
