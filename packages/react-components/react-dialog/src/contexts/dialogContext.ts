@@ -3,10 +3,6 @@ import type { Context } from '@fluentui/react-context-selector';
 import type { DialogOpenChangeData, DialogModalType } from '../Dialog';
 import * as React from 'react';
 
-export type DialogRequestOpenChangeData = Omit<DialogOpenChangeData, 'open'> & {
-  open: React.SetStateAction<boolean>;
-};
-
 export type DialogContextValue = {
   /**
    * Reference to trigger element that opened the Dialog
@@ -15,11 +11,13 @@ export type DialogContextValue = {
   triggerRef: React.RefObject<HTMLElement>;
   contentRef: React.RefObject<HTMLElement>;
   modalType: DialogModalType;
+  dialogTitleID?: string;
+  dialogBodyID?: string;
   open: boolean;
   /**
    * Requests dialog main component to update it's internal open state
    */
-  requestOpenChange: (data: DialogRequestOpenChangeData) => void;
+  requestOpenChange: (data: DialogOpenChangeData) => void;
 };
 
 const defaultContextValue: DialogContextValue = {

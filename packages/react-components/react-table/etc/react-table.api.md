@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
@@ -35,6 +36,24 @@ export const tableClassName = "fui-Table";
 
 // @public (undocumented)
 export const tableClassNames: SlotClassNames<TableSlots>;
+
+// @public
+export const TableHeader: ForwardRefComponent<TableHeaderProps>;
+
+// @public
+export const TableHeaderCell: ForwardRefComponent<TableHeaderCellProps>;
+
+// @public (undocumented)
+export const tableHeaderCellClassName = "fui-TableHeaderCell";
+
+// @public (undocumented)
+export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
+
+// @public (undocumented)
+export const tableHeaderClassName = "fui-TableHeader";
+
+// @public (undocumented)
+export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;

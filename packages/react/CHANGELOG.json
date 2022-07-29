@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 29 Jul 2022 07:41:56 GMT",
+      "tag": "@fluentui/react_v8.86.0",
+      "version": "8.86.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e0700217b89d418bbe94fc6b9151770d18c4ef60",
+            "comment": "fix: update DetailsRow and GroupHeader to only expose treegrid semantics when used within GroupedList"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jul 2022 07:41:17 GMT",
       "tag": "@fluentui/react_v8.85.1",
       "version": "8.85.1",

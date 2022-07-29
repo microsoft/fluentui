@@ -9,7 +9,7 @@ export const NonModal = () => {
       <DialogTrigger>
         <Button>Open non-modal dialog</Button>
       </DialogTrigger>
-      <DialogSurface aria-label="label">
+      <DialogSurface>
         <DialogTitle>Non-modal dialog title</DialogTitle>
         <DialogBody>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, explicabo repudiandae impedit doloribus

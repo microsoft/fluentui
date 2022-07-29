@@ -452,6 +452,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -1428,6 +1429,8 @@ export { useImageStyles_unstable }
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
+
+export { useIsomorphicLayoutEffect }
 
 export { useIsSSR }
 

@@ -9,7 +9,7 @@ export const NoFocusableElement = () => {
         <DialogTrigger>
           <Button>Open modal dialog</Button>
         </DialogTrigger>
-        <DialogSurface aria-label="label">
+        <DialogSurface>
           <DialogTitle>Dialog Title</DialogTitle>
           <DialogBody>
             <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
@@ -21,7 +21,7 @@ export const NoFocusableElement = () => {
         <DialogTrigger>
           <Button>Open non-modal dialog</Button>
         </DialogTrigger>
-        <DialogSurface aria-label="label">
+        <DialogSurface>
           <DialogTitle closeButton={null}>Dialog Title</DialogTitle>
           <DialogBody>
             <p>⚠️A Dialog without focusable elements is not recommended!⚠️</p>
