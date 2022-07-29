@@ -6,6 +6,7 @@ import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Combobox.
@@ -25,12 +26,15 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     excludedPropNames: ['children', 'size'],
   });
 
+  const triggerRef = React.useRef<HTMLInputElement>(null);
+
   const triggerShorthand = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
       onChange: () => {
         /* Combobox does not yet support allowFreeForm */
       },
+      ref: useMergedRefs(props.input?.ref, triggerRef),
       type: 'text',
       value: baseState.value,
       ...triggerNativeProps,
@@ -66,6 +70,24 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     }),
     ...baseState,
   };
+
+  if (state.expandIcon) {
+    const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon;
+
+    state.expandIcon.onMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
+      // do not dismiss on blur when clicking the icon
+      baseState.ignoreNextBlur.current = true;
+
+      onIconMouseDown?.(event);
+    };
+
+    state.expandIcon.onClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+      state.setOpen(event, !state.open);
+      triggerRef.current?.focus();
+
+      onIconClick?.(event);
+    };
+  }
 
   return state;
 };
