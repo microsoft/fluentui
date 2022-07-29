@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(merge-styles): eslint suppressions",
+  "packageName": "@fluentui/merge-styles",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
