@@ -56,12 +56,14 @@ export const FocusRectsProvider = FocusRectsContext.Provider;
 /**
  * Initializes the logic which:
  *
- * 1. Subscribes keydown and mousedown events. (It will only do it once per window,
- *    so it's safe to call this method multiple times.)
- * 2. When the user presses directional keyboard keys, adds the 'ms-Fabric--isFocusVisible' classname
- *    to the document body, removes the 'ms-Fabric-isFocusHidden' classname.
- * 3. When the user clicks a mouse button, adds the 'ms-Fabric-isFocusHidden' classname to the
- *    document body, removes the 'ms-Fabric--isFocusVisible' classname.
+ * 1. Subscribes keydown and mousedown events. (It will only do it once for the outmost ThemeProvider/Fabric element in
+ *    a tree or once per window if no such element exists in the tree, so it's safe to call this method multiple times.)
+ * 2. When the user presses directional keyboard keys, adds the 'ms-Fabric--isFocusVisible' classname to the
+ *    ThemeProvider/Fabric element or the document body if no such element exists in the tree, and removes the
+ *    'ms-Fabric-isFocusHidden' classname.
+ * 3. When the user clicks a mouse button, adds the 'ms-Fabric-isFocusHidden' classname to the ThemeProvider/Fabric
+ *    element or the document body if no such element exists in the tree, and removes the 'ms-Fabric--isFocusVisible'
+ *    classname.
  *
  * This logic allows components on the page to conditionally render focus treatments based on
  * the existence of global classnames, which simplifies logic overall.
@@ -96,6 +98,14 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
       onKeyDown = _onKeyDown;
       onKeyUp = _onKeyUp;
     }
+
+    // If the providerRef from context is defined but the current value is null, then it means that a ref has been
+    // provided to context bu the element it refers to has not been resolved yet. We abort operations here in those
+    // scenarios to ensure that we do not erroneously attach event listeners to the window while we wait for the ref to
+    // resolve.
+    // if (providerRef && providerRef.current === null) {
+    //   return;
+    // }
 
     let count = setMountCounters(el, 1);
     if (count <= 1) {
