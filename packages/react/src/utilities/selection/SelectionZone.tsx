@@ -53,6 +53,7 @@ export interface ISelectionZone {
  * {@docCategory Selection}
  */
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+  children?: React.ReactNode;
   /**
    * Reference to the component interface.
    */
