@@ -47,7 +47,7 @@
     "@fluentui/react-tooltip": "^9.0.3",
     "@fluentui/react-utilities": "^9.0.2",
     "@fluentui/scripts": "^1.0.0",
-    "@griffel/react": "^1.2.0",
+    "@griffel/react": "^1.2.3",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "screener-storybook": "0.23.0",

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 27 Jul 2022 07:37:42 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jul 2022 07:41:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.86.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.0)
+
+Fri, 29 Jul 2022 07:41:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.85.1..@fluentui/react_v8.86.0)
+
+### Minor changes
+
+- fix: update DetailsRow and GroupHeader to only expose treegrid semantics when used within GroupedList ([PR #24109](https://github.com/microsoft/fluentui/pull/24109) by sarah.higley@microsoft.com)
+
+## [8.85.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.85.1)
+
+Thu, 28 Jul 2022 07:41:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.85.0..@fluentui/react_v8.85.1)
+
+### Patches
+
+- feat: Making Fabric component an element to which to attach focus rects classnames and event listeners. ([PR #24110](https://github.com/microsoft/fluentui/pull/24110) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-hooks to v8.6.3 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
 
 ## [8.85.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.85.0)
 

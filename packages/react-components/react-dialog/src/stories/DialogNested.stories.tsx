@@ -4,32 +4,30 @@ import { Button } from '@fluentui/react-components';
 
 export const Nested = () => {
   return (
-    <>
-      <Dialog>
-        <DialogTrigger>
-          <Button>Open dialog</Button>
-        </DialogTrigger>
-        <DialogSurface aria-label="label">
-          <DialogTitle>Dialog title</DialogTitle>
-          <DialogActions>
-            <Dialog>
-              <DialogTrigger>
-                <Button appearance="primary">Open inner dialog</Button>
-              </DialogTrigger>
-              <DialogSurface aria-label="label">
-                <DialogTitle>Inner dialog title</DialogTitle>
-                <DialogBody>⚠️ just because you can doesn't mean you should have nested dialogs ⚠️</DialogBody>
-                <DialogActions>
-                  <DialogTrigger action="close">
-                    <Button appearance="primary">Close</Button>
-                  </DialogTrigger>
-                </DialogActions>
-              </DialogSurface>
-            </Dialog>
-          </DialogActions>
-        </DialogSurface>
-      </Dialog>
-    </>
+    <Dialog>
+      <DialogTrigger>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface aria-label="label">
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogActions>
+          <Dialog>
+            <DialogTrigger>
+              <Button appearance="primary">Open inner dialog</Button>
+            </DialogTrigger>
+            <DialogSurface aria-label="label">
+              <DialogTitle>Inner dialog title</DialogTitle>
+              <DialogBody>⚠️ just because you can doesn't mean you should have nested dialogs ⚠️</DialogBody>
+              <DialogActions>
+                <DialogTrigger>
+                  <Button appearance="primary">Close</Button>
+                </DialogTrigger>
+              </DialogActions>
+            </DialogSurface>
+          </Dialog>
+        </DialogActions>
+      </DialogSurface>
+    </Dialog>
   );
 };
 
