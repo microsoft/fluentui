@@ -282,12 +282,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
                 />
-                <rect
-                  id={this._rectId}
-                  width={props.containerWidth}
-                  height={props.containerHeight}
-                  fill={'transparent'}
-                />
+                {this.props.optimizeLargeData ? (
+                  <rect
+                    id={this._rectId}
+                    width={props.containerWidth}
+                    height={props.containerHeight}
+                    fill={'transparent'}
+                  />
+                ) : (
+                  <></>
+                )}
                 <g>
                   {this._renderedColorFillBars}
                   {this.lines}
@@ -642,7 +646,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
         pointsForLine.push(
           <circle
-            id={`${this._staticHighlightCircle}}_${i}`}
+            id={`${this._staticHighlightCircle}_${i}`}
             key={`${this._staticHighlightCircle}_${i}`}
             r={5.5}
             cx={0}
