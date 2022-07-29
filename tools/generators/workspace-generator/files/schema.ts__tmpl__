@@ -1,6 +1,0 @@
-export interface <%= className %>GeneratorSchema {
-  /**
-   * Library name
-   */
-  name: string;
-}
