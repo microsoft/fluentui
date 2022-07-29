@@ -1,8 +1,13 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TableContextValue } from '../../contexts/types';
 
 export type TableSlots = {
   root: Slot<'table', 'div'>;
+};
+
+export type TableContextValue = {
+  size: 'small' | 'smaller' | 'medium';
+
+  noNativeElements: boolean;
 };
 
 export type TableContextValues = {
