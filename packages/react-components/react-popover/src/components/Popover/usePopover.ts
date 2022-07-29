@@ -122,7 +122,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   React.useEffect(() => {
     if (open && positioningRefs.contentRef.current) {
       const firstFocusable =
-        positioningRefs.contentRef.current.tabIndex !== -1
+        positioningRefs.contentRef.current.tabIndex !== undefined
           ? positioningRefs.contentRef.current
           : findFirstFocusable(positioningRefs.contentRef.current);
       firstFocusable?.focus();
