@@ -25,6 +25,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
     },
     root: getNativeElementProps(as, {
       ref,
+      id: useDialogContext_unstable(ctx => ctx.dialogTitleID),
       ...props,
     }),
     closeButton: useARIAButton(closeButton, {

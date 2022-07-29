@@ -9,7 +9,7 @@ export const Default = () => {
         <DialogTrigger>
           <Button>Open dialog</Button>
         </DialogTrigger>
-        <DialogSurface aria-label="label">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
