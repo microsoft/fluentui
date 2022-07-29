@@ -17,7 +17,7 @@ export const useTableHeaderCell_unstable = (
   props: TableHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): TableHeaderCellState => {
-  const { noNativeElements } = useTableContext();
+  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
   return {
