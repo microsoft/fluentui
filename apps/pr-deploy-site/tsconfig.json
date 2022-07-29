@@ -1,8 +1,0 @@
-{
-  "extends": "../../scripts/tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true
-  },
-  "include": ["pr-deploy-site.js", "just.config.ts"]
-}
