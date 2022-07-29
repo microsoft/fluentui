@@ -6,7 +6,6 @@ import {
   getNativeProps,
   getRTL,
   memoizeFunction,
-  useFocusRects,
   Customizer,
   FocusRectsContext,
   FocusRectsProvider,
