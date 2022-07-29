@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
-import { PositioningImperativeRef } from '@fluentui/react-positioning';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import type { PopoverProps, PositioningImperativeRef } from '@fluentui/react-components';
 
 export const ImperativePositionUpdate = () => {
   const [loading, setLoading] = React.useState(true);

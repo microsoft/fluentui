@@ -14,12 +14,25 @@ export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    minHeight: '44px',
     color: tokens.colorNeutralForeground1,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
     },
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStroke2),
+  },
+
+  medium: {
+    minHeight: '44px',
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+  },
+
+  small: {
+    minHeight: '34px',
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
+  },
+
+  smaller: {
+    minHeight: '24px',
+    fontSize: tokens.fontSizeBase200,
   },
 });
 
@@ -28,7 +41,7 @@ const useStyles = makeStyles({
  */
 export const useTableRowStyles_unstable = (state: TableRowState): TableRowState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableRowClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(tableRowClassNames.root, styles.root, styles[state.size], state.root.className);
 
   return state;
 };

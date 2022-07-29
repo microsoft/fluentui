@@ -393,6 +393,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
               ariaColSpan: adjustedColumns.length,
+              ariaLevel: undefined,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
               ariaRowCount: undefined,
@@ -413,6 +414,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
+            ariaLevel: undefined,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
             ariaRowCount: undefined,
@@ -513,6 +515,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         rowWidth,
         useFastIcons,
         role: rowRole,
+        isGridRow: true,
       };
 
       if (!item) {

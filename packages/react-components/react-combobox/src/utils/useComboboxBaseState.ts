@@ -56,7 +56,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     !multiselect && setOpen(event, false);
 
     // handle selection change
-    selectOption(event, option.value);
+    selectOption(event, option);
   };
 
   // update active option based on change in open state

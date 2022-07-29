@@ -1,8 +1,34 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Tue, 26 Jul 2022 07:39:35 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jul 2022 07:41:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Thu, 28 Jul 2022 07:41:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.85.1 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+- Bump @fluentui/azure-themes to v8.4.11 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.11 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+- Bump @fluentui/theme-samples to v8.6.11 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.11 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+
+## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
+
+Wed, 27 Jul 2022 07:37:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.1.41..@fluentui/public-docsite-resources_v8.1.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.85.0 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
+- Bump @fluentui/azure-themes to v8.4.10 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.10 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
+- Bump @fluentui/theme-samples to v8.6.10 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.10 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
 
 ## [8.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.1.41)
 

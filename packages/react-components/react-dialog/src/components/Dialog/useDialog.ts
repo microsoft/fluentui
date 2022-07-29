@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
-import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
-import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
-import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { normalizeDefaultPrevented, isEscapeKeyDismiss } from '../../utils';
+
+import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
 
 /**
  * Create the state required to render Dialog.
@@ -34,26 +32,19 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     },
   });
 
-  const requestOpenChange = useEventCallback((data: DialogRequestOpenChangeData) => {
-    const getNextOpen = normalizeSetStateAction(data.open);
+  const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     const isDefaultPrevented = normalizeDefaultPrevented(data.event);
 
     if (onOpenChange) {
-      onOpenChange(data.event, {
-        type: data.type,
-        open: getNextOpen(open),
-        event: data.event,
-      } as DialogOpenChangeData);
+      onOpenChange(data.event, data);
     }
 
     // if user prevents default then do not change state value
+    // otherwise updates state value and trigger reference to the element that caused the opening
     if (!isDefaultPrevented()) {
-      // updates trigger reference
-      (triggerRef as React.MutableRefObject<HTMLElement | null>).current = isOpening(open, getNextOpen)
-        ? (data.event.currentTarget as HTMLElement)
-        : null;
-      // updates value
-      setOpen(getNextOpen);
+      (triggerRef as React.MutableRefObject<HTMLElement | null>).current =
+        !open && data.open ? (data.event.currentTarget as HTMLElement) : null;
+      setOpen(data.open);
     }
   });
 
@@ -123,13 +114,6 @@ function childrenToTriggerAndContent(
 function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return type === 'modal' && !isDefaultPrevented();
-}
-
-/**
- * Checks if dialog is opening
- */
-function isOpening(current: boolean, next: Extract<React.SetStateAction<boolean>, Function>) {
-  return !current && next(current) === true;
 }
 
 /**

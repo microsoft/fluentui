@@ -8,7 +8,6 @@ import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 describe('MenuGroupHeader', () => {
   isConformant({
     Component: MenuGroupHeader,
-    disabledTests: ['component-has-static-classname-exported'],
     displayName: 'MenuGroupHeader',
   });
 
