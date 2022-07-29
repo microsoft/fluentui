@@ -31,10 +31,10 @@ const names = [
 
 export const Layout = () => {
   const styles = useStyles();
-  const stackAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'stack-' + name} />);
   const spreadAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'spread-' + name} />);
-  const stackPartitionedItems = getPartitionedAvatarGroupItems(stackAvatarGroupItems);
+  const stackAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'stack-' + name} />);
   const spreadPartitionedItems = getPartitionedAvatarGroupItems(spreadAvatarGroupItems);
+  const stackPartitionedItems = getPartitionedAvatarGroupItems(stackAvatarGroupItems);
 
   return (
     <div className={styles.root}>
