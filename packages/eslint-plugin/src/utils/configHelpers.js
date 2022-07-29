@@ -106,6 +106,8 @@ module.exports = {
         format: ['PascalCase'],
         ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
       },
+      // Many false positives when working with React:
+      { selector: 'property', modifiers: ['requiresQuotes'], format: null },
       {
         selector: 'default',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],

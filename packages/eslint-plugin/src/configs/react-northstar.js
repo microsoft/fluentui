@@ -29,6 +29,11 @@ module.exports = {
     // False positive on arg types:
     // https://github.com/typescript-eslint/typescript-eslint/issues/46
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
+    // Many false positives when working with React:
+    '@typescript-eslint/naming-convention': [
+      'error',
+      { selector: 'property', modifiers: ['requiresQuotes'], format: null },
+    ],
 
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],
 
