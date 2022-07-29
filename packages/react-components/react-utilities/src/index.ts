@@ -38,6 +38,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
+  mergeCallbacks,
   shouldPreventDefaultOnKeyDown,
 } from './utils/index';
 
