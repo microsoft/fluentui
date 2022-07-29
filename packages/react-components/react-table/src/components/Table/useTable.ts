@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { TableProps, TableState } from './Table.types';
+import { getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import type { SortDirection, TableContextValue, TableProps, TableState } from './Table.types';
 
 /**
  * Create the state required to render Table.
@@ -13,6 +13,32 @@ import type { TableProps, TableState } from './Table.types';
  */
 export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>): TableState => {
   const rootComponent = props.as ?? props.noNativeElements ? 'div' : 'table';
+  const sortable =
+    !!props.onSortColumnChange ||
+    !!props.sortColumn ||
+    !!props.sortDirection ||
+    !!props.defaultSortColumn ||
+    !!props.defaultSortDirection;
+
+  const [sortState, setSortState] = React.useState<{ sortColumn: string | undefined; sortDirection: SortDirection }>({
+    sortColumn: undefined,
+    sortDirection: 'ascending',
+  });
+
+  const requestSortColumnChange: TableContextValue['requestSortColumnChange'] = useEventCallback((e, columnKey) => {
+    const newState = {
+      sortColumn: columnKey,
+      sortDirection: 'ascending' as SortDirection,
+    };
+    setSortState(s => {
+      if (s.sortColumn === columnKey) {
+        newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
+      }
+
+      props.onSortColumnChange?.(e, newState);
+      return newState;
+    });
+  });
 
   return {
     components: {
@@ -25,5 +51,8 @@ export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>
     }),
     size: props.size ?? 'medium',
     noNativeElements: props.noNativeElements ?? false,
+    sortable,
+    requestSortColumnChange,
+    ...sortState,
   };
 };

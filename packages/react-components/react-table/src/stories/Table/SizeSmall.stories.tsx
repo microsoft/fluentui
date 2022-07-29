@@ -62,7 +62,9 @@ export const SizeSmall = () => {
     <Table noNativeElements size="small">
       <TableHeader>
         {columns.map(column => (
-          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+          <TableHeaderCell columnKey={column.columnKey} key={column.columnKey}>
+            {column.label}
+          </TableHeaderCell>
         ))}
       </TableHeader>
       <TableBody>

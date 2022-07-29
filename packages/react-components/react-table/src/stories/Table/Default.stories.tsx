@@ -62,7 +62,9 @@ export const Default = () => {
     <Table>
       <TableHeader>
         {columns.map(column => (
-          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+          <TableHeaderCell key={column.columnKey} columnKey={column.columnKey}>
+            {column.label}
+          </TableHeaderCell>
         ))}
       </TableHeader>
       <TableBody>

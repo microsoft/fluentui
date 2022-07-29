@@ -7,6 +7,7 @@ export const tableHeaderCellClassName = 'fui-TableHeaderCell';
 export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots> = {
   root: 'fui-TableHeaderCell',
   button: 'fui-TableHeaderCell__button',
+  sortIcon: 'fui-TableHeaderCell__sortIcon',
 };
 
 /**

@@ -57,12 +57,12 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const NonNativeElements = () => {
+export const Sort = () => {
   return (
-    <Table noNativeElements>
+    <Table onSortColumnChange={() => undefined} defaultSortColumn="file">
       <TableHeader>
         {columns.map(column => (
-          <TableHeaderCell columnKey={column.columnKey} key={column.columnKey}>
+          <TableHeaderCell key={column.columnKey} columnKey={column.columnKey}>
             {column.label}
           </TableHeaderCell>
         ))}

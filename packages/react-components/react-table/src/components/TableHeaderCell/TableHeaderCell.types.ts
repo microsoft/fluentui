@@ -4,6 +4,8 @@ import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 export type TableHeaderCellSlots = {
   root: Slot<'th', 'div'>;
 
+  sortIcon: Slot<'span'>;
+
   /**
    * Button handles correct narration and interactions for sorting;
    */
@@ -13,7 +15,12 @@ export type TableHeaderCellSlots = {
 /**
  * TableHeaderCell Props
  */
-export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {};
+export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+  /**
+   * Key that uniquely identifies the column
+   */
+  columnKey: string;
+};
 
 /**
  * State used in rendering TableHeaderCell

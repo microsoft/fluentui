@@ -22,14 +22,16 @@ describe('TableHeaderCell', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TableHeaderCell>Default TableHeaderCell</TableHeaderCell>, { container: tr });
+    const result = render(<TableHeaderCell columnKey="test">Default TableHeaderCell</TableHeaderCell>, {
+      container: tr,
+    });
     expect(result.container).toMatchSnapshot();
   });
 
   it('renders as div if `noNativeElements` is set', () => {
     const { container } = render(
       <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
-        <TableHeaderCell>Cell</TableHeaderCell>
+        <TableHeaderCell columnKey={'test'}>Cell</TableHeaderCell>
       </TableContextProvider>,
     );
     expect(container.firstElementChild?.tagName).toEqual('DIV');

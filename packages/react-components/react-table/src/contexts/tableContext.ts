@@ -6,6 +6,10 @@ const tableContext = createContext<TableContextValue | undefined>(undefined);
 const tableContextDefaultValue: TableContextValue = {
   size: 'medium',
   noNativeElements: false,
+  sortColumn: undefined,
+  sortDirection: 'ascending',
+  sortable: false,
+  requestSortColumnChange: () => undefined,
 };
 
 export const TableContextProvider = tableContext.Provider;
