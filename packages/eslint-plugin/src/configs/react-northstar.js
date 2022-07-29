@@ -156,6 +156,8 @@ module.exports = {
     {
       files: '**/*.{ts,tsx}',
       rules: {
+        '@typescript-eslint/default-param-last': 'error',
+        'default-param-last': 'off', // we use @typescript-eslint/default-param-last instead
         'no-dupe-class-members': 'off',
       },
     },

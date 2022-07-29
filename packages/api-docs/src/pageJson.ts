@@ -12,7 +12,6 @@ const supportedApiItems = [ApiItemKind.Interface, ApiItemKind.Enum, ApiItemKind.
  */
 export function generatePageJson(
   apiModel: ApiModel,
-  // eslint-disable-next-line default-param-last
   pageGroups: PageGroups = {},
   fallbackGroup?: string,
 ): Map<string, IPageJson> {

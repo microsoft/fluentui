@@ -256,6 +256,7 @@ const getOverrides = () => [
     // and manually enable rules that only work on TS
     rules: {
       '@typescript-eslint/ban-ts-comment': 'error',
+      '@typescript-eslint/default-param-last': 'error',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
@@ -292,6 +293,7 @@ const getOverrides = () => [
 
       // permanently disable due to improper TS handling or unnecessary for TS
       // (and not covered by plugin:@typescript-eslint/eslint-recommended)
+      'default-param-last': 'off',
       'no-empty-function': 'off',
       'no-shadow': 'off',
       'no-unused-vars': 'off',

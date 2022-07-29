@@ -60,9 +60,7 @@ export function createGroups(
   groupDepth: number,
   startIndex: number,
   itemsPerGroup: number,
-  // eslint-disable-next-line default-param-last
   level: number = 0,
-  // eslint-disable-next-line default-param-last
   key: string = '',
   isCollapsed?: boolean,
 ): IExampleGroup[] {
