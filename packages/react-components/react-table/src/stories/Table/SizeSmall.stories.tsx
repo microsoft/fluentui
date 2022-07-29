@@ -70,7 +70,13 @@ export const SizeSmall = () => {
           <TableRow key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+              media={
+                <Avatar
+                  size={24}
+                  name={item.author.label}
+                  badge={{ status: item.author.status as PresenceBadgeStatus }}
+                />
+              }
             >
               {item.author.label}
             </TableCell>
