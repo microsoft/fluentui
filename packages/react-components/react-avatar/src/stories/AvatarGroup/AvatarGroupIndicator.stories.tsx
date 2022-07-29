@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow } from '@fluentui/react-avatar';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupOverflow,
+  getPartitionedAvatarGroupItems,
+} from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -10,36 +15,36 @@ const useStyles = makeStyles({
   },
 });
 
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
 export const Indicator = () => {
   const styles = useStyles();
+  const countAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'spread-' + name} />);
+  const iconAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'stack-' + name} />);
+  const countPartitionedItems = getPartitionedAvatarGroupItems(countAvatarGroupItems);
+  const iconPartitionedItems = getPartitionedAvatarGroupItems(iconAvatarGroupItems);
 
   return (
     <div className={styles.root}>
       <AvatarGroup>
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow indicator="count">
-          <AvatarGroupItem name="Mona Kane" />
-          <AvatarGroupItem name="Allan Munger" />
-          <AvatarGroupItem name="Daisy Phillips" />
-          <AvatarGroupItem name="Robert Tolbert" />
-          <AvatarGroupItem name="Kevin Sturgis" />
-        </AvatarGroupOverflow>
+        {countPartitionedItems.inlineItems}
+        <AvatarGroupOverflow indicator="count">{countPartitionedItems.overflowItems}</AvatarGroupOverflow>
       </AvatarGroup>
       <AvatarGroup>
-        <AvatarGroupItem name="Katri Athokas" />
-        <AvatarGroupItem name="Elvia Atkins" />
-        <AvatarGroupItem name="Cameron Evans" />
-        <AvatarGroupItem name="Wanda Howard" />
-        <AvatarGroupOverflow indicator="icon">
-          <AvatarGroupItem name="Mona Kane" />
-          <AvatarGroupItem name="Allan Munger" />
-          <AvatarGroupItem name="Daisy Phillips" />
-          <AvatarGroupItem name="Robert Tolbert" />
-          <AvatarGroupItem name="Kevin Sturgis" />
-        </AvatarGroupOverflow>
+        {iconPartitionedItems.inlineItems}
+        <AvatarGroupOverflow indicator="icon">{iconPartitionedItems.overflowItems}</AvatarGroupOverflow>
       </AvatarGroup>
     </div>
   );

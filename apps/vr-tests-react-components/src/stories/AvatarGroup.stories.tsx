@@ -7,6 +7,7 @@ import {
   AvatarGroupOverflow,
   AvatarGroupOverflowProps,
   AvatarGroupProps,
+  getPartitionedAvatarGroupItems,
 } from '@fluentui/react-avatar';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
@@ -44,23 +45,18 @@ const names = [
 
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
-const inlineAvatars = 4;
-
 const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupOverflowProps['indicator'] }
 > = props => {
+  const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
+  const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(items);
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
       {sizes.map(size => (
         <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
-          {names.slice(-inlineAvatars).map(name => (
-            <AvatarGroupItem key={'inline' + name} name={name} />
-          ))}
-          <AvatarGroupOverflow indicator={props.overflowIndicator}>
-            {names.slice(0, -inlineAvatars).map(name => (
-              <AvatarGroupItem key={name} name={name} />
-            ))}
-          </AvatarGroupOverflow>
+          {inlineItems}
+          <AvatarGroupOverflow indicator={props.overflowIndicator}>{overflowItems}</AvatarGroupOverflow>
         </AvatarGroup>
       ))}
     </div>
@@ -96,18 +92,16 @@ storiesOf('AvatarGroup Converged', module)
   ))
   .addStory(
     'overflowContent',
-    () => (
-      <AvatarGroup>
-        {names.slice(-inlineAvatars).map(name => (
-          <AvatarGroupItem key={'inline' + name} name={name} />
-        ))}
-        <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>
-          {names.slice(0, -inlineAvatars).map(name => (
-            <AvatarGroupItem key={name} name={name} />
-          ))}
-        </AvatarGroupOverflow>
-      </AvatarGroup>
-    ),
+    () => {
+      const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
+      const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(items);
+      return (
+        <AvatarGroup>
+          {inlineItems}
+          <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>{overflowItems}</AvatarGroupOverflow>
+        </AvatarGroup>
+      );
+    },
     {
       includeHighContrast: true,
       includeDarkMode: true,

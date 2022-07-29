@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, AvatarSizes } from '@fluentui/react-avatar';
+import {
+  AvatarGroup,
+  AvatarGroupItem,
+  AvatarGroupOverflow,
+  getPartitionedAvatarGroupItems,
+} from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
+import type { AvatarSizes } from '@fluentui/react-avatar';
 
 const useStyles = makeStyles({
   root: {
@@ -10,6 +16,20 @@ const useStyles = makeStyles({
   },
 });
 
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 export const SizeStack = () => {
@@ -17,21 +37,16 @@ export const SizeStack = () => {
 
   return (
     <div className={styles.root}>
-      {sizes.map(size => (
-        <AvatarGroup layout="stack" size={size as AvatarSizes} key={size}>
-          <AvatarGroupItem name="Katri Athokas" />
-          <AvatarGroupItem name="Elvia Atkins" />
-          <AvatarGroupItem name="Cameron Evans" />
-          <AvatarGroupItem name="Wanda Howard" />
-          <AvatarGroupOverflow>
-            <AvatarGroupItem name="Mona Kane" />
-            <AvatarGroupItem name="Allan Munger" />
-            <AvatarGroupItem name="Daisy Phillips" />
-            <AvatarGroupItem name="Robert Tolbert" />
-            <AvatarGroupItem name="Kevin Sturgis" />
-          </AvatarGroupOverflow>
-        </AvatarGroup>
-      ))}
+      {sizes.map(size => {
+        const avatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={size + '-' + name} />);
+        const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(avatarGroupItems);
+        return (
+          <AvatarGroup layout="stack" size={size as AvatarSizes} key={size}>
+            {inlineItems}
+            <AvatarGroupOverflow>{overflowItems}</AvatarGroupOverflow>
+          </AvatarGroup>
+        );
+      })}
     </div>
   );
 };
