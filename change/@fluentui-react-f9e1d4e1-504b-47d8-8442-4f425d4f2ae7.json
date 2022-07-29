@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(TagPicker): focus outline for TagItem remove button now meets required contrast ratio.",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

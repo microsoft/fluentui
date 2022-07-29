@@ -11,6 +11,8 @@ export type DialogContextValue = {
   triggerRef: React.RefObject<HTMLElement>;
   contentRef: React.RefObject<HTMLElement>;
   modalType: DialogModalType;
+  dialogTitleID?: string;
+  dialogBodyID?: string;
   open: boolean;
   /**
    * Requests dialog main component to update it's internal open state
