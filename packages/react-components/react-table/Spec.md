@@ -208,6 +208,31 @@ interface TableProps {
    */
   sortable?: boolean;
 
+  onSortChange?: (
+    e: React.SyntheticEvent<HTMLElement>,
+    data: { columnKey: string; sortDirection: 'acending' | 'descending' },
+  ) => void;
+
+  /**
+   * Used for controlled sort state
+   */
+  sortColumn?: string;
+
+  /**
+   * Used to set the sorted column on mount when sort state is uncontrolled
+   */
+  defaultSortColumn?: string;
+
+  /**
+   * Used for controlled sort state
+   */
+  sortDirection?: 'ascending' | 'descending';
+
+  /**
+   * Used to set the sorted column on mount when sort state is uncontrolled
+   */
+  defaultSortDirection?: 'ascending' | 'descending';
+
   /**
    * Renders all table components as `div` with appropriate roles.
    * Avoids manual `as` overrides for all table components
@@ -225,28 +250,29 @@ interface TableProps {
 }
 
 interface TableHeaderProps {
-  root: Slot<'thead' | 'div'>;
+  root?: Slot<'thead' | 'div'>;
 }
 
 interface TableBodyProps {
-  root: Slot<'tbody' | 'div'>;
+  root?: Slot<'tbody' | 'div'>;
 }
 
 interface TableRowProps {
-  root: Slot<'tr' | 'div'>;
+  root?: Slot<'tr' | 'div'>;
 }
 
 interface TableHeaderCellProps {
-  root: Slot<'th' | 'div'>;
-  sortButton: Slot<'button'>;
+  root?: Slot<'th' | 'div'>;
+  button?: Slot<'button'>;
   /**
    * Whether the column is sortable overrides the top level table prop
    */
-  sortable: boolean;
+  sortable?: boolean;
+
   /**
-   * How the column data is sorted
+   * Necessary to maintain sort state
    */
-  sortDirection: 'ascending' | 'descending';
+  columnKey: string;
 }
 
 /**
@@ -368,7 +394,7 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table nativeElements={false}>
   <TableHeader>
     <TableRow>
-      <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
+      <TableHeaderCell columnKey="header">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -378,7 +404,7 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table as="div">
   <TableHeader as="div">
     <TableRow as="div">
-      <TableHeaderCell as="div" sortDirection="ascending">Header</TableHeaderCell>
+      <TableHeaderCell columnKey="header" as="div" sortDirection="ascending">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -397,10 +423,10 @@ interface DataGridCellProps extends DataGridCellProps {
 ### Sortable
 
 ```tsx
-<Table sortable>
+<Table sortable sortDirection="ascending" sortColumn="header">
   <TableHeader>
     <TableRow>
-      <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
+      <TableHeaderCell columnKey="header">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
