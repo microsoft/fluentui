@@ -56,9 +56,9 @@ export const FocusRectsProvider = FocusRectsContext.Provider;
 /**
  * Initializes the logic which:
  *
- * 1. Subscribes keydown and mousedown events. (It will only do it once for the current element of the FocusRectsContext
- *    providerRef or once per window if no such element is provided via context, so it's safe to call this method
- *    multiple times.)
+ * 1. Subscribes keydown, keyup, mousedown and pointerdown events. (It will only do it once for the current element of
+ *    the FocusRectsContext providerRef or once per window if no such element is provided via context, so it's safe to
+ *    call this method multiple times.)
  * 2. When the user presses triggers a keydown or keyup event via directional keyboard keys, adds the
  *    'ms-Fabric--isFocusVisible' classname to the current element of the FocusRectsContext providerRef or the document
  *    body if no such element is provided via context, and removes the 'ms-Fabric-isFocusHidden' classname.
