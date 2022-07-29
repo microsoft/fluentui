@@ -1,4 +1,19 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "overrides": [
+    {
+      "files": ["src/*.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "property",
+            "modifiers": ["requiresQuotes"],
+            "format": null
+          }
+        ]
+      }
+    }
+  ]
 }
