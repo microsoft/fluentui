@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: adds react-dialog to react-components unstable",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
