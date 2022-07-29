@@ -114,7 +114,7 @@ export const Sort = () => {
   });
 
   return (
-    <Table onSortColumnChange={(_, data) => setSortState(data.sortState)}>
+    <Table onSortColumnChange={(_, data) => setSortState(data.sortState)} defaultSortState={sortState}>
       <TableHeader>
         <TableRow>
           {(Object.keys(columns) as (keyof typeof columns)[]).map(columnKey => (
