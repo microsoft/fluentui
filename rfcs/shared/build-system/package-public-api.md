@@ -206,8 +206,8 @@ Access modifiers introduced in this document will create following package API p
 
 ```mermaid
 graph TD
-A["@alpha,@beta"] -- access from path --> U["@fluentui/pacakge-name/unstable"]
-B["@public"] -- access from path --> S["@fluentui/pacakge-name"]
+A["@alpha,@beta"] -- access from path --> U["@fluentui/package-name/unstable"]
+B["@public"] -- access from path --> S["@fluentui/package-name"]
 C["@internal"] -- access from path --> E((X))
 ```
 
