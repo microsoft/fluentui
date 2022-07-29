@@ -64,6 +64,7 @@ export function createEmotionRenderer(options: CreateEmotionRendererOptions = {}
       // return () => sheet.flush();
       // });
 
+      // eslint-disable-next-line react/jsx-no-useless-fragment
       return <>{props.children}</>;
     };
 
