@@ -51,8 +51,10 @@ export const useTableHeaderCell_unstable = (
         // TODO implement sort state
         role: sortable ? undefined : 'presentation',
         tabIndex: sortable ? undefined : -1,
+        type: 'button',
         onClick,
       },
     }),
+    sortable,
   };
 };

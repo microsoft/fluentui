@@ -23,6 +23,10 @@ export type TableContextValue = {
 };
 
 export type SortDirection = 'ascending' | 'descending';
+export type SortState = {
+  sortColumn: string | undefined;
+  sortDirection: 'ascending' | 'descending';
+};
 
 export type TableContextValues = {
   table: TableContextValue;
@@ -37,22 +41,12 @@ export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextV
      */
     onSortColumnChange?: (
       e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-      data: { sortColumn: string; sortDirection: SortDirection },
+      data: { sortState: SortState },
     ) => void;
 
-    sortColumn?: string;
+    sortState?: SortState;
 
-    /**
-     * Sets the sort column key on mount when the sort state is uncontrolled
-     */
-    defaultSortColumn?: string;
-
-    sortDirection?: SortDirection;
-
-    /**
-     * Sets the sort direction on mount when the sort state is uncontrolled
-     */
-    defaultSortDirection?: SortDirection;
+    defaultSortState?: SortState;
   };
 
 /**

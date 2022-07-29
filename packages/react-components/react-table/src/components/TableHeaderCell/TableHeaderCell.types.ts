@@ -25,4 +25,4 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
 /**
  * State used in rendering TableHeaderCell
  */
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & { sortable: boolean };

@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
     ...shorthands.flex(1, 1, '0px'),
   },
 
@@ -36,6 +35,21 @@ const useStyles = makeStyles({
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },
+  button: {
+    display: 'flex',
+    flexGrow: 1,
+    height: '100%',
+    alignItems: 'center',
+    ...shorthands.gap(tokens.spacingHorizontalS),
+  },
+  sortable: {
+    cursor: 'pointer',
+  },
+
+  sortIcon: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 });
 
 /**
@@ -44,7 +58,21 @@ const useStyles = makeStyles({
 export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): TableHeaderCellState => {
   const styles = useStyles();
   state.root.className = mergeClasses(tableHeaderCellClassNames.root, styles.root, state.root.className);
-  state.button.className = mergeClasses(tableHeaderCellClassNames.button, styles.resetButton, state.button.className);
+  state.button.className = mergeClasses(
+    tableHeaderCellClassNames.button,
+    styles.resetButton,
+    styles.button,
+    state.sortable && styles.sortable,
+    state.button.className,
+  );
+
+  if (state.sortIcon) {
+    state.sortIcon.className = mergeClasses(
+      tableHeaderCellClassNames.sortIcon,
+      styles.sortIcon,
+      state.sortIcon.className,
+    );
+  }
 
   return state;
 };
