@@ -31,10 +31,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }],
 
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],
-    'react/function-component-definition': [
-      'error',
-      { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
-    ],
 
     'import/no-unresolved': 'off',
     'no-shadow': 'off', // https://github.com/microsoft/fluent-ui-react/pull/1261#pullrequestreview-231005092
@@ -64,6 +60,7 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/forbid-foreign-prop-types': 'off',
     'react/forbid-prop-types': 'off',
+    'react/function-component-definition': 'off',
     'react/jsx-boolean-value': 'off',
     'react/jsx-curly-brace-presence': 'off',
     'react/jsx-no-bind': 'off',
