@@ -11,28 +11,26 @@ export const CustomFocusedElementOnOpen = () => {
     }
   }, [open]);
   return (
-    <>
-      <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-        <DialogTrigger>
-          <Button>Open dialog</Button>
-        </DialogTrigger>
-        <DialogSurface>
-          <DialogTitle>Dialog title</DialogTitle>
-          <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
-          <DialogActions position="start">
-            <Button appearance="outline">Third Action</Button>
-          </DialogActions>
-          <DialogActions position="end">
-            <DialogTrigger>
-              <Button ref={buttonRef} appearance="secondary">
-                Close
-              </Button>
-            </DialogTrigger>
-            <Button appearance="primary">Do Something</Button>
-          </DialogActions>
-        </DialogSurface>
-      </Dialog>
-    </>
+    <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
+      <DialogTrigger>
+        <Button>Open dialog</Button>
+      </DialogTrigger>
+      <DialogSurface aria-label="label">
+        <DialogTitle>Dialog title</DialogTitle>
+        <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
+        <DialogActions position="start">
+          <Button appearance="outline">Third Action</Button>
+        </DialogActions>
+        <DialogActions position="end">
+          <DialogTrigger>
+            <Button ref={buttonRef} appearance="secondary">
+              Close
+            </Button>
+          </DialogTrigger>
+          <Button appearance="primary">Do Something</Button>
+        </DialogActions>
+      </DialogSurface>
+    </Dialog>
   );
 };
 
