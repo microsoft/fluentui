@@ -10,7 +10,7 @@ export const AlertDialog = () => {
         <DialogTrigger>
           <Button>Open Alert dialog</Button>
         </DialogTrigger>
-        <DialogSurface aria-label="label">
+        <DialogSurface>
           <DialogTitle>Alert dialog title</DialogTitle>
           <DialogBody>
             This dialog cannot be dismissed by clicking on the overlay nor by pressing Escape. Close button should be
