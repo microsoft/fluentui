@@ -84,6 +84,7 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
+// eslint-disable-next-line @typescript-eslint/default-param-last
 function extractSelector(currentSelector: string, rules: IRuleSet = { __order: [] }, selector: string, value: IStyle) {
   if (selector.indexOf('@') === 0) {
     selector = selector + '{' + currentSelector;

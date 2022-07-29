@@ -125,7 +125,6 @@ const api = {
       description: 'A branch to associate a report',
       required: true,
     },
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     'commit-sha': {
       type: 'string',
       description: 'Defines a commit sha for a report',

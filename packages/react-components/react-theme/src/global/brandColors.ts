@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import type { BrandVariants } from '../types';
 
 export const brandWeb: BrandVariants = {

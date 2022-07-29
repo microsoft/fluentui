@@ -27,7 +27,6 @@ function createWebpackConfig(fixturePath, outputPath) {
     },
     externals: {
       react: 'React',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'react-dom': 'ReactDOM',
     },
 

@@ -417,7 +417,6 @@ describe('Stylesheet', () => {
 
         expect(rehydrationData).toStrictEqual({
           classNameToArgs: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             'css-1': {
               args: [
                 {
