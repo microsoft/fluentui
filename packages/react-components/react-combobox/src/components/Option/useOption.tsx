@@ -83,7 +83,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     }
 
     // handle selection change
-    selectOption(event, optionValue);
+    selectOption(event, optionData);
 
     props.onClick?.(event);
   };

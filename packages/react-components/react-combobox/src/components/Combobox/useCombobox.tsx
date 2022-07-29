@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
+import type { SelectionEvents } from '../../utils/Selection.types';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
@@ -78,9 +79,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   /* Handle typed input */
 
   // reset any typed value when an option is selected
-  baseState.selectOption = (ev, optionValue) => {
+  baseState.selectOption = (ev: SelectionEvents, option: OptionValue) => {
     setValue(undefined);
-    selectOption(ev, optionValue);
+    selectOption(ev, option);
   };
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
@@ -88,7 +89,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     if (!baseState.open && !allowFreeform) {
       // select matching option, if the value fully matches
       if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
-        baseState.selectOption(ev, activeOption.value);
+        baseState.selectOption(ev, activeOption);
       }
 
       // reset typed value when the input loses focus while collapsed, unless allowFreeform is true

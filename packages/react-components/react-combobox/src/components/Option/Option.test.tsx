@@ -173,11 +173,12 @@ describe('Option', () => {
     );
 
     fireEvent.click(getByRole('option'));
+    const optionData = { id: 'optionId', disabled: undefined, value: 'foo' };
 
     expect(selectOption).toHaveBeenCalledTimes(1);
-    expect(selectOption).toHaveBeenCalledWith(expect.anything(), 'foo');
+    expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
 
     expect(setActiveOption).toHaveBeenCalledTimes(1);
-    expect(setActiveOption).toHaveBeenCalledWith({ id: 'optionId', disabled: undefined, value: 'foo' });
+    expect(setActiveOption).toHaveBeenCalledWith(optionData);
   });
 });
