@@ -1,4 +1,19 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
-  "root": true
+  "root": true,
+  "overrides": [
+    {
+      "files": ["src/types.ts", "src/utils/getCallbackArguments.test.ts"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "property",
+            "modifiers": ["requiresQuotes"],
+            "format": null
+          }
+        ]
+      }
+    }
+  ]
 }
