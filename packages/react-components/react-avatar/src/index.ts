@@ -14,7 +14,13 @@ export {
   useAvatarGroupStyles_unstable,
   useAvatarGroup_unstable,
 } from './AvatarGroup';
-export type { AvatarGroupProps, AvatarGroupSlots, AvatarGroupState } from './AvatarGroup';
+export type {
+  AvatarGroupProps,
+  AvatarGroupSlots,
+  AvatarGroupState,
+  AvatarGroupContextValue,
+  AvatarGroupContextValues,
+} from './AvatarGroup';
 export {
   AvatarGroupItem,
   avatarGroupItemClassNames,
@@ -37,3 +43,4 @@ export type {
   AvatarGroupOverflowSlots,
   AvatarGroupOverflowState,
 } from './AvatarGroupOverflow';
+export { AvatarGroupProvider, useAvatarGroupContextValues, useAvatarGroupContext_unstable } from './contexts/index';

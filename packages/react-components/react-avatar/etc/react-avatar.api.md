@@ -8,10 +8,14 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -28,6 +32,16 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
+
+// @public (undocumented)
+export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
+    isOverflow?: boolean;
+};
+
+// @public (undocumented)
+export type AvatarGroupContextValues = {
+    avatarGroup: AvatarGroupContextValue;
+};
 
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
@@ -88,6 +102,9 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 };
 
 // @public (undocumented)
+export const AvatarGroupProvider: Provider<AvatarGroupContextValue> & FC<ProviderProps<AvatarGroupContextValue>>;
+
+// @public (undocumented)
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
 };
@@ -138,7 +155,7 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
@@ -151,6 +168,12 @@ export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLEleme
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public (undocumented)
+export const useAvatarGroupContext_unstable: <T>(selector: ContextSelector<AvatarGroupContextValue, T>) => T;
+
+// @public (undocumented)
+export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;
 
 // @public
 export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;

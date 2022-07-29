@@ -26,3 +26,11 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
  * State used in rendering AvatarGroup
  */
 export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size'>>;
+
+export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
+  isOverflow?: boolean;
+};
+
+export type AvatarGroupContextValues = {
+  avatarGroup: AvatarGroupContextValue;
+};
