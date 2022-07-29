@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Jul 2022 12:27:44 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jul 2022 12:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.191.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.191.0)
+
+Fri, 29 Jul 2022 12:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.190.3..office-ui-fabric-react_v7.191.0)
+
+### Minor changes
+
+- chore: Added exports for decorators missing from v7. ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
+- chore: Added exports for decorators missing from v7. ([PR #24097](https://github.com/microsoft/fluentui/pull/24097) by gcox@microsoft.com)
 
 ## [7.190.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.190.3)
 

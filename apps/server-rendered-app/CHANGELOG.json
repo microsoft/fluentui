@@ -2,6 +2,21 @@
   "name": "server-rendered-app",
   "entries": [
     {
+      "date": "Fri, 29 Jul 2022 12:21:50 GMT",
+      "tag": "server-rendered-app_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.191.0",
+            "author": "gcox@microsoft.com",
+            "commit": "b716ea148c4bd8a097e30b27bf7f4cd13c503628",
+            "package": "server-rendered-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jul 2022 12:27:44 GMT",
       "tag": "server-rendered-app_v0.0.1",
       "version": "0.0.1",
