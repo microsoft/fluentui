@@ -9,8 +9,19 @@ import { alertClassNames } from '@fluentui/react-alert';
 import { AlertProps } from '@fluentui/react-alert';
 import { AlertSlots } from '@fluentui/react-alert';
 import { AlertState } from '@fluentui/react-alert';
+import { AvatarGroup } from '@fluentui/react-avatar';
+import { avatarGroupClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItem } from '@fluentui/react-avatar';
+import { avatarGroupItemClassNames } from '@fluentui/react-avatar';
+import { AvatarGroupItemProps } from '@fluentui/react-avatar';
+import { AvatarGroupItemSlots } from '@fluentui/react-avatar';
+import { AvatarGroupItemState } from '@fluentui/react-avatar';
+import { AvatarGroupProps } from '@fluentui/react-avatar';
+import { AvatarGroupSlots } from '@fluentui/react-avatar';
+import { AvatarGroupState } from '@fluentui/react-avatar';
 import { Card } from '@fluentui/react-card';
 import { cardClassNames } from '@fluentui/react-card';
+import { cardCSSVars } from '@fluentui/react-card';
 import { CardFooter } from '@fluentui/react-card';
 import { cardFooterClassNames } from '@fluentui/react-card';
 import { CardFooterProps } from '@fluentui/react-card';
@@ -18,6 +29,7 @@ import { CardFooterSlots } from '@fluentui/react-card';
 import { CardFooterState } from '@fluentui/react-card';
 import { CardHeader } from '@fluentui/react-card';
 import { cardHeaderClassNames } from '@fluentui/react-card';
+import { cardHeaderCSSVars } from '@fluentui/react-card';
 import { CardHeaderProps } from '@fluentui/react-card';
 import { CardHeaderSlots } from '@fluentui/react-card';
 import { CardHeaderState } from '@fluentui/react-card';
@@ -29,36 +41,85 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { Combobox } from '@fluentui/react-combobox';
+import { comboboxClassNames } from '@fluentui/react-combobox';
+import { ComboboxContextValues } from '@fluentui/react-combobox';
+import { ComboboxOpenChangeData } from '@fluentui/react-combobox';
+import { ComboboxOpenEvents } from '@fluentui/react-combobox';
+import { ComboboxProps } from '@fluentui/react-combobox';
+import { ComboboxSlots } from '@fluentui/react-combobox';
+import { ComboboxState } from '@fluentui/react-combobox';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { Dropdown } from '@fluentui/react-combobox';
+import { dropdownClassNames } from '@fluentui/react-combobox';
+import { DropdownContextValues } from '@fluentui/react-combobox';
+import { DropdownOpenChangeData } from '@fluentui/react-combobox';
+import { DropdownOpenEvents } from '@fluentui/react-combobox';
+import { DropdownProps } from '@fluentui/react-combobox';
+import { DropdownSlots } from '@fluentui/react-combobox';
+import { DropdownState } from '@fluentui/react-combobox';
+import { Listbox } from '@fluentui/react-combobox';
+import { listboxClassNames } from '@fluentui/react-combobox';
+import { ListboxContextValues } from '@fluentui/react-combobox';
+import { ListboxProps } from '@fluentui/react-combobox';
+import { ListboxSlots } from '@fluentui/react-combobox';
+import { ListboxState } from '@fluentui/react-combobox';
+import { Option as Option_2 } from '@fluentui/react-combobox';
+import { optionClassNames } from '@fluentui/react-combobox';
+import { OptionGroup } from '@fluentui/react-combobox';
+import { optionGroupClassNames } from '@fluentui/react-combobox';
+import { OptionGroupProps } from '@fluentui/react-combobox';
+import { OptionGroupSlots } from '@fluentui/react-combobox';
+import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionProps } from '@fluentui/react-combobox';
+import { OptionSlots } from '@fluentui/react-combobox';
+import { OptionState } from '@fluentui/react-combobox';
 import { Overflow } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
 import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderOption_unstable } from '@fluentui/react-combobox';
+import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderSelect_unstable } from '@fluentui/react-select';
-import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
-import { SpinButton } from '@fluentui/react-spinbutton';
-import { SpinButtonBounds } from '@fluentui/react-spinbutton';
-import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
-import { spinButtonClassNames } from '@fluentui/react-spinbutton';
-import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
-import { SpinButtonProps } from '@fluentui/react-spinbutton';
-import { SpinButtonSlots } from '@fluentui/react-spinbutton';
-import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
-import { SpinButtonState } from '@fluentui/react-spinbutton';
+import { Toolbar } from '@fluentui/react-toolbar';
+import { ToolbarButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarButtonState } from '@fluentui/react-toolbar';
+import { toolbarClassNames } from '@fluentui/react-toolbar';
+import { ToolbarContextValue } from '@fluentui/react-toolbar';
+import { ToolbarContextValues } from '@fluentui/react-toolbar';
+import { ToolbarDivider } from '@fluentui/react-toolbar';
+import { ToolbarDividerProps } from '@fluentui/react-toolbar';
+import { ToolbarDividerState } from '@fluentui/react-toolbar';
+import { ToolbarProps } from '@fluentui/react-toolbar';
+import { ToolbarSlots } from '@fluentui/react-toolbar';
+import { ToolbarState } from '@fluentui/react-toolbar';
+import { ToolbarToggleButton } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonProps } from '@fluentui/react-toolbar';
+import { ToolbarToggleButtonState } from '@fluentui/react-toolbar';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useAvatarGroup_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useCard_unstable } from '@fluentui/react-card';
 import { useCardFooter_unstable } from '@fluentui/react-card';
 import { useCardFooterStyles_unstable } from '@fluentui/react-card';
@@ -67,13 +128,24 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useDropdown_unstable } from '@fluentui/react-combobox';
+import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
+import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useOption_unstable } from '@fluentui/react-combobox';
+import { useOptionGroup_unstable } from '@fluentui/react-combobox';
+import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
+import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
-import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
+import { useToolbar_unstable } from '@fluentui/react-toolbar';
+import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
+import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
 
 export { Alert }
 
@@ -85,9 +157,31 @@ export { AlertSlots }
 
 export { AlertState }
 
+export { AvatarGroup }
+
+export { avatarGroupClassNames }
+
+export { AvatarGroupItem }
+
+export { avatarGroupItemClassNames }
+
+export { AvatarGroupItemProps }
+
+export { AvatarGroupItemSlots }
+
+export { AvatarGroupItemState }
+
+export { AvatarGroupProps }
+
+export { AvatarGroupSlots }
+
+export { AvatarGroupState }
+
 export { Card }
 
 export { cardClassNames }
+
+export { cardCSSVars }
 
 export { CardFooter }
 
@@ -102,6 +196,8 @@ export { CardFooterState }
 export { CardHeader }
 
 export { cardHeaderClassNames }
+
+export { cardHeaderCSSVars }
 
 export { CardHeaderProps }
 
@@ -125,11 +221,75 @@ export { CardSlots }
 
 export { CardState }
 
+export { Combobox }
+
+export { comboboxClassNames }
+
+export { ComboboxContextValues }
+
+export { ComboboxOpenChangeData }
+
+export { ComboboxOpenEvents }
+
+export { ComboboxProps }
+
+export { ComboboxSlots }
+
+export { ComboboxState }
+
 export { DATA_OVERFLOW_ITEM }
 
 export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
+
+export { Dropdown }
+
+export { dropdownClassNames }
+
+export { DropdownContextValues }
+
+export { DropdownOpenChangeData }
+
+export { DropdownOpenEvents }
+
+export { DropdownProps }
+
+export { DropdownSlots }
+
+export { DropdownState }
+
+export { Listbox }
+
+export { listboxClassNames }
+
+export { ListboxContextValues }
+
+export { ListboxProps }
+
+export { ListboxSlots }
+
+export { ListboxState }
+
+export { Option_2 as Option }
+
+export { optionClassNames }
+
+export { OptionGroup }
+
+export { optionGroupClassNames }
+
+export { OptionGroupProps }
+
+export { OptionGroupSlots }
+
+export { OptionGroupState }
+
+export { OptionProps }
+
+export { OptionSlots }
+
+export { OptionState }
 
 export { Overflow }
 
@@ -141,6 +301,10 @@ export { OverflowProps }
 
 export { renderAlert_unstable }
 
+export { renderAvatarGroup_unstable }
+
+export { renderAvatarGroupItem_unstable }
+
 export { renderCard_unstable }
 
 export { renderCardFooter_unstable }
@@ -149,9 +313,19 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
+export { renderCombobox_unstable }
+
+export { renderDropdown_unstable }
+
+export { renderListbox_unstable }
+
+export { renderOption_unstable }
+
+export { renderOptionGroup_unstable }
+
 export { renderSelect_unstable }
 
-export { renderSpinButton_unstable }
+export { renderToolbar_unstable }
 
 export { Select }
 
@@ -163,27 +337,47 @@ export { SelectSlots }
 
 export { SelectState }
 
-export { SpinButton }
+export { Toolbar }
 
-export { SpinButtonBounds }
+export { ToolbarButtonProps }
 
-export { SpinButtonChangeEvent }
+export { ToolbarButtonState }
 
-export { spinButtonClassNames }
+export { toolbarClassNames }
 
-export { SpinButtonOnChangeData }
+export { ToolbarContextValue }
 
-export { SpinButtonProps }
+export { ToolbarContextValues }
 
-export { SpinButtonSlots }
+export { ToolbarDivider }
 
-export { SpinButtonSpinState }
+export { ToolbarDividerProps }
 
-export { SpinButtonState }
+export { ToolbarDividerState }
+
+export { ToolbarProps }
+
+export { ToolbarSlots }
+
+export { ToolbarState }
+
+export { ToolbarToggleButton }
+
+export { ToolbarToggleButtonProps }
+
+export { ToolbarToggleButtonState }
 
 export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
+
+export { useAvatarGroup_unstable }
+
+export { useAvatarGroupItem_unstable }
+
+export { useAvatarGroupItemStyles_unstable }
+
+export { useAvatarGroupStyles_unstable }
 
 export { useCard_unstable }
 
@@ -201,9 +395,29 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
+export { useCombobox_unstable }
+
+export { useComboboxStyles_unstable }
+
+export { useDropdown_unstable }
+
+export { useDropdownStyles_unstable }
+
 export { useIsOverflowGroupVisible }
 
 export { useIsOverflowItemVisible }
+
+export { useListbox_unstable }
+
+export { useListboxStyles_unstable }
+
+export { useOption_unstable }
+
+export { useOptionGroup_unstable }
+
+export { useOptionGroupStyles_unstable }
+
+export { useOptionStyles_unstable }
 
 export { useOverflowMenu }
 
@@ -211,9 +425,11 @@ export { useSelect_unstable }
 
 export { useSelectStyles_unstable }
 
-export { useSpinButton_unstable }
+export { useToolbar_unstable }
 
-export { useSpinButtonStyles_unstable }
+export { useToolbarDividerStyles_unstable }
+
+export { useToolbarStyles_unstable }
 
 // (No @packageDocumentation comment for this package)
 

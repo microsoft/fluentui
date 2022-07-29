@@ -67,6 +67,16 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  let spy: jest.SpyInstance;
+  beforeAll(() => {
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+    spy = jest.spyOn(window, 'scrollTo').mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    spy.mockRestore();
+  });
+
   beforeEach(() => {
     resetIds();
   });
@@ -346,6 +356,122 @@ describe('DetailsList', () => {
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
       true /* attach */,
+    );
+  });
+
+  it('focuses row by arrow key', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+      },
+    );
+  });
+
+  it('does not focus by arrow key when isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        component!.focusIndex(0);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-DetailsList-headerWrapper').simulate('keyDown', { which: KeyCodes.down });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+      },
+    );
+  });
+
+  it('clears selection when escape key is pressed and isSelectedOnFocus is `true`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+        expect(selection.getSelectedCount()).toEqual(0);
+      },
+    );
+  });
+
+  it('does not clear selection when escape key is pressed and isSelectedOnFocus is `false`', () => {
+    jest.useFakeTimers();
+
+    let component: IDetailsList | null;
+    const onSelectionChanged = jest.fn();
+    const selection = new Selection({
+      onSelectionChanged,
+    });
+    safeMount(
+      <DetailsList
+        componentRef={ref => (component = ref)}
+        items={mockData(5)}
+        selection={selection}
+        skipViewportMeasures={true}
+        onShouldVirtualize={() => false}
+        isSelectedOnFocus={false}
+      />,
+      wrapper => {
+        expect(component).toBeTruthy();
+        selection.setAllSelected(true);
+        jest.runAllTimers();
+
+        onSelectionChanged.mockClear();
+        wrapper.find('.ms-SelectionZone').simulate('keyDown', { which: KeyCodes.escape });
+        expect(onSelectionChanged).toHaveBeenCalledTimes(0);
+        expect(selection.getSelectedCount()).toEqual(5);
+      },
     );
   });
 

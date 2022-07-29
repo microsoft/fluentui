@@ -13,6 +13,42 @@
 
 In addition to creating column headers, DetailsList also allows the manual definition of row headers. In the example below, the Name column has been specified as a row header using `isRowHeader: true`. When creating a DetailsList where one column is clearly the primary label for the row, it's best to use `isRowHeader` on that column to create a better screen reader experience navigating the table. For selectable DetailsLists, specifying a row header also gives the checkboxes a better accessible label.
 
+### Keyboard / Hotkeys
+
+DetailsList supports different selection modes with keyboard behavior differing based on the current selection mode.
+
+#### All selection modes
+
+- **Up/down arrow key**: change the current selection. When presssing up or down arrow any current selection is de-selected and the focused item is selected.
+- **Ctrl + up/down arrow key**: maintain the current selection and move the focus up or down. The focused item is not selected.
+- **Left/right arrow key**: select column when focused on the header.
+- **Space**: select the currently focused item, de-selecting any other selected items.
+- **Escape**: de-select all selected items.
+- **Tab**: focus the header. Pressing tab from the header focuses the first selected item or, if no items are selected, the last focused item, or the first item in the list if no item has previously been selected or focused. Pressing tab again focuses the next element in the tab order after DetailsList.
+- **Shift + tab**: focus the last selected item in the list or, if no items are selected, the last focused item, or the first item in the list if no item has previously been focused. Pressing shift + tab again focuses the header. From the header, shift + tab focuses the previous element in the tab order before DetailsList.
+
+#### Selection mode: multiple
+
+- **Ctrl + space**: toggle selection of the currently focused item, maintaining any other selected items.
+- **Ctrl + a**: select all items.
+
+#### Selection mode: multiple, isSelectedOnFocus = false
+
+`isSelectedOnFocus` is a prop that, when set to false, alters DetailList's selection behavior.
+
+- **Up/down arrow key**: change the current focus. When pressing up or down the current selection is not changed.
+- **Space**: toggle selection of the currently focused item, maintaining any other selected items.
+
+#### Selection mode: single
+
+- **Up/down arrow key**: change the current selection. When presssing up or down arrow any current selection is de-selected and the focused item is selected.
+- **Ctrl + up/down arrow key**: maintain the current selection and move the focus up or down. The focused item is not selected.
+
+#### Selection mode: none
+
+- **Tab/shift + tab**: works the same as other selection modes except that it does not select items, only focuses them.
+- **Up/down arrow key**: change the current focus.
+
 ### FAQ
 
 #### My scrollable content isn't updating on scroll. What should I do?

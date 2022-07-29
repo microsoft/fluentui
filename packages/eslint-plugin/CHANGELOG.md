@@ -1,8 +1,44 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 27 May 2022 07:39:11 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jul 2022 07:37:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.0)
+
+Wed, 27 Jul 2022 07:37:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.11.1..@fluentui/eslint-plugin_v1.12.0)
+
+### Minor changes
+
+- Create no-context-default-value lint rule ([PR #24000](https://github.com/microsoft/fluentui/pull/24000) by bernardo.sunderhus@gmail.com)
+
+## [1.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.1)
+
+Wed, 13 Jul 2022 07:47:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.11.0..@fluentui/eslint-plugin_v1.11.1)
+
+### Patches
+
+- chore: don't forbid package imports from components being exported from react-components/unstable. ([PR #23858](https://github.com/microsoft/fluentui/pull/23858) by tristan.watanabe@gmail.com)
+
+## [1.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.0)
+
+Tue, 12 Jul 2022 07:40:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.10.0..@fluentui/eslint-plugin_v1.11.0)
+
+### Minor changes
+
+- chore: use no-restricted-import rule for v9 lint config. ([PR #23845](https://github.com/microsoft/fluentui/pull/23845) by tristan.watanabe@gmail.com)
+
+## [1.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.10.0)
+
+Mon, 11 Jul 2022 07:37:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.9.1..@fluentui/eslint-plugin_v1.10.0)
+
+### Minor changes
+
+- feat: add custom no-restricted-imports rule with fixer ([PR #23613](https://github.com/microsoft/fluentui/pull/23613) by tristan.watanabe@gmail.com)
 
 ## [1.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.9.1)
 

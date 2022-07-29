@@ -127,9 +127,10 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   initializeFocusRects,
 } from './initializeFocusRects';
-export { FocusRects, useFocusRects } from './useFocusRects';
+export { FocusRects, FocusRectsContext, FocusRectsProvider, useFocusRects } from './useFocusRects';
+export type { IFocusRectsContext } from './useFocusRects';
 export { getInitials } from './initials';
-export { addDirectionalKeyCode, isDirectionalKeyCode } from './keyboard';
+export { addDirectionalKeyCode, isDirectionalKeyCode, removeDirectionalKeyCode } from './keyboard';
 export {
   getLanguage,
   // eslint-disable-next-line deprecation/deprecation
@@ -221,6 +222,8 @@ export type { ISettingsMap, IWarnControlledUsageParams } from './warn';
 export { isIE11 } from './ie11Detector';
 export { getPropsWithDefaults } from './getPropsWithDefaults';
 export { setFocusVisibility, IsFocusVisibleClassName } from './setFocusVisibility';
+export { canUseDOM } from './dom/canUseDOM';
+// eslint-disable-next-line deprecation/deprecation
 export { setSSR } from './dom/setSSR';
 export { createMergedRef } from './createMergedRef';
 export { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';

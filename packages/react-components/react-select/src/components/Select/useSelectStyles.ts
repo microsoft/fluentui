@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
 
-    '&:after': {
+    '&::after': {
       backgroundImage: `linear-gradient(
         0deg,
         ${tokens.colorCompoundBrandStroke} 0%,
@@ -62,6 +62,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
 
     '&:focus-within::after': {
@@ -69,6 +74,11 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 });
@@ -83,7 +93,7 @@ const useSelectStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
 
-    ':focus-visible': {
+    ':focus': {
       outlineWidth: '2px',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
@@ -91,8 +101,12 @@ const useSelectStyles = makeStyles({
   },
   disabled: {
     backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('1px', 'solid', tokens.colorNeutralStrokeDisabled),
     color: tokens.colorNeutralForegroundDisabled,
     cursor: 'not-allowed',
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
   },
   small: {
     height: fieldHeights.small,
@@ -142,6 +156,12 @@ const useIconStyles = makeStyles({
       display: 'block',
     },
   },
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+    },
+  },
   small: {
     fontSize: iconSizes.small,
     height: iconSizes.small,
@@ -188,7 +208,13 @@ export const useSelectStyles_unstable = (state: SelectState): SelectState => {
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(selectClassNames.icon, iconStyles.icon, iconStyles[size], state.icon.className);
+    state.icon.className = mergeClasses(
+      selectClassNames.icon,
+      iconStyles.icon,
+      disabled && iconStyles.disabled,
+      iconStyles[size],
+      state.icon.className,
+    );
   }
 
   return state;

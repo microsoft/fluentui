@@ -38,12 +38,13 @@ export type FocusOutlineStyleOptions = {
 };
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
 }
@@ -77,10 +78,13 @@ export const useModalAttributes: (options?: UseModalAttributesOptions) => {
 // @public (undocumented)
 export interface UseModalAttributesOptions {
     alwaysFocusable?: boolean;
+    legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "useTabsterAttributes" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
 // (No @packageDocumentation comment for this package)

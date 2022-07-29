@@ -4,6 +4,7 @@
 
 ```ts
 
+import { __css } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -114,7 +115,6 @@ import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { getNativeProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@griffel/react';
@@ -296,6 +296,7 @@ import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
@@ -328,6 +329,15 @@ import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
+import { SpinButton } from '@fluentui/react-spinbutton';
+import { SpinButtonBounds } from '@fluentui/react-spinbutton';
+import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
+import { spinButtonClassNames } from '@fluentui/react-spinbutton';
+import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
+import { SpinButtonProps } from '@fluentui/react-spinbutton';
+import { SpinButtonSlots } from '@fluentui/react-spinbutton';
+import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
+import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { Spinner } from '@fluentui/react-spinner';
 import { spinnerClassNames } from '@fluentui/react-spinner';
 import { SpinnerProps } from '@fluentui/react-spinner';
@@ -430,7 +440,7 @@ import { useCounterBadge_unstable } from '@fluentui/react-badge';
 import { useCounterBadgeStyles_unstable } from '@fluentui/react-badge';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
-import { useFluent } from '@fluentui/react-provider';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
@@ -442,6 +452,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -496,11 +507,12 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
-import { useSSRContext } from '@fluentui/react-utilities';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -511,15 +523,18 @@ import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
-import { useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { useToggleState } from '@fluentui/react-button';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
+import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
+
+export { __css }
 
 export { __styles }
 
@@ -740,8 +755,6 @@ export { FontWeightTokens }
 export { ForwardRefComponent }
 
 export { getNativeElementProps }
-
-export { getNativeProps }
 
 export { getPartitionedNativeProps }
 
@@ -1105,6 +1118,8 @@ export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
+export { renderSpinButton_unstable }
+
 export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
@@ -1168,6 +1183,24 @@ export { SlotClassNames }
 export { SlotPropsRecord }
 
 export { SpacingTokens }
+
+export { SpinButton }
+
+export { SpinButtonBounds }
+
+export { SpinButtonChangeEvent }
+
+export { spinButtonClassNames }
+
+export { SpinButtonOnChangeData }
+
+export { SpinButtonProps }
+
+export { SpinButtonSlots }
+
+export { SpinButtonSpinState }
+
+export { SpinButtonState }
 
 export { Spinner }
 
@@ -1397,6 +1430,8 @@ export { useInput_unstable }
 
 export { useInputStyles_unstable }
 
+export { useIsomorphicLayoutEffect }
+
 export { useIsSSR }
 
 export { useKeyboardNavAttribute }
@@ -1505,6 +1540,10 @@ export { useSliderState_unstable }
 
 export { useSliderStyles_unstable }
 
+export { useSpinButton_unstable }
+
+export { useSpinButtonStyles_unstable }
+
 export { useSpinner_unstable }
 
 export { useSpinnerStyles_unstable }
@@ -1512,8 +1551,6 @@ export { useSpinnerStyles_unstable }
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
-
-export { useSSRContext }
 
 export { useSwitch_unstable }
 
@@ -1546,6 +1583,8 @@ export { useToggleState }
 export { useTooltip_unstable }
 
 export { useTooltipStyles_unstable }
+
+export { useTooltipVisibility }
 
 export { VerticalSpacingTokens }
 

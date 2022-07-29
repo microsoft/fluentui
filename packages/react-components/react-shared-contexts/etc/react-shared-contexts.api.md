@@ -7,42 +7,64 @@
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-// @public (undocumented)
-export const ProviderContext: React_2.Context<ProviderContextValue>;
+// Warning: (ae-internal-missing-underscore) The name "Provider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
-export interface ProviderContextValue {
+export type ProviderContextValue_unstable = {
     dir: 'ltr' | 'rtl';
     targetDocument?: Document;
-}
-
-// @public
-export const ThemeClassNameContext: React_2.Context<string>;
+};
 
 // @public (undocumented)
-export type ThemeClassNameContextValue = string;
+export type ThemeClassNameContextValue_unstable = string;
 
 // @public (undocumented)
-export const ThemeContext: React_2.Context<Theme | Partial<Theme> | undefined>;
+export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 
-// @public
-export const TooltipContext: React_2.Context<TooltipContextType>;
+// Warning: (ae-internal-missing-underscore) The name "ThemeContext_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const ThemeContext_unstable: React_2.Context<ThemeContextValue_unstable>;
 
-// @public
-export type TooltipContextType = {
+// Warning: (ae-internal-missing-underscore) The name "ThemeContextValue_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export type ThemeContextValue_unstable = Theme | Partial<Theme> | undefined;
+
+// Warning: (ae-internal-missing-underscore) The name "ThemeProvider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const ThemeProvider_unstable: React_2.Provider<ThemeContextValue_unstable>;
+
+// Warning: (ae-internal-missing-underscore) The name "TooltipVisibilityContextValue_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type TooltipVisibilityContextValue_unstable = {
     visibleTooltip?: {
         hide: () => void;
     };
 };
 
-// @public (undocumented)
-export function useFluent(): ProviderContextValue;
+// Warning: (ae-internal-missing-underscore) The name "TooltipVisibilityProvider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
 // @public (undocumented)
-export function useTheme(): Theme | Partial<Theme> | undefined;
+export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// @public (undocumented)
-export function useThemeClassName(): ThemeClassNameContextValue;
+// Warning: (ae-internal-missing-underscore) The name "useThemeClassName_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;
+
+// Warning: (ae-internal-missing-underscore) The name "useTooltipVisibility_unstable" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function useTooltipVisibility_unstable(): TooltipVisibilityContextValue_unstable;
 
 // (No @packageDocumentation comment for this package)
 

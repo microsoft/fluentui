@@ -1,4 +1,11 @@
-export { Card, cardClassNames, renderCard_unstable, useCardStyles_unstable, useCard_unstable } from './Card';
+export {
+  Card,
+  cardClassNames,
+  cardCSSVars,
+  renderCard_unstable,
+  useCardStyles_unstable,
+  useCard_unstable,
+} from './Card';
 export type { CardProps, CardSlots, CardState } from './Card';
 export {
   CardFooter,
@@ -11,6 +18,7 @@ export type { CardFooterProps, CardFooterSlots, CardFooterState } from './CardFo
 export {
   CardHeader,
   cardHeaderClassNames,
+  cardHeaderCSSVars,
   renderCardHeader_unstable,
   useCardHeaderStyles_unstable,
   useCardHeader_unstable,

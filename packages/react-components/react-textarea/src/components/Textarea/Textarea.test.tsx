@@ -21,7 +21,6 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   // TODO create visual regression tests in /apps/vr-tests

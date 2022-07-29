@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adds proper initialValue to value on useInput",
+  "packageName": "@fluentui/react-input",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -8,7 +8,6 @@ describe('Avatar', () => {
   isConformant({
     Component: Avatar,
     displayName: 'Avatar',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -151,7 +150,7 @@ describe('Avatar', () => {
     const rootRef = React.createRef<HTMLSpanElement>();
     render(<Avatar ref={rootRef} image={{ src: 'avatar.png' }} />);
 
-    expect(rootRef.current).toBe(screen.getByRole('img'));
+    expect(rootRef.current?.getAttribute('role')).toBe('img');
   });
 
   it('sets aria-label={name} on the root', () => {
@@ -194,7 +193,7 @@ describe('Avatar', () => {
     const name = 'First Last';
     render(<Avatar id="root-id" name={name} badge={{ status: 'away', id: 'badge-id' }} />);
 
-    expect(screen.getByRole('img').getAttribute('aria-label')).toBe(name);
-    expect(screen.getByRole('img').getAttribute('aria-labelledby')).toBe('root-id badge-id');
+    expect(screen.getAllByRole('img')[0].getAttribute('aria-label')).toBe(name);
+    expect(screen.getAllByRole('img')[0].getAttribute('aria-labelledby')).toBe('root-id badge-id');
   });
 });

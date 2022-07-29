@@ -2,6 +2,59 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 14 Jul 2022 17:06:24 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "769bfa3d797cb79aa6594aa8589e382403287a9d",
+            "comment": "Organize left navigation, add theme entries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:13:21 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "7e21b27395eeca6273e8cc7fda1964a358ab5b50",
+            "comment": "chore: Move Theme stories to folder with index entry."
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c7b1348bdad7aa883c29bfbc96ef2a32e6ebc7dd",
+            "comment": "feat: Initial 9.0.0 release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jun 2022 14:25:31 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0-rc.10",
+      "version": "9.0.0-rc.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "b00790b7a0ea1473d8c3cc49c7ca0088002957ed",
+            "comment": "BREAKING: reduce shared colors"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 May 2022 18:56:50 GMT",
       "tag": "@fluentui/react-theme_v9.0.0-rc.9",
       "version": "9.0.0-rc.9",

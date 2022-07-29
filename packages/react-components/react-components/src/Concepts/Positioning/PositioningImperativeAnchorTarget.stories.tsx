@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tooltip } from '@fluentui/react-components';
-import { PositioningImperativeRef, PositioningVirtualElement } from '@fluentui/react-positioning';
+import type { PositioningImperativeRef, PositioningVirtualElement } from '@fluentui/react-components';
 
 export const ImperativeAnchorTarget = () => {
   const positioningRef = React.useRef<PositioningImperativeRef>(null);

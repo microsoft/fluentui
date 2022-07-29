@@ -174,7 +174,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             yMaxValue={120}
             isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}

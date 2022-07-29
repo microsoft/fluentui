@@ -18,10 +18,28 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Features
+- Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
+- Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
+- Add size 'medium-large' to `Avatar` @yuanboxue-amber ([#23787](https://github.com/microsoft/fluentui/pull/23787))
+
+### Fixes
+- Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
+- Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
+- Fix `Datepicker` hover background for HC theme @chpalac ([#23798](https://github.com/microsoft/fluentui/pull/23798))
+- Fix box-shadow for `Menu` and `Dropdown` component to make it consistent with other components @vitthalr ([#23937](https://github.com/microsoft/fluentui/pull/23937))
+- Align `default` scheme colors between v0 and v9 @yuanboxue-amber ([#23901](https://github.com/microsoft/fluentui/pull/23901))
+
+<!--------------------------------[ v0.63.1 ]------------------------------- -->
+## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.0..@fluentui/react-northstar_v0.63.1)
+
 ### Fixes
 
 - Remove unnecessary `Ref` usage from `TreeItem` @chpalac ([#23105](https://github.com/microsoft/fluentui/pull/23105))
 - Render `selectionIndicator` in `TreeTitle` only when it's needed @layershifter ([#23131](https://github.com/microsoft/fluentui/pull/23131))
+- Setting `flex-schrink: 0` on listItemHeaderMediaStyle @simonmysun ([#23338](https://github.com/microsoft/fluentui/pull/23338))
+- Return selected value to the `Dropdown` label @jurokapsiar ([#23407](https://github.com/microsoft/fluentui/pull/23407))
 
 <!--------------------------------[ v0.63.0 ]------------------------------- -->
 ## [v0.63.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.0) (2022-05-18)

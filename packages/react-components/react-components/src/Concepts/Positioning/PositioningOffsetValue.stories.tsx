@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
 export const OffsetValue = () => {
   const [crossAxis, setCrossAxis] = React.useState(10);

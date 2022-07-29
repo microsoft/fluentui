@@ -2,6 +2,7 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { PopoverState } from './components/Popover/index';
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue>({
   open: false,
   setOpen: () => null,
@@ -36,6 +37,7 @@ export type PopoverContextValue = Pick<
   | 'size'
   | 'appearance'
   | 'trapFocus'
+  | 'legacyTrapFocus'
   | 'inline'
 >;
 

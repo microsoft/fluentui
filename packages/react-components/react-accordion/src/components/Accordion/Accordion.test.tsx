@@ -8,7 +8,7 @@ describe('Accordion', () => {
     Component: Accordion,
     displayName: 'Accordion',
     // Accordion does not have own styles
-    disabledTests: ['make-styles-overrides-win', 'component-has-static-classname-exported'],
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   /**

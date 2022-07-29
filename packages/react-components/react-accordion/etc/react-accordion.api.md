@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';

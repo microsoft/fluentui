@@ -111,6 +111,8 @@ const useStyles = makeStyles({
 
 Those tokens are resolved to CSS variable usages. The `FluentProvider` component is responsible for setting the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
 
+For more details on, see [Theming](?path=/docs/concepts-developer-theming--page).
+
 ### Incorrect usages
 
 This section shows and describes anti-patterns which should never be used.
@@ -129,6 +131,10 @@ function Component(props) {
   const wrongClasses2 = mergeClasses(props.className, classes.root); // Incorrect order of classes - as the latest wins, props.className should be last to override the component styles
 }
 ```
+
+### Debugging styles
+
+[Griffel devtools chrome extension](https://chrome.google.com/webstore/detail/griffel-devtools/bejhagjehnpgagkaaeehdpdadmffbigb) can be used to debug style overrides. It shows all griffel styles applied on the currently selected DOM element, including the styles that are overridden in `mergeClasses`.
 
 ## Overriding FUI component styles
 

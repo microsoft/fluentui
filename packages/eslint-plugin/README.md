@@ -97,6 +97,41 @@ The rule requires an options object containing:
 
 Ban references to the `React` global namespace (in favor of explicitly importing React). Implicit global references cause problems for API Extractor and potentially other tools.
 
+### `no-restricted-imports`
+
+Prevents imports from `forbidden` packages. If a corresponding `preferred` import is provided, the lint error will be automatically fixable.
+
+**Example Configuration:**
+
+```
+"@fluentui/no-restricted-imports": [
+  'error',
+  {
+    paths: [
+      {
+        forbidden: ['@fluentui/react-theme', '@griffel/react`],
+        preferred: '@fluentui/react-components',
+      },
+    ],
+  },
+  ],
+```
+
+**❌ Don't**
+
+```ts
+import * as React from 'react';
+import { webDarkTheme } from '@fluentui/react-theme';
+import { makeStyles } from '@griffel/react';
+```
+
+**✅ Do**
+
+```ts
+import * as React from 'react';
+import { makeStyles, webDarkTheme } from '@fluentui/react-components';
+```
+
 ### `no-tslint-comments`
 
 Ban `tslint:disable` and `tslint:enable` comments.
@@ -106,3 +141,32 @@ Ban `tslint:disable` and `tslint:enable` comments.
 Prevent visibility modifiers (`public`, `protected`, `private`) from being specified on class members/methods.
 
 Used in Fluent UI only by [`@fluentui/react-northstar`](https://aka.ms/fluent-ui), not `@fluentui/react`.
+
+### `no-context-default-value`
+
+Restricts usage of default values on React context creation. Imports should be provided to declare where the `createContext` function is coming from. For more information why this is necessary please consult [#23624](https://github.com/microsoft/fluentui/issues/23624)
+
+**Example Configuration:**
+
+```
+"@fluentui/no-context-default-value": [
+  "error",
+  {
+    imports: ["react", "@fluentui/react-context-selector"]
+  }
+]
+```
+
+**❌ Don't**
+
+```ts
+import * as React from 'react';
+const context = React.createContext({ someValue: undefined });
+```
+
+**✅ Do**
+
+```ts
+import * as React from 'react';
+const context = React.createContext(undefined);
+```

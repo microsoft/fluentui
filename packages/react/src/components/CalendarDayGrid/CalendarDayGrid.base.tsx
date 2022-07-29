@@ -381,7 +381,7 @@ export const CalendarDayGridBase: React.FunctionComponent<ICalendarDayGridProps>
   } as const;
 
   return (
-    <FocusZone className={classNames.wrapper}>
+    <FocusZone className={classNames.wrapper} preventDefaultWhenHandled={true}>
       <table
         className={classNames.table}
         aria-multiselectable="false"

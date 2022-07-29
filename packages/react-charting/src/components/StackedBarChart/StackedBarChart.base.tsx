@@ -142,7 +142,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 target={this.state.refSelected}
                 setInitialFocus={true}
                 hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-                directionalHint={DirectionalHint.topRightEdge}
+                directionalHint={DirectionalHint.topAutoEdge}
                 id={this._calloutId}
                 onDismiss={this._closeCallout}
                 preventDismissOnLostFocus={true}

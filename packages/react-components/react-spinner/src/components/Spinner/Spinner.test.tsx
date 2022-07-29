@@ -16,7 +16,6 @@ describe('Spinner', () => {
         },
       ],
     },
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('has role progressbar', () => {
@@ -30,13 +29,14 @@ describe('Spinner', () => {
     expect(result.queryByRole('progressbar')).toBeDefined();
   });
 
-  it('doesnt render Spinner when slot is overridden', () => {
-    const result = render(<Spinner spinner="" />);
-    expect(result.queryByRole('progressbar')).toBeNull();
+  it('doesnt render svg when slot is null', () => {
+    const result = render(<Spinner spinner={null} />);
+    expect(result.container.getElementsByClassName('fui-Spinner__Progressbar')).toBeNull;
   });
 
-  it('doesnt render Spinner when spinner styles is overridden', () => {
-    const result = render(<Spinner spinner={{ style: { visibility: 'hidden' } }} />);
-    expect(result.queryByRole('progressbar')).toBeNull();
+  it('doesnt render svg when spinner styles is overridden', () => {
+    const testId = 'test-id';
+    const result = render(<Spinner id={testId} spinner={{ style: { visibility: 'hidden' } }} />);
+    expect(result.queryByRole('progressbar')?.getAttribute('id')).toEqual('test-id');
   });
 });

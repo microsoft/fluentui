@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 23 May 2022 18:56:44 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.3)
+
+Thu, 14 Jul 2022 21:21:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.2..@fluentui/react-image_v9.0.3)
+
+### Patches
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.2)
+
+Thu, 14 Jul 2022 17:06:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.1..@fluentui/react-image_v9.0.2)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.1)
+
+Tue, 28 Jun 2022 17:39:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0..@fluentui/react-image_v9.0.1)
+
+### Patches
+
+- fix: Use caret dependency range for Griffel ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by lingfangao@hotmail.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.10 ([PR #23754](https://github.com/microsoft/fluentui/pull/23754) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0)
+
+Tue, 28 Jun 2022 15:13:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.12..@fluentui/react-image_v9.0.0)
+
+### Patches
+
+- feat: Initial 9.0.0 release ([PR #23733](https://github.com/microsoft/fluentui/pull/23733) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-theme to v9.0.0 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.9 ([commit](https://github.com/microsoft/fluentui/commit/ba6c5d651559b91c815429c9a9357c4d5a390f3e) by beachball)
+
+### Changes
+
+- Update 9.0.0-rc dependencies to use caret range ([PR #23732](https://github.com/microsoft/fluentui/pull/23732) by lingfangao@hotmail.com)
+- README, spec and migration guide cleanup for react-image. ([PR #23447](https://github.com/microsoft/fluentui/pull/23447) by Humberto.Morimoto@microsoft.com)
+- Bump Griffel dependencies ([PR #23688](https://github.com/microsoft/fluentui/pull/23688) by lingfangao@hotmail.com)
+
+## [9.0.0-rc.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.12)
+
+Thu, 23 Jun 2022 14:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.11..@fluentui/react-image_v9.0.0-rc.12)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-rc.10 ([PR #23608](https://github.com/microsoft/fluentui/pull/23608) by beachball)
+
+## [9.0.0-rc.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.11)
+
+Tue, 31 May 2022 21:28:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-rc.10..@fluentui/react-image_v9.0.0-rc.11)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #23275](https://github.com/microsoft/fluentui/pull/23275) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-rc.10 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.8 ([PR #23325](https://github.com/microsoft/fluentui/pull/23325) by beachball)
 
 ## [9.0.0-rc.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-rc.10)
 

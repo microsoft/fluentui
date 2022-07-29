@@ -6,14 +6,45 @@ export interface JustArgs extends Arguments {
   babel: boolean;
   production: boolean;
   webpackConfig: string;
-  commonjs: boolean;
   cached: boolean;
   registry: string;
   push: boolean;
   package: string;
-  min: boolean;
+  module: typeof moduleDefaults;
 }
 
 export function getJustArgv() {
-  return argv() as Partial<JustArgs>;
+  return parseModule(argv()) as Partial<JustArgs>;
+}
+
+const moduleDefaults = { esm: false, cjs: false, amd: false };
+function parseModule(args: Arguments & { module?: string | string[] }) {
+  const { module, ...rest } = args;
+
+  if (!module) {
+    return rest;
+  }
+
+  const normalizedModule = Array.isArray(module) ? module : module.split(',').map(value => value.trim());
+  const parsedModule = normalizedModule.reduce(
+    (acc, outputType) => {
+      if (!Object.prototype.hasOwnProperty.call(acc, outputType)) {
+        throw new Error(
+          `--module supports only following values: ${Object.keys(
+            moduleDefaults,
+          )}. You provided ${outputType} is invalid`,
+        );
+      }
+
+      acc[outputType] = true;
+
+      return acc;
+    },
+    { ...moduleDefaults },
+  );
+
+  return {
+    module: parsedModule,
+    ...rest,
+  };
 }

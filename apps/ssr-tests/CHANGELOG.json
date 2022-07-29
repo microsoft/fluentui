@@ -2,6 +2,441 @@
   "name": "@fluentui/ssr-tests",
   "entries": [
     {
+      "date": "Thu, 28 Jul 2022 07:41:18 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.85.1",
+            "commit": "d02dcc168ab47640fa503b05a142c9b32f555c3f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 07:37:43 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.85.0",
+            "commit": "e2694f89edb0aa2ee86e7e0c6c9b6354e99eabf5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.84.0",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:56 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.83.1",
+            "commit": "3a4adc9678288e62d86487b84c6e3a4ce55cfae5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.83.0",
+            "commit": "cc1dc504692525db9106e00dc65133ecfcfc35fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jul 2022 07:49:17 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.82.2",
+            "commit": "4ddf5a7467dc9540f21c4968495dd9a09afb69bc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.82.1",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.82.0",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:48 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.81.1",
+            "commit": "7989de0234d8faaba0e6d4fa945d6d70827696f3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 07:45:35 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.81.0",
+            "commit": "6ff3fb3cfb5d81d3db822f675a4ab0fb8be9559a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jul 2022 07:41:00 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.80.0",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Jul 2022 07:36:29 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.79.0",
+            "commit": "7a1737f0db893a5c623c30d81745f8e41c9ef79b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Jul 2022 07:37:21 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.78.1",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Jul 2022 07:38:24 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.78.0",
+            "commit": "33c89d8c4bfcd1b50a7aa23e70eedde6e9cb08df"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jun 2022 07:40:48 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.77.3",
+            "commit": "c0c292a7f35103752b40f2872d31e83b77f7a053"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 07:39:04 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.77.2",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jun 2022 07:43:32 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.77.1",
+            "commit": "70b75890a1d902972081ed67e7b912bd86b85411"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jun 2022 07:45:13 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.77.0",
+            "commit": "83db0242a04d4b28906166f92ec7585208d3cd94"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jun 2022 07:41:59 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.76.1",
+            "commit": "eab5e8113a378cdf539632a9a3bd716901b2cdaa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 21:38:03 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.76.0",
+            "commit": "e08c7f046fbae53b15b033bce6b9daa102ce9f9c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 07:40:22 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.75.1",
+            "commit": "d00ad919213921fe60f2e77dc862e50e19bcec66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jun 2022 07:52:11 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.75.0",
+            "commit": "3c3bd1fd66dd8d717c3a56cb2204681f9907e64c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jun 2022 07:39:08 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.74.0",
+            "commit": "7581977dbf55ea586280985c407c38ea58e54121"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jun 2022 07:46:14 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.73.0",
+            "commit": "2adc0f24b2ab21395e788c80bec9d57760591450"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jun 2022 07:45:28 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.72.3",
+            "commit": "960f5354ba3d3e1d2ff7267ea1c70c2eddeb80de"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jun 2022 07:48:04 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.72.2",
+            "commit": "4a812370ec9dac9991e75288c9b150d38e96beeb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jun 2022 07:38:04 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.72.1",
+            "commit": "91fbffdab2aed4c6bc84500e76a9a355a72f2ea0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jun 2022 07:38:24 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.72.0",
+            "commit": "0f0e6ad066a52cdd3c4156ecb033413e0a92411d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 May 2022 07:44:13 GMT",
+      "tag": "@fluentui/ssr-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/ssr-tests",
+            "comment": "Bump @fluentui/react to v8.71.1",
+            "commit": "b01ac1a166a8dc67a6c53409d9fe86977517bae6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 27 May 2022 07:39:11 GMT",
       "tag": "@fluentui/ssr-tests_v1.0.0",
       "version": "1.0.0",

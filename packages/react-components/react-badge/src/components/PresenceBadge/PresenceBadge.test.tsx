@@ -8,7 +8,6 @@ describe('PresenceBadge', () => {
   isConformant({
     Component: PresenceBadge,
     displayName: 'PresenceBadge',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   let wrapper: ReactWrapper | undefined;
