@@ -60,14 +60,16 @@ export function createGroups(
   groupDepth: number,
   startIndex: number,
   itemsPerGroup: number,
+  // eslint-disable-next-line default-param-last
   level: number = 0,
+  // eslint-disable-next-line default-param-last
   key: string = '',
   isCollapsed?: boolean,
 ): IExampleGroup[] {
   if (key !== '') {
     key = key + '-';
   }
-  const count = Math.pow(itemsPerGroup, groupDepth);
+  const count = itemsPerGroup ** groupDepth;
   return [...Array(groupCount)].map((value: number, index: number) => {
     return {
       count: count,
