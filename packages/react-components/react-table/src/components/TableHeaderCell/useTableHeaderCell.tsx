@@ -49,7 +49,6 @@ export const useTableHeaderCell_unstable = (
     button: useARIAButton(props.button, {
       required: true,
       defaultProps: {
-        // TODO implement sort state
         role: 'presentation',
         tabIndex: -1,
         type: 'button',

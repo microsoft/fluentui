@@ -8,14 +8,14 @@ export const Nested = () => {
       <DialogTrigger>
         <Button>Open dialog</Button>
       </DialogTrigger>
-      <DialogSurface aria-label="label">
+      <DialogSurface>
         <DialogTitle>Dialog title</DialogTitle>
         <DialogActions>
           <Dialog>
             <DialogTrigger>
               <Button appearance="primary">Open inner dialog</Button>
             </DialogTrigger>
-            <DialogSurface aria-label="label">
+            <DialogSurface>
               <DialogTitle>Inner dialog title</DialogTitle>
               <DialogBody>⚠️ just because you can doesn't mean you should have nested dialogs ⚠️</DialogBody>
               <DialogActions>

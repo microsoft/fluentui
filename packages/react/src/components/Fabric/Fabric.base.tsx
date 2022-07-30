@@ -6,16 +6,16 @@ import {
   getNativeProps,
   getRTL,
   memoizeFunction,
-  useFocusRects,
   Customizer,
+  FocusRectsContext,
   FocusRectsProvider,
-  IFocusRectsContext,
 } from '../../Utilities';
 import { createTheme } from '../../Styling';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import type { ITheme } from '../../Styling';
+import type { IFocusRectsContext } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -47,7 +47,6 @@ export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRe
 
     const rootElement = React.useRef<HTMLDivElement>(null);
     useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
-    useFocusRects(rootElement);
 
     return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
   },
@@ -65,11 +64,12 @@ function useRenderedContent(
 
   const { rootDir, needsTheme } = getDir(props);
 
+  const { providerRef: parentProviderRef } = React.useContext(FocusRectsContext);
   const focusRectsContext = React.useMemo<IFocusRectsContext>(
     () => ({
-      providerRef: rootElement,
+      providerRef: parentProviderRef ?? rootElement,
     }),
-    [rootElement],
+    [parentProviderRef, rootElement],
   );
 
   let renderedContent = (

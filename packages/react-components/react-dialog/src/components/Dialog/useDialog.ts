@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { resolveShorthand, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { normalizeDefaultPrevented, isEscapeKeyDismiss } from '../../utils';
@@ -76,6 +76,8 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     triggerRef,
     contentRef,
     requestOpenChange,
+    dialogBodyID: useId('dialog-body-'),
+    dialogTitleID: useId('dialog-title-'),
   };
 };
 
