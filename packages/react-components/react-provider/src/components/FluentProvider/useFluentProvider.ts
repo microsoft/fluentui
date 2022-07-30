@@ -1,4 +1,4 @@
-import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
+import { useKeyboardNavAttribute, useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
@@ -58,7 +58,8 @@ export const useFluentProvider_unstable = (
     root: getNativeElementProps('div', {
       ...props,
       dir,
-      ref: useMergedRefs(ref, useKeyboardNavAttribute()),
+      // ref: useMergedRefs(ref, useKeyboardNavAttribute()),
+      ref: useMergedRefs(ref, useFocusVisible(), useKeyboardNavAttribute()),
     }),
   };
 };

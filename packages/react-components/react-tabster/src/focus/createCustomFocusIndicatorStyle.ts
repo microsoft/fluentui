@@ -1,4 +1,5 @@
 import { KEYBOARD_NAV_SELECTOR, defaultOptions } from './constants';
+import { FOCUS_VISIBLE_CLASS } from './focusVisiblePolyfill';
 import type { GriffelStyle } from '@griffel/react';
 
 export interface CreateCustomFocusIndicatorStyleOptions {
@@ -19,5 +20,9 @@ export const createCustomFocusIndicatorStyle = (
   ':focus': {
     outlineStyle: 'none',
   },
-  [`${KEYBOARD_NAV_SELECTOR} :${selector}`]: style,
+  ':focus-visible': {
+    outlineStyle: 'none',
+  },
+  // [`${KEYBOARD_NAV_SELECTOR} :${selector}`]: style,
+  [`:global(.${FOCUS_VISIBLE_CLASS})`]: style,
 });
