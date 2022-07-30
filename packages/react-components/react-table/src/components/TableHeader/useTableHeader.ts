@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { TableHeaderProps, TableHeaderState } from './TableHeader.types';
 import { useTableContext } from '../../contexts/tableContext';
-import { useArrowNavigationGroup } from '../../../../react-tabster/src/index';
 
 /**
  * Create the state required to render TableHeader.

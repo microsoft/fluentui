@@ -34,6 +34,8 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.0.2",
     "@fluentui/react-context-selector": "^9.0.2",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-tabster": "^9.0.3",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
     "@griffel/react": "^1.2.3",
