@@ -25,6 +25,8 @@ const TestProvider: React.FC<{ value: any; children: any }> = props => {
   const [index, setIndex] = React.useState<number>(+props.value.index);
   const [value, setValue] = React.useState<string>(props.value.value);
 
+  /* eslint-disable no-unsafe-optional-chaining */
+  /* eslint-disable react/jsx-no-constructed-context-values */
   return (
     <div className="test-provider">
       <button className="set-index" onClick={e => setIndex(+(e.target as HTMLElement)?.dataset.index!)} />
@@ -32,6 +34,8 @@ const TestProvider: React.FC<{ value: any; children: any }> = props => {
       <TestContext.Provider value={{ index, value }}>{props.children}</TestContext.Provider>
     </div>
   );
+  /* eslint-enable no-unsafe-optional-chaining */
+  /* eslint-enable react/jsx-no-constructed-context-values */
 };
 
 describe('useContextSelectors', () => {

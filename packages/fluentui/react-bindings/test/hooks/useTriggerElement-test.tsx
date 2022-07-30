@@ -49,6 +49,7 @@ describe('useTriggerElement', () => {
   });
 
   it('"trigger" should not be a Fragment element', () => {
+    /* eslint-disable react/jsx-no-useless-fragment */
     consoleUtil.disableOnce();
     expect(() =>
       mount(
@@ -57,6 +58,7 @@ describe('useTriggerElement', () => {
         </TestComponent>,
       ),
     ).toThrow(/A "React\.Fragment" cannot be used as a "trigger"/);
+    /* eslint-enable react/jsx-no-useless-fragment */
   });
 
   it('"trigger" with "disabled" will produce a warning', () => {

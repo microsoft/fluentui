@@ -9,7 +9,10 @@ window.requestAnimationFrame = (callback: FrameRequestCallback) => {
   return r;
 };
 
-const animationFrame = () => new Promise(resolve => window.requestAnimationFrame(resolve));
+const animationFrame = () =>
+  new Promise(resolve => {
+    window.requestAnimationFrame(resolve);
+  });
 jest.useFakeTimers();
 
 describe('AutoFocusZone', () => {

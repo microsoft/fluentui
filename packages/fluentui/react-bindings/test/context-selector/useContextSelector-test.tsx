@@ -18,11 +18,13 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
 const TestProvider: React.FC = props => {
   const [index, setIndex] = React.useState<number>(0);
 
+  /* eslint-disable react/jsx-no-constructed-context-values */
   return (
     <div className="test-provider" onClick={() => setIndex(prevIndex => prevIndex + 1)}>
       <TestContext.Provider value={{ index }}>{props.children}</TestContext.Provider>
     </div>
   );
+  /* eslint-enable react/jsx-no-constructed-context-values */
 };
 
 describe('useContextSelector', () => {

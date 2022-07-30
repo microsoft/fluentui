@@ -337,6 +337,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
    * Sets focus to the last tabbable item in the zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
+  // eslint-disable-next-line react/no-unused-class-component-methods
   focusLast(): boolean {
     if (this._root.current) {
       const lastChild = this._root.current && (this._root.current.lastChild as HTMLElement | null);
