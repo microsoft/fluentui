@@ -27,9 +27,11 @@ const TelemetryTableRoundingFooter: React.FC<HeaderProps<{}> & { totals: Telemet
   totals,
 }) => <>{_.round(totals[column.id as keyof TelemetryDataTotals], 2).toFixed(2)}</>;
 
+/* eslint-disable react/jsx-no-useless-fragment */
 const TelemetryTableSumFooter: React.FC<HeaderProps<{}> & { totals: TelemetryDataTotals }> = ({ column, totals }) => (
   <>{totals[column.id as keyof TelemetryDataTotals]}</>
 );
+/* eslint-enable react/jsx-no-useless-fragment */
 
 export function useTelemetryColumns({
   showStylesDetails,
