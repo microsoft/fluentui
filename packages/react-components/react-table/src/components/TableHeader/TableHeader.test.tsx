@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { TableHeader } from './TableHeader';
 import { isConformant } from '../../common/isConformant';
 import { TableHeaderProps } from './TableHeader.types';
-import { TableContextProvider } from '../../contexts/tableContext';
+import { TableContextProvider, tableContextDefaultValue } from '../../contexts/tableContext';
 
 describe('TableHeader', () => {
   const table = document.createElement('table');
@@ -32,7 +32,7 @@ describe('TableHeader', () => {
 
   it('renders as div if `noNativeElements` is set', () => {
     const { container } = render(
-      <TableContextProvider value={{ size: 'medium', noNativeElements: true }}>
+      <TableContextProvider value={{ ...tableContextDefaultValue, noNativeElements: true }}>
         <TableHeader>
           <div />
         </TableHeader>

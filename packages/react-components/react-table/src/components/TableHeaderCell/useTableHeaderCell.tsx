@@ -39,6 +39,7 @@ export const useTableHeaderCell_unstable = (
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'columnheader' : undefined,
+      'aria-sort': isSorted ? sortDirection : undefined,
       ...props,
     }),
     sortIcon: resolveShorthand(props.sortIcon, {
@@ -49,10 +50,14 @@ export const useTableHeaderCell_unstable = (
       required: true,
       defaultProps: {
         // TODO implement sort state
-        role: sortable ? undefined : 'presentation',
-        tabIndex: sortable ? undefined : -1,
+        role: 'presentation',
+        tabIndex: -1,
         type: 'button',
-        onClick,
+        ...(sortable && {
+          role: undefined,
+          tabIndex: undefined,
+          onClick,
+        }),
       },
     }),
     sortable,

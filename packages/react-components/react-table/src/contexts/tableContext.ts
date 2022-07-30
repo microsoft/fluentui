@@ -3,7 +3,7 @@ import { TableContextValue } from '../components/Table/Table.types';
 
 const tableContext = createContext<TableContextValue | undefined>(undefined);
 
-const tableContextDefaultValue: TableContextValue = {
+export const tableContextDefaultValue: TableContextValue = {
   size: 'medium',
   noNativeElements: false,
   sortColumn: undefined,
