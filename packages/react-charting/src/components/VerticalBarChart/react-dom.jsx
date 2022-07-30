@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-import-module-exports
 import React from 'react';
 const reactDom = jest.genMockFromModule('react-dom');
 

@@ -214,7 +214,9 @@ class LayeredTree extends StandardTree {
     treeData: ITreeChartDataPoint,
     composition: number | undefined,
     styleClassNames: { link: string; rectNode: string; rectText: string; rectSubText: string; rectmetricText: string },
+    // eslint-disable-next-line @typescript-eslint/default-param-last
     _nodeElements: Array<React.SVGProps<SVGRectElement> | React.SVGProps<SVGTextElement>> = [],
+    // eslint-disable-next-line @typescript-eslint/default-param-last
     _linkElements: Array<React.SVGProps<SVGPathElement>> = [],
     _treeTraversal: number | undefined,
   ) {
@@ -237,6 +239,7 @@ class LayeredTree extends StandardTree {
     });
 
     // Find tree Height
+    // eslint-disable-next-line no-unsafe-optional-chaining
     const treeHeight = root?.height + 1;
 
     // Create tree layout, width: layoutWidth, height: layoutWidth/1.5 and add node separation
@@ -329,6 +332,7 @@ class LayeredTree extends StandardTree {
         const children: any = treeDataStructure[d.parentID]?.children;
 
         const dx1: number = treeDataStructure[d.parentID]?.x;
+        // eslint-disable-next-line no-unsafe-optional-chaining
         const dx2: number = treeDataStructure[d.parentID]?.x + newWidth + gap;
         let dy: number = children[0]?.y;
 
