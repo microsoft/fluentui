@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(react-charting): ESlint suppressions",
+  "packageName": "@fluentui/react-charting",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
