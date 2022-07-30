@@ -294,6 +294,7 @@ const getOverrides = () => [
 
       // permanently disable due to improper TS handling or unnecessary for TS
       // (and not covered by plugin:@typescript-eslint/eslint-recommended)
+      'import/no-import-module-exports': 'off',
       'default-param-last': 'off',
       'no-empty-function': 'off',
       'no-shadow': 'off',

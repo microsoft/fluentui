@@ -4,7 +4,6 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "deprecation/deprecation": "off",
-    "prefer-arrow-callback": "off",
-    "import/no-import-module-exports": "off"
+    "prefer-arrow-callback": "off"
   }
 }
