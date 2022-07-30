@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(eslint-plugin): bump eslint-plugin-jest",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "stjust@microsoft.com",
+  "dependentChangeType": "patch"
+}
