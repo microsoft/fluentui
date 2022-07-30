@@ -135,6 +135,7 @@ const config = {
     'consistent-return': 'off',
     'default-case': 'off',
     'func-names': 'off',
+    'prefer-exponentiation-operator': 'off',
     'global-require': 'off',
     'spaced-comment': 'off',
     // airbnb options ban for-of which is unnecessary for TS and modern node (https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/style.js#L334)

@@ -127,6 +127,7 @@ module.exports = {
     'no-useless-return': 'off',
     'operator-assignment': 'off',
     'prefer-destructuring': 'off',
+    'prefer-exponentiation-operator': 'off',
   },
   overrides: [
     {

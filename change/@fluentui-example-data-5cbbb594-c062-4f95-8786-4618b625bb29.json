@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(example-data): Fix/suppress lint errors",
-  "packageName": "@fluentui/example-data",
-  "email": "stjust@microsoft.com",
-  "dependentChangeType": "patch"
-}

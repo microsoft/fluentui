@@ -67,7 +67,7 @@ export function createGroups(
   if (key !== '') {
     key = key + '-';
   }
-  const count = itemsPerGroup ** groupDepth;
+  const count = Math.pow(itemsPerGroup, groupDepth);
   return [...Array(groupCount)].map((value: number, index: number) => {
     return {
       count: count,

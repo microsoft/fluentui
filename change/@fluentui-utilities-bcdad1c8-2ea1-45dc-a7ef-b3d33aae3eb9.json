@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(utilities): Use exponentiation operator for updated eslint dependencies",
-  "packageName": "@fluentui/utilities",
-  "email": "stjust@microsoft.com",
-  "dependentChangeType": "patch"
-}
