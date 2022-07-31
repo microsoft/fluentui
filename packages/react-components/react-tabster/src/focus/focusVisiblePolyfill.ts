@@ -56,20 +56,22 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
 
   // Make sure that when focus leaves the scope, the focus visible class is removed
   const blurListener = (e: FocusEvent) => {
-    if (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget) && state.current) {
-      removeFocusVisibleClass(state.current);
-      state.current = undefined;
+    if (!e.relatedTarget || (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget))) {
+      if (state.current) {
+        removeFocusVisibleClass(state.current);
+        state.current = undefined;
+      }
     }
   };
 
   scope.addEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
-  scope.addEventListener('blur', blurListener, true);
+  scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
   // Return disposer
   return () => {
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
-    scope.removeEventListener('blur', blurListener, true);
+    scope.removeEventListener('focusout', blurListener);
     delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
     disposeKeyborg(keyborg);
   };
