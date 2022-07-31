@@ -6,6 +6,7 @@ export {
   useModalAttributes,
   useTabsterAttributes,
   useFocusVisible,
+  useFocusWithin,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

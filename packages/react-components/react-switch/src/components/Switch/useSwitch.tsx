@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
+import { useFocusWithin } from '@fluentui/react-tabster';
 import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState } from './Switch.types';
 
@@ -25,7 +26,7 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
   const id = useId('switch-', nativeProps.primary.id);
 
   const root = resolveShorthand(props.root, {
-    defaultProps: nativeProps.root,
+    defaultProps: { ref: useFocusWithin<HTMLDivElement>(), ...nativeProps.root },
     required: true,
   });
 

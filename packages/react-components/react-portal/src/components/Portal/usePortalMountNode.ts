@@ -4,8 +4,8 @@ import {
   useThemeClassName_unstable as useThemeClassName,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
-import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { useFocusVisible } from '@fluentui/react-tabster';
 
 export type UsePortalMountNodeOptions = {
   /**
@@ -57,7 +57,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     }
   }, [element, className, dir]);
 
-  (useKeyboardNavAttribute() as React.MutableRefObject<HTMLElement>).current = element!;
+  (useFocusVisible() as React.MutableRefObject<HTMLElement | null>).current = element;
 
   React.useEffect(() => {
     return () => {

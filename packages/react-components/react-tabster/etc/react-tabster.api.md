@@ -5,6 +5,7 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import * as React_2 from 'react';
 import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
@@ -65,6 +66,12 @@ export const useFocusFinders: () => {
     findNextFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
     findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
+
+// @public (undocumented)
+export function useFocusVisible(): React_2.RefObject<HTMLElement>;
+
+// @public (undocumented)
+export function useFocusWithin<E extends HTMLElement>(): React_2.RefObject<E>;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;

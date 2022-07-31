@@ -1,6 +1,5 @@
 import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
-
-export const FOCUS_VISIBLE_CLASS = 'fui-focus-visible';
+import { FOCUS_VISIBLE_CLASS } from './constants';
 
 /**
  * Because `addEventListener` type override falls back to 2nd definition (evt name is unknown string literal)
@@ -40,7 +39,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
     }
   });
 
-  // Keyborg's focusin event is only registered once on the window
+  // Keyborg's focusin event is delegated so it's only registered once on the window
   // and contains metadata about the focus event
   const keyborgListener = (e: KeyborgFocusInEvent) => {
     if (state.current) {
@@ -48,19 +47,29 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
       state.current = undefined;
     }
 
-    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(e.target) && e.target.parentElement) {
+    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(e.target) && e.target) {
       // Griffel can't create chained global styles so use the parent element for now
-      state.current = e.target.parentElement;
+      state.current = e.target;
       applyFocusVisibleClass(state.current);
     }
   };
 
+  // Make sure that when focus leaves the scope, the focus visible class is removed
+  const blurListener = (e: FocusEvent) => {
+    if (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget) && state.current) {
+      removeFocusVisibleClass(state.current);
+      state.current = undefined;
+    }
+  };
+
   scope.addEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
+  scope.addEventListener('blur', blurListener, true);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
   // Return disposer
   return () => {
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
+    scope.removeEventListener('blur', blurListener, true);
     delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
     disposeKeyborg(keyborg);
   };

@@ -5,6 +5,7 @@ import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallb
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import type { RadioProps, RadioState } from './Radio.types';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Radio.
@@ -41,7 +42,10 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
 
   const root = resolveShorthand(props.root, {
     required: true,
-    defaultProps: nativeProps.root,
+    defaultProps: {
+      ref: useFocusWithin(),
+      ...nativeProps.root,
+    },
   });
 
   const input = resolveShorthand(props.input, {

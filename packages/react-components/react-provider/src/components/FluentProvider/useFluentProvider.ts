@@ -59,7 +59,7 @@ export const useFluentProvider_unstable = (
       ...props,
       dir,
       // ref: useMergedRefs(ref, useKeyboardNavAttribute()),
-      ref: useMergedRefs(ref, useFocusVisible(), useKeyboardNavAttribute()),
+      ref: useMergedRefs(ref, useFocusVisible()),
     }),
   };
 };
