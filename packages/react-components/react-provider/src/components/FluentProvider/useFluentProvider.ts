@@ -1,4 +1,4 @@
-import { useKeyboardNavAttribute, useFocusVisible } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
   useFluent_unstable as useFluent,
