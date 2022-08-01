@@ -56,7 +56,7 @@ module.exports = {
   alwaysAcceptBaseBranch: true,
   baseBranch,
   failureExitCode: 0,
-
+  //isPR
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
     ? {
         commit: getCurrentHash(),

@@ -98,6 +98,7 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
   // remove prefix if exists
+  //when does the prefix exist?
   if (branchName.indexOf('refs/heads/') === 0) {
     branchName = branchName.replace('refs/heads/', '');
   }

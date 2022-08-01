@@ -41,6 +41,7 @@ const config = {
   baseBranch,
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
+  //isPR
   ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
     ? { commit: getCurrentHash() }
     : null),
