@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix bug in rendering large datapoints in line chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}
