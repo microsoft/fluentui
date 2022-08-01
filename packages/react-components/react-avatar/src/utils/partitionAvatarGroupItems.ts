@@ -7,7 +7,7 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 /**
  * Get the inline items and overflowing items based on the array of AvatarGroupItems needed for AvatarGroup.
  *
- * @param options
+ * @param options - Configure the partition options
  *
  * @returns Two arrays of AvatarGroupItems splitted between the inline items and the overflowing items
  * based on maxItems.
