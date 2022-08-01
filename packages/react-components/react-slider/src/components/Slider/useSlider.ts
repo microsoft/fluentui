@@ -35,7 +35,7 @@ export const useSlider_unstable = (props: SliderProps, ref: React.Ref<HTMLInputE
     root: resolveShorthand(root, {
       required: true,
       defaultProps: {
-        ref: useFocusWithin(),
+        ref: useFocusWithin<HTMLDivElement>(),
         ...nativeProps.root,
       },
     }),

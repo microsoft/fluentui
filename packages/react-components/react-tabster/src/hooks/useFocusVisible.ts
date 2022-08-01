@@ -2,9 +2,9 @@ import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { applyFocusVisiblePolyfill } from '../focus/focusVisiblePolyfill';
 
-export function useFocusVisible() {
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>() {
   const { targetDocument } = useFluent();
-  const scopeRef = React.useRef<HTMLElement>(null);
+  const scopeRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
     if (targetDocument?.defaultView && scopeRef.current) {

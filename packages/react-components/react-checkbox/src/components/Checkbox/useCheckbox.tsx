@@ -71,7 +71,7 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
-        ref: useFocusWithin(),
+        ref: useFocusWithin<HTMLSpanElement>(),
         ...nativeProps.root,
       },
     }),

@@ -68,10 +68,10 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export function useFocusVisible(): React_2.RefObject<HTMLElement>;
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public (undocumented)
-export function useFocusWithin(): React_2.RefObject<HTMLElement>;
+export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;

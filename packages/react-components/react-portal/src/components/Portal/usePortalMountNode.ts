@@ -57,7 +57,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
     }
   }, [element, className, dir]);
 
-  (useFocusVisible() as React.MutableRefObject<HTMLElement | null>).current = element;
+  (useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>).current = element;
 
   React.useEffect(() => {
     return () => {

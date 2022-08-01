@@ -43,7 +43,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
   const root = resolveShorthand(props.root, {
     required: true,
     defaultProps: {
-      ref: useFocusWithin(),
+      ref: useFocusWithin<HTMLSpanElement>(),
       ...nativeProps.root,
     },
   });
