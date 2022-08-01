@@ -191,8 +191,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
     this._rectId = getId('containerRectLD');
-    this._staticHighlightCircle = getId('staticHighlightCircle01');
-
+    this._staticHighlightCircle = getId('staticHighlightCircle');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
