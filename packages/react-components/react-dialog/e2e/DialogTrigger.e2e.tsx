@@ -1,0 +1,67 @@
+import * as React from 'react';
+import { mount as mountBase } from '@cypress/react';
+
+import { FluentProvider } from '@fluentui/react-provider';
+import { teamsLightTheme } from '@fluentui/react-theme';
+
+import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
+import { Button } from '@fluentui/react-components';
+
+const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
+
+describe('DialogTrigger', () => {
+  it(`should not open dialog when 'aria-disabled' is true`, () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <button aria-disabled id="open-btn">
+            Open dialog
+          </button>
+        </DialogTrigger>
+        <DialogSurface id="dialog-surface">
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogBody>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
+          </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-btn').click();
+    cy.get('#dialog-surface').should('not.exist');
+  });
+  it(`should open dialog when 'aria-disabled' is false`, () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <button aria-disabled={false} id="open-btn">
+            Open dialog
+          </button>
+        </DialogTrigger>
+        <DialogSurface id="dialog-surface">
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogBody>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
+          </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-btn').click();
+    cy.get('#dialog-surface').should('exist');
+  });
+});
