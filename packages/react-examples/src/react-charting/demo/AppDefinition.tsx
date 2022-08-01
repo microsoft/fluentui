@@ -103,7 +103,7 @@ export const AppDefinition: IAppDefinition = {
   ],
   headerLinks: [
     {
-      name: 'Getting',
+      name: 'Getting started',
       url: '#/',
     },
     {
@@ -112,7 +112,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/microsoft/fluentui/packages/react-charting',
+      url: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting',
     },
   ],
 };
