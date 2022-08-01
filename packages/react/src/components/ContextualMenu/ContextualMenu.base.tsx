@@ -279,7 +279,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
       } else {
         previousElementsQueue.current = [targetElement, ...previousElementsQueue.current];
       }
-    } else if (previousElementsQueue.current) {
+    } else if (previousElementsQueue.current.length > 0) {
       tryFocusPreviousActiveElement({
         originalElement: previousElementsQueue.current[0],
         containsFocus: true,
