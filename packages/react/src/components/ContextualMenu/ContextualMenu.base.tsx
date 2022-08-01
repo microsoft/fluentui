@@ -263,7 +263,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
         // In some cases the object might exist but not be a real element.
         // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
 
-        previousElementsQueue.current[0].focus?.();
+        previousElementsQueue.current[0]?.focus?.();
       }
     },
     [onRestoreFocus],
@@ -275,7 +275,7 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
       const targetPosition = previousElementsQueue.current.indexOf(targetElement);
 
       if (targetPosition > -1) {
-        previousElementsQueue.current = [...previousElementsQueue.current].slice(targetPosition + 1);
+        previousElementsQueue.current = previousElementsQueue.current.slice(targetPosition + 1);
       } else {
         previousElementsQueue.current = [targetElement, ...previousElementsQueue.current];
       }
