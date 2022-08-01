@@ -8,6 +8,7 @@ export { AllControls } from './FieldDefault.stories';
 export { LabelBefore } from './FieldDefault.stories';
 export { Required } from './FieldDefault.stories';
 export { Status } from './FieldDefault.stories';
+export { Size } from './FieldDefault.stories';
 export { HelperText } from './FieldDefault.stories';
 
 export default {

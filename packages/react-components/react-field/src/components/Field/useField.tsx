@@ -37,6 +37,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
       id: baseId + '__label',
       htmlFor: inputId,
       required,
+      size,
     },
   });
 

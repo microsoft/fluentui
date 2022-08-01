@@ -107,6 +107,23 @@ export const Status = () => {
   );
 };
 
+export const Size = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.stack}>
+      <Field label="Size small" size="small">
+        <Input defaultValue="This is a small input" />
+      </Field>
+      <Field label="Size medium" size="medium">
+        <Input defaultValue="This is a medium input" />
+      </Field>
+      <Field label="Size large" size="large">
+        <Input defaultValue="This is a large input" />
+      </Field>
+    </div>
+  );
+};
+
 export const HelperText = () => {
   return (
     <Field label="Channel name" helperText="Letters, numbers, and spaces are allowed">
