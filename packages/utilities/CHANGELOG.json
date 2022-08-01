@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Mon, 01 Aug 2022 07:39:03 GMT",
+      "tag": "@fluentui/utilities_v8.10.0",
+      "version": "8.10.0",
+      "comments": {
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "02536d4b808deadafd13c9c990b41027fec07cda",
+            "comment": "chore: Updating description in comments of useFocusRects function."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jul 2022 07:39:35 GMT",
       "tag": "@fluentui/utilities_v8.10.0",
       "version": "8.10.0",

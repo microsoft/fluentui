@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
-import { PositioningShorthand } from '@fluentui/react-positioning';
+import {
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+} from '@fluentui/react-components';
+import type { PositioningShorthand } from '@fluentui/react-components';
 
 const useExampleStyles = makeStyles({
   popoverSurface: {
