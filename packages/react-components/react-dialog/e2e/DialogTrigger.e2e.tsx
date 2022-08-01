@@ -64,4 +64,29 @@ describe('DialogTrigger', () => {
     cy.get('#open-btn').click();
     cy.get('#dialog-surface').should('exist');
   });
+  it('should work with any element besides <button>', () => {
+    mount(
+      <Dialog>
+        <DialogTrigger>
+          <div id="open-btn">Open dialog</div>
+        </DialogTrigger>
+        <DialogSurface id="dialog-surface">
+          <DialogTitle>Dialog title</DialogTitle>
+          <DialogBody>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+            est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+            cumque eaque?
+          </DialogBody>
+          <DialogActions>
+            <DialogTrigger>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get('#open-btn').click();
+    cy.get('#dialog-surface').should('exist');
+  });
 });

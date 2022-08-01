@@ -74,31 +74,29 @@ describe('DialogTitle', () => {
   });
   describe('modalType = alert', () => {
     it('should not have closeButton by default', () => {
-      it('should have closeButton by default', () => {
-        mount(
-          <Dialog modalType="alert">
-            <DialogTrigger>
-              <Button id="open-btn">Open dialog</Button>
-            </DialogTrigger>
-            <DialogSurface id="dialog-surface">
-              <DialogTitle>Dialog title</DialogTitle>
-              <DialogBody>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus
-                eaque est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in
-                natus iure cumque eaque?
-              </DialogBody>
-              <DialogActions>
-                <DialogTrigger>
-                  <Button appearance="secondary">Close</Button>
-                </DialogTrigger>
-                <Button appearance="primary">Do Something</Button>
-              </DialogActions>
-            </DialogSurface>
-          </Dialog>,
-        );
-        cy.get('#open-btn').click();
-        cy.get(`.${dialogTitleClassNames.closeButton}`).should('not.exist');
-      });
+      mount(
+        <Dialog modalType="alert">
+          <DialogTrigger>
+            <Button id="open-btn">Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface id="dialog-surface">
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get('#open-btn').click();
+      cy.get(`.${dialogTitleClassNames.closeButton}`).should('not.exist');
     });
   });
 });
