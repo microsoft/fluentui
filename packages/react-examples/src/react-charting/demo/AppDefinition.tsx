@@ -1,5 +1,4 @@
 import { IAppDefinition } from '@fluentui/react-docsite-components';
-import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Charting',
