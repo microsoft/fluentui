@@ -4726,6 +4726,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;
     id?: string;
+    isGridRow?: boolean;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -5871,6 +5872,7 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaLevel?: number;
     ariaPosInSet?: number;
     ariaRowCount?: number;
     ariaRowIndex?: number;

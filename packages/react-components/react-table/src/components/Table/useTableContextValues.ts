@@ -1,15 +1,12 @@
-import * as React from 'react';
-import { TableContextValue } from '../../contexts/types';
-import { TableState } from './Table.types';
+import { TableContextValues, TableState } from './Table.types';
 
-export function useTableContextValues_unstable(state: TableState) {
-  const table = React.useMemo<TableContextValue>(
-    () => ({
-      size: state.size,
-      noNativeElements: state.noNativeElements,
-    }),
-    [state.size, state.noNativeElements],
-  );
+export function useTableContextValues_unstable(state: TableState): TableContextValues {
+  const { size, noNativeElements } = state;
 
-  return { table };
+  return {
+    table: {
+      size,
+      noNativeElements,
+    },
+  };
 }

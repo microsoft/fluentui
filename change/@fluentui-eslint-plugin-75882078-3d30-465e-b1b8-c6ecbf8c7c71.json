@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: upgrade error level of no-restricted-imports to error in v9 config.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "none"
+}

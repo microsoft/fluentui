@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogSurface } from './DialogSurface';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 import { isConformant } from '../../common/isConformant';
 import type { DialogSurfaceProps } from './DialogSurface.types';
 
 describe('DialogSurface', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant<DialogSurfaceProps>({
     Component: DialogSurface,
     displayName: 'DialogSurface',

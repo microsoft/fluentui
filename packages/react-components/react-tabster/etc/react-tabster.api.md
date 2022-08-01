@@ -38,12 +38,13 @@ export type FocusOutlineStyleOptions = {
 };
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid';
     circular?: boolean;
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
 }
