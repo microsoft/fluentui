@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 29 Jul 2022 07:41:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Aug 2022 07:39:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.13)
+
+Mon, 01 Aug 2022 07:39:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.12..@fluentui/react-charting_v5.12.13)
+
+### Patches
+
+- Fix bug in rendering large datapoints in line chart ([PR #21773](https://github.com/microsoft/fluentui/pull/21773) by atishay.jain@microsoft.com)
+- Bump @fluentui/react to v8.86.1 ([PR #24123](https://github.com/microsoft/fluentui/pull/24123) by beachball)
 
 ## [5.12.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.12)
 

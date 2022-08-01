@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 01 Aug 2022 07:39:02 GMT",
+      "tag": "@fluentui/react_v8.86.1",
+      "version": "8.86.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "02536d4b808deadafd13c9c990b41027fec07cda",
+            "comment": "fix: Make use parent FocusRectsContext so that only the outermost Fabric/ThemeProvider element in a tree is the only one being targetted by focus visibility classnames and event listeners."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "50b08528ea6ed19e13f002276fb880271771e425",
+            "comment": "fix(TagPicker): focus outline for TagItem remove button now meets required contrast ratio."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jul 2022 07:41:56 GMT",
       "tag": "@fluentui/react_v8.86.0",
       "version": "8.86.0",

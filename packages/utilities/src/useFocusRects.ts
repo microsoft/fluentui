@@ -56,12 +56,15 @@ export const FocusRectsProvider = FocusRectsContext.Provider;
 /**
  * Initializes the logic which:
  *
- * 1. Subscribes keydown and mousedown events. (It will only do it once per window,
- *    so it's safe to call this method multiple times.)
- * 2. When the user presses directional keyboard keys, adds the 'ms-Fabric--isFocusVisible' classname
- *    to the document body, removes the 'ms-Fabric-isFocusHidden' classname.
- * 3. When the user clicks a mouse button, adds the 'ms-Fabric-isFocusHidden' classname to the
- *    document body, removes the 'ms-Fabric--isFocusVisible' classname.
+ * 1. Subscribes keydown, keyup, mousedown and pointerdown events. (It will only do it once for the current element of
+ *    the FocusRectsContext providerRef or once per window if no such element is provided via context, so it's safe to
+ *    call this method multiple times.)
+ * 2. When the user presses triggers a keydown or keyup event via directional keyboard keys, adds the
+ *    'ms-Fabric--isFocusVisible' classname to the current element of the FocusRectsContext providerRef or the document
+ *    body if no such element is provided via context, and removes the 'ms-Fabric-isFocusHidden' classname.
+ * 3. When the user triggers a mousedown or pointerdown event, adds the 'ms-Fabric-isFocusHidden' classname to the
+ *    current element of the FocusRectsContext providerRef or the document body if no such element is provided via
+ *    context, and removes the 'ms-Fabric--isFocusVisible' classname.
  *
  * This logic allows components on the page to conditionally render focus treatments based on
  * the existence of global classnames, which simplifies logic overall.
