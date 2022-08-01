@@ -1,4 +1,5 @@
 import { ButtonVariables } from '../../../teams/components/Button/buttonVariables';
+import { loaderSvgDataUrl } from './loaderSvgDataUrl';
 
 export const buttonVariables = (siteVars: any): Partial<ButtonVariables> => {
   return {
@@ -15,5 +16,7 @@ export const buttonVariables = (siteVars: any): Partial<ButtonVariables> => {
 
     boxShadow: 'none',
     primaryBoxShadow: 'none',
+
+    primarySvgContent: loaderSvgDataUrl,
   };
 };

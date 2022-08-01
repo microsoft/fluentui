@@ -307,6 +307,7 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         borderWidth: p.size === 'small' ? v.sizeSmallLoaderBorderSize : v.loaderBorderSize,
         width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
         height: p.size === 'small' ? v.sizeSmallLoaderSvgHeight : v.loaderSvgHeight,
+        backgroundImage: p.primary ? v.primarySvgContent : v.svgContent,
       },
     },
 

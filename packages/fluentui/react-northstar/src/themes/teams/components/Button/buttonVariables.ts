@@ -1,5 +1,7 @@
 import { Property } from 'csstype';
 
+import { loaderPrimarySvgDataUrl } from './loaderPrimarySvgDataUrl';
+import { loaderSvgDataUrl } from './loaderSvgDataUrl';
 import { pxToRem } from '../../../../utils';
 
 export interface ButtonVariables {
@@ -66,6 +68,8 @@ export interface ButtonVariables {
   loaderSize: string;
   loaderSvgHeight: string;
   loaderSvgAnimationHeight: string;
+  svgContent: string;
+  primarySvgContent: string;
 
   sizeSmallContentFontSize: string;
   sizeSmallContentLineHeight: string;
@@ -141,6 +145,8 @@ export const buttonVariables = (siteVars: any): ButtonVariables => ({
   loaderSize: pxToRem(20),
   loaderSvgHeight: pxToRem(1220),
   loaderSvgAnimationHeight: pxToRem(-1200),
+  svgContent: loaderSvgDataUrl,
+  primarySvgContent: loaderPrimarySvgDataUrl,
 
   sizeSmallContentFontSize: siteVars.fontSizes.small,
   sizeSmallContentLineHeight: siteVars.lineHeightSmall,
