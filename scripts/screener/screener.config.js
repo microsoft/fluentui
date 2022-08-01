@@ -32,7 +32,7 @@ require('tsconfig-paths').register({
 });
 
 const baseBranch = 'master';
-const sourceBranch = process.env.BUILD_SOURCEBRANCH;
+const sourceBranchName = process.env.BUILD_SOURCEBRANCHNAME;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
@@ -56,8 +56,7 @@ module.exports = {
   alwaysAcceptBaseBranch: true,
   baseBranch,
   failureExitCode: 0,
-  //isPR
-  ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
+  ...(sourceBranchName === 'merge'
     ? {
         commit: getCurrentHash(),
       }

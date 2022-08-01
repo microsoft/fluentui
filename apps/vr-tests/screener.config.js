@@ -41,7 +41,6 @@ const config = {
   baseBranch,
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
-  //isPR
   ...(process.env.BUILD_SOURCEBRANCHNAME === 'merge' ? { commit: getCurrentHash() } : null),
   baseUrl: `${process.env.DEPLOYURL}/react-screener/iframe.html`,
 };
