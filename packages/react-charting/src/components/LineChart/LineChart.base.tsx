@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
-import { select as d3Select } from 'd3-selection';
+import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
@@ -160,6 +160,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _colorFillBars: IColorFillBarsProps[];
   private _colorFillBarsOpacity: number;
   private _tooltipId: string;
+  private _rectId: string;
+  private _staticHighlightCircle: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -188,6 +190,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
     this._tooltipId = getId('LineChartTooltipId_');
+    this._rectId = getId('containerRectLD');
+    this._staticHighlightCircle = getId('staticHighlightCircle');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -278,6 +282,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
                 />
+                {this.props.optimizeLargeData ? (
+                  <rect
+                    id={this._rectId}
+                    width={props.containerWidth}
+                    height={props.containerHeight}
+                    fill={'transparent'}
+                  />
+                ) : (
+                  <></>
+                )}
                 <g>
                   {this._renderedColorFillBars}
                   {this.lines}
@@ -550,7 +564,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const gaps = this._points[i].gaps?.sort((a, b) => a.startIndex - b.startIndex) ?? [];
 
       // Use path rendering technique for larger datasets to optimize performance.
-      if (this._points[i].data.length >= 1000 || this.props.optimizeLargeData!) {
+      if (this.props.optimizeLargeData!) {
         const line = d3Line()
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .x((d: any) => this._xAxisScale(d[0]))
@@ -632,8 +646,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
         pointsForLine.push(
           <circle
-            id={`staticHighlightCircle_${i}`}
-            key={`staticHighlightCircle_${i}`}
+            id={`${this._staticHighlightCircle}_${i}`}
+            key={`${this._staticHighlightCircle}_${i}`}
             r={5.5}
             cx={0}
             cy={0}
@@ -963,13 +977,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     lineHeight: number,
     mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
   ) => {
-    // Run this code for different scenarios. For data and numeric data. Try to satisfy undefined d0/d1 scenario.
     mouseEvent.persist();
     const { data } = this.props;
     const { lineChartData } = data;
 
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisScale.invert(mouseEvent.pageX - 15); //Todo - fix this
+    const xOffset = this._xAxisScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
     const i = bisect(lineChartData![linenumber].data, xOffset);
     const d0 = lineChartData![linenumber].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![linenumber].data[i] as ILineChartDataPoint;
@@ -1023,9 +1036,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           this.state.nearestCircleToHighlight.y !== pointToHighlight.y));
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated) {
-      this._uniqueCallOutID = `#staticHighlightCircle_${linenumber}`;
+      this._uniqueCallOutID = `#${this._staticHighlightCircle}_${linenumber}`;
 
-      d3Select(`#staticHighlightCircle_${linenumber}`)
+      d3Select(`#${this._staticHighlightCircle}_${linenumber}`)
         .attr('cx', `${this._xAxisScale(pointToHighlight.x)}`)
         .attr('cy', `${this._yAxisScale(pointToHighlight.y)}`)
         .attr('visibility', 'visibility');
@@ -1041,7 +1054,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this.setState({
         nearestCircleToHighlight: pointToHighlight,
         isCalloutVisible: true,
-        refSelected: `#staticHighlightCircle_${linenumber}`,
+        refSelected: `#${this._staticHighlightCircle}_${linenumber}`,
         stackCalloutProps: found!,
         YValueHover: found.values,
         dataPointCalloutProps: found!,

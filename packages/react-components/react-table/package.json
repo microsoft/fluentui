@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.0.2",
+    "@fluentui/react-context-selector": "^9.0.2",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
     "@griffel/react": "^1.2.3",
