@@ -3,7 +3,7 @@ import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Charting',
-  themes: AppThemes,
+
   testPages: [],
   examplePages: [
     {
