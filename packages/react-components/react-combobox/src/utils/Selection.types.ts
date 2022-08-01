@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { OptionValue } from './OptionCollection.types';
 
 export type SelectionProps = {
   /* For an uncontrolled component, sets the initial selection */
@@ -27,7 +28,7 @@ export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> &
 /* Values returned by the useSelection hook */
 export type SelectionValue = {
   selectedOptions: string[];
-  selectOption: (event: SelectionEvents, optionValue: string) => void;
+  selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
 /* Data for the onSelect callback */

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TableContextValue } from '../../contexts/types';
+import { TableState } from '../Table/Table.types';
 
 export type TableRowSlots = {
   root: Slot<'tr', 'div'>;
@@ -13,4 +13,4 @@ export type TableRowProps = ComponentProps<TableRowSlots> & {};
 /**
  * State used in rendering TableRow
  */
-export type TableRowState = ComponentState<TableRowSlots> & { size: TableContextValue['size'] };
+export type TableRowState = ComponentState<TableRowSlots> & { size: TableState['size'] };

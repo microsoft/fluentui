@@ -14,7 +14,7 @@ export { TriggerOutsideDialog } from './DialogTriggerOutsideDialog.stories';
 export { CustomTrigger } from './DialogCustomTrigger.stories';
 
 export default {
-  title: 'Components/Dialog',
+  title: 'Preview Components/Dialog',
   component: Dialog,
   parameters: {
     docs: {

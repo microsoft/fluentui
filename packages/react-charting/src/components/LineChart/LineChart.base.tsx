@@ -193,6 +193,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle01');
 
+
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
