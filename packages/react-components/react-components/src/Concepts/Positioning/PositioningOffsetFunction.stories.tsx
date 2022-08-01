@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
-import { Button } from '@fluentui/react-button';
-import { PositioningProps } from '@fluentui/react-positioning';
+import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import type { PositioningProps } from '@fluentui/react-components';
 
 export const OffsetFunction = () => {
   const offset: PositioningProps['offset'] = ({ positionedRect, targetRect, position, alignment }) => {

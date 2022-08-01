@@ -11,7 +11,7 @@ export const TriggerOutsideDialog = () => {
         <Button onClick={() => setOpen(true)}>Open Dialog</Button>
       </DialogTrigger>
       <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
-        <DialogSurface aria-label="label">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Bump Griffel dependencies",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -80,7 +80,7 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     /* Callback when an option is clicked, for internal use */
     onOptionClick(event: React.MouseEvent, option: OptionValue): void;
 
-    selectOption(event: SelectionEvents, optionValue: string): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
 
     setActiveOption(option?: OptionValue): void;
 

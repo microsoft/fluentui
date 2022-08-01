@@ -134,6 +134,7 @@ export {
   resolveShorthand,
   SSRProvider,
   useId,
+  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
 } from '@fluentui/react-utilities';
