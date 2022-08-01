@@ -4,9 +4,16 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Label } from '@fluentui/react-label';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -15,30 +22,62 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 export const Field: ForwardRefComponent<FieldProps>;
 
 // @public (undocumented)
-export const fieldClassName = "fui-Field";
-
-// @public (undocumented)
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
-// @public
-export type FieldProps = ComponentProps<FieldSlots> & {};
+// @public (undocumented)
+export type FieldContextValue = Readonly<Pick<FieldState, 'status' | 'labelId' | 'inputId' | 'required' | 'size'>>;
 
 // @public (undocumented)
-export type FieldSlots = {
-    root: Slot<'div'>;
+export type FieldContextValues = {
+    field: FieldContextValue;
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots>;
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+    children: React_2.ReactElement<FieldChildProps>;
+    size?: 'small' | 'medium' | 'large';
+    labelPosition?: 'above' | 'before';
+    status?: 'error' | 'warning' | 'success';
+    inputId?: string;
+    required?: boolean;
+};
+
+// @public (undocumented)
+export const FieldProvider: Provider<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined> & FC<ProviderProps<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined>>;
+
+// @public (undocumented)
+export type FieldSlots = {
+    root: NonNullable<Slot<'div'>>;
+    label?: Slot<typeof Label>;
+    statusText?: Slot<'span'>;
+    statusIcon?: Slot<'span'>;
+    helperText?: Slot<'span'>;
+};
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export type FieldState = ComponentState<FieldSlots> & {
+    size: NonNullable<FieldProps['size']>;
+    labelPosition: NonNullable<FieldProps['labelPosition']>;
+    status: FieldProps['status'];
+    required: FieldProps['required'];
+    inputId: NonNullable<FieldProps['inputId']>;
+    labelId: string | undefined;
+};
+
+// @public
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
 
+// @public (undocumented)
+export const useFieldContext_unstable: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined, T>) => T;
+
+// @public (undocumented)
+export const useFieldContextValues: (state: FieldState) => FieldContextValues;
+
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => FieldState;
+export const useFieldStyles_unstable: (state: FieldState) => void;
 
 // (No @packageDocumentation comment for this package)
 
