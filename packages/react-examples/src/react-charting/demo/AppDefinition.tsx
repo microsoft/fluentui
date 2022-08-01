@@ -1,8 +1,9 @@
 import { IAppDefinition } from '@fluentui/react-docsite-components';
+import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Charting',
-
+  themes: AppThemes,
   testPages: [],
   examplePages: [
     {
@@ -102,7 +103,7 @@ export const AppDefinition: IAppDefinition = {
   ],
   headerLinks: [
     {
-      name: 'Getting started',
+      name: 'Getting',
       url: '#/',
     },
     {
