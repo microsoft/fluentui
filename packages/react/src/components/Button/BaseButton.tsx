@@ -482,7 +482,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _onRenderDescription = (props: IButtonProps) => {
     // eslint-disable-next-line deprecation/deprecation
-    const { secondaryText } = props;
+    const { secondaryText = this.props.description } = props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
