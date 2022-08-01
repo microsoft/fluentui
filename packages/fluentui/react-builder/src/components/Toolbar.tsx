@@ -13,6 +13,7 @@ import {
   CodeSnippetIcon,
   OpenOutsideIcon,
   TrashCanIcon,
+  CallControlPresentNewIcon,
   UndoIcon,
   RedoIcon,
   TranslationIcon,
@@ -25,6 +26,7 @@ export type ToolbarProps = {
   canUndo: boolean;
   onModeChange: (mode: DesignerMode) => void;
   onReset: () => void;
+  onLoadFromUrl: () => void;
   onUndo: () => void;
   onRedo: () => void;
   onShowCodeChange: (showCode: boolean) => void;
@@ -44,6 +46,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   canUndo,
   onModeChange,
   onReset,
+  onLoadFromUrl,
   onUndo,
   onRedo,
   onShowCodeChange,
@@ -142,6 +145,14 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
             {
               key: 'divider-2',
               kind: 'divider',
+            },
+            {
+              icon: <CallControlPresentNewIcon outline={true} />,
+              key: 'load-from-url',
+              title: 'Load from URL',
+              onClick: () => {
+                onLoadFromUrl();
+              },
             },
             {
               icon: <TrashCanIcon outline={true} />,

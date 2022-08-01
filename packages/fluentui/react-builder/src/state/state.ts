@@ -50,6 +50,7 @@ export type DesignerAction =
   | { type: 'ENABLE_VIRTUAL_CURSOR'; enabledVirtualCursor: boolean }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
+  | { type: 'LOAD_FROM_URL'; url: string }
   | { type: 'SHOW_CODE'; show: boolean }
   | { type: 'SWITCH_TAB'; tab: string }
   | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
@@ -193,6 +194,17 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
 
     case 'SWITCH_TO_STORE':
       draftState.jsonTree = readTreeFromStore() || getDefaultJSONTree();
+      draftState.jsonTreeOrigin = 'store';
+      treeChanged = true;
+      break;
+
+    case 'LOAD_FROM_URL':
+      draftState.code = '';
+      draftState.selectedJSONTreeElementUuid = null;
+      draftState.selectedComponentInfo = null;
+      draftState.codeError = null;
+
+      draftState.jsonTree = readTreeFromURL(action.url) || getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
       treeChanged = true;
       break;

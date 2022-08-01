@@ -60,6 +60,15 @@ export const Designer: React.FunctionComponent = () => {
     }
   }, [dispatch]);
 
+  const handleLoadFromUrl = React.useCallback(() => {
+    /* eslint-disable-next-line no-alert */
+    if (confirm('Lose your changes?')) {
+      /* eslint-disable-next-line no-alert */
+      const url = window.prompt('Paste URL');
+      dispatch({ type: 'LOAD_FROM_URL', url });
+    }
+  }, [dispatch]);
+
   const handleShowCodeChange = React.useCallback(
     showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
@@ -378,6 +387,7 @@ export const Designer: React.FunctionComponent = () => {
         canUndo={state.history.length > 0}
         canRedo={state.redo.length > 0}
         onReset={handleReset}
+        onLoadFromUrl={handleLoadFromUrl}
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
@@ -413,6 +423,7 @@ export const Designer: React.FunctionComponent = () => {
         onSourceCodeError={handleSourceCodeError}
         onSwitchTab={handleSwitchTab}
         onSwitchToStore={handleSwitchToStore}
+        onLoadFromUrl={handleLoadFromUrl}
         selectedComponent={selectedComponent}
         selectedComponentAccessibilityErrors={selectedComponentAccessibilityErrors}
         selectedComponentInfo={selectedComponentInfo}

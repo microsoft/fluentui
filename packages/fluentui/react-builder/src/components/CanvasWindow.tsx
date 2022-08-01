@@ -1,9 +1,9 @@
-import { CodeSandboxExporter, CodeSandboxState, renderElementToJSX } from '@fluentui/docs-components';
+import { CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 import { Button, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { AccessibilityError } from '../accessibility/types';
-import { getCodeSandboxInfo, renderJSONTreeToJSXElement } from '../config';
+import { getCodeSandboxInfo } from '../config';
 import { useMode } from '../hooks/useMode';
 import { DesignerState } from '../state/state';
 import { BrowserWindow } from './BrowserWindow';
@@ -33,15 +33,13 @@ export type CanvasWindowProps = {
   onSourceCodeError: (code: any, error: any) => void;
   onSelectComponent: (jsonTreeElement: any) => void;
   onSwitchToStore: () => void;
+  onLoadFromUrl: () => void;
 };
 
 export const CanvasWindow: React.FunctionComponent<CanvasWindowProps> = (props: CanvasWindowProps) => {
   const HEADER_HEIGHT = '3rem';
   const [headerMessage, setHeaderMessage] = React.useState('');
-  const codeSandboxData = getCodeSandboxInfo(
-    props.state.jsonTree,
-    renderElementToJSX(renderJSONTreeToJSXElement(props.state.jsonTree)),
-  );
+  const codeSandboxData = getCodeSandboxInfo(props.state.jsonTree, props.state.code);
   const [{ mode }] = useMode();
 
   const CodeEditor = React.lazy(async () => {
