@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  AvatarGroup,
-  AvatarGroupItem,
-  AvatarGroupOverflow,
-  getPartitionedAvatarGroupItems,
-} from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 import type { AvatarSizes } from '@fluentui/react-avatar';
 
@@ -30,7 +25,7 @@ const names = [
   'Elliot Woodward',
 ];
 
-const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
+const sizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 export const SizeStack = () => {
   const styles = useStyles();
@@ -38,12 +33,18 @@ export const SizeStack = () => {
   return (
     <div className={styles.root}>
       {sizes.map(size => {
-        const avatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={size + '-' + name} />);
-        const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(avatarGroupItems);
+        const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: 'stack' });
+
         return (
-          <AvatarGroup layout="stack" size={size as AvatarSizes} key={size}>
-            {inlineItems}
-            <AvatarGroupOverflow>{overflowItems}</AvatarGroupOverflow>
+          <AvatarGroup layout="stack" size={size} key={size}>
+            {inlineItems.map(name => (
+              <AvatarGroupItem name={name} key={name} />
+            ))}
+            <AvatarGroupOverflow>
+              {overflowItems.map(name => (
+                <AvatarGroupItem name={name} key={name} />
+              ))}
+            </AvatarGroupOverflow>
           </AvatarGroup>
         );
       })}

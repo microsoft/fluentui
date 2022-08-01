@@ -4,7 +4,6 @@ export const useAvatarGroupContextValues = (state: AvatarGroupState): AvatarGrou
   const { layout, size } = state;
 
   const avatarGroup: AvatarGroupContextValue = {
-    isOverflow: false,
     layout,
     size,
   };

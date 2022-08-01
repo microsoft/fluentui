@@ -34,7 +34,7 @@ export type AvatarGroupOverflowSlots = {
  */
 export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
   /**
-   * Whether the indicator should render an icon instead of the number of overflowed AvatarGroupItems.
+   * Whether the triggerButton should render an icon instead of the number of overflowed AvatarGroupItems.
    * Note: The indicator will default to `icon` when the size is less than 24.
    * @default count
    */
@@ -56,7 +56,7 @@ export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOv
  */
 export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> &
   Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
-    isPopoverOpen: boolean;
+    popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
   };

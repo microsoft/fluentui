@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 import { getSlots } from '@fluentui/react-utilities';
 import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
@@ -8,7 +9,10 @@ import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './Avata
 /**
  * Render the final JSX of AvatarGroupOverflow
  */
-export const renderAvatarGroupOverflow_unstable = (state: AvatarGroupOverflowState) => {
+export const renderAvatarGroupOverflow_unstable = (
+  state: AvatarGroupOverflowState,
+  contextValuees: AvatarGroupContextValues,
+) => {
   const { slots, slotProps } = getSlots<AvatarGroupOverflowSlots>(state);
 
   return (
@@ -19,7 +23,7 @@ export const renderAvatarGroupOverflow_unstable = (state: AvatarGroupOverflowSta
         </slots.tooltip>
       </PopoverTrigger>
       <slots.popoverSurface {...slotProps.popoverSurface}>
-        <AvatarGroupContext.Provider value={{ isOverflow: true, size: 24 }}>
+        <AvatarGroupContext.Provider value={contextValuees.avatarGroup}>
           <slots.content {...slotProps.content} />
         </AvatarGroupContext.Provider>
       </slots.popoverSurface>

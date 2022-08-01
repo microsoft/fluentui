@@ -6,11 +6,13 @@ export {
   useAvatar_unstable,
 } from './Avatar';
 export type { AvatarNamedColor, AvatarProps, AvatarSlots, AvatarState, AvatarSizes } from './Avatar';
-export { getInitials, getPartitionedAvatarGroupItems } from './utils/index';
+export { getInitials, partitionAvatarGroupItems } from './utils/index';
+export type { PartitionAvatarGroupItemsOptions } from './utils/index';
 export {
   AvatarGroup,
   avatarGroupClassNames,
   renderAvatarGroup_unstable,
+  useAvatarGroupContextValues,
   useAvatarGroupStyles_unstable,
   useAvatarGroup_unstable,
 } from './AvatarGroup';
@@ -41,4 +43,4 @@ export type {
   AvatarGroupOverflowSlots,
   AvatarGroupOverflowState,
 } from './AvatarGroupOverflow';
-export { AvatarGroupProvider, useAvatarGroupContextValues, useAvatarGroupContext_unstable } from './contexts/index';
+export { AvatarGroupProvider, useAvatarGroupContext_unstable } from './contexts/index';

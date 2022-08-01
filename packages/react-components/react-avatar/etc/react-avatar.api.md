@@ -152,9 +152,16 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 }): string;
 
 // @public
-export const getPartitionedAvatarGroupItems: (items: JSX.Element[], maxItems?: number) => {
-    inlineItems: JSX.Element[];
-    overflowItems: JSX.Element[];
+export const partitionAvatarGroupItems: <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
+    inlineItems: T[];
+    overflowItems: readonly T[];
+};
+
+// @public (undocumented)
+export type PartitionAvatarGroupItemsOptions<T> = {
+    items: readonly T[];
+    layout?: 'spread' | 'stack' | 'pie';
+    maxInlineItems?: number;
 };
 
 // @public (undocumented)

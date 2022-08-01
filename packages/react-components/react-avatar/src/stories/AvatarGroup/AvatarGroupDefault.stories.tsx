@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  AvatarGroup,
-  AvatarGroupItem,
-  AvatarGroupOverflow,
-  getPartitionedAvatarGroupItems,
-} from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import type { AvatarGroupProps } from '@fluentui/react-avatar';
 
 const names = [
@@ -22,13 +17,18 @@ const names = [
 ];
 
 export const Default = (props: Partial<AvatarGroupProps>) => {
-  const avatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={name} />);
-  const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(avatarGroupItems);
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
     <AvatarGroup {...props}>
-      {inlineItems}
-      <AvatarGroupOverflow>{overflowItems}</AvatarGroupOverflow>
+      {inlineItems.map(name => (
+        <AvatarGroupItem name={name} key={name} />
+      ))}
+      <AvatarGroupOverflow>
+        {overflowItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+      </AvatarGroupOverflow>
     </AvatarGroup>
   );
 };

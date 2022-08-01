@@ -109,7 +109,7 @@ const useTriggerButtonStyles = makeStyles({
  * Apply styling to the AvatarGroupOverflow slots based on the state
  */
 export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflowState): AvatarGroupOverflowState => {
-  const { indicator, size, layout, isPopoverOpen } = state;
+  const { indicator, size, layout, popoverOpen } = state;
   const sizeStyles = useSizeStyles();
   const triggerButtonStyles = useTriggerButtonStyles();
   const contentStyles = useContentStyles();
@@ -168,7 +168,7 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
     groupChildClassName,
     triggerButtonStyles.focusIndicator,
     triggerButtonStyles.states,
-    isPopoverOpen && triggerButtonStyles.selected,
+    popoverOpen && triggerButtonStyles.selected,
     state.triggerButton.className,
   );
 

@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  AvatarGroup,
-  AvatarGroupItem,
-  AvatarGroupOverflow,
-  getPartitionedAvatarGroupItems,
-} from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -31,20 +26,30 @@ const names = [
 
 export const Layout = () => {
   const styles = useStyles();
-  const spreadAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'spread-' + name} />);
-  const stackAvatarGroupItems = names.map(name => <AvatarGroupItem name={name} key={'stack-' + name} />);
-  const spreadPartitionedItems = getPartitionedAvatarGroupItems(spreadAvatarGroupItems);
-  const stackPartitionedItems = getPartitionedAvatarGroupItems(stackAvatarGroupItems);
+  const spreadPartitionedItems = partitionAvatarGroupItems({ items: names });
+  const stackPartitionedItems = partitionAvatarGroupItems({ items: names });
 
   return (
     <div className={styles.root}>
       <AvatarGroup layout="spread">
-        {spreadPartitionedItems.inlineItems}
-        <AvatarGroupOverflow>{spreadPartitionedItems.overflowItems}</AvatarGroupOverflow>
+        {spreadPartitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        <AvatarGroupOverflow>
+          {spreadPartitionedItems.overflowItems.map(name => (
+            <AvatarGroupItem name={name} key={name} />
+          ))}
+        </AvatarGroupOverflow>
       </AvatarGroup>
       <AvatarGroup layout="stack">
-        {stackPartitionedItems.inlineItems}
-        <AvatarGroupOverflow>{stackPartitionedItems.overflowItems}</AvatarGroupOverflow>
+        {stackPartitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        <AvatarGroupOverflow>
+          {stackPartitionedItems.overflowItems.map(name => (
+            <AvatarGroupItem name={name} key={name} />
+          ))}
+        </AvatarGroupOverflow>
       </AvatarGroup>
     </div>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -15,24 +15,29 @@ import { Tooltip } from '@fluentui/react-tooltip';
  * before being passed to renderAvatarGroupOverflow_unstable.
  *
  * @param props - props from this instance of AvatarGroupOverflow
- * @param ref - reference to root HTMLElement of AvatarGroupOverflow
  */
 export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps): AvatarGroupOverflowState => {
   const size = useContextSelector(AvatarGroupContext, ctx => ctx.size) ?? defaultAvatarGroupSize;
   const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
-  const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
   const {
     indicator = size < 24 ? 'icon' : 'count',
     count = React.Children.count(props.children),
     children,
     ...restOfProps
   } = props;
-  let triggerButtonChildren;
+
+  const [popoverOpen, setPopoverOpen] = useControllableState({
+    state: props.open,
+    defaultState: props.defaultOpen,
+    initialState: false,
+  });
 
   const handleOnPopoverChange = (e: OpenPopoverEvents, data: OnOpenChangeData) => {
-    setIsPopoverOpen(data.open);
+    restOfProps.onOpenChange?.(e, data);
+    setPopoverOpen(data.open);
   };
 
+  let triggerButtonChildren;
   if (indicator === 'icon') {
     triggerButtonChildren = <MoreHorizontalRegular />;
   } else {
@@ -40,7 +45,7 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
   }
 
   return {
-    isPopoverOpen,
+    popoverOpen,
     layout,
     indicator,
     size,
@@ -55,10 +60,10 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
     root: {
       // Popover expects a child for its children. The children are added in the renderAvatarGroupOverflow.
       children: <></>,
-      onOpenChange: handleOnPopoverChange,
       size: 'small',
       trapFocus: true,
       ...restOfProps,
+      onOpenChange: handleOnPopoverChange,
     },
     triggerButton: resolveShorthand(props.triggerButton, {
       required: true,

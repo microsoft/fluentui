@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderAvatarGroup_unstable } from './renderAvatarGroup';
 import { useAvatarGroup_unstable } from './useAvatarGroup';
-import { useAvatarGroupContextValues } from '../../contexts/useAvatarGroupContextValues';
+import { useAvatarGroupContextValues } from './useAvatarGroupContextValues';
 import { useAvatarGroupStyles_unstable } from './useAvatarGroupStyles';
 import type { AvatarGroupProps } from './AvatarGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';

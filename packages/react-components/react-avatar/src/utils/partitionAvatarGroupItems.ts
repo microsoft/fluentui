@@ -1,0 +1,36 @@
+export type PartitionAvatarGroupItemsOptions<T> = {
+  items: readonly T[];
+  layout?: 'spread' | 'stack' | 'pie';
+  maxInlineItems?: number;
+};
+
+/**
+ * Get the inline items and overflowing items based on the array of AvatarGroupItems needed for AvatarGroup.
+ *
+ * @param options
+ *
+ * @returns Two arrays of AvatarGroupItems splitted between the inline items and the overflowing items
+ * based on maxItems.
+ *
+ * NOTE: Each item in the array must be a single AvatarGroupItem. If an item in the array contains a fragment with
+ * two avatars, the items will not be partitioned correctly.
+ */
+export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
+  const { items } = options;
+  const isPie = options.layout === 'pie';
+  const maxInlineItems = isPie ? 3 : options.maxInlineItems ?? 5;
+  const inlineCount = -(maxInlineItems - (items.length > maxInlineItems ? 1 : 0));
+
+  const overflowItems = isPie ? items : items.slice(0, inlineCount);
+  let inlineItems: T[] = [];
+  if (isPie) {
+    inlineItems = items.slice(0, maxInlineItems);
+  } else {
+    inlineItems = items.slice(inlineCount);
+  }
+
+  return {
+    inlineItems,
+    overflowItems,
+  };
+};

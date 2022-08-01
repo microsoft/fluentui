@@ -1,2 +1,3 @@
 export { getInitials } from './getInitials';
-export { getPartitionedAvatarGroupItems } from './getPartitionedAvatarGroupItems';
+export { partitionAvatarGroupItems } from './partitionAvatarGroupItems';
+export type { PartitionAvatarGroupItemsOptions } from './partitionAvatarGroupItems';
