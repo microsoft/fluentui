@@ -1,14 +1,14 @@
-# RFC: Input appearance migration
+# RFC: Appearance migration
 
 @peta-duda
 
 ## Summary
 
-Fluent V9 changes the appearance of `Input` component. V0 Input component default background colour is grey-ish, whereas in V9 the background colour of the input is white.
+Fluent V9 changes the default appearance of input components (`Input`, `Dropdown`). V0 input components default background colour is grey-ish, whereas in V9 the background colour is white.
 
 ## Background
 
-Partners could change the background colour to match the previous version of Fluent by passing a prop `appearance` with value `filled-darker`, but this solution does not scale well for partners when migrating to the new version.
+Partners could change the background colour to match the previous version of Fluent by passing a prop `appearance` with value `filled-darker`, but this solution does not scale well for partners when migrating to the new version and is error prone.
 
 ## Problem statement
 
@@ -36,15 +36,15 @@ Partners could create a new composition component and modify the props in their 
 
 👎 Cons:
 
-- Creating new input that does not match the fluent V9 doc.
+- Creating new input components (`Dropdown`, `Input`) that wouldn't match the Fluent V9 doc.
 
 ### Global css selector
 
-Targeting all the input selectors from a partner app and change the colour with global css.
+Targeting all input selectors from a partner app and change the colour with global css.
 
 👎 Cons:
 
-- Wouldn’t work in iframes
+- Wouldn’t work in iframes (?)
 - Difficult to validate
 
 ### New token alias to theme
