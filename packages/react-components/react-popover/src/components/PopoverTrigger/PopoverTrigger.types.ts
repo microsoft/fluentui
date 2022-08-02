@@ -16,9 +16,4 @@ export type PopoverTriggerState = {
   children: React.ReactElement | null;
 };
 
-export type PopoverTriggerChildProps = {
-  ref?: React.Ref<never>;
-} & Pick<
-  React.HTMLAttributes<HTMLElement>,
-  'aria-expanded' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
->;
+export type PopoverTriggerChildProps = React.HTMLAttributes<HTMLElement>;

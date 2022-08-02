@@ -102,9 +102,7 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
 
 // @public (undocumented)
-export type PopoverTriggerChildProps = {
-    ref?: React_2.Ref<never>;
-} & Pick<React_2.HTMLAttributes<HTMLElement>, 'aria-expanded' | 'onClick' | 'onContextMenu' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'>;
+export type PopoverTriggerChildProps = React_2.HTMLAttributes<HTMLElement>;
 
 // @public
 export type PopoverTriggerProps = {
