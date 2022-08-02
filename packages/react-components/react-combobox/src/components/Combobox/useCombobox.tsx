@@ -75,18 +75,22 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ...baseState,
   };
 
+  /* handle open/close + focus change when clicking expandIcon */
+  const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
+  const onExpandIconMouseDown = useMergedEventCallbacks(onIconMouseDown, () => {
+    // do not dismiss on blur when clicking the icon
+    baseState.ignoreNextBlur.current = true;
+  });
+
+  const onExpandIconClick = useMergedEventCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+    // open and set focus
+    state.setOpen(event, !state.open);
+    triggerRef.current?.focus();
+  });
+
   if (state.expandIcon) {
-    const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon;
-
-    state.expandIcon.onMouseDown = useMergedEventCallbacks(onIconMouseDown, () => {
-      // do not dismiss on blur when clicking the icon
-      baseState.ignoreNextBlur.current = true;
-    });
-
-    state.expandIcon.onClick = useMergedEventCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
-      state.setOpen(event, !state.open);
-      triggerRef.current?.focus();
-    });
+    state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
   }
 
   return state;
