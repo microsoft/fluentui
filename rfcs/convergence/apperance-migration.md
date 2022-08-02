@@ -65,7 +65,7 @@ Discuss with designers to unify V0 and V9 design, setting the appearance to fill
 
 👍 Props: Will make migration easier for partners who already uses V0
 
-👎 Cons: Inherits old design/dependency instead of inventing the best thing for future
+👎 Cons: Inherits old design/dependency that might not be relevant this time
 
 <!-- ### Pros and Cons -->
 
