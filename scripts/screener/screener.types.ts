@@ -119,5 +119,5 @@ export interface ScreenerProxyPayload {
   /** Name of the screener project for the screener run */
   project?: string;
   /** Name of the branch */
-  branch?: string;
+  branch: string;
 }
