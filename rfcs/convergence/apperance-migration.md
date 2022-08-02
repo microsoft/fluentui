@@ -30,17 +30,21 @@ Partners could create a new composition component and modify the props in their 
 
 👍 Pros:
 
-- Easy to create
 - Would work in iframes
 - Is relatively safe
 
 👎 Cons:
 
-- Creating new input components (`Dropdown`, `Input`, `TextArea`) where the props and default appearance wouldn't match our documentation.
+- Creating new composition component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
+- Composition component apperance prop wouldn't match our Fluent V9 documentation
 
 ### Global css selector
 
 Targeting all input selectors from a partner app and change the color with global css.
+
+👍 Pros:
+
+- Relatively easy and fast to do
 
 👎 Cons:
 
@@ -53,7 +57,7 @@ Adding a new theme token that the partner could override the existing one.
 
 👍 Pros:
 
-- Easy to do ?
+- Easy to do but creating for each input component (?)
 
 👎 Cons:
 
