@@ -3,7 +3,7 @@ import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utiliti
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
-import { useARIAButton } from '@fluentui/react-aria';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import { useEventCallback } from '@fluentui/react-utilities';
 
 /**
@@ -46,7 +46,7 @@ export const useTableHeaderCell_unstable = (
       required: sortable && isSorted,
       defaultProps: { children: sortDirection === 'ascending' ? <ArrowUpRegular /> : <ArrowDownRegular /> },
     }),
-    button: useARIAButton(props.button, {
+    button: useARIAButtonShorthand(props.button, {
       required: true,
       defaultProps: {
         role: 'presentation',
