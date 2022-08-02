@@ -1,6 +1,8 @@
 name: Screener build
 
-on: workflow_dispatch
+on:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   environment-upload:
@@ -29,6 +31,7 @@ jobs:
           BUILD_BUILDID=${{ github.run_id }}
           BUILD_SOURCEBRANCH=${{ github.ref }}
           EOT
+
       ###########################################
       # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
       # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
