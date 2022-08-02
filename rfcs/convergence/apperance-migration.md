@@ -64,7 +64,7 @@ Adding a new theme token that the partner could override the existing one.
 👎 Cons:
 
 - Negative impact on performance by increasing variables (as read here: [fluentui/theme-shared-colors.md at d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/blob/d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351/rfcs/react-components/convergence/theme-shared-colors.md))
-- Divergince the themes
+- Divergence themes from the original
 - Wouldn't work with iframes
 
 ### Unify design
