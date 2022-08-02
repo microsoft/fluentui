@@ -53,6 +53,8 @@ export interface IVerticalBarChartState extends IBasestate {
 
 type ColorScale = (_p?: number) => string;
 
+const LINE_BORDER_WIDTH: number = 4;
+
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
@@ -196,15 +198,28 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
     }
+
     const line = (
-      <path
-        opacity={shouldHighlight ? 1 : 0.4}
-        d={linePath(lineData)!}
-        fill={'none'}
-        strokeWidth={3}
-        stroke={lineLegendColor}
-      />
+      <>
+        <path
+          opacity={shouldHighlight ? 1 : 0.4}
+          d={linePath(lineData)!}
+          fill="transparent"
+          strokeLinecap="square"
+          strokeWidth={3 + LINE_BORDER_WIDTH}
+          stroke={theme!.palette.white}
+        />
+        <path
+          opacity={shouldHighlight ? 1 : 0.4}
+          d={linePath(lineData)!}
+          fill="transparent"
+          strokeLinecap="square"
+          strokeWidth={3}
+          stroke={lineLegendColor}
+        />
+      </>
     );
+
     const dots: React.ReactNode[] = lineData.map(
       (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
         return (
