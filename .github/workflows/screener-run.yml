@@ -78,6 +78,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          repository: microsoft/fluentui
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
