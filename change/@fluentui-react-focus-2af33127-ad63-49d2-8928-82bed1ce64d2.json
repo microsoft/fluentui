@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Scope keydown event listener so that it is added to the FocusZone itself instead of the window.",
+  "packageName": "@fluentui/react-focus",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
