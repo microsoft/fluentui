@@ -32,7 +32,7 @@ Partners could create a new composition component and modify the props in their 
 
 - Easy to create
 - Would work in iframes
-- Is safe
+- Is relatively safe
 
 👎 Cons:
 
