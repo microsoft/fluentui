@@ -76,6 +76,7 @@ jobs:
     name: Screener @fluentui/react
 
     steps:
+      - run: echo "HELLO"
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -106,11 +107,6 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
-
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{env.BUILD_SOURCEBRANCH}}
-          fetch-depth: 0
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
