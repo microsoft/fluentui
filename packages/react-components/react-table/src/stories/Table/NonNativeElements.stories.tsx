@@ -61,9 +61,13 @@ export const NonNativeElements = () => {
   return (
     <Table noNativeElements>
       <TableHeader>
-        {columns.map(column => (
-          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-        ))}
+        <TableRow>
+          {columns.map(column => (
+            <TableHeaderCell columnKey={column.columnKey} key={column.columnKey}>
+              {column.label}
+            </TableHeaderCell>
+          ))}
+        </TableRow>
       </TableHeader>
       <TableBody>
         {items.map(item => (

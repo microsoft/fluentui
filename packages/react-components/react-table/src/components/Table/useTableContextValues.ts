@@ -1,12 +1,16 @@
 import { TableContextValues, TableState } from './Table.types';
 
 export function useTableContextValues_unstable(state: TableState): TableContextValues {
-  const { size, noNativeElements } = state;
+  const { size, noNativeElements, sortable, sortColumn, sortDirection, requestSortColumnChange } = state;
 
   return {
     table: {
-      size,
       noNativeElements,
+      requestSortColumnChange,
+      size,
+      sortColumn,
+      sortDirection,
+      sortable,
     },
   };
 }

@@ -9,6 +9,7 @@ exports[`TableHeaderCell renders a default state 1`] = `
       class="fui-TableHeaderCell__button"
       role="presentation"
       tabindex="-1"
+      type="button"
     >
       Default TableHeaderCell
     </button>
