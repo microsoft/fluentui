@@ -64,10 +64,16 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   messageBars: [
     {
       path: '#',
-      text: <span>Fluent UI React version 8 is now available.</span>,
-      linkText: 'Learn more',
-      linkUrl: 'https://github.com/microsoft/fluentui/wiki/Version-8-release-notes',
-      sessionStoragePrefix: 'FluentUI8',
+      text: (
+        <span>
+          🎉 Announcing Fluent UI React v9 stable release! Visit{' '}
+          <a href="https://react.fluentui.dev/" style={{ color: '#006cbe' }}>
+            Fluent UI React v9
+          </a>{' '}
+          to see more.
+        </span>
+      ),
+      sessionStoragePrefix: 'FluentUI9',
     },
   ],
   // This is defined by loadSite() from @fluentui/public-docsite-setup

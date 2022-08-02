@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: Fix issue preventing copying text out of theme storybook documentation",
+  "packageName": "@fluentui/react-theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "none"
+}

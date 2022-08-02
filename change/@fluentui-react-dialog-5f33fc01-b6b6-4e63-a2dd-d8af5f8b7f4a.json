@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: Adds e2e tests for `react-dialog`",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}

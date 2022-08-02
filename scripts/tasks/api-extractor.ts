@@ -4,18 +4,32 @@ import * as path from 'path';
 import jju from 'jju';
 import { apiExtractorVerifyTask, task, series, resolveCwd, logger, TaskFunction, TscTaskOptions } from 'just-scripts';
 
-const apiExtractorConfigs = glob
+const apiExtractorConfigs: Array<
+  [
+    configPath: string,
+    /**
+     * config name is created from <configName> suffix `api-extractor.<configName>.json`.
+     * @example
+     * `api-extractor.fast.json -> configName === fast`
+     *
+     * default behavior:
+     * `api-extractor.json -> configName === default`
+     */
+    configName: string,
+  ]
+> = glob
   .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
-  .map(configPath => [configPath, configPath.replace(/.*\bapi-extractor(?:\.(.*))?\.json$/, '$1') || 'default'])
-  .filter(([, configName]) => configName !== 'local');
+  .map(configPath => [configPath, configPath.replace(/.*\bapi-extractor(?:\.(.*))?\.json$/, '$1') || 'default']);
+
+const apiExtractorConfigsForExecution = apiExtractorConfigs.filter(([, configName]) => configName !== 'local');
 
 // Whether to update automatically on build
 const localBuild = !process.env.TF_BUILD;
 
 export function apiExtractor() {
-  return apiExtractorConfigs.length
+  return apiExtractorConfigsForExecution.length
     ? (series(
-        ...apiExtractorConfigs.map(([configPath, configName]) => {
+        ...apiExtractorConfigsForExecution.map(([configPath, configName]) => {
           const taskName = `api-extractor:${configName}`;
 
           task(
@@ -43,7 +57,16 @@ export function apiExtractor() {
           return taskName;
         }),
       ) as TaskFunction)
-    : 'no-op';
+    : () => {
+        if (apiExtractorConfigs.length) {
+          logger.info(
+            `skipping api-extractor execution - no configs to execute present besides: '${apiExtractorConfigs}'`,
+          );
+          return;
+        }
+
+        logger.info(`skipping api-extractor execution - no configs present`);
+      };
 }
 
 interface TsConfig {

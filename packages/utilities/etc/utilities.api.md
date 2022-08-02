@@ -126,6 +126,9 @@ export const buttonProperties: Record<string, number>;
 export function calculatePrecision(value: number | string): number;
 
 // @public
+export function canUseDOM(): boolean;
+
+// @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
@@ -297,6 +300,12 @@ export function focusFirstChild(rootElement: HTMLElement): boolean;
 export const FocusRects: React_2.FunctionComponent<{
     rootRef?: React_2.RefObject<HTMLElement>;
 }>;
+
+// @public (undocumented)
+export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
+
+// @public (undocumented)
+export const FocusRectsProvider: React_2.Provider<IFocusRectsContext>;
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -505,6 +514,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
+    children?: React_2.ReactNode;
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 
@@ -587,6 +597,11 @@ export interface IFitContentToBoundsOptions {
     maxScale?: number;
     mode: FitMode;
 }
+
+// @public (undocumented)
+export type IFocusRectsContext = {
+    providerRef?: React_2.RefObject<HTMLElement>;
+};
 
 // @public
 export const iframeProperties: Record<string, number>;
@@ -1039,6 +1054,9 @@ export type RefObject<T> = {
 };
 
 // @public
+export function removeDirectionalKeyCode(which: number): void;
+
+// @public
 export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
@@ -1147,7 +1165,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, providerElem?: Element): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
@@ -1165,7 +1183,7 @@ export { setPortalAttribute }
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
-// @public
+// @public @deprecated
 export function setSSR(isEnabled: boolean): void;
 
 // @public @deprecated (undocumented)

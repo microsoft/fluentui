@@ -2,6 +2,66 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 28 Jul 2022 07:41:18 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "af5aca63710f7d1264e8aa3141147e71ab3f0b4f",
+            "comment": "chore: Remove static className conformance tests."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/react-conformance_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jun 2022 07:43:32 GMT",
+      "tag": "@fluentui/react-conformance_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "52f6f9da2687560b5f165309c6c54c63878379f8",
+            "comment": "feat: Adding getPortalElement option to static classnames object test."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:09 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b48c03cff249019cf845af18a7f63dacf46d5218",
+            "comment": "Hoist react-is devDependencies to the repo root"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Apr 2022 07:34:57 GMT",
       "tag": "@fluentui/react-conformance_v0.13.0",
       "version": "0.13.0",

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "disables eslint rule @fluentui/no-context-default-value for local component context",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}

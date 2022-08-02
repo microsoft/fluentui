@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Make <textarea> match its wrapper size and add documentation on changing its height.",
+  "packageName": "@fluentui/react-textarea",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

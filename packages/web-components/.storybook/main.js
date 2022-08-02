@@ -2,10 +2,14 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|mdx)'],
+  staticDirs: ['../public'],
   core: {
     builder: 'webpack4',
   },
   addons: [
+    {
+      name: '@storybook/addon-docs',
+    },
     {
       name: '@storybook/addon-essentials',
       options: {
@@ -14,9 +18,6 @@ module.exports = {
         toolbars: false,
         actions: false,
       },
-    },
-    {
-      name: '@storybook/addon-docs',
     },
   ],
   webpackFinal: async config => {

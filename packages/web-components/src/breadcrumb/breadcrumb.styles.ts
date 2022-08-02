@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { bodyFont, typeRampBaseFontSize, typeRampBaseLineHeight } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const breadcrumbStyles: (
   context: ElementDefinitionContext,
@@ -8,9 +8,7 @@ export const breadcrumbStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
   ${display('inline-block')} :host {
     box-sizing: border-box;
-    font-family: ${bodyFont};
-    font-size: ${typeRampBaseFontSize};
-    line-height: ${typeRampBaseLineHeight};
+    ${typeRampBase};
   }
 
   .list {

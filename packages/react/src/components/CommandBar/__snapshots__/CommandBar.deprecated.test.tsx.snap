@@ -113,7 +113,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -121,19 +121,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -257,7 +257,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -265,19 +265,19 @@ exports[`CommandBar renders commands correctly 1`] = `
                     right: 4px;
                     top: 4px;
                   }
-                  &:active > * {
+                  &:active > span {
                     left: 0px;
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {

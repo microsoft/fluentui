@@ -47,14 +47,14 @@ exports[`Button renders CompoundButton correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
         right: -2px;
         top: -2px;
       }
-      &:active > * {
+      &:active > span {
         left: 0px;
         position: relative;
         top: 0px;
@@ -63,7 +63,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }

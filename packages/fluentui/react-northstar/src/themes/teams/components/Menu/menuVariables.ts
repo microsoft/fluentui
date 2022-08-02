@@ -62,7 +62,6 @@ export interface MenuVariables {
   verticalItemBorderWidth: string;
   verticalItemBorderColor: string;
   verticalPointingBorderColor: string;
-  verticalBackgroundColorFocus: string;
   verticalBorderColor: string;
 
   pointingIndicatorBackgroundColor: string;
@@ -96,6 +95,8 @@ export interface MenuVariables {
   indicatorColor: string;
   primaryIndicatorColorHover: string;
   indicatorColorHover: string;
+
+  subMenuBorderColor: string;
 }
 
 export const menuVariables = (siteVars: any): MenuVariables => {
@@ -161,7 +162,6 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
-    verticalBackgroundColorFocus: undefined,
     verticalBorderColor: siteVars.colorScheme.default.borderTransparent,
 
     activeUnderlinedColor: undefined,
@@ -201,5 +201,7 @@ export const menuVariables = (siteVars: any): MenuVariables => {
     activePrimaryVerticalIndicatorColor: siteVars.colors.black,
     primaryIndicatorColorHover: siteVars.colors.black,
     indicatorColorHover: siteVars.colors.grey[500],
+
+    subMenuBorderColor: siteVars.colorScheme.default.borderTransparent,
   };
 };

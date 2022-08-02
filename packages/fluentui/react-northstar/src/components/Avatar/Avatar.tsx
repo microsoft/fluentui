@@ -42,7 +42,7 @@ export interface AvatarProps extends UIComponentProps {
   square?: boolean;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 
   /** Shorthand for the status of the user. */
   status?: ShorthandValue<AvatarStatusProps>;
@@ -51,6 +51,7 @@ export interface AvatarProps extends UIComponentProps {
   getInitials?: (name: string) => string;
 }
 
+export type AvatarSizeValue = SizeValue | 'medium-large';
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 export const avatarClassName = 'ui-avatar';
 
@@ -82,7 +83,7 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
     debugName: Avatar.displayName,
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
+  const { classes } = useStyles(Avatar.displayName, {
     className: avatarClassName,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
@@ -103,8 +104,6 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
         avatar: !square,
         title: name,
         size,
-        // remove in upcoming breaking change
-        styles: resolvedStyles.image,
       }),
   });
 
@@ -112,7 +111,6 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
     defaultProps: () =>
       getA11Props('icon', {
         title: name,
-        styles: resolvedStyles.icon,
         size,
         square,
       }),
@@ -126,7 +124,6 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
         title: name,
         size,
         square,
-        styles: resolvedStyles.label,
       }),
   });
 
@@ -140,8 +137,6 @@ export const Avatar = (React.forwardRef<HTMLDivElement, AvatarProps>((props, ref
         defaultProps: () =>
           getA11Props('status', {
             size,
-            // remove in upcoming breaking change
-            styles: resolvedStyles.status,
           }),
         overrideProps: (predefinedProps: AvatarStatusProps) => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),

@@ -1,11 +1,17 @@
 import type { IRawStyle } from '../MergeStyles';
 
-export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), (forced-colors: active)';
+export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
 export const HighContrastSelectorWhite =
-  '@media screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white)';
+  // eslint-disable-next-line @fluentui/max-len
+  '@media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light)';
 export const HighContrastSelectorBlack =
-  '@media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black)';
-export const EdgeChromiumHighContrastSelector = '@media screen and (forced-colors: active)';
+  // eslint-disable-next-line @fluentui/max-len
+  '@media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark)';
+/**
+ * @deprecated Use `HighContrastSelector`
+ */
+export const EdgeChromiumHighContrastSelector =
+  '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
 
 export const ScreenWidthMinSmall = 320;
 export const ScreenWidthMinMedium = 480;
@@ -41,10 +47,13 @@ export function getHighContrastNoAdjustStyle(): IRawStyle {
  * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
  *  @deprecated Use `getHighContrastNoAdjustStyle`
  */
+// eslint-disable-next-line deprecation/deprecation
 export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IRawStyle } {
   return {
+    // eslint-disable-next-line deprecation/deprecation
     [EdgeChromiumHighContrastSelector]: {
       forcedColorAdjust: 'none',
+      MsHighContrastAdjust: 'none',
     },
   };
 }

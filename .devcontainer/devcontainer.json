@@ -14,7 +14,7 @@
   "settings": {},
 
   // Add the IDs of extensions you want installed when the container is created.
-  "extensions": ["dbaeumer.vscode-eslint"],
+  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -23,6 +23,10 @@
   "remoteUser": "node",
   "features": {
     "github-cli": "latest"
+  },
+  "containerEnv": {
+    "DISPLAY": "host.docker.internal:0.0",
+    "LIBGL_ALWAYS_INDIRECT": "0"
   },
 
   // https://code.visualstudio.com/docs/remote/devcontainerjson-reference#_lifecycle-scripts
