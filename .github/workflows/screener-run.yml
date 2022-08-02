@@ -78,7 +78,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: enable-screener-workflows
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -107,6 +106,12 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{env.BUILD_SOURCEBRANCH}}
+          fetch-depth: 0
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
