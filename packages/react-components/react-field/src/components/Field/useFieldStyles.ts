@@ -11,57 +11,31 @@ export const fieldClassNames: SlotClassNames<FieldSlots> = {
   helperText: 'fui-Field__helperText',
 };
 
-// TODO replace with shorthands.gridArea when it is available
-// https://github.com/microsoft/griffel/issues/120
-const gridArea = (area: string) => ({
-  gridRowStart: area,
-  gridRowEnd: area,
-  gridColumnStart: area,
-  gridColumnEnd: area,
-});
-
 /**
  * Styles for the root slot
  */
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
-    gridTemplateAreas: `
-      "input"
-      "statusText"
-      "helperText"
-    `,
+    gridAutoFlow: 'row',
+    justifyItems: 'start',
   },
 
-  'label-above': {
-    gridTemplateAreas: `
-      "label"
-      "input"
-      "statusText"
-      "helperText"
-    `,
-  },
-
-  'label-before': {
-    gridTemplateAreas: `
-      "label input"
-      "label statusText"
-      "label helperText"
-    `,
+  labelBefore: {
+    gridTemplateRows: 'repeat(4, auto)',
+    gridTemplateColumns: 'repeat(2, auto)',
   },
 });
 
 const useLabelStyles = makeStyles({
-  base: {
-    ...gridArea('label'),
-  },
-
   above: {
     marginBottom: tokens.spacingVerticalXXS,
   },
 
   before: {
     marginRight: tokens.spacingHorizontalM,
+    gridRowStart: '1',
+    gridRowEnd: '-1',
   },
 });
 
@@ -71,13 +45,6 @@ const useSecondaryTextStyles = makeStyles({
     marginTop: tokens.spacingVerticalXXS,
     color: tokens.colorNeutralForeground3,
     ...typographyStyles.caption1,
-  },
-
-  statusText: {
-    ...gridArea('statusText'),
-  },
-  helperText: {
-    ...gridArea('helperText'),
   },
 
   error: {
@@ -112,7 +79,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   state.root.className = mergeClasses(
     fieldClassNames.root,
     rootStyles.base,
-    state.label ? rootStyles[`label-${state.labelPosition}`] : undefined,
+    state.label && state.labelPosition === 'before' && rootStyles.labelBefore,
     state.root.className,
   );
 
@@ -120,7 +87,6 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
-      labelStyles.base,
       labelStyles[state.labelPosition],
       state.label.className,
     );
@@ -141,7 +107,6 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.statusText.className = mergeClasses(
       fieldClassNames.statusText,
       secondaryTextStyles.base,
-      secondaryTextStyles.statusText,
       state.status === 'error' && secondaryTextStyles.error,
       state.statusText.className,
     );
@@ -151,7 +116,6 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.helperText.className = mergeClasses(
       fieldClassNames.helperText,
       secondaryTextStyles.base,
-      secondaryTextStyles.helperText,
       state.helperText.className,
     );
   }
