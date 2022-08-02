@@ -26,6 +26,7 @@ const useStyles = makeStyles({
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
   const { targetDocument, dir } = useFluent();
+  const focusVisibleRef = useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>;
 
   const classes = useStyles();
   const themeClassName = useThemeClassName();
@@ -49,15 +50,14 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
 
       element.classList.add(...classesToApply);
       element.setAttribute('dir', dir);
+      focusVisibleRef.current = element;
 
       return () => {
         element.classList.remove(...classesToApply);
         element.removeAttribute('dir');
       };
     }
-  }, [element, className, dir]);
-
-  (useFocusVisible<HTMLDivElement>() as React.MutableRefObject<HTMLElement | null>).current = element;
+  }, [element, className, dir, focusVisibleRef]);
 
   React.useEffect(() => {
     return () => {
