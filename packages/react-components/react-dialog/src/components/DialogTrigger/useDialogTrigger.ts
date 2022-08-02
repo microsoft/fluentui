@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { Enter, Space } from '@fluentui/keyboard-keys';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
 import { DialogTriggerChildProps, DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { isTargetDisabled } from '../../utils';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render DialogTrigger.
@@ -37,23 +37,15 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
     }
   });
 
-  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
-    if (isTargetDisabled(event)) {
-      return;
-    }
-    child?.props.onKeyDown?.(event);
-    if (!event.isDefaultPrevented() && (event.key === Enter || event.key === Space)) {
-      event.currentTarget.click();
-    }
-  });
-
   return {
-    children: applyTriggerPropsToChildren<DialogTriggerChildProps>(children, {
-      'aria-haspopup': action === 'close' ? undefined : 'dialog',
-      ref: child?.ref as React.Ref<never>,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-      ...triggerAttributes,
-    }),
+    children: applyTriggerPropsToChildren<DialogTriggerChildProps>(
+      children,
+      useARIAButtonProps(typeof child?.type === 'string' ? (child.type as 'div') : 'div', {
+        'aria-haspopup': action === 'close' ? undefined : 'dialog',
+        ref: child?.ref as React.Ref<never>,
+        onClick: handleClick,
+        ...triggerAttributes,
+      }),
+    ),
   };
 };
