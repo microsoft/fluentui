@@ -61,7 +61,6 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     components: {
       root: 'div',
       label: Label,
-      // wrapper: 'div',
       statusText: 'span',
       statusIcon: 'span',
       helperText: 'span',
@@ -69,14 +68,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     root: getNativeElementProps('div', {
       ...props,
       ref,
-      // children: undefined,
     }),
-    // wrapper: resolveShorthand(props.wrapper, {
-    //   required: true,
-    //   defaultProps: {
-    //     children: props.children,
-    //   },
-    // }),
     label,
     statusIcon: resolveShorthand(props.statusIcon, {
       required: !!defaultStatusIcon,

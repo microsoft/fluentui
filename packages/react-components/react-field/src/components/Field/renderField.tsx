@@ -14,7 +14,6 @@ export const renderField_unstable = (state: FieldState, contextValues: FieldCont
       <slots.root {...slotProps.root}>
         {slots.label && <slots.label {...slotProps.label} />}
         {slotProps.root.children}
-        {/* <slots.wrapper {...slotProps.wrapper} /> */}
         {slots.statusText && (
           <slots.statusText {...slotProps.statusText}>
             {slots.statusIcon && <slots.statusIcon {...slotProps.statusIcon} />}

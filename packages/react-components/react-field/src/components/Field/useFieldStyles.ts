@@ -6,7 +6,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: 'fui-Field',
   label: 'fui-Field__label',
-  // wrapper: 'fui-Field__wrapper',
   statusText: 'fui-Field__statusText',
   statusIcon: 'fui-Field__statusIcon',
   helperText: 'fui-Field__helperText',
@@ -50,10 +49,6 @@ const useRootStyles = makeStyles({
       "label helperText"
     `,
   },
-
-  // wrapper: {
-  //   ...gridArea('wrapper'),
-  // },
 });
 
 const useLabelStyles = makeStyles({
@@ -120,8 +115,6 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.label ? rootStyles[`label-${state.labelPosition}`] : undefined,
     state.root.className,
   );
-
-  // state.wrapper.className = mergeClasses(fieldClassNames.wrapper, rootStyles.wrapper, state.wrapper.className);
 
   const labelStyles = useLabelStyles();
   if (state.label) {

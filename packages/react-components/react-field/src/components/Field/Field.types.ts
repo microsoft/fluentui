@@ -4,7 +4,6 @@ import * as React from 'react';
 
 export type FieldSlots = {
   root: NonNullable<Slot<'div'>>;
-  // wrapper: NonNullable<Slot<'div'>>;
   label?: Slot<typeof Label>;
   statusText?: Slot<'span'>;
   statusIcon?: Slot<'span'>;
