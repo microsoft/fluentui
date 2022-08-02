@@ -9,7 +9,6 @@ describe('SplitButton', () => {
   isConformant({
     Component: SplitButton as React.FunctionComponent<SplitButtonProps>,
     displayName: 'SplitButton',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

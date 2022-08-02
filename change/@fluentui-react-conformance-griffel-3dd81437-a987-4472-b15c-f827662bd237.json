@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Griffel conformance test should use user container for render",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -2,7 +2,7 @@
   "name": "@fluentui/react-conformance-griffel",
   "version": "9.0.0-beta.11",
   "description": "A set of conformance tests for Griffel CSS-in-JS",
-  "main": "lib/index.js",
+  "main": "lib-commonjs/index.js",
   "typings": "dist/index.d.ts",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "@fluentui/react-conformance": "^0.14.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.2.0",
+    "@griffel/react": "^1.2.3",
     "tslib": "^2.1.0"
   },
   "beachball": {

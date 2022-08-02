@@ -127,23 +127,6 @@ export {
 export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-select';
 
 export {
-  SpinButton,
-  renderSpinButton_unstable,
-  spinButtonClassNames,
-  useSpinButtonStyles_unstable,
-  useSpinButton_unstable,
-} from '@fluentui/react-spinbutton';
-export type {
-  SpinButtonOnChangeData,
-  SpinButtonChangeEvent,
-  SpinButtonProps,
-  SpinButtonSlots,
-  SpinButtonState,
-  SpinButtonSpinState,
-  SpinButtonBounds,
-} from '@fluentui/react-spinbutton';
-
-export {
   Toolbar,
   ToolbarDivider,
   ToolbarToggleButton,
@@ -180,3 +163,59 @@ export {
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
+
+export {
+  Dialog,
+  dialogClassNames,
+  useDialog_unstable,
+  useDialogStyles_unstable,
+  renderDialog_unstable,
+  DialogTitle,
+  dialogTitleClassNames,
+  useDialogTitle_unstable,
+  useDialogTitleStyles_unstable,
+  renderDialogTitle_unstable,
+  DialogTrigger,
+  useDialogTrigger_unstable,
+  renderDialogTrigger_unstable,
+  DialogBody,
+  dialogBodyClassNames,
+  useDialogBody_unstable,
+  useDialogBodyStyles_unstable,
+  renderDialogBody_unstable,
+  DialogActions,
+  dialogActionsClassNames,
+  useDialogActions_unstable,
+  useDialogActionsStyles_unstable,
+  renderDialogActions_unstable,
+  DialogSurface,
+  dialogSurfaceClassNames,
+  useDialogSurface_unstable,
+  useDialogSurfaceStyles_unstable,
+  renderDialogSurface_unstable,
+} from '@fluentui/react-dialog';
+
+export type {
+  DialogProps,
+  DialogOpenChangeData,
+  DialogOpenChangeEvent,
+  DialogSlots,
+  DialogState,
+  DialogTriggerProps,
+  DialogTriggerChildProps,
+  DialogTriggerState,
+  DialogTriggerAction,
+  DialogActionsProps,
+  DialogActionsSlots,
+  DialogActionsState,
+  DialogActionsPosition,
+  DialogBodyProps,
+  DialogBodySlots,
+  DialogBodyState,
+  DialogTitleProps,
+  DialogTitleSlots,
+  DialogTitleState,
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+} from '@fluentui/react-dialog';

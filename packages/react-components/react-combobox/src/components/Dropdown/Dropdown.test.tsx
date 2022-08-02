@@ -9,8 +9,6 @@ describe('Dropdown', () => {
     Component: Dropdown,
     displayName: 'Dropdown',
     primarySlot: 'button',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -272,6 +270,22 @@ describe('Dropdown', () => {
     fireEvent.keyDown(combobox, { key: ' ' });
 
     expect(getByRole('combobox').textContent).toEqual('Green');
+  });
+
+  it('does not select a disabled option with the keyboard', () => {
+    const { getByTestId, getByRole } = render(
+      <Dropdown open data-testid="combobox">
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.keyDown(combobox, { key: ' ' });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
   it('selects an option when tabbing away from an open combobox', () => {

@@ -15,7 +15,6 @@ describe('ToggleButton', () => {
   isConformant({
     Component: ToggleButton as React.FunctionComponent<ToggleButtonProps>,
     displayName: 'ToggleButton',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

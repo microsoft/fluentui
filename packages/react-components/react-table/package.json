@@ -21,7 +21,9 @@
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-table/src && yarn docs",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "storybook": "node ../../../scripts/storybook/runner",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,9 +32,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.0.2",
+    "@fluentui/react-context-selector": "^9.0.2",
+    "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-tabster": "^9.0.3",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
-    "@griffel/react": "^1.2.0",
+    "@griffel/react": "^1.2.3",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

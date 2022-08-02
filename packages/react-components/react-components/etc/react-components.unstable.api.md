@@ -52,6 +52,39 @@ import { ComboboxState } from '@fluentui/react-combobox';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_MENU } from '@fluentui/react-overflow';
 import { DATA_OVERFLOWING } from '@fluentui/react-overflow';
+import { Dialog } from '@fluentui/react-dialog';
+import { DialogActions } from '@fluentui/react-dialog';
+import { dialogActionsClassNames } from '@fluentui/react-dialog';
+import { DialogActionsPosition } from '@fluentui/react-dialog';
+import { DialogActionsProps } from '@fluentui/react-dialog';
+import { DialogActionsSlots } from '@fluentui/react-dialog';
+import { DialogActionsState } from '@fluentui/react-dialog';
+import { DialogBody } from '@fluentui/react-dialog';
+import { dialogBodyClassNames } from '@fluentui/react-dialog';
+import { DialogBodyProps } from '@fluentui/react-dialog';
+import { DialogBodySlots } from '@fluentui/react-dialog';
+import { DialogBodyState } from '@fluentui/react-dialog';
+import { dialogClassNames } from '@fluentui/react-dialog';
+import { DialogOpenChangeData } from '@fluentui/react-dialog';
+import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
+import { DialogProps } from '@fluentui/react-dialog';
+import { DialogSlots } from '@fluentui/react-dialog';
+import { DialogState } from '@fluentui/react-dialog';
+import { DialogSurface } from '@fluentui/react-dialog';
+import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceProps } from '@fluentui/react-dialog';
+import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import { DialogSurfaceState } from '@fluentui/react-dialog';
+import { DialogTitle } from '@fluentui/react-dialog';
+import { dialogTitleClassNames } from '@fluentui/react-dialog';
+import { DialogTitleProps } from '@fluentui/react-dialog';
+import { DialogTitleSlots } from '@fluentui/react-dialog';
+import { DialogTitleState } from '@fluentui/react-dialog';
+import { DialogTrigger } from '@fluentui/react-dialog';
+import { DialogTriggerAction } from '@fluentui/react-dialog';
+import { DialogTriggerChildProps } from '@fluentui/react-dialog';
+import { DialogTriggerProps } from '@fluentui/react-dialog';
+import { DialogTriggerState } from '@fluentui/react-dialog';
 import { Dropdown } from '@fluentui/react-combobox';
 import { dropdownClassNames } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
@@ -88,27 +121,23 @@ import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
+import { renderDialog_unstable } from '@fluentui/react-dialog';
+import { renderDialogActions_unstable } from '@fluentui/react-dialog';
+import { renderDialogBody_unstable } from '@fluentui/react-dialog';
+import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
+import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
+import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderSelect_unstable } from '@fluentui/react-select';
-import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
-import { SpinButton } from '@fluentui/react-spinbutton';
-import { SpinButtonBounds } from '@fluentui/react-spinbutton';
-import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
-import { spinButtonClassNames } from '@fluentui/react-spinbutton';
-import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
-import { SpinButtonProps } from '@fluentui/react-spinbutton';
-import { SpinButtonSlots } from '@fluentui/react-spinbutton';
-import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
-import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
 import { ToolbarButtonState } from '@fluentui/react-toolbar';
@@ -140,6 +169,17 @@ import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
+import { useDialog_unstable } from '@fluentui/react-dialog';
+import { useDialogActions_unstable } from '@fluentui/react-dialog';
+import { useDialogActionsStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogBody_unstable } from '@fluentui/react-dialog';
+import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
@@ -153,8 +193,6 @@ import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowMenu } from '@fluentui/react-overflow';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
-import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
-import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
 import { useToolbarStyles_unstable } from '@fluentui/react-toolbar';
@@ -255,6 +293,72 @@ export { DATA_OVERFLOW_MENU }
 
 export { DATA_OVERFLOWING }
 
+export { Dialog }
+
+export { DialogActions }
+
+export { dialogActionsClassNames }
+
+export { DialogActionsPosition }
+
+export { DialogActionsProps }
+
+export { DialogActionsSlots }
+
+export { DialogActionsState }
+
+export { DialogBody }
+
+export { dialogBodyClassNames }
+
+export { DialogBodyProps }
+
+export { DialogBodySlots }
+
+export { DialogBodyState }
+
+export { dialogClassNames }
+
+export { DialogOpenChangeData }
+
+export { DialogOpenChangeEvent }
+
+export { DialogProps }
+
+export { DialogSlots }
+
+export { DialogState }
+
+export { DialogSurface }
+
+export { dialogSurfaceClassNames }
+
+export { DialogSurfaceProps }
+
+export { DialogSurfaceSlots }
+
+export { DialogSurfaceState }
+
+export { DialogTitle }
+
+export { dialogTitleClassNames }
+
+export { DialogTitleProps }
+
+export { DialogTitleSlots }
+
+export { DialogTitleState }
+
+export { DialogTrigger }
+
+export { DialogTriggerAction }
+
+export { DialogTriggerChildProps }
+
+export { DialogTriggerProps }
+
+export { DialogTriggerState }
+
 export { Dropdown }
 
 export { dropdownClassNames }
@@ -327,6 +431,18 @@ export { renderCardPreview_unstable }
 
 export { renderCombobox_unstable }
 
+export { renderDialog_unstable }
+
+export { renderDialogActions_unstable }
+
+export { renderDialogBody_unstable }
+
+export { renderDialogSurface_unstable }
+
+export { renderDialogTitle_unstable }
+
+export { renderDialogTrigger_unstable }
+
 export { renderDropdown_unstable }
 
 export { renderListbox_unstable }
@@ -336,8 +452,6 @@ export { renderOption_unstable }
 export { renderOptionGroup_unstable }
 
 export { renderSelect_unstable }
-
-export { renderSpinButton_unstable }
 
 export { renderToolbar_unstable }
 
@@ -350,24 +464,6 @@ export { SelectProps }
 export { SelectSlots }
 
 export { SelectState }
-
-export { SpinButton }
-
-export { SpinButtonBounds }
-
-export { SpinButtonChangeEvent }
-
-export { spinButtonClassNames }
-
-export { SpinButtonOnChangeData }
-
-export { SpinButtonProps }
-
-export { SpinButtonSlots }
-
-export { SpinButtonSpinState }
-
-export { SpinButtonState }
 
 export { Toolbar }
 
@@ -431,6 +527,28 @@ export { useCombobox_unstable }
 
 export { useComboboxStyles_unstable }
 
+export { useDialog_unstable }
+
+export { useDialogActions_unstable }
+
+export { useDialogActionsStyles_unstable }
+
+export { useDialogBody_unstable }
+
+export { useDialogBodyStyles_unstable }
+
+export { useDialogStyles_unstable }
+
+export { useDialogSurface_unstable }
+
+export { useDialogSurfaceStyles_unstable }
+
+export { useDialogTitle_unstable }
+
+export { useDialogTitleStyles_unstable }
+
+export { useDialogTrigger_unstable }
+
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
@@ -456,10 +574,6 @@ export { useOverflowMenu }
 export { useSelect_unstable }
 
 export { useSelectStyles_unstable }
-
-export { useSpinButton_unstable }
-
-export { useSpinButtonStyles_unstable }
 
 export { useToolbar_unstable }
 

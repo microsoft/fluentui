@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Bump Griffel dependencies",
+  "packageName": "@fluentui/react-popover",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -82,6 +82,11 @@ const useLoaderStyles = makeStyles({
         '100%': { transform: 'rotate(360deg)' },
       },
       ...spinnerAnimation.container,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
     ['& > svg > circle']: {
       cx: '50%',
@@ -194,6 +199,11 @@ const useTrackStyles = makeStyles({
       strokeLinecap: 'round',
       transform: 'rotate(-90deg)',
       transformOrigin: '50% 50%',
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
 
     ['& > svg > circle.fui-Spinner__Track']: {

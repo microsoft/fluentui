@@ -9,6 +9,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.@(ts|tsx)',
     ...utils.getVnextStories(),
   ],
+  staticDirs: ['../public'],
   addons: [...rootMain.addons],
   webpackFinal: (config, options) => {
     const localConfig = { ...rootMain.webpackFinal(config, options) };
