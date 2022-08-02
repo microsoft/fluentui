@@ -63,6 +63,7 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
       size: 'small',
       trapFocus: true,
       ...restOfProps,
+      open: popoverOpen,
       onOpenChange: handleOnPopoverChange,
     },
     triggerButton: resolveShorthand(props.triggerButton, {
