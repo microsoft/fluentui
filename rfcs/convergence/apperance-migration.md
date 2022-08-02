@@ -4,11 +4,11 @@
 
 ## Summary
 
-Fluent V9 changes the default appearance of input components (`Dropdown`, `Input`, `TextArea`). V0 input components default background colour is grey-ish, whereas in V9 the background colour is white.
+Fluent V9 changes the default appearance of input components (`Dropdown`, `Input`, `TextArea`). V0 input components default background color is grey-ish, whereas in V9 the background color is white.
 
 ## Background
 
-Partners could change the background colour to match the previous version of Fluent by passing a prop `appearance` with value `filled-darker`, but this solution does not scale well for partners when migrating to the new version and is error prone.
+Partners could change the background color to match the previous version of Fluent by passing a prop `appearance` with value `filled-darker`, but this solution does not scale well for partners when migrating to the new version and is error prone.
 
 ## Problem statement
 
@@ -26,7 +26,7 @@ Partners should also easily revert the decision to the default appearance value 
 
 ### Composition component
 
-Partners could create a new composition component and modify the props in their preferred way. If the partner would like to keep the original colour, they could create the composition component and have the default component without the appearance prop renders as `filled-darker`.
+Partners could create a new composition component and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composition component and have the default component without the appearance prop renders as `filled-darker`.
 
 👍 Pros:
 
@@ -40,7 +40,7 @@ Partners could create a new composition component and modify the props in their 
 
 ### Global css selector
 
-Targeting all input selectors from a partner app and change the colour with global css.
+Targeting all input selectors from a partner app and change the color with global css.
 
 👎 Cons:
 
