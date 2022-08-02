@@ -78,7 +78,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: microsoft/fluentui
+          ref: enable-screener-workflows
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
