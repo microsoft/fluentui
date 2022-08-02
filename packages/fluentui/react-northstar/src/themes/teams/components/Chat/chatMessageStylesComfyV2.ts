@@ -67,7 +67,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
       display: 'none',
       whiteSpace: 'nowrap',
     };
-    if (v.isNarrow) {
+    if (v.hasReducedHorizontalSpace) {
       styles.fontSize = '1rem';
       styles.marginTop = pxToRem(3);
       styles.marginLeft = pxToRem(2.5);
@@ -80,12 +80,12 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
   body: ({ props: p, variables: v }): ICSSInJSStyle => ({
     position: 'relative',
     maxWidth: '100%',
-    ...(v.isFullWidth && {
+    ...(p.fullWidth && {
       width: '100%',
     }),
 
     ...(!p.mine &&
-      v.isNarrow && {
+      v.hasReducedHorizontalSpace && {
         marginRight: pxToRem(16),
       }),
   }),
@@ -107,7 +107,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
         backgroundAttachment: 'fixed',
       }),
 
-      ...(v.isFailed && {
+      ...(p.failed && {
         backgroundImage: 'none',
         backgroundColor: theme.siteVariables.colorScheme.red.background1,
         border: `1px solid ${theme.siteVariables.colorScheme.red.border}`,
@@ -166,8 +166,8 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
     // use padding instead of margin so that the bubble container's :hover
     // styles still apply when mousing over the gap between the container
     // and bubble-inset.
-    paddingLeft: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
-    paddingRight: v.isNarrow ? pxToRem(2.5) : pxToRem(5),
+    paddingLeft: v.hasReducedHorizontalSpace ? pxToRem(2.5) : pxToRem(5),
+    paddingRight: v.hasReducedHorizontalSpace ? pxToRem(2.5) : pxToRem(5),
     ...(p.mine ? { right: '100%', flexDirection: 'row-reverse' } : { left: '100%' }),
   }),
 
@@ -182,7 +182,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
       '&:hover': { textDecorationStyle: 'double' },
       '&:focus': { textDecorationStyle: 'double' },
     },
-    ...(v.isFailed && {
+    ...(p.failed && {
       color: theme.siteVariables.colorScheme.default.foreground,
     }),
   }),

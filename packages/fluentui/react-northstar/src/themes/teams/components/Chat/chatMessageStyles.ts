@@ -29,10 +29,10 @@ const chatMessageDensityStyles: Record<
 };
 
 const getChatMessageVariantStyles = (props: ChatMessageStylesProps) => {
-  if (props.isV2Enabled) {
+  const density = props.density || defaultChatDensity;
+  if (props.v2 && density === 'comfy') {
     return chatMessageStylesComfyV2;
   }
-  const density = props.density || defaultChatDensity;
   return chatMessageDensityStyles[density];
 };
 
@@ -44,7 +44,7 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       theme: { siteVariables },
     } = componentStyleFunctionParam;
 
-    if (p.isV2Enabled && p.density === 'comfy') {
+    if (p.v2 && p.density === 'comfy') {
       return chatMessageStylesComfyV2.root(componentStyleFunctionParam);
     }
     return {

@@ -37,9 +37,7 @@ export interface ChatMessageVariables {
   reactionGroupMarginLeft: string;
   showActionMenu?: boolean;
   zIndex: number;
-  isFailed: boolean;
-  isNarrow: boolean;
-  isFullWidth: boolean;
+  hasReducedHorizontalSpace: boolean;
 }
 
 export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
@@ -79,7 +77,5 @@ export const chatMessageVariables = (siteVars): ChatMessageVariables => ({
   reactionGroupMarginLeft: pxToRem(12),
   showActionMenu: undefined,
   zIndex: siteVars.zIndexes.foreground,
-  isFailed: false,
-  isNarrow: false,
-  isFullWidth: false,
+  hasReducedHorizontalSpace: false,
 });

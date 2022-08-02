@@ -124,6 +124,9 @@ export interface ChatMessageProps
   /** A message can have a custom header. */
   header?: ShorthandValue<ChatMessageHeaderProps>;
 
+  /** Optional slot for inserting content into the default header. */
+  headerContent?: React.ReactNode;
+
   /** Indicates whether message belongs to the current user. */
   mine?: boolean;
 
@@ -183,11 +186,11 @@ export interface ChatMessageProps
   /** Opts into the V2 layout. */
   v2?: boolean;
 
-  /** Indicates whether the message is in a failure state. */
+  /** Indicates whether the message is in a failed state. */
   failed?: boolean;
 
-  /** Optional override for the content in the message header. */
-  headerContent?: React.ReactNode;
+  /** A message can span the full width of its container. */
+  fullWidth?: boolean;
 
   /** A message can have a custom body element. */
   body?: ShorthandValue<BoxProps>;
@@ -195,13 +198,13 @@ export interface ChatMessageProps
   /** A message can have a custom bubble element. */
   bubble?: ShorthandValue<BoxProps>;
 
-  /** A message can have a custom bubble inset element, which sits next to the bubble. */
+  /** A message can have a custom bubble inset element which sits next to the bubble. */
   bubbleInset?: ShorthandValue<BoxProps>;
 
-  /** Optional override for the content in the message header. */
+  /** Optional override for the content in the default bubble inset. */
   bubbleInsetContent?: React.ReactNode;
 
-  /** More refined version of the original `timestamp` property that guarantees certain fields exist. */
+  /** The timestamp can render a tooltip to display more detailed information. */
   timestampTooltip?: string;
 }
 
@@ -209,7 +212,9 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   hasBadge: boolean;
   hasHeaderReactionGroup: boolean;
   hasReactions: boolean;
-  isV2Enabled: boolean;
+  v2: boolean;
+  failed: boolean;
+  fullWidth: boolean;
 
   // focused, hasActionMenu and showActionMenu controls the visibility of action menu
   focused: boolean;
@@ -293,6 +298,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     unstable_overflow: overflow,
     variables,
     v2,
+    failed,
+    fullWidth,
     bubble,
     body,
     timestampTooltip,
@@ -391,7 +398,9 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       mine,
       showActionMenu,
       hasReactions: !!reactionGroup,
-      isV2Enabled,
+      failed,
+      fullWidth,
+      v2,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -777,7 +786,9 @@ ChatMessage.propTypes = {
   readStatus: customPropTypes.itemShorthand,
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
+  v2: PropTypes.bool,
   failed: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   headerContent: PropTypes.node,
   body: customPropTypes.itemShorthand,
   bubble: customPropTypes.itemShorthand,
