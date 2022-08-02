@@ -6,6 +6,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
+import { dialogSurfaceSelector, dialogTriggerCloseSelector, dialogTriggerOpenSelector } from './selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -14,9 +15,9 @@ describe('Dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <Button id="open-btn">Open dialog</Button>
+          <Button>Open dialog</Button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -32,16 +33,16 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').should('exist');
-    cy.get('#dialog-surface').should('not.exist');
+    cy.get(dialogTriggerOpenSelector).should('exist');
+    cy.get(dialogSurfaceSelector).should('not.exist');
   });
   it('should open when trigger is clicked', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <Button id="open-btn">Open dialog</Button>
+          <Button>Open dialog</Button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -57,16 +58,16 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#dialog-surface').should('exist');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogSurfaceSelector).should('exist');
   });
   it('should focus on first focusabled element when opened', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <Button id="open-btn">Open dialog</Button>
+          <Button>Open dialog</Button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -84,14 +85,14 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#close-btn').should('be.focused');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerCloseSelector).should('be.focused');
   });
   it('should focus on body if no focusabled element in dialog', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <Button id="open-btn">Open dialog</Button>
+          <Button>Open dialog</Button>
         </DialogTrigger>
         <DialogSurface id="dialog-surface">
           <DialogTitle>Dialog title</DialogTitle>
@@ -103,16 +104,16 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
+    cy.get(dialogTriggerOpenSelector).click();
     cy.focused().should('not.exist');
   });
   it('should focus back on trigger when dialog closed', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <Button id="open-btn">Open dialog</Button>
+          <Button>Open dialog</Button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -130,18 +131,18 @@ describe('Dialog', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#close-btn').click();
-    cy.get('#open-btn').should('be.focused');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogTriggerCloseSelector).click();
+    cy.get(dialogTriggerOpenSelector).should('be.focused');
   });
   describe('modalType = modal', () => {
     it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -150,18 +151,16 @@ describe('Dialog', () => {
             </DialogBody>
             <DialogActions>
               <DialogTrigger>
-                <Button id="close-btn" appearance="secondary">
-                  Close
-                </Button>
+                <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
+      cy.get(dialogTriggerOpenSelector).click();
       cy.focused().type('{esc}');
-      cy.get('#dialog-surface').should('not.exist');
+      cy.get(dialogSurfaceSelector).should('not.exist');
     });
   });
   describe('modalType = non-modal', () => {
@@ -169,9 +168,9 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -180,18 +179,16 @@ describe('Dialog', () => {
             </DialogBody>
             <DialogActions>
               <DialogTrigger>
-                <Button id="close-btn" appearance="secondary">
-                  Close
-                </Button>
+                <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
+      cy.get(dialogTriggerOpenSelector).click();
       cy.focused().type('{esc}');
-      cy.get('#dialog-surface').should('not.exist');
+      cy.get(dialogSurfaceSelector).should('not.exist');
     });
   });
   describe('modalType = alert', () => {
@@ -199,9 +196,9 @@ describe('Dialog', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -210,18 +207,16 @@ describe('Dialog', () => {
             </DialogBody>
             <DialogActions>
               <DialogTrigger>
-                <Button id="close-btn" appearance="secondary">
-                  Close
-                </Button>
+                <Button appearance="secondary">Close</Button>
               </DialogTrigger>
               <Button appearance="primary">Do Something</Button>
             </DialogActions>
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
+      cy.get(dialogTriggerOpenSelector).click();
       cy.focused().type('{esc}');
-      cy.get('#dialog-surface').should('exist');
+      cy.get(dialogSurfaceSelector).should('exist');
     });
   });
 });

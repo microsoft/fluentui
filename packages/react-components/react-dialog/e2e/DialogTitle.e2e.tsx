@@ -4,16 +4,9 @@ import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
-import {
-  Dialog,
-  DialogActions,
-  DialogBody,
-  DialogSurface,
-  DialogTitle,
-  DialogTrigger,
-  dialogTitleClassNames,
-} from '@fluentui/react-dialog';
+import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
+import { dialogCloseButtonSelector, dialogTriggerOpenSelector } from './selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -23,9 +16,9 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="modal">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -41,8 +34,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
-      cy.get(`.${dialogTitleClassNames.closeButton}`).should('not.exist');
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogCloseButtonSelector).should('not.exist');
     });
   });
   describe('modalType = non-modal', () => {
@@ -50,9 +43,9 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="non-modal">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -68,8 +61,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
-      cy.get(`.${dialogTitleClassNames.closeButton}`).should('exist');
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogCloseButtonSelector).should('exist');
     });
   });
   describe('modalType = alert', () => {
@@ -77,9 +70,9 @@ describe('DialogTitle', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger>
-            <Button id="open-btn">Open dialog</Button>
+            <Button>Open dialog</Button>
           </DialogTrigger>
-          <DialogSurface id="dialog-surface">
+          <DialogSurface>
             <DialogTitle>Dialog title</DialogTitle>
             <DialogBody>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -95,8 +88,8 @@ describe('DialogTitle', () => {
           </DialogSurface>
         </Dialog>,
       );
-      cy.get('#open-btn').click();
-      cy.get(`.${dialogTitleClassNames.closeButton}`).should('not.exist');
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get(dialogCloseButtonSelector).should('not.exist');
     });
   });
 });

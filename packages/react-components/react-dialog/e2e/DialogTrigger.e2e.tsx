@@ -6,6 +6,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Dialog, DialogActions, DialogBody, DialogSurface, DialogTitle, DialogTrigger } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-components';
+import { dialogSurfaceSelector, dialogTriggerOpenSelector } from './selectors';
 
 const mount = (element: JSX.Element) => mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 
@@ -14,11 +15,9 @@ describe('DialogTrigger', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <button aria-disabled id="open-btn">
-            Open dialog
-          </button>
+          <button aria-disabled>Open dialog</button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -34,18 +33,16 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#dialog-surface').should('not.exist');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogSurfaceSelector).should('not.exist');
   });
   it(`should open dialog when 'aria-disabled' is false`, () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <button aria-disabled={false} id="open-btn">
-            Open dialog
-          </button>
+          <button aria-disabled={false}>Open dialog</button>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -61,16 +58,16 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#dialog-surface').should('exist');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogSurfaceSelector).should('exist');
   });
   it('should work with any element besides <button>', () => {
     mount(
       <Dialog>
         <DialogTrigger>
-          <div id="open-btn">Open dialog</div>
+          <div>Open dialog</div>
         </DialogTrigger>
-        <DialogSurface id="dialog-surface">
+        <DialogSurface>
           <DialogTitle>Dialog title</DialogTitle>
           <DialogBody>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
@@ -86,7 +83,7 @@ describe('DialogTrigger', () => {
         </DialogSurface>
       </Dialog>,
     );
-    cy.get('#open-btn').click();
-    cy.get('#dialog-surface').should('exist');
+    cy.get(dialogTriggerOpenSelector).click();
+    cy.get(dialogSurfaceSelector).should('exist');
   });
 });
