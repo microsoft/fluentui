@@ -11,7 +11,7 @@ import {
   IRefArrayData,
 } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -94,7 +94,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     {points!.chartTitle && (
                       <div
                         className={this._classNames.chartDataText}
-                        {...this._getAccessibleDataObject(points!.chartTitleAccessibilityData)}
+                        {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
                       >
                         {points!.chartTitle}
                       </div>
@@ -147,7 +147,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           onDismiss={this._closeCallout}
           preventDismissOnLostFocus={true}
           {...this.props.calloutProps!}
-          {...this._getAccessibleDataObject(this.state.callOutAccessibilityData)}
+          {...getAccessibleDataObject(this.state.callOutAccessibilityData)}
         >
           <>
             {this.props.onRenderCalloutPerHorizonalBar ? (
@@ -236,7 +236,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = this._getAccessibleDataObject(data.chartDataAccessibilityData);
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData);
     switch (chartDataMode) {
       case 'default':
         return (
@@ -319,16 +319,5 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this.setState({
       isCalloutVisible: false,
     });
-  };
-
-  private _getAccessibleDataObject = (accessibleData?: IAccessibilityProps, role: string = 'text') => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': true,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
   };
 }
