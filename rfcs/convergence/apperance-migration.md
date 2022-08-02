@@ -30,13 +30,14 @@ Partners could create a new composition component and modify the props in their 
 
 👍 Pros:
 
-- Would work in iframes
 - Is relatively safe
 
 👎 Cons:
 
 - Creating new composition component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
 - Composition component apperance prop wouldn't match our Fluent V9 documentation
+- Wouldn’t work in iframes
+- Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
 
 ### Global css selector
 
@@ -45,11 +46,12 @@ Targeting all input selectors from a partner app and change the color with globa
 👍 Pros:
 
 - Relatively easy and fast to do
+- Scalable
 
 👎 Cons:
 
-- Wouldn’t work in iframes (?)
 - Difficult to validate
+- Wouldn’t work in iframes
 
 ### New token alias to theme
 
@@ -62,21 +64,18 @@ Adding a new theme token that the partner could override the existing one.
 👎 Cons:
 
 - Negative impact on performance by increasing variables (as read here: [fluentui/theme-shared-colors.md at d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/blob/d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351/rfcs/react-components/convergence/theme-shared-colors.md))
+- Divergince the themes
+- Wouldn't work with iframes
 
 ### Unify design
 
 Discuss with designers to unify V0 and V9 design, setting the appearance to filled-dark by default.
 
-👍 Props: Will make migration easier for partners who already uses V0
+👍 Props:
 
-👎 Cons: Inherits old design/dependency that might not be relevant this time
+- Will make migration easier for partners who already uses V0
+- Would work with iframes (if all the teams have the unified design)
 
-<!-- ### Pros and Cons -->
+👎 Cons:
 
-<!-- ## Discarded Solutions -->
-
-<!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
-
-<!-- ## Open Issues -->
-
-<!-- Optional section, but useful for first drafts. Use this section to track open issues on unanswered questions regarding the design or proposal.  -->
+- Inherits design from old V0 package that does not meet our needs/goals
