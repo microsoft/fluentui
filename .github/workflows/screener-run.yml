@@ -164,7 +164,6 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
-
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |

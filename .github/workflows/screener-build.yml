@@ -29,7 +29,6 @@ jobs:
           BUILD_BUILDID=${{ github.run_id }}
           BUILD_SOURCEBRANCH=${{ github.ref }}
           EOT
-
       ###########################################
       # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
       # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
