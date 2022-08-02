@@ -70,7 +70,7 @@ export const useFocusFinders: () => {
 // @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
-// @public (undocumented)
+// @public
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
