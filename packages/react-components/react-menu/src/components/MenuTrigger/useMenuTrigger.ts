@@ -12,7 +12,7 @@ import {
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render MenuTrigger.
@@ -74,12 +74,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       return;
     }
 
-    if (shouldPreventDefaultOnKeyDown(e)) {
-      e.preventDefault();
-      openedWithKeyboardRef.current = true;
-      (e.target as HTMLElement)?.click();
-    }
-
     const key = e.key;
 
     if (!openOnContext && ((isSubmenu && key === OpenArrowKey) || (!isSubmenu && key === ArrowDown))) {
@@ -129,19 +123,22 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   return {
     isSubmenu,
-    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(children, {
-      'aria-haspopup': 'menu',
-      'aria-expanded': !open && !isSubmenu ? undefined : open,
-      id: triggerId,
-      ...child?.props,
-      ref: useMergedRefs(triggerRef, child?.ref),
-      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-      onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-      onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
-      onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
-      onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
-    }),
+    children: applyTriggerPropsToChildren<MenuTriggerChildProps>(
+      children,
+      useARIAButtonProps(child?.type === 'button' || child?.type === 'a' ? child.type : 'div', {
+        'aria-haspopup': 'menu',
+        'aria-expanded': !open && !isSubmenu ? undefined : open,
+        id: triggerId,
+        ...child?.props,
+        ref: useMergedRefs(triggerRef, child?.ref),
+        onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
+        onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
+        onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
+        onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+        onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
+        onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
+      }),
+    ),
   };
 };
 

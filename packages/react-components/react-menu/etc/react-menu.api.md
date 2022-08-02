@@ -295,10 +295,7 @@ export type MenuState = ComponentState<MenuSlots> & Pick<MenuProps, 'defaultChec
 export const MenuTrigger: React_2.FC<MenuTriggerProps> & FluentTriggerComponent;
 
 // @public
-export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onMouseEnter' | 'onMouseLeave' | 'onMouseMove' | 'onContextMenu' | 'onKeyDown' | 'aria-haspopup' | 'id'>> & {
-    ref?: React_2.Ref<never>;
-    'aria-expanded': boolean | undefined;
-};
+export type MenuTriggerChildProps = React_2.HTMLAttributes<HTMLElement>;
 
 // @public (undocumented)
 export const MenuTriggerContextProvider: React_2.Provider<boolean>;
