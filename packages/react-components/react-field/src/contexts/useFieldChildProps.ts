@@ -1,4 +1,4 @@
-import { useFieldContext_unstable } from './FieldContext';
+import { useFieldContext } from './FieldContext';
 
 export type UseFieldChildPropsOptions<SizeValues extends string> = {
   supportedSizes: SizeValues[];
@@ -16,22 +16,22 @@ export const useFieldChildProps = <SizeValues extends string = never>(
 ) => {
   const props: FieldChildProps<SizeValues> = {};
 
-  const inputId = useFieldContext_unstable(context => context?.inputId);
-  if (inputId) {
-    props.id = inputId;
+  const labelFor = useFieldContext(ctx => ctx?.labelFor);
+  if (labelFor) {
+    props.id = labelFor;
   }
 
-  const labelId = useFieldContext_unstable(context => context?.labelId);
+  const labelId = useFieldContext(ctx => ctx?.labelId);
   if (labelId) {
     props['aria-labelledby'] = labelId;
   }
 
-  const required = useFieldContext_unstable(context => context?.required);
+  const required = useFieldContext(ctx => ctx?.required);
   if (required) {
     props.required = required;
   }
 
-  const size = useFieldContext_unstable(context => context?.size);
+  const size = useFieldContext(ctx => ctx?.size);
   if (size && options.supportedSizes.includes(size as SizeValues)) {
     props.size = size as SizeValues;
   }

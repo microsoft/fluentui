@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { FieldProps, FieldState } from './Field.types';
+import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
+import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Field.
@@ -14,40 +14,33 @@ import { Label } from '@fluentui/react-label';
  * @param ref - reference to root HTMLElement of Field
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>): FieldState => {
+  const child = React.Children.only(props.children);
+  const childProps = React.isValidElement(child) ? child.props : undefined;
+
   const baseId = useId('field-');
 
-  let childInput = React.Children.only(props.children);
-  if (!React.isValidElement(childInput) || childInput.type === React.Fragment) {
-    throw new Error(
-      'The child must be a single input element for this component. ' +
-        "Please ensure that you're not using React Fragments.",
-    );
-  }
-
   const {
-    size = 'medium',
+    labelFor = childProps?.id ?? baseId + '__input',
+    labelId = baseId + '__label',
     labelPosition = 'above',
+    required = childProps?.required,
+    size = 'medium',
     status,
-    inputId = childInput.props.id || baseId + '__input',
-    required = childInput.props.required,
   } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
-      id: baseId + '__label',
-      htmlFor: inputId,
+      id: labelId,
+      htmlFor: labelFor,
       required,
       size,
     },
   });
 
-  // Apply the props to the child input
-  childInput = React.cloneElement(childInput, {
-    id: inputId,
-    'aria-labelledby': label?.id,
-    required,
-    ...childInput.props,
-  });
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    ref = useMergedRefs(ref, useLabelDebugCheck(label));
+  }
 
   let defaultStatusIcon;
   if (status === 'error') {
@@ -59,15 +52,16 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
   }
 
   return {
-    labelPosition,
-    status,
-    size,
-    required,
+    labelFor: label?.htmlFor,
     labelId: label?.id,
-    inputId,
+    labelPosition,
+    required,
+    size,
+    status,
     components: {
       root: 'div',
       label: Label,
+      // wrapper: 'div',
       statusText: 'span',
       statusIcon: 'span',
       helperText: 'span',
@@ -75,11 +69,17 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     root: getNativeElementProps('div', {
       ...props,
       ref,
-      children: childInput,
+      // children: undefined,
     }),
+    // wrapper: resolveShorthand(props.wrapper, {
+    //   required: true,
+    //   defaultProps: {
+    //     children: props.children,
+    //   },
+    // }),
     label,
     statusIcon: resolveShorthand(props.statusIcon, {
-      required: !!status,
+      required: !!defaultStatusIcon,
       defaultProps: {
         children: defaultStatusIcon,
       },
@@ -87,4 +87,29 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
     statusText: resolveShorthand(props.statusText),
     helperText: resolveShorthand(props.helperText),
   };
+};
+
+const useLabelDebugCheck = (label: FieldState['label']) => {
+  const labelFor = label?.htmlFor;
+  const labelId = label?.id;
+  const labelText = label?.children;
+  const rootRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    if (!rootRef.current || !labelFor || !labelId) {
+      return;
+    }
+
+    if (!rootRef.current.querySelector(`[id='${labelFor}'], [aria-labelledby='${labelId}']`)) {
+      // eslint-disable-next-line no-console
+      console.error(
+        `Field with label "${labelText}" requires the label be associated with its input. Try one of these fixes:\n` +
+          '1. Use a component that gets its ID from FieldContext.labelFor (e.g. the form controls in this library).\n' +
+          "2. Or, set the Field's `labelFor` prop to the input's `id` prop.\n" +
+          "3. Or, set the Field's `labelId` to the input's `aria-labelledby` prop.\n",
+      );
+    }
+  }, [labelFor, labelId, labelText]);
+
+  return rootRef;
 };

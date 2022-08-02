@@ -6,6 +6,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 export const fieldClassNames: SlotClassNames<FieldSlots> = {
   root: 'fui-Field',
   label: 'fui-Field__label',
+  // wrapper: 'fui-Field__wrapper',
   statusText: 'fui-Field__statusText',
   statusIcon: 'fui-Field__statusIcon',
   helperText: 'fui-Field__helperText',
@@ -26,10 +27,14 @@ const gridArea = (area: string) => ({
 const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
+    gridTemplateAreas: `
+      "input"
+      "statusText"
+      "helperText"
+    `,
   },
 
-  // labelPosition="above"
-  above: {
+  'label-above': {
     gridTemplateAreas: `
       "label"
       "input"
@@ -38,14 +43,17 @@ const useRootStyles = makeStyles({
     `,
   },
 
-  // labelPosition="before"
-  before: {
+  'label-before': {
     gridTemplateAreas: `
       "label input"
       "label statusText"
       "label helperText"
     `,
   },
+
+  // wrapper: {
+  //   ...gridArea('wrapper'),
+  // },
 });
 
 const useLabelStyles = makeStyles({
@@ -62,10 +70,11 @@ const useLabelStyles = makeStyles({
   },
 });
 
-const useExtraTextStyles = makeStyles({
+const useSecondaryTextStyles = makeStyles({
   base: {
     display: 'inline-flex',
     marginTop: tokens.spacingVerticalXXS,
+    color: tokens.colorNeutralForeground3,
     ...typographyStyles.caption1,
   },
 
@@ -79,12 +88,6 @@ const useExtraTextStyles = makeStyles({
   error: {
     color: tokens.colorPaletteRedForeground1,
   },
-  warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
-  },
-  success: {
-    color: tokens.colorPaletteGreenForeground1,
-  },
 });
 
 const useStatusIconStyles = makeStyles({
@@ -93,6 +96,16 @@ const useStatusIconStyles = makeStyles({
     lineHeight: '12px',
     alignSelf: 'center',
     marginRight: tokens.spacingHorizontalXS,
+  },
+
+  error: {
+    color: tokens.colorPaletteRedForeground1,
+  },
+  warning: {
+    color: tokens.colorPaletteDarkOrangeForeground1,
+  },
+  success: {
+    color: tokens.colorPaletteGreenForeground1,
   },
 });
 
@@ -104,9 +117,11 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   state.root.className = mergeClasses(
     fieldClassNames.root,
     rootStyles.base,
-    rootStyles[state.labelPosition],
+    state.label ? rootStyles[`label-${state.labelPosition}`] : undefined,
     state.root.className,
   );
+
+  // state.wrapper.className = mergeClasses(fieldClassNames.wrapper, rootStyles.wrapper, state.wrapper.className);
 
   const labelStyles = useLabelStyles();
   if (state.label) {
@@ -123,17 +138,18 @@ export const useFieldStyles_unstable = (state: FieldState) => {
     state.statusIcon.className = mergeClasses(
       fieldClassNames.statusIcon,
       statusIconStyles.base,
+      !!state.status && statusIconStyles[state.status],
       state.statusIcon.className,
     );
   }
 
-  const extraTextStyles = useExtraTextStyles();
+  const secondaryTextStyles = useSecondaryTextStyles();
   if (state.statusText) {
     state.statusText.className = mergeClasses(
       fieldClassNames.statusText,
-      extraTextStyles.base,
-      extraTextStyles.statusText,
-      !!state.status && extraTextStyles[state.status],
+      secondaryTextStyles.base,
+      secondaryTextStyles.statusText,
+      state.status === 'error' && secondaryTextStyles.error,
       state.statusText.className,
     );
   }
@@ -141,8 +157,8 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.helperText) {
     state.helperText.className = mergeClasses(
       fieldClassNames.helperText,
-      extraTextStyles.base,
-      extraTextStyles.helperText,
+      secondaryTextStyles.base,
+      secondaryTextStyles.helperText,
       state.helperText.className,
     );
   }

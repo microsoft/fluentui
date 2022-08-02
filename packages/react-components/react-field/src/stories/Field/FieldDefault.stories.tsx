@@ -67,7 +67,7 @@ export const LabelBefore = () => {
 
 export const Required = () => {
   return (
-    <Field required label="Required input">
+    <Field label="Required input" required>
       <Input />
     </Field>
   );
@@ -78,22 +78,13 @@ export const Status = () => {
   return (
     <div className={styles.stack}>
       <Field label="Input with error" status="error" statusText="This is an error message" labelPosition="before">
-        <Input defaultValue="This is invalid input" />
-      </Field>
-      <Field label="Input with error" status="error" statusText="This is an error message" labelPosition="before">
-        <Input defaultValue="This is invalid input" appearance="underline" />
-      </Field>
-      <Field label="Input with error" status="error" statusText="This is an error message" labelPosition="before">
-        <Input defaultValue="This is invalid input" appearance="filled-darker" />
-      </Field>
-      <Field label="Input with error" status="error" statusText="This is an error message" labelPosition="before">
-        <Input defaultValue="This is invalid input" appearance="filled-lighter" />
+        <Input />
       </Field>
       <Field label="Input with warning" status="warning" statusText="This is a warning message" labelPosition="before">
-        <Input defaultValue="This input causes a warning" />
+        <Input />
       </Field>
       <Field label="Input with success" status="success" statusText="This is a success message" labelPosition="before">
-        <Input defaultValue="This is valid input" />
+        <Input />
       </Field>
       <Field
         label="Input with custom status"
@@ -107,18 +98,35 @@ export const Status = () => {
   );
 };
 
+export const Validation = () => {
+  const [value, setValue] = React.useState<string>('error');
+
+  const status = value === 'error' || value === 'warning' || value === 'success' ? value : undefined;
+
+  return (
+    <Field label="Pick a status" status={status} statusText={`This is an example ${value} message`}>
+      <RadioGroup value={value} onChange={(_ev, data) => setValue(data.value)}>
+        <Radio value="default" label="Default" />
+        <Radio value="error" label="Error" />
+        <Radio value="warning" label="Warning" />
+        <Radio value="success" label="Success" />
+      </RadioGroup>
+    </Field>
+  );
+};
+
 export const Size = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <Field label="Size small" size="small">
-        <Input defaultValue="This is a small input" />
+      <Field label="Small field" size="small">
+        <Input />
       </Field>
-      <Field label="Size medium" size="medium">
-        <Input defaultValue="This is a medium input" />
+      <Field label="Medium field" size="medium">
+        <Input />
       </Field>
-      <Field label="Size large" size="large">
-        <Input defaultValue="This is a large input" />
+      <Field label="Large field" size="large">
+        <Input />
       </Field>
     </div>
   );

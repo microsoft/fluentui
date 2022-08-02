@@ -5,6 +5,6 @@ export const FieldContext = createContext<FieldContextValue | undefined>(undefin
 
 export const FieldProvider = FieldContext.Provider;
 
-export const useFieldContext_unstable = <T>(selector: ContextSelector<FieldContextValue | undefined, T>): T => {
+export const useFieldContext = <T>(selector: ContextSelector<FieldContextValue | undefined, T>): T => {
   return useContextSelector(FieldContext, selector);
 };
