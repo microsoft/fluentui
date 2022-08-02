@@ -31,7 +31,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
 
   const keyborg = createKeyborg(win);
 
-  // When navgitaion mode changes remove the focus-visible selector
+  // When navigation mode changes remove the focus-visible selector
   keyborg.subscribe(isNavigatingWithKeyboard => {
     if (!isNavigatingWithKeyboard && state.current) {
       removeFocusVisibleClass(state.current);
@@ -89,7 +89,7 @@ function isHTMLElement(target: EventTarget | null): target is HTMLElement {
   if (!target) {
     return false;
   }
-  return Boolean(target && typeof target === 'object' && 'hasAttribute' in target && 'getAttribute' in target);
+  return Boolean(target && typeof target === 'object' && 'classList' in target && 'contains' in target);
 }
 
 function alreadyInScope(el: HTMLElement | null | undefined): boolean {

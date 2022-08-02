@@ -22,6 +22,8 @@ export const createCustomFocusIndicatorStyle = (
   ':focus-visible': {
     outlineStyle: 'none',
   },
+  // Remove the `.fui-FluentProvider` global selector once Griffel supports chained global styles
+  // https://github.com/microsoft/griffel/issues/178
   ...(selector === 'focus' && {
     [`:global(.fui-FluentProvider)`]: {
       [`& .${FOCUS_VISIBLE_CLASS}`]: style,

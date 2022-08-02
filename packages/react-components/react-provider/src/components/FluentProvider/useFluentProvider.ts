@@ -58,7 +58,6 @@ export const useFluentProvider_unstable = (
     root: getNativeElementProps('div', {
       ...props,
       dir,
-      // ref: useMergedRefs(ref, useKeyboardNavAttribute()),
       ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>()),
     }),
   };

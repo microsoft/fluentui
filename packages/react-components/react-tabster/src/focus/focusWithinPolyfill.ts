@@ -8,6 +8,11 @@ import { FOCUS_WITHIN_CLASS } from './constants';
  */
 type ListenerOverride = (evt: Event) => void;
 
+/**
+ * A ponyfill that allows `:focus-within` to support visibility based on keyboard/mouse navigation
+ * like `:focus-visible` https://github.com/WICG/focus-visible/issues/151
+ * @returns ref to the element that uses `:focus-within` styles
+ */
 export function applyFocusWithinPolyfill(element: HTMLElement, win: Window): () => void {
   const keyborg = createKeyborg(win);
 
@@ -57,5 +62,5 @@ function isHTMLElement(target: EventTarget | null): target is HTMLElement {
   if (!target) {
     return false;
   }
-  return Boolean(target && typeof target === 'object' && 'hasAttribute' in target && 'getAttribute' in target);
+  return Boolean(target && typeof target === 'object' && 'classList' in target && 'contains' in target);
 }
