@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 02 Aug 2022 18:04:48 GMT",
+      "tag": "@fluentui/react-focus_v8.7.6",
+      "version": "8.7.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8",
+            "comment": "fix: Scope keydown event listener so that it is added to the FocusZone itself instead of the window."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Aug 2022 07:44:44 GMT",
       "tag": "@fluentui/react-focus_v8.7.5",
       "version": "8.7.5",
