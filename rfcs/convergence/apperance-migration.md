@@ -4,7 +4,7 @@
 
 ## Summary
 
-Fluent V9 changes the default appearance of input components (`Input`, `Dropdown`). V0 input components default background colour is grey-ish, whereas in V9 the background colour is white.
+Fluent V9 changes the default appearance of input components (`Dropdown`, `Input`, `TextArea`). V0 input components default background colour is grey-ish, whereas in V9 the background colour is white.
 
 ## Background
 
@@ -36,7 +36,7 @@ Partners could create a new composition component and modify the props in their 
 
 👎 Cons:
 
-- Creating new input components (`Dropdown`, `Input`) that wouldn't match the Fluent V9 doc.
+- Creating new input components (`Dropdown`, `Input`, `TextArea`) where the props and default appearance wouldn't match our documentation.
 
 ### Global css selector
 
