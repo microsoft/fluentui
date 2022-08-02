@@ -3,9 +3,6 @@ import { fireEvent, render } from '@testing-library/react';
 import { KeyCodes } from '@fluentui/utilities';
 import { FocusZone } from './FocusZone';
 
-// HEADS UP: this test is intentionally in a separate file aside from the rest of FocusZone tests
-// As it is testing ref counting on a global `window` object it would interfere with other FocusZone tests
-// which use ReactTestUtils.renderIntoDocument() which renders FocusZone into a detached DOM node and never unmounts.
 describe('FocusZone keydown event handler', () => {
   let originalOnKeyDownCapture: (ev: KeyboardEvent) => void;
   const mockOnKeyDownCapture = jest.fn();
