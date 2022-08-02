@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added top-level export for decorators",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
