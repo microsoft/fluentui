@@ -271,14 +271,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  favoritesfolder: {},
   folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff'],
   },
-  loop: {
-    extensions: ['fluid', 'loop'],
-  },
-  favoritesfolder: {},
   form: {},
   genericfile: {},
   html: {
@@ -286,6 +283,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   ipynb: {
     extensions: ['nnb', 'ipynb'],
+  },
+  loop: {
+    extensions: ['fluid', 'loop'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
