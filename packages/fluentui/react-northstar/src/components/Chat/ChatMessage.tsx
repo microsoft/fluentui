@@ -186,27 +186,23 @@ export interface ChatMessageProps
   /** Indicates whether the message is in a failure state. */
   failed?: boolean;
 
-  /** Label that describes message importance. */
-  importanceLabel?: React.ReactNode;
+  /** Optional override for the content in the message header. */
+  headerContent?: React.ReactNode;
 
-  /** Additional label slot for message details, such as a scheduled message label. */
-  infoLabel?: React.ReactNode;
+  /** A message can have a custom body element. */
+  body?: ShorthandValue<BoxProps>;
 
-  /**
-   * Hook that can be used to customize the element rendered for the message bubble.
-   * This is required for external, platform-specific implementations that need to
-   * wrap the bubble in order to inject animations et al.
-   */
-  customizeBubbleElement?(element: React.ReactElement): React.ReactElement;
+  /** A message can have a custom bubble element. */
+  bubble?: ShorthandValue<BoxProps>;
 
-  /** Slot for elements that sit next to the message bubble. */
-  bubbleInset?: React.ReactNode;
+  /** A message can have a custom bubble inset element, which sits next to the bubble. */
+  bubbleInset?: ShorthandValue<BoxProps>;
+
+  /** Optional override for the content in the message header. */
+  bubbleInsetContent?: React.ReactNode;
 
   /** More refined version of the original `timestamp` property that guarantees certain fields exist. */
   timestampTooltip?: string;
-
-  /** Optional override for the content in the message header. */
-  headerContent?: React.ReactNode;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
@@ -297,11 +293,11 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     unstable_overflow: overflow,
     variables,
     v2,
-    infoLabel,
-    importanceLabel,
-    customizeBubbleElement,
+    bubble,
+    body,
     timestampTooltip,
     bubbleInset,
+    bubbleInsetContent,
     headerContent,
   } = props;
 
@@ -604,50 +600,43 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     );
   } else if (isV2Enabled) {
     const headerElement = createShorthand(ChatMessageHeader, header || {}, {
-      overrideProps: () => ({
+      defaultProps: () => ({
         styles: resolvedStyles.header,
-        content: headerContent || (
+        content: (
           <>
             {authorElement}
-            {infoLabel}
-            {importanceLabel}
+            {headerContent}
             {detailsElement}
           </>
         ),
       }),
     });
 
-    let bubbleElement = Box.create(
-      {},
-      {
-        defaultProps: () =>
-          getA11Props('bubble', {
-            className: chatMessageSlotClassNames.bubble,
-            styles: resolvedStyles.bubble,
-          }),
-        overrideProps: () => ({
-          ref: actionsMenuPopper.targetRef,
-          content: (
-            <>
-              {actionMenuElement}
-              {messageContent}
-              {reactionGroupElement}
-              {readStatusElement}
-            </>
-          ),
-          onMouseEnter(e: React.SyntheticEvent) {
-            popperRef.current?.updatePosition();
-            handleMouseEnter(e);
-          },
-          onMouseLeave(e: React.SyntheticEvent) {
-            handleMouseLeave(e);
-          },
+    const bubbleElement = Box.create(bubble || {}, {
+      defaultProps: () =>
+        getA11Props('bubble', {
+          className: chatMessageSlotClassNames.bubble,
+          styles: resolvedStyles.bubble,
         }),
-      },
-    );
-    if (customizeBubbleElement) {
-      bubbleElement = customizeBubbleElement(bubbleElement);
-    }
+      overrideProps: () => ({
+        ref: actionsMenuPopper.targetRef,
+        content: (
+          <>
+            {actionMenuElement}
+            {messageContent}
+            {reactionGroupElement}
+            {readStatusElement}
+          </>
+        ),
+        onMouseEnter(e: React.SyntheticEvent) {
+          popperRef.current?.updatePosition();
+          handleMouseEnter(e);
+        },
+        onMouseLeave(e: React.SyntheticEvent) {
+          handleMouseLeave(e);
+        },
+      }),
+    });
 
     const timestampElement = (
       <Tooltip
@@ -663,43 +652,39 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       />
     );
 
-    const bubbleInsetElement = Box.create(
-      { as: 'span' },
-      {
-        defaultProps: () => ({
-          className: chatMessageSlotClassNames.bubbleInset,
-          styles: resolvedStyles.bubbleInset,
-        }),
-        overrideProps: () => ({
-          content: (
-            <>
-              {badgeElement}
-              {bubbleInset}
-              {timestampElement}
-            </>
-          ),
-        }),
-      },
-    );
+    const bubbleInsetElement = Box.create(bubbleInset || {}, {
+      defaultProps: () => ({
+        as: 'span',
+        className: chatMessageSlotClassNames.bubbleInset,
+        styles: resolvedStyles.bubbleInset,
+      }),
+      overrideProps: () => ({
+        content: (
+          <>
+            {badgeElement}
+            {bubbleInsetContent}
+            {timestampElement}
+          </>
+        ),
+      }),
+    });
 
-    const bodyElement = Box.create(
-      {},
-      {
-        defaultProps: () =>
-          getA11Props('body', {
-            className: chatMessageSlotClassNames.body,
-            styles: resolvedStyles.body,
-          }),
-        overrideProps: () => ({
-          content: (
-            <>
-              {bubbleElement}
-              {bubbleInsetElement}
-            </>
-          ),
+    const bodyElement = Box.create(body || {}, {
+      defaultProps: () =>
+        getA11Props('body', {
+          className: chatMessageSlotClassNames.body,
+          styles: resolvedStyles.body,
         }),
-      },
-    );
+      overrideProps: () => ({
+        content: (
+          <>
+            {bubbleElement}
+            {bubbleInsetElement}
+          </>
+        ),
+      }),
+    });
+
     elements = (
       <>
         {headerElement}
@@ -793,11 +778,11 @@ ChatMessage.propTypes = {
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
   failed: PropTypes.bool,
-  importanceLabel: PropTypes.node,
   headerContent: PropTypes.node,
-  infoLabel: PropTypes.node,
-  customizeBubbleElement: PropTypes.func,
-  bubbleInset: PropTypes.node,
+  body: customPropTypes.itemShorthand,
+  bubble: customPropTypes.itemShorthand,
+  bubbleInset: customPropTypes.itemShorthand,
+  bubbleInsetContent: PropTypes.node,
   timestampTooltip: PropTypes.string,
 };
 
