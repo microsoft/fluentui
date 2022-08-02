@@ -7,7 +7,7 @@ import {
   AvatarGroupOverflow,
   AvatarGroupOverflowProps,
   AvatarGroupProps,
-  getPartitionedAvatarGroupItems,
+  partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
@@ -49,7 +49,7 @@ const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupOverflowProps['indicator'] }
 > = props => {
   const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
-  const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(items);
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
@@ -94,7 +94,7 @@ storiesOf('AvatarGroup Converged', module)
     'overflowContent',
     () => {
       const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
-      const { inlineItems, overflowItems } = getPartitionedAvatarGroupItems(items);
+      const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
       return (
         <AvatarGroup>
           {inlineItems}
