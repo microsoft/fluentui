@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update to UIFabric (v7 Branch) to pick up latest filetype icon system. Here's the changes:",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
