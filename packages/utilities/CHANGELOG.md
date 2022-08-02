@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 26 Jul 2022 07:39:35 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Aug 2022 07:44:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.1)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.10.0..@fluentui/utilities_v8.10.1)
+
+### Patches
+
+- fix: Miscellaneous TS fixes for React 18 usage. ([PR #24148](https://github.com/microsoft/fluentui/pull/24148) by mgodbolt@microsoft.com)
 
 ## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.0)
 
