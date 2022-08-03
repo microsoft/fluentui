@@ -67,10 +67,14 @@ export const useFocusFinders: () => {
     findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Types.FindNextProps, 'container'>) => HTMLElement | null | undefined;
 };
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "useFocusVisible" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "useFocusWithin" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
