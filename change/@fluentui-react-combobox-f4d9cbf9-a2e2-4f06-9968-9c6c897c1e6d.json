@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(docs): add Dropdown usage warning and style best practices",
+  "packageName": "@fluentui/react-combobox",
+  "email": "popatudor@microsoft.com",
+  "dependentChangeType": "none"
+}
