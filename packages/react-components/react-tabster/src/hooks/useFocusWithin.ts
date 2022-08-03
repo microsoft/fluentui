@@ -13,7 +13,7 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>() {
   const elementRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
-    if (targetDocument?.defaultView && elementRef.current && canUseDOM()) {
+    if (targetDocument?.defaultView && elementRef.current) {
       return applyFocusWithinPolyfill(elementRef.current, targetDocument.defaultView);
     }
   }, [elementRef, targetDocument]);
