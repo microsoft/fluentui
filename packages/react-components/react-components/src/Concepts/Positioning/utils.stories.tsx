@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PositioningProps } from '@fluentui/react-positioning';
+import type { PositioningProps } from '@fluentui/react-components';
 
 /**
  * A helper component for storybook to auto generate an args table for positioning props

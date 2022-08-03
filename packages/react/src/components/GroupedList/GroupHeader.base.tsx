@@ -80,6 +80,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       styles,
       className,
       compact,
+      ariaLevel,
       ariaPosInSet,
       ariaSetSize,
       ariaRowIndex,
@@ -118,6 +119,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
         role="row"
+        aria-level={ariaLevel}
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
         aria-rowindex={ariaRowIndex}
@@ -127,7 +129,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-labelledby={group.ariaLabel ? undefined : this._id}
         aria-expanded={!this.state.isCollapsed}
         aria-selected={canSelectGroup ? currentlySelected : undefined}
-        aria-level={groupLevel + 1}
       >
         <div className={this._classNames.groupHeaderContainer} role="presentation">
           {isSelectionCheckVisible ? (

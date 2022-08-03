@@ -2,6 +2,36 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 01 Aug 2022 07:39:02 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.1",
+      "version": "1.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "51b7a53a9af64eb32a21fc5cc628a857b0e39afd",
+            "comment": "chore: upgrade error level of no-restricted-imports to error in v9 config."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.0",
+      "version": "1.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "Create no-context-default-value lint rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 13 Jul 2022 07:47:44 GMT",
       "tag": "@fluentui/eslint-plugin_v1.11.1",
       "version": "1.11.1",

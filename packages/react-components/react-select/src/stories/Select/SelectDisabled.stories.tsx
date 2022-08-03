@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Select } from '@fluentui/react-select';
-import { useId } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-components';
 
 export const Disabled = () => {
   const selectId = useId();

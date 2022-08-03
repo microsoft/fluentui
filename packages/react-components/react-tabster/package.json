@@ -31,12 +31,12 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.2.0",
+    "@griffel/react": "^1.2.3",
     "@fluentui/react-shared-contexts": "^9.0.0",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
     "keyborg": "^1.1.0",
-    "tabster": "^1.4.2",
+    "tabster": "^2.1.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

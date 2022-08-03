@@ -50,7 +50,7 @@ jobs:
           ISPR=true
           DEPLOYBASEPATH=pull/$PR_NUMBER
           DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
-          BUILD_SOURCEBRANCHNAME='merge' ,
+          BUILD_SOURCEBRANCHNAME='merge'
           EOT
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'

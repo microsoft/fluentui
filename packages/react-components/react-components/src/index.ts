@@ -53,6 +53,22 @@ export type {
   RadioState,
 } from '@fluentui/react-radio';
 export {
+  SpinButton,
+  renderSpinButton_unstable,
+  spinButtonClassNames,
+  useSpinButtonStyles_unstable,
+  useSpinButton_unstable,
+} from '@fluentui/react-spinbutton';
+export type {
+  SpinButtonOnChangeData,
+  SpinButtonChangeEvent,
+  SpinButtonProps,
+  SpinButtonSlots,
+  SpinButtonState,
+  SpinButtonSpinState,
+  SpinButtonBounds,
+} from '@fluentui/react-spinbutton';
+export {
   createCustomFocusIndicatorStyle,
   createFocusOutlineStyle,
   useArrowNavigationGroup,
@@ -118,6 +134,7 @@ export {
   resolveShorthand,
   SSRProvider,
   useId,
+  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -509,6 +526,7 @@ export type {
   TabListSlots,
   TabListState,
 } from '@fluentui/react-tabs';
+
 export {
   Body1,
   Caption1,

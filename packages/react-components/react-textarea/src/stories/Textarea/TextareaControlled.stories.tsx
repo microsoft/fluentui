@@ -7,6 +7,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     '& > label': {
+      display: 'block',
       marginBottom: tokens.spacingVerticalMNudge,
     },
   },
@@ -25,9 +26,7 @@ export const Controlled = () => {
 
   return (
     <div className={styles.base}>
-      <Label htmlFor={textareaId} style={{ display: 'block' }}>
-        Controlled Textarea limiting the value to 50 characters.
-      </Label>
+      <Label htmlFor={textareaId}>Controlled Textarea limiting the value to 50 characters.</Label>
       <Textarea value={value} onChange={onChange} id={textareaId} />
     </div>
   );

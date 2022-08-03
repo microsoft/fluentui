@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { SpinButton } from '@fluentui/react-spinbutton';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, mergeClasses, shorthands, tokens, useId, Label, SpinButton } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {

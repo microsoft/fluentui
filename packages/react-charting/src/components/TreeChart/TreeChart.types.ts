@@ -117,7 +117,7 @@ export interface ITreeDataStructure {
   /**
    * Children node object
    */
-  children: unknown;
+  children: Array<ITreeDataStructure>;
   /**
    * Node main text
    */
