@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, shorthands } from '@griffel/react';
 import {
   Badge,
   Divider,
@@ -14,30 +14,38 @@ import {
   tokens,
   Subtitle2,
 } from '@fluentui/react-components';
-import { brandRamp } from './OverridableTokenBrandColors';
+import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
-import { CircleFilled } from '@fluentui/react-icons';
-
+import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
 import { usageList } from './UsageList';
 import { ColorOverrideBrands } from './ColorTokens';
+import { ContrastRatioList } from './getAccessibilityChecker';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AppContext } from '../../ThemeDesigner';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
   brandColors: ColorOverrideBrands;
   colorOverride: ColorOverrideBrands;
+  coveredTokens: string[];
   onNewOverride: (color: string, newColor: Brands) => void;
+  failList?: ContrastRatioList;
 }
 
 export interface ColorTokenRowProps {
   brand: BrandVariants;
   brandValue: Brands;
   brandValueString: string;
+  selected: boolean;
 }
 
 const useStyles = makeStyles({
   root: {},
   colorLabel: {
     color: tokens.colorBrandForeground1,
+  },
+  selected: {
+    fontWeight: 'bold',
   },
   col: {
     display: 'flex',
@@ -49,21 +57,36 @@ const useStyles = makeStyles({
     paddingRight: '5px',
     display: 'grid',
     gridTemplateColumns: '15px 1fr 1fr 1.5fr',
+    gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
     paddingBottom: tokens.spacingVerticalXL,
   },
+  row2: {
+    gridColumnStart: '3',
+  },
+  colorPreview: {
+    display: 'inline',
+    paddingLeft: '5px',
+    paddingRight: '5px',
+    ...shorthands.borderRadius('10px'),
+  },
 });
 
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
-  const { brand, brandValue, brandValueString } = props;
+  const styles = useStyles();
+  const { brand, brandValue, brandValueString, selected } = props;
+
+  const name = useContextSelector(AppContext, ctx => ctx.name);
   return (
     <MenuItemRadio
       icon={<CircleFilled primaryFill={brand[brandValue]} />}
       name={brandValueString}
       value={brandValueString}
     >
-      Untitled {brandValueString}
+      <span className={selected ? styles.selected : ''}>
+        {name} {brandValueString}
+      </span>
     </MenuItemRadio>
   );
 };
@@ -71,13 +94,15 @@ const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
 export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = props => {
   const styles = useStyles();
 
-  const { brand, brandColors, colorOverride, onNewOverride } = props;
-  const newColors = { ...brandColors, ...colorOverride };
+  const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
+  const newColors: ColorOverrideBrands = { ...brandColors, ...colorOverride };
+
+  const name = useContextSelector(AppContext, ctx => ctx.name);
 
   return (
     <div>
-      {Object.keys(newColors).map(color => {
-        const colorValue = newColors[color];
+      {coveredTokens.map(color => {
+        const colorValue: Brands = newColors[color];
         const usage = ((usageList as unknown) as Record<string, string>)[color];
 
         const handleColorChange: MenuProps['onCheckedValueChange'] = (e, data) => {
@@ -101,16 +126,22 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 <Menu>
                   <MenuTrigger>
                     <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                      Untitled {colorValue}
+                      {name} {colorValue}
                     </MenuButton>
                   </MenuTrigger>
                   <MenuPopover>
                     <MenuList onCheckedValueChange={handleColorChange}>
                       {brandRamp.map(brandValue => {
+                        const selected = colorValue === brandValue;
                         const brandValueString = brandValue.toString();
                         return (
                           <div key={brandValueString}>
-                            <ColorTokenRow brand={brand} brandValue={brandValue} brandValueString={brandValueString} />
+                            <ColorTokenRow
+                              brand={brand}
+                              brandValue={brandValue}
+                              brandValueString={brandValueString}
+                              selected={selected}
+                            />
                           </div>
                         );
                       })}
@@ -119,6 +150,27 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 </Menu>
               </div>
               <div className={styles.col}>{usage}</div>
+              <div className={styles.row2}>
+                {failList ? (
+                  failList[color].map(fail => {
+                    const { compHex, ratio, desiredRatio } = fail;
+                    return (
+                      <div key={color + ' ' + compHex}>
+                        <WarningRegular color="red" /> Contrast against{' '}
+                        <div
+                          className={styles.colorPreview}
+                          style={{ backgroundColor: brand[colorValue], color: compHex }}
+                        >
+                          {compHex}
+                        </div>{' '}
+                        is {ratio} - expected {desiredRatio}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
             <Divider />
           </div>

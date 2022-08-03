@@ -9,7 +9,6 @@ describe('RadioGroup', () => {
   isConformant({
     Component: RadioGroup,
     displayName: 'RadioGroup',
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {

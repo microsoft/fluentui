@@ -99,6 +99,10 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+
     '::before': {
       content: '""',
       position: 'absolute',
@@ -111,6 +115,11 @@ const useStyles = makeStyles({
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 
@@ -152,6 +161,11 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      transitionDelay: '0.01ms',
+    },
+
     '::before': {
       ...shorthands.margin(0),
       opacity: 0,
@@ -159,6 +173,11 @@ const useStyles = makeStyles({
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 

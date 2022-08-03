@@ -31,7 +31,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     setActiveOption(getOptionById(option.id));
 
     // handle selection change
-    selectOption(event, option.value);
+    selectOption(event, option);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -43,7 +43,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     switch (action) {
       case 'Select':
       case 'CloseSelect':
-        activeOption && selectOption(event, activeOption.value);
+        activeOption && selectOption(event, activeOption);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);

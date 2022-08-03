@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import { useARIAButton } from '@fluentui/react-aria';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { AccordionContext } from '../Accordion/AccordionContext';
@@ -41,7 +41,7 @@ export const useAccordionHeader_unstable = (
     expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   }
 
-  const buttonShorthand = useARIAButton(button, {
+  const buttonShorthand = useARIAButtonShorthand(button, {
     required: true,
     defaultProps: {
       disabled,

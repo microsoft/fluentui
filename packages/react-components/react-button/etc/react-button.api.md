@@ -32,7 +32,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: NonNullable<Slot<ARIAButtonSlotProps>>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     icon?: Slot<'span'>;
 };
 

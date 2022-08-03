@@ -2,6 +2,179 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:40 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.24",
+      "version": "9.0.0-beta.24",
+      "comments": {
+        "none": [
+          {
+            "author": "marcosmoura@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8d0180b3bbaad7459257fb8bf7f2235953d12eec",
+            "comment": "docs(react-card): create migration guide from v0 to v9"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "59610d4c795d76a580fbb9391e20cf1249408555",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "770a741091a1f5d1f3b6d4bbfecdd29e333fef9c",
+            "comment": "chore: add missing Card components to Storybook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.4",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 18:27:26 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "none": [
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "447b211fec38e4320b13c5ee2f7449c188f8183c",
+            "comment": "docs: add missing info to README"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "640408c5aef9c3037f5f6bc08069ff9d9141a7ee",
+            "comment": "chore: add templates to stories"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 21:21:09 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.3",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:16 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "317b411a60a53ab5c0ed6c8ea58302940e8e0158",
+            "comment": "BREAKING CHANGE: new structural and styling approach applied to CardHeader"
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "b61d5f07a11be23b322de7e6cc50f280fb31746d",
+            "comment": "feat: add `img` as allowed element for CardPreview's logo slot"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.0.2",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Jun 2022 17:39:47 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.21",
       "version": "9.0.0-beta.21",

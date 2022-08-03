@@ -24,6 +24,12 @@ export interface ISparklineProps {
   height?: number;
 
   /**
+   * Width of value text
+   * * @default 80
+   */
+  valueTextWidth?: number;
+
+  /**
    * Additional CSS class(es) to apply to the SparklineChart.
    */
   className?: string;
@@ -51,5 +57,5 @@ export interface ISparklineProps {
 
 export interface ISparklineStyles {
   inlineBlock?: IStyle;
-  titleText?: IStyle;
+  valueText?: IStyle;
 }

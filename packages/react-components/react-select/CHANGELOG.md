@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Tue, 28 Jun 2022 17:39:51 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.8)
+
+Wed, 03 Aug 2022 16:03:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.7..@fluentui/react-select_v9.0.0-beta.8)
+
+### Changes
+
+- bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+
+## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.7)
+
+Thu, 14 Jul 2022 21:21:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.6..@fluentui/react-select_v9.0.0-beta.7)
+
+### Changes
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.6)
+
+Thu, 14 Jul 2022 17:06:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.5..@fluentui/react-select_v9.0.0-beta.6)
+
+### Changes
+
+- chore: Update @fluentui/react-icons dependency to v2.0.175 ([PR #23812](https://github.com/microsoft/fluentui/pull/23812) by ololubek@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.11 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.5)
 

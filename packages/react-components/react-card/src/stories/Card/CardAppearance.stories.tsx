@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { action } from '@storybook/addon-actions';
-import { Subtitle1 } from '@fluentui/react-text';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands, Subtitle1 } from '@fluentui/react-components';
 import { SampleCard } from './SampleCard.stories';
 
 const useStyles = makeStyles({

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 12 Jul 2022 07:41:00 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Aug 2022 18:04:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.7.6)
+
+Tue, 02 Aug 2022 18:04:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.7.5..@fluentui/react-focus_v8.7.6)
+
+### Patches
+
+- fix: Scope keydown event listener so that it is added to the FocusZone itself instead of the window. ([PR #24175](https://github.com/microsoft/fluentui/pull/24175) by makotom@microsoft.com)
+
+## [8.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.7.5)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.7.4..@fluentui/react-focus_v8.7.5)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.4 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+- Bump @fluentui/utilities to v8.10.1 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+
+## [8.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.7.4)
+
+Tue, 26 Jul 2022 07:39:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.7.3..@fluentui/react-focus_v8.7.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.3 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+- Bump @fluentui/utilities to v8.10.0 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
 
 ## [8.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.7.3)
 

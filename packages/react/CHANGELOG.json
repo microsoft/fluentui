@@ -2,6 +2,336 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 02 Aug 2022 18:04:49 GMT",
+      "tag": "@fluentui/react_v8.86.3",
+      "version": "8.86.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.6",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/react_v8.86.2",
+      "version": "8.86.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "07c2ec12f64349b852a2b5afea163745e848de7e",
+            "comment": "fix: Miscellaneous TS fixes for React 18 usage."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.12",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.5",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.5",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.9",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.10.1",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.1",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Aug 2022 07:39:02 GMT",
+      "tag": "@fluentui/react_v8.86.1",
+      "version": "8.86.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "02536d4b808deadafd13c9c990b41027fec07cda",
+            "comment": "fix: Make use parent FocusRectsContext so that only the outermost Fabric/ThemeProvider element in a tree is the only one being targetted by focus visibility classnames and event listeners."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "50b08528ea6ed19e13f002276fb880271771e425",
+            "comment": "fix(TagPicker): focus outline for TagItem remove button now meets required contrast ratio."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jul 2022 07:41:56 GMT",
+      "tag": "@fluentui/react_v8.86.0",
+      "version": "8.86.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e0700217b89d418bbe94fc6b9151770d18c4ef60",
+            "comment": "fix: update DetailsRow and GroupHeader to only expose treegrid semantics when used within GroupedList"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jul 2022 07:41:17 GMT",
+      "tag": "@fluentui/react_v8.85.1",
+      "version": "8.85.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "66eae9024cd995473c52c08e460963df2cdd39d6",
+            "comment": "feat: Making Fabric component an element to which to attach focus rects classnames and event listeners."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.3",
+            "commit": "d02dcc168ab47640fa503b05a142c9b32f555c3f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/react_v8.85.0",
+      "version": "8.85.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ad8661e299d2528a2d191469f52b2000a293dd72",
+            "comment": "fix: Change modal isModeless to only effect pointer events, not layout."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.0",
+            "commit": "e2694f89edb0aa2ee86e7e0c6c9b6354e99eabf5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 07:39:34 GMT",
+      "tag": "@fluentui/react_v8.84.0",
+      "version": "8.84.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9dfca5c711afb616147faf111504d11ec1e24856",
+            "comment": "fix: Scope focus visible classnames and event listeners to ThemeProvider by default, and to the window body as a fallback."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.11",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.4",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.4",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.2",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.3",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.8",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.10.0",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.1.3",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/react_v8.83.1",
+      "version": "8.83.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "70c03a62a18accc5a1903d89e4625600796d09e9",
+            "comment": "fix: update TooltipHost to use onRenderContent in description text"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/react_v8.83.0",
+      "version": "8.83.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7597b05cc64da5d2613a02ff157bfcbff8693f0e",
+            "comment": "feat(Nav): Add role property to override navigation ARIA role."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jul 2022 07:49:17 GMT",
+      "tag": "@fluentui/react_v8.82.2",
+      "version": "8.82.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "8e81a8871d36f3574467f4cb49103072aaa6fddb",
+            "comment": "fix: TagPicker no longer reads remove when narrating list of selected tags"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/react_v8.82.1",
+      "version": "8.82.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33",
+            "comment": "fix: Improve step handling for invalid intermediate SpinButton values"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fb6ee6b7d255499a234cad77f47678240792655d",
+            "comment": "fix: update CommandBar cacheKey computation to include farItems"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/react_v8.82.0",
+      "version": "8.82.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84",
+            "comment": "fix: Update Nav to not use separate labels for expand/collapse state."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:47 GMT",
+      "tag": "@fluentui/react_v8.81.1",
+      "version": "8.81.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "702440cc0cd2303dd87093583b251418cca3d871",
+            "comment": "chore: Fixing dependency mismatch due to @fluentui/react-portal-compat-context bump."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 07:45:34 GMT",
+      "tag": "@fluentui/react_v8.81.0",
+      "version": "8.81.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react",
+            "commit": "e1efdc9264ab9a14ab2837dc6b0bc2e1495f5b13",
+            "comment": "Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 07:40:59 GMT",
       "tag": "@fluentui/react_v8.80.0",
       "version": "8.80.0",

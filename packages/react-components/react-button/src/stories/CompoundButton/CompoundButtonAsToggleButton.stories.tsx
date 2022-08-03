@@ -1,19 +1,24 @@
 import * as React from 'react';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { mergeClasses } from '@griffel/react';
-import { useToggleState } from '../../utils/useToggleState';
 import {
+  mergeClasses,
   renderCompoundButton_unstable,
   useCompoundButton_unstable,
   useCompoundButtonStyles_unstable,
-} from '@fluentui/react-button';
+} from '@fluentui/react-components';
+import { useToggleState } from '../../utils/useToggleState';
+
 import {
   useCheckedStyles as useToggleButtonCheckedStyles,
   useDisabledStyles as useToggleButtonDisabledStyles,
 } from '../../components/ToggleButton/useToggleButtonStyles';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { CompoundButtonProps, CompoundButtonState } from '@fluentui/react-button';
-import type { ToggleButtonProps, ToggleButtonState } from '@fluentui/react-button';
+import type {
+  CompoundButtonProps,
+  CompoundButtonState,
+  ForwardRefComponent,
+  ToggleButtonProps,
+  ToggleButtonState,
+} from '@fluentui/react-components';
 
 type ToggleCompoundButtonProps = CompoundButtonProps & ToggleButtonProps;
 type ToggleCompoundButtonState = CompoundButtonState & ToggleButtonState;

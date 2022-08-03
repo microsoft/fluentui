@@ -468,6 +468,48 @@ describe('Menu', () => {
       .get(menuSelector)
       .should('not.exist');
   });
+
+  it('should be able to tab to next element after the root trigger', () => {
+    mount(
+      <>
+        <Menu closeOnScroll>
+          <MenuTrigger>
+            <button>Menu</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <button>After</button>
+      </>,
+    );
+
+    cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').realPress('Tab');
+    cy.contains('After').should('be.focused').get(menuSelector).should('not.exist');
+  });
+
+  it('should be able to shift tab to previous element after the root trigger', () => {
+    mount(
+      <>
+        <button>Before</button>
+        <Menu closeOnScroll>
+          <MenuTrigger>
+            <button>Menu</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+      </>,
+    );
+
+    cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').realPress(['Shift', 'Tab']);
+    cy.contains('Before').should('be.focused').get(menuSelector).should('not.exist');
+  });
 });
 
 describe('SplitMenuItem', () => {
@@ -737,7 +779,6 @@ describe(`Nested Menus`, () => {
 
       it('should close on mouse enter parent menu', () => {
         mount(<Example />);
-        // mocking the clock due to setTimeout used for mouseenter and mouseleave
         cy.get(menuTriggerSelector).click();
 
         cy.get(menuSelector).within(() => {
@@ -785,7 +826,7 @@ describe(`Nested Menus`, () => {
         it(`should close on ${key}`, () => {
           mount(<Example />);
           cy.get(menuTriggerSelector)
-            .type('{rightarrow}')
+            .click()
             .get(menuSelector)
             .within(() => {
               cy.get(menuTriggerSelector).focus().type('{rightarrow}').focused().type(key);
@@ -798,7 +839,7 @@ describe(`Nested Menus`, () => {
       it(`should all close when a menu item in the nested menu is clicked`, () => {
         mount(<Example />);
         cy.get(menuTriggerSelector)
-          .type('{rightarrow}')
+          .click()
           .get(menuSelector)
           .within(() => {
             cy.get(menuTriggerSelector).type('{rightarrow}');
@@ -810,6 +851,46 @@ describe(`Nested Menus`, () => {
           })
           .get(menuSelector)
           .should('not.exist');
+      });
+
+      it('should be able to tab to next element after the root trigger', () => {
+        mount(
+          <>
+            <Example />
+            <button>After</button>
+          </>,
+        );
+
+        cy.get(menuTriggerSelector)
+          .click()
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector).type('{rightarrow}');
+          })
+          .get(menuSelector)
+          .eq(1)
+          .realPress('Tab');
+        cy.contains('After').should('be.focused').get(menuSelector).should('not.exist');
+      });
+
+      it('should be able to shift tab to previous element after the root trigger', () => {
+        mount(
+          <>
+            <button>Before</button>
+            <Example />
+          </>,
+        );
+
+        cy.get(menuTriggerSelector)
+          .click()
+          .get(menuSelector)
+          .within(() => {
+            cy.get(menuTriggerSelector).type('{rightarrow}');
+          })
+          .get(menuSelector)
+          .eq(1)
+          .realPress(['Shift', 'Tab']);
+        cy.contains('Before').should('be.focused').get(menuSelector).should('not.exist');
       });
     });
   });

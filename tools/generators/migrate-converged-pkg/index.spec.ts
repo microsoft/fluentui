@@ -1071,7 +1071,7 @@ describe('migrate-converged-pkg generator', () => {
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
         json.scripts = json.scripts || {};
-        json.scripts.build = 'just-scripts build --commonjs';
+        json.scripts.build = 'just-scripts build --module cjs';
         return json;
       });
 

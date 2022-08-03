@@ -57,10 +57,12 @@ export const TagItemBase = (props: ITagItemProps) => {
         iconProps={removeButtonIconProps ?? { iconName: 'Cancel' }}
         styles={{ icon: { fontSize: '12px' } }}
         className={classNames.close}
-        ariaLabel={removeButtonAriaLabel}
-        aria-labelledby={`${itemId} ${itemId}-text`}
+        aria-labelledby={`${itemId}-removeLabel ${itemId}-text`}
         data-selection-index={index}
       />
+      <span id={`${itemId}-removeLabel`} hidden>
+        {removeButtonAriaLabel}
+      </span>
     </div>
   );
 };

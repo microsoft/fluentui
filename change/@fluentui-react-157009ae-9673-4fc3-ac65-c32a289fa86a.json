@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "create focus queue for multi level contextual menus",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

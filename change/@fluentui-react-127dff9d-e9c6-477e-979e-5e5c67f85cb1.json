@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exporting setLayerHostSelector method to configure the default layerhost selector. This allows partners to opt back into the old behavior of appending layers to the body.",
-  "packageName": "@fluentui/react",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

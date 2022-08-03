@@ -1,8 +1,29 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Tue, 28 Jun 2022 15:14:09 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Jul 2022 21:21:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.3)
+
+Thu, 14 Jul 2022 21:21:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.2..@fluentui/global-context_v9.0.0-beta.3)
+
+### Changes
+
+- fix: Fixing bad version bump of @fluentui/react-utilities. ([PR #23920](https://github.com/microsoft/fluentui/pull/23920) by Humberto.Morimoto@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+- Bump @fluentui/react-utilities to v9.0.2 ([PR #23918](https://github.com/microsoft/fluentui/pull/23918) by beachball)
+
+## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.2)
+
+Thu, 14 Jul 2022 17:06:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.1..@fluentui/global-context_v9.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.0.1 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
+- Bump @fluentui/react-utilities to v9.0.1-0 ([PR #23897](https://github.com/microsoft/fluentui/pull/23897) by beachball)
 
 ## [9.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.1)
 
