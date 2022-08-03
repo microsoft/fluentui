@@ -181,7 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
-    const bordersForLine: JSX.Element[] = [];
+    const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -202,7 +202,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       : 0;
 
     if (lineBorderWidth > 0) {
-      bordersForLine.push(
+      line.push(
         <path
           opacity={shouldHighlight ? 1 : 0.4}
           d={linePath(lineData)!}
@@ -213,7 +213,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         />,
       );
     }
-    bordersForLine.push(
+    line.push(
       <path
         opacity={shouldHighlight ? 1 : 0.4}
         d={linePath(lineData)!}
@@ -246,7 +246,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
     return (
       <>
-        {bordersForLine}
+        {line}
         {dots}
       </>
     );
