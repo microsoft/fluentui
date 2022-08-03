@@ -2,6 +2,6 @@
   "type": "minor",
   "comment": "Add overflowButtonAs prop to Pivot component",
   "packageName": "@fluentui/react",
-  "email": "alinazaieva@microsoft.com",
+  "email": "alina.o.zaieva@gmail.com",
   "dependentChangeType": "patch"
 }
