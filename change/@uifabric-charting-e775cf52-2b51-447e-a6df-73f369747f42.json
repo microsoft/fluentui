@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Culture issue in multistacked bar chart solved",
+  "packageName": "@uifabric/charting",
+  "email": "v-scharde@microsoft.com",
+  "dependentChangeType": "patch"
+}
