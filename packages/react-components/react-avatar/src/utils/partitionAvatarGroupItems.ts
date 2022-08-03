@@ -18,19 +18,19 @@ export type PartitionAvatarGroupItemsOptions<T> = {
 export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
   const { items } = options;
   const isPie = options.layout === 'pie';
-  const maxInlineItems = isPie ? 3 : options.maxInlineItems ?? 5;
-  const inlineCount = -(maxInlineItems - (items.length > maxInlineItems ? 1 : 0));
 
-  const overflowItems = isPie ? items : items.slice(0, inlineCount);
-  let inlineItems: T[] = [];
   if (isPie) {
-    inlineItems = items.slice(0, maxInlineItems);
-  } else {
-    inlineItems = items.slice(inlineCount);
+    return {
+      inlineItems: items.slice(0, 3),
+      overflowItems: items,
+    };
   }
 
+  const maxInlineItems = options.maxInlineItems ?? 5;
+  const inlineCount = -(maxInlineItems - (items.length > maxInlineItems ? 1 : 0));
+
   return {
-    inlineItems,
-    overflowItems,
+    inlineItems: items.slice(inlineCount),
+    overflowItems: items.slice(0, inlineCount),
   };
 };
