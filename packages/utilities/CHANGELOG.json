@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/utilities_v8.10.1",
+      "version": "8.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "07c2ec12f64349b852a2b5afea163745e848de7e",
+            "comment": "fix: Miscellaneous TS fixes for React 18 usage."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Aug 2022 07:39:03 GMT",
       "tag": "@fluentui/utilities_v8.10.0",
       "version": "8.10.0",

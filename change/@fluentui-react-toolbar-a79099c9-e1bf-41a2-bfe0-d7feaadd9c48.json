@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(docs): add description and unstable usage warning for Toolbar",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "popatudor@microsoft.com",
-  "dependentChangeType": "none"
-}

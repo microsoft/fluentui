@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import type { DialogTitleProps, DialogTitleState } from './DialogTitle.types';
-import { useARIAButton } from '@fluentui/react-aria';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
 import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -28,7 +28,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
       id: useDialogContext_unstable(ctx => ctx.dialogTitleID),
       ...props,
     }),
-    closeButton: useARIAButton(closeButton, {
+    closeButton: useARIAButtonShorthand(closeButton, {
       required: modalType === 'non-modal',
       defaultProps: {
         type: 'button', // This is added because the default for type is 'submit'

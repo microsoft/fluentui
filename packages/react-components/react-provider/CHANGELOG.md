@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Thu, 14 Jul 2022 21:21:03 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.1.0)
+
+Wed, 03 Aug 2022 16:03:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.0.3..@fluentui/react-provider_v9.1.0)
+
+### Minor changes
+
+- fix: Move to useLayoutEffect or useInsertionEffect for Theme Provider theme insertion. ([PR #24061](https://github.com/microsoft/fluentui/pull/24061) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+
+### Patches
+
+- fix: use `useFocusVisible` hook for :focus-visible styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.0.3)
 
