@@ -61,14 +61,6 @@ jobs:
           DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
@@ -108,6 +100,29 @@ jobs:
         with:
           node-version: 14.18.1
 
+      - name: Set env variables if there is a PR
+        run: |
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          echo "ISPR=true" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+        env:
+          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+          PR_NUMBER: ${{ github.event.number }}
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Set env variables if there is not a PR
+        run: |
+          echo "ISPR=false" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -142,6 +157,29 @@ jobs:
         with:
           node-version: 14.18.1
 
+      - name: Set env variables if there is a PR
+        run: |
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          echo "ISPR=true" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+        env:
+          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+          PR_NUMBER: ${{ github.event.number }}
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Set env variables if there is not a PR
+        run: |
+          echo "ISPR=false" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -173,6 +211,29 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+
+      - name: Set env variables if there is a PR
+        run: |
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+          echo "ISPR=true" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+        env:
+          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+          PR_NUMBER: ${{ github.event.number }}
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Set env variables if there is not a PR
+        run: |
+          echo "ISPR=false" >> $GITHUB_ENV
+          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+        if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
