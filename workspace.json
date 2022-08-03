@@ -812,8 +812,8 @@
       "projectType": "application",
       "implicitDependencies": []
     },
-    "@fluentui/react18-test": {
-      "root": "apps/react18-test",
+    "@fluentui/react-18-tests-v9": {
+      "root": "apps/react-18-tests-v9",
       "projectType": "application",
       "implicitDependencies": []
     },

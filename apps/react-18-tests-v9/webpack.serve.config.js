@@ -6,7 +6,7 @@ module.exports = resources.createServeConfig(
   {
     entry: ['react-app-polyfill/ie11', './src/index.tsx'],
     output: {
-      filename: 'react18-test.js',
+      filename: 'react-18-tests-v9.js',
     },
 
     resolve: {

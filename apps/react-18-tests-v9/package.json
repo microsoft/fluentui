@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react18-test",
+  "name": "@fluentui/react-18-tests-v9",
   "description": "React 18 test application",
   "version": "1.0.0",
   "private": true,
@@ -19,8 +19,7 @@
     "@types/react-dom": "18.0.6"
   },
   "dependencies": {
-    "@fluentui/react-components": "9.1.1",
-    "@fluentui/react": "8.85.0",
+    "@fluentui/react-components": "9.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tslib": "^2.1.0"

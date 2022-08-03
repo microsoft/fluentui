@@ -287,8 +287,8 @@
       "@fluentui/web-components/ts-node",
       "@fluentui/web-components/ts-node/**",
       "@fluentui/web-components/webpack",
-      "@fluentui/react18-test/react",
-      "@fluentui/react18-test/react-dom"
+      "@fluentui/react-18-tests-v9/react",
+      "@fluentui/react-18-tests-v9/react-dom"
     ]
   },
   "resolutions": {
@@ -308,7 +308,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/!(react18-test)/package.json",
+      "apps/!(react-18-tests-v9)/package.json",
       "packages/!(web-components)/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
