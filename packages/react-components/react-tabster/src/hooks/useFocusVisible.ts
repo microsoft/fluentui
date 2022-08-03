@@ -11,7 +11,7 @@ export function useFocusVisible<TElement extends HTMLElement = HTMLElement>() {
   const scopeRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
-    if (targetDocument?.defaultView && scopeRef.current && canUseDOM()) {
+    if (targetDocument?.defaultView && scopeRef.current) {
       return applyFocusVisiblePolyfill(scopeRef.current, targetDocument.defaultView);
     }
   }, [scopeRef, targetDocument]);
