@@ -172,6 +172,7 @@ packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
 packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
+packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
