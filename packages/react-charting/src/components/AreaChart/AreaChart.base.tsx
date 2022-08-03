@@ -90,6 +90,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
+  private _rectRef: SVGRectElement | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
@@ -121,6 +122,29 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+  }
+
+  public componentDidUpdate() {
+    if (this.state.isShowCalloutPending) {
+      const points = this.props.data.lineChartData!;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
+        if (points.length === index) {
+          return;
+        }
+        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
+          const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
+          const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
+          if (this.state.nearestCircleToHighlight === xDataPoint) {
+            this.setState({
+              refSelected: `#${circleId}`,
+              isCalloutVisible: true,
+              isShowCalloutPending: false,
+            });
+          }
+        });
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -180,6 +204,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             <>
               <g>
                 <rect
+                  ref={e => (this._rectRef = e)}
                   id={this._rectId}
                   width={width1}
                   height={rectHeight}
@@ -206,7 +231,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisRectScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
+    const xOffset = this._xAxisRectScale.invert(clientPoint(this._rectRef!, mouseEvent)[0]);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![0].data[i] as ILineChartDataPoint;
@@ -537,13 +562,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint) {
-      if (this.state.isShowCalloutPending) {
-        this.setState({
-          refSelected: `#${circleId}`,
-          isCalloutVisible: true,
-          isShowCalloutPending: false,
-        });
-      }
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
       }

@@ -190,3 +190,15 @@ describe('Render calling with respective to props', () => {
     renderMock.mockRestore();
   });
 });
+
+describe('AreaChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', async () => {
+    wrapper = mount(<AreaChart data={chartPoints} />);
+    expect(wrapper.find('[id^="toolTip"]').length).toBe(0);
+    wrapper.find('rect').simulate('mouseover');
+    expect(wrapper.find('[id^="toolTip"]').length).toBe(1);
+  });
+});
