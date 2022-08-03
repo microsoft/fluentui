@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { FluentProvider, webLightTheme, Button } from '@fluentui/react-components';
 
+// This app is here as a simple sandbox to render v9 controls inside of React 18 environement.
+
 export const App = () => {
   return (
     <FluentProvider theme={webLightTheme}>
