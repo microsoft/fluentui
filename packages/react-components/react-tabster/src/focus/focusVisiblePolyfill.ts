@@ -20,8 +20,7 @@ type HTMLElementWithFocusVisibleScope = {
 } & HTMLElement;
 
 export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void {
-  if (alreadyInScope(scope)) {
-    // Focus visible polyfill already applied at this scope
+  if (alreadyInScope(scope) || browserSupportsFocusVisible()) {
     return () => undefined;
   }
 
@@ -102,4 +101,8 @@ function alreadyInScope(el: HTMLElement | null | undefined): boolean {
   }
 
   return alreadyInScope(el?.parentElement);
+}
+
+function browserSupportsFocusVisible() {
+  return CSS.supports('selector(:focus-visible)');
 }

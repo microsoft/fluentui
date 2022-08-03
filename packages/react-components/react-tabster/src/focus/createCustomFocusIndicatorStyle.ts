@@ -28,6 +28,8 @@ export const createCustomFocusIndicatorStyle = (
     [`:global(.fui-FluentProvider)`]: {
       [`& .${FOCUS_VISIBLE_CLASS}`]: style,
     },
+
+    ':focus-visible': style,
   }),
   ...(selector === 'focus-within' && {
     [`:global(.fui-FluentProvider)`]: {
