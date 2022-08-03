@@ -19,7 +19,6 @@ const convergedComponentPackages = Object.entries(getAllPackageInfo())
       isConvergedPackage(info.packageJson) &&
       pkgName.startsWith('@fluentui/react-') &&
       info.packagePath.startsWith('packages') &&
-      !!info.packageJson.scripts?.start &&
       !!info.packageJson.dependencies?.['@fluentui/react-utilities'],
   )
   .map(([packageName]) => packageName);
