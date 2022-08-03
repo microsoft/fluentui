@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use caret for @fluentui/react-spinbutton",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
