@@ -53,8 +53,6 @@ export interface IVerticalBarChartState extends IBasestate {
 
 type ColorScale = (_p?: number) => string;
 
-const LINE_BORDER_WIDTH: number = 4;
-
 export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps, IVerticalBarChartState> {
   private _points: IVerticalBarChartDataPoint[];
   private _barWidth: number;
@@ -183,6 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    const bordersForLine: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -198,26 +197,31 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
     }
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
 
-    const line = (
-      <>
+    if (lineBorderWidth > 0) {
+      bordersForLine.push(
         <path
           opacity={shouldHighlight ? 1 : 0.4}
           d={linePath(lineData)!}
           fill="transparent"
           strokeLinecap="square"
-          strokeWidth={3 + LINE_BORDER_WIDTH}
+          strokeWidth={3 + lineBorderWidth * 2}
           stroke={theme!.palette.white}
-        />
-        <path
-          opacity={shouldHighlight ? 1 : 0.4}
-          d={linePath(lineData)!}
-          fill="transparent"
-          strokeLinecap="square"
-          strokeWidth={3}
-          stroke={lineLegendColor}
-        />
-      </>
+        />,
+      );
+    }
+    bordersForLine.push(
+      <path
+        opacity={shouldHighlight ? 1 : 0.4}
+        d={linePath(lineData)!}
+        fill="transparent"
+        strokeLinecap="square"
+        strokeWidth={3}
+        stroke={lineLegendColor}
+      />,
     );
 
     const dots: React.ReactNode[] = lineData.map(
@@ -242,7 +246,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
     return (
       <>
-        {line}
+        {bordersForLine}
         {dots}
       </>
     );
