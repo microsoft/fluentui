@@ -18,12 +18,11 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
     gridAutoFlow: 'row',
-    justifyItems: 'start',
   },
 
   labelBefore: {
     gridTemplateRows: 'repeat(4, auto)',
-    gridTemplateColumns: 'repeat(2, auto)',
+    gridTemplateColumns: '1fr 2fr',
   },
 });
 
@@ -33,9 +32,11 @@ const useLabelStyles = makeStyles({
   },
 
   before: {
-    marginRight: tokens.spacingHorizontalM,
     gridRowStart: '1',
     gridRowEnd: '-1',
+    marginRight: tokens.spacingHorizontalM,
+    marginTop: tokens.spacingVerticalXXS,
+    marginBottom: tokens.spacingVerticalXXS,
   },
 });
 
