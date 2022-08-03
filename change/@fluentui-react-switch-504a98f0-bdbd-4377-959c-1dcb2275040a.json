@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: use `useFocusWithin` hook for :focus-within styles",
+  "packageName": "@fluentui/react-switch",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

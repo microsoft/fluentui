@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Adds `@fluentui/react-table` package to unstable exports",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

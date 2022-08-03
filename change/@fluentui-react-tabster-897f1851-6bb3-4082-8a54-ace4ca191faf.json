@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: create `:focus-visible` and `:focus-within` polyfills",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
