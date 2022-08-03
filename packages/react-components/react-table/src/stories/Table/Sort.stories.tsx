@@ -9,8 +9,7 @@ import {
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
-import { SortState } from '../../components/Table/Table.types';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, SortDirection } from '../..';
 
 type FileCell = {
   label: string;
@@ -100,10 +99,13 @@ const columns: Record<string, { label: string; compare: (a: unknown, b: unknown)
 };
 
 export const Sort = () => {
-  const [sortState, setSortState] = React.useState<SortState>({ sortColumn: 'file', sortDirection: 'ascending' });
+  const [sortState, setSortState] = React.useState<{ sortColumn: string; sortDirection: SortDirection }>({
+    sortColumn: 'file',
+    sortDirection: 'ascending',
+  });
+  const { sortColumn, sortDirection } = sortState;
 
   const sortedItems = items.slice().sort((a, b) => {
-    const { sortColumn, sortDirection } = sortState;
     if (!sortColumn) {
       return 1;
     }
@@ -113,12 +115,30 @@ export const Sort = () => {
     return columns[columnKey].compare(a[columnKey], b[columnKey]) * mod;
   });
 
+  const onHeaderCellClick = (columnKey: string) => () => {
+    setSortState(s => {
+      const newState = { ...s, sortDirection: 'ascending' as SortDirection };
+
+      if (s.sortColumn === columnKey) {
+        newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
+      } else {
+        newState.sortColumn = columnKey;
+      }
+
+      return newState;
+    });
+  };
+
   return (
-    <Table onSortColumnChange={(_, data) => setSortState(data.sortState)} defaultSortState={sortState}>
+    <Table>
       <TableHeader>
         <TableRow>
-          {(Object.keys(columns) as (keyof typeof columns)[]).map(columnKey => (
-            <TableHeaderCell key={columnKey} columnKey={columnKey}>
+          {Object.keys(columns).map(columnKey => (
+            <TableHeaderCell
+              key={columnKey}
+              onClick={onHeaderCellClick(columnKey)}
+              sortDirection={sortColumn === columnKey ? sortDirection : undefined}
+            >
               {columns[columnKey].label}
             </TableHeaderCell>
           ))}
