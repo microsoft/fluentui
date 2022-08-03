@@ -14,10 +14,7 @@ describe('useTableContextValues', () => {
       Object {
         "table": Object {
           "noNativeElements": false,
-          "requestSortColumnChange": undefined,
           "size": "medium",
-          "sortColumn": undefined,
-          "sortDirection": undefined,
           "sortable": false,
         },
       }
