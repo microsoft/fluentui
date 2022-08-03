@@ -1,40 +1,47 @@
-import { useFieldContext } from './FieldContext';
+export {};
+// import { FieldProps } from '../Field';
+// import { filterFieldSize } from '../util/filterFieldSize';
+// import { useFieldContext } from './FieldContext';
 
-export type UseFieldChildPropsOptions<SizeValues extends string> = {
-  supportedSizes: SizeValues[];
-};
+// export type UseFieldChildPropsOptions<Props extends FieldChildProps<unknown>> = {
+//   supportedSizes: (NonNullable<Props['size']> & NonNullable<FieldProps['size']>)[];
+// };
 
-export type FieldChildProps<SizeValues extends string> = {
-  id?: string;
-  required?: boolean;
-  'aria-labelledby'?: string;
-  size?: SizeValues;
-};
+// export type FieldChildProps<SizeValues> = {
+//   id?: string;
+//   required?: boolean;
+//   'aria-labelledby'?: string;
+//   size?: SizeValues;
+// };
 
-export const useFieldChildProps = <SizeValues extends string = never>(
-  options: UseFieldChildPropsOptions<SizeValues>,
-) => {
-  const props: FieldChildProps<SizeValues> = {};
+// export const useFieldChildProps_unstable = <SizeValues>(
+//   options: UseFieldChildPropsOptions<FieldChildProps<SizeValues>>,
+// ) => {
+//   const props: FieldChildProps<SizeValues> = {
+//     id: useFieldContext(ctx => ctx?.childId),
+//     'aria-labelledby': useFieldContext(ctx => ctx?.labelId),
+//     required: useFieldContext(ctx => ctx?.required),
+//     size: useFieldContext(ctx => filterFieldSize(ctx?.size, options.supportedSizes)),
+//   };
 
-  const labelFor = useFieldContext(ctx => ctx?.labelFor);
-  if (labelFor) {
-    props.id = labelFor;
-  }
+//   if (useFieldContext(ctx => ctx === undefined)) {
+//     return undefined;
+//   }
 
-  const labelId = useFieldContext(ctx => ctx?.labelId);
-  if (labelId) {
-    props['aria-labelledby'] = labelId;
-  }
+//   return props;
+// };
 
-  const required = useFieldContext(ctx => ctx?.required);
-  if (required) {
-    props.required = required;
-  }
+// export const useMergedFieldProps_unstable = <Props extends FieldChildProps<unknown>>(
+//   props: Props,
+//   options: UseFieldChildPropsOptions<Props>,
+// ): Props => {
+//   const propsFromField = {
+//     id: useFieldContext(ctx => ctx?.childId),
+//     'aria-labelledby': useFieldContext(ctx => ctx?.labelId),
+//     required: useFieldContext(ctx => ctx?.required),
+//     size: useFieldContext(ctx => filterFieldSize(ctx?.size, options.supportedSizes)),
+//   };
 
-  const size = useFieldContext(ctx => ctx?.size);
-  if (size && options.supportedSizes.includes(size as SizeValues)) {
-    props.size = size as SizeValues;
-  }
-
-  return props;
-};
+//   const hasFieldContext = useFieldContext(ctx => ctx !== undefined);
+//   return hasFieldContext ? { ...propsFromField, ...props } : props;
+// };

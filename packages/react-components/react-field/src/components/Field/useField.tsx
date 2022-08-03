@@ -14,24 +14,15 @@ import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@
  * @param ref - reference to root HTMLElement of Field
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>): FieldState => {
+  const { labelPosition = 'above', required, size = 'medium', status } = props;
+
   const child = React.Children.only(props.children);
   const childProps = React.isValidElement(child) ? child.props : undefined;
 
-  const baseId = useId('field-');
-
-  const {
-    labelFor = childProps?.id ?? baseId + '__input',
-    labelId = baseId + '__label',
-    labelPosition = 'above',
-    required = childProps?.required,
-    size = 'medium',
-    status,
-  } = props;
-
   const label = resolveShorthand(props.label, {
     defaultProps: {
-      id: labelId,
-      htmlFor: labelFor,
+      id: useId('field__label-'),
+      htmlFor: useId('field__input-', childProps?.id),
       required,
       size,
     },
@@ -52,7 +43,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLElement>
   }
 
   return {
-    labelFor: label?.htmlFor,
+    childId: label?.htmlFor,
     labelId: label?.id,
     labelPosition,
     required,
@@ -96,9 +87,9 @@ const useLabelDebugCheck = (label: FieldState['label']) => {
       // eslint-disable-next-line no-console
       console.error(
         `Field with label "${labelText}" requires the label be associated with its input. Try one of these fixes:\n` +
-          '1. Use a component that gets its ID from FieldContext.labelFor (e.g. the form controls in this library).\n' +
-          "2. Or, set the Field's `labelFor` prop to the input's `id` prop.\n" +
-          "3. Or, set the Field's `labelId` to the input's `aria-labelledby` prop.\n",
+          '1. Use a component that gets its ID from FieldContext.childId (e.g. the form controls in this library).\n' +
+          '2. Or, set `label={{ htmlFor: ... }}` to the `id` prop of the field component.\n' +
+          '3. Or, set `label={{ id: ... }}` to the `aria-labelledby` prop of the field component.\n',
       );
     }
   }, [labelFor, labelId, labelText]);

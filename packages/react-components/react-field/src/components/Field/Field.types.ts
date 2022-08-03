@@ -14,9 +14,7 @@ export type FieldSlots = {
  * Field Props
  */
 export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> & {
-  children: React.ReactElement<{ id?: string; required?: boolean }>;
-  labelFor?: string;
-  labelId?: string;
+  children: React.ReactElement<{ id?: string }>;
   labelPosition?: 'above' | 'before';
   required?: boolean;
   size?: 'small' | 'medium' | 'large';
@@ -27,10 +25,13 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
  * State used in rendering Field
  */
 export type FieldState = ComponentState<Required<FieldSlots>> &
-  Pick<FieldProps, 'labelFor' | 'labelId' | 'required' | 'status'> &
-  Required<Pick<FieldProps, 'labelPosition' | 'size'>>;
+  Pick<FieldProps, 'required' | 'status'> &
+  Required<Pick<FieldProps, 'labelPosition' | 'size'>> & {
+    childId: string | undefined;
+    labelId: string | undefined;
+  };
 
-export type FieldContextValue = Readonly<Pick<FieldState, 'labelFor' | 'labelId' | 'required' | 'size' | 'status'>>;
+export type FieldContextValue = Readonly<Pick<FieldState, 'childId' | 'labelId' | 'required' | 'size' | 'status'>>;
 
 export type FieldContextValues = {
   field: FieldContextValue;

@@ -25,7 +25,7 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
-export type FieldContextValue = Readonly<Pick<FieldState, 'status' | 'labelId' | 'inputId' | 'required' | 'size'>>;
+export type FieldContextValue = Readonly<Pick<FieldState, 'childId' | 'labelId' | 'required' | 'size' | 'status'>>;
 
 // @public (undocumented)
 export type FieldContextValues = {
@@ -33,17 +33,18 @@ export type FieldContextValues = {
 };
 
 // @public
-export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
-    children: React_2.ReactElement<FieldChildProps>;
-    size?: 'small' | 'medium' | 'large';
+export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> & {
+    children: React_2.ReactElement<{
+        id?: string;
+    }>;
     labelPosition?: 'above' | 'before';
-    status?: 'error' | 'warning' | 'success';
-    inputId?: string;
     required?: boolean;
+    size?: 'small' | 'medium' | 'large';
+    status?: 'error' | 'warning' | 'success';
 };
 
 // @public (undocumented)
-export const FieldProvider: Provider<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined> & FC<ProviderProps<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined>>;
+export const FieldProvider: Provider<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined> & FC<ProviderProps<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined>>;
 
 // @public (undocumented)
 export type FieldSlots = {
@@ -55,12 +56,8 @@ export type FieldSlots = {
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots> & {
-    size: NonNullable<FieldProps['size']>;
-    labelPosition: NonNullable<FieldProps['labelPosition']>;
-    status: FieldProps['status'];
-    required: FieldProps['required'];
-    inputId: NonNullable<FieldProps['inputId']>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'required' | 'status'> & Required<Pick<FieldProps, 'labelPosition' | 'size'>> & {
+    childId: string | undefined;
     labelId: string | undefined;
 };
 
@@ -71,13 +68,19 @@ export const renderField_unstable: (state: FieldState, contextValues: FieldConte
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
 
 // @public (undocumented)
-export const useFieldContext_unstable: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "inputId" | "labelId">> | undefined, T>) => T;
+export const useFieldChildProps_unstable: <SizeValues>(options: UseFieldChildPropsOptions<FieldChildProps<SizeValues>>) => FieldChildProps<SizeValues> | undefined;
+
+// @public (undocumented)
+export const useFieldContext: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined, T>) => T;
 
 // @public (undocumented)
 export const useFieldContextValues: (state: FieldState) => FieldContextValues;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;
+
+// @public (undocumented)
+export const useMergedFieldProps_unstable: <Props extends FieldChildProps<unknown>>(props: Props, options: UseFieldChildPropsOptions<Props>) => Props;
 
 // (No @packageDocumentation comment for this package)
 
