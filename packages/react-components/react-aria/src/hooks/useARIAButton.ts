@@ -18,10 +18,10 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
   disabledFocusable?: boolean;
 };
 
-export type ARIAButtonProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = React.PropsWithRef<
-  JSX.IntrinsicElements[NonNullable<ARIAButtonSlotProps<AlternateAs>['as']>]
+export type ARIAButtonProps<Type extends 'a' | 'div' | 'button' = 'a' | 'div' | 'button'> = React.PropsWithRef<
+  JSX.IntrinsicElements[Type]
 > &
-  Pick<ARIAButtonSlotProps<AlternateAs>, 'disabled' | 'disabledFocusable'>;
+  Pick<ARIAButtonSlotProps, 'disabled' | 'disabledFocusable'>;
 
 /**
  * @internal
@@ -34,10 +34,23 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
   type?: Type,
   props?: ARIAButtonProps,
 ): React.PropsWithRef<JSX.IntrinsicElements[Type]> {
-  const { disabled, tabIndex, disabledFocusable = false, onClick, onKeyDown, onKeyUp, ...rest } = props ?? {};
+  const {
+    disabled,
+    tabIndex,
+    disabledFocusable = false,
+    onClick,
+    onKeyDown,
+    onKeyUp,
+    ['aria-disabled']: ariaDisabled,
+    ...rest
+  } = props ?? {};
 
-  const onClickHandler: ARIAButtonProps['onClick'] = useEventCallback(ev => {
-    if (disabled || disabledFocusable) {
+  const normalizedARIADisabled = typeof ariaDisabled === 'string' ? ariaDisabled === 'true' : ariaDisabled;
+
+  const isDisabled = disabled || disabledFocusable || normalizedARIADisabled;
+
+  const handleClick: ARIAButtonProps['onClick'] = useEventCallback(ev => {
+    if (isDisabled) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {
@@ -45,7 +58,7 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
     }
   });
 
-  const onKeyDownHandler: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
+  const handleKeyDown: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
     onKeyDown?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -54,7 +67,7 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
 
     const key = ev.key;
 
-    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
+    if (isDisabled && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -72,7 +85,7 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
     }
   });
 
-  const onKeyupHandler: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
+  const handleKeyUp: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
     onKeyUp?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -81,7 +94,7 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
 
     const key = ev.key;
 
-    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
+    if (isDisabled && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -99,9 +112,10 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
       ...rest,
       tabIndex,
       disabled: disabled && !disabledFocusable,
-      'aria-disabled': disabledFocusable ? true : undefined,
-      // Undefine event handlers if disabledFocusable is passed in
-      onClick: disabledFocusable ? undefined : onClick,
+      'aria-disabled': disabledFocusable ? true : normalizedARIADisabled,
+      // onclick should still use internal handler to ensure prevention if disabled
+      // if disabledFocusable then there's no requirement for handlers as those events should not be propagated
+      onClick: disabledFocusable ? undefined : handleClick,
       onKeyUp: disabledFocusable ? undefined : onKeyUp,
       onKeyDown: disabledFocusable ? undefined : onKeyDown,
     } as React.PropsWithRef<JSX.IntrinsicElements[Type]>;
@@ -113,14 +127,17 @@ export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps[
     const nextProps = {
       role: 'button',
       ...rest,
-      onClick: onClickHandler,
-      onKeyUp: onKeyupHandler,
-      onKeyDown: onKeyDownHandler,
-      'aria-disabled': disabled || disabledFocusable,
+      // If it's not a <button> than listeners are required even with disabledFocusable
+      // Since you cannot assure the default behavior of the element
+      // E.g: <a> will redirect on click
+      onClick: handleClick,
+      onKeyUp: handleKeyUp,
+      onKeyDown: handleKeyDown,
+      'aria-disabled': disabled || disabledFocusable || normalizedARIADisabled,
       tabIndex: disabled && !disabledFocusable ? undefined : tabIndex ?? 0,
     } as React.PropsWithRef<JSX.IntrinsicElements[Type]>;
 
-    if (type === 'a' && disabled) {
+    if (type === 'a' && isDisabled) {
       (nextProps as JSX.IntrinsicElements['a']).href = undefined;
     }
 
