@@ -4,8 +4,8 @@ import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, resolveShorthand, useId, useMergedEventCallbacks } from '@fluentui/react-utilities';
 import { RadioGroupContext } from '../../contexts/RadioGroupContext';
 import { useContextSelector } from '@fluentui/react-context-selector';
-import type { RadioProps, RadioState } from './Radio.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
+import type { RadioProps, RadioState } from './Radio.types';
 
 /**
  * Create the state required to render Radio.

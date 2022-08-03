@@ -2,11 +2,11 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
+  useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
   useTabsterAttributes,
-  useFocusVisible,
-  useFocusWithin,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

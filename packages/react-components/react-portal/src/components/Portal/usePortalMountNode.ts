@@ -57,7 +57,7 @@ export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElem
         element.removeAttribute('dir');
       };
     }
-  }, [element, className, dir, focusVisibleRef]);
+  }, [className, dir, element, focusVisibleRef]);
 
   React.useEffect(() => {
     return () => {
