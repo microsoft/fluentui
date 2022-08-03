@@ -2,6 +2,7 @@ name: Screener build
 
 on:
   pull_request:
+  workflow_dispatch:
 
 env:
   BROWSERSLIST_IGNORE_OLD_DATA: true
