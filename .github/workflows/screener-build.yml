@@ -2,7 +2,6 @@ name: Screener build
 
 on:
   pull_request:
-  workflow_dispatch:
 
 env:
   BROWSERSLIST_IGNORE_OLD_DATA: true
@@ -74,10 +73,6 @@ jobs:
           DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
       - name: Upload environment variables artifact
