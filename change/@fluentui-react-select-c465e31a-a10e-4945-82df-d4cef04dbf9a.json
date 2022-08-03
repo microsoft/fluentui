@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix(docs): add Select usage warning and style best practices",
+  "packageName": "@fluentui/react-select",
+  "email": "popatudor@microsoft.com",
+  "dependentChangeType": "none"
+}
