@@ -4,10 +4,10 @@ name: 'Docsite publish'
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
     branches:
-      - main
+      - master
 
 jobs:
   check:
@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        name: Checkout [main]
+        name: Checkout [master]
 
       - name: Verify react-compoenents has changed
         uses: tj-actions/changed-files@v23.1
