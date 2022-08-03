@@ -92,7 +92,7 @@ This will result in the following DOM structure:
 
 ## API
 
-For more information about the components, please refer to the [API documentation](https://aka.ms/fluentui-storybook).
+For more information about the components, please refer to the [API documentation](https://react.fluentui.dev/).
 
 ## Migration
 

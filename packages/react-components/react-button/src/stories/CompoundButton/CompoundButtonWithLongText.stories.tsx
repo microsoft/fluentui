@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles } from '@griffel/react';
-import { CompoundButton } from '@fluentui/react-button';
+import { makeStyles, CompoundButton } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   maxWidth: {

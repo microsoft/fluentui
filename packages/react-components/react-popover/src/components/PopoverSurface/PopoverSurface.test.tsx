@@ -17,7 +17,6 @@ describe('PopoverSurface', () => {
   isConformant({
     Component: PopoverSurface,
     displayName: 'PopoverSurface',
-    disabledTests: ['component-has-static-classname-exported'],
     requiredProps: props as PopoverSurfaceProps,
     getTargetElement: result => result.getByTestId(testid),
   });

@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { Input } from '@fluentui/react-input';
+import { useId, Input, Label } from '@fluentui/react-components';
 
 export const Inline = () => {
   const inputId = useId('input');
@@ -9,7 +7,7 @@ export const Inline = () => {
   return (
     <div>
       <Label htmlFor={inputId} style={{ paddingInlineEnd: '12px' }}>
-        Sample Inline Input
+        Sample inline input
       </Label>
       <Input id={inputId} />
 

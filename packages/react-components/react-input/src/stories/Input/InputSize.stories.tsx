@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
-import { Input } from '@fluentui/react-input';
+import { makeStyles, shorthands, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -25,21 +22,21 @@ export const Size = () => {
     <div className={styles.root}>
       <div>
         <Label size="small" htmlFor={smallId}>
-          Small Input
+          Small input
         </Label>
         <Input size="small" id={smallId} />
       </div>
 
       <div>
         <Label size="medium" htmlFor={mediumId}>
-          Medium Input
+          Medium input
         </Label>
         <Input size="medium" id={mediumId} />
       </div>
 
       <div>
         <Label size="large" htmlFor={largeId}>
-          Large Input
+          Large input
         </Label>
         <Input size="large" id={largeId} />
       </div>

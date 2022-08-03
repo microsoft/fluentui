@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump Griffel dependencies",
-  "packageName": "@fluentui/react-alert",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

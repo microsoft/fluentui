@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { Textarea } from '@fluentui/react-textarea';
-import type { TextareaProps } from '@fluentui/react-textarea';
-import { useId } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, tokens, useId, Label, Textarea } from '@fluentui/react-components';
+import type { TextareaProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
     '& > label': {
+      display: 'block',
       marginBottom: tokens.spacingVerticalMNudge,
     },
   },
@@ -29,9 +26,7 @@ export const Controlled = () => {
 
   return (
     <div className={styles.base}>
-      <Label htmlFor={textareaId} style={{ display: 'block' }}>
-        Controlled Textarea limiting the value to 50 characters.
-      </Label>
+      <Label htmlFor={textareaId}>Controlled Textarea limiting the value to 50 characters.</Label>
       <Textarea value={value} onChange={onChange} id={textareaId} />
     </div>
   );

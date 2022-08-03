@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Checkbox } from '@fluentui/react-checkbox';
-import type { CheckboxProps } from '@fluentui/react-checkbox';
+import { Checkbox } from '@fluentui/react-components';
+import type { CheckboxProps } from '@fluentui/react-components';
 
 export const Checked = () => {
   const [checked, setChecked] = React.useState<CheckboxProps['checked']>(true);

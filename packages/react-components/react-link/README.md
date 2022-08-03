@@ -1,6 +1,6 @@
 # @fluentui/react-link
 
-**Link components for [Fluent UI](https://aka.ms/fluentui-storybook)**
+**Link components for [Fluent UI](https://react.fluentui.dev/)**
 
 Links reference data that a user can follow by clicking or tapping it.
 
@@ -23,7 +23,7 @@ import { Link } from '@fluentui/react-components';
 <Link as="button" appearance="subtle">This is a link</Link>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

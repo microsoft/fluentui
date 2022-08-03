@@ -1,5 +1,5 @@
 {
-  "disallowedChangeTypes": ["major", "prerelease"],
+  "disallowedChangeTypes": ["major"],
   "tag": "latest",
   "generateChangelog": true,
   "ignorePatterns": [

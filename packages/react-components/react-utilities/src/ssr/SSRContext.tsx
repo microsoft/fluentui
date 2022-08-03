@@ -20,6 +20,7 @@ export const defaultSSRContextValue: SSRContextValue = {
   current: 0,
 };
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const SSRContext = React.createContext<SSRContextValue>(defaultSSRContextValue);
 
 /**
@@ -55,8 +56,14 @@ export function useIsSSR(): boolean {
     if (!isInSSRContext && !canUseDOM()) {
       // eslint-disable-next-line no-console
       console.error(
-        'When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are ' +
-          'generated between the client and server.',
+        [
+          '@fluentui/react-components: ',
+          'When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are ' +
+            'generated between the client and server.',
+          '\n',
+          '\n',
+          'Check documentation at https://aka.ms/fluentui-ssr',
+        ].join(''),
       );
     }
   }

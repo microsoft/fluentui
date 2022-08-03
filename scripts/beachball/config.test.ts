@@ -8,7 +8,7 @@ describe(`beachball configs`, () => {
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
       changehint: "Run 'yarn change' to generate a change file",
-      disallowedChangeTypes: ['major', 'prerelease'],
+      disallowedChangeTypes: ['major'],
       generateChangelog: true,
       ignorePatterns: [
         '**/*.{shot,snap}',

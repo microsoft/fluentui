@@ -1,9 +1,9 @@
-import { ColorTokens } from './ColorTokens';
+import { createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from '../../utils/getBrandTokensFromPalette';
-import { createDarkTheme } from '@fluentui/react-components';
+import { ColorTokens } from './ColorTokens';
 export default { component: ColorTokens };
 
-const brand = getBrandTokensFromPalette('#006bc7');
-const lightTheme = createDarkTheme(brand);
+const brand = getBrandTokensFromPalette('#006BC7');
+const lightTheme = createLightTheme(brand);
 
 export const Default = { args: { theme: lightTheme } };

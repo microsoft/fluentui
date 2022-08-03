@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
+import { makeStyles, shorthands, useId } from '@fluentui/react-components';
 import { Combobox, Option } from '@fluentui/react-combobox';
-import { makeStyles, shorthands } from '@griffel/react';
 import type { ComboboxProps } from '@fluentui/react-combobox';
 
 const useStyles = makeStyles({

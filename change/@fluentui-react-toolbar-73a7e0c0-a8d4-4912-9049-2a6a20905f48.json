@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove private from react toolbar",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "chassunc@microsoft.com",
-  "dependentChangeType": "none"
-}

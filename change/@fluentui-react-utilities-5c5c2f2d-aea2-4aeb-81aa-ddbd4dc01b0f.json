@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: useOnClickOutside should trigger for webviews",
-  "packageName": "@fluentui/react-utilities",
-  "email": "jukapsia@microsoft.com",
-  "dependentChangeType": "patch"
-}

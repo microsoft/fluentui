@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: update select stories to use index based approach",
-  "packageName": "@fluentui/react-select",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

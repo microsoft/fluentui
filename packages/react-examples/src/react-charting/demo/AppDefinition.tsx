@@ -1,8 +1,9 @@
 import { IAppDefinition } from '@fluentui/react-docsite-components';
+import { AppThemes } from './AppThemes';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fluent UI React - Charting',
-
+  themes: AppThemes,
   testPages: [],
   examplePages: [
     {
@@ -85,6 +86,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'Sankey Chart',
           url: '#/examples/sankeychart',
         },
+        {
+          component: require<any>('../TreeChart/TreeChartPage').TreeChartPage,
+          key: 'TreeChart',
+          name: 'Tree Chart',
+          url: '#/examples/treechart',
+        },
+        {
+          component: require<any>('../SparklineChart/SparklineChartPage').SparklineChartPage,
+          key: 'SparklineChart',
+          name: 'Sparkline Chart',
+          url: '#/examples/sparkline',
+        },
       ],
     },
   ],
@@ -99,7 +112,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/microsoft/fluentui',
+      url: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting',
     },
   ],
 };

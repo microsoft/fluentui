@@ -30,6 +30,7 @@ import { baseElementProperties } from '@fluentui/utilities';
 import { buildClassMap } from '@fluentui/style-utilities';
 import { buttonProperties } from '@fluentui/utilities';
 import { calculatePrecision } from '@fluentui/utilities';
+import { canUseDOM } from '@fluentui/utilities';
 import { classNamesFunction } from '@fluentui/utilities';
 import { colGroupProperties } from '@fluentui/utilities';
 import { ColorClassNames } from '@fluentui/style-utilities';
@@ -88,6 +89,8 @@ import { focusAsync } from '@fluentui/utilities';
 import { focusClear } from '@fluentui/style-utilities';
 import { focusFirstChild } from '@fluentui/utilities';
 import { FocusRects } from '@fluentui/utilities';
+import { FocusRectsContext } from '@fluentui/utilities';
+import { FocusRectsProvider } from '@fluentui/utilities';
 import { FocusZone } from '@fluentui/react-focus';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusZoneTabbableElements } from '@fluentui/react-focus';
@@ -194,6 +197,7 @@ import { IEventRecord } from '@fluentui/utilities';
 import { IEventRecordList } from '@fluentui/utilities';
 import { IEventRecordsByName } from '@fluentui/utilities';
 import { IFitContentToBoundsOptions } from '@fluentui/utilities';
+import { IFocusRectsContext } from '@fluentui/utilities';
 import { IFocusZone } from '@fluentui/react-focus';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontFace } from '@fluentui/style-utilities';
@@ -310,6 +314,7 @@ import { registerDefaultFontFaces } from '@fluentui/theme';
 import { registerIconAlias } from '@fluentui/style-utilities';
 import { registerIcons } from '@fluentui/style-utilities';
 import { registerOnThemeChangeCallback } from '@fluentui/style-utilities';
+import { removeDirectionalKeyCode } from '@fluentui/utilities';
 import { removeIndex } from '@fluentui/utilities';
 import { removeOnThemeChangeCallback } from '@fluentui/style-utilities';
 import { replaceElement } from '@fluentui/utilities';
@@ -911,6 +916,8 @@ export const CalloutContentBase: React_2.FunctionComponent<ICalloutProps>;
 
 // @public
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
+
+export { canUseDOM }
 
 // @public (undocumented)
 export const Check: React_2.FunctionComponent<ICheckProps>;
@@ -1653,6 +1660,10 @@ export { focusClear }
 export { focusFirstChild }
 
 export { FocusRects }
+
+export { FocusRectsContext }
+
+export { FocusRectsProvider }
 
 // @public
 export const FocusTrapCallout: React_2.FunctionComponent<IFocusTrapCalloutProps>;
@@ -2574,7 +2585,7 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
     data?: any;
     defaultRender?: any;
     // @deprecated
-    description?: IStyle;
+    description?: string;
     disabled?: boolean;
     // @deprecated
     elementRef?: React_2.Ref<HTMLElement>;
@@ -4728,6 +4739,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;
     id?: string;
+    isGridRow?: boolean;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -4873,6 +4885,8 @@ export interface IDialogContent {
 
 // @public (undocumented)
 export interface IDialogContentProps extends React_2.ClassAttributes<DialogContentBase> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     closeButtonAriaLabel?: string;
     componentRef?: IRefObject<IDialogContent>;
@@ -4959,6 +4973,8 @@ export interface IDialogProps extends React_2.ClassAttributes<DialogBase>, IWith
     ariaDescribedById?: string;
     // @deprecated
     ariaLabelledById?: string;
+    // (undocumented)
+    children?: React_2.ReactNode;
     // @deprecated
     className?: string;
     // @deprecated (undocumented)
@@ -5785,6 +5801,8 @@ export interface IFacepileStyles {
 
 export { IFitContentToBoundsOptions }
 
+export { IFocusRectsContext }
+
 // @public (undocumented)
 export interface IFocusTrapCalloutProps extends ICalloutProps {
     focusTrapProps?: IFocusTrapZoneProps;
@@ -5871,6 +5889,7 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaLevel?: number;
     ariaPosInSet?: number;
     ariaRowCount?: number;
     ariaRowIndex?: number;
@@ -6947,6 +6966,7 @@ export interface INavLink {
 // @public (undocumented)
 export interface INavLinkGroup {
     automationId?: string;
+    // @deprecated
     collapseAriaLabel?: string;
     collapseByDefault?: boolean;
     expandAriaLabel?: string;
@@ -6964,6 +6984,7 @@ export interface INavProps {
     componentRef?: IRefObject<INav>;
     // @deprecated
     expandButtonAriaLabel?: string;
+    focusZoneProps?: IFocusZoneProps;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -6972,6 +6993,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
     onRenderLink?: IRenderFunction<INavLink>;
+    role?: string;
     // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
@@ -7509,6 +7531,8 @@ export interface IPivot {
 export interface IPivotItemProps extends React_2.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<{}>;
     headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
@@ -8127,6 +8151,8 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZone> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
@@ -8349,6 +8375,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
     ariaLabel?: string;
     className?: string;
     customElementsGroup?: React_2.ReactNode;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColors?: IShimmerColors;
     shimmerElements?: IShimmerElement[];
@@ -8360,6 +8387,7 @@ export interface IShimmerProps extends React_2.AllHTMLAttributes<HTMLElement>, R
 // @public
 export interface IShimmerStyleProps {
     className?: string;
+    improveCSSPerformance?: boolean;
     isDataLoaded?: boolean;
     shimmerColor?: string;
     shimmerWaveColor?: string;
@@ -8584,6 +8612,8 @@ export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, 
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React_2.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     basis?: React_2.CSSProperties['flexBasis'];
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
@@ -10249,6 +10279,8 @@ export { registerIcons }
 
 export { registerOnThemeChangeCallback }
 
+export { removeDirectionalKeyCode }
+
 export { removeIndex }
 
 export { removeOnThemeChangeCallback }
@@ -10494,6 +10526,9 @@ export { setFocusVisibility }
 export { setIconOptions }
 
 export { setLanguage }
+
+// @public
+export function setLayerHostSelector(selector?: string): void;
 
 export { setMemoizeWeakMap }
 

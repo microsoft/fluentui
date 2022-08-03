@@ -1,11 +1,11 @@
-import { MenuList } from '@fluentui/react-menu';
+import { MenuList } from '@fluentui/react-components';
 import descriptionMd from './MenuListDescription.md';
 
 export { Default } from './MenuListDefault.stories';
 export { MenuListWithNestedSubmenus } from './MenuListNestedSubmenus.stories';
 
 export default {
-  title: 'Components/MenuList',
+  title: 'Components/Menu/MenuList',
   component: MenuList,
   parameters: {
     docs: {

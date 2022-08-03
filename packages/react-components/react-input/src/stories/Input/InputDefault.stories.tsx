@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { ArgTypes } from '@storybook/api';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
-import { Input } from '@fluentui/react-input';
-import type { InputProps } from '@fluentui/react-input';
+import { makeStyles, shorthands, useId, Input, Label } from '@fluentui/react-components';
+import type { InputProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +22,7 @@ export const Default = (props: InputProps) => {
   return (
     <div className={styles.root}>
       <Label htmlFor={inputId} size={props.size} disabled={props.disabled}>
-        Sample Input
+        Sample input
       </Label>
       <Input id={inputId} {...props} />
     </div>

@@ -14,7 +14,7 @@ describe('AvatarGroupItem', () => {
   isConformant({
     Component: AvatarGroupItem,
     displayName: 'AvatarGroupItem',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
+    disabledTests: ['make-styles-overrides-win'],
     primarySlot: 'avatar',
     renderOptions: {
       wrapper: ContextWrapper,

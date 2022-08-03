@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { SplitButton, MenuButtonProps } from '@fluentui/react-button';
+import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
+import type { MenuButtonProps } from '@fluentui/react-components';
 
 export const Appearance = () => (
   <>

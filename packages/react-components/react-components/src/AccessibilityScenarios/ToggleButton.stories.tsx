@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ToggleButton } from '@fluentui/react-button';
+import { ToggleButton } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

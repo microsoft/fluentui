@@ -4,6 +4,7 @@
 
 ```ts
 
+import { __css } from '@griffel/react';
 import { __styles } from '@griffel/react';
 import { Accordion } from '@fluentui/react-accordion';
 import { accordionClassNames } from '@fluentui/react-accordion';
@@ -295,6 +296,7 @@ import { renderPopoverTrigger_unstable } from '@fluentui/react-popover';
 import { renderRadio_unstable } from '@fluentui/react-radio';
 import { renderRadioGroup_unstable } from '@fluentui/react-radio';
 import { renderSlider_unstable } from '@fluentui/react-slider';
+import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
@@ -327,6 +329,15 @@ import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SpacingTokens } from '@fluentui/react-theme';
+import { SpinButton } from '@fluentui/react-spinbutton';
+import { SpinButtonBounds } from '@fluentui/react-spinbutton';
+import { SpinButtonChangeEvent } from '@fluentui/react-spinbutton';
+import { spinButtonClassNames } from '@fluentui/react-spinbutton';
+import { SpinButtonOnChangeData } from '@fluentui/react-spinbutton';
+import { SpinButtonProps } from '@fluentui/react-spinbutton';
+import { SpinButtonSlots } from '@fluentui/react-spinbutton';
+import { SpinButtonSpinState } from '@fluentui/react-spinbutton';
+import { SpinButtonState } from '@fluentui/react-spinbutton';
 import { Spinner } from '@fluentui/react-spinner';
 import { spinnerClassNames } from '@fluentui/react-spinner';
 import { SpinnerProps } from '@fluentui/react-spinner';
@@ -441,6 +452,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -495,6 +507,8 @@ import { useRadioStyles_unstable } from '@fluentui/react-radio';
 import { useSlider_unstable } from '@fluentui/react-slider';
 import { useSliderState_unstable } from '@fluentui/react-slider';
 import { useSliderStyles_unstable } from '@fluentui/react-slider';
+import { useSpinButton_unstable } from '@fluentui/react-spinbutton';
+import { useSpinButtonStyles_unstable } from '@fluentui/react-spinbutton';
 import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
@@ -519,6 +533,8 @@ import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
+
+export { __css }
 
 export { __styles }
 
@@ -1102,6 +1118,8 @@ export { renderRadioGroup_unstable }
 
 export { renderSlider_unstable }
 
+export { renderSpinButton_unstable }
+
 export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
@@ -1165,6 +1183,24 @@ export { SlotClassNames }
 export { SlotPropsRecord }
 
 export { SpacingTokens }
+
+export { SpinButton }
+
+export { SpinButtonBounds }
+
+export { SpinButtonChangeEvent }
+
+export { spinButtonClassNames }
+
+export { SpinButtonOnChangeData }
+
+export { SpinButtonProps }
+
+export { SpinButtonSlots }
+
+export { SpinButtonSpinState }
+
+export { SpinButtonState }
 
 export { Spinner }
 
@@ -1394,6 +1430,8 @@ export { useInput_unstable }
 
 export { useInputStyles_unstable }
 
+export { useIsomorphicLayoutEffect }
+
 export { useIsSSR }
 
 export { useKeyboardNavAttribute }
@@ -1502,6 +1540,10 @@ export { useSliderState_unstable }
 
 export { useSliderStyles_unstable }
 
+export { useSpinButton_unstable }
+
+export { useSpinButtonStyles_unstable }
+
 export { useSpinner_unstable }
 
 export { useSpinnerStyles_unstable }
@@ -1529,7 +1571,6 @@ export { useTextarea_unstable }
 export { useTextareaStyles_unstable }
 
 export { useTextStyles_unstable }
-
 
 export { useThemeClassName }
 

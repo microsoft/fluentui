@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, shorthands } from '@griffel/react';
-import { Input } from '@fluentui/react-input';
+import { makeStyles, shorthands, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -24,17 +21,17 @@ export const Type = () => {
   return (
     <div className={styles.root}>
       <div>
-        <Label htmlFor={emailId}>Email Input</Label>
+        <Label htmlFor={emailId}>Email input</Label>
         <Input type="email" id={emailId} />
       </div>
 
       <div>
-        <Label htmlFor={urlId}>URL Input</Label>
+        <Label htmlFor={urlId}>URL input</Label>
         <Input type="url" id={urlId} />
       </div>
 
       <div>
-        <Label htmlFor={passwordId}>Password Input</Label>
+        <Label htmlFor={passwordId}>Password input</Label>
         <Input type="password" defaultValue="password" id={passwordId} />
       </div>
     </div>

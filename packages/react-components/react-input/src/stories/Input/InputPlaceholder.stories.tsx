@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react-input';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +16,7 @@ export const Placeholder = () => {
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={inputId}>Input With a Placeholder</Label>
+      <Label htmlFor={inputId}>Input with a placeholder</Label>
       <Input placeholder="This is a placeholder" id={inputId} />
     </div>
   );

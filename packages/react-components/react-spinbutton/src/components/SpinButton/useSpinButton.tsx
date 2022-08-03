@@ -23,6 +23,7 @@ type InternalState = {
   spinTime: number;
   spinDelay: number;
   previousTextValue?: string;
+  atBound: SpinButtonBounds;
 };
 
 const DEFAULT_SPIN_DELAY_MS = 150;
@@ -77,24 +78,171 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     defaultState: defaultValue,
     initialState: 0,
   });
-  const [textValue, setTextValue] = React.useState(
-    value !== undefined && displayValue !== undefined ? displayValue : String(currentValue),
-  );
-  const [spinState, setSpinState] = React.useState<SpinButtonSpinState>('rest');
-  const [atBound, setAtBound] = React.useState<SpinButtonBounds>('none');
+
+  const isControlled = value !== undefined;
+
+  const [textValue, setTextValue] = React.useState<string | undefined>(undefined);
+  const [keyboardSpinState, setKeyboardSpinState] = React.useState<SpinButtonSpinState>('rest');
 
   const internalState = React.useRef<InternalState>({
     value: currentValue,
-    spinState,
+    spinState: 'rest',
     spinTime: 0,
     spinDelay: DEFAULT_SPIN_DELAY_MS,
+    atBound: currentValue !== null ? getBound(precisionRound(currentValue, precision), min, max) : 'none',
   });
+
+  const [setStepTimeout, clearStepTimeout] = useTimeout();
+
+  const stepValue = (
+    e: SpinButtonChangeEvent,
+    direction: 'up' | 'down' | 'upPage' | 'downPage',
+    startFrom?: string,
+  ) => {
+    let startValue = internalState.current.value;
+    if (startFrom) {
+      const num = parseFloat(startFrom);
+      if (!isNaN(num)) {
+        startValue = num;
+      }
+    }
+    const val = startValue;
+    const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
+    const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
+
+    if (val === null) {
+      const stepStart = min === undefined ? 0 : min;
+      const nullStep = clamp(stepStart + stepSize * dir, min, max);
+      commit(e, nullStep);
+      return;
+    }
+
+    let newValue = val + stepSize * dir;
+    if (!Number.isNaN(newValue)) {
+      newValue = clamp(newValue, min, max);
+    }
+
+    commit(e, newValue);
+
+    if (internalState.current.spinState !== 'rest') {
+      setStepTimeout(() => {
+        // Ease the step speed a bit
+        internalState.current.spinTime += internalState.current.spinDelay;
+        internalState.current.spinDelay = lerp(
+          DEFAULT_SPIN_DELAY_MS,
+          MIN_SPIN_DELAY_MS,
+          internalState.current.spinTime / MAX_SPIN_TIME_MS,
+        );
+        stepValue(e, direction);
+      }, internalState.current.spinDelay);
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!internalState.current.previousTextValue) {
+      internalState.current.previousTextValue = textValue;
+    }
+    const newValue = e.target.value;
+    setTextValue(newValue);
+  };
+
+  const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    internalState.current.spinState = 'up';
+    stepValue(e, 'up');
+  };
+
+  const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
+    internalState.current.spinState = 'down';
+    stepValue(e, 'down');
+  };
+
+  const handleStepMouseUpOrLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    clearStepTimeout();
+    internalState.current.spinState = 'rest';
+    internalState.current.spinDelay = DEFAULT_SPIN_DELAY_MS;
+    internalState.current.spinTime = 0;
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    commit(e, currentValue, textValue);
+    internalState.current.previousTextValue = undefined;
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
+
+    if (e.key === Keys.ArrowUp) {
+      stepValue(e, 'up', textValue);
+      nextKeyboardSpinState = 'up';
+    } else if (e.key === Keys.ArrowDown) {
+      stepValue(e, 'down', textValue);
+      nextKeyboardSpinState = 'down';
+    } else if (e.key === Keys.PageUp) {
+      e.preventDefault();
+      stepValue(e, 'upPage', textValue);
+      nextKeyboardSpinState = 'up';
+    } else if (e.key === Keys.PageDown) {
+      e.preventDefault();
+      stepValue(e, 'downPage', textValue);
+      nextKeyboardSpinState = 'down';
+    } else if (!e.shiftKey && e.key === Keys.Home && min !== undefined) {
+      commit(e, min);
+      nextKeyboardSpinState = 'down';
+    } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
+      commit(e, max);
+      nextKeyboardSpinState = 'up';
+    } else if (e.key === Keys.Enter) {
+      commit(e, currentValue, textValue);
+      internalState.current.previousTextValue = undefined;
+    } else if (e.key === Keys.Escape) {
+      if (internalState.current.previousTextValue) {
+        setTextValue(undefined);
+        internalState.current.previousTextValue = undefined;
+      }
+    }
+
+    if (keyboardSpinState !== nextKeyboardSpinState) {
+      setKeyboardSpinState(nextKeyboardSpinState);
+    }
+  };
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (keyboardSpinState !== 'rest') {
+      setKeyboardSpinState('rest');
+      internalState.current.spinState = 'rest';
+    }
+  };
+
+  const commit = (e: SpinButtonChangeEvent, newValue?: number | null, newDisplayValue?: string) => {
+    const valueChanged = newValue !== undefined && currentValue !== newValue;
+    const displayValueChanged =
+      newDisplayValue !== undefined &&
+      internalState.current.previousTextValue !== undefined &&
+      internalState.current.previousTextValue !== newDisplayValue;
+
+    let roundedValue;
+    if (valueChanged) {
+      roundedValue = precisionRound(newValue!, precision);
+      setCurrentValue(roundedValue);
+    } else if (displayValueChanged && !isControlled) {
+      const nextValue = parseFloat(newDisplayValue as string);
+      if (!isNaN(nextValue)) {
+        setCurrentValue(precisionRound(nextValue, precision));
+      }
+    }
+
+    if (valueChanged || displayValueChanged) {
+      onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
+    }
+
+    setTextValue(undefined);
+  };
 
   const state: SpinButtonState = {
     size,
     appearance,
-    spinState,
-    atBound,
+    spinState: keyboardSpinState,
+    atBound: internalState.current.atBound,
 
     components: {
       root: 'span',
@@ -139,151 +287,25 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
     }),
   };
 
-  const [setStepTimeout, clearStepTimeout] = useTimeout();
-
-  React.useEffect(() => {
-    let newTextValue;
-    if (value === null || currentValue === null) {
-      newTextValue = displayValue ?? '';
-      internalState.current.value = null;
-      setAtBound('none');
-    } else if (value !== undefined) {
-      const roundedValue = precisionRound(value, precision);
-      newTextValue = displayValue ?? String(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
+  let valueToDisplay;
+  if (textValue !== undefined) {
+    valueToDisplay = textValue;
+  } else if (value === null || currentValue === null) {
+    valueToDisplay = displayValue ?? '';
+    internalState.current.value = null;
+    internalState.current.atBound = 'none';
+  } else {
+    const roundedValue = precisionRound(currentValue, precision);
+    internalState.current.value = roundedValue;
+    internalState.current.atBound = getBound(roundedValue, min, max);
+    if (isControlled) {
+      valueToDisplay = displayValue ?? String(roundedValue);
     } else {
-      const roundedValue = precisionRound(currentValue, precision);
-      newTextValue = String(roundedValue);
-      internalState.current.value = roundedValue;
-      setAtBound(getBound(roundedValue, min, max));
+      valueToDisplay = String(roundedValue);
     }
-    setTextValue(newTextValue);
-  }, [value, displayValue, currentValue, precision, setAtBound, min, max]);
+  }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!internalState.current.previousTextValue) {
-      internalState.current.previousTextValue = textValue;
-    }
-
-    const newValue = e.target.value;
-    setTextValue(newValue);
-  };
-
-  const stepValue = (e: SpinButtonChangeEvent, direction: 'up' | 'down' | 'upPage' | 'downPage') => {
-    const val = internalState.current.value;
-    const dir = direction === 'up' || direction === 'upPage' ? 1 : -1;
-    const stepSize = direction === 'upPage' || direction === 'downPage' ? stepPage : step;
-
-    if (val === null) {
-      const stepStart = min === undefined ? 0 : min;
-      const nullStep = clamp(stepStart + stepSize * dir, min, max);
-      commit(e, nullStep);
-      return;
-    }
-
-    let newValue = val + stepSize * dir;
-    if (!Number.isNaN(newValue)) {
-      newValue = clamp(newValue, min, max);
-    }
-
-    commit(e, newValue);
-
-    if (internalState.current.spinState !== 'rest') {
-      setStepTimeout(() => {
-        // Ease the step speed a bit
-        internalState.current.spinTime += internalState.current.spinDelay;
-        internalState.current.spinDelay = lerp(
-          DEFAULT_SPIN_DELAY_MS,
-          MIN_SPIN_DELAY_MS,
-          internalState.current.spinTime / MAX_SPIN_TIME_MS,
-        );
-        stepValue(e, direction);
-      }, internalState.current.spinDelay);
-    }
-  };
-
-  const handleIncrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-    internalState.current.spinState = 'up';
-    stepValue(e, 'up');
-  };
-
-  const handleDecrementMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
-    internalState.current.spinState = 'down';
-    stepValue(e, 'down');
-  };
-
-  const handleStepMouseUpOrLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    clearStepTimeout();
-    internalState.current.spinState = 'rest';
-    internalState.current.spinDelay = DEFAULT_SPIN_DELAY_MS;
-    internalState.current.spinTime = 0;
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    commit(e, currentValue, textValue);
-    internalState.current.previousTextValue = undefined;
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === Keys.ArrowUp) {
-      stepValue(e, 'up');
-      setSpinState('up');
-    } else if (e.key === Keys.ArrowDown) {
-      stepValue(e, 'down');
-      setSpinState('down');
-    } else if (e.key === Keys.PageUp) {
-      e.preventDefault();
-      stepValue(e, 'upPage');
-      setSpinState('up');
-    } else if (e.key === Keys.PageDown) {
-      e.preventDefault();
-      stepValue(e, 'downPage');
-      setSpinState('down');
-    } else if (!e.shiftKey && e.key === Keys.Home && min !== undefined) {
-      commit(e, min);
-      setSpinState('down');
-    } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
-      commit(e, max);
-      setSpinState('up');
-    } else if (e.key === Keys.Enter) {
-      commit(e, currentValue, textValue);
-      internalState.current.previousTextValue = undefined;
-      setSpinState('rest');
-    } else if (e.key === Keys.Escape) {
-      if (internalState.current.previousTextValue) {
-        setTextValue(internalState.current.previousTextValue);
-        internalState.current.previousTextValue = undefined;
-      }
-      setSpinState('rest');
-    } else {
-      setSpinState('rest');
-    }
-  };
-
-  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    setSpinState('rest');
-  };
-
-  const commit = (e: SpinButtonChangeEvent, newValue?: number | null, newDisplayValue?: string) => {
-    const valueChanged = newValue !== undefined && currentValue !== newValue;
-    const displayValueChanged =
-      newDisplayValue !== undefined &&
-      internalState.current.previousTextValue !== undefined &&
-      internalState.current.previousTextValue !== newDisplayValue;
-
-    let roundedValue;
-    if (valueChanged) {
-      roundedValue = precisionRound(newValue!, precision);
-      setCurrentValue(roundedValue);
-    }
-
-    if (valueChanged || displayValueChanged) {
-      onChange?.(e, { value: roundedValue, displayValue: newDisplayValue });
-    }
-  };
-
-  state.input.value = textValue;
+  state.input.value = valueToDisplay;
   state.input['aria-valuemin'] = min;
   state.input['aria-valuemax'] = max;
   state.input['aria-valuenow'] = currentValue ?? undefined;

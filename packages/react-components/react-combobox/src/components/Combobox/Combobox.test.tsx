@@ -8,9 +8,7 @@ describe('Combobox', () => {
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
-    primarySlot: 'button',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
+    primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [
         {
@@ -250,7 +248,7 @@ describe('Combobox', () => {
 
     fireEvent.click(getByTestId('red'));
 
-    expect(getByRole('combobox').textContent).toEqual('Red');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
 
   it('selects an option on enter and space', () => {
@@ -266,12 +264,28 @@ describe('Combobox', () => {
 
     fireEvent.keyDown(combobox, { key: 'Enter' });
 
-    expect(getByRole('combobox').textContent).toEqual('Red');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
 
     fireEvent.keyDown(combobox, { key: 'ArrowDown' });
     fireEvent.keyDown(combobox, { key: ' ' });
 
-    expect(getByRole('combobox').textContent).toEqual('Green');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('does not select a disabled option with the keyboard', () => {
+    const { getByTestId, getByRole } = render(
+      <Combobox open data-testid="combobox">
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.keyDown(combobox, { key: 'Enter' });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
   it('selects an option when tabbing away from an open combobox', () => {
@@ -286,7 +300,7 @@ describe('Combobox', () => {
     const combobox = getByTestId('combobox');
     fireEvent.keyDown(combobox, { key: 'Tab' });
 
-    expect(getByRole('combobox').textContent).toEqual('Red');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
 
   it('adds to selection for multiselect', () => {
@@ -328,7 +342,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    expect(getByRole('combobox').textContent).toEqual('foo');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
   });
 
   it('should change defaultValue on select', () => {
@@ -342,7 +356,7 @@ describe('Combobox', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByRole('combobox').textContent).toEqual('Green');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
 
   it('should not change value on select', () => {
@@ -356,7 +370,7 @@ describe('Combobox', () => {
 
     fireEvent.click(getByText('Green'));
 
-    expect(getByRole('combobox').textContent).toEqual('Red');
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
 
   /* Active option */

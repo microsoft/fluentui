@@ -1,9 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-label';
-import { useId } from '@fluentui/react-utilities';
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
-import { Input } from '@fluentui/react-input';
+import { makeStyles, mergeClasses, shorthands, tokens, useId, Input, Label } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
@@ -41,22 +37,22 @@ export const Appearance = () => {
   return (
     <div className={styles.base}>
       <div className={styles.field}>
-        <Label htmlFor={outlineId}>Outline Input Appearance (default)</Label>
+        <Label htmlFor={outlineId}>Outline appearance (default)</Label>
         <Input appearance="outline" id={outlineId} />
       </div>
 
       <div className={styles.field}>
-        <Label htmlFor={underlineId}>Underline Input Appearance </Label>
+        <Label htmlFor={underlineId}>Underline appearance</Label>
         <Input appearance="underline" id={underlineId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled Lighter Input Appearance </Label>
+        <Label htmlFor={filledLighterId}>Filled lighter appearance</Label>
         <Input appearance="filled-lighter" id={filledLighterId} />
       </div>
 
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled Darker Input Appearance </Label>
+        <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={filledDarkerId} />
       </div>
     </div>

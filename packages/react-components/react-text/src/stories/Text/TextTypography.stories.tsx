@@ -2,15 +2,15 @@ import * as React from 'react';
 import {
   Body1,
   Caption1,
+  Caption2,
   Display,
-  Subtitle1,
   LargeTitle,
+  Subtitle1,
+  Subtitle2,
   Title1,
   Title2,
   Title3,
-  Subtitle2,
-  Caption2,
-} from '@fluentui/react-text';
+} from '@fluentui/react-components';
 
 export const Typography = () => (
   <>

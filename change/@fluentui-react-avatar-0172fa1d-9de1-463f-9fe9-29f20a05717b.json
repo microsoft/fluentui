@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Fix wrong border radius for outline in webkit browsers.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

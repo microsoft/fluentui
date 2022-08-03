@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Input } from '@fluentui/react-input';
+import { Input } from '@fluentui/react-components';
 
 import descriptionMd from './InputDescription.md';
 import bestPracticesMd from './InputBestPractices.md';

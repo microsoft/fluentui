@@ -7,7 +7,6 @@ describe('Select', () => {
   isConformant({
     Component: Select,
     displayName: 'Select',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'select',
   });
 

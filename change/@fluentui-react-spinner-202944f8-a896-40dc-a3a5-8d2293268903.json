@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Convert Spinner to index based stories",
-  "packageName": "@fluentui/react-spinner",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "none"
-}

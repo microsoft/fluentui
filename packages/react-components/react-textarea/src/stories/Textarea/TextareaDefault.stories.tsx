@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { useId } from '@fluentui/react-utilities';
-import { Textarea } from '@fluentui/react-textarea';
-import type { TextareaProps } from '@fluentui/react-textarea';
-import { Label } from '@fluentui/react-label';
-import { makeStyles } from '@griffel/react';
-import { tokens } from '@fluentui/react-theme';
+import { makeStyles, tokens, useId, Label, Textarea } from '@fluentui/react-components';
+import type { TextareaProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {

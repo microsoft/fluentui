@@ -12,12 +12,14 @@ import { LineChartStyledExample } from './LineChart.Styled.Example';
 import { LineChartMultipleExample } from './LineChart.Multiple.Example';
 import { LineChartEventsExample } from './LineChart.Events.Example';
 import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
+import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 
 const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
 const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Styled.Example.tsx') as string;
 const MultipleLineChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Events.Example.tsx') as string;
 const LineChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomAccessibility.Example.tsx') as string;
+const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -41,6 +43,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart Custom Accessibility" code={LineChartCustomAccessibilityExampleCode}>
               <LineChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart large data" code={LineChartLargeDataExampleCode}>
+              <LineChartLargeDataExample />
             </ExampleCard>
           </div>
         }

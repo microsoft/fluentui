@@ -53,6 +53,26 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
 };
 
 // @public
+export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps>;
+
+// @public (undocumented)
+export const avatarGroupOverflowClassName = "fui-AvatarGroupOverflow";
+
+// @public (undocumented)
+export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots>;
+
+// @public
+export type AvatarGroupOverflowProps = ComponentProps<AvatarGroupOverflowSlots> & {};
+
+// @public (undocumented)
+export type AvatarGroupOverflowSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots>;
+
+// @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
     maxAvatars?: number;
@@ -64,7 +84,8 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
     overflowButton?: NonNullable<Slot<'button'>>;
-    overflowContent?: NonNullable<Slot<typeof PopoverSurface>>;
+    overflowContent?: NonNullable<Slot<'div'>>;
+    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
@@ -122,6 +143,9 @@ export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Elemen
 // @public
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
 
+// @public
+export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState) => JSX.Element;
+
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
@@ -133,6 +157,12 @@ export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: Rea
 
 // @public
 export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
+
+// @public
+export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupOverflowState;
+
+// @public
+export const useAvatarGroupOverflowStyles_unstable: (state: AvatarGroupOverflowState) => AvatarGroupOverflowState;
 
 // @public
 export const useAvatarGroupStyles_unstable: (state: AvatarGroupState) => AvatarGroupState;

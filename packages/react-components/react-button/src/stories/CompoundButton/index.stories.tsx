@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Meta } from '@storybook/react';
-import { CompoundButton } from '@fluentui/react-button';
+import { CompoundButton } from '@fluentui/react-components';
 import descriptionMd from './CompoundButtonDescription.md';
 import bestPracticesMd from '../Button/ButtonBestPractices.md';
 
@@ -14,7 +14,7 @@ export { WithLongText } from './CompoundButtonWithLongText.stories';
 export { AsToggleButton } from './CompoundButtonAsToggleButton.stories';
 
 export default {
-  title: 'Components/CompoundButton',
+  title: 'Components/Button/CompoundButton',
   component: CompoundButton,
   parameters: {
     docs: {

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Adding scheduler as a peer dependency since this package has a dependency on packages that use @fluentui/react-context-selector.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
