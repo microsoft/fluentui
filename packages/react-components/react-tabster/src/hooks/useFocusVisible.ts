@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { canUseDOM } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { applyFocusVisiblePolyfill } from '../focus/focusVisiblePolyfill';
 
@@ -7,7 +8,7 @@ export function useFocusVisible<TElement extends HTMLElement = HTMLElement>() {
   const scopeRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
-    if (targetDocument?.defaultView && scopeRef.current) {
+    if (targetDocument?.defaultView && scopeRef.current && canUseDOM()) {
       return applyFocusVisiblePolyfill(scopeRef.current, targetDocument.defaultView);
     }
   }, [scopeRef, targetDocument]);

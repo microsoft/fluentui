@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { canUseDOM } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { applyFocusWithinPolyfill } from '../focus/focusWithinPolyfill';
 
@@ -12,7 +13,7 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>() {
   const elementRef = React.useRef<TElement>(null);
 
   React.useEffect(() => {
-    if (targetDocument?.defaultView && elementRef.current) {
+    if (targetDocument?.defaultView && elementRef.current && canUseDOM()) {
       return applyFocusWithinPolyfill(elementRef.current, targetDocument.defaultView);
     }
   }, [elementRef, targetDocument]);
