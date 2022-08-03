@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: use browser `:focus-visible` if supported",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
