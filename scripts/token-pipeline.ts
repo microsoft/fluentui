@@ -36,9 +36,14 @@ function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: 
 
   // https://github.com/microsoft/fluentui-token-pipeline
   execSync(
-    `npx transform-tokens --platform react --in src/global.json --in src/${_.kebabCase(
-      theme,
-    )}.json --out ${outDir}/${theme}`,
+    [
+      'npx',
+      'transform-tokens',
+      '--platform react',
+      '--in src/global.json',
+      `--in src/${_.kebabCase(theme)}.json`,
+      `--out ${outDir}/${theme}`,
+    ].join(' '),
     `Generate tokens for theme:${theme}`,
     pipelineDir,
   );
