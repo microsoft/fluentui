@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useARIAButtonShorthand, useARIAButtonProps, ARIAButtonProps } from './useARIAButton';
+import { useARIAButtonShorthand, useARIAButtonProps, ARIAButtonProps, ARIAButtonSlotProps } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, render } from '@testing-library/react';
-import { ARIAButtonSlotProps } from '../../dist/types';
 import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
 
 const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
