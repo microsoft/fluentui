@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { canUseDOM } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { applyFocusVisiblePolyfill } from '../focus/focusVisiblePolyfill';
 
