@@ -4,6 +4,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { applyFocusWithinPolyfill } from '../focus/focusWithinPolyfill';
 
 /**
+ * @internal
  * A ponyfill that allows `:focus-within` to support visibility based on keyboard/mouse navigation
  * like `:focus-visible` https://github.com/WICG/focus-visible/issues/151
  * @returns ref to the element that uses `:focus-within` styles
