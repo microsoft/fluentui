@@ -36,6 +36,9 @@ export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JS
 // @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 
+// @public (undocumented)
+export type SortDirection = 'ascending' | 'descending';
+
 // @public
 export const Table: ForwardRefComponent<TableProps>;
 
@@ -93,9 +96,6 @@ export const TableContextProvider: Provider<TableContextValue | undefined> & FC<
 export type TableContextValue = {
     size: 'small' | 'smaller' | 'medium';
     noNativeElements: boolean;
-    requestSortColumnChange: (e: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, columnKey: string) => void;
-    sortColumn: string | undefined;
-    sortDirection: SortDirection;
     sortable: boolean;
 };
 
@@ -118,7 +118,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
-    columnKey: string;
+    sortDirection?: SortDirection;
 };
 
 // @public (undocumented)
@@ -187,7 +187,7 @@ export type TableSlots = {
 };
 
 // @public
-export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & Pick<TableContextValue, 'sortable' | 'sortColumn' | 'sortDirection' | 'requestSortColumnChange'>;
+export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;

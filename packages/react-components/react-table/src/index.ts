@@ -36,7 +36,7 @@ export {
   useTable_unstable,
   renderTable_unstable,
 } from './Table';
-export type { TableProps, TableSlots, TableState, TableContextValue, TableContextValues } from './Table';
+export type { TableProps, TableSlots, TableState, TableContextValue, TableContextValues, SortDirection } from './Table';
 
 export {
   TableHeader,
