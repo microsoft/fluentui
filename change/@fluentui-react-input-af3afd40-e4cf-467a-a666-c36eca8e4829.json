@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles",
-  "packageName": "@fluentui/react-input",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

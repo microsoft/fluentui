@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Make sorting more primitive",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

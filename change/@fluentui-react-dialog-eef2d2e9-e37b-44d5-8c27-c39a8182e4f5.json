@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "move stories to a proper directory",
-  "packageName": "@fluentui/react-dialog",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: use `useFocusWithin` hook for :focus-within styles",
-  "packageName": "@fluentui/react-radio",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

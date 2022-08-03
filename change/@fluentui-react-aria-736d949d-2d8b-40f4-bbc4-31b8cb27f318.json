@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: treats aria-disabled as disabled state on useARIAButtonProps",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

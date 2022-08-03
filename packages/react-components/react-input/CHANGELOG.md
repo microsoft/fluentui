@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Thu, 14 Jul 2022 21:21:12 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.4)
+
+Wed, 03 Aug 2022 16:03:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.0.3..@fluentui/react-input_v9.0.4)
+
+### Patches
+
+- Adds proper initialValue to value on useInput ([PR #24084](https://github.com/microsoft/fluentui/pull/24084) by bernardo.sunderhus@gmail.com)
+- bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-text to v9.0.4 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.0.3)
 

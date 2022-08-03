@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(storybook): remove deprecated --static-dir CLI flag usage",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
