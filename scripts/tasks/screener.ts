@@ -21,7 +21,7 @@ export async function screener() {
   const packagePath = path.relative(findGitRoot(), process.cwd());
   const affectedPackageInfo = Object.values(packageInfos).find(x => x.packagePath === packagePath);
   let affectedPackages = new Set<string>();
-  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
+  const isPrBuild = process.env.BUILD_SOURCEBRANCHNAME === 'merge';
 
   if (isPrBuild) {
     affectedPackages = getAffectedPackages();

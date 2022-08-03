@@ -38,7 +38,7 @@ task('screener:runner', cb => {
 
   const screenerConfig = require(screenerConfigPath);
   let affectedPackages = new Set<string>();
-  const isPrBuild = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.includes('refs/pull');
+  const isPrBuild = process.env.BUILD_SOURCEBRANCHNAME === 'merge';
 
   if (isPrBuild) {
     affectedPackages = getAffectedPackages();
