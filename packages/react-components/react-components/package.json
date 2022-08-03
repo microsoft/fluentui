@@ -55,7 +55,7 @@
     "@fluentui/react-select": "9.0.0-beta.8",
     "@fluentui/react-shared-contexts": "^9.0.0",
     "@fluentui/react-slider": "^9.0.3",
-    "@fluentui/react-spinbutton": "9.0.0",
+    "@fluentui/react-spinbutton": "^9.0.0",
     "@fluentui/react-spinner": "^9.0.4",
     "@fluentui/react-switch": "^9.0.4",
     "@fluentui/react-table": "9.0.0-alpha.1",

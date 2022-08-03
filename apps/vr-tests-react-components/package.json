@@ -38,7 +38,7 @@
     "@fluentui/react-shared-contexts": "^9.0.0",
     "@fluentui/react-slider": "^9.0.3",
     "@fluentui/react-spinner": "^9.0.4",
-    "@fluentui/react-spinbutton": "9.0.0",
+    "@fluentui/react-spinbutton": "^9.0.0",
     "@fluentui/react-switch": "^9.0.4",
     "@fluentui/react-tabs": "^9.0.4",
     "@fluentui/react-text": "^9.0.4",
