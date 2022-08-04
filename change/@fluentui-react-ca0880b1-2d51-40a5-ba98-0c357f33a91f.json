@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow IChoiceGroupOption in callback signatures",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
