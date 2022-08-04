@@ -73,9 +73,7 @@ export const PrimaryCell = () => {
       <TableHeader>
         <TableRow>
           {columns.map(column => (
-            <TableHeaderCell key={column.columnKey} columnKey={column.columnKey}>
-              {column.label}
-            </TableHeaderCell>
+            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
