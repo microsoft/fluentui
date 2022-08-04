@@ -11,7 +11,7 @@ import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './Avata
  */
 export const renderAvatarGroupOverflow_unstable = (
   state: AvatarGroupOverflowState,
-  contextValuees: AvatarGroupContextValues,
+  contextValues: AvatarGroupContextValues,
 ) => {
   const { slots, slotProps } = getSlots<AvatarGroupOverflowSlots>(state);
 
@@ -23,7 +23,7 @@ export const renderAvatarGroupOverflow_unstable = (
         </slots.tooltip>
       </PopoverTrigger>
       <slots.popoverSurface {...slotProps.popoverSurface}>
-        <AvatarGroupContext.Provider value={contextValuees.avatarGroup}>
+        <AvatarGroupContext.Provider value={contextValues.avatarGroup}>
           <slots.content {...slotProps.content} />
         </AvatarGroupContext.Provider>
       </slots.popoverSurface>

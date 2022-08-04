@@ -174,7 +174,7 @@ export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
 
 // @public
-export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState, contextValuees: AvatarGroupContextValues) => JSX.Element;
+export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;

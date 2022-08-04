@@ -26,27 +26,26 @@ const names = [
 
 export const Indicator = () => {
   const styles = useStyles();
-  const countPartitionedItems = partitionAvatarGroupItems({ items: names });
-  const iconPartitionedItems = partitionAvatarGroupItems({ items: names });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
     <div className={styles.root}>
       <AvatarGroup>
-        {countPartitionedItems.inlineItems.map(name => (
+        {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
         <AvatarGroupOverflow indicator="count">
-          {countPartitionedItems.overflowItems.map(name => (
+          {overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
         </AvatarGroupOverflow>
       </AvatarGroup>
       <AvatarGroup>
-        {iconPartitionedItems.inlineItems.map(name => (
+        {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
         <AvatarGroupOverflow indicator="icon">
-          {iconPartitionedItems.overflowItems.map(name => (
+          {overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
         </AvatarGroupOverflow>

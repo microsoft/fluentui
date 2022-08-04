@@ -9,11 +9,7 @@ export type PartitionAvatarGroupItemsOptions<T> = {
  *
  * @param options - Configure the partition options
  *
- * @returns Two arrays of AvatarGroupItems splitted between the inline items and the overflowing items
- * based on maxItems.
- *
- * NOTE: Each item in the array must be a single AvatarGroupItem. If an item in the array contains a fragment with
- * two avatars, the items will not be partitioned correctly.
+ * @returns Two arrays split into inline items and overflow items based on maxInlineItems.
  */
 export const partitionAvatarGroupItems = <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
   const { items } = options;
