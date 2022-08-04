@@ -1,0 +1,172 @@
+name: Screener build
+
+on: workflow_dispatch
+
+jobs:
+  environment-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir artifacts
+
+      ###########################################
+      # Environment variables are passed as an artifact so that the run workflow
+      # can download and access them. There are two workflows used- `screener-build.yml`
+      # and `screener-run.yml` so that the screener checks can also be triggered by
+      # pull requests from forks. Note: This is a temporary change.
+      ###########################################
+
+      ###########################################
+      # BROWSERSLIST_IGNORE_OLD_DATA = Prevents failures on CI when "caniuse-lite" becomes outdated
+      # DEPLOYHOST = address of host for screener tests deployment
+      # BUILD_BUILDID = unique ID of the workflow run within the repo
+      # BUILD_SOURCEBRANCH = branch that triggered the workflow -> refs/pull/<pr_number>/merge
+      ###########################################
+      - name: Set base env variables
+        run: |
+          cat <<EOT >> artifacts/environment
+          BROWSERSLIST_IGNORE_OLD_DATA=true
+          DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
+          BUILD_BUILDID=${{ github.run_id }}
+          BUILD_SOURCEBRANCH=${{ github.ref }}
+          EOT
+
+      ###########################################
+      # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
+      # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
+      # SYSTEM_PULLREQUEST_PULLREQUESTID = ID of the PR
+      # SYSTEM_PULLREQUEST_SOURCECOMMITID = commit SHA of PR
+      # ISPR = true if workflow triggered by PR
+      # DEPLOYBASEPATH = path for deploy URL -> pull/<pr_number> for PRs
+      # DEPLOYURL= address for tests deployment, uses DEPLOYHOST and DEPLOYBASEPATH
+      # BUILD_SOURCEBRANCHNAME = 'merge' for PRs
+      ###########################################
+      - name: Set env variables if there is a PR
+        run: |
+          cat <<EOT >> artifacts/environment
+          SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}
+          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
+          SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
+          SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
+          ISPR=true
+          DEPLOYBASEPATH=pull/$PR_NUMBER
+          DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
+          BUILD_SOURCEBRANCHNAME='merge'
+          EOT
+        env:
+          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+          PR_NUMBER: ${{ github.event.number }}
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Set env variables if there is not a PR
+        run: |
+          cat <<EOT >> artifacts/environment
+          ISPR=false
+          DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
+          DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
+          BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
+          EOT
+        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Upload environment variables artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: env-artifact
+          path: artifacts/environment
+
+  screener-react-northstar:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-northstar
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build FUI N* VR Test
+        run: yarn workspace @fluentui/docs vr:build
+        env:
+          SCREENER_BUILD: 1
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: northstar-artifact
+          path: packages/fluentui/docs/dist
+
+  screener-react:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build vr-tests storybook
+        run: yarn workspace @fluentui/vr-tests screener:build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: screener-artifact
+          path: apps/vr-tests/dist/storybook
+
+  screener-react-components:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-components
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build vr-tests-react-components storybook
+        run: yarn workspace @fluentui/vr-tests-react-components screener:build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: vnext-artifact
+          path: apps/vr-tests-react-components/dist/storybook

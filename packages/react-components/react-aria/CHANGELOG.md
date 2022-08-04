@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 14 Jul 2022 21:21:08 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.1.0)
+
+Wed, 03 Aug 2022 16:03:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.0.2..@fluentui/react-aria_v9.1.0)
+
+### Minor changes
+
+- chore: Splits useARIAButton into useARIAButtonProps and useARIAButtonShorthand. ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- feat: treats aria-disabled as disabled state on useARIAButtonProps ([PR #24197](https://github.com/microsoft/fluentui/pull/24197) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.0.2)
 

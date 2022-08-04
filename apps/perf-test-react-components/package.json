@@ -15,11 +15,11 @@
     "@fluentui/eslint-plugin": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.4.1",
-    "@fluentui/react-avatar": "^9.0.3",
-    "@fluentui/react-button": "^9.0.3",
-    "@fluentui/react-provider": "^9.0.3",
-    "@fluentui/react-spinbutton": "9.0.0-beta.18",
+    "@griffel/core": "^1.5.1",
+    "@fluentui/react-avatar": "^9.0.4",
+    "@fluentui/react-button": "^9.1.0",
+    "@fluentui/react-provider": "^9.1.0",
+    "@fluentui/react-spinbutton": "^9.0.0",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",

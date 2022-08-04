@@ -7,7 +7,6 @@ describe('CardFooter', () => {
   isConformant({
     Component: CardFooter,
     displayName: 'CardFooter',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

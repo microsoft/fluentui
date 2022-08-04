@@ -8,62 +8,79 @@ import {
   DocumentPdf16Regular as DocumentPdfRegular,
   Video16Regular as VideoRegular,
 } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
-import { TableCell, TableRow } from '../../index';
+import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+
+const items = [
+  {
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
+    author: { label: 'Max Mustermann', status: 'available' },
+    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdate: {
+      label: 'You edited this',
+      icon: <EditRegular />,
+    },
+  },
+  {
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
+    author: { label: 'Erika Mustermann', status: 'busy' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Training recording', icon: <VideoRegular /> },
+    author: { label: 'John Doe', status: 'away' },
+    lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
+    lastUpdate: {
+      label: 'You recently opened this',
+      icon: <OpenRegular />,
+    },
+  },
+  {
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
+    author: { label: 'Jane Doe', status: 'offline' },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdate: {
+      label: 'You shared this in a Teams chat',
+      icon: <PeopleRegular />,
+    },
+  },
+];
+
+const columns = [
+  { columnKey: 'file', label: 'File' },
+  { columnKey: 'author', label: 'Author' },
+  { columnKey: 'lastUpdated', label: 'Last updated' },
+  { columnKey: 'lastUpdate', label: 'Last update' },
+];
 
 export const NonNativeElements = () => {
   return (
-    <div role="table" style={{ width: '100%' }}>
-      <div role="rolegroup">
-        <TableRow as="div">
-          <TableCell as="div" media={<DocumentRegular />}>
-            Meeting notes
-          </TableCell>
-          <TableCell as="div" media={<Avatar name="Max Mustermann" badge={{ status: 'available' }} />}>
-            Max Mustermann
-          </TableCell>
-          <TableCell as="div">7h ago</TableCell>
-          <TableCell as="div" media={<EditRegular />}>
-            You edited this
-          </TableCell>
-        </TableRow>
+    <Table noNativeElements>
+      <TableHeader>
         <TableRow>
-          <TableCell as="div" media={<FolderRegular />}>
-            Thursday presentation
-          </TableCell>
-          <TableCell as="div" media={<Avatar name="Erika Mustermann" badge={{ status: 'away' }} />}>
-            Erika Mustermann
-          </TableCell>
-          <TableCell as="div">Yesterday at 1:45 PM</TableCell>
-          <TableCell as="div" media={<OpenRegular />}>
-            You recently opened this
-          </TableCell>
+          {columns.map(column => (
+            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+          ))}
         </TableRow>
-        <TableRow>
-          <TableCell as="div" media={<VideoRegular />}>
-            Training recording
-          </TableCell>
-          <TableCell as="div" media={<Avatar name="John Doe" badge={{ status: 'away' }} />}>
-            John Doe
-          </TableCell>
-          <TableCell as="div">Yesterday at 1:45 PM</TableCell>
-          <TableCell as="div" media={<OpenRegular />}>
-            You recently opened this
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell as="div" media={<DocumentPdfRegular />}>
-            Purchase order
-          </TableCell>
-          <TableCell as="div" media={<Avatar name="Jane Doe" badge={{ status: 'away' }} />}>
-            Jane Doe
-          </TableCell>
-          <TableCell as="div">Tue at 9:30 AM</TableCell>
-          <TableCell as="div" media={<PeopleRegular />}>
-            You shared this in a Teams chat
-          </TableCell>
-        </TableRow>
-      </div>
-    </div>
+      </TableHeader>
+      <TableBody>
+        {items.map(item => (
+          <TableRow key={item.file.label}>
+            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
+            <TableCell
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
+            >
+              {item.author.label}
+            </TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };

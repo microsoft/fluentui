@@ -22,12 +22,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
 - Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
 - Add size 'medium-large' to `Avatar` @yuanboxue-amber ([#23787](https://github.com/microsoft/fluentui/pull/23787))
+- Allow freeform to better support time picker scenario for `Dropdown` @jurokapsiar ([#23949](https://github.com/microsoft/fluentui/pull/23949))
 
 ### Fixes
 - Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
 - Update `Pink` colors to new color palette @notandrew ([#23262](https://github.com/microsoft/fluentui/pull/23262))
 - Fix `Datepicker` hover background for HC theme @chpalac ([#23798](https://github.com/microsoft/fluentui/pull/23798))
 - Fix box-shadow for `Menu` and `Dropdown` component to make it consistent with other components @vitthalr ([#23937](https://github.com/microsoft/fluentui/pull/23937))
+- Align `default` scheme colors between v0 and v9 @yuanboxue-amber ([#23901](https://github.com/microsoft/fluentui/pull/23901))
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->
 ## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)

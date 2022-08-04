@@ -1,8 +1,134 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 15 Jul 2022 18:27:26 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.2.0)
+
+Wed, 03 Aug 2022 16:03:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.1.1..@fluentui/react-components_v9.2.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - chore: Splits useARIAButton into useARIAButtonProps and useARIAButtonShorthand. ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - chore: Updates Button to use useARIAButton over useARIAButtonShorthand ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - feat: update spinbutton to stable ([PR #23805](https://github.com/microsoft/fluentui/pull/23805) by seanmonahan@microsoft.com)
+  - feat: adds react-dialog to react-components unstable ([PR #24140](https://github.com/microsoft/fluentui/pull/24140) by bernardo.sunderhus@gmail.com)
+  - chore: Re-exporting useIsomorphicLayoutEffect from @fluentui/react-utilities in @fluentui/react-components. ([PR #24132](https://github.com/microsoft/fluentui/pull/24132) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: Move to useLayoutEffect or useInsertionEffect for Theme Provider theme insertion. ([PR #24061](https://github.com/microsoft/fluentui/pull/24061) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - feat: update spinbutton to stable ([PR #23805](https://github.com/microsoft/fluentui/pull/23805) by seanmonahan@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: Adds `ignoreDefaultKeydown` option to `useArrowNavigationGroup` ([PR #24101](https://github.com/microsoft/fluentui/pull/24101) by lingfangao@hotmail.com)
+  - feat: create `:focus-visible` and `:focus-within` polyfills ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: Updates AccordionHeader to use useARIAButtonShorthand over useARIAButton ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by bernardo.sunderhus@gmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-aria`
+  - feat: treats aria-disabled as disabled state on useARIAButtonProps ([PR #24197](https://github.com/microsoft/fluentui/pull/24197) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-button`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-checkbox`
+  - refactor: use `useFocusWithin` hook for :focus-within styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-components`
+  - feat: Adds `@fluentui/react-table` package to unstable exports ([PR #24182](https://github.com/microsoft/fluentui/pull/24182) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-image`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-input`
+  - Adds proper initialValue to value on useInput ([PR #24084](https://github.com/microsoft/fluentui/pull/24084) by bernardo.sunderhus@gmail.com)
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-label`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-link`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+  - fix: Fix tabbing from within menu ([PR #24101](https://github.com/microsoft/fluentui/pull/24101) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: use `useFocusVisible` hook for :focus-visible styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: enable AMD compatible build ([PR #24052](https://github.com/microsoft/fluentui/pull/24052) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: use `useFocusVisible` hook for :focus-visible styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-radio`
+  - refactor: use `useFocusWithin` hook for :focus-within styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+  - refactor: use `useFocusWithin` hook for :focus-within styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+- `@fluentui/react-spinbutton`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- `@fluentui/react-switch`
+  - refactor: use `useFocusWithin` hook for :focus-within styles ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Bump tabster to 2.1.0 ([PR #23811](https://github.com/microsoft/fluentui/pull/23811) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-text`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-textarea`
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+  - fix: Make <textarea> match its wrapper size and add documentation on changing its height. ([PR #23992](https://github.com/microsoft/fluentui/pull/23992) by esteban.230@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-card`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: prevent react-combobox keyboard selection of disabled options ([PR #24073](https://github.com/microsoft/fluentui/pull/24073) by sarah.higley@microsoft.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: Griffel conformance test should use user container for render ([PR #24051](https://github.com/microsoft/fluentui/pull/24051) by lingfangao@hotmail.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: adds aria-labelledby and aria-describedby attributes ([PR #24141](https://github.com/microsoft/fluentui/pull/24141) by bernardo.sunderhus@gmail.com)
+  - feat: adds react-dialog to react-components unstable ([PR #24140](https://github.com/microsoft/fluentui/pull/24140) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-overflow`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-select`
+  - bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- `@fluentui/react-table`
+  - feat: Make sorting more primitive ([PR #24198](https://github.com/microsoft/fluentui/pull/24198) by lingfangao@hotmail.com)
+  - feat: Release package in `alpha` ([PR #24182](https://github.com/microsoft/fluentui/pull/24182) by lingfangao@hotmail.com)
+- `@fluentui/react-toolbar`
+  - chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.1.1)
 

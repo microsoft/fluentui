@@ -17,6 +17,7 @@ import {
   CircleFilled,
 } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Checkbox.
@@ -69,7 +70,10 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
     },
     root: resolveShorthand(props.root, {
       required: true,
-      defaultProps: nativeProps.root,
+      defaultProps: {
+        ref: useFocusWithin<HTMLSpanElement>(),
+        ...nativeProps.root,
+      },
     }),
     input: resolveShorthand(props.input, {
       required: true,

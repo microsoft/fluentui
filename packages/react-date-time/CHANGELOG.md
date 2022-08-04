@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Tue, 26 Jul 2022 07:39:35 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Aug 2022 07:42:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.16)
+
+Thu, 04 Aug 2022 07:42:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.15..@fluentui/react-date-time_v8.6.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.86.4 ([PR #24215](https://github.com/microsoft/fluentui/pull/24215) by beachball)
+
+## [8.6.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.15)
+
+Tue, 02 Aug 2022 18:04:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.14..@fluentui/react-date-time_v8.6.15)
+
+### Patches
+
+- Bump @fluentui/react to v8.86.3 ([PR #24175](https://github.com/microsoft/fluentui/pull/24175) by beachball)
+
+## [8.6.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.14)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.13..@fluentui/react-date-time_v8.6.14)
+
+### Patches
+
+- Bump @fluentui/react to v8.86.2 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+
+## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.13)
+
+Mon, 01 Aug 2022 07:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.12..@fluentui/react-date-time_v8.6.13)
+
+### Patches
+
+- Bump @fluentui/react to v8.86.1 ([PR #24123](https://github.com/microsoft/fluentui/pull/24123) by beachball)
+
+## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.12)
+
+Fri, 29 Jul 2022 07:41:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.11..@fluentui/react-date-time_v8.6.12)
+
+### Patches
+
+- Bump @fluentui/react to v8.86.0 ([PR #24132](https://github.com/microsoft/fluentui/pull/24132) by beachball)
+
+## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.11)
+
+Thu, 28 Jul 2022 07:41:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.10..@fluentui/react-date-time_v8.6.11)
+
+### Patches
+
+- Bump @fluentui/react to v8.85.1 ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by beachball)
+
+## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.10)
+
+Wed, 27 Jul 2022 07:37:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.6.9..@fluentui/react-date-time_v8.6.10)
+
+### Patches
+
+- Bump @fluentui/react to v8.85.0 ([PR #24055](https://github.com/microsoft/fluentui/pull/24055) by beachball)
 
 ## [8.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.6.9)
 

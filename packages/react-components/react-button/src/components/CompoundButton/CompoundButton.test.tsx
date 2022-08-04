@@ -9,7 +9,6 @@ describe('CompoundButton', () => {
   isConformant({
     Component: CompoundButton as React.FunctionComponent<CompoundButtonProps>,
     displayName: 'CompoundButton',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

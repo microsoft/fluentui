@@ -2572,7 +2572,7 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
     data?: any;
     defaultRender?: any;
     // @deprecated
-    description?: IStyle;
+    description?: string;
     disabled?: boolean;
     // @deprecated
     elementRef?: React_2.Ref<HTMLElement>;
@@ -4726,6 +4726,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     getRowAriaLabel?: (item: any) => string;
     group?: IGroup;
     id?: string;
+    isGridRow?: boolean;
     item: any;
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
@@ -4871,6 +4872,8 @@ export interface IDialogContent {
 
 // @public (undocumented)
 export interface IDialogContentProps extends React_2.ClassAttributes<DialogContentBase> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     closeButtonAriaLabel?: string;
     componentRef?: IRefObject<IDialogContent>;
@@ -4957,6 +4960,8 @@ export interface IDialogProps extends React_2.ClassAttributes<DialogBase>, IWith
     ariaDescribedById?: string;
     // @deprecated
     ariaLabelledById?: string;
+    // (undocumented)
+    children?: React_2.ReactNode;
     // @deprecated
     className?: string;
     // @deprecated (undocumented)
@@ -5871,6 +5876,7 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaLevel?: number;
     ariaPosInSet?: number;
     ariaRowCount?: number;
     ariaRowIndex?: number;
@@ -7512,6 +7518,8 @@ export interface IPivot {
 export interface IPivotItemProps extends React_2.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
+    // (undocumented)
+    children?: React_2.ReactNode;
     componentRef?: IRefObject<{}>;
     headerButtonProps?: IButtonProps | {
         [key: string]: string | number | boolean;
@@ -8130,6 +8138,8 @@ export interface ISelectionZone {
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React_2.ClassAttributes<SelectionZone> {
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
@@ -8589,6 +8599,8 @@ export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, 
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React_2.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     basis?: React_2.CSSProperties['flexBasis'];
+    // (undocumented)
+    children?: React_2.ReactNode;
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';

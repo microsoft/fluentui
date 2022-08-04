@@ -148,12 +148,12 @@ In case the trigger is used outside `Dialog` component it'll still provide basic
 ```typescript
 export type DialogTriggerProps = {
   /**
-   * Explicitly declare if the trigger is responsible for opening,
-   * closing or toggling a Dialog visibility state.
-   *
-   * @default 'toggle'
+   * Explicitly declare if the trigger is responsible for opening or
+   * closing a Dialog visibility state.
+   * @default 'open' // if it's outside DialogSurface
+   * @default 'close' // if it's inside DialogSurface
    */
-  action?: 'open' | 'close' | 'toggle';
+  action?: 'open' | 'close';
   /**
    * Explicitly require single child or render function
    * to inject properties
@@ -496,7 +496,6 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Non-modal
 
@@ -507,16 +506,13 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Alert dialog
 
 - Trigger button
   - [`aria-haspopup="dialog"`](https://w3c.github.io/aria/#aria-haspopup)
-    > ⚠️ This is deprecated, the proper attribute should be [`aria-expanded=true`](https://w3c.github.io/aria/#aria-expanded)
 - Dialog
   - [`role="alertdialog"`](https://w3c.github.io/aria/#dialog)
-  - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
+  - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)

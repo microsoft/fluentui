@@ -1,7 +1,14 @@
 import * as React from 'react';
 
-import { MenuButton } from '@fluentui/react-button';
-import { Menu, MenuTrigger, MenuList, MenuPopover, MenuItem, MenuSplitGroup } from '@fluentui/react-menu';
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuSplitGroup,
+  MenuTrigger,
+} from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

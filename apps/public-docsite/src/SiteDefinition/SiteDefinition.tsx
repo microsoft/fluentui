@@ -67,7 +67,10 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       text: (
         <span>
           🎉 Announcing Fluent UI React v9 stable release! Visit{' '}
-          <a href="https://react.fluentui.dev/">Fluent UI React v9</a> to see more.
+          <a href="https://react.fluentui.dev/" style={{ color: '#006cbe' }}>
+            Fluent UI React v9
+          </a>{' '}
+          to see more.
         </span>
       ),
       sessionStoragePrefix: 'FluentUI9',

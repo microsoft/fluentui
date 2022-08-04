@@ -1,12 +1,13 @@
 import * as React from 'react';
 
-export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+export type DialogTriggerAction = 'open' | 'close';
 
 export type DialogTriggerProps = {
   /**
-   * Explicitly declare if the trigger is responsible for opening,
-   * closing or toggling a Dialog visibility state.
-   * @default toggle
+   * Explicitly declare if the trigger is responsible for opening or
+   * closing a Dialog visibility state.
+   * @default 'open' // if it's outside DialogSurface
+   * @default 'close' // if it's inside DialogSurface
    */
   action?: DialogTriggerAction;
   /**
@@ -21,8 +22,9 @@ export type DialogTriggerProps = {
 /**
  * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behaviour for the Dialog
  */
-export type DialogTriggerChildProps = Required<
-  Pick<React.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>
+export type DialogTriggerChildProps = Pick<
+  React.HTMLAttributes<HTMLElement>,
+  'onClick' | 'onKeyDown' | 'aria-haspopup'
 > & {
   ref?: React.Ref<never>;
 };

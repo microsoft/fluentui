@@ -26,11 +26,7 @@ describe('AvatarGroup', () => {
   isConformant({
     Component: AvatarGroup,
     displayName: 'AvatarGroup',
-    disabledTests: [
-      'component-has-static-classname',
-      'component-has-static-classname-exported',
-      'make-styles-overrides-win',
-    ],
+    disabledTests: ['make-styles-overrides-win'],
     testOptions: {
       'has-static-classnames': [
         {

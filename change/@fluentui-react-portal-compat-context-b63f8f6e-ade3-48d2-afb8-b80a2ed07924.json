@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor(scripts): replace isCompatibilityPackage with new --module build flag",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
