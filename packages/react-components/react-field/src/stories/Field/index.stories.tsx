@@ -4,13 +4,12 @@ import descriptionMd from './FieldDescription.md';
 import bestPracticesMd from './FieldBestPractices.md';
 
 export { Default } from './FieldDefault.stories';
-export { AllControls } from './FieldDefault.stories';
-export { LabelBefore } from './FieldDefault.stories';
-export { Required } from './FieldDefault.stories';
-export { Status } from './FieldDefault.stories';
-export { Validation } from './FieldDefault.stories';
-export { Size } from './FieldDefault.stories';
-export { HelperText } from './FieldDefault.stories';
+export { LabelAbove } from './FieldLabelAbove.stories';
+export { LabelBefore } from './FieldLabelBefore.stories';
+export { Required } from './FieldRequired.stories';
+export { Status } from './FieldStatus.stories';
+export { Size } from './FieldSize.stories';
+export { HelperText } from './FieldHelperText.stories';
 
 export default {
   title: 'Components/Field',
