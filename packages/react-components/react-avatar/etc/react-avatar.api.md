@@ -8,13 +8,18 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { PopoverSurface } from '@fluentui/react-popover';
+import type { PopoverProps } from '@fluentui/react-popover';
+import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { TooltipProps } from '@fluentui/react-tooltip';
+import type { TooltipProps } from '@fluentui/react-tooltip';
 
 // @public (undocumented)
 export const Avatar: ForwardRefComponent<AvatarProps>;
@@ -27,6 +32,16 @@ export const AvatarGroup: ForwardRefComponent<AvatarGroupProps>;
 
 // @public (undocumented)
 export const avatarGroupClassNames: SlotClassNames<AvatarGroupSlots>;
+
+// @public (undocumented)
+export type AvatarGroupContextValue = Pick<AvatarGroupProps, 'size' | 'layout'> & {
+    isOverflow?: boolean;
+};
+
+// @public (undocumented)
+export type AvatarGroupContextValues = {
+    avatarGroup: AvatarGroupContextValue;
+};
 
 // @public
 export const AvatarGroupItem: ForwardRefComponent<AvatarGroupItemProps>;
@@ -47,53 +62,55 @@ export type AvatarGroupItemSlots = {
 // @public
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
-    nonOverflowAvatarsCount: number;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;
 };
 
 // @public
-export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps>;
-
-// @public (undocumented)
-export const avatarGroupOverflowClassName = "fui-AvatarGroupOverflow";
+export const AvatarGroupOverflow: React_2.FC<AvatarGroupOverflowProps>;
 
 // @public (undocumented)
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots>;
 
 // @public
-export type AvatarGroupOverflowProps = ComponentProps<AvatarGroupOverflowSlots> & {};
+export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
+    indicator?: 'count' | 'icon';
+    count?: number;
+    children: React_2.ReactNode;
+};
 
 // @public (undocumented)
 export type AvatarGroupOverflowSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<PopoverProps>>;
+    triggerButton: NonNullable<Slot<'button'>>;
+    content: NonNullable<Slot<'div'>>;
+    popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+    tooltip: NonNullable<Slot<TooltipProps>>;
 };
 
 // @public
-export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots>;
+export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> & Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
+    popoverOpen: boolean;
+    layout: AvatarGroupProps['layout'];
+    size: AvatarSizes;
+};
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
-    layout?: 'spread' | 'stack' | 'pie';
-    maxAvatars?: number;
-    overflowIndicator?: 'count' | 'icon';
+    layout?: 'spread' | 'stack';
     size?: AvatarSizes;
 };
 
 // @public (undocumented)
+export const AvatarGroupProvider: Provider<AvatarGroupContextValue> & FC<ProviderProps<AvatarGroupContextValue>>;
+
+// @public (undocumented)
 export type AvatarGroupSlots = {
     root: NonNullable<Slot<'div'>>;
-    overflowButton?: NonNullable<Slot<'button'>>;
-    overflowContent?: NonNullable<Slot<'div'>>;
-    overflowSurface?: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size' | 'overflowIndicator'>> & {
-    hasOverflow: boolean;
-    tooltipContent: TooltipProps['content'];
-    nonOverflowAvatarsCount: number;
-};
+export type AvatarGroupState = ComponentState<AvatarGroupSlots> & Required<Pick<AvatarGroupProps, 'layout' | 'size'>>;
 
 // @public
 export type AvatarNamedColor = 'dark-red' | 'cranberry' | 'red' | 'pumpkin' | 'peach' | 'marigold' | 'gold' | 'brass' | 'brown' | 'forest' | 'seafoam' | 'dark-green' | 'light-teal' | 'teal' | 'steel' | 'blue' | 'royal-blue' | 'cornflower' | 'navy' | 'lavender' | 'purple' | 'grape' | 'lilac' | 'pink' | 'magenta' | 'plum' | 'beige' | 'mink' | 'platinum' | 'anchor';
@@ -134,23 +151,42 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
     firstInitialOnly?: boolean;
 }): string;
 
+// @public
+export const partitionAvatarGroupItems: <T>(options: PartitionAvatarGroupItemsOptions<T>) => {
+    inlineItems: T[];
+    overflowItems: readonly T[];
+};
+
+// @public (undocumented)
+export type PartitionAvatarGroupItemsOptions<T> = {
+    items: readonly T[];
+    layout?: 'spread' | 'stack' | 'pie';
+    maxInlineItems?: number;
+};
+
 // @public (undocumented)
 export const renderAvatar_unstable: (state: AvatarState) => JSX.Element;
 
 // @public
-export const renderAvatarGroup_unstable: (state: AvatarGroupState) => JSX.Element;
+export const renderAvatarGroup_unstable: (state: AvatarGroupState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public
 export const renderAvatarGroupItem_unstable: (state: AvatarGroupItemState) => JSX.Element;
 
 // @public
-export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState) => JSX.Element;
+export const renderAvatarGroupOverflow_unstable: (state: AvatarGroupOverflowState, contextValues: AvatarGroupContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const useAvatar_unstable: (props: AvatarProps, ref: React_2.Ref<HTMLElement>) => AvatarState;
 
 // @public
 export const useAvatarGroup_unstable: (props: AvatarGroupProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupState;
+
+// @public (undocumented)
+export const useAvatarGroupContext_unstable: <T>(selector: ContextSelector<AvatarGroupContextValue, T>) => T;
+
+// @public (undocumented)
+export const useAvatarGroupContextValues: (state: AvatarGroupState) => AvatarGroupContextValues;
 
 // @public
 export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupItemState;
@@ -159,7 +195,7 @@ export const useAvatarGroupItem_unstable: (props: AvatarGroupItemProps, ref: Rea
 export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) => AvatarGroupItemState;
 
 // @public
-export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps, ref: React_2.Ref<HTMLElement>) => AvatarGroupOverflowState;
+export const useAvatarGroupOverflow_unstable: (props: AvatarGroupOverflowProps) => AvatarGroupOverflowState;
 
 // @public
 export const useAvatarGroupOverflowStyles_unstable: (state: AvatarGroupOverflowState) => AvatarGroupOverflowState;

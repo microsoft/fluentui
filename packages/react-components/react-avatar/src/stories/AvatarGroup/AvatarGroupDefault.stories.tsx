@@ -1,19 +1,34 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import type { AvatarGroupProps } from '@fluentui/react-avatar';
 
+const names = [
+  'Johnie McConnell',
+  'Allan Munger',
+  'Erik Nason',
+  'Kristin Patterson',
+  'Daisy Phillips',
+  'Carole Poland',
+  'Carlos Slattery',
+  'Robert Tolbert',
+  'Kevin Sturgis',
+  'Charlotte Waltson',
+  'Elliot Woodward',
+];
+
 export const Default = (props: Partial<AvatarGroupProps>) => {
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
+
   return (
     <AvatarGroup {...props}>
-      <AvatarGroupItem name="Katri Athokas" />
-      <AvatarGroupItem name="Elvia Atkins" />
-      <AvatarGroupItem name="Cameron Evans" />
-      <AvatarGroupItem name="Wanda Howard" />
-      <AvatarGroupItem name="Mona Kane" />
-      <AvatarGroupItem name="Allan Munger" />
-      <AvatarGroupItem name="Daisy Phillips" />
-      <AvatarGroupItem name="Robert Tolbert" />
-      <AvatarGroupItem name="Kevin Sturgis" />
+      {inlineItems.map(name => (
+        <AvatarGroupItem name={name} key={name} />
+      ))}
+      <AvatarGroupOverflow>
+        {overflowItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+      </AvatarGroupOverflow>
     </AvatarGroup>
   );
 };
