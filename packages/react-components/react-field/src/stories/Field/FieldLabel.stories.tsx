@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Input } from '@fluentui/react-components';
 import { Field } from '@fluentui/react-field';
 
-export const HelperText = () => (
-  <Field label="Channel name" helperText="Letters, numbers, and spaces are allowed">
+export const Label = () => (
+  <Field label="Name">
     <Input />
   </Field>
 );
 
-HelperText.parameters = {
+Label.parameters = {
   docs: {
     description: {
-      story: 'Helper text should be used sparingly.',
+      story: 'The Field label is placed above the field component by default.',
     },
   },
 };

@@ -15,23 +15,36 @@ export const Status = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <Field label="Input with error" status="error" statusText="This is an error message" labelPosition="before">
+      <Field label="Error status" status="error" statusText="This is an error message" labelPosition="before">
         <Input />
       </Field>
-      <Field label="Input with warning" status="warning" statusText="This is a warning message" labelPosition="before">
+      <Field label="Warning status" status="warning" statusText="This is a warning message" labelPosition="before">
         <Input />
       </Field>
-      <Field label="Input with success" status="success" statusText="This is a success message" labelPosition="before">
+      <Field label="Success status" status="success" statusText="This is a success message" labelPosition="before">
         <Input />
       </Field>
       <Field
-        label="Input with custom status"
+        label="Custom status"
         statusIcon={<SparkleFilled />}
-        statusText="This is a custom status message, with a custom icon"
+        statusText="This status message has a custom icon"
         labelPosition="before"
       >
         <Input />
       </Field>
     </div>
   );
+};
+
+Status.parameters = {
+  docs: {
+    description: {
+      story:
+        'The `status` property modifies the appearance of the status text, and for some input types, ' +
+        'an error status also applies visual indication such as a red border.' +
+        '<br />' +
+        'Use the `statusText` property to display an associated message. ' +
+        'You can optionally override the default icon with `statusIcon`.',
+    },
+  },
 };

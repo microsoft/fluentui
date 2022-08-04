@@ -7,7 +7,7 @@ export const Default = (props: Partial<FieldProps>) => (
     label="Example Field"
     status="success"
     statusText="This is a success message"
-    helperText="Helper text should be used sparingly"
+    helperText="Fields can have helper text, but it should be used sparingly"
     {...props}
   >
     <Input />
