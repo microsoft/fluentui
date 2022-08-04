@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 02 Aug 2022 07:44:44 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Aug 2022 07:42:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.86.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.4)
+
+Thu, 04 Aug 2022 07:42:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.3..@fluentui/react_v8.86.4)
+
+### Patches
+
+- create focus queue for multi level contextual menus ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by mgodbolt@microsoft.com)
+- task: fix precopy in react in include files from the correct folder ([PR #24215](https://github.com/microsoft/fluentui/pull/24215) by mgodbolt@microsoft.com)
+
+## [8.86.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.3)
+
+Tue, 02 Aug 2022 18:04:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.2..@fluentui/react_v8.86.3)
+
+### Patches
+
+- Bump @fluentui/react-focus to v8.7.6 ([PR #24175](https://github.com/microsoft/fluentui/pull/24175) by beachball)
 
 ## [8.86.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.2)
 

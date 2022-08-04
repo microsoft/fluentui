@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 14 Jul 2022 21:21:01 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.9)
+
+Wed, 03 Aug 2022 16:03:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.0-beta.8..@fluentui/react-overflow_v9.0.0-beta.9)
+
+### Changes
+
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.0-beta.8)
 

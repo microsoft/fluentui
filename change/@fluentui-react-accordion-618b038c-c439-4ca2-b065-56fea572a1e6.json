@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Updates AccordionHeader to use useARIAButtonShorthand over useARIAButton",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

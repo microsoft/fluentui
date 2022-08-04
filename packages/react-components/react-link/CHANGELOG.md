@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 14 Jul 2022 21:21:12 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.4)
+
+Wed, 03 Aug 2022 16:03:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.3..@fluentui/react-link_v9.0.4)
+
+### Patches
+
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-tabster to v9.1.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.3)
 

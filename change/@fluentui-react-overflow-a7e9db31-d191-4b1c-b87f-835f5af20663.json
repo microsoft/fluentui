@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump Griffel dependencies",
-  "packageName": "@fluentui/react-overflow",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

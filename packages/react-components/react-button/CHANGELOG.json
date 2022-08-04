@@ -2,6 +2,55 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:39 GMT",
+      "tag": "@fluentui/react-button_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558",
+            "comment": "chore: Updates Button to use useARIAButton over useARIAButtonShorthand"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:09 GMT",
       "tag": "@fluentui/react-button_v9.0.3",
       "version": "9.0.3",

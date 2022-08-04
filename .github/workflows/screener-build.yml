@@ -125,9 +125,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
@@ -182,9 +181,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
@@ -237,9 +235,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build

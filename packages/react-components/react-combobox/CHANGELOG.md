@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Thu, 14 Jul 2022 21:21:10 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.8)
+
+Wed, 03 Aug 2022 16:03:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.0.0-beta.7..@fluentui/react-combobox_v9.0.0-beta.8)
+
+### Changes
+
+- fix: prevent react-combobox keyboard selection of disabled options ([PR #24073](https://github.com/microsoft/fluentui/pull/24073) by sarah.higley@microsoft.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-portal to v9.0.4 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-positioning to v9.1.2 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.0.0-beta.7)
 

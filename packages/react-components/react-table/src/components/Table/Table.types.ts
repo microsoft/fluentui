@@ -10,15 +10,6 @@ export type TableContextValue = {
 
   noNativeElements: boolean;
 
-  requestSortColumnChange: (
-    e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    columnKey: string,
-  ) => void;
-
-  sortColumn: string | undefined;
-
-  sortDirection: SortDirection;
-
   sortable: boolean;
 };
 
@@ -54,4 +45,4 @@ export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextV
  */
 export type TableState = ComponentState<TableSlots> &
   Pick<Required<TableProps>, 'size' | 'noNativeElements'> &
-  Pick<TableContextValue, 'sortable' | 'sortColumn' | 'sortDirection' | 'requestSortColumnChange'>;
+  TableContextValue;
