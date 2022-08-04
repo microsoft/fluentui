@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { useAvatarGroupOverflow_unstable } from './useAvatarGroupOverflow';
 import { renderAvatarGroupOverflow_unstable } from './renderAvatarGroupOverflow';
+import { useAvatarGroupOverflowContextValues } from './useAvatarGroupOverflowContextValues';
+import { useAvatarGroupOverflow_unstable } from './useAvatarGroupOverflow';
 import { useAvatarGroupOverflowStyles_unstable } from './useAvatarGroupOverflowStyles';
 import type { AvatarGroupOverflowProps } from './AvatarGroupOverflow.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * AvatarGroupOverflow component - TODO: add more docs
+ * The AvatarGroupOverflow component provides a button with a Popover containing the children provided.
  */
-export const AvatarGroupOverflow: ForwardRefComponent<AvatarGroupOverflowProps> = React.forwardRef((props, ref) => {
-  const state = useAvatarGroupOverflow_unstable(props, ref);
+export const AvatarGroupOverflow: React.FC<AvatarGroupOverflowProps> = props => {
+  const state = useAvatarGroupOverflow_unstable(props);
+  const contextValues = useAvatarGroupOverflowContextValues(state);
 
   useAvatarGroupOverflowStyles_unstable(state);
-  return renderAvatarGroupOverflow_unstable(state);
-});
+  return renderAvatarGroupOverflow_unstable(state, contextValues);
+};
 
 AvatarGroupOverflow.displayName = 'AvatarGroupOverflow';

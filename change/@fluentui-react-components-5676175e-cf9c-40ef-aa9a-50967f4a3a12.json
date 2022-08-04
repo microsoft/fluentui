@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds react-dialog to react-components unstable",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

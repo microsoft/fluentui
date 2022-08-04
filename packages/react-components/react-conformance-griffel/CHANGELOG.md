@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Thu, 14 Jul 2022 17:06:18 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.12)
+
+Wed, 03 Aug 2022 16:03:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.11..@fluentui/react-conformance-griffel_v9.0.0-beta.12)
+
+### Changes
+
+- fix: Griffel conformance test should use user container for render ([PR #24051](https://github.com/microsoft/fluentui/pull/24051) by lingfangao@hotmail.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-conformance to v0.15.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.11)
 

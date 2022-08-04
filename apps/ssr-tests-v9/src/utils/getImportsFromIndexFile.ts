@@ -8,15 +8,19 @@ type StoryImport = {
   path: string;
 };
 
-// TODO: Once will be solved, can be simplified https://github.com/microsoft/fluentui/issues/23393
 function getImportPrefix(filename: string): string {
-  const importPrefixByFile = path.basename(filename).split('.')[0];
+  const importPrefix = path.basename(path.dirname(filename));
 
-  if (importPrefixByFile === 'index') {
-    return path.basename(path.dirname(filename));
+  if (importPrefix === 'stories' || importPrefix[0].toLowerCase() === importPrefix[0]) {
+    throw new Error(
+      [
+        `The file "${filename}" has an incorrect location a directory name.`,
+        `All stories should be placed in "/src/stories/ComponentName" directory.`,
+      ].join(' '),
+    );
   }
 
-  return importPrefixByFile;
+  return importPrefix;
 }
 
 export async function getImportsFromIndexFile(distDir: string, filename: string): Promise<StoryImport[]> {

@@ -252,7 +252,7 @@ function useShouldUpdateFocusOnMouseMove({ delayUpdateFocusOnHover, hidden }: IC
 }
 
 function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuProps, targetWindow: Window | undefined) {
-  const previousActiveElement = React.useRef<undefined | HTMLElement>();
+  const previousElementsQueue = React.useRef<HTMLElement[]>([]);
 
   const tryFocusPreviousActiveElement = React.useCallback(
     (options: IPopupRestoreFocusParams) => {
@@ -262,7 +262,8 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
         // Make sure that the focus method actually exists
         // In some cases the object might exist but not be a real element.
         // This is primarily for IE 11 and should be removed once IE 11 is no longer in use.
-        previousActiveElement.current?.focus?.();
+
+        previousElementsQueue.current[0]?.focus?.();
       }
     },
     [onRestoreFocus],
@@ -270,15 +271,22 @@ function usePreviousActiveElement({ hidden, onRestoreFocus }: IContextualMenuPro
 
   useIsomorphicLayoutEffect(() => {
     if (!hidden) {
-      previousActiveElement.current = targetWindow?.document.activeElement as HTMLElement;
-    } else if (previousActiveElement.current) {
+      const targetElement = targetWindow?.document.activeElement as HTMLElement;
+      const targetPosition = previousElementsQueue.current.indexOf(targetElement);
+
+      if (targetPosition > -1) {
+        previousElementsQueue.current = previousElementsQueue.current.slice(targetPosition + 1);
+      } else {
+        previousElementsQueue.current = [targetElement, ...previousElementsQueue.current];
+      }
+    } else if (previousElementsQueue.current.length > 0) {
       tryFocusPreviousActiveElement({
-        originalElement: previousActiveElement.current,
+        originalElement: previousElementsQueue.current[0],
         containsFocus: true,
         documentContainsFocus: getDocument()?.hasFocus() || false,
       });
 
-      previousActiveElement.current = undefined;
+      previousElementsQueue.current = [];
     }
   }, [hidden, targetWindow?.document.activeElement, tryFocusPreviousActiveElement]);
 

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:54 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "6731ada047afe1d79d2765d1464cfa9acb90bee8",
+            "comment": "chore: enable AMD compatible build"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.2.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 18:27:27 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.4",
       "version": "9.0.4",

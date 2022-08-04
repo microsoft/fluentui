@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use `useFocusVisible` hook for :focus-visible styles",
-  "packageName": "@fluentui/react-portal",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

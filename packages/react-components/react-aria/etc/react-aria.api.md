@@ -10,7 +10,7 @@ import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type ARIAButtonProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = React_2.PropsWithRef<JSX.IntrinsicElements[NonNullable<ARIAButtonSlotProps<AlternateAs>['as']>]> & Pick<ARIAButtonSlotProps<AlternateAs>, 'disabled' | 'disabledFocusable'>;
+export type ARIAButtonProps<Type extends 'a' | 'div' | 'button' = 'a' | 'div' | 'button'> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & Pick<ARIAButtonSlotProps, 'disabled' | 'disabledFocusable'>;
 
 // @public (undocumented)
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & {

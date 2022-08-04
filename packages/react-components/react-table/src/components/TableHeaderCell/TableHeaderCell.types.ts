@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { SortDirection } from '../Table/Table.types';
 
 export type TableHeaderCellSlots = {
   root: Slot<'th', 'div'>;
@@ -16,10 +17,7 @@ export type TableHeaderCellSlots = {
  * TableHeaderCell Props
  */
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
-  /**
-   * Key that uniquely identifies the column
-   */
-  columnKey: string;
+  sortDirection?: SortDirection;
 };
 
 /**

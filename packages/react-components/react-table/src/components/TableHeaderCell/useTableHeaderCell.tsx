@@ -4,7 +4,11 @@ import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import type { TableHeaderCellProps, TableHeaderCellState } from './TableHeaderCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
-import { useEventCallback } from '@fluentui/react-utilities';
+
+const sortIcons = {
+  ascending: <ArrowUpRegular />,
+  descending: <ArrowDownRegular />,
+};
 
 /**
  * Create the state required to render TableHeaderCell.
@@ -21,13 +25,6 @@ export const useTableHeaderCell_unstable = (
 ): TableHeaderCellState => {
   const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
   const sortable = useTableContext(ctx => ctx.sortable);
-  const isSorted = useTableContext(ctx => ctx.sortColumn === props.columnKey);
-  const sortDirection = useTableContext(ctx => ctx.sortDirection);
-  const requestSortColumnChange = useTableContext(ctx => ctx.requestSortColumnChange);
-
-  const onClick = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
-    requestSortColumnChange(e, props.columnKey);
-  });
 
   const rootComponent = props.as ?? noNativeElements ? 'div' : 'th';
   return {
@@ -39,12 +36,12 @@ export const useTableHeaderCell_unstable = (
     root: getNativeElementProps(rootComponent, {
       ref,
       role: rootComponent === 'div' ? 'columnheader' : undefined,
-      'aria-sort': isSorted ? sortDirection : undefined,
+      'aria-sort': props.sortDirection,
       ...props,
     }),
     sortIcon: resolveShorthand(props.sortIcon, {
-      required: sortable && isSorted,
-      defaultProps: { children: sortDirection === 'ascending' ? <ArrowUpRegular /> : <ArrowDownRegular /> },
+      required: !!props.sortDirection,
+      defaultProps: { children: props.sortDirection ? sortIcons[props.sortDirection] : undefined },
     }),
     button: useARIAButtonShorthand(props.button, {
       required: true,
@@ -55,7 +52,6 @@ export const useTableHeaderCell_unstable = (
         ...(sortable && {
           role: undefined,
           tabIndex: undefined,
-          onClick,
         }),
       },
     }),
