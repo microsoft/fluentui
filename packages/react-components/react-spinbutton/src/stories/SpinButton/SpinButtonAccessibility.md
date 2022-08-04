@@ -43,7 +43,7 @@ TODO: Either add specifics about SVGs in high contrast and how to customize the 
 
 There is an animation when this element receives focus. This respects reduced-motion media queries.
 
-Placeholder: Mouse press speed of value changes visual indicators
+When a user holds down an edit key or mouse click, there is an animation of spinning numbers to provide a sense of how fast the value is changing. This animation is an interaction cue and therefore is acceptable even when a user has set a preference for reduced motion.
 
 ### Semantics
 
