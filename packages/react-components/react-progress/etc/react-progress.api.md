@@ -21,7 +21,8 @@ export const progressClassNames: SlotClassNames<ProgressSlots>;
 // @public
 export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
     appearance?: 'primary' | 'inverted';
-    barHeight?: number;
+    barThickness?: 'small' | 'medium' | 'large';
+    determinate?: boolean;
     percentComplete?: number;
 };
 
@@ -29,12 +30,12 @@ export type ProgressProps = Omit<ComponentProps<ProgressSlots>, 'size'> & {
 export type ProgressSlots = {
     root: NonNullable<Slot<'div'>>;
     label?: Slot<typeof Label>;
-    indicator?: Slot<'span'>;
+    indicator?: NonNullable<Slot<'span'>>;
     description?: Slot<typeof Label>;
 };
 
 // @public
-export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'appearance' | 'barHeight' | 'percentComplete'>>;
+export type ProgressState = ComponentState<ProgressSlots> & Required<Pick<ProgressProps, 'appearance' | 'barThickness' | 'determinate'>>;
 
 // @public
 export const renderProgress_unstable: (state: ProgressState) => JSX.Element;
