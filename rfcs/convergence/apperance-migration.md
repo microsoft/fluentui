@@ -58,17 +58,25 @@ Targeting all input selectors from a partner app and change the color with globa
 
 ### New token alias to theme
 
-Adding a new theme token that the partner could override the existing one.
+Adding a new alias color token (let's say `colorInputBackground`) and use it for all inputs.
 
 👍 Pros:
 
-- Easy to do but creating for each input component (?)
+- Easy to do and would work for all inputs
 
 👎 Cons:
 
 - Negative impact on performance by increasing variables (as read here: [fluentui/theme-shared-colors.md at d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/blob/d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351/rfcs/react-components/convergence/theme-shared-colors.md))
 - Divergence themes from the original
-- Wouldn't work with iframes
+- Wouldn't work in iframes
+
+Another option is to add a possibility to override the background using a CSS variable:
+We can use `backgroundColor: var(--inputBackgroundOverride, ${tokens.colorNeutralBackground1})` without setting the `--inputBackgroundOverride` anywhere. Then an application can set that variable if it needs to override the background.
+
+👍 no additional tokens unless needed
+
+👎 new concept
+👎 one-off just for the Input background
 
 ### Unify design
 
@@ -82,3 +90,4 @@ Discuss with designers to unify V0 and V9 design, setting the appearance to fill
 👎 Cons:
 
 - Inherits design from old V0 package that does not meet our needs/goals
+- According to the design team, this is currently a no-go
