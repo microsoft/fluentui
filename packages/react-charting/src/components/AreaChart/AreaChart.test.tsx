@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { IAreaChartProps, AreaChart } from './index';
 import { IAreaChartState, AreaChartBase } from './AreaChart.base';
 import { ICustomizedCalloutData } from '../../index';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the AreaChart to be tested.
 let wrapper: ReactWrapper<IAreaChartProps, IAreaChartState, AreaChartBase> | undefined;
@@ -197,8 +198,7 @@ describe('AreaChart - mouse events', () => {
 
   it('Should render callout on hover', async () => {
     wrapper = mount(<AreaChart data={chartPoints} />);
-    expect(wrapper.find('[id^="toolTip"]').length).toBe(0);
     wrapper.find('rect').simulate('mouseover');
-    expect(wrapper.find('[id^="toolTip"]').length).toBe(1);
+    expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
   });
 });
