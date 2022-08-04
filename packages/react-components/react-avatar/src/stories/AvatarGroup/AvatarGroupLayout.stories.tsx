@@ -26,27 +26,37 @@ const names = [
 
 export const Layout = () => {
   const styles = useStyles();
-  const spreadPartitionedItems = partitionAvatarGroupItems({ items: names });
-  const stackPartitionedItems = partitionAvatarGroupItems({ items: names });
+  const partitionedItems = partitionAvatarGroupItems({ items: names });
+  const piePartitionedItems = partitionAvatarGroupItems({ items: names, layout: 'pie' });
 
   return (
     <div className={styles.root}>
       <AvatarGroup layout="spread">
-        {spreadPartitionedItems.inlineItems.map(name => (
+        {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
         <AvatarGroupOverflow>
-          {spreadPartitionedItems.overflowItems.map(name => (
+          {partitionedItems.overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
         </AvatarGroupOverflow>
       </AvatarGroup>
       <AvatarGroup layout="stack">
-        {stackPartitionedItems.inlineItems.map(name => (
+        {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
         <AvatarGroupOverflow>
-          {stackPartitionedItems.overflowItems.map(name => (
+          {partitionedItems.overflowItems.map(name => (
+            <AvatarGroupItem name={name} key={name} />
+          ))}
+        </AvatarGroupOverflow>
+      </AvatarGroup>
+      <AvatarGroup layout="pie">
+        {piePartitionedItems.inlineItems.map(name => (
+          <AvatarGroupItem name={name} key={name} />
+        ))}
+        <AvatarGroupOverflow>
+          {piePartitionedItems.overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
         </AvatarGroupOverflow>
@@ -58,7 +68,7 @@ export const Layout = () => {
 Layout.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports support two layouts: spread and stack. The default is spread.`,
+      story: `An AvatarGroup supports three layouts: spread, stack, and pie. The default is spread.`,
     },
   },
 };

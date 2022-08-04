@@ -38,10 +38,14 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
   };
 
   let triggerButtonChildren;
-  if (indicator === 'icon') {
-    triggerButtonChildren = <MoreHorizontalRegular />;
+  if (layout === 'pie') {
+    triggerButtonChildren = null;
   } else {
-    triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
+    if (indicator === 'icon') {
+      triggerButtonChildren = <MoreHorizontalRegular />;
+    } else {
+      triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
+    }
   }
 
   return {
