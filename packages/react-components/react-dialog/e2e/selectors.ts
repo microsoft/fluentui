@@ -1,6 +1,6 @@
 import { dialogClassNames, dialogSurfaceClassNames, dialogTitleClassNames } from '@fluentui/react-dialog';
 
-export const dialogOverlaySelector = `.${dialogClassNames.overlay}`;
+export const dialogBackdropSelector = `.${dialogClassNames.backdrop}`;
 export const dialogSurfaceSelector = `.${dialogSurfaceClassNames.root}`;
 export const dialogTriggerOpenSelector = `[aria-haspopup="dialog"]`;
 export const dialogTriggerCloseSelector = `#close-btn`;

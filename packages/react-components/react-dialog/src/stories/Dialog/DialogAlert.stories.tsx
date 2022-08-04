@@ -12,7 +12,7 @@ export const AlertDialog = () => {
       <DialogSurface aria-label="label">
         <DialogTitle>Alert dialog title</DialogTitle>
         <DialogBody>
-          This dialog cannot be dismissed by clicking on the overlay nor by pressing Escape. Close button should be
+          This dialog cannot be dismissed by clicking on the backdrop nor by pressing Escape. Close button should be
           pressed to dismiss this Alert
         </DialogBody>
         <DialogActions>

@@ -17,7 +17,7 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
         {trigger}
         {open && (
           <Portal>
-            {slots.overlay && <slots.overlay {...slotProps.overlay} />}
+            {slots.backdrop && <slots.backdrop {...slotProps.backdrop} />}
             {content}
           </Portal>
         )}
