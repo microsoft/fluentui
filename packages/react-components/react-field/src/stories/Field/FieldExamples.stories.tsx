@@ -29,9 +29,6 @@ export const Examples = () => {
       <Field label="Input" labelPosition="before">
         <Input />
       </Field>
-      <Field label="Spin button" labelPosition="before">
-        <SpinButton min={1} max={99} />
-      </Field>
       <Field label="Combobox" labelPosition="before">
         <Combobox>
           <Option>Option one</Option>
@@ -42,8 +39,8 @@ export const Examples = () => {
       <Field
         label="Radio"
         labelPosition="before"
-        status={radioValue === 'three' ? 'success' : 'error'}
-        statusText={radioValue === 'three' ? 'Great!' : 'Please select option three'}
+        status={radioValue !== 'three' ? 'error' : 'success'}
+        statusText={radioValue !== 'three' ? 'Please select option three' : 'Great!'}
       >
         <RadioGroup value={radioValue} onChange={(_ev, data) => setRadioValue(data.value)}>
           <Radio value="one" label="Option one" />
@@ -51,22 +48,17 @@ export const Examples = () => {
           <Radio value="three" label="Option three" />
         </RadioGroup>
       </Field>
-      <Field
-        label="Checkbox"
-        labelPosition="before"
-        helperText="Prefer Checkbox's built-in label instead of the Field label"
-      >
-        <Checkbox label="I agree" />
+      <Field labelPosition="before" helperText="Prefer Checkbox's built-in label instead of the Field label">
+        <Checkbox label="Checkbox" />
       </Field>
-      <Field
-        label="Switch"
-        labelPosition="before"
-        helperText="Prefer Switch's built-in label instead of the Field label"
-      >
-        <Switch label="Enabled" />
+      <Field labelPosition="before" helperText="Prefer Switch's built-in label instead of the Field label">
+        <Switch label="Switch" />
       </Field>
       <Field label="Slider" labelPosition="before">
-        <Slider value={20} />
+        <Slider defaultValue={20} />
+      </Field>
+      <Field label="Spin button" labelPosition="before">
+        <SpinButton min={1} max={99} />
       </Field>
     </div>
   );
