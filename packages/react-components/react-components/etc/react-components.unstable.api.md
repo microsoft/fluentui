@@ -135,8 +135,10 @@ import { renderSelect_unstable } from '@fluentui/react-select';
 import { renderTable_unstable } from '@fluentui/react-table';
 import { renderTableBody_unstable } from '@fluentui/react-table';
 import { renderTableCell_unstable } from '@fluentui/react-table';
+import { renderTableCellActions_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
+import { renderTablePrimaryCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
@@ -144,6 +146,7 @@ import { selectClassNames } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
 import { SelectState } from '@fluentui/react-select';
+import { SortDirection } from '@fluentui/react-table';
 import { Table } from '@fluentui/react-table';
 import { TableBody } from '@fluentui/react-table';
 import { tableBodyClassName } from '@fluentui/react-table';
@@ -152,6 +155,10 @@ import { TableBodyProps } from '@fluentui/react-table';
 import { TableBodySlots } from '@fluentui/react-table';
 import { TableBodyState } from '@fluentui/react-table';
 import { TableCell } from '@fluentui/react-table';
+import { TableCellActions } from '@fluentui/react-table';
+import { TableCellActionsProps } from '@fluentui/react-table';
+import { TableCellActionsSlots } from '@fluentui/react-table';
+import { TableCellActionsState } from '@fluentui/react-table';
 import { tableCellClassName } from '@fluentui/react-table';
 import { tableCellClassNames } from '@fluentui/react-table';
 import { TableCellProps } from '@fluentui/react-table';
@@ -174,6 +181,10 @@ import { tableHeaderClassNames } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
+import { TablePrimaryCell } from '@fluentui/react-table';
+import { TablePrimaryCellProps } from '@fluentui/react-table';
+import { TablePrimaryCellSlots } from '@fluentui/react-table';
+import { TablePrimaryCellState } from '@fluentui/react-table';
 import { TableProps } from '@fluentui/react-table';
 import { TableRow } from '@fluentui/react-table';
 import { tableRowClassName } from '@fluentui/react-table';
@@ -242,12 +253,16 @@ import { useTable_unstable } from '@fluentui/react-table';
 import { useTableBody_unstable } from '@fluentui/react-table';
 import { useTableBodyStyles_unstable } from '@fluentui/react-table';
 import { useTableCell_unstable } from '@fluentui/react-table';
+import { useTableCellActions_unstable } from '@fluentui/react-table';
+import { useTableCellActionsStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableHeader_unstable } from '@fluentui/react-table';
 import { useTableHeaderCell_unstable } from '@fluentui/react-table';
 import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
+import { useTablePrimaryCell_unstable } from '@fluentui/react-table';
+import { useTablePrimaryCellStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
@@ -517,9 +532,13 @@ export { renderTableBody_unstable }
 
 export { renderTableCell_unstable }
 
+export { renderTableCellActions_unstable }
+
 export { renderTableHeader_unstable }
 
 export { renderTableHeaderCell_unstable }
+
+export { renderTablePrimaryCell_unstable }
 
 export { renderTableRow_unstable }
 
@@ -534,6 +553,8 @@ export { SelectProps }
 export { SelectSlots }
 
 export { SelectState }
+
+export { SortDirection }
 
 export { Table }
 
@@ -550,6 +571,14 @@ export { TableBodySlots }
 export { TableBodyState }
 
 export { TableCell }
+
+export { TableCellActions }
+
+export { TableCellActionsProps }
+
+export { TableCellActionsSlots }
+
+export { TableCellActionsState }
 
 export { tableCellClassName }
 
@@ -594,6 +623,14 @@ export { TableHeaderProps }
 export { TableHeaderSlots }
 
 export { TableHeaderState }
+
+export { TablePrimaryCell }
+
+export { TablePrimaryCellProps }
+
+export { TablePrimaryCellSlots }
+
+export { TablePrimaryCellState }
 
 export { TableProps }
 
@@ -731,6 +768,10 @@ export { useTableBodyStyles_unstable }
 
 export { useTableCell_unstable }
 
+export { useTableCellActions_unstable }
+
+export { useTableCellActionsStyles_unstable }
+
 export { useTableCellStyles_unstable }
 
 export { useTableContext }
@@ -742,6 +783,10 @@ export { useTableHeaderCell_unstable }
 export { useTableHeaderCellStyles_unstable }
 
 export { useTableHeaderStyles_unstable }
+
+export { useTablePrimaryCell_unstable }
+
+export { useTablePrimaryCellStyles_unstable }
 
 export { useTableRow_unstable }
 

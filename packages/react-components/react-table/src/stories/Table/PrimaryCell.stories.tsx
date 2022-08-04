@@ -1,29 +1,29 @@
 import * as React from 'react';
 import {
-  DocumentRegular,
-  VideoRegular,
   FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
   PeopleRegular,
   DocumentPdfRegular,
-  OpenRegular,
-  EditRegular,
+  VideoRegular,
+  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, makeStyles, tokens } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellActions,
+  TablePrimaryCell,
+} from '../..';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  secondary: {
-    fontSize: tokens.fontSizeBase200,
-  },
-});
 const items = [
   {
-    file: { label: 'Meeting notes', icon: <DocumentRegular fontSize={24} /> },
+    file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
     lastUpdated: { label: '7h ago', timestamp: 1 },
     lastUpdate: {
@@ -32,7 +32,7 @@ const items = [
     },
   },
   {
-    file: { label: 'Thursday presentation', icon: <FolderRegular fontSize={24} /> },
+    file: { label: 'Thursday presentation', icon: <FolderRegular /> },
     author: { label: 'Erika Mustermann', status: 'busy' },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
@@ -41,7 +41,7 @@ const items = [
     },
   },
   {
-    file: { label: 'Training recording', icon: <VideoRegular fontSize={24} /> },
+    file: { label: 'Training recording', icon: <VideoRegular /> },
     author: { label: 'John Doe', status: 'away' },
     lastUpdated: { label: 'Yesterday at 1:45 PM', timestamp: 2 },
     lastUpdate: {
@@ -50,7 +50,7 @@ const items = [
     },
   },
   {
-    file: { label: 'Purchase order', icon: <DocumentPdfRegular fontSize={24} /> },
+    file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
     author: { label: 'Jane Doe', status: 'offline' },
     lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
     lastUpdate: {
@@ -67,8 +67,7 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const WithPrimaryColumn = () => {
-  const styles = useStyles();
+export const PrimaryCell = () => {
   return (
     <Table>
       <TableHeader>
@@ -83,12 +82,12 @@ export const WithPrimaryColumn = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>
-              <div className={styles.container}>
-                <span>{item.file.label}</span>
-                <span className={styles.secondary}>Your organization</span>
-              </div>
-            </TableCell>
+            <TablePrimaryCell media={item.file.icon} main={item.file.label} secondary="Your organization">
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TablePrimaryCell>
             <TableCell
               media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
             >
