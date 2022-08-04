@@ -48,15 +48,20 @@ const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 const AvatarGroupList: React.FC<
   AvatarGroupProps & { overflowIndicator?: AvatarGroupOverflowProps['indicator'] }
 > = props => {
-  const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
-  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
+  const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
       {sizes.map(size => (
         <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
-          {inlineItems}
-          <AvatarGroupOverflow indicator={props.overflowIndicator}>{overflowItems}</AvatarGroupOverflow>
+          {inlineItems.map(name => (
+            <AvatarGroupItem key={name} name={name} />
+          ))}
+          <AvatarGroupOverflow indicator={props.overflowIndicator}>
+            {overflowItems.map(name => (
+              <AvatarGroupItem key={name} name={name} />
+            ))}
+          </AvatarGroupOverflow>
         </AvatarGroup>
       ))}
     </div>
@@ -77,6 +82,10 @@ storiesOf('AvatarGroup Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
+  .addStory('layoutStack', () => <AvatarGroupList layout="spread" />, {
+    includeHighContrast: true,
+    includeDarkMode: true,
+  })
   .addStory('overflowIndicator', () => <AvatarGroupList overflowIndicator="icon" />, {
     includeHighContrast: true,
     includeDarkMode: true,
@@ -93,12 +102,17 @@ storiesOf('AvatarGroup Converged', module)
   .addStory(
     'overflowContent',
     () => {
-      const items = names.map(name => <AvatarGroupItem key={name} name={name} />);
-      const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items });
+      const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
       return (
         <AvatarGroup>
-          {inlineItems}
-          <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>{overflowItems}</AvatarGroupOverflow>
+          {inlineItems.map(name => (
+            <AvatarGroupItem key={name} name={name} />
+          ))}
+          <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>
+            {overflowItems.map(name => (
+              <AvatarGroupItem key={name} name={name} />
+            ))}
+          </AvatarGroupOverflow>
         </AvatarGroup>
       );
     },
