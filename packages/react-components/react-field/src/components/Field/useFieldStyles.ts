@@ -18,6 +18,7 @@ const useRootStyles = makeStyles({
   base: {
     display: 'inline-grid',
     gridAutoFlow: 'row',
+    justifyItems: 'start',
   },
 
   labelBefore: {
@@ -30,7 +31,8 @@ const useRootStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
-  above: {
+  base: {
+    marginTop: tokens.spacingVerticalXXS,
     marginBottom: tokens.spacingVerticalXXS,
   },
 
@@ -38,14 +40,11 @@ const useLabelStyles = makeStyles({
     gridRowStart: '1',
     gridRowEnd: '-1',
     marginRight: tokens.spacingHorizontalM,
-    marginTop: tokens.spacingVerticalXXS,
-    marginBottom: tokens.spacingVerticalXXS,
   },
 });
 
 const useSecondaryTextStyles = makeStyles({
   base: {
-    display: 'inline-flex',
     marginTop: tokens.spacingVerticalXXS,
     color: tokens.colorNeutralForeground3,
     ...typographyStyles.caption1,
@@ -60,7 +59,7 @@ const useStatusIconStyles = makeStyles({
   base: {
     fontSize: '12px',
     lineHeight: '12px',
-    alignSelf: 'center',
+    verticalAlign: 'middle',
     marginRight: tokens.spacingHorizontalXS,
   },
 
@@ -91,7 +90,8 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
-      labelStyles[state.labelPosition],
+      labelStyles.base,
+      state.labelPosition === 'before' && labelStyles.before,
       state.label.className,
     );
   }
