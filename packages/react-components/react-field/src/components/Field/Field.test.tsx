@@ -9,7 +9,7 @@ describe('Field', () => {
     Component: Field,
     displayName: 'Field',
     requiredProps: {
-      children: <input />,
+      children: <input id="test-input" />,
     },
     disabledTests: ['component-has-static-classname-exported'], // TODO remove this
     testOptions: {

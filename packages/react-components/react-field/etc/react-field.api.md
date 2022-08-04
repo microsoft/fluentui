@@ -61,14 +61,14 @@ export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps,
     labelId: string | undefined;
 };
 
+// @public (undocumented)
+export const filterFieldSize: <SupportedSizes extends "small" | "medium" | "large">(size: FieldProps['size'], supportedSizes: SupportedSizes[]) => SupportedSizes | undefined;
+
 // @public
 export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
 
 // @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
-
-// @public (undocumented)
-export const useFieldChildProps_unstable: <SizeValues>(options: UseFieldChildPropsOptions<FieldChildProps<SizeValues>>) => FieldChildProps<SizeValues> | undefined;
+export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public (undocumented)
 export const useFieldContext: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined, T>) => T;
@@ -78,9 +78,6 @@ export const useFieldContextValues: (state: FieldState) => FieldContextValues;
 
 // @public
 export const useFieldStyles_unstable: (state: FieldState) => void;
-
-// @public (undocumented)
-export const useMergedFieldProps_unstable: <Props extends FieldChildProps<unknown>>(props: Props, options: UseFieldChildPropsOptions<Props>) => Props;
 
 // (No @packageDocumentation comment for this package)
 
