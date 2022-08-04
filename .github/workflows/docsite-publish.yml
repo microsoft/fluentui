@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       sha:
-        description: The SHA-1 hash referring to the commit to check.
+        description: The SHA-1 hash referring to the commit which will be used for publishing.
         required: true
       ref:
         description: The head branch associated with the pull request.
