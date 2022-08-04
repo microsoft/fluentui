@@ -1,5 +1,4 @@
 export { Ref } from './Ref';
-export { RefFindNode } from './RefFindNode';
-export { RefForward } from './RefForward';
+export type { RefProps } from './Ref';
 
-export * from './utils';
+export { handleRef, isRefObject } from './utils';
