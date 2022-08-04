@@ -25,7 +25,7 @@ export const Field: ForwardRefComponent<FieldProps>;
 export const fieldClassNames: SlotClassNames<FieldSlots>;
 
 // @public (undocumented)
-export type FieldContextValue = Readonly<Pick<FieldState, 'childId' | 'labelId' | 'required' | 'size' | 'status'>>;
+export type FieldContextValue = Readonly<Pick<FieldState, 'generatedChildId' | 'labelId' | 'required' | 'size' | 'status'>>;
 
 // @public (undocumented)
 export type FieldContextValues = {
@@ -41,10 +41,11 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
     required?: boolean;
     size?: 'small' | 'medium' | 'large';
     status?: 'error' | 'warning' | 'success';
+    htmlFor?: string;
 };
 
 // @public (undocumented)
-export const FieldProvider: Provider<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined> & FC<ProviderProps<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined>>;
+export const FieldProvider: Provider<Readonly<Pick<FieldState, "status" | "required" | "size" | "generatedChildId" | "labelId">> | undefined> & FC<ProviderProps<Readonly<Pick<FieldState, "status" | "required" | "size" | "generatedChildId" | "labelId">> | undefined>>;
 
 // @public (undocumented)
 export type FieldSlots = {
@@ -57,7 +58,7 @@ export type FieldSlots = {
 
 // @public
 export type FieldState = ComponentState<Required<FieldSlots>> & Pick<FieldProps, 'required' | 'status'> & Required<Pick<FieldProps, 'labelPosition' | 'size'>> & {
-    childId: string | undefined;
+    generatedChildId: string | undefined;
     labelId: string | undefined;
 };
 
@@ -71,7 +72,7 @@ export const renderField_unstable: (state: FieldState, contextValues: FieldConte
 export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
 
 // @public (undocumented)
-export const useFieldContext: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "childId" | "labelId">> | undefined, T>) => T;
+export const useFieldContext: <T>(selector: ContextSelector<Readonly<Pick<FieldState, "status" | "required" | "size" | "generatedChildId" | "labelId">> | undefined, T>) => T;
 
 // @public (undocumented)
 export const useFieldContextValues: (state: FieldState) => FieldContextValues;
