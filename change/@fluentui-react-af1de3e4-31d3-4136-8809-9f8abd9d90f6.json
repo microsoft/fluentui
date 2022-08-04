@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "task: fix precopy in react in include files from the correct folder",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
