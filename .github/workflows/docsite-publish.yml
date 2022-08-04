@@ -6,8 +6,15 @@ on:
     branches:
       - master
   workflow_dispatch:
-    branches:
-      - master
+    # both inputs are required by chromaui/action
+    # https://github.com/chromaui/action#triggering-from-workflow_dispatch
+    inputs:
+      sha:
+        description: The SHA-1 hash referring to the commit which will be used for publishing.
+        required: true
+      ref:
+        description: The head branch associated with the pull request.
+        required: true
 
 jobs:
   check:
