@@ -5,4 +5,4 @@ export {
   useSelectStyles_unstable,
   useSelect_unstable,
 } from './Select';
-export type { SelectProps, SelectSlots, SelectState } from './Select';
+export type { SelectOnChangeData, SelectProps, SelectSlots, SelectState } from './Select';

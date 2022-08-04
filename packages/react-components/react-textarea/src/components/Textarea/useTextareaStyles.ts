@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TextareaSlots, TextareaState } from './Textarea.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import type { TextareaSlots, TextareaState } from './Textarea.types';
 
 export const textareaClassNames: SlotClassNames<TextareaSlots> = {
   root: 'fui-Textarea',
@@ -42,7 +42,7 @@ const useRootStyles = makeStyles({
   interactive: {
     // This is all for the bottom focus border.
     // It's supposed to be 2px flat all the way across and match the radius of the field's corners.
-    ':after': {
+    '::after': {
       boxSizing: 'border-box',
       content: '""',
       position: 'absolute',
@@ -70,15 +70,25 @@ const useRootStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
-    ':focus-within:after': {
+    ':focus-within::after': {
       // Animation for focus IN
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
-    ':focus-within:active:after': {
+    ':focus-within:active::after': {
       // This is if the user clicks the field again while it's already focused
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
     },
@@ -130,8 +140,12 @@ const useTextareaStyles = makeStyles({
     ...shorthands.borderStyle('none'),
     ...shorthands.margin('0'),
     backgroundColor: 'transparent',
+    boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     flexGrow: 1,
+    fontFamily: tokens.fontFamilyBase,
+    height: '100%',
+    maxHeight: '100%',
 
     '::placeholder': {
       color: tokens.colorNeutralForeground4,
@@ -150,22 +164,29 @@ const useTextareaStyles = makeStyles({
   // affected by changing the padding of the root.
   small: {
     height: textareaHeight.small,
+    minHeight: '40px',
     ...shorthands.padding(
-      '0',
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-      '0',
+      tokens.spacingVerticalXS,
       `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
     ),
     ...typographyStyles.caption1,
   },
   medium: {
     height: textareaHeight.medium,
-    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
+    minHeight: '52px',
+    ...shorthands.padding(
+      tokens.spacingVerticalSNudge,
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
     ...typographyStyles.body1,
   },
   large: {
     height: textareaHeight.large,
-    ...shorthands.padding('0', `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`),
+    minHeight: '64px',
+    ...shorthands.padding(
+      tokens.spacingVerticalS,
+      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalXXS})`,
+    ),
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
   },

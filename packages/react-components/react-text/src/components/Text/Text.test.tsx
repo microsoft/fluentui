@@ -8,7 +8,6 @@ describe('Text', () => {
   isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
     testOptions: {
       'make-styles-overrides-win': {
         callCount: 1,

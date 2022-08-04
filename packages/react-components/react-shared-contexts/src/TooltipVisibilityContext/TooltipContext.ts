@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 /**
+ * @internal
  * The context provided by TooltipProvider
  */
 export type TooltipVisibilityContextValue = {
@@ -14,12 +15,20 @@ export type TooltipVisibilityContextValue = {
 };
 
 /**
+ * @internal
  * Context shared by all of the tooltips in the app
  */
+// eslint-disable-next-line @fluentui/no-context-default-value
 const TooltipVisibilityContext = React.createContext<TooltipVisibilityContextValue>({});
 
-export const { Provider: TooltipVisibilityProvider } = TooltipVisibilityContext;
+/**
+ * @internal
+ */
+export const TooltipVisibilityProvider = TooltipVisibilityContext.Provider;
 
+/**
+ * @internal
+ */
 export function useTooltipVisibility(): TooltipVisibilityContextValue {
   return React.useContext(TooltipVisibilityContext);
 }

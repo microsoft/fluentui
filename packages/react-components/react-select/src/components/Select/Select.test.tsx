@@ -7,7 +7,6 @@ describe('Select', () => {
   isConformant({
     Component: Select,
     displayName: 'Select',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'select',
   });
 
@@ -33,6 +32,18 @@ describe('Select', () => {
       </Select>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('handles the defaultValue attribute', () => {
+    const { getByTestId } = render(
+      <Select defaultValue="B">
+        <option>A</option>
+        <option data-testid="option-b">B</option>
+        <option>C</option>
+      </Select>,
+    );
+
+    expect((getByTestId('option-b') as HTMLOptionElement).selected).toBeTruthy();
   });
 
   it('handles the disabled attribute', () => {

@@ -1,6 +1,6 @@
 # @fluentui/react-button
 
-**Button components for [Fluent UI React](https://aka.ms/fluentui-storybook)**
+**Button components for [Fluent UI React](https://react.fluentui.dev/)**
 
 - Buttons enable users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 - CompoundButtons are buttons that can have secondary content that adds extra information to the user.
@@ -82,7 +82,7 @@ import { Button, CompoundButton, MenuButton, SplitButton, ToggleButton } from '@
 <ToggleButton checked={false}>Toggle volume</ToggleButton>
 ```
 
-See [Fluent UI Storybook](https://aka.ms/fluentui-storybook) for more detailed usage examples.
+See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage examples.
 
 Alternatively, run Storybook locally with:
 

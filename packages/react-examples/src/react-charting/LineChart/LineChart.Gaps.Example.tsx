@@ -45,6 +45,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
             strokeDasharray: '5',
             strokeLinecap: 'butt',
             strokeWidth: '2',
+            lineBorderWidth: '4',
           },
           data: [
             {
@@ -236,7 +237,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
 
     return (
       <>
-        <label htmlFor="changeWidth_Gaps">change Width:</label>
+        <label htmlFor="changeWidth_Gaps">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -246,7 +247,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="ChangeHeight_Gaps">change Height:</label>
+        <label htmlFor="ChangeHeight_Gaps">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

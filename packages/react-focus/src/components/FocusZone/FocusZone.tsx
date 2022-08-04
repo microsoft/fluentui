@@ -21,7 +21,6 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  getWindow,
   findScrollableParent,
   createMergedRef,
 } from '@fluentui/utilities';
@@ -147,8 +146,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _shouldRaiseClicksOnEnter: boolean;
   private _shouldRaiseClicksOnSpace: boolean;
 
-  private _windowElement: Window | undefined;
-
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
     return _outerZones.size;
@@ -201,7 +198,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      this._windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -215,9 +211,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._isInnerZone) {
         _outerZones.add(this);
 
-        if (this._windowElement && _outerZones.size === 1) {
-          this._windowElement.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
-        }
+        this._root.current && this._root.current.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
       }
 
       this._root.current && this._root.current.addEventListener('blur', this._onBlur, true);
@@ -242,6 +236,18 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = this._getDocument();
+
+    // If either _activeElement or _defaultFocusElement are no longer contained by _root,
+    // reset those variables (and update tab indexes) to avoid memory leaks
+    if (
+      (this._activeElement && !elementContains(this._root.current, this._activeElement, ALLOW_VIRTUAL_ELEMENTS)) ||
+      (this._defaultFocusElement &&
+        !elementContains(this._root.current, this._defaultFocusElement, ALLOW_VIRTUAL_ELEMENTS))
+    ) {
+      this._activeElement = null;
+      this._defaultFocusElement = null;
+      this._updateTabIndexes();
+    }
 
     if (
       !this.props.preventFocusRestoration &&
@@ -270,10 +276,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
-      // If this is the last outer zone, remove the keydown listener.
-      if (this._windowElement && _outerZones.size === 0) {
-        this._windowElement.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
-      }
+      this._root.current && this._root.current.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
     }
 
     if (this._root.current) {
@@ -419,6 +422,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    */
   public setFocusAlignment(point: Point): void {
     this._focusAlignment = point;
+  }
+
+  public get defaultFocusElement() {
+    return this._defaultFocusElement;
+  }
+
+  public get activeElement() {
+    return this._activeElement;
   }
 
   private _evaluateFocusBeforeRender(): void {

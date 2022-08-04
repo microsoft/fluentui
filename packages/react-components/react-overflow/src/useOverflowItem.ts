@@ -3,6 +3,7 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useOverflowContext } from './overflowContext';
 
 /**
+ * @internal
  * Registers an overflow item
  * @param id - unique identifier for the item used by the overflow manager
  * @param priority - higher priority means the item overflows later

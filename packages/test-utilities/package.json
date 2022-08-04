@@ -2,8 +2,8 @@
   "name": "@fluentui/test-utilities",
   "version": "8.2.1",
   "description": "Utilities used when testing components.",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

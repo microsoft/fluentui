@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Fri, 13 May 2022 07:45:35 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Aug 2022 07:44:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.4)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.3..@fluentui/react-hooks_v8.6.4)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.10.1 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+
+## [8.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.3)
+
+Thu, 28 Jul 2022 07:41:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.2..@fluentui/react-hooks_v8.6.3)
+
+### Patches
+
+- task: useAsync: remove stored async when useEffect return is called ([PR #24093](https://github.com/microsoft/fluentui/pull/24093) by mgodbolt@microsoft.com)
+
+## [8.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.2)
+
+Tue, 26 Jul 2022 07:39:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.1..@fluentui/react-hooks_v8.6.2)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.10.0 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.1)
+
+Tue, 12 Jul 2022 07:41:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.0..@fluentui/react-hooks_v8.6.1)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.9.0 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.0)
+
+Mon, 13 Jun 2022 07:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.5.5..@fluentui/react-hooks_v8.6.0)
+
+### Minor changes
+
+- Add useEventCallback ([PR #22500](https://github.com/microsoft/fluentui/pull/22500) by elcraig@microsoft.com)
 
 ## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.5.5)
 

@@ -46,6 +46,9 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
           { x: new Date('2018/01/29'), y: 90 },
         ],
         legend: 'Week',
+        lineOptions: {
+          lineBorderWidth: '4',
+        },
         color: DefaultPalette.blue,
       },
     ];
@@ -60,7 +63,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
     };
     return (
       <>
-        <label htmlFor="changeWidth_Styled">change Width:</label>
+        <label htmlFor="changeWidth_Styled">Change Width:</label>
         <input
           type="range"
           value={this.state.width}
@@ -70,7 +73,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state.width}`}
         />
-        <label htmlFor="changeHeight_Styled">change Height:</label>
+        <label htmlFor="changeHeight_Styled">Change Height:</label>
         <input
           type="range"
           value={this.state.height}

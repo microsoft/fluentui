@@ -34,7 +34,6 @@ const useRootStyles = makeStyles({
     position: 'relative',
     display: 'inline-grid',
     gridTemplateAreas: '"slider"',
-    userSelect: 'none',
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
@@ -131,7 +130,7 @@ const useRailStyles = makeStyles({
     outlineWidth: '1px',
     outlineStyle: 'solid',
     outlineColor: tokens.colorTransparentStroke,
-    ':before': {
+    '::before': {
       content: "''",
       position: 'absolute',
       // Repeating gradient represents the steps if provided
@@ -158,7 +157,7 @@ const useRailStyles = makeStyles({
   horizontal: {
     width: '100%',
     height: `var(${railSizeVar})`,
-    ':before': {
+    '::before': {
       left: '-1px',
       right: '-1px',
       height: `var(${railSizeVar})`,
@@ -168,7 +167,7 @@ const useRailStyles = makeStyles({
   vertical: {
     width: `var(${railSizeVar})`,
     height: '100%',
-    ':before': {
+    '::before': {
       width: `var(${railSizeVar})`,
       top: '-1px',
       bottom: '1px',
@@ -191,7 +190,7 @@ const useThumbStyles = makeStyles({
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     transform: 'translateX(-50%)',
-    ':before': {
+    '::before': {
       position: 'absolute',
       top: '0px',
       left: '0px',
@@ -204,7 +203,7 @@ const useThumbStyles = makeStyles({
     },
   },
   disabled: {
-    ':before': {
+    '::before': {
       ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralForegroundDisabled),
     },
   },

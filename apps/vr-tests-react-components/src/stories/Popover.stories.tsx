@@ -1,51 +1,62 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Popover, PopoverTrigger, PopoverSurface, PopoverProps } from '@fluentui/react-popover';
+import { Popover, PopoverSurface } from '@fluentui/react-popover';
+import { tokens } from '@fluentui/react-theme';
+import { TestWrapperDecorator } from '../utilities/index';
 
-const ExampleContent = () => {
+const PopoverPositioning: React.FC = () => {
+  const positions = [
+    ['above', 'start'],
+    ['above', 'center'],
+    ['above', 'end'],
+    ['below', 'start'],
+    ['below', 'center'],
+    ['below', 'end'],
+    ['before', 'top'],
+    ['before', 'center'],
+    ['before', 'bottom'],
+    ['after', 'top'],
+    ['after', 'center'],
+    ['after', 'bottom'],
+  ] as const;
+
+  const [target, setTarget] = React.useState<HTMLDivElement | null>(null);
+  const [open, setOpen] = React.useState<boolean>(false);
+
   return (
-    <div>
-      <h3>Popover content</h3>
+    <div style={{ display: 'flex', padding: '100px 150px' }}>
+      <div
+        ref={setTarget}
+        className="target"
+        style={{ width: '400px', height: '300px', border: `1px solid ${tokens.colorNeutralStroke1}` }}
+      >
+        {positions.map(([position, align]) => (
+          <Popover withArrow open={open} positioning={{ position, align, target }} key={position + '' + align}>
+            <PopoverSurface>
+              <div>{position + ' ' + align}</div>
+            </PopoverSurface>
+          </Popover>
+        ))}
 
-      <div>This is some popover content</div>
+        <button id="show-popovers" onClick={() => setOpen(true)}>
+          Show popovers
+        </button>
+      </div>
     </div>
   );
 };
 
-const positions: NonNullable<PopoverProps['positioning']>[] = [
-  'above',
-  'above-end',
-  'above-start',
-  'below',
-  'below-end',
-  'below-start',
-  'before',
-  'before-bottom',
-  'before-top',
-  'after',
-  'after-bottom',
-  'after-top',
-];
-
-const stories = storiesOf('Popover Converged - positioning', module)
-  .addDecorator(story => <Screener>{story()}</Screener>)
-  .addDecorator(story => <div style={{ position: 'fixed', top: '50%', left: '50%' }}>{story()}</div>);
-
-positions.forEach(position => {
-  stories.addStory(
-    position as string,
-    () => (
-      <Popover withArrow open positioning={position}>
-        <PopoverTrigger>
-          <button>Toggle menu</button>
-        </PopoverTrigger>
-
-        <PopoverSurface>
-          <ExampleContent />
-        </PopoverSurface>
-      </Popover>
-    ),
-    { includeRtl: true },
-  );
-});
+storiesOf('Popover Converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .click('#show-popovers')
+        .snapshot('positioned popovers', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });

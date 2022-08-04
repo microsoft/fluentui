@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -66,7 +68,7 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 // @public (undocumented)
 export type AccordionHeaderSlots = {
     root: Slot<'div', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    button: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     expandIcon: Slot<'span'>;
     icon?: Slot<'div'>;
 };

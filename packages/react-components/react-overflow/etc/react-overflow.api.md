@@ -5,7 +5,6 @@
 ```ts
 
 import type { ObserveOptions } from '@fluentui/priority-overflow';
-import type { OnUpdateItemVisibility } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
 import { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
@@ -42,18 +41,19 @@ export type OverflowProps = Partial<Pick<ObserveOptions, 'overflowAxis' | 'overf
 };
 
 // @public (undocumented)
-export const updateVisibilityAttribute: OnUpdateItemVisibility;
-
-// @public (undocumented)
 export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 
 // @public (undocumented)
 export function useIsOverflowItemVisible(id: string): boolean;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "useOverflowContainer" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "UseOverflowContainerReturn" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
     containerRef: React_2.RefObject<TElement>;
     registerItem: OverflowContextValue['registerItem'];
@@ -63,7 +63,9 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
 // @public (undocumented)
 export const useOverflowCount: () => number;
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "useOverflowItem" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement>;
 
 // @public (undocumented)

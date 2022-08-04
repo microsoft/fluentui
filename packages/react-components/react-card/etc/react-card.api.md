@@ -20,6 +20,7 @@ export const cardClassNames: SlotClassNames<CardSlots>;
 // @public
 export const cardCSSVars: {
     cardSizeVar: string;
+    cardBorderRadiusVar: string;
 };
 
 // @public
@@ -47,13 +48,17 @@ export const CardHeader: ForwardRefComponent<CardHeaderProps>;
 export const cardHeaderClassNames: SlotClassNames<CardHeaderSlots>;
 
 // @public
+export const cardHeaderCSSVars: {
+    cardHeaderGapVar: string;
+};
+
+// @public
 export type CardHeaderProps = ComponentProps<Partial<CardHeaderSlots>>;
 
 // @public
 export type CardHeaderSlots = {
     root: Slot<'div'>;
-    image: Slot<'div'>;
-    content?: Slot<'div'>;
+    image: Slot<'div', 'img'>;
     header: Slot<'span'>;
     description: Slot<'span'>;
     action?: Slot<'div'>;
@@ -74,7 +79,7 @@ export type CardPreviewProps = ComponentProps<CardPreviewSlots>;
 // @public
 export type CardPreviewSlots = {
     root: Slot<'div'>;
-    logo?: Slot<'div'>;
+    logo?: Slot<'div', 'img'>;
 };
 
 // @public

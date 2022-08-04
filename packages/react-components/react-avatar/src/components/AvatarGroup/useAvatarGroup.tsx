@@ -14,7 +14,7 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
  * @param ref - reference to root HTMLElement of AvatarGroup
  */
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
-  const { children, layout = 'spread', maxAvatars = 5, size = 32 } = props;
+  const { children, layout = 'spread', maxAvatars = 5, size = defaultAvatarGroupSize } = props;
   const { overflowIndicator = size < 24 ? 'icon' : 'count' } = props;
   const childrenArray = React.Children.toArray(children);
 
@@ -53,26 +53,26 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
     required: true,
     defaultProps: {
       children: overflowButtonChildren,
+      type: 'button',
     },
   });
 
-  const overflowSurface = resolveShorthand(props.overflowSurface, {
+  const overflowContent = resolveShorthand(props.overflowContent, {
     required: true,
     defaultProps: {
       'aria-label': 'Overflow',
-    },
-  });
-
-  const overflowList = resolveShorthand(props.overflowList, {
-    required: true,
-    defaultProps: {
       children: overflowChildren,
       role: 'list',
       tabIndex: 0,
     },
   });
 
+  const overflowSurface = resolveShorthand(props.overflowSurface, {
+    required: true,
+  });
+
   return {
+    nonOverflowAvatarsCount: rootChildren.length,
     hasOverflow: !!overflowChildren,
     layout,
     overflowIndicator,
@@ -81,14 +81,16 @@ export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<
 
     components: {
       root: 'div',
-      overflowSurface: PopoverSurface,
-      overflowList: 'ul',
+      overflowContent: 'div',
       overflowButton: 'button',
+      overflowSurface: PopoverSurface,
     },
 
     root,
     overflowButton,
+    overflowContent,
     overflowSurface,
-    overflowList,
   };
 };
+
+export const defaultAvatarGroupSize = 32;

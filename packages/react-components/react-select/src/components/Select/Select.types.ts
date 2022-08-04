@@ -25,14 +25,6 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
   appearance?: 'outline' | 'underline' | 'filled-darker' | 'filled-lighter';
 
   /**
-   * If true, the Select will have an inline `display`, allowing it to be inline with other content.
-   * By default, Select has block layout.
-   *
-   * @default false
-   */
-  inline?: boolean;
-
-  /**
    * Called when the user changes the select element's value by selecting an option.
    */
   onChange?: (ev: React.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
@@ -45,7 +37,7 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
   size?: 'small' | 'medium' | 'large';
 };
 
-export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'inline' | 'size'>>;
+export type SelectState = ComponentState<SelectSlots> & Required<Pick<SelectProps, 'appearance' | 'size'>>;
 
 /**
  * Data passed to the `onChange` callback when a new option is selected.

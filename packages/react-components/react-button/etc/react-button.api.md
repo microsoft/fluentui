@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -30,7 +32,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
 
 // @public (undocumented)
 export type ButtonSlots = {
-    root: NonNullable<Slot<ARIAButtonSlotProps>>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
     icon?: Slot<'span'>;
 };
 

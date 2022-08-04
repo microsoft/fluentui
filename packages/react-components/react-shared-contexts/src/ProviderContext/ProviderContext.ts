@@ -8,12 +8,19 @@ export type ProviderContextValue = {
   targetDocument?: Document;
 };
 
+/**
+ * @internal
+ */
+// eslint-disable-next-line @fluentui/no-context-default-value
 const ProviderContext = React.createContext<ProviderContextValue>({
   targetDocument: typeof document === 'object' ? document : undefined,
   dir: 'ltr',
 });
 
-export const { Provider } = ProviderContext;
+/**
+ * @internal
+ */
+export const Provider = ProviderContext.Provider;
 
 export function useFluent(): ProviderContextValue {
   return React.useContext(ProviderContext);

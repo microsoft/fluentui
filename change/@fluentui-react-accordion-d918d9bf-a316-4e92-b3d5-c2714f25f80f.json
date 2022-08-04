@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: updates AccordionHeader to follow design spec tokens",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

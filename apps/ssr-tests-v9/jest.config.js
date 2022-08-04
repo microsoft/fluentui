@@ -15,6 +15,7 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
+  testEnvironment: 'node',
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],
 };

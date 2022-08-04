@@ -76,6 +76,9 @@ export interface ObserveOptions {
   onUpdateOverflow: OnUpdateOverflow;
 }
 
+/**
+ * @internal
+ */
 export interface OverflowManager {
   /**
    * Starts observing the container and managing the overflow state

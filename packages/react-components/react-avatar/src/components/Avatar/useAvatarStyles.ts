@@ -99,7 +99,11 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
 
-    ':before': {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+    },
+
+    '::before': {
       content: '""',
       position: 'absolute',
       top: 0,
@@ -111,38 +115,43 @@ const useStyles = makeStyles({
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastEase}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 
   ring: {
-    ':before': {
+    '::before': {
       ...shorthands.borderColor(tokens.colorBrandBackgroundStatic),
       ...shorthands.borderStyle('solid'),
     },
   },
   ringThick: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThick})`),
       ...shorthands.borderWidth(tokens.strokeWidthThick),
     },
   },
   ringThicker: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThicker})`),
       ...shorthands.borderWidth(tokens.strokeWidthThicker),
     },
   },
   ringThickest: {
-    ':before': {
+    '::before': {
       ...shorthands.margin(`calc(-2 * ${tokens.strokeWidthThickest})`),
       ...shorthands.borderWidth(tokens.strokeWidthThickest),
     },
   },
 
-  shadow4: { ':before': { boxShadow: tokens.shadow4 } },
-  shadow8: { ':before': { boxShadow: tokens.shadow8 } },
-  shadow16: { ':before': { boxShadow: tokens.shadow16 } },
-  shadow28: { ':before': { boxShadow: tokens.shadow28 } },
+  shadow4: { '::before': { boxShadow: tokens.shadow4 } },
+  shadow8: { '::before': { boxShadow: tokens.shadow8 } },
+  shadow16: { '::before': { boxShadow: tokens.shadow16 } },
+  shadow28: { '::before': { boxShadow: tokens.shadow28 } },
 
   inactive: {
     opacity: '0.8',
@@ -152,13 +161,23 @@ const useStyles = makeStyles({
     transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.faster}`,
     transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
 
-    ':before': {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.01ms',
+      transitionDelay: '0.01ms',
+    },
+
+    '::before': {
       ...shorthands.margin(0),
       opacity: 0,
 
       transitionProperty: 'margin, opacity',
       transitionDuration: `${animationTiming.ultraSlow}, ${animationTiming.slower}`,
       transitionDelay: `${animations.fastOutSlowInMin}, ${animations.nullEasing}`,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
   },
 
