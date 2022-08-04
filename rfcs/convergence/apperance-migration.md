@@ -38,6 +38,7 @@ Partners could create a new composition component and modify the props in their 
 - Composition component apperance prop wouldn't match our Fluent V9 documentation
 - Wouldn’t work in iframes
 - Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
+- Composition approach is currently marked as unstable in v9
 
 ### Global css selector
 
