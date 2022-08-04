@@ -86,11 +86,11 @@ The root level component serves as an interface for interaction with all possibl
 type DialogSlots = {
   /**
    * Dimmed background of dialog.
-   * The default overlay is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default overlay.
-   * The overlay should have `aria-hidden="true"`.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
    */
-  overlay?: Slot<'div'>;
+  backdrop?: Slot<'div'>;
   /**
    * The root element of the Dialog right after Portal.
    */
@@ -131,7 +131,7 @@ type DialogOpenChangeData = {
   /**
    * The event source of the callback invocation
    */
-  type: 'escapeKeyDown' | 'overlayClick' | 'triggerClick';
+  type: 'escapeKeyDown' | 'backdropClick' | 'triggerClick';
   /**
    * The next value for the internal state of the dialog
    */
@@ -238,7 +238,7 @@ const dialog = <Dialog>
 <!-- expected DOM output  -->
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div aria-modal="true" role="dialog" class="fui-dialog-content">This is as basic as it gets</div>
 ```
 
@@ -271,7 +271,7 @@ const dialog = <Dialog type="alert">
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
@@ -333,7 +333,7 @@ const CustomDialog = () => {
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"

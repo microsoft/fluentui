@@ -78,7 +78,7 @@ export type DialogOpenChangeData = {
     open: boolean;
     event: KeyboardEvent;
 } | {
-    type: 'overlayClick';
+    type: 'backdropClick';
     open: boolean;
     event: React_2.MouseEvent;
 } | {
@@ -101,7 +101,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 
 // @public (undocumented)
 export type DialogSlots = {
-    overlay?: Slot<'div'>;
+    backdrop?: Slot<'div'>;
 };
 
 // @public (undocumented)
