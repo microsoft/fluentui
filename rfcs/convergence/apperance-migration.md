@@ -24,6 +24,8 @@ Partners should also easily revert the decision to the default appearance value 
 
 ## Detailed Design or Proposal
 
+### Wrap the library components on application side
+
 ### Composed component
 
 Partners could create a new composition component and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composition component and have the default component without the appearance prop renders as `filled-darker`.
