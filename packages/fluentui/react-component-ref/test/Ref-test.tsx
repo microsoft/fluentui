@@ -109,6 +109,25 @@ describe('Ref', () => {
       expect(updatedRef).toHaveBeenCalled();
     });
 
+    it('resolves once on node/ref change', () => {
+      const initialRef = jest.fn();
+      const updatedRef = jest.fn();
+      const wrapper = mount(
+        <Ref innerRef={initialRef}>
+          <div />
+        </Ref>,
+      );
+
+      expect(initialRef).toHaveBeenCalledTimes(1);
+      expect(updatedRef).not.toHaveBeenCalled();
+
+      jest.resetAllMocks();
+      wrapper.setProps({ children: <span />, innerRef: updatedRef });
+
+      expect(initialRef).not.toHaveBeenCalled();
+      expect(updatedRef).toHaveBeenCalledTimes(1);
+    });
+
     it('always returns "null" for react-test-renderer', () => {
       const innerRef = jest.fn();
       const ref = jest.fn();

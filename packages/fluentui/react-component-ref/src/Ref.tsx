@@ -114,12 +114,14 @@ export class Ref extends React.Component<RefProps, RefState> {
         }
       }
 
-      if (this.prevNode !== currentNode) {
+      const isNodeChanged = this.prevNode !== currentNode;
+      const isRefChanged = prevProps.innerRef !== this.props.innerRef;
+
+      if (isNodeChanged) {
         this.prevNode = currentNode;
-        handleRef(this.props.innerRef, currentNode);
       }
 
-      if (prevProps.innerRef !== this.props.innerRef) {
+      if (isNodeChanged || isRefChanged) {
         handleRef(this.props.innerRef, currentNode);
       }
     }
