@@ -36,7 +36,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(
       children,
-      useARIAButtonProps(typeof child?.type === 'string' ? (child.type as 'div') : 'div', {
+      useARIAButtonProps(child?.type === 'button' || child?.type === 'a' ? child.type : 'div', {
         ...child?.props,
         'aria-haspopup': action === 'close' ? undefined : 'dialog',
         ref: child?.ref as React.Ref<never>,
