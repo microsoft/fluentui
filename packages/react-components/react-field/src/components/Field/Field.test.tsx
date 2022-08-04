@@ -11,7 +11,6 @@ describe('Field', () => {
     requiredProps: {
       children: <input id="test-input" />,
     },
-    disabledTests: ['component-has-static-classname-exported'], // TODO remove this
     testOptions: {
       'has-static-classnames': [
         {
