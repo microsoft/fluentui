@@ -171,6 +171,10 @@ A primary column is generally the first column of the table, however there is no
 column has some design differences and supports secondary content which can contain extra instructions or
 description.
 
+### Column actions
+
+Each cell can support optional buttons/actions that only appear when focused or the row is hovered.
+
 #### Cell media
 
 A cell can also include a media item such as an icon or an avatar positioned at the start of the cell.
@@ -265,6 +269,10 @@ interface TableRowProps {
 interface TableCellProps {
   root: Slot<'td' | 'div'>;
   media: Slot<'span'>;
+}
+
+interface TableCellActionsProps {
+  root: Slot<'div'>;
 }
 ```
 
@@ -443,6 +451,35 @@ interface DataGridCellProps extends DataGridCellProps {
           <span>Secondary content</span>
         </div>
         Children
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Column actions
+
+```tsx
+<Table>
+  <TableBody>
+    <TableRow>
+      <TableCell media={<FileIcon />}>
+        Content
+        <TableCellActions><Button icon={<FileIcon />} /></TableCellActions>
+      </TablePrimaryCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```
+
+```html
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <span aria-hidden="true">icon</span>
+        Content
+        <div><button><span>FileIcon</span></button></div>
       </td>
     </tr>
   </tbody>
