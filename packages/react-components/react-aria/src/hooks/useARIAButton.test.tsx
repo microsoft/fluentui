@@ -1,5 +1,16 @@
-import { useARIAButtonShorthand, useARIAButtonProps, ARIAButtonProps } from './useARIAButton';
+import * as React from 'react';
+import { useARIAButtonShorthand, useARIAButtonProps, ARIAButtonProps, ARIAButtonSlotProps } from './useARIAButton';
 import { renderHook } from '@testing-library/react-hooks';
+import { fireEvent, render } from '@testing-library/react';
+import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
+
+const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
+  const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
+    components: { root: 'button' },
+    root: useARIAButtonShorthand(props, { required: true }),
+  });
+  return <slots.root {...slotProps.root} />;
+};
 
 describe('useARIAButton', () => {
   describe('<button>', () => {
@@ -21,7 +32,7 @@ describe('useARIAButton', () => {
       expect(current).toEqual(
         expect.objectContaining<ARIAButtonProps>({
           'aria-disabled': undefined,
-          onClick: handle,
+          onClick: expect.any(Function),
           onKeyDown: handle,
           onKeyUp: handle,
         }),
@@ -81,7 +92,7 @@ describe('useARIAButton', () => {
       expect(current).not.toHaveProperty('disabledFocusable');
       expect(current).toEqual(
         expect.objectContaining<ARIAButtonProps>({
-          'aria-disabled': false,
+          'aria-disabled': undefined,
           role: 'button',
           tabIndex: 0,
           onClick: expect.any(Function),
@@ -139,6 +150,12 @@ describe('useARIAButton', () => {
         }),
       );
     });
+  });
+  it.each(['button', 'div', 'a'] as const)('should not be possible to click %p when aria-disabled is true', type => {
+    const handleClick = jest.fn();
+    const { getByRole } = render(<TestButton as={type} onClick={handleClick} aria-disabled />);
+    fireEvent.click(getByRole('button'));
+    expect(handleClick).toBeCalledTimes(0);
   });
 });
 

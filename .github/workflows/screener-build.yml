@@ -118,16 +118,20 @@ jobs:
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
-
+        
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
@@ -148,6 +152,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
 
       - uses: actions/setup-node@v3
         with:
@@ -182,9 +187,13 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
@@ -237,9 +246,13 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build

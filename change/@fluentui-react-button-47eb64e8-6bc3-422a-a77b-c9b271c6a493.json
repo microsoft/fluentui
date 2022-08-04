@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Updates Button to use useARIAButton over useARIAButtonShorthand",
-  "packageName": "@fluentui/react-button",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

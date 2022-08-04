@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 14 Jul 2022 21:21:05 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:04:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.1.0)
+
+Wed, 03 Aug 2022 16:04:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.0.3..@fluentui/react-tabster_v9.1.0)
+
+### Minor changes
+
+- feat: Adds `ignoreDefaultKeydown` option to `useArrowNavigationGroup` ([PR #24101](https://github.com/microsoft/fluentui/pull/24101) by lingfangao@hotmail.com)
+- feat: create `:focus-visible` and `:focus-within` polyfills ([PR #24154](https://github.com/microsoft/fluentui/pull/24154) by lingfangao@hotmail.com)
+
+### Patches
+
+- chore: Bump tabster to 2.1.0 ([PR #23811](https://github.com/microsoft/fluentui/pull/23811) by lingfangao@hotmail.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.0.3)
 
