@@ -78,7 +78,7 @@ export type DialogOpenChangeData = {
     open: boolean;
     event: KeyboardEvent;
 } | {
-    type: 'overlayClick';
+    type: 'backdropClick';
     open: boolean;
     event: React_2.MouseEvent;
 } | {
@@ -101,7 +101,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 
 // @public (undocumented)
 export type DialogSlots = {
-    overlay?: Slot<'div'>;
+    backdrop?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -149,10 +149,10 @@ export type DialogTitleState = ComponentState<DialogTitleSlots>;
 export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
 
 // @public (undocumented)
-export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+export type DialogTriggerAction = 'open' | 'close';
 
 // @public
-export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>> & {
+export type DialogTriggerChildProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'> & {
     ref?: React_2.Ref<never>;
 };
 
@@ -179,7 +179,7 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSX.Element;
+export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
 
 // @public
 export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;

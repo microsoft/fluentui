@@ -1,15 +1,15 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { DialogContextValue } from '../../contexts/dialogContext';
+import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSlots = {
   /**
    * Dimmed background of dialog.
-   * The default overlay is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default overlay.
-   * The overlay should have `aria-hidden="true"`.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
    */
-  overlay?: Slot<'div'>;
+  backdrop?: Slot<'div'>;
 };
 
 export type DialogOpenChangeEvent = React.KeyboardEvent | React.MouseEvent | KeyboardEvent;
@@ -20,13 +20,18 @@ export type DialogOpenChangeData =
    * document escape keydown defers from internal escape keydown events because of the synthetic event API
    */
   | { type: 'documentEscapeKeyDown'; open: boolean; event: KeyboardEvent }
-  | { type: 'overlayClick'; open: boolean; event: React.MouseEvent }
+  | { type: 'backdropClick'; open: boolean; event: React.MouseEvent }
   | { type: 'triggerClick'; open: boolean; event: React.MouseEvent };
 
 export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 
 export type DialogContextValues = {
   dialog: DialogContextValue;
+  /**
+   * dialogSurface context is provided by Dialog as false
+   * to ensure components inside Dialog but outside DialogSurface will consume this as false
+   */
+  dialogSurface: DialogSurfaceContextValue;
 };
 
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {

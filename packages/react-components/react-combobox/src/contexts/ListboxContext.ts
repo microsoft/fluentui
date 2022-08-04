@@ -9,6 +9,7 @@ export type ListboxContextValue = Pick<
   'activeOption' | 'multiselect' | 'onOptionClick' | 'registerOption' | 'selectedOptions'
 >;
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const ListboxContext = createContext<ListboxContextValue>({
   activeOption: undefined,
   multiselect: false,

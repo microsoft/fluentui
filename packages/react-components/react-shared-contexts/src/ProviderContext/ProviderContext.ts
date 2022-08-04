@@ -11,6 +11,7 @@ export type ProviderContextValue = {
 /**
  * @internal
  */
+// eslint-disable-next-line @fluentui/no-context-default-value
 const ProviderContext = React.createContext<ProviderContextValue>({
   targetDocument: typeof document === 'object' ? document : undefined,
   dir: 'ltr',

@@ -17,10 +17,11 @@ import {
 import { brandRamp } from './getOverridableTokenBrandColors';
 import { Brands, BrandVariants } from '@fluentui/react-theme';
 import { CircleFilled, WarningRegular } from '@fluentui/react-icons';
-
 import { usageList } from './UsageList';
 import { ColorOverrideBrands } from './ColorTokens';
 import { ContrastRatioList } from './getAccessibilityChecker';
+import { useContextSelector } from '@fluentui/react-context-selector';
+import { AppContext } from '../../ThemeDesigner';
 
 export interface ColorTokensListProps {
   brand: BrandVariants;
@@ -55,7 +56,7 @@ const useStyles = makeStyles({
     paddingLeft: '5px',
     paddingRight: '5px',
     display: 'grid',
-    gridTemplateColumns: '10px 1fr 1fr 1.5fr',
+    gridTemplateColumns: '15px 1fr 1fr 1.5fr',
     gridTemplateRows: 'auto auto',
     alignItems: 'center',
     paddingTop: tokens.spacingVerticalXL,
@@ -75,13 +76,17 @@ const useStyles = makeStyles({
 const ColorTokenRow: React.FunctionComponent<ColorTokenRowProps> = props => {
   const styles = useStyles();
   const { brand, brandValue, brandValueString, selected } = props;
+
+  const name = useContextSelector(AppContext, ctx => ctx.name);
   return (
     <MenuItemRadio
       icon={<CircleFilled primaryFill={brand[brandValue]} />}
       name={brandValueString}
       value={brandValueString}
     >
-      <span className={selected ? styles.selected : ''}>Untitled {brandValueString}</span>
+      <span className={selected ? styles.selected : ''}>
+        {name} {brandValueString}
+      </span>
     </MenuItemRadio>
   );
 };
@@ -91,6 +96,8 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
 
   const { brand, brandColors, colorOverride, coveredTokens, failList, onNewOverride } = props;
   const newColors: ColorOverrideBrands = { ...brandColors, ...colorOverride };
+
+  const name = useContextSelector(AppContext, ctx => ctx.name);
 
   return (
     <div>
@@ -119,7 +126,7 @@ export const ColorTokensList: React.FunctionComponent<ColorTokensListProps> = pr
                 <Menu>
                   <MenuTrigger>
                     <MenuButton shape="circular" icon={<CircleFilled primaryFill={brand[colorValue]} />}>
-                      Untitled {colorValue}
+                      {name} {colorValue}
                     </MenuButton>
                   </MenuTrigger>
                   <MenuPopover>

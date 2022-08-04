@@ -1,0 +1,191 @@
+name: Screener run
+
+on:
+  workflow_run:
+    workflows:
+      - Screener build
+    types:
+      - completed
+
+env:
+  AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
+
+jobs:
+  screener-react-northstar:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-northstar
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{github.event.workflow_run.head_branch}}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Download environment variables artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: env-artifact
+
+      - name: Download N* storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: northstar-artifact
+          # downloads artifact to where it would be 'built'
+          path: packages/fluentui/docs/dist
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Upload N* VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
+      - name: Start @fluentui/react-northstar VR Test
+        run: yarn workspace @fluentui/docs vr:test
+        env:
+          SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+          SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+          SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
+  screener-react:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{github.event.workflow_run.head_branch}}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Download environment variables artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: env-artifact
+
+      - name: Download screener storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: screener-artifact
+          path: apps/vr-tests/dist/storybook
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Upload @fluentui/react VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
+      - name: Start @fluentui/react VR Test
+        run: yarn workspace @fluentui/vr-tests screener
+        env:
+          SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+          SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+          SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}
+
+  screener-react-components:
+    runs-on: 'ubuntu-latest'
+
+    name: Screener @fluentui/react-components
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{github.event.workflow_run.head_branch}}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Download environment variables artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: env-artifact
+
+      - name: Download VNext storybook artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: screener-build.yml
+          workflow_conclusion: success
+          name: vnext-artifact
+          path: apps/vr-tests-react-components/dist/storybook
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Upload @fluentui/react-components VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
+      - name: Start @fluentui/react-components VR Test
+        run: yarn workspace @fluentui/vr-tests-react-components screener
+        env:
+          SCREENER_ENDPOINT: ${{secrets.SCREENER_ENDPOINT}}
+          SCREENER_PROXY_ENDPOINT: ${{secrets.SCREENER_PROXY_ENDPOINT}}
+          SCREENER_API_KEY: ${{secrets.SCREENER_API_KEY}}

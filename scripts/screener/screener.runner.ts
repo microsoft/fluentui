@@ -81,11 +81,15 @@ async function scheduleScreenerBuild(
 }
 
 async function notifyIntegration(payload: ScreenerProxyPayload) {
-  await fetch(environment.screener.proxyUri, {
+  const fetchResponse = await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
+
+  if (fetchResponse.status !== 200) {
+    throw new Error(`Notify integration failed: ${fetchResponse.status}`);
+  }
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
@@ -107,7 +111,13 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
-  await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
+  await notifyIntegration({
+    commit,
+    url: checkUrl,
+    status: 'in_progress',
+    project: screenerConfig.projectRepo,
+    branch: branchName,
+  });
 }
 
 export async function cancelScreenerRun(
@@ -116,6 +126,8 @@ export async function cancelScreenerRun(
 ) {
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
+  // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
+  let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
 
   await notifyIntegration({
     commit,
@@ -123,6 +135,7 @@ export async function cancelScreenerRun(
     status: 'completed',
     project: screenerConfig.projectRepo,
     conclusion,
+    branch: branchName,
   });
 
   console.log(`cancelled screener run ${screenerConfig.projectRepo}`);

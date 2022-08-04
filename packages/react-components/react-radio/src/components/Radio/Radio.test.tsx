@@ -10,7 +10,6 @@ describe('Radio', () => {
   isConformant({
     Component: Radio,
     displayName: 'Radio',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [

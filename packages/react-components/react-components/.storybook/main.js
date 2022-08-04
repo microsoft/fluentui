@@ -6,7 +6,7 @@ module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescr
   stories: [
     ...rootMain.stories,
     '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(ts|tsx)',
+    '../src/**/index.stories.@(ts|tsx)',
     ...utils.getVnextStories(),
   ],
   staticDirs: ['../public'],

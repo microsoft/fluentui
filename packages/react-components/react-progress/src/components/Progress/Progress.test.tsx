@@ -7,7 +7,6 @@ describe('Progress', () => {
   isConformant({
     Component: Progress,
     displayName: 'Progress',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

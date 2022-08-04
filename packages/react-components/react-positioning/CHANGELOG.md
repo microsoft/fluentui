@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Thu, 14 Jul 2022 21:21:02 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.1.2)
+
+Wed, 03 Aug 2022 16:03:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.1.1..@fluentui/react-positioning_v9.1.2)
+
+### Patches
+
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
 
 ## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.1.1)
 

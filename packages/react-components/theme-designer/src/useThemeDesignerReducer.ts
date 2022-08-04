@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { createDarkTheme, createLightTheme } from '@fluentui/react-components';
 import { getBrandTokensFromPalette } from './utils/getBrandTokensFromPalette';
-import { brandTeams } from './utils/brandColors';
+import { brandWeb } from './utils/brandColors';
 import type { BrandVariants, Theme } from '@fluentui/react-components';
 import { themeList, themeNames } from './utils/themeList';
 
 export type CustomAttributes = {
   keyColor: string;
   hueTorsion: number;
-  darkCp: number;
-  lightCp: number;
+  vibrancy: number;
 };
 
 export type DispatchTheme = {
@@ -33,20 +32,20 @@ export type AppState = {
 };
 
 export const initialAppState = {
-  themeName: 'Teams',
-  brand: brandTeams,
-  theme: createLightTheme(brandTeams),
+  themeName: 'Custom',
+  brand: brandWeb,
+  theme: createLightTheme(brandWeb),
   isDark: false,
   lightOverrides: {},
   darkOverrides: {},
 };
 
 export const useThemeDesignerReducer = () => {
-  const createCustomTheme = ({ darkCp, hueTorsion, keyColor, lightCp }: CustomAttributes): BrandVariants => {
+  const createCustomTheme = ({ hueTorsion, keyColor, vibrancy }: CustomAttributes): BrandVariants => {
     const brand = getBrandTokensFromPalette(keyColor, {
-      hueTorsion: hueTorsion,
-      darkCp: darkCp,
-      lightCp: lightCp,
+      hueTorsion,
+      darkCp: vibrancy,
+      lightCp: vibrancy + 0.5,
     });
     return brand;
   };

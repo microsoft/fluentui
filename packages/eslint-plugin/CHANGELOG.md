@@ -1,8 +1,26 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 13 Jul 2022 07:47:44 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Aug 2022 07:39:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.1)
+
+Mon, 01 Aug 2022 07:39:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.12.0..@fluentui/eslint-plugin_v1.12.1)
+
+### Patches
+
+- chore: upgrade error level of no-restricted-imports to error in v9 config. ([PR #24002](https://github.com/microsoft/fluentui/pull/24002) by tristan.watanabe@gmail.com)
+
+## [1.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.12.0)
+
+Wed, 27 Jul 2022 07:37:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.11.1..@fluentui/eslint-plugin_v1.12.0)
+
+### Minor changes
+
+- Create no-context-default-value lint rule ([PR #24000](https://github.com/microsoft/fluentui/pull/24000) by bernardo.sunderhus@gmail.com)
 
 ## [1.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.11.1)
 

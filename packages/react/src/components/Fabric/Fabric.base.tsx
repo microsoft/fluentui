@@ -1,19 +1,21 @@
 import * as React from 'react';
 import {
-  getNativeProps,
-  divProperties,
   classNamesFunction,
+  divProperties,
   getDocument,
-  memoizeFunction,
+  getNativeProps,
   getRTL,
+  memoizeFunction,
   Customizer,
-  useFocusRects,
+  FocusRectsContext,
+  FocusRectsProvider,
 } from '../../Utilities';
 import { createTheme } from '../../Styling';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import type { ITheme } from '../../Styling';
+import type { IFocusRectsContext } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -43,9 +45,8 @@ export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRe
       className,
     });
 
-    const rootElement = React.useRef<HTMLDivElement | null>(null);
+    const rootElement = React.useRef<HTMLDivElement>(null);
     useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
-    useFocusRects(rootElement);
 
     return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
   },
@@ -55,7 +56,7 @@ FabricBase.displayName = 'FabricBase';
 function useRenderedContent(
   props: IFabricProps,
   { root }: IProcessedStyleSet<IFabricStyles>,
-  rootElement: React.RefObject<HTMLDivElement | undefined>,
+  rootElement: React.RefObject<HTMLDivElement>,
   ref: React.Ref<HTMLDivElement>,
 ) {
   const { as: Root = 'div', dir, theme } = props;
@@ -63,7 +64,19 @@ function useRenderedContent(
 
   const { rootDir, needsTheme } = getDir(props);
 
-  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />;
+  const { providerRef: parentProviderRef } = React.useContext(FocusRectsContext);
+  const focusRectsContext = React.useMemo<IFocusRectsContext>(
+    () => ({
+      providerRef: parentProviderRef ?? rootElement,
+    }),
+    [parentProviderRef, rootElement],
+  );
+
+  let renderedContent = (
+    <FocusRectsProvider value={focusRectsContext}>
+      <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />
+    </FocusRectsProvider>
+  );
 
   // Create the contextual theme if component direction does not match parent direction.
   if (needsTheme) {

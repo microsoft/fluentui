@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { IBaseProps } from '../BaseComponent.types';
 import type { ISettings, ISettingsFunction } from './Customizations';
 import type { ICustomizerContext } from './CustomizerContext';
@@ -41,6 +42,7 @@ export type ICustomizerProps = IBaseProps &
      */
     scopedSettings: ISettings | ISettingsFunction;
   }> & {
+    children?: React.ReactNode;
     /**
      * Optional transform function for context. Any implementations should take care to return context without
      * mutating it.

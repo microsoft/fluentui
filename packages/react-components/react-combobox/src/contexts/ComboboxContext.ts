@@ -9,6 +9,7 @@ export type ComboboxContextValue = Pick<
   'activeOption' | 'appearance' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'size'
 >;
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
   appearance: 'outline',
