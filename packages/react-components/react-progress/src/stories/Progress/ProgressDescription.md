@@ -1,1 +1,1 @@
-A progress alerts a user that content is being loaded or processed and they should wait for the activity to complete.
+A Progress provides a visual representation of content being loaded or processed.
