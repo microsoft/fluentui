@@ -21,7 +21,7 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 // Warning: (ae-internal-missing-underscore) The name "useARIAButtonProps" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps['as']>>(type?: Type, props?: ARIAButtonProps): React_2.PropsWithRef<JSX.IntrinsicElements[Type]>;
+export function useARIAButtonProps<Type extends 'button' | 'a' | 'div'>(type?: Type, props?: ARIAButtonProps): React_2.PropsWithRef<JSX.IntrinsicElements[Type]>;
 
 // Warning: (ae-internal-missing-underscore) The name "useARIAButtonShorthand" should be prefixed with an underscore because the declaration is marked as @internal
 //

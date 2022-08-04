@@ -27,10 +27,10 @@ export type ARIAButtonProps<Type extends 'a' | 'div' | 'button' = 'a' | 'div' | 
  * @internal
  *
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
- * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
+ * for multiple scenarios of non native button elements. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps['as']>>(
+export function useARIAButtonProps<Type extends 'button' | 'a' | 'div'>(
   type?: Type,
   props?: ARIAButtonProps,
 ): React.PropsWithRef<JSX.IntrinsicElements[Type]> {
