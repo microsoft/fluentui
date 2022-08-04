@@ -155,7 +155,7 @@ const useRootStyles = makeStyles({
     color: tokens.colorPaletteDarkOrangeForeground3,
   },
   'ghost-subtle': {
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundInvertedStatic,
   },
   'ghost-success': {
     color: tokens.colorPaletteGreenForeground3,
