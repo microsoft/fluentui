@@ -14,16 +14,21 @@ import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@
  * @param ref - reference to root HTMLElement of Field
  */
 export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivElement>): FieldState => {
-  const { labelPosition = 'above', required, size = 'medium', status } = props;
-
+  const generatedChildId = useId('field__input-');
   const child = React.Children.only(props.children);
-  const childProps = React.isValidElement(child) ? child.props : undefined;
-  const childId = useId('field__input-', childProps?.id);
+
+  const {
+    htmlFor = child?.props?.id || generatedChildId,
+    labelPosition = 'above',
+    required,
+    size = 'medium',
+    status,
+  } = props;
 
   const label = resolveShorthand(props.label, {
     defaultProps: {
       id: useId('field__label-'),
-      htmlFor: childId,
+      htmlFor,
       required,
       size,
     },
@@ -44,7 +49,8 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   }
 
   return {
-    childId,
+    // Only pass the generatedChildId if it is the one that was used for the htmlFor prop
+    generatedChildId: htmlFor === generatedChildId ? generatedChildId : undefined,
     labelId: label?.id,
     labelPosition,
     required,
@@ -88,9 +94,9 @@ const useLabelDebugCheck = (label: FieldState['label']) => {
       // eslint-disable-next-line no-console
       console.error(
         `Field with label "${labelText}" requires the label be associated with its input. Try one of these fixes:\n` +
-          '1. Use a component that gets its ID from FieldContext.childId (e.g. the form controls in this library).\n' +
+          '1. Use a control that sets its ID from FieldContext.generatedChildId (form controls in this library).\n' +
           '2. Or, set the `id` prop of the child of field.\n' +
-          '3. Or, set `label={{ htmlFor: ... }}` to the ID used by the field component.\n' +
+          '3. Or, set `htmlFor` to the ID used by the field component.\n' +
           '4. Or, set `label={{ id: ... }}` to the `aria-labelledby` prop of the field component.\n',
       );
     }

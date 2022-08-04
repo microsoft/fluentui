@@ -69,6 +69,17 @@ export type FieldProps = Omit<ComponentProps<Partial<FieldSlots>>, 'children'> &
    * @default undefined
    */
   status?: 'error' | 'warning' | 'success';
+
+  /**
+   * The ID of the form component in this Field (the child of the Field).
+   *
+   * `htmlFor` will default to the `id` property of the Field's child, if set.
+   * Otherwise, it will default to `generatedChildId` on the FieldContext.
+   *
+   * In most cases, it isn't necessary to set this property. It only needs to be set if the child component
+   * doesn't assign its ID via an `id` prop, and doesn't use FieldContext (such as a component from another library).
+   */
+  htmlFor?: string;
 };
 
 /**
@@ -78,11 +89,11 @@ export type FieldState = ComponentState<Required<FieldSlots>> &
   Pick<FieldProps, 'required' | 'status'> &
   Required<Pick<FieldProps, 'labelPosition' | 'size'>> & {
     /**
-     * The ID that the child component should use to be sure that it is properly associated with the label.
+     * The generated ID used as the label's htmlFor prop.
      *
-     * This will default to the `id` prop of the child, or use a generated ID if the child has no `id` prop.
+     * This will be undefined if either (a) the Field's htmlFor was set, or (b) the child has an id property set.
      */
-    childId: string | undefined;
+    generatedChildId: string | undefined;
 
     /**
      * The (generated) ID of the field's label component.
@@ -92,7 +103,9 @@ export type FieldState = ComponentState<Required<FieldSlots>> &
     labelId: string | undefined;
   };
 
-export type FieldContextValue = Readonly<Pick<FieldState, 'childId' | 'labelId' | 'required' | 'size' | 'status'>>;
+export type FieldContextValue = Readonly<
+  Pick<FieldState, 'generatedChildId' | 'labelId' | 'required' | 'size' | 'status'>
+>;
 
 export type FieldContextValues = {
   field: FieldContextValue;
