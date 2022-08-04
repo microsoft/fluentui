@@ -23,6 +23,9 @@ const useRootStyles = makeStyles({
   labelBefore: {
     gridTemplateRows: 'repeat(4, auto)',
     gridTemplateColumns: '1fr 2fr',
+    [`> :not(.${fieldClassNames.label})`]: {
+      gridColumnStart: '2',
+    },
   },
 });
 
@@ -80,7 +83,7 @@ export const useFieldStyles_unstable = (state: FieldState) => {
   state.root.className = mergeClasses(
     fieldClassNames.root,
     rootStyles.base,
-    state.label && state.labelPosition === 'before' && rootStyles.labelBefore,
+    state.labelPosition === 'before' && rootStyles.labelBefore,
     state.root.className,
   );
 
