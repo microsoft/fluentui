@@ -6,11 +6,9 @@ import { progressCssVars } from './useProgressStyles';
 const ZERO_THRESHOLD = 0.01;
 
 export const useProgressState_unstable = (state: ProgressState, props: ProgressProps) => {
-  const { percentComplete = -1 } = props;
+  const { determinate = false, percentComplete } = props;
 
-  const determinate = percentComplete > -1 ? true : false;
-
-  const valuePercent = determinate ? Math.min(100, Math.max(0, percentComplete)) : undefined;
+  const valuePercent = determinate ? Math.min(100, Math.max(0, percentComplete! * 100)) : undefined;
 
   const progressBarStyles = {
     [`${progressCssVars.percentageCssVar}`]: determinate ? valuePercent + '%' : '0',
@@ -20,7 +18,7 @@ export const useProgressState_unstable = (state: ProgressState, props: ProgressP
 
   const ariaValueMin = determinate ? 0 : undefined;
   const ariaValueMax = determinate ? 100 : undefined;
-  const ariaValueNow = determinate ? Math.floor(percentComplete!) : undefined;
+  const ariaValueNow = determinate ? Math.floor(percentComplete! * 100) : undefined;
 
   if (state.indicator) {
     state.indicator.style = {
@@ -31,5 +29,4 @@ export const useProgressState_unstable = (state: ProgressState, props: ProgressP
     state.indicator['aria-valuemax'] = ariaValueMax;
     state.indicator['aria-valuenow'] = ariaValueNow;
   }
-  //return state;
 };

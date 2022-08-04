@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 import type { ProgressProps, ProgressState } from './Progress.types';
 import { Label } from '@fluentui/react-label';
-import { DefaultDiv } from './DefaultDiv';
+import { DefaultProgressDiv } from './DefaultProgressDiv';
 import { useProgressState_unstable } from './useProgressState';
 
 /**
@@ -16,9 +16,9 @@ import { useProgressState_unstable } from './useProgressState';
  */
 export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLElement>): ProgressState => {
   // Props
-  const { appearance = 'primary', barHeight = 2, percentComplete = -1 } = props;
+  const { appearance = 'primary', barThickness = 'small', determinate = false } = props;
   const baseId = useId('Progress');
-  const describedbyId = useId('Progress Description');
+  const describedbyId = useId('ProgressDescription');
 
   const { role = 'progressbar', ...rest } = props;
   const nativeRoot = getNativeElementProps('div', { ref, role, ...rest });
@@ -40,7 +40,7 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
   const indicatorShortHand = resolveShorthand(props.indicator, {
     required: true,
     defaultProps: {
-      children: <DefaultDiv />,
+      children: <DefaultProgressDiv />,
     },
   });
 
@@ -50,8 +50,8 @@ export const useProgress_unstable = (props: ProgressProps, ref: React.Ref<HTMLEl
 
   const state: ProgressState = {
     appearance,
-    barHeight,
-    percentComplete,
+    barThickness,
+    determinate,
     components: {
       root: 'div',
       indicator: 'span',
