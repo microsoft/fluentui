@@ -15,7 +15,7 @@ jobs:
     if: ${{ contains(github.event.head_commit.message, 'applying package updates') || github.event_name == 'workflow_dispatch' }}
 
     outputs:
-      status: ${{ steps.verify-react-components-changed.outputs.any_changed }}
+      status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
 
     steps:
       - uses: actions/checkout@v3
