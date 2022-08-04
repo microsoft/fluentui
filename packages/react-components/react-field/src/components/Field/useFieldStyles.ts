@@ -40,6 +40,8 @@ const useLabelStyles = makeStyles({
     gridRowStart: '1',
     gridRowEnd: '-1',
     marginRight: tokens.spacingHorizontalM,
+    alignSelf: 'start',
+    justifySelf: 'stretch',
   },
 });
 
