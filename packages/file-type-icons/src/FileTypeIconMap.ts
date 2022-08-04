@@ -258,7 +258,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   desktopfolder: {},
   docset: {},
-  documentfolder: {},
+  documentsfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -271,12 +271,10 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  favoritesfolder: {},
   folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff'],
-  },
-  fluid: {
-    extensions: ['fluid', 'loop'],
   },
   form: {},
   genericfile: {},
@@ -285,6 +283,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   ipynb: {
     extensions: ['nnb', 'ipynb'],
+  },
+  loop: {
+    extensions: ['fluid', 'loop'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
@@ -414,7 +415,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
-  stream: {},
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
