@@ -5,18 +5,18 @@ import { DialogContext } from '../../contexts/dialogContext';
 import type { DialogSlots, DialogState } from './Dialog.types';
 
 export const dialogClassNames: SlotClassNames<DialogSlots> = {
-  overlay: 'fui-Dialog__overlay',
+  backdrop: 'fui-Dialog__backdrop',
 };
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  overlay: {
+  backdrop: {
     position: 'fixed',
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     ...shorthands.inset('0px'),
   },
-  nestedDialogOverlay: {
+  nestedDialogBackdrop: {
     backgroundColor: 'transparent',
   },
 });
@@ -28,12 +28,12 @@ export const useDialogStyles_unstable = (state: DialogState): DialogState => {
   const styles = useStyles();
   const isNestedDialog = useHasParentContext(DialogContext);
 
-  if (state.overlay) {
-    state.overlay.className = mergeClasses(
-      dialogClassNames.overlay,
-      styles.overlay,
-      isNestedDialog && styles.nestedDialogOverlay,
-      state.overlay.className,
+  if (state.backdrop) {
+    state.backdrop.className = mergeClasses(
+      dialogClassNames.backdrop,
+      styles.backdrop,
+      isNestedDialog && styles.nestedDialogBackdrop,
+      state.backdrop.className,
     );
   }
 

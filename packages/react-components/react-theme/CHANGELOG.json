@@ -2,6 +2,27 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:04:07 GMT",
+      "tag": "@fluentui/react-theme_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e6bec62689022606e64b56b90506c6d75cbdcfce",
+            "comment": "fix: Fix issue preventing copying text out of theme storybook documentation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 17:06:24 GMT",
       "tag": "@fluentui/react-theme_v9.0.0",
       "version": "9.0.0",

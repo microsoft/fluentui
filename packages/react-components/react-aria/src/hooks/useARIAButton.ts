@@ -1,25 +1,56 @@
 import { Enter, Space } from '@fluentui/keyboard-keys';
 import { resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, ResolveShorthandFunction, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
 
-export type ARIAButtonSlotProps = ExtractSlotProps<Slot<'button', 'a'>> & {
+export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<
+  Slot<'button', AlternateAs>
+> & {
   disabled?: boolean;
+  /**
+   * When set, allows the button to be focusable even when it has been disabled.
+   * This is used in scenarios where it is important to keep a consistent tab order
+   * for screen reader and keyboard users. The primary example of this
+   * pattern is when the disabled button is in a menu or a commandbar and is seldom used for standalone buttons.
+   *
+   * @default false
+   */
   disabledFocusable?: boolean;
 };
 
+export type ARIAButtonProps<Type extends 'a' | 'div' | 'button' = 'a' | 'div' | 'button'> = React.PropsWithRef<
+  JSX.IntrinsicElements[Type]
+> &
+  Pick<ARIAButtonSlotProps, 'disabled' | 'disabledFocusable'>;
+
 /**
+ * @internal
+ *
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (shorthand, options) => {
-  const shorthandProps = resolveShorthand(shorthand, options);
+export function useARIAButtonProps<Type extends NonNullable<ARIAButtonSlotProps['as']>>(
+  type?: Type,
+  props?: ARIAButtonProps,
+): React.PropsWithRef<JSX.IntrinsicElements[Type]> {
+  const {
+    disabled,
+    tabIndex,
+    disabledFocusable = false,
+    onClick,
+    onKeyDown,
+    onKeyUp,
+    ['aria-disabled']: ariaDisabled,
+    ...rest
+  } = props ?? {};
 
-  const { disabled, disabledFocusable, onClick, onKeyDown, onKeyUp, tabIndex } = (shorthandProps ||
-    {}) as ARIAButtonSlotProps;
+  const normalizedARIADisabled = typeof ariaDisabled === 'string' ? ariaDisabled === 'true' : ariaDisabled;
 
-  const onClickHandler: ARIAButtonSlotProps['onClick'] = useEventCallback(ev => {
-    if (disabled || disabledFocusable) {
+  const isDisabled = disabled || disabledFocusable || normalizedARIADisabled;
+
+  const handleClick: ARIAButtonProps['onClick'] = useEventCallback(ev => {
+    if (isDisabled) {
       ev.preventDefault();
       ev.stopPropagation();
     } else {
@@ -27,7 +58,7 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
     }
   });
 
-  const onKeyDownHandler: ARIAButtonSlotProps['onKeyDown'] = useEventCallback(ev => {
+  const handleKeyDown: ARIAButtonProps['onKeyDown'] = useEventCallback(ev => {
     onKeyDown?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -36,7 +67,7 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
 
     const key = ev.key;
 
-    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
+    if (isDisabled && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -54,7 +85,7 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
     }
   });
 
-  const onKeyupHandler: ARIAButtonSlotProps['onKeyUp'] = useEventCallback(ev => {
+  const handleKeyUp: ARIAButtonProps['onKeyUp'] = useEventCallback(ev => {
     onKeyUp?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -63,7 +94,7 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
 
     const key = ev.key;
 
-    if ((disabled || disabledFocusable) && (key === Enter || key === Space)) {
+    if (isDisabled && (key === Enter || key === Space)) {
       ev.preventDefault();
       ev.stopPropagation();
       return;
@@ -75,37 +106,56 @@ export const useARIAButton: ResolveShorthandFunction<ARIAButtonSlotProps> = (sho
     }
   });
 
-  if (shorthandProps) {
-    // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
-    if (shorthandProps.as === 'button' || shorthandProps.as === undefined) {
-      shorthandProps.disabled = disabled && !disabledFocusable;
-      shorthandProps['aria-disabled'] = disabledFocusable ? true : undefined;
-
-      // Undefine events if disabledFocusable is passed in
-      if (disabledFocusable) {
-        shorthandProps.onClick = undefined;
-        shorthandProps.onKeyDown = undefined;
-        shorthandProps.onKeyUp = undefined;
-      }
-    }
-
-    // If an <a> tag is to be rendered we have to remove disabled and type, and set aria-disabled, role and tabIndex.
-    else {
-      delete shorthandProps.disabled;
-      shorthandProps['aria-disabled'] = disabled || disabledFocusable;
-      (shorthandProps as JSX.IntrinsicElements['a']).href = disabled
-        ? undefined
-        : (shorthandProps as JSX.IntrinsicElements['a']).href;
-      shorthandProps.onClick = onClickHandler;
-      shorthandProps.onKeyDown = onKeyDownHandler;
-      shorthandProps.onKeyUp = onKeyupHandler;
-      shorthandProps.role = shorthandProps.role ?? 'button';
-      shorthandProps.tabIndex = disabled && !disabledFocusable ? undefined : tabIndex ?? 0;
-    }
-
-    // Remove non-DOM disabledFocusable prop
-    delete shorthandProps.disabledFocusable;
+  // If a <button> tag is to be rendered we just need to set disabled and aria-disabled correctly
+  if (type === 'button' || type === undefined) {
+    return {
+      ...rest,
+      tabIndex,
+      disabled: disabled && !disabledFocusable,
+      'aria-disabled': disabledFocusable ? true : normalizedARIADisabled,
+      // onclick should still use internal handler to ensure prevention if disabled
+      // if disabledFocusable then there's no requirement for handlers as those events should not be propagated
+      onClick: disabledFocusable ? undefined : handleClick,
+      onKeyUp: disabledFocusable ? undefined : onKeyUp,
+      onKeyDown: disabledFocusable ? undefined : onKeyDown,
+    } as React.PropsWithRef<JSX.IntrinsicElements[Type]>;
   }
 
-  return shorthandProps;
+  // If an <a> or <div> tag is to be rendered we have to remove disabled and type,
+  // and set aria-disabled, role and tabIndex.
+  else {
+    const nextProps = {
+      role: 'button',
+      ...rest,
+      // If it's not a <button> than listeners are required even with disabledFocusable
+      // Since you cannot assure the default behavior of the element
+      // E.g: <a> will redirect on click
+      onClick: handleClick,
+      onKeyUp: handleKeyUp,
+      onKeyDown: handleKeyDown,
+      'aria-disabled': disabled || disabledFocusable || normalizedARIADisabled,
+      tabIndex: disabled && !disabledFocusable ? undefined : tabIndex ?? 0,
+    } as React.PropsWithRef<JSX.IntrinsicElements[Type]>;
+
+    if (type === 'a' && isDisabled) {
+      (nextProps as JSX.IntrinsicElements['a']).href = undefined;
+    }
+
+    return nextProps;
+  }
+}
+
+/**
+ * @internal
+ *
+ * This function expects to receive a slot, if `as` property is not desired use `useARIAButtonProps` instead
+ *
+ * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
+ * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
+ * where no attribute addition is required.
+ */
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (slot, options) => {
+  const shorthand = resolveShorthand(slot, options);
+  const shorthandARIAButton = useARIAButtonProps(shorthand?.as ?? 'button', shorthand);
+  return shorthand && shorthandARIAButton;
 };

@@ -134,6 +134,7 @@ export {
   resolveShorthand,
   SSRProvider,
   useId,
+  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -525,6 +526,7 @@ export type {
   TabListSlots,
   TabListState,
 } from '@fluentui/react-tabs';
+
 export {
   Body1,
   Caption1,

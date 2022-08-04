@@ -2,6 +2,7 @@ import { createContext, ContextSelector, useContextSelector } from '@fluentui/re
 import type { Context } from '@fluentui/react-context-selector';
 import type { AccordionContextValue } from './Accordion.types';
 
+// eslint-disable-next-line @fluentui/no-context-default-value
 export const AccordionContext: Context<AccordionContextValue> = createContext<AccordionContextValue>({
   openItems: [],
   collapsible: false,

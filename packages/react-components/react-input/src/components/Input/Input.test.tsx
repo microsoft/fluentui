@@ -20,7 +20,6 @@ describe('Input', () => {
   isConformant({
     Component: Input,
     displayName: 'Input',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [
