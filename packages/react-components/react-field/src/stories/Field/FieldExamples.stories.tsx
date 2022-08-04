@@ -10,7 +10,7 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { Combobox, Option } from '@fluentui/react-components/unstable';
+import { Combobox, Option } from '@fluentui/react-combobox';
 import { Field } from '@fluentui/react-field';
 
 const useStyles = makeStyles({
