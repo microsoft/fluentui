@@ -208,31 +208,6 @@ interface TableProps {
    */
   sortable?: boolean;
 
-  onSortChange?: (
-    e: React.SyntheticEvent<HTMLElement>,
-    data: { columnKey: string; sortDirection: 'acending' | 'descending' },
-  ) => void;
-
-  /**
-   * Used for controlled sort state
-   */
-  sortColumn?: string;
-
-  /**
-   * Used to set the sorted column on mount when sort state is uncontrolled
-   */
-  defaultSortColumn?: string;
-
-  /**
-   * Used for controlled sort state
-   */
-  sortDirection?: 'ascending' | 'descending';
-
-  /**
-   * Used to set the sorted column on mount when sort state is uncontrolled
-   */
-  defaultSortDirection?: 'ascending' | 'descending';
-
   /**
    * Renders all table components as `div` with appropriate roles.
    * Avoids manual `as` overrides for all table components
@@ -268,11 +243,8 @@ interface TableHeaderCellProps {
    * Whether the column is sortable overrides the top level table prop
    */
   sortable?: boolean;
-
-  /**
-   * Necessary to maintain sort state
-   */
-  columnKey: string;
+  
+  sortDirection: 'ascending' | 'descending';
 }
 
 /**
@@ -280,8 +252,10 @@ interface TableHeaderCellProps {
  */
 interface TablePrimaryCellProps {
   root: Slot<'td' | 'div'>;
-  secondaryContent: Slot<'span'>;
-  icon: Slot<'span'>;
+  secondary: Slot<'span'>;
+  main: Slot<'span'>;
+  wrapper: Slot<'div'>;
+  media: Slot<'span'>;
 }
 
 interface TableRowProps {
@@ -295,6 +269,8 @@ interface TableCellProps {
 ```
 
 ### DataGrid
+
+> ⚒️ Actively in development to figure out how API will look like with more advanced features
 
 The DataGrid component is an extension of the Table component through composition. This component will
 be interactive and support further scenarios such as row selection and different keyboard navigation modes.
@@ -394,7 +370,7 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table nativeElements={false}>
   <TableHeader>
     <TableRow>
-      <TableHeaderCell columnKey="header">Header</TableHeaderCell>
+      <TableHeaderCell>Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -404,7 +380,7 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table as="div">
   <TableHeader as="div">
     <TableRow as="div">
-      <TableHeaderCell columnKey="header" as="div" sortDirection="ascending">Header</TableHeaderCell>
+      <TableHeaderCell as="div">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -423,10 +399,10 @@ interface DataGridCellProps extends DataGridCellProps {
 ### Sortable
 
 ```tsx
-<Table sortable sortDirection="ascending" sortColumn="header">
+<Table sortable>
   <TableHeader>
     <TableRow>
-      <TableHeaderCell columnKey="header">Header</TableHeaderCell>
+      <TableHeaderCell sortDirection="ascending">Header</TableHeaderCell>
     </TableRow>
   </TableHeader>
 </Table>
@@ -448,8 +424,8 @@ interface DataGridCellProps extends DataGridCellProps {
 <Table>
   <TableBody>
     <TableRow>
-      <TablePrimaryCell secondaryContent="Secondary content" icon={<FileIcon />}>
-        Primary content
+      <TablePrimaryCell main="Main content" secondary="Secondary content" media={<FileIcon />}>
+        Children
       </TablePrimaryCell>
     </TableRow>
   </TableBody>
@@ -460,7 +436,14 @@ interface DataGridCellProps extends DataGridCellProps {
 <table>
   <tbody>
     <tr>
-      <td><span aria-hidden="true">icon</span><span>Primary content</span> <span>Secondary content</span></td>
+      <td>
+        <span aria-hidden="true">icon</span>
+        <div>
+          <span>Primary content</span>
+          <span>Secondary content</span>
+        </div>
+        Children
+      </td>
     </tr>
   </tbody>
 </table>
