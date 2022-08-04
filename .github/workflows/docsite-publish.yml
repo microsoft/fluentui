@@ -6,8 +6,13 @@ on:
     branches:
       - master
   workflow_dispatch:
-    branches:
-      - master
+    inputs:
+      sha:
+        description: The SHA-1 hash referring to the commit to check.
+        required: true
+      ref:
+        description: The head branch associated with the pull request.
+        required: true
 
 jobs:
   check:
