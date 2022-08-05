@@ -1,8 +1,38 @@
 name: Screener build
 
 on:
-  pull_request:
   workflow_dispatch:
+    inputs:
+      PRno:
+        description: 'PR Number'
+        required: false
+        default: default
+        type: string
+      targetBranch:
+        description: 'PR target branch name'
+        required: false
+        default: default
+        type: string
+      sourceBranch:
+        description: 'PR source branch name'
+        required: false
+        default: default
+        type: string
+      PRID:
+        description: 'PR ID'
+        required: false
+        default: default
+        type: string
+      commitSHA:
+        description: 'Source commit SHA'
+        required: false
+        default: default
+        type: string
+      isPRBuild:
+        description: 'Is the build triggered by a PR'
+        required: true
+        default: false
+        type: boolean
 
 env:
   BROWSERSLIST_IGNORE_OLD_DATA: true
@@ -52,11 +82,11 @@ jobs:
       - name: Set env variables if there is a PR
         run: |
           cat <<EOT >> artifacts/environment
-          SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}
-          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
-          SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
-          SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
-          ISPR=true
+          SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.inputs.targetBranch }}
+          SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.inputs.sourceBranch }}
+          SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.inputs.PRID }}
+          SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.inputs.commitSHA }}
+          ISPR=${{ github.event.inputs.isPRBuild }}
           DEPLOYBASEPATH=pull/$PR_NUMBER
           DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
           BUILD_SOURCEBRANCHNAME='merge'
@@ -69,7 +99,7 @@ jobs:
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment
-          ISPR=false
+          ISPR=${{ github.event.inputs.isPRBuild }}
           DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
@@ -98,11 +128,11 @@ jobs:
 
       - name: Set env variables if there is a PR
         run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.inputs.targetBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.inputs.sourceBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.inputs.PRID }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.inputs.commitSHA }}" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
@@ -113,7 +143,7 @@ jobs:
 
       - name: Set env variables if there is not a PR
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
@@ -155,11 +185,11 @@ jobs:
 
       - name: Set env variables if there is a PR
         run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.inputs.targetBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.inputs.sourceBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.inputs.PRID }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.inputs.commitSHA }}" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
@@ -170,7 +200,7 @@ jobs:
 
       - name: Set env variables if there is not a PR
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
@@ -210,11 +240,11 @@ jobs:
 
       - name: Set env variables if there is a PR
         run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.inputs.targetBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.inputs.sourceBranch }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.inputs.PRID }}" >> $GITHUB_ENV
+          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.inputs.commitSHA }}" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
@@ -225,7 +255,7 @@ jobs:
 
       - name: Set env variables if there is not a PR
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
+          echo "ISPR=${{ github.event.inputs.isPRBuild }}" >> $GITHUB_ENV
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
