@@ -514,6 +514,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
+    children?: React_2.ReactNode;
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 

@@ -93,6 +93,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
     ],
     close: [
       classNames.close,
+      getFocusStyle(theme, { borderColor: 'transparent', inset: 1, outlineColor: palette.white }),
       {
         color: palette.neutralSecondary,
         width: 30,
