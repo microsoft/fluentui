@@ -31,11 +31,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
 
-    if (isNorthstar) {
-      return false;
-    }
-
-    if (packageJson.private === true) {
+    if (isNorthstar || packageJson.private === true) {
       return false;
     }
 
