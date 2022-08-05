@@ -64,7 +64,7 @@ storiesOf('Popover Converged', module)
     <Screener
       steps={new Screener.Steps()
         .click('#show-popovers')
-        .snapshot('container focused popover', { cropTo: '.testWrapper' })
+        .snapshot('PopoverSurface focused', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
