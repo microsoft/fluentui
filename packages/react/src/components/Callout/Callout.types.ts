@@ -185,7 +185,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   layerProps?: ILayerProps;
 
   /**
-   * Optional props to pass the Popup component that the panel uses.
+   * Optional props to pass the Popup component that the callout uses.
    */
   popupProps?: IPopupProps;
 
