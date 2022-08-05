@@ -137,7 +137,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStrokeOnBrand2Pressed: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeOnBrand2Selected: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandStroke1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorBrandStroke2: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorBrandStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorCompoundBrandStroke: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokeHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // Highlight Global.Color.hcHighlight
