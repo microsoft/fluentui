@@ -22,8 +22,6 @@ export {
   useForceUpdate,
   useId,
   useIsomorphicLayoutEffect,
-  // eslint-disable-next-line deprecation/deprecation
-  useMergedEventCallbacks,
   useMergedRefs,
   useOnClickOutside,
   useOnScrollOutside,
