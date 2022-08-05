@@ -2320,6 +2320,8 @@ export interface IBasePickerState<T> {
     // (undocumented)
     suggestedDisplayValue?: string;
     // (undocumented)
+    suggestionsExtendedLoading?: boolean;
+    // (undocumented)
     suggestionsLoading?: boolean;
     // (undocumented)
     suggestionsVisible?: boolean;
@@ -8832,6 +8834,7 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
     componentRef?: IRefObject<ISuggestions<T>>;
     createGenericItem?: () => void;
     forceResolveText?: string;
+    isExtendedLoading?: boolean;
     isLoading?: boolean;
     isMostRecentlyUsedVisible?: boolean;
     isResultsFooterVisible?: boolean;

@@ -146,6 +146,11 @@ export interface ISuggestionsProps<T> extends IReactProps<any> {
   isLoading?: boolean;
 
   /**
+   * Used to indicate whether or not the suggestions are taking an extended amount of time to load.
+   */
+  isExtendedLoading?: boolean;
+
+  /**
    * Used to indicate whether or not the component is searching for more results.
    */
   isSearching?: boolean;
