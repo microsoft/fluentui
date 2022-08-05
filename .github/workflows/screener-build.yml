@@ -94,7 +94,7 @@ jobs:
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
-        if: ${{ github.event.inputs.isPRBuild == true }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
         run: |
@@ -104,7 +104,7 @@ jobs:
           DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
-        if: ${{ github.event.inputs.isPRBuild == false }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Upload environment variables artifact
         uses: actions/upload-artifact@v3
@@ -139,7 +139,7 @@ jobs:
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
-        if: ${{ github.event.inputs.isPRBuild == true }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
         run: |
@@ -147,7 +147,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild == false }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -195,7 +195,7 @@ jobs:
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
-        if: ${{ github.event.inputs.isPRBuild == true }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
         run: |
@@ -203,7 +203,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild == false }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -249,7 +249,7 @@ jobs:
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
-        if: ${{ github.event.inputs.isPRBuild == true }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
         run: |
@@ -257,7 +257,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild == false }}
+        if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
