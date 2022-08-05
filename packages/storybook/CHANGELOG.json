@@ -2,6 +2,93 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Thu, 04 Aug 2022 07:42:13 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/react to v8.86.4",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/azure-themes to v8.4.16",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme-samples to v8.6.16",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 18:04:49 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/react to v8.86.3",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/azure-themes to v8.4.15",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme-samples to v8.6.15",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/react to v8.86.2",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme to v2.6.9",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/azure-themes to v8.4.14",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme-samples to v8.6.14",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Aug 2022 07:39:03 GMT",
       "tag": "@fluentui/storybook_v1.0.0",
       "version": "1.0.0",

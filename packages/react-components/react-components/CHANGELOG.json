@@ -2,6 +2,816 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:34 GMT",
+      "tag": "@fluentui/react-components_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e",
+            "comment": "chore: Creating AvatarGroupOverflow component boilerplate."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "marcosmoura@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8d0180b3bbaad7459257fb8bf7f2235953d12eec",
+            "comment": "docs(react-card): create migration guide from v0 to v9"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "59610d4c795d76a580fbb9391e20cf1249408555",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "770a741091a1f5d1f3b6d4bbfecdd29e333fef9c",
+            "comment": "chore: add missing Card components to Storybook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "20fd0422e9831a560717f39a8d0cbdf57bc721ca",
+            "comment": "fix(docs): add combobox usage warning and style best practices"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "0db1b92eb265450c1e73a7fb35cd266b1b97eba1",
+            "comment": "fix(docs): add Dropdown usage warning and style best practices"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "434275449948d59e22238be8ba830b77fbd827ff",
+            "comment": "chore(react-components): remove CSF warnings violation when running storybook"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5aa33cbb283143f8dda9a836faa1b69d94c1ca64",
+            "comment": "chore(storybook): remove deprecated --static-dir CLI flag usage"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b67323e77fe054dfaba09be0e22fb14bcbffa897",
+            "comment": "chore: Adds e2e tests for `react-dialog`"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "83f074e81375955cba003eb8210b4751767a7987",
+            "comment": "fix(react-dialog): converts Dialog stories to Preview Components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3a670062bfb8a122fef0dfb7f9f06e884f3745a1",
+            "comment": "move stories to a proper directory"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "30737a497e7787fe8b4efddeadb4a261ba19933f",
+            "comment": "refactor(scripts): replace isCompatibilityPackage with new --module build flag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "6731ada047afe1d79d2765d1464cfa9acb90bee8",
+            "comment": "chore: Explicitly enable AMD lint-imports rule"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "16c5ea573489dfd05921c6569dc3ac6c8da38a66",
+            "comment": "fix(docs): add Select usage warning and style best practices"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "e6bec62689022606e64b56b90506c6d75cbdcfce",
+            "comment": "fix: Fix issue preventing copying text out of theme storybook documentation"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "2eb2198f78bbbbfecdd0eeb6a543ac52f11135ed",
+            "comment": "fix(docs): add description and unstable usage warning for Toolbar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558",
+            "comment": "chore: Updates AccordionHeader to use useARIAButtonShorthand over useARIAButton"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "a0e1e0c2780ad6ba73aaeee1aa1525168a4d4045",
+            "comment": "feat: treats aria-disabled as disabled state on useARIAButtonProps"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "refactor: use `useFocusWithin` hook for :focus-within styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0e1784cd430525e023a458564d232ac689e0f50a",
+            "comment": "feat: Adds `@fluentui/react-table` package to unstable exports"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "ee025ccd3a919f2f4dcdd3a74dbe6d2abfed24ff",
+            "comment": "Adds proper initialValue to value on useInput"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "2756c649a83c0fa0a20b82c62855d388a5e6bc2a",
+            "comment": "fix: Fix tabbing from within menu"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "fix: use `useFocusVisible` hook for :focus-visible styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "6731ada047afe1d79d2765d1464cfa9acb90bee8",
+            "comment": "chore: enable AMD compatible build"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "fix: use `useFocusVisible` hook for :focus-visible styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "refactor: use `useFocusWithin` hook for :focus-within styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "refactor: use `useFocusWithin` hook for :focus-within styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "refactor: use `useFocusWithin` hook for :focus-within styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b9e6c6a7dd8ce6111744739a0ec486b99c2bb2ea",
+            "comment": "chore: Bump tabster to 2.1.0"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "0777632c9fac223c113283357bbca98dcf266c27",
+            "comment": "fix: Make <textarea> match its wrapper size and add documentation on changing its height."
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "29769d9e95a0395c36d596e4e186744da2d232d4",
+            "comment": "fix: prevent react-combobox keyboard selection of disabled options"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8d8c2765c6286c236983c2193c4d57f754ec2454",
+            "comment": "fix: Griffel conformance test should use user container for render"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "93cbe6fdb4fc73aad83328aac304ac53cfd84303",
+            "comment": "chore: adds aria-labelledby and aria-describedby attributes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "26e5a29ec185ffaf62407b76e63190a4adb8e012",
+            "comment": "feat: adds react-dialog to react-components unstable"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "c8e1d465e52dca6aef141437bdd0cc5a927a4d7c",
+            "comment": "feat: Make sorting more primitive"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "0e1784cd430525e023a458564d232ac689e0f50a",
+            "comment": "feat: Release package in `alpha`"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558",
+            "comment": "chore: Splits useARIAButton into useARIAButtonProps and useARIAButtonShorthand."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558",
+            "comment": "chore: Updates Button to use useARIAButton over useARIAButtonShorthand"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "a6aa8b678209b98098e23c16313bd528ef7da028",
+            "comment": "feat: update spinbutton to stable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "26e5a29ec185ffaf62407b76e63190a4adb8e012",
+            "comment": "feat: adds react-dialog to react-components unstable"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c69f9bd19610cbceb4ecf8243b5d49afea4634d7",
+            "comment": "chore: Re-exporting useIsomorphicLayoutEffect from @fluentui/react-utilities in @fluentui/react-components."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "76f5c61c1bce0d606264f6a10dfa523de98b937e",
+            "comment": "fix: Move to useLayoutEffect or useInsertionEffect for Theme Provider theme insertion."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "a6aa8b678209b98098e23c16313bd528ef7da028",
+            "comment": "feat: update spinbutton to stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2756c649a83c0fa0a20b82c62855d388a5e6bc2a",
+            "comment": "feat: Adds `ignoreDefaultKeydown` option to `useArrowNavigationGroup`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "feat: create `:focus-visible` and `:focus-within` polyfills"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 18:27:26 GMT",
       "tag": "@fluentui/react-components_v9.1.1",
       "version": "9.1.1",

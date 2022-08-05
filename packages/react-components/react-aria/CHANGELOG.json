@@ -2,6 +2,37 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:37 GMT",
+      "tag": "@fluentui/react-aria_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "a0e1e0c2780ad6ba73aaeee1aa1525168a4d4045",
+            "comment": "feat: treats aria-disabled as disabled state on useARIAButtonProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558",
+            "comment": "chore: Splits useARIAButton into useARIAButtonProps and useARIAButtonShorthand."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:08 GMT",
       "tag": "@fluentui/react-aria_v9.0.2",
       "version": "9.0.2",

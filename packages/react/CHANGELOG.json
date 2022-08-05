@@ -2,6 +2,105 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 04 Aug 2022 07:42:12 GMT",
+      "tag": "@fluentui/react_v8.86.4",
+      "version": "8.86.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d",
+            "comment": "create focus queue for multi level contextual menus"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539",
+            "comment": "task: fix precopy in react in include files from the correct folder"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 18:04:49 GMT",
+      "tag": "@fluentui/react_v8.86.3",
+      "version": "8.86.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.6",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/react_v8.86.2",
+      "version": "8.86.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "07c2ec12f64349b852a2b5afea163745e848de7e",
+            "comment": "fix: Miscellaneous TS fixes for React 18 usage."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.12",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.5",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.5",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.9",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.10.1",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.1",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Aug 2022 07:39:02 GMT",
       "tag": "@fluentui/react_v8.86.1",
       "version": "8.86.1",

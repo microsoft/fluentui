@@ -15,6 +15,7 @@ describe('useTableContextValues', () => {
         "table": Object {
           "noNativeElements": false,
           "size": "medium",
+          "sortable": false,
         },
       }
     `);

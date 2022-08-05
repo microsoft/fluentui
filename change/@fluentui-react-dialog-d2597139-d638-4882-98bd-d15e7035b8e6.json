@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix(react-dialog): converts Dialog stories to Preview Components",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

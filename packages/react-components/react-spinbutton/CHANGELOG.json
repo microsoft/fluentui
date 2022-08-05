@@ -2,6 +2,47 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:04:01 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "a6aa8b678209b98098e23c16313bd528ef7da028",
+            "comment": "feat: update spinbutton to stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-input to v9.0.4",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-label to v9.0.4",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:04 GMT",
       "tag": "@fluentui/react-spinbutton_v9.0.0-beta.18",
       "version": "9.0.0-beta.18",

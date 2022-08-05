@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  Folder16Regular as FolderRegular,
-  Edit16Regular as EditRegular,
-  Open16Regular as OpenRegular,
-  Document16Regular as DocumentRegular,
-  People16Regular as PeopleRegular,
-  DocumentPdf16Regular as DocumentPdfRegular,
-  Video16Regular as VideoRegular,
+  FolderRegular,
+  EditRegular,
+  OpenRegular,
+  DocumentRegular,
+  PeopleRegular,
+  DocumentPdfRegular,
+  VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
@@ -61,9 +61,11 @@ export const SizeSmall = () => {
   return (
     <Table noNativeElements size="small">
       <TableHeader>
-        {columns.map(column => (
-          <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-        ))}
+        <TableRow>
+          {columns.map(column => (
+            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
+          ))}
+        </TableRow>
       </TableHeader>
       <TableBody>
         {items.map(item => (

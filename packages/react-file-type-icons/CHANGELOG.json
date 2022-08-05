@@ -2,6 +2,36 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Fri, 05 Aug 2022 07:39:56 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "23390b034ccd802aefe3f2da250da86d59243d10",
+            "comment": "Filetype Icon Update for Fluent. Here's the corresponding patch notes from the CDN: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.6.13",
+      "version": "8.6.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.7.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jul 2022 07:39:35 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.6.12",
       "version": "8.6.12",

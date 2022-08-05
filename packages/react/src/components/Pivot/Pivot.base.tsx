@@ -70,7 +70,16 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, overflowAriaLabel, focusZoneProps } = props;
+    const {
+      componentRef,
+      theme,
+      linkSize,
+      linkFormat,
+      overflowBehavior,
+      overflowAriaLabel,
+      focusZoneProps,
+      overflowButtonAs,
+    } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const nameProps = {
@@ -269,6 +278,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       pinnedIndex: renderedSelectedIndex,
     });
 
+    const OverflowButton = overflowButtonAs ? overflowButtonAs : CommandButton;
     return (
       <div ref={ref} {...divProps}>
         <FocusZone
@@ -281,7 +291,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         >
           {items}
           {overflowBehavior === 'menu' && (
-            <CommandButton
+            <OverflowButton
               className={css(classNames.link, classNames.overflowMenuButton)}
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
