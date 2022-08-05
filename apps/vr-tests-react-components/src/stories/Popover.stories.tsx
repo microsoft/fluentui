@@ -66,7 +66,7 @@ storiesOf('Popover Converged', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .click('#show-popovers')
+        .click('#show-popover')
         .snapshot('PopoverSurface focused', { cropTo: '.testWrapper' })
         .end()}
     >
@@ -75,7 +75,7 @@ storiesOf('Popover Converged', module)
   ))
   .addStory('avoid scrolling', () => {
     return (
-      <Popover>
+      <Popover trapFocus>
         <PopoverTrigger>
           <button id="show-popover">Show Popover</button>
         </PopoverTrigger>
@@ -99,8 +99,8 @@ storiesOf('Popover Converged', module)
     );
   });
 
-const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
- dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
+const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+ et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
  ultricies lacus sed turpis. Eros donec ac odio tempor. Mattis molestie a iaculis at erat. Aenean euismod elementum nisi
   quis eleifend quam. Penatibus et magnis dis parturient montes nascetur ridiculus mus mauris. Sed euismod nisi porta
   lorem mollis aliquam ut porttitor leo. Lorem ipsum dolor sit amet. Id faucibus nisl tincidunt eget nullam. Fermentum
