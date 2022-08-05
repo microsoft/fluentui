@@ -28,6 +28,9 @@ import {
   DATA_POSITIONING_PLACEMENT,
 } from './constants';
 
+/**
+ * @internal
+ */
 export function usePositioning(
   options: UsePositioningOptions,
 ): {
