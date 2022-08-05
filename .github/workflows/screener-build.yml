@@ -1,8 +1,6 @@
 name: Screener build
 
 on:
-  pull_request:
-
   workflow_dispatch:
     inputs:
       PRno:
