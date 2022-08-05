@@ -236,7 +236,12 @@ const useMenuOpenState = (
   const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
   const focusFirst = React.useCallback(() => {
     const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
-    firstFocusable?.focus();
+    if (firstFocusable) {
+      // For some reason, directly focusing the element here causes a nasty issue when opening the menu
+      // while inside an iframe with no scrollbars: the parent frame will be automatically scrolled to top
+      // focusing the menu item on the next repaint seems to fix the issue
+      requestAnimationFrame(() => firstFocusable.focus());
+    }
   }, [findFirstFocusable, state.menuPopoverRef]);
 
   const focusAfterMenuTrigger = React.useCallback(() => {

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixed an issue causing the parent page to be scrolled to top when opening a <MenuPopover> if the storybooks are embedded in an iframe that doesn't have scrollbars",
+  "packageName": "@fluentui/react-menu",
+  "email": "radu.groza@bistone.eu",
+  "dependentChangeType": "patch"
+}
