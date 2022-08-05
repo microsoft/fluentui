@@ -61,8 +61,8 @@ export function usePositioning(
     // Container is always initialized with `position: fixed` to avoid scroll jumps
     // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
     Object.assign(containerRef.current.style, { position: strategy });
-    computePosition(target, containerRef.current, { placement, middleware, strategy }).then(
-      ({ x, y, middlewareData, placement: computedPlacement }) => {
+    computePosition(target, containerRef.current, { placement, middleware, strategy })
+      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
         writeArrowUpdates({ arrow: arrowRef.current, middlewareData });
         writeContainerUpdates({
           container: containerRef.current,
@@ -72,8 +72,20 @@ export function usePositioning(
           lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
           strategy,
         });
-      },
-    );
+      })
+      .catch(err => {
+        // This is super duper stuuuuuuupid
+        // FIXME for node > 14
+        // node 15 introduces promise rejection which means that any components
+        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
+        // JSOM being torn down before this promise is resolved.
+        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
+        // will actually be counter productive
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error('[usePositioning]: Failed to calculate position', err);
+        }
+      });
   });
 
   const updatePosition = React.useState(() => debounce(forceUpdate))[0];
@@ -251,7 +263,7 @@ function useContainerRef(updatePosition: () => void, enabled: boolean) {
     if (container && enabled) {
       // When the container is first resolved, set position `fixed` to avoid scroll jumps.
       // Without this scroll jumps can occur when the element is rendered initially and receives focus
-      Object.assign(container.style, { position: 'fixed', top: 0, left: 0 });
+      Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
     }
 
     toggleScrollListener(container, prevContainer, updatePosition);
