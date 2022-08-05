@@ -285,8 +285,6 @@
       "@fluentui/web-components/@storybook/html",
       "@fluentui/web-components/ts-loader",
       "@fluentui/web-components/ts-loader/**",
-      "@fluentui/web-components/ts-node",
-      "@fluentui/web-components/ts-node/**",
       "@fluentui/web-components/webpack"
     ]
   },
