@@ -548,7 +548,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, paths.packageJson).scripts).toEqual(
         expect.objectContaining({
           start: 'yarn storybook',
-          storybook: 'node ../../scripts/storybook/runner',
+          storybook: 'start-storybook',
         }),
       );
 

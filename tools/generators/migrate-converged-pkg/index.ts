@@ -549,8 +549,6 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   const scripts = {
     docs: 'api-extractor run --config=config/api-extractor.local.json --local',
     'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./${options.tsconfigs.lib.compilerOptions.declarationDir}/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
-    storybook: 'node ../../../scripts/storybook/runner',
-    start: 'yarn storybook',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
@@ -637,7 +635,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
     updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
       const scripts = {
-        storybook: `node ${offsetFromRoot(options.projectConfig.root)}scripts/storybook/runner`,
+        storybook: `start-storybook`,
         start: 'yarn storybook',
       };
       Object.assign(json.scripts, scripts);
