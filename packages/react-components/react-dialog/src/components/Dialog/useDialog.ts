@@ -15,7 +15,7 @@ import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } 
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, overlay, modalType = 'modal', onOpenChange } = props;
+  const { children, backdrop, modalType = 'modal', onOpenChange } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -25,7 +25,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
-  const overlayShorthand = resolveShorthand(overlay, {
+  const backdropShorthand = resolveShorthand(backdrop, {
     required: modalType !== 'non-modal',
     defaultProps: {
       'aria-hidden': 'true',
@@ -54,20 +54,20 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
   });
 
-  const handleOverLayClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    overlayShorthand?.onClick?.(event);
-    if (isOverlayClickDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'overlayClick' });
+  const handlebackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    backdropShorthand?.onClick?.(event);
+    if (isbackdropClickDismiss(event, modalType)) {
+      requestOpenChange({ event, open: false, type: 'backdropClick' });
     }
   });
 
   return {
     components: {
-      overlay: 'div',
+      backdrop: 'div',
     },
-    overlay: overlayShorthand && {
-      ...overlayShorthand,
-      onClick: handleOverLayClick,
+    backdrop: backdropShorthand && {
+      ...backdropShorthand,
+      onClick: handlebackdropClick,
     },
     open,
     modalType,
@@ -111,9 +111,9 @@ function childrenToTriggerAndContent(
 }
 
 /**
- * Checks is click event is a proper Overlay click dismiss
+ * Checks is click event is a proper backdrop click dismiss
  */
-function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
+function isbackdropClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return type === 'modal' && !isDefaultPrevented();
 }

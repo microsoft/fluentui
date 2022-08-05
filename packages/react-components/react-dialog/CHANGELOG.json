@@ -2,6 +2,71 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:47 GMT",
+      "tag": "@fluentui/react-dialog_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "93cbe6fdb4fc73aad83328aac304ac53cfd84303",
+            "comment": "chore: adds aria-labelledby and aria-describedby attributes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "26e5a29ec185ffaf62407b76e63190a4adb8e012",
+            "comment": "feat: adds react-dialog to react-components unstable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-aria to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-tabster to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-portal to v9.0.4",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-dialog",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b67323e77fe054dfaba09be0e22fb14bcbffa897",
+            "comment": "chore: Adds e2e tests for `react-dialog`"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "83f074e81375955cba003eb8210b4751767a7987",
+            "comment": "fix(react-dialog): converts Dialog stories to Preview Components"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3a670062bfb8a122fef0dfb7f9f06e884f3745a1",
+            "comment": "move stories to a proper directory"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:13 GMT",
       "tag": "@fluentui/react-dialog_v9.0.0-beta.6",
       "version": "9.0.0-beta.6",

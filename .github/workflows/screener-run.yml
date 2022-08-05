@@ -25,6 +25,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -55,9 +56,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Upload N* VR test site
         uses: azure/CLI@v1
@@ -85,6 +85,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -114,9 +115,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Upload @fluentui/react VR test site
         uses: azure/CLI@v1
@@ -144,6 +144,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -174,9 +175,8 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - name: yarn (install packages)
-        run: ./yarn-ci.sh
-        shell: bash
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Upload @fluentui/react-components VR test site
         uses: azure/CLI@v1

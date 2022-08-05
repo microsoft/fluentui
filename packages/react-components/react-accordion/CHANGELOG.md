@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 14 Jul 2022 21:21:07 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.4)
+
+Wed, 03 Aug 2022 16:03:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.0.3..@fluentui/react-accordion_v9.0.4)
+
+### Patches
+
+- chore: Updates AccordionHeader to use useARIAButtonShorthand over useARIAButton ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by bernardo.sunderhus@gmail.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-aria to v9.1.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-tabster to v9.1.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.0.3)
 

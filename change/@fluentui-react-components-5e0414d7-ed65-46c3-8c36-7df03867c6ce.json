@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-components): remove CSF warnings violation when running storybook",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

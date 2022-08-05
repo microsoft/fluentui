@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Bump Griffel dependencies",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}
