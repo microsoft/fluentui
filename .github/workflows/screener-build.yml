@@ -46,9 +46,6 @@ jobs:
     steps:
       - run: mkdir artifacts
 
-      - run: echo $ID
-        env:
-          ID: ${{ github.event.pull_request.id}}
       ###########################################
       # Environment variables are passed as an artifact so that the run workflow
       # can download and access them. There are two workflows used- `screener-build.yml`
