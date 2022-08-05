@@ -259,8 +259,17 @@ export {
   renderTableHeaderCell_unstable,
   TableContextProvider,
   useTableContext,
+  TablePrimaryCell,
+  useTablePrimaryCellStyles_unstable,
+  useTablePrimaryCell_unstable,
+  renderTablePrimaryCell_unstable,
+  TableCellActions,
+  useTableCellActionsStyles_unstable,
+  useTableCellActions_unstable,
+  renderTableCellActions_unstable,
 } from '@fluentui/react-table';
 export type {
+  SortDirection,
   TableHeaderCellProps,
   TableHeaderCellSlots,
   TableHeaderCellState,
@@ -281,4 +290,10 @@ export type {
   TableCellProps,
   TableCellState,
   TableCellSlots,
+  TableCellActionsProps,
+  TableCellActionsState,
+  TableCellActionsSlots,
+  TablePrimaryCellProps,
+  TablePrimaryCellSlots,
+  TablePrimaryCellState,
 } from '@fluentui/react-table';

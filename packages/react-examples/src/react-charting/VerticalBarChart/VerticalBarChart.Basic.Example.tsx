@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -142,6 +147,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         },
       },
     ];
+
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -183,6 +191,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             height={this.state.height}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
+            lineOptions={lineOptions}
             {...(this.state.isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
