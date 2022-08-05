@@ -104,7 +104,7 @@ jobs:
           DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
-        if: ${{ github.event.inputs.isPRBuild }}
+        if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Upload environment variables artifact
         uses: actions/upload-artifact@v3
@@ -147,7 +147,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild }}
+        if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -203,7 +203,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild }}
+        if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -257,7 +257,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{ github.event.inputs.isPRBuild }}
+        if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
