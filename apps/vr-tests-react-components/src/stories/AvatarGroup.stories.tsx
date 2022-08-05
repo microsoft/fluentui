@@ -70,7 +70,6 @@ const AvatarGroupList: React.FC<
 
 // Non-interactive stories
 storiesOf('AvatarGroup Converged', module)
-  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
@@ -82,7 +81,7 @@ storiesOf('AvatarGroup Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('layoutStack', () => <AvatarGroupList layout="spread" />, {
+  .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
@@ -93,7 +92,6 @@ storiesOf('AvatarGroup Converged', module)
 
 // Interactive stories
 storiesOf('AvatarGroup Converged', module)
-  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('overflowContentOpen').end()}>
       {story()}
