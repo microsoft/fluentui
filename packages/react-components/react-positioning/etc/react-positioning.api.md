@@ -42,9 +42,7 @@ export type CreateArrowStylesOptions = {
 // @public
 export function createVirtualElementFromClick(nativeEvent: MouseEvent): PositioningVirtualElement;
 
-// Warning: (ae-internal-missing-underscore) The name "mergeArrowOffset" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
+// @public
 export function mergeArrowOffset(userOffset: Offset | undefined | null, arrowHeight: number): Offset;
 
 // @public (undocumented)
@@ -109,10 +107,8 @@ export type PositioningVirtualElement = {
 // @public (undocumented)
 export function resolvePositioningShorthand(shorthand: PositioningShorthand | undefined | null): Readonly<PositioningProps>;
 
-// Warning: (ae-internal-missing-underscore) The name "usePositioning" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function usePositioning(options?: UsePopperOptions): {
+// @public (undocumented)
+export function usePositioning(options: UsePositioningOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;
