@@ -9,7 +9,6 @@ import {
   AvatarGroupProps,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
-import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const names = [
   'Katri Athokas',
