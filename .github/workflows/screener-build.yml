@@ -65,7 +65,6 @@ jobs:
           BROWSERSLIST_IGNORE_OLD_DATA=true
           DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
           BUILD_BUILDID=${{ github.run_id }}
-          BUILD_SOURCEBRANCH=${{ github.ref }}
           SCREENER_BUILD=1
           EOT
 
@@ -90,6 +89,7 @@ jobs:
           DEPLOYBASEPATH=pull/$PR_NUMBER
           DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
           BUILD_SOURCEBRANCHNAME='merge'
+          BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge
           EOT
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
@@ -103,6 +103,7 @@ jobs:
           DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
+          BUILD_SOURCEBRANCH=${{ github.ref }}
           EOT
         if: ${{ !github.event.inputs.isPRBuild }}
 
@@ -136,6 +137,7 @@ jobs:
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
@@ -147,6 +149,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV
         if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
@@ -192,6 +195,7 @@ jobs:
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
@@ -203,6 +207,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV
         if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
@@ -246,6 +251,7 @@ jobs:
           echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
@@ -257,6 +263,7 @@ jobs:
           echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
+          echo "BUILD_SOURCEBRANCH=${{ github.ref }}" >> $GITHUB_ENV
         if: ${{ !github.event.inputs.isPRBuild }}
 
       - name: Log environment variables (Linux)
