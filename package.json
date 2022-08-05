@@ -216,6 +216,7 @@
     "loader-utils": "2.0.0",
     "memfs": "3.2.2",
     "node-fetch": "2.6.7",
+    "nx": "13.10.6",
     "portfinder": "1.0.28",
     "postcss": "8.3.5",
     "postcss-loader": "4.1.0",
@@ -244,7 +245,8 @@
     "terser-webpack-plugin": "5.3.1",
     "tmp": "0.2.1",
     "ts-jest": "26.5.6",
-    "ts-loader": "8.0.14",
+    "ts-loader": "9.3.1",
+    "ts-node": "9.1.1",
     "tsconfig-paths": "3.9.0",
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "tslib": "2.4.0",
@@ -259,8 +261,7 @@
     "workspace-tools": "0.18.4",
     "yargs": "13.3.2",
     "yargs-parser": "13.1.2",
-    "yargs-unparser": "2.0.0",
-    "nx": "13.10.6"
+    "yargs-unparser": "2.0.0"
   },
   "dependencies": {
     "copy-to-clipboard": "3.3.1"
@@ -364,7 +365,6 @@
         "dependencies": [
           "mocha",
           "ts-loader",
-          "ts-node",
           "tslib",
           "webpack"
         ]
