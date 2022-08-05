@@ -138,6 +138,7 @@ import { renderTableCell_unstable } from '@fluentui/react-table';
 import { renderTableHeader_unstable } from '@fluentui/react-table';
 import { renderTableHeaderCell_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
+import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { Select } from '@fluentui/react-select';
 import { selectClassNames } from '@fluentui/react-select';
@@ -181,6 +182,11 @@ import { tableRowClassNames } from '@fluentui/react-table';
 import { TableRowProps } from '@fluentui/react-table';
 import { TableRowSlots } from '@fluentui/react-table';
 import { TableRowState } from '@fluentui/react-table';
+import { TableSelectionCell } from '@fluentui/react-table';
+import { tableSelectionCellClassNames } from '@fluentui/react-table';
+import { TableSelectionCellProps } from '@fluentui/react-table';
+import { TableSelectionCellSlots } from '@fluentui/react-table';
+import { TableSelectionCellState } from '@fluentui/react-table';
 import { TableSlots } from '@fluentui/react-table';
 import { TableState } from '@fluentui/react-table';
 import { Toolbar } from '@fluentui/react-toolbar';
@@ -250,6 +256,8 @@ import { useTableHeaderCellStyles_unstable } from '@fluentui/react-table';
 import { useTableHeaderStyles_unstable } from '@fluentui/react-table';
 import { useTableRow_unstable } from '@fluentui/react-table';
 import { useTableRowStyles_unstable } from '@fluentui/react-table';
+import { useTableSelectionCell_unstable } from '@fluentui/react-table';
+import { useTableSelectionCellStyles_unstable } from '@fluentui/react-table';
 import { useTableStyles_unstable } from '@fluentui/react-table';
 import { useToolbar_unstable } from '@fluentui/react-toolbar';
 import { useToolbarDividerStyles_unstable } from '@fluentui/react-toolbar';
@@ -523,6 +531,8 @@ export { renderTableHeaderCell_unstable }
 
 export { renderTableRow_unstable }
 
+export { renderTableSelectionCell_unstable }
+
 export { renderToolbar_unstable }
 
 export { Select }
@@ -608,6 +618,16 @@ export { TableRowProps }
 export { TableRowSlots }
 
 export { TableRowState }
+
+export { TableSelectionCell }
+
+export { tableSelectionCellClassNames }
+
+export { TableSelectionCellProps }
+
+export { TableSelectionCellSlots }
+
+export { TableSelectionCellState }
 
 export { TableSlots }
 
@@ -746,6 +766,10 @@ export { useTableHeaderStyles_unstable }
 export { useTableRow_unstable }
 
 export { useTableRowStyles_unstable }
+
+export { useTableSelectionCell_unstable }
+
+export { useTableSelectionCellStyles_unstable }
 
 export { useTableStyles_unstable }
 

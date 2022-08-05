@@ -5,6 +5,8 @@ export { Sort } from './Sort.stories';
 export { NonNativeElements } from './NonNativeElements.stories';
 export { SizeSmall } from './SizeSmall.stories';
 export { SizeSmaller } from './SizeSmaller.stories';
+export { MultipleSelect } from './MultipleSelect.stories';
+export { SingleSelect } from './SingleSelect.stories';
 
 export default {
   title: 'Preview Components/Table',

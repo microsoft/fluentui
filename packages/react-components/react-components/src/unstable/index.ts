@@ -259,6 +259,11 @@ export {
   renderTableHeaderCell_unstable,
   TableContextProvider,
   useTableContext,
+  TableSelectionCell,
+  useTableSelectionCellStyles_unstable,
+  useTableSelectionCell_unstable,
+  renderTableSelectionCell_unstable,
+  tableSelectionCellClassNames,
 } from '@fluentui/react-table';
 export type {
   TableHeaderCellProps,
@@ -281,4 +286,7 @@ export type {
   TableCellProps,
   TableCellState,
   TableCellSlots,
+  TableSelectionCellProps,
+  TableSelectionCellState,
+  TableSelectionCellSlots,
 } from '@fluentui/react-table';

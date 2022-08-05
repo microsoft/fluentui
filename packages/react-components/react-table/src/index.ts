@@ -59,3 +59,12 @@ export {
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export {
+  TableSelectionCell,
+  useTableSelectionCellStyles_unstable,
+  useTableSelectionCell_unstable,
+  renderTableSelectionCell_unstable,
+  tableSelectionCellClassNames,
+} from './TableSelectionCell';
+
+export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';
