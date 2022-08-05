@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bug 5118 For a hybrid graph including a 2px outline for line graph",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}

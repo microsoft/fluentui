@@ -37,7 +37,7 @@
     "@fluentui/react-button": "^9.1.0"
   },
   "dependencies": {
-    "@griffel/react": "^1.2.3",
+    "@griffel/react": "^1.3.0",
     "@fluentui/react-utilities": "^9.0.2",
     "@fluentui/react-tabster": "^9.1.0",
     "@fluentui/react-theme": "^9.0.0",

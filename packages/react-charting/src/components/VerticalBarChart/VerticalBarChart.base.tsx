@@ -181,6 +181,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
+    const line: JSX.Element[] = [];
     data &&
       data.forEach((item: IVerticalBarChartDataPoint, index: number) => {
         if (item.lineData && item.lineData.y) {
@@ -196,15 +197,33 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this.state.isLegendHovered || this.state.isLegendSelected) {
       shouldHighlight = this.state.selectedLegendTitle === lineLegendText;
     }
-    const line = (
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
+
+    if (lineBorderWidth > 0) {
+      line.push(
+        <path
+          opacity={shouldHighlight ? 1 : 0.1}
+          d={linePath(lineData)!}
+          fill="transparent"
+          strokeLinecap="square"
+          strokeWidth={3 + lineBorderWidth * 2}
+          stroke={theme!.palette.white}
+        />,
+      );
+    }
+    line.push(
       <path
-        opacity={shouldHighlight ? 1 : 0.4}
+        opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
-        fill={'none'}
+        fill="transparent"
+        strokeLinecap="square"
         strokeWidth={3}
         stroke={lineLegendColor}
-      />
+      />,
     );
+
     const dots: React.ReactNode[] = lineData.map(
       (item: { x: number | string; y: number; point: IVerticalBarChartDataPoint; index: number }, index: number) => {
         return (

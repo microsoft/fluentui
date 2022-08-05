@@ -68,3 +68,21 @@ export {
 } from './TableSelectionCell';
 
 export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';
+export {
+  TableCellActions,
+  tableCellActionsClassNames,
+  useTableCellActionsStyles_unstable,
+  useTableCellActions_unstable,
+  renderTableCellActions_unstable,
+} from './TableCellActions';
+
+export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
+export {
+  TablePrimaryCell,
+  tablePrimaryCellClassNames,
+  useTablePrimaryCellStyles_unstable,
+  useTablePrimaryCell_unstable,
+  renderTablePrimaryCell_unstable,
+} from './TablePrimaryCell';
+
+export type { TablePrimaryCellProps, TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell';
