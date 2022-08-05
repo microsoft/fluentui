@@ -2,6 +2,41 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:58 GMT",
+      "tag": "@fluentui/react-select_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "c66808887bcd7fd150c22eda462b325075742694",
+            "comment": "bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ],
+        "none": [
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "16c5ea573489dfd05921c6569dc3ac6c8da38a66",
+            "comment": "fix(docs): add Select usage warning and style best practices"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:03 GMT",
       "tag": "@fluentui/react-select_v9.0.0-beta.7",
       "version": "9.0.0-beta.7",
