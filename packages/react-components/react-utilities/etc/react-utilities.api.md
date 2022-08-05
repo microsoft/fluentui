@@ -79,6 +79,11 @@ export const getTriggerChild: <P = any>(children: React_2.ReactNode) => React_2.
     ref?: React_2.Ref<unknown> | undefined;
 };
 
+// Warning: (ae-internal-missing-underscore) The name "mergeCallbacks" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export function mergeCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
+
 // Warning: (ae-internal-missing-underscore) The name "RefObjectFunction" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
@@ -177,11 +182,6 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function useIsSSR(): boolean;
-
-// Warning: (ae-internal-missing-underscore) The name "useMergedEventCallbacks" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function useMergedEventCallbacks<Args extends unknown[]>(callback1: ((...args: Args) => void) | undefined, callback2: ((...args: Args) => void) | undefined): (...args: Args) => void;
 
 // Warning: (ae-internal-missing-underscore) The name "useMergedRefs" should be prefixed with an underscore because the declaration is marked as @internal
 //
