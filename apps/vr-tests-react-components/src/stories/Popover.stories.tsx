@@ -59,7 +59,10 @@ storiesOf('Popover Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true })
+  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
+
+storiesOf('Popover Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
