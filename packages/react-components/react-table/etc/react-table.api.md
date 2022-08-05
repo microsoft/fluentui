@@ -28,10 +28,16 @@ export const renderTableBody_unstable: (state: TableBodyState) => JSX.Element;
 export const renderTableCell_unstable: (state: TableCellState) => JSX.Element;
 
 // @public
+export const renderTableCellActions_unstable: (state: TableCellActionsState) => JSX.Element;
+
+// @public
 export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Element;
 
 // @public
 export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
+
+// @public
+export const renderTablePrimaryCell_unstable: (state: TablePrimaryCellState) => JSX.Element;
 
 // @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
@@ -64,6 +70,23 @@ export type TableBodyState = ComponentState<TableBodySlots>;
 
 // @public
 export const TableCell: ForwardRefComponent<TableCellProps>;
+
+// @public
+export const TableCellActions: ForwardRefComponent<TableCellActionsProps>;
+
+// @public (undocumented)
+export const tableCellActionsClassNames: SlotClassNames<TableCellActionsSlots>;
+
+// @public
+export type TableCellActionsProps = ComponentProps<TableCellActionsSlots> & {};
+
+// @public (undocumented)
+export type TableCellActionsSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TableCellActionsState = ComponentState<TableCellActionsSlots>;
 
 // @public (undocumented)
 export const tableCellClassName = "fui-TableCell";
@@ -151,6 +174,25 @@ export type TableHeaderSlots = {
 export type TableHeaderState = ComponentState<TableHeaderSlots>;
 
 // @public
+export const TablePrimaryCell: ForwardRefComponent<TablePrimaryCellProps>;
+
+// @public (undocumented)
+export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots>;
+
+// @public
+export type TablePrimaryCellProps = ComponentProps<Partial<TablePrimaryCellSlots>> & {};
+
+// @public (undocumented)
+export type TablePrimaryCellSlots = {
+    main: Slot<'span'>;
+    secondary: Slot<'span'>;
+    wrapper: Slot<'div'>;
+} & TableCellSlots;
+
+// @public
+export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
+
+// @public
 export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
     onSortColumnChange?: (e: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, data: {
         sortState: SortState;
@@ -202,6 +244,12 @@ export const useTableBodyStyles_unstable: (state: TableBodyState) => TableBodySt
 export const useTableCell_unstable: (props: TableCellProps, ref: React_2.Ref<HTMLElement>) => TableCellState;
 
 // @public
+export const useTableCellActions_unstable: (props: TableCellActionsProps, ref: React_2.Ref<HTMLElement>) => TableCellActionsState;
+
+// @public
+export const useTableCellActionsStyles_unstable: (state: TableCellActionsState) => TableCellActionsState;
+
+// @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
 
 // @public (undocumented)
@@ -218,6 +266,12 @@ export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) =>
 
 // @public
 export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
+
+// @public
+export const useTablePrimaryCell_unstable: (props: TablePrimaryCellProps, ref: React_2.Ref<HTMLElement>) => TablePrimaryCellState;
+
+// @public
+export const useTablePrimaryCellStyles_unstable: (state: TablePrimaryCellState) => TablePrimaryCellState;
 
 // @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;

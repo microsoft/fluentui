@@ -7,9 +7,19 @@ import {
   PeopleRegular,
   DocumentPdfRegular,
   VideoRegular,
+  MoreHorizontalRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell } from '../..';
+import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
+import {
+  TableBody,
+  TableCell,
+  TableRow,
+  Table,
+  TableHeader,
+  TableHeaderCell,
+  TableCellActions,
+  TablePrimaryCell,
+} from '../..';
 
 const items = [
   {
@@ -57,9 +67,9 @@ const columns = [
   { columnKey: 'lastUpdate', label: 'Last update' },
 ];
 
-export const SizeSmaller = () => {
+export const PrimaryCell = () => {
   return (
-    <Table noNativeElements size="smaller">
+    <Table>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -70,15 +80,14 @@ export const SizeSmaller = () => {
       <TableBody>
         {items.map(item => (
           <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
+            <TablePrimaryCell media={item.file.icon} main={item.file.label} secondary="Your organization">
+              <TableCellActions>
+                <Button icon={<EditRegular />} appearance="subtle" />
+                <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+              </TableCellActions>
+            </TablePrimaryCell>
             <TableCell
-              media={
-                <Avatar
-                  size={20}
-                  name={item.author.label}
-                  badge={{ status: item.author.status as PresenceBadgeStatus }}
-                />
-              }
+              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
             >
               {item.author.label}
             </TableCell>
