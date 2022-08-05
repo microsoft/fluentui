@@ -396,7 +396,7 @@ describe('Popover', () => {
 
         cy.get(popoverTriggerSelector).focus().realPress('Enter');
 
-        cy.get('#popover-surface').should('exist').realPress('Tab');
+        cy.get('#popover-surface').should('have.focus').realPress('Tab');
         cy.contains('One').should('have.focus').realPress('Tab');
         cy.contains('Two').should('have.focus');
       });
