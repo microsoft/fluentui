@@ -7,6 +7,7 @@ export const getStyles = (props: ISparklineStyleProps): ISparklineStyles => {
     },
     valueText: {
       ...props.theme!.fonts.smallPlus,
+      fill: props.theme!.palette.white,
     },
   };
 };
