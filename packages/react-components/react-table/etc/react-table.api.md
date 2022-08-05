@@ -7,6 +7,8 @@
 /// <reference types="react" />
 
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { Checkbox } from '@fluentui/react-checkbox';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
@@ -41,6 +43,9 @@ export const renderTablePrimaryCell_unstable: (state: TablePrimaryCellState) => 
 
 // @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
+
+// @public
+export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSX.Element;
 
 // @public (undocumented)
 export type SortDirection = 'ascending' | 'descending';
@@ -223,6 +228,27 @@ export type TableRowState = ComponentState<TableRowSlots> & {
     size: TableState['size'];
 };
 
+// @public
+export const TableSelectionCell: ForwardRefComponent<TableSelectionCellProps>;
+
+// @public (undocumented)
+export const tableSelectionCellClassNames: SlotClassNames<TableSelectionCellSlots>;
+
+// @public
+export type TableSelectionCellProps = ComponentProps<Partial<Omit<TableSelectionCellSlots, 'media'>>> & {
+    type?: 'checkbox' | 'radio';
+    checked?: CheckboxProps['checked'];
+};
+
+// @public (undocumented)
+export type TableSelectionCellSlots = {
+    checkboxIndicator: Slot<typeof Checkbox>;
+    radioIndicator: Slot<'span'>;
+} & Pick<TableCellSlots, 'root'>;
+
+// @public
+export type TableSelectionCellState = ComponentState<TableSelectionCellSlots> & Pick<TableCellState, 'media'> & Pick<Required<TableSelectionCellProps>, 'type' | 'checked'>;
+
 // @public (undocumented)
 export type TableSlots = {
     root: Slot<'table', 'div'>;
@@ -278,6 +304,12 @@ export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLE
 
 // @public
 export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
+
+// @public
+export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;
+
+// @public
+export const useTableSelectionCellStyles_unstable: (state: TableSelectionCellState) => TableSelectionCellState;
 
 // @public
 export const useTableStyles_unstable: (state: TableState) => TableState;
