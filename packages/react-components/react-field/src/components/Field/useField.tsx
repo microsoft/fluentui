@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { FieldProps, FieldState } from './Field.types';
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Field.
@@ -34,6 +34,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
+  // TODO https://github.com/microsoft/fluentui/issues/24236: re-enable check once FieldContext is hooked up
   // if (process.env.NODE_ENV !== 'production') {
   //   // eslint-disable-next-line react-hooks/rules-of-hooks
   //   ref = useMergedRefs(ref, useLabelDebugCheck(label));
