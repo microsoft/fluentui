@@ -76,7 +76,7 @@ const App = () => {
 };
 ```
 
-Additionaly in the `FluentProvider` we can strip and classnames that are known to be created by a standard `makeStyles`
+Additionaly in the `FluentProvider` we will strip and classnames that are known to be created by a standard `makeStyles`
 call and trigger a warning. This will ensure that there is only **correct** way of overriding the provider styles.
 
 #### Pros and Cons
