@@ -9,6 +9,7 @@ import {
   AvatarGroupProps,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const names = [
   'Katri Athokas',
@@ -69,6 +70,7 @@ const AvatarGroupList: React.FC<
 
 // Non-interactive stories
 storiesOf('AvatarGroup Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
   ))
@@ -91,6 +93,7 @@ storiesOf('AvatarGroup Converged', module)
 
 // Interactive stories
 storiesOf('AvatarGroup Converged', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().click('#show-overflow').snapshot('overflowContentOpen').end()}>
       {story()}
@@ -101,16 +104,18 @@ storiesOf('AvatarGroup Converged', module)
     () => {
       const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
       return (
-        <AvatarGroup>
-          {inlineItems.map(name => (
-            <AvatarGroupItem key={name} name={name} />
-          ))}
-          <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>
-            {overflowItems.map(name => (
+        <div style={{ padding: '10px' }}>
+          <AvatarGroup>
+            {inlineItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-          </AvatarGroupOverflow>
-        </AvatarGroup>
+            <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>
+              {overflowItems.map(name => (
+                <AvatarGroupItem key={name} name={name} />
+              ))}
+            </AvatarGroupOverflow>
+          </AvatarGroup>
+        </div>
       );
     },
     {
