@@ -60,6 +60,16 @@ storiesOf('Popover Converged', module)
     </Screener>
   ))
   .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true })
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .click('#show-popovers')
+        .snapshot('container focused popover', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
   .addStory('avoid scrolling', () => {
     return (
       <Popover>
