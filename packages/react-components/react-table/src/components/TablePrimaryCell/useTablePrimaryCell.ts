@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand } from '@fluentui/react-utilities';
 import type { TablePrimaryCellProps, TablePrimaryCellState } from './TablePrimaryCell.types';
-import { useTableContext } from '../../contexts/tableContext';
+import { useTableCell_unstable } from '../TableCell/useTableCell';
 
 /**
  * Create the state required to render TablePrimaryCell.
@@ -16,23 +16,16 @@ export const useTablePrimaryCell_unstable = (
   props: TablePrimaryCellProps,
   ref: React.Ref<HTMLElement>,
 ): TablePrimaryCellState => {
-  const noNativeElements = useTableContext(ctx => ctx.noNativeElements);
-  const rootComponent = props.as ?? noNativeElements ? 'div' : 'td';
+  const tableCellState = useTableCell_unstable(props, ref);
 
   return {
+    ...tableCellState,
     components: {
-      root: rootComponent,
+      ...tableCellState.components,
       main: 'span',
       secondary: 'span',
-      media: 'span',
       wrapper: 'div',
     },
-    root: getNativeElementProps(rootComponent, {
-      ref,
-      role: rootComponent === 'div' ? 'cell' : undefined,
-      ...props,
-    }),
-    media: resolveShorthand(props.media),
     main: resolveShorthand(props.secondary),
     secondary: resolveShorthand(props.main),
     wrapper: resolveShorthand(props.wrapper, { required: !!props.main || !!props.secondary }),

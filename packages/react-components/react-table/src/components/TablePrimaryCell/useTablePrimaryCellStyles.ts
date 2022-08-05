@@ -1,7 +1,8 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useTableCellStyles_unstable } from '../TableCell/useTableCellStyles';
 
 export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots> = {
   root: 'fui-TablePrimaryCell',
@@ -15,22 +16,12 @@ export const tablePrimaryCellClassNames: SlotClassNames<TablePrimaryCellSlots> =
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(1, 1, '0px'),
-  },
-
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
   },
 
   media: {
-    display: 'flex',
-    alignItems: 'center',
     '& svg': {
       width: '28px',
       height: '28px',
@@ -53,8 +44,9 @@ const useStyles = makeStyles({
  * Apply styling to the TablePrimaryCell slots based on the state
  */
 export const useTablePrimaryCellStyles_unstable = (state: TablePrimaryCellState): TablePrimaryCellState => {
+  useTableCellStyles_unstable(state);
   const styles = useStyles();
-  state.root.className = mergeClasses(tablePrimaryCellClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(tablePrimaryCellClassNames.root, state.root.className);
 
   if (state.media) {
     state.media.className = mergeClasses(tablePrimaryCellClassNames.media, styles.media, state.media.className);
