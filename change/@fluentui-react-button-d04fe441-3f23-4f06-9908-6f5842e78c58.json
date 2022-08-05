@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Replace useMergedEventCallbacks utility with mergeCallbacks",
+  "comment": "refactor: Replace useMergedEventCallbacks utility with mergeCallbacks",
   "packageName": "@fluentui/react-button",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
