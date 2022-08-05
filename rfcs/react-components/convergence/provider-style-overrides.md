@@ -38,15 +38,6 @@ not handle portals which use the same default styles as the closest `FluentProvi
 
 ## Detailed Design or Proposal
 
-#### Pros and Cons
-
-- 👍 No extra code changes necessary
-- 👍 Users will understand what the problem is
-- 👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
-
-- 👎 Extra effort to override one single component
-- 👍/👎 `TextDirectionProvider` should be re-exported
-
 ### Specific API for overriding provider styles
 
 The `FluentProvider` internally suffers from the same problem. This is solved by using `@griffel/core` so that
@@ -132,6 +123,15 @@ const AppWrapper = () => {
   );
 };
 ```
+
+#### Pros and Cons
+
+- 👍 No extra code changes necessary
+- 👍 Users will understand what the problem is
+- 👍 API Consistency (The same pattern must be adopted if user wants their own renderer with RendererProvider)
+
+- 👎 Extra effort to override one single component
+- 👍/👎 `TextDirectionProvider` should be re-exported
 
 ## Open Issues
 
