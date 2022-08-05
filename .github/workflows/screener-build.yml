@@ -93,7 +93,7 @@ jobs:
           EOT
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
+          PR_NUMBER: ${{ github.event.inputs.PRno }}
         if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
@@ -140,7 +140,7 @@ jobs:
           echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
+          PR_NUMBER: ${{ github.event.inputs.PRno }}
         if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
@@ -198,7 +198,7 @@ jobs:
           echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
+          PR_NUMBER: ${{ github.event.inputs.PRno }}
         if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
@@ -254,7 +254,7 @@ jobs:
           echo "BUILD_SOURCEBRANCH=refs/pull/$PR_NUMBER/merge" >> $GITHUB_ENV
         env:
           DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
+          PR_NUMBER: ${{ github.event.inputs.PRno }}
         if: ${{ github.event.inputs.isPRBuild }}
 
       - name: Set env variables if there is not a PR
