@@ -77,7 +77,7 @@ storiesOf('Popover Converged', module)
           <button id="show-popover">Show Popover</button>
         </PopoverTrigger>
         <PopoverSurface
-          tabIndex={0}
+          tabIndex={-1}
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -86,7 +86,7 @@ storiesOf('Popover Converged', module)
             overflowY: 'scroll',
           }}
         >
-          <span>{lorem}</span>
+          <span>{sampleText}</span>
           <div>
             <button>close</button>
             <button>accept</button>
@@ -96,7 +96,7 @@ storiesOf('Popover Converged', module)
     );
   });
 
-const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
  dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
  ultricies lacus sed turpis. Eros donec ac odio tempor. Mattis molestie a iaculis at erat. Aenean euismod elementum nisi
   quis eleifend quam. Penatibus et magnis dis parturient montes nascetur ridiculus mus mauris. Sed euismod nisi porta
