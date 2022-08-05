@@ -301,7 +301,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         if (lineBorderWidth > 0) {
           borderForLines.push(
             <line
-              key={`${index}-${i}-line`}
+              key={`${index}-${i}-BorderLine`}
               x1={x1}
               y1={y1}
               x2={x2}
@@ -312,11 +312,6 @@ export class VerticalStackedBarChartBase extends React.Component<
               strokeLinecap="round"
               stroke={theme!.palette.white}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-              {...(isLegendSelected &&
-                selectedLegendTitle === item && {
-                  onMouseOver: this._lineHover.bind(this, lineObject[item][i - 1]),
-                  onMouseLeave: this._lineHoverOut,
-                })}
             />,
           );
         }

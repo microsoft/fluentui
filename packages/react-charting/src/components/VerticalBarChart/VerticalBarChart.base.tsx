@@ -204,7 +204,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (lineBorderWidth > 0) {
       line.push(
         <path
-          opacity={shouldHighlight ? 1 : 0.4}
+          opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
           strokeLinecap="square"
@@ -215,7 +215,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     line.push(
       <path
-        opacity={shouldHighlight ? 1 : 0.4}
+        opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
         fill="transparent"
         strokeLinecap="square"
