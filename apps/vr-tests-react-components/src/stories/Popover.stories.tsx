@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Popover, PopoverSurface } from '@fluentui/react-popover';
+import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
 import { TestWrapperDecorator } from '../utilities/index';
 
@@ -59,4 +59,40 @@ storiesOf('Popover Converged', module)
       {story()}
     </Screener>
   ))
-  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
+  .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true })
+  .addStory('avoid scrolling', () => {
+    return (
+      <Popover>
+        <PopoverTrigger>
+          <button id="show-popover">Show Popover</button>
+        </PopoverTrigger>
+        <PopoverSurface
+          tabIndex={0}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            maxWidth: '300px',
+            maxHeight: '300px',
+            overflowY: 'scroll',
+          }}
+        >
+          <span>{lorem}</span>
+          <div>
+            <button>close</button>
+            <button>accept</button>
+          </div>
+        </PopoverSurface>
+      </Popover>
+    );
+  });
+
+const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+ dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
+ ultricies lacus sed turpis. Eros donec ac odio tempor. Mattis molestie a iaculis at erat. Aenean euismod elementum nisi
+  quis eleifend quam. Penatibus et magnis dis parturient montes nascetur ridiculus mus mauris. Sed euismod nisi porta
+  lorem mollis aliquam ut porttitor leo. Lorem ipsum dolor sit amet. Id faucibus nisl tincidunt eget nullam. Fermentum
+  posuere urna nec tincidunt praesent semper. Dolor sit amet consectetur adipiscing. Ut enim blandit volutpat maecenas
+  volutpat blandit aliquam etiam erat. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc sed.
+  Dignissim convallis aenean et tortor at risus. Tristique senectus et netus et malesuada. Sed blandit libero volutpat
+  sed cras ornare arcu dui. Arcu dictum varius duis at consectetur lorem. Montes nascetur ridiculus mus mauris vitae. Ut
+   ornare lectus sit amet est placerat in egestas.`;
