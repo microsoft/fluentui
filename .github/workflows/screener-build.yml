@@ -4,22 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       PRno:
-        description: 'PR Number'
+        description: 'Pull request Number'
         required: false
         default: default
         type: string
       targetBranch:
-        description: 'PR target branch name'
+        description: 'Pull request target branch name'
         required: false
         default: default
         type: string
       sourceBranch:
-        description: 'PR source branch name'
+        description: 'Pull request source branch name'
         required: false
         default: default
         type: string
       PRID:
-        description: 'PR ID'
+        description: 'Pull request ID'
         required: false
         default: default
         type: string
