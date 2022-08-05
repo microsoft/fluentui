@@ -34,10 +34,10 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     },
   });
 
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    ref = useMergedRefs(ref, useLabelDebugCheck(label));
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   ref = useMergedRefs(ref, useLabelDebugCheck(label));
+  // }
 
   let defaultStatusIcon;
   if (status === 'error') {
@@ -79,28 +79,29 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   };
 };
 
-const useLabelDebugCheck = (label: FieldState['label']) => {
-  const labelFor = label?.htmlFor;
-  const labelId = label?.id;
-  const labelText = label?.children;
-  const rootRef = React.useRef<HTMLDivElement>(null);
+// TODO https://github.com/microsoft/fluentui/issues/24236: re-enable check once FieldContext is hooked up
+// const useLabelDebugCheck = (label: FieldState['label']) => {
+//   const labelFor = label?.htmlFor;
+//   const labelId = label?.id;
+//   const labelText = label?.children;
+//   const rootRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    if (!rootRef.current || !labelText || !labelFor || !labelId) {
-      return;
-    }
+//   React.useEffect(() => {
+//     if (!rootRef.current || !labelText || !labelFor || !labelId) {
+//       return;
+//     }
 
-    if (!rootRef.current.querySelector(`[id='${labelFor}'], [aria-labelledby='${labelId}']`)) {
-      // eslint-disable-next-line no-console
-      console.error(
-        `Field with label "${labelText}" requires the label be associated with its input. Try one of these fixes:\n` +
-          '1. Use a control that sets its ID from FieldContext.generatedChildId (form controls in this library).\n' +
-          '2. Or, set the `id` prop of the child of field.\n' +
-          '3. Or, set `htmlFor` to the ID used by the field component.\n' +
-          '4. Or, set `label={{ id: ... }}` to the `aria-labelledby` prop of the field component.\n',
-      );
-    }
-  }, [labelFor, labelId, labelText]);
+//     if (!rootRef.current.querySelector(`[id='${labelFor}'], [aria-labelledby='${labelId}']`)) {
+//       // eslint-disable-next-line no-console
+//       console.error(
+//         `Field with label "${labelText}" requires the label be associated with its input. Try one of these fixes:\n`+
+//           '1. Use a control that sets its ID from FieldContext.generatedChildId (form controls in this library).\n' +
+//           '2. Or, set the `id` prop of the child of field.\n' +
+//           '3. Or, set `htmlFor` to the ID used by the field component.\n' +
+//           '4. Or, set `label={{ id: ... }}` to the `aria-labelledby` prop of the field component.\n',
+//       );
+//     }
+//   }, [labelFor, labelId, labelText]);
 
-  return rootRef;
-};
+//   return rootRef;
+// };
