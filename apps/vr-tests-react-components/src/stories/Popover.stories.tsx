@@ -64,12 +64,7 @@ storiesOf('Popover Converged', module)
 storiesOf('Popover Converged', module)
   .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .click('#show-popover')
-        .snapshot('PopoverSurface focused', { cropTo: '.testWrapper' })
-        .end()}
-    >
+    <Screener steps={new Screener.Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
       {story()}
     </Screener>
   ))
