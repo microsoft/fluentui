@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Fri, 05 Aug 2022 07:39:56 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-file-type-icons to v8.7.0",
+            "commit": "5cdc29322d17fc7d0c09cb19a353051ef7f1cc95"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Aug 2022 07:42:13 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",
