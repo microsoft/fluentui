@@ -321,6 +321,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }
             data-is-focusable={ true }
+            role='columnheader'
           >
             <Icon
               className={ css(
@@ -332,7 +333,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             />
           </div>
         ) : null }
-        { GroupSpacer({ count: groupNestingDepth! - 1 }) }
+        { GroupSpacer({ count: groupNestingDepth! - 1, role: 'gridcell' }) }
         { columns.map((column: IColumn, columnIndex: number) => {
           const _isDraggable = columnReorderProps
             ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd
