@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 ## Browser Support Matrix
 
-FluentUI supports browsers that are at or above the indicated versions below:
+FluentUI fully supports browsers that are at or above the indicated versions below:
 
 **Desktop Browsers:**
 
@@ -22,6 +22,35 @@ FluentUI will ensure that no browser, EcmaScript(ES), or CSS features that are i
 FluentUI will not be providing polyfills for features that we expect our browser support matrix to already support. This means that consumers who require the
 use/support of older browsers that don't support certain browser, ES, or CSS features (i.e. `ResizeObserver`),
 are expected to implement their own polyfills or use a third-party one.
+
+## Partial Support:
+
+FluentUI provides partial support for the browsers below which will have limitations that may require consumers to use/implement polyfills to cover the support gaps.
+
+**Desktop Browsers:**
+
+| Edge | Firefox | Chrome | Safari | Opera | Internet Explorer |
+| ---- | ------- | ------ | ------ | ----- | ----------------- |
+| >=79 | >=69    | >=79   | >=13.1 | >=64  | Not Supported     |
+
+**Mobile Browsers:**
+
+| Safari on iOS | Chrome for Android | Samsung |
+| ------------- | ------------------ | ------- |
+| >=13.4        | >=79               | >=14    |
+
+List of features that are currently used in FluentUI that aren't supported out of the box by the partial support matrix above:
+
+**Unsupported ECMAScript Features:**
+
+1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera
+2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera
+
+**Unsupported CSS Features:**
+
+1.  Flex gap: Unsupported by Chrome, Edge, Firefox, Opera, Safari, Safari on IOS, Chrome on Android
+2.  CSS min, max, clamp: Unsupported by Firefox and Opera
+3.  CSS revert value: Unsupported by Firefox and Opera
 
 ## Browser Support Going Forward
 
