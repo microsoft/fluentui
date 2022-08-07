@@ -90,7 +90,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _chart: JSX.Element[];
   private margins: IMargins;
   private _rectId: string;
-  private _rectRef: SVGRectElement | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
@@ -204,7 +203,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
             <>
               <g>
                 <rect
-                  ref={e => (this._rectRef = e)}
                   id={this._rectId}
                   width={width1}
                   height={rectHeight}
@@ -231,7 +229,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const { data } = this.props;
     const { lineChartData } = data;
     // This will get the value of the X when mouse is on the chart
-    const xOffset = this._xAxisRectScale.invert(clientPoint(this._rectRef!, mouseEvent)[0]);
+    const xOffset = this._xAxisRectScale.invert(clientPoint(document.getElementById(this._rectId)!, mouseEvent)[0]);
     const i = bisect(lineChartData![0].data, xOffset);
     const d0 = lineChartData![0].data[i - 1] as ILineChartDataPoint;
     const d1 = lineChartData![0].data[i] as ILineChartDataPoint;

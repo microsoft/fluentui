@@ -196,9 +196,15 @@ describe('AreaChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', async () => {
-    wrapper = mount(<AreaChart data={chartPoints} />);
+  it('Should render callout on hover', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    wrapper = mount(<AreaChart data={chartPoints} />, { attachTo: root });
     wrapper.find('rect').simulate('mouseover');
-    expect(toJson(wrapper, { mode: 'deep' })).toMatchSnapshot();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+
+    document.body.removeChild(root);
   });
 });
