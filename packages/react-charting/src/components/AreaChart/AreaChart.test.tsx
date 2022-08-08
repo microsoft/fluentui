@@ -200,7 +200,7 @@ describe('AreaChart - mouse events', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);
 
-    wrapper = mount(<AreaChart data={chartPoints} />, { attachTo: root });
+    wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('rect').simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
