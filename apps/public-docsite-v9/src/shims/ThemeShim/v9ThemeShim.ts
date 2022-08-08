@@ -97,6 +97,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorSubtleBackgroundInvertedHover: blackAlpha[10],
     colorSubtleBackgroundInvertedPressed: blackAlpha[30],
     colorSubtleBackgroundInvertedSelected: blackAlpha[20],
+    colorTest: 'pink',
     colorTransparentBackground: 'transparent',
     colorTransparentBackgroundHover: 'transparent',
     colorTransparentBackgroundPressed: 'transparent',
