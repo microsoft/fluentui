@@ -92,10 +92,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-
       - name: Set env variables if there is a PR
         run: |
           echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
@@ -124,6 +120,11 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -148,10 +149,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-
       - name: Set env variables if there is a PR
         run: |
           echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
@@ -180,6 +177,11 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -202,10 +204,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-
       - name: Set env variables if there is a PR
         run: |
           echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
@@ -234,6 +232,11 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
