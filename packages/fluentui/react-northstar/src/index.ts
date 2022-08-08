@@ -1,3 +1,5 @@
+export const dummy = 'dummy';
+
 export * from '@fluentui/accessibility';
 export * from '@fluentui/react-component-ref';
 export * from '@fluentui/react-bindings';
