@@ -398,6 +398,8 @@ describe('Popover', () => {
 
         cy.get('#popover-surface').should('have.focus').realPress('Tab');
         cy.contains('One').should('have.focus').realPress('Tab');
+        cy.contains('Two').should('have.focus').realPress('Tab');
+        cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
         cy.contains('Two').should('have.focus');
       });
     });
