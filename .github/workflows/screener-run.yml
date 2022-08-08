@@ -19,6 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -63,7 +64,6 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
-
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
         env:
@@ -79,6 +79,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -108,7 +109,6 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
-
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -123,7 +123,6 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
-
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
         env:
@@ -139,6 +138,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{github.event.workflow_run.head_branch}}
           fetch-depth: 0
 
       - uses: actions/setup-node@v3
@@ -168,6 +168,7 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -182,7 +183,6 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
-
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
         env:
