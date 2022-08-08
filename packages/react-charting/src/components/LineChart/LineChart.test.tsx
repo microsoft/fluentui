@@ -5,6 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { ILineChartProps, LineChart } from './index';
 import { ILineChartState, LineChartBase } from './LineChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the LineChart to be tested.
 let wrapper: ReactWrapper<ILineChartProps, ILineChartState, LineChartBase> | undefined;
@@ -141,5 +142,22 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('LineChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+
+    document.body.removeChild(root);
   });
 });
