@@ -27,9 +27,7 @@ function getCurrentHash() {
   return '';
 }
 
-const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-  ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
-  : 'master';
+const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH;
 
 // https://github.com/screener-io/screener-storybook#additional-configuration-options
 const config = {
