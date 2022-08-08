@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix box-shadow for `Menu` and `Dropdown` component to make it consistent with other components @vitthalr ([#23937](https://github.com/microsoft/fluentui/pull/23937))
 - Align `default` scheme colors between v0 and v9 @yuanboxue-amber ([#23901](https://github.com/microsoft/fluentui/pull/23901))
 - Refactor `Ref` component to flatten React's tree @layershifter ([#24105](https://github.com/microsoft/fluentui/pull/24105))
+- Fix to handle an empty string as an empty value in `Dropdown` @layershifter ([#24274](https://github.com/microsoft/fluentui/pull/24274))
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->
 ## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
