@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { IDonutChartProps, DonutChart } from './index';
 import { IDonutChartState, DonutChartBase } from './DonutChart.base';
 import { IChartProps, IChartDataPoint } from '../../index';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the DonutChart to be tested.
 let wrapper: ReactWrapper<IDonutChartProps, IDonutChartState, DonutChartBase> | undefined;
@@ -115,5 +116,17 @@ describe('DonutChart - basic props', () => {
     wrapper = mount(<DonutChart data={chartPoints} />);
     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
+  });
+});
+
+describe('DonutChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', () => {
+    wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
