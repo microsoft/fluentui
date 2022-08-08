@@ -77,11 +77,11 @@ export function usePositioning(
         });
       })
       .catch(err => {
-        // This is super duper stuuuuuuupid
+        // https://github.com/floating-ui/floating-ui/issues/1845
         // FIXME for node > 14
         // node 15 introduces promise rejection which means that any components
         // tests need to be `it('', async () => {})` otherwise there can be race conditions with
-        // JSOM being torn down before this promise is resolved.
+        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
         // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
         // will actually be counter productive
         if (process.env.NODE_ENV === 'development') {
