@@ -24,7 +24,6 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       },
       rootIsTabs && {
         selectors: {
-          // remove bottom highlight
           '.is-selected::before': {
             border: StyleConstants.borderNone,
           },
@@ -47,6 +46,11 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
         paddingLeft: 0,
         paddingRight: 0,
         marginRight: 24,
+        selectors: {
+          '.ms-Pivot-text': {
+            padding: '0 8px',
+          },
+        },
       },
       !rootIsLarge && {
         fontSize: theme.fonts.large.fontSize,
@@ -54,13 +58,13 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       !rootIsTabs && {
         selectors: {
           ':hover': {
-            backgroundColor: extendedSemanticColors.bodyBackground,
+            backgroundColor: extendedSemanticColors.listItemBackgroundHovered,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.bodyBackground,
+            backgroundColor: semanticColors.listItemBackgroundSelected,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
           },
@@ -89,13 +93,20 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     ],
     linkIsSelected: [
       {
-        marginRight: 24,
+        marginRight: StyleConstants.inputControlHeight,
         selectors: {
           '.ms-Fabric--isFocusVisible': {
-            outline: '1px solid black !important',
+            outline: `${StyleConstants.borderWidth} solid ${semanticColors.bodyText}`,
+          },
+          '.ms-Pivot-text': {
+            backgroundColor: 'none',
+            padding: '0 8px',
           },
           ':active': {
-            backgroundColor: semanticColors.bodyBackground,
+            backgroundColor: semanticColors.buttonBackgroundHovered,
+          },
+          '.ms-Pivot-text:hover': {
+            backgroundColor: extendedSemanticColors.listItemBackgroundHovered,
           },
         },
       },
