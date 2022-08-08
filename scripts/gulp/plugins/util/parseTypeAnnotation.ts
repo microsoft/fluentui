@@ -48,6 +48,7 @@ const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSTyp
   }
 
   if (t.isTSLiteralType(tsType)) {
+    // @ts-expect-error - FIXME - `value` doesn't exist on literal
     return [{ name: 'literal', value: tsType.literal.value.toString() }];
   }
 
