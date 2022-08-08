@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add stress test app",
+  "packageName": "@fluentui/stress-test",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
