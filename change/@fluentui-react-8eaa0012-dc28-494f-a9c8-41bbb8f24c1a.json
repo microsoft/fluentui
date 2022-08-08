@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(Pivot): add overflowButtonAs prop to allow overflow button customization.",
-  "packageName": "@fluentui/react",
-  "email": "alina.o.zaieva@gmail.com",
-  "dependentChangeType": "patch"
-}
