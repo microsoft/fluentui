@@ -9,14 +9,15 @@ export interface OverflowContextValue {
   updateOverflow: (padding?: number) => void;
 }
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const OverflowContext = createContext<OverflowContextValue>({
+export const OverflowContext = createContext<OverflowContextValue | undefined>(undefined);
+
+const overflowContextDefaultValue = {
   itemVisibility: {},
   groupVisibility: {},
   hasOverflow: false,
   registerItem: () => () => null,
   updateOverflow: () => null,
-});
+};
 
 export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>
-  useContextSelector(OverflowContext, selector);
+  useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));

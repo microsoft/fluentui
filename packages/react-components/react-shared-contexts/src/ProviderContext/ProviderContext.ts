@@ -11,11 +11,12 @@ export type ProviderContextValue = {
 /**
  * @internal
  */
-// eslint-disable-next-line @fluentui/no-context-default-value
-const ProviderContext = React.createContext<ProviderContextValue>({
+const ProviderContext = React.createContext<ProviderContextValue | undefined>(undefined);
+
+const providerContextDefaultValue = {
   targetDocument: typeof document === 'object' ? document : undefined,
-  dir: 'ltr',
-});
+  dir: 'ltr' as 'ltr',
+};
 
 /**
  * @internal
@@ -23,5 +24,5 @@ const ProviderContext = React.createContext<ProviderContextValue>({
 export const Provider = ProviderContext.Provider;
 
 export function useFluent(): ProviderContextValue {
-  return React.useContext(ProviderContext);
+  return React.useContext(ProviderContext) ?? providerContextDefaultValue;
 }
