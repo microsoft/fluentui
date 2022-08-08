@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 04 Aug 2022 07:42:12 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 07:39:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.87.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.0)
+
+Mon, 08 Aug 2022 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.86.4..@fluentui/react_v8.87.0)
+
+### Minor changes
+
+- feat(Pivot): add overflowButtonAs prop to allow overflow button customization. ([PR #24196](https://github.com/microsoft/fluentui/pull/24196) by alina.o.zaieva@gmail.com)
+- feat: add popupProps to Callout ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by sarah.higley@microsoft.com)
+- Bump @fluentui/date-time-utilities to v8.5.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.13 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.6 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/merge-styles to v8.5.3 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/react-focus to v8.7.7 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/react-hooks to v8.6.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/style-utilities to v8.7.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/theme to v2.6.10 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/utilities to v8.10.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/common-styles to v1.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/example-data to v8.4.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.20 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/test-utilities to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/webpack-utilities to v8.1.8 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+
+### Patches
+
+- fix: Breadcrumb overflowbutton focus outline now visible in HCM. ([PR #24234](https://github.com/microsoft/fluentui/pull/24234) by tristan.watanabe@gmail.com)
 
 ## [8.86.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.86.4)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add popupProps to Callout",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

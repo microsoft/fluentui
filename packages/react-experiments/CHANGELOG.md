@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 04 Aug 2022 07:42:13 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.12.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.16)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.12.15..@fluentui/react-experiments_v8.12.16)
+
+### Patches
+
+- Bump @fluentui/react to v8.87.0 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/theme to v2.6.10 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/example-data to v8.4.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.13 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.6 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/merge-styles to v8.5.3 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/react-hooks to v8.6.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/style-utilities to v8.7.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/utilities to v8.10.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/common-styles to v1.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.20 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
 
 ## [8.12.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.12.15)
 

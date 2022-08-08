@@ -2,6 +2,63 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Mon, 08 Aug 2022 07:39:33 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.9.17",
+      "version": "8.9.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.87.0",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.6.10",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/example-data to v8.4.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/public-docsite-setup to v0.3.10",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.6.5",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/set-version to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.6.17",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/common-styles to v1.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Aug 2022 07:42:13 GMT",
       "tag": "@fluentui/react-docsite-components_v8.9.16",
       "version": "8.9.16",

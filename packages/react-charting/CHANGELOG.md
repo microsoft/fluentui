@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 04 Aug 2022 07:42:13 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 07:39:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.17)
+
+Mon, 08 Aug 2022 07:39:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.16..@fluentui/react-charting_v5.12.17)
+
+### Patches
+
+- Bug 5118 For a hybrid graph including a 2px outline for line graph ([PR #24176](https://github.com/microsoft/fluentui/pull/24176) by ankityadav@microsoft.com)
+- Bump @fluentui/react-focus to v8.7.7 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/react to v8.87.0 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.20 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
 
 ## [5.12.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.16)
 
