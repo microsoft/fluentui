@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 02 Aug 2022 21:25:23 GMT",
+      "tag": "@fluentui/react_v7.192.0",
+      "version": "7.192.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added top-level export for decorators",
+            "author": "gcox@microsoft.com",
+            "commit": "654ac95610c72c7f254650c5b7332308577fce5b",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.192.0",
+            "author": "gcox@microsoft.com",
+            "commit": "654ac95610c72c7f254650c5b7332308577fce5b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jul 2022 12:21:50 GMT",
       "tag": "@fluentui/react_v7.191.0",
       "version": "7.191.0",

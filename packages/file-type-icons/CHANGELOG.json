@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Fri, 05 Aug 2022 12:21:13 GMT",
+      "tag": "@uifabric/file-type-icons_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update to UIFabric (v7 Branch) to pick up latest filetype icon system. Here's the changes: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!)",
+            "author": "caperez@microsoft.com",
+            "commit": "7a8c496c0eba5972578ad8bda73265537d68911a",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jul 2022 12:27:44 GMT",
       "tag": "@uifabric/file-type-icons_v7.8.11",
       "version": "7.8.11",
