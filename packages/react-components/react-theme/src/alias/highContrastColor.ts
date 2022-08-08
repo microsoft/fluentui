@@ -96,6 +96,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorSubtleBackgroundInvertedHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorSubtleBackgroundInvertedPressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorSubtleBackgroundInvertedSelected: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorTest: 'pink',
   colorTransparentBackground: 'transparent', // transparent undefined
   colorTransparentBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorTransparentBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight

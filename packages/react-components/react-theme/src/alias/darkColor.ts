@@ -86,6 +86,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorSubtleBackgroundInvertedHover: blackAlpha[10], // rgba(0, 0, 0, 0.1) Global.Color.BlackAlpha.10
   colorSubtleBackgroundInvertedPressed: blackAlpha[30], // rgba(0, 0, 0, 0.3) Global.Color.BlackAlpha.30
   colorSubtleBackgroundInvertedSelected: blackAlpha[20], // rgba(0, 0, 0, 0.2) Global.Color.BlackAlpha.20
+  colorTest: 'pink',
   colorTransparentBackground: 'transparent', // transparent undefined
   colorTransparentBackgroundHover: 'transparent', // transparent undefined
   colorTransparentBackgroundPressed: 'transparent', // transparent undefined

@@ -86,6 +86,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorSubtleBackgroundInvertedHover: 'var(--colorSubtleBackgroundInvertedHover)',
   colorSubtleBackgroundInvertedPressed: 'var(--colorSubtleBackgroundInvertedPressed)',
   colorSubtleBackgroundInvertedSelected: 'var(--colorSubtleBackgroundInvertedSelected)',
+  colorTest: 'var(--colorTest)',
   colorTransparentBackground: 'var(--colorTransparentBackground)',
   colorTransparentBackgroundHover: 'var(--colorTransparentBackgroundHover)',
   colorTransparentBackgroundPressed: 'var(--colorTransparentBackgroundPressed)',
