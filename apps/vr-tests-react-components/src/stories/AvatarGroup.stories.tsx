@@ -82,6 +82,31 @@ storiesOf('AvatarGroup Converged', module)
     includeHighContrast: true,
     includeDarkMode: true,
   })
+  .addStory(
+    'layoutPie-1',
+    () => (
+      <AvatarGroup>
+        <AvatarGroupItem name={names[0]} />
+      </AvatarGroup>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'layoutPie-2',
+    () => (
+      <AvatarGroup>
+        <AvatarGroupItem name={names[0]} />
+        <AvatarGroupItem name={names[1]} />
+      </AvatarGroup>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
   .addStory('layoutPie', () => <AvatarGroupList layout="pie" />, {
     includeHighContrast: true,
     includeDarkMode: true,

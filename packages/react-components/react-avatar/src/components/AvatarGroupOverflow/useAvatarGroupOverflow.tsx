@@ -40,12 +40,10 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
   let triggerButtonChildren;
   if (layout === 'pie') {
     triggerButtonChildren = null;
+  } else if (indicator === 'icon') {
+    triggerButtonChildren = <MoreHorizontalRegular />;
   } else {
-    if (indicator === 'icon') {
-      triggerButtonChildren = <MoreHorizontalRegular />;
-    } else {
-      triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
-    }
+    triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
   }
 
   return {

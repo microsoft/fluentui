@@ -164,30 +164,38 @@ const usePieStyles = makeStyles({
   },
   slices: {
     // Two slices
+    // 1st of 2 items
     '&:nth-of-type(1):nth-last-of-type(2)': {
       clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
       left: '-25%',
     },
+    // 2nd of 2 items
     '&:nth-of-type(2):nth-last-of-type(1)': {
       clipPath: `inset(0 25% 0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)))`,
       left: '25%',
     },
 
     // Three slices
+    // 1st of 3 items
     '&:nth-of-type(1):nth-last-of-type(3)': {
       clipPath: `inset(0 calc(25% + (var(${avatarGroupItemDividerWidthVar}) / 2)) 0 25%)`,
       left: '-25%',
     },
-    '&:nth-of-type(2):nth-last-of-type(2),&:nth-of-type(3):nth-last-of-type(1)': {
+    // 2nd of 3 items
+    '&:nth-of-type(2):nth-last-of-type(2)': {
       // Since the two AvatarGroupItems on the right are scaled by 0.5, the divider width should not be halved.
       clipPath: `inset(0 0 var(${avatarGroupItemDividerWidthVar}) var(${avatarGroupItemDividerWidthVar}))`,
       left: '50%',
       transform: 'scale(0.5)',
       transformOrigin: '0 0',
     },
+    // 3rd of 3 items
     '&:nth-of-type(3):nth-last-of-type(1)': {
       clipPath: `inset(var(${avatarGroupItemDividerWidthVar}) 0 0 var(${avatarGroupItemDividerWidthVar}))`,
+      left: '50%',
       top: '50%',
+      transform: 'scale(0.5)',
+      transformOrigin: '0 0',
     },
   },
   thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },

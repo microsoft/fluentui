@@ -60,9 +60,7 @@ const useTriggerButtonStyles = makeStyles({
   },
 
   pie: {
-    backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
-    color: 'transparent',
+    opacity: '0',
   },
 
   // These styles match the default button styles.
