@@ -11,6 +11,7 @@ import {
   IVerticalStackedChartProps,
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the VerticalStackedBarChart to be tested.
 let wrapper:
@@ -225,5 +226,19 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('VerticalStackedBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', async () => {
+    wrapper = mount(<VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
