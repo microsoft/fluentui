@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: update package scaffold",
+  "packageName": "@fluentui/react-portal",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
