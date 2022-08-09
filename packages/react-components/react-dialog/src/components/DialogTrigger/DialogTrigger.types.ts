@@ -1,3 +1,4 @@
+import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
 import * as React from 'react';
 
 export type DialogTriggerAction = 'open' | 'close';
@@ -22,7 +23,12 @@ export type DialogTriggerProps = {
 /**
  * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behaviour for the Dialog
  */
-export type DialogTriggerChildProps = React.HTMLAttributes<HTMLElement>;
+export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
+  Type,
+  Props & {
+    'aria-haspopup'?: 'dialog';
+  }
+>;
 
 export type DialogTriggerState = {
   children: React.ReactElement | null;

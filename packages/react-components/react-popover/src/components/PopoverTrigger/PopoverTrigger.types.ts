@@ -1,3 +1,4 @@
+import { ARIAButtonResultProps, ARIAButtonType } from '@fluentui/react-aria';
 import * as React from 'react';
 
 /**
@@ -16,4 +17,18 @@ export type PopoverTriggerState = {
   children: React.ReactElement | null;
 };
 
-export type PopoverTriggerChildProps = React.HTMLAttributes<HTMLElement>;
+/**
+ * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behaviour for the Dialog
+ */
+export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
+  Type,
+  Props & {
+    'aria-expanded'?: 'true' | 'false';
+    ref: React.Ref<unknown>;
+    onClick: React.MouseEventHandler;
+    onKeyDown: React.KeyboardEventHandler;
+    onMouseEnter: React.MouseEventHandler;
+    onMouseLeave: React.MouseEventHandler;
+    onContextMenu: React.MouseEventHandler;
+  }
+>;
