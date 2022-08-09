@@ -9,7 +9,28 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import {
+  useReactTable,
+  getCoreRowModel,
+  createColumnHelper,
+  flexRender,
+  getSortedRowModel,
+} from '@tanstack/react-table';
+import type { SortingState, SortDirection as SortDirection2 } from '@tanstack/react-table';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, SortDirection } from '../..';
+
+const sortDirectionMap: Record<SortDirection2, SortDirection> = {
+  asc: 'ascending',
+  desc: 'descending',
+};
+
+const getSortDirection = (original: SortDirection2 | false) => {
+  if (original === false) {
+    return undefined;
+  }
+
+  return sortDirectionMap[original];
+};
 
 type FileCell = {
   label: string;
@@ -37,8 +58,6 @@ type Item = {
   lastUpdated: LastUpdatedCell;
   lastUpdate: LastUpdateCell;
 };
-
-type ColumnKey = 'file' | 'author' | 'lastUpdate' | 'lastUpdated';
 
 const items: Item[] = [
   {
@@ -79,82 +98,73 @@ const items: Item[] = [
   },
 ];
 
-const columns: Record<string, { label: string; compare: (a: unknown, b: unknown) => number }> = {
-  file: {
-    label: 'File',
-    compare: (a: unknown, b: unknown) => (a as FileCell).label.localeCompare((b as FileCell).label),
-  },
-  author: {
-    label: 'Author',
-    compare: (a: unknown, b: unknown) => (a as AuthorCell).label.localeCompare((b as AuthorCell).label),
-  },
-  lastUpdated: {
-    label: 'Last updated',
-    compare: (a: unknown, b: unknown) => (b as LastUpdatedCell).timestamp - (a as LastUpdatedCell).timestamp,
-  },
-  lastUpdate: {
-    label: 'Last update',
-    compare: (a: unknown, b: unknown) => (a as LastUpdateCell).label.localeCompare((b as LastUpdateCell).label),
-  },
-};
+const columnHelper = createColumnHelper<Item>();
+const columns2 = [
+  columnHelper.accessor(row => row.file, {
+    id: 'file',
+    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
+    header: 'File',
+    sortingFn: (rowA, rowB, columnId) =>
+      rowA.getValue<FileCell>(columnId).label.localeCompare(rowB.getValue<FileCell>(columnId).label),
+  }),
+  columnHelper.accessor(row => row.author, {
+    id: 'author',
+    cell: info => (
+      <TableCell media={<Avatar badge={{ status: info.getValue().status }} />}>{info.getValue().label}</TableCell>
+    ),
+    header: 'Author',
+    sortingFn: (rowA, rowB, columnId) =>
+      rowA.getValue<AuthorCell>(columnId).label.localeCompare(rowB.getValue<AuthorCell>(columnId).label),
+  }),
+  columnHelper.accessor(row => row.lastUpdated, {
+    id: 'lastUpdated',
+    cell: info => <TableCell>{info.getValue().label}</TableCell>,
+    header: 'Last updated',
+    sortingFn: (rowA, rowB, columnId) =>
+      rowA.getValue<LastUpdatedCell>(columnId).timestamp - rowB.getValue<LastUpdatedCell>(columnId).timestamp,
+  }),
+  columnHelper.accessor(row => row.lastUpdate, {
+    id: 'lastUpdate',
+    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
+    header: 'Last updated',
+    sortingFn: (rowA, rowB, columnId) =>
+      rowA.getValue<LastUpdateCell>(columnId).label.localeCompare(rowB.getValue<LastUpdateCell>(columnId).label),
+  }),
+];
 
 export const Sort = () => {
-  const [sortState, setSortState] = React.useState<{ sortColumn: string; sortDirection: SortDirection }>({
-    sortColumn: 'file',
-    sortDirection: 'ascending',
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+
+  const table = useReactTable({
+    columns: columns2,
+    data: items,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
-  const { sortColumn, sortDirection } = sortState;
-
-  const sortedItems = items.slice().sort((a, b) => {
-    if (!sortColumn) {
-      return 1;
-    }
-
-    const columnKey = sortColumn as ColumnKey;
-    const mod = sortDirection === 'ascending' ? 1 : -1;
-    return columns[columnKey].compare(a[columnKey], b[columnKey]) * mod;
-  });
-
-  const onHeaderCellClick = (columnKey: string) => () => {
-    setSortState(s => {
-      const newState = { ...s, sortDirection: 'ascending' as SortDirection };
-
-      if (s.sortColumn === columnKey) {
-        newState.sortDirection = s.sortDirection === 'ascending' ? 'descending' : 'ascending';
-      } else {
-        newState.sortColumn = columnKey;
-      }
-
-      return newState;
-    });
-  };
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          {Object.keys(columns).map(columnKey => (
+          {table.getHeaderGroups()[0].headers.map(header => (
             <TableHeaderCell
-              key={columnKey}
-              onClick={onHeaderCellClick(columnKey)}
-              sortDirection={sortColumn === columnKey ? sortDirection : undefined}
+              onClick={header.column.getToggleSortingHandler()}
+              sortDirection={getSortDirection(header.column.getIsSorted())}
+              key={header.id}
             >
-              {columns[columnKey].label}
+              {header.column.columnDef.header}
             </TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
       <TableBody>
-        {sortedItems.map(item => (
-          <TableRow key={item.file.label}>
-            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
-            <TableCell
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCell>
-            <TableCell>{item.lastUpdated.label}</TableCell>
-            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
+        {table.getRowModel().rows.map(row => (
+          <TableRow>
+            {row.getVisibleCells().map(cell => flexRender(cell.column.columnDef.cell, cell.getContext()))}
           </TableRow>
         ))}
       </TableBody>

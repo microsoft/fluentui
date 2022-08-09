@@ -9,13 +9,47 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
+import {
+  useReactTable,
+  getCoreRowModel,
+  createColumnHelper,
+  flexRender,
+  RowSelectionState,
+} from '@tanstack/react-table';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 
-const items = [
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
-    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdated: { label: '7h ago', timestamp: 3 },
     lastUpdate: {
       label: 'You edited this',
       icon: <EditRegular />,
@@ -42,7 +76,7 @@ const items = [
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
     author: { label: 'Jane Doe', status: 'offline' },
-    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
       icon: <PeopleRegular />,
@@ -50,68 +84,73 @@ const items = [
   },
 ];
 
-const columns = [
-  { columnKey: 'file', label: 'File' },
-  { columnKey: 'author', label: 'Author' },
-  { columnKey: 'lastUpdated', label: 'Last updated' },
-  { columnKey: 'lastUpdate', label: 'Last update' },
+const columnHelper = createColumnHelper<Item>();
+const columns2 = [
+  columnHelper.display({
+    id: 'select',
+    // header: props => console.log(props),
+    header: () => <TableSelectionCell type="radio" />,
+    cell: ({ row }) => <TableSelectionCell checked={row.getIsSelected()} type="radio" />,
+  }),
+  columnHelper.accessor(row => row.file, {
+    id: 'file',
+    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
+    header: ({ header }) => {
+      return <TableHeaderCell key={header.id}>File</TableHeaderCell>;
+    },
+  }),
+  columnHelper.accessor(row => row.author, {
+    id: 'author',
+    cell: info => (
+      <TableCell media={<Avatar badge={{ status: info.getValue().status }} />}>{info.getValue().label}</TableCell>
+    ),
+    header: ({ header }) => {
+      return <TableHeaderCell key={header.id}>Author</TableHeaderCell>;
+    },
+  }),
+  columnHelper.accessor(row => row.lastUpdated, {
+    id: 'lastUpdated',
+    cell: info => <TableCell>{info.getValue().label}</TableCell>,
+    header: ({ header }) => {
+      return <TableHeaderCell key={header.id}>Last updated</TableHeaderCell>;
+    },
+  }),
+  columnHelper.accessor(row => row.lastUpdate, {
+    id: 'lastUpdate',
+    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
+    header: ({ header }) => {
+      return <TableHeaderCell key={header.id}>Last update</TableHeaderCell>;
+    },
+  }),
 ];
 
 export const SingleSelect = () => {
-  const [selected, setSelected] = React.useState(-1);
+  const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
 
-  const select = (rowKey: number) => {
-    setSelected(rowKey);
-  };
-
-  const onClickRow = (rowKey: number) => () => {
-    select(rowKey);
-  };
-
-  const onKeyDownRow = (rowKey: number) => (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === ' ') {
-      select(rowKey);
-    }
-  };
+  const table = useReactTable({
+    columns: columns2,
+    data: items,
+    state: {
+      rowSelection,
+    },
+    onRowSelectionChange: setRowSelection,
+    getCoreRowModel: getCoreRowModel(),
+    enableMultiRowSelection: false,
+  });
 
   return (
-    <Table noNativeElements role="grid">
+    <Table>
       <TableHeader>
         <TableRow>
-          <TableSelectionCell role="gridcell" type="radio" />
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
+          {table
+            .getHeaderGroups()[0]
+            .headers.map(header => flexRender(header.column.columnDef.header, header.getContext()))}
         </TableRow>
       </TableHeader>
       <TableBody>
-        {items.map((item, i) => (
-          <TableRow
-            key={item.file.label}
-            aria-selected={selected === i}
-            tabIndex={0}
-            onClick={onClickRow(i)}
-            onKeyDown={onKeyDownRow(i)}
-          >
-            <TableSelectionCell
-              role="gridcell"
-              type="radio"
-              checked={selected === i}
-              checkboxIndicator={{ tabIndex: -1, title: `Select ${i}` }}
-            />
-            <TableCell role="gridcell" media={item.file.icon}>
-              {item.file.label}
-            </TableCell>
-            <TableCell
-              role="gridcell"
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCell>
-            <TableCell role="gridcell">{item.lastUpdated.label}</TableCell>
-            <TableCell role="gridcell" media={item.lastUpdate.icon}>
-              {item.lastUpdate.label}
-            </TableCell>
+        {table.getRowModel().rows.map(row => (
+          <TableRow onClick={() => row.toggleSelected()}>
+            {row.getVisibleCells().map(cell => flexRender(cell.column.columnDef.cell, cell.getContext()))}
           </TableRow>
         ))}
       </TableBody>
