@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  mergeCallbacks,
   shouldPreventDefaultOnKeyDown,
   useMergedRefs,
-  useMergedEventCallbacks,
   useEventCallback,
 } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
@@ -57,11 +57,11 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
     }
   };
 
-  const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+  const onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
       setOpen(e, true);
     }
-  });
+  };
 
   const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (openOnHover) {
@@ -74,11 +74,11 @@ export const usePopoverTrigger_unstable = (props: PopoverTriggerProps): PopoverT
       ...triggerAttributes,
       'aria-expanded': `${open}`,
       ...child?.props,
-      onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
-      onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
-      onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
-      onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
-      onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
+      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
+      onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
+      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+      onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
+      onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
       ref: useMergedRefs(triggerRef, child?.ref),
     }),
   };
