@@ -63,7 +63,8 @@ function loadWorkspacePlugin(addonName, options = {}) {
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
 
-  let modifiedPresetContent = presetContent.replaceAll(`./${path.normalize(packageDistPath)}`, relativePathToSource);
+  const regex = new RegExp(`\.\\/${path.normalize(packageDistPath)}`, 'g');
+  let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
   modifiedPresetContent = stripIndents`
     const { workspaceRoot } = require('nx/src/utils/app-root');
     const { registerTsProject } = require('nx/src/utils/register');
