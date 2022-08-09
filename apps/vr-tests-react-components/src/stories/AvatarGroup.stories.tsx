@@ -85,9 +85,14 @@ storiesOf('AvatarGroup Converged', module)
   .addStory(
     'layoutPie-1',
     () => (
-      <AvatarGroup>
-        <AvatarGroupItem name={names[0]} />
-      </AvatarGroup>
+      <div style={{ padding: '10px' }}>
+        <AvatarGroup layout="pie">
+          <AvatarGroupItem name={names[0]} />
+          <AvatarGroupOverflow>
+            <AvatarGroupItem name={names[0]} />
+          </AvatarGroupOverflow>
+        </AvatarGroup>
+      </div>
     ),
     {
       includeHighContrast: true,
@@ -97,10 +102,16 @@ storiesOf('AvatarGroup Converged', module)
   .addStory(
     'layoutPie-2',
     () => (
-      <AvatarGroup>
-        <AvatarGroupItem name={names[0]} />
-        <AvatarGroupItem name={names[1]} />
-      </AvatarGroup>
+      <div style={{ padding: '10px' }}>
+        <AvatarGroup layout="pie">
+          <AvatarGroupItem name={names[0]} />
+          <AvatarGroupItem name={names[1]} />
+          <AvatarGroupOverflow>
+            <AvatarGroupItem name={names[0]} />
+            <AvatarGroupItem name={names[1]} />
+          </AvatarGroupOverflow>
+        </AvatarGroup>
+      </div>
     ),
     {
       includeHighContrast: true,
