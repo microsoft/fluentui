@@ -5,6 +5,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, IHorizontalBarChartProps, HorizontalBarChart } from './index';
 import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the HorizontalBarChart to be tested.
 let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
@@ -112,5 +113,17 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('HorizontalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', () => {
+    wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
