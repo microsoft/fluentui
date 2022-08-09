@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Upgrade to Floating UI v1",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

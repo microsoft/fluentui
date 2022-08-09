@@ -22,7 +22,6 @@ export {
   useForceUpdate,
   useId,
   useIsomorphicLayoutEffect,
-  useMergedEventCallbacks,
   useMergedRefs,
   useOnClickOutside,
   useOnScrollOutside,
@@ -38,6 +37,7 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
+  mergeCallbacks,
   shouldPreventDefaultOnKeyDown,
 } from './utils/index';
 

@@ -4,7 +4,6 @@ export * from './useFirstMount';
 export * from './useForceUpdate';
 export * from './useId';
 export * from './useIsomorphicLayoutEffect';
-export * from './useMergedEventCallbacks';
 export * from './useMergedRefs';
 export * from './useOnClickOutside';
 export * from './useOnScrollOutside';
