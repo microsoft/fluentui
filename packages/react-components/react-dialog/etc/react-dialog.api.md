@@ -155,15 +155,14 @@ export type DialogTriggerAction = 'open' | 'close';
 
 // @public
 export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+    ref: React_2.Ref<unknown>;
     'aria-haspopup'?: 'dialog';
 }>;
 
 // @public (undocumented)
 export type DialogTriggerProps = {
     action?: DialogTriggerAction;
-    children: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+    children: React_2.ReactElement | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)

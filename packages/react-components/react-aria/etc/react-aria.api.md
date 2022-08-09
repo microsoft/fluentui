@@ -16,7 +16,7 @@ export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = Reac
 };
 
 // @public
-export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Omit<Props, keyof ARIAButtonAlteredProps<Type> | 'disabledFocusable' | 'disabled'> & ARIAButtonAlteredProps<Type>;
+export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props & UnionToIntersection<ARIAButtonAlteredProps<Type>>;
 
 // @public (undocumented)
 export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;

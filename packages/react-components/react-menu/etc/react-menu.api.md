@@ -302,12 +302,12 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-expanded'?: boolean;
     id: string;
     ref: React_2.Ref<unknown>;
-    onClick: React_2.MouseEventHandler;
-    onKeyDown: React_2.MouseEventHandler;
-    onMouseEnter: React_2.MouseEventHandler;
-    onMouseLeave: React_2.MouseEventHandler;
-    onMouseMove: React_2.MouseEventHandler;
-    onContextMenu: React_2.MouseEventHandler;
+    onClick: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onKeyDown: React_2.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseMove: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
 }>;
 
 // @public (undocumented)
@@ -315,9 +315,7 @@ export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
 export type MenuTriggerProps = {
-    children: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: MenuTriggerChildProps) => React_2.ReactElement | null);
+    children: React_2.ReactElement | ((props: MenuTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)
