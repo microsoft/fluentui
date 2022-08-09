@@ -5,7 +5,7 @@ function createStyleTag(css: string) {
   return style;
 }
 
-export function injectGlobalCss(css: string) {
+export function injectGlobalCss(css?: string) {
   performance.mark('fluent-inject-global-css-start');
   css = `
     div {

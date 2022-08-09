@@ -62,7 +62,6 @@ const config = {
           loader: '@griffel/webpack-loader',
           options: {
             babelOptions: {
-              plugins: ['@babel/plugin-proposal-class-static-block'],
               presets: ['@babel/preset-typescript'],
             },
           },
@@ -78,7 +77,7 @@ const config = {
       {
         test: /\.(ts|tsx)?$/,
         use: {
-          loader: 'babel-loader',
+          loader: 'swc-loader',
         },
         exclude: [/node_modules/, /\.wc\.(ts|tsx)?$/],
       },
@@ -114,11 +113,7 @@ const config = {
   },
 };
 
-if (isProd) {
-  config.optimization = {
-    minimizer: [new TerserWebpackPlugin()],
-  };
-} else {
+if (!isProd) {
   config.devServer = {
     port: 9000,
     open: false,
