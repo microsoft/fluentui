@@ -295,7 +295,8 @@
     "@types/react-dom": "16.9.14",
     "eslint": "7.25.0",
     "workspace-tools": "0.18.4",
-    "requestretry": "7.0.0"
+    "requestretry": "7.0.0",
+    "@fluentui/stress-test/ts-loader": "9.3.1"
   },
   "syncpack": {
     "prod": true,

@@ -6,7 +6,6 @@
     "allowJs": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
     "preserveConstEnums": true,
