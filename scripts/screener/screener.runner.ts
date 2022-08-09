@@ -42,13 +42,15 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  const response = await fetch(environment.screener.apiUri, {
+  const response = await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': screenerConfig.apiKey,
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      screenerCongifuration: screenerConfig,
+      payload: payload,
+    }),
   });
 
   if (response.status === 409) {
