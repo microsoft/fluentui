@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.2.1",
+  "version": "8.2.2",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "typings": "lib-commonjs/index.d.ts",

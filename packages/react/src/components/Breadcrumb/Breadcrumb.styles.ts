@@ -93,6 +93,13 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     fontWeight: itemTextFontWeight,
   };
 
+  const overflowButtonHighContrastFocus = {
+    left: 1,
+    right: 1,
+    top: 1,
+    bottom: 1,
+  };
+
   return {
     root: [
       classNames.root,
@@ -167,7 +174,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyle(theme),
+      getFocusStyle(theme, { highContrastStyle: overflowButtonHighContrastFocus }),
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,
