@@ -2,11 +2,12 @@ import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import type { SelectionEvents } from '../../utils/Selection.types';
-import type { OptionValue } from '../../utils/OptionCollection.types';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SelectionEvents } from '../../utils/Selection.types';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 
 /**
@@ -131,7 +132,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   // resolve input and listbox slot props
-  const triggerShorthand = resolveShorthand(props.input, {
+  let triggerSlot: Slot<'input'>;
+  let listboxSlot: Slot<typeof Listbox>;
+
+  triggerSlot = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
       type: 'text',
@@ -143,10 +147,13 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     },
   });
 
-  const listboxShorthand = resolveShorthand(props.listbox, { required: true });
+  listboxSlot = resolveShorthand(props.listbox, {
+    required: true,
+    defaultProps: { children: props.children },
+  });
 
-  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
-  const [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
+  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
 
   const state: ComboboxState = {
     components: {
@@ -158,7 +165,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     root: resolveShorthand(props.root, {
       required: true,
       defaultProps: {
-        children: props.children,
         ...rootNativeProps,
       },
     }),

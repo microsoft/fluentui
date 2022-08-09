@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../common/isConformant';
@@ -77,7 +78,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByRole('combobox'));
+    userEvent.click(getByRole('combobox'));
 
     expect(getByRole('listbox')).not.toBeNull();
     expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
@@ -97,7 +98,7 @@ describe('Combobox', () => {
     expect(getByRole('listbox')).not.toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('true');
 
-    fireEvent.click(combobox);
+    userEvent.click(combobox);
 
     expect(queryByRole('listbox')).toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
@@ -114,7 +115,7 @@ describe('Combobox', () => {
 
     expect(getByRole('listbox')).not.toBeNull();
 
-    fireEvent.click(getByRole('combobox'));
+    userEvent.click(getByRole('combobox'));
 
     expect(getByRole('listbox')).not.toBeNull();
   });
@@ -128,7 +129,8 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'Enter' });
+    userEvent.tab();
+    userEvent.keyboard('{Enter}');
 
     expect(getByRole('listbox')).not.toBeNull();
     expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('true');
@@ -143,17 +145,18 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowDown', altKey: true });
+    userEvent.tab();
+    userEvent.keyboard('{Alt>}{ArrowDown}{/Alt}');
 
     expect(getByRole('listbox')).not.toBeNull();
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowUp', altKey: true });
+    userEvent.keyboard('{Alt>}{ArrowUp}{/Alt}');
 
     expect(queryByRole('listbox')).toBeNull();
   });
 
   it('closes the popup with escape', () => {
-    const { getByRole, queryByRole } = render(
+    const { queryByRole } = render(
       <Combobox defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -161,7 +164,8 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'Escape' });
+    userEvent.tab();
+    userEvent.keyboard('{Escape}');
 
     expect(queryByRole('listbox')).toBeNull();
   });
@@ -177,7 +181,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByRole('combobox'));
+    userEvent.click(getByRole('combobox'));
 
     expect(onOpen).toHaveBeenCalledTimes(1);
     expect(onOpen.mock.calls[0][1]).toEqual({ open: true });
@@ -231,7 +235,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByTestId('red'));
+    userEvent.click(getByTestId('red'));
 
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
     expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
@@ -246,7 +250,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByTestId('red'));
+    userEvent.click(getByTestId('red'));
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
@@ -262,12 +266,12 @@ describe('Combobox', () => {
 
     const combobox = getByTestId('combobox');
 
-    fireEvent.keyDown(combobox, { key: 'Enter' });
+    userEvent.type(combobox, '{Enter}');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
 
-    fireEvent.keyDown(combobox, { key: 'ArrowDown' });
-    fireEvent.keyDown(combobox, { key: ' ' });
+    // arrow down + space
+    userEvent.keyboard('{ArrowDown} ');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
@@ -283,22 +287,22 @@ describe('Combobox', () => {
 
     const combobox = getByTestId('combobox');
 
-    fireEvent.keyDown(combobox, { key: 'Enter' });
+    userEvent.type(combobox, '{Enter}');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
   it('selects an option when tabbing away from an open combobox', () => {
-    const { getByTestId, getByRole } = render(
-      <Combobox defaultOpen data-testid="combobox">
+    const { getByRole } = render(
+      <Combobox defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>
       </Combobox>,
     );
 
-    const combobox = getByTestId('combobox');
-    fireEvent.keyDown(combobox, { key: 'Tab' });
+    userEvent.tab(); // tab to the combobox
+    userEvent.tab(); // tab away from the combobox
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
@@ -312,7 +316,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByText('Green'));
+    userEvent.click(getByText('Green'));
 
     expect(getByText('Red', { selector: '[role=option]' }).getAttribute('aria-selected')).toEqual('true');
     expect(getByText('Green').getAttribute('aria-selected')).toEqual('true');
@@ -328,7 +332,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByText('Green'));
+    userEvent.click(getByText('Green'));
 
     expect(getByRole('listbox')).not.toBeNull();
   });
@@ -354,7 +358,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByText('Green'));
+    userEvent.click(getByText('Green'));
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
@@ -368,7 +372,7 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByText('Green'));
+    userEvent.click(getByText('Green'));
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
@@ -384,7 +388,7 @@ describe('Combobox', () => {
     );
 
     const option = getByTestId('clicked');
-    fireEvent.click(option);
+    userEvent.click(option);
 
     expect(getByTestId('combobox').getAttribute('aria-activedescendant')).toEqual(option.id);
   });
@@ -400,7 +404,9 @@ describe('Combobox', () => {
 
     const combobox = getByTestId('combobox');
 
-    fireEvent.keyDown(combobox, { key: 'ArrowDown' });
+    userEvent.tab();
+    userEvent.keyboard('{ArrowDown}');
+
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
   });
 
@@ -415,9 +421,9 @@ describe('Combobox', () => {
 
     const combobox = getByTestId('combobox');
 
-    fireEvent.click(getByText('Blue'));
+    userEvent.click(getByText('Blue'));
+    userEvent.keyboard('{ArrowUp}');
 
-    fireEvent.keyDown(combobox, { key: 'ArrowUp' });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
   });
 
@@ -432,7 +438,7 @@ describe('Combobox', () => {
 
     const combobox = getByTestId('combobox');
 
-    fireEvent.change(combobox, { target: { value: 'g' } });
+    userEvent.type(combobox, 'g');
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
   });
 
@@ -446,10 +452,11 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    const combobox = getByTestId('combobox');
-    fireEvent.click(getByText('Gold'));
+    const combobox = getByTestId('combobox') as HTMLInputElement;
+    userEvent.click(getByText('Gold'));
+    combobox.setSelectionRange(0, 4);
+    userEvent.type(combobox, 'g');
 
-    fireEvent.change(combobox, { target: { value: 'g' } });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Gold').id);
   });
 
@@ -464,7 +471,7 @@ describe('Combobox', () => {
     );
 
     const combobox = getByTestId('combobox');
-    fireEvent.change(combobox, { target: { value: 'foo' } });
+    userEvent.type(combobox, 'foo');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
   });
@@ -479,9 +486,10 @@ describe('Combobox', () => {
     );
 
     const combobox = getByTestId('combobox');
-    fireEvent.click(getByText('Green'));
-    fireEvent.change(combobox, { target: { value: 'G' } });
-    fireEvent.blur(combobox);
+    userEvent.click(getByText('Green'));
+    // delete a few characters
+    userEvent.type(combobox, '{backspace}{backspace}{backspace}');
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
@@ -496,16 +504,17 @@ describe('Combobox', () => {
     );
 
     const combobox = getByTestId('combobox');
-    fireEvent.click(getByText('Green'));
-    fireEvent.change(combobox, { target: { value: '' } });
-    fireEvent.blur(combobox);
+    userEvent.click(getByText('Green'));
+    // remove full value of "Green"
+    userEvent.type(combobox, '{backspace}{backspace}{backspace}{backspace}{backspace}');
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
     expect(getByTestId('green').getAttribute('aria-selected')).toEqual('false');
   });
 
-  it('should revert value to the empty string on blur with no selected options', () => {
-    const { getByRole, getByTestId } = render(
+  it('should revert value to the empty string on blur when collapsed with no selected options', () => {
+    const { getByRole } = render(
       <Combobox data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
@@ -513,15 +522,15 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    const combobox = getByTestId('combobox');
-    fireEvent.change(combobox, { target: { value: 'gr' } });
-    fireEvent.blur(combobox);
+    userEvent.tab();
+    userEvent.keyboard('gr');
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
   it('selects an option on blur from a closed combobox when the full value is typed', () => {
-    const { getByRole, getByTestId } = render(
+    const { getByRole } = render(
       <Combobox data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
@@ -529,10 +538,9 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    const combobox = getByTestId('combobox');
-    fireEvent.focus(combobox);
-    fireEvent.change(combobox, { target: { value: 'blue' } });
-    fireEvent.blur(combobox);
+    userEvent.tab();
+    userEvent.keyboard('blue');
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Blue');
   });
@@ -546,10 +554,12 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    const combobox = getByTestId('combobox');
-    fireEvent.click(getByText('Green'));
-    fireEvent.change(combobox, { target: { value: 'foo' } });
-    fireEvent.blur(combobox);
+    const combobox = getByTestId('combobox') as HTMLInputElement;
+    userEvent.click(getByText('Green'));
+
+    combobox.setSelectionRange(0, 5);
+    userEvent.keyboard('foo');
+    userEvent.tab();
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('foo');
   });

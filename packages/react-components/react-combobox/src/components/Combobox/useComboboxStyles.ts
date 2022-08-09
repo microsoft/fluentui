@@ -174,7 +174,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, hasFocus, open, size } = state;
+  const { appearance, open, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -189,7 +189,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
   state.listbox.className = mergeClasses(
     comboboxClassNames.listbox,
     styles.listbox,
-    hasFocus && !open && styles.listboxCollapsed,
+    !open && styles.listboxCollapsed,
     state.listbox.className,
   );
   state.input.className = mergeClasses(
