@@ -1,8 +1,30 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 26 Jul 2022 07:39:35 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.2)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.10.1..@fluentui/utilities_v8.10.2)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/merge-styles to v8.5.3 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.20 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/test-utilities to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+
+## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.1)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.10.0..@fluentui/utilities_v8.10.1)
+
+### Patches
+
+- fix: Miscellaneous TS fixes for React 18 usage. ([PR #24148](https://github.com/microsoft/fluentui/pull/24148) by mgodbolt@microsoft.com)
 
 ## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.0)
 

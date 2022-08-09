@@ -7,7 +7,7 @@ const jju = require('jju');
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nrwl/tao/src/shared/workspace").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ *  @typedef {import("@nrwl/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 const testFiles = [

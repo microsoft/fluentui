@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@fluentui/react-charting';
+import {
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  VerticalStackedBarChart,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -152,6 +157,8 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
@@ -199,6 +206,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             data={data}
             height={this.state.height}
             width={this.state.width}
+            lineOptions={lineOptions}
             legendProps={{
               allowFocusOnLegends: true,
             }}

@@ -2,6 +2,68 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:40 GMT",
+      "tag": "@fluentui/react-card_v9.0.0-beta.24",
+      "version": "9.0.0-beta.24",
+      "comments": {
+        "none": [
+          {
+            "author": "marcosmoura@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "8d0180b3bbaad7459257fb8bf7f2235953d12eec",
+            "comment": "docs(react-card): create migration guide from v0 to v9"
+          },
+          {
+            "author": "popatudor@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "59610d4c795d76a580fbb9391e20cf1249408555",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          },
+          {
+            "author": "39736248+andrefcdias@users.noreply.github.com",
+            "package": "@fluentui/react-card",
+            "commit": "770a741091a1f5d1f3b6d4bbfecdd29e333fef9c",
+            "comment": "chore: add missing Card components to Storybook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-text to v9.0.4",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-button to v9.1.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 18:27:26 GMT",
       "tag": "@fluentui/react-card_v9.0.0-beta.23",
       "version": "9.0.0-beta.23",

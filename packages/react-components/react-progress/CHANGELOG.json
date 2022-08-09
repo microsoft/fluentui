@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-progress",
+  "entries": [
+    {
+      "date": "Wed, 03 Aug 2022 16:04:10 GMT",
+      "tag": "@fluentui/react-progress_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ]
+      }
+    }
+  ]
+}

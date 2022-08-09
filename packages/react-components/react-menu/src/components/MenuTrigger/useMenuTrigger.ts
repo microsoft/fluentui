@@ -8,7 +8,8 @@ import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-key
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
-  useMergedEventCallbacks,
+  mergeCallbacks,
+  useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { shouldPreventDefaultOnKeyDown } from '@fluentui/react-utilities';
@@ -134,12 +135,12 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
       id: triggerId,
       ...child?.props,
       ref: useMergedRefs(triggerRef, child?.ref),
-      onClick: useMergedEventCallbacks(child?.props?.onClick, onClick),
-      onMouseEnter: useMergedEventCallbacks(child?.props?.onMouseEnter, onMouseEnter),
-      onMouseLeave: useMergedEventCallbacks(child?.props?.onMouseLeave, onMouseLeave),
-      onKeyDown: useMergedEventCallbacks(child?.props?.onKeyDown, onKeyDown),
-      onContextMenu: useMergedEventCallbacks(child?.props?.onContextMenu, onContextMenu),
-      onMouseMove: useMergedEventCallbacks(child?.props?.onMouseMove, onMouseMove),
+      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
+      onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
+      onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
+      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+      onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
+      onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
     }),
   };
 };

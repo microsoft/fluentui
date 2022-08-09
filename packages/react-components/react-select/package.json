@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-select",
-  "version": "9.0.0-beta.7",
+  "version": "9.0.0-beta.8",
   "description": "Fluent UI React Select component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,13 +28,13 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.11"
+    "@fluentui/react-conformance-griffel": "9.0.0-beta.12"
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",
-    "@griffel/react": "^1.2.3",
+    "@griffel/react": "^1.3.0",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

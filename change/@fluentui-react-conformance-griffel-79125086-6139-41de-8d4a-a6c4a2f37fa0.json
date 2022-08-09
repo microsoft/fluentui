@@ -1,7 +1,0 @@
-{
-  "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours",
-  "type": "none",
-  "packageName": "@fluentui/react-conformance-griffel",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

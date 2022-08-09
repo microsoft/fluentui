@@ -2,6 +2,36 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 08 Aug 2022 07:39:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.2",
+      "version": "1.12.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5cdc29322d17fc7d0c09cb19a353051ef7f1cc95",
+            "comment": "remove unused dependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Aug 2022 07:39:02 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.1",
+      "version": "1.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "51b7a53a9af64eb32a21fc5cc628a857b0e39afd",
+            "comment": "chore: upgrade error level of no-restricted-imports to error in v9 config."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jul 2022 07:37:42 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.0",
       "version": "1.12.0",
