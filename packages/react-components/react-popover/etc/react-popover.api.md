@@ -4,6 +4,8 @@
 
 ```ts
 
+import { ARIAButtonResultProps } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
@@ -101,8 +103,16 @@ export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<Pop
 // @public
 export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComponent;
 
-// @public (undocumented)
-export type PopoverTriggerChildProps = React_2.HTMLAttributes<HTMLElement>;
+// @public
+export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+    'aria-expanded'?: 'true' | 'false';
+    ref: React_2.Ref<unknown>;
+    onClick: React_2.MouseEventHandler;
+    onKeyDown: React_2.KeyboardEventHandler;
+    onMouseEnter: React_2.MouseEventHandler;
+    onMouseLeave: React_2.MouseEventHandler;
+    onContextMenu: React_2.MouseEventHandler;
+}>;
 
 // @public
 export type PopoverTriggerProps = {

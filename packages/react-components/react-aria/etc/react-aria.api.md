@@ -9,19 +9,25 @@ import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export type ARIAButtonProps<Type extends 'a' | 'div' | 'button' = 'a' | 'div' | 'button'> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & Pick<ARIAButtonSlotProps, 'disabled' | 'disabledFocusable'>;
-
-// @public (undocumented)
-export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & {
+// @public
+export type ARIAButtonProps<Type extends ARIAButtonType = ARIAButtonType> = React_2.PropsWithRef<JSX.IntrinsicElements[Type]> & {
     disabled?: boolean;
     disabledFocusable?: boolean;
 };
 
+// @public
+export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Omit<Props, keyof ARIAButtonAlteredProps<Type> | 'disabledFocusable' | 'disabled'> & ARIAButtonAlteredProps<Type>;
+
+// @public (undocumented)
+export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> = ExtractSlotProps<Slot<'button', AlternateAs>> & Pick<ARIAButtonProps<ARIAButtonType>, 'disabled' | 'disabledFocusable'>;
+
+// @public (undocumented)
+export type ARIAButtonType = 'button' | 'a' | 'div';
+
 // Warning: (ae-internal-missing-underscore) The name "useARIAButtonProps" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export function useARIAButtonProps<Type extends 'button' | 'a' | 'div'>(type?: Type, props?: ARIAButtonProps): React_2.PropsWithRef<JSX.IntrinsicElements[Type]>;
+export function useARIAButtonProps<Type extends ARIAButtonType, Props>(type?: Type, props?: Props & ARIAButtonProps<Type>): ARIAButtonResultProps<Type, Props>;
 
 // Warning: (ae-internal-missing-underscore) The name "useARIAButtonShorthand" should be prefixed with an underscore because the declaration is marked as @internal
 //
