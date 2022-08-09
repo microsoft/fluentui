@@ -585,5 +585,3 @@ export type {
   PositioningImperativeRef,
   PositioningVirtualElement,
 } from '@fluentui/react-positioning';
-
-//some comment
