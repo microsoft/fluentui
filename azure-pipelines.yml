@@ -162,7 +162,6 @@ jobs:
 
       - script: yarn workspace @fluentui/docs vr:test
         displayName: Start @fluentui/react-northstar VR Test
-        condition: ne(variables['skipScreener'], 'true')
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
@@ -222,7 +221,6 @@ jobs:
       - script: |
           yarn workspace @fluentui/vr-tests screener
         displayName: Start @fluentui/react VR Test
-        condition: ne(variables['skipScreener'], 'true')
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
@@ -282,7 +280,6 @@ jobs:
       - script: |
           yarn workspace @fluentui/vr-tests-react-components screener
         displayName: Start @fluentui/react-components VR Test
-        condition: ne(variables['skipScreener'], 'true')
         env:
           SCREENER_ENDPOINT: $(screenerApiUri)
           SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
