@@ -128,7 +128,7 @@ jobs:
             echo "##vso[task.setvariable variable=skipScreener]true"
             echo "Should skip screener"
           fi
-        name: PackagesAffected
+        name: PackagesAffectedPR
         displayName: Check if northstar packages were affected
         condition: eq(variables['isPR'], 'true')
 
@@ -188,7 +188,7 @@ jobs:
             echo "##vso[task.setvariable variable=skipScreener]true"
             echo "Should skip screener"
           fi
-        name: PackagesAffected
+        name: PackagesAffectedPR
         displayName: Check if v8 packages were affected
         condition: eq(variables['isPR'], 'true')
 
@@ -248,7 +248,7 @@ jobs:
             echo "##vso[task.setvariable variable=skipScreener]true"
             echo "Should skip screener"
           fi
-        name: PackagesAffected
+        name: PackagesAffectedPR
         displayName: Check if v9 packages were affected
         condition: eq(variables['isPR'], 'true')
 
