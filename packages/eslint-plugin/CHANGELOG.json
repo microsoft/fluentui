@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 08 Aug 2022 07:39:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.2",
+      "version": "1.12.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5cdc29322d17fc7d0c09cb19a353051ef7f1cc95",
+            "comment": "remove unused dependency"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Aug 2022 07:39:02 GMT",
       "tag": "@fluentui/eslint-plugin_v1.12.1",
       "version": "1.12.1",

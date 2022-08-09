@@ -1,9 +1,9 @@
-function config(entry = []) {
-  return [...entry, require.resolve('./lib/preset/preview')];
-}
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./preset.prod');
+} else {
+  const { workspaceRoot } = require('nx/src/utils/app-root');
+  const { registerTsProject } = require('nx/src/utils/register');
 
-function managerEntries(entry = []) {
-  return [...entry, require.resolve('./lib/preset/manager')];
+  registerTsProject(workspaceRoot, 'tsconfig.base.json');
+  module.exports = require('./preset.dev');
 }
-
-module.exports = { managerEntries, config };
