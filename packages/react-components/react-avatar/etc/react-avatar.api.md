@@ -102,7 +102,7 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 };
 
 // @public (undocumented)
-export const AvatarGroupProvider: Provider<AvatarGroupContextValue | undefined> & FC<ProviderProps<AvatarGroupContextValue | undefined>>;
+export const AvatarGroupProvider: Provider<AvatarGroupContextValue> & FC<ProviderProps<AvatarGroupContextValue>>;
 
 // @public (undocumented)
 export type AvatarGroupSlots = {

@@ -1,9 +1,11 @@
 import * as React from 'react';
 import type { AccordionItemContextValue } from './AccordionItem.types';
 
-export const AccordionItemContext = React.createContext<AccordionItemContextValue | undefined>(undefined);
+export const AccordionItemContext = React.createContext<AccordionItemContextValue | undefined>(
+  undefined,
+) as React.Context<AccordionItemContextValue>;
 
-const accordionItemContextDefaultValue = {
+const accordionItemContextDefaultValue: AccordionItemContextValue = {
   onHeaderClick() {
     /** */
   },

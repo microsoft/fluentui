@@ -55,7 +55,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
 };
 
 // @public (undocumented)
-export const RadioGroupProvider: Provider<RadioGroupContextValue | undefined> & FC<ProviderProps<RadioGroupContextValue | undefined>>;
+export const RadioGroupProvider: Provider<RadioGroupContextValue> & FC<ProviderProps<RadioGroupContextValue>>;
 
 // @public (undocumented)
 export type RadioGroupSlots = {

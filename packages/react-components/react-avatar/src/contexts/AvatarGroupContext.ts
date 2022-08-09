@@ -6,9 +6,9 @@ import type { AvatarGroupContextValue } from '../AvatarGroup';
  * AvatarGroupContext is provided by AvatarGroup, and is consumed by AvatarGroupItem to determine
  * default values of some props.
  */
-export const AvatarGroupContext: Context<AvatarGroupContextValue | undefined> = createContext<
-  AvatarGroupContextValue | undefined
->(undefined);
+export const AvatarGroupContext: Context<AvatarGroupContextValue> = createContext<AvatarGroupContextValue | undefined>(
+  undefined,
+) as Context<AvatarGroupContextValue>;
 
 const avatarGroupContextDefaultValue: AvatarGroupContextValue = {};
 

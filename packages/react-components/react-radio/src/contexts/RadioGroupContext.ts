@@ -5,9 +5,9 @@ import type { RadioGroupContextValue } from '../RadioGroup';
 /**
  * RadioGroupContext is provided by RadioGroup, and is consumed by Radio to determine default values of some props.
  */
-export const RadioGroupContext: Context<RadioGroupContextValue | undefined> = createContext<
-  RadioGroupContextValue | undefined
->(undefined);
+export const RadioGroupContext: Context<RadioGroupContextValue> = createContext<RadioGroupContextValue | undefined>(
+  undefined,
+) as Context<RadioGroupContextValue>;
 
 const radioGroupContextDefaultValue: RadioGroupContextValue = {};
 

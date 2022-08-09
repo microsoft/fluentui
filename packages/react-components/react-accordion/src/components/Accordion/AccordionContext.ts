@@ -2,11 +2,11 @@ import { createContext, ContextSelector, useContextSelector } from '@fluentui/re
 import type { Context } from '@fluentui/react-context-selector';
 import type { AccordionContextValue } from './Accordion.types';
 
-export const AccordionContext: Context<AccordionContextValue | undefined> = createContext<
-  AccordionContextValue | undefined
->(undefined);
+export const AccordionContext: Context<AccordionContextValue> = createContext<AccordionContextValue | undefined>(
+  undefined,
+) as Context<AccordionContextValue>;
 
-const accordionContextDefaultValue = {
+const accordionContextDefaultValue: AccordionContextValue = {
   openItems: [],
   collapsible: false,
   requestToggle() {

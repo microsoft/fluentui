@@ -103,7 +103,7 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
 };
 
 // @public (undocumented)
-export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue | undefined>;
+export const AccordionItemProvider: React_2.Provider<AccordionItemContextValue>;
 
 // @public (undocumented)
 export type AccordionItemSlots = {
@@ -146,7 +146,7 @@ export type AccordionProps = ComponentProps<AccordionSlots> & {
 };
 
 // @public (undocumented)
-export const AccordionProvider: Provider<AccordionContextValue | undefined> & FC<ProviderProps<AccordionContextValue | undefined>>;
+export const AccordionProvider: Provider<AccordionContextValue> & FC<ProviderProps<AccordionContextValue>>;
 
 // @public (undocumented)
 export type AccordionSlots = {
