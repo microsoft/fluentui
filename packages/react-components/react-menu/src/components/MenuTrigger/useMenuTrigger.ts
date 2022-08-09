@@ -47,7 +47,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const child = React.isValidElement(children) ? getTriggerChild<Partial<MenuTriggerChildProps>>(children) : undefined;
 
-  const onContextMenu = (e: React.MouseEvent<HTMLElement>) => {
+  const onContextMenu = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -58,7 +58,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLElement>) => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -69,7 +69,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -90,7 +90,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
+  const onMouseEnter = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -102,7 +102,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   // Opening a menu when a mouse hasn't moved and just entering the trigger is a bad a11y experience
   // First time open the mouse using mousemove and then continue with mouseenter
   // Only use once to determine that the user is using the mouse since it is an expensive event to handle
-  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const onMouseMove = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -112,7 +112,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
-  const onMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
+  const onMouseLeave = (e: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
     if (isTargetDisabled(e)) {
       return;
     }
@@ -131,10 +131,10 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
         id: triggerId,
         ...child?.props,
         ref: useMergedRefs(triggerRef, child?.ref),
-        onClick: useEventCallback(mergeCallbacks(child?.props?.onClick as React.MouseEventHandler, onClick)),
+        onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
         onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
         onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-        onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown as React.KeyboardEventHandler, onKeyDown)),
+        onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
         onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
         onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
       }),

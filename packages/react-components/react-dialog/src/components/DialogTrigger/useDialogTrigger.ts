@@ -22,16 +22,18 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const { triggerAttributes } = useModalAttributes();
 
-  const handleClick: DialogTriggerChildProps['onClick'] = useEventCallback(event => {
-    child?.props.onClick?.(event);
-    if (!event.isDefaultPrevented()) {
-      requestOpenChange({
-        event,
-        type: 'triggerClick',
-        open: action === 'open',
-      });
-    }
-  });
+  const handleClick = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+      child?.props.onClick?.(event);
+      if (!event.isDefaultPrevented()) {
+        requestOpenChange({
+          event,
+          type: 'triggerClick',
+          open: action === 'open',
+        });
+      }
+    },
+  );
 
   return {
     children: applyTriggerPropsToChildren<DialogTriggerChildProps>(
@@ -40,7 +42,7 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
         ...child?.props,
         'aria-haspopup': action === 'close' ? undefined : 'dialog',
         ref: child?.ref as React.Ref<never>,
-        onClick: handleClick as React.MouseEventHandler,
+        onClick: handleClick,
         ...triggerAttributes,
       }),
     ),

@@ -50,14 +50,13 @@ type ARIAButtonAlteredProps<Type extends ARIAButtonType> =
       ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'>
       : never);
 
+type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+
 /**
  * Merge of props provided by the user and props provided internally.
  */
-export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Omit<
-  Props,
-  keyof ARIAButtonAlteredProps<Type> | 'disabledFocusable' | 'disabled'
-> &
-  ARIAButtonAlteredProps<Type>;
+export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props &
+  UnionToIntersection<ARIAButtonAlteredProps<Type>>;
 
 /**
  * @internal

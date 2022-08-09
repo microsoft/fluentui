@@ -15,9 +15,7 @@ export type DialogTriggerProps = {
    * Explicitly require single child or render function
    * to inject properties
    */
-  children:
-    | (React.ReactElement & { ref?: React.Ref<unknown> })
-    | ((props: DialogTriggerChildProps) => React.ReactElement | null);
+  children: React.ReactElement | ((props: DialogTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -26,6 +24,7 @@ export type DialogTriggerProps = {
 export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<
   Type,
   Props & {
+    ref: React.Ref<unknown>;
     'aria-haspopup'?: 'dialog';
   }
 >;

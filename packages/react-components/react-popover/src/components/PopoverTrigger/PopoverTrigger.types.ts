@@ -5,9 +5,7 @@ import * as React from 'react';
  * PopoverTrigger Props
  */
 export type PopoverTriggerProps = {
-  children:
-    | (React.ReactElement & { ref?: React.Ref<unknown> })
-    | ((props: PopoverTriggerChildProps) => React.ReactElement | null);
+  children: React.ReactElement | ((props: PopoverTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -25,10 +23,10 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
   Props & {
     'aria-expanded'?: 'true' | 'false';
     ref: React.Ref<unknown>;
-    onClick: React.MouseEventHandler;
-    onKeyDown: React.KeyboardEventHandler;
-    onMouseEnter: React.MouseEventHandler;
-    onMouseLeave: React.MouseEventHandler;
-    onContextMenu: React.MouseEventHandler;
+    onClick: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onKeyDown: React.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
   }
 >;

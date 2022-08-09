@@ -5,9 +5,7 @@ export type MenuTriggerProps = {
   /**
    * Explicitly require single child or render function
    */
-  children:
-    | (React.ReactElement & { ref?: React.Ref<unknown> })
-    | ((props: MenuTriggerChildProps) => React.ReactElement | null);
+  children: React.ReactElement | ((props: MenuTriggerChildProps) => React.ReactElement | null);
 };
 
 /**
@@ -20,12 +18,12 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<unknown>;
-    onClick: React.MouseEventHandler;
-    onKeyDown: React.MouseEventHandler;
-    onMouseEnter: React.MouseEventHandler;
-    onMouseLeave: React.MouseEventHandler;
-    onMouseMove: React.MouseEventHandler;
-    onContextMenu: React.MouseEventHandler;
+    onClick: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onKeyDown: React.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
   }
 >;
 
