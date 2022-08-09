@@ -301,7 +301,7 @@ export type MenuTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLEle
 };
 
 // @public (undocumented)
-export const MenuTriggerContextProvider: React_2.Provider<boolean | undefined>;
+export const MenuTriggerContextProvider: React_2.Provider<boolean>;
 
 // @public (undocumented)
 export type MenuTriggerProps = {

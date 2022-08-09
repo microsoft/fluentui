@@ -7,7 +7,7 @@
 import * as React_2 from 'react';
 
 // @public (undocumented)
-export const PortalCompatContextProvider: React_2.Provider<RegisterPortalFn | undefined>;
+export const PortalCompatContextProvider: React_2.Provider<RegisterPortalFn>;
 
 // @public (undocumented)
 export type RegisterPortalFn = (el: HTMLElement) => () => void;
