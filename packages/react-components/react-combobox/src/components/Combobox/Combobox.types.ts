@@ -31,7 +31,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
     /*
      * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
      */
-    allowFreeform?: boolean;
+    freeform?: boolean;
 
     /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.

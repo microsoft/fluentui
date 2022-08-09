@@ -545,9 +545,9 @@ describe('Combobox', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Blue');
   });
 
-  it('should not revert value on blur with allowFreeform', () => {
+  it('should not revert value on blur with freeform', () => {
     const { getByRole, getByTestId, getByText } = render(
-      <Combobox defaultOpen allowFreeform data-testid="combobox">
+      <Combobox defaultOpen freeform data-testid="combobox">
         <Option>Red</Option>
         <Option>Green</Option>
         <Option>Blue</Option>

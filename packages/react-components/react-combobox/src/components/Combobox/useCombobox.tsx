@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
@@ -33,7 +33,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const { allowFreeform, multiselect } = props;
+  const { freeform, multiselect } = props;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -43,10 +43,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // track focused state to conditionally render collapsed listbox
   const [hasFocus, setHasFocus] = React.useState(false);
-  const onFocus = (ev: React.FocusEvent<HTMLInputElement>) => {
+  const onTriggerFocus = () => {
     setHasFocus(true);
-
-    triggerNativeProps.onFocus?.(ev);
   };
 
   const getSearchString = (inputValue: string): string => {
@@ -85,24 +83,23 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     selectOption(ev, option);
   };
 
-  const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
-    // handle selection and updating value if allowFreeform is false
-    if (!baseState.open && !allowFreeform) {
+  const onTriggerBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
+    // handle selection and updating value if freeform is false
+    if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
       if (value && activeOption && getSearchString(value) === activeOption?.value.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 
-      // reset typed value when the input loses focus while collapsed, unless allowFreeform is true
+      // reset typed value when the input loses focus while collapsed, unless freeform is true
       setValue(undefined);
     }
 
     setHasFocus(false);
-    triggerNativeProps.onBlur?.(ev);
   };
 
   baseState.setOpen = (ev, newState: boolean) => {
-    if (!newState && !allowFreeform) {
+    if (!newState && !freeform) {
       setValue(undefined);
     }
 
@@ -110,7 +107,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   // update value and active option based on input
-  const onChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  const onTriggerChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target.value;
     // update uncontrolled value
     baseState.setValue(inputValue);
@@ -127,8 +124,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     ) {
       clearSelection(ev);
     }
-
-    triggerNativeProps.onChange?.(ev);
   };
 
   // resolve input and listbox slot props
@@ -141,11 +136,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       type: 'text',
       value: value ?? '',
       ...triggerNativeProps,
-      onBlur,
-      onChange,
-      onFocus,
     },
   });
+
+  triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
+  triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
+  triggerSlot.onFocus = mergeCallbacks(triggerSlot.onFocus, onTriggerFocus);
 
   listboxSlot = resolveShorthand(props.listbox, {
     required: true,

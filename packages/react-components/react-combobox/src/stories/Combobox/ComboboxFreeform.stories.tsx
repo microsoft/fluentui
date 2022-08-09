@@ -20,7 +20,7 @@ export const Freeform = (props: Partial<ComboboxProps>) => {
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} allowFreeform placeholder="Select an animal" {...props}>
+      <Combobox aria-labelledby={comboId} freeform placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}
@@ -35,7 +35,7 @@ Freeform.parameters = {
   docs: {
     description: {
       story:
-        'Combobox supports the `allowFreeform` prop, which allows freeform text input. ' +
+        'Combobox supports the `freeform` prop, which allows freeform text input. ' +
         'The input value will be reset on blur to reflect the selected options.',
     },
   },
