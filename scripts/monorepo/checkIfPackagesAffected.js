@@ -1,4 +1,5 @@
 const getAffectedPackages = require('./getAffectedPackages');
+const getNthCommit = require('./getNthCommit');
 const yargs = require('yargs');
 
 const args = yargs

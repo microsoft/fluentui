@@ -186,6 +186,19 @@ describe('Callout', () => {
     );
   });
 
+  it('passes popupProps through to Popup', () => {
+    const { getByRole } = render(
+      <div>
+        <Callout doNotLayer role="dialog" popupProps={{ 'aria-modal': 'true' }}>
+          content
+        </Callout>
+      </div>,
+    );
+
+    const popup = getByRole('dialog');
+    expect(popup.getAttribute('aria-modal')).toEqual('true');
+  });
+
   // This behavior could be changed in the future
   it('does not hide siblings (currently)', () => {
     const { getByText, getByTestId } = render(
