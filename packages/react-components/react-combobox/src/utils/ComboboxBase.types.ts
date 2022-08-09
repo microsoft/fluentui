@@ -77,6 +77,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
+    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    ignoreNextBlur: React.MutableRefObject<boolean>;
+
     /* Callback when an option is clicked, for internal use */
     onOptionClick(event: React.MouseEvent, option: OptionValue): void;
 
