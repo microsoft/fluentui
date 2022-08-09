@@ -66,7 +66,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.listItemBackgroundSelected,
+            backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
           },
