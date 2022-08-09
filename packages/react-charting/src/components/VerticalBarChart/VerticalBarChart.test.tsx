@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the VerticalBarChart to be tested.
 let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
@@ -183,5 +184,19 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('VerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', async () => {
+    wrapper = mount(<VerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
