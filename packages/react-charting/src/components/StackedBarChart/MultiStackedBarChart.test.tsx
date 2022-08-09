@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IChartProps, IChartDataPoint, IMultiStackedBarChartProps, MultiStackedBarChart } from '../../index';
 import { IMultiStackedBarChartState, MultiStackedBarChartBase } from './MultiStackedBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the MultiStackedBarChart to be tested.
 let wrapper: ReactWrapper<IMultiStackedBarChartProps, IMultiStackedBarChartState, MultiStackedBarChartBase> | undefined;
@@ -195,5 +196,17 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('MultiStackedBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout on hover', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
