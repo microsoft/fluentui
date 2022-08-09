@@ -25,7 +25,7 @@ Our solution to these problems is to start using a [common, unified project boar
 1. All teams will run under the same [sprint](#sprints). We will start with 2 weeks long sprints.
    - Planning and other sprint related ceremonies (ie retrospective) are up to each team.
 1. Ideally all issues assigned to a sprint should be [prioritized](#prioritization) and [estimated](#difficulty).
-1. The managers of each team will have weekly meetings to groom the [backlog](#backlog) and prioritize items.
+1. The managers of each team will have weekly meetings to [groom the backlog](#backlog-grooming) and prioritize items.
    - Teams will have full ownership of breaking down big tasks and planning accordingly
 1. The goal of each [sprint](#sprints) is to have as few leftovers as possible for the next one, so making sure that you **break your work into chunks that fit in a sprint** is essential.
 1. Each team will set up [milestones](#milestones) which will reflect their 6 sprints long road map.
@@ -37,6 +37,16 @@ Our solution to these problems is to start using a [common, unified project boar
 The backlog is a collection of items that are not included in a sprint. Backlog items can be prioritized, which means that EMs / PMs have already checked them, but also unprioritized, which means that they must be checked by EMs / PMs in the following grooming sessions.
 
 Once items in the backlog are groomed, they can also be assigned to specific teams. Items such as PRs can be assigned to boards without being prioritized.
+
+### Backlog grooming
+
+The grooming process is as follows:
+
+1. We start by going through the ["By team" board view](https://github.com/orgs/microsoft/projects/395/views/6) and assign as many unassigned items as possible.
+   1. Sometimes we might also prioritise some of them, depending on their size but most of the time we would like to leave this for each crew to decide.
+   1. In some cases we might also add comments to get more context / clarify the current status of an issue. The comments may come from any of us (Justin, Juraj and Tudor) and they're basically a group comment.
+1. We will look at all [Needs: Backlog review issues](https://github.com/microsoft/fluentui/issues?q=is%3Aopen+is%3Aissue+label%3A%22Needs%3A+Backlog+review%22) directly in the issues view and try to groom as many as possible. This could mean team assignment, prioritisation, questions for better context.
+   1. It's important to note that **we will go through non unified board issues as well**, so make sure to **add the "Needs: Backlog review" label** to all issues you'd like us to go through.
 
 ### Sprints
 
