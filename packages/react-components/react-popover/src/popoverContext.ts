@@ -2,11 +2,10 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import type { PopoverState } from './components/Popover/index';
 
-export const PopoverContext: Context<PopoverContextValue | undefined> = createContext<PopoverContextValue | undefined>(
+export const PopoverContext: Context<PopoverContextValue> = createContext<PopoverContextValue | undefined>(
   undefined,
-);
-
-const popoverContextDefaultValue = {
+) as Context<PopoverContextValue>;
+const popoverContextDefaultValue: PopoverContextValue = {
   open: false,
   setOpen: () => null,
   toggleOpen: () => null,

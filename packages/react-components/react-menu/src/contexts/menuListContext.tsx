@@ -4,11 +4,11 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { SelectableHandler } from '../selectable/index';
 import type { MenuListProps } from '../components/index';
 
-export const MenuListContext: Context<MenuListContextValue | undefined> = createContext<
-  MenuListContextValue | undefined
->(undefined);
+export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue | undefined>(
+  undefined,
+) as Context<MenuListContextValue>;
 
-const menuListContextDefaultValue = {
+const menuListContextDefaultValue: MenuListContextValue = {
   checkedValues: {},
   onCheckedValueChange: () => null,
   setFocusByFirstCharacter: () => null,

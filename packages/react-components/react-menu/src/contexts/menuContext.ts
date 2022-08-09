@@ -4,11 +4,11 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { MenuListProps } from '../components/index';
 import type { MenuState } from '../components/Menu/index';
 
-export const MenuContext: Context<MenuContextValue | undefined> = createContext<MenuContextValue | undefined>(
+export const MenuContext: Context<MenuContextValue> = createContext<MenuContextValue | undefined>(
   undefined,
-);
+) as Context<MenuContextValue>;
 
-const menuContextDefaultValue = {
+const menuContextDefaultValue: MenuContextValue = {
   open: false,
   setOpen: () => false,
   checkedValues: {},

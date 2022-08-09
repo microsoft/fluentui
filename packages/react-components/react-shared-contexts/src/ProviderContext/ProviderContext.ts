@@ -11,9 +11,11 @@ export type ProviderContextValue = {
 /**
  * @internal
  */
-const ProviderContext = React.createContext<ProviderContextValue | undefined>(undefined);
+const ProviderContext = React.createContext<ProviderContextValue | undefined>(
+  undefined,
+) as React.Context<ProviderContextValue>;
 
-const providerContextDefaultValue = {
+const providerContextDefaultValue: ProviderContextValue = {
   targetDocument: typeof document === 'object' ? document : undefined,
   dir: 'ltr' as 'ltr',
 };

@@ -1,8 +1,10 @@
 import * as React from 'react';
 
-const MenuGroupContext = React.createContext<MenuGroupContextValue | undefined>(undefined);
+const MenuGroupContext = React.createContext<MenuGroupContextValue | undefined>(
+  undefined,
+) as React.Context<MenuGroupContextValue>;
 
-const menuGroupContextDefaultValue = {
+const menuGroupContextDefaultValue: MenuGroupContextValue = {
   headerId: '',
 };
 

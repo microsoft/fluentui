@@ -60,7 +60,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
 };
 
 // @public (undocumented)
-export const PopoverProvider: Provider<PopoverContextValue | undefined> & FC<ProviderProps<PopoverContextValue | undefined>>;
+export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
 
 // @public
 export type PopoverSize = 'small' | 'medium' | 'large';

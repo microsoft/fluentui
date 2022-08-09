@@ -18,7 +18,9 @@ export type TooltipVisibilityContextValue = {
  * @internal
  * Context shared by all of the tooltips in the app
  */
-const TooltipVisibilityContext = React.createContext<TooltipVisibilityContextValue | undefined>(undefined);
+const TooltipVisibilityContext = React.createContext<TooltipVisibilityContextValue | undefined>(
+  undefined,
+) as React.Context<TooltipVisibilityContextValue>;
 
 const tooltipVisibilityContextDefaultValue: TooltipVisibilityContextValue = {};
 

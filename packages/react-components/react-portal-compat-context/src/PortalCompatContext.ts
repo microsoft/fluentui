@@ -1,7 +1,9 @@
 import * as React from 'react';
 import type { RegisterPortalFn } from './types';
 
-const PortalCompatContext = React.createContext<RegisterPortalFn | undefined>(undefined);
+const PortalCompatContext = React.createContext<RegisterPortalFn | undefined>(
+  undefined,
+) as React.Context<RegisterPortalFn>;
 
 const portalCompatContextDefaultValue = () => () => {};
 

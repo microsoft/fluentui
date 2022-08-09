@@ -20,7 +20,7 @@ export const defaultSSRContextValue: SSRContextValue = {
   current: 0,
 };
 
-export const SSRContext = React.createContext<SSRContextValue | undefined>(undefined);
+export const SSRContext = React.createContext<SSRContextValue | undefined>(undefined) as React.Context<SSRContextValue>;
 
 /**
  * @internal

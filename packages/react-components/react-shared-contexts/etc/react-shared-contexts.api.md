@@ -10,7 +10,7 @@ import type { Theme } from '@fluentui/react-theme';
 // Warning: (ae-internal-missing-underscore) The name "Provider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable | undefined>;
+export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
 
 // @public (undocumented)
 export type ProviderContextValue_unstable = {
@@ -22,7 +22,7 @@ export type ProviderContextValue_unstable = {
 export type ThemeClassNameContextValue_unstable = string;
 
 // @public (undocumented)
-export const ThemeClassNameProvider_unstable: React_2.Provider<string | undefined>;
+export const ThemeClassNameProvider_unstable: React_2.Provider<string>;
 
 // Warning: (ae-internal-missing-underscore) The name "ThemeContext_unstable" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -51,7 +51,7 @@ export type TooltipVisibilityContextValue_unstable = {
 // Warning: (ae-internal-missing-underscore) The name "TooltipVisibilityProvider_unstable" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable | undefined>;
+export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
