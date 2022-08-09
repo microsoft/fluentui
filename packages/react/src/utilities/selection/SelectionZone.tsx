@@ -324,7 +324,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
             }
           } else {
             if (this.props.isSelectedOnFocus) {
-              this._onItemSurfaceClick(ev, index);
+              this._onItemSurfaceClick('focus', index);
             }
           }
         }
@@ -404,7 +404,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           if (!isSelectionDisabled) {
             if (this._isShiftPressed) {
-              this._onItemSurfaceClick(ev, index, span);
+              this._onItemSurfaceClick('click', index, span);
             } else {
               this._onToggleClick(ev, index, span);
             }
@@ -423,7 +423,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           break;
         } else if (target === itemRoot) {
           if (!isSelectionDisabled) {
-            this._onItemSurfaceClick(ev, index, span);
+            this._onItemSurfaceClick('click', index, span);
           }
           break;
         } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
@@ -678,7 +678,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     }
   }
 
-  private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number, span?: number): void {
+  private _onItemSurfaceClick(type: 'focus' | 'click', index: number, span?: number): void {
     const { selection, toggleWithoutModifierPressed } = this.props;
     const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
@@ -691,7 +691,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         } else {
           selection.selectToIndex(index, !isToggleModifierPressed);
         }
-      } else if (isToggleModifierPressed || toggleWithoutModifierPressed) {
+      } else if (type === 'click' && (isToggleModifierPressed || toggleWithoutModifierPressed)) {
         if (span !== undefined) {
           selection.toggleRangeSelected(index, span);
         } else {
