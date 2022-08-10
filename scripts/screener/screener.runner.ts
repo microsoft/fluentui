@@ -38,7 +38,7 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  const response = await fetch(environment.screener.proxyUri, {
+  const response = await fetch(`${environment.screener.proxyUri}/api/runner`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
