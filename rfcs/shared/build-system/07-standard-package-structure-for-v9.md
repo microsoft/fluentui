@@ -1,4 +1,4 @@
-# RFC: Standard Structure for v9 Packages
+# RFC: File Organization Convention for v9 Packages
 
 Contributors: @TristanWatanabe, @Hotell
 
