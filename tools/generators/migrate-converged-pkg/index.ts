@@ -349,10 +349,12 @@ const templates = {
     bundle-size/
     config/
     coverage/
+    docs/
     e2e/
     etc/
     node_modules/
     src/
+    stories/
     dist/types/
     temp/
     __fixtures__
@@ -362,7 +364,6 @@ const templates = {
     *.api.json
     *.log
     *.spec.*
-    *.stories.*
     *.test.*
     *.yml
 

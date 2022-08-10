@@ -934,10 +934,12 @@ describe('migrate-converged-pkg generator', () => {
         bundle-size/
         config/
         coverage/
+        docs/
         e2e/
         etc/
         node_modules/
         src/
+        stories/
         dist/types/
         temp/
         __fixtures__
@@ -947,7 +949,6 @@ describe('migrate-converged-pkg generator', () => {
         *.api.json
         *.log
         *.spec.*
-        *.stories.*
         *.test.*
         *.yml
 
