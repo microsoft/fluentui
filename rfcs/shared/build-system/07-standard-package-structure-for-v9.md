@@ -27,6 +27,7 @@ The proposed folder organization can be seen below:
   |- e2e tests
 |- src/
   |- implementation files
+  |- test files
 CHANGELOG.json
 CHANGELOG.md
 package.json
