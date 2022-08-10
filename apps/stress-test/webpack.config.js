@@ -76,22 +76,20 @@ const config = {
 
       {
         test: /\.(ts|tsx)?$/,
-        use: {
-          loader: 'swc-loader',
-        },
-        exclude: [/node_modules/, /\.wc\.(ts|tsx)?$/],
-      },
-
-      // Match Web Component files
-      // Not sure why babel-loader isn't working but
-      // the FAST docs use ts-loader and it "just works"
-      // so let's roll with it for now.
-      {
-        test: /\.wc\.(ts|tsx)?$/,
-        use: {
-          loader: 'ts-loader',
-        },
         exclude: /node_modules/,
+        oneOf: [
+          {
+            // Match Web Component files
+            // Not sure why babel-loader isn't working but
+            // the FAST docs use ts-loader and it "just works"
+            // so let's roll with it for now.
+            include: /\.wc\.(ts|tsx)?$/,
+            use: 'ts-loader',
+          },
+          {
+            use: 'swc-loader',
+          },
+        ],
       },
     ],
   },
