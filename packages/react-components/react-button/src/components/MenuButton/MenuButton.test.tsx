@@ -10,7 +10,6 @@ describe('MenuButton', () => {
   isConformant({
     Component: MenuButton as React.FunctionComponent<MenuButtonProps>,
     displayName: 'MenuButton',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

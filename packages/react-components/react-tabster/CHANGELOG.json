@@ -2,6 +2,49 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:04:04 GMT",
+      "tag": "@fluentui/react-tabster_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b9e6c6a7dd8ce6111744739a0ec486b99c2bb2ea",
+            "comment": "chore: Bump tabster to 2.1.0"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "2756c649a83c0fa0a20b82c62855d388a5e6bc2a",
+            "comment": "feat: Adds `ignoreDefaultKeydown` option to `useArrowNavigationGroup`"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "71590ea6aeab8ce24d8c8e50e0ee80ece81a4392",
+            "comment": "feat: create `:focus-visible` and `:focus-within` polyfills"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:05 GMT",
       "tag": "@fluentui/react-tabster_v9.0.3",
       "version": "9.0.3",

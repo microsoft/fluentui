@@ -9,8 +9,6 @@ describe('Option', () => {
   isConformant({
     Component: Option,
     displayName: 'Option',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
   });
 
   afterEach(() => {

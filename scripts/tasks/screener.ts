@@ -14,8 +14,6 @@ export async function screener() {
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
   console.log('screener config for run');
   console.log(JSON.stringify(screenerConfig, null, 2));
-  const screenerStates = await getScreenerStates(screenerConfig);
-  screenerConfig.states = screenerStates;
 
   const packageInfos = getAllPackageInfo();
   const packagePath = path.relative(findGitRoot(), process.cwd());
@@ -37,6 +35,8 @@ export async function screener() {
     if (!affectedPackages.has(affectedPackageInfo.packageJson.name)) {
       await cancelScreenerRun(screenerConfig, 'skipped');
     } else {
+      const screenerStates = await getScreenerStates(screenerConfig);
+      screenerConfig.states = screenerStates;
       await screenerRunner(screenerConfig);
     }
   } catch (err) {

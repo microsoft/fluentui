@@ -2,6 +2,21 @@
   "name": "@fluentui/global-context",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:35 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:07 GMT",
       "tag": "@fluentui/global-context_v9.0.0-beta.3",
       "version": "9.0.0-beta.3",

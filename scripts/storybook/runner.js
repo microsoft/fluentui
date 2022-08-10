@@ -26,12 +26,7 @@ main();
 function main() {
   const args = process.argv.slice(2);
   const COMMAND_PREFIX = `${chalk.cyan('>')} ${chalk.inverse(chalk.bold(chalk.cyan(' STORYBOOK RUNNER ')))}`;
-  const implicitDependencies = [
-    {
-      name: '@fluentui/react-storybook-addon',
-      description: 'fluentui storybook addon that adds functionality to storybook',
-    },
-  ];
+  const implicitDependencies = [];
   const dependencies = [];
 
   /**

@@ -141,6 +141,7 @@ packages/react-components/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/teams-prg
 packages/react-components/react-divider @microsoft/cxe-coastal
+packages/react-components/react-field @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red @spmonahan
@@ -170,7 +171,9 @@ packages/react-components/theme-designer @microsoft/cxe-coastal
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
-## <%= NX-CODEOWNER-PLACEHOLDER %>
+packages/react-components/react-progress @microsoft/cxe-red @tomi-msft
+packages/react-components/react-persona @microsoft/cxe-red @sopranopillow
+# <%= NX-CODEOWNER-PLACEHOLDER %>
 
 
 

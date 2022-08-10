@@ -548,7 +548,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, paths.packageJson).scripts).toEqual(
         expect.objectContaining({
           start: 'yarn storybook',
-          storybook: 'node ../../scripts/storybook/runner',
+          storybook: 'start-storybook',
         }),
       );
 
@@ -1071,7 +1071,7 @@ describe('migrate-converged-pkg generator', () => {
 
       updateJson(tree, `${projectConfig.root}/package.json`, (json: PackageJson) => {
         json.scripts = json.scripts || {};
-        json.scripts.build = 'just-scripts build --commonjs';
+        json.scripts.build = 'just-scripts build --module cjs';
         return json;
       });
 

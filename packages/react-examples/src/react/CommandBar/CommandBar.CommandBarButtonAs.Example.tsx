@@ -89,13 +89,7 @@ const IndividualCommandBarButtonAsExample: React.FunctionComponent<IIndividualCo
     ];
   }, [onDismissCoachmark, isCoachmarkVisible]);
 
-  return (
-    <CommandBar
-      overflowButtonProps={overflowButtonProps}
-      items={items}
-      ariaLabel="Use left and right arrow keys to navigate between commands"
-    />
-  );
+  return <CommandBar overflowButtonProps={overflowButtonProps} items={items} />;
 };
 
 export const IndividualCommandBarButtonAsExampleWrapper: React.FunctionComponent = () => {

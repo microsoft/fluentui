@@ -7,7 +7,6 @@ describe('Subtitle1', () => {
   isConformant({
     Component: Subtitle1,
     displayName: 'Subtitle1',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('renders a default state', () => {

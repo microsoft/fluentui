@@ -68,13 +68,4 @@ export const ts = {
 
     return tscTask(options);
   },
-  commonjsOnly: () => {
-    // Use default tsbuildinfo for this variant (since it's the only variant)
-    const options = prepareTsTaskConfig({
-      outDir: 'lib',
-      module: 'commonjs',
-    });
-
-    return tscTask(options);
-  },
 };

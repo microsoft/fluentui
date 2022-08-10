@@ -80,21 +80,17 @@ Sample usages will be give in the following section of this document [Sample cod
 
 ### Dialog
 
-The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogContent` or a `DialogTrigger` and a `DialogContent` (or some component that will eventually render one of those compound components) in this specific order
+The root level component serves as an interface for interaction with all possible behaviors exposed. It provides context down the hierarchy to `children` compound components to allow functionality. This component expects to receive as children either a `DialogSurface` or a `DialogTrigger` and a `DialogSurface` (or some component that will eventually render one of those compound components) in this specific order
 
 ```tsx
 type DialogSlots = {
   /**
-   * The dialog element itself
-   */
-  root: Slot<'div'>;
-  /**
    * Dimmed background of dialog.
-   * The default overlay is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default overlay.
-   * The overlay should have `aria-hidden="true"`.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
    */
-  overlay?: Slot<'div'>;
+  backdrop?: Slot<'div'>;
   /**
    * The root element of the Dialog right after Portal.
    */
@@ -110,8 +106,10 @@ type DialogProps = ComponentProps<DialogSlots> & {
    * `non-modal`: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.
    *
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background or escape key.
+   *
+   * @default 'modal'
    */
-  type?: 'modal' | 'non-modal' | 'alert';
+  modalType?: 'modal' | 'non-modal' | 'alert';
   /**
    * Controls the open state of the dialog
    * @default undefined
@@ -133,7 +131,7 @@ type DialogOpenChangeData = {
   /**
    * The event source of the callback invocation
    */
-  type: 'escapeKeyDown' | 'overlayClick' | 'triggerClick';
+  type: 'escapeKeyDown' | 'backdropClick' | 'triggerClick';
   /**
    * The next value for the internal state of the dialog
    */
@@ -150,11 +148,12 @@ In case the trigger is used outside `Dialog` component it'll still provide basic
 ```typescript
 export type DialogTriggerProps = {
   /**
-   * Explicitly declare if the trigger is responsible for opening,
-   * closing or toggling a Dialog visibility state.
-   * @default 'toggle'
+   * Explicitly declare if the trigger is responsible for opening or
+   * closing a Dialog visibility state.
+   * @default 'open' // if it's outside DialogSurface
+   * @default 'close' // if it's inside DialogSurface
    */
-  type?: 'open' | 'close' | 'toggle';
+  action?: 'open' | 'close';
   /**
    * Explicitly require single child or render function
    * to inject properties
@@ -163,10 +162,9 @@ export type DialogTriggerProps = {
 };
 ```
 
-### DialogContent
+### DialogSurface
 
-The `DialogContent` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
-By itself it has no style, but it's responsible of showing/hiding content when `Dialog` visibility state changes, also it'll ensure a `Portal` is properly created for the content being provided as well as for the `overlay` element provided by `Dialog`
+The `DialogSurface` component represents the visual part of a `Dialog` as a whole, it contains everything that should be visible.
 
 ```tsx
 type DialogTitleSlots = {
@@ -230,9 +228,9 @@ const dialog = <Dialog>
   <DialogTrigger>
     <Button>Open Dialog</Button>
   <DialogTrigger>
-  <DialogContent>
+  <DialogSurface>
     This is as basic as it gets.
-  </DialogContent>
+  </DialogSurface>
 </Dialog>
 ```
 
@@ -240,7 +238,7 @@ const dialog = <Dialog>
 <!-- expected DOM output  -->
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div aria-modal="true" role="dialog" class="fui-dialog-content">This is as basic as it gets</div>
 ```
 
@@ -253,7 +251,7 @@ const dialog = <Dialog type="alert">
   <DialogTrigger>
     <Button>Open Dialog</Button>
   <DialogTrigger>
-  <DialogContent>
+  <DialogSurface>
     <DialogTitle>
         This is an alert
     </DialogTitle>
@@ -266,14 +264,14 @@ const dialog = <Dialog type="alert">
       </DialogTrigger>
       <Button>Action</Button>
     </DialogActions>
-  </DialogContent>
+  </DialogSurface>
 </Dialog>
 ```
 
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
@@ -312,7 +310,7 @@ const CustomDialog = () => {
         <Button onClick={handleOpen}>Button outside Dialog Context</Button>
       </DialogTrigger>
       <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-        <DialogContent>
+        <DialogSurface>
           <DialogTitle>This is an alert</DialogTitle>
           <DialogBody>This is going to be inside the dialog</DialogBody>
           <DialogActions>
@@ -325,7 +323,7 @@ const CustomDialog = () => {
             </DialogTrigger>
             <Button>Action</Button>
           </DialogActions>
-        </DialogContent>
+        </DialogSurface>
       </Dialog>
     </>
   );
@@ -335,7 +333,7 @@ const CustomDialog = () => {
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
@@ -381,7 +379,7 @@ function AsyncConfirmDialog() {
         <DialogTrigger>
           <Button>Open Dialog</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogSurface>
           <DialogTitle>This is a dialog</DialogTitle>
           <DialogBody>
             <form id="form-id" onSubmit={handleSubmit}>
@@ -397,7 +395,7 @@ function AsyncConfirmDialog() {
               {state === 'submitting' && 'Submitting...'}
             </Button>
           </DialogActions>
-        </DialogContent>
+        </DialogSurface>
       </Dialog>
     </>
   );
@@ -498,7 +496,6 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Non-modal
 
@@ -509,16 +506,13 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Alert dialog
 
 - Trigger button
   - [`aria-haspopup="dialog"`](https://w3c.github.io/aria/#aria-haspopup)
-    > ⚠️ This is deprecated, the proper attribute should be [`aria-expanded=true`](https://w3c.github.io/aria/#aria-expanded)
 - Dialog
   - [`role="alertdialog"`](https://w3c.github.io/aria/#dialog)
-  - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
+  - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)

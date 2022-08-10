@@ -31,9 +31,9 @@
     "prettier": "prettier --config ../../prettier.config.js --write 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
     "prettier:diff": "prettier --config ../../prettier.config.js 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore --list-different",
     "code-style": "npm run prettier && npm run lint",
-    "start": "yarn start-storybook -p 6006 -s ./public --docs",
+    "start": "yarn start-storybook -p 6006 --docs",
     "start-storybook": "node node_modules/@storybook/html/bin/index.js",
-    "build-storybook": "node node_modules/@storybook/html/bin/build.js -o ./dist/storybook --docs -s ./public",
+    "build-storybook": "node node_modules/@storybook/html/bin/build.js -o ./dist/storybook --docs",
     "test": "yarn doc:ci && yarn test-chrome:verbose",
     "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
     "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
@@ -82,7 +82,6 @@
     "source-map": "^0.7.3",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.2",
-    "ts-node": "^8.0.0",
     "webpack": "^4.43.0"
   },
   "dependencies": {

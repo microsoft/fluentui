@@ -72,7 +72,6 @@ export const CommandBarButtonAsExample: React.FunctionComponent = () => {
       items={_items}
       overflowItems={_overflowItems}
       farItems={_farItems}
-      ariaLabel="Use left and right arrow keys to navigate between commands"
     />
   );
 };

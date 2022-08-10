@@ -9,8 +9,6 @@ describe('Combobox', () => {
     Component: Combobox,
     displayName: 'Combobox',
     primarySlot: 'input',
-    // don't test deprecated className export on new components
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {
@@ -103,6 +101,36 @@ describe('Combobox', () => {
 
     expect(queryByRole('listbox')).toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
+  });
+
+  it('opens the popup on expand icon click', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    fireEvent.click(getByTestId('icon'));
+
+    expect(getByRole('listbox')).not.toBeNull();
+  });
+
+  it('closes the popup on expand icon click', () => {
+    const { getByRole, getByTestId, queryByRole } = render(
+      <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    fireEvent.mouseDown(getByTestId('icon'));
+    fireEvent.blur(getByRole('combobox'));
+    fireEvent.click(getByTestId('icon'));
+
+    expect(queryByRole('listbox')).toBeNull();
   });
 
   it('does not close the combobox on click with controlled open', () => {
@@ -272,6 +300,22 @@ describe('Combobox', () => {
     fireEvent.keyDown(combobox, { key: ' ' });
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('does not select a disabled option with the keyboard', () => {
+    const { getByTestId, getByRole } = render(
+      <Combobox open data-testid="combobox">
+        <Option disabled>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    fireEvent.keyDown(combobox, { key: 'Enter' });
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('');
   });
 
   it('selects an option when tabbing away from an open combobox', () => {

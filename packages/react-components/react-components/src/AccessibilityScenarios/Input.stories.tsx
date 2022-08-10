@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import { Input } from '@fluentui/react-input';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { Label } from '@fluentui/react-label';
-import { Button } from '@fluentui/react-button';
+import { Button, Checkbox, Input, Label } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

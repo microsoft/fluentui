@@ -33,7 +33,7 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
     | (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions })
     | undefined;
 
-  let container: HTMLDivElement | null = null;
+  let container: HTMLElement | null = null;
   const mergeClasses = jest.fn().mockImplementation(() => '');
 
   jest.mock('@griffel/react', () => {
@@ -45,9 +45,12 @@ export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
   beforeEach(() => {
     jest.clearAllMocks();
     jest.resetModules();
-
-    container = document.createElement('div');
-    document.body.appendChild(container);
+    if (testInfo.renderOptions?.container) {
+      container = testInfo.renderOptions.container;
+    } else {
+      container = document.createElement('div');
+      document.body.appendChild(container);
+    }
   });
 
   afterEach(async () => {

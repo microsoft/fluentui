@@ -14,7 +14,6 @@ describe('SpinButton', () => {
     Component: SpinButton,
     displayName: 'SpinButton',
     primarySlot: 'input',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
   });
 
   it('renders a default uncontrolled state', () => {

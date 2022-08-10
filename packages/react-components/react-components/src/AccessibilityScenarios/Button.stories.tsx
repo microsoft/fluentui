@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button } from '@fluentui/react-button';
+import { Button } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
