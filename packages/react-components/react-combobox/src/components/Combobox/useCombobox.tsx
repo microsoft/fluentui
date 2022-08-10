@@ -3,7 +3,8 @@ import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
   resolveShorthand,
-  useMergedEventCallbacks,
+  mergeCallbacks,
+  useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
@@ -77,16 +78,20 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
-  const onExpandIconMouseDown = useMergedEventCallbacks(onIconMouseDown, () => {
-    // do not dismiss on blur when clicking the icon
-    baseState.ignoreNextBlur.current = true;
-  });
+  const onExpandIconMouseDown = useEventCallback(
+    mergeCallbacks(onIconMouseDown, () => {
+      // do not dismiss on blur when clicking the icon
+      baseState.ignoreNextBlur.current = true;
+    }),
+  );
 
-  const onExpandIconClick = useMergedEventCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
-    // open and set focus
-    state.setOpen(event, !state.open);
-    triggerRef.current?.focus();
-  });
+  const onExpandIconClick = useEventCallback(
+    mergeCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      // open and set focus
+      state.setOpen(event, !state.open);
+      triggerRef.current?.focus();
+    }),
+  );
 
   if (state.expandIcon) {
     state.expandIcon.onMouseDown = onExpandIconMouseDown;
