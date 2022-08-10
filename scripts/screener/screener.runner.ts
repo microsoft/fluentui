@@ -45,7 +45,6 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
-      key: screenerConfig.apiKey,
       uri: environment.screener.apiUri,
     }),
   });
@@ -53,7 +52,6 @@ async function scheduleScreenerBuild(
   console.log('Response debug info');
 
   console.log(response.status);
-  console.log(response.json());
   console.log('Response debug info ends');
 
   if (response.status !== 201) {
