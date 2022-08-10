@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

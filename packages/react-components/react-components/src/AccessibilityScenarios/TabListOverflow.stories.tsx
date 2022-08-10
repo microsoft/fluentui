@@ -2,15 +2,24 @@ import * as React from 'react';
 
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
-import { TabList, Tab, TabValue } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-button';
-import { Label } from '@fluentui/react-label';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { RadioGroup, Radio } from '@fluentui/react-components';
-import { Textarea } from '@fluentui/react-textarea';
-import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
+import {
+  tokens,
+  Button,
+  Label,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  TabList,
+  Tab,
+  TabValue,
+  Textarea,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
 import { Overflow, OverflowItem, useIsOverflowItemVisible, useOverflowMenu } from '@fluentui/react-overflow';
-import { tokens } from '@fluentui/react-theme';
 
 import { MusicNote1Filled, InfoRegular, MoreHorizontalRegular } from '@fluentui/react-icons';
 

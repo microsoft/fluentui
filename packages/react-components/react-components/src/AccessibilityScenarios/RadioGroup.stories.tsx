@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Label } from '@fluentui/react-label';
-import { RadioGroup, Radio, RadioGroupOnChangeData } from '@fluentui/react-components';
-import { Button } from '@fluentui/react-button';
+import { Button, Label, RadioGroup, Radio, RadioGroupOnChangeData } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 

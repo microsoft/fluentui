@@ -1,10 +1,17 @@
 import * as React from 'react';
 
-import { TabList, Tab, TabValue, SelectTabEvent, SelectTabData } from '@fluentui/react-components';
-import { Label } from '@fluentui/react-label';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { RadioGroup, Radio } from '@fluentui/react-components';
-import { Textarea } from '@fluentui/react-textarea';
+import {
+  Label,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  TabList,
+  Tab,
+  TabValue,
+  Textarea,
+  SelectTabEvent,
+  SelectTabData,
+} from '@fluentui/react-components';
 
 import { MusicNote1Filled, InfoRegular } from '@fluentui/react-icons';
 

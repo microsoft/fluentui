@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import { Label } from '@fluentui/react-label';
-import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { Button } from '@fluentui/react-button';
+import { Button, Checkbox, CheckboxOnChangeData, Label } from '@fluentui/react-components';
 
 import { Scenario } from './utils';
 
