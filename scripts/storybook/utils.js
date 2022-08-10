@@ -13,13 +13,13 @@ const defaults = { workspaceRoot };
  *
  * @example
  * ```js
- *  module.exports = { addons: ['@storybook/addon-essentials', loadWorkspacePlugin('@fluentui/custom-storybook-addon')] }
+ *  module.exports = { addons: ['@storybook/addon-essentials', loadWorkspaceAddon('@fluentui/custom-storybook-addon')] }
  * ```
  *
  * @param {string} addonName - package name of custom workspace addon
  * @param {{workspaceRoot?:string}=} options
  */
-function loadWorkspacePlugin(addonName, options = {}) {
+function loadWorkspaceAddon(addonName, options = {}) {
   const { workspaceRoot } = { ...defaults, ...options };
 
   if (process.env.NODE_ENV === 'production') {
@@ -83,4 +83,4 @@ function loadWorkspacePlugin(addonName, options = {}) {
   return distPath;
 }
 
-exports.loadWorkspacePlugin = loadWorkspacePlugin;
+exports.loadWorkspaceAddon = loadWorkspaceAddon;
