@@ -91,7 +91,9 @@ const useSelectStyles = makeStyles({
     boxShadow: 'none',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
+    cursor: 'pointer',
     flexGrow: 1,
+    maxWidth: '100%',
 
     ':focus': {
       outlineWidth: '2px',
@@ -108,25 +110,50 @@ const useSelectStyles = makeStyles({
       ...shorthands.borderColor('GrayText'),
     },
   },
+  /* The right padding is calculated  as the sum of the following:
+   * 1. Field padding-right
+   * 2. Icon width
+   * 3. Content-icon spacing
+   * 4. Content inner padding
+   */
   small: {
     height: fieldHeights.small,
-    ...shorthands.padding('0', tokens.spacingHorizontalSNudge),
+    paddingBottom: 0,
+    paddingLeft: `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+    paddingRight: `calc(${tokens.spacingHorizontalSNudge} + ${iconSizes.small} + ${tokens.spacingHorizontalXXS} + ${tokens.spacingHorizontalXXS})`,
+    paddingTop: 0,
     ...typographyStyles.caption1,
   },
   medium: {
     height: fieldHeights.medium,
-    ...shorthands.padding('0', tokens.spacingHorizontalMNudge),
+    paddingBottom: 0,
+    paddingLeft: `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    paddingRight: `calc(${tokens.spacingHorizontalMNudge} + ${iconSizes.medium} + ${tokens.spacingHorizontalXXS} + ${tokens.spacingHorizontalXXS})`,
+    paddingTop: 0,
     ...typographyStyles.body1,
   },
   large: {
     height: fieldHeights.large,
-    ...shorthands.padding('0', tokens.spacingHorizontalM),
+    paddingBottom: 0,
+    paddingLeft: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+    paddingRight: `calc(${tokens.spacingHorizontalM} + ${iconSizes.large} + ${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalSNudge})`,
+    paddingTop: 0,
     ...contentSizes[400],
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+
+    '&:hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -147,7 +174,6 @@ const useIconStyles = makeStyles({
     color: tokens.colorNeutralStrokeAccessible,
     display: 'block',
     position: 'absolute',
-    right: tokens.spacingHorizontalMNudge,
     pointerEvents: 'none',
 
     // the SVG must have display: block for accurate positioning
@@ -165,22 +191,19 @@ const useIconStyles = makeStyles({
   small: {
     fontSize: iconSizes.small,
     height: iconSizes.small,
-    paddingRight: tokens.spacingHorizontalSNudge,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    right: tokens.spacingHorizontalSNudge,
     width: iconSizes.small,
   },
   medium: {
     fontSize: iconSizes.medium,
     height: iconSizes.medium,
-    paddingRight: tokens.spacingHorizontalM,
-    paddingLeft: tokens.spacingHorizontalXXS,
+    right: tokens.spacingHorizontalMNudge,
     width: iconSizes.medium,
   },
   large: {
     fontSize: iconSizes.large,
     height: iconSizes.large,
-    paddingRight: tokens.spacingHorizontalM,
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    right: tokens.spacingHorizontalM,
     width: iconSizes.large,
   },
 });
