@@ -82,7 +82,6 @@ Adding a new alias color token (let's say `colorInputBackground`) and use it for
 
 - Negative impact on performance by increasing variables (as read here: [fluentui/theme-shared-colors.md at d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/blob/d5d510bf1ffcc1a4ed2067e9eb009c84e7beb351/rfcs/react-components/convergence/theme-shared-colors.md))
 - Divergence themes from the original
-- Wouldn't work in iframes
 
 Another option is to add a possibility to override the background using a CSS variable:
 We can use `backgroundColor: var(--inputBackgroundOverride, ${tokens.colorNeutralBackground1})` without setting the `--inputBackgroundOverride` anywhere. Then an application can set that variable if it needs to override the background.
