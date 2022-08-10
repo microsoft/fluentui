@@ -214,6 +214,7 @@ export class TextFieldBase
       autoAdjustHeight,
       canRevealPassword,
       revealPasswordAriaLabel,
+      enableBuiltInRevealButton,
       type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -242,6 +243,7 @@ export class TextFieldBase
       inputClassName,
       autoAdjustHeight,
       hasRevealButton,
+      enableBuiltInRevealButton,
     }));
 
     return (

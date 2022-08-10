@@ -82,6 +82,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     inputClassName,
     autoAdjustHeight,
     hasRevealButton,
+    enableBuiltInRevealButton,
   } = props;
 
   const { semanticColors, effects, fonts } = theme;
@@ -375,6 +376,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             },
           },
         },
+      !enableBuiltInRevealButton && {
+        selectors: {
+          '::-ms-reveal': {
+            display: 'none',
+            backgroundColor: 'red',
+          },
+        },
+      },
       inputClassName,
     ],
     icon: [

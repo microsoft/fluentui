@@ -9102,6 +9102,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     disabled?: boolean;
     // @deprecated
     elementRef?: React_2.Ref<HTMLDivElement>;
+    enableBuiltInRevealButton?: boolean;
     errorMessage?: string | JSX.Element;
     iconProps?: IIconProps;
     inputClassName?: string;
@@ -9148,7 +9149,7 @@ export interface ITextFieldState {
 }
 
 // @public (undocumented)
-export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight' | 'enableBuiltInRevealButton'> & {
     hasErrorMessage?: boolean;
     hasIcon?: boolean;
     hasLabel?: boolean;
