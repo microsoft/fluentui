@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: update styles based on design review",
+  "packageName": "@fluentui/react-select",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
