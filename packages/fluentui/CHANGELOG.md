@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.64.0 ]------------------------------- -->
+## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.1..@fluentui/react-northstar_v0.64.0)
+
 ### Features
 - Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
 - Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
