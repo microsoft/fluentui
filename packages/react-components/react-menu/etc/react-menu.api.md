@@ -301,7 +301,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-haspopup': 'menu';
     'aria-expanded'?: boolean;
     id: string;
-    ref: React_2.Ref<unknown>;
+    ref: React_2.Ref<never>;
     onClick: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onKeyDown: React_2.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
