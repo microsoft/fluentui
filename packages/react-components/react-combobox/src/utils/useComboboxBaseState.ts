@@ -17,6 +17,8 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
   const { selectedOptions, selectOption } = useSelection(props);
 
+  const ignoreNextBlur = React.useRef(false);
+
   // update value based on selectedOptions
   const isFirstMount = useFirstMount();
   const value = React.useMemo(() => {
@@ -85,6 +87,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     ...optionCollection,
     activeOption,
     appearance,
+    ignoreNextBlur,
     inlinePopup,
     onOptionClick,
     open,

@@ -103,6 +103,36 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
+  it('opens the popup on expand icon click', () => {
+    const { getByRole, getByTestId } = render(
+      <Combobox expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    fireEvent.click(getByTestId('icon'));
+
+    expect(getByRole('listbox')).not.toBeNull();
+  });
+
+  it('closes the popup on expand icon click', () => {
+    const { getByRole, getByTestId, queryByRole } = render(
+      <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    fireEvent.mouseDown(getByTestId('icon'));
+    fireEvent.blur(getByRole('combobox'));
+    fireEvent.click(getByTestId('icon'));
+
+    expect(queryByRole('listbox')).toBeNull();
+  });
+
   it('does not close the combobox on click with controlled open', () => {
     const { getByRole } = render(
       <Combobox open>
