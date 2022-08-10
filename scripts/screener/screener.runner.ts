@@ -44,7 +44,6 @@ async function scheduleScreenerBuild(
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      screenerCongifuration: screenerConfig,
       payload: payload,
     }),
   });
