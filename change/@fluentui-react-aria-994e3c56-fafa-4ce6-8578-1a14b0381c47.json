@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: updates generics for useARIAButtonProps for equivalent but simple",
+  "comment": "feat: upgrade typings on useARIAButtonProps to be more specific",
   "packageName": "@fluentui/react-aria",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
