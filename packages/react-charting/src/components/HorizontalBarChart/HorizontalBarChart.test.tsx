@@ -121,6 +121,10 @@ describe('HorizontalBarChart - mouse events', () => {
   afterEach(sharedAfterEach);
 
   it('Should render callout on hover', () => {
+    const mockMath = Object.create(global.Math);
+    mockMath.random = () => 0.1;
+    global.Math = mockMath;
+
     wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });

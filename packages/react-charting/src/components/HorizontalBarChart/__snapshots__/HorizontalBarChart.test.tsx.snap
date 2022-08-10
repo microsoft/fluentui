@@ -107,8 +107,8 @@ exports[`HorizontalBarChart - mouse events Should render callout on hover 1`] = 
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            id="_HorizontalLine_awc1sl_0"
-            key="_HorizontalLine_awc1sl_0"
+            id="_HorizontalLine_lllllm_0"
+            key="_HorizontalLine_lllllm_0"
             onClick={[Function]}
           >
             <rect
@@ -242,8 +242,8 @@ exports[`HorizontalBarChart - mouse events Should render callout on hover 1`] = 
                   stroke-width: 2px;
                   stroke: #ffffff;
                 }
-            id="_HorizontalLine_awc1sl_1"
-            key="_HorizontalLine_awc1sl_1"
+            id="_HorizontalLine_lllllm_1"
+            key="_HorizontalLine_lllllm_1"
             onClick={[Function]}
           >
             <rect
