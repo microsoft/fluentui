@@ -1,13 +1,12 @@
 const path = require('path');
-const { GriffelCSSExtractionPlugin } = require('@griffel/webpack-extraction-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const { configurePages } = require('./pageConfig');
+const { configureGriffel } = require('./griffelConfig');
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const config = {
+let config = {
   mode: isProd ? 'production' : 'development',
   output: {
     filename: '[name].[contenthash].bundle.js',
@@ -25,35 +24,6 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.(js|ts|tsx)$/,
-        // Apply "exclude" only if your dependencies **do not use** Griffel
-        // exclude: /node_modules/,
-        exclude: /\.wc\.(ts|tsx)?$/,
-        use: {
-          loader: GriffelCSSExtractionPlugin.loader,
-        },
-      },
-      // Add "@griffel/webpack-loader" if you use Griffel directly in your project
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: [/node_modules/, /\.wc\.(ts|tsx)?$/],
-        use: {
-          loader: '@griffel/webpack-loader',
-          options: {
-            babelOptions: {
-              presets: ['@babel/preset-typescript'],
-            },
-          },
-        },
-      },
-      // "css-loader" is required to handle produced CSS assets by Griffel
-      // you can use "style-loader" or "MiniCssExtractPlugin.loader" to handle CSS insertion
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-
       {
         test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
@@ -73,7 +43,7 @@ const config = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin(), new GriffelCSSExtractionPlugin(), new CleanWebpackPlugin()],
+  plugins: [new CleanWebpackPlugin()],
 
   optimization: {
     splitChunks: {
@@ -91,4 +61,7 @@ if (!isProd) {
   };
 }
 
-module.exports = configurePages(config);
+config = configureGriffel(config);
+config = configurePages(config);
+
+module.exports = config;

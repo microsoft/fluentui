@@ -31,8 +31,6 @@ const getPages = () => {
     return config;
   });
 
-  console.log(pages);
-
   return pages;
 };
 
