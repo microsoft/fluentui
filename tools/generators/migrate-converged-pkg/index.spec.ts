@@ -578,7 +578,7 @@ describe('migrate-converged-pkg generator', () => {
 
         module.exports = /** @type {Omit<import('../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
-        stories: [...rootMain.stories, '../src/**/*.stories.mdx', '../src/**/index.stories.@(ts|tsx)'],
+        stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
         webpackFinal: (config, options) => {
         const localConfig = { ...rootMain.webpackFinal(config, options) };
@@ -674,11 +674,10 @@ describe('migrate-converged-pkg generator', () => {
       expect(tree.read(paths.storyOne)?.toString('utf-8')).toMatchSnapshot();
     });
 
-    it(`should move existing stories to the src/stories/ComponentName folder`, async () => {
-      const { projectConfig, normalizedProjectName } = setup({ createDummyStories: true });
-      const componentName = names(normalizedProjectName).className.replace('React', '');
+    it(`should move existing stories to the root stories subfolder`, async () => {
+      const { projectConfig } = setup({ createDummyStories: true });
       const oldStoriesPath = `${projectConfig.root}/src/stories`;
-      const newStoriesPath = `${oldStoriesPath}/${componentName}`;
+      const newStoriesPath = `${projectConfig.root}/stories`;
       const storyFiles: string[] = [];
 
       visitNotIgnoredFiles(tree, oldStoriesPath, treePath => {
