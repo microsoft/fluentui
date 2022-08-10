@@ -3,15 +3,15 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles';
 import { useSizeStyles } from '../Avatar/useAvatarStyles';
-import type { AvatarGroupOverflowSlots, AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
+import type { AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots> = {
-  root: 'fui-AvatarGroupOverflow',
-  content: 'fui-AvatarGroupOverflow__content',
-  popoverSurface: 'fui-AvatarGroupOverflow__popoverSurface',
-  tooltip: 'fui-AvatarGroupOverflow__tooltip',
-  triggerButton: 'fui-AvatarGroupOverflow__triggerButton',
+export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots> = {
+  root: 'fui-AvatarGroupPopover',
+  content: 'fui-AvatarGroupPopover__content',
+  popoverSurface: 'fui-AvatarGroupPopover__popoverSurface',
+  tooltip: 'fui-AvatarGroupPopover__tooltip',
+  triggerButton: 'fui-AvatarGroupPopover__triggerButton',
 };
 
 /**
@@ -117,9 +117,9 @@ const useTriggerButtonStyles = makeStyles({
 });
 
 /**
- * Apply styling to the AvatarGroupOverflow slots based on the state
+ * Apply styling to the AvatarGroupPopover slots based on the state
  */
-export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflowState): AvatarGroupOverflowState => {
+export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverState): AvatarGroupPopoverState => {
   const { indicator, size, layout, popoverOpen } = state;
   const sizeStyles = useSizeStyles();
   const triggerButtonStyles = useTriggerButtonStyles();
@@ -172,7 +172,7 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
   }
 
   state.triggerButton.className = mergeClasses(
-    avatarGroupOverflowClassNames.triggerButton,
+    avatarGroupPopoverClassNames.triggerButton,
     groupChildClassName,
     sizeStyles[size],
     triggerButtonStyles.base,
@@ -186,13 +186,13 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
   );
 
   state.content.className = mergeClasses(
-    avatarGroupOverflowClassNames.content,
+    avatarGroupPopoverClassNames.content,
     contentStyles.base,
     state.content.className,
   );
 
   state.popoverSurface.className = mergeClasses(
-    avatarGroupOverflowClassNames.popoverSurface,
+    avatarGroupPopoverClassNames.popoverSurface,
     popoverSurfaceStyles.base,
     state.popoverSurface.className,
   );

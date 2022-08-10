@@ -3,7 +3,7 @@ import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../common/isConformant';
 import { render, screen } from '@testing-library/react';
-import { AvatarGroupOverflow } from '../AvatarGroupOverflow/AvatarGroupOverflow';
+import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 
 describe('AvatarGroup', () => {
   isConformant({
@@ -18,12 +18,12 @@ describe('AvatarGroup', () => {
           <AvatarGroupItem name="Daisy Phillips" />
           <AvatarGroupItem name="Robert Tolbert" />
           <AvatarGroupItem name="Kevin Sturgis" />
-          <AvatarGroupOverflow>
+          <AvatarGroupPopover>
             <AvatarGroupItem name="Allan Munger" />
             <AvatarGroupItem name="Daisy Phillips" />
             <AvatarGroupItem name="Robert Tolbert" />
             <AvatarGroupItem name="Kevin Sturgis" />
-          </AvatarGroupOverflow>
+          </AvatarGroupPopover>
         </>
       ),
     },
@@ -37,12 +37,12 @@ describe('AvatarGroup', () => {
         <AvatarGroupItem name="Daisy Phillips" />
         <AvatarGroupItem name="Robert Tolbert" />
         <AvatarGroupItem name="Kevin Sturgis" />
-        <AvatarGroupOverflow>
+        <AvatarGroupPopover>
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
           <AvatarGroupItem name="Robert Tolbert" />
           <AvatarGroupItem name="Kevin Sturgis" />
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>,
     );
 

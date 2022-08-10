@@ -4,16 +4,16 @@ import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 import { getSlots } from '@fluentui/react-utilities';
 import { PopoverProps, PopoverTrigger } from '@fluentui/react-popover';
 import { TooltipProps } from '@fluentui/react-tooltip';
-import type { AvatarGroupOverflowState, AvatarGroupOverflowSlots } from './AvatarGroupOverflow.types';
+import type { AvatarGroupPopoverState, AvatarGroupPopoverSlots } from './AvatarGroupPopover.types';
 
 /**
- * Render the final JSX of AvatarGroupOverflow
+ * Render the final JSX of AvatarGroupPopover
  */
-export const renderAvatarGroupOverflow_unstable = (
-  state: AvatarGroupOverflowState,
+export const renderAvatarGroupPopover_unstable = (
+  state: AvatarGroupPopoverState,
   contextValues: AvatarGroupContextValues,
 ) => {
-  const { slots, slotProps } = getSlots<AvatarGroupOverflowSlots>(state);
+  const { slots, slotProps } = getSlots<AvatarGroupPopoverSlots>(state);
 
   return (
     <slots.root {...(slotProps.root as PopoverProps)}>

@@ -1,7 +1,7 @@
 import { AvatarGroupContextValue, AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
-import { AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
+import { AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 
-export const useAvatarGroupOverflowContextValues = (state: AvatarGroupOverflowState): AvatarGroupContextValues => {
+export const useAvatarGroupPopoverContextValues = (state: AvatarGroupPopoverState): AvatarGroupContextValues => {
   const avatarGroup: AvatarGroupContextValue = {
     isOverflow: true,
     size: 24,
