@@ -95,6 +95,8 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
+  console.log(checkUrl);
+
   await notifyIntegration({
     commit,
     url: checkUrl,
