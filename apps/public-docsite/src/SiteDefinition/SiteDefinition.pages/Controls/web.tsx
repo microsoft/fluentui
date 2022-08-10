@@ -119,6 +119,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Layer: {},
     MarqueeSelection: {},
     Overlay: {},
+    Popup: {},
     ResizeGroup: {},
     Selection: {},
     Separator: {},
