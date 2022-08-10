@@ -97,7 +97,7 @@ export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> 
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
-    layout?: 'spread' | 'stack';
+    layout?: 'spread' | 'stack' | 'pie';
     size?: AvatarSizes;
 };
 

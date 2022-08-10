@@ -8,10 +8,10 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots> = {
   root: 'fui-AvatarGroupOverflow',
-  triggerButton: 'fui-AvatarGroupOverflow__triggerButton',
   content: 'fui-AvatarGroupOverflow__content',
   popoverSurface: 'fui-AvatarGroupOverflow__popoverSurface',
   tooltip: 'fui-AvatarGroupOverflow__tooltip',
+  triggerButton: 'fui-AvatarGroupOverflow__triggerButton',
 };
 
 /**
@@ -59,12 +59,23 @@ const useTriggerButtonStyles = makeStyles({
     },
   },
 
+  pie: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    color: 'transparent',
+  },
+
   // These styles match the default button styles.
   focusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineColor: tokens.colorStrokeFocus2,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
+  }),
+
+  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
+  pieFocusIndicator: createCustomFocusIndicatorStyle({
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
   }),
 
   states: {
@@ -162,13 +173,15 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
 
   state.triggerButton.className = mergeClasses(
     avatarGroupOverflowClassNames.triggerButton,
+    groupChildClassName,
     sizeStyles[size],
     triggerButtonStyles.base,
+    layout === 'pie' && triggerButtonStyles.pie,
+    layout === 'pie' && triggerButtonStyles.pieFocusIndicator,
+    layout !== 'pie' && triggerButtonStyles.focusIndicator,
+    layout !== 'pie' && triggerButtonStyles.states,
+    layout !== 'pie' && popoverOpen && triggerButtonStyles.selected,
     ...triggerButtonClasses,
-    groupChildClassName,
-    triggerButtonStyles.focusIndicator,
-    triggerButtonStyles.states,
-    popoverOpen && triggerButtonStyles.selected,
     state.triggerButton.className,
   );
 
