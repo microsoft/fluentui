@@ -1,4 +1,4 @@
-# RFC: Subfolder Structure for v9 Packages
+# RFC: Standard Structure for v9 Packages
 
 Contributors: @TristanWatanabe, @Hotell
 
