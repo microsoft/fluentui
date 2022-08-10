@@ -24,11 +24,9 @@ Partners should also easily revert the decision to the default appearance value 
 
 ## Detailed Design or Proposal
 
-### Wrap the library components on application side
-
 ### Composed component
 
-Partners could create a new composition component and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composition component and have the default component without the appearance prop renders as `filled-darker`.
+Partners could create a new composed component in fluent and modify the props in their preferred way. If the partner would like to keep the original color, they could create the composed component and have the default component without the appearance prop renders as `filled-darker`.
 
 👍 Pros:
 
@@ -36,25 +34,41 @@ Partners could create a new composition component and modify the props in their 
 
 👎 Cons:
 
-- Creating new composition component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
-- Composition component apperance prop wouldn't match our Fluent V9 documentation
-- Wouldn’t work in iframes
+- Creating new composed component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
+- Composed component apperance prop wouldn't match our Fluent V9 documentation
 - Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
 - Composition approach is currently marked as unstable in v9
+
+### Wrap the library components on application side
+
+Partners could a new component wrapper that will wrap input components and modify the appearance prop on the application side.
+
+👍 Pros:
+
+- Is safe and stable
+
+👎 Cons:
+
+- Creating new composed component for each input `Dropdown`, `Input`, `TextArea` and `DatePicker`
+- Wrapper component apperance wouldn't match our Fluent V9 documentation
+- Would work in iframes only within the TMP repository
+- Does not work if repos have dependencies of another project with Fluent V9 input components (Nova)
 
 ### Global css selector
 
 Targeting all input selectors from a partner app and change the color with global css.
 
+Example: https://codesandbox.io/s/rfc-inputs-ew821q?file=/app.tsx
+
 👍 Pros:
 
 - Relatively easy and fast to do
 - Scalable
+- Would work for dependencies such as Nova (but depending where we inject the CSS rule and if they have their own `FluentProvider`)
 
 👎 Cons:
 
 - Difficult to validate
-- Wouldn’t work in iframes
 
 ### New token alias to theme
 
