@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use only 1 instance of ts-node in monorepo",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
