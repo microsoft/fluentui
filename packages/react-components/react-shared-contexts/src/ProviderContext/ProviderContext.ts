@@ -17,7 +17,7 @@ const ProviderContext = React.createContext<ProviderContextValue | undefined>(
 
 const providerContextDefaultValue: ProviderContextValue = {
   targetDocument: typeof document === 'object' ? document : undefined,
-  dir: 'ltr' as 'ltr',
+  dir: 'ltr' as const,
 };
 
 /**
