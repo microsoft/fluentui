@@ -6,7 +6,7 @@ const { stripIndents } = require('@nrwl/devkit');
 const fs = require('fs');
 const path = require('path');
 const tmp = require('tmp');
-const { loadWorkspacePlugin } = require('./utils');
+const { loadWorkspaceAddon } = require('./utils');
 
 tmp.setGracefulCleanup();
 
@@ -98,7 +98,7 @@ describe(`utils`, () => {
       const originalEnv = process.env;
       process.env = { ...originalEnv, NODE_ENV: 'production' };
 
-      const actual = loadWorkspacePlugin('@myorg/storybook-custom-addon');
+      const actual = loadWorkspaceAddon('@myorg/storybook-custom-addon');
       const expected = '@myorg/storybook-custom-addon';
 
       expect(actual).toBe(expected);
@@ -109,7 +109,7 @@ describe(`utils`, () => {
     it(`should return path to in memory preset loader root`, () => {
       const { npmScope, workspaceRoot } = setup({ packageName: 'storybook-custom-addon' });
 
-      const actual = loadWorkspacePlugin(`${npmScope}/storybook-custom-addon`, { workspaceRoot });
+      const actual = loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, { workspaceRoot });
       const expected = `${workspaceRoot}/packages/storybook-custom-addon/dist`;
 
       expect(actual).toBe(expected);
@@ -118,7 +118,7 @@ describe(`utils`, () => {
     it(`should create in mocked preset with in memory TS compilation`, () => {
       const { npmScope, packageRoot, workspaceRoot } = setup({ packageName: 'storybook-custom-addon' });
 
-      loadWorkspacePlugin(`${npmScope}/storybook-custom-addon`, { workspaceRoot });
+      loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, { workspaceRoot });
 
       const mockedPreset = fs.readFileSync(path.join(packageRoot, 'dist', 'preset.js'), 'utf-8');
 
