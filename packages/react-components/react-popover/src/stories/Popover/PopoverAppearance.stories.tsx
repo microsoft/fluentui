@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, tokens } from '@fluentui/react-components';
-import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentHeader: {
@@ -27,12 +26,12 @@ const ExampleContent = () => {
   );
 };
 
-export const Appearance = (props: PopoverProps) => {
+export const Appearance = () => {
   const layoutStyles = useLayoutStyles();
 
   return (
     <div className={layoutStyles.root}>
-      <Popover {...props}>
+      <Popover>
         <PopoverTrigger>
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
@@ -42,7 +41,7 @@ export const Appearance = (props: PopoverProps) => {
         </PopoverSurface>
       </Popover>
 
-      <Popover {...props} appearance="brand">
+      <Popover appearance="brand">
         <PopoverTrigger>
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
@@ -52,7 +51,7 @@ export const Appearance = (props: PopoverProps) => {
         </PopoverSurface>
       </Popover>
 
-      <Popover {...props} appearance="inverted">
+      <Popover appearance="inverted">
         <PopoverTrigger>
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>

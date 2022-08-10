@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
+import { tokens } from '@fluentui/react-theme';
 import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
 // are consistently visible.
 const InvertedWrapper: React.FC = ({ children }) => {
-  return <div style={{ background: '#af33a1', padding: '10px' }}>{children}</div>;
+  return <div style={{ background: tokens.colorPaletteBerryForeground1, padding: '10px' }}>{children}</div>;
 };
 
 storiesOf('Spinner converged', module)
@@ -170,7 +171,6 @@ storiesOf('Spinner converged', module)
     'Inverted with Size Extra Small',
     () => (
       <InvertedWrapper>
-        {' '}
         <Spinner className="test-class" appearance="inverted" size="extra-small" />
       </InvertedWrapper>
     ),
