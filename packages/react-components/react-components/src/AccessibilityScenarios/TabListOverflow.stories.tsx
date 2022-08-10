@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@fluentui/react-components';
 
 import {
   tokens,
