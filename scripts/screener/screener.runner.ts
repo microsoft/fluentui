@@ -49,8 +49,10 @@ async function scheduleScreenerBuild(
   });
 
   console.log('Response debug info');
+
   console.log(response.status);
   console.log(response.body);
+
   console.log('Response debug info ends');
 
   if (response.status !== 201) {
