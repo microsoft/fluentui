@@ -85,9 +85,9 @@ export type ARIAButtonResultProps<Type extends ARIAButtonType, Props> = Props &
  * )
  * ```
  */
-export function useARIAButtonProps<Type extends ARIAButtonType, Props>(
+export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(
   type?: Type,
-  props?: Props & ARIAButtonProps<Type>,
+  props?: Props,
 ): ARIAButtonResultProps<Type, Props> {
   const {
     disabled,
@@ -104,7 +104,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props>(
 
   const isDisabled = disabled || disabledFocusable || normalizedARIADisabled;
 
-  const handleClick: ARIAButtonProps<Type>['onClick'] = useEventCallback(ev => {
+  const handleClick: Props['onClick'] = useEventCallback(ev => {
     if (isDisabled) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -113,7 +113,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props>(
     }
   });
 
-  const handleKeyDown: ARIAButtonProps<Type>['onKeyDown'] = useEventCallback(ev => {
+  const handleKeyDown: Props['onKeyDown'] = useEventCallback(ev => {
     onKeyDown?.(ev);
 
     if (ev.isDefaultPrevented()) {
@@ -140,7 +140,7 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props>(
     }
   });
 
-  const handleKeyUp: ARIAButtonProps<Type>['onKeyUp'] = useEventCallback(ev => {
+  const handleKeyUp: Props['onKeyUp'] = useEventCallback(ev => {
     onKeyUp?.(ev);
 
     if (ev.isDefaultPrevented()) {
