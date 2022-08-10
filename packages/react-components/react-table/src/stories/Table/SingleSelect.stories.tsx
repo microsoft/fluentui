@@ -9,14 +9,8 @@ import {
   VideoRegular,
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
-import {
-  useReactTable,
-  getCoreRowModel,
-  createColumnHelper,
-  flexRender,
-  RowSelectionState,
-} from '@tanstack/react-table';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
+import { useTable, ColumnDefinition } from '../../hooks';
 
 type FileCell = {
   label: string;
@@ -84,73 +78,43 @@ const items: Item[] = [
   },
 ];
 
-const columnHelper = createColumnHelper<Item>();
-const columns2 = [
-  columnHelper.display({
-    id: 'select',
-    // header: props => console.log(props),
-    header: () => <TableSelectionCell type="radio" />,
-    cell: ({ row }) => <TableSelectionCell checked={row.getIsSelected()} type="radio" />,
-  }),
-  columnHelper.accessor(row => row.file, {
-    id: 'file',
-    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
-    header: ({ header }) => {
-      return <TableHeaderCell key={header.id}>File</TableHeaderCell>;
-    },
-  }),
-  columnHelper.accessor(row => row.author, {
-    id: 'author',
-    cell: info => (
-      <TableCell media={<Avatar badge={{ status: info.getValue().status }} />}>{info.getValue().label}</TableCell>
-    ),
-    header: ({ header }) => {
-      return <TableHeaderCell key={header.id}>Author</TableHeaderCell>;
-    },
-  }),
-  columnHelper.accessor(row => row.lastUpdated, {
-    id: 'lastUpdated',
-    cell: info => <TableCell>{info.getValue().label}</TableCell>,
-    header: ({ header }) => {
-      return <TableHeaderCell key={header.id}>Last updated</TableHeaderCell>;
-    },
-  }),
-  columnHelper.accessor(row => row.lastUpdate, {
-    id: 'lastUpdate',
-    cell: info => <TableCell media={info.getValue().icon}>{info.getValue().label}</TableCell>,
-    header: ({ header }) => {
-      return <TableHeaderCell key={header.id}>Last update</TableHeaderCell>;
-    },
-  }),
+const columns: ColumnDefinition<Item>[] = [
+  {
+    columnId: 'file',
+  },
+  {
+    columnId: 'author',
+  },
+  {
+    columnId: 'lastUpdated',
+  },
+  {
+    columnId: 'lastUpdate',
+  },
 ];
 
-export const SingleSelect = () => {
-  const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
-
-  const table = useReactTable({
-    columns: columns2,
-    data: items,
-    state: {
-      rowSelection,
-    },
-    onRowSelectionChange: setRowSelection,
-    getCoreRowModel: getCoreRowModel(),
-    enableMultiRowSelection: false,
-  });
+export const Selection = () => {
+  const { rows } = useTable({ columns, items, selectionMode: 'single' });
 
   return (
-    <Table>
+    <Table sortable>
       <TableHeader>
         <TableRow>
-          {table
-            .getHeaderGroups()[0]
-            .headers.map(header => flexRender(header.column.columnDef.header, header.getContext()))}
+          <TableSelectionCell type="radio" />
+          <TableHeaderCell>File</TableHeaderCell>
+          <TableHeaderCell>Author</TableHeaderCell>
+          <TableHeaderCell>Last updated</TableHeaderCell>
+          <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {table.getRowModel().rows.map(row => (
-          <TableRow onClick={() => row.toggleSelected()}>
-            {row.getVisibleCells().map(cell => flexRender(cell.column.columnDef.cell, cell.getContext()))}
+        {rows().map(({ item, toggleSelect, selected }) => (
+          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
+            <TableSelectionCell type="radio" checked={selected} />
+            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
+            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
           </TableRow>
         ))}
       </TableBody>

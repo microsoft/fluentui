@@ -1,0 +1,63 @@
+import * as React from 'react';
+import type { UseTableOptions, TableState } from './types';
+import { useMultipleSelection } from './useMultipleSelection';
+import { useSingleSelection } from './useSingleSelection';
+import { useSort } from './useSort';
+
+export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TItem> {
+  const {
+    items: baseItems,
+    columns,
+    getRowId: getUserRowId = () => undefined,
+    selectionMode = 'multiselect',
+  } = options;
+
+  const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
+  const { sortColumn, sortDirection, toggleSort, headerSortProps, sort } = useSort(columns);
+
+  const multipleSelectionState = useMultipleSelection(baseItems, getRowId);
+  const singleSelectionState = useSingleSelection();
+  const {
+    toggleRowSelect,
+    toggleSelectAllRows,
+    selectedRows,
+    allRowsSelected,
+    someRowsSelected,
+    clearSelection,
+    selectRow,
+    deSelectRow,
+  } = selectionMode === 'multiselect' ? multipleSelectionState : singleSelectionState;
+
+  const rows = React.useCallback(
+    () =>
+      sort(baseItems).map((item, i) => ({
+        item,
+        deSelectRow: () => deSelectRow(getRowId(item, i)),
+        selectRow: () => selectRow(getRowId(item, i)),
+        toggleSelect: () => toggleRowSelect(getRowId(item, i)),
+        selected: selectedRows.has(getRowId(item, i)),
+        rowId: getRowId(item, i),
+      })),
+    [baseItems, selectedRows, sort, toggleRowSelect, getRowId, selectRow, deSelectRow],
+  );
+
+  return {
+    rows,
+    selection: {
+      clearSelection,
+      deSelectRow,
+      selectRow,
+      toggleSelectAllRows,
+      toggleRowSelect,
+      selectedRows: Array.from(selectedRows),
+      allRowsSelected,
+      someRowsSelected,
+    },
+    sort: {
+      sortColumn,
+      sortDirection,
+      toggleSort,
+      headerSortProps,
+    },
+  };
+}
