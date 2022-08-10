@@ -13,25 +13,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  */
 const getPages = () => {
   const extPattern = /\.(tsx|wc.ts)/;
-  const pagePattern = './src/**/*/index.?(tsx|wc.ts)';
+  const pagePattern = './src/pages/**/*/index.?(tsx|wc.ts)';
 
   const files = glob.sync(pagePattern);
 
   const pages = files.map(file => {
     const template = file.replace(extPattern, '.html');
+    const prefix = './src/pages/';
 
     const config = {
-      name: file.replace('./src/', '').replace(/\//g, '-').replace(extPattern, ''),
+      name: file.replace(prefix, '').replace(/\//g, '-').replace(extPattern, ''),
       path: file,
       template,
-      output: template.replace('./src/', ''),
+      output: template.replace(prefix, ''),
     };
 
     return config;
   });
 
+  console.log(pages);
+
   return pages;
 };
+
+getPages();
 
 /**
  * Take data from getPages() and generate Webpack

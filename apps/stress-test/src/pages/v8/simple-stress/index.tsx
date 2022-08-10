@@ -1,7 +1,7 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { initializeIcons } from '@fluentui/react';
-import { StressApp } from '../../components/v8/StressApp';
+import { StressApp } from '../../../components/v8/StressApp';
 
 initializeIcons();
 
