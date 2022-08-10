@@ -138,6 +138,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   setupBabel(tree, options);
 
   updateNxWorkspace(tree, options);
+  moveDocsToSubfolder(tree, options);
 }
 
 // ==== helpers ====
@@ -731,6 +732,19 @@ function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
         .join('/');
 
       tree.rename(treePath, newStoryPath);
+    }
+  });
+}
+
+function moveDocsToSubfolder(tree: Tree, options: NormalizedSchema) {
+  const root = options.projectConfig.root;
+  visitNotIgnoredFiles(tree, root, treePath => {
+    const currPath = treePath.toLowerCase();
+    if (currPath.includes('spec') || currPath.includes('migration')) {
+      const fileName = path.basename(treePath);
+      const newPath = joinPathFragments(root, 'docs', fileName);
+
+      tree.rename(treePath, newPath);
     }
   });
 }
