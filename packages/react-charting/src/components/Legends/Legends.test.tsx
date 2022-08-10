@@ -135,9 +135,12 @@ describe('Render calling with respective to props', () => {
     const props = {
       legends,
       allowFocusOnLegends: true,
+      focusZonePropsInHoverCard,
+      overflowProps,
+      legendsOverflowText: 'OverFlow Items',
     };
     const component = mount(<Legends {...props} />);
-    component.setProps({ ...props, allowFocusOnLegends: true });
+    component.setProps({ ...props });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
