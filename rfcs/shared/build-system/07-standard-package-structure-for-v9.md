@@ -17,17 +17,19 @@ The proposed folder organization can be seen below:
 ```
 |- docs/
   |- assets/
-  |- migration.md
-  |- spec.md
+  |- MIGRATION.md
+  |- SPEC.md
 |- stories/
   |- assets/
-  |- component stories
+  |- {componentName}/ //story files
 |- e2e/
   |- assets/
   |- e2e tests
 |- src/
-  |- implementation files
-  |- test files
+  |- common/
+  |- components/ //implementation and test files
+  |- index.ts
+  |- {componentName}.ts
 CHANGELOG.json
 CHANGELOG.md
 package.json
