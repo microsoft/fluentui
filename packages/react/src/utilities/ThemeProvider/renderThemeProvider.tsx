@@ -4,14 +4,14 @@ import { ThemeContext } from './ThemeContext';
 import type { ThemeProviderState } from './ThemeProvider.types';
 
 export const renderThemeProvider = (state: ThemeProviderState) => {
-  const { customizerContext, focusRectsContext, theme } = state;
+  const { customizerContext, ref, theme } = state;
   const Root = state.as || 'div';
   const rootProps = typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, ['as']);
 
   return (
     <ThemeContext.Provider value={theme}>
       <CustomizerContext.Provider value={customizerContext}>
-        <FocusRectsProvider value={focusRectsContext}>
+        <FocusRectsProvider providerRef={ref}>
           <Root {...rootProps} />
         </FocusRectsProvider>
       </CustomizerContext.Provider>

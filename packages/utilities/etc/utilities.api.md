@@ -305,7 +305,13 @@ export const FocusRects: React_2.FunctionComponent<{
 export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
 
 // @public (undocumented)
-export const FocusRectsProvider: React_2.Provider<IFocusRectsContext>;
+export const FocusRectsProvider: React_2.FC<FocusRectsProviderParams>;
+
+// @public (undocumented)
+export type FocusRectsProviderParams = {
+    providerRef: React_2.RefObject<HTMLElement>;
+    layerRoot?: boolean;
+};
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -601,6 +607,7 @@ export interface IFitContentToBoundsOptions {
 // @public (undocumented)
 export type IFocusRectsContext = {
     providerRef?: React_2.RefObject<HTMLElement>;
+    registeredProviders?: HTMLElement[];
 };
 
 // @public
@@ -1165,7 +1172,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element, providerElem?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: HTMLElement[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
