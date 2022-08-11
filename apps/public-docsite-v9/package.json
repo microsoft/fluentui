@@ -13,7 +13,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook:docs",
-    "storybook": "node ../../scripts/storybook/runner --port 3000 --no-manager-cache",
+    "storybook": "start-storybook --port 3000 --no-manager-cache",
     "storybook:docs": "yarn storybook --docs"
   },
   "devDependencies": {
