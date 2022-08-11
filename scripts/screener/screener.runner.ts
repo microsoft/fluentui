@@ -45,7 +45,6 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
-      uri: environment.screener.apiUri,
     }),
   });
 
