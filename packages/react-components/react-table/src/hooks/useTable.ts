@@ -16,7 +16,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
 
   const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
   const sortState = useSort(columns);
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, headerSortProps, sort } = sortState;
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = sortState;
 
   const selectionState = useSelection(selectionMode, baseItems, getRowId);
   const {
@@ -63,7 +63,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
       sortDirection,
       setColumnSort,
       toggleColumnSort,
-      headerSortProps,
+      getSortDirection,
     },
   };
 }

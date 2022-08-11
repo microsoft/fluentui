@@ -1,5 +1,4 @@
 import { SortDirection } from '../components/Table/Table.types';
-import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
 export type RowId = string | number;
 export type ColumnId = string | number;
@@ -20,7 +19,7 @@ export interface SortStateInternal<TItem> {
   sortColumn: ColumnId | undefined;
   setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
   toggleColumnSort: (columnId: ColumnId) => void;
-  headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
   /**
    * Returns a sorted **shallow** copy of original items
    */
@@ -65,9 +64,10 @@ export interface SortState {
    */
   toggleColumnSort: (columnId: ColumnId) => void;
   /**
-   * Returns props for @see TableHeaderCell to display sort state correctly
+   * Returns the sort direction if a column is sorted,
+   * returns undefined if the column is not sorted
    */
-  headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
 }
 
 export interface SelectionState {
