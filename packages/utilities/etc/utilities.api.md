@@ -606,7 +606,7 @@ export interface IFitContentToBoundsOptions {
 // @public (undocumented)
 export type IFocusRectsContext = {
     providerRef?: React_2.RefObject<HTMLElement>;
-    registeredProviders?: HTMLElement[];
+    allProviders?: HTMLElement[];
 };
 
 // @public
@@ -1171,7 +1171,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: HTMLElement[]): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, allProviders?: HTMLElement[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;

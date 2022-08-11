@@ -8,7 +8,14 @@ import { setFocusVisibility } from './setFocusVisibility';
  * Counter for mounted component that uses focus rectangles.
  * We want to cleanup the listeners before the last component that uses focus rectangles unmounts.
  */
+export type ListenerCallbacks = {
+  onMouseDown: (ev: MouseEvent) => void;
+  onPointerDown: (ev: PointerEvent) => void;
+  onKeyDown: (ev: KeyboardEvent) => void;
+  onKeyUp: (ev: KeyboardEvent) => void;
+};
 let mountCounters = new WeakMap<Window | HTMLElement, number>();
+let callbackMap = new WeakMap<HTMLElement[], ListenerCallbacks>();
 
 function setMountCounters(key: Window | HTMLElement, delta: number): number {
   let newValue;
@@ -21,6 +28,22 @@ function setMountCounters(key: Window | HTMLElement, delta: number): number {
 
   mountCounters.set(key, newValue);
   return newValue;
+}
+
+function setCallbackMap(key: HTMLElement[]): ListenerCallbacks {
+  let callbacks = callbackMap.get(key);
+  if (callbacks) {
+    return callbacks;
+  }
+
+  const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, key);
+  const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, key);
+  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, key);
+  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, key);
+  callbacks = { onMouseDown, onPointerDown, onKeyDown, onKeyUp };
+
+  callbackMap.set(key, callbacks);
+  return callbacks;
 }
 
 type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
@@ -44,20 +67,7 @@ type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) |
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const { providerRef, registeredProviders } = React.useContext(FocusRectsContext);
-
-  const callbacks = React.useMemo(
-    () =>
-      registeredProviders
-        ? {
-            onMouseDown: (ev: MouseEvent) => _onMouseDown(ev, registeredProviders),
-            onPointerDown: (ev: PointerEvent) => _onPointerDown(ev, registeredProviders),
-            onKeyDown: (ev: KeyboardEvent) => _onKeyDown(ev, registeredProviders),
-            onKeyUp: (ev: KeyboardEvent) => _onKeyUp(ev, registeredProviders),
-          }
-        : undefined,
-    [registeredProviders],
-  );
+  const { providerRef, allProviders } = React.useContext(FocusRectsContext);
 
   React.useEffect(() => {
     const win = getWindow(rootRef?.current) as AppWindow;
@@ -71,8 +81,9 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (providerRef && providerRef.current && callbacks) {
+    if (providerRef && providerRef.current && allProviders) {
       el = providerRef.current;
+      const callbacks = setCallbackMap(allProviders);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
       onKeyDown = callbacks.onKeyDown;
@@ -104,7 +115,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         el.removeEventListener('keyup', onKeyUp, true);
       }
     };
-  }, [providerRef, rootRef, callbacks]);
+  }, [providerRef, allProviders, rootRef]);
 }
 
 /**
@@ -116,13 +127,13 @@ export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTM
   return null;
 };
 
-function _onMouseDown(ev: MouseEvent, registeredProviders?: HTMLElement[]): void {
-  setFocusVisibility(false, ev.target as Element, registeredProviders);
+function _onMouseDown(ev: MouseEvent, allProviders?: HTMLElement[]): void {
+  setFocusVisibility(false, ev.target as Element, allProviders);
 }
 
-function _onPointerDown(ev: PointerEvent, registeredProviders?: HTMLElement[]): void {
+function _onPointerDown(ev: PointerEvent, allProviders?: HTMLElement[]): void {
   if (ev.pointerType !== 'mouse') {
-    setFocusVisibility(false, ev.target as Element, registeredProviders);
+    setFocusVisibility(false, ev.target as Element, allProviders);
   }
 }
 
@@ -135,16 +146,16 @@ function _onPointerDown(ev: PointerEvent, registeredProviders?: HTMLElement[]): 
 // every element that is being tabbed into.
 // This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
 // when focus visibility is turned on.
-function _onKeyDown(ev: KeyboardEvent, registeredProviders?: HTMLElement[]): void {
+function _onKeyDown(ev: KeyboardEvent, allProviders?: HTMLElement[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
-    setFocusVisibility(true, ev.target as Element, registeredProviders);
+    setFocusVisibility(true, ev.target as Element, allProviders);
   }
 }
 
-function _onKeyUp(ev: KeyboardEvent, registeredProviders?: HTMLElement[]): void {
+function _onKeyUp(ev: KeyboardEvent, allProviders?: HTMLElement[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
-    setFocusVisibility(true, ev.target as Element, registeredProviders);
+    setFocusVisibility(true, ev.target as Element, allProviders);
   }
 }
