@@ -88,14 +88,11 @@ export type SortDirection = 'ascending' | 'descending';
 
 // @public (undocumented)
 export interface SortState {
-    // (undocumented)
     headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
-    // (undocumented)
+    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
     sortColumn: ColumnId | undefined;
-    // (undocumented)
     sortDirection: SortDirection;
-    // (undocumented)
-    toggleSort: (columnId: ColumnId) => void;
+    toggleColumnSort: (columnId: ColumnId) => void;
 }
 
 // @public
