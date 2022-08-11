@@ -95,7 +95,7 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
 
   await notifyIntegration({
     commit,
-    url: checkUrl,
+    url: checkUrl.url,
     status: 'in_progress',
     project: screenerConfig.projectRepo,
     branch: branchName,
