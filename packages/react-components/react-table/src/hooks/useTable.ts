@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { UseTableOptions, TableState } from './types';
-import { useMultipleSelection } from './useMultipleSelection';
-import { useSingleSelection } from './useSingleSelection';
+import { useSelection } from './useSelection';
 import { useSort } from './useSort';
 
 export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TItem> {
@@ -15,8 +14,6 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
   const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
   const { sortColumn, sortDirection, toggleSort, headerSortProps, sort } = useSort(columns);
 
-  const multipleSelectionState = useMultipleSelection(baseItems, getRowId);
-  const singleSelectionState = useSingleSelection();
   const {
     toggleRowSelect,
     toggleSelectAllRows,
@@ -26,7 +23,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     clearSelection,
     selectRow,
     deSelectRow,
-  } = selectionMode === 'multiselect' ? multipleSelectionState : singleSelectionState;
+  } = useSelection(selectionMode, baseItems, getRowId);
 
   const rows = React.useMemo(
     () =>
