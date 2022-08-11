@@ -23,6 +23,9 @@
       "path": "./monorepo/tsconfig.json"
     },
     {
+      "path": "./screener/tsconfig.json"
+    },
+    {
       "path": "./tsconfig.json"
     }
   ]
