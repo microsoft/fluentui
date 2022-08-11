@@ -19,7 +19,9 @@ export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlot
  */
 const useContentStyles = makeStyles({
   base: {
+    listStyleType: 'none',
     maxHeight: '220px',
+    ...shorthands.margin('0'),
     minHeight: '80px',
     ...shorthands.overflow('hidden', 'scroll'),
     ...shorthands.padding(tokens.spacingHorizontalS),
