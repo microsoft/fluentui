@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
-import { AvatarGroupOverflow } from './AvatarGroupOverflow';
-import { avatarGroupOverflowClassNames } from './useAvatarGroupOverflowStyles';
+import { AvatarGroupPopover } from './AvatarGroupPopover';
+import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles';
 import { isConformant } from '../../common/isConformant';
 import { RenderResult } from '@testing-library/react';
 
@@ -16,18 +16,18 @@ function queryByRoleDialog(result: RenderResult) {
   }
 }
 
-const getOverflowSurfaceElement = (result: RenderResult) => {
-  // Overflow button needs to be clicked otherwise overflowContent won't be rendered.
+const getPopoverSurfaceElement = (result: RenderResult) => {
+  // triggerButton needs to be clicked otherwise content won't be rendered.
   result.getByRole('button').click();
   const dialog = queryByRoleDialog(result);
   expect(dialog).not.toBeNull();
   return dialog!;
 };
 
-describe('AvatarGroupOverflow', () => {
+describe('AvatarGroupPopover', () => {
   isConformant({
-    Component: AvatarGroupOverflow,
-    displayName: 'AvatarGroupOverflow',
+    Component: AvatarGroupPopover,
+    displayName: 'AvatarGroupPopover',
     disabledTests: [
       'component-handles-ref',
       'component-has-root-ref',
@@ -40,11 +40,11 @@ describe('AvatarGroupOverflow', () => {
           props: {},
           expectedClassNames: {
             // root shouldn't be expected since the root is a Popover
-            overflowButton: avatarGroupOverflowClassNames.triggerButton,
-            overflowContent: avatarGroupOverflowClassNames.content,
-            overflowSurface: avatarGroupOverflowClassNames.popoverSurface,
+            popoverButton: avatarGroupPopoverClassNames.triggerButton,
+            popoverContent: avatarGroupPopoverClassNames.content,
+            popoverSurface: avatarGroupPopoverClassNames.popoverSurface,
           },
-          getPortalElement: getOverflowSurfaceElement,
+          getPortalElement: getPopoverSurfaceElement,
         },
       ],
     },

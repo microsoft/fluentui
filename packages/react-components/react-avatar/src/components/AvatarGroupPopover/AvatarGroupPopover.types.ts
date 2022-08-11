@@ -5,7 +5,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { PopoverProps, PopoverSurface } from '@fluentui/react-popover';
 import type { TooltipProps } from '@fluentui/react-tooltip';
 
-export type AvatarGroupOverflowSlots = {
+export type AvatarGroupPopoverSlots = {
   root: NonNullable<Slot<PopoverProps>>;
 
   /**
@@ -30,9 +30,9 @@ export type AvatarGroupOverflowSlots = {
 };
 
 /**
- * AvatarGroupOverflow Props
+ * AvatarGroupPopover Props
  */
-export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOverflowSlots>>, 'children'> & {
+export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPopoverSlots>>, 'children'> & {
   /**
    * Whether the triggerButton should render an icon instead of the number of overflowed AvatarGroupItems.
    * Note: The indicator will default to `icon` when the size is less than 24.
@@ -43,7 +43,7 @@ export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOv
   /**
    * Number of AvatarGroupItems that will be rendered.
    *
-   * Note: AvatarGroupOverflow handles counting the number of children, but when using a react fragment to wrap the
+   * Note: AvatarGroupPopover handles counting the number of children, but when using a react fragment to wrap the
    * children, this is not possible and therefore it has do be added manually.
    */
   count?: number;
@@ -52,10 +52,10 @@ export type AvatarGroupOverflowProps = Omit<ComponentProps<Partial<AvatarGroupOv
 };
 
 /**
- * State used in rendering AvatarGroupOverflow
+ * State used in rendering AvatarGroupPopover
  */
-export type AvatarGroupOverflowState = ComponentState<AvatarGroupOverflowSlots> &
-  Required<Pick<AvatarGroupOverflowProps, 'indicator'>> & {
+export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> &
+  Required<Pick<AvatarGroupPopoverProps, 'indicator'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
     size: AvatarSizes;

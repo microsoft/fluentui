@@ -3,15 +3,15 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useGroupChildClassName } from '../AvatarGroupItem/useAvatarGroupItemStyles';
 import { useSizeStyles } from '../Avatar/useAvatarStyles';
-import type { AvatarGroupOverflowSlots, AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
+import type { AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const avatarGroupOverflowClassNames: SlotClassNames<AvatarGroupOverflowSlots> = {
-  root: 'fui-AvatarGroupOverflow',
-  triggerButton: 'fui-AvatarGroupOverflow__triggerButton',
-  content: 'fui-AvatarGroupOverflow__content',
-  popoverSurface: 'fui-AvatarGroupOverflow__popoverSurface',
-  tooltip: 'fui-AvatarGroupOverflow__tooltip',
+export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlots> = {
+  root: 'fui-AvatarGroupPopover',
+  content: 'fui-AvatarGroupPopover__content',
+  popoverSurface: 'fui-AvatarGroupPopover__popoverSurface',
+  tooltip: 'fui-AvatarGroupPopover__tooltip',
+  triggerButton: 'fui-AvatarGroupPopover__triggerButton',
 };
 
 /**
@@ -59,12 +59,23 @@ const useTriggerButtonStyles = makeStyles({
     },
   },
 
+  pie: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    color: 'transparent',
+  },
+
   // These styles match the default button styles.
   focusIndicator: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor('transparent'),
     outlineColor: tokens.colorStrokeFocus2,
     outlineWidth: tokens.strokeWidthThick,
     outlineStyle: 'solid',
+  }),
+
+  // This custom focus indicator is required for the pie layout due to the clip-path applied to the root
+  pieFocusIndicator: createCustomFocusIndicatorStyle({
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
   }),
 
   states: {
@@ -106,9 +117,9 @@ const useTriggerButtonStyles = makeStyles({
 });
 
 /**
- * Apply styling to the AvatarGroupOverflow slots based on the state
+ * Apply styling to the AvatarGroupPopover slots based on the state
  */
-export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflowState): AvatarGroupOverflowState => {
+export const useAvatarGroupPopoverStyles_unstable = (state: AvatarGroupPopoverState): AvatarGroupPopoverState => {
   const { indicator, size, layout, popoverOpen } = state;
   const sizeStyles = useSizeStyles();
   const triggerButtonStyles = useTriggerButtonStyles();
@@ -161,25 +172,27 @@ export const useAvatarGroupOverflowStyles_unstable = (state: AvatarGroupOverflow
   }
 
   state.triggerButton.className = mergeClasses(
-    avatarGroupOverflowClassNames.triggerButton,
+    avatarGroupPopoverClassNames.triggerButton,
+    groupChildClassName,
     sizeStyles[size],
     triggerButtonStyles.base,
+    layout === 'pie' && triggerButtonStyles.pie,
+    layout === 'pie' && triggerButtonStyles.pieFocusIndicator,
+    layout !== 'pie' && triggerButtonStyles.focusIndicator,
+    layout !== 'pie' && triggerButtonStyles.states,
+    layout !== 'pie' && popoverOpen && triggerButtonStyles.selected,
     ...triggerButtonClasses,
-    groupChildClassName,
-    triggerButtonStyles.focusIndicator,
-    triggerButtonStyles.states,
-    popoverOpen && triggerButtonStyles.selected,
     state.triggerButton.className,
   );
 
   state.content.className = mergeClasses(
-    avatarGroupOverflowClassNames.content,
+    avatarGroupPopoverClassNames.content,
     contentStyles.base,
     state.content.className,
   );
 
   state.popoverSurface.className = mergeClasses(
-    avatarGroupOverflowClassNames.popoverSurface,
+    avatarGroupPopoverClassNames.popoverSurface,
     popoverSurfaceStyles.base,
     state.popoverSurface.className,
   );
