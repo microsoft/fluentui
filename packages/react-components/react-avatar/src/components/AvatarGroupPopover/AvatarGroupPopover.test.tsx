@@ -61,19 +61,6 @@ describe('AvatarGroupPopover', () => {
     },
   });
 
-  it('renders an icon overflow indicator when size is less than 24', () => {
-    render(
-      <AvatarGroupPopover>
-        <AvatarGroupItem name="Allan Munger" />
-        <AvatarGroupItem name="Daisy Phillips" />
-        <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
-      </AvatarGroupPopover>,
-    );
-
-    expect(screen.getByRole('button').textContent).toBe('');
-  });
-
   it('respects a custom count', () => {
     render(
       <AvatarGroupPopover count={20}>
