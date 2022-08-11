@@ -120,7 +120,10 @@ const useSelectStyles = makeStyles({
     height: fieldHeights.small,
     paddingBottom: 0,
     paddingLeft: `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    paddingRight: `calc(${tokens.spacingHorizontalSNudge} + ${iconSizes.small} + ${tokens.spacingHorizontalXXS} + ${tokens.spacingHorizontalXXS})`,
+    paddingRight: `calc(${tokens.spacingHorizontalSNudge}
+                  + ${iconSizes.small}
+                  + ${tokens.spacingHorizontalXXS}
+                  + ${tokens.spacingHorizontalXXS})`,
     paddingTop: 0,
     ...typographyStyles.caption1,
   },
@@ -128,7 +131,10 @@ const useSelectStyles = makeStyles({
     height: fieldHeights.medium,
     paddingBottom: 0,
     paddingLeft: `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    paddingRight: `calc(${tokens.spacingHorizontalMNudge} + ${iconSizes.medium} + ${tokens.spacingHorizontalXXS} + ${tokens.spacingHorizontalXXS})`,
+    paddingRight: `calc(${tokens.spacingHorizontalMNudge}
+                  + ${iconSizes.medium}
+                  + ${tokens.spacingHorizontalXXS}
+                  + ${tokens.spacingHorizontalXXS})`,
     paddingTop: 0,
     ...typographyStyles.body1,
   },
@@ -136,7 +142,10 @@ const useSelectStyles = makeStyles({
     height: fieldHeights.large,
     paddingBottom: 0,
     paddingLeft: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
-    paddingRight: `calc(${tokens.spacingHorizontalM} + ${iconSizes.large} + ${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalSNudge})`,
+    paddingRight: `calc(${tokens.spacingHorizontalM}
+                  + ${iconSizes.large}
+                  + ${tokens.spacingHorizontalSNudge}
+                  + ${tokens.spacingHorizontalSNudge})`,
     paddingTop: 0,
     ...contentSizes[400],
   },
