@@ -535,6 +535,13 @@
       "sourceRoot": "packages/react-components/react-overflow/src",
       "tags": ["vNext", "platform:web"]
     },
+    "@fluentui/react-persona": {
+      "root": "packages/react-components/react-persona",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-persona/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-popover": {
       "root": "packages/react-components/react-popover",
       "projectType": "library",

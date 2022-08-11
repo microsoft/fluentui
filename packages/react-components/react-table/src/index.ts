@@ -1,3 +1,6 @@
+export { useTable } from './hooks';
+export type { UseTableOptions, SelectionState, SortState, ColumnDefinition, RowState, RowId, ColumnId } from './hooks';
+
 export {
   TableCell,
   tableCellClassNames,
@@ -59,3 +62,30 @@ export {
 export type { TableHeaderCellProps, TableHeaderCellSlots, TableHeaderCellState } from './TableHeaderCell';
 
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
+export {
+  TableSelectionCell,
+  useTableSelectionCellStyles_unstable,
+  useTableSelectionCell_unstable,
+  renderTableSelectionCell_unstable,
+  tableSelectionCellClassNames,
+} from './TableSelectionCell';
+
+export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';
+export {
+  TableCellActions,
+  tableCellActionsClassNames,
+  useTableCellActionsStyles_unstable,
+  useTableCellActions_unstable,
+  renderTableCellActions_unstable,
+} from './TableCellActions';
+
+export type { TableCellActionsProps, TableCellActionsSlots, TableCellActionsState } from './TableCellActions';
+export {
+  TablePrimaryCell,
+  tablePrimaryCellClassNames,
+  useTablePrimaryCellStyles_unstable,
+  useTablePrimaryCell_unstable,
+  renderTablePrimaryCell_unstable,
+} from './TablePrimaryCell';
+
+export type { TablePrimaryCellProps, TablePrimaryCellSlots, TablePrimaryCellState } from './TablePrimaryCell';

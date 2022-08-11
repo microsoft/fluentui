@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "bugfix: update useMergedEventCallbacks to mergeCallbacks",
+  "packageName": "@fluentui/react-combobox",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "none"
+}

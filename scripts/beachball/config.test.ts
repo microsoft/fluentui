@@ -1,5 +1,3 @@
-/// <reference types="jest" />
-
 import { config as sharedConfig } from './shared.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';

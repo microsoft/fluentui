@@ -6,8 +6,15 @@ on:
     branches:
       - master
   workflow_dispatch:
-    branches:
-      - master
+    # both inputs are required by chromaui/action
+    # https://github.com/chromaui/action#triggering-from-workflow_dispatch
+    inputs:
+      sha:
+        description: The SHA-1 hash referring to the commit which will be used for publishing.
+        required: true
+      ref:
+        description: The head branch associated with the pull request.
+        required: true
 
 jobs:
   check:
@@ -15,7 +22,7 @@ jobs:
     if: ${{ contains(github.event.head_commit.message, 'applying package updates') || github.event_name == 'workflow_dispatch' }}
 
     outputs:
-      status: ${{ steps.verify-react-components-changed.outputs.any_changed }}
+      status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
 
     steps:
       - uses: actions/checkout@v3
@@ -49,7 +56,6 @@ jobs:
         run: yarn build --to @fluentui/public-docsite-v9
 
       - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        with:
-          workingDir: apps/public-docsite-v9
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        run: yarn workspace @fluentui/public-docsite-v9 chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
