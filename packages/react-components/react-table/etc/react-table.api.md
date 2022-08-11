@@ -85,7 +85,7 @@ export type SortDirection = 'ascending' | 'descending';
 
 // @public (undocumented)
 export interface SortState {
-    headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
     setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
     sortColumn: ColumnId | undefined;
     sortDirection: SortDirection;
