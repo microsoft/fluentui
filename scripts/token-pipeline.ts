@@ -49,22 +49,30 @@ function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: 
   );
 }
 
-const tokenPipeline = () => {
+function setupDesignTokensRepo(options: { argv: typeof argv }) {
   const tmpDir = createTempDir('theme');
-  let pipelineDir = path.join(tmpDir, 'fluentui-design-tokens');
 
-  if (typeof argv.designTokensRepo === 'string') {
-    console.log(`Using local copy of design-tokens from ${argv.designTokensRepo}`);
-    pipelineDir = argv.designTokensRepo;
-  } else {
-    // clone repo, install deps
-    execSync(
-      'git clone --depth 1 https://github.com/microsoft/fluentui-design-tokens.git',
-      'Clone design tokens repo',
-      tmpDir,
-    );
-    execSync('npm install', 'Install dependencies', pipelineDir);
+  if (options.argv['design-tokens-repo']) {
+    const pipelineDir = options.argv['design-tokens-repo'];
+    console.log(`Using local copy of design-tokens from ${pipelineDir}`);
+
+    return { pipelineDir, tmpDir };
   }
+
+  // clone repo, install deps
+  execSync(
+    'git clone --depth 1 https://github.com/microsoft/fluentui-design-tokens.git',
+    'Clone design tokens repo',
+    tmpDir,
+  );
+  const pipelineDir = path.join(tmpDir, 'fluentui-design-tokens');
+  execSync('npm install', 'Install dependencies', pipelineDir);
+
+  return { pipelineDir, tmpDir };
+}
+
+const tokenPipeline = () => {
+  const { pipelineDir, tmpDir } = setupDesignTokensRepo({ argv });
 
   themes.forEach(theme => {
     runPipeline(theme, pipelineDir, tmpDir);
