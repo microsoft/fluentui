@@ -1,20 +1,5 @@
 import * as React from 'react';
-
-export type IFocusRectsContext = {
-  /**
-   * Ref to the root element of the provider
-   */
-  providerRef?: React.RefObject<HTMLElement>;
-
-  /**
-   * Array of all provider roots in this React tree.
-   * All child FocusRectsProviders share the same `allProviders` array as the parent. This way, a focus event in any of
-   * them will set focus visible styling on all of them.
-   */
-  allProviders?: HTMLElement[];
-};
-
-export const FocusRectsContext = React.createContext<IFocusRectsContext>({});
+import { FocusRectsContext } from './useFocusRects';
 
 export type FocusRectsProviderParams = {
   /**
@@ -46,11 +31,7 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
     }
   }, [providerRef, allProviders]);
 
-  return (
-    <FocusRectsContext.Provider
-      value={React.useMemo(() => ({ providerRef, allProviders }), [providerRef, allProviders])}
-    >
-      {params.children}
-    </FocusRectsContext.Provider>
-  );
+  const context = React.useMemo(() => ({ providerRef, allProviders }), [providerRef, allProviders]);
+
+  return <FocusRectsContext.Provider value={context}>{params.children}</FocusRectsContext.Provider>;
 };

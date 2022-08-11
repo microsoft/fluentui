@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { getWindow } from './dom/getWindow';
-import { FocusRectsContext } from './FocusRectsProvider';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
@@ -47,6 +46,22 @@ function setCallbackMap(key: HTMLElement[]): ListenerCallbacks {
 }
 
 type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+
+export type IFocusRectsContext = {
+  /**
+   * Ref to the root element of the provider
+   */
+  providerRef?: React.RefObject<HTMLElement>;
+
+  /**
+   * Array of all provider roots in this React tree.
+   * All child FocusRectsProviders share the same `allProviders` array as the parent. This way, a focus event in any of
+   * them will set focus visible styling on all of them.
+   */
+  allProviders?: HTMLElement[];
+};
+
+export const FocusRectsContext = React.createContext<IFocusRectsContext>({});
 
 /**
  * Initializes the logic which:
