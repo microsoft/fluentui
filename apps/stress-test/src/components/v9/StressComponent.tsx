@@ -9,7 +9,6 @@ import {
   Label,
   SpinButton,
   Spinner,
-  useId,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
