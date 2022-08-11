@@ -2,10 +2,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const semver = require('semver');
 const { stripIndents } = require('@nrwl/devkit');
 const { workspaceRoot } = require('nx/src/utils/app-root');
 
-const defaults = { workspaceRoot };
+const { isConvergedPackage, getAllPackageInfo } = require('../monorepo');
+
+const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
 /**
  * Registers workspace custom storybook addon to storybook with build-less setup during development.
  *
@@ -20,7 +23,7 @@ const defaults = { workspaceRoot };
  * @param {{workspaceRoot?:string}=} options
  */
 function loadWorkspaceAddon(addonName, options = {}) {
-  const { workspaceRoot } = { ...defaults, ...options };
+  const { workspaceRoot } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   if (process.env.NODE_ENV === 'production') {
     return addonName;
@@ -83,4 +86,24 @@ function loadWorkspaceAddon(addonName, options = {}) {
   return distPath;
 }
 
+/**
+ * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
+ */
+function getCodesandboxBabelOptions() {
+  const allPackageInfo = getAllPackageInfo();
+
+  return Object.values(allPackageInfo).reduce((acc, cur) => {
+    if (isConvergedPackage(cur.packageJson)) {
+      const prereleaseTags = semver.prerelease(cur.packageJson.version);
+      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
+      acc[cur.packageJson.name] = isNonRcPrerelease
+        ? { replace: '@fluentui/react-components/unstable' }
+        : { replace: '@fluentui/react-components' };
+    }
+
+    return acc;
+  }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+}
+
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
+exports.getCodesandboxBabelOptions = getCodesandboxBabelOptions;

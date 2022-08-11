@@ -13,7 +13,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "storybook": "node ../../scripts/storybook/runner",
+    "storybook": "start-storybook",
     "test:unit": "jest",
     "test:ssr": "ts-node --swc ./src/test.ts",
     "test": "yarn test:unit && yarn test:ssr",
