@@ -2,7 +2,7 @@
 
 const { setIconOptions } = require('@fluentui/style-utilities');
 const { configure } = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
 // Suppress icon warnings.
 setIconOptions({
