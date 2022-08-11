@@ -4,11 +4,11 @@ import * as path from 'path';
 
 import { renderHeader, renderEntry } from './customRenderers';
 
-const baseConfig: BeachballConfig = JSON.parse(
+const baseConfig: typeof import('./base.config.json') = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, 'base.config.json'), { encoding: 'utf8' }),
 );
 
-export const config: BeachballConfig = {
+export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changelog'>> = {
   ...baseConfig,
   changelog: {
     customRenderers: {

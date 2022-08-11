@@ -1,8 +1,18 @@
-const Project = require('@lerna/project');
-const PackageGraph = require('@lerna/package-graph');
 const path = require('path');
+// @ts-ignore
+const Project = require('@lerna/project');
+// @ts-ignore
+const PackageGraph = /** @type {Map<any,any>}*/ require('@lerna/package-graph');
+
 const findGitRoot = require('./findGitRoot');
 
+/**
+ *
+ * @param {string[]} rootPackages
+ * @param {Map<any,any>} projectGraph
+ * @param {string[]} packageList
+ * @returns
+ */
 function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
   rootPackages.forEach(packageName => {
     packageList.push(packageName);
@@ -16,8 +26,9 @@ function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
 /**
  * Returns all the dependencies of a given package name
  * @param {string} packageName including `@fluentui/` prefix
- * @param {string} options.dev include dev dependencies
- * @param {string} options.production include production dependencies
+ * @param {Object} options
+ * @param {string} [options.dev] include dev dependencies
+ * @param {boolean} [options.production] include production dependencies
  */
 async function getDependencies(packageName, options = { production: true }) {
   const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
@@ -28,6 +39,9 @@ async function getDependencies(packageName, options = { production: true }) {
 
   const devDependencies = allDepsGraph.filter(dep => !productionDepsGraph.includes(dep));
 
+  /**
+   * @type {string[]}
+   */
   let res = [];
 
   if (options.dev) {
