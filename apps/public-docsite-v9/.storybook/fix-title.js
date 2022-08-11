@@ -1,17 +1,28 @@
 const fs = require('fs');
 const path = require('path');
 
+function fixTitle(filePath, title) {
+  const htmlDocumentPath = path.resolve(__dirname, filePath);
+  const htmlDocument = fs.readFileSync(htmlDocumentPath, 'utf-8');
+  const updatedHtmlDocument = htmlDocument.replace(/<title>.*<\/title>/, `<title>${title}</title>`);
+
+  fs.writeFileSync(htmlDocumentPath, updatedHtmlDocument);
+}
+
 try {
   const args = process.argv.slice(2);
   const [title, distPath] = args;
 
+  const storybookDistPath = `${distPath}/storybook`;
+  const indexPath = `${storybookDistPath}/index.html`;
+  const iframePath = `${storybookDistPath}/iframe.html`;
+
   console.log(`Rewriting index.html document title to ${title}.`);
+  fixTitle(indexPath, title);
 
-  const filePath = `${distPath}/storybook/index.html`;
-  const document = fs.readFileSync(path.resolve(__dirname, filePath), 'utf8');
-  const output = document.replace(/<title>.*<\/title>/, `<title>${title}</title>`);
+  console.log(`Rewriting iframe.html document title to ${title}.`);
+  fixTitle(iframePath, title);
 
-  fs.writeFileSync(path.resolve(__dirname, filePath), output);
   console.log('Title rewrite complete.');
 } catch (error) {
   console.log('Title rewrite failed.');
