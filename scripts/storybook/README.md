@@ -1,10 +1,16 @@
 # Storybook utils
 
+This module contains solely v9 packages storybook tools.
+
+> **💡 NOTE:** only exception is `webpack.config.js` that is used for v8
+
+# API
+
 ## `loadWorkspaceAddon`
 
 Function that registers custom workspace(monorepo) storybook addon written in TypeScript without need to build first before use.
 
-## Usage
+### Usage
 
 ```js
 // @filename .storybook/main.js

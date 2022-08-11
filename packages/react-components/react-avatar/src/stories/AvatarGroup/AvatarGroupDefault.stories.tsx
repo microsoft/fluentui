@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import type { AvatarGroupProps } from '@fluentui/react-avatar';
 
 const names = [
@@ -24,11 +24,11 @@ export const Default = (props: Partial<AvatarGroupProps>) => {
       {inlineItems.map(name => (
         <AvatarGroupItem name={name} key={name} />
       ))}
-      <AvatarGroupOverflow>
+      <AvatarGroupPopover>
         {overflowItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-      </AvatarGroupOverflow>
+      </AvatarGroupPopover>
     </AvatarGroup>
   );
 };
