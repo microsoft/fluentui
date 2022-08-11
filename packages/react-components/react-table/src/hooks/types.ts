@@ -110,9 +110,9 @@ export interface RowState<TItem> {
 
 export interface TableState<TItem> {
   /**
-   * Gets the row data for rendering
+   * The row data for rendering
    */
-  rows: () => RowState<TItem>[];
+  rows: RowState<TItem>[];
   /**
    * State and actions to manage row selection
    */

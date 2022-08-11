@@ -28,7 +28,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     deSelectRow,
   } = selectionMode === 'multiselect' ? multipleSelectionState : singleSelectionState;
 
-  const rows = React.useCallback(
+  const rows = React.useMemo(
     () =>
       sort(baseItems).map((item, i) => ({
         item,

@@ -114,7 +114,7 @@ export const MultipleSelect = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows().map(({ item, toggleSelect, selected }) => (
+        {rows.map(({ item, toggleSelect, selected }) => (
           <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
             <TableSelectionCell checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
