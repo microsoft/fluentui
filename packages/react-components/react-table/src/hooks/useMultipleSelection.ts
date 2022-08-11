@@ -62,7 +62,15 @@ export function useMultipleSelection<TItem>(items: TItem[], getRowId: GetRowIdIn
     setSelected(new Set<RowId>());
   }, []);
 
+  const isRowSelected: SelectionStateInternal['isRowSelected'] = React.useCallback(
+    (rowId: RowId) => {
+      return selected.has(rowId);
+    },
+    [selected],
+  );
+
   return {
+    isRowSelected,
     clearSelection,
     deSelectRow,
     selectRow,

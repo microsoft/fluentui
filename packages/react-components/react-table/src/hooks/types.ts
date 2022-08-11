@@ -10,6 +10,11 @@ export interface ColumnDefinition<TItem> {
   compare?: (a: TItem, b: TItem) => number;
 }
 
+export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
+  row: RowState<TItem>,
+  state: { selection: SelectionStateInternal; sort: SortStateInternal<TItem> },
+) => TRowState;
+
 export interface SortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
@@ -22,11 +27,12 @@ export interface SortStateInternal<TItem> {
   sort: (items: TItem[]) => TItem[];
 }
 
-export interface UseTableOptions<TItem> {
+export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
   selectionMode?: 'single' | 'multiselect';
   getRowId?: (item: TItem) => RowId;
+  rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
 export interface SelectionStateInternal {
@@ -35,6 +41,7 @@ export interface SelectionStateInternal {
   selectRow: (rowId: RowId) => void;
   toggleSelectAllRows: () => void;
   toggleRowSelect: (rowId: RowId) => void;
+  isRowSelected: (rowId: RowId) => boolean;
   selectedRows: Set<RowId>;
   allRowsSelected: boolean;
   someRowsSelected: boolean;
@@ -96,6 +103,11 @@ export interface SelectionState {
    * Whether some rows are selected
    */
   someRowsSelected: boolean;
+
+  /**
+   * Checks if a given rowId is selected
+   */
+  isRowSelected: (rowId: RowId) => boolean;
 }
 
 export interface RowState<TItem> {
@@ -104,32 +116,16 @@ export interface RowState<TItem> {
    */
   item: TItem;
   /**
-   * Toggle the selection of the row
-   */
-  toggleSelect: () => void;
-  /**
-   * Selects the row
-   */
-  selectRow: () => void;
-  /**
-   * De-selects the row
-   */
-  deSelectRow: () => void;
-  /**
-   * Whether the row is selected
-   */
-  selected: boolean;
-  /**
    * The row id, defaults to index position in the collection
    */
   rowId: RowId;
 }
 
-export interface TableState<TItem> {
+export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   /**
    * The row data for rendering
    */
-  rows: RowState<TItem>[];
+  rows: TRowState[];
   /**
    * State and actions to manage row selection
    */
