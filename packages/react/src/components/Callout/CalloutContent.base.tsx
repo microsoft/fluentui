@@ -5,7 +5,6 @@ import {
   divProperties,
   elementContains,
   focusFirstChild,
-  FocusRects,
   getNativeProps,
   on,
   shallowCompare,
@@ -527,7 +526,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             {...popupProps}
           >
             {children}
-            <FocusRects />
           </Popup>
         </div>
       </div>
