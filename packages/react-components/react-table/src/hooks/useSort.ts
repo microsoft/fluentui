@@ -10,7 +10,7 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
 
   const { sortColumn, sortDirection } = sorted;
 
-  const toggleSort = (columnId: ColumnId | undefined) => {
+  const toggleColumnSort = (columnId: ColumnId | undefined) => {
     setSorted(s => {
       const newState = { ...s, sortColumn: columnId };
       if (s.sortColumn === columnId) {
@@ -21,6 +21,10 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
 
       return newState;
     });
+  };
+
+  const setColumnSort: SortStateInternal<TItem>['setColumnSort'] = (nextSortColumn, nextSortDirection) => {
+    setSorted({ sortColumn: nextSortColumn, sortDirection: nextSortDirection });
   };
 
   const sort = (items: TItem[]) =>
@@ -38,10 +42,11 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
     sortColumn,
     sortDirection,
     sort,
-    toggleSort,
+    setColumnSort,
+    toggleColumnSort,
     headerSortProps: (columnId: ColumnId) => ({
       sortDirection: sortColumn === columnId ? sortDirection : undefined,
-      onClick: () => toggleSort(columnId),
+      onClick: () => toggleColumnSort(columnId),
     }),
   };
 }

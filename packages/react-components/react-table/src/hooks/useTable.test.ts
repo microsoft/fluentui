@@ -14,7 +14,7 @@ describe('useTable', () => {
     );
 
     act(() => {
-      result.current.sort.toggleSort(1);
+      result.current.sort.toggleColumnSort(1);
     });
 
     expect(result.current.rows.map(row => row.rowId)).toEqual([1, 2, 3]);
@@ -31,11 +31,11 @@ describe('useTable', () => {
     );
 
     act(() => {
-      result.current.sort.toggleSort(1);
+      result.current.sort.toggleColumnSort(1);
     });
 
     act(() => {
-      result.current.sort.toggleSort(1);
+      result.current.sort.toggleColumnSort(1);
     });
 
     expect(result.current.rows.map(row => row.rowId)).toEqual([3, 2, 1]);
@@ -74,9 +74,10 @@ describe('useTable', () => {
     expect(result.current.sort).toMatchInlineSnapshot(`
       Object {
         "headerSortProps": [Function],
+        "setColumnSort": [Function],
         "sortColumn": undefined,
         "sortDirection": "ascending",
-        "toggleSort": [Function],
+        "toggleColumnSort": [Function],
       }
     `);
   });

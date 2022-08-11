@@ -12,7 +12,7 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
   } = options;
 
   const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
-  const { sortColumn, sortDirection, toggleSort, headerSortProps, sort } = useSort(columns);
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, headerSortProps, sort } = useSort(columns);
 
   const {
     toggleRowSelect,
@@ -53,7 +53,8 @@ export function useTable<TItem>(options: UseTableOptions<TItem>): TableState<TIt
     sort: {
       sortColumn,
       sortDirection,
-      toggleSort,
+      setColumnSort,
+      toggleColumnSort,
       headerSortProps,
     },
   };

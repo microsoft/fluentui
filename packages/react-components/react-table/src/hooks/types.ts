@@ -13,7 +13,8 @@ export interface ColumnDefinition<TItem> {
 export interface SortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
-  toggleSort: (columnId: ColumnId) => void;
+  setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+  toggleColumnSort: (columnId: ColumnId) => void;
   headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
   /**
    * Returns a sorted **shallow** copy of original items
@@ -40,9 +41,25 @@ export interface SelectionStateInternal {
 }
 
 export interface SortState {
+  /**
+   * Current sort direction
+   */
   sortDirection: SortDirection;
+  /**
+   * Column id of the currently sorted column
+   */
   sortColumn: ColumnId | undefined;
-  toggleSort: (columnId: ColumnId) => void;
+  /**
+   * Set the sort direction for the specified column
+   */
+  setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+  /**
+   * Toggles the sort direction for specified column
+   */
+  toggleColumnSort: (columnId: ColumnId) => void;
+  /**
+   * Returns props for @see {TableHeaderCell} to display sort state correctly
+   */
   headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
 }
 

@@ -4,12 +4,12 @@ import { ColumnDefinition } from './types';
 import { useSort } from './useSort';
 
 describe('useSort', () => {
-  describe('toggleSort', () => {
+  describe('toggleColumnSort', () => {
     it('should sort a new column in ascending order', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       expect(result.current.sortColumn).toBe(1);
@@ -20,11 +20,35 @@ describe('useSort', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
+      });
+
+      expect(result.current.sortColumn).toBe(1);
+      expect(result.current.sortDirection).toBe('descending');
+    });
+  });
+
+  describe('setColumnSort', () => {
+    it('should sort a column in ascending order', () => {
+      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const { result } = renderHook(() => useSort(columnDefinition));
+      act(() => {
+        result.current.setColumnSort(1, 'ascending');
+      });
+
+      expect(result.current.sortColumn).toBe(1);
+      expect(result.current.sortDirection).toBe('ascending');
+    });
+
+    it('should sort a column in descending order', () => {
+      const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+      const { result } = renderHook(() => useSort(columnDefinition));
+      act(() => {
+        result.current.setColumnSort(1, 'descending');
       });
 
       expect(result.current.sortColumn).toBe(1);
@@ -44,7 +68,7 @@ describe('useSort', () => {
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(2);
+        result.current.toggleColumnSort(2);
       });
 
       result.current.sort([{}, {}]);
@@ -58,7 +82,7 @@ describe('useSort', () => {
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       const sorted = result.current.sort([{ value: 2 }, { value: 1 }]);
@@ -72,10 +96,10 @@ describe('useSort', () => {
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       const sorted = result.current.sort([{ value: 1 }, { value: 2 }]);
@@ -107,7 +131,7 @@ describe('useSort', () => {
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       const headerProps = result.current.headerSortProps(2);
@@ -119,7 +143,7 @@ describe('useSort', () => {
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleSort(1);
+        result.current.toggleColumnSort(1);
       });
 
       const headerProps = result.current.headerSortProps(1);
