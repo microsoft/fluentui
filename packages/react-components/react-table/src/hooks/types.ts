@@ -58,7 +58,7 @@ export interface SortState {
    */
   toggleColumnSort: (columnId: ColumnId) => void;
   /**
-   * Returns props for @see {TableHeaderCell} to display sort state correctly
+   * Returns props for @see TableHeaderCell to display sort state correctly
    */
   headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
 }
