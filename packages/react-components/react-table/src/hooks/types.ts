@@ -11,7 +11,7 @@ export interface ColumnDefinition<TItem> {
 
 export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
   row: RowState<TItem>,
-  state: { selection: SelectionStateInternal; sort: SortStateInternal<TItem> },
+  state: { selection: SelectionState; sort: SortState },
 ) => TRowState;
 
 export interface SortStateInternal<TItem> {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { UseTableOptions, TableState, RowState } from './types';
+import type { UseTableOptions, TableState, RowState, SelectionState, SortState } from './types';
 import { useSelection } from './useSelection';
 import { useSort } from './useSort';
 
@@ -15,10 +15,18 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
   } = options;
 
   const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
-  const sortState = useSort(columns);
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = sortState;
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort(columns);
+  const sortState: SortState = React.useMemo(
+    () => ({
+      sortColumn,
+      sortDirection,
+      setColumnSort,
+      toggleColumnSort,
+      getSortDirection,
+    }),
+    [sortColumn, sortDirection, setColumnSort, toggleColumnSort, getSortDirection],
+  );
 
-  const selectionState = useSelection(selectionMode, baseItems, getRowId);
   const {
     isRowSelected,
     toggleRowSelect,
@@ -29,7 +37,32 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     clearSelection,
     selectRow,
     deSelectRow,
-  } = selectionState;
+  } = useSelection(selectionMode, baseItems, getRowId);
+
+  const selectionState: SelectionState = React.useMemo(
+    () => ({
+      isRowSelected,
+      clearSelection,
+      deSelectRow,
+      selectRow,
+      toggleSelectAllRows,
+      toggleRowSelect,
+      selectedRows: Array.from(selectedRows),
+      allRowsSelected,
+      someRowsSelected,
+    }),
+    [
+      isRowSelected,
+      clearSelection,
+      deSelectRow,
+      selectRow,
+      toggleSelectAllRows,
+      toggleRowSelect,
+      selectedRows,
+      allRowsSelected,
+      someRowsSelected,
+    ],
+  );
 
   const rows = React.useMemo(
     () =>
@@ -47,23 +80,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
 
   return {
     rows,
-    selection: {
-      isRowSelected,
-      clearSelection,
-      deSelectRow,
-      selectRow,
-      toggleSelectAllRows,
-      toggleRowSelect,
-      selectedRows: Array.from(selectedRows),
-      allRowsSelected,
-      someRowsSelected,
-    },
-    sort: {
-      sortColumn,
-      sortDirection,
-      setColumnSort,
-      toggleColumnSort,
-      getSortDirection,
-    },
+    selection: selectionState,
+    sort: sortState,
   };
 }
