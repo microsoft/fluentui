@@ -68,7 +68,7 @@ async function checkDevtoolsAvailability(host, port, timeout): Promise<boolean> 
 
     socket.connect(port, host, () => {
       socket.end();
-      resolve();
+      resolve(undefined);
     });
   });
 
