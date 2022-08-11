@@ -121,23 +121,32 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     }
   };
 
+  const triggerProps = {
+    'aria-haspopup': 'menu',
+    'aria-expanded': !open && !isSubmenu ? undefined : open,
+    id: triggerId,
+    ...child?.props,
+    ref: useMergedRefs(triggerRef, child?.ref),
+    onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
+    onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
+    onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
+    onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
+  } as const;
+
+  const ariaButtonTriggerProps = useARIAButtonProps(
+    child?.type === 'button' || child?.type === 'a' ? child.type : 'div',
+    {
+      ...triggerProps,
+      onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
+      onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
+    },
+  );
+
   return {
     isSubmenu,
     children: applyTriggerPropsToChildren<MenuTriggerChildProps>(
       children,
-      useARIAButtonProps(child?.type === 'button' || child?.type === 'a' ? child.type : 'div', {
-        'aria-haspopup': 'menu',
-        'aria-expanded': !open && !isSubmenu ? undefined : open,
-        id: triggerId,
-        ...child?.props,
-        ref: useMergedRefs(triggerRef, child?.ref),
-        onClick: useEventCallback(mergeCallbacks(child?.props?.onClick, onClick)),
-        onMouseEnter: useEventCallback(mergeCallbacks(child?.props?.onMouseEnter, onMouseEnter)),
-        onMouseLeave: useEventCallback(mergeCallbacks(child?.props?.onMouseLeave, onMouseLeave)),
-        onKeyDown: useEventCallback(mergeCallbacks(child?.props?.onKeyDown, onKeyDown)),
-        onContextMenu: useEventCallback(mergeCallbacks(child?.props?.onContextMenu, onContextMenu)),
-        onMouseMove: useEventCallback(mergeCallbacks(child?.props?.onMouseMove, onMouseMove)),
-      }),
+      openOnContext ? triggerProps : ariaButtonTriggerProps,
     ),
   };
 };

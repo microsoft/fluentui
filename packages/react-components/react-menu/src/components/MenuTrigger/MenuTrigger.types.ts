@@ -18,8 +18,6 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<never>;
-    onClick: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onKeyDown: React.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
