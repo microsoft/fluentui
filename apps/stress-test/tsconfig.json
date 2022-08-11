@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019",
     "noEmit": false,
     "allowJs": true,
     "importHelpers": true,
@@ -12,14 +11,5 @@
     "experimentalDecorators": true,
     "outDir": "./dist"
   },
-  "include": [],
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+  "include": ["src"]
 }
