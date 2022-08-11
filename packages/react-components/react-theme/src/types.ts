@@ -42,6 +42,7 @@ export type ColorTokens = {
   colorNeutralForegroundInvertedPressed: string;
   colorNeutralForegroundInvertedSelected: string;
   colorNeutralForegroundOnBrand: string;
+  colorNeutralForegroundInvertedStatic: string;
   colorNeutralForegroundInvertedLink: string;
   colorNeutralForegroundInvertedLinkHover: string;
   colorNeutralForegroundInvertedLinkPressed: string;
@@ -74,6 +75,7 @@ export type ColorTokens = {
   colorNeutralBackground5Pressed: string;
   colorNeutralBackground5Selected: string;
   colorNeutralBackground6: string;
+  colorNeutralBackgroundStatic: string;
   colorNeutralBackgroundInverted: string;
   colorSubtleBackground: string;
   colorSubtleBackgroundHover: string;

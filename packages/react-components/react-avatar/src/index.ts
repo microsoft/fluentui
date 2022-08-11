@@ -32,15 +32,11 @@ export {
 } from './AvatarGroupItem';
 export type { AvatarGroupItemProps, AvatarGroupItemSlots, AvatarGroupItemState } from './AvatarGroupItem';
 export {
-  AvatarGroupOverflow,
-  avatarGroupOverflowClassNames,
-  renderAvatarGroupOverflow_unstable,
-  useAvatarGroupOverflowStyles_unstable,
-  useAvatarGroupOverflow_unstable,
-} from './AvatarGroupOverflow';
-export type {
-  AvatarGroupOverflowProps,
-  AvatarGroupOverflowSlots,
-  AvatarGroupOverflowState,
-} from './AvatarGroupOverflow';
+  AvatarGroupPopover,
+  avatarGroupPopoverClassNames,
+  renderAvatarGroupPopover_unstable,
+  useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopover_unstable,
+} from './AvatarGroupPopover';
+export type { AvatarGroupPopoverProps, AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover';
 export { AvatarGroupProvider, useAvatarGroupContext_unstable } from './contexts/index';
