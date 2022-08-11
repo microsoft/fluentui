@@ -37,7 +37,7 @@ export const useAvatarGroupItem_unstable = (
     layout,
     size,
     components: {
-      root: groupIsOverflow ? 'div' : 'li',
+      root: groupIsOverflow ? 'li' : 'div',
       avatar: Avatar,
       overflowLabel: 'span',
     },
