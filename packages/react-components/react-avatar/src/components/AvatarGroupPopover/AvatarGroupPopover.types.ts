@@ -16,7 +16,7 @@ export type AvatarGroupPopoverSlots = {
   /**
    * List that contains the overflowed AvatarGroupItems.
    */
-  content: NonNullable<Slot<'div'>>;
+  content: NonNullable<Slot<'ul'>>;
 
   /**
    * PopoverSurface that contains the content.
