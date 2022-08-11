@@ -25,7 +25,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/react-theme": "^9.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
