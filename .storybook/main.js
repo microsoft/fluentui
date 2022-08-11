@@ -5,6 +5,8 @@ const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox'
 const { getAllPackageInfo, isConvergedPackage } = require('@fluentui/scripts/monorepo');
 const semver = require('semver');
 
+const { loadWorkspaceAddon } = require('../scripts/storybook');
+
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
  *
@@ -49,7 +51,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
-    '@fluentui/react-storybook-addon',
+    loadWorkspaceAddon('@fluentui/react-storybook-addon'),
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({

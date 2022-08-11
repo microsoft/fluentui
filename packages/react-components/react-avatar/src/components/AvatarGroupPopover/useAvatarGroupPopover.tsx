@@ -4,18 +4,18 @@ import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
-import type { AvatarGroupOverflowProps, AvatarGroupOverflowState } from './AvatarGroupOverflow.types';
+import type { AvatarGroupPopoverProps, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 import { Tooltip } from '@fluentui/react-tooltip';
 
 /**
- * Create the state required to render AvatarGroupOverflow.
+ * Create the state required to render AvatarGroupPopover.
  *
- * The returned state can be modified with hooks such as useAvatarGroupOverflowStyles_unstable,
- * before being passed to renderAvatarGroupOverflow_unstable.
+ * The returned state can be modified with hooks such as useAvatarGroupPopoverStyles_unstable,
+ * before being passed to renderAvatarGroupPopover_unstable.
  *
- * @param props - props from this instance of AvatarGroupOverflow
+ * @param props - props from this instance of AvatarGroupPopover
  */
-export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps): AvatarGroupOverflowState => {
+export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): AvatarGroupPopoverState => {
   const size = useAvatarGroupContext_unstable(ctx => ctx.size) ?? defaultAvatarGroupSize;
   const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const {
@@ -37,7 +37,9 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
   };
 
   let triggerButtonChildren;
-  if (indicator === 'icon') {
+  if (layout === 'pie') {
+    triggerButtonChildren = null;
+  } else if (indicator === 'icon') {
     triggerButtonChildren = <MoreHorizontalRegular />;
   } else {
     triggerButtonChildren = count > 99 ? '99+' : `+${count}`;
@@ -57,7 +59,7 @@ export const useAvatarGroupOverflow_unstable = (props: AvatarGroupOverflowProps)
       tooltip: Tooltip,
     },
     root: {
-      // Popover expects a child for its children. The children are added in the renderAvatarGroupOverflow.
+      // Popover expects a child for its children. The children are added in the renderAvatarGroupPopover.
       children: <></>,
       size: 'small',
       trapFocus: true,

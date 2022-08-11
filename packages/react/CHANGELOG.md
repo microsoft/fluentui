@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 08 Aug 2022 07:39:32 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 20:28:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.87.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.1)
+
+Mon, 08 Aug 2022 20:28:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.0..@fluentui/react_v8.87.1)
+
+### Patches
+
+- fix: Make focus rects visible inside of ContextualMenu ([PR #24261](https://github.com/microsoft/fluentui/pull/24261) by behowell@microsoft.com)
 
 ## [8.87.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.0)
 

@@ -377,6 +377,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/pivot',
         },
         {
+          component: require<any>('./components/pages/PopupPage').PopupPage,
+          key: 'Popup',
+          name: 'Popup',
+          url: '#/examples/Popup',
+        },
+        {
           component: require<any>('./components/pages/ProgressIndicatorPage').ProgressIndicatorPage,
           key: 'ProgressIndicator',
           name: 'ProgressIndicator',

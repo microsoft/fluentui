@@ -134,21 +134,21 @@ const useInputStyles = makeStyles({
     // Enabled and checked
     ':enabled:checked': {
       [`& ~ .${switchClassNames.indicator}`]: {
-        backgroundColor: tokens.colorBrandBackground,
-        color: tokens.colorNeutralForegroundOnBrand,
+        backgroundColor: tokens.colorCompoundBrandBackground,
+        color: tokens.colorNeutralForegroundInverted,
         ...shorthands.borderColor(tokens.colorTransparentStroke),
       },
 
       ':hover': {
         [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: tokens.colorBrandBackgroundHover,
+          backgroundColor: tokens.colorCompoundBrandBackgroundHover,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
 
       ':hover:active': {
         [`& ~ .${switchClassNames.indicator}`]: {
-          backgroundColor: tokens.colorBrandBackgroundPressed,
+          backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
           ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
         },
       },
