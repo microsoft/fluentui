@@ -310,7 +310,6 @@ export const FocusRectsProvider: React_2.FC<FocusRectsProviderParams>;
 // @public (undocumented)
 export type FocusRectsProviderParams = {
     providerRef: React_2.RefObject<HTMLElement>;
-    layerRoot?: boolean;
 };
 
 // @public
