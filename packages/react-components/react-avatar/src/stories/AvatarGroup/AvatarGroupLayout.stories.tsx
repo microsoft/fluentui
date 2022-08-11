@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -35,31 +35,31 @@ export const Layout = () => {
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupOverflow>
+        <AvatarGroupPopover>
           {partitionedItems.overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>
       <AvatarGroup layout="stack">
         {partitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupOverflow>
+        <AvatarGroupPopover>
           {partitionedItems.overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>
       <AvatarGroup layout="pie">
         {piePartitionedItems.inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupOverflow>
+        <AvatarGroupPopover>
           {piePartitionedItems.overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>
     </div>
   );

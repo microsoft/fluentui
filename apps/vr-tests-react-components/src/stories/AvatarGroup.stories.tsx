@@ -4,8 +4,8 @@ import Screener from 'screener-storybook/src/screener';
 import {
   AvatarGroup,
   AvatarGroupItem,
-  AvatarGroupOverflow,
-  AvatarGroupOverflowProps,
+  AvatarGroupPopover,
+  AvatarGroupPopoverProps,
   AvatarGroupProps,
   partitionAvatarGroupItems,
 } from '@fluentui/react-avatar';
@@ -46,7 +46,7 @@ const names = [
 const sizes = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 const AvatarGroupList: React.FC<
-  AvatarGroupProps & { overflowIndicator?: AvatarGroupOverflowProps['indicator'] }
+  AvatarGroupProps & { overflowIndicator?: AvatarGroupPopoverProps['indicator'] }
 > = props => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
 
@@ -57,11 +57,11 @@ const AvatarGroupList: React.FC<
           {inlineItems.map(name => (
             <AvatarGroupItem key={name} name={name} />
           ))}
-          <AvatarGroupOverflow indicator={props.overflowIndicator}>
+          <AvatarGroupPopover indicator={props.overflowIndicator}>
             {overflowItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-          </AvatarGroupOverflow>
+          </AvatarGroupPopover>
         </AvatarGroup>
       ))}
     </div>
@@ -88,9 +88,9 @@ storiesOf('AvatarGroup Converged', module)
       <div style={{ padding: '10px' }}>
         <AvatarGroup layout="pie">
           <AvatarGroupItem name={names[0]} />
-          <AvatarGroupOverflow>
+          <AvatarGroupPopover>
             <AvatarGroupItem name={names[0]} />
-          </AvatarGroupOverflow>
+          </AvatarGroupPopover>
         </AvatarGroup>
       </div>
     ),
@@ -106,10 +106,10 @@ storiesOf('AvatarGroup Converged', module)
         <AvatarGroup layout="pie">
           <AvatarGroupItem name={names[0]} />
           <AvatarGroupItem name={names[1]} />
-          <AvatarGroupOverflow>
+          <AvatarGroupPopover>
             <AvatarGroupItem name={names[0]} />
             <AvatarGroupItem name={names[1]} />
-          </AvatarGroupOverflow>
+          </AvatarGroupPopover>
         </AvatarGroup>
       </div>
     ),
@@ -145,11 +145,11 @@ storiesOf('AvatarGroup Converged', module)
             {inlineItems.map(name => (
               <AvatarGroupItem key={name} name={name} />
             ))}
-            <AvatarGroupOverflow triggerButton={{ id: 'show-overflow' }}>
+            <AvatarGroupPopover triggerButton={{ id: 'show-overflow' }}>
               {overflowItems.map(name => (
                 <AvatarGroupItem key={name} name={name} />
               ))}
-            </AvatarGroupOverflow>
+            </AvatarGroupPopover>
           </AvatarGroup>
         </div>
       );
