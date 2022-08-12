@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedList, IGroup } from '@fluentui/react/lib/GroupedList';
+import { GroupedListV2, IGroup } from '@fluentui/react/lib/GroupedList';
 import { IColumn, DetailsRow } from '@fluentui/react/lib/DetailsList';
 import { Selection, SelectionMode, SelectionZone } from '@fluentui/react/lib/Selection';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
@@ -23,7 +23,7 @@ const columns = Object.keys(items[0])
 
 const groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
-export const GroupedListBasicExample: React.FunctionComponent = () => {
+export const GroupedListV2BasicExample: React.FunctionComponent = () => {
   const [isCompactMode, { toggle: toggleIsCompactMode }] = useBoolean(false);
   const selection = useConst(() => {
     const s = new Selection();
@@ -62,7 +62,7 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
         styles={toggleStyles}
       />
       <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-        <GroupedList
+        <GroupedListV2
           items={items}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderCell={onRenderCell}
@@ -70,12 +70,13 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
           selectionMode={SelectionMode.multiple}
           groups={groups}
           compact={isCompactMode}
-          groupProps={{
-            footerProps: { footerText: 'cats' },
-            getGroupItemLimit: (group: any) => (group.key === 'group0-0-0' && !group.isShowingAll ? 1 : group.count),
-          }}
         />
       </SelectionZone>
     </div>
   );
+};
+
+// @ts-expect-error Storybook
+GroupedListV2BasicExample.story = {
+  name: 'V2 Basic',
 };
