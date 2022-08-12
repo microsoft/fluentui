@@ -9,6 +9,7 @@ exports[`AccordionHeader renders a default state 1`] = `
     className="fui-AccordionHeader__button"
     disabled={false}
     onClick={[Function]}
+    type="button"
   >
     <span
       aria-hidden={true}

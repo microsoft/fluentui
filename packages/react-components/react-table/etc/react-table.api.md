@@ -20,6 +20,17 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export interface ColumnDefinition<TItem> {
+    // (undocumented)
+    columnId: ColumnId;
+    // (undocumented)
+    compare?: (a: TItem, b: TItem) => number;
+}
+
+// @public (undocumented)
+export type ColumnId = string | number;
+
 // @public
 export const renderTable_unstable: (state: TableState, contextValues: TableContextValues) => JSX.Element;
 
@@ -48,7 +59,41 @@ export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 export const renderTableSelectionCell_unstable: (state: TableSelectionCellState) => JSX.Element;
 
 // @public (undocumented)
+export type RowId = string | number;
+
+// @public (undocumented)
+export interface RowState<TItem> {
+    deSelectRow: () => void;
+    item: TItem;
+    rowId: RowId;
+    selected: boolean;
+    selectRow: () => void;
+    toggleSelect: () => void;
+}
+
+// @public (undocumented)
+export interface SelectionState {
+    allRowsSelected: boolean;
+    clearSelection: () => void;
+    deSelectRow: (rowId: RowId) => void;
+    selectedRows: RowId[];
+    selectRow: (rowId: RowId) => void;
+    someRowsSelected: boolean;
+    toggleRowSelect: (rowId: RowId) => void;
+    toggleSelectAllRows: () => void;
+}
+
+// @public (undocumented)
 export type SortDirection = 'ascending' | 'descending';
+
+// @public (undocumented)
+export interface SortState {
+    headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+    setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
+    sortColumn: ColumnId | undefined;
+    sortDirection: SortDirection;
+    toggleColumnSort: (columnId: ColumnId) => void;
+}
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
@@ -200,10 +245,10 @@ export type TablePrimaryCellState = ComponentState<TablePrimaryCellSlots>;
 // @public
 export type TableProps = ComponentProps<TableSlots> & {} & Partial<TableContextValue> & {
     onSortColumnChange?: (e: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>, data: {
-        sortState: SortState;
+        sortState: SortState_2;
     }) => void;
-    sortState?: SortState;
-    defaultSortState?: SortState;
+    sortState?: SortState_2;
+    defaultSortState?: SortState_2;
 };
 
 // @public
@@ -257,6 +302,9 @@ export type TableSlots = {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
+// @public (undocumented)
+export function useTable<TItem>(options: UseTableOptions<TItem>): TableState_2<TItem>;
+
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
 
@@ -292,6 +340,18 @@ export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) =>
 
 // @public
 export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
+
+// @public (undocumented)
+export interface UseTableOptions<TItem> {
+    // (undocumented)
+    columns: ColumnDefinition<TItem>[];
+    // (undocumented)
+    getRowId?: (item: TItem) => RowId;
+    // (undocumented)
+    items: TItem[];
+    // (undocumented)
+    selectionMode?: 'single' | 'multiselect';
+}
 
 // @public
 export const useTablePrimaryCell_unstable: (props: TablePrimaryCellProps, ref: React_2.Ref<HTMLElement>) => TablePrimaryCellState;

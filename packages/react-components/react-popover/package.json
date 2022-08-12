@@ -19,12 +19,12 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "e2e": "yarn cypress run --component",
-    "e2e:local": "yarn cypress open --component",
-    "storybook": "node ../../../scripts/storybook/runner",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
-    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/react-components/react-popover/src && yarn docs",
+    "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-popover/src && yarn docs",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
@@ -34,6 +34,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.1.0",
     "@fluentui/react-context-selector": "^9.0.2",
     "@fluentui/react-portal": "^9.0.4",
     "@fluentui/react-positioning": "^9.1.2",

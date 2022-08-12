@@ -37,7 +37,7 @@ export const useAvatarGroupItem_unstable = (
     layout,
     size,
     components: {
-      root: 'div',
+      root: groupIsOverflow ? 'li' : 'div',
       avatar: Avatar,
       overflowLabel: 'span',
     },
@@ -46,7 +46,6 @@ export const useAvatarGroupItem_unstable = (
       defaultProps: {
         style,
         className,
-        role: groupIsOverflow ? 'listitem' : undefined,
       },
     }),
     avatar: resolveShorthand(props.avatar, {
