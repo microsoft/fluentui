@@ -7862,7 +7862,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={2}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -8001,7 +8002,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader5"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -8726,7 +8729,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={2}
+                        data-selection-span={3}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -8865,7 +8869,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader7"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
