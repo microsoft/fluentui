@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 12 Aug 2022 07:48:18 GMT",
+      "tag": "@fluentui/react_v8.87.2",
+      "version": "8.87.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "6ba787f09bb625f2f09124ddd766afd03266f7a8",
+            "comment": "fix: Remove caret from regex to correctly detect if the browser is Edge."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Aug 2022 20:28:21 GMT",
       "tag": "@fluentui/react_v8.87.1",
       "version": "8.87.1",

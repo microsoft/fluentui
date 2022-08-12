@@ -2,8 +2,8 @@ import * as React from 'react';
 import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../common/isConformant';
+import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 import { render, screen } from '@testing-library/react';
-import { AvatarGroupOverflow } from '../AvatarGroupOverflow/AvatarGroupOverflow';
 
 describe('AvatarGroup', () => {
   isConformant({
@@ -18,12 +18,12 @@ describe('AvatarGroup', () => {
           <AvatarGroupItem name="Daisy Phillips" />
           <AvatarGroupItem name="Robert Tolbert" />
           <AvatarGroupItem name="Kevin Sturgis" />
-          <AvatarGroupOverflow>
+          <AvatarGroupPopover>
             <AvatarGroupItem name="Allan Munger" />
             <AvatarGroupItem name="Daisy Phillips" />
             <AvatarGroupItem name="Robert Tolbert" />
             <AvatarGroupItem name="Kevin Sturgis" />
-          </AvatarGroupOverflow>
+          </AvatarGroupPopover>
         </>
       ),
     },
@@ -31,18 +31,17 @@ describe('AvatarGroup', () => {
 
   it('renders an icon overflow indicator when size is less than 24', () => {
     render(
-      <AvatarGroup size={20}>
+      <AvatarGroup size={16}>
         <AvatarGroupItem name="Mona Kane" />
         <AvatarGroupItem name="Allan Munger" />
         <AvatarGroupItem name="Daisy Phillips" />
         <AvatarGroupItem name="Robert Tolbert" />
-        <AvatarGroupItem name="Kevin Sturgis" />
-        <AvatarGroupOverflow>
+        <AvatarGroupPopover>
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
           <AvatarGroupItem name="Robert Tolbert" />
           <AvatarGroupItem name="Kevin Sturgis" />
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>,
     );
 

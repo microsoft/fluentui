@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import {
+  getPartitionedNativeProps,
+  resolveShorthand,
+  mergeCallbacks,
+  useEventCallback,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
@@ -40,6 +46,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     primarySlotTagName: 'input',
     excludedPropNames: ['children', 'size'],
   });
+
+  const triggerRef = React.useRef<HTMLInputElement>(null);
 
   // track focused state to conditionally render collapsed listbox
   const [hasFocus, setHasFocus] = React.useState(false);
@@ -133,6 +141,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   triggerSlot = resolveShorthand(props.input, {
     required: true,
     defaultProps: {
+      ref: useMergedRefs(props.input?.ref, triggerRef),
       type: 'text',
       value: value ?? '',
       ...triggerNativeProps,
@@ -176,6 +185,28 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     hasFocus,
     setOpen,
   };
+
+  /* handle open/close + focus change when clicking expandIcon */
+  const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};
+  const onExpandIconMouseDown = useEventCallback(
+    mergeCallbacks(onIconMouseDown, () => {
+      // do not dismiss on blur when clicking the icon
+      baseState.ignoreNextBlur.current = true;
+    }),
+  );
+
+  const onExpandIconClick = useEventCallback(
+    mergeCallbacks(onIconClick, (event: React.MouseEvent<HTMLSpanElement>) => {
+      // open and set focus
+      state.setOpen(event, !state.open);
+      triggerRef.current?.focus();
+    }),
+  );
+
+  if (state.expandIcon) {
+    state.expandIcon.onMouseDown = onExpandIconMouseDown;
+    state.expandIcon.onClick = onExpandIconClick;
+  }
 
   return state;
 };

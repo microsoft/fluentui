@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2-branded",
   "entries": [
     {
+      "date": "Tue, 09 Aug 2022 07:45:27 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.2.16",
+      "version": "1.2.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2-branded",
+            "commit": "b74a9610dc778d7626b1c492813bee91633890fd",
+            "comment": "Update package.json from react 17 to 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Aug 2022 07:39:33 GMT",
       "tag": "@fluentui/react-icons-mdl2-branded_v1.2.15",
       "version": "1.2.15",

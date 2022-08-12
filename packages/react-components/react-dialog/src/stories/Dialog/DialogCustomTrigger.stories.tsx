@@ -4,7 +4,7 @@ import { Dialog, DialogSurface, DialogTitle, DialogBody, DialogActions, DialogTr
 import type { DialogTriggerChildProps } from '@fluentui/react-dialog';
 import story from './DialogCustomTrigger.md';
 
-const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, Partial<DialogTriggerChildProps>>((props, ref) => {
+const CustomDialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerChildProps>((props, ref) => {
   return (
     <Button {...props} ref={ref}>
       Custom Trigger
