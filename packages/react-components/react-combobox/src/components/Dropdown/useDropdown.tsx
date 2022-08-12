@@ -5,6 +5,7 @@ import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
+import type { Slot } from '@fluentui/react-utilities';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 
 /**
@@ -25,7 +26,11 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  const triggerShorthand = resolveShorthand(props.button, {
+  // resolve button and listbox slot props
+  let triggerSlot: Slot<'button'>;
+  let listboxSlot: Slot<typeof Listbox>;
+
+  triggerSlot = resolveShorthand(props.button, {
     required: true,
     defaultProps: {
       type: 'button',
@@ -34,10 +39,10 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
   });
 
-  const listboxShorthand = resolveShorthand(props.listbox, { required: true });
+  listboxSlot = resolveShorthand(props.listbox, { required: true });
 
-  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerShorthand, listboxShorthand);
-  const [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
+  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
 
   const state: DropdownState = {
     components: {
