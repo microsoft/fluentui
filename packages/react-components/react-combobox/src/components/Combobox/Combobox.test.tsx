@@ -113,13 +113,13 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.click(getByTestId('icon'));
+    userEvent.click(getByTestId('icon'));
 
     expect(getByRole('listbox')).not.toBeNull();
   });
 
   it('closes the popup on expand icon click', () => {
-    const { getByRole, getByTestId, queryByRole } = render(
+    const { getByTestId, queryByRole } = render(
       <Combobox defaultOpen expandIcon={{ 'data-testid': 'icon' } as React.HTMLAttributes<HTMLSpanElement>}>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -127,9 +127,8 @@ describe('Combobox', () => {
       </Combobox>,
     );
 
-    fireEvent.mouseDown(getByTestId('icon'));
-    fireEvent.blur(getByRole('combobox'));
-    fireEvent.click(getByTestId('icon'));
+    userEvent.tab();
+    userEvent.click(getByTestId('icon'));
 
     expect(queryByRole('listbox')).toBeNull();
   });
