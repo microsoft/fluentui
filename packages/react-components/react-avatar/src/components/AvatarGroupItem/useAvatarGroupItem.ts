@@ -60,6 +60,7 @@ export const useAvatarGroupItem_unstable = (
     overflowLabel: resolveShorthand(props.overflowLabel, {
       required: true,
       defaultProps: {
+        'aria-hidden': true,
         children: props.name,
       },
     }),
