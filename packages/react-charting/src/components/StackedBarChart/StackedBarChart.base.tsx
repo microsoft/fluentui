@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocaleString } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -105,12 +105,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartTitle}>
             {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
                 <strong>{data!.chartTitle}</strong>
               </div>
             )}
             {showRatio && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
                 {!this.props.hideDenominator && (
                   <span>
@@ -120,7 +120,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               </div>
             )}
             {showNumber && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
+              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData)}>
                 <strong>{getChartData()}</strong>
               </div>
             )}
@@ -147,7 +147,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                 onDismiss={this._closeCallout}
                 preventDismissOnLostFocus={true}
                 {...this.props.calloutProps}
-                {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+                {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
               >
                 <>
                   {this.props.onRenderCalloutPerDataPoint ? (
@@ -434,20 +434,5 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this.setState({
       isCalloutVisible: false,
     });
-  };
-
-  private _getAccessibleDataObject = (
-    accessibleData?: IAccessibilityProps,
-    role: string = 'text',
-    isDataFocusable: boolean = true,
-  ) => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': isDataFocusable,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
   };
 }
