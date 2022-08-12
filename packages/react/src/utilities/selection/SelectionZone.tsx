@@ -813,19 +813,15 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   }
 
   private _getItemIndex(itemRoot: HTMLElement): number {
-    const indexValue = itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
+    const indexValue = parseInt(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME) ?? '', 10);
 
-    return Number(indexValue);
+    return isNaN(indexValue) ? -1 : indexValue;
   }
 
   private _getItemSpan(itemRoot: HTMLElement): number | undefined {
-    const spanValue = itemRoot.getAttribute(SELECTION_SPAN_ATTRIBUTE_NAME);
+    const spanValue = parseInt(itemRoot.getAttribute(SELECTION_SPAN_ATTRIBUTE_NAME) ?? '', 10);
 
-    if (typeof spanValue === 'string') {
-      return Number(spanValue);
-    }
-
-    return undefined;
+    return isNaN(spanValue) ? undefined : spanValue;
   }
 
   private _shouldAutoSelect(element: HTMLElement): boolean {
