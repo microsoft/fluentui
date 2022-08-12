@@ -78,7 +78,7 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
               </li>
               <li>
                 A number is displayed on the top of stacked bar chart if it has only one data point. This number shown
-                is the data you pass
+                is the data that is passed to the chart.
               </li>
               <li>
                 MultiStackedBarChart has a option 'showRatio' this will help you hide the ratio for the chart. It is a
@@ -86,6 +86,14 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
               </li>
               <li>
                 If a chart in MultiStackedBarChart shows ratio, legends are not displayed for that chart and vice-versa.
+              </li>
+              <li>
+                Stacked bar chart supports specifying a target value for the chart. The target shows up as a colored
+                arrow in the chart. It can be set using the targetData prop.
+              </li>
+              <li>
+                Stacked bar chart also supports specifying a benchmark value for the chart. The benchmark shows up as a
+                colored arrow in the chart. It can be set using the benchmarkData prop.
               </li>
             </ul>
           </div>

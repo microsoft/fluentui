@@ -32,6 +32,7 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/HeatMapChart/HeatMapChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
         }

@@ -13,9 +13,12 @@ This library is also supported for fluent UI [v7](https://github.com/microsoft/f
 
 **Using the library**
 
-The documentation and examples for the charting library are available on the [demo site](https://aka.ms/fluentcharting).
+Examples and code snippets for the charting library are available on the [demo site](https://aka.ms/fluentcharting).
+The code snippets can be used as usage guide for all the props and their variations. Click on 'Show code' on the demo site to access demo for each variants.
 
-If using npm, install the package
+Technical information is available at [Technical details](./TechnicalDetails.md)
+
+The library is published as a npm package to public npm feed. To install the package
 
 ```js
 npm install @fluentui/react-charting
@@ -31,14 +34,22 @@ import { ComponentName } from '@fluentui/react-charting/lib/ComponentName';
 
 Refer the main fluentui [wiki](https://github.com/microsoft/fluentui/wiki) for detailed instructions on setup and contributing to the package.
 
-**Future roadmap**.
+**Testing**
 
-Work In Progress. To be published soon.
+The library has sufficient number of snapshot tests to test for visual regression.
+Run `yarn test` from within the package to run all the tests.
 
-**FAQ**
+**Versioning and changelog**
 
-Work In Progress. To be published soon
+We use SemVer for versioning. For the versions available, see the [tags](https://github.com/microsoft/fluentui/tags) on this repository.
+
+Refer to the [changelog](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/CHANGELOG.md) for details about changes made in each version.
 
 **Contact**
 
-You can reach out to the charting team by tagging `@microsoft/charting-team` in discussion items.
+You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
+
+You could also create issues under the [charting](https://github.com/microsoft/fluentui/labels/Package:%20charting) tag.
+
+**Coding Guidelines**
+Refer fluent [Coding guidelines](https://github.com/microsoft/fluentui/wiki/Coding-Style)

@@ -46,10 +46,16 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/VerticalStackedBarChart/VerticalStackedBarChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <div>
+            <p>Grouped vertical bar chart</p>
+          </div>
+        }
       />
     );
   }

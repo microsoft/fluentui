@@ -53,6 +53,7 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/LineChart/LineChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
         }
@@ -64,6 +65,22 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
               amount of lines (data sets) depend on the attributes selected during the report creation.
             </p>
             <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
+            <h3>Different variants of line chart</h3>
+            <h4>Event annotations</h4>
+            <p>Data can be annotated using vertical lines representing the events of interest.</p>
+            <h4>Gaps</h4>
+            <p>
+              The chart can have gaps in between. This is to represent missing data. The gaps can also be replaced with
+              dashed or dotted lines for specific scenarios.
+            </p>
+            **Line border** * Each line in the chart can contain a 2 px border for better highlighting of the line when
+            there are multiple items in the chart.
+            <h4>Lines with large dataset</h4>
+            <p>
+              We use a path based rendering technique to create datasets with large number of points (greater than 1k).
+              Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
+              setting the `optimizeLargeData` prop to true.
+            </p>
           </div>
         }
       />

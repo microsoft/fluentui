@@ -43,6 +43,7 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/AreaChart/AreaChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
         }
@@ -54,6 +55,13 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
               volume. Information is graphed on two axes, using data points connected by line segments. The area between
               the axis and this line is commonly emphasized with color or shading for legibility. Most often area charts
               compare two or more categories.
+            </p>
+            <h3>Area chart variants</h3>
+            <h4>Stacked area chart</h4>
+            <p>
+              In stacked area chart, two or more data series are stacked vertically. It helps in easy comparison across
+              different dimensions. The hover callout for stacked chart can be configured to display single or stacked
+              values.
             </p>
           </div>
         }
