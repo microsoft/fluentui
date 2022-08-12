@@ -23,8 +23,8 @@
   "module": "dist/es/index.js",
   "peerDependencies": {
     "@fluentui/react-northstar": "0.54.0",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^16.8.0 || ^17",
+    "react-dom": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"
