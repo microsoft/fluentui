@@ -6,6 +6,7 @@ import bestPracticesMd from './DialogBestPractices.md';
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { AlertDialog as Alert } from './DialogAlert.stories';
+export { RTL } from './DialogRTL.stories';
 export { Nested } from './DialogNested.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
 export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories';
