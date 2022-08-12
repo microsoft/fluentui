@@ -55,7 +55,7 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
     components: {
       root: Popover,
       triggerButton: 'button',
-      content: 'div',
+      content: 'ul',
       popoverSurface: PopoverSurface,
       tooltip: Tooltip,
     },
