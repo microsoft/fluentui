@@ -73,7 +73,7 @@ export type TextProps = ComponentProps<TextSlots> & {
    *
    * @default regular
    */
-  weight?: 'regular' | 'medium' | 'semibold';
+  weight?: 'regular' | 'medium' | 'semibold' | 'bold';
 
   /**
    * Wraps the text content on white spaces.
