@@ -138,7 +138,7 @@
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.15",
     "@types/react-is": "17.0.3",
-    "@types/react-test-renderer": "17.0.1",
+    "@types/react-test-renderer": "17.0.2",
     "@types/scheduler": "0.16.2",
     "@types/semver": "^6.2.0",
     "@types/tmp": "0.2.0",
