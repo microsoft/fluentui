@@ -60,6 +60,7 @@ export const useAvatarGroupItem_unstable = (
     overflowLabel: resolveShorthand(props.overflowLabel, {
       required: true,
       defaultProps: {
+        // Avatar already has its aria-label set to the name, this will prevent the name to be read twice.
         'aria-hidden': true,
         children: props.name,
       },
