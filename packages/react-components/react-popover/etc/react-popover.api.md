@@ -107,8 +107,6 @@ export const PopoverTrigger: React_2.FC<PopoverTriggerProps> & FluentTriggerComp
 export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
     'aria-expanded'?: 'true' | 'false';
     ref: React_2.Ref<unknown>;
-    onClick: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onKeyDown: React_2.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseEnter: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React_2.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;

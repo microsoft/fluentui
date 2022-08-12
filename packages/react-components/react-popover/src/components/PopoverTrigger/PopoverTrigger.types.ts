@@ -23,8 +23,6 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
   Props & {
     'aria-expanded'?: 'true' | 'false';
     ref: React.Ref<unknown>;
-    onClick: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    onKeyDown: React.KeyboardEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
