@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Support range selection from Group headers",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
