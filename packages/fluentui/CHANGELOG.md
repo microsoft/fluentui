@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Breaking
+- Move `react-is` to `peerDependencies` and allow 16 or 17 ([#24356](https://github.com/microsoft/fluentui/pull/24356))
+
 ### Features
 - Consider webview element type for outside click scenarios for popups @jurokapsiar ([#23531](https://github.com/microsoft/fluentui/pull/23531))
 - Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
@@ -32,6 +35,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Align `default` scheme colors between v0 and v9 @yuanboxue-amber ([#23901](https://github.com/microsoft/fluentui/pull/23901))
 - Refactor `Ref` component to flatten React's tree @layershifter ([#24105](https://github.com/microsoft/fluentui/pull/24105))
 - Fix to handle an empty string as an empty value in `Dropdown` @layershifter ([#24274](https://github.com/microsoft/fluentui/pull/24274))
+- Allow React 17 in `peerDependencies` of all packages @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
 
 <!--------------------------------[ v0.63.1 ]------------------------------- -->
 ## [v0.63.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.63.1) (2022-06-06)
