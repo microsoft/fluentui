@@ -11,6 +11,7 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="1"
     >
       <span
@@ -23,6 +24,7 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="2"
     >
       <span
@@ -35,6 +37,7 @@ exports[`TabList renders tabs when disabled 1`] = `
       class="fui-Tab"
       disabled=""
       role="tab"
+      type="button"
       value="3"
     >
       <span
@@ -59,6 +62,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="1"
     >
       <span
@@ -72,6 +76,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="2"
     >
       <span
@@ -85,6 +90,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="3"
     >
       <span
@@ -119,6 +125,7 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="1"
     >
       <span
@@ -132,6 +139,7 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="2"
     >
       <span
@@ -145,6 +153,7 @@ exports[`TabList renders with tabs 1`] = `
       class="fui-Tab"
       role="tab"
       style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
       value="3"
     >
       <span

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 08 Aug 2022 20:28:21 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Aug 2022 07:48:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.19)
+
+Fri, 12 Aug 2022 07:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.18..@fluentui/react-charting_v5.12.19)
+
+### Patches
+
+- fixed culture issue in multistacked barchart ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
+- Bump @fluentui/react to v8.87.2 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
 
 ## [5.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.18)
 

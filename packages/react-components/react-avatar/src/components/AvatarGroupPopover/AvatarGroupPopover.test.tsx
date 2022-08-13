@@ -3,7 +3,7 @@ import { AvatarGroupItem } from '../AvatarGroupItem/AvatarGroupItem';
 import { AvatarGroupPopover } from './AvatarGroupPopover';
 import { avatarGroupPopoverClassNames } from './useAvatarGroupPopoverStyles';
 import { isConformant } from '../../common/isConformant';
-import { RenderResult } from '@testing-library/react';
+import { render, RenderResult, screen } from '@testing-library/react';
 
 // testing-library's queryByRole function doesn't look inside portals
 function queryByRoleDialog(result: RenderResult) {
@@ -59,5 +59,31 @@ describe('AvatarGroupPopover', () => {
       ),
       count: 4,
     },
+  });
+
+  it('respects a custom count', () => {
+    render(
+      <AvatarGroupPopover count={20}>
+        <AvatarGroupItem name="Allan Munger" />
+        <AvatarGroupItem name="Daisy Phillips" />
+        <AvatarGroupItem name="Robert Tolbert" />
+        <AvatarGroupItem name="Kevin Sturgis" />
+      </AvatarGroupPopover>,
+    );
+
+    expect(screen.getByRole('button').textContent).toBe('+20');
+  });
+
+  it('does not render a count greater than 99', () => {
+    render(
+      <AvatarGroupPopover count={120}>
+        <AvatarGroupItem name="Allan Munger" />
+        <AvatarGroupItem name="Daisy Phillips" />
+        <AvatarGroupItem name="Robert Tolbert" />
+        <AvatarGroupItem name="Kevin Sturgis" />
+      </AvatarGroupPopover>,
+    );
+
+    expect(screen.getByRole('button').textContent).toBe('99+');
   });
 });
