@@ -19,7 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ### Breaking
-- Move `react-is` to `peerDependencies` and allow 16 or 17 ([#24356](https://github.com/microsoft/fluentui/pull/24356))
+- Move `react-is` to `peerDependencies` and allow 16 or 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
 
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
