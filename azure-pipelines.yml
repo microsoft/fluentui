@@ -45,13 +45,13 @@ jobs:
           fi
         displayName: check formatting
 
-      ## Danger.js checks for Fluent UI N*
-      # - script: |
-      #     yarn danger ci
-      #   displayName: danger
-      #   condition: eq(variables.isPR, true)
-      #   env:
-      #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+      # Danger.js checks for Fluent UI N*
+      - script: |
+          yarn danger ci
+        displayName: danger
+        condition: eq(variables.isPR, true)
+        env:
+          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
           yarn buildci  $(sinceArg)
