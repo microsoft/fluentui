@@ -20,7 +20,8 @@ describe('MenuTrigger', () => {
         <ToolbarButton>Item 3</ToolbarButton>
       </Toolbar>,
     );
-    cy.get('[role="toolbar"]').type('{rightarrow}').get('[type="button"]').eq(0).should('be.focused');
+
+    cy.get('html').type('Tab').type('{rightarrow}').get('[type="button"]').eq(0).should('be.focused');
   });
 
   it('should navigate with arrow key', () => {
