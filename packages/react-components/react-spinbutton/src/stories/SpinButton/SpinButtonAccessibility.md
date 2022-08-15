@@ -84,9 +84,9 @@ Placeholder: Cover potential use cases not included in our storybook examples he
 The component has the following structure:
 * Input field
 * Up button
-  * Up carat symbol
+  * Increment icon
 * Down button
-  * Down carat symbol
+  * Decrement icon
 
 
 #### Component-specific usage warnings
