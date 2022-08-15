@@ -2,17 +2,24 @@
 
 ## Background
 
-`Field` is used to add a label, validation text, and helper text to form input components, such as `Input`, `Combobox`, `RadioGroup`, etc.
+Fields add add a label, validation text, and helper text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
 ## Prior Art
 
-_Include background research done for this component_
+Existing libraries tend to take one of the following approaches to field.
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+1. Include support for label, error text, etc. in the base input component. Libraries using this approach include:
+   - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), etc.
+2. Provide a set of components that are manually constructed into a field. This requires manually hooking up the components using props like `htmlFor` and `aria-describedby`. Libraries using this approach include:
+   - **FluentUI v0** - [`FormField`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-field), [`FormLabel`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-label), [`FormMessage`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-message)
+   - **Material design** - https://material.io/components/text-fields/web
+   - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the item and the field component).
+3. Provide base components without a label or descriptive text, and then Field versions of those controls. Libraries using this approach include:
+   - **FluentUI v0** - [`Input`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/input/props) and [`FormInput`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-input), for example.
+   - **Evergreen UI** - [`TextInput`](https://evergreen.segment.com/components/text-input) and [`TextInputField`](https://evergreen.segment.com/components/text-input#textinputfield), for example.
+   -
 
 ## Sample Code
 
@@ -104,7 +111,7 @@ The FieldProps, etc. types are templated so they can be merged with the wrapped 
 
 ```ts
 /**
- * The minimum requirement for a component wrapped by makeFieldComponent.
+ * The minimum requirement for a component used by Field.
  *
  * Note: the use of VoidFunctionComponent means that component is not *required* to have a children prop,
  * but it is still allowed to have a children prop.
@@ -136,7 +143,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * The label associated with the field.
    */
-  label?: Slot<typeof Label>;
+  label?: SlotComponent<typeof Label>;
 
   /**
    * A status or validation message. The appearance of the statusText depends on the value of the `status` prop.
@@ -176,6 +183,27 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
    * @default undefined
    */
   status?: 'error' | 'warning' | 'success';
+};
+```
+
+Field also reads some props from the underlying component. These are not part of `FieldProps` because they are not added to the components that don't support them. However, they are accepted by `useField`:
+
+```ts
+/**
+ * Props that are supported by Field, but not required to be supported by the component that implements field.
+ */
+export type OptionalFieldComponentProps = {
+  /**
+   * Whether the field label should be marked as required.
+   */
+  required?: boolean;
+
+  /**
+   * Size of the field label.
+   *
+   * Number sizes will be ignored, but are allowed because the HTML <input> element has a `size` prop of type `number`.
+   */
+  size?: 'small' | 'medium' | 'large' | number;
 };
 ```
 
