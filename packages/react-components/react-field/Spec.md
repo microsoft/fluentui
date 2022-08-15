@@ -12,7 +12,7 @@ Existing libraries tend to take one of the following approaches to field.
 
 1. Include support for label, error text, etc. in the base input component. Libraries using this approach include:
    - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), [`ChoiceGroup`](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup), etc.
-   - **Spectrum** - [`TextField`](https://react-spectrum.adobe.com/react-spectrum/TextField.html), [`Slider`](https://react-spectrum.adobe.com/react-spectrum/Slider.html), ['RadioGroup'](https://react-spectrum.adobe.com/react-spectrum/RadioGroup.html), etc.
+   - **Spectrum** - [`TextField`](https://react-spectrum.adobe.com/react-spectrum/TextField.html), [`Slider`](https://react-spectrum.adobe.com/react-spectrum/Slider.html), [`RadioGroup`](https://react-spectrum.adobe.com/react-spectrum/RadioGroup.html), etc.
 2. Provide a set of components that are manually constructed into a field. This requires manually hooking up the components using props like `htmlFor` and `aria-describedby`. Libraries using this approach include:
    - **FluentUI v0** - [`FormField`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-field), [`FormLabel`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-label), [`FormMessage`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-message)
    - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the item and the field component).
@@ -94,13 +94,13 @@ The following field components will be defined. If more form components are adde
 ## Variants
 
 - **Orientation**: The `fieldOrientation` prop affects the layout of the label and field component:
-  - `vertical` (default) - label comes above the field component
-  - `horizontal` - label is to the left of the field component, and is 33% the width of the field (this allows multiple stacked fields to all align their labels)
+  - `'vertical'` (default) - label is above the field component
+  - `'horizontal'` - label is to the left of the field component, and is 33% the width of the field (this allows multiple stacked fields to all align their labels)
 - **Status**: The `status` prop affects the icon and color used by the `statusText`:
-  - `error` - Red x icon, and red status text
-  - `warning` - Yellow exclamation icon
-  - `success` - Green check icon
-  - `undefined` (default): Status text is normal color, and there is no status icon
+  - `'error'` - Red x icon, red text color
+  - `'warning'` - Yellow exclamation icon, neutral color text
+  - `'success'` - Green check icon, neutral color text
+  - `undefined` (default): No status icon, neutral color text
 - **Error**: Some control types (like `Input` and `Combobox`) have a prop that makes the border red. This prop will be set `status="error"`.
 
 Field also forwards some props from the wrapped component to the label as well:
