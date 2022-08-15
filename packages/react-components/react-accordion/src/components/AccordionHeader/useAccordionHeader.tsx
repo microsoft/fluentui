@@ -47,6 +47,7 @@ export const useAccordionHeader_unstable = (
       disabled,
       disabledFocusable,
       'aria-expanded': open,
+      type: 'button',
     },
   });
 

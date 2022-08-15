@@ -672,7 +672,7 @@ function _browserNeedsRevealButton() {
 
     if (win?.navigator) {
       // Edge, Chromium Edge
-      const isEdge = /^Edg/.test(win.navigator.userAgent || '');
+      const isEdge = /Edg/.test(win.navigator.userAgent || '');
 
       __browserNeedsRevealButton = !(isIE11() || isEdge);
     } else {

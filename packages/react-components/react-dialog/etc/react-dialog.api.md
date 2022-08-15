@@ -6,7 +6,9 @@
 
 /// <reference types="react" />
 
+import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
@@ -152,16 +154,15 @@ export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerCompon
 export type DialogTriggerAction = 'open' | 'close';
 
 // @public
-export type DialogTriggerChildProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'> & {
-    ref?: React_2.Ref<never>;
-};
+export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+    ref: React_2.Ref<unknown>;
+    'aria-haspopup'?: 'dialog';
+}>;
 
 // @public (undocumented)
 export type DialogTriggerProps = {
     action?: DialogTriggerAction;
-    children: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+    children: React_2.ReactElement | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)
