@@ -11,15 +11,21 @@ Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues
 Existing libraries tend to take one of the following approaches to field.
 
 1. Include support for label, error text, etc. in the base input component. Libraries using this approach include:
-   - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), etc.
+   - **FluentUI v8** - [`TextField`](https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield), [`Dropdown`](https://developer.microsoft.com/en-us/fluentui#/controls/web/dropdown), [`ChoiceGroup`](https://developer.microsoft.com/en-us/fluentui#/controls/web/choicegroup), etc.
+   - **Spectrum** - [`TextField`](https://react-spectrum.adobe.com/react-spectrum/TextField.html), [`Slider`](https://react-spectrum.adobe.com/react-spectrum/Slider.html), ['RadioGroup'](https://react-spectrum.adobe.com/react-spectrum/RadioGroup.html), etc.
 2. Provide a set of components that are manually constructed into a field. This requires manually hooking up the components using props like `htmlFor` and `aria-describedby`. Libraries using this approach include:
    - **FluentUI v0** - [`FormField`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-field), [`FormLabel`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-label), [`FormMessage`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-message)
-   - **Material design** - https://material.io/components/text-fields/web
    - **Ant** - [`Form.Item`](https://ant.design/components/form/#Form.Item) (uses context to do some of the hooking up between the item and the field component).
 3. Provide base components without a label or descriptive text, and then Field versions of those controls. Libraries using this approach include:
    - **FluentUI v0** - [`Input`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/input/props) and [`FormInput`](https://fluentsite.z22.web.core.windows.net/0.64.0/components/form/props#form-input), for example.
    - **Evergreen UI** - [`TextInput`](https://evergreen.segment.com/components/text-input) and [`TextInputField`](https://evergreen.segment.com/components/text-input#textinputfield), for example.
-   -
+
+The Field implementation in this spec follows pattern (3). There are Field versions of all components that can be used as form inputs. There are several reasons, including:
+
+- **Accessibility**: By combining a base component with the field props into a single component, all of the accessibility props like `htmlFor` and `aria-describedby` are set correctly for "free".
+- **Simplicity**: All props related to the component (such as `label`, `id`, `status="error"`, etc.) are on the same component, rather than split between multiple components (like separate `Field` and `Input` components).
+- **Consistency**: All of the Field components share a common set of props for the label, status, helperText, etc.
+- **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the base components without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
 
@@ -39,19 +45,18 @@ Each input component has a field version (such as `InputField`, `ComboboxField`,
     contentBefore="$"
     contentAfter=".00"
   />
-  {/* Other component types are supported, such as: */}
-  <RadioGroupField label="Radio group field" status="error" statusText="Error text">
+  <RadioGroupField label="Radio group field">
     <Radio value="one" label="Option one" />
     <Radio value="two" label="Option two" />
     <Radio value="three" label="Option three" />
   </RadioGroupField>
-  <ComboboxField label="Combobox field" status="error" statusText="Error text">
+  <ComboboxField label="Combobox field" status="success" statusText="Success text">
     <Option value="one">Option one</Option>
     <Option value="two">Option two</Option>
     <Option value="three">Option three</Option>
   </ComboboxField>
-  <SliderField label="Slider field" status="error" statusText="Error text" />
-  <SpinButtonField label="Spin button field" status="error" statusText="Error text" />
+  <SliderField label="Slider field" status="warning" statusText="Warning text" />
+  <SpinButtonField label="Spin button field" helperText="Help text" />
 </>
 ```
 
@@ -107,7 +112,7 @@ Field also forwards some props from the wrapped component to the label as well:
 
 ### FieldComponent
 
-The FieldProps, etc. types are templated so they can be merged with the wrapped component's props. The `FieldComponent` type defines the minimum set of props that the wrapped component must support.
+The `FieldComponent` type defines the minimum set of props that the wrapped component must support. This is used for the generic types as the requirement for the type parameter: `FieldProps<T extends FieldComponent>`
 
 ```ts
 /**
