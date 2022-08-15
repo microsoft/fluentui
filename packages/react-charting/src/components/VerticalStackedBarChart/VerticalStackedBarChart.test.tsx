@@ -234,7 +234,9 @@ describe('VerticalStackedBarChart - mouse events', () => {
   afterEach(sharedAfterEach);
 
   it('Should render callout on hover', async () => {
-    wrapper = mount(<VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper = mount(
+      <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
     wrapper.find('rect').at(0).simulate('mouseover');
