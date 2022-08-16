@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "feat: add toolbar controlled state example for toggle buttons",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "chassunc@microsoft.com",
+  "dependentChangeType": "none"
+}
