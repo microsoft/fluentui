@@ -153,8 +153,11 @@ describe('LineChart - mouse events', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);
 
+    // document.getElementbyId() returns null if component is not attached to DOM
     wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    // Direct DOM changes like toggling visibility attr of verticalLine dont seem to update enzyme wrapper here
+    // but these changes are visible in wrapper.html()
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
 

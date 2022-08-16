@@ -237,8 +237,11 @@ describe('VerticalStackedBarChart - mouse events', () => {
     wrapper = mount(
       <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
     );
+
+    // Wait for the chart to be resized
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
+
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();

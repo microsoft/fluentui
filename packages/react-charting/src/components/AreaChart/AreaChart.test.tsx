@@ -200,6 +200,7 @@ describe('AreaChart - mouse events', () => {
     const root = document.createElement('div');
     document.body.appendChild(root);
 
+    // document.getElementbyId() returns null if component is not attached to DOM
     wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('rect').simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
