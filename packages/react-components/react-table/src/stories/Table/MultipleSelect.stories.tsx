@@ -103,7 +103,12 @@ export const MultipleSelect = () => {
     items,
     rowEnhancer: (row, { selection }) => ({
       ...row,
-      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+      onClick: () => selection.toggleRowSelect(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          selection.toggleRowSelect(row.rowId);
+        }
+      },
       selected: selection.isRowSelected(row.rowId),
     }),
   });
@@ -112,7 +117,7 @@ export const MultipleSelect = () => {
   const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table ref={ref}>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
@@ -125,10 +130,10 @@ export const MultipleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {rows.map(({ item, selected, toggleSelect }) => (
-          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
-            <TableSelectionCell checked={selected} />
+      <TableBody ref={ref}>
+        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>
