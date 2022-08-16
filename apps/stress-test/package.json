@@ -5,9 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack",
+    "start": "webpack-dev-server --mode=development",
+    "build": "lage build --to @fluentui/react @fluentui/web-components --verbose && yarn build:app",
+    "build:app": "webpack --mode=production",
     "serve": "http-server ./dist",
     "bench:simple-stress:build": "node ./benchmarks/simple-stress/buildConfig.js",
     "bench:simple-stress": "yarn bench:simple-stress:mount && yarn bench:simple-stress:inject-styles && yarn bench:simple-stress:prop-update && yarn bench:simple-stress:add-node && yarn bench:simple-stress:remove-node",
