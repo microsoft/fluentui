@@ -32,7 +32,7 @@ export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 // @public
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
     freeform?: boolean;
-    children: React_2.ReactNode;
+    children?: React_2.ReactNode;
 };
 
 // @public (undocumented)
@@ -40,7 +40,7 @@ export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
-    listbox: NonNullable<Slot<typeof Listbox>>;
+    listbox: Slot<typeof Listbox>;
 };
 
 // @public
@@ -71,7 +71,7 @@ export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
     button: NonNullable<Slot<'button'>>;
-    listbox: NonNullable<Slot<typeof Listbox>>;
+    listbox: Slot<typeof Listbox>;
 };
 
 // @public

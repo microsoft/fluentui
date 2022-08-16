@@ -28,7 +28,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   // resolve button and listbox slot props
   let triggerSlot: Slot<'button'>;
-  let listboxSlot: Slot<typeof Listbox>;
+  let listboxSlot: Slot<typeof Listbox> | undefined;
 
   triggerSlot = resolveShorthand(props.button, {
     required: true,

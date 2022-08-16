@@ -136,7 +136,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
-  let listboxSlot: Slot<typeof Listbox>;
+  let listboxSlot: Slot<typeof Listbox> | undefined;
 
   triggerSlot = resolveShorthand(props.input, {
     required: true,

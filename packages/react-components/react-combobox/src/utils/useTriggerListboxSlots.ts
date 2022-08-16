@@ -11,14 +11,14 @@ export function useTriggerListboxSlots(
   ref: React.Ref<HTMLButtonElement>,
   triggerSlot?: ExtractSlotProps<Slot<'button'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'button'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
   ref: React.Ref<HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'input'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 
 /*
  * useTriggerListboxSlots returns a tuple of trigger/listbox shorthand,
@@ -31,7 +31,10 @@ export function useTriggerListboxSlots(
   ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>] {
+): [
+  trigger: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
+  listbox?: ExtractSlotProps<Slot<typeof Listbox>>,
+] {
   const { multiselect } = props;
   const {
     activeOption,
@@ -49,7 +52,7 @@ export function useTriggerListboxSlots(
   const triggerRef: typeof ref = React.useRef(null);
 
   // resolve listbox shorthand props
-  const listbox: typeof listboxSlot = {
+  const listbox: typeof listboxSlot = listboxSlot && {
     multiselect,
     tabIndex: undefined,
     ...listboxSlot,
@@ -67,23 +70,26 @@ export function useTriggerListboxSlots(
     ref: useMergedRefs(ref, triggerSlot?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
   };
 
-  /*
-   * Handle focus when clicking the listbox popup:
-   * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
-   * 2. Do not close the listbox on button/input blur when clicking into the listbox
-   */
-  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
-  listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    triggerRef.current?.focus();
+  // listbox is nullable, only add event handlers if it exists
+  if (listbox) {
+    /*
+     * Handle focus when clicking the listbox popup:
+     * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
+     * 2. Do not close the listbox on button/input blur when clicking into the listbox
+     */
+    const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
+    listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      triggerRef.current?.focus();
 
-    onListboxClick?.(event);
-  };
+      onListboxClick?.(event);
+    };
 
-  listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    ignoreNextBlur.current = true;
+    listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+      ignoreNextBlur.current = true;
 
-    onListboxMouseDown?.(event);
-  };
+      onListboxMouseDown?.(event);
+    };
+  }
 
   // the trigger should open/close the popup on click or blur
   const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = trigger;

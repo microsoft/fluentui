@@ -20,7 +20,7 @@ export type ComboboxSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /* The dropdown listbox slot */
-  listbox: NonNullable<Slot<typeof Listbox>>;
+  listbox: Slot<typeof Listbox>;
 };
 
 /**
@@ -36,7 +36,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
     /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */
-    children: React.ReactNode;
+    children?: React.ReactNode;
   };
 
 /**
