@@ -32,6 +32,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     clearSelection,
     getIndexOfId,
     getOptionsMatchingValue,
+    open,
     selectOption,
     selectedOptions,
     setActiveOption,
@@ -174,7 +175,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     input: triggerSlot,
-    listbox: listboxSlot,
+    listbox: open || hasFocus ? listboxSlot : undefined,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {
@@ -182,7 +183,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
-    hasFocus,
     setOpen,
   };
 

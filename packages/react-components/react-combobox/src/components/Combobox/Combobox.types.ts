@@ -42,11 +42,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<ComboboxSlots> &
-  ComboboxBaseState & {
-    /* Whether the input is currently focused; used for rendering the collapsed listbox. */
-    hasFocus: boolean;
-  };
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;
