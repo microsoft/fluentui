@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add fontWeightBold, add Body2, fix font weight for *Stronger typography",
+  "comment": "feat: Add fontWeightBold, add Body2, fix font weight for *Stronger typography",
   "packageName": "@fluentui/react-theme",
   "email": "miroslav.stastny@microsoft.com",
   "dependentChangeType": "patch"
