@@ -48,6 +48,11 @@ async function scheduleScreenerBuild(
     }),
   });
 
+  if (response.status === 200) {
+    console.log('Skipping screener check');
+    return undefined;
+  }
+
   if (response.status !== 201) {
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
@@ -86,13 +91,16 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
-  await notifyIntegration({
-    commit,
-    url: checkUrl.url,
-    status: 'in_progress',
-    project: screenerConfig.projectRepo,
-    branch: branchName,
-  });
+  if (checkUrl === undefined) {
+    await cancelScreenerRun(screenerConfig, 'skipped');
+  } else
+    await notifyIntegration({
+      commit,
+      url: checkUrl.url,
+      status: 'in_progress',
+      project: screenerConfig.projectRepo,
+      branch: branchName,
+    });
 }
 
 export async function cancelScreenerRun(
