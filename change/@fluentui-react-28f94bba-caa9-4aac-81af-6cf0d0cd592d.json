@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add items prop to state to fix issue 23135",
+  "packageName": "@fluentui/react",
+  "email": "tonyhallett74@gmail.com",
+  "dependentChangeType": "patch"
+}
