@@ -1725,13 +1725,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D1
+                                  A1
                                 </div>
                                 <div>
-                                  E1
+                                  B1
                                 </div>
                                 <div>
-                                  F1
+                                  C1
                                 </div>
                               </div>
                             </div>
@@ -1743,13 +1743,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D2
+                                  A2
                                 </div>
                                 <div>
-                                  E2
+                                  B2
                                 </div>
                                 <div>
-                                  F2
+                                  C2
                                 </div>
                               </div>
                             </div>
@@ -1804,13 +1804,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D3
+                                  A3
                                 </div>
                                 <div>
-                                  E3
+                                  B3
                                 </div>
                                 <div>
-                                  F3
+                                  C3
                                 </div>
                               </div>
                             </div>
@@ -1822,13 +1822,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D4
+                                  A4
                                 </div>
                                 <div>
-                                  E4
+                                  B4
                                 </div>
                                 <div>
-                                  F4
+                                  C4
                                 </div>
                               </div>
                             </div>
