@@ -11,6 +11,7 @@ import {
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
+import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
   label: string;
@@ -104,9 +105,11 @@ export const SingleSelect = () => {
       toggleSelect: () => selection.toggleRowSelect(row.rowId),
     }),
   });
+  // eslint-disable-next-line deprecation/deprecation
+  const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table sortable>
+    <Table ref={ref}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" />

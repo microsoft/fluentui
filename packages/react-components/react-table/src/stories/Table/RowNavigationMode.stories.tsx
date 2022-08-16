@@ -59,9 +59,10 @@ const columns = [
 ];
 
 export const RowNavigationMode = () => {
+  // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('row');
   return (
-    <Table sortable>
+    <Table ref={ref}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -69,7 +70,7 @@ export const RowNavigationMode = () => {
           ))}
         </TableRow>
       </TableHeader>
-      <TableBody ref={ref}>
+      <TableBody>
         {items.map(item => (
           <TableRow tabIndex={0} key={item.file.label}>
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>

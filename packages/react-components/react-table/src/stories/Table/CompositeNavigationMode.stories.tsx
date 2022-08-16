@@ -59,10 +59,11 @@ const columns = [
 ];
 
 export const CompositeNavigationMode = () => {
+  // eslint-disable-next-line deprecation/deprecation
   const ref = useNavigationMode<HTMLDivElement>('composite');
 
   return (
-    <Table>
+    <Table ref={ref}>
       <TableHeader>
         <TableRow>
           {columns.map(column => (
@@ -70,7 +71,7 @@ export const CompositeNavigationMode = () => {
           ))}
         </TableRow>
       </TableHeader>
-      <TableBody ref={ref}>
+      <TableBody>
         {items.map(item => (
           <TableRow tabIndex={0} key={item.file.label}>
             <TableCell tabIndex={0} media={item.file.icon}>
