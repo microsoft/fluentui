@@ -54,6 +54,7 @@ describe('useTable', () => {
         "allRowsSelected": false,
         "clearSelection": [Function],
         "deSelectRow": [Function],
+        "isRowSelected": [Function],
         "selectRow": [Function],
         "selectedRows": Array [],
         "someRowsSelected": false,
@@ -73,7 +74,7 @@ describe('useTable', () => {
 
     expect(result.current.sort).toMatchInlineSnapshot(`
       Object {
-        "headerSortProps": [Function],
+        "getSortDirection": [Function],
         "setColumnSort": [Function],
         "sortColumn": undefined,
         "sortDirection": "ascending",
@@ -82,8 +83,38 @@ describe('useTable', () => {
     `);
   });
 
+  describe('rowEnhancer', () => {
+    it('should enahnce rows', () => {
+      const { result } = renderHook(() =>
+        useTable({
+          columns: [{ columnId: 1 }],
+          items: [{}, {}, {}],
+          rowEnhancer: row => ({ ...row, foo: 'bar' }),
+        }),
+      );
+
+      expect(result.current.rows.map(row => row.foo)).toEqual(['bar', 'bar', 'bar']);
+    });
+
+    it('should have access to state', () => {
+      const { result } = renderHook(() =>
+        useTable({
+          columns: [{ columnId: 1 }],
+          items: [{}, {}, {}],
+          rowEnhancer: (row, { selection }) => ({ ...row, selectRow: () => selection.selectRow(row.rowId) }),
+        }),
+      );
+
+      act(() => {
+        result.current.rows[1].selectRow();
+      });
+
+      expect(result.current.selection.isRowSelected(1));
+    });
+  });
+
   describe('rows', () => {
-    it('should have selectRow action', () => {
+    it('should return position index as rowId by default', () => {
       const { result } = renderHook(() =>
         useTable({
           columns: [{ columnId: 1 }],
@@ -91,80 +122,30 @@ describe('useTable', () => {
         }),
       );
 
-      act(() => {
-        result.current.rows[1].selectRow();
-      });
-
-      expect(result.current.selection.selectedRows.length).toBe(1);
-      expect(result.current.selection.selectedRows[0]).toBe(1);
+      expect(result.current.rows.map(row => row.rowId)).toEqual([0, 1, 2]);
     });
 
-    it('should have deSelectRow action', () => {
+    it('should return original items', () => {
       const { result } = renderHook(() =>
         useTable({
           columns: [{ columnId: 1 }],
-          items: [{}, {}, {}],
+          items: [{ value: 1 }, { value: 2 }, { value: 3 }],
         }),
       );
 
-      act(() => {
-        result.current.rows[1].selectRow();
-      });
-
-      act(() => {
-        result.current.rows[1].deSelectRow();
-      });
-
-      expect(result.current.selection.selectedRows.length).toBe(0);
+      expect(result.current.rows.map(row => row.item)).toEqual([{ value: 1 }, { value: 2 }, { value: 3 }]);
     });
 
-    it('should have toggleSelect action', () => {
+    it('should use custom rowId', () => {
       const { result } = renderHook(() =>
         useTable({
           columns: [{ columnId: 1 }],
-          items: [{}, {}, {}],
-        }),
-      );
-
-      act(() => {
-        result.current.rows[1].toggleSelect();
-      });
-
-      expect(result.current.selection.selectedRows.length).toBe(1);
-      expect(result.current.selection.selectedRows[0]).toBe(1);
-
-      act(() => {
-        result.current.rows[1].toggleSelect();
-      });
-
-      expect(result.current.selection.selectedRows.length).toBe(0);
-    });
-
-    it('should have selected status of item', () => {
-      const { result } = renderHook(() =>
-        useTable({
-          columns: [{ columnId: 1 }],
-          items: [{}, {}, {}],
-        }),
-      );
-
-      act(() => {
-        result.current.rows[1].selectRow();
-      });
-
-      expect(result.current.rows[1].selected).toBe(true);
-    });
-
-    it('should use getRowId', () => {
-      const { result } = renderHook(() =>
-        useTable({
-          columns: [{ columnId: 1 }],
-          items: [{ value: 'a' }],
+          items: [{ value: 'a' }, { value: 'b' }, { value: 'c' }],
           getRowId: item => item.value,
         }),
       );
 
-      expect(result.current.rows[0].rowId).toBe('a');
+      expect(result.current.rows.map(row => row.rowId)).toEqual(['a', 'b', 'c']);
     });
   });
 });

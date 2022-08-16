@@ -96,8 +96,16 @@ const columns: ColumnDefinition<Item>[] = [
 export const MultipleSelect = () => {
   const {
     rows,
-    selection: { someRowsSelected, allRowsSelected, toggleSelectAllRows },
-  } = useTable({ columns, items });
+    selection: { allRowsSelected, someRowsSelected, toggleSelectAllRows },
+  } = useTable({
+    columns,
+    items,
+    rowEnhancer: (row, { selection }) => ({
+      ...row,
+      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+      selected: selection.isRowSelected(row.rowId),
+    }),
+  });
 
   return (
     <Table sortable>
@@ -114,7 +122,7 @@ export const MultipleSelect = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item, toggleSelect, selected }) => (
+        {rows.map(({ item, selected, toggleSelect }) => (
           <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
             <TableSelectionCell checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>

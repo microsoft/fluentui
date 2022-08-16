@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support range selection from Group headers",
-  "packageName": "@fluentui/utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}
