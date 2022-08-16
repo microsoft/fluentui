@@ -11,7 +11,15 @@ export function useSingleSelection(): SelectionStateInternal {
     setSelected(undefined);
   }, []);
 
+  const isRowSelected: SelectionStateInternal['isRowSelected'] = React.useCallback(
+    (rowId: RowId) => {
+      return selected === rowId;
+    },
+    [selected],
+  );
+
   return {
+    isRowSelected,
     deSelectRow: clearSelection,
     clearSelection,
     selectRow: toggleRowSelect,

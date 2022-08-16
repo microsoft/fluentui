@@ -54,7 +54,7 @@ export type AvatarGroupItemProps = Omit<ComponentProps<Partial<AvatarGroupItemSl
 
 // @public (undocumented)
 export type AvatarGroupItemSlots = {
-    root: NonNullable<Slot<'div'>>;
+    root: NonNullable<Slot<'div', 'li'>>;
     avatar: NonNullable<Slot<typeof Avatar>>;
     overflowLabel: NonNullable<Slot<'span'>>;
 };
@@ -83,7 +83,7 @@ export type AvatarGroupPopoverProps = Omit<ComponentProps<Partial<AvatarGroupPop
 export type AvatarGroupPopoverSlots = {
     root: NonNullable<Slot<PopoverProps>>;
     triggerButton: NonNullable<Slot<'button'>>;
-    content: NonNullable<Slot<'div'>>;
+    content: NonNullable<Slot<'ul'>>;
     popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
     tooltip: NonNullable<Slot<TooltipProps>>;
 };

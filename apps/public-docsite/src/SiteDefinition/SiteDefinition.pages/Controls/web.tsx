@@ -67,6 +67,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
         NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
         Shimmer: {},
+        ProportionalColumns: { title: 'Proportional Columns', url: 'proportionalcolumns' },
       },
     },
     GroupedList: {},

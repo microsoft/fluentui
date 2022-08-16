@@ -24,7 +24,7 @@ import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListProportionalColumnsExample } from './DetailsList.ProportionalColumns.Example';
-const DetailsListProportionalColumnsCode = require('!raw-loader!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
+const DetailsListProportionalColumnsCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
