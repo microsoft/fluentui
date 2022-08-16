@@ -1,7 +1,49 @@
 export function applyCellNavigation(element: HTMLElement) {
   const container = element;
   let column = 0;
-  let mode: 'row' | 'column' = 'row';
+  let mode: 'row' | 'column' | undefined = undefined;
+  let movingOut = false;
+
+  const pre = document.createElement('div');
+  const post = document.createElement('div');
+
+  if (!pre || !post) {
+    return;
+  }
+
+  pre.tabIndex = 0;
+  post.tabIndex = 0;
+
+  pre.addEventListener('focus', () => {
+    if (movingOut) {
+      movingOut = false;
+      return;
+    } else {
+      treeWalker.currentNode = container;
+      const candidate = treeWalker.nextNode();
+      if (isHTMLElement(candidate)) {
+        column = 0;
+        candidate.focus();
+      }
+    }
+  });
+
+  post.addEventListener('focus', () => {
+    if (movingOut) {
+      movingOut = false;
+      return;
+    } else {
+      treeWalker.currentNode = post;
+      const candidate = treeWalker.previousNode();
+      if (isHTMLElement(candidate)) {
+        column = findColumnCount(candidate);
+        candidate.focus();
+      }
+    }
+  });
+
+  container.before(pre);
+  container.after(post);
 
   const acceptNode = (node: Node) => {
     if (!isHTMLElement(node)) {
@@ -10,9 +52,17 @@ export function applyCellNavigation(element: HTMLElement) {
 
     if (mode === 'column') {
       return acceptCell(node);
-    } else {
+    }
+
+    if (mode === 'row') {
       return acceptRow(node);
     }
+
+    if (node.tabIndex >= 0) {
+      return NodeFilter.FILTER_ACCEPT;
+    }
+
+    return NodeFilter.FILTER_SKIP;
   };
 
   const acceptCell = (node: HTMLElement) => {
@@ -126,18 +176,35 @@ export function applyCellNavigation(element: HTMLElement) {
       case 'ArrowRight':
         next = right(target);
         break;
+      case 'Tab':
+        movingOut = true;
+        if (e.shiftKey) {
+          pre.focus();
+        } else {
+          post.focus();
+        }
+
+        break;
       default:
         return;
     }
 
-    e.preventDefault();
     if (next) {
+      e.preventDefault();
       next.focus();
     }
   };
 
+  const onFocusOut = () => {
+    mode = undefined;
+  };
+
   container.addEventListener('keydown', onKeyDown);
-  return () => container.removeEventListener('keydown', onKeyDown);
+  container.addEventListener('focusout', onFocusOut);
+  return () => {
+    container.removeEventListener('focusout', onFocusOut);
+    container.removeEventListener('keydown', onKeyDown);
+  };
 }
 
 function isHTMLElement(node: unknown): node is HTMLElement {
@@ -150,4 +217,13 @@ function isRow(element: HTMLElement) {
   }
 
   return false;
+}
+
+function findColumnCount(node: HTMLElement) {
+  let cur = node;
+  while (cur.parentElement && !isRow(cur)) {
+    cur = cur.parentElement;
+  }
+
+  return cur.querySelectorAll('[role="cell"], [role="gridcell"], td').length - 1;
 }

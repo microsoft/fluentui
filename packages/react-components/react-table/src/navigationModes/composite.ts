@@ -1,6 +1,48 @@
 export function applyCompositeNavigation(element: HTMLElement) {
   const container = element;
   let mode: 'row' | 'column' = 'row';
+  let movingOut = false;
+
+  const pre = document.createElement('div');
+  const post = document.createElement('div');
+
+  if (!pre || !post) {
+    return;
+  }
+
+  pre.tabIndex = 0;
+  post.tabIndex = 0;
+
+  pre.addEventListener('focus', () => {
+    if (movingOut) {
+      movingOut = false;
+      return;
+    } else {
+      treeWalker.currentNode = container;
+      mode = 'row';
+      const candidate = treeWalker.nextNode();
+      if (isHTMLElement(candidate)) {
+        candidate.focus();
+      }
+    }
+  });
+
+  post.addEventListener('focus', () => {
+    if (movingOut) {
+      movingOut = false;
+      return;
+    } else {
+      treeWalker.currentNode = post;
+      mode = 'row';
+      const candidate = treeWalker.previousNode();
+      if (isHTMLElement(candidate)) {
+        candidate.focus();
+      }
+    }
+  });
+
+  container.before(pre);
+  container.after(post);
 
   const acceptNode = (node: Node) => {
     if (!isHTMLElement(node)) {
@@ -17,6 +59,10 @@ export function applyCompositeNavigation(element: HTMLElement) {
 
     if (mode === 'row' && isCell(node)) {
       return NodeFilter.FILTER_REJECT;
+    }
+
+    if (node.tabIndex < 0) {
+      return NodeFilter.FILTER_SKIP;
     }
 
     return NodeFilter.FILTER_ACCEPT;
@@ -102,12 +148,21 @@ export function applyCompositeNavigation(element: HTMLElement) {
       case 'ArrowRight':
         next = right(target);
         break;
+      case 'Tab':
+        movingOut = true;
+        if (e.shiftKey) {
+          pre.focus();
+        } else {
+          post.focus();
+        }
+
+        break;
       default:
         break;
     }
 
-    e.preventDefault();
     if (next) {
+      e.preventDefault();
       next.focus();
     }
   };
