@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore(react-dialog): Updates trigger to use useARIAButtonProps",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

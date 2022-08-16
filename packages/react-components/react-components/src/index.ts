@@ -1,16 +1,16 @@
 // Utilities
 export {
-  RendererProvider,
   __css,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
   makeStyles,
   mergeClasses,
+  RendererProvider,
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
-export type { GriffelStyle } from '@griffel/react';
+export type { GriffelStyle, GriffelRenderer } from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassNames,

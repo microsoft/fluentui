@@ -128,6 +128,7 @@ export type { SelectProps, SelectSlots, SelectState } from '@fluentui/react-sele
 
 export {
   Toolbar,
+  ToolbarButton,
   ToolbarDivider,
   ToolbarToggleButton,
   renderToolbar_unstable,
