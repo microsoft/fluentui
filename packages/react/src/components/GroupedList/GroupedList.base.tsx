@@ -77,17 +77,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       shouldForceUpdates = true;
     }
 
-    if (groups !== previousState.groups) {
-      nextState = {
-        ...nextState,
-        groups,
-      };
-    }
-
-    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
-      shouldForceUpdates = true;
-    }
-
     if (shouldForceUpdates) {
       nextState = {
         ...nextState,
