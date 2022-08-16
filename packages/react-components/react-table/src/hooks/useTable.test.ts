@@ -74,7 +74,7 @@ describe('useTable', () => {
 
     expect(result.current.sort).toMatchInlineSnapshot(`
       Object {
-        "headerSortProps": [Function],
+        "getSortDirection": [Function],
         "setColumnSort": [Function],
         "sortColumn": undefined,
         "sortDirection": "ascending",
