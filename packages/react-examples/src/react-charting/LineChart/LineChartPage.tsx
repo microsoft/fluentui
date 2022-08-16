@@ -12,6 +12,7 @@ import { LineChartStyledExample } from './LineChart.Styled.Example';
 import { LineChartMultipleExample } from './LineChart.Multiple.Example';
 import { LineChartEventsExample } from './LineChart.Events.Example';
 import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibility.Example';
+import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 
 const LineChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -19,6 +20,7 @@ const LineChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui
 const MultipleLineChartExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Multiple.Example.tsx') as string;
 const LineChartEventsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Events.Example.tsx') as string;
 const LineChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomAccessibility.Example.tsx') as string;
+const LineChartGapsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Gaps.Example.tsx') as string;
 const LineChartLargeDataExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 
 export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -43,6 +45,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart Custom Accessibility" code={LineChartCustomAccessibilityExampleCode}>
               <LineChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart with gaps" code={LineChartGapsExampleCode}>
+              <LineChartGapsExample />
             </ExampleCard>
             <ExampleCard title="LineChart large data" code={LineChartLargeDataExampleCode}>
               <LineChartLargeDataExample />
@@ -77,15 +82,20 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </p>
             <h4>Gaps</h4>
             <p>
-              The chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
-              replaced with dashed or dotted lines for specific scenarios. For eg: Representing low confidence
-              predictions for a time series forecast graph.
+              A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
+              replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
+              for a time series forecast graph. Gaps can be added by adding <code>gaps</code> prop. A gap is denoted by{' '}
+              <code>startIndex</code> and
+              <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for{' '}
+              <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
             </p>
             <h4>Line border</h4>
             <p>
               Each line in the chart can contain a 2 px border for better highlighting of the line when there are
               multiple items in the chart. The border will be of the background theme color. Lines will be highlighted
-              in order of their appearance in legends.
+              in order of their appearance in legends. Line border is a highly suggested style that you should apply to
+              make multiple lines more distinguishable. Use <code>lineBorderWidth</code> prop inside{' '}
+              <code>lineOptions</code> to enable it.
             </p>
             <h4>Lines with large dataset</h4>
             <p>
