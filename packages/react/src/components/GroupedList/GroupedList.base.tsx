@@ -57,6 +57,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       compact,
       groups,
       listProps,
+      items,
     };
 
     let shouldForceUpdates = false;
