@@ -2,7 +2,7 @@ import * as React from 'react';
 import { resolveShorthand, useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented, isEscapeKeyDismiss } from '../../utils';
+import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableBodyScroll } from '../../utils';
 
 import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
 
@@ -34,10 +34,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     const isDefaultPrevented = normalizeDefaultPrevented(data.event);
-
-    if (onOpenChange) {
-      onOpenChange(data.event, data);
-    }
+    onOpenChange?.(data.event, data);
 
     // if user prevents default then do not change state value
     // otherwise updates state value and trigger reference to the element that caused the opening
@@ -54,9 +51,19 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
   });
 
-  const handlebackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+  const { disableBodyScroll, enableBodyScroll } = useDisableBodyScroll();
+
+  React.useEffect(() => {
+    if (open) {
+      disableBodyScroll();
+    } else {
+      enableBodyScroll();
+    }
+  }, [disableBodyScroll, enableBodyScroll, open]);
+
+  const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     backdropShorthand?.onClick?.(event);
-    if (isbackdropClickDismiss(event, modalType)) {
+    if (isBackdropClickDismiss(event, modalType)) {
       requestOpenChange({ event, open: false, type: 'backdropClick' });
     }
   });
@@ -67,7 +74,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     },
     backdrop: backdropShorthand && {
       ...backdropShorthand,
-      onClick: handlebackdropClick,
+      onClick: handleBackdropClick,
     },
     open,
     modalType,
@@ -113,7 +120,7 @@ function childrenToTriggerAndContent(
 /**
  * Checks is click event is a proper backdrop click dismiss
  */
-function isbackdropClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
+function isBackdropClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return type === 'modal' && !isDefaultPrevented();
 }
