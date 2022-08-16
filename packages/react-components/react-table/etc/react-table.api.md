@@ -63,12 +63,8 @@ export type RowId = string | number;
 
 // @public (undocumented)
 export interface RowState<TItem> {
-    deSelectRow: () => void;
     item: TItem;
     rowId: RowId;
-    selected: boolean;
-    selectRow: () => void;
-    toggleSelect: () => void;
 }
 
 // @public (undocumented)
@@ -76,6 +72,7 @@ export interface SelectionState {
     allRowsSelected: boolean;
     clearSelection: () => void;
     deSelectRow: (rowId: RowId) => void;
+    isRowSelected: (rowId: RowId) => boolean;
     selectedRows: RowId[];
     selectRow: (rowId: RowId) => void;
     someRowsSelected: boolean;
@@ -88,7 +85,7 @@ export type SortDirection = 'ascending' | 'descending';
 
 // @public (undocumented)
 export interface SortState {
-    headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+    getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
     setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
     sortColumn: ColumnId | undefined;
     sortDirection: SortDirection;
@@ -303,7 +300,7 @@ export type TableSlots = {
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
 // @public (undocumented)
-export function useTable<TItem>(options: UseTableOptions<TItem>): TableState_2<TItem>;
+export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TItem>>(options: UseTableOptions<TItem, TRowState>): TableState_2<TItem, TRowState>;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
@@ -342,13 +339,15 @@ export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) =>
 export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
 
 // @public (undocumented)
-export interface UseTableOptions<TItem> {
+export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
     // (undocumented)
     columns: ColumnDefinition<TItem>[];
     // (undocumented)
     getRowId?: (item: TItem) => RowId;
     // (undocumented)
     items: TItem[];
+    // (undocumented)
+    rowEnhancer?: RowEnhancer<TItem, TRowState>;
     // (undocumented)
     selectionMode?: 'single' | 'multiselect';
 }
