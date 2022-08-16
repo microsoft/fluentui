@@ -117,7 +117,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       <div
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
-        onClick={this._onHeaderClick}
         role="row"
         aria-level={ariaLevel}
         aria-setsize={ariaSetSize}
@@ -129,6 +128,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-labelledby={group.ariaLabel ? undefined : this._id}
         aria-expanded={!this.state.isCollapsed}
         aria-selected={canSelectGroup ? currentlySelected : undefined}
+        data-selection-index={group.startIndex}
+        data-selection-span={group.count}
       >
         <div className={this._classNames.groupHeaderContainer} role="presentation">
           {isSelectionCheckVisible ? (
@@ -142,7 +143,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
                 aria-checked={currentlySelected}
                 aria-labelledby={`${this._id}-check ${this._id}`}
                 data-selection-toggle={true}
-                onClick={this._onToggleSelectGroupClick}
                 {...selectAllButtonProps}
               >
                 {onRenderCheckbox({ checked: currentlySelected, theme }, onRenderCheckbox)}
@@ -175,7 +175,16 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             </button>
           </div>
 
-          {onRenderTitle(this.props, this._onRenderTitle)}
+          <div
+            className={this._classNames.title}
+            id={this._id}
+            onClick={this._onHeaderClick}
+            role="gridcell"
+            aria-colspan={this.props.ariaColSpan}
+            data-selection-invoke={true}
+          >
+            {onRenderTitle(this.props, this._onRenderTitle)}
+          </div>
           {isLoadingVisible && <Spinner label={loadingText} />}
         </div>
       </div>
@@ -224,24 +233,11 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     ev.preventDefault();
   };
 
-  private _onToggleSelectGroupClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { onToggleSelectGroup, group } = this.props;
-
-    if (onToggleSelectGroup) {
-      onToggleSelectGroup(group!);
-    }
-
-    ev.preventDefault();
-    ev.stopPropagation();
-  };
-
   private _onHeaderClick = (): void => {
-    const { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
+    const { group, onGroupHeaderClick } = this.props;
 
     if (onGroupHeaderClick) {
       onGroupHeaderClick(group!);
-    } else if (onToggleSelectGroup) {
-      onToggleSelectGroup(group!);
     }
   };
 
@@ -254,14 +250,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
   }
 
   private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
-    const { group, ariaColSpan } = props;
+    const { group } = props;
 
     if (!group) {
       return null;
     }
 
     return (
-      <div className={this._classNames.title} id={this._id} role="gridcell" aria-colspan={ariaColSpan}>
+      <>
         <span>{group.name}</span>
         {
           // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
@@ -273,7 +269,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           ({group.count}
           {group.hasMoreData && '+'})
         </span>
-      </div>
+      </>
     );
   };
 }

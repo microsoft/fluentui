@@ -111,8 +111,8 @@ export function resolvePositioningShorthand(shorthand: PositioningShorthand | un
 
 // Warning: (ae-internal-missing-underscore) The name "usePositioning" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal
-export function usePositioning(options?: UsePopperOptions): {
+// @internal (undocumented)
+export function usePositioning(options: UsePositioningOptions): {
     targetRef: React_2.MutableRefObject<any>;
     containerRef: React_2.MutableRefObject<any>;
     arrowRef: React_2.MutableRefObject<any>;

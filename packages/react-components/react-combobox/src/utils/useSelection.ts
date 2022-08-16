@@ -36,5 +36,10 @@ export const useSelection = (props: SelectionProps): SelectionValue => {
     onSelect?.(event, { optionValue: option.value, selectedOptions: newSelection });
   };
 
-  return { selectedOptions, selectOption };
+  const clearSelection = (event: SelectionEvents) => {
+    setSelectedOptions([]);
+    onSelect?.(event, { optionValue: undefined, selectedOptions: [] });
+  };
+
+  return { clearSelection, selectOption, selectedOptions };
 };

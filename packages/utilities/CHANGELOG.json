@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Mon, 15 Aug 2022 07:39:40 GMT",
+      "tag": "@fluentui/utilities_v8.11.0",
+      "version": "8.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "7c797fb44915964da8f764a93557f2b5c4c7067f",
+            "comment": "Support range selection from Group headers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Aug 2022 07:39:33 GMT",
       "tag": "@fluentui/utilities_v8.10.2",
       "version": "8.10.2",

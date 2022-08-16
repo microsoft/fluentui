@@ -74,8 +74,8 @@ describe('MenuTrigger', () => {
       .should('not.exist');
   });
 
-  ['downarrow', 'enter', ' '].forEach(key => {
-    it(`should open menu with ${key === ' ' ? 'space' : key} and focus first menuitem`, () => {
+  (['ArrowDown', 'Enter', 'Space'] as const).forEach(key => {
+    it(`should open menu with ${key} and focus first menuitem`, () => {
       mount(
         <Menu>
           <MenuTrigger>
@@ -88,14 +88,9 @@ describe('MenuTrigger', () => {
           </MenuPopover>
         </Menu>,
       );
-      cy.get(menuTriggerSelector)
-        .focus()
-        .type(`{${key}}`)
-        .get(menuSelector)
-        .should('be.visible')
-        .get(menuItemSelector)
-        .first()
-        .should('be.focused');
+
+      cy.get(menuTriggerSelector).focus().realPress(key);
+      cy.get(menuSelector).should('be.visible').get(menuItemSelector).first().should('be.focused');
     });
   });
 });

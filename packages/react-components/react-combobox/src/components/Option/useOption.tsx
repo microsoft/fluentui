@@ -2,10 +2,11 @@ import * as React from 'react';
 import { getNativeElementProps, resolveShorthand, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { CheckmarkFilled, CheckboxUncheckedFilled, CheckboxCheckedFilled } from '@fluentui/react-icons';
+import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
-// TODO: refine this more
 function getValueString(value: string | undefined, children: React.ReactNode) {
   if (value) {
     return value;
@@ -34,21 +35,27 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   const optionRef = React.useRef<HTMLElement>(null);
   const optionValue = getValueString(value, props.children);
 
+  // use the id if provided, otherwise use a generated id
+  const id = useId('fluent-option', props.id);
+
+  // data used for context registration & events
+  const optionData = React.useMemo<OptionValue>(() => ({ id, disabled, value: optionValue }), [
+    id,
+    disabled,
+    optionValue,
+  ]);
+
   // context values
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
-  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selected = useContextSelector(ListboxContext, ctx => {
     const selectedOptions = ctx.selectedOptions;
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-
-  // use the id if provided, otherwise use a generated id
-  const defaultId = useId('fluent-option');
-  const id = React.useMemo(() => {
-    return props.id || defaultId;
-  }, [props.id, defaultId]);
+  const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
+  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
+  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
 
   // current active option?
   const active = useContextSelector(ListboxContext, ctx => {
@@ -67,16 +74,26 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    onOptionClick(event, { id, disabled, value: optionValue });
+    // clicked option should always become active option
+    setActiveOption(optionData);
+
+    // close on option click for single-select options in a combobox
+    if (!multiselect) {
+      setOpen?.(event, false);
+    }
+
+    // handle selection change
+    selectOption(event, optionData);
+
     props.onClick?.(event);
   };
 
   // register option data with context
   React.useEffect(() => {
     if (id && optionRef.current) {
-      return registerOption({ id, disabled, value: optionValue }, optionRef.current);
+      return registerOption(optionData, optionRef.current);
     }
-  }, [registerOption, id, disabled, optionValue]);
+  }, [id, optionData, registerOption]);
 
   return {
     components: {

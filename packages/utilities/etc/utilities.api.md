@@ -736,6 +736,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(index: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -747,6 +749,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal?(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1112,6 +1116,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -1122,6 +1128,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)

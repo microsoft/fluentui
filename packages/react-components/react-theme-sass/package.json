@@ -18,16 +18,15 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-theme-sass/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/react-theme": "^9.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -35,5 +34,6 @@
       "minor",
       "patch"
     ]
-  }
+  },
+  "dependencies": {}
 }
