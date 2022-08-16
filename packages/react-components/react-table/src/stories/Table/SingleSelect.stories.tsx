@@ -93,8 +93,17 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const Selection = () => {
-  const { rows } = useTable({ columns, items, selectionMode: 'single' });
+export const SingleSelect = () => {
+  const { rows } = useTable({
+    columns,
+    items,
+    selectionMode: 'single',
+    rowEnhancer: (row, { selection }) => ({
+      ...row,
+      selected: selection.isRowSelected(row.rowId),
+      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+    }),
+  });
 
   return (
     <Table sortable>
