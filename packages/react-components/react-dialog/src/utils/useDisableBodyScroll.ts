@@ -1,56 +1,44 @@
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import * as React from 'react';
+import { makeStaticStyles } from '@griffel/react';
 
-/**
- * Hook that provides methods for enabling and disabling body scrolling through `overflow:hidden` method
- */
-export function useDisableBodyScroll() {
-  const overflowSettingRef = React.useRef<string>();
-  const paddingRightRef = React.useRef<string>();
-  const { targetDocument } = useFluent_unstable();
+const disableScrollingClassName = 'disableScrolling' as const;
+const fluentDisableScrollCountProp = '__fluentDisableScrollCount' as const;
 
-  const setOverflowHidden = React.useCallback(() => {
-    if (!targetDocument || !targetDocument.defaultView) {
-      return;
-    }
-    if (paddingRightRef.current === undefined) {
-      const paddingRight = computeScrollBarSizeAndPadding(targetDocument, targetDocument.defaultView);
-      if (paddingRight) {
-        paddingRightRef.current = targetDocument.body.style.paddingRight;
-        targetDocument.body.style.paddingRight = `${paddingRight}px`;
-      }
-    }
-    if (overflowSettingRef.current === undefined) {
-      overflowSettingRef.current = targetDocument.body.style.overflow;
-      targetDocument.body.style.overflow = 'hidden';
-    }
-  }, [targetDocument]);
+const useStaticStyles = makeStaticStyles({
+  [`.${disableScrollingClassName}`]: {
+    overflowY: 'hidden',
+  },
+});
 
-  const restoreOverflowSetting = React.useCallback(() => {
-    if (!targetDocument) {
-      return;
-    }
-    if (paddingRightRef.current !== undefined) {
-      targetDocument.body.style.paddingRight = paddingRightRef.current;
-      paddingRightRef.current = undefined;
-    }
+type FluentDisableScrollElement = HTMLElement & {
+  [fluentDisableScrollCountProp]: number;
+};
 
-    if (overflowSettingRef.current !== undefined) {
-      targetDocument.body.style.overflow = overflowSettingRef.current;
-      overflowSettingRef.current = undefined;
-    }
-  }, [targetDocument]);
-  return { disableBodyScroll: setOverflowHidden, enableBodyScroll: restoreOverflowSetting };
+export function useDisableScroll() {
+  useStaticStyles();
+  return disableScroll;
 }
 
-function computeScrollBarSizeAndPadding(document: Document, view: Window) {
-  const scrollBarSize = view.innerWidth - document.documentElement.clientWidth;
+/**
+ * disables scrolling from a given element through `overflow: hidden` CSS property
+ * @param target - element to disable scrolling from
+ * @returns a method for enabling scrolling again
+ */
+function disableScroll(target: HTMLElement) {
+  assertDisableScrollElement(target);
+  target.classList.add(disableScrollingClassName);
+  target[fluentDisableScrollCountProp]++;
+  return () => {
+    target[fluentDisableScrollCountProp]--;
+    if (target[fluentDisableScrollCountProp] === 0) {
+      target.classList.remove(disableScrollingClassName);
+    }
+  };
+}
 
-  if (scrollBarSize > 0) {
-    const computedBodyPaddingRight = parseInt(
-      view.getComputedStyle(document.body).getPropertyValue('padding-right'),
-      10,
-    );
-    return computedBodyPaddingRight + scrollBarSize;
-  }
+/**
+ * asserts a given HTMLElement has the proper initial value
+ * @param element element to be asserted
+ */
+function assertDisableScrollElement(element: HTMLElement): asserts element is FluentDisableScrollElement {
+  (element as FluentDisableScrollElement)[fluentDisableScrollCountProp] ??= 0;
 }
