@@ -17616,10 +17616,10 @@ karma@^6.3.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.1.0.tgz#f6886a90b4ec1f4c5272326213110f6d9e831d0e"
-  integrity sha512-AmEH/if+1TG1MkDT4UOAG8ZKTTO2IwJBXq20crsLD3QhMsRivL6OpxZSTBrnbGAsn/QeH/+YIgDCXcNvLSe/Yw==
+keyborg@^1.1.0, keyborg@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-1.2.1.tgz#0503719c9b2791d8e4f1a00f7eae7e29327416fa"
+  integrity sha512-PXjcJb7d4ecncFnJgq1TzLBx38+LbTPDpbwNCXebMzp3xaZeG//7ydWpISouBVyjRtJFuIvpIryme4U2dYGUEg==
 
 keyv@3.0.0:
   version "3.0.0"
