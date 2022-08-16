@@ -12,19 +12,29 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
   const { appearance = 'outline', inlinePopup = false, multiselect, onOpenChange, size = 'medium' } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionById, getOptionsMatchingValue } = optionCollection;
+  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-  const { selectedOptions, selectOption } = useSelection(props);
 
-  // update value based on selectedOptions
+  const ignoreNextBlur = React.useRef(false);
+
+  const selectionState = useSelection(props);
+  const { selectedOptions } = selectionState;
+
+  // calculate value based on props, internal value changes, and selected options
   const isFirstMount = useFirstMount();
+  const [controllableValue, setValue] = useControllableState({
+    state: props.value,
+    initialState: undefined,
+  });
+
   const value = React.useMemo(() => {
-    // don't compute value if it is defined through props,
-    if (props.value !== undefined) {
-      return props.value;
+    // don't compute the value if it is defined through props or setValue,
+    if (controllableValue !== undefined) {
+      return controllableValue;
     }
 
+    // handle defaultValue here, so it is overridden by selection
     if (isFirstMount && props.defaultValue !== undefined) {
       return props.defaultValue;
     }
@@ -34,7 +44,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     }
 
     return selectedOptions[0];
-  }, [isFirstMount, multiselect, props.defaultValue, props.value, selectedOptions]);
+  }, [controllableValue, isFirstMount, multiselect, props.defaultValue, selectedOptions]);
 
   // Handle open state, which is shared with options in context
   const [open, setOpenState] = useControllableState({
@@ -48,20 +58,9 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     setOpenState(newState);
   };
 
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
-    // clicked option should always become active option
-    setActiveOption(getOptionById(option.id));
-
-    // close on option click for single-select
-    !multiselect && setOpen(event, false);
-
-    // handle selection change
-    selectOption(event, option);
-  };
-
   // update active option based on change in open state
   React.useEffect(() => {
-    if (open) {
+    if (open && !activeOption) {
       // if there is a selection, start at the most recently selected item
       if (selectedOptions.length > 0) {
         const lastSelectedOption = getOptionsMatchingValue(
@@ -73,7 +72,7 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
       else {
         setActiveOption(getOptionAtIndex(0));
       }
-    } else {
+    } else if (!open) {
       // reset the active option when closing
       setActiveOption(undefined);
     }
@@ -83,15 +82,15 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   return {
     ...optionCollection,
+    ...selectionState,
     activeOption,
     appearance,
+    ignoreNextBlur,
     inlinePopup,
-    onOptionClick,
     open,
-    selectedOptions,
-    selectOption,
     setActiveOption,
     setOpen,
+    setValue,
     size,
     value,
   };

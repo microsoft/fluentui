@@ -32,6 +32,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('div', {
+      role: 'toolbar',
       ref,
       ...arrowNavigationProps,
       ...props,
