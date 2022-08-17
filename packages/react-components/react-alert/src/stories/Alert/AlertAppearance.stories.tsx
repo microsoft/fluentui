@@ -1,10 +1,10 @@
 import * as React from 'react';
+
 import { Alert } from '@fluentui/react-alert';
-import { Title3 } from '@fluentui/react-text';
 
 const renderAlerts = (appearance: 'primary' | 'inverted') => (
   <div style={{ flexGrow: 1 }}>
-    <Title3>{appearance}</Title3>
+    <p>{appearance}</p>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       <Alert appearance={appearance} intent="success" action="Undo">
         Success text
