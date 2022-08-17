@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "implement `useTable` state hook",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,9 +1,19 @@
 {
-  "extends": "@fluentui/scripts/typescript/tsconfig.common",
   "compilerOptions": {
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "lib": ["es2015", "dom"],
+    "strict": true,
+    "jsx": "react",
     "rootDir": "src",
     "outDir": "lib",
-    "types": ["node", "jest", "expect-puppeteer", "jest-environment-puppeteer", "webpack-env"]
+    "sourceMap": true,
+    "types": ["node", "jest", "expect-puppeteer", "jest-environment-puppeteer", "webpack-env"],
+    "noUnusedLocals": true
   },
   "include": ["src"],
   "references": []

@@ -224,6 +224,13 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - Keyboard Overrides',
               url: '#/examples/detailslist/keyboardoverrides',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListProportionalColumnsPage')
+                .DetailsListProportionalColumnsPage,
+              key: 'DetailsList - Proportional Columns',
+              name: 'DetailsList - Proportional Columns',
+              url: '#/examples/detailslist/proportionalcolumns',
+            },
           ],
         },
         {
