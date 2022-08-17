@@ -3,12 +3,12 @@ import { SelectionMode } from './types';
 type OnSelectionChangeCallback = (selectedItems: Set<SelectionItemId>) => void;
 
 export interface SelectionManager {
-  toggleSelect(id: SelectionItemId): void;
-  select(id: SelectionItemId): void;
-  deSelect(id: SelectionItemId): void;
-  clearSelection(): void;
+  toggleItem(id: SelectionItemId): void;
+  selectItem(id: SelectionItemId): void;
+  deSelectItem(id: SelectionItemId): void;
+  clearItems(): void;
   isSelected(id: SelectionItemId): boolean;
-  toggleSelectAll(itemIds: SelectionItemId[]): void;
+  toggleAllItems(itemIds: SelectionItemId[]): void;
 }
 
 export type SelectionItemId = string | number;
@@ -17,96 +17,97 @@ export function createSelectionManager(
   mode: SelectionMode,
   onSelectionChange: OnSelectionChangeCallback = () => undefined,
 ): SelectionManager {
+  const managerFactory = mode === 'multiselect' ? createMultipleSelectionManager : createSingleSelectionManager;
+
+  return managerFactory(onSelectionChange);
+}
+
+function createMultipleSelectionManager(onSelectionChange: OnSelectionChangeCallback): SelectionManager {
   const selectedItems = new Set<SelectionItemId>();
-  return mode === 'multiselect'
-    ? createMultipleSelectionManager(selectedItems, onSelectionChange)
-    : createSingleSelectionManager(selectedItems, onSelectionChange);
-}
+  const toggleAllItems = (itemIds: SelectionItemId[]) => {
+    const allItemsSelected = itemIds.every(itemId => selectedItems.has(itemId));
 
-function createMultipleSelectionManager(
-  set: Set<SelectionItemId>,
-  onSelectionChange: OnSelectionChangeCallback,
-): SelectionManager {
-  const toggleSelectAll = (itemIds: SelectionItemId[]) => {
-    if (set.size === itemIds.length) {
-      set.clear();
+    if (allItemsSelected) {
+      selectedItems.clear();
     } else {
-      itemIds.forEach(itemId => set.add(itemId));
+      itemIds.forEach(itemId => selectedItems.add(itemId));
     }
 
-    onSelectionChange(new Set(set));
+    onSelectionChange(new Set(selectedItems));
   };
 
-  const toggleSelect = (itemId: SelectionItemId) => {
-    if (set.has(itemId)) {
-      set.delete(itemId);
+  const toggleItem = (itemId: SelectionItemId) => {
+    if (selectedItems.has(itemId)) {
+      selectedItems.delete(itemId);
     } else {
-      set.add(itemId);
+      selectedItems.add(itemId);
     }
 
-    onSelectionChange(new Set(set));
+    onSelectionChange(new Set(selectedItems));
   };
 
-  const select = (itemId: SelectionItemId) => {
-    set.add(itemId);
-    onSelectionChange(new Set(set));
+  const selectItem = (itemId: SelectionItemId) => {
+    selectedItems.add(itemId);
+    onSelectionChange(new Set(selectedItems));
   };
 
-  const deSelect = (itemId: SelectionItemId) => {
-    set.delete(itemId);
-    onSelectionChange(new Set(set));
+  const deSelectItem = (itemId: SelectionItemId) => {
+    selectedItems.delete(itemId);
+    onSelectionChange(new Set(selectedItems));
   };
 
-  const clearSelection = () => {
-    set.clear();
-    onSelectionChange(new Set(set));
+  const clearItems = () => {
+    selectedItems.clear();
+    onSelectionChange(new Set(selectedItems));
   };
 
   const isSelected = (itemId: SelectionItemId) => {
-    return set.has(itemId);
+    return selectedItems.has(itemId);
   };
 
   return {
-    toggleSelect,
-    select,
-    deSelect,
-    clearSelection,
+    toggleItem,
+    selectItem,
+    deSelectItem,
+    clearItems,
     isSelected,
-    toggleSelectAll,
+    toggleAllItems,
   };
 }
 
-function createSingleSelectionManager(
-  set: Set<SelectionItemId>,
-  onSelectionChange: OnSelectionChangeCallback,
-): SelectionManager {
-  const toggleSelect = (itemId: SelectionItemId) => {
-    set.clear();
-    set.add(itemId);
-    onSelectionChange(new Set(set));
+function createSingleSelectionManager(onSelectionChange: OnSelectionChangeCallback): SelectionManager {
+  let selectedItem: SelectionItemId | undefined = undefined;
+  const toggleItem = (itemId: SelectionItemId) => {
+    selectedItem = itemId;
+    onSelectionChange(new Set([selectedItem]));
   };
 
-  const clearSelection = () => {
-    set.clear();
-    onSelectionChange(new Set(set));
+  const clearItems = () => {
+    selectedItem = undefined;
+    onSelectionChange(new Set<SelectionItemId>());
   };
 
   const isSelected = (itemId: SelectionItemId) => {
-    return set.has(itemId);
+    return selectedItem === itemId;
   };
 
-  const select = (itemId: SelectionItemId) => {
-    set.clear();
-    set.add(itemId);
-    onSelectionChange(new Set(set));
+  const selectItem = (itemId: SelectionItemId) => {
+    selectedItem = itemId;
+    onSelectionChange(new Set([selectedItem]));
   };
 
   return {
-    deSelect: clearSelection,
-    select,
-    toggleSelectAll: () => undefined,
-    toggleSelect,
-    clearSelection,
+    deSelectItem: clearItems,
+    selectItem,
+    toggleAllItems: () => {
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error('[react-table]: `toggleAllItems` should not be used in single selection mode');
+      }
+
+      return undefined;
+    },
+    toggleItem,
+    clearItems,
     isSelected,
   };
 }

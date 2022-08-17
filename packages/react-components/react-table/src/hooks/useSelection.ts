@@ -20,19 +20,19 @@ export function useSelection<TItem>(
     }
   }, [selectionMode, prevSelectionMode]);
 
-  const toggleSelectAllRows: SelectionStateInternal['toggleSelectAllRows'] = useEventCallback(() => {
-    selectionManager.toggleSelectAll(items.map((item, i) => getRowId(item, i)));
+  const toggleAllRows: SelectionStateInternal['toggleAllRows'] = useEventCallback(() => {
+    selectionManager.toggleAllItems(items.map((item, i) => getRowId(item, i)));
   });
 
   return {
     someRowsSelected: selected.size > 0,
     allRowsSelected: selectionMode === 'single' ? selected.size > 0 : selected.size === items.length,
     selectedRows: selected,
-    toggleRowSelect: selectionManager.toggleSelect,
-    toggleSelectAllRows,
-    clearSelection: selectionManager.clearSelection,
-    deSelectRow: selectionManager.deSelect,
-    selectRow: selectionManager.select,
+    toggleRow: selectionManager.toggleItem,
+    toggleAllRows,
+    clearRows: selectionManager.clearItems,
+    deSelectRow: selectionManager.deSelectItem,
+    selectRow: selectionManager.selectItem,
     isRowSelected: selectionManager.isSelected,
   };
 }

@@ -36,11 +36,11 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
 }
 
 export interface SelectionStateInternal {
-  clearSelection: () => void;
+  clearRows: () => void;
   deSelectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
-  toggleSelectAllRows: () => void;
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleAllRows: () => void;
+  toggleRow: (rowId: RowId) => void;
   isRowSelected: (rowId: RowId) => boolean;
   selectedRows: Set<RowId>;
   allRowsSelected: boolean;
@@ -75,7 +75,7 @@ export interface SelectionState {
   /**
    * Clears all selected rows
    */
-  clearSelection: () => void;
+  clearRows: () => void;
   /**
    * Selects single row
    */
@@ -87,11 +87,11 @@ export interface SelectionState {
   /**
    * Toggle selection of all rows
    */
-  toggleSelectAllRows: () => void;
+  toggleAllRows: () => void;
   /**
    * Toggle selection of single row
    */
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleRow: (rowId: RowId) => void;
   /**
    * Collection of row ids corresponding to selected rows
    */

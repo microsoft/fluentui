@@ -101,7 +101,7 @@ export const SingleSelect = () => {
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),
-      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+      toggle: () => selection.toggleRow(row.rowId),
     }),
   });
 
@@ -117,8 +117,8 @@ export const SingleSelect = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item, toggleSelect, selected }) => (
-          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
+        {rows.map(({ item, toggle, selected }) => (
+          <TableRow key={item.file.label} onClick={toggle} aria-selected={selected}>
             <TableSelectionCell type="radio" checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

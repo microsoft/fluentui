@@ -70,14 +70,14 @@ export interface RowState<TItem> {
 // @public (undocumented)
 export interface SelectionState {
     allRowsSelected: boolean;
-    clearSelection: () => void;
+    clearRows: () => void;
     deSelectRow: (rowId: RowId) => void;
     isRowSelected: (rowId: RowId) => boolean;
     selectedRows: RowId[];
     selectRow: (rowId: RowId) => void;
     someRowsSelected: boolean;
-    toggleRowSelect: (rowId: RowId) => void;
-    toggleSelectAllRows: () => void;
+    toggleAllRows: () => void;
+    toggleRow: (rowId: RowId) => void;
 }
 
 // @public (undocumented)
