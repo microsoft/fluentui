@@ -14,7 +14,7 @@ export type ListenerCallbacks = {
   onKeyUp: (ev: KeyboardEvent) => void;
 };
 let mountCounters = new WeakMap<Window | HTMLElement, number>();
-let callbackMap = new WeakMap<HTMLElement[], ListenerCallbacks>();
+let callbackMap = new WeakMap<IFocusRectsContext, ListenerCallbacks>();
 
 function setMountCounters(key: Window | HTMLElement, delta: number): number {
   let newValue;
@@ -29,19 +29,19 @@ function setMountCounters(key: Window | HTMLElement, delta: number): number {
   return newValue;
 }
 
-function setCallbackMap(key: HTMLElement[]): ListenerCallbacks {
-  let callbacks = callbackMap.get(key);
+function setCallbackMap(context: IFocusRectsContext): ListenerCallbacks {
+  let callbacks = callbackMap.get(context);
   if (callbacks) {
     return callbacks;
   }
 
-  const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, key);
-  const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, key);
-  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, key);
-  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, key);
+  const onMouseDown = (ev: MouseEvent) => _onMouseDown(ev, context.registeredProviders);
+  const onPointerDown = (ev: PointerEvent) => _onPointerDown(ev, context.registeredProviders);
+  const onKeyDown = (ev: KeyboardEvent) => _onKeyDown(ev, context.registeredProviders);
+  const onKeyUp = (ev: KeyboardEvent) => _onKeyUp(ev, context.registeredProviders);
   callbacks = { onMouseDown, onPointerDown, onKeyDown, onKeyUp };
 
-  callbackMap.set(key, callbacks);
+  callbackMap.set(context, callbacks);
   return callbacks;
 }
 
@@ -110,7 +110,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onKeyUp: (ev: KeyboardEvent) => void;
     if (context?.providerRef.current) {
       el = context.providerRef.current;
-      const callbacks = setCallbackMap(context.registeredProviders);
+      const callbacks = setCallbackMap(context);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
       onKeyDown = callbacks.onKeyDown;
