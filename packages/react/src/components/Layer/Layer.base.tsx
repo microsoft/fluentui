@@ -162,7 +162,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       <span className="ms-layer" ref={mergedRef}>
         {layerRef.current &&
           ReactDOM.createPortal(
-            <FocusRectsProvider providerRef={fabricRef}>
+            <FocusRectsProvider layerRoot providerRef={fabricRef}>
               {/* eslint-disable deprecation/deprecation */}
               <Fabric
                 {...(!eventBubblingEnabled && getFilteredEvents())}

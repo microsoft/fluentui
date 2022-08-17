@@ -6,32 +6,60 @@ export type FocusRectsProviderParams = {
    * Ref to the root element that this is providing focus rects for.
    */
   providerRef: React.RefObject<HTMLElement>;
+
+  /**
+   * Indicates that this is the root of a layer, and should not inherit the providerRef from a parent context.
+   */
+  layerRoot?: boolean;
 };
 
 export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => {
-  const { providerRef } = params;
-
-  // Get the registered providers array from the parent if it exists. Otherwise, this is the root and we need to create
-  // a allProviders array that'll be used by this and all child providers.
+  const { providerRef, layerRoot } = params;
+  const [registeredProviders] = React.useState<HTMLElement[]>([]);
   const parentContext = React.useContext(FocusRectsContext);
-  const [allProvidersRoot] = React.useState<HTMLElement[]>([]);
-  const allProviders = parentContext.allProviders ?? allProvidersRoot;
+
+  // Inherit the parent context if it exists, unless this is a layer root.
+  // This allows the topmost provider element in the HTML tree to handle the focus events.
+  // Since layers are in a separate HTML tree from their parent, they shouldn't use the parent's providerRef.
+  const inheritParentContext = parentContext.providerRef !== undefined && !layerRoot;
+
+  const context = React.useMemo(
+    () =>
+      inheritParentContext
+        ? undefined
+        : {
+            providerRef,
+            registeredProviders,
+            registerProvider: (e: HTMLElement) => {
+              // Register this child provider with the current context, and any parent contexts
+              registeredProviders.push(e);
+              parentContext.registerProvider?.(e);
+            },
+            unregisterProvider: (e: HTMLElement) => {
+              parentContext.unregisterProvider?.(e);
+              const i = registeredProviders.indexOf(e);
+              if (i >= 0) {
+                registeredProviders.splice(i, 1);
+              }
+            },
+          },
+    [providerRef, registeredProviders, parentContext, inheritParentContext],
+  );
 
   React.useEffect(() => {
-    const providerElem = providerRef.current;
-    if (providerElem) {
-      allProviders.push(providerElem);
-
-      return () => {
-        const i = allProviders.indexOf(providerElem);
-        if (i >= 0) {
-          allProviders.splice(i, 1);
-        }
-      };
+    if (context) {
+      const providerElem = context.providerRef.current;
+      if (providerElem) {
+        context.registerProvider(providerElem);
+        return () => context.unregisterProvider(providerElem);
+      }
     }
-  }, [providerRef, allProviders]);
+  }, [context]);
 
-  const context = React.useMemo(() => ({ providerRef, allProviders }), [providerRef, allProviders]);
-
-  return <FocusRectsContext.Provider value={context}>{params.children}</FocusRectsContext.Provider>;
+  // Create a new context provider if this is not inheriting from the parent.
+  if (context) {
+    return <FocusRectsContext.Provider value={context}>{params.children}</FocusRectsContext.Provider>;
+  } else {
+    return <>{params.children}</>;
+  }
 };
