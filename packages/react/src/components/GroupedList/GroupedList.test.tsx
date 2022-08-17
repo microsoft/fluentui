@@ -329,9 +329,13 @@ describe('GroupedList', () => {
     }
 
     const wrapper = mount(<GroupedList items={initialItems} groups={_groups} onRenderCell={_onRenderCell} />);
-    wrapper.setProps({ items: nextItems });
-    wrapper.setProps({ items: initialItems });
+    expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(true);
 
+    wrapper.setProps({ items: nextItems });
+    expect(wrapper.contains(<div id="rendered-item-changed" />)).toEqual(true);
+    expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(false);
+
+    wrapper.setProps({ items: initialItems });
     expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(true);
   });
 });
