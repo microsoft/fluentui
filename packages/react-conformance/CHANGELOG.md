@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Fri, 24 Jun 2022 07:43:32 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jul 2022 07:41:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.0)
+
+Thu, 28 Jul 2022 07:41:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.14.0..@fluentui/react-conformance_v0.15.0)
+
+### Minor changes
+
+- chore: Remove static className conformance tests. ([PR #24063](https://github.com/microsoft/fluentui/pull/24063) by ololubek@microsoft.com)
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.14.0)
 

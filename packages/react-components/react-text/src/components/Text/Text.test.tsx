@@ -8,7 +8,6 @@ describe('Text', () => {
   isConformant<TextProps>({
     Component: Text,
     displayName: 'Text',
-    disabledTests: ['component-has-static-classname', 'component-has-static-classname-exported'],
     testOptions: {
       'make-styles-overrides-win': {
         callCount: 1,
@@ -146,6 +145,7 @@ describe('Text', () => {
     ['regular', 'Regular'],
     ['medium', 'Medium'],
     ['semibold', 'Semibold'],
+    ['bold', 'Bold'],
   ] as const)('applies %s weight', (input, expectedValue) => {
     const { getByText } = render(<Text weight={input}>Test</Text>);
 

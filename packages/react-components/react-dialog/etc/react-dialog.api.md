@@ -6,7 +6,9 @@
 
 /// <reference types="react" />
 
+import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { FluentTriggerComponent } from '@fluentui/react-utilities';
@@ -78,7 +80,7 @@ export type DialogOpenChangeData = {
     open: boolean;
     event: KeyboardEvent;
 } | {
-    type: 'overlayClick';
+    type: 'backdropClick';
     open: boolean;
     event: React_2.MouseEvent;
 } | {
@@ -101,7 +103,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 
 // @public (undocumented)
 export type DialogSlots = {
-    overlay?: Slot<'div'>;
+    backdrop?: Slot<'div'>;
 };
 
 // @public (undocumented)
@@ -149,19 +151,18 @@ export type DialogTitleState = ComponentState<DialogTitleSlots>;
 export const DialogTrigger: React_2.FC<DialogTriggerProps> & FluentTriggerComponent;
 
 // @public (undocumented)
-export type DialogTriggerAction = 'open' | 'close' | 'toggle';
+export type DialogTriggerAction = 'open' | 'close';
 
 // @public
-export type DialogTriggerChildProps = Required<Pick<React_2.HTMLAttributes<HTMLElement>, 'onClick' | 'onKeyDown' | 'aria-haspopup'>> & {
-    ref?: React_2.Ref<never>;
-};
+export type DialogTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, Props = {}> = ARIAButtonResultProps<Type, Props & {
+    ref: React_2.Ref<unknown>;
+    'aria-haspopup'?: 'dialog';
+}>;
 
 // @public (undocumented)
 export type DialogTriggerProps = {
     action?: DialogTriggerAction;
-    children: (React_2.ReactElement & {
-        ref?: React_2.Ref<unknown>;
-    }) | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
+    children: React_2.ReactElement | ((props: DialogTriggerChildProps) => React_2.ReactElement | null);
 };
 
 // @public (undocumented)
@@ -179,7 +180,7 @@ export const renderDialogActions_unstable: (state: DialogActionsState) => JSX.El
 export const renderDialogBody_unstable: (state: DialogBodyState) => JSX.Element;
 
 // @public
-export const renderDialogSurface_unstable: (state: DialogSurfaceState) => JSX.Element;
+export const renderDialogSurface_unstable: (state: DialogSurfaceState, contextValues: DialogSurfaceContextValues) => JSX.Element;
 
 // @public
 export const renderDialogTitle_unstable: (state: DialogTitleState) => JSX.Element;

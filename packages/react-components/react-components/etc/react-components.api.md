@@ -117,6 +117,7 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
@@ -452,6 +453,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsSSR } from '@fluentui/react-utilities';
 import { useKeyboardNavAttribute } from '@fluentui/react-tabster';
 import { useLabel_unstable } from '@fluentui/react-label';
@@ -758,6 +760,8 @@ export { getNativeElementProps }
 export { getPartitionedNativeProps }
 
 export { getSlots }
+
+export { GriffelRenderer }
 
 export { GriffelStyle }
 
@@ -1428,6 +1432,8 @@ export { useImageStyles_unstable }
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
+
+export { useIsomorphicLayoutEffect }
 
 export { useIsSSR }
 

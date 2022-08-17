@@ -2,16 +2,10 @@
   "name": "@fluentui/scripts",
   "version": "1.0.0",
   "private": true,
-  "main": "./index.js",
-  "bin": {
-    "just-scripts": "./just-scripts.js"
-  },
   "scripts": {
-    "build": "echo no-op",
-    "bundlesize": "bundlesize --debug",
-    "clean": "",
-    "code-style": "node ./just-scripts.js code-style",
-    "test": "jest"
+    "code-style": "just-scripts code-style",
+    "test": "jest",
+    "type-check": "tsc -p . --noEmit"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*"
@@ -71,13 +65,6 @@
     "request-promise-native": "^1.0.5",
     "resolve": "^1.7.1",
     "riceburn": "^1.3.1",
-    "through2": "^2.0.3",
-    "ts-node": "^7.0.0"
-  },
-  "bundlesize": [
-    {
-      "path": "../apps/test-bundles/dist/fluentui-react-Button.min.js",
-      "maxSize": "50.1 kB"
-    }
-  ]
+    "through2": "^2.0.3"
+  }
 }

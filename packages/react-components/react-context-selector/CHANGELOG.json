@@ -2,6 +2,27 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:46 GMT",
+      "tag": "@fluentui/react-context-selector_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Jul 2022 21:21:11 GMT",
       "tag": "@fluentui/react-context-selector_v9.0.2",
       "version": "9.0.2",

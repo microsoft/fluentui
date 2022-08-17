@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add Body2",
+  "packageName": "@fluentui/react-text",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

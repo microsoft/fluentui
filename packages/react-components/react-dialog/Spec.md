@@ -86,11 +86,11 @@ The root level component serves as an interface for interaction with all possibl
 type DialogSlots = {
   /**
    * Dimmed background of dialog.
-   * The default overlay is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default overlay.
-   * The overlay should have `aria-hidden="true"`.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
    */
-  overlay?: Slot<'div'>;
+  backdrop?: Slot<'div'>;
   /**
    * The root element of the Dialog right after Portal.
    */
@@ -131,7 +131,7 @@ type DialogOpenChangeData = {
   /**
    * The event source of the callback invocation
    */
-  type: 'escapeKeyDown' | 'overlayClick' | 'triggerClick';
+  type: 'escapeKeyDown' | 'backdropClick' | 'triggerClick';
   /**
    * The next value for the internal state of the dialog
    */
@@ -148,12 +148,12 @@ In case the trigger is used outside `Dialog` component it'll still provide basic
 ```typescript
 export type DialogTriggerProps = {
   /**
-   * Explicitly declare if the trigger is responsible for opening,
-   * closing or toggling a Dialog visibility state.
-   *
-   * @default 'toggle'
+   * Explicitly declare if the trigger is responsible for opening or
+   * closing a Dialog visibility state.
+   * @default 'open' // if it's outside DialogSurface
+   * @default 'close' // if it's inside DialogSurface
    */
-  action?: 'open' | 'close' | 'toggle';
+  action?: 'open' | 'close';
   /**
    * Explicitly require single child or render function
    * to inject properties
@@ -238,7 +238,7 @@ const dialog = <Dialog>
 <!-- expected DOM output  -->
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div aria-modal="true" role="dialog" class="fui-dialog-content">This is as basic as it gets</div>
 ```
 
@@ -271,7 +271,7 @@ const dialog = <Dialog type="alert">
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
@@ -333,7 +333,7 @@ const CustomDialog = () => {
 ```html
 <button aria-haspopup="true" class="fui-button">Open Dialog</button>
 <!-- ... portal ... -->
-<div aria-hidden="true" class="fui-dialog-overlay"></div>
+<div aria-hidden="true" class="fui-dialog-backdrop"></div>
 <div
   aria-describedby="fui-dialog-body-id"
   aria-labelledby="fui-dialog-title-id"
@@ -496,7 +496,6 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Non-modal
 
@@ -507,16 +506,13 @@ The dialog component follows the [Dialog WAI-Aria design pattern](https://www.w3
   - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)
 
 #### Alert dialog
 
 - Trigger button
   - [`aria-haspopup="dialog"`](https://w3c.github.io/aria/#aria-haspopup)
-    > ⚠️ This is deprecated, the proper attribute should be [`aria-expanded=true`](https://w3c.github.io/aria/#aria-expanded)
 - Dialog
   - [`role="alertdialog"`](https://w3c.github.io/aria/#dialog)
-  - [`aria-modal=false`](https://w3c.github.io/aria/#aria-modal)
+  - [`aria-modal=true`](https://w3c.github.io/aria/#aria-modal)
   - [`aria-labelledby={dialog-title-idref}`](https://w3c.github.io/aria/#aria-labelledby)
   - [`aria-describedby={dialog-body-idref}`](https://w3c.github.io/aria/#aria-describedby)
-  - [`aria-label="some label"`](https://w3c.github.io/aria/#aria-label)

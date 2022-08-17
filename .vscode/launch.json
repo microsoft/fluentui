@@ -57,7 +57,7 @@
       "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just-scripts.js",
+      "program": "${workspaceRoot}/node-modules/just-scripts/bin/just-scripts.js",
       "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["ts"],

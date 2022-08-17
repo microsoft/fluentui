@@ -14,10 +14,6 @@ const environment = {
   },
 };
 
-function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 async function scheduleScreenerBuild(
   screenerConfig: ScreenerRunnerConfig,
   buildInfo: {
@@ -42,50 +38,33 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  const response = await fetch(environment.screener.apiUri, {
+  const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': screenerConfig.apiKey,
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({
+      payload: payload,
+    }),
   });
 
-  if (response.status === 409) {
-    console.log('screener-runner: An existing build is running...');
-
-    await wait(15000);
-    await scheduleScreenerBuild(screenerConfig, buildInfo);
-
-    return;
+  if (response.status !== 201) {
+    throw new Error(`Call to proxy failed: ${response.status}`);
   }
-
-  if (response.status !== 200) {
-    console.log(`screener-runner: Failed to queue screener tests: status=${response.status}. Retrying`);
-    const errorMessage = await response.text();
-    console.log(errorMessage);
-
-    await wait(15000);
-    await scheduleScreenerBuild(screenerConfig, buildInfo);
-
-    return;
-  }
-
-  const data = await response.json();
-  const url = `https://screener.io/v2/dashboard/${data.project}/${encodeURIComponent(data.branch)}`;
-
-  console.log(`screener-runner: Screener tests for "${buildInfo.commit}" commit were queued.`);
-  console.log(`screener-runner: See job status at ${url}`);
-
-  return url;
+  //checkUrl
+  return response.json().then(url => url);
 }
 
 async function notifyIntegration(payload: ScreenerProxyPayload) {
-  await fetch(environment.screener.proxyUri, {
+  const fetchResponse = await fetch(environment.screener.proxyUri, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
   });
+
+  if (fetchResponse.status !== 200) {
+    throw new Error(`Notify integration failed: ${fetchResponse.status}`);
+  }
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
@@ -107,7 +86,13 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
-  await notifyIntegration({ commit, url: checkUrl, status: 'in_progress', project: screenerConfig.projectRepo });
+  await notifyIntegration({
+    commit,
+    url: checkUrl.url,
+    status: 'in_progress',
+    project: screenerConfig.projectRepo,
+    branch: branchName,
+  });
 }
 
 export async function cancelScreenerRun(
@@ -116,6 +101,8 @@ export async function cancelScreenerRun(
 ) {
   // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
+  // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
+  let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
 
   await notifyIntegration({
     commit,
@@ -123,6 +110,7 @@ export async function cancelScreenerRun(
     status: 'completed',
     project: screenerConfig.projectRepo,
     conclusion,
+    branch: branchName,
   });
 
   console.log(`cancelled screener run ${screenerConfig.projectRepo}`);

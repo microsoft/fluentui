@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Fri, 15 Jul 2022 18:27:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.5)
+
+Wed, 03 Aug 2022 16:03:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.4..@fluentui/react-portal-compat_v9.0.5)
+
+### Patches
+
+- chore: enable AMD compatible build ([PR #24052](https://github.com/microsoft/fluentui/pull/24052) by lingfangao@hotmail.com)
+- Bump @fluentui/react-components to v9.2.0 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.4)
 

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 14 Jul 2022 21:21:03 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Aug 2022 16:03:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.8)
+
+Wed, 03 Aug 2022 16:03:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.0.0-beta.7..@fluentui/react-select_v9.0.0-beta.8)
+
+### Changes
+
+- bugfix: add reduced motion styles for avatar, spinner, switch, and input focus styles ([PR #23788](https://github.com/microsoft/fluentui/pull/23788) by sarah.higley@microsoft.com)
+- chore: Bump Griffel dependencies ([PR #24114](https://github.com/microsoft/fluentui/pull/24114) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-conformance-griffel to v9.0.0-beta.12 ([PR #24131](https://github.com/microsoft/fluentui/pull/24131) by beachball)
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.0.0-beta.7)
 

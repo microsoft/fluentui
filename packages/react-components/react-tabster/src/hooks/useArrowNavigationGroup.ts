@@ -21,13 +21,18 @@ export interface UseArrowNavigationGroupOptions {
    * Allow tabbing within the arrow navigation group items.
    */
   tabbable?: boolean;
+  /**
+   * Tabster should ignore default handling of keydown events
+   */
+  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
 }
 
 /**
  * A hook that returns the necessary tabster attributes to support arrow key navigation
  * @param options - Options to configure keyboard navigation
  */
-export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions): Types.TabsterDOMAttribute => {
+export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
+  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -36,11 +41,16 @@ export const useArrowNavigationGroup = (options?: UseArrowNavigationGroupOptions
 
   return useTabsterAttributes({
     mover: {
-      cyclic: !!options?.circular,
-      direction: axisToMoverDirection(options?.axis ?? 'vertical'),
-      memorizeCurrent: options?.memorizeCurrent,
-      tabbable: options?.tabbable,
+      cyclic: !!circular,
+      direction: axisToMoverDirection(axis ?? 'vertical'),
+      memorizeCurrent: memorizeCurrent,
+      tabbable: tabbable,
     },
+    ...(ignoreDefaultKeydown && {
+      focusable: {
+        ignoreKeydown: ignoreDefaultKeydown,
+      },
+    }),
   });
 };
 

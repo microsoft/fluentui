@@ -1,8 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
-const { getAllPackageInfo, isConvergedPackage } = require('@fluentui/scripts/monorepo');
-const semver = require('semver');
+const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
+
+const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('../scripts/storybook');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -20,6 +21,10 @@ const semver = require('semver');
 
 /**
  * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
+ */
+
+/**
+ * @typedef {import('@babel/core').TransformOptions & Partial<{customize: string | null}>} BabelLoaderOptions
  */
 
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
@@ -44,7 +49,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
-    '@fluentui/react-storybook-addon',
+    loadWorkspaceAddon('@fluentui/react-storybook-addon'),
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -56,18 +61,29 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     }
 
     if (config.module && config.module.rules) {
-      overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
-
-      config.module.rules.unshift({
+      /**
+       * @type {import("webpack").RuleSetRule}
+       */
+      const codesandboxRule = {
+        /**
+         * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
+         * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
+         */
+        enforce: 'post',
         test: /\.stories\.tsx$/,
+        include: /src/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            plugins: [[require('storybook-addon-export-to-codesandbox').babelPlugin, getCodesandboxBabelOptions()]],
-          },
+          options: processBabelLoaderOptions({
+            plugins: [[exportToCodesandboxAddon.babelPlugin, getCodesandboxBabelOptions()]],
+          }),
         },
-      });
+      };
+
+      config.module.rules.push(codesandboxRule);
+
+      overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
     }
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
@@ -89,52 +105,60 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 });
 
 /**
- * This is a temporary quick-fix solution. Remove this once we'll came up with robust solution - @see https://github.com/microsoft/fluentui/issues/18775
+ * Adds custom config to any `babel-loader` usage. Needs to be used on all manually added rules with babel-loader to webpack configuration.
  *
- * Note: this function mutates rules argument
+ * Why is this needed:
+ *  - `options.babelrc` is ignored by `babel-loader` thus we need to use `customize` api to exclude specific babel presets/plugins
+ *
+ * @param {BabelLoaderOptions} loaderConfig
+ */
+function processBabelLoaderOptions(loaderConfig) {
+  const customLoaderPath = path.resolve(__dirname, './custom-loader.js');
+  const customOptions = { customize: customLoaderPath };
+  Object.assign(loaderConfig, customOptions);
+
+  return loaderConfig;
+}
+
+/**
+ * Overrides storybooks babel-loader setup
+ *
+ * We might remove this once we'll came up with robust solution (or proper behaviors will be added to babel-loader). For more context @see https://github.com/microsoft/fluentui/issues/18775
+ *
+ * Note:
+ * - this function mutates `rules` argument which is a reference to `modules.rules` webpack config property
+ * - to print used babel-loader config run: `yarn start-storybook --no-manager-cache --debug-webpack` and look for
+ * webpack rule set containing both:
+ *  - `test: /\.(mjs|tsx?|jsx?)$/`
+ *  - `node_modules/babel-loader/lib/index.js` as `loader` within module.rules
  *
  * @param {import("webpack").RuleSetRule[]} rules
  */
 function overrideDefaultBabelLoader(rules) {
-  const customLoaderPath = path.resolve(__dirname, './custom-loader.js');
-  const ruleIdx = rules.findIndex(rule => {
-    return String(/** @type {import("webpack").RuleSetRule}*/ (rule).test) === '/\\.(mjs|tsx?|jsx?)$/';
-  });
+  const loader = getBabelLoader();
+  processBabelLoaderOptions(loader.options);
 
-  const rule = /** @type {import("webpack").RuleSetRule}*/ (rules[ruleIdx]);
+  function getBabelLoader() {
+    const ruleIdx = rules.findIndex(rule => {
+      return String(/** @type {import("webpack").RuleSetRule}*/ (rule).test) === '/\\.(mjs|tsx?|jsx?)$/';
+    });
 
-  if (!Array.isArray(rule.use)) {
-    throw new Error('storybook webpack rules changed');
-  }
+    const rule = /** @type {import("webpack").RuleSetRule}*/ (rules[ruleIdx]);
 
-  const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
-  });
-
-  const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
-
-  if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
-    throw new Error('storybook webpack rules changed');
-  }
-
-  loader.options.customize = customLoaderPath;
-}
-
-/**
- * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
- */
-function getCodesandboxBabelOptions() {
-  const allPackageInfo = getAllPackageInfo();
-
-  return Object.values(allPackageInfo).reduce((acc, cur) => {
-    if (isConvergedPackage(cur.packageJson)) {
-      const prereleaseTags = semver.prerelease(cur.packageJson.version);
-      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
-      acc[cur.packageJson.name] = isNonRcPrerelease
-        ? { replace: '@fluentui/react-components/unstable' }
-        : { replace: '@fluentui/react-components' };
+    if (!Array.isArray(rule.use)) {
+      throw new Error('storybook webpack rules changed');
     }
 
-    return acc;
-  }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
+    const loaderIdx = rule.use.findIndex(loaderConfig => {
+      return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
+    });
+
+    const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
+
+    if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
+      throw new Error('storybook webpack #module.rules changed!');
+    }
+
+    return loader;
+  }
 }

@@ -1,16 +1,16 @@
 // Utilities
 export {
-  RendererProvider,
   __css,
   __styles,
   createDOMRenderer,
   makeStaticStyles,
   makeStyles,
   mergeClasses,
+  RendererProvider,
   renderToStyleElements,
   shorthands,
 } from '@griffel/react';
-export type { GriffelStyle } from '@griffel/react';
+export type { GriffelStyle, GriffelRenderer } from '@griffel/react';
 export {
   FluentProvider,
   fluentProviderClassNames,
@@ -134,6 +134,7 @@ export {
   resolveShorthand,
   SSRProvider,
   useId,
+  useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
 } from '@fluentui/react-utilities';
@@ -525,6 +526,7 @@ export type {
   TabListSlots,
   TabListState,
 } from '@fluentui/react-tabs';
+
 export {
   Body1,
   Caption1,

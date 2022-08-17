@@ -10,7 +10,6 @@ describe('Alert', () => {
   isConformant({
     Component: Alert,
     displayName: 'Alert',
-    disabledTests: ['component-has-static-classname-exported'],
     testOptions: {
       'has-static-classnames': [
         {

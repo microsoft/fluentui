@@ -86,6 +86,25 @@ describe('Dropdown', () => {
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
       expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
+
+    it('is not visible when an empty array is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        multiple: true,
+        value: [],
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
+
+    it('is not visible when an empty string is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        value: '',
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
   });
 
   describe('open', () => {
@@ -1193,6 +1212,83 @@ describe('Dropdown', () => {
       keyDownOnItemsList('Tab');
 
       expect(triggerButtonNode).toHaveTextContent(selectedItem);
+    });
+  });
+
+  describe('allowFreeForm', () => {
+    ['Enter', 'Tab'].forEach(key => {
+      it(`selects item that starts with query prefix on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('it');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(0)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item0');
+      });
+
+      it(`highlights first item matching prefix and selects it on ${key}`, () => {
+        const items = ['item0', 'item1', 'itemA1', 'itemB1'];
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+          items,
+        });
+
+        changeSearchInput('itemA');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemA1');
+      });
+
+      it(`keeps search query value when there is no match on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('itemX');
+        expect(searchInputNode).not.toHaveAttribute('aria-activedescendant');
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('itemX');
+      });
+
+      it(`keeps search query value when when selected by arrow key on ${key}`, () => {
+        const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+          search: items => items,
+          allowFreeform: true,
+        });
+
+        changeSearchInput('item1');
+        keyDownOnSearchInput('ArrowDown');
+        expect(searchInputNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(2)),
+        );
+        keyDownOnSearchInput(key);
+        expect(searchInputNode).toHaveValue('item2');
+      });
+      return true;
+    });
+
+    it('selects item that starts with query prefix when user clicks on toggle', () => {
+      const { clickOnToggleIndicator, changeSearchInput, searchInputNode } = renderDropdown({
+        search: items => items,
+        allowFreeform: true,
+      });
+
+      changeSearchInput('it');
+      expect(searchInputNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(0)));
+      clickOnToggleIndicator();
+      expect(searchInputNode).toHaveValue('item0');
     });
   });
 

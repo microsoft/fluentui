@@ -76,7 +76,7 @@ const useInputStyles = makeStyles({
       },
       [`& ~ .${checkboxClassNames.indicator}`]: {
         backgroundColor: tokens.colorCompoundBrandBackground,
-        color: tokens.colorNeutralForegroundOnBrand,
+        color: tokens.colorNeutralForegroundInverted,
         ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
       },
 

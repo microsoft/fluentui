@@ -21,7 +21,6 @@ import {
   shouldWrapFocus,
   warnDeprecations,
   portalContainsElement,
-  getWindow,
   findScrollableParent,
   createMergedRef,
 } from '@fluentui/utilities';
@@ -147,8 +146,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _shouldRaiseClicksOnEnter: boolean;
   private _shouldRaiseClicksOnSpace: boolean;
 
-  private _windowElement: Window | undefined;
-
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
     return _outerZones.size;
@@ -201,7 +198,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     _allInstances[this._id] = this;
 
     if (root) {
-      this._windowElement = getWindow(root);
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== this._getDocument().body && parentElement.nodeType === 1) {
@@ -215,9 +211,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       if (!this._isInnerZone) {
         _outerZones.add(this);
 
-        if (this._windowElement && _outerZones.size === 1) {
-          this._windowElement.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
-        }
+        this._root.current && this._root.current.addEventListener('keydown', FocusZone._onKeyDownCapture, true);
       }
 
       this._root.current && this._root.current.addEventListener('blur', this._onBlur, true);
@@ -282,10 +276,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
-      // If this is the last outer zone, remove the keydown listener.
-      if (this._windowElement && _outerZones.size === 0) {
-        this._windowElement.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
-      }
+      this._root.current && this._root.current.removeEventListener('keydown', FocusZone._onKeyDownCapture, true);
     }
 
     if (this._root.current) {

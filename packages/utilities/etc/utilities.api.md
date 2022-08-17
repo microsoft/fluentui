@@ -301,6 +301,12 @@ export const FocusRects: React_2.FunctionComponent<{
     rootRef?: React_2.RefObject<HTMLElement>;
 }>;
 
+// @public (undocumented)
+export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
+
+// @public (undocumented)
+export const FocusRectsProvider: React_2.Provider<IFocusRectsContext>;
+
 // @public
 export function format(s: string, ...values: any[]): string;
 
@@ -508,6 +514,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
+    children?: React_2.ReactNode;
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 
@@ -590,6 +597,11 @@ export interface IFitContentToBoundsOptions {
     maxScale?: number;
     mode: FitMode;
 }
+
+// @public (undocumented)
+export type IFocusRectsContext = {
+    providerRef?: React_2.RefObject<HTMLElement>;
+};
 
 // @public
 export const iframeProperties: Record<string, number>;
@@ -724,6 +736,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(index: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -735,6 +749,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal?(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1042,6 +1058,9 @@ export type RefObject<T> = {
 };
 
 // @public
+export function removeDirectionalKeyCode(which: number): void;
+
+// @public
 export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
@@ -1097,6 +1116,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -1107,6 +1128,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1150,7 +1173,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, providerElem?: Element): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;

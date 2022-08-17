@@ -1,5 +1,5 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
   "extends": "./api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/packages/react-components/<unscopedPackageName>/src/index.d.ts"
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/packages/react-components/<unscopedPackageName>/src/index.d.ts"
 }

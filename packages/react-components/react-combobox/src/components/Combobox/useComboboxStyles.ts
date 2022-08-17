@@ -51,12 +51,22 @@ const useStyles = makeStyles({
       transitionProperty: 'transform',
       transitionDuration: tokens.durationUltraFast,
       transitionDelay: tokens.curveAccelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
       transitionDuration: tokens.durationNormal,
       transitionDelay: tokens.curveDecelerateMid,
+
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        transitionDuration: '0.01ms',
+        transitionDelay: '0.01ms',
+      },
     },
     ':focus-within:active::after': {
       borderBottomColor: tokens.colorCompoundBrandStrokePressed,
@@ -64,6 +74,10 @@ const useStyles = makeStyles({
   },
 
   listbox: {},
+
+  listboxCollapsed: {
+    display: 'none',
+  },
 
   // size variants
   small: {
@@ -160,7 +174,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, size } = state;
+  const { appearance, open, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -172,7 +186,12 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles[size],
     state.root.className,
   );
-  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
+  state.listbox.className = mergeClasses(
+    comboboxClassNames.listbox,
+    styles.listbox,
+    !open && styles.listboxCollapsed,
+    state.listbox.className,
+  );
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,

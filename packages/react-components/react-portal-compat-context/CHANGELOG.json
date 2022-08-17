@@ -2,6 +2,39 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Wed, 03 Aug 2022 16:03:55 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "30737a497e7787fe8b4efddeadb4a261ba19933f",
+            "comment": "refactor(scripts): replace isCompatibilityPackage with new --module build flag"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "6731ada047afe1d79d2765d1464cfa9acb90bee8",
+            "comment": "chore: Explicitly enable AMD lint-imports rule"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jul 2022 18:27:27 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.1",
       "version": "9.0.1",

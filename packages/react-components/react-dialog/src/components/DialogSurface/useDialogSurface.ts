@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
-import { useDialogContext_unstable } from '../../contexts/dialogContext';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import type { DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import { useDialogContext_unstable } from '../../contexts';
+import { isEscapeKeyDismiss } from '../../utils';
 
 /**
  * Create the state required to render DialogSurface.
@@ -22,6 +22,8 @@ export const useDialogSurface_unstable = (
   const { as = 'div' } = props;
 
   const contentRef = useDialogContext_unstable(ctx => ctx.contentRef);
+  const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleID);
+  const dialogBodyID = useDialogContext_unstable(ctx => ctx.dialogBodyID);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
 
   const { modalAttributes } = useModalAttributes({ trapFocus: modalType !== 'non-modal' });
@@ -40,6 +42,10 @@ export const useDialogSurface_unstable = (
     },
     root: getNativeElementProps(as, {
       ref: useMergedRefs(ref, contentRef),
+      'aria-modal': modalType !== 'non-modal',
+      'aria-describedby': dialogBodyID,
+      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
       ...props,
       ...modalAttributes,
       onKeyDown: handleRootKeyDown,

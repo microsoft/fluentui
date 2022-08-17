@@ -895,7 +895,8 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M218.75,110 H612.5 V85.21739130434783"
+          d="M106.25,110 H1118.75 M612.5,110
+    V85.21739130434783"
         />
         <path
           className=
@@ -915,16 +916,6 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M481.25,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
@@ -935,27 +926,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M743.75,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M743.75,205.2173913043478 V230 H631.25 H856.25"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -1868,7 +1839,8 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M218.75,110 H612.5 V85.21739130434783"
+          d="M106.25,110 H1118.75 M612.5,110
+    V85.21739130434783"
         />
         <path
           className=
@@ -1888,16 +1860,6 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M481.25,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
@@ -1908,27 +1870,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M743.75,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M743.75,205.2173913043478 V230 H631.25 H856.25"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -2841,7 +2783,8 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M218.75,110 H612.5 V85.21739130434783"
+          d="M106.25,110 H1118.75 M612.5,110
+    V85.21739130434783"
         />
         <path
           className=
@@ -2861,16 +2804,6 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M481.25,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M481.25,205.2173913043478 V230 H368.75 H593.75"
         />
         <path
@@ -2881,27 +2814,7 @@ subText sub Parent info parentId: 13
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M743.75,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
           d="M743.75,205.2173913043478 V230 H631.25 H856.25"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M1006.25,110 H612.5 V85.21739130434783"
         />
         <path
           className=
@@ -3256,37 +3169,8 @@ subText Subtext val is subtext Parent info parentId: 0
                 stroke-width: 2px;
                 stroke: #A1A1A1;
               }
-          d="M218.75,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M481.25,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M743.75,110 H612.5 V85.21739130434783"
-        />
-        <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
-          d="M1006.25,110 H612.5 V85.21739130434783"
+          d="M106.25,110 H1118.75 M612.5,110
+    V85.21739130434783"
         />
       </g>
     </svg>

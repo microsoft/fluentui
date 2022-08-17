@@ -15,7 +15,6 @@ describe('Checkbox', () => {
   isConformant({
     Component: Checkbox,
     displayName: 'Checkbox',
-    disabledTests: ['component-has-static-classname-exported'],
     primarySlot: 'input',
     testOptions: {
       'has-static-classnames': [

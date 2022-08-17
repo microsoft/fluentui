@@ -20,19 +20,11 @@ import { OptionValue } from '../../utils/OptionCollection.types';
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
-  const { getCount, getOptionAtIndex, getOptionById, getIndexOfId } = optionCollection;
+  const { getCount, getOptionAtIndex, getIndexOfId } = optionCollection;
 
   const { selectedOptions, selectOption } = useSelection(props);
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
-
-  const onOptionClick = (event: React.MouseEvent<HTMLElement>, option: OptionValue) => {
-    // clicked option should always become active option
-    setActiveOption(getOptionById(option.id));
-
-    // handle selection change
-    selectOption(event, option.value);
-  };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
@@ -43,7 +35,7 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     switch (action) {
       case 'Select':
       case 'CloseSelect':
-        activeOption && selectOption(event, activeOption.value);
+        activeOption && selectOption(event, activeOption);
         break;
       default:
         newIndex = getIndexFromAction(action, activeIndex, maxIndex);
@@ -59,20 +51,23 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
-  const comboboxOnOptionClick = useContextSelector(ComboboxContext, ctx => ctx.onOptionClick);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
+  const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
+  const comboboxSetActiveOption = useContextSelector(ComboboxContext, ctx => ctx.setActiveOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
     ? {
         activeOption: comboboxActiveOption,
-        onOptionClick: comboboxOnOptionClick,
         selectedOptions: comboboxSelectedOptions,
+        selectOption: comboboxSelectOption,
+        setActiveOption: comboboxSetActiveOption,
       }
     : {
         activeOption,
-        onOptionClick,
         selectedOptions,
+        selectOption,
+        setActiveOption,
       };
 
   return {

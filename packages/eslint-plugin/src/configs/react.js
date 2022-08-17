@@ -17,7 +17,14 @@ const v9PackageDeps = Object.keys(
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
-  rules: {},
+  rules: {
+    '@fluentui/no-context-default-value': [
+      'error',
+      {
+        imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
+      },
+    ],
+  },
   overrides: [
     // Enable rules requiring type info only for appropriate files/circumstances
     ...configHelpers.getTypeInfoRuleOverrides(typeAwareRules),
@@ -25,7 +32,7 @@ module.exports = {
       files: '**/*.stories.tsx',
       rules: {
         '@fluentui/no-restricted-imports': [
-          'warn',
+          'error',
           {
             paths: [
               {

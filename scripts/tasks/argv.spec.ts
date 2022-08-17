@@ -1,5 +1,3 @@
-/// <reference types="jest" />
-
 import { argv } from 'just-scripts';
 import { Arguments } from 'yargs';
 

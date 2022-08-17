@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { resolveShorthand, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
-import { DialogRequestOpenChangeData } from '../../contexts/dialogContext';
+import {
+  resolveShorthand,
+  useControllableState,
+  useEventCallback,
+  useId,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented } from '../../utils/normalizeDefaultPrevented';
-import { normalizeSetStateAction } from '../../utils/normalizeSetStateAction';
-import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
+import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableScroll } from '../../utils';
+
+import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
+import { useDialogContext_unstable } from '../../contexts/dialogContext';
 
 /**
  * Create the state required to render Dialog.
@@ -17,7 +22,7 @@ import { isEscapeKeyDismiss } from '../../utils/isEscapeKeyDown';
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, overlay, modalType = 'modal', onOpenChange } = props;
+  const { children, backdrop, modalType = 'modal', onOpenChange } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -27,33 +32,23 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
-  const overlayShorthand = resolveShorthand(overlay, {
+  const backdropShorthand = resolveShorthand(backdrop, {
     required: modalType !== 'non-modal',
     defaultProps: {
       'aria-hidden': 'true',
     },
   });
 
-  const requestOpenChange = useEventCallback((data: DialogRequestOpenChangeData) => {
-    const getNextOpen = normalizeSetStateAction(data.open);
+  const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     const isDefaultPrevented = normalizeDefaultPrevented(data.event);
-
-    if (onOpenChange) {
-      onOpenChange(data.event, {
-        type: data.type,
-        open: getNextOpen(open),
-        event: data.event,
-      } as DialogOpenChangeData);
-    }
+    onOpenChange?.(data.event, data);
 
     // if user prevents default then do not change state value
+    // otherwise updates state value and trigger reference to the element that caused the opening
     if (!isDefaultPrevented()) {
-      // updates trigger reference
-      (triggerRef as React.MutableRefObject<HTMLElement | null>).current = isOpening(open, getNextOpen)
-        ? (data.event.currentTarget as HTMLElement)
-        : null;
-      // updates value
-      setOpen(getNextOpen);
+      (triggerRef as React.MutableRefObject<HTMLElement | null>).current =
+        !open && data.open ? (data.event.currentTarget as HTMLElement) : null;
+      setOpen(data.open);
     }
   });
 
@@ -63,20 +58,31 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
   });
 
-  const handleOverLayClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    overlayShorthand?.onClick?.(event);
-    if (isOverlayClickDismiss(event, modalType)) {
-      requestOpenChange({ event, open: false, type: 'overlayClick' });
+  const { targetDocument } = useFluent_unstable();
+  const disableScroll = useDisableScroll();
+  const isBodyScrollLocked =
+    useDialogContext_unstable(ctx => ctx.isBodyScrollLocked) || Boolean(open && modalType !== 'non-modal');
+
+  useIsomorphicLayoutEffect(() => {
+    if (isBodyScrollLocked && targetDocument) {
+      return disableScroll(targetDocument.body);
+    }
+  }, [targetDocument, isBodyScrollLocked, disableScroll]);
+
+  const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    backdropShorthand?.onClick?.(event);
+    if (isBackdropClickDismiss(event, modalType)) {
+      requestOpenChange({ event, open: false, type: 'backdropClick' });
     }
   });
 
   return {
     components: {
-      overlay: 'div',
+      backdrop: 'div',
     },
-    overlay: overlayShorthand && {
-      ...overlayShorthand,
-      onClick: handleOverLayClick,
+    backdrop: backdropShorthand && {
+      ...backdropShorthand,
+      onClick: handleBackdropClick,
     },
     open,
     modalType,
@@ -84,7 +90,10 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     triggerRef,
     contentRef,
+    isBodyScrollLocked,
     requestOpenChange,
+    dialogBodyID: useId('dialog-body-'),
+    dialogTitleID: useId('dialog-title-'),
   };
 };
 
@@ -118,18 +127,11 @@ function childrenToTriggerAndContent(
 }
 
 /**
- * Checks is click event is a proper Overlay click dismiss
+ * Checks is click event is a proper backdrop click dismiss
  */
-function isOverlayClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
+function isBackdropClickDismiss(event: React.MouseEvent, type: DialogModalType): boolean {
   const isDefaultPrevented = normalizeDefaultPrevented(event);
   return type === 'modal' && !isDefaultPrevented();
-}
-
-/**
- * Checks if dialog is opening
- */
-function isOpening(current: boolean, next: Extract<React.SetStateAction<boolean>, Function>) {
-  return !current && next(current) === true;
 }
 
 /**
