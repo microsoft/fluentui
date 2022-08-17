@@ -102,10 +102,10 @@ export const SingleSelect = () => {
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),
-      onClick: () => selection.toggleRowSelect(row.rowId),
+      onClick: () => selection.toggleRow(row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRowSelect(row.rowId);
+          selection.toggleRow(row.rowId);
         }
       },
     }),

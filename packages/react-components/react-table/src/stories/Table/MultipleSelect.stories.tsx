@@ -97,16 +97,16 @@ const columns: ColumnDefinition<Item>[] = [
 export const MultipleSelect = () => {
   const {
     rows,
-    selection: { allRowsSelected, someRowsSelected, toggleSelectAllRows },
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
   } = useTable({
     columns,
     items,
     rowEnhancer: (row, { selection }) => ({
       ...row,
-      onClick: () => selection.toggleRowSelect(row.rowId),
+      onClick: () => selection.toggleRow(row.rowId),
       onKeyDown: (e: React.KeyboardEvent) => {
         if (e.key === ' ' || e.key === 'Enter') {
-          selection.toggleRowSelect(row.rowId);
+          selection.toggleRow(row.rowId);
         }
       },
       selected: selection.isRowSelected(row.rowId),
@@ -122,7 +122,7 @@ export const MultipleSelect = () => {
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleSelectAllRows}
+            onClick={toggleAllRows}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
