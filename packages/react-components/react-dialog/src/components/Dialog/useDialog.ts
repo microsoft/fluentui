@@ -60,14 +60,14 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
 
   const { targetDocument } = useFluent_unstable();
   const disableScroll = useDisableScroll();
-  const isBodyScrollLock =
-    useDialogContext_unstable(ctx => ctx.isBodyScrollLock) || Boolean(open && modalType !== 'non-modal');
+  const isBodyScrollLocked =
+    useDialogContext_unstable(ctx => ctx.isBodyScrollLocked) || Boolean(open && modalType !== 'non-modal');
 
   useIsomorphicLayoutEffect(() => {
-    if (isBodyScrollLock && targetDocument) {
+    if (isBodyScrollLocked && targetDocument) {
       return disableScroll(targetDocument.body);
     }
-  }, [targetDocument, isBodyScrollLock, disableScroll]);
+  }, [targetDocument, isBodyScrollLocked, disableScroll]);
 
   const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     backdropShorthand?.onClick?.(event);
@@ -90,7 +90,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     triggerRef,
     contentRef,
-    isBodyScrollLock,
+    isBodyScrollLocked,
     requestOpenChange,
     dialogBodyID: useId('dialog-body-'),
     dialogTitleID: useId('dialog-title-'),

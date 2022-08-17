@@ -9,7 +9,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     contentRef,
     dialogBodyID,
     dialogTitleID,
-    isBodyScrollLock,
+    isBodyScrollLocked,
     requestOpenChange,
   } = state;
 
@@ -24,7 +24,7 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
     contentRef,
     dialogBodyID,
     dialogTitleID,
-    isBodyScrollLock,
+    isBodyScrollLocked,
     requestOpenChange,
   };
 
