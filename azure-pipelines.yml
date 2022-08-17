@@ -45,7 +45,7 @@ jobs:
           fi
         displayName: check formatting
 
-      # Danger.js checks for Fluent UI N*
+      ## Danger.js checks for Fluent UI N*
       - script: |
           yarn danger ci
         displayName: danger
