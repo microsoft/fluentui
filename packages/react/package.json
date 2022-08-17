@@ -69,41 +69,8 @@
     "./dist/sass/References": {
       "sass": "./dist/sass/_References.scss"
     },
-    "./dist/sass/common": {
-      "sass": "./dist/sass/_common.scss"
-    },
-    "./dist/sass/constants": {
-      "sass": "./dist/sass/_constants.scss"
-    },
-    "./dist/sass/effects": {
-      "sass": "./dist/sass/_effects.scss"
-    },
-    "./dist/sass/focusBorder": {
-      "sass": "./dist/sass/_focusBorder.scss"
-    },
-    "./dist/sass/highContrast": {
-      "sass": "./dist/sass/_highContrast.scss"
-    },
-    "./dist/sass/i18n": {
-      "sass": "./dist/sass/_i18n.scss"
-    },
-    "./dist/sass/legacyThemePalette": {
-      "sass": "./dist/sass/_legacyThemePalette.scss"
-    },
-    "./dist/sass/semanticSlots": {
-      "sass": "./dist/sass/_semanticSlots.scss"
-    },
-    "./dist/sass/themeCssVariables": {
-      "sass": "./dist/sass/_themeCssVariables.scss"
-    },
-    "./dist/sass/themeOverrides": {
-      "sass": "./dist/sass/_themeOverrides.scss"
-    },
-    "./dist/sass/themeVariables": {
-      "sass": "./dist/sass/_themeVariables.scss"
-    },
-    "./dist/sass/ThemingSass": {
-      "sass": "./dist/sass/ThemingSass.scss"
+    "./dist/sass/*": {
+      "sass": "./dist/sass/*"
     },
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
