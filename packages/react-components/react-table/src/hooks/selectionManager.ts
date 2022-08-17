@@ -5,7 +5,7 @@ type OnSelectionChangeCallback = (selectedItems: Set<SelectionItemId>) => void;
 export interface SelectionManager {
   toggleItem(id: SelectionItemId): void;
   selectItem(id: SelectionItemId): void;
-  deSelectItem(id: SelectionItemId): void;
+  deselectItem(id: SelectionItemId): void;
   clearItems(): void;
   isSelected(id: SelectionItemId): boolean;
   toggleAllItems(itemIds: SelectionItemId[]): void;
@@ -51,7 +51,7 @@ function createMultipleSelectionManager(onSelectionChange: OnSelectionChangeCall
     onSelectionChange(new Set(selectedItems));
   };
 
-  const deSelectItem = (itemId: SelectionItemId) => {
+  const deselectItem = (itemId: SelectionItemId) => {
     selectedItems.delete(itemId);
     onSelectionChange(new Set(selectedItems));
   };
@@ -68,7 +68,7 @@ function createMultipleSelectionManager(onSelectionChange: OnSelectionChangeCall
   return {
     toggleItem,
     selectItem,
-    deSelectItem,
+    deselectItem,
     clearItems,
     isSelected,
     toggleAllItems,
@@ -97,7 +97,7 @@ function createSingleSelectionManager(onSelectionChange: OnSelectionChangeCallba
   };
 
   return {
-    deSelectItem: clearItems,
+    deselectItem: clearItems,
     selectItem,
     toggleAllItems: () => {
       if (process.env.NODE_ENV !== 'production') {

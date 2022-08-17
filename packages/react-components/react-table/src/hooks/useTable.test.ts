@@ -53,7 +53,7 @@ describe('useTable', () => {
       Object {
         "allRowsSelected": false,
         "clearRows": [Function],
-        "deSelectRow": [Function],
+        "deselectRow": [Function],
         "isRowSelected": [Function],
         "selectRow": [Function],
         "selectedRows": Array [],

@@ -36,14 +36,14 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     allRowsSelected,
     someRowsSelected,
     selectRow,
-    deSelectRow,
+    deselectRow,
   } = useSelection(selectionMode, baseItems, getRowId);
 
   const selectionState: SelectionState = React.useMemo(
     () => ({
       isRowSelected,
       clearRows,
-      deSelectRow,
+      deselectRow,
       selectRow,
       toggleAllRows,
       toggleRow,
@@ -54,7 +54,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     [
       isRowSelected,
       clearRows,
-      deSelectRow,
+      deselectRow,
       selectRow,
       toggleAllRows,
       toggleRow,

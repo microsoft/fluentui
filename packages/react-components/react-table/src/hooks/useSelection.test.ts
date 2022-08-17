@@ -27,7 +27,7 @@ describe('useSelection', () => {
         expect(Array.from(result.current.selectedRows)).toEqual(items.map((_, i) => i));
       });
 
-      it('should deSelect all rows', () => {
+      it('should deselect all rows', () => {
         const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
 
         act(() => {
@@ -84,7 +84,7 @@ describe('useSelection', () => {
       });
     });
 
-    describe('deSelectRow', () => {
+    describe('deselectRow', () => {
       it('should make row unselected', () => {
         const { result } = renderHook(() => useSelection('multiselect', items, getRowId));
 
@@ -93,7 +93,7 @@ describe('useSelection', () => {
         });
 
         act(() => {
-          result.current.deSelectRow(1);
+          result.current.deselectRow(1);
         });
 
         expect(result.current.selectedRows.size).toBe(0);
@@ -170,7 +170,7 @@ describe('useSelection', () => {
         });
 
         act(() => {
-          result.current.deSelectRow(1);
+          result.current.deselectRow(1);
         });
 
         expect(result.current.selectedRows.size).toBe(3);
@@ -261,7 +261,7 @@ describe('useSelection', () => {
       });
     });
 
-    describe('deSelectRow', () => {
+    describe('deselectRow', () => {
       it('should make row unselected', () => {
         const { result } = renderHook(() => useSelection('single', items, getRowId));
 
@@ -270,7 +270,7 @@ describe('useSelection', () => {
         });
 
         act(() => {
-          result.current.deSelectRow(1);
+          result.current.deselectRow(1);
         });
 
         expect(result.current.selectedRows.size).toBe(0);

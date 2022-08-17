@@ -37,7 +37,7 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
 
 export interface SelectionStateInternal {
   clearRows: () => void;
-  deSelectRow: (rowId: RowId) => void;
+  deselectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
   toggleAllRows: () => void;
   toggleRow: (rowId: RowId) => void;
@@ -83,7 +83,7 @@ export interface SelectionState {
   /**
    * De-selects single row
    */
-  deSelectRow: (rowId: RowId) => void;
+  deselectRow: (rowId: RowId) => void;
   /**
    * Toggle selection of all rows
    */

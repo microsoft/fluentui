@@ -31,7 +31,7 @@ export function useSelection<TItem>(
     toggleRow: selectionManager.toggleItem,
     toggleAllRows,
     clearRows: selectionManager.clearItems,
-    deSelectRow: selectionManager.deSelectItem,
+    deselectRow: selectionManager.deselectItem,
     selectRow: selectionManager.selectItem,
     isRowSelected: selectionManager.isSelected,
   };
