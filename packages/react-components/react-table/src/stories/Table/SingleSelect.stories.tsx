@@ -97,7 +97,10 @@ export const SingleSelect = () => {
   const { rows } = useTable({
     columns,
     items,
-    selectionMode: 'single',
+    selection: {
+      selectionMode: 'single',
+      defaultSelectedRows: new Set([1]),
+    },
     rowEnhancer: (row, { selection }) => ({
       ...row,
       selected: selection.isRowSelected(row.rowId),

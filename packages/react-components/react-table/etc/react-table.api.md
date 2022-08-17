@@ -349,7 +349,9 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
     // (undocumented)
     rowEnhancer?: RowEnhancer<TItem, TRowState>;
     // (undocumented)
-    selectionMode?: SelectionMode_2;
+    selection?: UseTableSelectionOptions;
+    // (undocumented)
+    sort?: UseTableSortOptions;
 }
 
 // @public

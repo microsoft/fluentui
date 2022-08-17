@@ -3,6 +3,29 @@ import { ColumnDefinition } from './types';
 import { useSort } from './useSort';
 
 describe('useSort', () => {
+  it('should set default sort column', () => {
+    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const { result } = renderHook(() =>
+      useSort(columnDefinition, jest.fn(), { sortColumn: 2, sortDirection: 'descending' }),
+    );
+
+    expect(result.current.sortColumn).toBe(2);
+    expect(result.current.sortDirection).toBe('descending');
+  });
+
+  it('should call onSortColumnChange when sort state changes', () => {
+    const onSortColumnChange = jest.fn();
+    const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];
+    const { result } = renderHook(() => useSort(columnDefinition, onSortColumnChange));
+
+    act(() => {
+      result.current.setColumnSort(3, 'descending');
+    });
+
+    expect(onSortColumnChange).toHaveBeenCalledTimes(1);
+    expect(onSortColumnChange).toHaveBeenCalledWith({ sortColumn: 3, sortDirection: 'descending' });
+  });
+
   describe('toggleColumnSort', () => {
     it('should sort a new column in ascending order', () => {
       const columnDefinition = [{ columnId: 1 }, { columnId: 2 }, { columnId: 3 }];

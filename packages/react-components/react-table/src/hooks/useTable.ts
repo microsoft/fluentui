@@ -10,12 +10,17 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     items: baseItems,
     columns,
     getRowId: getUserRowId = () => undefined,
-    selectionMode = 'multiselect',
+    selection: { selectionMode = 'multiselect', onRowSelectionChange, defaultSelectedRows } = {},
+    sort: { defaultSortColumn, onSortColumnChange } = {},
     rowEnhancer = (row: RowState<TItem>) => row as TRowState,
   } = options;
 
   const getRowId = React.useCallback((item: TItem, index: number) => getUserRowId(item) ?? index, [getUserRowId]);
-  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort(columns);
+  const { sortColumn, sortDirection, toggleColumnSort, setColumnSort, getSortDirection, sort } = useSort(
+    columns,
+    onSortColumnChange,
+    defaultSortColumn,
+  );
   const sortState: SortState = React.useMemo(
     () => ({
       sortColumn,
@@ -37,7 +42,7 @@ export function useTable<TItem, TRowState extends RowState<TItem> = RowState<TIt
     someRowsSelected,
     selectRow,
     deselectRow,
-  } = useSelection(selectionMode, baseItems, getRowId);
+  } = useSelection({ selectionMode, items: baseItems, getRowId, onRowSelectionChange, defaultSelectedRows });
 
   const selectionState: SelectionState = React.useMemo(
     () => ({

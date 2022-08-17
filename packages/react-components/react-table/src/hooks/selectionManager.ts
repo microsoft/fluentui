@@ -9,21 +9,30 @@ export interface SelectionManager {
   clearItems(): void;
   isSelected(id: SelectionItemId): boolean;
   toggleAllItems(itemIds: SelectionItemId[]): void;
+  selectedItems(): Set<SelectionItemId>;
 }
 
 export type SelectionItemId = string | number;
 
-export function createSelectionManager(
-  mode: SelectionMode,
-  onSelectionChange: OnSelectionChangeCallback = () => undefined,
-): SelectionManager {
-  const managerFactory = mode === 'multiselect' ? createMultipleSelectionManager : createSingleSelectionManager;
-
-  return managerFactory(onSelectionChange);
+interface CreateSelectionManagerOptions {
+  mode: SelectionMode;
+  onSelectionChange: OnSelectionChangeCallback;
+  defaultSelectedItems?: Set<SelectionItemId>;
 }
 
-function createMultipleSelectionManager(onSelectionChange: OnSelectionChangeCallback): SelectionManager {
-  const selectedItems = new Set<SelectionItemId>();
+export function createSelectionManager(options: CreateSelectionManagerOptions): SelectionManager {
+  const { mode, onSelectionChange = () => undefined, defaultSelectedItems } = options;
+
+  const managerFactory = mode === 'multiselect' ? createMultipleSelectionManager : createSingleSelectionManager;
+
+  return managerFactory(onSelectionChange, defaultSelectedItems);
+}
+
+function createMultipleSelectionManager(
+  onSelectionChange: OnSelectionChangeCallback,
+  defaultSelectedItems?: Set<SelectionItemId>,
+): SelectionManager {
+  const selectedItems = new Set<SelectionItemId>(defaultSelectedItems);
   const toggleAllItems = (itemIds: SelectionItemId[]) => {
     const allItemsSelected = itemIds.every(itemId => selectedItems.has(itemId));
 
@@ -72,11 +81,24 @@ function createMultipleSelectionManager(onSelectionChange: OnSelectionChangeCall
     clearItems,
     isSelected,
     toggleAllItems,
+    selectedItems: () => selectedItems,
   };
 }
 
-function createSingleSelectionManager(onSelectionChange: OnSelectionChangeCallback): SelectionManager {
+function createSingleSelectionManager(
+  onSelectionChange: OnSelectionChangeCallback,
+  defaultSelectedItems?: Set<SelectionItemId>,
+): SelectionManager {
   let selectedItem: SelectionItemId | undefined = undefined;
+
+  if (defaultSelectedItems && defaultSelectedItems.size) {
+    if (process.env.NODE_ENV !== 'production' && defaultSelectedItems.size > 1) {
+      throw new Error('[react-table]: `defaultSelectedItems` should not have more than 1 element');
+    }
+
+    selectedItem = Array.from(defaultSelectedItems)[0];
+  }
+
   const toggleItem = (itemId: SelectionItemId) => {
     selectedItem = itemId;
     onSelectionChange(new Set([selectedItem]));
@@ -109,5 +131,6 @@ function createSingleSelectionManager(onSelectionChange: OnSelectionChangeCallba
     toggleItem,
     clearItems,
     isSelected,
+    selectedItems: () => new Set<SelectionItemId>(selectedItem ? [selectedItem] : []),
   };
 }

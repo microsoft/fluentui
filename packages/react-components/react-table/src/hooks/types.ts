@@ -15,6 +15,11 @@ export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TIte
   state: { selection: SelectionState; sort: SortState },
 ) => TRowState;
 
+export interface SortColumnState {
+  sortDirection: SortDirection;
+  sortColumn: ColumnId | undefined;
+}
+
 export interface SortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
@@ -27,12 +32,39 @@ export interface SortStateInternal<TItem> {
   sort: (items: TItem[]) => TItem[];
 }
 
+export interface UseTableSelectionOptions {
+  selectionMode?: SelectionMode;
+  /**
+   * Sets the default selected rows on mount
+   */
+  defaultSelectedRows?: Set<RowId>;
+  /**
+   * Called whenever the selected rows changes, can be useful
+   * to forward to higher state in userland
+   */
+  onRowSelectionChange?: (selectedRows: Set<RowId>) => void;
+}
+
+export interface UseTableSortOptions {
+  /**
+   * Sets the default sort state on mount
+   */
+  defaultSortColumn?: SortColumnState;
+
+  /**
+   * Called whenever the sort state changes, can be useful to forward to higher
+   * state in userland.
+   */
+  onSortColumnChange?: (state: SortColumnState) => void;
+}
+
 export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
-  selectionMode?: SelectionMode;
   getRowId?: (item: TItem) => RowId;
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
+  selection?: UseTableSelectionOptions;
+  sort?: UseTableSortOptions;
 }
 
 export interface SelectionStateInternal {
