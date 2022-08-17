@@ -167,7 +167,7 @@ describe('Legends - basic props', () => {
   });
 
   it('Should not mount Overflow when empty', () => {
-    wrapper = mount(<Legends legends={legends} {...overflowProps} overflowText={'OverFlow Items'} />);
+    wrapper = mount(<Legends legends={legends} />);
     const overflowBtn = wrapper.getDOMNode().querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
     expect(overflowBtn!.length).toBe(0);
   });
