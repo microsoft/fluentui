@@ -3,36 +3,16 @@ import { Alert } from '@fluentui/react-alert';
 
 export const Intent = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-    <Alert
-      intent="success"
-      action={{
-        children: 'Undo',
-      }}
-    >
+    <Alert intent="success" action="Undo">
       Success text
     </Alert>
-    <Alert
-      intent="error"
-      action={{
-        children: 'Retry',
-      }}
-    >
+    <Alert intent="error" action="Retry">
       Error text
     </Alert>
-    <Alert
-      intent="warning"
-      action={{
-        children: 'Review',
-      }}
-    >
+    <Alert intent="warning" action="Review">
       Warning text
     </Alert>
-    <Alert
-      intent="info"
-      action={{
-        children: 'Dismiss',
-      }}
-    >
+    <Alert intent="info" action="Dismiss">
       Info text
     </Alert>
   </div>

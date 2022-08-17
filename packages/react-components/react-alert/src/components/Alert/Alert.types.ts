@@ -41,4 +41,6 @@ export type AlertProps = ComponentProps<AlertSlots> & {
 /**
  * State used in rendering Alert
  */
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'appearance' | 'intent'>;
+export type AlertState = ComponentState<AlertSlots> &
+  Pick<AlertProps, 'intent'> &
+  Required<Pick<AlertProps, 'appearance'>>;

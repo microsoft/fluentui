@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
   },
-  invertedRoot: {
+  inverted: {
     color: tokens.colorNeutralForegroundInverted,
     backgroundColor: tokens.colorNeutralBackgroundInverted,
   },
@@ -65,13 +65,12 @@ const useIntentIconStyles = makeStyles({
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const styles = useStyles();
-  const appearance = state.appearance || 'primary';
   const intentIconStyles = useIntentIconStyles();
 
   state.root.className = mergeClasses(
     alertClassNames.root,
     styles.root,
-    appearance !== 'primary' && styles.invertedRoot,
+    state.appearance !== 'primary' && styles.inverted,
     state.root.className,
   );
 

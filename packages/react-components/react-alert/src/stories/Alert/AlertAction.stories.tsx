@@ -5,12 +5,7 @@ import { Alert } from '@fluentui/react-alert';
 
 export const Action = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-    <Alert
-      intent="success"
-      action={{
-        children: 'Undo',
-      }}
-    >
+    <Alert intent="success" action="Undo">
       Message sent
     </Alert>
     <Alert

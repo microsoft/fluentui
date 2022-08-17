@@ -39,6 +39,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
       break;
   }
 
+  const action = resolveShorthand(props.action, { defaultProps: { appearance: 'transparent' } });
   const avatar = resolveShorthand(props.avatar);
   let icon;
   /** Avatar prop takes precedence over the icon or intent prop */
@@ -52,7 +53,7 @@ export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>
   }
 
   return {
-    action: resolveShorthand(props.action, { defaultProps: { appearance: 'transparent' } }),
+    action,
     appearance,
     avatar,
     components: {

@@ -5,12 +5,7 @@ import { Alert } from '../../index';
 
 export const Avatar = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-    <Alert
-      action={{
-        children: 'Undo',
-      }}
-      avatar={{ name: 'Jane Doe', size: 24, color: 'dark-red' }}
-    >
+    <Alert action="Undo" avatar={{ name: 'Jane Doe', size: 24, color: 'dark-red' }}>
       sent you a message
     </Alert>
     <Alert

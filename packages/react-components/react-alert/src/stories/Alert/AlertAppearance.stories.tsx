@@ -6,40 +6,16 @@ const renderAlerts = (appearance: 'primary' | 'inverted') => (
   <div style={{ flexGrow: 1 }}>
     <Title3>{appearance}</Title3>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-      <Alert
-        appearance={appearance}
-        intent="success"
-        action={{
-          children: 'Undo',
-        }}
-      >
+      <Alert appearance={appearance} intent="success" action="Undo">
         Success text
       </Alert>
-      <Alert
-        appearance={appearance}
-        intent="error"
-        action={{
-          children: 'Retry',
-        }}
-      >
+      <Alert appearance={appearance} intent="error" action="Retry">
         Error text
       </Alert>
-      <Alert
-        appearance={appearance}
-        intent="warning"
-        action={{
-          children: 'Review',
-        }}
-      >
+      <Alert appearance={appearance} intent="warning" action="Review">
         Warning text
       </Alert>
-      <Alert
-        appearance={appearance}
-        intent="info"
-        action={{
-          children: 'Dismiss',
-        }}
-      >
+      <Alert appearance={appearance} intent="info" action="Dismiss">
         Info text
       </Alert>
     </div>
@@ -57,7 +33,7 @@ Appearance.storyName = 'Appearance';
 Appearance.parameters = {
   docs: {
     description: {
-      story: "An alert's styles can be inverted by setting the `appearance` prop to `inverted`",
+      story: 'An alert can render with `primary` or `inverted` styles by passing that value to the `appearance` prop.',
     },
   },
 };
