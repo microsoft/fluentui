@@ -49,10 +49,12 @@ async function scheduleScreenerBuild(
     }),
   });
 
-  let prNumber = process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER;
+  if (response.status === 200) {
+    console.log('Skipping screener check');
+  }
 
   if (response.status !== 201 && response.status !== 200) {
-    throw new Error(`[PR #${prNumber}]: Call to proxy failed: ${response.status}`);
+    throw new Error(`Call to proxy failed: ${response.status}`);
   }
   //conclusion of screener run triggered by the proxy
   return response.json().then(conclusion => conclusion);
@@ -63,8 +65,6 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
-
-  let prNumber = process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER;
   // remove prefix if exists
   if (branchName.indexOf('refs/heads/') === 0) {
     branchName = branchName.replace('refs/heads/', '');
@@ -80,8 +80,8 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   });
 
   if (screenerRun.conclusion === 'skipped') {
-    console.log(`[PR #${prNumber}]: Screener test skipped.`);
+    console.log('Screener test skipped.');
   } else if (screenerRun.conclusion === 'in_progress') {
-    console.log(`[PR #${prNumber}]: Screener test in progress.`);
+    console.log('Screener test in progress.');
   }
 }
