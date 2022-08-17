@@ -170,6 +170,7 @@ export type ColorTokens = {
     colorNeutralForegroundInvertedPressed: string;
     colorNeutralForegroundInvertedSelected: string;
     colorNeutralForegroundOnBrand: string;
+    colorNeutralForegroundInvertedStatic: string;
     colorNeutralForegroundInvertedLink: string;
     colorNeutralForegroundInvertedLinkHover: string;
     colorNeutralForegroundInvertedLinkPressed: string;
@@ -202,6 +203,7 @@ export type ColorTokens = {
     colorNeutralBackground5Pressed: string;
     colorNeutralBackground5Selected: string;
     colorNeutralBackground6: string;
+    colorNeutralBackgroundStatic: string;
     colorNeutralBackgroundInverted: string;
     colorSubtleBackground: string;
     colorSubtleBackgroundHover: string;
@@ -336,6 +338,7 @@ export type FontWeightTokens = {
     fontWeightRegular: number;
     fontWeightMedium: number;
     fontWeightSemibold: number;
+    fontWeightBold: number;
 };
 
 // @public (undocumented)
@@ -444,6 +447,7 @@ export type TypographyStyles = {
     body1: TypographyStyle;
     body1Strong: TypographyStyle;
     body1Stronger: TypographyStyle;
+    body2: TypographyStyle;
     caption1: TypographyStyle;
     caption1Strong: TypographyStyle;
     caption1Stronger: TypographyStyle;

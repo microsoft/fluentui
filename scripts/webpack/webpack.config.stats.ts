@@ -1,4 +1,4 @@
-import CleanWebpackPlugin from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
@@ -64,10 +64,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     optimization: {
       minimizer: [
         new TerserWebpackPlugin({
-          cache: true,
           parallel: true,
-          sourceMap: false,
-
           terserOptions: {
             mangle: false,
             output: {
@@ -81,10 +78,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     },
   }),
   plugins: [
-    new CleanWebpackPlugin([paths.base('stats')], {
-      root: paths.base(),
-      verbose: false, // do not log
-    }),
+    new CleanWebpackPlugin(),
     new IgnoreNotFoundExportPlugin(),
     // new BundleAnalyzerPlugin({
     //   reportFilename: `${name}.html`,
