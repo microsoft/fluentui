@@ -37,7 +37,7 @@ describe('useSelection', () => {
       });
 
       expect(onRowSelectionChange).toHaveBeenCalledTimes(1);
-      expect(onRowSelectionChange).toHaveBeenCalledWith(new Set([0, 1, 2, 3]));
+      expect(onRowSelectionChange).toHaveBeenCalledWith([0, 1, 2, 3]);
     });
 
     describe('toggleAllRows', () => {
@@ -243,7 +243,7 @@ describe('useSelection', () => {
       });
 
       expect(onRowSelectionChange).toHaveBeenCalledTimes(1);
-      expect(onRowSelectionChange).toHaveBeenCalledWith(new Set([1]));
+      expect(onRowSelectionChange).toHaveBeenCalledWith([1]);
     });
 
     it('should throw error when defaultSelectedRows has a length greater than 1', () => {
