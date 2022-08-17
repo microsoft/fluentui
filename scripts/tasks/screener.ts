@@ -11,7 +11,8 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  console.log('screener config for run');
+  let prNumber = process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER;
+  console.log(`[PR #${prNumber}]: screener config for run`);
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
