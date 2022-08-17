@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Bumps keyborg to 1.1.1 and removes deep import for KeyborgCallback",
+  "comment": "fix: Bumps tabster to 2.1.2 and removes deep import for KeyborgCallback",
   "packageName": "@fluentui/react-tabster",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
