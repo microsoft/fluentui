@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { AvatarGroupContext } from '../../contexts/AvatarGroupContext';
+import { useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
 import { resolveShorthand, useControllableState } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import type { AvatarGroupPopoverProps, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
 import { Tooltip } from '@fluentui/react-tooltip';
 
@@ -17,8 +16,8 @@ import { Tooltip } from '@fluentui/react-tooltip';
  * @param props - props from this instance of AvatarGroupPopover
  */
 export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): AvatarGroupPopoverState => {
-  const size = useContextSelector(AvatarGroupContext, ctx => ctx.size) ?? defaultAvatarGroupSize;
-  const layout = useContextSelector(AvatarGroupContext, ctx => ctx.layout);
+  const size = useAvatarGroupContext_unstable(ctx => ctx.size) ?? defaultAvatarGroupSize;
+  const layout = useAvatarGroupContext_unstable(ctx => ctx.layout);
   const {
     indicator = size < 24 ? 'icon' : 'count',
     count = React.Children.count(props.children),

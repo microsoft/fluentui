@@ -15,6 +15,7 @@ export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) 
     requestOpenChange() {
       /* noop */
     },
+    isBodyScrollLocked: false,
     ...options,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

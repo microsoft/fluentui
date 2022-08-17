@@ -38,15 +38,16 @@ export function useSort<TItem>(columns: ColumnDefinition<TItem>[]): SortStateInt
       return sortColumnDef.compare(a, b) * mod;
     });
 
+  const getSortDirection: SortStateInternal<TItem>['getSortDirection'] = (columnId: ColumnId) => {
+    return sortColumn === columnId ? sortDirection : undefined;
+  };
+
   return {
     sortColumn,
     sortDirection,
     sort,
     setColumnSort,
     toggleColumnSort,
-    headerSortProps: (columnId: ColumnId) => ({
-      sortDirection: sortColumn === columnId ? sortDirection : undefined,
-      onClick: () => toggleColumnSort(columnId),
-    }),
+    getSortDirection,
   };
 }

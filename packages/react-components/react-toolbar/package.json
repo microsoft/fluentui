@@ -15,6 +15,8 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "yarn cypress run --component",
+    "e2e:local": "yarn cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
