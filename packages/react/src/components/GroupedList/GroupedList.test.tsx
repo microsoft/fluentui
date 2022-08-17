@@ -307,4 +307,35 @@ describe('GroupedList', () => {
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
     expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false, theme: getTheme() });
   });
+
+  it('re-renders when items change back to the initial items', () => {
+    const initialItems: Array<{ key: string }> = [{ key: 'initial' }];
+    const nextItems: Array<{ key: string }> = [{ key: 'changed' }];
+    const _groups: Array<IGroup> = [
+      {
+        count: 1,
+        hasMoreData: true,
+        isCollapsed: false,
+        key: 'group0',
+        name: 'group 0',
+        startIndex: 0,
+        level: 0,
+      },
+    ];
+
+    function _onRenderCell(nestingDepth: number, item: { key: string }, itemIndex: number): JSX.Element {
+      const id = `rendered-item-${item.key}`;
+      return <div id={id} />;
+    }
+
+    const wrapper = mount(<GroupedList items={initialItems} groups={_groups} onRenderCell={_onRenderCell} />);
+    expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(true);
+
+    wrapper.setProps({ items: nextItems });
+    expect(wrapper.contains(<div id="rendered-item-changed" />)).toEqual(true);
+    expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(false);
+
+    wrapper.setProps({ items: initialItems });
+    expect(wrapper.contains(<div id="rendered-item-initial" />)).toEqual(true);
+  });
 });
