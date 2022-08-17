@@ -20,8 +20,14 @@ export const typographyStyles: TypographyStyles = {
   body1Stronger: {
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightMedium,
+    fontWeight: tokens.fontWeightBold,
     lineHeight: tokens.lineHeightBase300,
+  },
+  body2: {
+    fontFamily: tokens.fontFamilyBase,
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    lineHeight: tokens.lineHeightBase400,
   },
   caption1: {
     fontFamily: tokens.fontFamilyBase,
@@ -38,7 +44,7 @@ export const typographyStyles: TypographyStyles = {
   caption1Stronger: {
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightMedium,
+    fontWeight: tokens.fontWeightBold,
     lineHeight: tokens.lineHeightBase200,
   },
   caption2: {
@@ -68,7 +74,7 @@ export const typographyStyles: TypographyStyles = {
   subtitle2Stronger: {
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightMedium,
+    fontWeight: tokens.fontWeightBold,
     lineHeight: tokens.lineHeightBase400,
   },
   title1: {
