@@ -37,12 +37,12 @@ export interface UseTableSelectionOptions {
   /**
    * Sets the default selected rows on mount
    */
-  defaultSelectedRows?: Set<RowId>;
+  defaultSelectedRows?: RowId[];
   /**
    * Called whenever the selected rows changes, can be useful
    * to forward to higher state in userland
    */
-  onRowSelectionChange?: (selectedRows: Set<RowId>) => void;
+  onRowSelectionChange?: (selectedRows: RowId[]) => void;
 }
 
 export interface UseTableSortOptions {

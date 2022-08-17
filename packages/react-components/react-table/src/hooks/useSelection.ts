@@ -8,7 +8,7 @@ interface UseSelectionOptions<TItem> {
   items: TItem[];
   getRowId: GetRowIdInternal<TItem>;
   onRowSelectionChange?: UseTableSelectionOptions['onRowSelectionChange'];
-  defaultSelectedRows?: Set<RowId>;
+  defaultSelectedRows?: RowId[];
 }
 
 export function useSelection<TItem>(options: UseSelectionOptions<TItem>): SelectionStateInternal {
@@ -20,10 +20,10 @@ export function useSelection<TItem>(options: UseSelectionOptions<TItem>): Select
     createSelectionManager({
       mode: selectionMode,
       onSelectionChange: selectedItems => {
-        onRowSelectionChange(selectedItems);
+        onRowSelectionChange(Array.from(selectedItems));
         rerender();
       },
-      defaultSelectedItems: defaultSelectedRows,
+      defaultSelectedItems: new Set(defaultSelectedRows),
     }),
   );
 
@@ -33,10 +33,10 @@ export function useSelection<TItem>(options: UseSelectionOptions<TItem>): Select
         createSelectionManager({
           mode: selectionMode,
           onSelectionChange: selectedItems => {
-            onRowSelectionChange(selectedItems);
+            onRowSelectionChange(Array.from(selectedItems));
             rerender();
           },
-          defaultSelectedItems: defaultSelectedRows,
+          defaultSelectedItems: new Set(defaultSelectedRows),
         }),
       );
     }

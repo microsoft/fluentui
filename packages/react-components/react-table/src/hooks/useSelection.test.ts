@@ -20,7 +20,7 @@ describe('useSelection', () => {
 
     it('should set default selected rows', () => {
       const { result } = renderHook(() =>
-        useSelection({ selectionMode: 'multiselect', items, getRowId, defaultSelectedRows: new Set([1, 2]) }),
+        useSelection({ selectionMode: 'multiselect', items, getRowId, defaultSelectedRows: [1, 2] }),
       );
 
       expect(Array.from(result.current.selectedRows)).toEqual([1, 2]);
@@ -226,7 +226,7 @@ describe('useSelection', () => {
   describe('single select', () => {
     it('should set default selected row', () => {
       const { result } = renderHook(() =>
-        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: new Set([1]) }),
+        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: [1] }),
       );
 
       expect(Array.from(result.current.selectedRows)).toEqual([1]);
@@ -248,7 +248,7 @@ describe('useSelection', () => {
 
     it('should throw error when defaultSelectedRows has a length greater than 1', () => {
       const { result } = renderHook(() =>
-        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: new Set([1, 2]) }),
+        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: [1, 2] }),
       );
 
       expect(result.error).toMatchInlineSnapshot(
@@ -260,7 +260,7 @@ describe('useSelection', () => {
       const nodeEnv = process.env.NODE_ENV;
       process.env.NODE_ENV = 'production';
       const { result } = renderHook(() =>
-        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: new Set([1, 2]) }),
+        useSelection({ selectionMode: 'single', items, getRowId, defaultSelectedRows: [1, 2] }),
       );
 
       expect(result.error).toBeUndefined();
