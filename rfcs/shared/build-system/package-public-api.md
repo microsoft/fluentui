@@ -6,11 +6,11 @@ _@hotell_
 
 ## Summary
 
-We wanna control which parts of API surface of our packages are being exposed to public.
+We want to control which parts of API surface of our packages are being exposed to public.
 
 ## Background
 
-During v9 pre-release phase we ran into various situation where we didn't want to propagate APIs as ready to go, thus we established `_unstable` identifiers naming suffix to mark those as unstable. To complement this approach we also introduced `*/unstable` deep imports for API's that are not STABLE. This works to some extent but fails short as its a manual work that is not checked by automation. This led to scenarios that we unintentionally exposed INTERNAL apis to public which led to Breaking changes which we wanna avoid at all costs as we follow proper semver.
+During v9 pre-release phase we ran into various situation where we didn't want to propagate APIs as ready to go, thus we established `_unstable` identifiers naming suffix to mark those as unstable. To complement this approach we also introduced `*/unstable` deep imports for API's that are not STABLE. This works to some extent but fails short as it's a manual work that is not checked by automation. This led to scenarios that we unintentionally exposed INTERNAL apis to public which led to breaking changes which we want to avoid at all costs as we follow proper semver.
 
 ## Problem statement
 
@@ -18,7 +18,7 @@ We expose all APIs of our packages as a PUBLIC from barrel files (`src/index.ts`
 
 ## Detailed Design or Proposal
 
-We wanna provide style guide/common approach how to annotate package APIs with proper ACCESS modifiers which will be processed/verified by tooling automation.
+We want to provide style guide/common approach how to annotate package APIs with proper ACCESS modifiers which will be processed/verified by tooling automation.
 
 Note that our approach will be applied only on **Type Declaration emit level** as we consider TypeScript surface as only source of truth for our package APIs.
 
@@ -118,7 +118,7 @@ It indicates that an API item has been released as a preview or for experimental
 
 - tooling will trim the declaration from a public API surface.
 - can be exposed only from `/unstable` API surface
-- tolling will NOT TRIM the declaration from `/unstable` API surface.
+- tooling will NOT TRIM the declaration from `/unstable` API surface.
 
 **Example:**
 
