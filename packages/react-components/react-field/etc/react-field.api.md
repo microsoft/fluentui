@@ -4,41 +4,494 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Input } from '@fluentui/react-input';
+import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
+import { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public
-export const Field: ForwardRefComponent<FieldProps>;
-
-// @public (undocumented)
-export const fieldClassName = "fui-Field";
-
-// @public (undocumented)
-export const fieldClassNames: SlotClassNames<FieldSlots>;
-
-// @public
-export type FieldProps = ComponentProps<FieldSlots> & {};
-
-// @public (undocumented)
-export type FieldSlots = {
-    root: Slot<'div'>;
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
+    fieldOrientation?: 'vertical' | 'horizontal';
+    status?: 'error' | 'warning' | 'success';
 };
 
 // @public
-export type FieldState = ComponentState<FieldSlots>;
+export type FieldSlots<T extends FieldComponent> = {
+    root: NonNullable<Slot<'div'>>;
+    fieldComponent: SlotComponent<T>;
+    label?: SlotComponent<typeof Label>;
+    statusText?: Slot<'span'>;
+    statusIcon?: Slot<'span'>;
+    helperText?: Slot<'span'>;
+};
 
 // @public
-export const renderField_unstable: (state: FieldState) => JSX.Element;
+export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'fieldOrientation' | 'status'> & {
+    classNames: SlotClassNames<FieldSlots<T>>;
+};
+
+// @public (undocumented)
+export const InputField: ForwardRefComponent<InputFieldProps>;
+
+// @public (undocumented)
+export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type InputFieldProps = FieldProps<typeof Input>;
 
 // @public
-export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLElement>) => FieldState;
+export const renderField_unstable: <T extends FieldComponent>(state: FieldState<T>) => JSX.Element;
 
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => FieldState;
+export const useField_unstable: <T extends FieldComponent>(props: Omit<Partial<FieldSlots<T>>, never> & ("ref" extends keyof Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactNodeArray, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> & keyof Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> ? (Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined>, keyof Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined> & "ref"> : Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactNodeArray, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactNodeArray, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactNodeArray, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) | (Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> extends unknown ? Omit<Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>, "ref"> : Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) : Exclude<T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<string, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<number, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactNodeArray, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined> | Exclude<Extract<React_2.ReactPortal, (T extends React_2.ComponentType<infer Props> ? (Props extends {
+    children?: unknown;
+} ? Props : Props & {
+    children?: undefined;
+}) & {
+    children?: (Props extends {
+        children?: unknown;
+    } ? Props : Props & {
+        children?: undefined;
+    })["children"] | SlotRenderFunction<Props extends {
+    children?: unknown;
+    } ? Props : Props & {
+    children?: undefined;
+    }> | undefined;
+} : never)["children"]>, SlotShorthandValue | null | undefined>) & {
+    fieldOrientation?: "vertical" | "horizontal" | undefined;
+    status?: "error" | "warning" | "success" | undefined;
+} & OptionalFieldComponentProps, ref: React_2.Ref<HTMLElement>, params: FieldParams<T>) => FieldState<T>;
+
+// @public
+export const useFieldStyles_unstable: <T extends FieldComponent>(state: FieldState<T>) => void;
 
 // (No @packageDocumentation comment for this package)
 

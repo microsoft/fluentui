@@ -1,34 +1,144 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { FieldSlots, FieldState } from './Field.types';
+import type { FieldComponent, FieldProps, FieldSlots, FieldState } from './Field.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
-export const fieldClassName = 'fui-Field';
-export const fieldClassNames: SlotClassNames<FieldSlots> = {
-  root: 'fui-Field',
-  // TODO: add class names for all slots on FieldSlots.
-  // Should be of the form `<slotName>: 'fui-Field__<slotName>`
-};
+export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldComponent>> => ({
+  root: `fui-${name}`,
+  fieldComponent: `fui-${name}__fieldComponent`,
+  label: `fui-${name}__label`,
+  statusText: `fui-${name}__statusText`,
+  statusIcon: `fui-${name}__statusIcon`,
+  helperText: `fui-${name}__helperText`,
+});
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+const useRootStyles = makeStyles({
+  base: {
+    display: 'inline-grid',
+    gridAutoFlow: 'row',
+    justifyItems: 'start',
   },
 
-  // TODO add additional classes for different states and/or slots
+  horizontal: {
+    gridTemplateRows: 'auto auto auto auto',
+    gridTemplateColumns: '1fr 2fr',
+  },
+
+  secondColumn: {
+    gridColumnStart: '2',
+  },
+});
+
+const useLabelStyles = makeStyles({
+  base: {
+    marginTop: tokens.spacingVerticalXXS,
+    marginBottom: tokens.spacingVerticalXXS,
+  },
+
+  horizontal: {
+    gridRowStart: '1',
+    gridRowEnd: '-1',
+    marginRight: tokens.spacingHorizontalM,
+    alignSelf: 'start',
+    justifySelf: 'stretch',
+  },
+});
+
+const useSecondaryTextStyles = makeStyles({
+  base: {
+    marginTop: tokens.spacingVerticalXXS,
+    color: tokens.colorNeutralForeground3,
+    ...typographyStyles.caption1,
+  },
+
+  error: {
+    color: tokens.colorPaletteRedForeground1,
+  },
+});
+
+const useStatusIconStyles = makeStyles({
+  base: {
+    fontSize: '12px',
+    lineHeight: '12px',
+    verticalAlign: 'middle',
+    marginRight: tokens.spacingHorizontalXS,
+  },
+
+  error: {
+    color: tokens.colorPaletteRedForeground1,
+  },
+  warning: {
+    color: tokens.colorPaletteDarkOrangeForeground1,
+  },
+  success: {
+    color: tokens.colorPaletteGreenForeground1,
+  },
 });
 
 /**
  * Apply styling to the Field slots based on the state
  */
-export const useFieldStyles_unstable = (state: FieldState): FieldState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(fieldClassName, styles.root, state.root.className);
+export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldState<T>) => {
+  const classNames = state.classNames;
+  const status: FieldProps<FieldComponent>['status'] = state.status;
+  const horizontal = state.fieldOrientation === 'horizontal';
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const rootStyles = useRootStyles();
+  state.root.className = mergeClasses(
+    classNames.root,
+    rootStyles.base,
+    horizontal && rootStyles.horizontal,
+    state.root.className,
+  );
 
-  return state;
+  if (state.fieldComponent) {
+    state.fieldComponent.className = mergeClasses(
+      classNames.fieldComponent,
+      horizontal && rootStyles.secondColumn,
+      state.fieldComponent.className,
+    );
+  }
+
+  const labelStyles = useLabelStyles();
+  if (state.label) {
+    state.label.className = mergeClasses(
+      classNames.label,
+      labelStyles.base,
+      horizontal && labelStyles.horizontal,
+      state.label.className,
+    );
+  }
+
+  const statusIconStyles = useStatusIconStyles();
+  if (state.statusIcon) {
+    state.statusIcon.className = mergeClasses(
+      classNames.statusIcon,
+      statusIconStyles.base,
+      !!status && statusIconStyles[status],
+      state.statusIcon.className,
+    );
+  }
+
+  const secondaryTextStyles = useSecondaryTextStyles();
+  if (state.statusText) {
+    state.statusText.className = mergeClasses(
+      classNames.statusText,
+      secondaryTextStyles.base,
+      horizontal && rootStyles.secondColumn,
+      status === 'error' && secondaryTextStyles.error,
+      state.statusText.className,
+    );
+  }
+
+  if (state.helperText) {
+    state.helperText.className = mergeClasses(
+      classNames.helperText,
+      secondaryTextStyles.base,
+      horizontal && rootStyles.secondColumn,
+      state.helperText.className,
+    );
+  }
 };
