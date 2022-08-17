@@ -50,9 +50,6 @@ async function scheduleScreenerBuild(
   });
 
   let prNumber = process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER;
-  if (response.status === 200) {
-    console.log(`[PR #${prNumber}]: Skipping screener check`);
-  }
 
   if (response.status !== 201 && response.status !== 200) {
     throw new Error(`[PR #${prNumber}]: Call to proxy failed: ${response.status}`);
