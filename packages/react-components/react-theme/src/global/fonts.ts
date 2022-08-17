@@ -32,6 +32,7 @@ export const fontWeights: FontWeightTokens = {
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightSemibold: 600,
+  fontWeightBold: 700,
 };
 
 export const fontFamilies: FontFamilyTokens = {

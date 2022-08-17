@@ -2,6 +2,63 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 15 Aug 2022 07:39:41 GMT",
+      "tag": "@fluentui/react-experiments_v8.12.19",
+      "version": "8.12.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.88.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/theme to v2.6.11",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.14",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.7",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react-hooks to v8.6.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/style-utilities to v8.7.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/utilities to v8.11.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/common-styles to v1.2.3",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Aug 2022 07:48:19 GMT",
       "tag": "@fluentui/react-experiments_v8.12.18",
       "version": "8.12.18",

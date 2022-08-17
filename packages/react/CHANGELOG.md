@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 12 Aug 2022 07:48:18 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Aug 2022 07:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.88.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.88.0)
+
+Mon, 15 Aug 2022 07:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.2..@fluentui/react_v8.88.0)
+
+### Minor changes
+
+- Support range selection from Group headers ([PR #24278](https://github.com/microsoft/fluentui/pull/24278) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.14 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.7 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-focus to v8.7.8 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-hooks to v8.6.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/style-utilities to v8.7.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/theme to v2.6.11 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/utilities to v8.11.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/common-styles to v1.2.3 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
 
 ## [8.87.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.2)
 
