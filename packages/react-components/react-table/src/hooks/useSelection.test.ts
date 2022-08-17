@@ -201,12 +201,22 @@ describe('useSelection', () => {
 
   describe('single select', () => {
     describe('toggleAllRows', () => {
-      it('should throw', () => {
+      it('should throw when not in production', () => {
         const { result } = renderHook(() => useSelection('single', items, getRowId));
 
         expect(result.current.toggleAllRows).toThrowErrorMatchingInlineSnapshot(
           `"[react-table]: \`toggleAllItems\` should not be used in single selection mode"`,
         );
+      });
+
+      it('should be a noop in production', () => {
+        const nodeEnv = (process.env.NODE_ENV = 'production');
+        const { result } = renderHook(() => useSelection('single', items, getRowId));
+
+        result.current.toggleAllRows;
+        expect(result.current.selectedRows.size).toBe(0);
+
+        process.env.NODE_ENV = nodeEnv;
       });
     });
     describe('clearRows', () => {
