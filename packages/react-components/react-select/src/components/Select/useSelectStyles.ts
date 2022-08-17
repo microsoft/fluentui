@@ -15,7 +15,7 @@ const iconSizes = {
   large: '24px',
 };
 
-// TODO: This 400 style is not in the typography styles.
+// This 400 style is not in the typography styles.
 // May need a design change
 const contentSizes = {
   400: {
@@ -31,6 +31,36 @@ const fieldHeights = {
   large: '40px',
 };
 
+/* Since the <select> element must span the full width and cannot have children,
+ * the right padding needs to be calculated from the sum of the following:
+ * 1. Field padding-right
+ * 2. Icon width
+ * 3. Content-icon spacing
+ * 4. Content inner padding
+ */
+const paddingRight = {
+  small: `calc(${tokens.spacingHorizontalSNudge}
+    + ${iconSizes.small}
+    + ${tokens.spacingHorizontalXXS}
+    + ${tokens.spacingHorizontalXXS})`,
+  medium: `calc(${tokens.spacingHorizontalMNudge}
+    + ${iconSizes.medium}
+    + ${tokens.spacingHorizontalXXS}
+    + ${tokens.spacingHorizontalXXS})`,
+  large: `calc(${tokens.spacingHorizontalM}
+    + ${iconSizes.large}
+    + ${tokens.spacingHorizontalSNudge}
+    + ${tokens.spacingHorizontalSNudge})`,
+};
+
+/* Left padding is calculated from the outer padding + inner content padding values
+ * since <select> can't have additional child content or custom inner layout */
+const paddingLeft = {
+  small: `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+  medium: `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+  large: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+};
+
 /* end of shared values */
 
 const useRootStyles = makeStyles({
@@ -41,6 +71,14 @@ const useRootStyles = makeStyles({
     flexWrap: 'nowrap',
     fontFamily: tokens.fontFamilyBase,
     position: 'relative',
+
+    // provide select-specific padding variables for customization
+    '--selectSpacingRightS': paddingRight.small,
+    '--selectSpacingLeftS': paddingLeft.small,
+    '--selectSpacingRightM': paddingRight.medium,
+    '--selectSpacingLeftM': paddingLeft.medium,
+    '--selectSpacingRightL': paddingRight.large,
+    '--selectSpacingLeftL': paddingLeft.large,
 
     '&::after': {
       backgroundImage: `linear-gradient(
@@ -110,42 +148,28 @@ const useSelectStyles = makeStyles({
       ...shorthands.borderColor('GrayText'),
     },
   },
-  /* The right padding is calculated  as the sum of the following:
-   * 1. Field padding-right
-   * 2. Icon width
-   * 3. Content-icon spacing
-   * 4. Content inner padding
-   */
+
   small: {
     height: fieldHeights.small,
     paddingBottom: 0,
-    paddingLeft: `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    paddingRight: `calc(${tokens.spacingHorizontalSNudge}
-                  + ${iconSizes.small}
-                  + ${tokens.spacingHorizontalXXS}
-                  + ${tokens.spacingHorizontalXXS})`,
+    paddingLeft: 'var(--selectSpacingLeftS)',
+    paddingRight: 'var(--selectSpacingRightS)',
     paddingTop: 0,
     ...typographyStyles.caption1,
   },
   medium: {
     height: fieldHeights.medium,
     paddingBottom: 0,
-    paddingLeft: `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    paddingRight: `calc(${tokens.spacingHorizontalMNudge}
-                  + ${iconSizes.medium}
-                  + ${tokens.spacingHorizontalXXS}
-                  + ${tokens.spacingHorizontalXXS})`,
+    paddingLeft: 'var(--selectSpacingLeftM)',
+    paddingRight: 'var(--selectSpacingRightM)',
     paddingTop: 0,
     ...typographyStyles.body1,
   },
   large: {
     height: fieldHeights.large,
     paddingBottom: 0,
-    paddingLeft: `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
-    paddingRight: `calc(${tokens.spacingHorizontalM}
-                  + ${iconSizes.large}
-                  + ${tokens.spacingHorizontalSNudge}
-                  + ${tokens.spacingHorizontalSNudge})`,
+    paddingLeft: 'var(--selectSpacingLeftL)',
+    paddingRight: 'var(--selectSpacingRightL)',
     paddingTop: 0,
     ...contentSizes[400],
   },
