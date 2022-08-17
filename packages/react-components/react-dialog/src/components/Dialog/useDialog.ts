@@ -11,6 +11,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableScroll } from '../../utils';
 
 import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
+import { useDialogContext_unstable } from '../../contexts/dialogContext';
 
 /**
  * Create the state required to render Dialog.
@@ -59,12 +60,14 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
 
   const { targetDocument } = useFluent_unstable();
   const disableScroll = useDisableScroll();
+  const isBodyScrollLock =
+    useDialogContext_unstable(ctx => ctx.isBodyScrollLock) || Boolean(open && modalType !== 'non-modal');
 
   useIsomorphicLayoutEffect(() => {
-    if (open && modalType !== 'non-modal' && targetDocument) {
+    if (isBodyScrollLock && targetDocument) {
       return disableScroll(targetDocument.body);
     }
-  }, [disableScroll, open, modalType, targetDocument]);
+  }, [targetDocument, isBodyScrollLock, disableScroll]);
 
   const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     backdropShorthand?.onClick?.(event);
@@ -87,6 +90,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     triggerRef,
     contentRef,
+    isBodyScrollLock,
     requestOpenChange,
     dialogBodyID: useId('dialog-body-'),
     dialogTitleID: useId('dialog-title-'),

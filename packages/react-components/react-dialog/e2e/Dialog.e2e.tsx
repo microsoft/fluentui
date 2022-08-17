@@ -162,6 +162,7 @@ describe('Dialog', () => {
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
+    it('should lock body scroll when dialog open');
   });
   describe('modalType = non-modal', () => {
     it('should close with escape keydown', () => {
@@ -190,6 +191,7 @@ describe('Dialog', () => {
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
+    it('should not lock body scroll when dialog open');
   });
   describe('modalType = alert', () => {
     it('should not close with escape keydown', () => {
@@ -218,5 +220,6 @@ describe('Dialog', () => {
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('exist');
     });
+    it('should lock body scroll when dialog open');
   });
 });
