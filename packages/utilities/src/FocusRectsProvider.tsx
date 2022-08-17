@@ -19,9 +19,9 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
   const parentContext = React.useContext(FocusRectsContext);
 
   // Inherit the parent context if it exists, unless this is a layer root.
-  // This allows the topmost provider element in the HTML tree to handle the focus events.
+  // This allows the topmost provider element in the DOM tree to handle the focus events.
   // Since layers are in a separate HTML tree from their parent, they shouldn't use the parent's providerRef.
-  const inheritParentContext = parentContext.providerRef !== undefined && !layerRoot;
+  const inheritParentContext = parentContext !== undefined && !layerRoot;
 
   const context = React.useMemo(
     () =>
@@ -33,10 +33,10 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
             registerProvider: (e: HTMLElement) => {
               // Register this child provider with the current context, and any parent contexts
               registeredProviders.push(e);
-              parentContext.registerProvider?.(e);
+              parentContext?.registerProvider(e);
             },
             unregisterProvider: (e: HTMLElement) => {
-              parentContext.unregisterProvider?.(e);
+              parentContext?.unregisterProvider(e);
               const i = registeredProviders.indexOf(e);
               if (i >= 0) {
                 registeredProviders.splice(i, 1);

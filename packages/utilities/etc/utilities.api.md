@@ -302,7 +302,7 @@ export const FocusRects: React_2.FunctionComponent<{
 }>;
 
 // @public (undocumented)
-export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
+export const FocusRectsContext: React_2.Context<IFocusRectsContext | undefined>;
 
 // @public (undocumented)
 export const FocusRectsProvider: React_2.FC<FocusRectsProviderParams>;
@@ -606,10 +606,10 @@ export interface IFitContentToBoundsOptions {
 
 // @public (undocumented)
 export type IFocusRectsContext = {
-    readonly providerRef?: React_2.RefObject<HTMLElement>;
-    readonly registeredProviders?: HTMLElement[];
-    readonly registerProvider?: (providerElem: HTMLElement) => void;
-    readonly unregisterProvider?: (providerElem: HTMLElement) => void;
+    readonly providerRef: React_2.RefObject<HTMLElement>;
+    readonly registeredProviders: HTMLElement[];
+    readonly registerProvider: (providerElem: HTMLElement) => void;
+    readonly unregisterProvider: (providerElem: HTMLElement) => void;
 };
 
 // @public

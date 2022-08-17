@@ -51,7 +51,7 @@ export type IFocusRectsContext = {
   /**
    * Ref to the root element of the provider
    */
-  readonly providerRef?: React.RefObject<HTMLElement>;
+  readonly providerRef: React.RefObject<HTMLElement>;
 
   /**
    * Array of this and all child provider elements under this one in the React tree.
@@ -60,20 +60,20 @@ export type IFocusRectsContext = {
    * This is needed for Combobox, for example, because the focus events happen on the parent context, but the visual
    * focus indicator is in the combobox callout. The callout needs to be notified on focus events from the parent.
    */
-  readonly registeredProviders?: HTMLElement[];
+  readonly registeredProviders: HTMLElement[];
 
   /**
    * Used by child FocusRectsProviders to register their element with the parent provider.
    */
-  readonly registerProvider?: (providerElem: HTMLElement) => void;
+  readonly registerProvider: (providerElem: HTMLElement) => void;
 
   /**
    * Used by child FocusRectsProviders to unregister their element from the parent provider.
    */
-  readonly unregisterProvider?: (providerElem: HTMLElement) => void;
+  readonly unregisterProvider: (providerElem: HTMLElement) => void;
 };
 
-export const FocusRectsContext = React.createContext<IFocusRectsContext>({});
+export const FocusRectsContext = React.createContext<IFocusRectsContext | undefined>(undefined);
 
 /**
  * Initializes the logic which:
@@ -94,7 +94,7 @@ export const FocusRectsContext = React.createContext<IFocusRectsContext>({});
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const { providerRef, registeredProviders } = React.useContext(FocusRectsContext);
+  const context = React.useContext(FocusRectsContext);
 
   React.useEffect(() => {
     const win = getWindow(rootRef?.current) as AppWindow;
@@ -108,9 +108,9 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (providerRef && providerRef.current && registeredProviders) {
-      el = providerRef.current;
-      const callbacks = setCallbackMap(registeredProviders);
+    if (context?.providerRef.current) {
+      el = context.providerRef.current;
+      const callbacks = setCallbackMap(context.registeredProviders);
       onMouseDown = callbacks.onMouseDown;
       onPointerDown = callbacks.onPointerDown;
       onKeyDown = callbacks.onKeyDown;
@@ -142,7 +142,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         el.removeEventListener('keyup', onKeyUp, true);
       }
     };
-  }, [providerRef, registeredProviders, rootRef]);
+  }, [context, rootRef]);
 }
 
 /**
