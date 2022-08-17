@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 17 Aug 2022 12:21:32 GMT",
+      "tag": "office-ui-fabric-react_v7.193.0",
+      "version": "7.193.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Standardize selection behavior of Groups in SelectionZone (#24278)",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.35.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/foundation to v7.10.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.5",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.7",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/react-hooks to v7.15.1",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.2",
+            "author": "tmichon@microsoft.com",
+            "commit": "94cb7fbdc1b68428d8ea8d69a19a1bcf1f11484d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jul 2022 12:21:50 GMT",
       "tag": "office-ui-fabric-react_v7.191.0",
       "version": "7.191.0",

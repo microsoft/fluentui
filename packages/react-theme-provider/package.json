@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "0.19.5",
+  "version": "0.19.6",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
-    "@uifabric/styling": "^7.21.1",
+    "@uifabric/styling": "^7.21.2",
     "@uifabric/test-utilities": "^7.3.2",
     "@fluentui/eslint-plugin": "^0.54.2",
     "@types/classnames": "^2.2.9",
@@ -46,14 +46,14 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.17",
+    "@fluentui/react-compose": "^0.19.18",
     "@fluentui/react-stylesheets": "^0.2.6",
-    "@fluentui/theme": "^1.7.6",
+    "@fluentui/theme": "^1.7.7",
     "@fluentui/react-window-provider": "^1.0.3",
-    "@uifabric/react-hooks": "^7.15.0",
+    "@uifabric/react-hooks": "^7.15.1",
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/merge-styles": "^7.19.2",
-    "@uifabric/utilities": "^7.34.1",
+    "@uifabric/utilities": "^7.35.0",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },

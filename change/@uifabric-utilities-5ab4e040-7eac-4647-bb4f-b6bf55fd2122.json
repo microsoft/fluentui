@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Standardize selection behavior of Groups in SelectionZone (#24278)",
-  "packageName": "@uifabric/utilities",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.5)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.4..@fluentui/react-icons_v0.4.5)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
 
 ## [0.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.4)
 
