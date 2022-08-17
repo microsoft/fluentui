@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { CardProps, CardState } from './Card.types';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import type { CardProps, CardRefElement, CardState } from './Card.types';
 
 /**
  * Create the state required to render Card.
@@ -12,8 +12,8 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  * @param props - props from this instance of Card
  * @param ref - reference to root HTMLElement of Card
  */
-export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>): CardState => {
-  const { appearance = 'filled', focusMode = 'off', orientation = 'vertical', size = 'medium' } = props;
+export const useCard_unstable = (props: CardProps, ref: React.Ref<CardRefElement>): CardState => {
+  const { appearance = 'filled', focusMode = 'off', orientation = 'vertical', size = 'medium', as = 'div' } = props;
 
   const focusMap = {
     off: undefined,
@@ -28,13 +28,26 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLElement>):
 
   const focusAttrs = focusMode !== 'off' ? { tabIndex: 0, ...groupperAttrs } : null;
 
+  const isInteractive = Boolean(
+    ['a', 'button'].includes(as) ||
+      props.onClick ||
+      props.onDoubleClick ||
+      props.onMouseUp ||
+      props.onMouseDown ||
+      props.onPointerUp ||
+      props.onPointerDown ||
+      props.onTouchStart ||
+      props.onTouchEnd,
+  );
+
   return {
     appearance,
     orientation,
     size,
+    isInteractive,
 
-    components: { root: 'div' },
-    root: getNativeElementProps(props.as || 'div', {
+    components: { root: as },
+    root: getNativeElementProps(as, {
       ref,
       role: 'group',
       ...focusAttrs,

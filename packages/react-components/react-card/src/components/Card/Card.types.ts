@@ -1,13 +1,19 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
+ * Card refs to the root element slot.
+ */
+
+export type CardRefElement = HTMLDivElement | HTMLButtonElement | HTMLAnchorElement;
+
+/**
  * Slots available in the Card component.
  */
 export type CardSlots = {
   /**
    * Root element of the component.
    */
-  root: Slot<'div'>;
+  root: Slot<'div', 'a' | 'button'>;
 };
 
 /**
@@ -56,4 +62,14 @@ export type CardProps = ComponentProps<CardSlots> & {
 /**
  * State used in rendering Card.
  */
-export type CardState = ComponentState<CardSlots> & Required<Pick<CardProps, 'appearance' | 'orientation' | 'size'>>;
+export type CardState = ComponentState<CardSlots> &
+  Required<
+    Pick<CardProps, 'appearance' | 'orientation' | 'size'> & {
+      /**
+       * Represents a card that contains interactive events (MouseEvents) or is a button/a tag.
+       *
+       * @default false
+       */
+      isInteractive: boolean;
+    }
+  >;
