@@ -38,6 +38,66 @@ const legends = [
     title: 'Legend 2',
     color: DefaultPalette.black,
   },
+  {
+    title: 'Legend 3',
+    color: DefaultPalette.green,
+  },
+  {
+    title: 'Legend 4',
+    color: DefaultPalette.blue,
+  },
+  {
+    title: 'Legend 5',
+    color: DefaultPalette.blueMid,
+  },
+  {
+    title: 'Legend 6',
+    color: DefaultPalette.whiteTranslucent40,
+  },
+  {
+    title: 'Legend 7',
+    color: DefaultPalette.greenDark,
+  },
+  {
+    title: 'Legend 8',
+    color: DefaultPalette.blueDark,
+  },
+  {
+    title: 'Legend 9',
+    color: DefaultPalette.orange,
+  },
+  {
+    title: 'Legend 10',
+    color: DefaultPalette.purpleDark,
+  },
+  {
+    title: 'Legend 11',
+    color: DefaultPalette.yellowLight,
+  },
+  {
+    title: 'Legend 12',
+    color: DefaultPalette.greenLight,
+  },
+  {
+    title: 'Legend 13',
+    color: DefaultPalette.orangeLighter,
+  },
+  {
+    title: 'Legend 14',
+    color: DefaultPalette.teal,
+  },
+  {
+    title: 'Legend 15',
+    color: DefaultPalette.tealLight,
+  },
+  {
+    title: 'Legend 16',
+    color: DefaultPalette.redDark,
+  },
+  {
+    title: 'Legend 17',
+    color: DefaultPalette.white,
+  },
 ];
 
 const styles = {
@@ -84,7 +144,7 @@ describe('Legends snapShot testing', () => {
   });
 });
 
-describe('AreaChart - basic props', () => {
+describe('Legends - basic props', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
@@ -100,10 +160,25 @@ describe('AreaChart - basic props', () => {
     expect(legend).toBeDefined();
   });
 
-  it('Should render overflowProps correctly', () => {
-    wrapper = mount(<Legends legends={legends} {...overflowProps} />);
-    const overflowProp = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(overflowProp).toBeDefined();
+  it('Should mount Overflow Button when not empty', () => {
+    wrapper = mount(<Legends legends={legends} {...overflowProps} overflowText={'OverFlow Items'} />);
+    const overflowBtnText = wrapper.getDOMNode().querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
+    expect(overflowBtnText).toBeDefined();
+  });
+
+  it('Should not mount Overflow when empty', () => {
+    wrapper = mount(<Legends legends={legends} {...overflowProps} overflowText={'OverFlow Items'} />);
+    const overflowBtn = wrapper.getDOMNode().querySelectorAll('[class^="ms-OverflowSet-overflowButton"]');
+    expect(overflowBtn!.length).toBe(0);
+  });
+
+  it('Should be not able to select multiple Legends', () => {
+    wrapper = mount(<Legends legends={legends} canSelectMultipleLegends={false} />);
+    const canSelectMultipleLegends = wrapper
+      .getDOMNode()
+      .querySelector('[class^="legend"]')
+      ?.getAttribute('canSelectMultipleLegends');
+    expect(canSelectMultipleLegends).toBeFalsy();
   });
 
   it('Should render data-is-focusable correctly', () => {
@@ -114,8 +189,8 @@ describe('AreaChart - basic props', () => {
 
   it('Should render focusZonePropsInHoverCard correctly', () => {
     wrapper = mount(<Legends legends={legends} {...focusZonePropsInHoverCard} />);
-    const overflowProp = wrapper.getDOMNode().querySelector('[class^="legend"]')?.getAttribute('aria-label');
-    expect(overflowProp).toBe('Legend 1 selected');
+    const focusZoneProps = wrapper.getDOMNode().querySelector('[class^="legend"]')?.getAttribute('aria-label');
+    expect(focusZoneProps).toBe('Legend 1 selected');
   });
 });
 
@@ -137,7 +212,7 @@ describe('Render calling with respective to props', () => {
       allowFocusOnLegends: true,
       focusZonePropsInHoverCard,
       overflowProps,
-      legendsOverflowText: 'OverFlow Items',
+      overflowText: 'OverFlow Items',
     };
     const component = mount(<Legends {...props} />);
     component.setProps({ ...props });
