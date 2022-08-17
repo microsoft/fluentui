@@ -36,7 +36,7 @@ export type AlertSlots = {
 };
 
 // @public
-export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'appearance' | 'intent'>;
+export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
 
 // @public (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;
