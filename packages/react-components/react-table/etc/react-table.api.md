@@ -70,14 +70,14 @@ export interface RowState<TItem> {
 // @public (undocumented)
 export interface SelectionState {
     allRowsSelected: boolean;
-    clearSelection: () => void;
-    deSelectRow: (rowId: RowId) => void;
+    clearRows: () => void;
+    deselectRow: (rowId: RowId) => void;
     isRowSelected: (rowId: RowId) => boolean;
     selectedRows: RowId[];
     selectRow: (rowId: RowId) => void;
     someRowsSelected: boolean;
-    toggleRowSelect: (rowId: RowId) => void;
-    toggleSelectAllRows: () => void;
+    toggleAllRows: () => void;
+    toggleRow: (rowId: RowId) => void;
 }
 
 // @public (undocumented)
@@ -349,7 +349,7 @@ export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowS
     // (undocumented)
     rowEnhancer?: RowEnhancer<TItem, TRowState>;
     // (undocumented)
-    selectionMode?: 'single' | 'multiselect';
+    selectionMode?: SelectionMode_2;
 }
 
 // @public

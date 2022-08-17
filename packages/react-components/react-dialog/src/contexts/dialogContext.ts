@@ -14,6 +14,7 @@ export type DialogContextValue = {
   dialogTitleID?: string;
   dialogBodyID?: string;
   open: boolean;
+  isBodyScrollLocked: boolean;
   /**
    * Requests dialog main component to update it's internal open state
    */
@@ -25,6 +26,7 @@ const defaultContextValue: DialogContextValue = {
   modalType: 'modal',
   triggerRef: { current: null },
   contentRef: { current: null },
+  isBodyScrollLocked: false,
   requestOpenChange() {
     /* noop */
   },

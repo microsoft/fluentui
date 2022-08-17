@@ -96,13 +96,13 @@ const columns: ColumnDefinition<Item>[] = [
 export const MultipleSelect = () => {
   const {
     rows,
-    selection: { allRowsSelected, someRowsSelected, toggleSelectAllRows },
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
   } = useTable({
     columns,
     items,
     rowEnhancer: (row, { selection }) => ({
       ...row,
-      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+      toggle: () => selection.toggleRow(row.rowId),
       selected: selection.isRowSelected(row.rowId),
     }),
   });
@@ -113,7 +113,7 @@ export const MultipleSelect = () => {
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleSelectAllRows}
+            onClick={toggleAllRows}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
@@ -122,8 +122,8 @@ export const MultipleSelect = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item, selected, toggleSelect }) => (
-          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
+        {rows.map(({ item, selected, toggle }) => (
+          <TableRow key={item.file.label} onClick={toggle} aria-selected={selected}>
             <TableSelectionCell checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
