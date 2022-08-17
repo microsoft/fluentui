@@ -20,7 +20,7 @@ export async function screener() {
     screenerConfig.states = screenerStates;
     await screenerRunner(screenerConfig);
   } catch (err) {
-    console.error('failed to run screener task');
+    console.error(`[PR #${prNumber}]: `, 'failed to run screener task');
     console.error(err);
     // screener-storybook internally starts a puppeteer instance that only closes on process exist
     process.exit(1);
