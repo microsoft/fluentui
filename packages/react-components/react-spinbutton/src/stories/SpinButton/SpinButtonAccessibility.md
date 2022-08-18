@@ -56,7 +56,7 @@ Mouse press quick changes to value are not announced to screen readers.
 [Narrator defaults to reading min/max as 0 when they're (intentionally) undefined](https://microsoft.visualstudio.com/Edge/_workitems/edit/39070743)
 
 ### Narrator + Edge
-When no min or max values are set Narrator announces "minimum 0" and "maximum 0". This is misleading because when these values are not set SpinButton does not enforce a min or max value. Example.
+When no min or max values are set Narrator announces "minimum 0" and "maximum 0". This is misleading because when these values are not set SpinButton does not enforce a min or max value.
 
 ### NVDA + Edge/Chrome
 When focused on the SpinButton input field pressing up/down arrows announces "blank". NVDA + Firefox announces the correct value.
