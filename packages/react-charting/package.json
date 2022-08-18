@@ -55,7 +55,7 @@
     "@types/d3-time-format": "^2.1.0",
     "@uifabric/icons": "^7.7.5",
     "@uifabric/set-version": "^7.0.24",
-    "@uifabric/charting": "4.21.10",
+    "@uifabric/charting": "^4.21.10",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-format": "^1.4.4",
