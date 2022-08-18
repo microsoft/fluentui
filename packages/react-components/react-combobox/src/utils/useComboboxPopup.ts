@@ -34,7 +34,8 @@ export function useComboboxPopup(
 
   const { targetRef, containerRef } = usePositioning(popperOptions);
 
-  const listbox = listboxShorthand && { ...listboxShorthand, ref: useMergedRefs(listboxShorthand?.ref, containerRef) };
+  const listboxRef = useMergedRefs(listboxShorthand?.ref, containerRef);
+  const listbox = listboxShorthand && { ...listboxShorthand, ref: listboxRef };
 
   return [{ ...triggerShorthand, ref: useMergedRefs(triggerShorthand?.ref, targetRef) }, listbox];
 }

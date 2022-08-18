@@ -39,13 +39,15 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
   });
 
-  listboxSlot = resolveShorthand(props.listbox, {
-    required: true,
-    defaultProps: { children: props.children },
-  });
+  listboxSlot =
+    baseState.open &&
+    resolveShorthand(props.listbox, {
+      required: true,
+      defaultProps: { children: props.children },
+    });
 
-  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerSlot, listboxSlot);
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
+  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
 
   const state: DropdownState = {
     components: {
@@ -62,7 +64,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       },
     }),
     button: triggerSlot,
-    listbox: baseState.open ? listboxSlot : undefined,
+    listbox: listboxSlot,
     expandIcon: resolveShorthand(props.expandIcon, {
       required: true,
       defaultProps: {
