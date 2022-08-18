@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: Adds padding-righ style to avoid jumping on scroll lock",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
