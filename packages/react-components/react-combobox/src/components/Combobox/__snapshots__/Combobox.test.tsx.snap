@@ -30,6 +30,9 @@ exports[`Combobox renders a default state 1`] = `
         />
       </svg>
     </span>
+    <span
+      hidden=""
+    />
   </div>
 </div>
 `;
