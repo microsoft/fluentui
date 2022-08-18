@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusRectsContext } from './useFocusRects';
 
-export type FocusRectsProviderParams = {
+export type FocusRectsProviderProps = {
   /**
    * Ref to the root element that this is providing focus rects for.
    */
@@ -13,8 +13,8 @@ export type FocusRectsProviderParams = {
   layerRoot?: boolean;
 };
 
-export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => {
-  const { providerRef, layerRoot } = params;
+export const FocusRectsProvider: React.FC<FocusRectsProviderProps> = props => {
+  const { providerRef, layerRoot } = props;
   const [registeredProviders] = React.useState<React.RefObject<HTMLElement>[]>([]);
   const parentContext = React.useContext(FocusRectsContext);
 
@@ -55,8 +55,8 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
 
   // Create a new context provider if this is not inheriting from the parent.
   if (context) {
-    return <FocusRectsContext.Provider value={context}>{params.children}</FocusRectsContext.Provider>;
+    return <FocusRectsContext.Provider value={context}>{props.children}</FocusRectsContext.Provider>;
   } else {
-    return <>{params.children}</>;
+    return <>{props.children}</>;
   }
 };

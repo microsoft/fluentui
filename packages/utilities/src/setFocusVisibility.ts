@@ -3,6 +3,13 @@ import { getWindow } from './dom/getWindow';
 export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
 export const IsFocusHiddenClassName = 'ms-Fabric--isFocusHidden';
 
+function updateClassList(el: HTMLElement | null | undefined, enabled: boolean) {
+  if (el) {
+    el.classList.add(enabled ? IsFocusVisibleClassName : IsFocusHiddenClassName);
+    el.classList.remove(enabled ? IsFocusHiddenClassName : IsFocusVisibleClassName);
+  }
+}
+
 /**
  * Sets the visibility of focus styling.
  *
@@ -23,17 +30,9 @@ export function setFocusVisibility(
   target?: Element,
   registeredProviders?: React.RefObject<HTMLElement>[],
 ): void {
-  const updateClassList = (el: HTMLElement) => {
-    el.classList.add(enabled ? IsFocusVisibleClassName : IsFocusHiddenClassName);
-    el.classList.remove(enabled ? IsFocusHiddenClassName : IsFocusVisibleClassName);
-  };
-
   if (registeredProviders) {
-    registeredProviders.forEach(ref => ref.current && updateClassList(ref.current));
+    registeredProviders.forEach(ref => updateClassList(ref.current, enabled));
   } else {
-    const win = target ? getWindow(target) : getWindow();
-    if (win) {
-      updateClassList(win.document.body);
-    }
+    updateClassList(getWindow(target)?.document.body, enabled);
   }
 }
