@@ -5,7 +5,17 @@ import { Spinner } from '@fluentui/react-spinner';
 
 ### Available Icons
 
-Search through this icon list for all the available icons.
+This page contains a list of available icons under `@fluentui/react-icons` package. To use icons install the package and select an icon to use.
+
+For example:
+
+```tsx
+import { DismissSquareRegular } from `@fluentui/react-icons`;
+
+function App() {
+  return <DismissSquareRegular />;
+}
+```
 
 <React.Suspense fallback={<Spinner label="Loading..." />}>
   {React.createElement(React.lazy(() => import('./ReactIconGrid')))}
