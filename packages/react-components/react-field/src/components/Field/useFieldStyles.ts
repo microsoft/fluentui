@@ -9,7 +9,7 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
   label: `fui-${name}__label`,
   statusText: `fui-${name}__statusText`,
   statusIcon: `fui-${name}__statusIcon`,
-  helperText: `fui-${name}__helperText`,
+  hint: `fui-${name}__hint`,
 });
 
 /**
@@ -133,12 +133,12 @@ export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldSt
     );
   }
 
-  if (state.helperText) {
-    state.helperText.className = mergeClasses(
-      classNames.helperText,
+  if (state.hint) {
+    state.hint.className = mergeClasses(
+      classNames.hint,
       secondaryTextStyles.base,
       horizontal && rootStyles.secondColumn,
-      state.helperText.className,
+      state.hint.className,
     );
   }
 };

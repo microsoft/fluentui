@@ -16,7 +16,7 @@ describe('InputField', () => {
             label: 'label',
             status: 'error',
             statusText: 'statusText',
-            helperText: 'helperText',
+            hint: 'hint',
           },
         },
       ],

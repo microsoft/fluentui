@@ -48,9 +48,9 @@ export type FieldSlots<T extends FieldComponent> = {
   statusIcon?: Slot<'span'>;
 
   /**
-   * Additional text below the field.
+   * Additional hint text below the field.
    */
-  helperText?: Slot<'span'>;
+  hint?: Slot<'span'>;
 };
 
 /**
@@ -59,7 +59,7 @@ export type FieldSlots<T extends FieldComponent> = {
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
   /**
    * The orientation of the label relative to the field component.
-   * This only affects the label, and not the statusText or helperText (which always appear below the field component).
+   * This only affects the label, and not the statusText or hint (which always appear below the field component).
    *
    * @default vertical
    */

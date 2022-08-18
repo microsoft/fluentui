@@ -19,7 +19,7 @@ export const renderField_unstable = <T extends FieldComponent>(state: FieldState
           {slotProps.statusText.children}
         </slots.statusText>
       )}
-      {slots.helperText && <slots.helperText {...slotProps.helperText} />}
+      {slots.hint && <slots.hint {...slotProps.hint} />}
     </slots.root>
   );
 };

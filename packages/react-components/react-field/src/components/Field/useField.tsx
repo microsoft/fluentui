@@ -23,7 +23,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
   const {
     className,
     fieldComponent,
-    helperText,
+    hint,
     label,
     orientation,
     root,
@@ -37,7 +37,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
   const fieldProps = {
     className,
     fieldComponent,
-    helperText,
+    hint,
     label,
     orientation,
     root,
@@ -118,9 +118,9 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     },
   });
 
-  const helperText = resolveShorthand(fieldProps.helperText, {
+  const hint = resolveShorthand(fieldProps.hint, {
     defaultProps: {
-      id: baseId + '__helperText',
+      id: baseId + '__hint',
     },
   });
 
@@ -141,7 +141,7 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
       id: label && labelConnection === 'htmlFor' ? baseId + '__fieldComponent' : undefined,
       // Add aria-labelledby only if not using the label's htmlFor
       'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
-      'aria-describedby': status !== 'error' ? mergeAriaDescribedBy(statusText?.id, helperText?.id) : helperText?.id,
+      'aria-describedby': status !== 'error' ? mergeAriaDescribedBy(statusText?.id, hint?.id) : hint?.id,
       'aria-errormessage': status === 'error' ? statusText?.id : undefined,
       'aria-invalid': status === 'error' ? true : undefined,
       ...componentProps,
@@ -162,14 +162,14 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
       label: Label,
       statusText: 'span',
       statusIcon: 'span',
-      helperText: 'span',
+      hint: 'span',
     },
     root,
     fieldComponent,
     label,
     statusIcon,
     statusText,
-    helperText,
+    hint,
   };
 
   return state as FieldState<T>;

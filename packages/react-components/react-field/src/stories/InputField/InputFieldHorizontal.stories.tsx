@@ -19,7 +19,7 @@ export const Horizontal = () => {
         orientation="horizontal"
         status="success"
         statusText="Status text appears below the input"
-        helperText="Helper text does too"
+        hint="Hint text does too"
       />
       <InputField label="Longer labels will wrap to multiple lines" orientation="horizontal" />
       <InputField label="First Name" orientation="horizontal" />
