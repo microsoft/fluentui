@@ -26,7 +26,9 @@ export class StressContainer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    if (getTestParams().test === 'mount') {
+    const { test } = getTestParams();
+
+    if (test === 'mount') {
       performance.mark('start');
     }
 
@@ -34,7 +36,7 @@ export class StressContainer extends FASTElement {
     slot?.addEventListener(
       'slotchange',
       e => {
-        if (getTestParams().test === 'inject-styles') {
+        if (test === 'inject-styles') {
           setTimeout(() => {
             performanceMeasure('stress', 'start');
             injectGlobalCss();
@@ -42,7 +44,7 @@ export class StressContainer extends FASTElement {
           return;
         }
 
-        if (getTestParams().test === 'mount') {
+        if (test === 'mount') {
           // requestPostAnimationFrame polyfill
           requestAnimationFrame(() => {
             addEventListener(

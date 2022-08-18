@@ -7,19 +7,16 @@ import { StressContainer } from './StressContainer';
 export const StressApp = () => {
   const [numChildren, setNumChildren] = React.useState(getTestParams().numStartNodes);
 
-  if (getTestParams().test === 'add-node') {
-    /* eslint-disable-next-line react-hooks/rules-of-hooks */
-    React.useEffect(() => {
+  React.useEffect(() => {
+    const { test, numStartNodes, numAddNodes, numRemoveNodes } = getTestParams();
+    if (test === 'add-node') {
       performanceMeasure('stress', 'start');
-      setNumChildren(getTestParams().numStartNodes + getTestParams().numAddNodes);
-    }, []);
-  } else if (getTestParams().test === 'remove-node') {
-    /* eslint-disable-next-line react-hooks/rules-of-hooks */
-    React.useEffect(() => {
+      setNumChildren(numStartNodes + numAddNodes);
+    } else if (test === 'removeNode') {
       performanceMeasure('stress', 'start');
-      setNumChildren(getTestParams().numStartNodes - getTestParams().numRemoveNodes);
-    }, []);
-  }
+      setNumChildren(numStartNodes - numRemoveNodes);
+    }
+  }, []);
 
   return (
     <FluentProvider theme={webLightTheme}>

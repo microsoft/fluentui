@@ -43,20 +43,22 @@ export class StressApp extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    if (getTestParams().test === 'prop-update') {
+    const { test, numStartNodes, numAddNodes, numRemoveNodes } = getTestParams();
+
+    if (test === 'prop-update') {
       setTimeout(() => {
         performanceMeasure('stress', 'start');
         this.checked = true;
       }, 2000);
-    } else if (getTestParams().test === 'add-node') {
+    } else if (test === 'add-node') {
       setTimeout(() => {
         performanceMeasure('stress', 'start');
-        this.numchildren = getTestParams().numStartNodes + getTestParams().numAddNodes;
+        this.numchildren = numStartNodes + numAddNodes;
       }, 2000);
-    } else if (getTestParams().test === 'remove-node') {
+    } else if (test === 'remove-node') {
       setTimeout(() => {
         performanceMeasure('stress', 'start');
-        this.numchildren = getTestParams().numStartNodes - getTestParams().numRemoveNodes;
+        this.numchildren = numStartNodes - numRemoveNodes;
       }, 2000);
     }
   }

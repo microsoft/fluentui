@@ -24,11 +24,11 @@ const useStyles = makeStyles({
 });
 
 export type StressComponentProps = {
-  id: string;
+  id?: string;
   checked: boolean;
 };
 
-export const StressComponent: React.FC<StressComponentProps> = ({ id, checked }) => {
+export const StressComponent: React.FC<StressComponentProps> = ({ id = '', checked }) => {
   const styles = useStyles();
 
   return (
