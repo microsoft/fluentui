@@ -78,7 +78,6 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
       required: true,
       defaultProps: {
         children: children,
-        role: 'list',
       },
     }),
     popoverSurface: resolveShorthand(props.popoverSurface, {
