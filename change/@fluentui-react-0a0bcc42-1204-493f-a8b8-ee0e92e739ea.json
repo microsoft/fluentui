@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Make focus rects visible again in Combobox",
+  "packageName": "@fluentui/react",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
