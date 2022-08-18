@@ -2,9 +2,10 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Card } from './Card';
 import { isConformant } from '../../common/isConformant';
+import type { CardProps } from './Card.types';
 
 describe('Card', () => {
-  isConformant({
+  isConformant<CardProps>({
     Component: Card,
     displayName: 'Card',
   });
