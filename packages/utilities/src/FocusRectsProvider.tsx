@@ -15,7 +15,7 @@ export type FocusRectsProviderParams = {
 
 export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => {
   const { providerRef, layerRoot } = params;
-  const [registeredProviders] = React.useState<HTMLElement[]>([]);
+  const [registeredProviders] = React.useState<React.RefObject<HTMLElement>[]>([]);
   const parentContext = React.useContext(FocusRectsContext);
 
   // Inherit the parent context if it exists, unless this is a layer root.
@@ -30,14 +30,14 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
         : {
             providerRef,
             registeredProviders,
-            registerProvider: (e: HTMLElement) => {
+            registerProvider: (ref: React.RefObject<HTMLElement>) => {
               // Register this child provider with the current context, and any parent contexts
-              registeredProviders.push(e);
-              parentContext?.registerProvider(e);
+              registeredProviders.push(ref);
+              parentContext?.registerProvider(ref);
             },
-            unregisterProvider: (e: HTMLElement) => {
-              parentContext?.unregisterProvider(e);
-              const i = registeredProviders.indexOf(e);
+            unregisterProvider: (ref: React.RefObject<HTMLElement>) => {
+              parentContext?.unregisterProvider(ref);
+              const i = registeredProviders.indexOf(ref);
               if (i >= 0) {
                 registeredProviders.splice(i, 1);
               }
@@ -48,11 +48,8 @@ export const FocusRectsProvider: React.FC<FocusRectsProviderParams> = params => 
 
   React.useEffect(() => {
     if (context) {
-      const providerElem = context.providerRef.current;
-      if (providerElem) {
-        context.registerProvider(providerElem);
-        return () => context.unregisterProvider(providerElem);
-      }
+      context.registerProvider(context.providerRef);
+      return () => context.unregisterProvider(context.providerRef);
     }
   }, [context]);
 

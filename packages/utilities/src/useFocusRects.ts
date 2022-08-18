@@ -60,17 +60,17 @@ export type IFocusRectsContext = {
    * This is needed for Combobox, for example, because the focus events happen on the parent context, but the visual
    * focus indicator is in the combobox callout. The callout needs to be notified on focus events from the parent.
    */
-  readonly registeredProviders: HTMLElement[];
+  readonly registeredProviders: React.RefObject<HTMLElement>[];
 
   /**
    * Used by child FocusRectsProviders to register their element with the parent provider.
    */
-  readonly registerProvider: (providerElem: HTMLElement) => void;
+  readonly registerProvider: (ref: React.RefObject<HTMLElement>) => void;
 
   /**
    * Used by child FocusRectsProviders to unregister their element from the parent provider.
    */
-  readonly unregisterProvider: (providerElem: HTMLElement) => void;
+  readonly unregisterProvider: (ref: React.RefObject<HTMLElement>) => void;
 };
 
 export const FocusRectsContext = React.createContext<IFocusRectsContext | undefined>(undefined);
@@ -154,11 +154,11 @@ export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTM
   return null;
 };
 
-function _onMouseDown(ev: MouseEvent, registeredProviders?: HTMLElement[]): void {
+function _onMouseDown(ev: MouseEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   setFocusVisibility(false, ev.target as Element, registeredProviders);
 }
 
-function _onPointerDown(ev: PointerEvent, registeredProviders?: HTMLElement[]): void {
+function _onPointerDown(ev: PointerEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   if (ev.pointerType !== 'mouse') {
     setFocusVisibility(false, ev.target as Element, registeredProviders);
   }
@@ -173,14 +173,14 @@ function _onPointerDown(ev: PointerEvent, registeredProviders?: HTMLElement[]): 
 // every element that is being tabbed into.
 // This works because `classList.add` is smart and will not duplicate a classname that already exists on the classList
 // when focus visibility is turned on.
-function _onKeyDown(ev: KeyboardEvent, registeredProviders?: HTMLElement[]): void {
+function _onKeyDown(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);
   }
 }
 
-function _onKeyUp(ev: KeyboardEvent, registeredProviders?: HTMLElement[]): void {
+function _onKeyUp(ev: KeyboardEvent, registeredProviders?: React.RefObject<HTMLElement>[]): void {
   // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element, registeredProviders);

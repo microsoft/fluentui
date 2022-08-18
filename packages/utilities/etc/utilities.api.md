@@ -607,9 +607,9 @@ export interface IFitContentToBoundsOptions {
 // @public (undocumented)
 export type IFocusRectsContext = {
     readonly providerRef: React_2.RefObject<HTMLElement>;
-    readonly registeredProviders: HTMLElement[];
-    readonly registerProvider: (providerElem: HTMLElement) => void;
-    readonly unregisterProvider: (providerElem: HTMLElement) => void;
+    readonly registeredProviders: React_2.RefObject<HTMLElement>[];
+    readonly registerProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement>) => void;
 };
 
 // @public
@@ -1182,7 +1182,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: HTMLElement[]): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement>[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
