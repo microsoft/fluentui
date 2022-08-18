@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make focus rects visible again in Combobox",
-  "packageName": "@fluentui/utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

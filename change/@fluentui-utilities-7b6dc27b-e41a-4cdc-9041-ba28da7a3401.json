@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "FocusZone: enable focus to be able to bypass hidden elements",
-  "packageName": "@fluentui/utilities",
-  "email": "jspurlin@microsoft.com",
-  "dependentChangeType": "patch"
-}

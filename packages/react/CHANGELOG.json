@@ -2,6 +2,83 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Aug 2022 23:39:29 GMT",
+      "tag": "@fluentui/react_v8.90.0",
+      "version": "8.90.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84",
+            "comment": "FocusZone: enable focus to be able to bypass hidden elements"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e10549cf02084db5919a71ffa0493c6797a38642",
+            "comment": "feat: Explicit exports for common-styles sass files copied into react package"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.15",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.8",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.12",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.12.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.4",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "3ce6e295fa7c514409413e5ce6b812338fd5ad1c",
+            "comment": "fix: Make focus rects visible again in Combobox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 07:48:47 GMT",
       "tag": "@fluentui/react_v8.89.0",
       "version": "8.89.0",

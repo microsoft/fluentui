@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Aug 2022 07:48:47 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Aug 2022 23:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.90.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.0)
+
+Thu, 18 Aug 2022 23:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.89.0..@fluentui/react_v8.90.0)
+
+### Minor changes
+
+- FocusZone: enable focus to be able to bypass hidden elements ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by jspurlin@microsoft.com)
+- feat: Explicit exports for common-styles sass files copied into react package ([PR #24361](https://github.com/microsoft/fluentui/pull/24361) by mgodbolt@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.15 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.8 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/react-focus to v8.8.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/react-hooks to v8.6.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/theme to v2.6.12 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/utilities to v8.12.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/common-styles to v1.2.4 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+### Patches
+
+- fix: Make focus rects visible again in Combobox ([PR #24340](https://github.com/microsoft/fluentui/pull/24340) by behowell@microsoft.com)
 
 ## [8.89.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.89.0)
 
