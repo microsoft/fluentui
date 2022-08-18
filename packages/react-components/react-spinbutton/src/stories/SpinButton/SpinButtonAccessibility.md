@@ -87,7 +87,7 @@ How the SpinButton is read depends on the screen reader used but generally it re
 2. "spin button"
 3. "value" where "value" is the current displayed value
 
-Prefixes, postfixes and other display formatted (e.g., mapping the numbers 1-12 to January-December) is handled by setting the `aria-valuetext` attribute.
+Prefixes, postfixes and other display formatting (e.g., mapping the numbers 1-12 to January-December) is handled by setting the `displayValue` prop which, internally to `SpinButton` sets the `aria-valuetext` attribute.
 
 How this is read also depends on the screen reader used but a screen reader should read the displayed text consistently with how it would read it in other contexts (i.e., "$1" should be read as "one dollar").
 
