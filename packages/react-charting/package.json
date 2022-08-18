@@ -2,6 +2,7 @@
   "name": "@fluentui/react-charting",
   "version": "4.21.10",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
+  "private": "true",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
