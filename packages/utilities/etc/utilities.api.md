@@ -294,7 +294,7 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
@@ -364,7 +364,7 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
 
 export { getParent }
 
