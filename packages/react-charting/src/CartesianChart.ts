@@ -1,1 +1,1 @@
-export * from '@uifabric/charting/lib/components/CommonComponents';
+export * from '@uifabric/charting/lib/components/CommonComponents/index';
