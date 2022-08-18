@@ -8,10 +8,9 @@ import {
 } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableScroll } from '../../utils';
+import { normalizeDefaultPrevented, isEscapeKeyDismiss, useDisableBodyScroll } from '../../utils';
 
 import type { DialogProps, DialogState, DialogModalType, DialogOpenChangeData } from './Dialog.types';
-import { useDialogContext_unstable } from '../../contexts/dialogContext';
 
 /**
  * Create the state required to render Dialog.
@@ -58,16 +57,14 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     requestOpenChange,
   });
 
-  const { targetDocument } = useFluent_unstable();
-  const disableScroll = useDisableScroll();
-  const isBodyScrollLocked =
-    useDialogContext_unstable(ctx => ctx.isBodyScrollLocked) || Boolean(open && modalType !== 'non-modal');
+  const disableBodyScroll = useDisableBodyScroll();
+  const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
   useIsomorphicLayoutEffect(() => {
-    if (isBodyScrollLocked && targetDocument) {
-      return disableScroll(targetDocument.body);
+    if (isBodyScrollLocked) {
+      return disableBodyScroll();
     }
-  }, [targetDocument, isBodyScrollLocked, disableScroll]);
+  }, [disableBodyScroll, isBodyScrollLocked]);
 
   const handleBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     backdropShorthand?.onClick?.(event);
@@ -90,7 +87,6 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trigger,
     triggerRef,
     contentRef,
-    isBodyScrollLocked,
     requestOpenChange,
     dialogBodyID: useId('dialog-body-'),
     dialogTitleID: useId('dialog-title-'),
