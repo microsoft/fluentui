@@ -33,7 +33,7 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * The label associated with the field.
    */
-  label?: SlotComponent<typeof Label>;
+  label?: Slot<typeof Label>;
 
   /**
    * A status or validation message. The appearance of the statusText depends on the value of the `status` prop.
@@ -63,11 +63,11 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
    *
    * @default vertical
    */
-  fieldOrientation?: 'vertical' | 'horizontal';
+  orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The status affects the color of the statusText, the statusIcon, and for some field components, an error status
-   * causes the border to become red.
+   * The status affects the color of the statusText, the statusIcon, and for some field components, an error
+   * status causes the border to become red.
    *
    * @default undefined
    */
@@ -95,6 +95,6 @@ export type OptionalFieldComponentProps = {
  * State used in rendering Field
  */
 export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &
-  Pick<FieldProps<T>, 'fieldOrientation' | 'status'> & {
+  Pick<FieldProps<T>, 'orientation' | 'status'> & {
     classNames: SlotClassNames<FieldSlots<T>>;
   };

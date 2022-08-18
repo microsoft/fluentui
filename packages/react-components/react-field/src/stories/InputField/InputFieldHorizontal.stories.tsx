@@ -16,14 +16,14 @@ export const Horizontal = () => {
     <div className={styles.stack}>
       <InputField
         label="Horizontal"
-        fieldOrientation="horizontal"
+        orientation="horizontal"
         status="success"
         statusText="Status text appears below the input"
         helperText="Helper text does too"
       />
-      <InputField label="Longer labels will wrap to multiple lines" fieldOrientation="horizontal" />
-      <InputField label="First Name" fieldOrientation="horizontal" />
-      <InputField label="Last Name" fieldOrientation="horizontal" />
+      <InputField label="Longer labels will wrap to multiple lines" orientation="horizontal" />
+      <InputField label="First Name" orientation="horizontal" />
+      <InputField label="Last Name" orientation="horizontal" />
     </div>
   );
 };

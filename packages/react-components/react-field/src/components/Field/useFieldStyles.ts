@@ -84,7 +84,7 @@ const useStatusIconStyles = makeStyles({
 export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldState<T>) => {
   const classNames = state.classNames;
   const status: FieldProps<FieldComponent>['status'] = state.status;
-  const horizontal = state.fieldOrientation === 'horizontal';
+  const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
   state.root.className = mergeClasses(

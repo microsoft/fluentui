@@ -15,29 +15,24 @@ export const Status = () => {
   const styles = useStyles();
   return (
     <div className={styles.stack}>
-      <InputField
-        label="Error status"
-        status="error"
-        statusText="This is an error message"
-        fieldOrientation="horizontal"
-      />
+      <InputField label="Error status" status="error" statusText="This is an error message" orientation="horizontal" />
       <InputField
         label="Warning status"
         status="warning"
         statusText="This is a warning message"
-        fieldOrientation="horizontal"
+        orientation="horizontal"
       />
       <InputField
         label="Success status"
         status="success"
         statusText="This is a success message"
-        fieldOrientation="horizontal"
+        orientation="horizontal"
       />
       <InputField
         label="Custom status"
         statusIcon={<SparkleFilled />}
         statusText="This status message has a custom icon"
-        fieldOrientation="horizontal"
+        orientation="horizontal"
       />
     </div>
   );

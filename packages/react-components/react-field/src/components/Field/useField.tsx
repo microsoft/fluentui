@@ -23,9 +23,9 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
   const {
     className,
     fieldComponent,
-    fieldOrientation,
     helperText,
     label,
+    orientation,
     root,
     status,
     statusIcon,
@@ -37,9 +37,9 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
   const fieldProps = {
     className,
     fieldComponent,
-    fieldOrientation,
     helperText,
     label,
+    orientation,
     root,
     status,
     statusIcon,
@@ -50,7 +50,17 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
   return [fieldProps, restOfProps] as const;
 };
 
-export type FieldParams<T extends FieldComponent> = {
+export type UseFieldParams<T extends FieldComponent> = {
+  /**
+   * Props passed to this Field
+   */
+  props: FieldProps<T> & OptionalFieldComponentProps;
+
+  /**
+   * Ref to the underlying fieldComponent
+   */
+  ref: React.Ref<HTMLElement>;
+
   /**
    * The underlying input component that this field is wrapping.
    */
@@ -60,6 +70,17 @@ export type FieldParams<T extends FieldComponent> = {
    * Class names for this component, created by `getFieldClassNames`.
    */
   classNames: SlotClassNames<FieldSlots<T>>;
+
+  /**
+   * How the label be connected to the fieldComponent.
+   * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
+   *   This is the preferred method for components that use the underlying <input> tag.
+   * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
+   *   that are not directly <input> elements (such as RadioGroup).
+   *
+   * @default htmlFor
+   */
+  labelConnection?: 'htmlFor' | 'aria-labelledby';
 };
 
 /**
@@ -68,20 +89,14 @@ export type FieldParams<T extends FieldComponent> = {
  * The returned state can be modified with hooks such as useFieldStyles_unstable,
  * before being passed to renderField_unstable.
  *
- * @param props - props from this instance of Field
- * @param ref - reference to root HTMLElement of Field
  * @param params - Configuration parameters for this Field
  */
-export const useField_unstable = <T extends FieldComponent>(
-  props: FieldProps<T> & OptionalFieldComponentProps,
-  ref: React.Ref<HTMLElement>,
-  params: FieldParams<T>,
-): FieldState<T> => {
-  const [fieldProps, componentProps] = getPartitionedFieldProps(props);
+export const useField_unstable = <T extends FieldComponent>(params: UseFieldParams<T>): FieldState<T> => {
+  const [fieldProps, componentProps] = getPartitionedFieldProps(params.props);
 
   const baseId = useId('field-');
 
-  const { fieldOrientation = 'vertical', status } = fieldProps;
+  const { orientation = 'vertical', status } = fieldProps;
 
   const root = resolveShorthand(fieldProps.root, {
     required: true,
@@ -116,11 +131,16 @@ export const useField_unstable = <T extends FieldComponent>(
     },
   });
 
+  const { labelConnection = 'htmlFor' } = params;
+
   const fieldComponent = resolveShorthand(fieldProps.fieldComponent, {
     required: true,
     defaultProps: {
-      ref,
-      'aria-labelledby': label?.id,
+      ref: params.ref,
+      // Add a default ID only if required for label's htmlFor prop
+      id: label && labelConnection === 'htmlFor' ? baseId + '__fieldComponent' : undefined,
+      // Add aria-labelledby only if not using the label's htmlFor
+      'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
       'aria-describedby': status !== 'error' ? mergeAriaDescribedBy(statusText?.id, helperText?.id) : helperText?.id,
       'aria-errormessage': status === 'error' ? statusText?.id : undefined,
       'aria-invalid': status === 'error' ? true : undefined,
@@ -128,15 +148,12 @@ export const useField_unstable = <T extends FieldComponent>(
     },
   });
 
-  if (label && !label.htmlFor) {
-    if (!fieldComponent.id) {
-      fieldComponent.id = baseId + '__fieldComponent';
-    }
+  if (labelConnection === 'htmlFor' && label && !label.htmlFor) {
     label.htmlFor = fieldComponent.id;
   }
 
   const state: FieldState<FieldComponent> = {
-    fieldOrientation,
+    orientation,
     status,
     classNames: params.classNames,
     components: {
