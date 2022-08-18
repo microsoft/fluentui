@@ -128,7 +128,7 @@ export {
   initializeFocusRects,
 } from './initializeFocusRects';
 export { FocusRectsProvider } from './FocusRectsProvider';
-export type { FocusRectsProviderParams } from './FocusRectsProvider';
+export type { FocusRectsProviderProps } from './FocusRectsProvider';
 export { FocusRects, FocusRectsContext, useFocusRects } from './useFocusRects';
 export type { IFocusRectsContext } from './useFocusRects';
 export { getInitials } from './initials';
