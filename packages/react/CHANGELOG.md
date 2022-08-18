@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 15 Aug 2022 07:39:40 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Aug 2022 07:48:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.89.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.89.0)
+
+Thu, 18 Aug 2022 07:48:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.88.0..@fluentui/react_v8.89.0)
+
+### Minor changes
+
+- feat: Allow IChoiceGroupOption in callback signatures ([PR #24242](https://github.com/microsoft/fluentui/pull/24242) by gcox@microsoft.com)
+
+### Patches
+
+- fix: add items prop to state to fix issue 23135 ([PR #24385](https://github.com/microsoft/fluentui/pull/24385) by tonyhallett74@gmail.com)
+- fix(List): solve stale props problem with getPageSpecification ([PR #24353](https://github.com/microsoft/fluentui/pull/24353) by olfedias@microsoft.com)
 
 ## [8.88.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.88.0)
 
