@@ -15,7 +15,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "skipLibCheck": true,
-    "types": ["webpack-env", "@storybook/react", "screener-storybook"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["webpack-env", "@storybook/react", "screener-storybook", "custom-global"]
   },
   "include": ["src"]
 }

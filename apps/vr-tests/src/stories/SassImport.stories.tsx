@@ -3,17 +3,20 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorFullWidth } from '../utilities/index';
 import { Text } from '@fluentui/react';
-import * as style from '@fluentui/react/dist/sass/Fabric.scss';
+import * as styleImport from '@fluentui/react/dist/sass/Fabric.scss';
+
+// vr tests are treating this import as a Sass module (import * as style)
+// but the typings expect import style
+const style = styleImport as any;
 
 const classNames = `
 ${style['ms-fontColor-sharedOrange10']}
 ${style['ms-bgColor-communicationTint10']}
 ${style['ms-fontSize-68']}
-${style['ms-borderColor-black']}
+${style['ms-borderColor-green']}
 ${style['ms-depth-16']}
 ${style['ms-fontWeight-bold']}
 ${style['ms-textAlignRight']}
-
 `;
 
 const className2 = `
