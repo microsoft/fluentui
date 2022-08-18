@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding @fluentui/react-charting package to alias @fluentui/charting",
+  "packageName": "@fluentui/react-charting",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "minor"
+}
