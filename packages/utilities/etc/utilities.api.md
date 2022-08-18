@@ -305,10 +305,10 @@ export const FocusRects: React_2.FunctionComponent<{
 export const FocusRectsContext: React_2.Context<IFocusRectsContext | undefined>;
 
 // @public (undocumented)
-export const FocusRectsProvider: React_2.FC<FocusRectsProviderParams>;
+export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
 
 // @public (undocumented)
-export type FocusRectsProviderParams = {
+export type FocusRectsProviderProps = {
     providerRef: React_2.RefObject<HTMLElement>;
     layerRoot?: boolean;
 };
