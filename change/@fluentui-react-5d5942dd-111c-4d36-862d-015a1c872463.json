@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Explicit exports for common-styles sass files copied into react package",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
