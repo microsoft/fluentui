@@ -7,8 +7,8 @@ export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<Fiel
   root: `fui-${name}`,
   fieldComponent: `fui-${name}__fieldComponent`,
   label: `fui-${name}__label`,
-  statusText: `fui-${name}__statusText`,
-  statusIcon: `fui-${name}__statusIcon`,
+  validationMessage: `fui-${name}__validationMessage`,
+  validationMessageIcon: `fui-${name}__validationMessageIcon`,
   hint: `fui-${name}__hint`,
 });
 
@@ -59,7 +59,7 @@ const useSecondaryTextStyles = makeStyles({
   },
 });
 
-const useStatusIconStyles = makeStyles({
+const useValidationMessageIconStyles = makeStyles({
   base: {
     fontSize: '12px',
     lineHeight: '12px',
@@ -83,7 +83,7 @@ const useStatusIconStyles = makeStyles({
  */
 export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldState<T>) => {
   const classNames = state.classNames;
-  const status: FieldProps<FieldComponent>['status'] = state.status;
+  const validationState: FieldProps<FieldComponent>['validationState'] = state.validationState;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
@@ -112,24 +112,24 @@ export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldSt
     );
   }
 
-  const statusIconStyles = useStatusIconStyles();
-  if (state.statusIcon) {
-    state.statusIcon.className = mergeClasses(
-      classNames.statusIcon,
-      statusIconStyles.base,
-      !!status && statusIconStyles[status],
-      state.statusIcon.className,
+  const validationMessageIconStyles = useValidationMessageIconStyles();
+  if (state.validationMessageIcon) {
+    state.validationMessageIcon.className = mergeClasses(
+      classNames.validationMessageIcon,
+      validationMessageIconStyles.base,
+      !!validationState && validationMessageIconStyles[validationState],
+      state.validationMessageIcon.className,
     );
   }
 
   const secondaryTextStyles = useSecondaryTextStyles();
-  if (state.statusText) {
-    state.statusText.className = mergeClasses(
-      classNames.statusText,
+  if (state.validationMessage) {
+    state.validationMessage.className = mergeClasses(
+      classNames.validationMessage,
       secondaryTextStyles.base,
       horizontal && rootStyles.secondColumn,
-      status === 'error' && secondaryTextStyles.error,
-      state.statusText.className,
+      validationState === 'error' && secondaryTextStyles.error,
+      state.validationMessage.className,
     );
   }
 

@@ -7,7 +7,7 @@ export { Default } from './InputFieldDefault.stories';
 export { Label } from './InputFieldLabel.stories';
 export { Horizontal } from './InputFieldHorizontal.stories';
 export { Required } from './InputFieldRequired.stories';
-export { Status } from './InputFieldStatus.stories';
+export { ValidationState } from './InputFieldValidationState.stories';
 export { Size } from './InputFieldSize.stories';
 export { Hint } from './InputFieldHint.stories';
 

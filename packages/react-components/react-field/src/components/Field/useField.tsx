@@ -4,7 +4,7 @@ import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@
 import { Label } from '@fluentui/react-label';
 import { getNativeElementProps, resolveShorthand, SlotClassNames, useId } from '@fluentui/react-utilities';
 
-const statusIcons = {
+const validationMessageIcons = {
   error: <ErrorCircle12Filled />,
   warning: <Warning12Filled />,
   success: <CheckmarkCircle12Filled />,
@@ -27,10 +27,10 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
     label,
     orientation,
     root,
-    status,
-    statusIcon,
-    statusText,
     style,
+    validationMessage,
+    validationMessageIcon,
+    validationState,
     ...restOfProps
   } = props;
 
@@ -41,10 +41,10 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
     label,
     orientation,
     root,
-    status,
-    statusIcon,
-    statusText,
     style,
+    validationMessage,
+    validationMessageIcon,
+    validationState,
   };
 
   return [fieldProps, restOfProps] as const;
@@ -96,7 +96,7 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
 
   const baseId = useId('field-');
 
-  const { orientation = 'vertical', status } = fieldProps;
+  const { orientation = 'vertical', validationState } = fieldProps;
 
   const root = resolveShorthand(fieldProps.root, {
     required: true,
@@ -112,9 +112,9 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     },
   });
 
-  const statusText = resolveShorthand(fieldProps.statusText, {
+  const validationMessage = resolveShorthand(fieldProps.validationMessage, {
     defaultProps: {
-      id: baseId + '__statusText',
+      id: baseId + '__validationMessage',
     },
   });
 
@@ -124,14 +124,15 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     },
   });
 
-  const statusIcon = resolveShorthand(fieldProps.statusIcon, {
-    required: !!status,
+  const validationMessageIcon = resolveShorthand(fieldProps.validationMessageIcon, {
+    required: !!validationState,
     defaultProps: {
-      children: status ? statusIcons[status] : undefined,
+      children: validationState ? validationMessageIcons[validationState] : undefined,
     },
   });
 
   const { labelConnection = 'htmlFor' } = params;
+  const hasError = validationState === 'error';
 
   const fieldComponent = resolveShorthand(fieldProps.fieldComponent, {
     required: true,
@@ -141,9 +142,9 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
       id: label && labelConnection === 'htmlFor' ? baseId + '__fieldComponent' : undefined,
       // Add aria-labelledby only if not using the label's htmlFor
       'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
-      'aria-describedby': status !== 'error' ? mergeAriaDescribedBy(statusText?.id, hint?.id) : hint?.id,
-      'aria-errormessage': status === 'error' ? statusText?.id : undefined,
-      'aria-invalid': status === 'error' ? true : undefined,
+      'aria-describedby': hasError ? hint?.id : mergeAriaDescribedBy(validationMessage?.id, hint?.id),
+      'aria-errormessage': hasError ? validationMessage?.id : undefined,
+      'aria-invalid': hasError ? true : undefined,
       ...componentProps,
     },
   });
@@ -154,21 +155,21 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
 
   const state: FieldState<FieldComponent> = {
     orientation,
-    status,
+    validationState,
     classNames: params.classNames,
     components: {
       root: 'div',
       fieldComponent: params.fieldComponent,
       label: Label,
-      statusText: 'span',
-      statusIcon: 'span',
+      validationMessage: 'span',
+      validationMessageIcon: 'span',
       hint: 'span',
     },
     root,
     fieldComponent,
     label,
-    statusIcon,
-    statusText,
+    validationMessageIcon,
+    validationMessage,
     hint,
   };
 

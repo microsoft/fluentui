@@ -17,8 +17,8 @@ export const Horizontal = () => {
       <InputField
         label="Horizontal"
         orientation="horizontal"
-        status="success"
-        statusText="Status text appears below the input"
+        validationState="success"
+        validationMessage="Validation message appears below the input"
         hint="Hint text does too"
       />
       <InputField label="Longer labels will wrap to multiple lines" orientation="horizontal" />

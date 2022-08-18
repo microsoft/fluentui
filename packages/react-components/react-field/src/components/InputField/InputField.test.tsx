@@ -14,8 +14,8 @@ describe('InputField', () => {
         {
           props: {
             label: 'label',
-            status: 'error',
-            statusText: 'statusText',
+            validationState: 'error',
+            validationMessage: 'validationMessage',
             hint: 'hint',
           },
         },

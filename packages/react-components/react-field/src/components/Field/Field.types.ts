@@ -36,16 +36,17 @@ export type FieldSlots<T extends FieldComponent> = {
   label?: Slot<typeof Label>;
 
   /**
-   * A status or validation message. The appearance of the statusText depends on the value of the `status` prop.
+   * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
    */
-  statusText?: Slot<'span'>;
+  validationMessage?: Slot<'span'>;
 
   /**
-   * The icon associated with the status. If the `status` prop is set, this will default to a corresponding icon.
+   * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
+   * icon corresponding to that state.
    *
-   * This will only be displayed if `statusText` is set.
+   * This will only be displayed if `validationMessage` is set.
    */
-  statusIcon?: Slot<'span'>;
+  validationMessageIcon?: Slot<'span'>;
 
   /**
    * Additional hint text below the field.
@@ -59,19 +60,19 @@ export type FieldSlots<T extends FieldComponent> = {
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
   /**
    * The orientation of the label relative to the field component.
-   * This only affects the label, and not the statusText or hint (which always appear below the field component).
+   * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
    *
    * @default vertical
    */
   orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The status affects the color of the statusText, the statusIcon, and for some field components, an error
-   * status causes the border to become red.
+   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`, and for some
+   * field components, an `validationState="error"` causes the border to become red.
    *
    * @default undefined
    */
-  status?: 'error' | 'warning' | 'success';
+  validationState?: 'error' | 'warning' | 'success';
 };
 
 /**
@@ -95,6 +96,6 @@ export type OptionalFieldComponentProps = {
  * State used in rendering Field
  */
 export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &
-  Pick<FieldProps<T>, 'orientation' | 'status'> & {
+  Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
     classNames: SlotClassNames<FieldSlots<T>>;
   };

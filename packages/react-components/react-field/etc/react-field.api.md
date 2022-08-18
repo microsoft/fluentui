@@ -20,7 +20,7 @@ import type { SlotShorthandValue } from '@fluentui/react-utilities';
 // @public
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
     orientation?: 'vertical' | 'horizontal';
-    status?: 'error' | 'warning' | 'success';
+    validationState?: 'error' | 'warning' | 'success';
 };
 
 // @public
@@ -28,13 +28,13 @@ export type FieldSlots<T extends FieldComponent> = {
     root: NonNullable<Slot<'div'>>;
     fieldComponent: SlotComponent<T>;
     label?: Slot<typeof Label>;
-    statusText?: Slot<'span'>;
-    statusIcon?: Slot<'span'>;
-    helperText?: Slot<'span'>;
+    validationMessage?: Slot<'span'>;
+    validationMessageIcon?: Slot<'span'>;
+    hint?: Slot<'span'>;
 };
 
 // @public
-export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'status'> & {
+export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
     classNames: SlotClassNames<FieldSlots<T>>;
 };
 
