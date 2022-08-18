@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
+import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 
 /**
@@ -19,12 +21,54 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   const baseState = useComboboxBaseState(props);
+  const { activeOption, getIndexOfId, getOptionsMatchingValue, open, setActiveOption, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
     excludedPropNames: ['children'],
   });
+
+  // jump to matching option based on typing
+  const searchString = React.useRef('');
+  const keyTimeoutRef = React.useRef<number>();
+
+  const getNextMatchingOption = (): OptionValue | undefined => {
+    const matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.current) === 0;
+    const matches = getOptionsMatchingValue(matcher);
+
+    // return first matching option after the current active option, looping back to the top
+    if (matches.length > 1 && activeOption) {
+      const startIndex = getIndexOfId(activeOption.id);
+      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
+      return nextMatch ?? matches[0];
+    }
+
+    return matches[0] ?? undefined;
+  };
+
+  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    // clear timeout, if it exists
+    if (keyTimeoutRef.current) {
+      window.clearTimeout(keyTimeoutRef.current);
+      keyTimeoutRef.current = undefined;
+    }
+
+    // if the key was a char key, update search string
+    if (getDropdownActionFromKey(ev) === 'Type') {
+      // update search string
+      searchString.current += ev.key.toLowerCase();
+      keyTimeoutRef.current = setTimeout(() => {
+        searchString.current = '';
+      }, 500);
+
+      // update state
+      !open && setOpen(ev, true);
+
+      const nextOption = getNextMatchingOption();
+      setActiveOption(nextOption);
+    }
+  };
 
   // resolve button and listbox slot props
   let triggerSlot: Slot<'button'>;
@@ -38,6 +82,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       ...triggerNativeProps,
     },
   });
+
+  triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
 
   listboxSlot = baseState.open
     ? resolveShorthand(props.listbox, {
