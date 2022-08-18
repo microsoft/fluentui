@@ -245,6 +245,22 @@ const useStyles = makeStyles({
   },
 });
 
+const getInteractiveStyles = (state: CardState, styles: ReturnType<typeof useStyles>) => {
+  const interactiveMap = {
+    filled: styles.filledInteractive,
+    'filled-alternative': styles.filledAlternativeInteractive,
+    subtle: styles.subtleInteractive,
+    outline: mergeClasses(styles.interactiveNoOutline, styles.outlineInteractive),
+  };
+  const classes = mergeClasses(interactiveMap[state.appearance], styles.interactiveNoUnderline);
+
+  if (state.components.root === 'button') {
+    return mergeClasses(classes, styles.interactiveButton);
+  }
+
+  return classes;
+};
+
 /**
  * Apply styling to the Card slots based on the state.
  */
@@ -254,27 +270,20 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
     vertical: styles.orientationVertical,
-  } as const;
+  };
 
   const sizeMap = {
     small: styles.sizeSmall,
     medium: styles.sizeMedium,
     large: styles.sizeLarge,
-  } as const;
+  };
 
   const appearanceMap = {
     filled: styles.filled,
     'filled-alternative': styles.filledAlternative,
     outline: styles.outline,
     subtle: styles.subtle,
-  } as const;
-
-  const interactiveMap = {
-    filled: styles.filledInteractive,
-    'filled-alternative': styles.filledAlternativeInteractive,
-    subtle: styles.subtleInteractive,
-    outline: mergeClasses(styles.interactiveNoOutline, styles.outlineInteractive),
-  } as const;
+  };
 
   state.root.className = mergeClasses(
     cardClassNames.root,
@@ -282,9 +291,7 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     orientationMap[state.orientation],
     sizeMap[state.size],
     state.appearance && appearanceMap[state.appearance],
-    state.isInteractive && interactiveMap[state.appearance],
-    state.isInteractive && styles.interactiveNoUnderline,
-    state.components.root === 'button' && styles.interactiveButton,
+    state.isInteractive && getInteractiveStyles(state, styles),
     state.root.className,
   );
 

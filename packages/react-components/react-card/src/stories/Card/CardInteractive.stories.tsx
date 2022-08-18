@@ -12,12 +12,12 @@ const useStyles = makeStyles({
   },
 });
 
+const onClickEvent = () => {
+  console.log('Interactive when has onClick event');
+};
+
 export const Interactive = () => {
   const styles = useStyles();
-
-  const onClickEvent = React.useCallback(() => {
-    console.log('Interactive when has onClick event');
-  }, []);
 
   return (
     <div className={styles.root}>

@@ -2,8 +2,8 @@ import { Card } from '@fluentui/react-card';
 import descriptionMd from './CardDescription.md';
 
 export { Default } from './CardDefault.stories';
-export { Interactive } from './CardInteractive.stories';
 export { Appearance } from './CardAppearance.stories';
+export { Interactive } from './CardInteractive.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';
