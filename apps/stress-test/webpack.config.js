@@ -27,19 +27,26 @@ module.exports = (env, argv) => {
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
-          oneOf: [
-            {
-              // Match Web Component files
-              // Not sure why babel-loader isn't working but
-              // the FAST docs use ts-loader and it "just works"
-              // so let's roll with it for now.
-              include: /\.wc\.tsx?$/,
-              use: 'ts-loader',
+          use: {
+            loader: 'swc-loader',
+            options: {
+              jsc: {
+                target: 'es2019',
+                parser: {
+                  syntax: 'typescript',
+                  decorators: true,
+                  dynamicImport: true,
+                },
+                transform: {
+                  decoratorMetadata: true,
+                  legacyDecorator: true,
+                },
+                keepClassNames: true,
+                externalHelpers: true,
+                loose: true,
+              },
             },
-            {
-              use: 'swc-loader',
-            },
-          ],
+          },
         },
       ],
     },

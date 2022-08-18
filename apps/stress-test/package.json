@@ -34,6 +34,7 @@
     "@fluentui/react-icons": "^2.0.175",
     "@fluentui/web-components": "^2.5.3",
     "@microsoft/fast-element": "^1.10.4",
+    "@swc/helpers": "0.4.7",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   }
