@@ -7,7 +7,7 @@ import * as styleImport from '@fluentui/react/dist/sass/Fabric.scss';
 
 // vr tests are treating this import as a Sass module (import * as style)
 // but the typings expect import style
-const style = styleImport as any;
+const style = (styleImport as unknown) as { [className: string]: string };
 
 const classNames = `
 ${style['ms-fontColor-sharedOrange10']}
