@@ -9,6 +9,7 @@
     "noUnusedLocals": true,
     "preserveConstEnums": true,
     "experimentalDecorators": true,
+    "types": ["environment"],
     "outDir": "./dist"
   },
   "include": ["src"],

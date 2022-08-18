@@ -25,7 +25,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)?$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
           oneOf: [
             {
@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
               // Not sure why babel-loader isn't working but
               // the FAST docs use ts-loader and it "just works"
               // so let's roll with it for now.
-              include: /\.wc\.(ts|tsx)?$/,
+              include: /\.wc\.tsx?$/,
               use: 'ts-loader',
             },
             {
