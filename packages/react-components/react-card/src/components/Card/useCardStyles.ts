@@ -121,7 +121,7 @@ const useStyles = makeStyles({
     },
   },
 
-  interactiveNoUnderline: {
+  interactiveLink: {
     textDecorationLine: 'none',
   },
 
@@ -249,16 +249,20 @@ const getInteractiveStyles = (state: CardState, styles: ReturnType<typeof useSty
   const interactiveMap = {
     filled: styles.filledInteractive,
     'filled-alternative': styles.filledAlternativeInteractive,
+    outline: styles.outlineInteractive,
     subtle: styles.subtleInteractive,
-    outline: mergeClasses(styles.interactiveNoOutline, styles.outlineInteractive),
   };
-  const classes = mergeClasses(interactiveMap[state.appearance], styles.interactiveNoUnderline);
+  const baseClass = interactiveMap[state.appearance];
 
   if (state.components.root === 'button') {
-    return mergeClasses(classes, styles.interactiveButton);
+    return mergeClasses(baseClass, styles.interactiveButton);
   }
 
-  return classes;
+  if (state.components.root === 'a') {
+    return mergeClasses(baseClass, styles.interactiveLink);
+  }
+
+  return baseClass;
 };
 
 /**
