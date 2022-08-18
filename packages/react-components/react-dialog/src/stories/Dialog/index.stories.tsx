@@ -7,6 +7,7 @@ export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
 export { AlertDialog as Alert } from './DialogAlert.stories';
 export { Nested } from './DialogNested.stories';
+export { ScrollingLongContent } from './DialogScrollingLongContent.stories';
 export { NoFocusableElement } from './DialogNoFocusableElement.stories';
 export { ControllingOpenAndClose } from './DialogControllingOpenAndClose.stories';
 export { CustomFocusedElementOnOpen as ChangeFocus } from './DialogChangeFocus.stories';

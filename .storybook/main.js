@@ -2,8 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 const exportToCodesandboxAddon = require('storybook-addon-export-to-codesandbox');
-const { getAllPackageInfo, isConvergedPackage } = require('@fluentui/scripts/monorepo');
-const semver = require('semver');
+
+const { loadWorkspaceAddon, getCodesandboxBabelOptions } = require('../scripts/storybook');
 
 /**
  * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
@@ -49,7 +49,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     // internal monorepo custom addons
 
     /**  @see ../packages/react-components/react-storybook-addon */
-    '@fluentui/react-storybook-addon',
+    loadWorkspaceAddon('@fluentui/react-storybook-addon'),
   ],
   webpackFinal: config => {
     const tsPaths = new TsconfigPathsPlugin({
@@ -161,23 +161,4 @@ function overrideDefaultBabelLoader(rules) {
 
     return loader;
   }
-}
-
-/**
- * @returns {import('storybook-addon-export-to-codesandbox').BabelPluginOptions}
- */
-function getCodesandboxBabelOptions() {
-  const allPackageInfo = getAllPackageInfo();
-
-  return Object.values(allPackageInfo).reduce((acc, cur) => {
-    if (isConvergedPackage(cur.packageJson)) {
-      const prereleaseTags = semver.prerelease(cur.packageJson.version);
-      const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
-      acc[cur.packageJson.name] = isNonRcPrerelease
-        ? { replace: '@fluentui/react-components/unstable' }
-        : { replace: '@fluentui/react-components' };
-    }
-
-    return acc;
-  }, /** @type import('storybook-addon-export-to-codesandbox').BabelPluginOptions*/ ({}));
 }

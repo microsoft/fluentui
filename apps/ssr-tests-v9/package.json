@@ -9,13 +9,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "ts-node --transpile-only ./src/build.ts",
+    "build": "ts-node --swc ./src/build.ts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "storybook": "node ../../scripts/storybook/runner",
+    "storybook": "start-storybook",
     "test:unit": "jest",
-    "test:ssr": "ts-node --transpile-only ./src/test.ts",
+    "test:ssr": "ts-node --swc ./src/test.ts",
     "test": "yarn test:unit && yarn test:ssr",
     "type-check": "tsc -b tsconfig.json"
   },

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Aug 2022 07:39:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.11.0)
+
+Mon, 15 Aug 2022 07:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.10.2..@fluentui/utilities_v8.11.0)
+
+### Minor changes
+
+- Support range selection from Group headers ([PR #24278](https://github.com/microsoft/fluentui/pull/24278) by tmichon@microsoft.com)
 
 ## [8.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.10.2)
 

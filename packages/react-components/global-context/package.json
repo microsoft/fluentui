@@ -16,15 +16,13 @@
     "bundle-size": "bundle-size measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "e2e": "yarn cypress run --component",
-    "e2e:local": "yarn cypress open --component",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "yarn storybook",
     "test": "jest --passWithNoTests",
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/global-context/src && yarn docs",
-    "storybook": "node ../../../scripts/storybook/runner",
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {

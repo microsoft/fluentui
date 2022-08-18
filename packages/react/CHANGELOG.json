@@ -2,6 +2,113 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Aug 2022 07:48:47 GMT",
+      "tag": "@fluentui/react_v8.89.0",
+      "version": "8.89.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "tonyhallett74@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "df602db552cade02f2a0922e7ba829975232c7dc",
+            "comment": "fix: add items prop to state to fix issue 23135"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c608ed1ca39d3aecb3a65c3710ab35c58903b24e",
+            "comment": "fix(List): solve stale props problem with getPageSpecification"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee77a76375e07c52729fdac1a08471607c12652d",
+            "comment": "feat: Allow IChoiceGroupOption in callback signatures"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Aug 2022 07:39:40 GMT",
+      "tag": "@fluentui/react_v8.88.0",
+      "version": "8.88.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7c797fb44915964da8f764a93557f2b5c4c7067f",
+            "comment": "Support range selection from Group headers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.14",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.7",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.7.8",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.11",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.11.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.3",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Aug 2022 07:48:18 GMT",
+      "tag": "@fluentui/react_v8.87.2",
+      "version": "8.87.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "6ba787f09bb625f2f09124ddd766afd03266f7a8",
+            "comment": "fix: Remove caret from regex to correctly detect if the browser is Edge."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Aug 2022 20:28:21 GMT",
       "tag": "@fluentui/react_v8.87.1",
       "version": "8.87.1",

@@ -123,13 +123,35 @@ jobs:
         displayName: yarn
 
       - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffectedPR
+        displayName: Check if northstar packages were affected
+        condition: eq(variables['isPR'], 'true')
+
+      - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffected
+        displayName: Check if northstar packages were affected
+        condition: eq(variables['isPR'], 'false')
+
+      - script: |
           yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
+        condition: ne(variables['skipScreener'], 'true')
         env:
           SCREENER_BUILD: 1
 
       - task: AzureUpload@2
         displayName: Upload N* VR test site
+        condition: ne(variables['skipScreener'], 'true')
         inputs:
           azureSubscription: $(azureSubscription)
           BlobPrefix: $(deployBasePath)/react-northstar-screener
@@ -160,11 +182,33 @@ jobs:
         displayName: yarn
 
       - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffectedPR
+        displayName: Check if v8 packages were affected
+        condition: eq(variables['isPR'], 'true')
+
+      - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffected
+        displayName: Check if v8 packages were affected
+        condition: eq(variables['isPR'], 'false')
+
+      - script: |
           yarn workspace @fluentui/vr-tests screener:build
         displayName: build vr-tests storybook
+        condition: ne(variables['skipScreener'], 'true')
 
       - task: AzureUpload@2
         displayName: Upload @fluentui/react VR test site
+        condition: ne(variables['skipScreener'], 'true')
         inputs:
           azureSubscription: $(azureSubscription)
           BlobPrefix: $(deployBasePath)/react-screener
@@ -197,11 +241,33 @@ jobs:
         displayName: yarn
 
       - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffectedPR
+        displayName: Check if v9 packages were affected
+        condition: eq(variables['isPR'], 'true')
+
+      - script: |
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components)
+          if [[ $packageAffected == false ]]; then
+            echo "##vso[task.setvariable variable=skipScreener]true"
+            echo "Should skip screener"
+          fi
+        name: PackagesAffected
+        displayName: Check if v9 packages were affected
+        condition: eq(variables['isPR'], 'false')
+
+      - script: |
           yarn workspace @fluentui/vr-tests-react-components screener:build
         displayName: build vr-tests-react-components storybook
+        condition: ne(variables['skipScreener'], 'true')
 
       - task: AzureUpload@2
         displayName: Upload @fluentui/react-components VR test site
+        condition: ne(variables['skipScreener'], 'true')
         inputs:
           azureSubscription: $(azureSubscription)
           BlobPrefix: $(deployBasePath)/react-components-screener

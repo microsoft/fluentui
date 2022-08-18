@@ -4,8 +4,11 @@ import type { ContextSelector, Context } from '@fluentui/react-context-selector'
 import type { SelectableHandler } from '../selectable/index';
 import type { MenuListProps } from '../components/index';
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue>({
+export const MenuListContext: Context<MenuListContextValue> = createContext<MenuListContextValue | undefined>(
+  undefined,
+) as Context<MenuListContextValue>;
+
+const menuListContextDefaultValue: MenuListContextValue = {
   checkedValues: {},
   onCheckedValueChange: () => null,
   setFocusByFirstCharacter: () => null,
@@ -13,7 +16,7 @@ export const MenuListContext: Context<MenuListContextValue> = createContext<Menu
   selectRadio: () => null,
   hasIcons: false,
   hasCheckmarks: false,
-});
+};
 
 /**
  * Context shared between MenuList and its children components
@@ -30,4 +33,4 @@ export type MenuListContextValue = Pick<
 export const MenuListProvider = MenuListContext.Provider;
 
 export const useMenuListContext_unstable = <T,>(selector: ContextSelector<MenuListContextValue, T>) =>
-  useContextSelector(MenuListContext, selector);
+  useContextSelector(MenuListContext, (ctx = menuListContextDefaultValue) => selector(ctx));

@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Meta } from '@storybook/addon-docs';
 import { SSRDefaultOpen } from './MenuSSRDefaultOpen.stories';
 
 <Meta title="Concepts/Developer/Server-Side Rendering" />
@@ -18,22 +18,30 @@ For basic instructions on getting Next.js set up, see [Getting Started](https://
 yarn add @fluentui/react-components
 ```
 
-1. Create a `_document.js` file under your `pages` folder with the following content:
+1. Create a `_document.tsx` file under your `pages` folder with the following content:
 
 ```tsx
 import { createDOMRenderer, renderToStyleElements } from '@fluentui/react-components';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    // 👇 creates a renderer
+  static async getInitialProps(ctx: DocumentContext) {
+    // 👇 creates a renderer that will be used for SSR
     const renderer = createDOMRenderer();
     const originalRenderPage = ctx.renderPage;
 
     ctx.renderPage = () =>
       originalRenderPage({
-        // 👇 this is required by pass the same instance to <App />
-        enhanceApp: App => props => <App {...props} renderer={renderer} />,
+        enhanceApp: App =>
+          function EnhancedApp(props) {
+            const enhancedProps = {
+              ...props,
+              // 👇 this is required to provide a proper renderer instance
+              renderer,
+            };
+
+            return <App {...enhancedProps} />;
+          },
       });
 
     const initialProps = await Document.getInitialProps(ctx);
@@ -41,8 +49,13 @@ class MyDocument extends Document {
 
     return {
       ...initialProps,
-      // 👇 adding our styles elements to output
-      styles: [...initialProps.styles, ...styles],
+      styles: (
+        <>
+          {initialProps.styles}
+          {/* 👇 adding Fluent UI styles elements to output */}
+          {styles}
+        </>
+      ),
     };
   }
 
@@ -62,17 +75,30 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-2. Create or modify a `_app.js` file under your `pages` folder with the following content:
+2. Create or modify a `_app.tsx` file under your `pages` folder with the following content:
 
-```js
-import { createDOMRenderer, RendererProvider, SSRProvider } from '@fluentui/react-components';
+```tsx
+import {
+  createDOMRenderer,
+  FluentProvider,
+  GriffelRenderer,
+  SSRProvider,
+  RendererProvider,
+  webLightTheme,
+} from '@fluentui/react-components';
+import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps, renderer }) {
+type EnhancedAppProps = AppProps & { renderer?: GriffelRenderer };
+
+function MyApp({ Component, pageProps, renderer }: EnhancedAppProps) {
   return (
-    // 👇 accepts a renderer from <Document /> or creates a default one
+    // 👇 Accepts a renderer from <Document /> or creates a default one
+    //    Also triggers rehydration a client
     <RendererProvider renderer={renderer || createDOMRenderer()}>
       <SSRProvider>
-        <Component {...pageProps} />
+        <FluentProvider theme={webLightTheme}>
+          <Component {...pageProps} />
+        </FluentProvider>
       </SSRProvider>
     </RendererProvider>
   );
@@ -83,16 +109,42 @@ export default MyApp;
 
 3. You should now be able to server render Fluent UI React components in any of your pages:
 
-```js
-import { Button, FluentProvider, webLightTheme } from '@fluentui/react-components';
+```tsx
+import { Button, makeStyles, shorthands, Title1, tokens } from '@fluentui/react-components';
+import type { NextPage } from 'next';
+import Head from 'next/head';
 
-export default function Home() {
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '200px',
+
+    ...shorthands.border('2px', 'dashed', tokens.colorPaletteBerryBorder2),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.gap('5px'),
+    ...shorthands.padding('10px'),
+  },
+});
+
+const Home: NextPage = () => {
+  const styles = useStyles();
+
   return (
-    <FluentProvider theme={webLightTheme}>
-      <Button>Hello world!</Button>
-    </FluentProvider>
+    <>
+      <Head>
+        <title>My app</title>
+      </Head>
+
+      <div className={styles.container}>
+        <Title1>Hello world!</Title1>
+        <Button>A button</Button>
+      </div>
+    </>
   );
-}
+};
+
+export default Home;
 ```
 
 ### React Portals
@@ -113,10 +165,12 @@ Toggle the checkbox to mount/unmount the component.
 
 ```tsx
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover, useIsSSR, Button } from '@fluentui/react-components';
+import * as React from 'react';
 
 const DefaultOpenMenu = () => {
   const [open, setOpen] = React.useState(false);
   const isSSR = useIsSSR();
+
   React.useEffect(() => {
     if (!isSSR) {
       setOpen(true);

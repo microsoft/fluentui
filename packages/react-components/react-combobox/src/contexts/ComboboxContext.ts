@@ -6,20 +6,34 @@ import { ComboboxState } from '../components/Combobox/Combobox.types';
  */
 export type ComboboxContextValue = Pick<
   ComboboxState,
-  'activeOption' | 'appearance' | 'onOptionClick' | 'open' | 'registerOption' | 'selectedOptions' | 'size'
+  | 'activeOption'
+  | 'appearance'
+  | 'open'
+  | 'registerOption'
+  | 'selectedOptions'
+  | 'selectOption'
+  | 'setActiveOption'
+  | 'setOpen'
+  | 'size'
 >;
 
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
   appearance: 'outline',
-  onOptionClick() {
-    // noop
-  },
   open: false,
-  selectedOptions: [],
   registerOption() {
     return () => undefined;
+  },
+  selectedOptions: [],
+  selectOption() {
+    // noop
+  },
+  setActiveOption() {
+    // noop
+  },
+  setOpen() {
+    // noop
   },
   size: 'medium',
 });

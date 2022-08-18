@@ -322,7 +322,15 @@ const charKeyPressedCleanupTime = 500;
 function normalizeValue(multiple: boolean, rawValue: DropdownProps['value']): ShorthandCollection<DropdownItemProps> {
   const normalizedValue = Array.isArray(rawValue) ? rawValue : [rawValue];
 
-  return multiple ? normalizedValue : normalizedValue.slice(0, 1);
+  if (multiple) {
+    return normalizedValue;
+  }
+
+  if (normalizedValue[0] === '') {
+    return [];
+  }
+
+  return normalizedValue.slice(0, 1);
 }
 
 /**

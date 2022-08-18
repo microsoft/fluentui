@@ -5,6 +5,12 @@ const useStyles = makeStyles({
   container: {
     '> div': { ...shorthands.padding('20px') },
   },
+
+  // Inverted Spinners are meant as overlays (e.g., over an image or similar)
+  // so give it a solid, dark background so it is visible in all themes.
+  invertedWrapper: {
+    backgroundColor: '#af33a1',
+  },
 });
 
 export const Appearance = () => {
@@ -14,7 +20,9 @@ export const Appearance = () => {
     <div className={styles.container}>
       <Spinner appearance="primary" label="Primary Spinner" />
 
-      <Spinner appearance="inverted" label="Inverted Spinner" />
+      <div className={styles.invertedWrapper}>
+        <Spinner appearance="inverted" label="Inverted Spinner" />
+      </div>
     </div>
   );
 };

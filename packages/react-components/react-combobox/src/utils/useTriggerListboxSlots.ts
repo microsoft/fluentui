@@ -38,6 +38,7 @@ export function useTriggerListboxSlots(
     getCount,
     getIndexOfId,
     getOptionAtIndex,
+    ignoreNextBlur,
     open,
     selectOption,
     setActiveOption,
@@ -46,7 +47,6 @@ export function useTriggerListboxSlots(
 
   // handle trigger focus/blur
   const triggerRef: typeof ref = React.useRef(null);
-  const ignoreTriggerBlur = React.useRef(false);
 
   // resolve listbox shorthand props
   const listbox: typeof listboxSlot = {
@@ -80,7 +80,7 @@ export function useTriggerListboxSlots(
   };
 
   listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    ignoreTriggerBlur.current = true;
+    ignoreNextBlur.current = true;
 
     onListboxMouseDown?.(event);
   };
@@ -88,11 +88,11 @@ export function useTriggerListboxSlots(
   // the trigger should open/close the popup on click or blur
   const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = trigger;
   trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
-    if (!ignoreTriggerBlur.current) {
+    if (!ignoreNextBlur.current) {
       setOpen(event, false);
     }
 
-    ignoreTriggerBlur.current = false;
+    ignoreNextBlur.current = false;
 
     onTriggerBlur?.(event);
   };

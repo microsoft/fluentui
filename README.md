@@ -29,11 +29,11 @@ The following table will help you navigate the 3 projects and understand their d
 
 ## FluentUI Insights
 
-Fluent UI Insights is a series that describes the design and decisions behind the Fluent UI design system.
+[Fluent UI Insights](https://docs.microsoft.com/en-us/shows/fluent-ui-insights?utm_source=github) is a series that describes the design and decisions behind the Fluent UI design system.
 
-|                                                                                    EP01: Positioning                                                                                     |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.youtube.com/watch?v=yhzAn4A1gbk" target="_blank"><img src="https://i.ytimg.com/vi_webp/yhzAn4A1gbk/mqdefault.webp" alt="Watch EP01: Positioning" width="240" /></a> |
+|                                                                                                                    EP01: Positioning                                                                                                                    |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://docs.microsoft.com/en-us/shows/fluent-ui-insights/fluent-ui-insights-positioning?utm_source=github" target="_blank"><img src="https://i.ytimg.com/vi_webp/yhzAn4A1gbk/mqdefault.webp" alt="Watch EP01: Positioning" width="240" /></a> |
 
 ## Licenses
 

@@ -1,5 +1,5 @@
 import type { OverflowGroupState, OverflowItemEntry } from '@fluentui/priority-overflow';
-import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import { ContextSelector, createContext, useContextSelector, Context } from '@fluentui/react-context-selector';
 
 export interface OverflowContextValue {
   itemVisibility: Record<string, boolean>;
@@ -9,14 +9,17 @@ export interface OverflowContextValue {
   updateOverflow: (padding?: number) => void;
 }
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const OverflowContext = createContext<OverflowContextValue>({
+export const OverflowContext = createContext<OverflowContextValue | undefined>(
+  undefined,
+) as Context<OverflowContextValue>;
+
+const overflowContextDefaultValue: OverflowContextValue = {
   itemVisibility: {},
   groupVisibility: {},
   hasOverflow: false,
   registerItem: () => () => null,
   updateOverflow: () => null,
-});
+};
 
 export const useOverflowContext = <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) =>
-  useContextSelector(OverflowContext, selector);
+  useContextSelector(OverflowContext, (ctx = overflowContextDefaultValue) => selector(ctx));

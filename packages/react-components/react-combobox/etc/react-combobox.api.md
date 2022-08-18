@@ -31,6 +31,7 @@ export type ComboboxOpenEvents = ComboboxBaseOpenEvents;
 
 // @public
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & ComboboxBaseProps & {
+    freeform?: boolean;
     children: React_2.ReactNode;
 };
 
@@ -43,7 +44,9 @@ export type ComboboxSlots = {
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    hasFocus: boolean;
+};
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -98,7 +101,8 @@ export type ListboxSlots = {
 // @public
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
-    onOptionClick(event: React_2.MouseEvent, option: OptionValue): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
+    setActiveOption(option?: OptionValue): void;
 };
 
 // @public

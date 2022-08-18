@@ -82,7 +82,6 @@
     "source-map": "^0.7.3",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.2",
-    "ts-node": "^8.0.0",
     "webpack": "^4.43.0"
   },
   "dependencies": {

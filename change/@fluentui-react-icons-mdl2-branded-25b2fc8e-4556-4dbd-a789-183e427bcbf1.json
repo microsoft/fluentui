@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update package.json from react 17 to 18",
-  "packageName": "@fluentui/react-icons-mdl2-branded",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

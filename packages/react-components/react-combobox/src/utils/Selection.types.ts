@@ -27,12 +27,19 @@ export type SelectionState = Required<Pick<SelectionProps, 'selectedOptions'>> &
 
 /* Values returned by the useSelection hook */
 export type SelectionValue = {
+  clearSelection: (event: SelectionEvents) => void;
   selectedOptions: string[];
   selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
-/* Data for the onSelect callback */
-export type OnSelectData = { optionValue: string; selectedOptions: string[] };
+/*
+ * Data for the onSelect callback.
+ * `optionValue` will be undefined if the multiple options are modified at once.
+ */
+export type OnSelectData = { optionValue: string | undefined; selectedOptions: string[] };
 
 /* Possible event types for onSelect */
-export type SelectionEvents = React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>;
+export type SelectionEvents =
+  | React.ChangeEvent<HTMLElement>
+  | React.KeyboardEvent<HTMLElement>
+  | React.MouseEvent<HTMLElement>;

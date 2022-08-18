@@ -46,7 +46,11 @@ describe('Alert', () => {
   });
 
   it('renders a button', () => {
-    render(<Alert action={{ children: 'Undo' }}>Test</Alert>);
+    render(
+      <Alert action={{ children: 'Undo' }} appearance="inverted">
+        Test
+      </Alert>,
+    );
     expect(screen.getByText('Undo')).toBeTruthy();
   });
 

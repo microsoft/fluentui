@@ -1,8 +1,63 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Mon, 08 Aug 2022 20:28:21 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Aug 2022 07:48:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Thu, 18 Aug 2022 07:48:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.89.0 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.21 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
+- Bump @fluentui/react-experiments to v8.12.20 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
+- Bump @fluentui/theme-samples to v8.6.21 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.21 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Mon, 15 Aug 2022 07:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.4.7 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react to v8.88.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.20 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-experiments to v8.12.19 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-file-type-icons to v8.7.2 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.16 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-icons-mdl2-branded to v1.2.17 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/theme to v2.6.11 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/theme-samples to v8.6.20 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/utilities to v8.11.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/common-styles to v1.2.3 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.20 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Fri, 12 Aug 2022 07:48:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react to v8.87.2 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.19 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
+- Bump @fluentui/react-experiments to v8.12.18 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
+- Bump @fluentui/theme-samples to v8.6.19 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.19 ([PR #24319](https://github.com/microsoft/fluentui/pull/24319) by beachball)
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Tue, 09 Aug 2022 07:45:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/react-icons-mdl2-branded to v1.2.16 ([PR #24281](https://github.com/microsoft/fluentui/pull/24281) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 

@@ -29,6 +29,11 @@ export type ComboboxSlots = {
 export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   ComboboxBaseProps & {
     /*
+     * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
+     */
+    freeform?: boolean;
+
+    /*
      * The primary slot, `<input>`, does not support children so we need to explicitly include it here.
      */
     children: React.ReactNode;
@@ -37,7 +42,11 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 /**
  * State used in rendering Combobox
  */
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> &
+  ComboboxBaseState & {
+    /* Whether the input is currently focused; used for rendering the collapsed listbox. */
+    hasFocus: boolean;
+  };
 
 /* Export types defined in ComboboxBase */
 export type ComboboxContextValues = ComboboxBaseContextValues;

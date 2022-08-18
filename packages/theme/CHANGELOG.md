@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 08 Aug 2022 07:39:33 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Aug 2022 07:39:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.11)
+
+Mon, 15 Aug 2022 07:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.10..@fluentui/theme_v2.6.11)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.11.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
 
 ## [2.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.10)
 
