@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Aug 2022 07:48:47 GMT",
+      "tag": "@fluentui/react_v8.89.0",
+      "version": "8.89.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "tonyhallett74@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "df602db552cade02f2a0922e7ba829975232c7dc",
+            "comment": "fix: add items prop to state to fix issue 23135"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c608ed1ca39d3aecb3a65c3710ab35c58903b24e",
+            "comment": "fix(List): solve stale props problem with getPageSpecification"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ee77a76375e07c52729fdac1a08471607c12652d",
+            "comment": "feat: Allow IChoiceGroupOption in callback signatures"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Aug 2022 07:39:40 GMT",
       "tag": "@fluentui/react_v8.88.0",
       "version": "8.88.0",
