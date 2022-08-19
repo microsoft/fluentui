@@ -1,14 +1,40 @@
-const resources = require('../../scripts/webpack/webpack-resources');
-const BUNDLE_NAME = 'react-18-tests-v9';
-const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
+const path = require('path');
 
-module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
-  entry: {
-    [BUNDLE_NAME]: ['react-app-polyfill/ie11', './lib/index.js'],
-  },
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
 
-  output: {
-    libraryTarget: 'var',
-    library: 'Fabric',
-  },
-});
+module.exports = () => {
+  return {
+    entry: ['react-app-polyfill/ie11', './src/index.tsx'],
+    output: {
+      filename: 'react-18-tests-v9.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
+      plugins: [
+        new TsconfigPathsPlugin({
+          configFile: path.resolve(__dirname, '../../tsconfig.base.json'),
+        }),
+      ],
+      alias: {
+        react: path.resolve(__dirname, './node_modules/react'),
+        'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+      },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: 'swc-loader',
+        },
+      ],
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        templateContent: '<div id="root"></div>',
+      }),
+    ],
+  };
+};
