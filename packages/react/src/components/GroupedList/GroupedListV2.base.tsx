@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css, getId } from '../../Utilities';
+import {
+  initializeComponentRef,
+  classNamesFunction,
+  KeyCodes,
+  getRTLSafeKeyCode,
+  css,
+  getId,
+  EventGroup,
+} from '../../Utilities';
 import { List, ScrollToMode } from '../../List';
-import { SelectionMode } from '../../Selection';
+import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
@@ -18,7 +26,7 @@ import { GroupFooter } from './GroupFooter';
 import type { IGroupHeaderProps } from './GroupHeader';
 import type { IGroupShowAllProps } from './GroupShowAll.styles';
 import type { IGroupFooterProps } from './GroupFooter.types';
-import { useMount } from '@fluentui/react-hooks';
+import { useMount, useUnmount } from '@fluentui/react-hooks';
 
 export interface IGroupedListV2State {
   selectionMode?: IGroupedListProps['selectionMode'];
@@ -125,20 +133,21 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
         };
         index++;
       }
-
-      if (groupProps.footerProps?.footerText) {
-        memoItems[index] = {
-          group,
-          type: 'footer',
-        };
-        index++;
-      }
     }
+    // Placeholder for a potential footer.
+    // Whether or not a footer is displayed is resolved
+    // by the footer render function so this is just a marker
+    // for where a footer may go.
+    memoItems[index] = {
+      group,
+      type: 'footer',
+    };
+    index++;
   }
 
   memoItems.length = index;
 
-  console.log('MEMO ITEMS', memoItems);
+  // console.log('MEMO ITEMS', memoItems);
 
   return memoItems;
 };
@@ -173,8 +182,12 @@ const renderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
   return <GroupShowAll {...props} />;
 };
 
-const renderGroupFooter = (props: IGroupFooterProps): JSX.Element => {
-  return <GroupFooter {...props} />;
+const renderGroupFooter = (props: IGroupFooterProps): JSX.Element | null => {
+  if (props.group && props.footerText) {
+    return <GroupFooter {...props} />;
+  }
+
+  return null;
 };
 
 export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
@@ -213,6 +226,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     compact,
   });
 
+  const events = React.useRef<EventGroup>();
   const flatList = React.useRef<IGroupedItem[]>([]);
   const isSomeGroupExpanded = React.useRef<boolean>(computeIsSomeGroupExpanded(groups));
 
@@ -231,6 +245,18 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     if (groupProps?.isAllGroupsCollapsed) {
       setGroupsCollapsedState(groups, groupProps.isAllGroupsCollapsed);
     }
+    events.current = new EventGroup(this);
+    if (selection) {
+      events.current.on(selection, SELECTION_CHANGE, onSelectionChange);
+    }
+  });
+
+  const onSelectionChange = React.useCallback(() => {
+    setVersion({});
+  }, [setVersion]);
+
+  useUnmount(() => {
+    events.current?.dispose();
   });
 
   React.useEffect(() => {
@@ -371,7 +397,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         ref={listRef}
         role={role}
         items={listView}
-        onRenderCell={renderItem}
+        onRenderCellConditional={renderItem}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
         version={version}

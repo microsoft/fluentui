@@ -77,6 +77,4 @@ export const GroupedListV2BasicExample: React.FunctionComponent = () => {
 };
 
 // @ts-expect-error Storybook
-GroupedListV2BasicExample.story = {
-  name: 'V2 Basic',
-};
+GroupedListV2BasicExample.storyName = 'V2 Basic';

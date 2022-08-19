@@ -70,10 +70,6 @@ export const GroupedListBasicExample: React.FunctionComponent = () => {
           selectionMode={SelectionMode.multiple}
           groups={groups}
           compact={isCompactMode}
-          groupProps={{
-            footerProps: { footerText: 'cats' },
-            getGroupItemLimit: (group: any) => (group.key === 'group0-0-0' && !group.isShowingAll ? 1 : group.count),
-          }}
         />
       </SelectionZone>
     </div>
