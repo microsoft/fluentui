@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { ScreenerRunnerConfig } from './screener.types';
+import { ScreenerProxyPayload, ScreenerRunnerConfig } from './screener.types';
 
 const environment = {
   screener: {
@@ -45,19 +45,26 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
-      screenerConfiguration: screenerConfig,
     }),
   });
 
-  if (response.status === 200) {
-    console.log('Skipping screener check');
-  }
-
-  if (response.status !== 201 && response.status !== 200) {
+  if (response.status !== 201) {
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
-  //conclusion of the screener run
-  return response.json().then(conclusion => conclusion);
+  //checkUrl
+  return response.json().then(url => url);
+}
+
+async function notifyIntegration(payload: ScreenerProxyPayload) {
+  const fetchResponse = await fetch(environment.screener.proxyUri, {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (fetchResponse.status !== 200) {
+    throw new Error(`Notify integration failed: ${fetchResponse.status}`);
+  }
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
@@ -70,7 +77,7 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
     branchName = branchName.replace('refs/heads/', '');
   }
 
-  const screenerRun = await scheduleScreenerBuild(screenerConfig, {
+  const checkUrl = await scheduleScreenerBuild(screenerConfig, {
     build: process.env.BUILD_BUILDID,
     branchName,
     commit,
@@ -79,9 +86,32 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
       : undefined,
   });
 
-  if (screenerRun.conclusion === 'skipped') {
-    console.log('Screener test skipped.');
-  } else if (screenerRun.conclusion === 'in_progress') {
-    console.log('Screener test in progress.');
-  }
+  await notifyIntegration({
+    commit,
+    url: checkUrl.url,
+    status: 'in_progress',
+    project: screenerConfig.projectRepo,
+    branch: branchName,
+  });
+}
+
+export async function cancelScreenerRun(
+  screenerConfig: ScreenerRunnerConfig,
+  conclusion: ScreenerProxyPayload['conclusion'] = 'cancelled',
+) {
+  // https://github.com/microsoft/azure-pipelines-tasks/issues/9801
+  const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
+  // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
+  let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
+
+  await notifyIntegration({
+    commit,
+    url: 'https://screener.io/',
+    status: 'completed',
+    project: screenerConfig.projectRepo,
+    conclusion,
+    branch: branchName,
+  });
+
+  console.log(`cancelled screener run ${screenerConfig.projectRepo}`);
 }
