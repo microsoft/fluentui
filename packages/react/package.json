@@ -972,6 +972,11 @@
       "import": "./lib/TextField.js",
       "require": "./lib-commonjs/TextField.js"
     },
+    "./lib/components/TextField/TextField.styles": {
+      "types": "./lib/components/TextField/TextField.styles.d.ts",
+      "import": "./lib/components/TextField/TextField.styles.js",
+      "require": "./lib-commonjs/components/TextField/TextField.styles.js"
+    },
     "./lib/Theme": {
       "types": "./lib/Theme.d.ts",
       "import": "./lib/Theme.js",
