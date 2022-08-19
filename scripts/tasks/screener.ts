@@ -16,7 +16,7 @@ export async function screener() {
 
   try {
     if (process.env.skipScreener !== 'true') {
-      console.log('Running screener test');
+      console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);
       screenerConfig.states = screenerStates;
     }
