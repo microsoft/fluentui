@@ -15,7 +15,8 @@ export async function screener() {
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    if (process.env.skipScreenerBuild !== 'true') {
+    console.log(process.env.SKIPSCREENERBUILD);
+    if (process.env.SKIPSCREENERBUILD !== 'true') {
       console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);
       screenerConfig.states = screenerStates;

@@ -127,6 +127,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffectedPR
         displayName: Check if northstar packages were affected
@@ -137,6 +140,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffected
         displayName: Check if northstar packages were affected
@@ -186,6 +192,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffectedPR
         displayName: Check if v8 packages were affected
@@ -196,6 +205,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffected
         displayName: Check if v8 packages were affected
@@ -245,6 +257,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffectedPR
         displayName: Check if v9 packages were affected
@@ -255,6 +270,9 @@ jobs:
           if [[ $packageAffected == false ]]; then
             echo "##vso[task.setvariable variable=skipScreenerBuild]true"
             echo "Should skip screener"
+          else
+            echo "##vso[task.setvariable variable=skipScreenerBuild]false"
+            echo "Should NOT skip screener"
           fi
         name: PackagesAffected
         displayName: Check if v9 packages were affected
