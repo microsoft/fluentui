@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, initializeComponentRef } from '../../../Utilities';
+import { styled } from '../../../Utilities';
 import { BasePicker } from '../BasePicker';
 import { getStyles } from '../BasePicker.styles';
 import { TagItem } from './TagItem';
@@ -18,7 +18,6 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 
   constructor(props: ITagPickerProps) {
     super(props);
-    initializeComponentRef(this);
   }
 }
 
