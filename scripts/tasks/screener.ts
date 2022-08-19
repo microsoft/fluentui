@@ -8,6 +8,8 @@ import { getStorybook } from '@storybook/react';
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
  */
+const { access } = require('fs');
+
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
@@ -15,6 +17,16 @@ export async function screener() {
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
+    const dir = 'dist/storybook';
+
+    access(dir, err => {
+      if (!err) {
+        console.log(dir, 'directory already exists');
+      } else if (err.code === 'ENOENT') {
+        //mkdirSync(dir)
+        console.log("doesn't exist");
+      }
+    });
     if (process.env.skipScreenerBuild !== 'true') {
       console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);
