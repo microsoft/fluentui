@@ -21,7 +21,7 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import type { SlotShorthandValue } from '@fluentui/react-utilities';
-import { SpinButton } from '@fluentui/react-spinButton';
+import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
 
