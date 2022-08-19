@@ -8,7 +8,7 @@ import {
   getId,
   EventGroup,
 } from '../../Utilities';
-import { List, ScrollToMode } from '../../List';
+import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import type { IProcessedStyleSet } from '../../Styling';
@@ -60,7 +60,7 @@ type FlattenItemsFn = (
 ) => IGroupedItem[];
 
 const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
-  if (groups === undefined) {
+  if (!groups) {
     return items;
   }
 
@@ -108,7 +108,8 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
     if (group.isCollapsed !== true) {
       let itemIndex = group.startIndex;
       const renderCount = groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit(group) : Infinity;
-      const itemEnd = itemIndex + Math.min(group.count, renderCount);
+      const count = !group.isShowingAll ? group.count : items.length;
+      const itemEnd = itemIndex + Math.min(count, renderCount);
       while (itemIndex < itemEnd) {
         memoItems[index] = {
           group,
@@ -173,6 +174,16 @@ const isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => 
 };
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
+
+const getKey: IListProps['getKey'] = (item, _index) => {
+  if (item.type === 'group' && item.group) {
+    return item.group.key;
+  } else if (item.type === 'item' && item.item) {
+    return item.item.key;
+  }
+
+  return null;
+};
 
 const renderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
   return <GroupHeader {...props} />;
@@ -240,6 +251,16 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     return flattenItems(groups, items, flatList.current, groupProps);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [groups, groupProps, items, toggleVersion, flatList]);
+
+  const getPageSpecification = React.useCallback(
+    (flattenedIndex: number): { key?: string } => {
+      const pageGroup = listView[flattenedIndex];
+      return {
+        key: pageGroup.type === 'group' ? pageGroup.group!.key : undefined,
+      };
+    },
+    [listView],
+  );
 
   useMount(() => {
     if (groupProps?.isAllGroupsCollapsed) {
@@ -363,7 +384,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 
         return onRenderFooter(groupFooterProps, renderGroupFooter);
       } else {
-        return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
+        return onRenderCell(level, item.item ?? item, item.itemIndex ?? flattenedIndex);
       }
     },
     [
@@ -400,7 +421,9 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         onRenderCellConditional={renderItem}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
+        getPageSpecification={getPageSpecification}
         version={version}
+        getKey={getKey}
         {...rootListProps}
       />
     </FocusZone>
@@ -410,6 +433,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 export class GroupedListV2Wrapper
   extends React.Component<IGroupedListProps, IGroupedListV2State>
   implements IGroupedList {
+  public static displayName: string = 'GroupedListV2';
   private _list = React.createRef<List>();
 
   public static getDerivedStateFromProps(

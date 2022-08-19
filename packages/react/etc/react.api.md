@@ -2022,6 +2022,8 @@ export const GroupedListV2FC: React_2.FC<IGroupedListV2Props>;
 export class GroupedListV2Wrapper extends React_2.Component<IGroupedListProps, IGroupedListV2State> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
+    static displayName: string;
+    // (undocumented)
     forceUpdate(): void;
     // (undocumented)
     static getDerivedStateFromProps(nextProps: IGroupedListProps, previousState: IGroupedListV2State): IGroupedListV2State;
@@ -4559,6 +4561,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
+    groupedListAs?: IComponentAs<IGroupedListProps>;
+    // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
@@ -6786,6 +6790,7 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode;
+    onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React_2.ReactNode | null;
     onRenderPage?: IRenderFunction<IPageProps<T>>;
     onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
     onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
@@ -9820,6 +9825,7 @@ export class List<T = any> extends React_2.Component<IListProps<T>, IListState<T
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
+        onRenderCellConditional: undefined;
         renderedWindowsAhead: number;
         renderedWindowsBehind: number;
     };
