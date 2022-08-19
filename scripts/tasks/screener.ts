@@ -11,12 +11,15 @@ import { getStorybook } from '@storybook/react';
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
-  console.log('screener config for run');
+  console.log('screener config for run:');
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    const screenerStates = await getScreenerStates(screenerConfig);
-    screenerConfig.states = screenerStates;
+    if (process.env.skipScreenerBuild !== 'true') {
+      console.log('Running screener test:');
+      const screenerStates = await getScreenerStates(screenerConfig);
+      screenerConfig.states = screenerStates;
+    }
     await screenerRunner(screenerConfig);
   } catch (err) {
     console.error('failed to run screener task');

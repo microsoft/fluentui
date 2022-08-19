@@ -18,6 +18,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+- Fix `FocusTrapZone` to always remove `aria-hidden` on portal wrapper @yuanboxue-amber ([#24414](https://github.com/microsoft/fluentui/pull/24414))
+
 <!--------------------------------[ v0.64.0 ]------------------------------- -->
 ## [v0.64.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.64.0) (2022-08-10)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.63.1..@fluentui/react-northstar_v0.64.0)
