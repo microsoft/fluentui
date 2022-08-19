@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode=development",
-    "build": "lage build --to @fluentui/react @fluentui/web-components --verbose && yarn build:app",
+    "build:local": "lage build --to @fluentui/react @fluentui/web-components --verbose && yarn build:app",
     "build:app": "webpack --mode=production",
     "serve": "http-server ./dist",
     "bench:simple-stress:build": "node ./benchmarks/simple-stress/buildConfig.js",
