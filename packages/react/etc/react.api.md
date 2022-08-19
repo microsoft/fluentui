@@ -7057,7 +7057,7 @@ export interface IOnRenderComboBoxLabelProps {
 
 // @public (undocumented)
 export interface IOverflowSet {
-    focus(forceIntoFirstElement?: boolean): boolean;
+    focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
 }
 

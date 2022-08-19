@@ -23,6 +23,7 @@ import {
   portalContainsElement,
   findScrollableParent,
   createMergedRef,
+  isElementVisibleAndNotHidden,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { getTheme } from '@fluentui/style-utilities';
@@ -337,9 +338,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
+   * @param bypassHiddenElements - If true, focus will be not be set on hidden elements.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focus(forceIntoFirstElement: boolean = false): boolean {
+  public focus(forceIntoFirstElement: boolean = false, bypassHiddenElements: boolean = false): boolean {
     if (this._root.current) {
       if (
         !forceIntoFirstElement &&
@@ -359,14 +361,27 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         !forceIntoFirstElement &&
         this._activeElement &&
         elementContains(this._root.current, this._activeElement) &&
-        isElementTabbable(this._activeElement)
+        isElementTabbable(this._activeElement) &&
+        (!bypassHiddenElements || isElementVisibleAndNotHidden(this._activeElement))
       ) {
         this._activeElement.focus();
         return true;
       } else {
         const firstChild = this._root.current.firstChild as HTMLElement;
 
-        return this.focusElement(getNextElement(this._root.current, firstChild, true) as HTMLElement);
+        return this.focusElement(
+          getNextElement(
+            this._root.current,
+            firstChild,
+            true,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            bypassHiddenElements,
+          ) as HTMLElement,
+        );
       }
     }
     return false;
