@@ -14,7 +14,7 @@ describe('AvatarGroup', () => {
   describe('AvatarGroupOverflow', () => {
     beforeEach(() => {
       mount(
-        <AvatarGroupPopover content={{ id: 'content-id' }}>
+        <AvatarGroupPopover popoverSurface={{ id: 'surface-id' }}>
           <AvatarGroupItem name="Allan Munger" />
           <AvatarGroupItem name="Daisy Phillips" />
           <AvatarGroupItem name="Robert Tolbert" />
@@ -25,7 +25,7 @@ describe('AvatarGroup', () => {
 
     it('opens popover and focuses on the content', () => {
       cy.get(overflowTriggerSelector).realClick();
-      cy.get('#content-id').should('have.focus');
+      cy.get('#surface-id').should('have.focus');
     });
   });
 });
