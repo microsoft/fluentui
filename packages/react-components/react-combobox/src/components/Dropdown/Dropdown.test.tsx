@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../common/isConformant';
@@ -422,5 +423,82 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(combobox, { key: 'ArrowUp' });
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should move to first matching active option by typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Groot</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'gr');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Green').id);
+  });
+
+  it('should clear active option when typing a string with no matches', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.click(combobox);
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
+
+    userEvent.keyboard('t');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toBeFalsy();
+  });
+
+  it('should cycle through options by repeating the same letter', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown open>
+        <Option>Cat</Option>
+        <Option>Dog</Option>
+        <Option>Dolphin</Option>
+        <Option>Duck</Option>
+        <Option>Horse</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dolphin').id);
+
+    userEvent.type(combobox, 'dd');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Dog').id);
+  });
+
+  it('should not move active option when typing a matching string', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown>
+        <Option>Red</Option>
+        <Option>Redder</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.tab();
+    userEvent.keyboard('red');
+
+    expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
   });
 });
