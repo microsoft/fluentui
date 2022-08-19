@@ -597,8 +597,10 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
+  const FinalGroupedList = groups && groupProps?.groupedListAs ? groupProps.groupedListAs : GroupedList;
+
   const list = groups ? (
-    <GroupedList
+    <FinalGroupedList
       focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
