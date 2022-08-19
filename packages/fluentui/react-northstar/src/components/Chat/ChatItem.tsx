@@ -55,6 +55,9 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Chat items can have a message. */
   message?: ShorthandValue<BoxProps>;
+
+  /** Opts into the V2 layout. */
+  v2?: boolean;
 }
 
 export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'>;
@@ -88,6 +91,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
     message,
     styles,
     variables,
+    v2,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -97,6 +101,7 @@ export const ChatItem = (React.forwardRef<HTMLLIElement, ChatItemProps>((inputPr
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
     className: chatItemClassName,
     mapPropsToStyles: () => ({
+      v2,
       attached,
       contentPosition,
       density,
@@ -169,6 +174,7 @@ ChatItem.propTypes = {
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   gutter: customPropTypes.itemShorthand,
   message: customPropTypes.itemShorthand,
+  v2: PropTypes.bool,
 };
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;
 

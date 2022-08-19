@@ -5,6 +5,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
+    v2: true,
     contentPosition: 'start',
     gutter: (
       <Avatar
@@ -29,6 +30,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
+    v2: true,
     attached: 'top',
     contentPosition: 'end',
     message: (
@@ -49,6 +51,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-2',
   },
   {
+    v2: true,
     attached: 'bottom',
     contentPosition: 'end',
     message: (
