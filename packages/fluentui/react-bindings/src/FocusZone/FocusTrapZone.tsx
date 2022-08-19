@@ -294,12 +294,14 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
 
     if (!lastActiveFocusTrap) {
       this._showContentInAccessibilityTree();
-    } else if (
-      lastActiveFocusTrap._root.current &&
-      lastActiveFocusTrap._root.current.hasAttribute(HIDDEN_FROM_ACC_TREE)
-    ) {
-      lastActiveFocusTrap._root.current.removeAttribute(HIDDEN_FROM_ACC_TREE);
-      lastActiveFocusTrap._root.current.removeAttribute('aria-hidden');
+    } else if (lastActiveFocusTrap._root.current) {
+      let element = lastActiveFocusTrap._root.current;
+      // aria hidden attributes are added to direct children of body. It can be the focusTrapZone root itself, or its parent
+      while (element.parentElement && element.parentElement !== doc?.body) {
+        element = element.parentElement;
+      }
+      element.removeAttribute(HIDDEN_FROM_ACC_TREE);
+      element.removeAttribute('aria-hidden');
     }
   };
 
