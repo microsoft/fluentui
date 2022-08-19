@@ -203,10 +203,37 @@ describe('MultiStackedBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', () => {
+  it('Should render callout correctly on mouseover', () => {
     wrapper = mount(<MultiStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<MultiStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mousemove');
+    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    wrapper.find('rect').at(1).simulate('mousemove');
+    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
+    expect(textContent1).not.toBe(textContent2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <MultiStackedBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });

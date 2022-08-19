@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
+exports[`HeatMapChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
 
@@ -98,7 +98,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
         transform="translate(40, 0)"
       />
       <g
-        aria-labelledby="00"
+        aria-labelledby="10"
         data-is-focusable={true}
         fillOpacity="1"
         key="00"
@@ -133,7 +133,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
         </text>
       </g>
       <g
-        aria-labelledby="00"
+        aria-labelledby="10"
         data-is-focusable={true}
         fillOpacity="1"
         key="10"
@@ -363,7 +363,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
             border: 0px;
           }
       data-is-focusable={false}
-      id="00"
+      id="10"
       style={
         Object {
           "filter": "opacity(0)",
@@ -450,7 +450,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid rgb(166, 207, 226);
+                    border-left: 4px solid rgb(159, 198, 222);
                     color: #323130;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 28px;
@@ -481,14 +481,14 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: rgb(166, 207, 226);
+                      color: rgb(159, 198, 222);
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 28px;
                       font-weight: bold;
                       line-height: 36px;
                     }
               >
-                25
+                50
               </div>
             </div>
             <div
@@ -511,7 +511,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
                       font-weight: 700;
                     }
               >
-                25
+                50
               </span>
               /
               <span
@@ -521,7 +521,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
                       font-weight: 600;
                     }
               >
-                2,479
+                2,391
               </span>
             </div>
           </div>
@@ -540,8 +540,7 @@ exports[`HeatMapChart - mouse events Should render callout on hover 1`] = `
                   padding-top: 10px;
                 }
           >
-            Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days
+            a good day to start with in Texas with best air quality
           </div>
         </div>
       </div>

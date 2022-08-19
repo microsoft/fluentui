@@ -242,7 +242,7 @@ describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', () => {
+  it('Should render callout correctly on mouseover', () => {
     wrapper = mount(
       <HeatMapChart
         data={HeatMapData}
@@ -251,7 +251,7 @@ describe('HeatMapChart - mouse events', () => {
         calloutProps={{ doNotLayer: true }}
       />,
     );
-    wrapper.find('rect').at(0).simulate('mouseover');
+    wrapper.find('rect').at(1).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });

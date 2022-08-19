@@ -191,7 +191,7 @@ describe('VerticalBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', async () => {
+  it('Should render callout correctly on mouseover', async () => {
     wrapper = mount(
       <VerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
     );
@@ -200,8 +200,29 @@ describe('VerticalBarChart - mouse events', () => {
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
 
-    wrapper.find('rect').at(0).simulate('mouseover');
+    wrapper.find('rect').at(1).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout on mouseover', async () => {
+    wrapper = mount(
+      <VerticalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });

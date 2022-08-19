@@ -120,14 +120,32 @@ describe('HorizontalBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', () => {
+  it('Should render callout correctly on mouseover', () => {
     const mockMath = Object.create(global.Math);
     mockMath.random = () => 0.1;
     global.Math = mockMath;
 
     wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
-    wrapper.find('rect').at(0).simulate('mouseover');
+    wrapper.find('rect').at(2).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <HorizontalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });

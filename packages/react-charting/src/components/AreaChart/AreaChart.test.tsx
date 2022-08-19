@@ -193,19 +193,76 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('AreaChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
+  let root: HTMLDivElement | null;
 
-  it('Should render callout on hover', () => {
-    const root = document.createElement('div');
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    root = document.createElement('div');
     document.body.appendChild(root);
+  });
 
+  afterEach(() => {
+    sharedAfterEach();
+
+    if (root) {
+      document.body.removeChild(root);
+      root = null;
+    }
+  });
+
+  it('Should render callout correctly on mouseover', () => {
     // document.getElementbyId() returns null if component is not attached to DOM
     wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('rect').simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
 
-    document.body.removeChild(root);
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+    wrapper.find('rect').simulate('mousemove', { clientX: 40, clientY: 0 });
+    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    wrapper.find('rect').simulate('mousemove', { clientX: -20, clientY: 0 });
+    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
+    expect(textContent1).not.toBe(textContent2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <AreaChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('rect').simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
+  });
+
+  it('Should render customized callout per stack on mouseover', () => {
+    wrapper = mount(
+      <AreaChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('rect').simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`StackedBarChart - mouse events Should render callout on hover 1`] = `
+exports[`StackedBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
       ms-StackedBarChart

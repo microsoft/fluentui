@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DonutChart - mouse events Should render callout on hover 1`] = `
+exports[`DonutChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
       ms-DonutChart

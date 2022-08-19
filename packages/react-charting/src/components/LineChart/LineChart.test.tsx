@@ -5,6 +5,7 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { ILineChartProps, LineChart } from './index';
 import { ILineChartState, LineChartBase } from './LineChart.base';
+import { ICustomizedCalloutData } from '../../index';
 import toJson from 'enzyme-to-json';
 
 // Wrapper of the LineChart to be tested.
@@ -146,13 +147,25 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('LineChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
+  let root: HTMLDivElement | null;
 
-  it('Should render callout on hover', () => {
-    const root = document.createElement('div');
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    root = document.createElement('div');
     document.body.appendChild(root);
+  });
 
+  afterEach(() => {
+    sharedAfterEach();
+
+    if (root) {
+      document.body.removeChild(root);
+      root = null;
+    }
+  });
+
+  it('Should render callout correctly on mouseover', () => {
     // document.getElementbyId() returns null if component is not attached to DOM
     wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
@@ -160,7 +173,52 @@ describe('LineChart - mouse events', () => {
     // but these changes are visible in wrapper.html()
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
 
-    document.body.removeChild(root);
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+    wrapper.find('path[id^="circle"]').at(0).simulate('mousemove');
+    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    wrapper.find('path[id^="circle"]').at(1).simulate('mousemove');
+    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
+    expect(textContent1).not.toBe(textContent2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <LineChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
+  });
+
+  it('Should render customized callout per stack on mouseover', () => {
+    wrapper = mount(
+      <LineChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+      { attachTo: root },
+    );
+    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HorizontalBarChart - mouse events Should render callout on hover 1`] = `
+exports[`HorizontalBarChart - mouse events Should render callout correctly on mouseover 1`] = `
 <div
   className=
 
@@ -397,7 +397,7 @@ exports[`HorizontalBarChart - mouse events Should render callout on hover 1`] = 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid #004b50;
+                    border-left: 4px solid #5c2d91;
                     color: #323130;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 28px;
@@ -428,14 +428,14 @@ exports[`HorizontalBarChart - mouse events Should render callout on hover 1`] = 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #004b50;
+                      color: #5c2d91;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 28px;
                       font-weight: bold;
                       line-height: 36px;
                     }
               >
-                94%
+                19%
               </div>
             </div>
           </div>

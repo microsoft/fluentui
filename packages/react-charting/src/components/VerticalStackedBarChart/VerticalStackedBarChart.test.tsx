@@ -75,6 +75,15 @@ const chartPoints: IVerticalStackedChartProps[] = [
   { chartData: secondChartPoints, xAxisPoint: 20 },
 ];
 
+const chartPoints2: IVerticalStackedChartProps[] = [
+  { chartData: firstChartPoints, xAxisPoint: 0, lineData: [{ y: 15, legend: 'Line1', color: DefaultPalette.yellow }] },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: 20,
+    lineData: [{ y: 30, legend: 'Line1', color: DefaultPalette.yellow }],
+  },
+];
+
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
     const component = renderer.create(<VerticalStackedBarChart data={chartPoints} />);
@@ -233,7 +242,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout on hover', async () => {
+  it('Should render callout correctly on mouseover', async () => {
     wrapper = mount(
       <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
     );
@@ -245,5 +254,60 @@ describe('VerticalStackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(2).simulate('mousemove');
+    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    wrapper.find('rect').at(3).simulate('mousemove');
+    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
+    expect(textContent1).not.toBe(textContent2);
+  });
+
+  it('Should render customized callout on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
+  });
+
+  it('Should render customized callout per stack on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart
+        data={chartPoints2}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerStack={(props: IVerticalStackedChartProps) =>
+          props ? (
+            <div className="custom-callout">
+              <p>Custom callout content</p>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.exists('.custom-callout')).toBe(true);
   });
 });
