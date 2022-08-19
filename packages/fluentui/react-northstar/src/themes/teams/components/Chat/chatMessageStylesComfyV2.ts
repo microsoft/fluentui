@@ -31,14 +31,10 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
       outline: 'none',
 
       [`&:focus-visible .${chatMessageSlotClassNames.timestamp}`]: {
-        display: 'block',
+        opacity: 1,
       },
 
       [`&:focus-visible .${chatMessageSlotClassNames.bubble}`]: borderFocusStyles[':focus-visible'],
-
-      [`& .bubble-inset:hover .${chatMessageSlotClassNames.timestamp}`]: {
-        display: 'block',
-      },
     };
   },
 
@@ -64,8 +60,10 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
 
   timestamp: ({ variables: v }): ICSSInJSStyle => {
     const styles: ICSSInJSStyle = {
-      display: 'none',
+      display: 'inline-block',
+      alignSelf: 'self-start',
       whiteSpace: 'nowrap',
+      opacity: 0,
     };
     if (v.hasReducedHorizontalSpace) {
       styles.fontSize = '1rem';
@@ -78,6 +76,8 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
   },
 
   body: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    display: 'flex',
+    flexDirection: p.mine ? 'row-reverse' : 'row',
     position: 'relative',
     maxWidth: '100%',
     ...(p.fullWidth && {
@@ -138,7 +138,7 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
         }),
 
       [`&:hover + .${chatMessageSlotClassNames.bubbleInset} .${chatMessageSlotClassNames.timestamp}`]: {
-        display: 'block',
+        opacity: 1,
       },
 
       ...(p.attached === true &&
@@ -158,10 +158,12 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
   },
 
   bubbleInset: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    position: 'absolute',
-    top: pxToRem(10),
+    // position: 'absolute',
+    // top: pxToRem(10),
+    // paddingTop: 0,
+
     display: 'flex',
-    paddingTop: 0,
+    paddingTop: pxToRem(10),
     paddingBottom: 0,
     // use padding instead of margin so that the bubble container's :hover
     // styles still apply when mousing over the gap between the container
@@ -169,6 +171,10 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
     paddingLeft: v.hasReducedHorizontalSpace ? pxToRem(2.5) : pxToRem(5),
     paddingRight: v.hasReducedHorizontalSpace ? pxToRem(2.5) : pxToRem(5),
     ...(p.mine ? { right: '100%', flexDirection: 'row-reverse' } : { left: '100%' }),
+
+    [`&:hover .${chatMessageSlotClassNames.timestamp}`]: {
+      opacity: 1,
+    },
   }),
 
   content: ({ props: p, variables: v, theme }): ICSSInJSStyle => ({
