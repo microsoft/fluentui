@@ -2,7 +2,7 @@
 
 ## Background
 
-Fields add add a label, validation text, and helper text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
+Fields add add a label, validation text, and hint text to form input components. The existing input components (such as `Input` and `Combobox`) are wrapped to create field versions of them (such as `InputField` and `ComboboxField`).
 
 Epic issue tracking implementation: https://github.com/microsoft/fluentui/issues/19627
 
@@ -23,8 +23,8 @@ Existing libraries tend to take one of the following approaches to field.
 The Field implementation in this spec follows pattern (3). There are Field versions of all components that can be used as form inputs. There are several reasons, including:
 
 - **Accessibility**: By combining a base component with the field props into a single component, all of the accessibility props like `htmlFor` and `aria-describedby` are set correctly for "free".
-- **Simplicity**: All props related to the component (such as `label`, `id`, `status="error"`, etc.) are on the same component, rather than split between multiple components (like separate `Field` and `Input` components).
-- **Consistency**: All of the Field components share a common set of props for the label, status, helperText, etc.
+- **Simplicity**: All props related to the component (such as `label`, `id`, `validationState="error"`, etc.) are on the same component, rather than split between multiple components (like separate `Field` and `Input` components).
+- **Consistency**: All of the Field components share a common set of props for the label, validationState, hint, etc.
 - **Bundle size**: When the label and other field functionality is not needed, it is still possible to use the base components without pulling in unnecessary dependencies (like `Label` and the field styling).
 
 ## Sample Code
@@ -36,9 +36,9 @@ Each input component has a field version (such as `InputField`, `ComboboxField`,
   <InputField
     // Field-specific props
     label="This is the field label"
-    fieldOrientation="horizontal"
-    status="error"
-    statusText="This is error text"
+    orientation="horizontal"
+    validationState="error"
+    validationMessage="This is error text"
     // All props and slots of the underlying Input component are supported
     required
     size="small"
@@ -50,13 +50,13 @@ Each input component has a field version (such as `InputField`, `ComboboxField`,
     <Radio value="two" label="Option two" />
     <Radio value="three" label="Option three" />
   </RadioGroupField>
-  <ComboboxField label="Combobox field" status="success" statusText="Success text">
+  <ComboboxField label="Combobox field" validationState="success" validationMessage="Success text">
     <Option value="one">Option one</Option>
     <Option value="two">Option two</Option>
     <Option value="three">Option three</Option>
   </ComboboxField>
-  <SliderField label="Slider field" status="warning" statusText="Warning text" />
-  <SpinButtonField label="Spin button field" helperText="Help text" />
+  <SliderField label="Slider field" validationState="warning" validationMessage="Warning text" />
+  <SpinButtonField label="Spin button field" hint="Hint text" />
 </>
 ```
 
@@ -93,15 +93,15 @@ The following field components will be defined. If more form components are adde
 
 ## Variants
 
-- **Orientation**: The `fieldOrientation` prop affects the layout of the label and field component:
+- **Orientation**: The `orientation` prop affects the layout of the label and field component:
   - `'vertical'` (default) - label is above the field component
   - `'horizontal'` - label is to the left of the field component, and is 33% the width of the field (this allows multiple stacked fields to all align their labels)
-- **Status**: The `status` prop affects the icon and color used by the `statusText`:
+- **Validation state**: The `validationState` prop affects the icon and color used by the `validationMessage`:
   - `'error'` - Red x icon, red text color
   - `'warning'` - Yellow exclamation icon, neutral color text
   - `'success'` - Green check icon, neutral color text
-  - `undefined` (default): No status icon, neutral color text
-- **Error**: Some control types (like `Input` and `Combobox`) have a prop that makes the border red. This prop will be set `status="error"`.
+  - `undefined` (default): No validation message icon, neutral color text
+- **Error**: Some control types (like `Input` and `Combobox`) have a prop that makes the border red. This prop will be set `validationState="error"`.
 
 Field also forwards some props from the wrapped component to the label as well:
 
@@ -148,24 +148,25 @@ export type FieldSlots<T extends FieldComponent> = {
   /**
    * The label associated with the field.
    */
-  label?: SlotComponent<typeof Label>;
+  label?: Slot<typeof Label>;
 
   /**
-   * A status or validation message. The appearance of the statusText depends on the value of the `status` prop.
+   * A message about the validation state. The appearance of the `validationMessage` depends on `validationState`.
    */
-  statusText?: Slot<'span'>;
+  validationMessage?: Slot<'span'>;
 
   /**
-   * The icon associated with the status. If the `status` prop is set, this will default to a corresponding icon.
+   * The icon associated with the `validationMessage`. If the `validationState` prop is set, this will default to an
+   * icon corresponding to that state.
    *
-   * This will only be displayed if `statusText` is set.
+   * This will only be displayed if `validationMessage` is set.
    */
-  statusIcon?: Slot<'span'>;
+  validationMessageIcon?: Slot<'span'>;
 
   /**
-   * Additional text below the field.
+   * Additional hint text below the field.
    */
-  helperText?: Slot<'span'>;
+  hint?: Slot<'span'>;
 };
 ```
 
@@ -175,19 +176,19 @@ export type FieldSlots<T extends FieldComponent> = {
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
   /**
    * The orientation of the label relative to the field component.
-   * This only affects the label, and not the statusText or helperText (which always appear below the field component).
+   * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
    *
    * @default vertical
    */
-  fieldOrientation?: 'vertical' | 'horizontal';
+  orientation?: 'vertical' | 'horizontal';
 
   /**
-   * The status affects the color of the statusText, the statusIcon, and for some field components, an error status
-   * causes the border to become red.
+   * The `validationState` affects the color of the `validationMessage`, the `validationMessageIcon`, and for some
+   * field components, an `validationState="error"` causes the border to become red.
    *
    * @default undefined
    */
-  status?: 'error' | 'warning' | 'success';
+  validationState?: 'error' | 'warning' | 'success';
 };
 ```
 
@@ -216,7 +217,9 @@ export type OptionalFieldComponentProps = {
 
 ```ts
 export type FieldState<T extends FieldComponent> = ComponentState<Required<FieldSlots<T>>> &
-  Pick<FieldProps<T>, 'fieldOrientation' | 'status'>;
+  Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
+    classNames: SlotClassNames<FieldSlots<T>>;
+  };
 ```
 
 ## Structure
@@ -226,10 +229,10 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
 ```jsx
 <InputField
   label="This is the field label"
-  fieldOrientation="horizontal"
-  status="error"
-  statusText="This is status text"
-  helperText="This is helper text"
+  orientation="horizontal"
+  validationState="error"
+  validationMessage="This is a validation message"
+  hint="This is a hint message"
 />
 ```
 
@@ -241,11 +244,11 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
 <slots.root>
   <slots.label {...slotProps.label} />
   <slots.fieldComponent {...slotProps.fieldComponent} />
-  <slots.statusText {...slotProps.statusText}>
-    <slots.statusIcon {...slotProps.statusIcon} />
-    {slotProps.statusText.children}
-  </slots.statusText>
-  <slots.helperText {...slotProps.helperText} />
+  <slots.validationMessage {...slotProps.validationMessage}>
+    <slots.validationMessageIcon {...slotProps.validationMessageIcon} />
+    {slotProps.validationMessage.children}
+  </slots.validationMessage>
+  <slots.hint {...slotProps.hint} />
 </slots.root>
 ```
 
@@ -255,11 +258,11 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
 <div className="fui-Field">
   <label className="fui-Field__label fui-Label">This is the field label</label>
   <!-- wrapped field component goes here -->
-  <span className="fui-Field__statusText">
-    <span className="fui-Field__statusIcon"><svg>...</svg></span>
-    This is status text
+  <span className="fui-Field__validationMessage">
+    <span className="fui-Field__validationMessageIcon"><svg>...</svg></span>
+    This is a validation message
   </span>
-  <span className="fui-Field__helperText">This is helper text</span>
+  <span className="fui-Field__hint">This is a hint message</span>
 </div>
 ```
 
@@ -267,7 +270,7 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
 
 ### Migration from v8
 
-Migration from v8 will require picking between the normal and `Field` version of an input control, depending on whether the field-specific features are required: (`label`, `status="error"`, `statusText`, `helperText`)
+Migration from v8 will require picking between the normal and `Field` version of an input control, depending on whether the field-specific features are required: (`label`, `validationState="error"`, `validationMessage`, `hint`)
 
 See individual input components for more detailed migration guides.
 
@@ -275,11 +278,11 @@ See individual input components for more detailed migration guides.
 | ------------- | --------------------- | ------------------------------- | -------------------------------------------------------------------------------------------- |
 | `Checkbox`    | `Checkbox`            | `CheckboxField`                 | Only use `CheckboxField` if an error message is needed, or if required for layout in a form. |
 | `ChoiceGroup` | `RadioGroup`          | `RadioGroupField`               |                                                                                              |
-| `ComboBox`    | `Combobox`            | `ComboboxField`                 | `errorMessage="..."` is replaced by `status="error" statusText="..."`                        |
-| `Dropdown`    | `Dropdown`            | `DropdownField`                 | `errorMessage="..."` is replaced by `status="error" statusText="..."`                        |
+| `ComboBox`    | `Combobox`            | `ComboboxField`                 | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
+| `Dropdown`    | `Dropdown`            | `DropdownField`                 | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
 | `Slider`      | `Slider`              | `SliderField`                   |                                                                                              |
 | `SpinButton`  | `SpinButton`          | `SpinButtonField`               |                                                                                              |
-| `TextField`   | `Input` OR `Textarea` | `InputField` OR `TextareaField` | `errorMessage="..."` is replaced by `status="error" statusText="..."`                        |
+| `TextField`   | `Input` OR `Textarea` | `InputField` OR `TextareaField` | `errorMessage="..."` is replaced by `validationState="error" validationMessage="..."`        |
 | `Toggle`      | `Switch`              | `SwitchField`                   |                                                                                              |
 
 ### Migration from v0
@@ -295,7 +298,7 @@ Component mapping:
 - `FormField` => Not supported
 - `FormFieldCustom` => Not supported
 - `FormLabel` => The `label` prop of the field component
-- `FormMessage` => Either the `statusText` or `helperText` prop of the field component
+- `FormMessage` => Either the `validationMessage` or `hint` prop of the field component
 - `FormRadioGroup` => `RadioGroupField`
 - `FormSlider` => `SliderField`
 - `FormTextArea` => `TextareaField`
@@ -303,8 +306,8 @@ Component mapping:
 The following props are common to each of the `Form___` components:
 
 - `label` => `label`
-- `message` => either `statusText` or `helperText`
-- `errorMessage` => `statusText` with `status="error"`
+- `message` => either `validationMessage` or `hint`
+- `errorMessage` => `validationMessage` with `validationState="error"`
 
 ## Behaviors
 
@@ -324,15 +327,15 @@ The Field itself is not interactive. The wrapped component has the same interact
   - The following are applied on the wrapped component:
     - `aria-labelledby={label.id}`, if the label is present.
     - `aria-describedby` is set to one of:
-      - `aria-describedby={statusText.id}`, if statusText is present, and _only if_ `status !== 'error'`
-      - `aria-describedby={helperText.id}`, if helperText is present
-      - `aria-describedby={statusText.id + ' ' + helperText.id}`, if both conditions above apply
-    - `aria-errormessage={statusText.id}`, if statusText is present, and _only if_ `status === 'error'`
-    - `aria-invalid={true}`, _only if_ `status === 'error'`
+      - `aria-describedby={validationMessage.id}`, if validationMessage is present, and _only if_ `validationState !== 'error'`
+      - `aria-describedby={hint.id}`, if hint is present
+      - `aria-describedby={validationMessage.id + ' ' + hint.id}`, if both conditions above apply
+    - `aria-errormessage={validationMessage.id}`, if validationMessage is present, and _only if_ `validationState === 'error'`
+    - `aria-invalid={true}`, _only if_ `validationState === 'error'`
   - On the `label` slot:
     - `htmlFor={fieldComponent.id}` - the wrapped component's `id` (an ID is generated if not supplied via props).
 - **Live regions** (state change announcements)
-  - TBD: Need to determine if the status text should be an aria live region.
+  - TBD: Need to determine if the validation message should be an aria live region.
 - **UI parts appearing on hover or focus**
   - None.
 - **Focus behavior**
