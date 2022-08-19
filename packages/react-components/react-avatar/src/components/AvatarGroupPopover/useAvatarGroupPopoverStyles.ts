@@ -33,7 +33,7 @@ const usePopoverSurfaceStyles = makeStyles({
     maxHeight: '220px',
     minHeight: '80px',
     ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     width: '220px',
   },
 });
