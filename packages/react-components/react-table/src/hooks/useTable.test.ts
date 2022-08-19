@@ -52,14 +52,14 @@ describe('useTable', () => {
     expect(result.current.selection).toMatchInlineSnapshot(`
       Object {
         "allRowsSelected": false,
-        "clearSelection": [Function],
-        "deSelectRow": [Function],
+        "clearRows": [Function],
+        "deselectRow": [Function],
         "isRowSelected": [Function],
         "selectRow": [Function],
         "selectedRows": Array [],
         "someRowsSelected": false,
-        "toggleRowSelect": [Function],
-        "toggleSelectAllRows": [Function],
+        "toggleAllRows": [Function],
+        "toggleRow": [Function],
       }
     `);
   });
