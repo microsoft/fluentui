@@ -30,9 +30,6 @@ exports[`Dropdown renders a default state 1`] = `
         </svg>
       </span>
     </button>
-    <span
-      hidden=""
-    />
   </div>
 </div>
 `;

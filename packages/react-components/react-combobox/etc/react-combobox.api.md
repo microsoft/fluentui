@@ -40,7 +40,7 @@ export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
-    listbox: Slot<typeof Listbox>;
+    listbox?: Slot<typeof Listbox>;
 };
 
 // @public
@@ -69,7 +69,7 @@ export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
     button: NonNullable<Slot<'button'>>;
-    listbox: Slot<typeof Listbox>;
+    listbox?: Slot<typeof Listbox>;
 };
 
 // @public
