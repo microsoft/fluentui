@@ -6,16 +6,36 @@
 
 /// <reference types="react" />
 
+import { Checkbox } from '@fluentui/react-checkbox';
+import { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import { Label } from '@fluentui/react-label';
+import { RadioGroup } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { Select } from '@fluentui/react-select';
+import { Slider } from '@fluentui/react-slider';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import type { SlotShorthandValue } from '@fluentui/react-utilities';
+import { SpinButton } from '@fluentui/react-spinButton';
+import { Switch } from '@fluentui/react-switch';
+import { Textarea } from '@fluentui/react-textarea';
+
+// @public (undocumented)
+export const CheckboxField: ForwardRefComponent<CheckboxFieldProps>;
+
+// @public (undocumented)
+export const checkboxFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type CheckboxFieldProps = Omit<FieldProps<typeof Checkbox>, 'label'> & {
+    label?: CheckboxProps['label'];
+    fieldLabel?: FieldProps<typeof Checkbox>['label'];
+};
 
 // @public
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
@@ -50,8 +70,62 @@ export const inputFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
 // @public (undocumented)
 export type InputFieldProps = FieldProps<typeof Input>;
 
+// @public (undocumented)
+export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps>;
+
+// @public (undocumented)
+export const radioGroupFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type RadioGroupFieldProps = FieldProps<typeof RadioGroup>;
+
 // @public
 export const renderField_unstable: <T extends FieldComponent>(state: FieldState<T>) => JSX.Element;
+
+// @public (undocumented)
+export const SelectField: ForwardRefComponent<SelectFieldProps>;
+
+// @public (undocumented)
+export const selectFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SelectFieldProps = FieldProps<typeof Select>;
+
+// @public (undocumented)
+export const SliderField: ForwardRefComponent<SliderFieldProps>;
+
+// @public (undocumented)
+export const sliderFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SliderFieldProps = FieldProps<typeof Slider>;
+
+// @public (undocumented)
+export const SpinButtonField: ForwardRefComponent<SpinButtonFieldProps>;
+
+// @public (undocumented)
+export const spinButtonFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SpinButtonFieldProps = FieldProps<typeof SpinButton>;
+
+// @public (undocumented)
+export const SwitchField: ForwardRefComponent<SwitchFieldProps>;
+
+// @public (undocumented)
+export const switchFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type SwitchFieldProps = FieldProps<typeof Switch>;
+
+// @public (undocumented)
+export const TextareaField: ForwardRefComponent<TextareaFieldProps>;
+
+// @public (undocumented)
+export const textareaFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type TextareaFieldProps = FieldProps<typeof Textarea>;
 
 // @public
 export const useField_unstable: <T extends FieldComponent>(params: UseFieldParams<T>) => FieldState<T>;
