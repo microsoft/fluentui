@@ -158,10 +158,6 @@ export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageSt
   },
 
   bubbleInset: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    // position: 'absolute',
-    // top: pxToRem(10),
-    // paddingTop: 0,
-
     display: 'flex',
     paddingTop: pxToRem(10),
     paddingBottom: 0,
