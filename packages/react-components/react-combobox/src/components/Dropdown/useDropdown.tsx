@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useTimeout } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
@@ -31,7 +31,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   // jump to matching option based on typing
   const searchString = React.useRef('');
-  const keyTimeoutRef = React.useRef<number>();
+  const [setKeyTimeout, clearKeyTimeout] = useTimeout();
 
   const getNextMatchingOption = (): OptionValue | undefined => {
     // first check for matches for the full searchString
@@ -71,16 +71,13 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
     // clear timeout, if it exists
-    if (keyTimeoutRef.current) {
-      window.clearTimeout(keyTimeoutRef.current);
-      keyTimeoutRef.current = undefined;
-    }
+    clearKeyTimeout();
 
     // if the key was a char key, update search string
     if (getDropdownActionFromKey(ev) === 'Type') {
       // update search string
       searchString.current += ev.key.toLowerCase();
-      keyTimeoutRef.current = setTimeout(() => {
+      setKeyTimeout(() => {
         searchString.current = '';
       }, 500);
 
