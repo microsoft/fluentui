@@ -20,12 +20,8 @@ export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlot
 const useContentStyles = makeStyles({
   base: {
     listStyleType: 'none',
-    maxHeight: '220px',
     ...shorthands.margin('0'),
-    minHeight: '80px',
-    ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    width: '220px',
+    ...shorthands.padding('0'),
   },
 });
 
@@ -34,7 +30,11 @@ const useContentStyles = makeStyles({
  */
 const usePopoverSurfaceStyles = makeStyles({
   base: {
-    ...shorthands.padding(0),
+    maxHeight: '220px',
+    minHeight: '80px',
+    ...shorthands.overflow('hidden', 'scroll'),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    width: '220px',
   },
 });
 
