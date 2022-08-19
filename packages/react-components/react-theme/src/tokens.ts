@@ -395,6 +395,7 @@ export const tokens: Record<keyof Theme, string> = {
   fontWeightRegular: 'var(--fontWeightRegular)',
   fontWeightMedium: 'var(--fontWeightMedium)',
   fontWeightSemibold: 'var(--fontWeightSemibold)',
+  fontWeightBold: 'var(--fontWeightBold)',
 
   // Line height tokens
   lineHeightBase100: 'var(--lineHeightBase100)',

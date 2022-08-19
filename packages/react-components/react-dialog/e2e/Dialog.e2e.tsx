@@ -162,6 +162,31 @@ describe('Dialog', () => {
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
+    it('should lock body scroll when dialog open', () => {
+      mount(
+        <Dialog modalType="modal">
+          <DialogTrigger>
+            <Button>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get('body').should('have.css', 'overflow', 'hidden');
+    });
   });
   describe('modalType = non-modal', () => {
     it('should close with escape keydown', () => {
@@ -190,6 +215,31 @@ describe('Dialog', () => {
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('not.exist');
     });
+    it('should not lock body scroll when dialog open', () => {
+      mount(
+        <Dialog modalType="non-modal">
+          <DialogTrigger>
+            <Button>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get('body').should('not.have.css', 'overflow', 'hidden');
+    });
   });
   describe('modalType = alert', () => {
     it('should not close with escape keydown', () => {
@@ -217,6 +267,31 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).click();
       cy.focused().type('{esc}');
       cy.get(dialogSurfaceSelector).should('exist');
+    });
+    it('should lock body scroll when dialog open', () => {
+      mount(
+        <Dialog modalType="alert">
+          <DialogTrigger>
+            <Button>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger>
+                <Button appearance="secondary">Close</Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).click();
+      cy.get('body').should('have.css', 'overflow', 'hidden');
     });
   });
 });
