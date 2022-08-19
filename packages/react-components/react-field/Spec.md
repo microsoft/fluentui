@@ -86,7 +86,7 @@ The following field components will be defined. If more form components are adde
 - `RadioGroupField`
 - `SelectField`
 - `SliderField`
-- `SpinnerField`
+- `SpinButtonField`
 - `SwitchField`
   - _Open question:_ how should this handle the `label`? Should it forward to the underlying `Switch`, or keep the label in the same place as the field's label? Might need a prop to control this behavior.
 - `TextareaField`
