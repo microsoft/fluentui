@@ -1,63 +1,272 @@
 # @fluentui/react-persona Spec
 
+Convergence epic issue: #24213
+
 ## Background
 
-_Description and use cases of this component_
+A Persona is a visual representation that showcases an Avatar, Icon, Image, or Badge.
+
+Persona is used in PeoplePicker, Team's left rail and menus, chiclets, and Card.
 
 ## Prior Art
 
-_Include background research done for this component_
+- OpenUI research: [Avatar/Persona](https://open-ui.org/components/avatar.research)
+- v7/v8: [link](https://developer.microsoft.com/en-us/fluentui#/controls/web/persona)
+  - > Note: v8's Persona is a combination of v9's Persona and Avatar (v8's Persona has a sub-component PersonaCoin that would count as Avatar, but is not exposed.). In v9 we've taken the approach of having a single component Avatar and another component Persona.
+- v0: Does not have equivalent component.
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Coin
+
+_Avatar vs PersonaCoin_: As mentioned in Prior Art, v8's persona is not quite the same as v9's. v8's Persona is only able to showcase PersonaCoin while v9 showcases Avatar (including Avatar + PresenceBadge, Avatar + image, and Avatar + Icon).
+
+_Icon vs PersonaCoin_: PersonaCoin allows you to have icon only when there's no image available or it's the unknown persona coin variant. In v9's Persona, you have the option of showcasing an icon through the Avatar or showcasing only the icon.
+
+- Note: The icon only shows up if there's no presence and size is `tiny`, `size8`, or `size16`.
+
+_Image vs PersonaCoin_: PersonaCoin allows you to have an image only within the Avatar. This can be avoided by rendering a custom coin, but there's still all the dom and styling overhead that comes with PersonaCoin. v9's Persona allows you use a single image with no extra dom.
+
+_PresenceBadge vs PersonaCoin_: PersonaCoin allows you to have only a PresenceBadge when the size of the coin is `tiny`, `size8`, or `size16`. In v9's Persona you are able to render the PresenceBadge alone.
+
+### Text lines
+
+Other than styling and naming, the text lines in persona remain the same.
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+Persona with Avatar:
+
+```jsx
+<Persona primaryText="Kevin Sturgis" secondaryText="Software Engineer" avatar={{ name: 'Kevin Sturgis' }} />
+```
+
+Persona with Avatar + PresenceBadge:
+
+```jsx
+<Persona
+  primaryText="Kevin Sturgis"
+  secondaryText="Software Engineer"
+  tertiaryText="Offline"
+  avatar={{ name: 'Kevin Sturgis' }}
+  badge={{ status: 'offline', outOfOffice: true }}
+/>
+```
+
+Persona with icon:
+
+```jsx
+<Persona primaryText="Person Call Icon" icon={<PersonCallRegular />} />
+```
+
+Persona with PresenceBadge:
+
+```jsx
+<Persona primaryText="Kevin Sturgis" badge={{ status: 'offline', outOfOffice: true }} />
+```
+
+Persona with image:
+
+```jsx
+<Persona
+  primaryText="Katri Athokas"
+  secondaryText="Software Engineer"
+  tertiaryText="CXE"
+  quaternaryText="Offline"
+  image={{ src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg' }}
+/>
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+There are three alignment variants:
+
+- start: Coin on the left and text on the right.
+- center: Coin on top and text on the bottom.
+- end: Coin on the right and text on the left.
+
+There are 5 coin variats:
+
+- Badge
+- icon
+- Avatar
+- Avatar + Badge
+  - > Note: When there's an Avatar and a Badge and the Avatar provided already has a Badge, the provided Badge will take over the provided Badge.
+- image
+
+There are 2 sizing variants:
+
+- stretch: When the text lines have a larger height compared to the coin, stretch the coin to fit text lines height.
+- fixed: Keep the coin the same size, no matter the height of the text lines.
+
+**⚠️Responsive text variants will be left out of the initial implementation due to the accessibility concerns, they are added to this spec to start a discussion⚠️**
+
+There are 4 responsive text variants:
+
+- truncate: simple text truncation when the text doesn't fit in the container.
+  - > Note: after a talk offline, it was brought up that this might be an accessibility concern. @smhighley could you confirm these scenarios are concerns for the text?
+- hidden: same as truncate, but has a default `min-width` of 36px. If the width is less than `min-width`, then the text is hidden.
+- wrap: simple text wrap.
+- lineclamp truncate: wraps text until specified number of lines and after those lines it truncates the text.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+**Slots**
+
+- `root`: The root slot for Persona.
+- `avatar`: The Avatar, if provided.
+- `badge`: The PresenceBadge, if provided.
+- `icon`: The icon, if provided.
+- `image`: The image, if provided.
+- `primaryText`: Primary text, this is the only required slot. I decided to have at least this slot required since it doesn't make sense to have just the coin without the text. ⚠️ Open to feedback though.
+- `secondaryText`: Secondary text, if provided.
+- `tertiaryText`: Tertiary text, if provided.
+- `quaternaryText`: Quaternary text, if provided.
+
+**Coin slots precedence**
+
+1. Avatar + PresenceBadge
+2. Avatar
+3. Image
+4. icon
+5. PresenceBadge
+
+**`default`**: Empty Avatar.
+
+**Types**
+
+```ts
+type PersonaSlots = {
+  root: Slot<'div'>;
+
+  avatar?: Slot<typeof Avatar>;
+
+  /**
+   * The Persona's image.
+   *
+   * Usage e.g.: `image={{ src: '...' }}`
+   */
+  image?: Slot<'img'>;
+
+  /**
+   * Icon to be displayed.
+   */
+  icon?: Slot<'span'>;
+
+  /**
+   * Badge to display.
+   *
+   * When an Avatar and a PresenceBadge are provided, the badge provided will be used on the Avatar.
+   */
+  badge?: Slot<typeof PresenceBadge>;
+
+  /**
+   * Primary text to be displayed.
+   */
+  primaryText: NonNullable<Slot<'span'>>;
+
+  /**
+   * Secondary text to be displayed.
+   */
+  secondaryText?: Slot<'span'>;
+
+  /**
+   * Tertiary text to be displayed.
+   */
+  tertiaryText?: Slot<'span'>;
+
+  /**
+   * Quaternary text to be displayed.
+   */
+  quaternaryText?: Slot<'span'>;
+};
+
+type PersonaProps = ComponentProps<PersonaSlots> & {
+  /**
+   * Type of sizing to be used. When using fixed, the coin will not resize. When using stretch,
+   * the coin will resize depending on the combined text's height.
+   *
+   * @default stretch
+   */
+  sizingStyle?: 'fixed' | 'stretch';
+
+  /**
+   * Where the coin is positioned relative to the text.
+   *
+   * @default start
+   */
+  coinPosition?: 'start' | 'center' | 'end';
+};
+```
 
 ## Structure
 
-- _**Public**_
+To avoid the [issue](https://github.com/microsoft/fluentui/issues/23386) v8 has, a css grid will be used instead of a flexbox that requires a general wrapper and a text container wrapper.
+
+- _**CSS Grid**_
+  - Start
+    ![](https://i.imgur.com/ADospcu.png)
+  - End
+    ![](https://i.imgur.com/Oc4D5zU.png)
+  - Center
+    ![](https://i.imgur.com/RTs5pDq.png)
+
+> ⚠️ Open to feedback: When using `grid-template-areas`, even if the rows are empty, `rowGap`/`columnGap` adds the spacing between them. To avoid this, a padding in the items could be used instead. While it's not a huge problem, it would impact the design.
+
 - _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+
+```jsx
+const textSlots = (
+  <>
+    <slots.primaryText {...slotProps.primaryText} />
+    {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
+    {slots.tertiaryText && <slots.tertiaryText {...slotProps.tertiaryText} />}
+    {slots.quaternaryText && <slots.quaternaryText {...slotProps.quaternaryText} />}
+  </>
+);
+
+return (
+  <slots.root {...slotProps.root}>
+    {position === 'end' && textSlots}
+    {slots.avatar && <slots.avatar {...slotProps.avatar} />}
+    {slots.badge && <slots.badge {...slotProps.badge} />}
+    {slots.icon && <slots.icon {...slotProps.icon} />}
+    {slots.image && <slots.image {...slotProps.image} />}
+    {(position === 'start' || position === 'center') && textSlots}
+  </slots.root>
+);
+```
+
+- _**DOM**_
+
+```html
+<div class="fui-Persona">
+  <span class="fui-Persona__avatar fui-Avatar">{/* Avatar */}</span>
+  <span class="fui-Persona__primaryText">Primary Text</span>
+  <span class="fui-Persona__secondaryText">Secondary Text</span>
+  <span class="fui-Persona__tertiaryText">Tertiary Text</span>
+  <span class="fui-Persona__quaternaryText">Quaternary Text</span>
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [MIGRATION.md](./MIGRATION.md) for details.
 
 ## Behaviors
 
 _Explain how the component will behave in use, including:_
 
 - _Component States_
+  - There are no states for this component, it's a visual representation.
 - _Interaction_
   - _Keyboard_
+    - Doesn't receive focus.
   - _Cursor_
+    - Doesn't interact with cursor.
   - _Touch_
+    - Doesn't interact with touch.
   - _Screen readers_
+    - It first focuses on the coin and then goes through each text line available.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- There's no need for `aria-*` or/and`role`. Avatar, Badge, Image, and icon are already accessible and the text labels won't need anything as well.
