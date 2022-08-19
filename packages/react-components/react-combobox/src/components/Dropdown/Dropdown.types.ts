@@ -19,7 +19,7 @@ export type DropdownSlots = {
   button: NonNullable<Slot<'button'>>;
 
   /* The dropdown listbox slot */
-  listbox: Slot<typeof Listbox>;
+  listbox?: Slot<typeof Listbox>;
 };
 
 /**

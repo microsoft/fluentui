@@ -20,7 +20,7 @@ export type ComboboxSlots = {
   input: NonNullable<Slot<'input'>>;
 
   /* The dropdown listbox slot */
-  listbox: Slot<typeof Listbox>;
+  listbox?: Slot<typeof Listbox>;
 };
 
 /**

@@ -147,11 +147,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // only resolve listbox slot if needed
   listboxSlot =
-    (open || hasFocus) &&
-    resolveShorthand(props.listbox, {
-      required: true,
-      defaultProps: { children: props.children },
-    });
+    open || hasFocus
+      ? resolveShorthand(props.listbox, {
+          required: true,
+          defaultProps: { children: props.children },
+        })
+      : undefined;
 
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
