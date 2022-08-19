@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 19 Aug 2022 12:24:02 GMT",
+      "tag": "@fluentui/react-charting_v4.22.0",
+      "version": "4.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding @fluentui/react-charting package to alias @fluentui/charting",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "1840ea4e52549641662f5672a0f320927e65c734",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/charting to v4.21.11",
+            "author": "103020020+AnnapareddyHarsha@users.noreply.github.com",
+            "commit": "daa08b8cd5801039f105790e08cb00be8b99a26f",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Aug 2022 12:21:32 GMT",
       "tag": "@uifabric/charting_v4.21.10",
       "version": "4.21.10",

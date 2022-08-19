@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 19 Aug 2022 12:24:02 GMT",
+      "tag": "@uifabric/charting_v4.21.11",
+      "version": "4.21.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing culture issue in multistacked bar chart",
+            "author": "103020020+AnnapareddyHarsha@users.noreply.github.com",
+            "commit": "daa08b8cd5801039f105790e08cb00be8b99a26f",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Aug 2022 12:21:32 GMT",
       "tag": "@uifabric/charting_v4.21.10",
       "version": "4.21.10",

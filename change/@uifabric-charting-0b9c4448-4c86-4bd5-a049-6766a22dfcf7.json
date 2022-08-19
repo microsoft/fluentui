@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing culture issue in multistacked bar chart",
-  "packageName": "@uifabric/charting",
-  "email": "103020020+AnnapareddyHarsha@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Aug 2022 12:24:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.21.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.11)
+
+Fri, 19 Aug 2022 12:24:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.10..@uifabric/charting_v4.21.11)
+
+### Patches
+
+- fixing culture issue in multistacked bar chart ([PR #24318](https://github.com/microsoft/fluentui/pull/24318) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
 
 ## [4.21.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.10)
 
