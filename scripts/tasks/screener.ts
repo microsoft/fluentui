@@ -18,17 +18,17 @@ export async function screener() {
 
   try {
     const dir = 'dist/storybook';
-
+    let skipScreenerBuild = undefined;
     access(dir, err => {
       if (!err) {
-        console.log(dir, 'directory already exists');
+        console.log('Running screener test:');
+        skipScreenerBuild = false;
       } else if (err.code === 'ENOENT') {
-        //mkdirSync(dir)
-        console.log("doesn't exist");
+        console.log('screener build skipped');
+        skipScreenerBuild = true;
       }
     });
-    if (process.env.skipScreenerBuild !== 'true') {
-      console.log('Running screener test:');
+    if (skipScreenerBuild === false) {
       const screenerStates = await getScreenerStates(screenerConfig);
       screenerConfig.states = screenerStates;
     }
