@@ -15,7 +15,6 @@ export async function screener() {
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    console.log('env variable:');
     console.log(process.env.SKIPSCREENERBUILD);
     if (process.env.SKIPSCREENERBUILD !== 'true') {
       console.log('Running screener test:');
