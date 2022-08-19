@@ -15,10 +15,6 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
     onRenderItem: (props: ITagItemProps) => <TagItem {...props}>{props.item.name}</TagItem>,
     onRenderSuggestionsItem: (props: ITag) => <TagItemSuggestion>{props.name}</TagItemSuggestion>,
   };
-
-  constructor(props: ITagPickerProps) {
-    super(props);
-  }
 }
 
 export const TagPicker = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(

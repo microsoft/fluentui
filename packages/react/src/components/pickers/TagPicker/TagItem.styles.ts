@@ -104,16 +104,11 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           ? `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
           : `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {
-          [`.${classNames.isSelected} &`]: {
-            // selected but not focused, assume color and bg of parent
-            color: 'inherit',
-            background: 'transparent',
-          },
           ':hover': {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary,
           },
-          ':focus': {
+          [`.${classNames.isSelected} &, :focus`]: {
             color: palette.white,
             background: palette.themePrimary,
           },
