@@ -1,2 +1,0 @@
-- Use the FloatingPeoplePicker to select something other than people
-- Use the FloatingPeoplePicker without sufficient space

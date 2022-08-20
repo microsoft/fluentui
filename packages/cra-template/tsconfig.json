@@ -1,8 +1,0 @@
-{
-  "extends": "../../scripts/tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true
-  },
-  "include": ["scripts"],
-  "exclude": ["node_modules", "template"]
-}

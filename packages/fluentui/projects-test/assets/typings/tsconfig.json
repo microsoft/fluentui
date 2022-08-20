@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "target": "es5",
-    "strict": true
-  },
-  "include": ["src"]
-}

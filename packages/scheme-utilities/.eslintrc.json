@@ -1,4 +1,0 @@
-{
-  "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
-  "root": true
-}
