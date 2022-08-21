@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use context passed handler",
+  "packageName": "@fluentui/react-button",
+  "email": "chassunc@microsoft.com",
+  "dependentChangeType": "none"
+}
