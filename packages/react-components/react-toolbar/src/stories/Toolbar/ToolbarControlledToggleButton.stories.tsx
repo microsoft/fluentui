@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Toolbar, ToolbarToggleButton } from '@fluentui/react-toolbar';
-import type { MenuProps } from '@fluentui/react-components';
+import { Toolbar, ToolbarToggleButton, ToolbarProps } from '@fluentui/react-toolbar';
 
 export const ControlledToggleButton = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ edit: ['cut', 'paste'] });
-  const onChange: MenuProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
+  const onChange: ToolbarProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
     setCheckedValues(s => {
       return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
     });
