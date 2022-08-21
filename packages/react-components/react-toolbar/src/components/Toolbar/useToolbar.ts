@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventCallback, useControllableState } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import type { ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';
+import type { ToggableHandler, ToolbarProps, ToolbarState, UninitializedToolbarState } from './Toolbar.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
@@ -48,7 +48,7 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
 
   const { onCheckedValueChange } = initialState;
 
-  const handleToggleButton = useEventCallback(
+  const handleToggleButton: ToggableHandler = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
       const newCheckedItems = [...checkedItems];

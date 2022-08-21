@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SelectableHandler } from '../../../../react-menu/src/index';
 
 export type ToolbarSlots = {
   root: Slot<'div'>;
@@ -54,11 +53,11 @@ export type ToolbarState = ComponentState<ToolbarSlots> &
     /*
      * Toggles the state of a ToggleButton item
      */
-    handleToggleButton: SelectableHandler;
+    handleToggleButton: ToggableHandler;
   };
 
 export type ToolbarContextValue = Pick<ToolbarProps, 'size'> & {
-  handleToggleButton?: SelectableHandler;
+  handleToggleButton?: ToggableHandler;
 };
 
 export type ToolbarContextValues = {
@@ -67,3 +66,10 @@ export type ToolbarContextValues = {
 
 export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'handleToggleButton'> &
   Partial<Pick<ToolbarState, 'checkedValues'>>;
+
+export type ToggableHandler = (
+  e: React.MouseEvent | React.KeyboardEvent,
+  name: string,
+  value: string,
+  checked: boolean,
+) => void;
