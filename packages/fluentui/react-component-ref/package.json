@@ -5,7 +5,8 @@
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.10.4"
+    "@babel/runtime": "^7.10.4",
+    "react-is": "^16.6.3"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -22,8 +23,7 @@
   "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17 || ^18",
-    "react-dom": "^16.8.0 || ^17 || ^18",
-    "react-is": "^16 || ^17"
+    "react-dom": "^16.8.0 || ^17 || ^18"
   },
   "publishConfig": {
     "access": "public"

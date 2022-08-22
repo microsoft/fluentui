@@ -16,7 +16,8 @@
     "@fluentui/styles": "^0.64.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-is": "^16.6.3"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -35,7 +36,6 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
     "react-dom": "^16.8.0 || ^17",
-    "react-is": "^16 || ^17",
     "scheduler": "^0.19.0 || ^0.20.0"
   },
   "publishConfig": {

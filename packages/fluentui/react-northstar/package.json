@@ -25,6 +25,7 @@
     "downshift": "5.0.5",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
+    "react-is": "^16.6.3",
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
@@ -54,8 +55,7 @@
   "module": "dist/es/index.js",
   "peerDependencies": {
     "react": "^16.8.0 || ^17",
-    "react-dom": "^16.8.0 || ^17",
-    "react-is": "^16 || ^17"
+    "react-dom": "^16.8.0 || ^17"
   },
   "publishConfig": {
     "access": "public"
