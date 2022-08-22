@@ -12,6 +12,7 @@ import {
   writeJson,
   updateProjectConfiguration,
   serializeJson,
+  offsetFromRoot,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import * as os from 'os';
