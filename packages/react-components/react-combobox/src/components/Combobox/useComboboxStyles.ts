@@ -186,18 +186,22 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles[size],
     state.root.className,
   );
-  state.listbox.className = mergeClasses(
-    comboboxClassNames.listbox,
-    styles.listbox,
-    !open && styles.listboxCollapsed,
-    state.listbox.className,
-  );
+
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,
     inputStyles[size],
     state.input.className,
   );
+
+  if (state.listbox) {
+    state.listbox.className = mergeClasses(
+      comboboxClassNames.listbox,
+      styles.listbox,
+      !open && styles.listboxCollapsed,
+      state.listbox.className,
+    );
+  }
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(

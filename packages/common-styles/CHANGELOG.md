@@ -1,8 +1,17 @@
 # Change Log - @fluentui/common-styles
 
-This log was last generated on Mon, 15 Aug 2022 07:39:41 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Aug 2022 23:39:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.4)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.2.3..@fluentui/common-styles_v1.2.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
 
 ## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.2.3)
 

@@ -3,6 +3,7 @@ import { SortDirection } from '../components/Table/Table.types';
 export type RowId = string | number;
 export type ColumnId = string | number;
 export type GetRowIdInternal<TItem> = (rowId: TItem, index: number) => RowId;
+export type SelectionMode = 'single' | 'multiselect';
 
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
@@ -29,17 +30,17 @@ export interface SortStateInternal<TItem> {
 export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
-  selectionMode?: 'single' | 'multiselect';
+  selectionMode?: SelectionMode;
   getRowId?: (item: TItem) => RowId;
   rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
 export interface SelectionStateInternal {
-  clearSelection: () => void;
-  deSelectRow: (rowId: RowId) => void;
+  clearRows: () => void;
+  deselectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
-  toggleSelectAllRows: () => void;
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleAllRows: () => void;
+  toggleRow: (rowId: RowId) => void;
   isRowSelected: (rowId: RowId) => boolean;
   selectedRows: Set<RowId>;
   allRowsSelected: boolean;
@@ -74,7 +75,7 @@ export interface SelectionState {
   /**
    * Clears all selected rows
    */
-  clearSelection: () => void;
+  clearRows: () => void;
   /**
    * Selects single row
    */
@@ -82,15 +83,15 @@ export interface SelectionState {
   /**
    * De-selects single row
    */
-  deSelectRow: (rowId: RowId) => void;
+  deselectRow: (rowId: RowId) => void;
   /**
    * Toggle selection of all rows
    */
-  toggleSelectAllRows: () => void;
+  toggleAllRows: () => void;
   /**
    * Toggle selection of single row
    */
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleRow: (rowId: RowId) => void;
   /**
    * Collection of row ids corresponding to selected rows
    */

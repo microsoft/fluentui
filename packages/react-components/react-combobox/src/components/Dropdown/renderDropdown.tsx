@@ -10,9 +10,6 @@ import type { DropdownContextValues, DropdownState, DropdownSlots } from './Drop
 export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues) => {
   const { slots, slotProps } = getSlots<DropdownSlots>(state);
 
-  const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
-  const popup = state.inlinePopup ? listbox : <Portal>{listbox}</Portal>;
-
   return (
     <slots.root {...slotProps.root}>
       <ComboboxContext.Provider value={contextValues.combobox}>
@@ -20,7 +17,14 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
           {slotProps.button.children}
           {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
         </slots.button>
-        {state.open ? popup : null}
+        {slots.listbox &&
+          (state.inlinePopup ? (
+            <slots.listbox {...slotProps.listbox} />
+          ) : (
+            <Portal>
+              <slots.listbox {...slotProps.listbox} />
+            </Portal>
+          ))}
       </ComboboxContext.Provider>
     </slots.root>
   );

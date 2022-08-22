@@ -11,6 +11,7 @@ import {
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
+import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
   label: string;
@@ -96,24 +97,32 @@ const columns: ColumnDefinition<Item>[] = [
 export const MultipleSelect = () => {
   const {
     rows,
-    selection: { allRowsSelected, someRowsSelected, toggleSelectAllRows },
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
   } = useTable({
     columns,
     items,
     rowEnhancer: (row, { selection }) => ({
       ...row,
-      toggleSelect: () => selection.toggleRowSelect(row.rowId),
+      onClick: () => selection.toggleRow(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          selection.toggleRow(row.rowId);
+        }
+      },
       selected: selection.isRowSelected(row.rowId),
     }),
   });
 
+  // eslint-disable-next-line deprecation/deprecation
+  const ref = useNavigationMode<HTMLDivElement>('row');
+
   return (
-    <Table sortable>
+    <Table>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
             checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
-            onClick={toggleSelectAllRows}
+            onClick={toggleAllRows}
           />
           <TableHeaderCell>File</TableHeaderCell>
           <TableHeaderCell>Author</TableHeaderCell>
@@ -121,10 +130,10 @@ export const MultipleSelect = () => {
           <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {rows.map(({ item, selected, toggleSelect }) => (
-          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
-            <TableSelectionCell checked={selected} />
+      <TableBody ref={ref}>
+        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
             <TableCell>{item.lastUpdated.label}</TableCell>

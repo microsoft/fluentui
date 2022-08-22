@@ -165,7 +165,7 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   const iconStyles = useIconStyles();
 
   state.root.className = mergeClasses(dropdownClassNames.root, styles.root, styles[appearance], state.root.className);
-  state.listbox.className = mergeClasses(dropdownClassNames.listbox, styles.listbox, state.listbox.className);
+
   state.button.className = mergeClasses(
     dropdownClassNames.button,
     styles.button,
@@ -173,6 +173,10 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
     placeholderVisible && styles.placeholder,
     state.button.className,
   );
+
+  if (state.listbox) {
+    state.listbox.className = mergeClasses(dropdownClassNames.listbox, styles.listbox, state.listbox.className);
+  }
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(

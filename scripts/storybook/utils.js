@@ -93,7 +93,7 @@ function getCodesandboxBabelOptions() {
   const allPackageInfo = getAllPackageInfo();
 
   return Object.values(allPackageInfo).reduce((acc, cur) => {
-    if (isConvergedPackage(cur.packageJson)) {
+    if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
       const prereleaseTags = semver.prerelease(cur.packageJson.version);
       const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
       acc[cur.packageJson.name] = isNonRcPrerelease

@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Mon, 15 Aug 2022 07:39:41 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Aug 2022 07:44:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.204.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.23)
+
+Mon, 22 Aug 2022 07:44:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.22..@fluentui/react-cards_v0.204.23)
+
+### Patches
+
+- Bump @fluentui/react to v8.90.1 ([PR #24279](https://github.com/microsoft/fluentui/pull/24279) by beachball)
+
+## [0.204.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.22)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.21..@fluentui/react-cards_v0.204.22)
+
+### Patches
+
+- Bump @fluentui/react to v8.90.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.15 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+## [0.204.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.21)
+
+Thu, 18 Aug 2022 07:48:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.204.20..@fluentui/react-cards_v0.204.21)
+
+### Patches
+
+- Bump @fluentui/react to v8.89.0 ([PR #23780](https://github.com/microsoft/fluentui/pull/23780) by beachball)
 
 ## [0.204.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.204.20)
 

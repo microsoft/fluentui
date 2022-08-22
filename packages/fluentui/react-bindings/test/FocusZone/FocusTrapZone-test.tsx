@@ -733,4 +733,64 @@ describe('FocusTrapZone', () => {
       removeTestContainer();
     });
   });
+
+  describe('multiple FocusZone mount/unmount', () => {
+    it('remove aria-hidden from the 1st focusZone when the 2nd focusZone unmount', () => {
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const TestComponent = () => {
+        const [open, setOpen] = React.useState(true);
+
+        return (
+          <>
+            {ReactDOM.createPortal(
+              <>
+                {open && (
+                  <FocusTrapZone id="zone2">
+                    <button>zone2 button</button>
+                  </FocusTrapZone>
+                )}
+              </>,
+              document.body,
+            )}
+            {ReactDOM.createPortal(
+              <div id="zone1-wrapper">
+                <FocusTrapZone id="zone1">
+                  <button>zone1 button</button>
+                </FocusTrapZone>
+              </div>,
+              document.body,
+            )}
+
+            <button id="unmount-zone2-button" onClick={() => setOpen(false)}>
+              button
+            </button>
+          </>
+        );
+      };
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<TestComponent />, testContainer);
+      });
+
+      // initially both focusZone are mounted
+      let zone1Wrapper = document.body.querySelector('#zone1-wrapper') as HTMLElement;
+      expect(zone1Wrapper).toBeDefined();
+      expect(zone1Wrapper.getAttribute('aria-hidden')).toBe('true');
+
+      const zone2 = document.body.querySelector('#zone2') as HTMLElement;
+      expect(zone2).toBeDefined();
+      expect(zone2.getAttribute('aria-hidden')).toBe('true');
+
+      // unmount zone2
+      const unmountButton = testContainer.querySelector('#unmount-zone2-button') as HTMLElement;
+      expect(unmountButton).toBeDefined();
+      ReactTestUtils.Simulate.click(unmountButton);
+
+      // expect zone1 is mounted, but it's wrapper's aria-hidden attribute is removed
+      zone1Wrapper = document.body.querySelector('#zone1-wrapper') as HTMLElement;
+      expect(zone1Wrapper).toBeDefined();
+      expect(zone1Wrapper.getAttribute('aria-hidden')).toBeFalsy();
+
+      removeTestContainer();
+    });
+  });
 });

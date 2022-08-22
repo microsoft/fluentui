@@ -505,6 +505,7 @@ export type FontWeightTokens = {
   fontWeightRegular: number;
   fontWeightMedium: number;
   fontWeightSemibold: number;
+  fontWeightBold: number;
 };
 
 export type FontFamilyTokens = {
@@ -544,6 +545,7 @@ export type TypographyStyles = {
   body1: TypographyStyle;
   body1Strong: TypographyStyle;
   body1Stronger: TypographyStyle;
+  body2: TypographyStyle;
   caption1: TypographyStyle;
   caption1Strong: TypographyStyle;
   caption1Stronger: TypographyStyle;
