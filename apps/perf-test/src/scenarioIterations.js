@@ -11,6 +11,11 @@ const scenarioIterations = {
   ComboBox: 1000,
   Persona: 1000,
   ContextualMenu: 1000,
+  /* List performance is generally more influenced by the size
+   * of the list rather than the number of lists on a page.
+   */
+  GroupedList: 2,
+  GroupedListV2: 2,
 };
 
 module.exports = scenarioIterations;
