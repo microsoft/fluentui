@@ -1,6 +1,8 @@
 // @ts-check
 
-require('../ts-node-register');
+if (process.env.NODE_ENV !== 'test') {
+  require('../ts-node-register');
+}
 
 const { getConfig } = require('./utils');
 const { config: sharedConfig } = require('./shared.config');

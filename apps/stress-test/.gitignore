@@ -1,0 +1,7 @@
+node_modules/
+dist/
+
+benchmarks/**/*.json
+benchmarks/**/results.js
+
+yarn-error.log

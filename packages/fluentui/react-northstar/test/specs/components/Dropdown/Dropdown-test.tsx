@@ -86,6 +86,25 @@ describe('Dropdown', () => {
       expect(getClearIndicatorNode()).not.toHaveAttribute('tabindex');
       expect(getClearIndicatorNode()).not.toHaveAttribute('role', 'button');
     });
+
+    it('is not visible when an empty array is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        multiple: true,
+        value: [],
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
+
+    it('is not visible when an empty string is passed', () => {
+      const { getClearIndicatorWrapper } = renderDropdown({
+        clearable: true,
+        value: '',
+      });
+
+      expect(getClearIndicatorWrapper()).toHaveLength(0);
+    });
   });
 
   describe('open', () => {

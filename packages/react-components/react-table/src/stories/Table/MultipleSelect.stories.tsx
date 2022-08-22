@@ -10,12 +10,41 @@ import {
 } from '@fluentui/react-icons';
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
+import { useTable, ColumnDefinition } from '../../hooks';
+import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
-const items = [
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
-    lastUpdated: { label: '7h ago', timestamp: 1 },
+    lastUpdated: { label: '7h ago', timestamp: 3 },
     lastUpdate: {
       label: 'You edited this',
       icon: <EditRegular />,
@@ -42,7 +71,7 @@ const items = [
   {
     file: { label: 'Purchase order', icon: <DocumentPdfRegular /> },
     author: { label: 'Jane Doe', status: 'offline' },
-    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 3 },
+    lastUpdated: { label: 'Tue at 9:30 AM', timestamp: 1 },
     lastUpdate: {
       label: 'You shared this in a Teams chat',
       icon: <PeopleRegular />,
@@ -50,95 +79,65 @@ const items = [
   },
 ];
 
-const columns = [
-  { columnKey: 'file', label: 'File' },
-  { columnKey: 'author', label: 'Author' },
-  { columnKey: 'lastUpdated', label: 'Last updated' },
-  { columnKey: 'lastUpdate', label: 'Last update' },
+const columns: ColumnDefinition<Item>[] = [
+  {
+    columnId: 'file',
+  },
+  {
+    columnId: 'author',
+  },
+  {
+    columnId: 'lastUpdated',
+  },
+  {
+    columnId: 'lastUpdate',
+  },
 ];
 
 export const MultipleSelect = () => {
-  const [selected, setSelected] = React.useState(new Set<number>());
+  const {
+    rows,
+    selection: { allRowsSelected, someRowsSelected, toggleAllRows },
+  } = useTable({
+    columns,
+    items,
+    rowEnhancer: (row, { selection }) => ({
+      ...row,
+      onClick: () => selection.toggleRow(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          selection.toggleRow(row.rowId);
+        }
+      },
+      selected: selection.isRowSelected(row.rowId),
+    }),
+  });
 
-  const selectAll = () => {
-    setSelected(prevSelected => {
-      if (prevSelected.size === items.length) {
-        return new Set<number>();
-      } else {
-        return new Set(items.map((_, i) => i));
-      }
-    });
-  };
-
-  const select = (rowKey: number) => {
-    setSelected(prevSelected => {
-      const nextSelected = new Set(prevSelected);
-
-      if (prevSelected.has(rowKey)) {
-        nextSelected.delete(rowKey);
-      } else {
-        nextSelected.add(rowKey);
-      }
-
-      return nextSelected;
-    });
-  };
-
-  const onClickRow = (rowKey: number) => () => {
-    select(rowKey);
-  };
-
-  const onKeyDownRow = (rowKey: number) => (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.key === ' ') {
-      select(rowKey);
-    }
-  };
-
-  const onClickHeader = () => {
-    selectAll();
-  };
+  // eslint-disable-next-line deprecation/deprecation
+  const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table noNativeElements role="grid">
+    <Table>
       <TableHeader>
         <TableRow>
           <TableSelectionCell
-            onClick={onClickHeader}
-            role="gridcell"
-            checked={selected.size === items.length ? true : selected.size === 0 ? false : 'mixed'}
+            checked={allRowsSelected ? true : someRowsSelected ? 'mixed' : false}
+            onClick={toggleAllRows}
           />
-          {columns.map(column => (
-            <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
-          ))}
+          <TableHeaderCell>File</TableHeaderCell>
+          <TableHeaderCell>Author</TableHeaderCell>
+          <TableHeaderCell>Last updated</TableHeaderCell>
+          <TableHeaderCell>Last update</TableHeaderCell>
         </TableRow>
       </TableHeader>
-      <TableBody>
-        {items.map((item, i) => (
-          <TableRow
-            key={item.file.label}
-            aria-selected={selected.has(i)}
-            tabIndex={0}
-            onClick={onClickRow(i)}
-            onKeyDown={onKeyDownRow(i)}
-          >
-            <TableSelectionCell
-              role="gridcell"
-              checked={selected.has(i)}
-              checkboxIndicator={{ tabIndex: -1, title: `Select ${i}` }}
-            />
-            <TableCell role="gridcell" media={item.file.icon}>
-              {item.file.label}
-            </TableCell>
-            <TableCell
-              role="gridcell"
-              media={<Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />}
-            >
-              {item.author.label}
-            </TableCell>
-            <TableCell role="gridcell">{item.lastUpdated.label}</TableCell>
-            <TableCell role="gridcell" media={item.lastUpdate.icon}>
-              {item.lastUpdate.label}
-            </TableCell>
+      <TableBody ref={ref}>
+        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
+            <TableSelectionCell checkboxIndicator={{ tabIndex: -1 }} checked={selected} />
+            <TableCell media={item.file.icon}>{item.file.label}</TableCell>
+            <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>
+            <TableCell>{item.lastUpdated.label}</TableCell>
+            <TableCell media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCell>
           </TableRow>
         ))}
       </TableBody>

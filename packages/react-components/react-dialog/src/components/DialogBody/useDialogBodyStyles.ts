@@ -15,7 +15,8 @@ export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
 const useStyles = makeStyles({
   root: {
     width: '100%',
-    height: 'fit-content',
+    height: '100%',
+    overflowY: 'auto',
     minHeight: '32px',
     boxSizing: 'border-box',
     ...localShorthands.gridArea(BODY_GRID_AREA),

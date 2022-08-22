@@ -1,8 +1,80 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 08 Aug 2022 20:28:21 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Aug 2022 07:44:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.90.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.1)
+
+Mon, 22 Aug 2022 07:44:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.0..@fluentui/react_v8.90.1)
+
+### Patches
+
+- @fluentui/react: Adding TextField style file to export map ([PR #24399](https://github.com/microsoft/fluentui/pull/24399) by gasramirez@microsoft.com)
+- fix: Resolved ref issue causing tag items to not be selectable or deletable. Fixed styles to show selection without focus ([PR #24434](https://github.com/microsoft/fluentui/pull/24434) by mgodbolt@microsoft.com)
+
+## [8.90.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.0)
+
+Thu, 18 Aug 2022 23:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.89.0..@fluentui/react_v8.90.0)
+
+### Minor changes
+
+- FocusZone: enable focus to be able to bypass hidden elements ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by jspurlin@microsoft.com)
+- feat: Explicit exports for common-styles sass files copied into react package ([PR #24361](https://github.com/microsoft/fluentui/pull/24361) by mgodbolt@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.15 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.8 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/react-focus to v8.8.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/react-hooks to v8.6.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/theme to v2.6.12 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/utilities to v8.12.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/common-styles to v1.2.4 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+### Patches
+
+- fix: Make focus rects visible again in Combobox ([PR #24340](https://github.com/microsoft/fluentui/pull/24340) by behowell@microsoft.com)
+
+## [8.89.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.89.0)
+
+Thu, 18 Aug 2022 07:48:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.88.0..@fluentui/react_v8.89.0)
+
+### Minor changes
+
+- feat: Allow IChoiceGroupOption in callback signatures ([PR #24242](https://github.com/microsoft/fluentui/pull/24242) by gcox@microsoft.com)
+
+### Patches
+
+- fix: add items prop to state to fix issue 23135 ([PR #24385](https://github.com/microsoft/fluentui/pull/24385) by tonyhallett74@gmail.com)
+- fix(List): solve stale props problem with getPageSpecification ([PR #24353](https://github.com/microsoft/fluentui/pull/24353) by olfedias@microsoft.com)
+
+## [8.88.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.88.0)
+
+Mon, 15 Aug 2022 07:39:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.2..@fluentui/react_v8.88.0)
+
+### Minor changes
+
+- Support range selection from Group headers ([PR #24278](https://github.com/microsoft/fluentui/pull/24278) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.14 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.7 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-focus to v8.7.8 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/react-hooks to v8.6.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/style-utilities to v8.7.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/theme to v2.6.11 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/utilities to v8.11.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/common-styles to v1.2.3 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+
+## [8.87.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.2)
+
+Fri, 12 Aug 2022 07:48:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.87.1..@fluentui/react_v8.87.2)
+
+### Patches
+
+- fix: Remove caret from regex to correctly detect if the browser is Edge. ([PR #24337](https://github.com/microsoft/fluentui/pull/24337) by esteban.230@hotmail.com)
 
 ## [8.87.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.87.1)
 

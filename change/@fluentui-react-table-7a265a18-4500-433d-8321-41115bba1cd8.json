@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Implement unstable navigation modes",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

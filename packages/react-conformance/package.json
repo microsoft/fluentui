@@ -25,7 +25,7 @@
     "lodash": "^4.17.15",
     "chalk": "^2.4.2",
     "react-docgen-typescript": "^2.1.0",
-    "react-is": "^16.6.3",
+    "react-is": "^17.0.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

@@ -29,16 +29,20 @@ const websitePackages = [
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
-    // Ignore northstar
-    if (/[\\/]fluentui[\\/]/.test(packagePath)) {
+    const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
+
+    if (isNorthstar || packageJson.private === true) {
       return false;
     }
 
+    const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
     if (process.env.RELEASE_VNEXT) {
-      return isConvergedPackage(packageJson) && packageJson.private !== true;
-    } else if (!isConvergedPackage(packageJson)) {
+      return isConverged;
+    }
+
+    if (!isConverged) {
       // v8 scope
-      return packageJson.private !== true || websitePackages.includes(packageJson.name);
+      return websitePackages.includes(packageJson.name);
     }
 
     // Ignore v9/converged packages when releasing v8

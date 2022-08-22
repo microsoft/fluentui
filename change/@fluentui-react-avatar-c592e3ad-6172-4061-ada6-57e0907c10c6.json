@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Update tests and add e2e tests.",
+  "packageName": "@fluentui/react-avatar",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

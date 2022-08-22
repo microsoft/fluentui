@@ -7,7 +7,7 @@ in a spread, stack, or pie layout.
 >
 > ```jsx
 >
-> import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow } from '@fluentui/react-components/unstable';
+> import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover } from '@fluentui/react-components/unstable';
 >
 > ```
 >

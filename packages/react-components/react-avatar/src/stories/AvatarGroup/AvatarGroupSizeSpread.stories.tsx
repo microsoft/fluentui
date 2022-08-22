@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 import type { AvatarSizes } from '@fluentui/react-avatar';
 
@@ -40,11 +40,11 @@ export const SizeSpread = () => {
             {inlineItems.map(name => (
               <AvatarGroupItem name={name} key={name} />
             ))}
-            <AvatarGroupOverflow>
+            <AvatarGroupPopover>
               {overflowItems.map(name => (
                 <AvatarGroupItem name={name} key={name} />
               ))}
-            </AvatarGroupOverflow>
+            </AvatarGroupPopover>
           </AvatarGroup>
         );
       })}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update React dependency to 17.0.2.",
+  "packageName": "@fluentui/codemods",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

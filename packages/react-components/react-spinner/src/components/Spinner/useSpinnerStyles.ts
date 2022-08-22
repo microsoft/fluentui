@@ -106,7 +106,7 @@ const useLoaderStyles = makeStyles({
     },
   },
 
-  extraSmall: {
+  'extra-small': {
     ['& > svg']: {
       height: spinnnerSizes.extraSmall,
       width: spinnnerSizes.extraSmall,
@@ -150,7 +150,7 @@ const useLoaderStyles = makeStyles({
     },
   },
 
-  extraLarge: {
+  'extra-large': {
     ['& > svg']: {
       height: spinnnerSizes.extraLarge,
       width: spinnnerSizes.extraLarge,
@@ -207,7 +207,7 @@ const useTrackStyles = makeStyles({
     },
 
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorNeutralBackgroundInverted,
+      stroke: 'rgba(255, 255, 255, 0.2)', // this is whiteAlpha[20] but that token is not exported
     },
   },
   primary: {
@@ -244,7 +244,7 @@ const useTrackStyles = makeStyles({
       },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorNeutralBackground4,
+      stroke: tokens.colorBrandStroke2,
       '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralBackgroundInverted,
       },
@@ -254,12 +254,17 @@ const useTrackStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   // style for label
+  inverted: {
+    color: tokens.colorNeutralForegroundInvertedStatic,
+  },
+
+  primary: {}, // no change
 
   tiny: {
     ...typographyStyles.body1,
   },
 
-  extraSmall: {
+  'extra-small': {
     ...typographyStyles.body1,
   },
 
@@ -275,7 +280,7 @@ const useLabelStyles = makeStyles({
     ...typographyStyles.subtitle2,
   },
 
-  extraLarge: {
+  'extra-large': {
     ...typographyStyles.subtitle2,
   },
 
@@ -288,7 +293,7 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size = 'medium' } = state;
+  const { labelPosition, size, appearance } = state;
   const rootStyles = useRootStyles();
   const spinnerStyles = useLoaderStyles();
   const labelStyles = useLabelStyles();
@@ -301,23 +306,20 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
-  if (state.spinner && state.appearance) {
+  if (state.spinner && appearance) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerStyles.spinnerSVG,
-      size === 'extra-small' && spinnerStyles.extraSmall,
-      size === 'extra-large' && spinnerStyles.extraLarge,
-      size !== 'extra-large' && size !== 'extra-small' && spinnerStyles[size],
-      trackStyles[state.appearance],
+      spinnerStyles[size],
+      trackStyles[appearance],
       state.spinner.className,
     );
   }
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
-      size === 'extra-small' && labelStyles.extraSmall,
-      size === 'extra-large' && labelStyles.extraLarge,
-      size !== 'extra-large' && size !== 'extra-small' && labelStyles[size],
+      labelStyles[size],
+      labelStyles[appearance],
       state.label.className,
     );
   }

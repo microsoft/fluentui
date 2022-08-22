@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarGroup, AvatarGroupItem, AvatarGroupOverflow, partitionAvatarGroupItems } from '@fluentui/react-avatar';
+import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -34,21 +34,21 @@ export const Indicator = () => {
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupOverflow indicator="count">
+        <AvatarGroupPopover indicator="count">
           {overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>
       <AvatarGroup>
         {inlineItems.map(name => (
           <AvatarGroupItem name={name} key={name} />
         ))}
-        <AvatarGroupOverflow indicator="icon">
+        <AvatarGroupPopover indicator="icon">
           {overflowItems.map(name => (
             <AvatarGroupItem name={name} key={name} />
           ))}
-        </AvatarGroupOverflow>
+        </AvatarGroupPopover>
       </AvatarGroup>
     </div>
   );
@@ -57,7 +57,7 @@ export const Indicator = () => {
 Indicator.parameters = {
   docs: {
     description: {
-      story: `An AvatarGroup supports an icon and a count overflow indicator.
+      story: `An AvatarGroup supports an icon and a count indicator.
         When size is less than 24, then icon will be used by default.`,
     },
   },
