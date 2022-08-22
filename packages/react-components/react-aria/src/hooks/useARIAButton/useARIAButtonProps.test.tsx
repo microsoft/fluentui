@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { useARIAButtonShorthand, useARIAButtonProps, ARIAButtonProps, ARIAButtonSlotProps } from './useARIAButton';
+import { useARIAButtonProps } from './useARIAButtonProps';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, render } from '@testing-library/react';
 import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
+import { ARIAButtonProps, ARIAButtonSlotProps } from './types';
+import { useARIAButtonShorthand } from './useARIAButtonShorthand';
 
 const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
   const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
@@ -156,26 +158,5 @@ describe('useARIAButton', () => {
     const { getByRole } = render(<TestButton as={type} onClick={handleClick} aria-disabled />);
     fireEvent.click(getByRole('button'));
     expect(handleClick).toBeCalledTimes(0);
-  });
-});
-
-describe('useARIAButtonShorthands', () => {
-  it('should return shorthands', () => {
-    const {
-      result: { current: buttonShorthand },
-    } = renderHook(() => useARIAButtonShorthand({ as: 'button' }));
-    expect(buttonShorthand.as).toBe('button');
-    const {
-      result: { current: buttonShorthand2 },
-    } = renderHook(() => useARIAButtonShorthand({ as: undefined }));
-    expect(buttonShorthand2.as).toBe(undefined);
-    const {
-      result: { current: acnhorShorthand },
-    } = renderHook(() => useARIAButtonShorthand({ as: 'a' }));
-    expect(acnhorShorthand.as).toBe('a');
-    const {
-      result: { current: divShorthand },
-    } = renderHook(() => useARIAButtonShorthand({ as: 'div' }));
-    expect(divShorthand.as).toBe('div');
   });
 });
