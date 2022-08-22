@@ -95,6 +95,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
+  private _highlightedCircleId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -125,23 +126,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   public componentDidUpdate() {
     if (this.state.isShowCalloutPending) {
-      const points = this.props.data.lineChartData!;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this._stackedData.forEach((singleStackedData: Array<any>, index: number) => {
-        if (points.length === index) {
-          return;
-        }
-        singleStackedData.forEach((singlePoint: IDPointType, pointIndex: number) => {
-          const circleId = `${this._circleId}_${index * this._stackedData[0].length + pointIndex}`;
-          const xDataPoint = singlePoint.xVal instanceof Date ? singlePoint.xVal.getTime() : singlePoint.xVal;
-          if (this.state.nearestCircleToHighlight === xDataPoint) {
-            this.setState({
-              refSelected: `#${circleId}`,
-              isCalloutVisible: true,
-              isShowCalloutPending: false,
-            });
-          }
-        });
+      this.setState({
+        refSelected: `#${this._highlightedCircleId}`,
+        isCalloutVisible: true,
+        isShowCalloutPending: false,
       });
     }
   }
@@ -560,6 +548,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint) {
+      this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
         fillColor = this.props.theme!.palette.white;
       }
