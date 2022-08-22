@@ -122,7 +122,7 @@ export type Slots<S extends SlotPropsRecord> = {
 };
 
 // @public
-export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNodeArray | React_2.ReactPortal;
+export type SlotShorthandValue = React_2.ReactChild | React_2.ReactNode[] | React_2.ReactPortal;
 
 // @public
 export const SSRProvider: React_2.FC;
