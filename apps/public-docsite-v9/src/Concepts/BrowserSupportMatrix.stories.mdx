@@ -19,9 +19,11 @@ FluentUI fully supports browsers that are at or above the indicated versions bel
 | >=14.5        | >=84               | >=16    |
 
 FluentUI will ensure that no browser, EcmaScript(ES), or CSS features that are incompatible with the support matrix laid out above are introduced.
-FluentUI will not be providing polyfills for features that we expect our browser support matrix to already support. This means that consumers who require the
-use/support of older browsers that don't support certain browser, ES, or CSS features (i.e. `ResizeObserver`),
-are expected to implement their own polyfills or use a third-party one.
+FluentUI will not be providing our own polyfills for features that we expect our browser support matrix to already support.
+There are often well-tested third-party polyfills available that applications can use to fill in the gaps.
+Consumers who require the use/support of older browsers that don't support certain browser, ES, or CSS features (i.e. ResizeObserver),
+will need to implement or use a third-party polyfill to provide the functionality. See the partial support section below for features
+that may need to be polyfilled.
 
 ## Partial Support:
 
