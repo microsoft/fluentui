@@ -290,7 +290,9 @@
       "@fluentui/web-components/@storybook/html",
       "@fluentui/web-components/ts-loader",
       "@fluentui/web-components/ts-loader/**",
-      "@fluentui/web-components/webpack"
+      "@fluentui/web-components/webpack",
+      "@fluentui/react-18-tests-v9/react",
+      "@fluentui/react-18-tests-v9/react-dom"
     ]
   },
   "resolutions": {
@@ -298,7 +300,8 @@
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
     "@types/jest-axe/axe-core": "4.2.1",
-    "@types/react": "17.0.44",
+    "@types/react@<18.0.0": "@types/react@17.0.44",
+    "@types/react-dom@<18.0.0": "@types/react-dom@17.0.15",
     "eslint": "7.25.0",
     "workspace-tools": "0.18.4",
     "requestretry": "7.0.0"
@@ -309,7 +312,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/*/package.json",
+      "apps/!(react-18-tests-v9)/package.json",
       "packages/!(web-components)/package.json",
       "packages/react-components/*/package.json",
       "packages/fluentui/*/package.json",
