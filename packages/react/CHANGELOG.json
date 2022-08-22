@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 22 Aug 2022 07:44:26 GMT",
+      "tag": "@fluentui/react_v8.90.1",
+      "version": "8.90.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gasramirez@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "a2c1111639bf378fdf2a68b6200847c16ab794dd",
+            "comment": "@fluentui/react: Adding TextField style file to export map"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0232344dc028b9054c9cd73211b09e491aaa8ab1",
+            "comment": "fix: Resolved ref issue causing tag items to not be selectable or deletable. Fixed styles to show selection without focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:29 GMT",
       "tag": "@fluentui/react_v8.90.0",
       "version": "8.90.0",

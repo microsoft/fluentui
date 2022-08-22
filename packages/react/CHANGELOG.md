@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Aug 2022 23:39:29 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Aug 2022 07:44:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.90.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.1)
+
+Mon, 22 Aug 2022 07:44:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.0..@fluentui/react_v8.90.1)
+
+### Patches
+
+- @fluentui/react: Adding TextField style file to export map ([PR #24399](https://github.com/microsoft/fluentui/pull/24399) by gasramirez@microsoft.com)
+- fix: Resolved ref issue causing tag items to not be selectable or deletable. Fixed styles to show selection without focus ([PR #24434](https://github.com/microsoft/fluentui/pull/24434) by mgodbolt@microsoft.com)
 
 ## [8.90.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.0)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "@fluentui/react: Adding TextField style file to export map",
-  "packageName": "@fluentui/react",
-  "email": "gasramirez@microsoft.com",
-  "dependentChangeType": "patch"
-}
