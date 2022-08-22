@@ -84,7 +84,7 @@ describe('Dropdown', () => {
   });
 
   it('closes the popup on click with defaultOpen', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -99,7 +99,6 @@ describe('Dropdown', () => {
 
     fireEvent.click(combobox);
 
-    expect(queryByRole('listbox')).toBeNull();
     expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
@@ -112,11 +111,15 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    expect(getByRole('listbox')).not.toBeNull();
-
-    fireEvent.click(getByRole('combobox'));
+    const combobox = getByRole('combobox');
 
     expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
+
+    fireEvent.click(combobox);
+
+    expect(getByRole('listbox')).not.toBeNull();
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
   });
 
   it('opens the popup on enter', () => {
@@ -135,7 +138,7 @@ describe('Dropdown', () => {
   });
 
   it('opens and closes the popup with alt + arrow keys', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -143,17 +146,17 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowDown', altKey: true });
+    const combobox = getByRole('combobox');
 
-    expect(getByRole('listbox')).not.toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowDown', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('true');
 
-    fireEvent.keyDown(getByRole('combobox'), { key: 'ArrowUp', altKey: true });
-
-    expect(queryByRole('listbox')).toBeNull();
+    fireEvent.keyDown(combobox, { key: 'ArrowUp', altKey: true });
+    expect(combobox.getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('closes the popup with escape', () => {
-    const { getByRole, queryByRole } = render(
+    const { getByRole } = render(
       <Dropdown defaultOpen>
         <Option>Red</Option>
         <Option>Green</Option>
@@ -163,7 +166,7 @@ describe('Dropdown', () => {
 
     fireEvent.keyDown(getByRole('combobox'), { key: 'Escape' });
 
-    expect(queryByRole('listbox')).toBeNull();
+    expect(getByRole('combobox').getAttribute('aria-expanded')).toEqual('false');
   });
 
   it('fires onOpen callback', () => {

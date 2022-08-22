@@ -2,6 +2,21 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Mon, 22 Aug 2022 07:44:26 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.6.23",
+      "version": "1.6.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.90.1",
+            "commit": "5cb75a709fca139572428f6c7a2a0cecd256005b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:31 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.6.22",
       "version": "1.6.22",

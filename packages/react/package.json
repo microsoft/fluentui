@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.90.0",
+  "version": "8.90.1",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -971,6 +971,11 @@
       "types": "./lib/TextField.d.ts",
       "import": "./lib/TextField.js",
       "require": "./lib-commonjs/TextField.js"
+    },
+    "./lib/components/TextField/TextField.styles": {
+      "types": "./lib/components/TextField/TextField.styles.d.ts",
+      "import": "./lib/components/TextField/TextField.styles.js",
+      "require": "./lib-commonjs/components/TextField/TextField.styles.js"
     },
     "./lib/Theme": {
       "types": "./lib/Theme.d.ts",

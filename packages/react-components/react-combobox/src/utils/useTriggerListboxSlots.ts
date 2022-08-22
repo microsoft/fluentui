@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
 import { Listbox } from '../components/Listbox/Listbox';
@@ -11,14 +11,14 @@ export function useTriggerListboxSlots(
   ref: React.Ref<HTMLButtonElement>,
   triggerSlot?: ExtractSlotProps<Slot<'button'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'button'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 export function useTriggerListboxSlots(
   props: ComboboxBaseProps,
   state: ComboboxBaseState,
   ref: React.Ref<HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>>, ExtractSlotProps<Slot<typeof Listbox>>];
+): [trigger: ExtractSlotProps<Slot<'input'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
 
 /*
  * useTriggerListboxSlots returns a tuple of trigger/listbox shorthand,
@@ -31,7 +31,10 @@ export function useTriggerListboxSlots(
   ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
   listboxSlot?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>, ExtractSlotProps<Slot<typeof Listbox>>] {
+): [
+  trigger: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
+  listbox?: ExtractSlotProps<Slot<typeof Listbox>>,
+] {
   const { multiselect } = props;
   const {
     activeOption,
@@ -42,6 +45,7 @@ export function useTriggerListboxSlots(
     open,
     selectOption,
     setActiveOption,
+    setHasFocus,
     setOpen,
   } = state;
 
@@ -49,7 +53,7 @@ export function useTriggerListboxSlots(
   const triggerRef: typeof ref = React.useRef(null);
 
   // resolve listbox shorthand props
-  const listbox: typeof listboxSlot = {
+  const listbox: typeof listboxSlot = listboxSlot && {
     multiselect,
     tabIndex: undefined,
     ...listboxSlot,
@@ -67,81 +71,92 @@ export function useTriggerListboxSlots(
     ref: useMergedRefs(ref, triggerSlot?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
   };
 
-  /*
-   * Handle focus when clicking the listbox popup:
-   * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
-   * 2. Do not close the listbox on button/input blur when clicking into the listbox
-   */
-  const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
-  listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    triggerRef.current?.focus();
+  // listbox is nullable, only add event handlers if it exists
+  if (listbox) {
+    /*
+     * Handle focus when clicking the listbox popup:
+     * 1. Move focus back to the button/input when the listbox is clicked (otherwise it goes to body)
+     * 2. Do not close the listbox on button/input blur when clicking into the listbox
+     */
+    const { onClick: onListboxClick, onMouseDown: onListboxMouseDown } = listbox;
+    listbox.onClick = (event: React.MouseEvent<HTMLDivElement>) => {
+      triggerRef.current?.focus();
 
-    onListboxClick?.(event);
-  };
+      onListboxClick?.(event);
+    };
 
-  listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-    ignoreNextBlur.current = true;
+    listbox.onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+      ignoreNextBlur.current = true;
 
-    onListboxMouseDown?.(event);
-  };
+      onListboxMouseDown?.(event);
+    };
+  }
 
   // the trigger should open/close the popup on click or blur
-  const { onBlur: onTriggerBlur, onClick: onTriggerClick, onKeyDown: onTriggerKeyDown } = trigger;
-  trigger.onBlur = (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
+  trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
     if (!ignoreNextBlur.current) {
       setOpen(event, false);
     }
 
     ignoreNextBlur.current = false;
 
-    onTriggerBlur?.(event);
-  };
+    setHasFocus(false);
+  }, trigger.onBlur);
 
-  trigger.onClick = (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
-    setOpen(event, !open);
+  trigger.onClick = mergeCallbacks(
+    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
+      setOpen(event, !open);
+    },
+    trigger.onClick,
+  );
 
-    onTriggerClick?.(event);
-  };
+  trigger.onFocus = mergeCallbacks(
+    (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
+      setHasFocus(true);
+    },
+    trigger.onFocus,
+  );
 
   // handle combobox keyboard interaction
-  trigger.onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
-    const action = getDropdownActionFromKey(event, { open, multiselect });
-    const maxIndex = getCount() - 1;
-    const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
-    let newIndex = activeIndex;
+  trigger.onKeyDown = mergeCallbacks(
+    (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
+      const action = getDropdownActionFromKey(event, { open, multiselect });
+      const maxIndex = getCount() - 1;
+      const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
+      let newIndex = activeIndex;
 
-    switch (action) {
-      case 'Open':
+      switch (action) {
+        case 'Open':
+          event.preventDefault();
+          setOpen(event, true);
+          break;
+        case 'Close':
+          // stop propagation for escape key to avoid dismissing any parent popups
+          event.stopPropagation();
+          event.preventDefault();
+          setOpen(event, false);
+          break;
+        case 'CloseSelect':
+          !multiselect && !activeOption?.disabled && setOpen(event, false);
+        // fallthrough
+        case 'Select':
+          activeOption && selectOption(event, activeOption);
+          event.preventDefault();
+          break;
+        case 'Tab':
+          activeOption && selectOption(event, activeOption);
+          break;
+        default:
+          newIndex = getIndexFromAction(action, activeIndex, maxIndex);
+      }
+      if (newIndex !== activeIndex) {
+        // prevent default page scroll/keyboard action if the index changed
         event.preventDefault();
-        setOpen(event, true);
-        break;
-      case 'Close':
-        // stop propagation for escape key to avoid dismissing any parent popups
-        event.stopPropagation();
-        event.preventDefault();
-        setOpen(event, false);
-        break;
-      case 'CloseSelect':
-        !multiselect && !activeOption?.disabled && setOpen(event, false);
-      // fallthrough
-      case 'Select':
-        activeOption && selectOption(event, activeOption);
-        event.preventDefault();
-        break;
-      case 'Tab':
-        activeOption && selectOption(event, activeOption);
-        break;
-      default:
-        newIndex = getIndexFromAction(action, activeIndex, maxIndex);
-    }
-    if (newIndex !== activeIndex) {
-      // prevent default page scroll/keyboard action if the index changed
-      event.preventDefault();
-      setActiveOption(getOptionAtIndex(newIndex));
-    }
-
-    onTriggerKeyDown?.(event);
-  };
+        setActiveOption(getOptionAtIndex(newIndex));
+      }
+    },
+    trigger.onKeyDown,
+  );
 
   return [trigger, listbox];
 }
