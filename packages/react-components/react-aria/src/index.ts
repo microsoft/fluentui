@@ -1,2 +1,7 @@
-export { useARIAButtonShorthand, useARIAButtonProps } from './hooks/index';
-export type { ARIAButtonSlotProps, ARIAButtonProps, ARIAButtonResultProps, ARIAButtonType } from './hooks/index';
+export { useARIAButtonShorthand, useARIAButtonProps } from './hooks/useARIAButton/index';
+export type {
+  ARIAButtonSlotProps,
+  ARIAButtonProps,
+  ARIAButtonResultProps,
+  ARIAButtonType,
+} from './hooks/useARIAButton/index';
