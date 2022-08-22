@@ -1,5 +1,5 @@
 import { hcHighlight, white, black } from '../global/colors';
-import { statusSharedColorNames, personaSharedColorNames } from './colorPalette';
+import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames';
 import { ColorPaletteTokens, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
 
 const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor) => {

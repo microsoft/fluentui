@@ -1,4 +1,4 @@
-import { statusSharedColorNames, personaSharedColorNames, unusedSharedColorNames } from './alias/colorPalette';
+import { statusSharedColorNames, personaSharedColorNames, unusedSharedColorNames } from './sharedColorNames';
 
 /**
  * Design tokens for alias colors
@@ -438,13 +438,9 @@ type StatusSharedColorNames = typeof statusSharedColorNames[number];
 type PersonaSharedColorNames = typeof personaSharedColorNames[number];
 type UnusedSharedColorNames = typeof unusedSharedColorNames[number];
 
-/**
- * All the global shared colors and their shade/tint variants
- */
-export type GlobalSharedColors = Record<
-  StatusSharedColorNames | PersonaSharedColorNames | UnusedSharedColorNames,
-  ColorVariants
->;
+export type StatusSharedColors = Record<StatusSharedColorNames, ColorVariants>;
+export type PersonaSharedColors = Record<PersonaSharedColorNames, ColorVariants>;
+export type UnusedSharedColors = Record<UnusedSharedColorNames, ColorVariants>;
 
 export type FontSizeTokens = {
   fontSizeBase100: string;
