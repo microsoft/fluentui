@@ -4,9 +4,11 @@ Convergence epic issue: #24213
 
 ## Background
 
-A Persona is a visual representation that showcases an Avatar, Icon, Image, or Badge.
+A Persona is a visual representation that showcases an Avatar, Icon, Image, or Badge. This composite component is not a card, therefore it will not provide a visual board or a popup when the user hovers the Avatar.
 
 Persona is used in PeoplePicker, Team's left rail and menus, chiclets, and Card.
+
+_**Persona Figma spec:**_ [link](https://www.figma.com/file/ayf1r31NnONkfiE00g9QOv/Persona?node-id=1741%3A2221)
 
 ## Prior Art
 
@@ -17,9 +19,14 @@ Persona is used in PeoplePicker, Team's left rail and menus, chiclets, and Card.
 
 ### Coin
 
-_Avatar vs PersonaCoin_: As mentioned in Prior Art, v8's persona is not quite the same as v9's. v8's Persona is only able to showcase PersonaCoin while v9 showcases Avatar (including Avatar + PresenceBadge, Avatar + image, and Avatar + Icon).
+_Avatar vs PersonaCoin_: As mentioned in Prior Art, v8's Persona is not quite the same as v9's. v8's Persona is only able to showcase PersonaCoin while v9 showcases Avatar (including Avatar + PresenceBadge, Avatar + image, and Avatar + Icon). Note that PersonaCoin does not support custom icons, the only icon options are the size 8 icon shown below and the unknown PersonaCoin.
 
-_Icon vs PersonaCoin_: PersonaCoin allows you to have icon only when there's no image available or it's the unknown persona coin variant. In v9's Persona, you have the option of showcasing an icon through the Avatar or showcasing only the icon.
+| v8 PersonaCoin ([link](https://developer.microsoft.com/en-us/fluentui#/controls/web/persona)) | v9 Avatar ([link](https://react.fluentui.dev/?path=/docs/components-avatar--default)) |
+| :-------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+|                             ![](https://i.imgur.com/TuUXN7t.png)                              |                         ![](https://i.imgur.com/BbEhlc3.png)                          |
+|                             ![](https://i.imgur.com/pXEFFmu.png)                              |                         ![](https://i.imgur.com/hbms9Bp.png)                          |
+
+_Icon vs PersonaCoin_: PersonaCoin allows you to have icon only when there's no image available or it's the unknown Persona coin variant. In v9's Persona, you have the option of showcasing an icon through the Avatar or showcasing only the icon.
 
 - Note: The icon only shows up if there's no presence and size is `tiny`, `size8`, or `size16`.
 
@@ -29,7 +36,7 @@ _PresenceBadge vs PersonaCoin_: PersonaCoin allows you to have only a PresenceBa
 
 ### Text lines
 
-Other than styling and naming, the text lines in persona remain the same.
+Other than styling and naming, the text lines in Persona remain the same.
 
 ## Sample Code
 
