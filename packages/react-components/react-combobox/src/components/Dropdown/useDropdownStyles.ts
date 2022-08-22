@@ -71,6 +71,10 @@ const useStyles = makeStyles({
 
   listbox: {},
 
+  listboxCollapsed: {
+    display: 'none',
+  },
+
   button: {
     alignItems: 'center',
     backgroundColor: tokens.colorTransparentBackground,
@@ -160,7 +164,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Dropdown slots based on the state
  */
 export const useDropdownStyles_unstable = (state: DropdownState): DropdownState => {
-  const { appearance, placeholderVisible, size } = state;
+  const { appearance, open, placeholderVisible, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
 
@@ -175,7 +179,12 @@ export const useDropdownStyles_unstable = (state: DropdownState): DropdownState 
   );
 
   if (state.listbox) {
-    state.listbox.className = mergeClasses(dropdownClassNames.listbox, styles.listbox, state.listbox.className);
+    state.listbox.className = mergeClasses(
+      dropdownClassNames.listbox,
+      styles.listbox,
+      !open && styles.listboxCollapsed,
+      state.listbox.className,
+    );
   }
 
   if (state.expandIcon) {
