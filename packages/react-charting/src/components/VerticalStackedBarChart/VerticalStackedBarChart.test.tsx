@@ -277,8 +277,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
         enabledLegendsWrapLines
         onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
@@ -287,7 +287,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
     wrapper.find('rect').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 
   it('Should render customized callout per stack on mouseover', async () => {
@@ -298,8 +299,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
         enabledLegendsWrapLines
         onRenderCalloutPerStack={(props: IVerticalStackedChartProps) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
@@ -308,6 +309,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
     wrapper.find('rect').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

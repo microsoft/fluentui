@@ -191,8 +191,8 @@ describe('LineChart - mouse events', () => {
         calloutProps={{ doNotLayer: true }}
         onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
@@ -200,7 +200,8 @@ describe('LineChart - mouse events', () => {
       { attachTo: root },
     );
     wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 
   it('Should render customized callout per stack on mouseover', () => {
@@ -210,8 +211,8 @@ describe('LineChart - mouse events', () => {
         calloutProps={{ doNotLayer: true }}
         onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
@@ -219,6 +220,7 @@ describe('LineChart - mouse events', () => {
       { attachTo: root },
     );
     wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

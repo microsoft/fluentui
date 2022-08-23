@@ -226,14 +226,15 @@ describe('MultiStackedBarChart - mouse events', () => {
         calloutProps={{ doNotLayer: true }}
         onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
       />,
     );
     wrapper.find('rect').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

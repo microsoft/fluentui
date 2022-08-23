@@ -213,8 +213,8 @@ describe('VerticalBarChart - mouse events', () => {
         enabledLegendsWrapLines
         onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
           props ? (
-            <div className="custom-callout">
-              <p>Custom callout content</p>
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
             </div>
           ) : null
         }
@@ -223,6 +223,7 @@ describe('VerticalBarChart - mouse events', () => {
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
     wrapper.find('rect').at(0).simulate('mouseover');
-    expect(wrapper.exists('.custom-callout')).toBe(true);
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });
