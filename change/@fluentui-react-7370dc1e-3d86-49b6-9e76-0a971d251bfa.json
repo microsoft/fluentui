@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added exports for ContextualMenu getItemStyles and getItemClassNames",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
