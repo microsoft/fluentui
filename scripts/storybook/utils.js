@@ -33,9 +33,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
     const rootPath = path.join(workspaceRoot, addonMetadata.root);
-    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
     const packageJsonPath = path.join(rootPath, 'package.json');
+    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     /**
      * @type {Record<string,any>}
      */
@@ -66,8 +66,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
 
-  const regex = new RegExp(`\.\\/${path.normalize(packageDistPath)}`, 'g');
+  const regex = new RegExp(`\.\\${path.sep}${path.normalize(packageDistPath)}`, 'g');
   let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
+
   modifiedPresetContent = stripIndents`
     const { workspaceRoot } = require('nx/src/utils/app-root');
     const { registerTsProject } = require('nx/src/utils/register');
