@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Exported getCommandBarStyles and getCommandButtonStyles",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
