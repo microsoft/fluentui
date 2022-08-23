@@ -7,9 +7,10 @@ import {
   css,
   getId,
   EventGroup,
+  IRenderFunction,
 } from '../../Utilities';
 import { List, ScrollToMode, IListProps } from '../../List';
-import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../Selection';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import type { IProcessedStyleSet } from '../../Styling';
 import type {
@@ -170,6 +171,26 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
   return memoItems;
 };
 
+const useIsGroupSelected = (startIndex, count, selection, eventGroup) => {
+  const [isSelected, setIsSelected] = React.useState(selection?.isRangeSelected(startIndex, count) ?? false);
+
+  React.useEffect(() => {
+    const changeHandler = () => {
+      setIsSelected(selection?.isRangeSelected(startIndex, count) ?? false);
+    };
+
+    if (selection) {
+      eventGroup.on(selection, SELECTION_CHANGE, changeHandler);
+    }
+
+    return () => {
+      eventGroup?.off(selection, SELECTION_CHANGE, changeHandler);
+    };
+  }, [startIndex, count, selection, eventGroup]);
+
+  return isSelected;
+};
+
 const computeIsSomeGroupExpanded = (groups: IGroup[] | undefined): boolean => {
   return !!(
     groups && groups.some(group => (group.children ? computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
@@ -273,7 +294,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     (flattenedIndex: number): { key?: string } => {
       const pageGroup = listView[flattenedIndex];
       return {
-        key: pageGroup.type === 'group' ? pageGroup.group!.key : undefined,
+        key: pageGroup.type === 'header' ? pageGroup.group.key : undefined,
       };
     },
     [listView],
@@ -284,14 +305,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       setGroupsCollapsedState(groups, groupProps.isAllGroupsCollapsed);
     }
     events.current = new EventGroup(this);
-    if (selection) {
-      events.current.on(selection, SELECTION_CHANGE, onSelectionChange);
-    }
   });
-
-  const onSelectionChange = React.useCallback(() => {
-    setVersion({});
-  }, [setVersion]);
 
   useUnmount(() => {
     events.current?.dispose();
@@ -352,14 +366,10 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 
   const getDividerProps = React.useCallback(
     (group: IGroup, flattenedIndex: number) => {
-      const isSelected = selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false;
-
       const dividerProps = {
         group,
         groupIndex: flattenedIndex,
         groupLevel: group.level ?? 0,
-        isSelected,
-        selected: isSelected,
         viewport,
         selectionMode,
         groups,
@@ -371,28 +381,35 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
 
       return dividerProps;
     },
-    [compact, groups, onToggleCollapse, onToggleSelectGroup, onToggleSummarize, selection, selectionMode, viewport],
+    [compact, groups, onToggleCollapse, onToggleSelectGroup, onToggleSummarize, selectionMode, viewport],
   );
 
   const renderHeader = React.useCallback(
     (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
       const group = item.group;
 
-      const level = group.level ? group.level + 1 : 1;
-
-      const groupHeaderProps = {
+      const headerProps = {
         ...groupProps!.headerProps,
-        ...getDividerProps(group, flattenedIndex),
+        ...getDividerProps(item.group, flattenedIndex),
         key: group.key,
         groupedListId: item.groupId,
-        ariaLevel: level,
+        ariaLevel: group.level ? group.level + 1 : 1,
         ariaSetSize: groups ? groups.length : undefined,
         ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
       };
 
-      return onRenderHeader(groupHeaderProps, renderGroupHeader);
+      return (
+        <GroupItem
+          render={onRenderHeader}
+          defaultRender={renderGroupHeader}
+          item={item}
+          selection={selection}
+          eventGroup={events.current}
+          props={headerProps}
+        />
+      );
     },
-    [onRenderHeader, groupProps, groups, getDividerProps],
+    [onRenderHeader, groupProps, groups, getDividerProps, selection],
   );
 
   const renderShowAll = React.useCallback(
@@ -404,10 +421,19 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         key: group?.key ? `${group.key}-show-all` : undefined,
       };
 
-      return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
+      return (
+        <GroupItem
+          render={onRenderShowAll}
+          defaultRender={renderGroupShowAll}
+          item={item}
+          selection={selection}
+          eventGroup={events.current}
+          props={groupShowAllProps}
+        />
+      );
     },
 
-    [onRenderShowAll, groupProps, getDividerProps],
+    [onRenderShowAll, groupProps, getDividerProps, selection],
   );
 
   const renderFooter = React.useCallback(
@@ -419,9 +445,18 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         key: group?.key ? `${group.key}-footer` : undefined,
       };
 
-      return onRenderFooter(groupFooterProps, renderGroupFooter);
+      return (
+        <GroupItem
+          render={onRenderFooter}
+          defaultRender={renderGroupFooter}
+          item={item}
+          selection={selection}
+          eventGroup={events.current}
+          props={groupFooterProps}
+        />
+      );
     },
-    [onRenderFooter, groupProps, getDividerProps],
+    [onRenderFooter, groupProps, getDividerProps, selection],
   );
 
   const renderItem = React.useCallback(
@@ -439,77 +474,6 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     },
     [onRenderCell, renderHeader, renderShowAll, renderFooter],
   );
-
-  // const renderItem = React.useCallback(
-  //   (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
-  //     const group = item.group;
-
-  //     const level = group.level ? group.level + 1 : 1;
-  //     const isSelected = selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false;
-
-  //     const dividerProps = {
-  //       group,
-  //       groupIndex: flattenedIndex,
-  //       groupLevel: group.level ?? 0,
-  //       isSelected,
-  //       selected: isSelected,
-  //       viewport,
-  //       selectionMode,
-  //       groups,
-  //       compact,
-  //       onToggleSelectGroup,
-  //       onToggleCollapse,
-  //       onToggleSummarize,
-  //     };
-
-  //     if (item.type === 'header') {
-  //       const groupHeaderProps = {
-  //         ...groupProps!.headerProps,
-  //         ...dividerProps,
-  //         key: group.key,
-  //         groupedListId: item.groupId,
-  //         ariaLevel: level,
-  //         ariaSetSize: groups ? groups.length : undefined,
-  //         ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
-  //       };
-
-  //       return onRenderHeader(groupHeaderProps, renderGroupHeader);
-  //     } else if (item.type === 'showAll') {
-  //       const groupShowAllProps = {
-  //         ...groupProps!.showAllProps,
-  //         ...dividerProps,
-  //         key: group?.key ? `${group.key}-show-all` : undefined,
-  //       };
-
-  //       return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
-  //     } else if (item.type === 'footer') {
-  //       const groupFooterProps = {
-  //         ...groupProps!.footerProps,
-  //         ...dividerProps,
-  //         key: group?.key ? `${group.key}-footer` : undefined,
-  //       };
-
-  //       return onRenderFooter(groupFooterProps, renderGroupFooter);
-  //     } else if (item.type === 'item') {
-  //       return onRenderCell(level, item.item ?? item, item.itemIndex ?? flattenedIndex);
-  //     }
-  //   },
-  //   [
-  //     onRenderCell,
-  //     groups,
-  //     groupProps,
-  //     selection,
-  //     selectionMode,
-  //     compact,
-  //     viewport,
-  //     onToggleCollapse,
-  //     onToggleSelectGroup,
-  //     onToggleSummarize,
-  //     onRenderHeader,
-  //     onRenderShowAll,
-  //     onRenderFooter,
-  //   ],
-  // );
 
   return (
     <FocusZone
@@ -535,6 +499,34 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       />
     </FocusZone>
   );
+};
+
+interface IGroupItemProps<T> {
+  props: T;
+  render: IRenderFunction<T>;
+  defaultRender: (props?: T) => JSX.Element | null;
+  item: any;
+  selection: ISelection;
+  eventGroup: EventGroup;
+}
+
+const GroupItem = ({
+  render,
+  defaultRender,
+  item,
+  selection,
+  eventGroup,
+  props,
+}: React.PropsWithChildren<IGroupItemProps<T>>): React.ReactElement | null => {
+  const group = item.group;
+
+  const isSelected = useIsGroupSelected(group.startIndex, group.count, selection, eventGroup);
+  const mergedProps = {
+    ...props,
+    isSelected: isSelected,
+    selected: isSelected,
+  };
+  return render(mergedProps, defaultRender);
 };
 
 export class GroupedListV2Wrapper
