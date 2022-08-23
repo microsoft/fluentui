@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added getStyles exports for details list components",
+  "packageName": "office-ui-fabric-react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
