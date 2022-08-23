@@ -1725,6 +1725,12 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 // @public
 export function getColorFromString(inputColor: string): IColor | undefined;
 
+// @public (undocumented)
+export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
+
+// @public (undocumented)
+export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
+
 // Warning: (ae-internal-missing-underscore) The name "getContextualMenuItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal @deprecated (undocumented)
@@ -1732,12 +1738,6 @@ export const getContextualMenuItemClassNames: (theme: ITheme, disabled: boolean,
 
 // @public
 export const getContextualMenuItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
-
-// @public (undocumented)
-export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
-
-// @public (undocumented)
-export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
 
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
