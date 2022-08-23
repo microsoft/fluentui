@@ -1,8 +1,7 @@
 import * as React from 'react';
 
 import { makeStyles } from '@fluentui/react-components';
-import { Body1, Caption1, Button, Avatar } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { Body1, Caption1, Avatar } from '@fluentui/react-components';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
 import { ASSET_URL } from './SampleCard.stories';
 import type { CardProps } from '@fluentui/react-card';
@@ -21,10 +20,6 @@ export const SampleCardSmall = (props: CardProps) => {
 
   return (
     <Card className={styles.root} {...props}>
-      <CardPreview>
-        <img src={previewImage} alt="Strategy 2022" />
-      </CardPreview>
-
       <CardHeader
         image={
           <Avatar
@@ -42,8 +37,11 @@ export const SampleCardSmall = (props: CardProps) => {
           </Body1>
         }
         description={<Caption1>Album</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
       />
+
+      <CardPreview>
+        <img src={previewImage} alt="Strategy 2022" />
+      </CardPreview>
     </Card>
   );
 };

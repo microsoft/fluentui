@@ -12,6 +12,7 @@ import type { CardSlots, CardState } from './Card.types';
  */
 export const cardClassNames: SlotClassNames<CardSlots> = {
   root: 'fui-Card',
+  select: 'fui-Card__select',
 };
 
 /**
@@ -124,7 +125,6 @@ const useStyles = makeStyles({
   interactiveLink: {
     textDecorationLine: 'none',
   },
-
   interactiveButton: {
     ...shorthands.border('0'),
     width: '100%',
@@ -154,6 +154,13 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground1Pressed,
     },
   },
+  filledInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+  },
   filled: {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow4,
@@ -177,6 +184,13 @@ const useStyles = makeStyles({
     },
     ':active': {
       backgroundColor: tokens.colorNeutralBackground2Pressed,
+    },
+  },
+  filledAlternativeInteractiveSelected: {
+    backgroundColor: tokens.colorNeutralBackground2Selected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
   },
   filledAlternative: {
@@ -211,6 +225,13 @@ const useStyles = makeStyles({
       },
     },
   },
+  outlineInteractiveSelected: {
+    backgroundColor: tokens.colorTransparentBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+  },
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
     boxShadow: 'none',
@@ -235,6 +256,13 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
   },
+  subtleInteractiveSelected: {
+    backgroundColor: tokens.colorSubtleBackgroundSelected,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
+    },
+  },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
     boxShadow: 'none',
@@ -242,6 +270,20 @@ const useStyles = makeStyles({
     '::after': {
       ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
+  },
+
+  select: {
+    position: 'absolute',
+    top: '4px',
+    right: '4px',
+  },
+
+  selectHidden: {
+    width: 0,
+    height: 0,
+    position: 'absolute',
+    top: 0,
+    right: 0,
   },
 });
 
@@ -289,6 +331,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtle,
   };
 
+  const selectedMap = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  };
+
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
@@ -296,8 +345,17 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     sizeMap[state.size],
     state.appearance && appearanceMap[state.appearance],
     state.isInteractive && getInteractiveStyles(state, styles),
+    state.isCardSelected && selectedMap[state.appearance],
     state.root.className,
   );
+
+  if (state.select) {
+    if (state.hasSelectSlot) {
+      state.select.className = mergeClasses(cardClassNames.select, styles.select, state.select.className);
+    } else {
+      state.select.className = mergeClasses(cardClassNames.select, styles.selectHidden, state.select.className);
+    }
+  }
 
   return state;
 };

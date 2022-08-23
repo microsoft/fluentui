@@ -4,6 +4,7 @@ import descriptionMd from './CardDescription.md';
 export { Default } from './CardDefault.stories';
 export { Appearance } from './CardAppearance.stories';
 export { Interactive } from './CardInteractive.stories';
+export { Selectable, SelectableWithCheckbox } from './CardSelectable.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';

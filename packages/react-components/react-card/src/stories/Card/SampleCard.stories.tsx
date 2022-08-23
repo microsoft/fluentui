@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Body1, Caption1, Subtitle1, Button } from '@fluentui/react-components';
+import { makeStyles, Body1, Caption1, Subtitle1, Button, mergeClasses } from '@fluentui/react-components';
 import { MoreHorizontal20Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardFooter, CardPreview } from '@fluentui/react-card';
 import type { CardProps } from '@fluentui/react-card';
@@ -10,38 +10,46 @@ export const ASSET_URL =
 const powerpointLogoURL = ASSET_URL + '/assets/powerpoint_logo.svg';
 const salesPresentationTemplateURL = ASSET_URL + '/assets/sales_template.png';
 
-export const SampleCard = (props: CardProps) => (
-  <Card {...props}>
-    <CardPreview>
-      <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
-    </CardPreview>
-    <CardHeader
-      image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
-      header={
-        <Body1>
-          <b>App Name</b>
-        </Body1>
-      }
-      description={<Caption1>Developer</Caption1>}
-      action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
-    />
-    <div>
-      Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
-    </div>
-    <CardFooter>
-      <Button appearance="primary" icon={<Open16Regular />}>
-        Open
-      </Button>
-      <Button icon={<Share16Regular />}>Share</Button>
-    </CardFooter>
-  </Card>
-);
-
 const useStyles = makeStyles({
   container: {
     marginBottom: '16px',
   },
+  card: {
+    width: '480px',
+    maxWidth: '100%',
+  },
 });
+
+export const SampleCard = ({ className, ...props }: CardProps) => {
+  const styles = useStyles();
+
+  return (
+    <Card className={mergeClasses(styles.card, className)} {...props}>
+      <CardPreview>
+        <img src={salesPresentationTemplateURL} alt="sales presentation preview" />
+      </CardPreview>
+      <CardHeader
+        image={{ as: 'img', src: powerpointLogoURL, alt: 'Microsoft PowerPoint logo' }}
+        header={
+          <Body1>
+            <b>App Name</b>
+          </Body1>
+        }
+        description={<Caption1>Developer</Caption1>}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+      />
+      <div>
+        Donut chocolate bar oat cake. Dragée tiramisu lollipop bear claw. Marshmallow pastry jujubes toffee sugar plum.
+      </div>
+      <CardFooter>
+        <Button appearance="primary" icon={<Open16Regular />}>
+          Open
+        </Button>
+        <Button icon={<Share16Regular />}>Share</Button>
+      </CardFooter>
+    </Card>
+  );
+};
 
 export const Title = (props: { title: string; description?: string }) => {
   const styles = useStyles();
