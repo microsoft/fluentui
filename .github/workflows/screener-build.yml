@@ -135,7 +135,7 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if northstar packages were affected
-        if: ${{env.ISPR = 'false'}}
+        if: ${{env.ISPR == 'false'}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -216,7 +216,7 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if v8 packages were affected
-        if: ${{env.ISPR = 'false'}}
+        if: ${{env.ISPR == 'false'}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
