@@ -1852,4 +1852,54 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(-1);
     expect(buttonC.tabIndex).toBe(0);
   });
+
+  it('Update tabIndex when FocusZone is updated before focused', () => {
+    const { testContainer, removeTestContainer } = createTestContainer();
+    const TestComponent = () => {
+      const [showButton3, setShowButton3] = React.useState(false);
+      const rootRef = React.useRef<HTMLDivElement>(null);
+      const getDefaultTabbableElement = () => {
+        if (rootRef.current) {
+          const buttons = (rootRef.current as HTMLElement).getElementsByClassName('button-in-zone');
+          return buttons[buttons.length - 1] as HTMLElement;
+        }
+        return null as any;
+      };
+      return (
+        <>
+          <button id="add-button" onClick={() => setShowButton3(true)}>
+            Add
+          </button>
+          <div ref={rootRef}>
+            <FocusZone shouldResetActiveElementWhenTabFromZone defaultTabbableElement={getDefaultTabbableElement}>
+              <button className="button-in-zone">button 1</button>
+              <button className="button-in-zone">button 2</button>
+              {showButton3 && (
+                <button className="button-in-zone" id="button-3">
+                  added button 3
+                </button>
+              )}
+            </FocusZone>
+          </div>
+        </>
+      );
+    };
+    ReactTestUtils.act(() => {
+      ReactDOM.render(<TestComponent />, testContainer);
+    });
+
+    const addButton = document.getElementById('add-button') as HTMLElement;
+    expect(addButton).toBeTruthy();
+
+    // add button 3, which triggers component update in FocusZone
+    ReactTestUtils.Simulate.click(addButton);
+    const button3 = document.getElementById('button-3') as HTMLElement;
+    expect(button3).toBeTruthy();
+
+    // expect tabIndex is recalculated on keydown, button3 now is the default focusable item in FocusZone
+    addButton.dispatchEvent(new KeyboardEvent('keydown', { keyCode: keyboardKey.Tab, which: keyboardKey.Tab }));
+    expect(button3.getAttribute('tabindex')).toBe('0');
+
+    removeTestContainer();
+  });
 });
