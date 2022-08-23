@@ -31,7 +31,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
 
-    if (isNorthstar || packageJson.private === true) {
+    if (isNorthstar) {
       return false;
     }
 
@@ -42,7 +42,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
 
     if (!isConverged) {
       // v8 scope
-      return websitePackages.includes(packageJson.name);
+      return websitePackages.includes(packageJson.name) || packageJson.private !== true;
     }
 
     // Ignore v9/converged packages when releasing v8
