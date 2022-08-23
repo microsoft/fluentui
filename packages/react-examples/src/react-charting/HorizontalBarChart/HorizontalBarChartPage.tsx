@@ -58,6 +58,23 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
               value (color) that is used to represent the total length.
             </p>
             <p>Numerical values are represented through abbreviations. </p>
+            <h4>Bar chart custom data</h4>
+            <p>
+              This property allows customizing the right side data part of the chart. See the usage of{' '}
+              <code>barChartCustomData</code>
+              prop in custom callout variant.
+            </p>
+            <h4>Custom hover callout</h4>
+            <p>
+              See <code>onRenderCalloutPerHorizontalBar</code> prop to customize the hover callout.
+            </p>
+            <p>
+              Set the <code>chartDataMode</code> as number, fraction or percentage
+            </p>
+            <h4>Benchmark data</h4>
+            <p>
+              Set the <code>data</code> attribute of IChartDataPoint to specify the benchmark value
+            </p>
           </div>
         }
       />

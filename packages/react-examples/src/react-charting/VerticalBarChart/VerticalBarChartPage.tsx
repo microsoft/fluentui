@@ -68,18 +68,26 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               time. Categories and time are typically shown along the horizontal axis, while the data values are shown
               along the vertical axis.
             </p>
-            <p>The bar widths are proportional to the number of bars and space available within the charting area.</p>
+            <p>
+              The bar widths are proportional to the number of bars and space available within the charting area. The
+              bar width can be changed using the <code>barWidth</code> property.
+            </p>
             <br />
             <h3>Implementation details</h3>
             <p>
               The current vertical bar charts implementation is in the cartesian coordinate system. The cartesian
               coordinate system is represented by Cartesian Chart which serves as the base class for vertical bar charts
             </p>
-          </div>
-        }
-        bestPractices={
-          <div>
-            <p>Coming soon.</p>
+            <p>
+              The chart provides an option to select a color scale based on the range of y value. Similar y values will
+              end up having similar color. Use the <code>colors</code> attribute
+            </p>
+            <p>
+              Use <code>useSingleColor</code> to use a single color for all bars.
+            </p>
+            <p>
+              Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of the line
+            </p>
           </div>
         }
       />

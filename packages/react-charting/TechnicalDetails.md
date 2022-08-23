@@ -35,7 +35,7 @@ The charting components are built using following building blocks.
     | Vertical Bar Chart         | Yes          | No        | Yes         |
     | Vertical Stacked Bar Chart | Yes          | No        | Yes         |
     | Grouped Vertical Bar Chart | No           | No        | Yes         |
-    | Heatmap Chart              | No           | No        | Yes         |
+    | Heatmap Chart              | Yes          | Yes       | Yes         |
     | Horizontal Bar Chart       | --           | --        | --          |
     | Donut Chart                | --           | --        | --          |
     | Sankey Chart               | --           | --        | --          |

@@ -76,25 +76,25 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             <p>
               Event annotations are used to highlight instances of datetime and annotate them using messages.
               Annotations are represented by vertical line markers to mark the date and callouts to represent the
-              message. Events can be added by using <code>eventAnnotationProps</code> prop. Each event contains a{' '}
-              <code>date</code>, <code>event message</code> and event detail callout callback
+              message. Events can be added by using <code>eventAnnotationProps</code> prop. Each event contains a
+              <code>date, event message</code> and event detail callout callback
               <code>onRenderCard</code>
             </p>
             <h4>Gaps</h4>
             <p>
               A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
               replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
-              for a time series forecast graph. Gaps can be added by adding <code>gaps</code> prop. A gap is denoted by{' '}
+              for a time series forecast graph. Gaps can be added by using <code>gaps</code> prop. A gap is denoted by
               <code>startIndex</code> and
-              <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for{' '}
+              <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for
               <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
             </p>
             <h4>Line border</h4>
             <p>
               Each line in the chart can contain a 2 px border for better highlighting of the line when there are
-              multiple items in the chart. The border will be of the background theme color. Lines will be highlighted
+              multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
               in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-              make multiple lines more distinguishable. Use <code>lineBorderWidth</code> prop inside{' '}
+              make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop inside
               <code>lineOptions</code> to enable it.
             </p>
             <h4>Lines with large dataset</h4>
@@ -105,13 +105,11 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </p>
             <h4>Custom accessibility</h4>
             <p>
-              Line chart provides a bunch of props to enable custom accessibility messages. Use{' '}
+              Line chart provides a bunch of props to enable custom accessibility messages. Use
               <code>xAxisCalloutAccessibilityData</code>
               and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
               respectively.
             </p>
-            <h4>Styled lines</h4>
-            <p>Fill in the details</p>
           </div>
         }
       />
