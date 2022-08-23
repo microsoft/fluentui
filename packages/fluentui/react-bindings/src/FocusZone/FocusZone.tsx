@@ -247,6 +247,11 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
         this.setParkedFocus(true);
       }
     }
+
+    if (this.props.shouldResetActiveElementWhenTabFromZone && doc?.activeElement !== this._activeElement) {
+      // when focus is out of component on component update, reset tabIndex
+      this._activeElement = null;
+    }
   }
 
   componentWillUnmount() {
