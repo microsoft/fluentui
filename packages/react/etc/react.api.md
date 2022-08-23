@@ -1726,6 +1726,12 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 export function getColorFromString(inputColor: string): IColor | undefined;
 
 // @public (undocumented)
+export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
+
+// @public (undocumented)
+export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
+
+// @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 export { getDatePartHashValue }
