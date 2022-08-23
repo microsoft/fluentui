@@ -327,7 +327,7 @@ const templates = {
         allowJs: true,
         checkJs: true,
       },
-      include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
+      include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
     },
   },
   e2e: {
