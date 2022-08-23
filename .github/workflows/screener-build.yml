@@ -319,4 +319,4 @@ jobs:
         with:
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
