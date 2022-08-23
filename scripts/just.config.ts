@@ -5,7 +5,7 @@ import fs from 'fs';
 
 import { babel } from './tasks/babel';
 import { clean } from './tasks/clean';
-import { copy } from './tasks/copy';
+import { copy, copyCompiled } from './tasks/copy';
 import { jest as jestTask, jestWatch } from './tasks/jest';
 import { sass } from './tasks/sass';
 import { ts } from './tasks/ts';
@@ -50,6 +50,7 @@ export function preset() {
   task('no-op', () => {}).cached();
   task('clean', clean);
   task('copy', copy);
+  task('copy-compiled', copyCompiled);
   task('jest', jestTask);
   task('jest-watch', jestWatch);
   task('sass', sass());
@@ -91,6 +92,7 @@ export function preset() {
   task('ts', () => {
     return series(
       'ts:compile',
+      condition('copy-compiled', () => isConvergedPackage({ projectType: 'library' })),
       'ts:postprocess',
       condition('babel:postprocess', () => fs.existsSync(path.join(process.cwd(), '.babelrc.json'))),
     );

@@ -10981,7 +10981,6 @@ export const TagPicker: React_2.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
-    constructor(props: ITagPickerProps);
     // (undocumented)
     static defaultProps: {
         onRenderItem: (props: ITagItemProps) => JSX.Element;

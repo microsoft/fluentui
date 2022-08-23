@@ -6,7 +6,7 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "react-is": "^16.6.3"
+    "react-is": "^17.0.2"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

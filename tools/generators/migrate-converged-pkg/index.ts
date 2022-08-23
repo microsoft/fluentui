@@ -145,30 +145,27 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 // ==== helpers ====
 
 const templates = {
-  apiExtractor: (options: { tsconfig: TsConfig }) => {
-    const { tsconfig } = options;
-    if (!tsconfig.compilerOptions.declarationDir) {
-      throw new Error(`Provided TS config is missing declarationDir.`);
-    }
-
-    /* eslint-disable @fluentui/max-len */
+  apiExtractor: () => {
     return {
       main: {
         $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
         extends: '@fluentui/scripts/api-extractor/api-extractor.common.v-next.json',
-        // @TODO - remove this once all v9 packages have been migrated to ship rolluped types
-        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/index.d.ts`,
+        // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+        dtsRollup: {
+          enabled: true,
+          untrimmedFilePath: '',
+          publicTrimmedFilePath: '<projectFolder>/dist/index.d.ts',
+        },
       },
-      local: {
-        $schema: 'https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json',
-        extends: './api-extractor.json',
-        mainEntryPointFilePath: `<projectFolder>/${tsconfig.compilerOptions.declarationDir}/packages/react-components/<unscopedPackageName>/src/index.d.ts`,
-      },
-      /* eslint-enable @fluentui/max-len */
     };
   },
 
-  tsconfig: (options: { platform: 'node' | 'web'; js: boolean; hasConformance: boolean }) => {
+  tsconfig: (options: {
+    platform: 'node' | 'web';
+    js: boolean;
+    hasConformance: boolean;
+    projectConfig: ProjectConfiguration;
+  }) => {
     return {
       main: () => {
         const tsConfig = {
@@ -209,9 +206,9 @@ const templates = {
           compilerOptions: {
             noEmit: false,
             lib: ['ES2019'],
-            outDir: 'dist',
             declaration: true,
-            declarationDir: 'dist/types',
+            declarationDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc/types',
+            outDir: offsetFromRoot(options.projectConfig.root) + 'dist/out-tsc',
             inlineSources: true,
             types: ['static-assets', 'environment'],
           } as TsConfig['compilerOptions'],
@@ -545,14 +542,11 @@ interface NormalizedSchemaWithTsConfigs extends NormalizedSchema {
 }
 
 function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
-  /* eslint-disable @fluentui/max-len */
   const scripts = {
-    docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-    'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./${options.tsconfigs.lib.compilerOptions.declarationDir}/packages/react-components/${options.normalizedPkgName}/src && yarn docs`,
+    'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
     test: 'jest --passWithNoTests',
     'type-check': 'tsc -b tsconfig.json',
   };
-  /* eslint-enable @fluentui/max-len */
 
   updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
     json.scripts = json.scripts || {};
@@ -561,6 +555,8 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     delete json.scripts['update-snapshots'];
     delete json.scripts['start-test'];
     delete json.scripts['test:watch'];
+    delete json.scripts['build:local'];
+    delete json.scripts.docs;
 
     Object.assign(json.scripts, scripts);
 
@@ -576,8 +572,9 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 }
 
 function updateApiExtractorForLocalBuilds(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
-  const apiExtractor = templates.apiExtractor({ tsconfig: options.tsconfigs.lib });
-  writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'), apiExtractor.local);
+  const apiExtractor = templates.apiExtractor();
+
+  tree.delete(joinPathFragments(options.paths.configRoot, 'api-extractor.local.json'));
   writeJson(tree, joinPathFragments(options.paths.configRoot, 'api-extractor.json'), apiExtractor.main);
 
   return tree;
@@ -847,7 +844,12 @@ function createTsSolutionConfig(tree: Tree, options: NormalizedSchema) {
   const js = isJs(tree, options);
   const hasConformance = hasConformanceSetup(tree, options);
 
-  const tsConfigs = templates.tsconfig({ platform: packageType, js, hasConformance });
+  const tsConfigs = templates.tsconfig({
+    platform: packageType,
+    js,
+    hasConformance,
+    projectConfig: options.projectConfig,
+  });
   const main = tsConfigs.main();
   const lib = tsConfigs.lib();
   const test = tsConfigs.test();
