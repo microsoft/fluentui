@@ -149,11 +149,6 @@ jobs:
         condition: eq(variables['isPR'], 'false')
 
       - script: |
-          printenv | sort
-        displayName: Log environment variables (Linux)
-        condition: eq(variables['Agent.OS'], 'Linux')
-
-      - script: |
           yarn workspace @fluentui/docs vr:build
         displayName: build FUI N* VR Test
         condition: ne(variables['SKIP_SCREENER_BUILD'], 'true')
@@ -217,11 +212,6 @@ jobs:
         name: PackagesAffected
         displayName: Check if v8 packages were affected
         condition: eq(variables['isPR'], 'false')
-
-      - script: |
-          printenv | sort
-        displayName: Log environment variables (Linux)
-        condition: eq(variables['Agent.OS'], 'Linux')
 
       - script: |
           yarn workspace @fluentui/vr-tests screener:build
