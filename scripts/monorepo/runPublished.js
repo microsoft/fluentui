@@ -36,8 +36,8 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
     }
 
     const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
-    if (process.env.RELEASE_VNEXT) {
-      return isConverged;
+    if (process.env.RELEASE_VNEXT && isConverged) {
+      return packageJson.private !== true;
     }
 
     if (!isConverged) {
