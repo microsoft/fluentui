@@ -61,7 +61,7 @@ export const TagItemBase = (props: ITagItemProps) => {
       onClick={handleClick}
     >
       <span className={classNames.text} title={title} id={`${itemId}-text`}>
-        {children} {}
+        {children}
       </span>
       <IconButton
         componentRef={buttonRef}

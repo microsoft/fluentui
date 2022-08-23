@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { getId, classNamesFunction, styled } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
-import { IconButton } from '../../../../Button';
+import { IconButton, IButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
 import { getStyles } from './PeoplePickerItem.styles';
 import type { IStyleFunctionOrObject } from '../../../../Utilities';
