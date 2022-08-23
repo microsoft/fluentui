@@ -113,6 +113,14 @@ jobs:
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - run: |
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr)
           if [[ $packageAffected == false ]]; then
@@ -142,14 +150,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
@@ -194,6 +194,14 @@ jobs:
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - run: |
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr)
           if [[ $packageAffected == false ]]; then
@@ -223,14 +231,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
@@ -273,6 +273,14 @@ jobs:
           echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - run: |
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr)
           if [[ $packageAffected == false ]]; then
@@ -302,14 +310,6 @@ jobs:
         run: |
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
