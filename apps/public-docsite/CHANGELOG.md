@@ -1,8 +1,27 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Mon, 22 Aug 2022 07:44:26 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Aug 2022 07:22:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
+
+Tue, 23 Aug 2022 07:22:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.2.41..@fluentui/public-docsite_v8.2.41)
+
+### Patches
+
+- Bump @fluentui/font-icons-mdl2 to v8.4.9 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react to v8.90.2 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-docsite-components to v8.9.24 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-experiments to v8.12.23 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-file-type-icons to v8.7.4 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-icons-mdl2 to v1.3.18 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-icons-mdl2-branded to v1.2.19 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/theme to v2.6.13 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/theme-samples to v8.6.24 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/common-styles to v1.2.5 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.6.24 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
 
 ## [8.2.41](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.2.41)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add React 17 support.",
-  "packageName": "@fluentui/style-utilities",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

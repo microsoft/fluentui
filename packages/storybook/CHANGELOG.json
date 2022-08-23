@@ -2,6 +2,39 @@
   "name": "@fluentui/storybook",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/storybook_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/react to v8.90.2",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme to v2.6.13",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/azure-themes to v8.4.24",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/storybook",
+            "comment": "Bump @fluentui/theme-samples to v8.6.24",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Aug 2022 07:44:26 GMT",
       "tag": "@fluentui/storybook_v1.0.0",
       "version": "1.0.0",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 18 Aug 2022 23:39:31 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Aug 2022 07:22:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.8)
+
+Tue, 23 Aug 2022 07:22:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.7..@fluentui/style-utilities_v8.7.8)
+
+### Patches
+
+- fix: Add React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme to v2.6.13 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
 
 ## [8.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.7)
 

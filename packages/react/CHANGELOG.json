@@ -2,6 +2,63 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/react_v8.90.2",
+      "version": "8.90.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.16",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.9",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.1",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.7.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.13",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/common-styles to v1.2.5",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Aug 2022 07:44:26 GMT",
       "tag": "@fluentui/react_v8.90.1",
       "version": "8.90.1",

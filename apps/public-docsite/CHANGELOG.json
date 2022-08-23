@@ -2,6 +2,81 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/public-docsite_v8.2.41",
+      "version": "8.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.4.9",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react to v8.90.2",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-docsite-components to v8.9.24",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-experiments to v8.12.23",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-file-type-icons to v8.7.4",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.3.18",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-icons-mdl2-branded to v1.2.19",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/theme to v2.6.13",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/theme-samples to v8.6.24",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/common-styles to v1.2.5",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.6.24",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Aug 2022 07:44:26 GMT",
       "tag": "@fluentui/public-docsite_v8.2.41",
       "version": "8.2.41",

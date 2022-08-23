@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add React 17 support.",
-  "packageName": "@fluentui/react-hooks",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

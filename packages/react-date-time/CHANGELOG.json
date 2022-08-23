@@ -2,6 +2,27 @@
   "name": "@fluentui/react-date-time",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:48 GMT",
+      "tag": "@fluentui/react-date-time_v8.6.24",
+      "version": "8.6.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-date-time",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-date-time",
+            "comment": "Bump @fluentui/react to v8.90.2",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Aug 2022 07:44:26 GMT",
       "tag": "@fluentui/react-date-time_v8.6.23",
       "version": "8.6.23",

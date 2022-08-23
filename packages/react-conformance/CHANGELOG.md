@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 28 Jul 2022 07:41:18 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Aug 2022 07:22:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.2)
+
+Tue, 23 Aug 2022 07:22:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.15.0..@fluentui/react-conformance_v0.15.2)
+
+### Patches
+
+- fix: Bump react-is dependency to version 17. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
 
 ## [0.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.15.0)
 

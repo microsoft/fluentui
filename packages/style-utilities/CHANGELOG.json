@@ -2,6 +2,27 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:49 GMT",
+      "tag": "@fluentui/style-utilities_v8.7.8",
+      "version": "8.7.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.13",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:31 GMT",
       "tag": "@fluentui/style-utilities_v8.7.7",
       "version": "8.7.7",
