@@ -269,9 +269,9 @@ describe('migrate-converged-pkg generator', () => {
         extends: './tsconfig.json',
         compilerOptions: {
           noEmit: false,
-          outDir: 'dist',
+          outDir: '../../dist/out-tsc',
           declaration: true,
-          declarationDir: 'dist/types',
+          declarationDir: '../../dist/out-tsc/types',
           inlineSources: true,
           lib: ['ES2019', 'dom'],
           types: ['static-assets', 'environment'],
@@ -785,30 +785,41 @@ describe('migrate-converged-pkg generator', () => {
   describe(`api-extractor.json updates`, () => {
     it(`should create api-extractor.json`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
+      const apiExtractorConfigPath = `${projectConfig.root}/config/api-extractor.json`;
 
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeFalsy();
-
-      await generator(tree, options);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.json`)).toBeTruthy();
-    });
-
-    it(`should create api-extractor.local.json for scripts:docs task consumption`, async () => {
-      const projectConfig = readProjectConfiguration(tree, options.name);
-
-      expect(tree.exists(`${projectConfig.root}/config/api-extractor.local.json`)).toBeFalsy();
+      expect(tree.exists(apiExtractorConfigPath)).toBeFalsy();
 
       await generator(tree, options);
 
-      /* eslint-disable @fluentui/max-len */
-      expect(readJson(tree, `${projectConfig.root}/config/api-extractor.local.json`)).toMatchInlineSnapshot(`
+      expect(tree.exists(apiExtractorConfigPath)).toBeTruthy();
+      expect(readJson(tree, apiExtractorConfigPath)).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
-          "extends": "./api-extractor.json",
-          "mainEntryPointFilePath": "<projectFolder>/dist/types/packages/react-components/<unscopedPackageName>/src/index.d.ts",
+          "dtsRollup": Object {
+            "enabled": true,
+            "publicTrimmedFilePath": "<projectFolder>/dist/index.d.ts",
+            "untrimmedFilePath": "",
+          },
+          "extends": "@fluentui/scripts/api-extractor/api-extractor.common.v-next.json",
         }
       `);
-      /* eslint-enable @fluentui/max-len */
+    });
+
+    it(`should remove api-extractor.local.json if present`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const apiExtractorLocalPath = `${projectConfig.root}/config/api-extractor.local.json`;
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
+
+      await generator(tree, options);
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
+
+      writeJson(tree, apiExtractorLocalPath, {});
+
+      await generator(tree, options);
+
+      expect(tree.exists(apiExtractorLocalPath)).toBeFalsy();
     });
   });
 
@@ -826,13 +837,24 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
-      let pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+      const pkgJsonPath = `${projectConfig.root}/package.json`;
+      updateJson(tree, pkgJsonPath, json => {
+        json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
+        json.scripts['build:local'] =
+          // eslint-disable-next-line @fluentui/max-len
+          'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs';
+        return json;
+      });
+      let pkgJson = readJson(tree, pkgJsonPath);
 
+      /* eslint-disable @fluentui/max-len */
       expect(pkgJson.scripts).toMatchInlineSnapshot(`
         Object {
           "build": "just-scripts build",
+          "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components && yarn docs",
           "clean": "just-scripts clean",
           "code-style": "just-scripts code-style",
+          "docs": "api-extractor run --config=config/api-extractor.local.json --local",
           "just": "just-scripts",
           "lint": "just-scripts lint",
           "start": "just-scripts dev:storybook",
@@ -842,15 +864,14 @@ describe('migrate-converged-pkg generator', () => {
           "update-snapshots": "just-scripts jest -u",
         }
       `);
+      /* eslint-enable @fluentui/max-len */
 
       await generator(tree, options);
 
       pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.scripts).toEqual({
-        docs: 'api-extractor run --config=config/api-extractor.local.json --local',
-        // eslint-disable-next-line @fluentui/max-len
-        'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-dummy/src && yarn docs`,
+        'generate-api': 'tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor',
         build: 'just-scripts build',
         clean: 'just-scripts clean',
         'code-style': 'just-scripts code-style',
@@ -1226,6 +1247,12 @@ function setupDummyPackage(
     root: `packages/${normalizedPkgName}`,
   };
 
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const jestConfigTemplate = fs.readFileSync(
+    path.join(__dirname, '__fixtures__', 'old-jest-config.js__tmpl__'),
+    'utf-8',
+  );
+
   const templates = {
     packageJson: {
       name: pkgName,
@@ -1248,17 +1275,7 @@ function setupDummyPackage(
     tsConfig: {
       ...normalizedOptions.tsConfig,
     },
-    jestConfig: stripIndents`
-      const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
-      const path = require('path');
-
-      const config = createConfig({
-        setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-        snapshotSerializers: ['@griffel/jest-serializer'],
-      });
-
-      module.exports = config;
-    `,
+    jestConfig: stripIndents`${jestConfigTemplate}`,
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
@@ -1333,16 +1350,9 @@ function setupDummyPackage(
 }
 
 function addConformanceSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
-  tree.write(
-    `${projectConfig.root}/src/common/isConformant.ts`,
-    stripIndents`
-          import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
-
-          export function isConformant<TProps = {}>(
-            testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string }
-          ){}
-        `,
-  );
+  // this is needed to stop TS parsing static imports and evaluating them in nx dep graph tree as true dependency - https://github.com/nrwl/nx/issues/8938
+  const template = fs.readFileSync(path.join(__dirname, '__fixtures__', 'conformance-setup.ts__tmpl__'), 'utf-8');
+  tree.write(`${projectConfig.root}/src/common/isConformant.ts`, stripIndents`${template}`);
 }
 
 function addUnstableSetup(tree: Tree, projectConfig: ReadProjectConfiguration) {
