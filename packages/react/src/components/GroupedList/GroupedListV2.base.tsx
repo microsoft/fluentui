@@ -44,13 +44,30 @@ export interface IGroupedListV2Props extends IGroupedListProps {
   groupExpandedVersion: {};
 }
 
-type IGroupedItem = {
-  group?: IGroup;
-  groupId?: string;
-  item?: any;
-  itemIndex?: number;
-  type: 'group' | 'item' | 'showAll' | 'footer';
+type IITemGroupedItem = {
+  type: 'item';
+  group: IGroup;
+  item: any;
+  itemIndex: number;
 };
+
+type IShowAllGroupedItem = {
+  type: 'showAll';
+  group: IGroup;
+};
+
+type IFooterGroupedItem = {
+  type: 'footer';
+  group: IGroup;
+};
+
+type IHeaderGroupedItem = {
+  type: 'header';
+  group: IGroup;
+  groupId: string;
+};
+
+type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
 
 type FlattenItemsFn = (
   groups: IGroup[] | undefined,
@@ -85,7 +102,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
     memoItems[index] = {
       group,
       groupId: getId('GroupedListSection'),
-      type: 'group',
+      type: 'header',
     };
 
     index++;
@@ -100,7 +117,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
       memoItems[index] = {
         group,
         groupId: getId('GroupedListSection'),
-        type: 'group',
+        type: 'header',
       };
       index++;
     }
@@ -333,17 +350,14 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     [groupProps],
   );
 
-  const renderItem = React.useCallback(
-    (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
-      const group = item.group;
-
-      const level = group?.level ? group.level + 1 : 1;
+  const getDividerProps = React.useCallback(
+    (group: IGroup, flattenedIndex: number) => {
       const isSelected = selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false;
 
       const dividerProps = {
         group,
         groupIndex: flattenedIndex,
-        groupLevel: group?.level ?? 0,
+        groupLevel: group.level ?? 0,
         isSelected,
         selected: isSelected,
         viewport,
@@ -355,54 +369,147 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         onToggleSummarize,
       };
 
-      if (item.type === 'group') {
-        const groupHeaderProps = {
-          ...groupProps!.headerProps,
-          ...dividerProps,
-          key: group!.key,
-          groupedListId: item.groupId!,
-          ariaLevel: level,
-          ariaSetSize: groups ? groups.length : undefined,
-          ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
-        };
+      return dividerProps;
+    },
+    [compact, groups, onToggleCollapse, onToggleSelectGroup, onToggleSummarize, selection, selectionMode, viewport],
+  );
 
-        return onRenderHeader(groupHeaderProps, renderGroupHeader);
+  const renderHeader = React.useCallback(
+    (item: IHeaderGroupedItem, flattenedIndex: number): React.ReactNode => {
+      const group = item.group;
+
+      const level = group.level ? group.level + 1 : 1;
+
+      const groupHeaderProps = {
+        ...groupProps!.headerProps,
+        ...getDividerProps(group, flattenedIndex),
+        key: group.key,
+        groupedListId: item.groupId,
+        ariaLevel: level,
+        ariaSetSize: groups ? groups.length : undefined,
+        ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
+      };
+
+      return onRenderHeader(groupHeaderProps, renderGroupHeader);
+    },
+    [onRenderHeader, groupProps, groups, getDividerProps],
+  );
+
+  const renderShowAll = React.useCallback(
+    (item: IShowAllGroupedItem, flattenedIndex: number): React.ReactNode => {
+      const group = item.group;
+      const groupShowAllProps = {
+        ...groupProps!.showAllProps,
+        ...getDividerProps(group, flattenedIndex),
+        key: group?.key ? `${group.key}-show-all` : undefined,
+      };
+
+      return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
+    },
+
+    [onRenderShowAll, groupProps, getDividerProps],
+  );
+
+  const renderFooter = React.useCallback(
+    (item: IFooterGroupedItem, flattenedIndex: number): React.ReactNode => {
+      const group = item.group;
+      const groupFooterProps = {
+        ...groupProps!.footerProps,
+        ...getDividerProps(group, flattenedIndex),
+        key: group?.key ? `${group.key}-footer` : undefined,
+      };
+
+      return onRenderFooter(groupFooterProps, renderGroupFooter);
+    },
+    [onRenderFooter, groupProps, getDividerProps],
+  );
+
+  const renderItem = React.useCallback(
+    (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
+      if (item.type === 'header') {
+        return renderHeader(item, flattenedIndex);
       } else if (item.type === 'showAll') {
-        const groupShowAllProps = {
-          ...groupProps!.showAllProps,
-          ...dividerProps,
-          key: group?.key ? `${group.key}-show-all` : undefined,
-        };
-
-        return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
+        return renderShowAll(item, flattenedIndex);
       } else if (item.type === 'footer') {
-        const groupFooterProps = {
-          ...groupProps!.footerProps,
-          ...dividerProps,
-          key: group?.key ? `${group.key}-footer` : undefined,
-        };
-
-        return onRenderFooter(groupFooterProps, renderGroupFooter);
-      } else {
+        return renderFooter(item, flattenedIndex);
+      } else if (item.type === 'item') {
+        const level = item.group.level ? item.group.level + 1 : 1;
         return onRenderCell(level, item.item ?? item, item.itemIndex ?? flattenedIndex);
       }
     },
-    [
-      onRenderCell,
-      groups,
-      groupProps,
-      selection,
-      selectionMode,
-      compact,
-      viewport,
-      onToggleCollapse,
-      onToggleSelectGroup,
-      onToggleSummarize,
-      onRenderHeader,
-      onRenderShowAll,
-      onRenderFooter,
-    ],
+    [onRenderCell, renderHeader, renderShowAll, renderFooter],
   );
+
+  // const renderItem = React.useCallback(
+  //   (item: IGroupedItem, flattenedIndex: number): React.ReactNode => {
+  //     const group = item.group;
+
+  //     const level = group.level ? group.level + 1 : 1;
+  //     const isSelected = selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false;
+
+  //     const dividerProps = {
+  //       group,
+  //       groupIndex: flattenedIndex,
+  //       groupLevel: group.level ?? 0,
+  //       isSelected,
+  //       selected: isSelected,
+  //       viewport,
+  //       selectionMode,
+  //       groups,
+  //       compact,
+  //       onToggleSelectGroup,
+  //       onToggleCollapse,
+  //       onToggleSummarize,
+  //     };
+
+  //     if (item.type === 'header') {
+  //       const groupHeaderProps = {
+  //         ...groupProps!.headerProps,
+  //         ...dividerProps,
+  //         key: group.key,
+  //         groupedListId: item.groupId,
+  //         ariaLevel: level,
+  //         ariaSetSize: groups ? groups.length : undefined,
+  //         ariaPosInSet: flattenedIndex !== undefined ? flattenedIndex + 1 : undefined,
+  //       };
+
+  //       return onRenderHeader(groupHeaderProps, renderGroupHeader);
+  //     } else if (item.type === 'showAll') {
+  //       const groupShowAllProps = {
+  //         ...groupProps!.showAllProps,
+  //         ...dividerProps,
+  //         key: group?.key ? `${group.key}-show-all` : undefined,
+  //       };
+
+  //       return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
+  //     } else if (item.type === 'footer') {
+  //       const groupFooterProps = {
+  //         ...groupProps!.footerProps,
+  //         ...dividerProps,
+  //         key: group?.key ? `${group.key}-footer` : undefined,
+  //       };
+
+  //       return onRenderFooter(groupFooterProps, renderGroupFooter);
+  //     } else if (item.type === 'item') {
+  //       return onRenderCell(level, item.item ?? item, item.itemIndex ?? flattenedIndex);
+  //     }
+  //   },
+  //   [
+  //     onRenderCell,
+  //     groups,
+  //     groupProps,
+  //     selection,
+  //     selectionMode,
+  //     compact,
+  //     viewport,
+  //     onToggleCollapse,
+  //     onToggleSelectGroup,
+  //     onToggleSummarize,
+  //     onRenderHeader,
+  //     onRenderShowAll,
+  //     onRenderFooter,
+  //   ],
+  // );
 
   return (
     <FocusZone
