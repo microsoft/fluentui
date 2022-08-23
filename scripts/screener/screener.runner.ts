@@ -64,7 +64,7 @@ async function scheduleScreenerBuild(
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
   //conclusion of the screener run
-  return (await response.json()) as ScheduleScreenerBuildResponse;
+  return response.json() as ScheduleScreenerBuildResponse;
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {

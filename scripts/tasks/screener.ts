@@ -1,10 +1,9 @@
-import { screenerRunner } from '../screener/screener.runner';
+import { screenerRunner, environment } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
 import { startStorybook, getStorybook as screenerGetStorybook } from 'screener-storybook';
 import { getStorybook } from '@storybook/react';
-import { environment } from '../screener/screener.runner';
 /**
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
