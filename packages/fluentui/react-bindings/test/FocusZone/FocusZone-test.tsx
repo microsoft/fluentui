@@ -1859,11 +1859,8 @@ describe('FocusZone', () => {
       const [showButton3, setShowButton3] = React.useState(false);
       const rootRef = React.useRef<HTMLDivElement>(null);
       const getDefaultTabbableElement = () => {
-        if (rootRef.current) {
-          const buttons = (rootRef.current as HTMLElement).getElementsByClassName('button-in-zone');
-          return buttons[buttons.length - 1] as HTMLElement;
-        }
-        return null as any;
+        const buttons = document.body.getElementsByClassName('button-in-zone');
+        return buttons[buttons.length - 1] as HTMLElement;
       };
       return (
         <>
@@ -1897,7 +1894,8 @@ describe('FocusZone', () => {
     expect(button3).toBeTruthy();
 
     // expect tabIndex is recalculated on keydown, button3 now is the default focusable item in FocusZone
-    addButton.dispatchEvent(new KeyboardEvent('keydown', { keyCode: keyboardKey.Tab, which: keyboardKey.Tab }));
+    // (I used dispatchEvent instead of ReactTestUtils.Simulate.keydown because ReactTestUtils doesn't trigger _onKeyDownCapture in focusZone)
+    addButton.dispatchEvent(new KeyboardEvent('keydown', { which: keyboardKey.Tab } as KeyboardEventInit));
     expect(button3.getAttribute('tabindex')).toBe('0');
 
     removeTestContainer();
