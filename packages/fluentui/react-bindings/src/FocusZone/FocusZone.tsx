@@ -95,7 +95,13 @@ function _raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<
  */
 function _onKeyDownCapture(ev: KeyboardEvent) {
   if (getCode(ev) === keyboardKey.Tab) {
-    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => zone.updateTabIndexes());
+    outerZones.getOutZone(getWindow(ev.target as Element)!)?.forEach(zone => {
+      if (zone.props.shouldResetActiveElementWhenTabFromZone && document.activeElement !== zone._activeElement) {
+        // when focus is outside of component and shouldResetActiveElementWhenTabFromZone, reset tabIndex
+        zone._activeElement = null;
+      }
+      zone.updateTabIndexes();
+    });
   }
 }
 
@@ -246,11 +252,6 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
         // on the container until we can try again.
         this.setParkedFocus(true);
       }
-    }
-
-    if (this.props.shouldResetActiveElementWhenTabFromZone && doc?.activeElement !== this._activeElement) {
-      // when focus is out of component on component update, reset tabIndex
-      this._activeElement = null;
     }
   }
 
