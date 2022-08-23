@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 07:22:49 GMT",
+      "tag": "@fluentui/theme_v2.6.13",
+      "version": "2.6.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/theme",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Add React 17 support."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:31 GMT",
       "tag": "@fluentui/theme_v2.6.12",
       "version": "2.6.12",

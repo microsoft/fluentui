@@ -40,6 +40,7 @@ task('screener:runner', cb => {
 
   handlePromiseExit(screenerRunner(screenerConfig));
 });
+
 // ----------------------------------------
 // Default
 // ----------------------------------------

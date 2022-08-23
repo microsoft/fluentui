@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export const Default = (props: Partial<DropdownProps>) => {
   const dropdownId = useId('dropdown-default');
-  const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
+  const options = ['Cat', 'Caterpiller', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
   const styles = useStyles();
   return (
     <div className={styles.root}>

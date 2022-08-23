@@ -89,8 +89,6 @@ export interface UseModalAttributesOptions {
     trapFocus?: boolean;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "useTabsterAttributes" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 

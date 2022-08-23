@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "allowJs": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "experimentalDecorators": true,
+    "types": ["environment"],
+    "outDir": "./dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

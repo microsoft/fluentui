@@ -16,6 +16,9 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
+  // track focused state to conditionally render collapsed listbox
+  const [hasFocus, setHasFocus] = React.useState(false);
+
   const ignoreNextBlur = React.useRef(false);
 
   const selectionState = useSelection(props);
@@ -85,10 +88,12 @@ export const useComboboxBaseState = (props: ComboboxBaseProps) => {
     ...selectionState,
     activeOption,
     appearance,
+    hasFocus,
     ignoreNextBlur,
     inlinePopup,
     open,
     setActiveOption,
+    setHasFocus,
     setOpen,
     setValue,
     size,

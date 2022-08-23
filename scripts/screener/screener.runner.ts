@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { ScreenerRunnerConfig } from './screener.types';
 
-const environment = {
+export const environment = {
   screener: {
     /**
      *  Screener API endpoint used to create the tasks.
@@ -11,7 +11,15 @@ const environment = {
      *  Screener Proxy endpoint used to orchestrate the GitHub checks for Screener.
      **/
     proxyUri: process.env.SCREENER_PROXY_ENDPOINT,
+    /**
+     *  Determines whether a screener test should be skipped or run
+     **/
+    skipScreenerBuild: process.env.SKIP_SCREENER_BUILD,
   },
+};
+
+type ScheduleScreenerBuildResponse = {
+  conclusion?: 'skipped' | 'failure' | 'in_progress' | 'cancelled';
 };
 
 async function scheduleScreenerBuild(
@@ -22,7 +30,7 @@ async function scheduleScreenerBuild(
     commit: string;
     pullRequest: string;
   },
-) {
+): Promise<ScheduleScreenerBuildResponse> {
   const payload = {
     states: screenerConfig.states,
 
@@ -45,7 +53,6 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
-      screenerConfiguration: screenerConfig,
     }),
   });
 
@@ -57,7 +64,7 @@ async function scheduleScreenerBuild(
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
   //conclusion of the screener run
-  return response.json().then(conclusion => conclusion);
+  return response.json() as ScheduleScreenerBuildResponse;
 }
 
 export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
@@ -81,7 +88,11 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
 
   if (screenerRun.conclusion === 'skipped') {
     console.log('Screener test skipped.');
-  } else if (screenerRun.conclusion === 'in_progress') {
+    return;
+  }
+
+  if (screenerRun.conclusion === 'in_progress') {
     console.log('Screener test in progress.');
+    return;
   }
 }

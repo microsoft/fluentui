@@ -1,4 +1,4 @@
-import { screenerRunner } from '../screener/screener.runner';
+import { screenerRunner, environment } from '../screener/screener.runner';
 import { ScreenerRunnerConfig, ScreenerRunnerStep, ScreenerState } from '../screener/screener.types';
 import path from 'path';
 // @ts-ignore - screener-storybook has no typings
@@ -8,8 +8,6 @@ import { getStorybook } from '@storybook/react';
  * Starts or cancels a screener run through the screener proxy.
  * Runs are cancelled if package does not appear in Lage's affected package graph.
  */
-const { access } = require('fs');
-
 export async function screener() {
   const screenerConfigPath = path.resolve(process.cwd(), './screener.config.js');
   const screenerConfig: ScreenerRunnerConfig = require(screenerConfigPath);
@@ -17,21 +15,14 @@ export async function screener() {
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    const dir = 'dist/storybook';
-    let skipScreenerBuild = undefined;
-    access(dir, err => {
-      if (!err) {
-        console.log('Running screener test:');
-        skipScreenerBuild = false;
-      } else if (err.code === 'ENOENT') {
-        console.log('screener build skipped');
-        skipScreenerBuild = true;
-      }
-    });
-    if (skipScreenerBuild === false) {
+    console.log(`screener-runner: skip build ${JSON.stringify(environment.screener.skipScreenerBuild)}`);
+    if (environment.screener.skipScreenerBuild !== 'true') {
+      //Skipping "getScreenerStates()" if artifacts were not build
+      console.log('Running screener test:');
       const screenerStates = await getScreenerStates(screenerConfig);
       screenerConfig.states = screenerStates;
     }
+    //call "screenerRunner()" since it controls CI checks on a PR and screener tests being run/skipped
     await screenerRunner(screenerConfig);
   } catch (err) {
     console.error('failed to run screener task');
