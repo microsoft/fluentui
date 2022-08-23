@@ -905,6 +905,9 @@ export class DefaultButton extends React.Component<IButtonProps, {}> {
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
+// @public (undocumented)
+export const DetailsColumn: React.FunctionComponent<IDetailsColumnProps>;
+
 // @public
 export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     constructor(props: IDetailsColumnProps);
@@ -1350,6 +1353,18 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public (undocumented)
+export const getDetailsColumnStyles: (props: IDetailsColumnStyleProps) => IDetailsColumnStyles;
+
+// @public (undocumented)
+export const getDetailsHeaderStyles: (props: IDetailsHeaderStyleProps) => IDetailsHeaderStyles;
+
+// @public (undocumented)
+export const getDetailsListStyles: (props: IDetailsListStyleProps) => IDetailsListStyles;
+
+// @public (undocumented)
+export const getDetailsRowCheckStyles: (props: IDetailsRowCheckStyleProps) => IDetailsRowCheckStyles;
+
+// @public (undocumented)
 export const getDetailsRowStyles: (props: IDetailsRowStyleProps) => IDetailsRowStyles;
 
 // @public
@@ -1397,6 +1412,9 @@ export function getResponsiveMode(currentWindow: Window | undefined): Responsive
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public (undocumented)
+export const getShimmeredDetailsListStyles: (props: Required<Pick<import("./ShimmeredDetailsList.types").IShimmeredDetailsListProps, "theme">>) => IShimmeredDetailsListStyles;
 
 // @public (undocumented)
 export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean | undefined) => ISplitButtonClassNames;
