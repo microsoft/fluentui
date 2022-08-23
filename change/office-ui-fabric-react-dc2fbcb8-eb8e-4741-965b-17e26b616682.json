@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Export getCommandBarStyles and getCommandButtonStyles",
+  "packageName": "office-ui-fabric-react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
