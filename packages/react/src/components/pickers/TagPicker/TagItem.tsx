@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { styled, classNamesFunction } from '../../../Utilities';
-import { IconButton } from '../../../Button';
+import { IconButton, IButton } from '../../../Button';
 import { getStyles } from './TagItem.styles';
 import { useId } from '@fluentui/react-hooks';
 import type { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
@@ -27,6 +27,12 @@ export const TagItemBase = (props: ITagItemProps) => {
     removeButtonIconProps,
   } = props;
 
+  const buttonRef = React.createRef<IButton>();
+
+  const handleClick: React.MouseEventHandler<HTMLDivElement> = () => {
+    buttonRef.current?.focus();
+  };
+
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
@@ -46,11 +52,19 @@ export const TagItemBase = (props: ITagItemProps) => {
       };
 
   return (
-    <div className={classNames.root} role={'listitem'} key={index}>
+    <div
+      className={classNames.root}
+      data-selection-index={index}
+      data-is-focusable="true"
+      role={'listitem'}
+      key={index}
+      onClick={handleClick}
+    >
       <span className={classNames.text} title={title} id={`${itemId}-text`}>
-        {children}
+        {children} {}
       </span>
       <IconButton
+        componentRef={buttonRef}
         id={itemId}
         onClick={onRemoveItem}
         {...disabledAttrs}
@@ -58,7 +72,6 @@ export const TagItemBase = (props: ITagItemProps) => {
         styles={{ icon: { fontSize: '12px' } }}
         className={classNames.close}
         aria-labelledby={`${itemId}-removeLabel ${itemId}-text`}
-        data-selection-index={index}
       />
       <span id={`${itemId}-removeLabel`} hidden>
         {removeButtonAriaLabel}
