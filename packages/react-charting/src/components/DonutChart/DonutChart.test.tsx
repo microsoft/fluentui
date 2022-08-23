@@ -133,11 +133,11 @@ describe('DonutChart - mouse events', () => {
   it('Should render callout correctly on mousemove', () => {
     wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('path[id^="_Pie_"]').at(0).simulate('mousemove');
-    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    const html1 = wrapper.html();
     wrapper.find('path[id^="_Pie_"]').at(0).simulate('mouseleave');
     wrapper.find('path[id^="_Pie_"]').at(1).simulate('mousemove');
-    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
-    expect(textContent1).not.toBe(textContent2);
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
   });
 
   it('Should render customized callout on mouseover', () => {

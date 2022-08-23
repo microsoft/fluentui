@@ -222,10 +222,10 @@ describe('AreaChart - mouse events', () => {
   it('Should render callout correctly on mousemove', () => {
     wrapper = mount(<AreaChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
     wrapper.find('rect').simulate('mousemove', { clientX: 40, clientY: 0 });
-    const textContent1 = wrapper.find('.ms-Callout').hostNodes().text();
+    const html1 = wrapper.html();
     wrapper.find('rect').simulate('mousemove', { clientX: -20, clientY: 0 });
-    const textContent2 = wrapper.find('.ms-Callout').hostNodes().text();
-    expect(textContent1).not.toBe(textContent2);
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
   });
 
   it('Should render customized callout on mouseover', () => {
