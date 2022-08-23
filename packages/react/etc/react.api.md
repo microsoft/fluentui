@@ -1719,6 +1719,14 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 // @public
 export function getColorFromString(inputColor: string): IColor | undefined;
 
+// Warning: (ae-internal-missing-underscore) The name "getContextualMenuItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const getContextualMenuItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
+
+// @public
+export const getContextualMenuItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
+
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
