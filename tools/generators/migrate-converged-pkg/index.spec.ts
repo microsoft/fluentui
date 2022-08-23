@@ -560,7 +560,7 @@ describe('migrate-converged-pkg generator', () => {
           outDir: '',
           types: ['static-assets', 'environment', 'storybook__addons'],
         },
-        include: ['../src/**/*.stories.ts', '../src/**/*.stories.tsx', '*.js'],
+        include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       });
       expect(readJson<TsConfig>(tree, paths.tsconfig.lib).exclude).toEqual(
         expect.arrayContaining(['**/*.stories.ts', '**/*.stories.tsx']),
