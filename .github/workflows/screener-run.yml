@@ -31,7 +31,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: 2912475509,
+               run_id: 2912676079,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "northstar-artifact"
@@ -114,7 +114,7 @@ jobs:
                owner: context.repo.owner,
                repo: context.repo.repo,
                //run_id: context.payload.workflow_run.id,
-               run_id: 2912475509,
+               run_id: 2912676079,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "screener-artifact"
