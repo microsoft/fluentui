@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 23 Aug 2022 16:10:36 GMT",
+      "tag": "@fluentui/react-charting_v5.12.25",
+      "version": "5.12.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "103020020+AnnapareddyHarsha@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0f5cdf1f75b22a6552dc3e31dc674023e76dea4",
+            "comment": "fixed spacing between bar graph and labels"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Aug 2022 07:22:50 GMT",
       "tag": "@fluentui/react-charting_v5.12.24",
       "version": "5.12.24",

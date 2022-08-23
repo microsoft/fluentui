@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 23 Aug 2022 07:22:50 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Aug 2022 16:10:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.25)
+
+Tue, 23 Aug 2022 16:10:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.24..@fluentui/react-charting_v5.12.25)
+
+### Patches
+
+- fixed spacing between bar graph and labels ([PR #24461](https://github.com/microsoft/fluentui/pull/24461) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
 
 ## [5.12.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.24)
 
