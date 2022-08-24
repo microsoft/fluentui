@@ -27,7 +27,7 @@ that may need to be polyfilled.
 
 ## Partial Support:
 
-FluentUI provides partial support for the browsers below which will have limitations that may require consumers to use/implement polyfills to cover the support gaps.
+FluentUI provides partial support for the browsers below which will have limitations that will require consumers to transpile down and/or use polyfills to cover the support gaps.
 
 **Desktop Browsers:**
 
@@ -45,8 +45,8 @@ List of features that are currently used in FluentUI that aren't supported out o
 
 **Unsupported ECMAScript Features:**
 
-1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera
-2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera
+1. Nullish Coalescing: Unsupported by Chrome, Edge, Firefox, Opera. Also an ES2020 feature, will require down-level transpilation to support older ECMAScript standards.
+2. Optional Chaining: Unsupported by Chrome, Edge, Firefox, Opera. Also an ES2020 feature, will require down-level transpilation to support older ECMAScript standards.
 
 **Unsupported CSS Features:**
 
