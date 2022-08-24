@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 23 Aug 2022 07:22:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 07:44:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.91.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.91.0)
+
+Wed, 24 Aug 2022 07:44:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.90.2..@fluentui/react_v8.91.0)
+
+### Minor changes
+
+- Exported getActivityItemStyles and getActivityItemClassNaes ([PR #24475](https://github.com/microsoft/fluentui/pull/24475) by gcox@microsoft.com)
+- Exported getCommandBarStyles and getCommandButtonStyles ([PR #24478](https://github.com/microsoft/fluentui/pull/24478) by gcox@microsoft.com)
+- Added exports for ContextualMenu getItemStyles and getItemClassNames ([PR #24484](https://github.com/microsoft/fluentui/pull/24484) by gcox@microsoft.com)
 
 ## [8.90.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.90.2)
 
