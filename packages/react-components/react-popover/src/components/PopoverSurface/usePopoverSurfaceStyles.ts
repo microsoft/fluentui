@@ -27,15 +27,13 @@ const useStyles = makeStyles({
   },
 
   inverted: {
-    // TODO: neutral background inverted missing from superset and theme
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralForegroundInverted,
+    backgroundColor: tokens.colorNeutralBackgroundStatic,
+    color: tokens.colorNeutralForegroundInvertedStatic,
   },
 
   brand: {
     backgroundColor: tokens.colorBrandBackground,
-    // TODO: clarify with designers what foreground color should be with brand background,
-    color: tokens.colorNeutralForegroundInverted,
+    color: tokens.colorNeutralForegroundOnBrand,
   },
 
   smallPadding: {

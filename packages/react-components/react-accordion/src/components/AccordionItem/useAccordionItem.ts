@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
-import { AccordionContext } from '../Accordion/AccordionContext';
+import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 
@@ -16,8 +15,8 @@ export const useAccordionItem_unstable = (
 ): AccordionItemState => {
   const { value, disabled = false } = props;
 
-  const requestToggle = useContextSelector(AccordionContext, ctx => ctx.requestToggle);
-  const open = useContextSelector(AccordionContext, ctx => ctx.openItems.includes(value));
+  const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
+  const open = useAccordionContext_unstable(ctx => ctx.openItems.includes(value));
   const onAccordionHeaderClick = React.useCallback((ev: AccordionToggleEvent) => requestToggle(ev, { value }), [
     requestToggle,
     value,

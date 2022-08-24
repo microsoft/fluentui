@@ -8,13 +8,14 @@ import {
   applyTriggerPropsToChildren,
   resolveShorthand,
   useControllableState,
-  useMergedEventCallbacks,
   useId,
   useIsomorphicLayoutEffect,
   useIsSSR,
   useMergedRefs,
   useTimeout,
   getTriggerChild,
+  mergeCallbacks,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipTriggerProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -188,8 +189,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   // Cancel the hide timer when the pointer enters the tooltip, and restart it when the mouse leaves.
   // This keeps the tooltip visible when the pointer is moved over it.
-  state.content.onPointerEnter = useMergedEventCallbacks(state.content.onPointerEnter, clearDelayTimeout);
-  state.content.onPointerLeave = useMergedEventCallbacks(state.content.onPointerLeave, onLeaveTrigger);
+  state.content.onPointerEnter = mergeCallbacks(state.content.onPointerEnter, clearDelayTimeout);
+  state.content.onPointerLeave = mergeCallbacks(state.content.onPointerLeave, onLeaveTrigger);
 
   const child = React.isValidElement(children) ? getTriggerChild(children) : undefined;
 
@@ -223,10 +224,10 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...child?.props,
     // If the target prop is not provided, attach targetRef to the trigger element's ref prop
     ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
-    onPointerEnter: useMergedEventCallbacks(child?.props?.onPointerEnter, onEnterTrigger),
-    onPointerLeave: useMergedEventCallbacks(child?.props?.onPointerLeave, onLeaveTrigger),
-    onFocus: useMergedEventCallbacks(child?.props?.onFocus, onEnterTrigger),
-    onBlur: useMergedEventCallbacks(child?.props?.onBlur, onLeaveTrigger),
+    onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
+    onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
+    onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),
+    onBlur: useEventCallback(mergeCallbacks(child?.props?.onBlur, onLeaveTrigger)),
   });
 
   return state;

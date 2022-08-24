@@ -33,6 +33,7 @@ import type { ISelection, IObjectWithKey } from './interfaces';
 
 const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
+const SELECTION_SPAN_ATTRIBUTE_NAME = 'data-selection-span';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME = 'data-selection-touch-invoke';
@@ -311,17 +312,20 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
       if (!isToggle && itemRoot) {
         const index = this._getItemIndex(itemRoot);
+        const span = this._getItemSpan(itemRoot);
 
-        if (isToggleModifierPressed) {
-          // set anchor only.
-          selection.setIndexSelected(index, selection.isIndexSelected(index), true);
-          if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
-            selection.setModal(true);
-            this._setIsTouch(false);
-          }
-        } else {
-          if (this.props.isSelectedOnFocus) {
-            this._onItemSurfaceClick(ev, index);
+        if (span === undefined) {
+          if (isToggleModifierPressed) {
+            // set anchor only.
+            selection.setIndexSelected(index, selection.isIndexSelected(index), true);
+            if (this.props.enterModalOnTouch && this._isTouch && selection.setModal) {
+              selection.setModal(true);
+              this._setIsTouch(false);
+            }
+          } else {
+            if (this.props.isSelectedOnFocus) {
+              this._onItemSurfaceClick('focus', index);
+            }
           }
         }
       }
@@ -332,6 +336,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._updateModifiers(ev);
+
+    const { toggleWithoutModifierPressed } = this.props;
 
     let target = ev.target as HTMLElement;
     const itemRoot = this._findItemRoot(target);
@@ -354,9 +360,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           !this._isShiftPressed &&
           !this._isCtrlPressed &&
           !this._isMetaPressed &&
-          !this.props.toggleWithoutModifierPressed
+          !toggleWithoutModifierPressed
         ) {
-          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
+          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot), this._getItemSpan(itemRoot));
+
           break;
         } else if (
           this.props.disableAutoSelectOnInputElements &&
@@ -392,13 +399,14 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         break;
       } else if (itemRoot) {
         const index = this._getItemIndex(itemRoot);
+        const span = this._getItemSpan(itemRoot);
 
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
           if (!isSelectionDisabled) {
             if (this._isShiftPressed) {
-              this._onItemSurfaceClick(ev, index);
+              this._onItemSurfaceClick('click', index, span);
             } else {
-              this._onToggleClick(ev, index);
+              this._onToggleClick(ev, index, span);
             }
           }
           break;
@@ -408,12 +416,14 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
             this._hasAttribute(target, SELECTION_INVOKE_TOUCH_ATTRIBUTE_NAME)) ||
           this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)
         ) {
-          // Items should be invokable even if selection is disabled.
-          this._onInvokeClick(ev, index);
+          if (span === undefined) {
+            // Items should be invokable even if selection is disabled.
+            this._onInvokeClick(ev, index);
+          }
           break;
         } else if (target === itemRoot) {
           if (!isSelectionDisabled) {
-            this._onItemSurfaceClick(ev, index);
+            this._onItemSurfaceClick('click', index, span);
           }
           break;
         } else if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'INPUT') {
@@ -548,6 +558,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     // If a key was pressed within an item, we should treat "enters" as invokes and "space" as toggle
     if (itemRoot) {
       const index = this._getItemIndex(itemRoot);
+      const span = this._getItemSpan(itemRoot);
 
       while (target !== this._root.current) {
         if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
@@ -555,10 +566,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           // so we can no-op for any keydowns in this case.
           break;
         } else if (this._shouldAutoSelect(target)) {
-          if (!isSelectionDisabled) {
+          if (!isSelectionDisabled && span === undefined) {
             // If the event went to an element which should trigger auto-select, select it and then let
             // the default behavior kick in.
-            this._onInvokeMouseDown(ev, index);
+            this._onInvokeMouseDown(ev, index, span);
           }
           break;
         } else if (
@@ -570,14 +581,16 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
         } else if (target === itemRoot) {
           // eslint-disable-next-line deprecation/deprecation
           if (ev.which === KeyCodes.enter) {
-            // Items should be invokable even if selection is disabled.
-            this._onInvokeClick(ev, index);
-            ev.preventDefault();
+            if (span === undefined) {
+              // Items should be invokable even if selection is disabled.
+              this._onInvokeClick(ev, index);
+              ev.preventDefault();
+            }
             return;
             // eslint-disable-next-line deprecation/deprecation
           } else if (ev.which === KeyCodes.space) {
             if (!isSelectionDisabled) {
-              this._onToggleClick(ev, index);
+              this._onToggleClick(ev, index, span);
             }
             ev.preventDefault();
             return;
@@ -602,30 +615,45 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     }
   }
 
-  private _onToggleClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number): void {
+  private _onToggleClick(
+    ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    index: number,
+    span?: number,
+  ): void {
     const { selection } = this.props;
 
     const selectionMode = this._getSelectionMode();
 
     selection.setChangeEvents(false);
 
-    if (this.props.enterModalOnTouch && this._isTouch && !selection.isIndexSelected(index) && selection.setModal) {
+    if (
+      this.props.enterModalOnTouch &&
+      this._isTouch &&
+      (span !== undefined ? !selection.isRangeSelected(index, span) : !selection.isIndexSelected(index)) &&
+      selection.setModal
+    ) {
       selection.setModal(true);
       this._setIsTouch(false);
     }
 
     if (selectionMode === SelectionMode.multiple) {
-      selection.toggleIndexSelected(index);
+      if (span !== undefined) {
+        selection.toggleRangeSelected(index, span);
+      } else {
+        selection.toggleIndexSelected(index);
+      }
     } else if (selectionMode === SelectionMode.single) {
-      const isSelected = selection.isIndexSelected(index);
-      const isModal = selection.isModal && selection.isModal();
-      selection.setAllSelected(false);
-      selection.setIndexSelected(index, !isSelected, true);
-      if (isModal && selection.setModal) {
-        // Since the above call to setAllSelected(false) clears modal state,
-        // restore it. This occurs because the SelectionMode of the Selection
-        // may differ from the SelectionZone.
-        selection.setModal(true);
+      if (span === undefined || span === 1) {
+        const isSelected = selection.isIndexSelected(index);
+        const isModal = selection.isModal && selection.isModal();
+        selection.setAllSelected(false);
+        selection.setIndexSelected(index, !isSelected, true);
+        if (isModal && selection.setModal) {
+          // Since the above call to setAllSelected(false) clears modal state,
+          // restore it. This occurs because the SelectionMode of the Selection
+          // may differ from the SelectionZone.
+          selection.setModal(true);
+        }
       }
     } else {
       selection.setChangeEvents(true);
@@ -650,7 +678,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     }
   }
 
-  private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number): void {
+  private _onItemSurfaceClick(type: 'focus' | 'click', index: number, span?: number): void {
     const { selection, toggleWithoutModifierPressed } = this.props;
     const isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
@@ -658,29 +686,44 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
     if (selectionMode === SelectionMode.multiple) {
       if (this._isShiftPressed && !this._isTabPressed) {
-        selection.selectToIndex(index, !isToggleModifierPressed);
-      } else if (isToggleModifierPressed || toggleWithoutModifierPressed) {
-        selection.toggleIndexSelected(index);
+        if (span !== undefined) {
+          selection.selectToRange(index, span, !isToggleModifierPressed);
+        } else {
+          selection.selectToIndex(index, !isToggleModifierPressed);
+        }
+      } else if (type === 'click' && (isToggleModifierPressed || toggleWithoutModifierPressed)) {
+        if (span !== undefined) {
+          selection.toggleRangeSelected(index, span);
+        } else {
+          selection.toggleIndexSelected(index);
+        }
       } else {
-        this._clearAndSelectIndex(index);
+        this._clearAndSelectIndex(index, span);
       }
     } else if (selectionMode === SelectionMode.single) {
-      this._clearAndSelectIndex(index);
+      this._clearAndSelectIndex(index, span);
     }
   }
 
   private _onInvokeMouseDown(
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
     index: number,
+    span?: number,
   ): void {
     const { selection } = this.props;
 
-    // Only do work if item is not selected.
-    if (selection.isIndexSelected(index)) {
-      return;
+    if (span !== undefined) {
+      if (selection.isRangeSelected(index, span)) {
+        return;
+      }
+    } else {
+      // Only do work if item is not selected.
+      if (selection.isIndexSelected(index)) {
+        return;
+      }
     }
 
-    this._clearAndSelectIndex(index);
+    this._clearAndSelectIndex(index, span);
   }
 
   /**
@@ -708,15 +751,20 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     }
   }
 
-  private _clearAndSelectIndex(index: number): void {
+  private _clearAndSelectIndex(index: number, span?: number): void {
     const { selection, selectionClearedOnSurfaceClick = true } = this.props;
-    const isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
+    const isAlreadySingleSelected =
+      (span === undefined || span === 1) && selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
 
     if (!isAlreadySingleSelected && selectionClearedOnSurfaceClick) {
       const isModal = selection.isModal && selection.isModal();
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
-      selection.setIndexSelected(index, true, true);
+      if (span !== undefined) {
+        selection.setRangeSelected(index, span, true, true);
+      } else {
+        selection.setIndexSelected(index, true, true);
+      }
       if (isModal || (this.props.enterModalOnTouch && this._isTouch)) {
         if (selection.setModal) {
           selection.setModal(true);
@@ -765,7 +813,15 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   }
 
   private _getItemIndex(itemRoot: HTMLElement): number {
-    return Number(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME));
+    const indexValue = parseInt(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME) ?? '', 10);
+
+    return isNaN(indexValue) ? -1 : indexValue;
+  }
+
+  private _getItemSpan(itemRoot: HTMLElement): number | undefined {
+    const spanValue = parseInt(itemRoot.getAttribute(SELECTION_SPAN_ATTRIBUTE_NAME) ?? '', 10);
+
+    return isNaN(spanValue) ? undefined : spanValue;
   }
 
   private _shouldAutoSelect(element: HTMLElement): boolean {

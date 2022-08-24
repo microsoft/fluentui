@@ -1,7 +1,7 @@
-import fs from 'fs';
 import * as path from 'path';
-import { tscTask, TscTaskOptions, resolveCwd, logger } from 'just-scripts';
+import { tscTask, TscTaskOptions, logger } from 'just-scripts';
 import { getJustArgv } from './argv';
+import { getTsPathAliasesConfig } from './utils';
 
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
@@ -22,18 +22,24 @@ function prepareTsTaskConfig(options: TscTaskOptions) {
     options.sourceMap = true;
   }
 
-  const tsConfigLib = 'tsconfig.lib.json';
-  const isUsingTsSolutionConfigs = fs.existsSync(resolveCwd(tsConfigLib));
+  const { isUsingTsSolutionConfigs, tsConfigFile, tsConfig } = getTsPathAliasesConfig();
 
   if (isUsingTsSolutionConfigs) {
-    // For converged packages (which use TS path aliases), explicitly set `baseUrl` and `rootDir` to current package root.
-    // > - This is a temporary workaround for current way of building packages via lage and just scripts.
-    // > - Without setting baseUrl we would get all aliased packages build within outDir
-    // > - Without setting rootDir we would get output dir mapping following path from monorepo root
     logger.info(`📣 TSC: package is using TS path aliases. Overriding tsconfig settings.`);
-    options.baseUrl = '.';
-    options.rootDir = './src';
-    options.project = tsConfigLib;
+
+    const tsConfigOutDir = tsConfig.compilerOptions.outDir as string;
+
+    const hasNewCompilationSetup = tsConfigOutDir.includes('dist/out-tsc');
+
+    if (hasNewCompilationSetup) {
+      options.outDir = `${tsConfigOutDir}/${options.outDir}`;
+    } else {
+      // TODO: remove after all v9 is migrated to new build and .d.ts API stripping
+      options.baseUrl = '.';
+      options.rootDir = './src';
+    }
+
+    options.project = tsConfigFile;
   }
 
   return options;

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "(chore): Remove appearance conditional from Spinner slot styling",
+  "packageName": "@fluentui/react-spinner",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

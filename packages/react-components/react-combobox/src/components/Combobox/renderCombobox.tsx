@@ -10,15 +10,19 @@ import type { ComboboxContextValues, ComboboxState, ComboboxSlots } from './Comb
 export const renderCombobox_unstable = (state: ComboboxState, contextValues: ComboboxContextValues) => {
   const { slots, slotProps } = getSlots<ComboboxSlots>(state);
 
-  const listbox = <slots.listbox {...slotProps.listbox}>{slotProps.root.children}</slots.listbox>;
-  const popup = state.inlinePopup ? listbox : <Portal>{listbox}</Portal>;
-
   return (
     <slots.root {...slotProps.root}>
       <ComboboxContext.Provider value={contextValues.combobox}>
         <slots.input {...slotProps.input} />
         {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-        {state.open ? popup : null}
+        {slots.listbox &&
+          (state.inlinePopup ? (
+            <slots.listbox {...slotProps.listbox} />
+          ) : (
+            <Portal>
+              <slots.listbox {...slotProps.listbox} />
+            </Portal>
+          ))}
       </ComboboxContext.Provider>
     </slots.root>
   );

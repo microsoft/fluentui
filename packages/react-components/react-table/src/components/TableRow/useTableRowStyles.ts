@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableRowSlots, TableRowState } from './TableRow.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tableCellActionsClassNames } from '../TableCellActions/useTableCellActionsStyles';
 
 export const tableRowClassName = 'fui-TableRow';
 export const tableRowClassNames: SlotClassNames<TableRowSlots> = {
@@ -17,6 +18,9 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      [`& .${tableCellActionsClassNames.root}`]: {
+        opacity: 1,
+      },
     },
   },
 

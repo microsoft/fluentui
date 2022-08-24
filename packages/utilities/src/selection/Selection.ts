@@ -374,9 +374,6 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       return;
     }
 
-    // Clamp the index.
-    index = Math.min(Math.max(0, index), this._items.length - 1);
-
     // No-op on out of bounds selections.
     if (index < 0 || index >= this._items.length) {
       return;
@@ -415,8 +412,62 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     this.setChangeEvents(true);
   }
 
+  public setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void {
+    if (this.mode === SelectionMode.none) {
+      return;
+    }
+
+    // No-op on out of bounds selections.
+    if (fromIndex < 0 || fromIndex >= this._items.length || count === 0) {
+      return;
+    }
+
+    this.setChangeEvents(false);
+
+    const anchorIndex = this._anchoredIndex || 0;
+    let startIndex = fromIndex;
+    const endIndex = fromIndex + count - 1;
+
+    const newAnchorIndex = anchorIndex >= endIndex ? startIndex : endIndex;
+
+    for (; startIndex <= endIndex; startIndex++) {
+      this.setIndexSelected(startIndex, isSelected, shouldAnchor ? startIndex === newAnchorIndex : false);
+    }
+
+    this.setChangeEvents(true);
+  }
+
   public selectToKey(key: string, clearSelection?: boolean): void {
     this.selectToIndex(this._keyToIndexMap[key], clearSelection);
+  }
+
+  public selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void {
+    if (this.mode === SelectionMode.none) {
+      return;
+    }
+
+    if (this.mode === SelectionMode.single) {
+      if (count === 1) {
+        this.setIndexSelected(fromIndex, true, true);
+      }
+      return;
+    }
+
+    const anchorIndex = this._anchoredIndex || 0;
+    let startIndex = Math.min(fromIndex, anchorIndex);
+    const endIndex = Math.max(fromIndex + count - 1, anchorIndex);
+
+    this.setChangeEvents(false);
+
+    if (clearSelection) {
+      this._setAllSelected(false, true);
+    }
+
+    for (; startIndex <= endIndex; startIndex++) {
+      this.setIndexSelected(startIndex, true, false);
+    }
+
+    this.setChangeEvents(true);
   }
 
   public selectToIndex(index: number, clearSelection?: boolean): void {

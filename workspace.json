@@ -218,6 +218,11 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/stress-test": {
+      "root": "apps/stress-test",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/priority-overflow": {
       "root": "packages/react-components/priority-overflow",
       "projectType": "library",
@@ -816,6 +821,11 @@
     },
     "@fluentui/theming-designer": {
       "root": "apps/theming-designer",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
+    "@fluentui/react-18-tests-v9": {
+      "root": "apps/react-18-tests-v9",
       "projectType": "application",
       "implicitDependencies": []
     },

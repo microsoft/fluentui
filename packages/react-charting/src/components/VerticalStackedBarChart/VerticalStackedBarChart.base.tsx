@@ -273,7 +273,12 @@ export class VerticalStackedBarChartBase extends React.Component<
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumeric);
     const lineObject: LineObject = this._getFormattedLineData(this.props.data);
     const lines: React.ReactNode[] = [];
+    const borderForLines: React.ReactNode[] = [];
     const dots: React.ReactNode[] = [];
+    const { theme } = this.props;
+    const lineBorderWidth = this.props.lineOptions?.lineBorderWidth
+      ? Number.parseFloat(this.props.lineOptions!.lineBorderWidth!.toString())
+      : 0;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const xScaleBandwidthTranslate = isNumeric ? 0 : (xBarScale as any).bandwidth() / 2;
     Object.keys(lineObject).forEach((item: string, index: number) => {
@@ -292,6 +297,24 @@ export class VerticalStackedBarChartBase extends React.Component<
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
         const y2 = yScale(lineObject[item][i].y);
+
+        if (lineBorderWidth > 0) {
+          borderForLines.push(
+            <line
+              key={`${index}-${i}-BorderLine`}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              opacity={shouldHighlight ? 1 : 0.1}
+              strokeWidth={3 + lineBorderWidth * 2}
+              fill="transparent"
+              strokeLinecap="round"
+              stroke={theme!.palette.white}
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            />,
+          );
+        }
         lines.push(
           <line
             key={`${index}-${i}-line`}
@@ -301,6 +324,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             y2={y2}
             opacity={shouldHighlight ? 1 : 0.1}
             strokeWidth={3}
+            strokeLinecap="round"
             stroke={lineObject[item][i].color}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             {...(isLegendSelected &&
@@ -345,6 +369,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     });
     return (
       <>
+        {borderForLines}
         {lines}
         {dots}
       </>

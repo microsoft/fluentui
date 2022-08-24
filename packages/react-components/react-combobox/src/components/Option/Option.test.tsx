@@ -18,13 +18,16 @@ describe('Option', () => {
   const defaultContextValues = {
     activeOption: undefined,
     multiselect: false,
-    onOptionClick() {
-      // noop
-    },
     registerOption() {
       return () => undefined;
     },
     selectedOptions: [],
+    selectOption() {
+      // noop
+    },
+    setActiveOption() {
+      // noop
+    },
   };
 
   it('renders a default single-select state', () => {
@@ -156,5 +159,26 @@ describe('Option', () => {
     );
 
     expect(registerOption).toHaveBeenCalledTimes(2);
+  });
+
+  it('calls selectOption and setActiveOption on click', () => {
+    const selectOption = jest.fn();
+    const setActiveOption = jest.fn();
+    const { getByRole } = render(
+      <ListboxContext.Provider value={{ ...defaultContextValues, selectOption, setActiveOption }}>
+        <Option id="optionId" value="foo">
+          Option 1
+        </Option>
+      </ListboxContext.Provider>,
+    );
+
+    fireEvent.click(getByRole('option'));
+    const optionData = { id: 'optionId', disabled: undefined, value: 'foo' };
+
+    expect(selectOption).toHaveBeenCalledTimes(1);
+    expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
+
+    expect(setActiveOption).toHaveBeenCalledTimes(1);
+    expect(setActiveOption).toHaveBeenCalledWith(optionData);
   });
 });

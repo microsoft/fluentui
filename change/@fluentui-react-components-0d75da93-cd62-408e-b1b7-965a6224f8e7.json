@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Export `TableCellActions` and `TablePrimaryCell` as unstable",
+  "packageName": "@fluentui/react-components",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

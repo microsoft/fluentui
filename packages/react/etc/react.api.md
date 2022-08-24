@@ -1691,6 +1691,12 @@ export { format }
 export { formProperties }
 
 // @public (undocumented)
+export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean) => IActivityItemClassNames;
+
+// @public (undocumented)
+export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles | undefined, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
+
+// @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public
@@ -1718,6 +1724,20 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 
 // @public
 export function getColorFromString(inputColor: string): IColor | undefined;
+
+// @public (undocumented)
+export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
+
+// @public (undocumented)
+export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "getContextualMenuItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const getContextualMenuItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
+
+// @public
+export const getContextualMenuItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
 
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
@@ -2037,6 +2057,28 @@ export interface IAccessiblePopupProps {
     // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
+export interface IActivityItemClassNames {
+    // (undocumented)
+    activityContent?: string;
+    // (undocumented)
+    activityPersona?: string;
+    // (undocumented)
+    activityText?: string;
+    // (undocumented)
+    activityTypeIcon?: string;
+    // (undocumented)
+    commentText?: string;
+    // (undocumented)
+    personaContainer?: string;
+    // (undocumented)
+    pulsingBeacon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    timeStamp?: string;
 }
 
 // @public (undocumented)
@@ -3102,6 +3144,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
+    popupProps?: IPopupProps;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
     // @deprecated
     preventDismissOnLostFocus?: boolean;
@@ -3247,8 +3290,8 @@ export interface IChoiceGroupOption extends Omit<React_2.InputHTMLAttributes<HTM
     imageSrc?: string;
     key: string;
     labelId?: string;
-    onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
-    onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
+    onRenderField?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
+    onRenderLabel?: IRenderFunction<IChoiceGroupOption | IChoiceGroupOptionProps>;
     selectedImageSrc?: string;
     styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
     text: string;
@@ -3263,9 +3306,9 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
     itemKey: string;
     key?: string;
     name?: string;
-    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOptionProps) => void;
-    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void;
-    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOptionProps) => void | undefined;
+    onBlur?: (ev?: React_2.FocusEvent<HTMLElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
+    onChange?: (evt?: React_2.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void;
+    onFocus?: (ev?: React_2.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption | IChoiceGroupOptionProps) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -7056,7 +7099,7 @@ export interface IOnRenderComboBoxLabelProps {
 
 // @public (undocumented)
 export interface IOverflowSet {
-    focus(forceIntoFirstElement?: boolean): boolean;
+    focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
 }
 
@@ -7547,6 +7590,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
     overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
+    overflowButtonAs?: IComponentAs<IButtonProps>;
     selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
@@ -10979,7 +11023,6 @@ export const TagPicker: React_2.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
-    constructor(props: ITagPickerProps);
     // (undocumented)
     static defaultProps: {
         onRenderItem: (props: ITagItemProps) => JSX.Element;

@@ -6,8 +6,8 @@ import * as jju from 'jju';
 import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
+import { WorkspaceJsonConfiguration } from '@nrwl/devkit';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import { WorkspaceJsonConfiguration } from '@nrwl/tao/src/shared/workspace';
 
 const root = findGitRoot();
 

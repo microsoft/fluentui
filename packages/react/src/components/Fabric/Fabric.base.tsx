@@ -7,7 +7,6 @@ import {
   getRTL,
   memoizeFunction,
   Customizer,
-  FocusRectsContext,
   FocusRectsProvider,
 } from '../../Utilities';
 import { createTheme } from '../../Styling';
@@ -15,7 +14,6 @@ import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
 import type { ITheme } from '../../Styling';
-import type { IFocusRectsContext } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -64,16 +62,8 @@ function useRenderedContent(
 
   const { rootDir, needsTheme } = getDir(props);
 
-  const { providerRef: parentProviderRef } = React.useContext(FocusRectsContext);
-  const focusRectsContext = React.useMemo<IFocusRectsContext>(
-    () => ({
-      providerRef: parentProviderRef ?? rootElement,
-    }),
-    [parentProviderRef, rootElement],
-  );
-
   let renderedContent = (
-    <FocusRectsProvider value={focusRectsContext}>
+    <FocusRectsProvider providerRef={rootElement}>
       <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />
     </FocusRectsProvider>
   );
