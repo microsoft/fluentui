@@ -2,6 +2,21 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 22:39:29 GMT",
+      "tag": "@uifabric/theme-samples_v7.5.11",
+      "version": "7.5.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.196.0",
+            "author": "gcox@microsoft.com",
+            "commit": "d646713bd4da0335f880e0a1ea00873fb8f3a519",
+            "package": "@uifabric/theme-samples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 17:07:21 GMT",
       "tag": "@uifabric/theme-samples_v7.5.10",
       "version": "7.5.10",

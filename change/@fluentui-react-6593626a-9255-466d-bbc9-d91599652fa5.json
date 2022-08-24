@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added missing export files in packages/react",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

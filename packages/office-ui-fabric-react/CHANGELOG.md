@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Aug 2022 17:07:21 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 22:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.196.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.196.0)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.195.0..office-ui-fabric-react_v7.196.0)
+
+### Minor changes
+
+- Added exports to pickers ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+- Added exports for textfield styles ([PR #24510](https://github.com/microsoft/fluentui/pull/24510) by gcox@microsoft.com)
+- Added exports for GroupedList utilities in v7 ([PR #24514](https://github.com/microsoft/fluentui/pull/24514) by gcox@microsoft.com)
 
 ## [7.195.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.195.0)
 

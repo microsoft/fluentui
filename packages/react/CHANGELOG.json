@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 22:39:29 GMT",
+      "tag": "@fluentui/react_v7.196.0",
+      "version": "7.196.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added missing export files in packages/react",
+            "author": "gcox@microsoft.com",
+            "commit": "76e1058c70a07426e82e303a80d55cf339838404",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.196.0",
+            "author": "gcox@microsoft.com",
+            "commit": "d646713bd4da0335f880e0a1ea00873fb8f3a519",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 17:07:21 GMT",
       "tag": "@fluentui/react_v7.195.0",
       "version": "7.195.0",
