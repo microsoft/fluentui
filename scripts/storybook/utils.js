@@ -36,7 +36,6 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
     const packageJsonPath = path.join(rootPath, 'package.json');
     const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
-
     /**
      * @type {Record<string,any>}
      */
@@ -47,7 +46,6 @@ function loadWorkspaceAddon(addonName, options = {}) {
     /**
      * we use always POSIX path in js modules, thus this needs to be explicit for all OS, to properly replace content
      */
-
     const relativePathToSource = path.relative(distPath, sourceRootPath).split(path.sep).join(path.posix.sep);
     const presetSourcePath = path.join(rootPath, 'preset.js');
     const presetMemorySourcePath = path.join(distPath, 'preset.js');
