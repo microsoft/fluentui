@@ -111,8 +111,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${env.ISPR}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr={env.ISPR})
+          echo "Is PR build? ${{env.ISPR}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{env.ISPR}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -170,8 +170,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${env.ISPR}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr={env.ISPR})
+          echo "Is PR build? ${{env.ISPR}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=${{env.ISPR}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -227,8 +227,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${env.ISPR}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${env.ISPR})
+          echo "Is PR build? ${{env.ISPR}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${{env.ISPR}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
