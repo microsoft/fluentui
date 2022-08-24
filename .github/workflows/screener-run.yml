@@ -42,7 +42,7 @@ jobs:
           result-encoding: string
 
       - name: Set env variable for skipping screener
-        run: echo "SKIP_SCREENER_BUILD=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -59,7 +59,7 @@ jobs:
           name: northstar-artifact
           # downloads artifact to where it would be 'built'
           path: packages/fluentui/docs/dist
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Define env variables
         run: |
@@ -83,7 +83,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
@@ -125,7 +125,7 @@ jobs:
           result-encoding: string
 
       - name: Set env variable for skipping screener
-        run: echo "SKIP_SCREENER_BUILD=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -141,7 +141,7 @@ jobs:
           workflow_conclusion: success
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Define env variables
         run: |
@@ -164,7 +164,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
@@ -205,7 +205,7 @@ jobs:
           result-encoding: string
 
       - name: Set env variable for skipping screener
-        run: echo "SKIP_SCREENER_BUILD=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -221,7 +221,7 @@ jobs:
           workflow_conclusion: success
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Define env variables
         run: |
@@ -245,7 +245,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
-        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
 
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
