@@ -166,7 +166,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
 
   memoItems.length = index;
 
-  // console.log('MEMO ITEMS', memoItems);
+  console.log('MEMO ITEMS', memoItems);
 
   return memoItems;
 };
@@ -425,7 +425,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       const groupShowAllProps = {
         ...groupProps!.showAllProps,
         ...getDividerProps(group, flattenedIndex),
-        key: group?.key ? `${group.key}-show-all` : undefined,
+        key: group.key ? `${group.key}-show-all` : undefined,
       };
 
       return (
@@ -449,7 +449,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       const groupFooterProps = {
         ...groupProps!.footerProps,
         ...getDividerProps(group, flattenedIndex),
-        key: group?.key ? `${group.key}-footer` : undefined,
+        key: group.key ? `${group.key}-footer` : undefined,
       };
 
       return (

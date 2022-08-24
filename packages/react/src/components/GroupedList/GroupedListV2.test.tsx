@@ -132,7 +132,7 @@ describe('GroupedListV2', () => {
     wrapper.unmount();
   });
 
-  it("renders the number of rows specified by a group's count when startIndex is not zero", () => {
+  it.only("renders the number of rows specified by a group's count when startIndex is not zero", () => {
     const _selection = new Selection();
     const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }, { key: '5' }];
     const _groups: Array<IGroup> = [
