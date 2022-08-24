@@ -6,7 +6,7 @@ import {
   Theme as ThemeV9,
   webLightTheme,
 } from '@fluentui/react-components';
-import { blackAlpha, whiteAlpha } from './themeDuplicates';
+import { blackAlpha, whiteAlpha, grey } from './themeDuplicates';
 
 /**
  * Creates v9 color tokens from a v8 palette.
@@ -53,6 +53,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorNeutralForegroundInvertedPressed: palette.white,
     colorNeutralForegroundInvertedSelected: palette.white,
     colorNeutralForegroundOnBrand: palette.white,
+    colorNeutralForegroundInvertedStatic: palette.white,
     colorNeutralForegroundInvertedLink: palette.white,
     colorNeutralForegroundInvertedLinkHover: palette.white,
     colorNeutralForegroundInvertedLinkPressed: palette.white,
@@ -85,6 +86,7 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorNeutralBackground5Pressed: palette.neutralLighter,
     colorNeutralBackground5Selected: palette.neutralLighterAlt,
     colorNeutralBackground6: palette.neutralLight,
+    colorNeutralBackgroundStatic: grey[20],
     colorNeutralBackgroundInverted: palette.neutralSecondary,
     colorSubtleBackground: 'transparent',
     colorSubtleBackgroundHover: palette.neutralLighter,

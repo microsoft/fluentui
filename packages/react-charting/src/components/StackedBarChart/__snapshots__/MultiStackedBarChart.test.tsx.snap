@@ -49,7 +49,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -195,7 +195,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -433,7 +433,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -575,7 +575,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -809,7 +809,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -955,7 +955,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -1123,7 +1123,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -1257,7 +1257,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -1676,7 +1676,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -1822,7 +1822,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div

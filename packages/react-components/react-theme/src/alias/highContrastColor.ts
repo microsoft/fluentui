@@ -47,11 +47,12 @@ export const generateColorTokens = (): ColorTokens => ({
   colorBrandForeground1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandForeground2: hcButtonText, // ButtonText Global.Color.hcButtonText
   colorNeutralForeground1Static: hcCanvas, // Canvas Global.Color.hcCanvas
-  colorNeutralForegroundInverted: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralForegroundInverted: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedHover: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedPressed: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundInvertedSelected: hcHighlightText, // HighlightText Global.Color.hcHighlightText
   colorNeutralForegroundOnBrand: hcButtonText, // ButtonText Global.Color.hcButtonText
+  colorNeutralForegroundInvertedStatic: hcCanvasText, // ButtonText Global.Color.hcCanvasText
   colorNeutralForegroundInvertedLink: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkHover: hcHyperlink, // LinkText Global.Color.hcHyperlink
   colorNeutralForegroundInvertedLinkPressed: hcHyperlink, // LinkText Global.Color.hcHyperlink
@@ -84,6 +85,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralBackground5Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground5Selected: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralBackground6: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralBackgroundStatic: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralBackgroundInverted: hcCanvas, // Canvas Global.Color.hcCanvas
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
@@ -135,7 +137,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorNeutralStrokeOnBrand2Pressed: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeOnBrand2Selected: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandStroke1: hcCanvasText, // CanvasText Global.Color.hcCanvasText
-  colorBrandStroke2: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorBrandStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorCompoundBrandStroke: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokeHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // Highlight Global.Color.hcHighlight

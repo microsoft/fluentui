@@ -1,293 +1,38 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount, canUseDOM } from '@fluentui/react-utilities';
+import { computePosition, hide as hideMiddleware, arrow as arrowMiddleware } from '@floating-ui/dom';
+import type { Middleware, Strategy, Placement, Coords, MiddlewareData } from '@floating-ui/dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import * as PopperJs from '@popperjs/core';
+import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useEventCallback } from '@fluentui/react-utilities';
 import * as React from 'react';
-
-import { isIntersectingModifier } from './isIntersectingModifier';
+import type { PositioningOptions, PositioningProps, PositioningVirtualElement } from './types';
 import {
-  getScrollParent,
-  applyRtlToOffset,
-  getPlacement,
-  getReactFiberFromNode,
-  getBoundary,
   useCallbackRef,
-  parsePopperPlacement,
-} from './utils/index';
-import type { PositioningVirtualElement, PositioningOptions, PositioningProps } from './types';
-import { getPopperOffset } from './utils/getPopperOffset';
-
-type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
-
-interface UsePopperOptions extends PositioningProps {
-  /**
-   * If false, delays Popper's creation.
-   * @default true
-   */
-  enabled?: boolean;
-}
-
-//
-// Dev utils to detect if nodes have "autoFocus" props.
-//
-
-/**
- * Detects if a passed HTML node has "autoFocus" prop on a React's fiber. Is needed as React handles autofocus behavior
- * in React DOM and will not pass "autoFocus" to an actual HTML.
- */
-function hasAutofocusProp(node: Node): boolean {
-  // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
-  const isAutoFocusableElement =
-    node.nodeName === 'BUTTON' ||
-    node.nodeName === 'INPUT' ||
-    node.nodeName === 'SELECT' ||
-    node.nodeName === 'TEXTAREA';
-
-  if (isAutoFocusableElement) {
-    return !!getReactFiberFromNode(node)?.pendingProps.autoFocus;
-  }
-
-  return false;
-}
-
-function hasAutofocusFilter(node: Node) {
-  return hasAutofocusProp(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-}
-
-/**
- * Provides a callback to resolve Popper options, it's stable and should be used as a dependency to trigger updates
- * of Popper options.
- *
- * A callback is used there intentionally as some of Popper.js modifiers require DOM nodes (targer, container, arrow)
- * that can't be resolved properly during an initial rendering.
- */
-function usePopperOptions(options: PositioningOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
-  const {
-    align,
-    arrowPadding,
-    autoSize,
-    coverTarget,
-    flipBoundary,
-    offset,
-    overflowBoundary,
-    pinned,
-    position,
-    positionFixed,
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    unstable_disableTether,
-  } = options;
-
-  const isRtl = useFluent().dir === 'rtl';
-  const placement = getPlacement(align, position, isRtl);
-  const strategy = positionFixed ? 'fixed' : 'absolute';
-
-  const offsetModifier = React.useMemo(
-    () =>
-      offset
-        ? {
-            name: 'offset',
-            options: { offset: isRtl ? applyRtlToOffset(getPopperOffset(offset)) : getPopperOffset(offset) },
-          }
-        : null,
-    [offset, isRtl],
-  );
-
-  return React.useCallback(
-    (
-      target: HTMLElement | PopperJs.VirtualElement | null,
-      container: HTMLElement | null,
-      arrow: HTMLElement | null,
-    ): PopperJs.Options => {
-      const scrollParentElement: HTMLElement = getScrollParent(container);
-      const hasScrollableElement = scrollParentElement
-        ? scrollParentElement !== scrollParentElement.ownerDocument?.body
-        : false;
-
-      const modifiers: PopperJs.Options['modifiers'] = [
-        isIntersectingModifier,
-
-        /**
-         * We are setting the position to `fixed` in the first effect to prevent scroll jumps in case of the content
-         * with managed focus. Modifier sets the position to `fixed` before all other modifier effects. Another part of
-         * a patch modifies ".forceUpdate()" directly after a Popper will be created.
-         */
-        {
-          name: 'positionStyleFix',
-          enabled: true,
-          phase: 'afterWrite' as PopperJs.ModifierPhases,
-          effect: ({ state, instance }: { state: PopperJs.State; instance: PopperInstance }) => {
-            // ".isFirstRun" is a part of our patch, on a first evaluation it will "undefined"
-            // should be disabled for subsequent runs as it breaks positioning for them
-            if (instance.isFirstRun !== false) {
-              popperOriginalPositionRef.current = state.elements.popper.style.position;
-              state.elements.popper.style.position = 'fixed';
-            }
-
-            return () => undefined;
-          },
-          requires: [],
-        },
-
-        { name: 'flip', options: { flipVariations: true } },
-
-        /**
-         * pinned disables the flip modifier by setting flip.enabled to false; this
-         * disables automatic repositioning of the popper box; it will always be placed according to
-         * the values of `align` and `position` props, regardless of the size of the component, the
-         * reference element or the viewport.
-         */
-        pinned && { name: 'flip', enabled: false },
-
-        /**
-         * When the popper box is placed in the context of a scrollable element, we need to set
-         * preventOverflow.escapeWithReference to true and flip.boundariesElement to 'scrollParent'
-         * (default is 'viewport') so that the popper box will stick with the targetRef when we
-         * scroll targetRef out of the viewport.
-         */
-        hasScrollableElement && { name: 'flip', options: { boundary: 'clippingParents' } },
-        hasScrollableElement && { name: 'preventOverflow', options: { boundary: 'clippingParents' } },
-
-        offsetModifier,
-
-        /**
-         * This modifier is necessary to retain behaviour from popper v1 where untethered poppers are allowed by
-         * default. i.e. popper is still rendered fully in the viewport even if anchor element is no longer in the
-         * viewport.
-         */
-        unstable_disableTether && {
-          name: 'preventOverflow',
-          options: { altAxis: unstable_disableTether === 'all', tether: false },
-        },
-
-        flipBoundary && {
-          name: 'flip',
-          options: {
-            altBoundary: true,
-            boundary: getBoundary(container, flipBoundary),
-          },
-        },
-        overflowBoundary && {
-          name: 'preventOverflow',
-          options: {
-            altBoundary: true,
-            boundary: getBoundary(container, overflowBoundary),
-          },
-        },
-
-        {
-          // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
-          // popper-maxsize-modifier only calculates the max sizes.
-          // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
-          name: 'applyMaxSize',
-          enabled: !!autoSize,
-          phase: 'beforeWrite' as PopperJs.ModifierPhases,
-          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
-          options: {
-            altBoundary: true,
-            boundary: getBoundary(container, overflowBoundary),
-          },
-          fn({ state, options: modifierOptions }: PopperJs.ModifierArguments<{}>) {
-            const overflow = PopperJs.detectOverflow(state, modifierOptions);
-            const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
-            const { width, height } = state.rects.popper;
-            const basePlacement = parsePopperPlacement(state.placement).basePlacement;
-
-            const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
-            const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
-
-            const applyMaxWidth =
-              autoSize === 'always' ||
-              autoSize === 'width-always' ||
-              (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width'));
-            const applyMaxHeight =
-              autoSize === 'always' ||
-              autoSize === 'height-always' ||
-              (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height'));
-
-            if (applyMaxWidth) {
-              state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
-            }
-            if (applyMaxHeight) {
-              state.styles.popper.maxHeight = `${height - overflow[heightProp] - y}px`;
-            }
-          },
-        },
-
-        /**
-         * This modifier is necessary in order to render the pointer. Refs are resolved in effects, so it can't be
-         * placed under computed modifiers. Deep merge is not required as this modifier has only these properties.
-         */
-        {
-          name: 'arrow',
-          enabled: !!arrow,
-          options: { element: arrow, padding: arrowPadding },
-        },
-
-        /**
-         * Modifies popper offsets to cover the reference rect, but still keep edge alignment
-         */
-        {
-          name: 'coverTarget',
-          enabled: !!coverTarget,
-          phase: 'main',
-          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
-          fn({ state }: PopperJs.ModifierArguments<{}>) {
-            const basePlacement = parsePopperPlacement(state.placement).basePlacement;
-            switch (basePlacement) {
-              case 'bottom':
-                state.modifiersData.popperOffsets!.y -= state.rects.reference.height;
-                break;
-              case 'top':
-                state.modifiersData.popperOffsets!.y += state.rects.reference.height;
-                break;
-              case 'left':
-                state.modifiersData.popperOffsets!.x += state.rects.reference.width;
-                break;
-              case 'right':
-                state.modifiersData.popperOffsets!.x -= state.rects.reference.width;
-                break;
-            }
-          },
-        },
-      ].filter(Boolean) as PopperJs.Options['modifiers']; // filter boolean conditional spreading values
-
-      const popperOptions: PopperJs.Options = {
-        modifiers,
-
-        placement,
-        strategy,
-      };
-
-      return popperOptions;
-    },
-    [
-      arrowPadding,
-      autoSize,
-      coverTarget,
-      flipBoundary,
-      offsetModifier,
-      overflowBoundary,
-      placement,
-      strategy,
-      unstable_disableTether,
-      pinned,
-
-      // These can be skipped from deps as they will not ever change
-      popperOriginalPositionRef,
-    ],
-  );
-}
+  toFloatingUIPlacement,
+  toggleScrollListener,
+  hasAutofocusFilter,
+  debounce,
+  hasScrollParent,
+} from './utils';
+import {
+  shift as shiftMiddleware,
+  flip as flipMiddleware,
+  coverTarget as coverTargetMiddleware,
+  maxSize as maxSizeMiddleware,
+  offset as offsetMiddleware,
+  intersecting as intersectingMiddleware,
+} from './middleware';
+import {
+  DATA_POSITIONING_ESCAPED,
+  DATA_POSITIONING_INTERSECTING,
+  DATA_POSITIONING_HIDDEN,
+  DATA_POSITIONING_PLACEMENT,
+} from './constants';
 
 /**
  * @internal
- * Exposes Popper positioning API via React hook. Contains few important differences between an official "react-popper"
- * package:
- * - style attributes are applied directly on DOM to avoid re-renders
- * - refs changes and resolution is handled properly without re-renders
- * - contains a specific to React fix related to initial positioning when containers have components with managed focus
- *   to avoid focus jumps
  */
 export function usePositioning(
-  options: UsePopperOptions = {},
+  options: UsePositioningOptions,
 ): {
   // React refs are supposed to be contravariant
   // (allows a more general type to be passed rather than a more specific one)
@@ -300,90 +45,63 @@ export function usePositioning(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   arrowRef: React.MutableRefObject<any>;
 } {
+  const { targetDocument } = useFluent();
   const { enabled = true } = options;
-  const isFirstMount = useFirstMount();
+  const resolvePositioningOptions = usePositioningOptions(options);
 
-  const popperOriginalPositionRef = React.useRef<string>('absolute');
-  const resolvePopperOptions = usePopperOptions(options, popperOriginalPositionRef);
-
-  const popperInstanceRef = React.useRef<PopperInstance | null>(null);
-
-  const handlePopperUpdate = useEventCallback(() => {
-    popperInstanceRef.current?.destroy();
-    popperInstanceRef.current = null;
-
+  const forceUpdate = useEventCallback(() => {
     const target = overrideTargetRef.current ?? targetRef.current;
-
-    let popperInstance: PopperInstance | null = null;
-
-    if (canUseDOM() && enabled) {
-      if (target && containerRef.current) {
-        popperInstance = PopperJs.createPopper(
-          target,
-          containerRef.current,
-          resolvePopperOptions(target, containerRef.current, arrowRef.current),
-        );
-      }
+    if (!canUseDOM || !enabled || !target || !containerRef.current) {
+      return;
     }
 
-    if (popperInstance) {
-      /**
-       * The patch updates `.forceUpdate()` Popper function which restores the original position before the first
-       * forceUpdate() call. See also "positionStyleFix" modifier in usePopperOptions().
-       */
-      const originalForceUpdate = popperInstance.forceUpdate;
+    const { placement, middleware, strategy } = resolvePositioningOptions(
+      target,
+      containerRef.current,
+      arrowRef.current,
+    );
 
-      popperInstance.isFirstRun = true;
-      popperInstance.forceUpdate = () => {
-        if (popperInstance?.isFirstRun) {
-          popperInstance.state.elements.popper.style.position = popperOriginalPositionRef.current;
-          popperInstance.isFirstRun = false;
+    // Container is always initialized with `position: fixed` to avoid scroll jumps
+    // Before computing the positioned coordinates, revert the container to the deisred positioning strategy
+    Object.assign(containerRef.current.style, { position: strategy });
+    computePosition(target, containerRef.current, { placement, middleware, strategy })
+      .then(({ x, y, middlewareData, placement: computedPlacement }) => {
+        writeArrowUpdates({ arrow: arrowRef.current, middlewareData });
+        writeContainerUpdates({
+          container: containerRef.current,
+          middlewareData,
+          placement: computedPlacement,
+          coordinates: { x, y },
+          lowPPI: (targetDocument?.defaultView?.devicePixelRatio || 1) <= 1,
+          strategy,
+        });
+      })
+      .catch(err => {
+        // https://github.com/floating-ui/floating-ui/issues/1845
+        // FIXME for node > 14
+        // node 15 introduces promise rejection which means that any components
+        // tests need to be `it('', async () => {})` otherwise there can be race conditions with
+        // JSDOM being torn down before this promise is resolved so globals like `window` and `document` don't exist
+        // Unless all tests that ever use `usePositioning` are turned into async tests, any logging during testing
+        // will actually be counter productive
+        if (process.env.NODE_ENV === 'development') {
+          // eslint-disable-next-line no-console
+          console.error('[usePositioning]: Failed to calculate position', err);
         }
-
-        originalForceUpdate();
-      };
-    }
-
-    popperInstanceRef.current = popperInstance;
+      });
   });
 
-  // Refs are managed by useCallbackRef() to handle ref updates scenarios.
-  //
-  // The first scenario are updates for a targetRef, we can handle it properly only via callback refs, but it causes
-  // re-renders (we would like to avoid them).
-  //
-  // The second problem is related to refs resolution on React's layer: refs are resolved in the same order as effects
-  // that causes an issue when you have a container inside a target, for example: a menu in ChatMessage.
-  //
-  // function ChatMessage(props) {
-  //   <div className="message" ref={targetRef}> // 3) ref will be resolved only now, but it's too late already
-  //     <Popper target={targetRef}> // 2) create a popper instance
-  //       <div className="menu" /> // 1) capture ref from this element
-  //     </Popper>
-  //   </div>
-  // }
-  //
-  // Check a demo on CodeSandbox: https://codesandbox.io/s/popper-refs-emy60.
-  //
-  // This again can be solved with callback refs. It's not a huge issue as with hooks we are moving popper's creation
-  // to ChatMessage itself, however, without `useCallback()` refs it's still a Pandora box.
-  const targetRef = useCallbackRef<HTMLElement | PopperJs.VirtualElement | null>(null, handlePopperUpdate, true);
-  const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
-  const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
+  const updatePosition = React.useState(() => debounce(forceUpdate))[0];
 
-  // Stores external target from options.target or setTarget
-  const overrideTargetRef = useCallbackRef<HTMLElement | PositioningVirtualElement | null>(
-    null,
-    handlePopperUpdate,
-    true,
-  );
+  const targetRef = useTargetRef(updatePosition);
+  const overrideTargetRef = useTargetRef(updatePosition);
+  const containerRef = useContainerRef(updatePosition, enabled);
+  const arrowRef = useArrowRef(updatePosition);
 
   React.useImperativeHandle(
     options.positioningRef,
     () => ({
-      updatePosition: () => {
-        popperInstanceRef.current?.update();
-      },
+      updatePosition,
       setTarget: (target: HTMLElement | PositioningVirtualElement) => {
         if (options.target && process.env.NODE_ENV !== 'production') {
           const err = new Error();
@@ -398,7 +116,8 @@ export function usePositioning(
     }),
     // Missing deps:
     // options.target - only used for a runtime warning
-    // targetRef - Stable between renders
+    // overrideTargetRef - Stable between renders
+    // updatePosition - Stable between renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
@@ -407,29 +126,25 @@ export function usePositioning(
     if (options.target) {
       overrideTargetRef.current = options.target;
     }
-  }, [options.target, overrideTargetRef]);
-  useIsomorphicLayoutEffect(() => {
-    handlePopperUpdate();
+  }, [options.target, overrideTargetRef, containerRef]);
 
-    return () => {
-      popperInstanceRef.current?.destroy();
-      popperInstanceRef.current = null;
-    };
-  }, [handlePopperUpdate, options.enabled]);
-  useIsomorphicLayoutEffect(
-    () => {
-      if (!isFirstMount) {
-        popperInstanceRef.current?.setOptions(
-          resolvePopperOptions(overrideTargetRef.current ?? targetRef.current, containerRef.current, arrowRef.current),
-        );
-      }
-    },
-    // Missing deps:
-    // isFirstMount - Should never change after mount
-    // arrowRef, containerRef, targetRef - Stable between renders
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [resolvePopperOptions],
-  );
+  useIsomorphicLayoutEffect(() => {
+    updatePosition();
+  }, [enabled, resolvePositioningOptions, updatePosition]);
+
+  // Add window resize and scroll listeners to update position
+  useIsomorphicLayoutEffect(() => {
+    const win = targetDocument?.defaultView;
+    if (win) {
+      win.addEventListener('resize', updatePosition);
+      win.addEventListener('scroll', updatePosition);
+
+      return () => {
+        win.removeEventListener('resize', updatePosition);
+        win.removeEventListener('scroll', updatePosition);
+      };
+    }
+  }, [updatePosition, targetDocument]);
 
   if (process.env.NODE_ENV !== 'production') {
     // This checked should run only in development mode
@@ -441,7 +156,7 @@ export function usePositioning(
           acceptNode: hasAutofocusFilter,
         });
 
-        while (treeWalker?.nextNode()) {
+        while (treeWalker.nextNode()) {
           const node = treeWalker.currentNode;
           // eslint-disable-next-line no-console
           console.warn('<Popper>:', node);
@@ -474,4 +189,166 @@ export function usePositioning(
   }
 
   return { targetRef, containerRef, arrowRef };
+}
+
+interface UsePositioningOptions extends PositioningProps {
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
+}
+
+function usePositioningOptions(options: PositioningOptions) {
+  const {
+    align,
+    arrowPadding,
+    autoSize,
+    coverTarget,
+    flipBoundary,
+    offset,
+    overflowBoundary,
+    pinned,
+    position,
+    unstable_disableTether: disableTether,
+    positionFixed,
+  } = options;
+
+  const { dir } = useFluent();
+  const isRtl = dir === 'rtl';
+  const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
+
+  return React.useCallback(
+    (
+      target: HTMLElement | PositioningVirtualElement | null,
+      container: HTMLElement | null,
+      arrow: HTMLElement | null,
+    ) => {
+      const hasScrollableElement = hasScrollParent(container);
+
+      const placement = toFloatingUIPlacement(align, position, isRtl);
+      const middleware = [
+        offset && offsetMiddleware(offset),
+        coverTarget && coverTargetMiddleware(),
+        !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement }),
+        shiftMiddleware({ container, hasScrollableElement, overflowBoundary, disableTether }),
+        autoSize && maxSizeMiddleware(autoSize),
+        intersectingMiddleware(),
+        arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
+        hideMiddleware({ strategy: 'referenceHidden' }),
+        hideMiddleware({ strategy: 'escaped' }),
+      ].filter(Boolean) as Middleware[];
+
+      return {
+        placement,
+        middleware,
+        strategy,
+      };
+    },
+    [
+      align,
+      arrowPadding,
+      autoSize,
+      coverTarget,
+      disableTether,
+      flipBoundary,
+      isRtl,
+      offset,
+      overflowBoundary,
+      pinned,
+      position,
+      strategy,
+    ],
+  );
+}
+
+function useContainerRef(updatePosition: () => void, enabled: boolean) {
+  return useCallbackRef<HTMLElement | null>(null, (container, prevContainer) => {
+    if (container && enabled) {
+      // When the container is first resolved, set position `fixed` to avoid scroll jumps.
+      // Without this scroll jumps can occur when the element is rendered initially and receives focus
+      Object.assign(container.style, { position: 'fixed', left: 0, top: 0, margin: 0 });
+    }
+
+    toggleScrollListener(container, prevContainer, updatePosition);
+
+    updatePosition();
+  });
+}
+
+function useTargetRef(updatePosition: () => void) {
+  return useCallbackRef<HTMLElement | PositioningVirtualElement | null>(null, (target, prevTarget) => {
+    toggleScrollListener(target, prevTarget, updatePosition);
+
+    updatePosition();
+  });
+}
+
+function useArrowRef(updatePosition: () => void) {
+  return useCallbackRef<HTMLElement | null>(null, updatePosition);
+}
+
+/**
+ * Writes all DOM element updates after position is computed
+ */
+function writeContainerUpdates(options: {
+  container: HTMLElement | null;
+  placement: Placement;
+  middlewareData: MiddlewareData;
+  /**
+   * Layer acceleration can disable subpixel rendering which causes slightly
+   * blurry text on low PPI displays, so we want to use 2D transforms
+   * instead
+   */
+  lowPPI: boolean;
+  strategy: Strategy;
+  coordinates: Coords;
+}) {
+  const {
+    container,
+    placement,
+    middlewareData,
+    strategy,
+    lowPPI,
+    coordinates: { x, y },
+  } = options;
+  if (!container) {
+    return;
+  }
+  container.setAttribute(DATA_POSITIONING_PLACEMENT, placement);
+  container.removeAttribute(DATA_POSITIONING_INTERSECTING);
+  if (middlewareData.intersectionObserver.intersecting) {
+    container.setAttribute(DATA_POSITIONING_INTERSECTING, '');
+  }
+
+  container.removeAttribute(DATA_POSITIONING_ESCAPED);
+  if (middlewareData.hide?.escaped) {
+    container.setAttribute(DATA_POSITIONING_ESCAPED, '');
+  }
+
+  container.removeAttribute(DATA_POSITIONING_HIDDEN);
+  if (middlewareData.hide?.referenceHidden) {
+    container.setAttribute(DATA_POSITIONING_HIDDEN, '');
+  }
+
+  Object.assign(container.style, {
+    transform: lowPPI ? `translate(${x}px, ${y}px)` : `translate3d(${x}px, ${y}px, 0)`,
+    position: strategy,
+  });
+}
+
+/**
+ * Writes all DOM element updates after position is computed
+ */
+function writeArrowUpdates(options: { arrow: HTMLElement | null; middlewareData: MiddlewareData }) {
+  const { arrow, middlewareData } = options;
+  if (!middlewareData.arrow || !arrow) {
+    return;
+  }
+
+  const { x: arrowX, y: arrowY } = middlewareData.arrow;
+
+  Object.assign(arrow.style, {
+    left: `${arrowX}px`,
+    top: `${arrowY}px`,
+  });
 }

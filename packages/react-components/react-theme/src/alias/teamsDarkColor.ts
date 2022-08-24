@@ -37,11 +37,12 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandForeground1: brand[100], // #2899f5 Global.Color.Brand.100
   colorBrandForeground2: brand[110], // #3aa0f3 Global.Color.Brand.110
   colorNeutralForeground1Static: grey[14], // #242424 Global.Color.Grey.14
-  colorNeutralForegroundInverted: white, // #ffffff Global.Color.White
-  colorNeutralForegroundInvertedHover: white, // #ffffff Global.Color.White
-  colorNeutralForegroundInvertedPressed: white, // #ffffff Global.Color.White
-  colorNeutralForegroundInvertedSelected: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInverted: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForegroundInvertedHover: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForegroundInvertedPressed: grey[14], // #242424 Global.Color.Grey.14
+  colorNeutralForegroundInvertedSelected: grey[14], // #242424 Global.Color.Grey.14
   colorNeutralForegroundOnBrand: white, // #ffffff Global.Color.White
+  colorNeutralForegroundInvertedStatic: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLink: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkHover: white, // #ffffff Global.Color.White
   colorNeutralForegroundInvertedLinkPressed: white, // #ffffff Global.Color.White
@@ -74,7 +75,8 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralBackground5Pressed: black, // #000000 Global.Color.Black
   colorNeutralBackground5Selected: grey[10], // #1a1a1a Global.Color.Grey.10
   colorNeutralBackground6: grey[20], // #333333 Global.Color.Grey.20
-  colorNeutralBackgroundInverted: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralBackgroundStatic: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralBackgroundInverted: grey[20], // #333333 Global.Color.Grey.20
   colorSubtleBackground: 'transparent', // transparent undefined
   colorSubtleBackgroundHover: grey[22], // #383838 Global.Color.Grey.22
   colorSubtleBackgroundPressed: grey[18], // #2e2e2e Global.Color.Grey.18

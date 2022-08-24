@@ -117,6 +117,7 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
+import { GriffelRenderer } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { Image as Image_2 } from '@fluentui/react-image';
@@ -759,6 +760,8 @@ export { getNativeElementProps }
 export { getPartitionedNativeProps }
 
 export { getSlots }
+
+export { GriffelRenderer }
 
 export { GriffelStyle }
 

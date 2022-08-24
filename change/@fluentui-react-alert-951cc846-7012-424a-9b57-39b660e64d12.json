@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adding appearance prop to the alert component",
+  "packageName": "@fluentui/react-alert",
+  "email": "rohitpag@microsoft.com",
+  "dependentChangeType": "none"
+}

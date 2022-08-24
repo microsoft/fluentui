@@ -1,8 +1,60 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Tue, 02 Aug 2022 07:44:44 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 16:36:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.9)
+
+Wed, 24 Aug 2022 16:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.8..@fluentui/style-utilities_v8.7.9)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme to v2.6.14 ([PR #24485](https://github.com/microsoft/fluentui/pull/24485) by beachball)
+
+## [8.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.8)
+
+Tue, 23 Aug 2022 07:22:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.7..@fluentui/style-utilities_v8.7.8)
+
+### Patches
+
+- fix: Add React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme to v2.6.13 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+
+## [8.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.7)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.6..@fluentui/style-utilities_v8.7.7)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.12 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+- Bump @fluentui/utilities to v8.12.0 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+## [8.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.6)
+
+Mon, 15 Aug 2022 07:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.5..@fluentui/style-utilities_v8.7.6)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.11 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+- Bump @fluentui/utilities to v8.11.0 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+
+## [8.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.5)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.7.4..@fluentui/style-utilities_v8.7.5)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.10 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/merge-styles to v8.5.3 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/utilities to v8.10.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
 
 ## [8.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.7.4)
 

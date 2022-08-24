@@ -39,8 +39,8 @@ const useStyles = makeStyles({
   },
 
   inverted: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    color: tokens.colorNeutralForegroundInverted,
+    backgroundColor: tokens.colorNeutralBackgroundStatic,
+    color: tokens.colorNeutralForegroundInvertedStatic,
   },
 
   arrow: createArrowStyles({ arrowHeight }),

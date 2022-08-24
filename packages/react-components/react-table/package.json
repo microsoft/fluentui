@@ -21,7 +21,7 @@
     "docs": "api-extractor run --config=config/api-extractor.local.json --local",
     "build:local": "tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/types/packages/react-components/react-table/src && yarn docs",
     "type-check": "tsc -b tsconfig.json",
-    "storybook": "node ../../../scripts/storybook/runner",
+    "storybook": "start-storybook",
     "start": "yarn storybook"
   },
   "devDependencies": {
@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "@fluentui/react-aria": "^9.1.0",
+    "@fluentui/react-checkbox": "^9.0.4",
     "@fluentui/react-context-selector": "^9.0.2",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-checkbox": "^9.0.4",
     "@fluentui/react-tabster": "^9.1.0",
     "@fluentui/react-theme": "^9.0.0",
     "@fluentui/react-utilities": "^9.0.2",

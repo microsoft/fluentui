@@ -5,6 +5,7 @@ exports[`Toolbar renders a default state 1`] = `
   <div
     class="fui-Toolbar"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2}}"
+    role="toolbar"
   >
     Default Toolbar
   </div>

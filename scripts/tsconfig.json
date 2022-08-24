@@ -1,17 +1,17 @@
 {
-  "extends": "./typescript/tsconfig.common.json",
   // This config is used for running build scripts through ts-node
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2018", // Node 10 per https://kangax.github.io/compat-table/es2016plus/#node10_9
-    "lib": ["ES2018", "DOM"], // Node 10, occasional test-related stuff that uses DOM
-    "esModuleInterop": true,
+    "noEmit": true,
     "allowJs": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "outDir": "../../dist",
+    "sourceMap": true,
     "typeRoots": ["../typings", "../node_modules/@types"],
-    "types": ["node", "webpack-env"]
+    "types": ["node", "jest"],
+    "noUnusedLocals": true
   },
   "include": ["."],
-  "exclude": ["./create-package/plop-templates*", "cypress.config.ts"]
+  "exclude": ["./cypress/**", "./cypress.js", "./cypress.config.ts"]
 }

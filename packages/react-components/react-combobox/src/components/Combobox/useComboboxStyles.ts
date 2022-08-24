@@ -75,6 +75,10 @@ const useStyles = makeStyles({
 
   listbox: {},
 
+  listboxCollapsed: {
+    display: 'none',
+  },
+
   // size variants
   small: {
     paddingRight: tokens.spacingHorizontalSNudge,
@@ -170,7 +174,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, size } = state;
+  const { appearance, open, size } = state;
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const inputStyles = useInputStyles();
@@ -182,13 +186,22 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
     styles[size],
     state.root.className,
   );
-  state.listbox.className = mergeClasses(comboboxClassNames.listbox, styles.listbox, state.listbox.className);
+
   state.input.className = mergeClasses(
     comboboxClassNames.input,
     inputStyles.input,
     inputStyles[size],
     state.input.className,
   );
+
+  if (state.listbox) {
+    state.listbox.className = mergeClasses(
+      comboboxClassNames.listbox,
+      styles.listbox,
+      !open && styles.listboxCollapsed,
+      state.listbox.className,
+    );
+  }
 
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
