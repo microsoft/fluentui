@@ -120,8 +120,8 @@ jobs:
               return artifact.name == "screener-artifact"
             })[0];
             if(matchArtifact !== undefined)
-              return 'false'
-            return 'true'
+              return 'true'
+            return 'false'
           result-encoding: string
 
       - name: Set env variable for skipping screener
@@ -200,8 +200,8 @@ jobs:
               return artifact.name == "vnext-artifact"
             })[0];
             if(matchArtifact !== undefined)
-              return 'false'
-            return 'true'
+              return 'true'
+            return 'false'
           result-encoding: string
 
       - name: Set env variable for skipping screener
