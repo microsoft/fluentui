@@ -1927,6 +1927,9 @@ export function getTagItemStyles(props: ITagItemStyleProps): ITagItemStyles;
 // @public (undocumented)
 export function getTagItemSuggestionStyles(props: ITagItemSuggestionStyleProps): ITagItemSuggestionStyles;
 
+// @public (undocumented)
+export function getTextFieldStyles(props: ITextFieldStyleProps): ITextFieldStyles;
+
 export { getTheme }
 
 export { getThemedContext }
