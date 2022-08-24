@@ -55,12 +55,12 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
             <p>
               A legend describes each of the component of the chart. The legends wrap based upon the space available for
               them. If there is not enough space to show all legends on a single line, the legends fall into an overflow
-              menu. Text appears indicating the number of legends in the overflow menu.
+              menu. A button is shown to open the overflow menu and indicating the number of legends in it.
             </p>
             <h4>Legend Actions</h4>
             <p>
-              The legends are selectable and action to be performed upon clicking a certain legend can be customized.
-              Refer to the <code>action, hoverAction and onMouseOutAction</code> properties to customize these actions.
+              The legends are selectable. Action to be performed upon clicking a certain legend can be customized. Refer
+              to the <code>action, hoverAction and onMouseOutAction</code> properties to customize these actions.
             </p>
             <h4>Legend shapes and colors</h4>
             <p>

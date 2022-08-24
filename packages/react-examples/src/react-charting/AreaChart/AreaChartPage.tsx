@@ -56,7 +56,7 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
               the axis and this line is commonly emphasized with color or shading for legibility. Most often area charts
               compare two or more categories. The area chart is a highly performant visual. It uses a path based
               rendering mechanism to render the area component. On hovering, the nearest x datapoint is identified and
-              the corresponding circle is highlighted.
+              the corresponding point is hovered.
             </p>
             <h3>Area chart variants</h3>
             <h4>Stacked area chart</h4>

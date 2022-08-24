@@ -79,14 +79,15 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               coordinate system is represented by Cartesian Chart which serves as the base class for vertical bar charts
             </p>
             <p>
-              The chart provides an option to select a color scale based on the range of y value. Similar y values will
-              end up having similar color. Use the <code>colors</code> attribute
+              The chart provides an option to select a color scale based on the range of y values. Similar y values will
+              end up having similar color. Use the <code>colors</code> attribute to define the color scale.
             </p>
             <p>
               Use <code>useSingleColor</code> to use a single color for all bars.
             </p>
             <p>
-              Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of the line
+              Use <code>lineLegendText and lineLegendColor</code> to specify the text and color for legends of lines in
+              the chart.
             </p>
           </div>
         }

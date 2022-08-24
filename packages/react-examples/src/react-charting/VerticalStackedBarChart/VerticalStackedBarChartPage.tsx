@@ -59,7 +59,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
         overview={
           <div>
             <p>
-              Stacked vertical bar chart shows comparsions between categories of data, but with the ability to break
+              Vertical stacked bar chart shows comparsions between categories of data, but with the ability to break
               down and compare parts of a whole. Each bar in the chart represents a whole, and sections within the bar
               represents different parts or categories of that whole
             </p>
@@ -77,8 +77,8 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               Use <code>isCalloutForStack</code> to configure callout to be at stack level or individual datapoint level
             </p>
             <p>
-              Define a custom callout rendered per datapoint <code>onRenderCalloutPerDataPoint</code> and per stack
-              <code>onRenderCalloutPerStack</code>
+              Define a custom callout rendered per datapoint using <code>onRenderCalloutPerDataPoint</code> and per
+              stack using <code>onRenderCalloutPerStack</code>
             </p>
             <p>
               Use <code>onBarClick</code> handler for callback on click of bars

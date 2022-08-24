@@ -86,9 +86,10 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
                 colored arrow in the chart. It can be set using the benchmarkData prop.
               </li>
               <li>
-                Ratio and number are not shown if <code>ignoreFixStyle </code> is set to true. They are also ignored if{' '}
+                Ratio and number are not shown if <code>ignoreFixStyle </code> is set to true. They are also ignored if
                 <code>hideNumberDisplay</code> is set to true.
-                <code>chartDataAccessibilityData</code> is enabled only if ratio or numbers are enabled to be shown.
+                <code>chartDataAccessibilityData</code> prop is enabled only if ratio or numbers are enabled to be
+                shown.
               </li>
               <li>
                 If a datapoint is marked as <code>placeHolder</code> there will be no corresponding legend.
@@ -97,8 +98,8 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
                 Use <code>onRenderCalloutPerDataPoint</code> to customize the hover callout content.
               </li>
               <li>
-                If <code>enabledLegendsWrapLines</code> is set legends will be wrapped otherwise legends will be showed
-                as an overflow callout
+                If <code>enabledLegendsWrapLines</code> is set, long legends will be wrapped otherwise legends will be
+                showed as an overflow callout
               </li>
             </ul>
             <h4>Multi stacked bar chart</h4>
@@ -108,10 +109,10 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
                 chart based upon the values given to this attribute.
               </li>
               <li>
-                MultiStackedBarChart has an option <code>hideRatio</code> which shows/hides the ratio for the chart. It
-                is a boolean[], one bool for each bar group. This value is applicable only when there are 2 datapoints
-                in the chart. Similarly there is an option <code>hideDenominator</code> to hide the denominator of the
-                ratio if it is enabled.
+                MultiStackedBarChart has an option <code>hideRatio</code> which shows/hides the ratio on top right of
+                the chart. It is a boolean[], one bool for each bar group. This value is applicable only when there are
+                2 datapoints in the chart. Similarly there is an option <code>hideDenominator</code> to hide the
+                denominator of the ratio if it is enabled.
               </li>
               <li>
                 If a datapoint is marked as <code>placeHolder</code> there will be no corresponding legend. The default

@@ -74,10 +74,10 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             <h3>Variant details</h3>
             <h4>Event annotations</h4>
             <p>
-              Event annotations are used to highlight instances of datetime and annotate them using messages.
-              Annotations are represented by vertical line markers to mark the date and callouts to represent the
-              message. Events can be added by using <code>eventAnnotationProps</code> prop. Each event contains a
-              <code>date, event message</code> and event detail callout callback
+              Event annotations are used to highlight events and annotate them using messages. Annotations are
+              represented by vertical line markers to mark the date and callouts to represent the message. Events can be
+              added by using <code>eventAnnotationProps</code> prop. Each event contains a
+              <code>date, event message</code> and event details callout callback
               <code>onRenderCard</code>
             </p>
             <h4>Gaps</h4>
@@ -94,14 +94,15 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
               Each line in the chart can contain a 2 px border for better highlighting of the line when there are
               multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
               in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-              make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop inside
+              make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop present
+              inside
               <code>lineOptions</code> to enable it.
             </p>
             <h4>Lines with large dataset</h4>
             <p>
-              We use a path based rendering technique to create datasets with large number of points (greater than 1k).
+              We use a path based rendering technique to show datasets with large number of points (greater than 1k).
               Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
-              setting the <code>optimizeLargeData</code> prop to true.
+              setting the <code>optimizeLargeData</code> prop to <code>true</code>.
             </p>
             <h4>Custom accessibility</h4>
             <p>
