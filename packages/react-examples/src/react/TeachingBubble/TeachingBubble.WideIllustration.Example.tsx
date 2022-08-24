@@ -9,7 +9,7 @@ const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
-const exampleImageProps: IImageProps = { src: 'http://via.placeholder.com/154x220', alt: 'Example placeholder image' };
+const exampleImageProps: IImageProps = { src: 'https://via.placeholder.com/154x220', alt: 'Example placeholder image' };
 
 const CalloutProps = { directionalHint: DirectionalHint.bottomCenter };
 
