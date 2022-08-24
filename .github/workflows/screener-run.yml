@@ -36,13 +36,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "northstar-artifact"
             })[0];
-            if(matchArtifact !== undefined)
-              return 'true'
-            return 'false'
-          result-encoding: string
-
-      - name: Set env variable for skipping screener
-        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -59,7 +53,7 @@ jobs:
           name: northstar-artifact
           # downloads artifact to where it would be 'built'
           path: packages/fluentui/docs/dist
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -83,7 +77,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener' -s 'packages/fluentui/docs/dist' --overwrite
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react-northstar VR Test
         run: yarn workspace @fluentui/docs vr:test
@@ -119,13 +113,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "screener-artifact"
             })[0];
-            if(matchArtifact !== undefined)
-              return 'true'
-            return 'false'
-          result-encoding: string
-
-      - name: Set env variable for skipping screener
-        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -141,7 +129,7 @@ jobs:
           workflow_conclusion: success
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -164,7 +152,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-screener' -s 'apps/vr-tests/dist/storybook' --overwrite
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react VR Test
         run: yarn workspace @fluentui/vr-tests screener
@@ -199,13 +187,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "vnext-artifact"
             })[0];
-            if(matchArtifact !== undefined)
-              return 'true'
-            return 'false'
-          result-encoding: string
-
-      - name: Set env variable for skipping screener
-        run: echo "IS_ARTIFACT_PRESENT=${{steps.skip-screener.outputs.result}}" >> $GITHUB_ENV
+            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -221,7 +203,7 @@ jobs:
           workflow_conclusion: success
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Define env variables
         run: |
@@ -245,7 +227,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob upload-batch -d '$web/${{env.DEPLOYBASEPATH}}/react-components-screener' -s 'apps/vr-tests-react-components/dist/storybook' --overwrite
-        if: ${{ env.IS_ARTIFACT_PRESENT == 'false' }}
+        if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
 
       - name: Start @fluentui/react-components VR Test
         run: yarn workspace @fluentui/vr-tests-react-components screener
