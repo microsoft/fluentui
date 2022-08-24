@@ -37,8 +37,8 @@ jobs:
               return artifact.name == "northstar-artifact"
             })[0];
             if(matchArtifact !== undefined)
-              return 'false'
-            return 'true'
+              return 'true'
+            return 'false'
           result-encoding: string
 
       - name: Set env variable for skipping screener
