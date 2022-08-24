@@ -58,11 +58,10 @@ jobs:
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
           ISPR=true
           DEPLOYBASEPATH=pull/$PR_NUMBER
-          DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/$PR_NUMBER
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
         env:
-          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
           PR_NUMBER: ${{ github.event.number }}
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
@@ -70,8 +69,8 @@ jobs:
         run: |
           cat <<EOT >> artifacts/environment
           ISPR=false
-          DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
-          DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
+          DEPLOYBASEPATH=heads/${{ github.ref_name }}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{ github.ref_name }}
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
@@ -90,28 +89,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set env variables if there is a PR
-        run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
-        env:
-          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
+      - name: Download env variables artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
 
-      - name: Set env variables if there is not a PR
+      - name: Define env variables
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
 
       - uses: actions/setup-node@v3
         with:
@@ -122,7 +111,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr)
+          echo "Is PR build? ${env.ISPR}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr={env.ISPR})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -131,19 +121,6 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if northstar packages were affected (PR)
-        if: ${{env.ISPR == 'true'}}
-
-      - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs)
-          if [[ $packageAffected == false ]]; then
-            echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
-          else
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-            echo "Should NOT skip screener"
-          fi
-        name: Check if northstar packages were affected
-        if: ${{env.ISPR == 'false'}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -171,28 +148,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set env variables if there is a PR
-        run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
-        env:
-          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
 
-      - name: Set env variables if there is not a PR
+      - name: Define env variables
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
 
       - uses: actions/setup-node@v3
         with:
@@ -203,7 +170,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr)
+          echo "Is PR build? ${env.ISPR}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr={env.ISPR})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -212,19 +180,6 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if v8 packages were affected
-        if: ${{env.ISPR == 'true'}}
-
-      - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests)
-          if [[ $packageAffected == false ]]; then
-            echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
-          else
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-            echo "Should NOT skip screener"
-          fi
-        name: Check if v8 packages were affected
-        if: ${{env.ISPR == 'false'}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -250,28 +205,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set env variables if there is a PR
-        run: |
-          echo "SYSTEM_PULLREQUEST_TARGETBRANCH=${{ github.event.pull_request.base.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}" >> $GITHUB_ENV
-          echo "SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          echo "ISPR=true" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME='merge'" >> $GITHUB_ENV
-        env:
-          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
 
-      - name: Set env variables if there is not a PR
+      - name: Define env variables
         run: |
-          echo "ISPR=false" >> $GITHUB_ENV
-          echo "DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH" >> $GITHUB_ENV
-          echo "BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}" >> $GITHUB_ENV
-        if: ${{!startsWith(github.ref, 'refs/pull/')}}
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
 
       - uses: actions/setup-node@v3
         with:
@@ -282,7 +227,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr)
+          echo "Is PR build? ${env.ISPR}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${env.ISPR})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -291,19 +237,6 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if v9 packages were affected
-        if: ${{env.ISPR == 'true'}}
-
-      - run: |
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components)
-          if [[ $packageAffected == false ]]; then
-            echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
-          else
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-            echo "Should NOT skip screener"
-          fi
-        name: Check if v9 packages were affected
-        if: ${{env.ISPR == 'false'}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
