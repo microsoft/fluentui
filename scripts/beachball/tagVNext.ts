@@ -43,7 +43,7 @@ function getPackagesToTag() {
   const packageInfos: AllPackageInfo = getAllPackageInfo();
   return Object.values(packageInfos)
     .map(packageInfo => {
-      if (!packageInfo.packageJson.private && isConvergedPackage(packageInfo.packageJson)) {
+      if (!packageInfo.packageJson.private && isConvergedPackage({ packagePathOrJson: packageInfo.packageJson })) {
         return {
           name: packageInfo.packageJson.name,
           version: packageInfo.packageJson.version,

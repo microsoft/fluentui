@@ -6,4 +6,5 @@ module.exports = {
   isConvergedPackage: require('./isConvergedPackage'),
   getAffectedPackages: require('./getAffectedPackages'),
   getNthCommit: require('./getNthCommit'),
+  ...require('./utils'),
 };

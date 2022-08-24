@@ -1691,6 +1691,12 @@ export { format }
 export { formProperties }
 
 // @public (undocumented)
+export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean) => IActivityItemClassNames;
+
+// @public (undocumented)
+export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles | undefined, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
+
+// @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public
@@ -1718,6 +1724,20 @@ export function getColorFromRGBA(rgba: IRGB): IColor;
 
 // @public
 export function getColorFromString(inputColor: string): IColor | undefined;
+
+// @public (undocumented)
+export const getCommandBarStyles: (props: ICommandBarStyleProps) => ICommandBarStyles;
+
+// @public (undocumented)
+export const getCommandButtonStyles: (customStyles: IButtonStyles | undefined) => IButtonStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "getContextualMenuItemClassNames" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated (undocumented)
+export const getContextualMenuItemClassNames: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string | undefined, dividerClassName?: string | undefined, iconClassName?: string | undefined, subMenuClassName?: string | undefined, primaryDisabled?: boolean | undefined, className?: string | undefined) => IContextualMenuItemStyles;
+
+// @public
+export const getContextualMenuItemStyles: (props: IContextualMenuItemStyleProps) => IContextualMenuItemStyles;
 
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
@@ -1796,6 +1816,18 @@ export { getLanguage }
 export { getLastFocusable }
 
 export { getLastTabbable }
+
+// @public
+export function getLayerCount(hostId: string): number;
+
+// @public
+export function getLayerHost(hostId: string): ILayerHost | undefined;
+
+// @public
+export function getLayerHostSelector(): string | undefined;
+
+// @public (undocumented)
+export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
 
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
@@ -2037,6 +2069,28 @@ export interface IAccessiblePopupProps {
     // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public (undocumented)
+export interface IActivityItemClassNames {
+    // (undocumented)
+    activityContent?: string;
+    // (undocumented)
+    activityPersona?: string;
+    // (undocumented)
+    activityText?: string;
+    // (undocumented)
+    activityTypeIcon?: string;
+    // (undocumented)
+    commentText?: string;
+    // (undocumented)
+    personaContainer?: string;
+    // (undocumented)
+    pulsingBeacon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    timeStamp?: string;
 }
 
 // @public (undocumented)
@@ -7057,7 +7111,7 @@ export interface IOnRenderComboBoxLabelProps {
 
 // @public (undocumented)
 export interface IOverflowSet {
-    focus(forceIntoFirstElement?: boolean): boolean;
+    focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
 }
 
@@ -9853,6 +9907,9 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     };
 }
 
+// @public
+export function notifyHostChanged(id: string): void;
+
 export { noWrap }
 
 export { nullRender }
@@ -10265,6 +10322,12 @@ export { registerDefaultFontFaces }
 export { registerIconAlias }
 
 export { registerIcons }
+
+// @public
+export function registerLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function registerLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 export { registerOnThemeChangeCallback }
 
@@ -10981,7 +11044,6 @@ export const TagPicker: React_2.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
-    constructor(props: ITagPickerProps);
     // (undocumented)
     static defaultProps: {
         onRenderItem: (props: ITagItemProps) => JSX.Element;
@@ -11152,6 +11214,12 @@ export { trProperties }
 export { unhoistMethods }
 
 export { unregisterIcons }
+
+// @public
+export function unregisterLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 // @public
 export function updateA(color: IColor, a: number): IColor;

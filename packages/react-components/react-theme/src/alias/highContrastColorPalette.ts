@@ -1,17 +1,8 @@
-import {
-  statusSharedColors,
-  personaSharedColors,
-  hcHighlight,
-  white,
-  black,
-  StatusSharedColors,
-  PersonaSharedColors,
-} from '../global/colors';
-import { ColorPaletteTokens, GlobalSharedColors, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
+import { hcHighlight, white, black } from '../global/colors';
+import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames';
+import { ColorPaletteTokens, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
 
-const statusColorPaletteTokens = (Object.keys(statusSharedColors) as Array<
-  keyof Pick<GlobalSharedColors, StatusSharedColors>
->).reduce((acc, sharedColor) => {
+const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
   const sharedColorTokens = {
     [`colorPalette${color}Background1`]: white,
@@ -28,9 +19,7 @@ const statusColorPaletteTokens = (Object.keys(statusSharedColors) as Array<
   return { ...acc, ...sharedColorTokens };
 }, {} as StatusColorPaletteTokens);
 
-const personaColorPaletteTokens = (Object.keys(personaSharedColors) as Array<
-  keyof Pick<GlobalSharedColors, PersonaSharedColors>
->).reduce((acc, sharedColor) => {
+const personaColorPaletteTokens = personaSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);
   const sharedColorTokens = {
     [`colorPalette${color}Background2`]: black,
