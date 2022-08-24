@@ -8,31 +8,25 @@ import { makeStyles, shorthands } from '@griffel/react';
 
 const useStyles = makeStyles({
   grid: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: ' flex-start',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto auto',
+    gridGap: '10px',
     backgroundColor: '#F7F7F7',
 
     '> div': {
-      ...shorthands.margin('8px'),
-      width: '25%',
-      height: '100%',
+      alignItems: 'center',
+      backgroundColor: '#FFFFFF',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-around',
+      ...shorthands.padding('8px'),
+      ...shorthands.overflow('hidden'),
 
-      '> span': {
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        ...shorthands.padding('8px'),
-        ...shorthands.overflow('hidden'),
-
-        '> code': {
-          fontSize: '8px',
-          display: 'inline-block',
-          height: 'auto',
-          ...shorthands.padding('0px 8px'),
-        },
+      '> code': {
+        fontSize: '8px',
+        display: 'inline-block',
+        height: 'auto',
+        ...shorthands.padding('0px 8px'),
       },
     },
   },
@@ -76,12 +70,10 @@ const ReactIconGrid = () => {
 
   const _renderIcon = (Icon: React.FC<FluentIconsProps>): JSX.Element => {
     return (
-      <div>
-        <span key={Icon.displayName} aria-label={Icon.displayName}>
-          <Icon />
-          <br />
-          <code>{Icon.displayName}</code>
-        </span>
+      <div key={Icon.displayName} aria-label={Icon.displayName}>
+        <Icon />
+        <br />
+        <code>{Icon.displayName}</code>
       </div>
     );
   };
