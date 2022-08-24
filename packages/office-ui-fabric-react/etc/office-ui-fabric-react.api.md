@@ -1386,6 +1386,18 @@ export const getIconContent: (iconName?: string | undefined) => IIconContent | n
 export function getInitialResponsiveMode(): ResponsiveMode;
 
 // @public
+export function getLayerCount(hostId: string): number;
+
+// @public
+export function getLayerHost(hostId: string): ILayerHost | undefined;
+
+// @public
+export function getLayerHostSelector(): string | undefined;
+
+// @public (undocumented)
+export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
+
+// @public
 export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
@@ -5723,6 +5735,19 @@ export type ILayerBaseState = {
     layerElement?: HTMLElement;
 };
 
+// @public
+export interface ILayerHost {
+    hostId: string;
+    notifyLayersChanged(): void;
+    rootRef: React.RefObject<HTMLDivElement | null>;
+}
+
+// @public (undocumented)
+export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
+    componentRef?: IRefObject<ILayerHost>;
+    id?: string;
+}
+
 // @public (undocumented)
 export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
     className?: string;
@@ -8824,9 +8849,6 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     render(): React.ReactNode;
     }
 
-// Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ILayerHost" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> implements ILayerHost {
     constructor(props: ILayerHostProps);
@@ -9056,6 +9078,9 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+// @public
+export function notifyHostChanged(id: string): void;
 
 // @public @deprecated (undocumented)
 export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
@@ -9522,6 +9547,12 @@ export enum RectangleEdge {
     top = 1
 }
 
+// @public
+export function registerLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function registerLayerHost(hostId: string, layerHost: ILayerHost): void;
+
 // @public (undocumented)
 export const ResizeGroup: typeof ResizeGroupBase;
 
@@ -9747,6 +9778,9 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 
 // @public
 export function sequencesToID(keySequences: string[]): string;
+
+// @public
+export function setLayerHostSelector(selector?: string): void;
 
 // @public
 export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
@@ -10393,6 +10427,12 @@ export function transitionKeysAreEqual(key1: IKeytipTransitionKey, key2: IKeytip
 
 // @public
 export function transitionKeysContain(keys: IKeytipTransitionKey[], key: IKeytipTransitionKey): boolean;
+
+// @public
+export function unregisterLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 // @public
 export function updateA(color: IColor, a: number): IColor;
