@@ -1906,6 +1906,9 @@ export function getSubmenuItems(item: IContextualMenuItem, options?: {
     target?: Target;
 }): IContextualMenuItem[] | undefined;
 
+// @public (undocumented)
+export function getTextFieldStyles(props: ITextFieldStyleProps): ITextFieldStyles;
+
 export { getTheme }
 
 export { getThemedContext }
