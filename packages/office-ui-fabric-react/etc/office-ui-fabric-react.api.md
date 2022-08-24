@@ -1387,6 +1387,9 @@ export const getFontIcon: (iconName: string, className?: string | undefined, ari
 // @public
 export function getFullColorString(color: IColor): string;
 
+// @public
+export const GetGroupCount: (groups: IGroup[] | undefined) => number;
+
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
