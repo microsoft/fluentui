@@ -1818,6 +1818,18 @@ export { getLastFocusable }
 export { getLastTabbable }
 
 // @public
+export function getLayerCount(hostId: string): number;
+
+// @public
+export function getLayerHost(hostId: string): ILayerHost | undefined;
+
+// @public
+export function getLayerHostSelector(): string | undefined;
+
+// @public (undocumented)
+export const getLayerStyles: (props: ILayerStyleProps) => ILayerStyles;
+
+// @public
 export function getMaxHeight(target: Element | MouseEvent | Point | Rectangle, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
 // @public
@@ -9895,6 +9907,9 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     };
 }
 
+// @public
+export function notifyHostChanged(id: string): void;
+
 export { noWrap }
 
 export { nullRender }
@@ -10307,6 +10322,12 @@ export { registerDefaultFontFaces }
 export { registerIconAlias }
 
 export { registerIcons }
+
+// @public
+export function registerLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function registerLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 export { registerOnThemeChangeCallback }
 
@@ -11193,6 +11214,12 @@ export { trProperties }
 export { unhoistMethods }
 
 export { unregisterIcons }
+
+// @public
+export function unregisterLayer(hostId: string, callback: () => void): void;
+
+// @public
+export function unregisterLayerHost(hostId: string, layerHost: ILayerHost): void;
 
 // @public
 export function updateA(color: IColor, a: number): IColor;
