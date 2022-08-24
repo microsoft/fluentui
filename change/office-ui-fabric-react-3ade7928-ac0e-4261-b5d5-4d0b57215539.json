@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added exports for ContextualMenu getItemStyles and getItemClassNames to v8 (#24484)",
-  "packageName": "office-ui-fabric-react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
