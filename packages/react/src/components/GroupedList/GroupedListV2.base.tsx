@@ -171,7 +171,14 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
   return memoItems;
 };
 
-const useIsGroupSelected = (startIndex, count, selection, eventGroup) => {
+type UseIsGroupSelected = (
+  startIndex: number,
+  count: number,
+  selection?: ISelection,
+  eventGroup?: EventGroup,
+) => boolean;
+
+const useIsGroupSelected: UseIsGroupSelected = (startIndex, count, selection, eventGroup) => {
   const [isSelected, setIsSelected] = React.useState(selection?.isRangeSelected(startIndex, count) ?? false);
 
   React.useEffect(() => {
@@ -180,7 +187,7 @@ const useIsGroupSelected = (startIndex, count, selection, eventGroup) => {
     };
 
     if (selection) {
-      eventGroup.on(selection, SELECTION_CHANGE, changeHandler);
+      eventGroup?.on(selection, SELECTION_CHANGE, changeHandler);
     }
 
     return () => {
@@ -506,11 +513,11 @@ interface IGroupItemProps<T> {
   render: IRenderFunction<T>;
   defaultRender: (props?: T) => JSX.Element | null;
   item: any;
-  selection: ISelection;
-  eventGroup: EventGroup;
+  selection?: ISelection;
+  eventGroup?: EventGroup;
 }
 
-const GroupItem = ({
+const GroupItem = <T,>({
   render,
   defaultRender,
   item,
