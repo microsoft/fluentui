@@ -858,7 +858,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
     if (doc && element) {
       while (element && element !== doc.documentElement) {
-        if (isElementTabbable(element)) {
+        if (isElementTabbable(element) || element.hasAttribute('data-selection-index')) {
           return false;
         }
 

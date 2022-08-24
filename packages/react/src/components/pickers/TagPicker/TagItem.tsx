@@ -52,14 +52,7 @@ export const TagItemBase = (props: ITagItemProps) => {
       };
 
   return (
-    <div
-      className={classNames.root}
-      data-selection-index={index}
-      data-is-focusable="true"
-      role={'listitem'}
-      key={index}
-      onClick={handleClick}
-    >
+    <div data-selection-index={index} className={classNames.root} role={'listitem'} key={index} onClick={handleClick}>
       <span className={classNames.text} title={title} id={`${itemId}-text`}>
         {children}
       </span>

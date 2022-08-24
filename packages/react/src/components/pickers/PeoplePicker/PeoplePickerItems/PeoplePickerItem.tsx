@@ -59,14 +59,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
     : undefined;
 
   return (
-    <div
-      data-is-focusable="true"
-      data-selection-index={index}
-      className={classNames.root}
-      role={'listitem'}
-      key={index}
-      onClick={handleClick}
-    >
+    <div data-selection-index={index} className={classNames.root} role={'listitem'} key={index} onClick={handleClick}>
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
         <Persona size={PersonaSize.size24} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
