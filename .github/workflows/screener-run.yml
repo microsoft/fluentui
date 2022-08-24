@@ -28,6 +28,7 @@ jobs:
         id: skip-screener
         with:
           script: |
+            const core = require('@actions/core');
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
@@ -36,7 +37,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "northstar-artifact"
             })[0];
-            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -104,6 +105,7 @@ jobs:
         id: skip-screener
         with:
           script: |
+            const core = require('@actions/core');
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
@@ -113,7 +115,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "screener-artifact"
             })[0];
-            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
@@ -179,6 +181,7 @@ jobs:
         id: skip-screener
         with:
           script: |
+            const core = require('@actions/core');
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
@@ -187,7 +190,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "vnext-artifact"
             })[0];
-            github.core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
+            core.exportVariable('IS_ARTIFACT_PRESENT', (matchArtifact !== undefined).toString());
 
       - name: Download environment variables artifact
         uses: dawidd6/action-download-artifact@v2
