@@ -121,17 +121,19 @@ describe('HorizontalBarChart - mouse events', () => {
   afterEach(sharedAfterEach);
 
   it('Should render callout correctly on mouseover', () => {
-    const mockMath = Object.create(global.Math);
-    mockMath.random = () => 0.1;
-    global.Math = mockMath;
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
 
     wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('rect').at(2).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+
+    jest.spyOn(global.Math, 'random').mockRestore();
   });
 
   it('Should render customized callout on mouseover', () => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+
     wrapper = mount(
       <HorizontalBarChart
         data={chartPoints}
@@ -148,5 +150,7 @@ describe('HorizontalBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+
+    jest.spyOn(global.Math, 'random').mockRestore();
   });
 });
