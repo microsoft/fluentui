@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added exports of GroupedList utils in v8",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}

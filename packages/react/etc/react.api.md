@@ -1796,6 +1796,9 @@ export function getFullColorString(color: IColor): string;
 
 export { getGlobalClassNames }
 
+// @public
+export const GetGroupCount: (groups: IGroup[] | undefined) => number;
+
 export { getHighContrastNoAdjustStyle }
 
 export { getIcon }
