@@ -142,6 +142,7 @@ jobs:
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
         if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+
       - name: Define env variables
         run: |
           input_file="environment"

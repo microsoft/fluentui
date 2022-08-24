@@ -161,7 +161,7 @@ jobs:
         with:
           name: northstar-artifact
           path: packages/fluentui/docs/dist
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
   screener-react:
     runs-on: 'ubuntu-latest'
