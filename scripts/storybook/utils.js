@@ -33,9 +33,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
     const rootPath = path.join(workspaceRoot, addonMetadata.root);
-    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
     const packageJsonPath = path.join(rootPath, 'package.json');
+    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     /**
      * @type {Record<string,any>}
      */
@@ -43,7 +43,10 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
     const packageDistPath = path.dirname(packageJson.module);
     const distPath = path.join(rootPath, tsconfigLibJson.compilerOptions.outDir);
-    const relativePathToSource = path.relative(distPath, sourceRootPath);
+    /**
+     * we use always POSIX path in js modules, thus this needs to be explicit for all OS, to properly replace content
+     */
+    const relativePathToSource = path.posix.relative(distPath, sourceRootPath);
     const presetSourcePath = path.join(rootPath, 'preset.js');
     const presetMemorySourcePath = path.join(distPath, 'preset.js');
 
@@ -66,8 +69,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
 
-  const regex = new RegExp(`\.\\/${path.normalize(packageDistPath)}`, 'g');
+  const regex = new RegExp(`\\./${path.normalize(packageDistPath)}`, 'g');
   let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
+
   modifiedPresetContent = stripIndents`
     const { workspaceRoot } = require('nx/src/utils/app-root');
     const { registerTsProject } = require('nx/src/utils/register');

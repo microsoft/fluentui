@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: fixes broken publish.",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

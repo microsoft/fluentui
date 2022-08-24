@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 07:44:41 GMT",
+      "tag": "@fluentui/react_v8.91.0",
+      "version": "8.91.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca161f57e9663f0d92527f9700eec892830b1233",
+            "comment": "Exported getActivityItemStyles and getActivityItemClassNaes"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f3104008db3243375c8e3ab0c152adacafab46d0",
+            "comment": "Exported getCommandBarStyles and getCommandButtonStyles"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "23a0768ad4a127f31c06449ae4b8ebf0b986bc19",
+            "comment": "Added exports for ContextualMenu getItemStyles and getItemClassNames"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Aug 2022 07:22:50 GMT",
       "tag": "@fluentui/react_v8.90.2",
       "version": "8.90.2",
