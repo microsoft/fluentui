@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exported getActivityItemStyles and getActivityItemClassNames",
-  "packageName": "office-ui-fabric-react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 12:24:20 GMT",
+      "tag": "office-ui-fabric-react_v7.194.0",
+      "version": "7.194.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added getStyles exports for details list components",
+            "author": "gcox@microsoft.com",
+            "commit": "d35595a956fbff6174b7d72c0ba232e28b4f8cbe",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Exported getActivityItemStyles and getActivityItemClassNames",
+            "author": "gcox@microsoft.com",
+            "commit": "0bc3300f373be2f596cab45bb319cc4afb09c082",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Export getCommandBarStyles and getCommandButtonStyles",
+            "author": "gcox@microsoft.com",
+            "commit": "540089254659311a7de9868c5fec570b72acda0d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Aug 2022 12:21:32 GMT",
       "tag": "office-ui-fabric-react_v7.193.0",
       "version": "7.193.0",

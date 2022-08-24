@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 19 Aug 2022 12:24:02 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 12:24:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.22.1)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v4.22.0..@fluentui/react-charting_v4.22.1)
+
+### Patches
+
+- Bump @uifabric/charting to v4.21.12 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
 
 ## [4.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.22.0)
 

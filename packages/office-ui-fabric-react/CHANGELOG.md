@@ -1,8 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 12:24:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.194.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.194.0)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.193.0..office-ui-fabric-react_v7.194.0)
+
+### Minor changes
+
+- Added getStyles exports for details list components ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+- Exported getActivityItemStyles and getActivityItemClassNames ([PR #24473](https://github.com/microsoft/fluentui/pull/24473) by gcox@microsoft.com)
+- Export getCommandBarStyles and getCommandButtonStyles ([PR #24476](https://github.com/microsoft/fluentui/pull/24476) by gcox@microsoft.com)
 
 ## [7.193.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.193.0)
 
