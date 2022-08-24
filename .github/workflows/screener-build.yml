@@ -8,10 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  BROWSERSLIST_IGNORE_OLD_DATA: true
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-  BUILD_BUILDID: ${{ github.run_id }}
-  BUILD_SOURCEBRANCH: ${{ github.ref }}
 
 jobs:
   environment-upload:
@@ -44,7 +41,6 @@ jobs:
       # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
       # SYSTEM_PULLREQUEST_PULLREQUESTID = ID of the PR
       # SYSTEM_PULLREQUEST_SOURCECOMMITID = commit SHA of PR
-      # ISPR = true if workflow triggered by PR
       # DEPLOYBASEPATH = path for deploy URL -> pull/<pr_number> for PRs
       # DEPLOYURL= address for tests deployment, uses DEPLOYHOST and DEPLOYBASEPATH
       # BUILD_SOURCEBRANCHNAME = 'merge' for PRs
@@ -56,19 +52,15 @@ jobs:
           SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
-          ISPR=true
           DEPLOYBASEPATH=pull/$PR_NUMBER
-          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/$PR_NUMBER
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{ github.event.number }}
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
-        env:
-          PR_NUMBER: ${{ github.event.number }}
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment
-          ISPR=false
           DEPLOYBASEPATH=heads/${{ github.ref_name }}
           DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{ github.ref_name }}
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
@@ -111,8 +103,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${{env.ISPR}}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{env.ISPR}})
+          echo "Is PR build? ${{!startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{!startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -170,8 +162,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${{env.ISPR}}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=${{env.ISPR}})
+          echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=${{!startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
@@ -227,8 +219,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - run: |
-          echo "Is PR build? ${{env.ISPR}}"
-          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${{env.ISPR}})
+          echo "Is PR build? ${{!startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${{!startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
