@@ -46,7 +46,7 @@ function loadWorkspaceAddon(addonName, options = {}) {
     /**
      * we use always POSIX path in js modules, thus this needs to be explicit for all OS, to properly replace content
      */
-    const relativePathToSource = path.posix.relative(distPath, sourceRootPath);
+    const relativePathToSource = path.relative(distPath, sourceRootPath).split(path.sep).join(path.posix.sep);
     const presetSourcePath = path.join(rootPath, 'preset.js');
     const presetMemorySourcePath = path.join(distPath, 'preset.js');
 
