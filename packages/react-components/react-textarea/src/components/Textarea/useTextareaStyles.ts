@@ -112,6 +112,18 @@ const useRootStyles = makeStyles({
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
   },
 
+  'filled-darker-shadow': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    boxShadow: tokens.shadow2,
+  },
+
+  'filled-lighter-shadow': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStrokeInteractive),
+    boxShadow: tokens.shadow2,
+  },
+
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
