@@ -1450,6 +1450,9 @@ export function getSubmenuItems(item: IContextualMenuItem, options?: {
     target?: Target_2;
 }): IContextualMenuItem[] | undefined;
 
+// @public (undocumented)
+export function getTextFieldStyles(props: ITextFieldStyleProps): ITextFieldStyles;
+
 // @public @deprecated (undocumented)
 export const Grid: React.FunctionComponent<IButtonGridProps>;
 
