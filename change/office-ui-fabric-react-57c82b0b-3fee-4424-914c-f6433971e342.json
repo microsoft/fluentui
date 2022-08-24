@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added exports for GroupedList utilities in v7",
+  "packageName": "office-ui-fabric-react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
