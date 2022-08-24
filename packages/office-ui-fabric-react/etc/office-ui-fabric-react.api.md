@@ -1338,6 +1338,9 @@ export function getAriaDescribedBy(keySequences: string[]): string;
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
+export function getBasePickerStyles(props: IBasePickerStyleProps): IBasePickerStyles;
+
+// @public (undocumented)
 export function getBoundsFromTargetWindow(target: Element | MouseEvent | Point | Rectangle | null, targetWindow: IWindowWithSegments): IRectangle;
 
 // @public
@@ -1430,6 +1433,12 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 // @public
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
+// @public (undocumented)
+export function getPeoplePickerItemStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles;
+
+// @public (undocumented)
+export function getPeoplePickerItemSuggestionStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeoplePickerItemSuggestionStyles;
+
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
@@ -1449,6 +1458,18 @@ export const getSplitButtonClassNames: (styles: IButtonStyles, disabled: boolean
 export function getSubmenuItems(item: IContextualMenuItem, options?: {
     target?: Target_2;
 }): IContextualMenuItem[] | undefined;
+
+// @public (undocumented)
+export function getSuggestionsItemStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles;
+
+// @public (undocumented)
+export function getSuggestionsStyles(props: ISuggestionsStyleProps): ISuggestionsStyles;
+
+// @public (undocumented)
+export function getTagItemStyles(props: ITagItemStyleProps): ITagItemStyles;
+
+// @public (undocumented)
+export function getTagItemSuggestionStyles(props: ITagItemSuggestionStyleProps): ITagItemSuggestionStyles;
 
 // @public @deprecated (undocumented)
 export const Grid: React.FunctionComponent<IButtonGridProps>;

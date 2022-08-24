@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added exports to pickers",
+  "packageName": "office-ui-fabric-react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
