@@ -107,9 +107,9 @@ jobs:
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-          else
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
             echo "Should NOT skip screener"
           fi
         name: Check if northstar packages were affected
@@ -124,13 +124,13 @@ jobs:
         run: yarn workspace @fluentui/docs vr:build
         env:
           SCREENER_BUILD: 1
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: northstar-artifact
           path: packages/fluentui/docs/dist
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react:
     runs-on: 'ubuntu-latest'
@@ -166,9 +166,9 @@ jobs:
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=${{startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-          else
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
             echo "Should NOT skip screener"
           fi
         name: Check if v8 packages were affected
@@ -181,13 +181,13 @@ jobs:
 
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react-components:
     runs-on: 'ubuntu-latest'
@@ -223,9 +223,9 @@ jobs:
           packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${{startsWith(github.ref, 'refs/pull/')}})
           if [[ $packageAffected == false ]]; then
             echo "Should skip screener"
-            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
-          else
             echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
             echo "Should NOT skip screener"
           fi
         name: Check if v9 packages were affected
@@ -238,10 +238,10 @@ jobs:
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
-        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
