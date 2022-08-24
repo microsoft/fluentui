@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added exports for TextField getStyles",
+  "packageName": "@fluentui/react",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
