@@ -14,6 +14,9 @@ interface IFluentDocsContainerProps {
 export const FluentDocsContainer: React.FC<IFluentDocsContainerProps> = ({ children, context }) => {
   // eslint-disable-next-line deprecation/deprecation
   const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
+  if (context.id === 'theme-theme-designer--page') {
+    return <DocsContainer context={context}>{children}</DocsContainer>;
+  }
   return (
     <>
       <FluentProvider style={{ backgroundColor: 'transparent' }} theme={selectedTheme?.theme ?? webLightTheme}>
