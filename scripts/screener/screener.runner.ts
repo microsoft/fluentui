@@ -46,8 +46,6 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  console.log(screenerConfig.baseUrl);
-
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
@@ -64,7 +62,7 @@ async function scheduleScreenerBuild(
   }
 
   if (response.status !== 201 && response.status !== 200) {
-    throw new Error(`Call to proxy failed: ${response.status}`);
+    throw new Error(`Call to proxy failed: ${response.status} , url: ${screenerConfig.baseUrl}`);
   }
   //conclusion of the screener run
   return response.json() as ScheduleScreenerBuildResponse;
