@@ -61,7 +61,6 @@ import { PortalInner } from '../Portal/PortalInner';
 import { Reaction, ReactionProps } from '../Reaction/Reaction';
 import { ReactionGroupProps } from '../Reaction/ReactionGroup';
 import { Text, TextProps } from '../Text/Text';
-import { Tooltip } from '../Tooltip/Tooltip';
 import { useChatContextSelectors } from './chatContext';
 import { ChatDensity } from './chatDensity';
 import { ChatItemContext } from './chatItemContext';
@@ -203,9 +202,6 @@ export interface ChatMessageProps
 
   /** Optional override for the content in the default bubble inset. */
   bubbleInsetContent?: React.ReactNode;
-
-  /** The timestamp can render a tooltip to display more detailed information. */
-  timestampTooltip?: string;
 }
 
 export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgePosition' | 'density' | 'mine'> & {
@@ -302,7 +298,6 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     fullWidth,
     bubble,
     body,
-    timestampTooltip,
     bubbleInset,
     bubbleInsetContent,
     headerContent,
@@ -647,20 +642,6 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       }),
     });
 
-    const timestampElement = (
-      <Tooltip
-        content={timestampTooltip}
-        trigger={Text.create(timestamp, {
-          defaultProps: () => ({
-            size: 'small',
-            styles: resolvedStyles.timestamp,
-            timestamp: true,
-            className: chatMessageSlotClassNames.timestamp,
-          }),
-        })}
-      />
-    );
-
     const bubbleInsetElement = Box.create(bubbleInset || {}, {
       defaultProps: () => ({
         as: 'span',
@@ -794,7 +775,6 @@ ChatMessage.propTypes = {
   bubble: customPropTypes.itemShorthand,
   bubbleInset: customPropTypes.itemShorthand,
   bubbleInsetContent: PropTypes.node,
-  timestampTooltip: PropTypes.string,
 };
 
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;

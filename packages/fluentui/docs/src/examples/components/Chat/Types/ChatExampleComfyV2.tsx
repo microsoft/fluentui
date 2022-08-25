@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { AcceptIcon, TranslationIcon } from '@fluentui/react-icons-northstar';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 
@@ -13,20 +12,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         status={{ color: 'green', icon: <AcceptIcon /> }}
       />
     ),
-    message: (
-      <Chat.Message
-        v2
-        content="Hello"
-        author="Robin Counts"
-        timestamp="10:15 PM"
-        details={
-          <>
-            Edited <TranslationIcon size="small" />
-          </>
-        }
-        timestampTooltip="Yesterday, 10:15 PM"
-      />
-    ),
+    message: <Chat.Message v2 content="Hello" author="Robin Counts" timestamp="10:15 PM" />,
     key: 'message-id-1',
   },
   {
@@ -36,7 +22,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         v2
-        content="Hi"
+        content="Hi! How are you doing?"
         author="Tim Deboer"
         timestamp="10:15 PM"
         details={
@@ -45,27 +31,9 @@ const items: ShorthandCollection<ChatItemProps> = [
           </>
         }
         mine
-        timestampTooltip="Yesterday, 10:15 PM"
       />
     ),
     key: 'message-id-2',
-  },
-  {
-    v2: true,
-    attached: 'bottom',
-    contentPosition: 'end',
-    message: (
-      <Chat.Message
-        v2
-        author="Tim Deboer"
-        content="How are you doing?"
-        details={<>Edited</>}
-        mine
-        timestamp="10:16 PM"
-        timestampTooltip="Yesterday, 10:16 PM"
-      />
-    ),
-    key: 'message-id-3',
   },
 ];
 
