@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make picker items clickable, while moving focus on close button after click",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
