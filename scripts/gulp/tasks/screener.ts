@@ -37,7 +37,7 @@ task('screener:runner', cb => {
       });
 
   const screenerConfig = require(screenerConfigPath);
-  console.log(`STATES: ${screenerConfig.states}`);
+  console.log(`STATES: ${JSON.stringify(screenerConfig.states[0])}`);
   handlePromiseExit(screenerRunner(screenerConfig));
 });
 
