@@ -36,7 +36,6 @@ async function scheduleScreenerBuild(
 
     baseBranch: screenerConfig.baseBranch,
     projectRepo: screenerConfig.projectRepo,
-    baseUrl: screenerConfig.baseUrl,
 
     alwaysAcceptBaseBranch: screenerConfig.alwaysAcceptBaseBranch,
     diffOptions: screenerConfig.diffOptions,
@@ -54,6 +53,7 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
+      baseUrl: screenerConfig.baseUrl,
     }),
   });
 
