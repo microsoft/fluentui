@@ -36,6 +36,7 @@ async function scheduleScreenerBuild(
 
     baseBranch: screenerConfig.baseBranch,
     projectRepo: screenerConfig.projectRepo,
+    baseUrl: screenerConfig.baseUrl,
 
     alwaysAcceptBaseBranch: screenerConfig.alwaysAcceptBaseBranch,
     diffOptions: screenerConfig.diffOptions,
