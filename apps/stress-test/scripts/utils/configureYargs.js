@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const { getBrowsers } = require('./getBrowsers');
+=======
+const { getBrowsers } = require('../../dist/getBrowsers');
+>>>>>>> 76c9e7deb9 (stress-test: add cli application)
 
 /**
  * @typedef {Object.<string, import('yargs').Options} YargsOptions

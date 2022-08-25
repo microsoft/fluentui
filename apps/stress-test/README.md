@@ -46,6 +46,12 @@ $ yarn workspace @fluentui/stress-test stress-test run --scenario simple-stress 
 - **targets**: Different implementation targets. For example: "v8" for Fluent UI v8, "v9" for Fluent UI v9, "wc" for Fluent UI Web Components.
 - **test cases**: Different test cases to run against a given scenario. For example, you might want to test mounting performance for a scenario.
 
+## Glossary
+
+- **scenario**: A testing scenario for a specific line of investigation. For example, if you wanted to compare the performance of different `Button` implementations you might create a "button-test" scenario for various targets.
+- **targets**: Different implementation targets. For example: "v8" for Fluent UI v8, "v9" for Fluent UI v9, "wc" for Fluent UI Web Components.
+- **test cases**: Different test cases to run against a given scenario. For example, you might want to test mounting performance for a scenario.
+
 ## Development
 
 Use `yarn start` and select `@fluentui/stress-test` from the list of options to start the application in development mode.
