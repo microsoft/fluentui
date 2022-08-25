@@ -38,6 +38,7 @@ export class LegendBasicExample extends React.Component<{}, {}> {
         hoverAction: () => {
           console.log('hover action');
         },
+        shape: 'diamond',
       },
       {
         title: 'Legend 4',
