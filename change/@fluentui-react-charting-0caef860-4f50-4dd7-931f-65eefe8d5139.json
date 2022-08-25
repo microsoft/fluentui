@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Update documentation for chartin library",
+  "comment": "Update documentation for charting library",
   "packageName": "@fluentui/react-charting",
   "email": "atishay.jain@microsoft.com",
   "dependentChangeType": "patch"
