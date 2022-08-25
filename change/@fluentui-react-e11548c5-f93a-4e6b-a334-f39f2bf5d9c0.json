@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Modal: respect insertFirst if passed in",
+  "comment": "fix: Respect insertFirst in Modal if passed in",
   "packageName": "@fluentui/react",
   "email": "jspurlin@microsoft.com",
   "dependentChangeType": "patch"
