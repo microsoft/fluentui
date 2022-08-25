@@ -29,7 +29,6 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     v2: true,
-    attached: 'top',
     contentPosition: 'end',
     message: (
       <Chat.Message
