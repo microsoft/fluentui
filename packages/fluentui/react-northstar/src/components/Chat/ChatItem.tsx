@@ -60,7 +60,7 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
   v2?: boolean;
 }
 
-export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'>;
+export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density' | 'v2'>;
 
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
