@@ -95,4 +95,9 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
     console.log('Screener test in progress.');
     return;
   }
+
+  if (screenerRun.conclusion === 'cancelled') {
+    console.log('Screener test cancelled.');
+    return;
+  }
 }
