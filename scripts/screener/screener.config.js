@@ -63,3 +63,4 @@ module.exports = {
       }
     : null),
 };
+console.log(`STATES: ${this.states}`);
