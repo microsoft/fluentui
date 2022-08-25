@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 19 May 2022 12:29:07 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.35.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.35.0)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.34.1..@uifabric/utilities_v7.35.0)
+
+### Minor changes
+
+- Standardize selection behavior of Groups in SelectionZone (#24278) ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
 
 ## [7.34.1](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.34.1)
 

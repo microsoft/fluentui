@@ -1,8 +1,53 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Fri, 29 Jul 2022 12:21:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 22:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.11](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.11)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.10..@fluentui/storybook_v0.9.11)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.11 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [0.9.10](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.10)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.9..@fluentui/storybook_v0.9.10)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.10 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [0.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.9)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.8..@fluentui/storybook_v0.9.9)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.9 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [0.9.8](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.8)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.7..@fluentui/storybook_v0.9.8)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.8 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [0.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.7)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.9.6..@fluentui/storybook_v0.9.7)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.7 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
 
 ## [0.9.6](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.9.6)
 

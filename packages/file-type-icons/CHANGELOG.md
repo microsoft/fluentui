@@ -1,8 +1,26 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 27 Jul 2022 12:27:44 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.1](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.1)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.9.0..@uifabric/file-type-icons_v7.9.1)
+
+### Patches
+
+- Bump @uifabric/styling to v7.21.2 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.9.0)
+
+Fri, 05 Aug 2022 12:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/file-type-icons_v7.8.11..@uifabric/file-type-icons_v7.9.0)
+
+### Minor changes
+
+- Update to UIFabric (v7 Branch) to pick up latest filetype icon system. Here's the changes: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!) ([PR #24188](https://github.com/microsoft/fluentui/pull/24188) by caperez@microsoft.com)
 
 ## [7.8.11](https://github.com/microsoft/fluentui/tree/@uifabric/file-type-icons_v7.8.11)
 

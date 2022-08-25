@@ -1,8 +1,62 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 29 Jul 2022 12:21:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 22:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.43.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.12)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.11..@uifabric/experiments_v7.43.12)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.11 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [7.43.11](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.11)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.10..@uifabric/experiments_v7.43.11)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.10 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [7.43.10](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.10)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.9..@uifabric/experiments_v7.43.10)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.9 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [7.43.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.9)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.8..@uifabric/experiments_v7.43.9)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.35.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [7.43.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.8)
+
+Fri, 05 Aug 2022 12:21:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.7..@uifabric/experiments_v7.43.8)
+
+### Patches
+
+- Bump @uifabric/file-type-icons to v7.9.0 ([PR #24188](https://github.com/microsoft/fluentui/pull/24188) by caperez@microsoft.com)
+
+## [7.43.7](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.7)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.43.6..@uifabric/experiments_v7.43.7)
+
+### Patches
+
+- Bump @uifabric/azure-themes to v7.10.7 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
 
 ## [7.43.6](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.43.6)
 

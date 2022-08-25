@@ -1,8 +1,62 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 29 Jul 2022 12:21:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Aug 2022 22:39:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.21.14](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.14)
+
+Wed, 24 Aug 2022 22:39:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.13..@uifabric/charting_v4.21.14)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.196.0 ([PR #24508](https://github.com/microsoft/fluentui/pull/24508) by gcox@microsoft.com)
+
+## [4.21.13](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.13)
+
+Wed, 24 Aug 2022 17:07:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.12..@uifabric/charting_v4.21.13)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.195.0 ([PR #24493](https://github.com/microsoft/fluentui/pull/24493) by gcox@microsoft.com)
+
+## [4.21.12](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.12)
+
+Wed, 24 Aug 2022 12:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.11..@uifabric/charting_v4.21.12)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.194.0 ([PR #24483](https://github.com/microsoft/fluentui/pull/24483) by gcox@microsoft.com)
+
+## [4.21.11](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.11)
+
+Fri, 19 Aug 2022 12:24:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.10..@uifabric/charting_v4.21.11)
+
+### Patches
+
+- fixing culture issue in multistacked bar chart ([PR #24318](https://github.com/microsoft/fluentui/pull/24318) by 103020020+AnnapareddyHarsha@users.noreply.github.com)
+
+## [4.21.10](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.10)
+
+Wed, 17 Aug 2022 12:21:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.9..@uifabric/charting_v4.21.10)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.193.0 ([PR #24370](https://github.com/microsoft/fluentui/pull/24370) by tmichon@microsoft.com)
+
+## [4.21.9](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.9)
+
+Tue, 02 Aug 2022 21:25:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.21.8..@uifabric/charting_v4.21.9)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.192.0 ([PR #24192](https://github.com/microsoft/fluentui/pull/24192) by gcox@microsoft.com)
 
 ## [4.21.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.21.8)
 
