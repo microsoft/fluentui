@@ -132,9 +132,6 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuState['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleKeyboardRef = React.useRef(false);
-  const shouldHandleTabRef = React.useRef(false);
-  const pressedShiftRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -164,22 +161,26 @@ const useMenuOpenState = (
   const trySetOpen = useEventCallback((e: MenuOpenEvents, data: MenuOpenChangeData) => {
     const event = e instanceof CustomEvent && e.type === MENU_ENTER_EVENT ? e.detail.nativeEvent : e;
     onOpenChange?.(event, { ...data });
+    let shouldHandleKeyboard = false;
+    let shouldHandleTab = false;
+    let pressedShift = false;
+
     if (data.open && e.type === 'contextmenu') {
       state.setContextTarget(e as React.MouseEvent);
     }
 
     if (data.keyboard) {
-      shouldHandleKeyboardRef.current = true;
-      shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
-      pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+      shouldHandleKeyboard = true;
+      shouldHandleTab = (e as React.KeyboardEvent).key === 'Tab';
+      pressedShift = (e as React.KeyboardEvent).shiftKey;
     }
 
     if (!data.open) {
       state.setContextTarget(undefined);
 
-      if (shouldHandleKeyboardRef.current) {
-        if (shouldHandleTabRef.current && !state.isSubmenu) {
-          pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
+      if (shouldHandleKeyboard) {
+        if (shouldHandleTab && !state.isSubmenu) {
+          pressedShift ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
         } else {
           state.triggerRef.current?.focus();
         }
@@ -262,11 +263,7 @@ const useMenuOpenState = (
     if (open) {
       focusFirst();
     }
-
-    shouldHandleKeyboardRef.current = false;
-    shouldHandleTabRef.current = false;
-    pressedShiftRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst, focusAfterMenuTrigger, focusBeforeMenuTrigger]);
+  }, [open, focusFirst]);
 
   return [open ?? false, setOpen] as const;
 };
