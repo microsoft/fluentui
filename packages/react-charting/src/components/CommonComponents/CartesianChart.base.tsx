@@ -199,7 +199,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this._xScale = xScale;
 
     /*
-     * To enable wrapping of x axis tick values or to disaply complete x axis tick values,
+     * To enable wrapping of x axis tick values or to display complete x axis tick values,
      * we need to calculate how much space it needed to render the text.
      * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
      * Required space will be calculated first time chart rendering and if any width/height of chart updated.
