@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 24 Aug 2022 16:36:06 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Aug 2022 07:41:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.92.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.0)
+
+Thu, 25 Aug 2022 07:41:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.91.1..@fluentui/react_v8.92.0)
+
+### Minor changes
+
+- Added exports of GroupedList utils in v8 ([PR #24515](https://github.com/microsoft/fluentui/pull/24515) by gcox@microsoft.com)
+- Added layer notification exports ([PR #24485](https://github.com/microsoft/fluentui/pull/24485) by gcox@microsoft.com)
+- Added exports to pickers ([PR #24509](https://github.com/microsoft/fluentui/pull/24509) by gcox@microsoft.com)
+- Added exports for TextField getStyles ([PR #24511](https://github.com/microsoft/fluentui/pull/24511) by gcox@microsoft.com)
 
 ## [8.91.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.91.1)
 

@@ -2,6 +2,39 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 25 Aug 2022 07:41:02 GMT",
+      "tag": "@fluentui/react_v8.92.0",
+      "version": "8.92.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4f36c51b9bde0c98b43da00ad13366a0cc0383cf",
+            "comment": "Added exports of GroupedList utils in v8"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe",
+            "comment": "Added layer notification exports"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0fde7c623fa32da69667f1e50c546f7f42fc0ff1",
+            "comment": "Added exports to pickers"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "32a18d7fb1c0c9dd464bacdd7b35bb67b5b7e13d",
+            "comment": "Added exports for TextField getStyles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 16:36:06 GMT",
       "tag": "@fluentui/react_v8.91.1",
       "version": "8.91.1",

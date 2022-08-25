@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added exports to pickers",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}
