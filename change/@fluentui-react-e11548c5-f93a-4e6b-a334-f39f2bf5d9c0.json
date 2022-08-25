@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Modal: respect insertFirst if passed in",
+  "packageName": "@fluentui/react",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
