@@ -138,6 +138,23 @@ const useMenuOpenState = (
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
+  // Focus helpers
+  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
+  const focusFirst = React.useCallback(() => {
+    const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
+    firstFocusable?.focus();
+  }, [findFirstFocusable, state.menuPopoverRef]);
+
+  const focusAfterMenuTrigger = React.useCallback(() => {
+    const nextFocusable = findNextFocusable(state.triggerRef.current);
+    nextFocusable?.focus();
+  }, [findNextFocusable, state.triggerRef]);
+
+  const focusBeforeMenuTrigger = React.useCallback(() => {
+    const prevFocusable = findPrevFocusable(state.triggerRef.current);
+    prevFocusable?.focus();
+  }, [findPrevFocusable, state.triggerRef]);
+
   const [open, setOpenState] = useControllableState({
     state: state.open,
     defaultState: state.defaultOpen,
@@ -151,14 +168,22 @@ const useMenuOpenState = (
       state.setContextTarget(e as React.MouseEvent);
     }
 
-    if (!data.open) {
-      state.setContextTarget(undefined);
-    }
-
     if (data.keyboard) {
       shouldHandleKeyboardRef.current = true;
       shouldHandleTabRef.current = (e as React.KeyboardEvent).key === 'Tab';
       pressedShiftRef.current = (e as React.KeyboardEvent).shiftKey;
+    }
+
+    if (!data.open) {
+      state.setContextTarget(undefined);
+
+      if (shouldHandleKeyboardRef.current) {
+        if (shouldHandleTabRef.current && !state.isSubmenu) {
+          pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
+        } else {
+          state.triggerRef.current?.focus();
+        }
+      }
     }
 
     if (data.bubble) {
@@ -233,39 +258,9 @@ const useMenuOpenState = (
   }, []);
 
   // Manage focus for open state
-  const { findFirstFocusable, findNextFocusable, findPrevFocusable } = useFocusFinders();
-  const focusFirst = React.useCallback(() => {
-    const firstFocusable = findFirstFocusable(state.menuPopoverRef.current);
-    firstFocusable?.focus();
-  }, [findFirstFocusable, state.menuPopoverRef]);
-
-  const focusAfterMenuTrigger = React.useCallback(() => {
-    const nextFocusable = findNextFocusable(state.triggerRef.current);
-    nextFocusable?.focus();
-  }, [findNextFocusable, state.triggerRef]);
-
-  const focusBeforeMenuTrigger = React.useCallback(() => {
-    const prevFocusable = findPrevFocusable(state.triggerRef.current);
-    prevFocusable?.focus();
-  }, [findPrevFocusable, state.triggerRef]);
-
   React.useEffect(() => {
     if (open) {
       focusFirst();
-    }
-  }, [open, focusFirst]);
-
-  React.useEffect(() => {
-    if (open) {
-      focusFirst();
-    }
-
-    if (shouldHandleKeyboardRef.current && !open) {
-      if (shouldHandleTabRef.current && !state.isSubmenu) {
-        pressedShiftRef.current ? focusBeforeMenuTrigger() : focusAfterMenuTrigger();
-      } else {
-        state.triggerRef.current?.focus();
-      }
     }
 
     shouldHandleKeyboardRef.current = false;
