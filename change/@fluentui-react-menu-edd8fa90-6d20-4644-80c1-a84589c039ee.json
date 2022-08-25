@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: focus change on close occurs before menu popup is removed, so blur events occur on menu items",
+  "packageName": "@fluentui/react-menu",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
