@@ -1,8 +1,13 @@
 const getScenarioConfig = require('./getScenarioConfig');
 
 /**
+<<<<<<< HEAD
  * @param {Object.<string, any>} parsedOptions
  * @returns {Object.<string, any>}
+=======
+ * @param {import('yargs').Options} parsedOptions
+ * @returns {import('yargs').Options}
+>>>>>>> 76c9e7deb9 (stress-test: add cli application)
  */
 const processOptions = parsedOptions => {
   if (parsedOptions.useConfig) {
