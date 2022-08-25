@@ -18,6 +18,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Features
+
+- Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
+
 ### Fixes
 - Allow React 17 in `peerDependencies` of all packages and bump react-is to 17 @TristanWatanabe ([#24356](https://github.com/microsoft/fluentui/pull/24356))
 - Fix `FocusTrapZone` to always remove `aria-hidden` on portal wrapper @yuanboxue-amber ([#24414](https://github.com/microsoft/fluentui/pull/24414))
@@ -32,7 +36,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `GlobeIcon` and `ArrowSyncIcon` @notandrew ([#23683](https://github.com/microsoft/fluentui/pull/23683))
 - Add size 'medium-large' to `Avatar` @yuanboxue-amber ([#23787](https://github.com/microsoft/fluentui/pull/23787))
 - Allow freeform to better support time picker scenario for `Dropdown` @jurokapsiar ([#23949](https://github.com/microsoft/fluentui/pull/23949))
-- Add a new comfy layout variation for `ChatMessage` @davezuko ([#23974](https://github.com/microsoft/fluentui/pull/23974))
 
 ### Fixes
 - Updating `Chat Message`'s `actionMenu` to use shadow8 @notandrew ([#23100](https://github.com/microsoft/fluentui/pull/23100))
