@@ -10,5 +10,19 @@
     "types": ["node", "jest"]
   },
   "include": ["."],
-  "exclude": ["node_modules", "./cypress/**", "./storybook/**", "./monorepo/**", "./beachball/**"]
+  "exclude": [
+    "node_modules",
+    "./cypress/**",
+    "./storybook/**",
+    "./monorepo/**",
+    "./beachball/**",
+    "./dangerjs/**",
+    "./github/**",
+    "./gulp/**",
+    "./projects-test/**",
+    "./updateReleaseNotes/**",
+    "./prettier/**",
+    "./fluentui-publish/**",
+    "./puppeteer/**"
+  ]
 }
