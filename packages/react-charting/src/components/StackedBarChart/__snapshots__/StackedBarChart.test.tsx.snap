@@ -38,7 +38,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
           }
     >
       <div
@@ -379,7 +379,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             font-size: 12px;
             font-weight: 400;
             justify-content: space-between;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
           }
     >
       <div

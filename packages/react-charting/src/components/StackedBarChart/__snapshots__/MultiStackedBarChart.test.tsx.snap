@@ -51,7 +51,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -203,7 +203,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -606,7 +606,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -758,7 +758,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div

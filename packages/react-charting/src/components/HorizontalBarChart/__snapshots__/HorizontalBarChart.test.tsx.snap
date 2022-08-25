@@ -52,7 +52,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -187,7 +187,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -498,7 +498,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
@@ -633,7 +633,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
                 font-size: 12px;
                 font-weight: 400;
                 justify-content: space-between;
-                margin-bottom: 5px;
+                margin-bottom: 3px;
               }
         >
           <div
