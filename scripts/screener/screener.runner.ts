@@ -46,6 +46,8 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
+  console.log(screenerConfig.baseUrl);
+
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
