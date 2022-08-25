@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update to use latest responsive SVGs in Fabric CDN for filetypes, fixing mapping of .classifier icon",
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
