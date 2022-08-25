@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix visualization UI bugs",
+  "comment": "Update documentation for chartin library",
   "packageName": "@fluentui/react-charting",
   "email": "atishay.jain@microsoft.com",
   "dependentChangeType": "patch"
