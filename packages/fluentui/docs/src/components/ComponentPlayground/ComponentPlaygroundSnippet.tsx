@@ -11,6 +11,7 @@ type ComponentPlaygroundSnippetProps = {
  */
 const ComponentPlaygroundSnippet: React.FunctionComponent<ComponentPlaygroundSnippetProps> = props => {
   const { element, component, ...rest } = props;
+  return null;
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof component === 'function' && !!component.prototype?.isReactComponent) {
