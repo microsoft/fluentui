@@ -46,8 +46,8 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
             </p>
             <h4>Defining Color scale</h4>
             <p>
-              The color palette for a heat map chart is defined by a domain/range combination. The domain consists of
-              values in the chart columns. It is an array of numbers. See <code>domainValuesForColorScale</code>. The
+              The color palette for a heat map chart is defined by a domain and range combination. The domain consists
+              of values in the chart columns. It is an array of numbers. See <code>domainValuesForColorScale</code>. The
               range is an array <code>rangeValuesForColorScale</code> of colors in hex format. The graph creates a
               mapping between each value from domain to range. For all values in the domain, an equivalent interpolation
               is drawn in the range of color scale. For eg: if the domain is [0,500,900] and range is [green, blue,
