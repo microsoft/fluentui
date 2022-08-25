@@ -31,7 +31,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: 2918208590,
+               run_id: 2917202539,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "northstar-artifact"
@@ -108,7 +108,7 @@ jobs:
                owner: context.repo.owner,
                repo: context.repo.repo,
                //run_id: context.payload.workflow_run.id,
-               run_id: 2918208590,
+               run_id: 2917202539,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "screener-artifact"
@@ -182,7 +182,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: 2918208590,
+               run_id: 2917202539,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "vnext-artifact"
