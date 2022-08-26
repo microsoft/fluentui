@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix backwards compatibility of Group Selection changes",
+  "packageName": "@fluentui/utilities",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
