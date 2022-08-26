@@ -1,4 +1,4 @@
-import { isSlot } from './isSlot';
+import { isShorthandValue, isSlot } from './isSlot';
 import type { ReplaceNullWithUndefined, SlotShorthandValue, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
@@ -27,6 +27,11 @@ export const resolveShorthand: ResolveShorthandFunction = (shorthand, options) =
   if (shorthand === null || (shorthand === undefined && !required)) {
     return undefined;
   }
-  const resolvedShorthand: UnknownSlotProps = isSlot(shorthand) ? shorthand : { children: shorthand };
+  let resolvedShorthand: UnknownSlotProps = {};
+  if (isShorthandValue(shorthand)) {
+    resolvedShorthand = { children: shorthand };
+  } else if (isSlot(shorthand)) {
+    resolvedShorthand = shorthand;
+  }
   return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;
 };

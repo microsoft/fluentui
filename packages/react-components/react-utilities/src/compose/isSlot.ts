@@ -1,5 +1,5 @@
 import { isValidElement } from 'react';
-import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
+import type { ExtractSlotProps, Slot, SlotShorthandValue, UnknownSlotProps } from './types';
 
 /**
  * Guard method that validates if a shorthand is a slot
@@ -39,5 +39,24 @@ export function isSlot<Shorthand extends Slot<UnknownSlotProps>>(
     !Array.isArray(shorthand) &&
     !isValidElement(shorthand) &&
     typeof shorthand === 'object'
+  );
+}
+
+/**
+ * @internal
+ * The "opposite" of being a slot is being a shorthand value. which means being either:
+ * 1. string
+ * 2. number
+ * 3. Array
+ * 4. JSX element
+ */
+export function isShorthandValue<Shorthand extends Slot<UnknownSlotProps>>(
+  shorthand?: Shorthand,
+): shorthand is Extract<Shorthand, SlotShorthandValue | null | undefined> {
+  return (
+    typeof shorthand === 'string' ||
+    typeof shorthand === 'number' ||
+    Array.isArray(shorthand) ||
+    isValidElement(shorthand)
   );
 }
