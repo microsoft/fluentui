@@ -15,7 +15,7 @@ export async function screener() {
   console.log(JSON.stringify(screenerConfig, null, 2));
 
   try {
-    console.log(`screener-runner: skip build ${JSON.stringify(environment.screener.isScreenerBuild)}`);
+    console.log(`screener-runner: is artifact present ${JSON.stringify(environment.screener.isScreenerBuild)}`);
     if (environment.screener.isScreenerBuild === 'true') {
       //Skipping "getScreenerStates()" if artifacts were not build
       console.log('Running screener test:');
