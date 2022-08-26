@@ -112,6 +112,7 @@
     "@storybook/core-events": "6.5.5",
     "@storybook/manager-webpack5": "6.5.5",
     "@storybook/react": "6.5.5",
+    "@storybook/html": "6.5.5",
     "@storybook/theming": "6.5.5",
     "@swc/core": "1.2.220",
     "@testing-library/dom": "8.11.3",
@@ -258,6 +259,13 @@
     "react-is": "17.0.2",
     "react-test-renderer": "17.0.2",
     "request-promise-native": "1.0.9",
+    "rollup": "2.45.2",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-filesize": "8.0.2",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "5.3.1",
+    "rollup-plugin-transform-tagged-template": "0.0.3",
+    "rollup-plugin-typescript2": "0.27.1",
     "sass": "1.49.11",
     "sass-loader": "12.4.0",
     "satisfied": "^1.1.1",
@@ -265,6 +273,7 @@
     "schema-utils": "3.1.1",
     "screener-storybook": "0.23.0",
     "semver": "^6.2.0",
+    "source-map-loader": "4.0.0",
     "storybook-addon-export-to-codesandbox": "0.7.0",
     "storybook-addon-performance": "0.16.1",
     "strip-ansi": "6.0.0",
@@ -312,12 +321,7 @@
     "nohoist": [
       "@fluentui/react-northstar-fela-renderer/stylis",
       "@fluentui/react-northstar-emotion-renderer/@types/stylis",
-      "@fluentui/react-northstar-emotion-renderer/stylis",
-      "@fluentui/web-components/@microsoft/eslint-config-fast-dna",
-      "@fluentui/web-components/@storybook/html",
-      "@fluentui/web-components/ts-loader",
-      "@fluentui/web-components/ts-loader/**",
-      "@fluentui/web-components/webpack"
+      "@fluentui/react-northstar-emotion-renderer/stylis"
     ]
   },
   "resolutions": {

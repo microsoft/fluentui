@@ -33,7 +33,7 @@ module.exports = function (config) {
     basePath,
     browserDisconnectTimeout: 10000,
     processKillTimeout: 10000,
-    frameworks: ['source-map-support', 'mocha'],
+    frameworks: ['source-map-support', 'mocha', 'webpack'],
     plugins: [
       require('karma-mocha'),
       require('karma-mocha-reporter'),
