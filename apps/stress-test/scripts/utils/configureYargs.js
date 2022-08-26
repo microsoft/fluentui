@@ -1,4 +1,4 @@
-const { getBrowsers } = require('../../dist/getBrowsers');
+const { getBrowsers } = require('./getBrowsers');
 
 /**
  * @typedef {Object.<string, import('yargs').Options} YargsOptions
