@@ -715,8 +715,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 function moveStoriesToPackageRoot(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.projectConfig.sourceRoot ?? '';
   const oldStoriesPath = joinPathFragments(sourceRoot, 'stories');
-  const newStoriesPath = joinPathFragments(options.projectConfig.root, 'stories');
-  const storiesExistInNewPath = tree.exists(newStoriesPath);
+  const storiesExistInNewPath = tree.exists(options.paths.stories);
 
   if (storiesExistInNewPath) {
     return;
