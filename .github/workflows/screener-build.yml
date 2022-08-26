@@ -65,7 +65,7 @@ jobs:
           DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{ github.ref_name }}
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
+        if: ${{!startsWith(github.ref, 'refs/pull/')}}
 
       - name: Upload environment variables artifact
         uses: actions/upload-artifact@v3
