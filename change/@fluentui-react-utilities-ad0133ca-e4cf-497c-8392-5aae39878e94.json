@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-utilities): adds isSlot guard method",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
