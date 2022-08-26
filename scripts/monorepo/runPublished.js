@@ -31,18 +31,18 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
     const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
 
-    if (isNorthstar || packageJson.private === true) {
+    if (isNorthstar) {
       return false;
     }
 
     const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
-    if (process.env.RELEASE_VNEXT) {
-      return isConverged;
+    if (process.env.RELEASE_VNEXT && isConverged) {
+      return packageJson.private !== true;
     }
 
     if (!isConverged) {
       // v8 scope
-      return websitePackages.includes(packageJson.name);
+      return websitePackages.includes(packageJson.name) || packageJson.private !== true;
     }
 
     // Ignore v9/converged packages when releasing v8

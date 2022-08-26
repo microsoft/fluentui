@@ -8,7 +8,7 @@ export const ScrollingLongContent = () => {
       <DialogTrigger>
         <Button>Open dialog</Button>
       </DialogTrigger>
-      <DialogSurface aria-label="label">
+      <DialogSurface>
         <DialogTitle>Dialog title</DialogTitle>
         <DialogBody>
           <p>

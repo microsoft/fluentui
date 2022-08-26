@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Wed, 24 Aug 2022 16:36:04 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.9",
+      "version": "8.6.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "7c7f113c5db25307df478f48612dd0fa77f8e8d4",
+            "comment": "fix: fixes broken publish."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Aug 2022 07:22:49 GMT",
       "tag": "@fluentui/react-hooks_v8.6.8",
       "version": "8.6.8",

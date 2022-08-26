@@ -14,7 +14,7 @@ export const environment = {
     /**
      *  Determines whether a screener test should be skipped or run
      **/
-    isScreenerBuild: process.env.IS_ARTIFACT_PRESENT,
+    isArtifactPresent: process.env.IS_ARTIFACT_PRESENT,
   },
 };
 
@@ -46,7 +46,7 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
-  const response = await fetch(`${environment.screener.proxyUri}/api/runner`, {
+  const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
