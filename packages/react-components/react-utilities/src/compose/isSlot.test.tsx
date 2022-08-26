@@ -25,4 +25,7 @@ describe('isSlot', () => {
   it('resolves object', () => {
     expect(isSlot({})).toEqual(true);
   });
+  it('resolves array', () => {
+    expect(isSlot(['1', 2])).toEqual(false);
+  });
 });

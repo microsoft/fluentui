@@ -32,5 +32,12 @@ import type { ExtractSlotProps, Slot, UnknownSlotProps } from './types';
 export function isSlot<Shorthand extends Slot<UnknownSlotProps>>(
   shorthand?: Shorthand,
 ): shorthand is ExtractSlotProps<Shorthand> {
-  return shorthand !== null && typeof shorthand === 'object' && !isValidElement(shorthand);
+  return (
+    shorthand !== null &&
+    typeof shorthand !== 'string' &&
+    typeof shorthand !== 'number' &&
+    !Array.isArray(shorthand) &&
+    !isValidElement(shorthand) &&
+    typeof shorthand === 'object'
+  );
 }
