@@ -46,7 +46,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
-    excludedPropNames: ['children', 'size'],
+    excludedPropNames: ['children', 'size', 'onOptionSelect'],
   });
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
