@@ -14,7 +14,7 @@ export const environment = {
     /**
      *  Determines whether a screener test should be skipped or run
      **/
-    isScreenerBuild: process.env.IS_ARTIFACT_PRESENT,
+    isArtifactPresent: process.env.IS_ARTIFACT_PRESENT,
   },
 };
 
