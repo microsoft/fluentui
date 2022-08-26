@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 const { getBrowsers } = require('./getBrowsers');
 
 /**
  * @typedef {Object.<string, import('yargs').Options>} YargsOptions
-=======
-const { getBrowsers } = require('../../dist/getBrowsers');
-
-/**
- * @typedef {Object.<string, import('yargs').Options} YargsOptions
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
  */
 
 const cliOptions = {
@@ -51,7 +44,6 @@ const cliOptions = {
     describe: 'Root folder for test server relative to package root.',
     default: 'dist',
   },
-<<<<<<< HEAD
   'griffel-mode': {
     describe: 'Optimization mode for Griffel.',
     default: 'buildtime',
@@ -75,12 +67,6 @@ const cliOptions = {
 };
 
 /**
-=======
-};
-
-/**
- *
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
  * @param {import('yargs').Argv} yargs
  * @param {YargsOptions} options
  */
@@ -106,7 +92,6 @@ const configure = (yargs, options) => {
 
       case 'use-config':
       case 'process-results':
-<<<<<<< HEAD
       case 'verbose':
       case 'build-deps':
       case 'open':
@@ -120,25 +105,17 @@ const configure = (yargs, options) => {
       case 'mode':
         y = y.choices(option, ['production', 'development']);
         break;
-=======
-        y = y.boolean(option);
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
     }
   });
 };
 
 /**
-<<<<<<< HEAD
-=======
- *
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
  * @param {string} command
  * @param {import('yargs').Argv} yargs
  */
 const configureYargs = (command, yargs) => {
   switch (command) {
     case 'build-test-config': {
-<<<<<<< HEAD
       const {
         scenario,
         'test-cases': testCases,
@@ -159,15 +136,10 @@ const configureYargs = (command, yargs) => {
         'use-config': useConfig,
         port,
       });
-=======
-      const { 'process-results': processResults, ...buildTestOptions } = cliOptions;
-      configure(yargs, buildTestOptions);
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
       break;
     }
 
     case 'run': {
-<<<<<<< HEAD
       const {
         scenario,
         'test-cases': testCases,
@@ -192,9 +164,6 @@ const configureYargs = (command, yargs) => {
         port,
         root,
       });
-=======
-      configure(yargs, cliOptions);
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
       break;
     }
 
@@ -215,7 +184,6 @@ const configureYargs = (command, yargs) => {
       configure(yargs, { scenario });
       break;
     }
-<<<<<<< HEAD
 
     case 'build': {
       const { 'griffel-mode': griffelMode, mode, verbose, 'build-deps': buildDeps } = cliOptions;
@@ -229,8 +197,6 @@ const configureYargs = (command, yargs) => {
       configure(yargs, { mode, open, 'griffel-mode': griffelMode });
       break;
     }
-=======
->>>>>>> 76c9e7deb9 (stress-test: add cli application)
   }
 };
 
