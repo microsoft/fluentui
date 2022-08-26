@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feature: add layerProps to PositioningContainer and TeachingBubble",
+  "comment": "feat: Add layerProps to PositioningContainer and TeachingBubble",
   "packageName": "@fluentui/react",
   "email": "mgodbolt@microsoft.com",
   "dependentChangeType": "patch"
