@@ -53,7 +53,7 @@ jobs:
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
           DEPLOYBASEPATH=pull/$PR_NUMBER
-          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{ github.event.number }}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{github.event.pull_request.number}}
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
         if: ${{startsWith(github.ref, 'refs/pull/')}}
@@ -61,8 +61,8 @@ jobs:
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment
-          DEPLOYBASEPATH=heads/${{ github.ref_name }}
-          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{ github.ref_name }}
+          DEPLOYBASEPATH=heads/${{github.ref_name}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{github.ref_name}}
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
