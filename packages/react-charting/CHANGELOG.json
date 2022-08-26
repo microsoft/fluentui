@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 26 Aug 2022 07:39:57 GMT",
+      "tag": "@fluentui/react-charting_v5.12.29",
+      "version": "5.12.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6faffd280a37636c7917752693b7bf627caec32d",
+            "comment": "Update documentation for charting library"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.92.1",
+            "commit": "744f8e5ccf138ef8c893929c77a1e85f484415d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Aug 2022 07:41:03 GMT",
       "tag": "@fluentui/react-charting_v5.12.28",
       "version": "5.12.28",

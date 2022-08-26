@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite-v9
 
-This log was last generated on Thu, 25 Aug 2022 07:41:03 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Aug 2022 07:39:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-v9_v1.0.0)
+
+Fri, 26 Aug 2022 07:39:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-v9_v1.0.0..@fluentui/public-docsite-v9_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.92.1 ([PR #24492](https://github.com/microsoft/fluentui/pull/24492) by beachball)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-v9_v1.0.0)
 

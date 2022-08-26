@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 25 Aug 2022 07:41:02 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Aug 2022 07:39:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.92.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.1)
+
+Fri, 26 Aug 2022 07:39:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.92.0..@fluentui/react_v8.92.1)
+
+### Patches
+
+- fix: make picker items clickable, while moving focus on close button after click ([PR #24492](https://github.com/microsoft/fluentui/pull/24492) by mgodbolt@microsoft.com)
+- fix: Respect insertFirst in Modal if passed in ([PR #24528](https://github.com/microsoft/fluentui/pull/24528) by jspurlin@microsoft.com)
 
 ## [8.92.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.0)
 

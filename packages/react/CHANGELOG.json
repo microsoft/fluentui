@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 26 Aug 2022 07:39:57 GMT",
+      "tag": "@fluentui/react_v8.92.1",
+      "version": "8.92.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "744f8e5ccf138ef8c893929c77a1e85f484415d4",
+            "comment": "fix: make picker items clickable, while moving focus on close button after click"
+          },
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "97ffee450a53285fd0228479e1294c4b0faf6151",
+            "comment": "fix: Respect insertFirst in Modal if passed in"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Aug 2022 07:41:02 GMT",
       "tag": "@fluentui/react_v8.92.0",
       "version": "8.92.0",
