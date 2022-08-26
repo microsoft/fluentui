@@ -4,7 +4,7 @@ import type { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utiliti
 import type { IPositionedData } from '../../../Positioning';
 import type { ReactNode } from 'react';
 import type { Target } from '@fluentui/react-hooks';
-import type { ILayerProps } from '../../Layer';
+import type { ILayerProps } from '../../../Layer';
 
 /**
  * {@docCategory Coachmark}
