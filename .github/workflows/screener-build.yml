@@ -52,7 +52,7 @@ jobs:
           SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
-          DEPLOYBASEPATH=pull/$PR_NUMBER
+          DEPLOYBASEPATH=pull/${{github.event.pull_request.number}}
           DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{github.event.pull_request.number}}
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
