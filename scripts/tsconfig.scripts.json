@@ -42,7 +42,7 @@
       "path": "./projects-test/tsconfig.json"
     },
     {
-      "path": "./updateReleaseNotes/tsconfig.json"
+      "path": "./update-release-notes/tsconfig.json"
     },
     {
       "path": "./prettier/tsconfig.json"

@@ -20,7 +20,7 @@
     "./github/**",
     "./gulp/**",
     "./projects-test/**",
-    "./updateReleaseNotes/**",
+    "./update-release-notes/**",
     "./prettier/**",
     "./fluentui-publish/**",
     "./puppeteer/**"
