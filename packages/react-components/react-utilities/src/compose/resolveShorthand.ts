@@ -1,4 +1,4 @@
-import { isValidElement } from 'react';
+import { isSlot } from './isSlot';
 import type { ReplaceNullWithUndefined, SlotShorthandValue, UnknownSlotProps } from './types';
 
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = {
@@ -19,22 +19,14 @@ export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlo
 /**
  * Resolves shorthands into slot props, to ensure normalization of the signature
  * being passed down to getSlots method
- * @param value - the base shorthand props
+ * @param shorthand - the base shorthand props
  * @param options - options to resolve shorthand props
  */
-export const resolveShorthand: ResolveShorthandFunction = (value, options) => {
+export const resolveShorthand: ResolveShorthandFunction = (shorthand, options) => {
   const { required = false, defaultProps } = options || {};
-  if (value === null || (value === undefined && !required)) {
+  if (shorthand === null || (shorthand === undefined && !required)) {
     return undefined;
   }
-
-  let resolvedShorthand = {} as UnknownSlotProps;
-
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value) || isValidElement(value)) {
-    resolvedShorthand.children = value;
-  } else if (typeof value === 'object') {
-    resolvedShorthand = value;
-  }
-
+  const resolvedShorthand: UnknownSlotProps = isSlot(shorthand) ? shorthand : { children: shorthand };
   return defaultProps ? { ...defaultProps, ...resolvedShorthand } : resolvedShorthand;
 };
