@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Fix backwards-compatibility of Group Selection additions (#24554)",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
