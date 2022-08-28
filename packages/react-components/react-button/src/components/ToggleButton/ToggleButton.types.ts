@@ -19,8 +19,4 @@ export type ToggleButtonProps = ButtonProps & {
   checked?: boolean;
 };
 
-export type ToggleButtonState = ButtonState &
-  Required<Pick<ToggleButtonProps, 'checked'>> & {
-    name: string;
-    value: string;
-  };
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
