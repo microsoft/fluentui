@@ -374,6 +374,9 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       return;
     }
 
+    // Clamp the index.
+    index = Math.min(Math.max(0, index), this._items.length - 1);
+
     // No-op on out of bounds selections.
     if (index < 0 || index >= this._items.length) {
       return;
@@ -416,6 +419,12 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     if (this.mode === SelectionMode.none) {
       return;
     }
+
+    // Clamp the index.
+    fromIndex = Math.min(Math.max(0, fromIndex), this._items.length - 1);
+
+    // Clamp the range.
+    count = Math.min(Math.max(0, count), this._items.length - fromIndex);
 
     // No-op on out of bounds selections.
     if (fromIndex < 0 || fromIndex >= this._items.length || count === 0) {

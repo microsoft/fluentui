@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.scripts.json",
+  "compilerOptions": {
+    "types": ["node", "cypress"]
+  },
+  "include": ["*"],
+  "files": ["../../typings/ignore-not-found-export-webpack-plugin/index.d.ts"]
+}

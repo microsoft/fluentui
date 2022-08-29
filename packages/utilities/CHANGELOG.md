@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 18 Aug 2022 23:39:30 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Aug 2022 07:44:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.0)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.12.0..@fluentui/utilities_v8.13.0)
+
+### Minor changes
+
+- Fix backwards compatibility of Group Selection changes ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by tmichon@microsoft.com)
 
 ## [8.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.12.0)
 

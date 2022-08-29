@@ -20,6 +20,7 @@ if (fs.existsSync(configPath)) {
     console.log("Attempting to npm link globally installed ngrok so it can be require'd");
     // This will probably install ngrok globally if it's not already present
     execSync('npm link ngrok@3', undefined, gitRoot);
+    // @ts-expect-error - no types for ngrok
     ngrok = require('ngrok');
   } catch (err) {
     // ngrok has a postbuild step which was slowing down yarn install, so it's been removed

@@ -1,0 +1,32 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "typeRoots": ["../typings", "../node_modules/@types"]
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./cypress/tsconfig.json"
+    },
+    {
+      "path": "./beachball/tsconfig.json"
+    },
+    {
+      "path": "./storybook/tsconfig.json"
+    },
+    {
+      "path": "./monorepo/tsconfig.json"
+    },
+    {
+      "path": "./screener/tsconfig.json"
+    },
+    {
+      "path": "./tsconfig.json"
+    }
+  ]
+}

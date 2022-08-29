@@ -15,7 +15,7 @@ export const CustomFocusedElementOnOpen = () => {
       <DialogTrigger>
         <Button>Open dialog</Button>
       </DialogTrigger>
-      <DialogSurface aria-label="label">
+      <DialogSurface>
         <DialogTitle>Dialog title</DialogTitle>
         <DialogBody>This dialog focus on the second button instead of the first</DialogBody>
         <DialogActions position="start">
