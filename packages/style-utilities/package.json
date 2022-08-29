@@ -40,8 +40,8 @@
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/utilities": "^7.35.0",
     "tslib": "^1.10.0"
-    "beachball": {
-      "tag": "lts-7"
-    }
+  },
+  "beachball": {
+    "tag": "lts-7"
   }
 }
