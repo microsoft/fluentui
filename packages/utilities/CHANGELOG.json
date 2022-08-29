@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/utilities_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665",
+            "comment": "Fix backwards compatibility of Group Selection changes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Aug 2022 23:39:30 GMT",
       "tag": "@fluentui/utilities_v8.12.0",
       "version": "8.12.0",

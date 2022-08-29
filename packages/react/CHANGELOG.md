@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 26 Aug 2022 07:39:57 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Aug 2022 07:44:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.93.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.93.0)
+
+Mon, 29 Aug 2022 07:44:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.92.1..@fluentui/react_v8.93.0)
+
+### Minor changes
+
+- feat: Add layerProps to PositioningContainer and TeachingBubble ([PR #24549](https://github.com/microsoft/fluentui/pull/24549) by mgodbolt@microsoft.com)
+- Fix backwards compatibility of Group Selection changes ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by tmichon@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.2.18 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.4.11 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/react-focus to v8.8.3 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/react-hooks to v8.6.10 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/style-utilities to v8.7.10 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/theme to v2.6.15 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/utilities to v8.13.0 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+- Bump @fluentui/common-styles to v1.2.7 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
 
 ## [8.92.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.92.1)
 
