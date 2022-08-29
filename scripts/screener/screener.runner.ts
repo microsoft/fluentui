@@ -46,6 +46,7 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
   //calling proxy
+  console.log('ARTIFACT PRESENT? ' + environment.screener.isArtifactPresent);
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
@@ -53,7 +54,7 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
-      isArtifactPresent: environment.screener.isArtifactPresent,
+      isArtifactPresent: 'false',
     }),
   });
 
