@@ -4,11 +4,6 @@
   max-width: 1200px;
 }
 
-/* used in v9 DocsContainer */
-#docs-root .full-screen .sbdocs-content {
-  max-width: none;
-}
-
 #docs-root h1.sbdocs-title {
   font-size: 44px;
   line-height: 60px;

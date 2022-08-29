@@ -5,6 +5,11 @@
   padding-top: 0;
 }
 
+/* used in v9 DocsContainer */
+#docs-root .full-screen .sbdocs-content {
+  max-width: none;
+}
+
 /* sb-show-main is missing during page transitions causing a page shift */
 /* todo: cleanup once we no longer inherit docs-root */
 .sb-show-main.sb-main-fullscreen,
