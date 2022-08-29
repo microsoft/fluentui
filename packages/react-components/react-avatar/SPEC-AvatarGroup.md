@@ -68,11 +68,11 @@ There are three layout variants in AvatarGroup:
 - Stack layout: Avatars are overlapped evenly.
 - Pie layout: Avatars are "cut" in a pie design. When there are two Avatars inline, the Avatars will be cut in half and placed side by side. When there are three Avatars inline, the first Avatar will be cut in half and other two will be downscaled by 50%.
   - The pie layout must have 3 or less Avatars inline and all Avatars should repeat in the `AvatarGroupPopover`. This is handled by `partitionAvatarGroupItems`.
-- The `spread` and `stack` layouts should have a maximum of 5 avatars before overflowing by default, which can be overridden via the `maxAvatars` option in `partitionAvatarGroupItems`.
+- If `partitionAvatarGroupItems` is used, the `spread` and `stack` layouts should have a maximum of 5 avatars before overflowing by default. This can be overridden via the `maxAvatars` option in `partitionAvatarGroupItems`.
 
 ## API
 
-See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts), [AvatarGroupPopover.types.ts](./src/components/AvatarGroupPopover/AvatarGroupPopover.types.ts) and [AvatarGroupItem.types.ts](./src/components/AvatarGroupItem/AvatarGroupItem.types.ts)for more details.
+See [AvatarGroup.types.ts](./src/components/AvatarGroup/AvatarGroup.types.ts), [AvatarGroupPopover.types.ts](./src/components/AvatarGroupPopover/AvatarGroupPopover.types.ts) and [AvatarGroupItem.types.ts](./src/components/AvatarGroupItem/AvatarGroupItem.types.ts) for more details.
 
 - `size`: Group size will override the children's current size. This is to ensure that the `AvatarGroup`'s spacing is correct because it changes depending on the group size.
 - `AvatarGroupPopover`: All Avatars in `AvatarGroupPopover` will have a size of 24 and have a wrapper to apply stylings.

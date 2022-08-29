@@ -1,6 +1,6 @@
 # @fluentui/react-avatar
 
-**React AvatarGroup component for [Fluent UI](https://dev.microsoft.com/fluentui)**
+**React AvatarGroup component for [Fluent UI](https://react.fluentui.dev)**
 
 The AvatarGroup component represents a group of multiple people or entities by taking care of the arrangement of individual Avatars in a spread, stack, or pie layout.
 
