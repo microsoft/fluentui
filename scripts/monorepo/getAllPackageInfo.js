@@ -1,5 +1,3 @@
-// @ts-check
-
 const fs = require('fs-extra');
 const path = require('path');
 const lernaAlias = require('lerna-alias');
@@ -7,6 +5,9 @@ const findGitRoot = require('./findGitRoot');
 
 /** @type {import('./index').AllPackageInfo} */
 let packageInfo;
+/**
+ * @type {string}
+ */
 let cwdForPackageInfo;
 
 /**

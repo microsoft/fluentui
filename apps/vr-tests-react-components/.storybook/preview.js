@@ -1,4 +1,3 @@
-// @ts-check
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { webLightTheme, teamsHighContrastTheme, webDarkTheme } from '@fluentui/react-theme';
@@ -25,11 +24,11 @@ setAddon({
    * @this {import('../src/utilities/types').ExtendedStoryApi}
    */
   addStory(storyName, storyFn, config = {}) {
-    this.add(storyName, context => {
+    this.add(storyName, (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
       return <FluentProvider theme={webLightTheme}>{storyFn(context)}</FluentProvider>;
     });
     if (config.includeRtl) {
-      this.add(storyName + ' - RTL', context => {
+      this.add(storyName + ' - RTL', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return (
           <FluentProvider theme={webLightTheme} dir="rtl">
             {storyFn(context)}
@@ -38,12 +37,14 @@ setAddon({
       });
     }
     if (config.includeDarkMode) {
-      this.add(storyName + ' - Dark Mode', context => {
+      this.add(storyName + ' - Dark Mode', (/** @type {import('../src/utilities/types').StoryContext} */ context) => {
         return <FluentProvider theme={webDarkTheme}>{storyFn(context)}</FluentProvider>;
       });
     }
     if (config.includeHighContrast) {
-      this.add(storyName + ' - High Contrast', context => {
+      this.add(storyName + ' - High Contrast', (
+        /** @type {import('../src/utilities/types').StoryContext} */ context,
+      ) => {
         return <FluentProvider theme={teamsHighContrastTheme}>{storyFn(context)}</FluentProvider>;
       });
     }

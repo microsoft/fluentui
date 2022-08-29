@@ -5982,6 +5982,7 @@ export interface IGroupDividerProps {
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
     onGroupHeaderKeyUp?: (ev: React_2.KeyboardEvent<HTMLElement>, group?: IGroup) => void;
+    onRenderName?: IRenderFunction<IGroupHeaderProps>;
     onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
     onToggleCollapse?: (group: IGroup) => void;
     onToggleSelectGroup?: (group: IGroup) => void;
@@ -7758,6 +7759,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
     finalHeight?: number;
+    layerProps?: ILayerProps;
     minPagePadding?: number;
     offsetFromTarget?: number;
     onDismiss?: (ev?: any) => void;
