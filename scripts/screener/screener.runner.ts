@@ -68,7 +68,7 @@ async function scheduleScreenerBuild(
   if (response.status !== 201 && response.status !== 200) {
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
-  //conclusion of the screener run
+
   return response.json() as ScheduleScreenerBuildResponse;
 }
 
