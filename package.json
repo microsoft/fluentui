@@ -73,6 +73,7 @@
     "packages": [
       "apps/*",
       "packages/*",
+      "stub-packages/*",
       "scripts"
     ]
   },

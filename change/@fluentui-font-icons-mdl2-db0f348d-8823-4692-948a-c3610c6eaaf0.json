@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added font-icons-mdl2 export of uifabric/icons",
+  "packageName": "@fluentui/font-icons-mdl2",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
