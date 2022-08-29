@@ -37,7 +37,6 @@ export const useToolbar_unstable = (props: ToolbarProps, ref: React.Ref<HTMLElem
       ...arrowNavigationProps,
       ...props,
     }),
-    ...props,
   };
 
   const [checkedValues, setCheckedValues] = useControllableState({
