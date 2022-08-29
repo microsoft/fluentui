@@ -6,9 +6,6 @@
   "license": "MIT",
   "scripts": {
     "stress-test": "node ./scripts/stressTest.js",
-    "start": "webpack-dev-server --mode=development",
-    "build:local": "lage build --to @fluentui/react @fluentui/web-components --verbose && yarn build:app",
-    "build:app": "webpack --mode=production",
     "type-check": "tsc -b tsconfig.type.json"
   },
   "dependencies": {
@@ -19,5 +16,8 @@
     "@microsoft/fast-element": "^1.10.4",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "7.14.5"
   }
 }

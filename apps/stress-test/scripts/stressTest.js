@@ -6,7 +6,9 @@ yargs.usage('Usage: $0 <cmd> [options]').commandDir('commands').demandCommand().
 yargs
   .usage('Usage: $0 <cmd> [options]')
   .command(require('./commands/run.js'))
-  .command(require('./commands/buildTestConfig'))
+  .command(require('./commands/build.js'))
+  .command(require('./commands/dev.js'))
+  .command(require('./commands/buildTestConfig.js'))
   .command(require('./commands/processResults.js'))
   .command(require('./commands/runServer.js'))
   .command(require('./commands/runTachometer.js'))

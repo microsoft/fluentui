@@ -8,17 +8,18 @@ module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
 
   let config = {
+    mode: argv.mode,
     output: {
       filename: '[name].[contenthash].bundle.js',
       sourceMapFilename: '[name].[contenthash].map',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(path.dirname(__dirname), 'dist'),
     },
     devtool: 'source-map',
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
       plugins: [
         new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, '../../tsconfig.base.json'),
+          configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
         }),
       ],
     },
@@ -61,7 +62,7 @@ module.exports = (env, argv) => {
     };
   }
 
-  config = configureGriffel(config);
+  config = configureGriffel(config, argv.griffelMode);
   config = configurePages(config);
 
   return config;
