@@ -33,5 +33,8 @@
     "@uifabric/styling": "^7.21.2",
     "@uifabric/utilities": "^7.35.0",
     "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "lts-7"
   }
 }
