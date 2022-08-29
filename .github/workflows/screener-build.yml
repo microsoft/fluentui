@@ -132,6 +132,13 @@ jobs:
           path: packages/fluentui/docs/dist
         if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
+      - name: Delete previous N* VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener'
+        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+
   screener-react:
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react
@@ -189,6 +196,13 @@ jobs:
           path: apps/vr-tests/dist/storybook
         if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
+      - name: Delete previous @fluentui/react VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob upload-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-screener'
+        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
+
   screener-react-components:
     runs-on: 'ubuntu-latest'
     name: Screener @fluentui/react-components
@@ -244,3 +258,10 @@ jobs:
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
         if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
+
+      - name: Delete previous @fluentui/react-components VR test site
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az storage blob delete-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-components-screener'
+        if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
