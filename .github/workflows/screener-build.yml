@@ -124,13 +124,13 @@ jobs:
         run: yarn workspace @fluentui/docs vr:build
         env:
           SCREENER_BUILD: 1
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: northstar-artifact
           path: packages/fluentui/docs/dist
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
   screener-react:
     runs-on: 'ubuntu-latest'
@@ -181,13 +181,13 @@ jobs:
 
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
   screener-react-components:
     runs-on: 'ubuntu-latest'
@@ -237,10 +237,10 @@ jobs:
 
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
-        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
+        if: ${{env.SKIP_SCREENER_BUILD == 'true'}}
