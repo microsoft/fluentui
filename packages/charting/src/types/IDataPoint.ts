@@ -31,7 +31,7 @@ export interface IRefArrayData {
 
 export interface IMargins {
   /**
-   * left margin for the chart.
+   * Left margin for the chart.
    */
   left?: number;
   /**
