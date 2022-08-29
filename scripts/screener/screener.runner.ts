@@ -28,7 +28,7 @@ async function scheduleScreenerBuild(
     build: string;
     branchName: string;
     commit: string;
-    pullRequest: string;
+    pullRequest?: string;
   },
 ): Promise<ScheduleScreenerBuildResponse> {
   const payload = {
@@ -45,6 +45,10 @@ async function scheduleScreenerBuild(
     commit: buildInfo.commit,
     pullRequest: buildInfo.pullRequest,
   };
+
+  if (!environment.screener.proxyUri) {
+    throw new Error('SCREENER_PROXY_ENDPOINT env variable doesnt exist');
+  }
 
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
@@ -72,6 +76,17 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
+
+  if (!commit) {
+    throw new Error('SYSTEM_PULLREQUEST_SOURCECOMMITID env variable doesnt exist');
+  }
+  if (!branchName) {
+    throw new Error('SYSTEM_PULLREQUEST_SOURCEBRANCH or BUILD_SOURCEBRANCHNAME env variable doesnt exist');
+  }
+  if (!process.env.BUILD_BUILDID) {
+    throw new Error('BUILD_BUILDID env variable doesnt exist');
+  }
+
   // remove prefix if exists
   if (branchName.indexOf('refs/heads/') === 0) {
     branchName = branchName.replace('refs/heads/', '');
@@ -82,7 +97,7 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
     branchName,
     commit,
     pullRequest: process.env.SYSTEM_PULLREQUEST_PULLREQUESTID
-      ? process.env.SYSTEM_PULLREQUEST_PULLREQUESTID.toString()
+      ? String(process.env.SYSTEM_PULLREQUEST_PULLREQUESTID)
       : undefined,
   });
 

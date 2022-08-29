@@ -1,8 +1,7 @@
 {
   "extends": "../tsconfig.scripts.json",
   "compilerOptions": {
-    "types": ["node", "jest"],
-    "resolveJsonModule": true
+    "types": ["node"]
   },
   "include": ["*"]
 }
