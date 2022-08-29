@@ -187,7 +187,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _canSelectOnlySingleLegend = (legend: ILegend): void => {
     if (this.state.selectedState === true && this.state.selectedLegend === legend.title) {
       this.setState({
-        selectedLegend: 'none',
         selectedState: false,
         selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
@@ -257,36 +256,18 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const overflowString = overflowText ? overflowText : 'more';
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
-      const { canSelectMultipleLegends = false } = this.props;
-      const selectedOverflowItem = find(
-        legends,
-        (legend: ILegend) =>
-          legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend,
-      );
-      this.setState(
-        {
-          isHoverCardVisible: false,
-          selecetedLegendInHoverCard: 'none',
-          selectedLegends: [],
-        },
-        () => {
-          if (selectedOverflowItem) {
-            this.setState({ selectedLegend: 'none', selectedState: false }, () => {
-              if (selectedOverflowItem.action && !canSelectMultipleLegends) {
-                selectedOverflowItem.action();
+      const selectedOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.selectedLegend);
+      this.setState({ isHoverCardVisible: false }, () => {
+        if (selectedOverflowItem) {
+          if (!this.state.selectedState && this.state.hoverState) {
+            this.setState({ hoverState: false, selectedLegend: 'none' }, () => {
+              if (selectedOverflowItem.onMouseOutAction) {
+                selectedOverflowItem.onMouseOutAction(true);
               }
-              if (this.props.onLegendHoverCardLeave && canSelectMultipleLegends) {
-                this.props.onLegendHoverCardLeave();
-              }
-              this.setState({ hoverState: false }, () => {
-                if (selectedOverflowItem.onMouseOutAction) {
-                  selectedOverflowItem.onMouseOutAction(true);
-                }
-              });
             });
           }
-        },
-      );
+        }
+      });
     };
     return (
       <HoverCard
