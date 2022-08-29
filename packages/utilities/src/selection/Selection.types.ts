@@ -55,7 +55,7 @@ export interface ISelection<TItem = IObjectWithKey> {
   setAllSelected(isAllSelected: boolean): void;
   setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
   setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-  setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
+  setRangeSelected?(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
 
   setModal?(isModal: boolean): void; // TODO make non-optional on next breaking change
 
@@ -63,7 +63,7 @@ export interface ISelection<TItem = IObjectWithKey> {
 
   selectToKey(key: string, clearSelection?: boolean): void;
   selectToIndex(index: number, clearSelection?: boolean): void;
-  selectToRange(index: number, count: number, clearSelection?: boolean): void;
+  selectToRange?(index: number, count: number, clearSelection?: boolean): void;
 
   // Toggle helpers.
 

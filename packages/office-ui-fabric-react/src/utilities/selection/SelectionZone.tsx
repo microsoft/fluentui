@@ -681,7 +681,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     if (selectionMode === SelectionMode.multiple) {
       if (this._isShiftPressed && !this._isTabPressed) {
         if (span !== undefined) {
-          selection.selectToRange(index, span, !isToggleModifierPressed);
+          selection.selectToRange?.(index, span, !isToggleModifierPressed);
         } else {
           selection.selectToIndex(index, !isToggleModifierPressed);
         }
@@ -755,7 +755,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       if (span !== undefined) {
-        selection.setRangeSelected(index, span, true, true);
+        selection.setRangeSelected?.(index, span, true, true);
       } else {
         selection.setIndexSelected(index, true, true);
       }
