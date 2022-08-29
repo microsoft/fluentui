@@ -1,1 +1,1 @@
-export { ContextualMenuExample } from './ContextualMenu';
+export { ContextualMenuExample } from './ContextualMenu/index';

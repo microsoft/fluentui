@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ThemeProvider, DefaultButton, PartialTheme, getTheme } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-import { ContextualMenuExample } from './components';
+import { ContextualMenuExample } from './components/index';
 
 // This app is here as a simple sandbox to render v8 controls inside of an React 18 environment.
 
