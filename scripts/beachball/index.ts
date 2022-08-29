@@ -9,6 +9,11 @@ export const config: BeachballConfig = {
       include: ['packages/office-ui-fabric-react', 'packages/react'],
       disallowedChangeTypes: ['major'],
     },
+    {
+      name: 'Charting',
+      include: ['packages/charting', 'stub-packages/react-charting'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {
