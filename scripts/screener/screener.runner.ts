@@ -57,6 +57,7 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
+      isArtifactPresent: environment.screener.isArtifactPresent,
     }),
   });
 
