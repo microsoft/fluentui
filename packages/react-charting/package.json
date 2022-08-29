@@ -31,8 +31,7 @@
     "@fluentui/react": "^8.91.1",
     "@types/react-addons-test-utils": "0.14.18",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.20",
-    "enzyme-to-json": "3.6.2"
+    "@fluentui/jest-serializer-merge-styles": "^8.0.20"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.2",
