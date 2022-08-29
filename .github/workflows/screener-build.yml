@@ -9,6 +9,7 @@ on:
 
 env:
   DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
+  AZURE_STORAGE_CONNECTION_STRING: ${{secrets.AZURE_STORAGE_CONNECTION_STRING}}
 
 jobs:
   environment-upload:
@@ -136,7 +137,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener'
+            az storage blob delete-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-northstar-screener'
         if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
 
   screener-react:
@@ -200,7 +201,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-screener'
+            az storage blob delete-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-screener'
         if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
 
   screener-react-components:
