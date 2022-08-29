@@ -11,6 +11,14 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   listbox: 'fui-Combobox__listbox',
 };
 
+// Matches internal heights for Select and Input, but there are no theme variables for these
+// field heights are 2px less than other controls, since the border is on the parent element.
+const fieldHeights = {
+  small: '22px',
+  medium: '30px',
+  large: '38px',
+};
+
 /**
  * Styles for Combobox
  */
@@ -139,18 +147,21 @@ const useInputStyles = makeStyles({
   // size variants
   small: {
     fontSize: tokens.fontSizeBase200,
+    height: fieldHeights.small,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', 0, '3px', `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
+    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   medium: {
     fontSize: tokens.fontSizeBase300,
+    height: fieldHeights.medium,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', 0, '5px', `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
+    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   large: {
     fontSize: tokens.fontSizeBase400,
+    height: fieldHeights.large,
     lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', 0, '7px', `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
+    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
 });
 
