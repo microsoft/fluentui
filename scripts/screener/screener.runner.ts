@@ -45,7 +45,7 @@ async function scheduleScreenerBuild(
     commit: buildInfo.commit,
     pullRequest: buildInfo.pullRequest,
   };
-
+  //calling proxy
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
