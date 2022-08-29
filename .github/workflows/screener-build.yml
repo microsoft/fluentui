@@ -201,7 +201,7 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob delete-batch -s '$web/${{env.DEPLOYBASEPATH}}/react-screener'
+            az storage blob delete-batch -s '$web' --pattern '${{env.DEPLOYBASEPATH}}/react-screener/*'
         if: ${{ env.SKIP_SCREENER_BUILD == 'false' }}
 
   screener-react-components:
