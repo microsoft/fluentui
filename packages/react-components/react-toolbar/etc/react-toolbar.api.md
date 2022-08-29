@@ -115,12 +115,15 @@ export type ToolbarState = ComponentState<ToolbarSlots> & Required<Pick<ToolbarP
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
 // @public
-export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable'>> & {
+export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
     appearance?: 'primary' | 'subtle';
 };
 
 // @public
-export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState;
+export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & {
+    name: string;
+    value: string;
+};
 
 // @public
 export const useToolbar_unstable: (props: ToolbarProps, ref: React_2.Ref<HTMLElement>) => ToolbarState;

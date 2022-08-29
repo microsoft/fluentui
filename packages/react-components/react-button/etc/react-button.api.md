@@ -122,10 +122,7 @@ export type ToggleButtonProps = ButtonProps & {
 };
 
 // @public (undocumented)
-export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & {
-    name: string;
-    value: string;
-};
+export type ToggleButtonState = ButtonState & Required<Pick<ToggleButtonProps, 'checked'>>;
 
 // @public
 export const useButton_unstable: (props: ButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ButtonState;
