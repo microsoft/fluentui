@@ -153,6 +153,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
         index++;
       }
     }
+
     // Placeholder for a potential footer.
     // Whether or not a footer is displayed is resolved
     // by the footer render function so this is just a marker
@@ -166,7 +167,7 @@ const flattenItems: FlattenItemsFn = (groups, items, memoItems, groupProps) => {
 
   memoItems.length = index;
 
-  console.log('MEMO ITEMS', memoItems);
+  // console.log('MEMO ITEMS', memoItems);
 
   return memoItems;
 };
@@ -221,10 +222,18 @@ const isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 
 const getKey: IListProps['getKey'] = (item, _index) => {
-  if (item.type === 'group' && item.group) {
-    return item.group.key;
-  } else if (item.type === 'item' && item.item) {
-    return item.item.key;
+  switch (item.type) {
+    case 'item':
+      return item.item?.key ?? null;
+
+    case 'header':
+      return item.group.key;
+
+    case 'footer':
+      return `${item.group.key}-footer`;
+
+    case 'showAll':
+      return `${item.group.key}-showAll`;
   }
 
   return null;
@@ -428,19 +437,10 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         key: group.key ? `${group.key}-show-all` : undefined,
       };
 
-      return (
-        <GroupItem
-          render={onRenderShowAll}
-          defaultRender={renderGroupShowAll}
-          item={item}
-          selection={selection}
-          eventGroup={events.current}
-          props={groupShowAllProps}
-        />
-      );
+      return onRenderShowAll(groupShowAllProps, renderGroupShowAll);
     },
 
-    [onRenderShowAll, groupProps, getDividerProps, selection],
+    [onRenderShowAll, groupProps, getDividerProps],
   );
 
   const renderFooter = React.useCallback(
@@ -452,18 +452,9 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         key: group.key ? `${group.key}-footer` : undefined,
       };
 
-      return (
-        <GroupItem
-          render={onRenderFooter}
-          defaultRender={renderGroupFooter}
-          item={item}
-          selection={selection}
-          eventGroup={events.current}
-          props={groupFooterProps}
-        />
-      );
+      return onRenderFooter(groupFooterProps, renderGroupFooter);
     },
-    [onRenderFooter, groupProps, getDividerProps, selection],
+    [onRenderFooter, groupProps, getDividerProps],
   );
 
   const renderItem = React.useCallback(
@@ -476,7 +467,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         return renderFooter(item, flattenedIndex);
       } else if (item.type === 'item') {
         const level = item.group.level ? item.group.level + 1 : 1;
-        return onRenderCell(level, item.item ?? item, item.itemIndex ?? flattenedIndex);
+        return onRenderCell(level, item.item, item.itemIndex ?? flattenedIndex);
       }
     },
     [onRenderCell, renderHeader, renderShowAll, renderFooter],
