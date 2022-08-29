@@ -14,22 +14,27 @@ interface IFluentDocsContainerProps {
 export const FluentDocsContainer: React.FC<IFluentDocsContainerProps> = ({ children, context }) => {
   // eslint-disable-next-line deprecation/deprecation
   const selectedTheme = themes.find(theme => theme.id === context.globals[THEME_ID]);
-  if (context.id === 'theme-theme-designer--page') {
-    return <DocsContainer context={context}>{children}</DocsContainer>;
-  }
-  return (
-    <>
-      <FluentProvider style={{ backgroundColor: 'transparent' }} theme={selectedTheme?.theme ?? webLightTheme}>
-        <FluentDocsHeader
-          // eslint-disable-next-line deprecation/deprecation
-          storybookGlobals={context.globals}
-        />
-      </FluentProvider>
 
-      {/** TODO add table of contents */}
-      <FluentProvider style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
-        <DocsContainer context={context}>{children}</DocsContainer>
-      </FluentProvider>
-    </>
+  const DefaultDocs = <DocsContainer context={context}>{children}</DocsContainer>;
+
+  return (
+    <div className={context.parameters.fullScreen && 'full-screen'}>
+      {context.parameters.themeSelector === false ? (
+        DefaultDocs
+      ) : (
+        <>
+          <FluentProvider style={{ backgroundColor: 'transparent' }} theme={selectedTheme?.theme ?? webLightTheme}>
+            <FluentDocsHeader
+              // eslint-disable-next-line deprecation/deprecation
+              storybookGlobals={context.globals}
+            />
+          </FluentProvider>
+
+          <FluentProvider style={{ backgroundColor: 'transparent' }} theme={webLightTheme}>
+            {DefaultDocs}
+          </FluentProvider>
+        </>
+      )}
+    </div>
   );
 };
