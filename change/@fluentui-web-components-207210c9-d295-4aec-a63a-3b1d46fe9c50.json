@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update FAST packages to resolve issues with form constraint validation on form associated elements",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
