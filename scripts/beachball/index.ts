@@ -20,6 +20,12 @@ export const config: BeachballConfig = {
       disallowedChangeTypes: ['major'],
     },
     {
+      name: 'Icons',
+      include: ['packages/icons', 'stub-packages/font-icons-mdl2'],
+      disallowedChangeTypes: ['major'],
+    },
+    ,
+    {
       name: 'Experiments',
       include: ['packages/experiments', 'stub-packages/experiments'],
       disallowedChangeTypes: ['major'],
