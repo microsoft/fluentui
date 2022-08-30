@@ -1,8 +1,17 @@
 # Change Log - @fluentui/font-icons-mdl2
 
-This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/font-icons-mdl2_v7.8.1)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/font-icons-mdl2_v7.8.0..@fluentui/font-icons-mdl2_v7.8.1)
+
+### Patches
+
+- Bump @uifabric/icons to v7.8.0 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
 
 ## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/font-icons-mdl2_v7.8.0)
 

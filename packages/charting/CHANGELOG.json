@@ -2,6 +2,39 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@uifabric/charting_v4.23.0",
+      "version": "4.23.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.13",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.8.0",
+            "author": "gcox@microsoft.com",
+            "commit": "22ff3e14adbf4a3b6950d8e47fb631ef15a7dff9",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.9",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 12:20:47 GMT",
       "tag": "@uifabric/charting_v4.22.1",
       "version": "4.22.1",

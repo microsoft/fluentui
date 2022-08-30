@@ -2,6 +2,29 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@uifabric/icons_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bumping version to match font-icons-mdl2",
+            "author": "gcox@microsoft.com",
+            "commit": "22ff3e14adbf4a3b6950d8e47fb631ef15a7dff9",
+            "package": "@uifabric/icons"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/styling to v7.22.0",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@uifabric/icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 00:07:57 GMT",
       "tag": "@uifabric/icons_v7.7.6",
       "version": "7.7.6",

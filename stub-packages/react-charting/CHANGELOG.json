@@ -2,6 +2,59 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 30 Aug 2022 19:01:23 GMT",
+      "tag": "@fluentui/react-charting_v4.23.0",
+      "version": "4.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move react-charting into stub package and create beachball group with charting",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3062173ba966f4a849cc440eea602994a05946f4",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Added lts-7 beachball tag to react charting",
+            "author": "gcox@microsoft.com",
+            "commit": "c78cb15afe71dbde6b51de81bcebf09413c6c88b",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @uifabric/charting to v4.23.0",
+            "author": "gcox@microsoft.com",
+            "commit": "22ff3e14adbf4a3b6950d8e47fb631ef15a7dff9",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.1",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.13",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.8.0",
+            "author": "gcox@microsoft.com",
+            "commit": "22ff3e14adbf4a3b6950d8e47fb631ef15a7dff9",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.9",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "acfc80a933f526df2732fdd43c6d82cffd1d5bc2",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Aug 2022 12:20:47 GMT",
       "tag": "@fluentui/react-charting_v4.22.5",
       "version": "4.22.5",

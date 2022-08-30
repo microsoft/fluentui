@@ -1,8 +1,21 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v7.22.0)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.21.2..@fluentui/style-utilities_v7.22.0)
+
+### Minor changes
+
+- Added style-utilities export of uifabric/styling ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/styling to v7.22.0 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
 
 ## [7.21.2](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.21.2)
 

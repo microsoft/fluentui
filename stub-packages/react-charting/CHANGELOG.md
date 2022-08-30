@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 30 Aug 2022 12:20:47 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 19:01:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.23.0)
+
+Tue, 30 Aug 2022 19:01:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v4.22.5..@fluentui/react-charting_v4.23.0)
+
+### Minor changes
+
+- Move react-charting into stub package and create beachball group with charting ([PR #24589](https://github.com/microsoft/fluentui/pull/24589) by mgodbolt@microsoft.com)
+
+### Patches
+
+- Added lts-7 beachball tag to react charting ([PR #24573](https://github.com/microsoft/fluentui/pull/24573) by gcox@microsoft.com)
+- Bump @uifabric/charting to v4.23.0 ([PR #24590](https://github.com/microsoft/fluentui/pull/24590) by gcox@microsoft.com)
+- Bump office-ui-fabric-react to v7.197.1 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+- Bump @uifabric/example-app-base to v7.22.13 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
+- Bump @uifabric/icons to v7.8.0 ([PR #24590](https://github.com/microsoft/fluentui/pull/24590) by gcox@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.9 ([PR #24572](https://github.com/microsoft/fluentui/pull/24572) by mgodbolt@microsoft.com)
 
 ## [4.22.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v4.22.5)
 

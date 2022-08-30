@@ -26,14 +26,14 @@
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^7.9.1",
-    "@fluentui/react-focus": "^7.18.8",
+    "@fluentui/react-focus": "^7.18.9",
     "@fluentui/theme": "^1.7.8",
     "@uifabric/merge-styles": "^7.19.2",
-    "@uifabric/styling": "^7.21.3",
+    "@uifabric/styling": "^7.22.0",
     "@uifabric/utilities": "^7.36.0",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0",
-    "office-ui-fabric-react": "^7.197.0"
+    "office-ui-fabric-react": "^7.197.1"
   }
 }
