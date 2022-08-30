@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "setFocusVisibility: get providers from FocusRectsContext if one wasn't provided",
+  "packageName": "@fluentui/utilities",
+  "email": "jspurlin@microsoft.com",
+  "dependentChangeType": "patch"
+}
