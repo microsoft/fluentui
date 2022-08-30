@@ -88,7 +88,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "{apps,packages,sub-packages}/*/package.json",
+      "{apps,packages,stub-packages}/*/package.json",
       "scripts/package.json"
     ]
   }
