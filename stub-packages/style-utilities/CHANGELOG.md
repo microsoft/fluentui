@@ -1,4 +1,4 @@
-# Change Log - @uifabric/styling
+# Change Log - @fluentui/style-utilities
 
 This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
 
