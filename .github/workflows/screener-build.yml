@@ -116,7 +116,7 @@ jobs:
 
       - run: |
           yarn lage info --since origin/master
-        name: Debug lage
+        name: Log affected packages (debug)
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
@@ -180,7 +180,7 @@ jobs:
 
       - run: |
           yarn lage info --since origin/master
-        name: Debug lage
+        name: Log affected packages (debug)
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
@@ -241,7 +241,7 @@ jobs:
 
       - run: |
           yarn lage info --since origin/master
-        name: Debug lage
+        name: Log affected packages (debug)
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
