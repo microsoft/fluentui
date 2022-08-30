@@ -1,0 +1,43 @@
+{
+  "name": "@fluentui/style-utilities",
+  "version": "7.21.3",
+  "description": "Styling helpers for Fluent UI React.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js",
+    "lib/index.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^0.54.2",
+    "@types/jest": "~24.9.0",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/build": "^7.0.0"
+  },
+  "dependencies": {
+    "@uifabric/styling": "^7.21.3",
+    "@uifabric/set-version": "^7.0.24",
+    "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "lts-7"
+  }
+}

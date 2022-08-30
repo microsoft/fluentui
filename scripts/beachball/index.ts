@@ -9,6 +9,11 @@ export const config: BeachballConfig = {
       include: ['packages/office-ui-fabric-react', 'packages/react'],
       disallowedChangeTypes: ['major'],
     },
+    {
+      name: 'Styling',
+      include: ['packages/styling', 'stub-packages/style-utilities'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {
