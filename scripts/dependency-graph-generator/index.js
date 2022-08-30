@@ -5,7 +5,6 @@ const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
 const getDependencies = require('../monorepo/index').getDependencies;
 const path = require('path');
-const os = require('os');
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
 let ignoreDevDependencies = [];
@@ -116,6 +115,7 @@ function _getSubTree(graph, rootPackage) {
     i++;
   }
 
+  let value;
   const edgeIterator = resEdges.values();
   while ((value = edgeIterator.next().value)) {
     const edge = value.split(',');

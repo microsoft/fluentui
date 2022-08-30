@@ -1,17 +1,14 @@
 {
   // This config is used for running build scripts through ts-node
-  "extends": "@tsconfig/node14/tsconfig.json",
+  "extends": "./tsconfig.scripts.json",
   "compilerOptions": {
-    "noEmit": true,
-    "allowJs": true,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "noUnusedLocals": true,
     "outDir": "../../dist",
-    "sourceMap": true,
-    "typeRoots": ["../typings", "../node_modules/@types"],
-    "types": ["node", "jest"],
-    "noUnusedLocals": true
+    "resolveJsonModule": true,
+    "types": ["node", "jest"]
   },
   "include": ["."],
-  "exclude": ["./cypress/**", "./cypress.js", "./cypress.config.ts"]
+  "exclude": ["node_modules", "./cypress/**", "./storybook/**", "./monorepo/**", "./beachball/**"]
 }

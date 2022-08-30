@@ -144,7 +144,6 @@ const useRootStyles = makeStyles({
     '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
   },
   filled: {
-    boxShadow: tokens.shadow2, // optional shadow for filled appearances
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
   },
   filledInteractive: {

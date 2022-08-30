@@ -46,13 +46,9 @@ export function useIsOverflowGroupVisible(id: string): OverflowGroupState;
 // @public (undocumented)
 export function useIsOverflowItemVisible(id: string): boolean;
 
-// Warning: (ae-internal-missing-underscore) The name "useOverflowContainer" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
 
-// Warning: (ae-internal-missing-underscore) The name "UseOverflowContainerReturn" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal (undocumented)
 export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
     containerRef: React_2.RefObject<TElement>;
@@ -63,8 +59,6 @@ export interface UseOverflowContainerReturn<TElement extends HTMLElement> {
 // @public (undocumented)
 export const useOverflowCount: () => number;
 
-// Warning: (ae-internal-missing-underscore) The name "useOverflowItem" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement>;
 

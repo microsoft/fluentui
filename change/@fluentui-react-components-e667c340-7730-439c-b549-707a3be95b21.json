@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Move Icon Table to new page",
+  "packageName": "@fluentui/react-components",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

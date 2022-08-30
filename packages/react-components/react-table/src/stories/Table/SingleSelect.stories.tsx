@@ -11,6 +11,7 @@ import {
 import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import { TableBody, TableCell, TableRow, Table, TableHeader, TableHeaderCell, TableSelectionCell } from '../..';
 import { useTable, ColumnDefinition } from '../../hooks';
+import { useNavigationMode } from '../../navigationModes/useNavigationMode';
 
 type FileCell = {
   label: string;
@@ -93,11 +94,27 @@ const columns: ColumnDefinition<Item>[] = [
   },
 ];
 
-export const Selection = () => {
-  const { rows } = useTable({ columns, items, selectionMode: 'single' });
+export const SingleSelect = () => {
+  const { rows } = useTable({
+    columns,
+    items,
+    selectionMode: 'single',
+    rowEnhancer: (row, { selection }) => ({
+      ...row,
+      selected: selection.isRowSelected(row.rowId),
+      onClick: () => selection.toggleRow(row.rowId),
+      onKeyDown: (e: React.KeyboardEvent) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          selection.toggleRow(row.rowId);
+        }
+      },
+    }),
+  });
+  // eslint-disable-next-line deprecation/deprecation
+  const ref = useNavigationMode<HTMLDivElement>('row');
 
   return (
-    <Table sortable>
+    <Table ref={ref}>
       <TableHeader>
         <TableRow>
           <TableSelectionCell type="radio" />
@@ -108,8 +125,8 @@ export const Selection = () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {rows.map(({ item, toggleSelect, selected }) => (
-          <TableRow key={item.file.label} onClick={toggleSelect} aria-selected={selected}>
+        {rows.map(({ item, selected, onClick, onKeyDown }) => (
+          <TableRow tabIndex={0} key={item.file.label} onClick={onClick} onKeyDown={onKeyDown} aria-selected={selected}>
             <TableSelectionCell type="radio" checked={selected} />
             <TableCell media={item.file.icon}>{item.file.label}</TableCell>
             <TableCell media={<Avatar badge={{ status: item.author.status }} />}>{item.author.label}</TableCell>

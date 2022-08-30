@@ -1,5 +1,3 @@
-// @ts-check
-
 const { readConfig } = require('../read-config');
 const getAllPackageInfo = require('./getAllPackageInfo');
 
@@ -17,6 +15,9 @@ function getDeps(packageJson, dev) {
 
 /** @type {import('./index').PackageInfo[]} */
 let repoDeps;
+/**
+ * @type {string}
+ */
 let cwdForRepoDeps;
 
 /**

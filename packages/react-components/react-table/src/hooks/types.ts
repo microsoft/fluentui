@@ -1,40 +1,47 @@
 import { SortDirection } from '../components/Table/Table.types';
-import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 
 export type RowId = string | number;
 export type ColumnId = string | number;
 export type GetRowIdInternal<TItem> = (rowId: TItem, index: number) => RowId;
+export type SelectionMode = 'single' | 'multiselect';
 
 export interface ColumnDefinition<TItem> {
   columnId: ColumnId;
   compare?: (a: TItem, b: TItem) => number;
 }
 
+export type RowEnhancer<TItem, TRowState extends RowState<TItem> = RowState<TItem>> = (
+  row: RowState<TItem>,
+  state: { selection: SelectionState; sort: SortState },
+) => TRowState;
+
 export interface SortStateInternal<TItem> {
   sortDirection: SortDirection;
   sortColumn: ColumnId | undefined;
   setColumnSort: (columnId: ColumnId, sortDirection: SortDirection) => void;
   toggleColumnSort: (columnId: ColumnId) => void;
-  headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
   /**
    * Returns a sorted **shallow** copy of original items
    */
   sort: (items: TItem[]) => TItem[];
 }
 
-export interface UseTableOptions<TItem> {
+export interface UseTableOptions<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   columns: ColumnDefinition<TItem>[];
   items: TItem[];
-  selectionMode?: 'single' | 'multiselect';
+  selectionMode?: SelectionMode;
   getRowId?: (item: TItem) => RowId;
+  rowEnhancer?: RowEnhancer<TItem, TRowState>;
 }
 
 export interface SelectionStateInternal {
-  clearSelection: () => void;
-  deSelectRow: (rowId: RowId) => void;
+  clearRows: () => void;
+  deselectRow: (rowId: RowId) => void;
   selectRow: (rowId: RowId) => void;
-  toggleSelectAllRows: () => void;
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleAllRows: () => void;
+  toggleRow: (rowId: RowId) => void;
+  isRowSelected: (rowId: RowId) => boolean;
   selectedRows: Set<RowId>;
   allRowsSelected: boolean;
   someRowsSelected: boolean;
@@ -58,16 +65,17 @@ export interface SortState {
    */
   toggleColumnSort: (columnId: ColumnId) => void;
   /**
-   * Returns props for @see TableHeaderCell to display sort state correctly
+   * Returns the sort direction if a column is sorted,
+   * returns undefined if the column is not sorted
    */
-  headerSortProps: (columnId: ColumnId) => TableHeaderCellProps;
+  getSortDirection: (columnId: ColumnId) => SortDirection | undefined;
 }
 
 export interface SelectionState {
   /**
    * Clears all selected rows
    */
-  clearSelection: () => void;
+  clearRows: () => void;
   /**
    * Selects single row
    */
@@ -75,15 +83,15 @@ export interface SelectionState {
   /**
    * De-selects single row
    */
-  deSelectRow: (rowId: RowId) => void;
+  deselectRow: (rowId: RowId) => void;
   /**
    * Toggle selection of all rows
    */
-  toggleSelectAllRows: () => void;
+  toggleAllRows: () => void;
   /**
    * Toggle selection of single row
    */
-  toggleRowSelect: (rowId: RowId) => void;
+  toggleRow: (rowId: RowId) => void;
   /**
    * Collection of row ids corresponding to selected rows
    */
@@ -96,6 +104,11 @@ export interface SelectionState {
    * Whether some rows are selected
    */
   someRowsSelected: boolean;
+
+  /**
+   * Checks if a given rowId is selected
+   */
+  isRowSelected: (rowId: RowId) => boolean;
 }
 
 export interface RowState<TItem> {
@@ -104,32 +117,16 @@ export interface RowState<TItem> {
    */
   item: TItem;
   /**
-   * Toggle the selection of the row
-   */
-  toggleSelect: () => void;
-  /**
-   * Selects the row
-   */
-  selectRow: () => void;
-  /**
-   * De-selects the row
-   */
-  deSelectRow: () => void;
-  /**
-   * Whether the row is selected
-   */
-  selected: boolean;
-  /**
    * The row id, defaults to index position in the collection
    */
   rowId: RowId;
 }
 
-export interface TableState<TItem> {
+export interface TableState<TItem, TRowState extends RowState<TItem> = RowState<TItem>> {
   /**
    * The row data for rendering
    */
-  rows: RowState<TItem>[];
+  rows: TRowState[];
   /**
    * State and actions to manage row selection
    */
