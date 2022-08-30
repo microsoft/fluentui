@@ -275,6 +275,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
+          data-selection-index={0}
+          onClick={[Function]}
           role="listitem"
         >
           <div
@@ -705,7 +707,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   color: #005a9e;
                 }
             data-is-focusable={true}
-            data-selection-index={0}
             id="id__9"
             onClick={[Function]}
             onKeyDown={[Function]}

@@ -6,7 +6,7 @@ export const Nested = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <Button>Open dialog</Button>
+        <Button>Open nested dialog</Button>
       </DialogTrigger>
       <DialogSurface>
         <DialogTitle>Dialog title</DialogTitle>
@@ -17,7 +17,7 @@ export const Nested = () => {
             </DialogTrigger>
             <DialogSurface>
               <DialogTitle>Inner dialog title</DialogTitle>
-              <DialogBody>⚠️ just because you can doesn't mean you should have nested dialogs ⚠️</DialogBody>
+              <DialogBody>⛔️ just because you can doesn't mean you should have nested dialogs ⛔️</DialogBody>
               <DialogActions>
                 <DialogTrigger>
                   <Button appearance="primary">Close</Button>

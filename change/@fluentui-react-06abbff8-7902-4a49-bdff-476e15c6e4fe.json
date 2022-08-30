@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Exported getActivityItemStyles and getActivityItemClassNaes",
-  "packageName": "@fluentui/react",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

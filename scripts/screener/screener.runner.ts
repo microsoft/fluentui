@@ -14,7 +14,7 @@ export const environment = {
     /**
      *  Determines whether a screener test should be skipped or run
      **/
-    skipScreenerBuild: process.env.SKIP_SCREENER_BUILD,
+    isArtifactPresent: process.env.IS_ARTIFACT_PRESENT,
   },
 };
 
@@ -27,8 +27,8 @@ async function scheduleScreenerBuild(
   buildInfo: {
     build: string;
     branchName: string;
-    commit: string;
-    pullRequest: string;
+    commit?: string;
+    pullRequest?: string;
   },
 ): Promise<ScheduleScreenerBuildResponse> {
   const payload = {
@@ -46,6 +46,10 @@ async function scheduleScreenerBuild(
     pullRequest: buildInfo.pullRequest,
   };
 
+  if (!environment.screener.proxyUri) {
+    throw new Error('SCREENER_PROXY_ENDPOINT env variable doesnt exist');
+  }
+
   const response = await fetch(environment.screener.proxyUri.replace('ci', 'runner'), {
     method: 'post',
     headers: {
@@ -53,6 +57,7 @@ async function scheduleScreenerBuild(
     },
     body: JSON.stringify({
       payload: payload,
+      isArtifactPresent: environment.screener.isArtifactPresent,
     }),
   });
 
@@ -63,7 +68,7 @@ async function scheduleScreenerBuild(
   if (response.status !== 201 && response.status !== 200) {
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
-  //conclusion of the screener run
+
   return response.json() as ScheduleScreenerBuildResponse;
 }
 
@@ -72,6 +77,14 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
   const commit = process.env.SYSTEM_PULLREQUEST_SOURCECOMMITID;
   // https://github.com/screener-io/screener-runner/blob/2a8291fb1b0219c96c8428ea6644678b0763a1a1/src/ci.js#L101
   let branchName = process.env.SYSTEM_PULLREQUEST_SOURCEBRANCH || process.env.BUILD_SOURCEBRANCHNAME;
+
+  if (!branchName) {
+    throw new Error('SYSTEM_PULLREQUEST_SOURCEBRANCH or BUILD_SOURCEBRANCHNAME env variable doesnt exist');
+  }
+  if (!process.env.BUILD_BUILDID) {
+    throw new Error('BUILD_BUILDID env variable doesnt exist');
+  }
+
   // remove prefix if exists
   if (branchName.indexOf('refs/heads/') === 0) {
     branchName = branchName.replace('refs/heads/', '');
@@ -82,7 +95,7 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
     branchName,
     commit,
     pullRequest: process.env.SYSTEM_PULLREQUEST_PULLREQUESTID
-      ? process.env.SYSTEM_PULLREQUEST_PULLREQUESTID.toString()
+      ? String(process.env.SYSTEM_PULLREQUEST_PULLREQUESTID)
       : undefined,
   });
 
@@ -93,6 +106,11 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
 
   if (screenerRun.conclusion === 'in_progress') {
     console.log('Screener test in progress.');
+    return;
+  }
+
+  if (screenerRun.conclusion === 'cancelled') {
+    console.log('Screener test cancelled.');
     return;
   }
 }
