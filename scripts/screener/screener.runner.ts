@@ -68,7 +68,7 @@ async function scheduleScreenerBuild(
   if (response.status !== 201 && response.status !== 200) {
     throw new Error(`Call to proxy failed: ${response.status}`);
   }
-  //conclusion of the screener run
+
   return response.json() as ScheduleScreenerBuildResponse;
 }
 
@@ -109,6 +109,11 @@ export async function screenerRunner(screenerConfig: ScreenerRunnerConfig) {
 
   if (screenerRun.conclusion === 'in_progress') {
     console.log('Screener test in progress.');
+    return;
+  }
+
+  if (screenerRun.conclusion === 'cancelled') {
+    console.log('Screener test cancelled.');
     return;
   }
 }
