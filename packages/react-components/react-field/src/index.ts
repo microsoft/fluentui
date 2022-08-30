@@ -4,6 +4,9 @@ export type { FieldProps, FieldSlots, FieldState, UseFieldParams } from './Field
 export { CheckboxField, checkboxFieldClassNames } from './CheckboxField';
 export type { CheckboxFieldProps } from './CheckboxField';
 
+export { ComboboxField, comboboxFieldClassNames } from './ComboboxField';
+export type { ComboboxFieldProps } from './ComboboxField';
+
 export { InputField, inputFieldClassNames } from './InputField';
 export type { InputFieldProps } from './InputField';
 

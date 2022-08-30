@@ -1,24 +1,17 @@
-// import * as React from 'react';
-// import { Combobox } from '@fluentui/react-combobox';
-// import type { ForwardRefComponent } from '@fluentui/react-utilities';
-// import type { FieldProps } from '../../Field';
-// import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
+import * as React from 'react';
+import { Combobox } from '@fluentui/react-combobox';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { FieldProps } from '../../Field';
+import { getFieldClassNames, renderField_unstable, useFieldStyles_unstable, useField_unstable } from '../../Field';
 
-// export type ComboboxFieldProps = FieldProps<typeof Combobox>;
+export type ComboboxFieldProps = FieldProps<typeof Combobox>;
 
-// export const comboboxFieldClassNames = getFieldClassNames('ComboboxField');
+export const comboboxFieldClassNames = getFieldClassNames('ComboboxField');
 
-// export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = React.forwardRef((props, ref) => {
-//   const state = useField_unstable({ props, ref, fieldComponent: Combobox, classNames: comboboxFieldClassNames });
-//   useFieldStyles_unstable(state);
-//   return renderField_unstable(state);
-// });
+export const ComboboxField: ForwardRefComponent<ComboboxFieldProps> = React.forwardRef((props, ref) => {
+  const state = useField_unstable({ props, ref, fieldComponent: Combobox, classNames: comboboxFieldClassNames });
+  useFieldStyles_unstable(state);
+  return renderField_unstable(state);
+});
 
-// ComboboxField.displayName = 'ComboboxField';
-
-// --
-
-// Temporary exports until Combobox is updated to make its children prop optional
-export type ComboboxFieldProps = never;
-export const comboboxFieldClassNames = undefined;
-export const ComboboxField = undefined;
+ComboboxField.displayName = 'ComboboxField';

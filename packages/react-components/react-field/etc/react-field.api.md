@@ -8,6 +8,7 @@
 
 import { Checkbox } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
+import { Combobox } from '@fluentui/react-combobox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -36,6 +37,15 @@ export type CheckboxFieldProps = Omit<FieldProps<typeof Checkbox>, 'label'> & {
     label?: CheckboxProps['label'];
     fieldLabel?: FieldProps<typeof Checkbox>['label'];
 };
+
+// @public (undocumented)
+export const ComboboxField: ForwardRefComponent<ComboboxFieldProps>;
+
+// @public (undocumented)
+export const comboboxFieldClassNames: SlotClassNames<FieldSlots<FieldComponent>>;
+
+// @public (undocumented)
+export type ComboboxFieldProps = FieldProps<typeof Combobox>;
 
 // @public
 export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
