@@ -143,7 +143,7 @@ export type FieldSlots<T extends FieldComponent> = {
    * This is the PRIMARY slot: all intrinsic HTML properties will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  fieldComponent: SlotComponent<T>;
+  field: SlotComponent<T>;
 
   /**
    * The label associated with the field.
@@ -173,7 +173,7 @@ export type FieldSlots<T extends FieldComponent> = {
 ### Props
 
 ```ts
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'field'> & {
   /**
    * The orientation of the label relative to the field component.
    * This only affects the label, and not the validationMessage or hint (which always appear below the field component).
@@ -243,7 +243,7 @@ export type FieldState<T extends FieldComponent> = ComponentState<Required<Field
 ```jsx
 <slots.root>
   <slots.label {...slotProps.label} />
-  <slots.fieldComponent {...slotProps.fieldComponent} />
+  <slots.field {...slotProps.field} />
   <slots.validationMessage {...slotProps.validationMessage}>
     <slots.validationMessageIcon {...slotProps.validationMessageIcon} />
     {slotProps.validationMessage.children}
@@ -333,7 +333,7 @@ The Field itself is not interactive. The wrapped component has the same interact
     - `aria-errormessage={validationMessage.id}`, if validationMessage is present, and _only if_ `validationState === 'error'`
     - `aria-invalid={true}`, _only if_ `validationState === 'error'`
   - On the `label` slot:
-    - `htmlFor={fieldComponent.id}` - the wrapped component's `id` (an ID is generated if not supplied via props).
+    - `htmlFor={field.id}` - the wrapped component's `id` (an ID is generated if not supplied via props).
 - **Live regions** (state change announcements)
   - TBD: Need to determine if the validation message should be an aria live region.
 - **UI parts appearing on hover or focus**
