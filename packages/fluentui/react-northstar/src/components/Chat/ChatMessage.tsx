@@ -82,6 +82,8 @@ export interface ChatMessageSlotClassNames {
   timestamp: string;
 }
 
+export type ChatMessageLayout = 'default' | 'refresh';
+
 export interface ChatMessageProps
   extends UIComponentProps,
     ChildrenComponentProps,
@@ -182,8 +184,8 @@ export interface ChatMessageProps
   /** Positions an actionMenu slot in "fixed" mode. */
   unstable_overflow?: boolean;
 
-  /** Opts into the V2 layout. */
-  v2?: boolean;
+  /** A message can render with different layouts. */
+  unstable_layout?: ChatMessageLayout;
 
   /** Indicates whether the message is in a failed state. */
   failed?: boolean;
@@ -208,7 +210,7 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   hasBadge: boolean;
   hasHeaderReactionGroup: boolean;
   hasReactions: boolean;
-  v2: boolean;
+  layout: ChatMessageLayout;
   failed: boolean;
   fullWidth: boolean;
 
@@ -292,8 +294,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     styles,
     timestamp,
     unstable_overflow: overflow,
+    unstable_layout: layout = 'default',
     variables,
-    v2,
     failed,
     fullWidth,
     bubble,
@@ -303,7 +305,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     headerContent,
   } = props;
 
-  const isV2Enabled = v2 && density === 'comfy';
+  const isRefreshComfyLayout = layout === 'refresh' && density === 'comfy';
 
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
   const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
@@ -395,7 +397,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       hasReactions: !!reactionGroup,
       failed,
       fullWidth,
-      v2,
+      layout,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -602,7 +604,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
         {readStatusElement}
       </>
     );
-  } else if (isV2Enabled) {
+  } else if (isRefreshComfyLayout) {
     const headerElement = createShorthand(ChatMessageHeader, header || {}, {
       defaultProps: () => ({
         styles: resolvedStyles.header,
@@ -710,7 +712,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   }
 
   const element = (
-    <Ref innerRef={!isV2Enabled && actionsMenuPopper.targetRef}>
+    <Ref innerRef={!isRefreshComfyLayout && actionsMenuPopper.targetRef}>
       {getA11Props.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11Props('root', {
@@ -767,7 +769,7 @@ ChatMessage.propTypes = {
   readStatus: customPropTypes.itemShorthand,
   timestamp: customPropTypes.itemShorthand,
   unstable_overflow: PropTypes.bool,
-  v2: PropTypes.bool,
+  unstable_layout: PropTypes.oneOf(['default', 'refresh']),
   failed: PropTypes.bool,
   fullWidth: PropTypes.bool,
   headerContent: PropTypes.node,

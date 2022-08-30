@@ -4,7 +4,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    v2: true,
+    unstable_layout: 'refresh',
     contentPosition: 'start',
     gutter: (
       <Avatar
@@ -14,7 +14,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     ),
     message: (
       <Chat.Message
-        v2
+        unstable_layout="refresh"
         content={`This is a really long message. It has a lot of content so that we can see how a chat message looks when it has a lot of content. You get the point? Lots of content to test lots of content. Here's even more content on top of the already long amount of content that we already had. This is a really long message. It has a lot of content so that we can see how a chat message looks when it has a lot of content. You get the point? Lots of content to test lots of content. Here's even more content on top of the already long amount of content that we already had. This is a really long message. It has a lot of content so that we can see how a chat message looks when it has a lot of content. You get the point? Lots of content to test lots of content. Here's even more content on top of the already long amount of content that we already had.`}
         author="Tim Deboer"
         timestamp="10:15 PM"
@@ -23,11 +23,11 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-2',
   },
   {
-    v2: true,
+    unstable_layout: 'refresh',
     contentPosition: 'end',
     message: (
       <Chat.Message
-        v2
+        unstable_layout="refresh"
         mine
         content={`contentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespacecontentwithnowhitespace`}
         author="Tim Deboer"

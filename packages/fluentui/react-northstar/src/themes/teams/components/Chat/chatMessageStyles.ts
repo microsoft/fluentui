@@ -7,7 +7,7 @@ import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { chatMessageStylesComfy } from './chatMessageStylesComfy';
 import { chatMessageStylesCompact } from './chatMessageStylesCompact';
-import { chatMessageStylesComfyV2 } from './chatMessageStylesComfyV2';
+import { chatMessageStylesComfyRefresh } from './chatMessageStylesComfyRefresh';
 import { ChatMessageVariables } from './chatMessageVariables';
 
 const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyle => ({
@@ -30,8 +30,8 @@ const chatMessageDensityStyles: Record<
 
 const getChatMessageVariantStyles = (props: ChatMessageStylesProps) => {
   const density = props.density || defaultChatDensity;
-  if (props.v2 && density === 'comfy') {
-    return chatMessageStylesComfyV2;
+  if (props.layout === 'refresh' && density === 'comfy') {
+    return chatMessageStylesComfyRefresh;
   }
   return chatMessageDensityStyles[density];
 };
@@ -44,8 +44,8 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       theme: { siteVariables },
     } = componentStyleFunctionParam;
 
-    if (p.v2 && p.density === 'comfy') {
-      return chatMessageStylesComfyV2.root(componentStyleFunctionParam);
+    if (p.layout === 'refresh' && p.density === 'comfy') {
+      return chatMessageStylesComfyRefresh.root(componentStyleFunctionParam);
     }
     return {
       borderRadius: v.borderRadius,

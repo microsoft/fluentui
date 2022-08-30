@@ -13,7 +13,10 @@ const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyl
   width: 'auto',
 });
 
-export const chatMessageStylesComfyV2: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
+export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
+  ChatMessageStylesProps,
+  ChatMessageVariables
+> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       borderRadius: 'inherit',

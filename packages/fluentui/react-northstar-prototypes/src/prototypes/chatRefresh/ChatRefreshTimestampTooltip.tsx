@@ -4,7 +4,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection, Tooltip } from '@flue
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    v2: true,
+    unstable_layout: 'refresh',
     contentPosition: 'start',
     gutter: (
       <Avatar
@@ -14,7 +14,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     ),
     message: (
       <Chat.Message
-        v2
+        unstable_layout="refresh"
         content="Hello"
         author="Robin Counts"
         timestamp={{
