@@ -10,10 +10,15 @@ export const config: BeachballConfig = {
       disallowedChangeTypes: ['major'],
     },
     {
+      name: 'React Charting',
+      include: ['packages/charting', 'stub-packages/react-charting'],
+      disallowedChangeTypes: ['major'],
+    },
+    {
       name: 'Styling',
       include: ['packages/styling', 'stub-packages/style-utilities'],
       disallowedChangeTypes: ['major'],
-    },
+    }
   ],
   changelog: {
     customRenderers: {
