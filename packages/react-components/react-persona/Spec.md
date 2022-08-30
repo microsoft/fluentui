@@ -17,7 +17,11 @@ _**Persona Figma spec:**_ [link](https://www.figma.com/file/ayf1r31NnONkfiE00g9Q
   - > Note: v8's Persona is a combination of v9's Persona and Avatar (v8's Persona has a sub-component PersonaCoin that would count as Avatar, but is not exposed.). In v9 we've taken the approach of having a single component Avatar and another component Persona.
 - v0: Does not have equivalent component.
 
-### Coin
+## Anatomy
+
+![](https://i.imgur.com/A3QXgpD.png)
+
+### Media
 
 _Avatar vs PersonaCoin_: As mentioned in Prior Art, v8's Persona is not quite the same as v9's. v8's Persona is only able to showcase PersonaCoin while v9 showcases Avatar (including Avatar + PresenceBadge, Avatar + image, and Avatar + Icon). Note that PersonaCoin does not support custom icons, the only icon options are the size 8 icon shown below and the unknown PersonaCoin.
 
@@ -26,7 +30,7 @@ _Avatar vs PersonaCoin_: As mentioned in Prior Art, v8's Persona is not quite th
 |                             ![](https://i.imgur.com/TuUXN7t.png)                              |                         ![](https://i.imgur.com/BbEhlc3.png)                          |
 |                             ![](https://i.imgur.com/pXEFFmu.png)                              |                         ![](https://i.imgur.com/hbms9Bp.png)                          |
 
-_Icon vs PersonaCoin_: PersonaCoin allows you to have icon only when there's no image available or it's the unknown Persona coin variant. In v9's Persona, you have the option of showcasing an icon through the Avatar or showcasing only the icon.
+_Icon vs PersonaCoin_: PersonaCoin allows you to have icon only when there's no image available or it's the unknown PersonaCoin variant. In v9's Persona, you have the option of showcasing an icon through the Avatar or showcasing only the icon.
 
 - Note: The icon only shows up if there's no presence and size is `tiny`, `size8`, or `size16`.
 
@@ -42,11 +46,15 @@ Other than styling and naming, the text lines in Persona remain the same.
 
 Persona with Avatar:
 
+![](https://i.imgur.com/yGUDnXG.png)
+
 ```jsx
 <Persona primaryText="Kevin Sturgis" secondaryText="Software Engineer" avatar={{ name: 'Kevin Sturgis' }} />
 ```
 
 Persona with Avatar + PresenceBadge:
+
+![](https://i.imgur.com/ALUEjSz.png)
 
 ```jsx
 <Persona
@@ -60,17 +68,23 @@ Persona with Avatar + PresenceBadge:
 
 Persona with icon:
 
+![](https://i.imgur.com/fPCtht4.png)
+
 ```jsx
 <Persona primaryText="Person Call Icon" icon={<PersonCallRegular />} />
 ```
 
 Persona with PresenceBadge:
 
+![](https://i.imgur.com/Wtusjhl.png)
+
 ```jsx
 <Persona primaryText="Kevin Sturgis" badge={{ status: 'offline', outOfOffice: true }} />
 ```
 
 Persona with image:
+
+![](https://i.imgur.com/14ClUNj.png)
 
 ```jsx
 <Persona
@@ -86,11 +100,11 @@ Persona with image:
 
 There are three alignment variants:
 
-- start: Coin on the left and text on the right.
-- center: Coin on top and text on the bottom.
-- end: Coin on the right and text on the left.
+- start: Media on the left and text on the right.
+- center: Media on top and text on the bottom.
+- end: Media on the right and text on the left.
 
-There are 5 coin variats:
+There are 5 Media variants:
 
 - Badge
 - icon
@@ -101,8 +115,8 @@ There are 5 coin variats:
 
 There are 2 sizing variants:
 
-- stretch: When the text lines have a larger height compared to the coin, stretch the coin to fit text lines height.
-- fixed: Keep the coin the same size, no matter the height of the text lines.
+- stretch: When the text lines have a larger height compared to the Media, stretch the Media to fit text lines height.
+- fixed: Keep the Media the same size, no matter the height of the text lines.
 
 **⚠️Responsive text variants will be left out of the initial implementation due to the accessibility concerns, they are added to this spec to start a discussion⚠️**
 
@@ -123,12 +137,12 @@ There are 4 responsive text variants:
 - `badge`: The PresenceBadge, if provided.
 - `icon`: The icon, if provided.
 - `image`: The image, if provided.
-- `primaryText`: Primary text, this is the only required slot. I decided to have at least this slot required since it doesn't make sense to have just the coin without the text. ⚠️ Open to feedback though.
+- `primaryText`: Primary text, this is the only required slot. I decided to have at least this slot required since it doesn't make sense to have just the Media without the text. ⚠️ Open to feedback though.
 - `secondaryText`: Secondary text, if provided.
 - `tertiaryText`: Tertiary text, if provided.
 - `quaternaryText`: Quaternary text, if provided.
 
-**Coin slots precedence**
+**Media slots precedence**
 
 1. Avatar + PresenceBadge
 2. Avatar
@@ -188,19 +202,19 @@ type PersonaSlots = {
 
 type PersonaProps = ComponentProps<PersonaSlots> & {
   /**
-   * Type of sizing to be used. When using fixed, the coin will not resize. When using stretch,
-   * the coin will resize depending on the combined text's height.
+   * Type of sizing to be used. When using fixed, the Media will not resize. When using stretch,
+   * the Media will resize depending on the combined text's height.
    *
    * @default stretch
    */
   sizingStyle?: 'fixed' | 'stretch';
 
   /**
-   * Where the coin is positioned relative to the text.
+   * Where the Media is positioned relative to the text.
    *
    * @default start
    */
-  coinPosition?: 'start' | 'center' | 'end';
+  mediaPosition?: 'start' | 'center' | 'end';
 };
 ```
 
@@ -272,7 +286,7 @@ _Explain how the component will behave in use, including:_
   - _Touch_
     - Doesn't interact with touch.
   - _Screen readers_
-    - It first focuses on the coin and then goes through each text line available.
+    - It first focuses on the media and then goes through each text line available.
 
 ## Accessibility
 
