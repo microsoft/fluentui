@@ -152,7 +152,7 @@ In this example, the first Avatar will have a `darkRed` color, while all the oth
 
 ## Migration
 
-See [MIGRATION-AvatarGroup.md](MIGRATION-AvatarGroup.md) for details.
+See [v8 to v9 migration guide](https://react.fluentui.dev/?path=/docs/concepts-upgrading-from-v8-components-avatargroup-upgrade--page) for details.
 
 ## Behaviors
 
