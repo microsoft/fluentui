@@ -134,7 +134,16 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps, culture } = this.props;
+    const {
+      calloutProps,
+      points,
+      chartType,
+      chartHoverProps,
+      svgFocusZoneProps,
+      svgProps,
+      culture,
+      dateLocalizeOptions,
+    } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -188,7 +197,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         xScale = createNumericXAxis(XAxisParams, culture);
         break;
       case XAxisTypes.DateAxis:
-        xScale = createDateXAxis(XAxisParams, this.props.tickParams!);
+        xScale = createDateXAxis(XAxisParams, this.props.tickParams!, culture, dateLocalizeOptions);
         break;
       case XAxisTypes.StringAxis:
         xScale = createStringXAxis(XAxisParams, this.props.tickParams!, this.props.datasetForXAxisDomain!, culture);
