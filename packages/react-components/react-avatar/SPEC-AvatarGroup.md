@@ -67,8 +67,8 @@ There are three layout variants in AvatarGroup:
 - Spread layout (Default): Avatars are spaced evenly.
 - Stack layout: Avatars are overlapped evenly.
 - Pie layout: Avatars are "cut" in a pie design. When there are two Avatars inline, the Avatars will be cut in half and placed side by side. When there are three Avatars inline, the first Avatar will be cut in half and other two will be downscaled by 50%.
-  - The pie layout must have 3 or less Avatars inline and all Avatars should repeat in the `AvatarGroupPopover`. This is handled by `partitionAvatarGroupItems`.
-- If `partitionAvatarGroupItems` is used, the `spread` and `stack` layouts should have a maximum of 5 avatars before overflowing by default. This can be overridden via the `maxAvatars` option in `partitionAvatarGroupItems`.
+  - The pie layout must have 3 or less Avatars inline and all Avatars must repeat in the `AvatarGroupPopover`. This is handled by `partitionAvatarGroupItems`.
+- If `partitionAvatarGroupItems` is used, the `spread` and `stack` layouts will have a maximum of 5 avatars before overflowing by default. This can be overridden via the `maxAvatars` option in `partitionAvatarGroupItems`.
 
 ## API
 

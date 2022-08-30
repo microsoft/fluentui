@@ -10,7 +10,7 @@ These are not production-ready components and **should never be used in product*
 
 ## Usage
 
-To import AvatarGroup and AvatarGroupItem:
+To import AvatarGroup, AvatarGroupItem, AvatarGroupPopover, and partitionAvatarGroupItems:
 
 ```js
 import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
