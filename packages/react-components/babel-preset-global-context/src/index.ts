@@ -5,4 +5,3 @@ export default function preset() {
     plugins: [[transformPlugin]],
   };
 }
-//add comment
