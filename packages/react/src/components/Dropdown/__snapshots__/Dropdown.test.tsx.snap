@@ -869,7 +869,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"
@@ -1224,7 +1223,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
       class="ms-Dropdown-container"
     >
       <div
-        aria-activedescendant="Dropdown0-list1"
         aria-controls="Dropdown0-list"
         aria-expanded="true"
         aria-haspopup="listbox"

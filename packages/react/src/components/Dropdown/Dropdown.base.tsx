@@ -332,11 +332,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const disabled = this._isDisabled();
 
     const errorMessageId = id + '-errorMessage';
-    const ariaActiveDescendant = disabled
-      ? undefined
-      : isOpen && selectedIndices.length === 1 && selectedIndices[0] >= 0
-      ? this._listId + selectedIndices[0]
-      : undefined;
 
     this._classNames = getClassNames(propStyles, {
       theme,
@@ -373,7 +368,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           aria-label={ariaLabel}
           aria-labelledby={label && !ariaLabel ? mergeAriaAttributeValues(this._labelId, this._optionId) : undefined}
           aria-describedby={hasErrorMessage ? this._id + '-errorMessage' : undefined}
-          aria-activedescendant={ariaActiveDescendant}
           aria-required={required}
           aria-disabled={disabled}
           aria-controls={isOpen ? this._listId : undefined}
