@@ -1,6 +1,6 @@
 import { mergeStyleSets } from '@fluentui/react';
 import * as React from 'react';
-import { injectGlobalCss } from '../../shared/injectStyles';
+import { injectGlobalCss } from '../../shared/css/injectStyles';
 import { getTestParams } from '../../shared/testParams';
 import { performanceMeasure } from '../../shared/performanceMeasure';
 import { StressComponent } from './StressComponent';

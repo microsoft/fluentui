@@ -15,7 +15,8 @@
     "@fluentui/web-components": "^2.5.5",
     "@microsoft/fast-element": "^1.10.4",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "random-seedable": "1.0.8"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "7.14.5"

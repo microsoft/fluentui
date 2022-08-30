@@ -1,17 +1,11 @@
-export type PerformanceMeasureFn = (measureName: string, startMark: string) => void;
+import { requestPostAnimationFrame } from './requestPostAnimationFrame';
 
-export const performanceMeasure: PerformanceMeasureFn = (measureName, startMark) => {
+export type PerformanceMeasureFn = (measureName?: string, startMark?: string) => void;
+
+export const performanceMeasure: PerformanceMeasureFn = (measureName = 'stress', startMark = 'start') => {
   performance.mark(startMark);
 
-  // requestPostAnimationFrame polyfill
-  requestAnimationFrame(() => {
-    addEventListener(
-      'message',
-      () => {
-        performance.measure(measureName, startMark);
-      },
-      { once: true },
-    );
-    postMessage('', '*');
+  requestPostAnimationFrame(() => {
+    performance.measure(measureName, startMark);
   });
 };

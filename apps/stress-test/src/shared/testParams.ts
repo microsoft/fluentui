@@ -1,10 +1,9 @@
-const testTypes = ['manual', 'mount', 'inject-styles', 'prop-update', 'remove-node', 'add-node'];
-
 export type TestParams = {
-  test: typeof testTypes[number];
+  test: string;
   numStartNodes: number;
   numAddNodes: number;
   numRemoveNodes: number;
+  [key: string]: string | number;
 };
 
 export type GetTestParamsFn = () => TestParams;
@@ -23,7 +22,7 @@ export const getTestParams = () => {
   const searchParams = new URLSearchParams(window.location.search);
 
   let test = searchParams.get('test');
-  if (!test || !testTypes.includes(test as TestParams['test'])) {
+  if (!test) {
     test = 'manual';
   }
 
@@ -46,6 +45,15 @@ export const getTestParams = () => {
   params.numStartNodes = numStartNodes;
   params.numAddNodes = numAddNodes;
   params.numRemoveNodes = numRemoveNodes;
+
+  const ignore = ['numStartNodes', 'numAddNodes', 'numRemoveNodes'];
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  for (const [key, value] of searchParams.entries()) {
+    if (!ignore.includes(key)) {
+      params[key] = value;
+    }
+  }
 
   return params;
 };

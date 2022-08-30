@@ -1,5 +1,5 @@
 import { FASTElement, customElement, html, css } from '@microsoft/fast-element';
-import { injectGlobalCss } from '../../shared/injectStyles';
+import { injectGlobalCss } from '../../shared/css/injectStyles';
 import { getTestParams } from '../../shared/testParams';
 import { performanceMeasure } from '../../shared/performanceMeasure';
 
