@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getWindow } from './dom/getWindow';
+import { FocusRectsContext } from './useFocusRects';
 export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
 export const IsFocusHiddenClassName = 'ms-Fabric--isFocusHidden';
 
@@ -30,8 +31,10 @@ export function setFocusVisibility(
   target?: Element,
   registeredProviders?: React.RefObject<HTMLElement>[],
 ): void {
-  if (registeredProviders) {
-    registeredProviders.forEach(ref => updateClassList(ref.current, enabled));
+  const context = React.useContext(FocusRectsContext);
+  const providers = registeredProviders || (context?.providerRef && [context?.providerRef]);
+  if (providers) {
+    providers.forEach(ref => updateClassList(ref.current, enabled));
   } else {
     updateClassList(getWindow(target)?.document.body, enabled);
   }
