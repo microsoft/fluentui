@@ -24,10 +24,13 @@ Basic usage of `FacePile` in v8
 
 ```tsx
 import React from 'react';
+import { facepilePersonas } from '@fluentui/example-data';
 import { Facepile, IFacepilePersona } from '@fluentui/react/lib/Facepile';
 import { PersonaSize } from '@fluentui/react/lib/Persona';
 
 const AvatarGroupV8BasicExample = () => {
+  // Number of faces to display inline
+  const numberOfFaces = 3;
   const personas: IFacepilePersona[] = React.useMemo(() => facepilePersonas.slice(0, numberOfFaces), [numberOfFaces]);
   const overflowPersonas = React.useMemo(() => facepilePersonas.slice(numberOfFaces), [numberOfFaces]);
 
