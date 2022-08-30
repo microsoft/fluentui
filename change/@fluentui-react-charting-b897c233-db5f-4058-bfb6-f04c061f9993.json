@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added lts-7 beachball tag to react charting",
+  "packageName": "@fluentui/react-charting",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
