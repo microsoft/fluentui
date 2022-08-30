@@ -42,6 +42,10 @@ The charting components are built using following building blocks.
     | Tree Chart                 | --           | --        | --          |
     | Sparkline Chart            | --           | --        | --          |
 
+  - Axis localization
+    The axes support javascript provided localization for numeric and date axis.
+    Specify the culture and dateLocalizeOptions for date axis to define target localization details.
+
 - Event annotations (Available in line charts).
 
   - Data can be annotated using vertical lines representing the events of interest. See [line chart with events](https://fluentuipr.z22.web.core.windows.net/heads/master/react-charting/demo/index.html#/examples/linechart#Variants) for example.

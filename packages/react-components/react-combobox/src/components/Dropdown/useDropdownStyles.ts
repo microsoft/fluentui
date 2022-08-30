@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',
     display: 'inline-block',
-    minWidth: '160px',
+    minWidth: '250px',
     position: 'relative',
 
     // windows high contrast mode focus indicator
@@ -38,10 +38,10 @@ const useStyles = makeStyles({
       left: '-1px',
       bottom: '-1px',
       right: '-1px',
-      height: `max(2px, ${tokens.borderRadiusMedium})`,
+      height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
       borderBottomLeftRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom('2px', 'solid', tokens.colorCompoundBrandStroke),
+      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -81,6 +81,7 @@ const useStyles = makeStyles({
     ...shorthands.border('0'),
     boxSizing: 'border-box',
     columnGap: tokens.spacingHorizontalXXS,
+    cursor: 'pointer',
     display: 'grid',
     fontFamily: tokens.fontFamilyBase,
     gridTemplateColumns: '1fr auto',
@@ -101,29 +102,54 @@ const useStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
-    ...shorthands.padding('3px', tokens.spacingHorizontalSNudge),
+    ...shorthands.padding(
+      '3px',
+      tokens.spacingHorizontalSNudge,
+      '3px',
+      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
   },
   medium: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding('5px', tokens.spacingHorizontalMNudge),
+    ...shorthands.padding(
+      '5px',
+      tokens.spacingHorizontalMNudge,
+      '5px',
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
-    ...shorthands.padding('7px', tokens.spacingHorizontalM),
+    ...shorthands.padding(
+      '7px',
+      tokens.spacingHorizontalM,
+      '7px',
+      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+    ),
   },
 
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
+
+    '&:hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
     ...shorthands.borderRadius(0),
   },
   'filled-lighter': {
@@ -151,12 +177,15 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
+    marginLeft: tokens.spacingHorizontalXXS,
   },
   medium: {
     fontSize: iconSizes.medium,
+    marginLeft: tokens.spacingHorizontalXXS,
   },
   large: {
     fontSize: iconSizes.large,
+    marginLeft: tokens.spacingHorizontalSNudge,
   },
 });
 
