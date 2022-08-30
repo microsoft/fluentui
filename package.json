@@ -40,7 +40,7 @@
     "lint:log:lerna": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
-    "postinstall": "node ./scripts/postinstall.js",
+    "postinstall": "patch-package",
     "preinstall": "node ./scripts/use-yarn-please.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
@@ -270,7 +270,9 @@
     "yargs-unparser": "2.0.0"
   },
   "dependencies": {
-    "copy-to-clipboard": "3.3.1"
+    "copy-to-clipboard": "3.3.1",
+    "patch-package": "6.4.7",
+    "postinstall-postinstall": "2.1.0"
   },
   "license": "MIT",
   "workspaces": {
@@ -307,7 +309,10 @@
     "@types/react-dom@<18.0.0": "@types/react-dom@17.0.15",
     "eslint": "7.25.0",
     "workspace-tools": "0.18.4",
-    "requestretry": "7.0.0"
+    "requestretry": "7.0.0",
+    "@griffel/core": "1.6.0",
+    "@griffel/react": "1.3.1",
+    "@griffel/babel-preset": "1.3.7"
   },
   "syncpack": {
     "prod": true,

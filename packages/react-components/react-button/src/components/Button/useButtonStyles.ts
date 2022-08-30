@@ -1,7 +1,7 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { shorthands, makeStyles, mergeClasses, unstableMakeResetStyles } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
@@ -12,82 +12,117 @@ export const buttonClassNames: SlotClassNames<ButtonSlots> = {
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
-const useRootStyles = makeStyles({
-  // Base styles
-  base: {
-    alignItems: 'center',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    verticalAlign: 'middle',
+const useBaseStyles = unstableMakeResetStyles({
+  alignItems: 'center',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  verticalAlign: 'middle',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  margin: 0,
 
-    ...shorthands.margin(0),
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 
-    ...shorthands.overflow('hidden'),
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
+  backgroundColor: tokens.colorNeutralBackground1,
+  color: tokens.colorNeutralForeground1,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  fontFamily: tokens.fontFamilyBase,
+  outlineStyle: 'none',
 
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+  ':hover': {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    borderColor: tokens.colorNeutralStroke1Hover,
+    color: tokens.colorNeutralForeground1Hover,
+    cursor: 'pointer',
 
-    fontFamily: tokens.fontFamilyBase,
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+  },
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  ':hover:active': {
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    borderColor: tokens.colorNeutralStroke1Pressed,
+    color: tokens.colorNeutralForeground1Pressed,
     outlineStyle: 'none',
 
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
+    },
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+  },
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalM}`,
+  height: '32px',
+  minWidth: '96px',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  borderRadius: tokens.borderRadiusMedium,
+
+  fontSize: tokens.fontSizeBase300,
+  fontWeight: tokens.fontWeightSemibold,
+  lineHeight: tokens.lineHeightBase300,
+
+  // High contrast styles
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  '@media (forced-colors: active)': {
+    ':focus': {
+      borderColor: 'ButtonText',
+    },
+
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      color: tokens.colorNeutralForeground1Hover,
-
-      cursor: 'pointer',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      color: tokens.colorNeutralForeground1Pressed,
-
-      outlineStyle: 'none',
-
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
     },
   },
 
-  // High contrast styles
-  highContrast: {
-    '@media (forced-colors: active)': {
-      ':focus': {
-        ...shorthands.borderColor('ButtonText'),
-      },
+  // Focus styles
+  ...createCustomFocusIndicatorStyle({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    borderColor: 'transparent',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    borderRadius: tokens.borderRadiusMedium,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    outline: `${tokens.strokeWidthThick} solid transparent`,
+    boxShadow: `
+      ${tokens.shadow4},
+      0 0 0 2px ${tokens.colorStrokeFocus2}
+    `,
+    zIndex: 1,
+  }),
+});
 
-      ':hover': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-        forcedColorAdjust: 'none',
-      },
-
-      ':hover:active': {
-        backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
-        color: 'Highlight',
-        forcedColorAdjust: 'none',
-      },
-    },
-  },
-
+const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -102,18 +137,29 @@ const useRootStyles = makeStyles({
   },
   primary: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
     color: tokens.colorNeutralForegroundOnBrand,
 
     ':hover': {
       backgroundColor: tokens.colorBrandBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForegroundOnBrand,
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForegroundOnBrand,
     },
   },
@@ -122,35 +168,57 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     backgroundColor: tokens.colorSubtleBackground,
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
     color: tokens.colorNeutralForeground2,
 
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForeground2BrandHover,
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
       color: tokens.colorNeutralForeground2BrandPressed,
     },
   },
@@ -179,18 +247,6 @@ const useRootStyles = makeStyles({
     fontWeight: tokens.fontWeightRegular,
     lineHeight: tokens.lineHeightBase200,
   },
-  medium: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalM),
-
-    height: '32px',
-    minWidth: '96px',
-
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.lineHeightBase300,
-  },
   large: {
     ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalL),
 
@@ -209,14 +265,20 @@ const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: tokens.colorNeutralStrokeDisabled,
     color: tokens.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: tokens.colorNeutralStrokeDisabled,
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
@@ -229,9 +291,14 @@ const useRootDisabledStyles = makeStyles({
       },
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: tokens.colorNeutralStrokeDisabled,
       color: tokens.colorNeutralForegroundDisabled,
 
       cursor: 'not-allowed',
@@ -247,21 +314,35 @@ const useRootDisabledStyles = makeStyles({
 
   // High contrast styles
   highContrast: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     '@media (forced-colors: active)': {
-      ...shorthands.borderColor('GrayText'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'GrayText',
       color: 'GrayText',
 
       ':focus': {
-        ...shorthands.borderColor('GrayText'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'GrayText',
       },
 
       ':hover': {
-        ...shorthands.borderColor('GrayText'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'GrayText',
         color: 'GrayText',
       },
 
       ':hover:active': {
-        ...shorthands.borderColor('GrayText'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'GrayText',
         color: 'GrayText',
       },
     },
@@ -280,14 +361,25 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   primary: {
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
 
     ':hover': {
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
   },
   secondary: {
@@ -295,47 +387,57 @@ const useRootDisabledStyles = makeStyles({
   },
   subtle: {
     backgroundColor: 'transparent',
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
 
     ':hover': {
       backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
   },
   transparent: {
     backgroundColor: 'transparent',
-    ...shorthands.borderColor('transparent'),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: 'transparent',
 
     ':hover': {
       backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ':hover:active': {
       backgroundColor: 'transparent',
-      ...shorthands.borderColor('transparent'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'transparent',
     },
   },
 });
 
 const useRootFocusStyles = makeStyles({
-  base: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor('transparent'),
-    outlineColor: 'transparent',
-    outlineWidth: tokens.strokeWidthThick,
-    outlineStyle: 'solid',
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
-    `,
-    zIndex: 1,
-  }),
-
   // Shape variations
   circular: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
@@ -356,9 +458,6 @@ const useRootFocusStyles = makeStyles({
   // Size variations
   small: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  }),
-  medium: createCustomFocusIndicatorStyle({
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   }),
   large: createCustomFocusIndicatorStyle({
     ...shorthands.borderRadius(tokens.borderRadiusLarge),
@@ -428,6 +527,7 @@ const useIconStyles = makeStyles({
 });
 
 export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
+  const baseStyles = useBaseStyles();
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const rootFocusStyles = useRootFocusStyles();
@@ -440,9 +540,10 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     buttonClassNames.root,
 
     // Root styles
-    rootStyles.base,
-    rootStyles.highContrast,
+    baseStyles,
     appearance && rootStyles[appearance],
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     rootStyles[size],
     rootStyles[shape],
 
@@ -452,8 +553,9 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 
     // Focus styles
-    rootFocusStyles.base,
     appearance === 'primary' && rootFocusStyles.primary,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     rootFocusStyles[size],
     rootFocusStyles[shape],
 

@@ -1,0 +1,1095 @@
+diff --git a/node_modules/@griffel/core/__resetStyles.cjs.js b/node_modules/@griffel/core/__resetStyles.cjs.js
+new file mode 100644
+index 0000000..3894524
+--- /dev/null
++++ b/node_modules/@griffel/core/__resetStyles.cjs.js
+@@ -0,0 +1,34 @@
++'use strict';
++
++Object.defineProperty(exports, '__esModule', { value: true });
++
++/**
++ * @internal
++ */
++function __resetStyles(ltrClassName, rtlClassName, cssRules) {
++  const insertionCache = {};
++
++  function computeClassName(options) {
++    const {
++      dir,
++      renderer
++    } = options;
++    const isLTR = dir === 'ltr'; // As RTL classes are different they should have a different cache key for insertion
++
++    const rendererId = isLTR ? renderer.id : renderer.id + 'r';
++
++    if (insertionCache[rendererId] === undefined) {
++      renderer.insertCSSRules({
++        r: cssRules
++      });
++      insertionCache[rendererId] = true;
++    }
++
++    return isLTR ? ltrClassName : rtlClassName || ltrClassName;
++  }
++
++  return computeClassName;
++}
++
++exports.__resetStyles = __resetStyles;
++//# sourceMappingURL=__resetStyles.cjs.js.map
+diff --git a/node_modules/@griffel/core/__resetStyles.d.ts b/node_modules/@griffel/core/__resetStyles.d.ts
+new file mode 100644
+index 0000000..128657f
+--- /dev/null
++++ b/node_modules/@griffel/core/__resetStyles.d.ts
+@@ -0,0 +1,5 @@
++import type { MakeStylesOptions } from './types';
++/**
++ * @internal
++ */
++export declare function __resetStyles(ltrClassName: string, rtlClassName: string | null, cssRules: string[]): (options: MakeStylesOptions) => string;
+diff --git a/node_modules/@griffel/core/__resetStyles.esm.js b/node_modules/@griffel/core/__resetStyles.esm.js
+new file mode 100644
+index 0000000..10f5bbd
+--- /dev/null
++++ b/node_modules/@griffel/core/__resetStyles.esm.js
+@@ -0,0 +1,30 @@
++/**
++ * @internal
++ */
++function __resetStyles(ltrClassName, rtlClassName, cssRules) {
++  const insertionCache = {};
++
++  function computeClassName(options) {
++    const {
++      dir,
++      renderer
++    } = options;
++    const isLTR = dir === 'ltr'; // As RTL classes are different they should have a different cache key for insertion
++
++    const rendererId = isLTR ? renderer.id : renderer.id + 'r';
++
++    if (insertionCache[rendererId] === undefined) {
++      renderer.insertCSSRules({
++        r: cssRules
++      });
++      insertionCache[rendererId] = true;
++    }
++
++    return isLTR ? ltrClassName : rtlClassName || ltrClassName;
++  }
++
++  return computeClassName;
++}
++
++export { __resetStyles };
++//# sourceMappingURL=__resetStyles.esm.js.map
+diff --git a/node_modules/@griffel/core/constants.cjs.js b/node_modules/@griffel/core/constants.cjs.js
+index c6146a2..a834eb7 100644
+--- a/node_modules/@griffel/core/constants.cjs.js
++++ b/node_modules/@griffel/core/constants.cjs.js
+@@ -9,6 +9,9 @@ const DATA_BUCKET_ATTR = 'data-make-styles-bucket';
+ const HASH_PREFIX = 'f';
+ /** @internal */
+ 
++const RESET_HASH_PREFIX = 'rf';
++/** @internal */
++
+ const SEQUENCE_HASH_LENGTH = 7;
+ /** @internal */
+ 
+@@ -88,6 +91,7 @@ exports.DEFINITION_LOOKUP_TABLE = DEFINITION_LOOKUP_TABLE;
+ exports.HASH_PREFIX = HASH_PREFIX;
+ exports.LOOKUP_DEFINITIONS_INDEX = LOOKUP_DEFINITIONS_INDEX;
+ exports.LOOKUP_DIR_INDEX = LOOKUP_DIR_INDEX;
++exports.RESET_HASH_PREFIX = RESET_HASH_PREFIX;
+ exports.SEQUENCE_HASH_LENGTH = SEQUENCE_HASH_LENGTH;
+ exports.SEQUENCE_PREFIX = SEQUENCE_PREFIX;
+ exports.SEQUENCE_SIZE = SEQUENCE_SIZE;
+diff --git a/node_modules/@griffel/core/constants.d.ts b/node_modules/@griffel/core/constants.d.ts
+index 37b0c7c..e3871cd 100644
+--- a/node_modules/@griffel/core/constants.d.ts
++++ b/node_modules/@griffel/core/constants.d.ts
+@@ -5,6 +5,8 @@ export declare const DATA_BUCKET_ATTR = "data-make-styles-bucket";
+ /** @internal */
+ export declare const HASH_PREFIX = "f";
+ /** @internal */
++export declare const RESET_HASH_PREFIX = "rf";
++/** @internal */
+ export declare const SEQUENCE_HASH_LENGTH = 7;
+ /** @internal */
+ export declare const SEQUENCE_PREFIX = "___";
+diff --git a/node_modules/@griffel/core/constants.esm.js b/node_modules/@griffel/core/constants.esm.js
+index ef91f76..5100d4a 100644
+--- a/node_modules/@griffel/core/constants.esm.js
++++ b/node_modules/@griffel/core/constants.esm.js
+@@ -5,6 +5,9 @@ const DATA_BUCKET_ATTR = 'data-make-styles-bucket';
+ const HASH_PREFIX = 'f';
+ /** @internal */
+ 
++const RESET_HASH_PREFIX = 'rf';
++/** @internal */
++
+ const SEQUENCE_HASH_LENGTH = 7;
+ /** @internal */
+ 
+@@ -78,5 +81,5 @@ const UNSUPPORTED_CSS_PROPERTIES = {
+   transition: 1
+ };
+ 
+-export { DATA_BUCKET_ATTR, DEBUG_SEQUENCE_SEPARATOR, DEFINITION_LOOKUP_TABLE, HASH_PREFIX, LOOKUP_DEFINITIONS_INDEX, LOOKUP_DIR_INDEX, SEQUENCE_HASH_LENGTH, SEQUENCE_PREFIX, SEQUENCE_SIZE, UNSUPPORTED_CSS_PROPERTIES };
++export { DATA_BUCKET_ATTR, DEBUG_SEQUENCE_SEPARATOR, DEFINITION_LOOKUP_TABLE, HASH_PREFIX, LOOKUP_DEFINITIONS_INDEX, LOOKUP_DIR_INDEX, RESET_HASH_PREFIX, SEQUENCE_HASH_LENGTH, SEQUENCE_PREFIX, SEQUENCE_SIZE, UNSUPPORTED_CSS_PROPERTIES };
+ //# sourceMappingURL=constants.esm.js.map
+diff --git a/node_modules/@griffel/core/index.cjs.js b/node_modules/@griffel/core/index.cjs.js
+index 3280413..cdacece 100644
+--- a/node_modules/@griffel/core/index.cjs.js
++++ b/node_modules/@griffel/core/index.cjs.js
+@@ -23,16 +23,19 @@ var transition = require('./shorthands/transition.cjs.js');
+ var createDOMRenderer = require('./renderer/createDOMRenderer.cjs.js');
+ var rehydrateRendererCache = require('./renderer/rehydrateRendererCache.cjs.js');
+ var mergeClasses = require('./mergeClasses.cjs.js');
+-var makeStaticStyles = require('./makeStaticStyles.cjs.js');
+ var makeStyles = require('./makeStyles.cjs.js');
++var makeStaticStyles = require('./makeStaticStyles.cjs.js');
++var makeResetStyles = require('./makeResetStyles.cjs.js');
+ var resolveStyleRulesForSlots = require('./resolveStyleRulesForSlots.cjs.js');
+ var __css = require('./__css.cjs.js');
++var __styles = require('./__styles.cjs.js');
++var __resetStyles = require('./__resetStyles.cjs.js');
+ var normalizeCSSBucketEntry = require('./runtime/utils/normalizeCSSBucketEntry.cjs.js');
+ var getStyleSheetForBucket = require('./renderer/getStyleSheetForBucket.cjs.js');
+ var getStyleBucketName = require('./runtime/getStyleBucketName.cjs.js');
+ var reduceToClassNameForSlots = require('./runtime/reduceToClassNameForSlots.cjs.js');
+ var resolveStyleRules = require('./runtime/resolveStyleRules.cjs.js');
+-var __styles = require('./__styles.cjs.js');
++var resolveResetStyleRules = require('./runtime/resolveResetStyleRules.cjs.js');
+ var constants = require('./constants.cjs.js');
+ 
+ // This should be just "export * as shorthands from "
+@@ -61,22 +64,26 @@ exports.createDOMRenderer = createDOMRenderer.createDOMRenderer;
+ exports.defaultCompareMediaQueries = createDOMRenderer.defaultCompareMediaQueries;
+ exports.rehydrateRendererCache = rehydrateRendererCache.rehydrateRendererCache;
+ exports.mergeClasses = mergeClasses.mergeClasses;
+-exports.makeStaticStyles = makeStaticStyles.makeStaticStyles;
+ exports.makeStyles = makeStyles.makeStyles;
++exports.makeStaticStyles = makeStaticStyles.makeStaticStyles;
++exports.unstableMakeResetStyles = makeResetStyles.makeResetStyles;
+ exports.resolveStyleRulesForSlots = resolveStyleRulesForSlots.resolveStyleRulesForSlots;
+ exports.__css = __css.__css;
++exports.__styles = __styles.__styles;
++exports.unstable__resetStyles = __resetStyles.__resetStyles;
+ exports.normalizeCSSBucketEntry = normalizeCSSBucketEntry.normalizeCSSBucketEntry;
+ exports.styleBucketOrdering = getStyleSheetForBucket.styleBucketOrdering;
+ exports.getStyleBucketName = getStyleBucketName.getStyleBucketName;
+ exports.reduceToClassNameForSlots = reduceToClassNameForSlots.reduceToClassNameForSlots;
+ exports.resolveStyleRules = resolveStyleRules.resolveStyleRules;
+-exports.__styles = __styles.__styles;
++exports.resolveResetStyleRules = resolveResetStyleRules.resolveResetStyleRules;
+ exports.DATA_BUCKET_ATTR = constants.DATA_BUCKET_ATTR;
+ exports.DEBUG_SEQUENCE_SEPARATOR = constants.DEBUG_SEQUENCE_SEPARATOR;
+ exports.DEFINITION_LOOKUP_TABLE = constants.DEFINITION_LOOKUP_TABLE;
+ exports.HASH_PREFIX = constants.HASH_PREFIX;
+ exports.LOOKUP_DEFINITIONS_INDEX = constants.LOOKUP_DEFINITIONS_INDEX;
+ exports.LOOKUP_DIR_INDEX = constants.LOOKUP_DIR_INDEX;
++exports.RESET_HASH_PREFIX = constants.RESET_HASH_PREFIX;
+ exports.SEQUENCE_HASH_LENGTH = constants.SEQUENCE_HASH_LENGTH;
+ exports.SEQUENCE_PREFIX = constants.SEQUENCE_PREFIX;
+ exports.SEQUENCE_SIZE = constants.SEQUENCE_SIZE;
+diff --git a/node_modules/@griffel/core/index.d.ts b/node_modules/@griffel/core/index.d.ts
+index 6316687..059abaa 100644
+--- a/node_modules/@griffel/core/index.d.ts
++++ b/node_modules/@griffel/core/index.d.ts
+@@ -23,17 +23,20 @@ export { createDOMRenderer } from './renderer/createDOMRenderer';
+ export type { CreateDOMRendererOptions } from './renderer/createDOMRenderer';
+ export { rehydrateRendererCache } from './renderer/rehydrateRendererCache';
+ export { mergeClasses } from './mergeClasses';
+-export { makeStaticStyles } from './makeStaticStyles';
+ export { makeStyles } from './makeStyles';
++export { makeStaticStyles } from './makeStaticStyles';
++export { makeResetStyles as unstableMakeResetStyles } from './makeResetStyles';
+ export { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots';
+ export { __css } from './__css';
++export { __styles } from './__styles';
++export { __resetStyles as unstable__resetStyles } from './__resetStyles';
+ export { normalizeCSSBucketEntry } from './runtime/utils/normalizeCSSBucketEntry';
+ export { styleBucketOrdering } from './renderer/getStyleSheetForBucket';
+ export { defaultCompareMediaQueries } from './renderer/createDOMRenderer';
+ export { getStyleBucketName } from './runtime/getStyleBucketName';
+ export { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots';
+ export { resolveStyleRules } from './runtime/resolveStyleRules';
+-export { __styles } from './__styles';
++export { resolveResetStyleRules } from './runtime/resolveResetStyleRules';
+ export * from './constants';
+ export type { GriffelStaticStyle, GriffelStaticStyles, GriffelAnimation, GriffelStyle, CSSClasses, CSSClassesMapBySlot, CSSRulesByBucket, StyleBucketName, MakeStaticStylesOptions, MakeStylesOptions, GriffelRenderer, } from './types';
+ export type { DebugCSSRules, DebugSequence, DebugResult } from './devtools';
+diff --git a/node_modules/@griffel/core/index.esm.js b/node_modules/@griffel/core/index.esm.js
+index 9e92ece..3c0360e 100644
+--- a/node_modules/@griffel/core/index.esm.js
++++ b/node_modules/@griffel/core/index.esm.js
+@@ -19,17 +19,20 @@ import { transition } from './shorthands/transition.esm.js';
+ export { createDOMRenderer, defaultCompareMediaQueries } from './renderer/createDOMRenderer.esm.js';
+ export { rehydrateRendererCache } from './renderer/rehydrateRendererCache.esm.js';
+ export { mergeClasses } from './mergeClasses.esm.js';
+-export { makeStaticStyles } from './makeStaticStyles.esm.js';
+ export { makeStyles } from './makeStyles.esm.js';
++export { makeStaticStyles } from './makeStaticStyles.esm.js';
++export { makeResetStyles as unstableMakeResetStyles } from './makeResetStyles.esm.js';
+ export { resolveStyleRulesForSlots } from './resolveStyleRulesForSlots.esm.js';
+ export { __css } from './__css.esm.js';
++export { __styles } from './__styles.esm.js';
++export { __resetStyles as unstable__resetStyles } from './__resetStyles.esm.js';
+ export { normalizeCSSBucketEntry } from './runtime/utils/normalizeCSSBucketEntry.esm.js';
+ export { styleBucketOrdering } from './renderer/getStyleSheetForBucket.esm.js';
+ export { getStyleBucketName } from './runtime/getStyleBucketName.esm.js';
+ export { reduceToClassNameForSlots } from './runtime/reduceToClassNameForSlots.esm.js';
+ export { resolveStyleRules } from './runtime/resolveStyleRules.esm.js';
+-export { __styles } from './__styles.esm.js';
+-export { DATA_BUCKET_ATTR, DEBUG_SEQUENCE_SEPARATOR, DEFINITION_LOOKUP_TABLE, HASH_PREFIX, LOOKUP_DEFINITIONS_INDEX, LOOKUP_DIR_INDEX, SEQUENCE_HASH_LENGTH, SEQUENCE_PREFIX, SEQUENCE_SIZE, UNSUPPORTED_CSS_PROPERTIES } from './constants.esm.js';
++export { resolveResetStyleRules } from './runtime/resolveResetStyleRules.esm.js';
++export { DATA_BUCKET_ATTR, DEBUG_SEQUENCE_SEPARATOR, DEFINITION_LOOKUP_TABLE, HASH_PREFIX, LOOKUP_DEFINITIONS_INDEX, LOOKUP_DIR_INDEX, RESET_HASH_PREFIX, SEQUENCE_HASH_LENGTH, SEQUENCE_PREFIX, SEQUENCE_SIZE, UNSUPPORTED_CSS_PROPERTIES } from './constants.esm.js';
+ 
+ // This should be just "export * as shorthands from "
+ const shorthands = {
+diff --git a/node_modules/@griffel/core/makeResetStyles.cjs.js b/node_modules/@griffel/core/makeResetStyles.cjs.js
+new file mode 100644
+index 0000000..5ca4f53
+--- /dev/null
++++ b/node_modules/@griffel/core/makeResetStyles.cjs.js
+@@ -0,0 +1,45 @@
++'use strict';
++
++Object.defineProperty(exports, '__esModule', { value: true });
++
++var resolveResetStyleRules = require('./runtime/resolveResetStyleRules.cjs.js');
++
++/**
++ * @internal
++ */
++
++function makeResetStyles(styles) {
++  const insertionCache = {};
++  let ltrClassName = null;
++  let rtlClassName = null;
++  let cssRules = null;
++
++  function computeClassName(options) {
++    const {
++      dir,
++      renderer
++    } = options;
++
++    if (ltrClassName === null) {
++      [ltrClassName, rtlClassName, cssRules] = resolveResetStyleRules.resolveResetStyleRules(styles);
++    }
++
++    const isLTR = dir === 'ltr'; // As RTL classes are different they should have a different cache key for insertion
++
++    const rendererId = isLTR ? renderer.id : renderer.id + 'r';
++
++    if (insertionCache[rendererId] === undefined) {
++      renderer.insertCSSRules({
++        r: cssRules
++      });
++      insertionCache[rendererId] = true;
++    }
++
++    return isLTR ? ltrClassName : rtlClassName || ltrClassName;
++  }
++
++  return computeClassName;
++}
++
++exports.makeResetStyles = makeResetStyles;
++//# sourceMappingURL=makeResetStyles.cjs.js.map
+diff --git a/node_modules/@griffel/core/makeResetStyles.d.ts b/node_modules/@griffel/core/makeResetStyles.d.ts
+new file mode 100644
+index 0000000..8348758
+--- /dev/null
++++ b/node_modules/@griffel/core/makeResetStyles.d.ts
+@@ -0,0 +1,5 @@
++import type { GriffelResetStyle, MakeStylesOptions } from './types';
++/**
++ * @internal
++ */
++export declare function makeResetStyles(styles: GriffelResetStyle): (options: MakeStylesOptions) => string;
+diff --git a/node_modules/@griffel/core/makeResetStyles.esm.js b/node_modules/@griffel/core/makeResetStyles.esm.js
+new file mode 100644
+index 0000000..e444623
+--- /dev/null
++++ b/node_modules/@griffel/core/makeResetStyles.esm.js
+@@ -0,0 +1,41 @@
++import { resolveResetStyleRules } from './runtime/resolveResetStyleRules.esm.js';
++
++/**
++ * @internal
++ */
++
++function makeResetStyles(styles) {
++  const insertionCache = {};
++  let ltrClassName = null;
++  let rtlClassName = null;
++  let cssRules = null;
++
++  function computeClassName(options) {
++    const {
++      dir,
++      renderer
++    } = options;
++
++    if (ltrClassName === null) {
++      [ltrClassName, rtlClassName, cssRules] = resolveResetStyleRules(styles);
++    }
++
++    const isLTR = dir === 'ltr'; // As RTL classes are different they should have a different cache key for insertion
++
++    const rendererId = isLTR ? renderer.id : renderer.id + 'r';
++
++    if (insertionCache[rendererId] === undefined) {
++      renderer.insertCSSRules({
++        r: cssRules
++      });
++      insertionCache[rendererId] = true;
++    }
++
++    return isLTR ? ltrClassName : rtlClassName || ltrClassName;
++  }
++
++  return computeClassName;
++}
++
++export { makeResetStyles };
++//# sourceMappingURL=makeResetStyles.esm.js.map
+diff --git a/node_modules/@griffel/core/runtime/compileCSS.cjs.js b/node_modules/@griffel/core/runtime/compileCSS.cjs.js
+index 3a40183..0de2b38 100644
+--- a/node_modules/@griffel/core/runtime/compileCSS.cjs.js
++++ b/node_modules/@griffel/core/runtime/compileCSS.cjs.js
+@@ -7,6 +7,30 @@ var hyphenateProperty = require('./utils/hyphenateProperty.cjs.js');
+ var normalizeNestedProperty = require('./utils/normalizeNestedProperty.cjs.js');
+ 
+ const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
++const global = element => {
++  switch (element.type) {
++    case stylis.RULESET:
++      if (typeof element.props === 'string') {
++        throw new Error();
++      }
++
++      element.props = element.props.map(value => {
++        return stylis.tokenize(value).reduce((acc, value, index, children) => {
++          if (value === 'global') {
++            // TODO: learn how to write loops
++            acc.unshift(' ');
++            acc.unshift(stylis.substr(children[index + 1], 1, -1));
++            delete acc[acc.length - 1];
++            delete children[index + 1];
++            return acc;
++          }
++
++          acc.push(value);
++          return acc;
++        }, []).join('');
++      });
++  }
++};
+ /**
+  * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
+  *
+@@ -24,7 +48,7 @@ function normalizePseudoSelector(pseudoSelector) {
+ }
+ function compileCSSRules(cssRules) {
+   const rules = [];
+-  stylis.serialize(stylis.compile(cssRules), stylis.middleware([stylis.prefixer, stylis.stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
++  stylis.serialize(stylis.compile(cssRules), stylis.middleware([stylis.prefixer, global, stylis.stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
+   // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
+   // individual rules to be used with this API
+   stylis.rulesheet(rule => rules.push(rule))]));
+@@ -53,27 +77,11 @@ function compileCSS(options) {
+     rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty.hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
+   }
+ 
+-  let cssRule = ''; // Should be handled by namespace plugin of Stylis, is buggy now
+-  // Issues are reported:
+-  // https://github.com/thysultan/stylis.js/issues/253
+-  // https://github.com/thysultan/stylis.js/issues/252
+-
+-  if (pseudo.indexOf(':global(') === 0) {
+-    // 👇 :global(GROUP_1)GROUP_2
+-    const GLOBAL_PSEUDO_REGEX = /global\((.+)\)(.+)?/;
+-    const [, globalSelector, restPseudo = ''] = GLOBAL_PSEUDO_REGEX.exec(pseudo); // should be normalized to handle ":global(SELECTOR) &"
+-
+-    const normalizedPseudo = normalizeNestedProperty.normalizeNestedProperty(restPseudo.trim());
+-    const ltrRule = `${classNameSelector}${normalizedPseudo} ${cssDeclaration}`;
+-    const rtlRule = rtlProperty ? `${rtlClassNameSelector}${normalizedPseudo} ${rtlCSSDeclaration}` : '';
+-    cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
+-  } else {
+-    const normalizedPseudo = normalizePseudoSelector(pseudo);
+-    cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
++  const normalizedPseudo = normalizePseudoSelector(pseudo);
++  let cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
+ 
+-    if (rtlProperty) {
+-      cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
+-    }
++  if (rtlProperty) {
++    cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
+   }
+ 
+   if (media) {
+@@ -93,5 +101,6 @@ function compileCSS(options) {
+ 
+ exports.compileCSS = compileCSS;
+ exports.compileCSSRules = compileCSSRules;
++exports.global = global;
+ exports.normalizePseudoSelector = normalizePseudoSelector;
+ //# sourceMappingURL=compileCSS.cjs.js.map
+diff --git a/node_modules/@griffel/core/runtime/compileCSS.d.ts b/node_modules/@griffel/core/runtime/compileCSS.d.ts
+index 5e9f368..9008fb5 100644
+--- a/node_modules/@griffel/core/runtime/compileCSS.d.ts
++++ b/node_modules/@griffel/core/runtime/compileCSS.d.ts
+@@ -1,3 +1,4 @@
++import type { Middleware } from 'stylis';
+ export interface CompileCSSOptions {
+     className: string;
+     pseudo: string;
+@@ -10,6 +11,7 @@ export interface CompileCSSOptions {
+     rtlProperty?: string;
+     rtlValue?: number | string | Array<number | string>;
+ }
++export declare const global: Middleware;
+ /**
+  * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
+  *
+diff --git a/node_modules/@griffel/core/runtime/compileCSS.esm.js b/node_modules/@griffel/core/runtime/compileCSS.esm.js
+index c8f0e05..632d2e8 100644
+--- a/node_modules/@griffel/core/runtime/compileCSS.esm.js
++++ b/node_modules/@griffel/core/runtime/compileCSS.esm.js
+@@ -1,8 +1,32 @@
+-import { serialize, compile, middleware, prefixer, stringify, rulesheet } from 'stylis';
++import { serialize, compile, middleware, prefixer, stringify, rulesheet, RULESET, tokenize, substr } from 'stylis';
+ import { hyphenateProperty } from './utils/hyphenateProperty.esm.js';
+ import { normalizeNestedProperty } from './utils/normalizeNestedProperty.esm.js';
+ 
+ const PSEUDO_SELECTOR_REGEX = /,( *[^ &])/g;
++const global = element => {
++  switch (element.type) {
++    case RULESET:
++      if (typeof element.props === 'string') {
++        throw new Error();
++      }
++
++      element.props = element.props.map(value => {
++        return tokenize(value).reduce((acc, value, index, children) => {
++          if (value === 'global') {
++            // TODO: learn how to write loops
++            acc.unshift(' ');
++            acc.unshift(substr(children[index + 1], 1, -1));
++            delete acc[acc.length - 1];
++            delete children[index + 1];
++            return acc;
++          }
++
++          acc.push(value);
++          return acc;
++        }, []).join('');
++      });
++  }
++};
+ /**
+  * Normalizes pseudo selectors to always contain &, requires to work properly with comma-separated selectors.
+  *
+@@ -20,7 +44,7 @@ function normalizePseudoSelector(pseudoSelector) {
+ }
+ function compileCSSRules(cssRules) {
+   const rules = [];
+-  serialize(compile(cssRules), middleware([prefixer, stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
++  serialize(compile(cssRules), middleware([prefixer, global, stringify, // 💡 we are using `.insertRule()` API for DOM operations, which does not support
+   // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
+   // individual rules to be used with this API
+   rulesheet(rule => rules.push(rule))]));
+@@ -49,27 +73,11 @@ function compileCSS(options) {
+     rtlCSSDeclaration = Array.isArray(rtlValue) ? `{ ${rtlValue.map(v => `${hyphenateProperty(rtlProperty)}: ${v}`).join(';')}; }` : `{ ${hyphenateProperty(rtlProperty)}: ${rtlValue}; }`;
+   }
+ 
+-  let cssRule = ''; // Should be handled by namespace plugin of Stylis, is buggy now
+-  // Issues are reported:
+-  // https://github.com/thysultan/stylis.js/issues/253
+-  // https://github.com/thysultan/stylis.js/issues/252
+-
+-  if (pseudo.indexOf(':global(') === 0) {
+-    // 👇 :global(GROUP_1)GROUP_2
+-    const GLOBAL_PSEUDO_REGEX = /global\((.+)\)(.+)?/;
+-    const [, globalSelector, restPseudo = ''] = GLOBAL_PSEUDO_REGEX.exec(pseudo); // should be normalized to handle ":global(SELECTOR) &"
+-
+-    const normalizedPseudo = normalizeNestedProperty(restPseudo.trim());
+-    const ltrRule = `${classNameSelector}${normalizedPseudo} ${cssDeclaration}`;
+-    const rtlRule = rtlProperty ? `${rtlClassNameSelector}${normalizedPseudo} ${rtlCSSDeclaration}` : '';
+-    cssRule = `${globalSelector} { ${ltrRule}; ${rtlRule} }`;
+-  } else {
+-    const normalizedPseudo = normalizePseudoSelector(pseudo);
+-    cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
++  const normalizedPseudo = normalizePseudoSelector(pseudo);
++  let cssRule = `${classNameSelector}{${normalizedPseudo} ${cssDeclaration}};`;
+ 
+-    if (rtlProperty) {
+-      cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
+-    }
++  if (rtlProperty) {
++    cssRule = `${cssRule}; ${rtlClassNameSelector}{${normalizedPseudo} ${rtlCSSDeclaration}};`;
+   }
+ 
+   if (media) {
+@@ -87,5 +95,5 @@ function compileCSS(options) {
+   return compileCSSRules(cssRule);
+ }
+ 
+-export { compileCSS, compileCSSRules, normalizePseudoSelector };
++export { compileCSS, compileCSSRules, global, normalizePseudoSelector };
+ //# sourceMappingURL=compileCSS.esm.js.map
+diff --git a/node_modules/@griffel/core/runtime/resolveResetStyleRules.cjs.js b/node_modules/@griffel/core/runtime/resolveResetStyleRules.cjs.js
+new file mode 100644
+index 0000000..c6a8e2d
+--- /dev/null
++++ b/node_modules/@griffel/core/runtime/resolveResetStyleRules.cjs.js
+@@ -0,0 +1,114 @@
++'use strict';
++
++Object.defineProperty(exports, '__esModule', { value: true });
++
++var hashString = require('@emotion/hash');
++var core = require('rtl-css-js/core');
++var constants = require('../constants.cjs.js');
++var compileCSS = require('./compileCSS.cjs.js');
++var isMediaQuerySelector = require('./utils/isMediaQuerySelector.cjs.js');
++var isNestedSelector = require('./utils/isNestedSelector.cjs.js');
++var isObject = require('./utils/isObject.cjs.js');
++var hyphenateProperty = require('./utils/hyphenateProperty.cjs.js');
++
++function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
++
++var hashString__default = /*#__PURE__*/_interopDefaultLegacy(hashString);
++
++/**
++ * @internal
++ */
++
++function createStringFromStyles(styles) {
++  let ltrCSS = '';
++  let rtlCSS = ''; // eslint-disable-next-line guard-for-in
++
++  for (const property in styles) {
++    const value = styles[property]; // eslint-disable-next-line eqeqeq
++
++    if (value == null) {
++      continue;
++    }
++
++    if (typeof value === 'string' || typeof value === 'number') {
++      const {
++        key: rtlProperty,
++        value: rtlValue
++      } = core.convertProperty(property, value); // TODO: trim
++
++      ltrCSS += `${hyphenateProperty.hyphenateProperty(property)}:${value};`;
++      rtlCSS += `${hyphenateProperty.hyphenateProperty(rtlProperty)}:${rtlValue};`;
++      continue;
++    }
++
++    if (property === 'animationName') {
++      // TODO: handle animations
++      throw new Error();
++    }
++
++    if (Array.isArray(value)) {
++      // not animationName property but array in the value => fallback values
++      if (value.length === 0) {
++        if (process.env.NODE_ENV !== 'production') {
++          console.warn(`makeStyles(): An empty array was passed as input to "${property}", the property will be omitted in the styles.`);
++        }
++
++        continue;
++      } // TODO: handle fallback values
++
++
++      throw new Error();
++    }
++
++    if (isObject.isObject(value)) {
++      if (isNestedSelector.isNestedSelector(property)) {
++        const nestedSelector = compileCSS.normalizePseudoSelector(property);
++        const [ltrNested, rtlNested] = createStringFromStyles(value);
++        ltrCSS += `${nestedSelector}{${ltrNested}}`;
++        rtlCSS += `${nestedSelector}{${rtlNested}}`;
++        continue;
++      }
++
++      if (isMediaQuerySelector.isMediaQuerySelector(property)) {
++        const [ltrNested, rtlNested] = createStringFromStyles(value);
++        ltrCSS += `${property}{${ltrNested}}`;
++        rtlCSS += `${property}{${rtlNested}}`;
++        continue;
++      } // TODO: handle :global()
++      // TODO: handle @media
++      // TODO: handle @layer
++      // TODO: handle @supports
++
++    }
++
++    if (process.env.NODE_ENV !== 'production') {
++      // eslint-disable-next-line no-console
++      console.error(`Please fix the unresolved style rule: \n ${property} \n ${JSON.stringify(value, null, 2)}"`);
++    }
++  }
++
++  return [ltrCSS, rtlCSS];
++}
++/**
++ * TODO write description
++ *
++ * @internal
++ */
++
++function resolveResetStyleRules(styles) {
++  const [ltrRule, rtlRule] = createStringFromStyles(styles);
++  const ltrClassName = constants.RESET_HASH_PREFIX + hashString__default["default"](ltrRule);
++  const ltrCSS = compileCSS.compileCSSRules(`.${ltrClassName}{${ltrRule}}`);
++
++  if (ltrRule === rtlRule) {
++    return [ltrClassName, null, ltrCSS];
++  }
++
++  const rtlClassName = constants.RESET_HASH_PREFIX + hashString__default["default"](rtlRule);
++  const rtlCSS = compileCSS.compileCSSRules(`.${rtlClassName}{${rtlRule}}`);
++  return [ltrClassName, rtlClassName, ltrCSS.concat(rtlCSS)];
++}
++
++exports.createStringFromStyles = createStringFromStyles;
++exports.resolveResetStyleRules = resolveResetStyleRules;
++//# sourceMappingURL=resolveResetStyleRules.cjs.js.map
+diff --git a/node_modules/@griffel/core/runtime/resolveResetStyleRules.d.ts b/node_modules/@griffel/core/runtime/resolveResetStyleRules.d.ts
+new file mode 100644
+index 0000000..52a28f5
+--- /dev/null
++++ b/node_modules/@griffel/core/runtime/resolveResetStyleRules.d.ts
+@@ -0,0 +1,11 @@
++import { GriffelStyle, GriffelResetStyle } from '../types';
++/**
++ * @internal
++ */
++export declare function createStringFromStyles(styles: GriffelResetStyle): string[];
++/**
++ * TODO write description
++ *
++ * @internal
++ */
++export declare function resolveResetStyleRules(styles: GriffelStyle): [string, string | null, string[]];
+diff --git a/node_modules/@griffel/core/runtime/resolveResetStyleRules.esm.js b/node_modules/@griffel/core/runtime/resolveResetStyleRules.esm.js
+new file mode 100644
+index 0000000..92d01cc
+--- /dev/null
++++ b/node_modules/@griffel/core/runtime/resolveResetStyleRules.esm.js
+@@ -0,0 +1,105 @@
++import hashString from '@emotion/hash';
++import { convertProperty } from 'rtl-css-js/core';
++import { RESET_HASH_PREFIX } from '../constants.esm.js';
++import { compileCSSRules, normalizePseudoSelector } from './compileCSS.esm.js';
++import { isMediaQuerySelector } from './utils/isMediaQuerySelector.esm.js';
++import { isNestedSelector } from './utils/isNestedSelector.esm.js';
++import { isObject } from './utils/isObject.esm.js';
++import { hyphenateProperty } from './utils/hyphenateProperty.esm.js';
++
++/**
++ * @internal
++ */
++
++function createStringFromStyles(styles) {
++  let ltrCSS = '';
++  let rtlCSS = ''; // eslint-disable-next-line guard-for-in
++
++  for (const property in styles) {
++    const value = styles[property]; // eslint-disable-next-line eqeqeq
++
++    if (value == null) {
++      continue;
++    }
++
++    if (typeof value === 'string' || typeof value === 'number') {
++      const {
++        key: rtlProperty,
++        value: rtlValue
++      } = convertProperty(property, value); // TODO: trim
++
++      ltrCSS += `${hyphenateProperty(property)}:${value};`;
++      rtlCSS += `${hyphenateProperty(rtlProperty)}:${rtlValue};`;
++      continue;
++    }
++
++    if (property === 'animationName') {
++      // TODO: handle animations
++      throw new Error();
++    }
++
++    if (Array.isArray(value)) {
++      // not animationName property but array in the value => fallback values
++      if (value.length === 0) {
++        if (process.env.NODE_ENV !== 'production') {
++          console.warn(`makeStyles(): An empty array was passed as input to "${property}", the property will be omitted in the styles.`);
++        }
++
++        continue;
++      } // TODO: handle fallback values
++
++
++      throw new Error();
++    }
++
++    if (isObject(value)) {
++      if (isNestedSelector(property)) {
++        const nestedSelector = normalizePseudoSelector(property);
++        const [ltrNested, rtlNested] = createStringFromStyles(value);
++        ltrCSS += `${nestedSelector}{${ltrNested}}`;
++        rtlCSS += `${nestedSelector}{${rtlNested}}`;
++        continue;
++      }
++
++      if (isMediaQuerySelector(property)) {
++        const [ltrNested, rtlNested] = createStringFromStyles(value);
++        ltrCSS += `${property}{${ltrNested}}`;
++        rtlCSS += `${property}{${rtlNested}}`;
++        continue;
++      } // TODO: handle :global()
++      // TODO: handle @media
++      // TODO: handle @layer
++      // TODO: handle @supports
++
++    }
++
++    if (process.env.NODE_ENV !== 'production') {
++      // eslint-disable-next-line no-console
++      console.error(`Please fix the unresolved style rule: \n ${property} \n ${JSON.stringify(value, null, 2)}"`);
++    }
++  }
++
++  return [ltrCSS, rtlCSS];
++}
++/**
++ * TODO write description
++ *
++ * @internal
++ */
++
++function resolveResetStyleRules(styles) {
++  const [ltrRule, rtlRule] = createStringFromStyles(styles);
++  const ltrClassName = RESET_HASH_PREFIX + hashString(ltrRule);
++  const ltrCSS = compileCSSRules(`.${ltrClassName}{${ltrRule}}`);
++
++  if (ltrRule === rtlRule) {
++    return [ltrClassName, null, ltrCSS];
++  }
++
++  const rtlClassName = RESET_HASH_PREFIX + hashString(rtlRule);
++  const rtlCSS = compileCSSRules(`.${rtlClassName}{${rtlRule}}`);
++  return [ltrClassName, rtlClassName, ltrCSS.concat(rtlCSS)];
++}
++
++export { createStringFromStyles, resolveResetStyleRules };
++//# sourceMappingURL=resolveResetStyleRules.esm.js.map
+diff --git a/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js b/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
+index 154cc3f..6955e92 100644
+--- a/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
++++ b/node_modules/@griffel/core/runtime/resolveStyleRules.cjs.js
+@@ -2,7 +2,7 @@
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+-var hash = require('@emotion/hash');
++var hashString = require('@emotion/hash');
+ var core = require('rtl-css-js/core');
+ var constants = require('../constants.cjs.js');
+ var compileCSS = require('./compileCSS.cjs.js');
+@@ -20,7 +20,7 @@ var hashPropertyKey = require('./utils/hashPropertyKey.cjs.js');
+ 
+ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+ 
+-var hash__default = /*#__PURE__*/_interopDefaultLegacy(hash);
++var hashString__default = /*#__PURE__*/_interopDefaultLegacy(hashString);
+ 
+ function pushToClassesMap(classesMap, propertyKey, ltrClassname, rtlClassname) {
+   classesMap[propertyKey] = rtlClassname ? [ltrClassname, rtlClassname] : ltrClassname;
+@@ -63,14 +63,22 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+   // eslint-disable-next-line guard-for-in
+   for (const property in styles) {
+     // eslint-disable-next-line no-prototype-builtins
+-    if (constants.UNSUPPORTED_CSS_PROPERTIES.hasOwnProperty(property)) {
+-      if (process.env.NODE_ENV !== 'production') {
+-        console.error([`@griffel/react: You are using unsupported shorthand CSS property "${property}". ` + `Please check your "makeStyles" calls, there *should not* be following:`, ' '.repeat(2) + `makeStyles({`, ' '.repeat(4) + `[slot]: { ${property}: "${styles[property]}" }`, ' '.repeat(2) + `})`, '', 'Learn why CSS shorthands are not supported: https://aka.ms/griffel-css-shorthands'].join('\n'));
+-      }
+-
+-      continue;
+-    }
+-
++    // if (UNSUPPORTED_CSS_PROPERTIES.hasOwnProperty(property)) {
++    //   if (process.env.NODE_ENV !== 'production') {
++    //     console.error(
++    //       [
++    //         `@griffel/react: You are using unsupported shorthand CSS property "${property}". ` +
++    //           `Please check your "makeStyles" calls, there *should not* be following:`,
++    //         ' '.repeat(2) + `makeStyles({`,
++    //         ' '.repeat(4) + `[slot]: { ${property}: "${styles[property as keyof GriffelStyle]}" }`,
++    //         ' '.repeat(2) + `})`,
++    //         '',
++    //         'Learn why CSS shorthands are not supported: https://aka.ms/griffel-css-shorthands',
++    //       ].join('\n'),
++    //     );
++    //   }
++    //   continue;
++    // }
+     const value = styles[property]; // eslint-disable-next-line eqeqeq
+ 
+     if (value == null) {
+@@ -126,7 +134,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       for (const keyframeObject of animationNameValue) {
+         const keyframeCSS = compileKeyframeCSS.compileKeyframeRule(keyframeObject);
+         const rtlKeyframeCSS = compileKeyframeCSS.compileKeyframeRule(core.convert(keyframeObject));
+-        const animationName = constants.HASH_PREFIX + hash__default["default"](keyframeCSS);
++        const animationName = constants.HASH_PREFIX + hashString__default["default"](keyframeCSS);
+         let rtlAnimationName;
+         const keyframeRules = compileKeyframeCSS.compileKeyframesCSS(animationName, keyframeCSS);
+         let rtlKeyframeRules = [];
+@@ -135,7 +143,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+           // If CSS for LTR & RTL are same we will re-use animationName from LTR to avoid duplication of rules in output
+           rtlAnimationName = animationName;
+         } else {
+-          rtlAnimationName = constants.HASH_PREFIX + hash__default["default"](rtlKeyframeCSS);
++          rtlAnimationName = constants.HASH_PREFIX + hashString__default["default"](rtlKeyframeCSS);
+           rtlKeyframeRules = compileKeyframeCSS.compileKeyframesCSS(rtlAnimationName, rtlKeyframeCSS);
+         }
+ 
+diff --git a/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js b/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
+index 83ad33a..774615c 100644
+--- a/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
++++ b/node_modules/@griffel/core/runtime/resolveStyleRules.esm.js
+@@ -1,6 +1,6 @@
+-import hash from '@emotion/hash';
++import hashString from '@emotion/hash';
+ import { convertProperty, convert } from 'rtl-css-js/core';
+-import { UNSUPPORTED_CSS_PROPERTIES, HASH_PREFIX } from '../constants.esm.js';
++import { HASH_PREFIX } from '../constants.esm.js';
+ import { compileCSS } from './compileCSS.esm.js';
+ import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS.esm.js';
+ import { generateCombinedQuery } from './utils/generateCombinedMediaQuery.esm.js';
+@@ -55,14 +55,22 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+   // eslint-disable-next-line guard-for-in
+   for (const property in styles) {
+     // eslint-disable-next-line no-prototype-builtins
+-    if (UNSUPPORTED_CSS_PROPERTIES.hasOwnProperty(property)) {
+-      if (process.env.NODE_ENV !== 'production') {
+-        console.error([`@griffel/react: You are using unsupported shorthand CSS property "${property}". ` + `Please check your "makeStyles" calls, there *should not* be following:`, ' '.repeat(2) + `makeStyles({`, ' '.repeat(4) + `[slot]: { ${property}: "${styles[property]}" }`, ' '.repeat(2) + `})`, '', 'Learn why CSS shorthands are not supported: https://aka.ms/griffel-css-shorthands'].join('\n'));
+-      }
+-
+-      continue;
+-    }
+-
++    // if (UNSUPPORTED_CSS_PROPERTIES.hasOwnProperty(property)) {
++    //   if (process.env.NODE_ENV !== 'production') {
++    //     console.error(
++    //       [
++    //         `@griffel/react: You are using unsupported shorthand CSS property "${property}". ` +
++    //           `Please check your "makeStyles" calls, there *should not* be following:`,
++    //         ' '.repeat(2) + `makeStyles({`,
++    //         ' '.repeat(4) + `[slot]: { ${property}: "${styles[property as keyof GriffelStyle]}" }`,
++    //         ' '.repeat(2) + `})`,
++    //         '',
++    //         'Learn why CSS shorthands are not supported: https://aka.ms/griffel-css-shorthands',
++    //       ].join('\n'),
++    //     );
++    //   }
++    //   continue;
++    // }
+     const value = styles[property]; // eslint-disable-next-line eqeqeq
+ 
+     if (value == null) {
+@@ -118,7 +126,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+       for (const keyframeObject of animationNameValue) {
+         const keyframeCSS = compileKeyframeRule(keyframeObject);
+         const rtlKeyframeCSS = compileKeyframeRule(convert(keyframeObject));
+-        const animationName = HASH_PREFIX + hash(keyframeCSS);
++        const animationName = HASH_PREFIX + hashString(keyframeCSS);
+         let rtlAnimationName;
+         const keyframeRules = compileKeyframesCSS(animationName, keyframeCSS);
+         let rtlKeyframeRules = [];
+@@ -127,7 +135,7 @@ function resolveStyleRules(styles, pseudo = '', media = '', layer = '', support
+           // If CSS for LTR & RTL are same we will re-use animationName from LTR to avoid duplication of rules in output
+           rtlAnimationName = animationName;
+         } else {
+-          rtlAnimationName = HASH_PREFIX + hash(rtlKeyframeCSS);
++          rtlAnimationName = HASH_PREFIX + hashString(rtlKeyframeCSS);
+           rtlKeyframeRules = compileKeyframesCSS(rtlAnimationName, rtlKeyframeCSS);
+         }
+ 
+diff --git a/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js b/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js
+index 24202b7..a882427 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js
++++ b/node_modules/@griffel/core/runtime/utils/hashClassName.cjs.js
+@@ -2,12 +2,12 @@
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+-var hash = require('@emotion/hash');
++var hashString = require('@emotion/hash');
+ var constants = require('../../constants.cjs.js');
+ 
+ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+ 
+-var hash__default = /*#__PURE__*/_interopDefaultLegacy(hash);
++var hashString__default = /*#__PURE__*/_interopDefaultLegacy(hashString);
+ 
+ function hashClassName({
+   media,
+@@ -18,7 +18,7 @@ function hashClassName({
+   value
+ }) {
+   // Trimming of value is required to generate consistent hashes
+-  const classNameHash = hash__default["default"](pseudo + media + layer + support + property + value.trim());
++  const classNameHash = hashString__default["default"](pseudo + media + layer + support + property + value.trim());
+   return constants.HASH_PREFIX + classNameHash;
+ }
+ 
+diff --git a/node_modules/@griffel/core/runtime/utils/hashClassName.esm.js b/node_modules/@griffel/core/runtime/utils/hashClassName.esm.js
+index 6847924..51dd050 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashClassName.esm.js
++++ b/node_modules/@griffel/core/runtime/utils/hashClassName.esm.js
+@@ -1,4 +1,4 @@
+-import hash from '@emotion/hash';
++import hashString from '@emotion/hash';
+ import { HASH_PREFIX } from '../../constants.esm.js';
+ 
+ function hashClassName({
+@@ -10,7 +10,7 @@ function hashClassName({
+   value
+ }) {
+   // Trimming of value is required to generate consistent hashes
+-  const classNameHash = hash(pseudo + media + layer + support + property + value.trim());
++  const classNameHash = hashString(pseudo + media + layer + support + property + value.trim());
+   return HASH_PREFIX + classNameHash;
+ }
+ 
+diff --git a/node_modules/@griffel/core/runtime/utils/hashPropertyKey.cjs.js b/node_modules/@griffel/core/runtime/utils/hashPropertyKey.cjs.js
+index 1a52d5d..290e5be 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashPropertyKey.cjs.js
++++ b/node_modules/@griffel/core/runtime/utils/hashPropertyKey.cjs.js
+@@ -2,18 +2,18 @@
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+-var hash = require('@emotion/hash');
++var hashString = require('@emotion/hash');
+ 
+ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+ 
+-var hash__default = /*#__PURE__*/_interopDefaultLegacy(hash);
++var hashString__default = /*#__PURE__*/_interopDefaultLegacy(hashString);
+ 
+ function hashPropertyKey(pseudo, media, support, property) {
+   // uniq key based on property & selector, used for merging later
+   const computedKey = pseudo + media + support + property; // "key" can be really long as it includes selectors, we use hashes to reduce sizes of keys
+   // ".foo :hover" => "abcd"
+ 
+-  const hashedKey = hash__default["default"](computedKey); // As these hashes are used as object keys in build output we should avoid having numbers as a first character to
++  const hashedKey = hashString__default["default"](computedKey); // As these hashes are used as object keys in build output we should avoid having numbers as a first character to
+   // avoid having quotes:
+   // {
+   //   "1abc": {}, // we don't want this
+diff --git a/node_modules/@griffel/core/runtime/utils/hashPropertyKey.esm.js b/node_modules/@griffel/core/runtime/utils/hashPropertyKey.esm.js
+index fb10a94..71b586b 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashPropertyKey.esm.js
++++ b/node_modules/@griffel/core/runtime/utils/hashPropertyKey.esm.js
+@@ -1,11 +1,11 @@
+-import hash from '@emotion/hash';
++import hashString from '@emotion/hash';
+ 
+ function hashPropertyKey(pseudo, media, support, property) {
+   // uniq key based on property & selector, used for merging later
+   const computedKey = pseudo + media + support + property; // "key" can be really long as it includes selectors, we use hashes to reduce sizes of keys
+   // ".foo :hover" => "abcd"
+ 
+-  const hashedKey = hash(computedKey); // As these hashes are used as object keys in build output we should avoid having numbers as a first character to
++  const hashedKey = hashString(computedKey); // As these hashes are used as object keys in build output we should avoid having numbers as a first character to
+   // avoid having quotes:
+   // {
+   //   "1abc": {}, // we don't want this
+diff --git a/node_modules/@griffel/core/runtime/utils/hashSequence.cjs.js b/node_modules/@griffel/core/runtime/utils/hashSequence.cjs.js
+index 21198df..73120e5 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashSequence.cjs.js
++++ b/node_modules/@griffel/core/runtime/utils/hashSequence.cjs.js
+@@ -2,12 +2,12 @@
+ 
+ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+-var hash = require('@emotion/hash');
++var hashString = require('@emotion/hash');
+ var constants = require('../../constants.cjs.js');
+ 
+ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+ 
+-var hash__default = /*#__PURE__*/_interopDefaultLegacy(hash);
++var hashString__default = /*#__PURE__*/_interopDefaultLegacy(hashString);
+ 
+ function padEndHash(value) {
+   const hashLength = value.length;
+@@ -25,10 +25,10 @@ function padEndHash(value) {
+ 
+ function hashSequence(classes, dir, sequenceIds = []) {
+   if (process.env.NODE_ENV === 'production') {
+-    return constants.SEQUENCE_PREFIX + padEndHash(hash__default["default"](classes + dir));
++    return constants.SEQUENCE_PREFIX + padEndHash(hashString__default["default"](classes + dir));
+   }
+ 
+-  return constants.SEQUENCE_PREFIX + padEndHash(hash__default["default"](classes + dir)) + constants.DEBUG_SEQUENCE_SEPARATOR + padEndHash(hash__default["default"](sequenceIds.join('')));
++  return constants.SEQUENCE_PREFIX + padEndHash(hashString__default["default"](classes + dir)) + constants.DEBUG_SEQUENCE_SEPARATOR + padEndHash(hashString__default["default"](sequenceIds.join('')));
+ }
+ 
+ exports.hashSequence = hashSequence;
+diff --git a/node_modules/@griffel/core/runtime/utils/hashSequence.esm.js b/node_modules/@griffel/core/runtime/utils/hashSequence.esm.js
+index 2de8cf1..80811a2 100644
+--- a/node_modules/@griffel/core/runtime/utils/hashSequence.esm.js
++++ b/node_modules/@griffel/core/runtime/utils/hashSequence.esm.js
+@@ -1,4 +1,4 @@
+-import hash from '@emotion/hash';
++import hashString from '@emotion/hash';
+ import { SEQUENCE_PREFIX, DEBUG_SEQUENCE_SEPARATOR, SEQUENCE_HASH_LENGTH } from '../../constants.esm.js';
+ 
+ function padEndHash(value) {
+@@ -17,10 +17,10 @@ function padEndHash(value) {
+ 
+ function hashSequence(classes, dir, sequenceIds = []) {
+   if (process.env.NODE_ENV === 'production') {
+-    return SEQUENCE_PREFIX + padEndHash(hash(classes + dir));
++    return SEQUENCE_PREFIX + padEndHash(hashString(classes + dir));
+   }
+ 
+-  return SEQUENCE_PREFIX + padEndHash(hash(classes + dir)) + DEBUG_SEQUENCE_SEPARATOR + padEndHash(hash(sequenceIds.join('')));
++  return SEQUENCE_PREFIX + padEndHash(hashString(classes + dir)) + DEBUG_SEQUENCE_SEPARATOR + padEndHash(hashString(sequenceIds.join('')));
+ }
+ 
+ export { hashSequence };
+diff --git a/node_modules/@griffel/core/types.d.ts b/node_modules/@griffel/core/types.d.ts
+index a0caf83..1f6ad9d 100644
+--- a/node_modules/@griffel/core/types.d.ts
++++ b/node_modules/@griffel/core/types.d.ts
+@@ -30,6 +30,7 @@ declare type GriffelStylesCSSObjectCustomL5 = {
+     [Property: string]: string | number | (string | number)[] | undefined | GriffelStylesStrictCSSObject;
+ } & GriffelStylesStrictCSSObject;
+ export declare type GriffelStyle = GriffelStylesStrictCSSObject | GriffelStylesCSSObjectCustomL1;
++export declare type GriffelResetStyle = GriffelStyle;
+ export declare type GriffelAnimation = Record<'from' | 'to' | string, GriffelStylesCSSObjectCustomL1>;
+ export interface MakeStylesOptions {
+     dir: 'ltr' | 'rtl';
+@@ -101,6 +102,7 @@ export declare type CSSClasses = /* ltrClassName */ string | [/* ltrClassName */
+ export declare type CSSClassesMap = Record<PropertyHash, CSSClasses>;
+ export declare type CSSClassesMapBySlot<Slots extends string | number> = Record<Slots, CSSClassesMap>;
+ export declare type CSSRulesByBucket = {
++    r?: CSSBucketEntry[];
+     d?: CSSBucketEntry[];
+     l?: CSSBucketEntry[];
+     v?: CSSBucketEntry[];

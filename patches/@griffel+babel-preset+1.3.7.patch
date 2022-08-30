@@ -1,0 +1,217 @@
+diff --git a/node_modules/@griffel/babel-preset/src/index.d.ts b/node_modules/@griffel/babel-preset/src/index.d.ts
+index bfc8496..ff7b9a9 100644
+--- a/node_modules/@griffel/babel-preset/src/index.d.ts
++++ b/node_modules/@griffel/babel-preset/src/index.d.ts
+@@ -9,7 +9,10 @@ export default function griffelPreset(babel: ConfigAPI, options: BabelPluginOpti
+     plugins: (BabelPluginOptions | ((api: object, options: Partial<BabelPluginOptions> | null | undefined, dirname: string) => import("@babel/core").PluginObj<import("@babel/core").PluginPass & {
+         importDeclarationPaths?: import("@babel/traverse").NodePath<import("@babel/types").ImportDeclaration>[] | undefined;
+         requireDeclarationPath?: import("@babel/traverse").NodePath<import("@babel/types").VariableDeclarator> | undefined;
+-        definitionPaths?: import("@babel/traverse").NodePath<import("@babel/types").ObjectExpression>[] | undefined;
++        definitionPaths?: {
++            kind: "makeStyles" | "makeResetStyles";
++            path: import("@babel/traverse").NodePath<import("@babel/types").SpreadElement | import("@babel/types").Expression>;
++        }[] | undefined;
+         calleePaths?: import("@babel/traverse").NodePath<import("@babel/types").Identifier>[] | undefined;
+     }>))[][];
+ };
+diff --git a/node_modules/@griffel/babel-preset/src/transformPlugin.d.ts b/node_modules/@griffel/babel-preset/src/transformPlugin.d.ts
+index 0f55eb0..ea37421 100644
+--- a/node_modules/@griffel/babel-preset/src/transformPlugin.d.ts
++++ b/node_modules/@griffel/babel-preset/src/transformPlugin.d.ts
+@@ -3,7 +3,10 @@ import { BabelPluginOptions } from './types';
+ declare type BabelPluginState = PluginPass & {
+     importDeclarationPaths?: NodePath<t.ImportDeclaration>[];
+     requireDeclarationPath?: NodePath<t.VariableDeclarator>;
+-    definitionPaths?: NodePath<t.ObjectExpression>[];
++    definitionPaths?: {
++        kind: 'makeStyles' | 'makeResetStyles';
++        path: NodePath<t.Expression | t.SpreadElement>;
++    }[];
+     calleePaths?: NodePath<t.Identifier>[];
+ };
+ export declare const transformPlugin: (api: object, options: Partial<BabelPluginOptions> | null | undefined, dirname: string) => PluginObj<BabelPluginState>;
+diff --git a/node_modules/@griffel/babel-preset/src/transformPlugin.js b/node_modules/@griffel/babel-preset/src/transformPlugin.js
+index daf9ea8..1b6ca9c 100644
+--- a/node_modules/@griffel/babel-preset/src/transformPlugin.js
++++ b/node_modules/@griffel/babel-preset/src/transformPlugin.js
+@@ -12,20 +12,23 @@ const replaceAssetsWithImports_1 = require("./assets/replaceAssetsWithImports");
+ const astify_1 = require("./utils/astify");
+ const evaluatePaths_1 = require("./utils/evaluatePaths");
+ const validateOptions_1 = require("./validateOptions");
+-function getDefinitionPathFromMakeStylesCallExpression(callExpression) {
++function getDefinitionPathFromMakeStylesCallExpression(kind, callExpression) {
+     const argumentPaths = callExpression.get('arguments');
+     const hasValidArguments = Array.isArray(argumentPaths) && argumentPaths.length === 1;
+     if (!hasValidArguments) {
+-        throw new Error('makeStyles() function accepts only a single param');
++        throw callExpression.buildCodeFrameError(`${kind}() function accepts only a single param`);
+     }
+     const definitionsPath = argumentPaths[0];
+-    if (!definitionsPath.isObjectExpression()) {
++    if (kind === 'makeStyles' && !definitionsPath.isObjectExpression()) {
+         throw definitionsPath.buildCodeFrameError('makeStyles() function accepts only an object as a param');
+     }
+-    return definitionsPath;
++    if (definitionsPath.isSpreadElement() || definitionsPath.isExpression()) {
++        return definitionsPath;
++    }
++    throw definitionsPath.buildCodeFrameError('Unexpected kind of element was received, this is a bug, please report it');
+ }
+ /**
+- * Checks that passed callee imports makesStyles().
++ * Checks that passed callee imports makeStyles().
+  */
+ function isMakeStylesCallee(path, modules) {
+     if (path.isIdentifier()) {
+@@ -33,6 +36,15 @@ function isMakeStylesCallee(path, modules) {
+     }
+     return false;
+ }
++/**
++ * Checks that passed callee imports makeResetStyles().
++ */
++function isMakeResetStylesCallee(path, modules) {
++    if (path.isIdentifier()) {
++        return Boolean(modules.find(module => path.referencesImport(module.moduleSource, 'unstableMakeResetStyles')));
++    }
++    return false;
++}
+ /**
+  * Checks if import statement import makeStyles().
+  */
+@@ -110,26 +122,38 @@ exports.transformPlugin = (0, helper_plugin_utils_1.declare)((api, options) => {
+                     }
+                     if (state.definitionPaths) {
+                         // Runs Babel AST processing or module evaluation for Node once for all arguments of makeStyles() calls once
+-                        (0, evaluatePaths_1.evaluatePaths)(programPath, state.file.opts.filename, state.definitionPaths, pluginOptions);
++                        (0, evaluatePaths_1.evaluatePaths)(programPath, state.file.opts.filename, state.definitionPaths.map(p => p.path), pluginOptions);
+                         state.definitionPaths.forEach(definitionPath => {
+-                            const callExpressionPath = definitionPath.findParent(parentPath => parentPath.isCallExpression());
+-                            const evaluationResult = definitionPath.evaluate();
++                            const callExpressionPath = definitionPath.path.findParent(parentPath => parentPath.isCallExpression());
++                            const evaluationResult = definitionPath.path.evaluate();
+                             if (!evaluationResult.confident) {
+                                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                 const deoptPath = evaluationResult.deopt;
+-                                throw (deoptPath || definitionPath).buildCodeFrameError('Evaluation of a code fragment failed, this is a bug, please report it');
++                                throw (deoptPath || definitionPath.path).buildCodeFrameError('Evaluation of a code fragment failed, this is a bug, please report it');
++                            }
++                            if (definitionPath.kind === 'makeStyles') {
++                                const stylesBySlots = evaluationResult.value;
++                                const [classnamesMapping, cssRulesByBucket] = (0, core_2.resolveStyleRulesForSlots)(
++                                // Heads up!
++                                // Style rules should be normalized *before* they will be resolved to CSS rules to have deterministic
++                                // results across different build targets.
++                                (0, normalizeStyleRules_1.normalizeStyleRules)(path, pluginOptions.projectRoot, 
++                                // Presence of "state.filename" is validated on `Program.enter()`
++                                state.filename, stylesBySlots));
++                                const uniqueCSSRules = dedupeCSSRules(cssRulesByBucket);
++                                callExpressionPath.get('arguments.0').remove();
++                                callExpressionPath.pushContainer('arguments', [(0, astify_1.astify)(classnamesMapping), (0, astify_1.astify)(uniqueCSSRules)]);
++                            }
++                            if (definitionPath.kind === 'makeResetStyles') {
++                                const styles = evaluationResult.value;
++                                const [ltrClassName, rtlClassName, cssRules] = (0, core_2.resolveResetStyleRules)(styles);
++                                callExpressionPath.get('arguments.0').remove();
++                                callExpressionPath.pushContainer('arguments', [
++                                    (0, astify_1.astify)(ltrClassName),
++                                    (0, astify_1.astify)(rtlClassName),
++                                    (0, astify_1.astify)(cssRules),
++                                ]);
+                             }
+-                            const stylesBySlots = evaluationResult.value;
+-                            const [classnamesMapping, cssRulesByBucket] = (0, core_2.resolveStyleRulesForSlots)(
+-                            // Heads up!
+-                            // Style rules should be normalized *before* they will be resolved to CSS rules to have deterministic
+-                            // results across different build targets.
+-                            (0, normalizeStyleRules_1.normalizeStyleRules)(path, pluginOptions.projectRoot, 
+-                            // Presence of "state.filename" is validated on `Program.enter()`
+-                            state.filename, stylesBySlots));
+-                            const uniqueCSSRules = dedupeCSSRules(cssRulesByBucket);
+-                            callExpressionPath.get('arguments.0').remove();
+-                            callExpressionPath.pushContainer('arguments', [(0, astify_1.astify)(classnamesMapping), (0, astify_1.astify)(uniqueCSSRules)]);
+                             (0, replaceAssetsWithImports_1.replaceAssetsWithImports)(pluginOptions.projectRoot, state.filename, programPath, callExpressionPath);
+                         });
+                     }
+@@ -140,19 +164,32 @@ exports.transformPlugin = (0, helper_plugin_utils_1.declare)((api, options) => {
+                             if (specifier.isImportSpecifier()) {
+                                 // TODO: should use generated modifier to avoid collisions
+                                 const importedPath = specifier.get('imported');
+-                                const importIdentifierPath = pluginOptions.modules.find(module => {
++                                const makeStylesIdentifierPath = pluginOptions.modules.find(module => {
+                                     return (module.moduleSource === source.node.value &&
+                                         // 👆 "moduleSource" should match "importDeclarationPath.source" to skip unrelated ".importName"
+                                         importedPath.isIdentifier({ name: module.importName }));
+                                 });
+-                                if (importIdentifierPath) {
++                                if (makeStylesIdentifierPath) {
+                                     specifier.replaceWith(core_1.types.identifier('__styles'));
++                                    return;
++                                }
++                                const resetStylesIdentifierPath = pluginOptions.modules.find(module => {
++                                    return (module.moduleSource === source.node.value &&
++                                        // 👆 "moduleSource" should match "importDeclarationPath.source" to skip unrelated ".importName"
++                                        importedPath.isIdentifier({ name: 'unstableMakeResetStyles' }));
++                                });
++                                if (resetStylesIdentifierPath) {
++                                    specifier.replaceWith(core_1.types.identifier('unstable__resetStyles'));
+                                 }
+                             }
+                         });
+                     });
+                     if (state.calleePaths) {
+                         state.calleePaths.forEach(calleePath => {
++                            if (calleePath.node.name === 'unstableMakeResetStyles') {
++                                calleePath.replaceWith(core_1.types.identifier('unstable__resetStyles'));
++                                return;
++                            }
+                             calleePath.replaceWith(core_1.types.identifier('__styles'));
+                         });
+                     }
+@@ -181,11 +218,20 @@ exports.transformPlugin = (0, helper_plugin_utils_1.declare)((api, options) => {
+                     return;
+                 }
+                 const calleePath = path.get('callee');
+-                if (!isMakeStylesCallee(calleePath, pluginOptions.modules)) {
+-                    return;
++                if (isMakeStylesCallee(calleePath, pluginOptions.modules)) {
++                    state.definitionPaths.push({
++                        kind: 'makeStyles',
++                        path: getDefinitionPathFromMakeStylesCallExpression('makeStyles', path),
++                    });
++                    state.calleePaths.push(calleePath);
++                }
++                if (isMakeResetStylesCallee(calleePath, pluginOptions.modules)) {
++                    state.definitionPaths.push({
++                        kind: 'makeResetStyles',
++                        path: getDefinitionPathFromMakeStylesCallExpression('makeResetStyles', path),
++                    });
++                    state.calleePaths.push(calleePath);
+                 }
+-                state.definitionPaths.push(getDefinitionPathFromMakeStylesCallExpression(path));
+-                state.calleePaths.push(calleePath);
+             },
+             // eslint-disable-next-line @typescript-eslint/naming-convention
+             MemberExpression(expressionPath, state) {
+@@ -200,7 +246,8 @@ exports.transformPlugin = (0, helper_plugin_utils_1.declare)((api, options) => {
+                 const objectPath = expressionPath.get('object');
+                 const propertyPath = expressionPath.get('property');
+                 const isMakeStylesCall = objectPath.isIdentifier({ name: state.requireDeclarationPath.node.id.name }) &&
+-                    propertyPath.isIdentifier({ name: 'makeStyles' });
++                    (propertyPath.isIdentifier({ name: 'makeStyles' }) ||
++                        propertyPath.isIdentifier({ name: 'unstableMakeResetStyles' }));
+                 if (!isMakeStylesCall) {
+                     return;
+                 }
+@@ -208,7 +255,10 @@ exports.transformPlugin = (0, helper_plugin_utils_1.declare)((api, options) => {
+                 if (!parentPath.isCallExpression()) {
+                     return;
+                 }
+-                state.definitionPaths.push(getDefinitionPathFromMakeStylesCallExpression(parentPath));
++                state.definitionPaths.push({
++                    kind: 'makeStyles',
++                    path: getDefinitionPathFromMakeStylesCallExpression('makeStyles', parentPath),
++                });
+                 state.calleePaths.push(propertyPath);
+             },
+         },

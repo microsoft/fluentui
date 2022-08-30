@@ -16,10 +16,16 @@ const useCheckedStyles = makeStyles({
   // Base styles
   base: {
     backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderColor: tokens.colorNeutralStroke1,
     color: tokens.colorNeutralForeground1Selected,
 
-    ...shorthands.borderWidth(tokens.strokeWidthThin),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // eslint-disable-next-line @griffel/no-shorthands
+    borderWidth: tokens.strokeWidthThin,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline',
@@ -30,39 +36,59 @@ const useCheckedStyles = makeStyles({
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: tokens.colorNeutralStroke1Hover,
       color: tokens.colorNeutralForeground1Hover,
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: tokens.colorNeutralStroke1Pressed,
       color: tokens.colorNeutralForeground1Pressed,
     },
   },
 
   // High contrast styles
   highContrast: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     '@media (forced-colors: active)': {
       backgroundColor: 'Highlight',
-      ...shorthands.borderColor('Highlight'),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // eslint-disable-next-line @griffel/no-shorthands
+      borderColor: 'Highlight',
       color: 'HighlightText',
       forcedColorAdjust: 'none',
 
       ':hover': {
         backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'Highlight',
         color: 'Highlight',
       },
 
       ':hover:active': {
         backgroundColor: 'HighlightText',
-        ...shorthands.borderColor('Highlight'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'Highlight',
         color: 'Highlight',
       },
 
       ':focus': {
-        ...shorthands.borderColor('Highlight'),
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        // eslint-disable-next-line @griffel/no-shorthands
+        borderColor: 'Highlight',
       },
     },
   },
