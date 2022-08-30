@@ -1,7 +1,7 @@
 {
-  "type": "minor",
-  "comment": "Move react-charting into stub package and create beachball group with charting",
+  "type": "patch",
+  "comment": "Added lts-7 beachball tag to react charting",
   "packageName": "@fluentui/react-charting",
-  "email": "mgodbolt@microsoft.com",
+  "email": "gcox@microsoft.com",
   "dependentChangeType": "patch"
 }
