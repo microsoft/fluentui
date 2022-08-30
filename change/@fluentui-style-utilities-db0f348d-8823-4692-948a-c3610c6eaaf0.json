@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added style-utilities export of uifabric/styling",
+  "packageName": "@fluentui/style-utilities",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
