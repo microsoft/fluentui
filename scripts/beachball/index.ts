@@ -18,7 +18,12 @@ export const config: BeachballConfig = {
       name: 'Styling',
       include: ['packages/styling', 'stub-packages/style-utilities'],
       disallowedChangeTypes: ['major'],
-    }
+    },
+    {
+      name: 'Experiments',
+      include: ['packages/experiments', 'stub-packages/experiments'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {
