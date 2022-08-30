@@ -20,6 +20,9 @@
       "path": "./storybook__addons/tsconfig.json"
     },
     {
+      "path": "./ignore-not-found-export-webpack-plugin/tsconfig.json"
+    },
+    {
       "path": "./custom-global/tsconfig.json"
     }
   ]

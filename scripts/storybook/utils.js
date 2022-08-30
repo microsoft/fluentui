@@ -1,5 +1,3 @@
-// @ts-check
-
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
@@ -20,7 +18,7 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  * ```
  *
  * @param {string} addonName - package name of custom workspace addon
- * @param {{workspaceRoot?:string}=} options
+ * @param {Partial<typeof loadWorkspaceAddonDefaultOptions>} options
  */
 function loadWorkspaceAddon(addonName, options = {}) {
   const { workspaceRoot } = { ...loadWorkspaceAddonDefaultOptions, ...options };
@@ -33,30 +31,58 @@ function loadWorkspaceAddon(addonName, options = {}) {
     const workspaceJson = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'workspace.json'), 'utf-8'));
     const addonMetadata = workspaceJson.projects[addonName];
     const rootPath = path.join(workspaceRoot, addonMetadata.root);
-    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     const tsConfigPath = path.join(rootPath, 'tsconfig.lib.json');
     const packageJsonPath = path.join(rootPath, 'package.json');
+    const sourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot);
     /**
-     * @type {Record<string,any>}
+     * @type {Record<string,unknown> & {compilerOptions:{outDir?:string}}}
      */
-    const tsconfigLibJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
+    const tsconfigJson = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
+    /**
+     * @type {Record<string,unknown> & {module?:string}}
+     */
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+    if (!packageJson.module) {
+      throw new Error(
+        `your addon package.json is missing valid entry point definition -> Please make sure module property is defined! Example: {"module":"path/to/your/build/entrypoint/index.js"}`,
+      );
+    }
+
+    if (!tsconfigJson.compilerOptions.outDir) {
+      throw new Error('your addon tsconfig.lib.json is missing compilerOptions.outDir definition');
+    }
+
     const packageDistPath = path.dirname(packageJson.module);
-    const distPath = path.join(rootPath, tsconfigLibJson.compilerOptions.outDir);
-    const relativePathToSource = path.relative(distPath, sourceRootPath);
+    const tsConfigDistPath = path.join(rootPath, tsconfigJson.compilerOptions.outDir);
+    /**
+     * we use always POSIX path in js modules thus this needs to be converted explicitly to POSIX, not matter what OS is used
+     * Example:
+     * `../one/two' -> `../one/two'  | POSIX (nix OS)
+     * `..\\one\\two` ->  `../one/two` | NON POSIX (windows)
+     */
+    const relativePathToSource = path
+      .relative(tsConfigDistPath, sourceRootPath)
+      .replace(new RegExp(`\\${path.sep}`, 'g'), path.posix.sep);
     const presetSourcePath = path.join(rootPath, 'preset.js');
-    const presetMemorySourcePath = path.join(distPath, 'preset.js');
+    const presetMockedSourcePath = path.join(tsConfigDistPath, 'preset.js');
 
     return {
-      distPath,
+      tsConfigDistPath,
       packageDistPath,
       presetSourcePath,
-      presetMemorySourcePath,
+      presetMockedSourcePath,
       relativePathToSource,
     };
   }
 
-  const { relativePathToSource, distPath, packageDistPath, presetSourcePath, presetMemorySourcePath } = getPaths();
+  const {
+    relativePathToSource,
+    tsConfigDistPath,
+    packageDistPath,
+    presetSourcePath,
+    presetMockedSourcePath,
+  } = getPaths();
 
   if (!fs.existsSync(presetSourcePath)) {
     throw new Error(
@@ -66,8 +92,9 @@ function loadWorkspaceAddon(addonName, options = {}) {
 
   const presetContent = fs.readFileSync(presetSourcePath, 'utf-8');
 
-  const regex = new RegExp(`\.\\/${path.normalize(packageDistPath)}`, 'g');
+  const regex = new RegExp(`\\./${path.normalize(packageDistPath)}`, 'g');
   let modifiedPresetContent = presetContent.replace(regex, relativePathToSource);
+
   modifiedPresetContent = stripIndents`
     const { workspaceRoot } = require('nx/src/utils/app-root');
     const { registerTsProject } = require('nx/src/utils/register');
@@ -77,13 +104,13 @@ function loadWorkspaceAddon(addonName, options = {}) {
     ${modifiedPresetContent}
   `;
 
-  if (!fs.existsSync(distPath)) {
-    fs.mkdirSync(distPath);
+  if (!fs.existsSync(tsConfigDistPath)) {
+    fs.mkdirSync(tsConfigDistPath);
   }
 
-  fs.writeFileSync(presetMemorySourcePath, modifiedPresetContent, { encoding: 'utf-8' });
+  fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
-  return distPath;
+  return tsConfigDistPath;
 }
 
 /**
@@ -93,7 +120,7 @@ function getCodesandboxBabelOptions() {
   const allPackageInfo = getAllPackageInfo();
 
   return Object.values(allPackageInfo).reduce((acc, cur) => {
-    if (isConvergedPackage(cur.packageJson)) {
+    if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
       const prereleaseTags = semver.prerelease(cur.packageJson.version);
       const isNonRcPrerelease = prereleaseTags && !prereleaseTags[0].includes('rc');
       acc[cur.packageJson.name] = isNonRcPrerelease

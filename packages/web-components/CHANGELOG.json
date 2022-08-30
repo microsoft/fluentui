@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 30 Aug 2022 07:41:54 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e86978c43db785ec3f40ee9e0bd35693e26189d",
+            "comment": "update FAST packages to resolve issues with form constraint validation on form associated elements"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Aug 2022 07:37:33 GMT",
       "tag": "@fluentui/web-components_v2.5.3",
       "version": "2.5.3",

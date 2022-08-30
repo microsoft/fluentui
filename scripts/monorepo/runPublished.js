@@ -1,4 +1,3 @@
-// @ts-check
 const { spawnSync } = require('child_process');
 const getAllPackageInfo = require('./getAllPackageInfo');
 const isConvergedPackage = require('./isConvergedPackage');
@@ -29,16 +28,20 @@ const websitePackages = [
 // in the root package.json's publishing-related scripts and will need to be updated if --scope changes.
 const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => {
-    // Ignore northstar
-    if (/[\\/]fluentui[\\/]/.test(packagePath)) {
+    const isNorthstar = /[\\/]fluentui[\\/]/.test(packagePath);
+
+    if (isNorthstar) {
       return false;
     }
 
-    if (process.env.RELEASE_VNEXT) {
-      return isConvergedPackage(packageJson) && packageJson.private !== true;
-    } else if (!isConvergedPackage(packageJson)) {
+    const isConverged = isConvergedPackage({ packagePathOrJson: packageJson });
+    if (process.env.RELEASE_VNEXT && isConverged) {
+      return packageJson.private !== true;
+    }
+
+    if (!isConverged) {
       // v8 scope
-      return packageJson.private !== true || websitePackages.includes(packageJson.name);
+      return websitePackages.includes(packageJson.name) || packageJson.private !== true;
     }
 
     // Ignore v9/converged packages when releasing v8
@@ -60,4 +63,4 @@ const result = spawnSync(process.execPath, [lageBin, ...lageArgs], {
   maxBuffer: 500 * 1024 * 1024,
 });
 
-process.exit(result.status);
+process.exit(result.status ?? undefined);
