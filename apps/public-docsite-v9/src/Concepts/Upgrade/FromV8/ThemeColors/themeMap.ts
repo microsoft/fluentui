@@ -1,6 +1,6 @@
 import { ColorCompareInfo } from './types';
 
-export const monochromeMap: ColorCompareInfo[] = [
+export const lightThemeNeutralMap: ColorCompareInfo[] = [
   { name: 'black', match: 'black', kind: 'v8-palette' },
   {
     name: 'blackTranslucent40',
@@ -24,6 +24,34 @@ export const monochromeMap: ColorCompareInfo[] = [
   {
     name: 'whiteTranslucent40',
     match: 'whiteAlpha[40]',
+    kind: 'v8-palette',
+  },
+];
+
+export const darkThemeNeutralMap: ColorCompareInfo[] = [
+  { name: 'black', match: 'white', kind: 'v8-palette' },
+  {
+    name: 'blackTranslucent40',
+    match: 'whieAlpha[40]',
+    kind: 'v8-palette',
+  },
+  { name: 'neutralDark', match: 'grey[98]', kind: 'v8-palette' },
+  { name: 'neutralPrimary', match: 'grey[96]', kind: 'v8-palette' },
+  { name: 'neutralPrimaryAlt', match: 'grey[94]', kind: 'v8-palette' },
+  { name: 'neutralSecondary', match: 'grey[82]', kind: 'v8-palette' },
+  { name: 'neutralSecondaryAlt', match: 'grey[74]', kind: 'v8-palette' },
+  { name: 'neutralTertiary', match: 'grey[44]', kind: 'v8-palette' },
+  { name: 'neutralTertiaryAlt', match: 'grey[26]', kind: 'v8-palette' },
+  { name: 'neutralQuaternary', match: 'grey[24]', kind: 'v8-palette' },
+  { name: 'neutralQuaternaryAlt', match: 'grey[18]', kind: 'v8-palette' },
+  { name: 'neutralLight', match: 'grey[16]', kind: 'v8-palette' },
+  { name: 'neutralLighter', match: 'grey[14]', kind: 'v8-palette' },
+  { name: 'neutralLighterAlt', match: 'grey[10]', kind: 'v8-palette' },
+  { name: 'accent', match: 'brand[90]', kind: 'v8-palette' },
+  { name: 'white', match: 'black', kind: 'v8-palette' },
+  {
+    name: 'whiteTranslucent40',
+    match: 'blackAlpha[40]',
     kind: 'v8-palette',
   },
 ];
@@ -318,7 +346,7 @@ export const namedColorMap: ColorCompareInfo[] = [
   },
 ];
 
-export const brandMap: ColorCompareInfo[] = [
+export const lightThemeBrandMap: ColorCompareInfo[] = [
   { name: 'themeDarker', match: 'brand[40]', kind: 'v8-palette' },
   { name: 'themeDark', match: 'brand[60]', kind: 'v8-palette' },
   { name: 'themeDarkAlt', match: 'brand[70]', kind: 'v8-palette' },
@@ -328,6 +356,18 @@ export const brandMap: ColorCompareInfo[] = [
   { name: 'themeLight', match: 'brand[140]', kind: 'v8-palette' },
   { name: 'themeLighter', match: 'brand[150]', kind: 'v8-palette' },
   { name: 'themeLighterAlt', match: 'brand[160]', kind: 'v8-palette' },
+];
+
+export const darkThemeBrandMap: ColorCompareInfo[] = [
+  { name: 'themeDarker', match: 'brand[110]', kind: 'v8-palette' },
+  { name: 'themeDark', match: 'brand[100]', kind: 'v8-palette' },
+  { name: 'themeDarkAlt', match: 'brand[100]', kind: 'v8-palette' },
+  { name: 'themePrimary', match: 'brand[90]', kind: 'v8-palette' },
+  { name: 'themeSecondary', match: 'brand[90]', kind: 'v8-palette' },
+  { name: 'themeTertiary', match: 'brand[60]', kind: 'v8-palette' },
+  { name: 'themeLight', match: 'brand[50]', kind: 'v8-palette' },
+  { name: 'themeLighter', match: 'brand[40]', kind: 'v8-palette' },
+  { name: 'themeLighterAlt', match: 'brand[30]', kind: 'v8-palette' },
 ];
 
 export const semanticToAliasMap: ColorCompareInfo[] = [
