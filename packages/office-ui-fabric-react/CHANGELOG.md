@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Aug 2022 22:39:29 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.197.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.197.0)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.196.0..office-ui-fabric-react_v7.197.0)
+
+### Minor changes
+
+- Fix backwards-compatibility of Group Selection additions (#24554) ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/foundation to v7.10.7 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/icons to v7.7.6 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @fluentui/react-focus to v7.18.8 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/react-hooks to v7.15.2 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
+- Bump @uifabric/styling to v7.21.3 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
 
 ## [7.196.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.196.0)
 

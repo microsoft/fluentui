@@ -1,5 +1,40 @@
 {
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added font-icons-mdl2 export of uifabric/icons",
+            "author": "gcox@microsoft.com",
+            "commit": "fb7ce1b5a1ff738f2eca4048afd855f95368937f",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/utilities to v7.36.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@fluentui/font-icons-mdl2"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@fluentui/font-icons-mdl2"
+          },
+          {
+            "comment": "Bump @uifabric/styling to v7.21.3",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    }
   ]
 }

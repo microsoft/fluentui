@@ -2,6 +2,62 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 30 Aug 2022 12:20:47 GMT",
+      "tag": "@uifabric/charting_v4.22.1",
+      "version": "4.22.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update line chart legend order",
+            "author": "atishay.jain@microsoft.com",
+            "commit": "2d8524cc5541913938ee915d8358e5de5e70b597",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 00:07:57 GMT",
+      "tag": "@uifabric/charting_v4.22.0",
+      "version": "4.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump charting to match fluentui/react-charting minor version",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "b585aa5bdf7e57d5746598f9389aba9c6fc8d489",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump office-ui-fabric-react to v7.197.0",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/example-app-base to v7.22.12",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @uifabric/icons to v7.7.6",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/charting"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v7.18.8",
+            "author": "tmichon@microsoft.com",
+            "commit": "2d5c41dc344c50b1c54c90b5650643002616c2c3",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Aug 2022 22:39:29 GMT",
       "tag": "@uifabric/charting_v4.21.14",
       "version": "4.21.14",

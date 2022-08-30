@@ -1,8 +1,17 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.7](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.7)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/foundation_v7.10.6..@uifabric/foundation_v7.10.7)
+
+### Patches
+
+- Bump @uifabric/utilities to v7.36.0 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
 
 ## [7.10.6](https://github.com/microsoft/fluentui/tree/@uifabric/foundation_v7.10.6)
 
