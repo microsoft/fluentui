@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 29 Aug 2022 07:44:38 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 07:41:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.12.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.31)
+
+Tue, 30 Aug 2022 07:41:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.12.30..@fluentui/react-charting_v5.12.31)
+
+### Patches
+
+- Add support for javascript date localization ([PR #24577](https://github.com/microsoft/fluentui/pull/24577) by atishay.jain@microsoft.com)
 
 ## [5.12.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.12.30)
 
