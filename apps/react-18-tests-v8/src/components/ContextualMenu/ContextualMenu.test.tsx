@@ -38,7 +38,7 @@ describe('ContextualMenu in React 18', () => {
     );
   };
   it('renders ContextualMenu when trigger button is clicked', () => {
-    const { getByRole, queryAllByRole } = render(
+    const { baseElement, getByRole, queryAllByRole } = render(
       <React.StrictMode>
         <MenuButton />
       </React.StrictMode>,
@@ -50,5 +50,11 @@ describe('ContextualMenu in React 18', () => {
     userEvent.click(menuTrigger);
 
     expect(queryAllByRole('menu').length).toBe(1);
+
+    const callOutElement = baseElement.getElementsByClassName('ms-ContextualMenu-Callout')[0];
+    const callOutElementStyle = callOutElement.getAttribute('style') as string;
+    // The above test is not enough since the ContextualMenu is still present in the DOM, it's just not
+    // visible. This checks if ContextualMenu is rendered on screen correctly.
+    expect(callOutElementStyle.includes('opacity: 0')).toBeFalsy();
   });
 });
