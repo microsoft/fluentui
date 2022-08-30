@@ -1,3 +1,5 @@
+import { statusSharedColorNames, personaSharedColorNames, unusedSharedColorNames } from './sharedColorNames';
+
 /**
  * Design tokens for alias colors
  */
@@ -432,46 +434,13 @@ export type Brands = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100 | 110 | 12
 
 export type BrandVariants = Record<Brands, string>;
 
-/**
- * All the global shared colors and their shade/tint variants
- */
-export type GlobalSharedColors = {
-  darkRed: ColorVariants;
-  cranberry: ColorVariants;
-  red: ColorVariants;
-  darkOrange: ColorVariants;
-  pumpkin: ColorVariants;
-  peach: ColorVariants;
-  marigold: ColorVariants;
-  yellow: ColorVariants;
-  gold: ColorVariants;
-  brass: ColorVariants;
-  brown: ColorVariants;
-  forest: ColorVariants;
-  seafoam: ColorVariants;
-  lightGreen: ColorVariants;
-  green: ColorVariants;
-  darkGreen: ColorVariants;
-  lightTeal: ColorVariants;
-  teal: ColorVariants;
-  steel: ColorVariants;
-  blue: ColorVariants;
-  royalBlue: ColorVariants;
-  cornflower: ColorVariants;
-  navy: ColorVariants;
-  lavender: ColorVariants;
-  purple: ColorVariants;
-  grape: ColorVariants;
-  berry: ColorVariants;
-  lilac: ColorVariants;
-  pink: ColorVariants;
-  magenta: ColorVariants;
-  plum: ColorVariants;
-  beige: ColorVariants;
-  mink: ColorVariants;
-  platinum: ColorVariants;
-  anchor: ColorVariants;
-};
+type StatusSharedColorNames = typeof statusSharedColorNames[number];
+type PersonaSharedColorNames = typeof personaSharedColorNames[number];
+type UnusedSharedColorNames = typeof unusedSharedColorNames[number];
+
+export type StatusSharedColors = Record<StatusSharedColorNames, ColorVariants>;
+export type PersonaSharedColors = Record<PersonaSharedColorNames, ColorVariants>;
+export type UnusedSharedColors = Record<UnusedSharedColorNames, ColorVariants>;
 
 export type FontSizeTokens = {
   fontSizeBase100: string;

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(List): solve stale props problem with getPageSpecification",
-  "packageName": "@fluentui/react",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

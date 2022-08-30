@@ -143,8 +143,6 @@ export type AvatarState = ComponentState<AvatarSlots> & Required<Pick<AvatarProp
     color: NonNullable<Exclude<AvatarProps['color'], 'colorful'>>;
 };
 
-// Warning: (ae-internal-missing-underscore) The name "getInitials" should be prefixed with an underscore because the declaration is marked as @internal
-//
 // @internal
 export function getInitials(displayName: string | undefined | null, isRtl: boolean, options?: {
     allowPhoneInitials?: boolean;

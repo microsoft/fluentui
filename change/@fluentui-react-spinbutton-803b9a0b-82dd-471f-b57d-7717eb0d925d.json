@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: add accessibility documentation for SpinButton",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "jennz@microsoft.com",
+  "dependentChangeType": "none"
+}

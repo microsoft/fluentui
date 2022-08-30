@@ -1,5 +1,3 @@
-// @ts-check
-
 const cp = require('child_process');
 
 function getCurrentHash() {

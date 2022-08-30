@@ -1,5 +1,3 @@
-// @ts-check
-
 const runTo = require('./runTo');
 
 const argv = process.argv.slice(2);
