@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update line chart legend order",
-  "packageName": "@uifabric/charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}
