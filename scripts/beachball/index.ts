@@ -18,7 +18,12 @@ export const config: BeachballConfig = {
       name: 'Styling',
       include: ['packages/styling', 'stub-packages/style-utilities'],
       disallowedChangeTypes: ['major'],
-    }
+    },
+    {
+      name: 'Icons',
+      include: ['packages/icons', 'stub-packages/font-icons-mdl2'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {
