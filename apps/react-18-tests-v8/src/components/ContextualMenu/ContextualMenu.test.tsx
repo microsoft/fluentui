@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ContextualMenuItemType, DefaultButton } from '@fluentui/react';
+import { ContextualMenuItemType, DefaultButton, DirectionalHint } from '@fluentui/react';
 
 describe('ContextualMenu in React 18', () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -13,6 +13,7 @@ describe('ContextualMenu in React 18', () => {
 
   const menuProps = {
     shouldFocusOnMount: true,
+    directionalHint: DirectionalHint.bottomLeftEdge,
     items: [
       { key: 'newItem', text: 'New', onClick: () => console.log('New clicked') },
       { key: 'divider_1', itemType: ContextualMenuItemType.Divider },
@@ -38,7 +39,7 @@ describe('ContextualMenu in React 18', () => {
     );
   };
   it('renders ContextualMenu when trigger button is clicked', () => {
-    const { baseElement, getByRole, queryAllByRole } = render(
+    const { baseElement, getByRole, queryAllByRole, debug } = render(
       <React.StrictMode>
         <MenuButton />
       </React.StrictMode>,
@@ -47,6 +48,7 @@ describe('ContextualMenu in React 18', () => {
     expect(queryAllByRole('menu').length).toBe(0);
 
     const menuTrigger = getByRole('button');
+
     userEvent.click(menuTrigger);
 
     expect(queryAllByRole('menu').length).toBe(1);
