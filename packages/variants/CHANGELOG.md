@@ -1,8 +1,17 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.2.39](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.39)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/variants_v7.2.38..@uifabric/variants_v7.2.39)
+
+### Patches
+
+- Bump @fluentui/theme to v1.7.8 ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
 
 ## [7.2.38](https://github.com/microsoft/fluentui/tree/@uifabric/variants_v7.2.38)
 

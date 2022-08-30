@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 17 Aug 2022 12:21:32 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Aug 2022 00:07:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.36.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.36.0)
+
+Tue, 30 Aug 2022 00:07:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.35.0..@uifabric/utilities_v7.36.0)
+
+### Minor changes
+
+- Fix backwards-compatibility of Group Selection additions (#24554) ([PR #24555](https://github.com/microsoft/fluentui/pull/24555) by tmichon@microsoft.com)
 
 ## [7.35.0](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.35.0)
 

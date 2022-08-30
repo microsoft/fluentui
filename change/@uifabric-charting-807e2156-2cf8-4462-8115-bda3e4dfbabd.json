@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Bump charting to match fluentui/react-charting minor version",
-  "packageName": "@uifabric/charting",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
