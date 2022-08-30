@@ -69,7 +69,7 @@ export type UninitializedToolbarState = Omit<ToolbarState, 'checkedValues' | 'ha
 
 export type ToggableHandler = (
   e: React.MouseEvent | React.KeyboardEvent,
-  name: string,
-  value: string,
-  checked: boolean,
+  name?: string,
+  value?: string,
+  checked?: boolean,
 ) => void;
