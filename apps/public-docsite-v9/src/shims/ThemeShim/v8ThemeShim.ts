@@ -341,5 +341,6 @@ export const createv8Theme = (
     semanticColors: mapSemanticColors(baseTheme.semanticColors, themeV9),
     fonts: mapFonts(baseTheme.fonts, themeV9),
     effects: mapEffects(baseTheme.effects, themeV9),
+    isInverted: isDarkTheme || themeV8?.isInverted === true,
   };
 };
