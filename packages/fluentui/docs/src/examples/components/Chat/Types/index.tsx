@@ -31,7 +31,7 @@ const Types = () => (
       examplePath="components/Chat/Types/ChatExampleDetails"
     />
     <ComponentExample
-      title="V2 Layout"
+      title="Refresh Comfy Layout"
       description="A comfy Chat can render with an updated layout."
       examplePath="components/Chat/Types/ChatExampleComfyRefresh"
     />
