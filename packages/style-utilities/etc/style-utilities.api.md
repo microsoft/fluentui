@@ -110,7 +110,7 @@ export function getFocusOutlineStyle(theme: ITheme, inset?: number, width?: numb
 export function getFocusStyle(theme: ITheme, options?: IGetFocusStylesOptions): IRawStyle;
 
 // @public @deprecated
-export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean, borderRadius?: string | number | undefined): IRawStyle;
 
 // @public
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
@@ -175,6 +175,7 @@ export { IFontWeight }
 // @public (undocumented)
 export interface IGetFocusStylesOptions {
     borderColor?: string;
+    borderRadius?: string | number | undefined;
     highContrastStyle?: IRawStyle;
     inset?: number;
     isFocusedOnly?: boolean;
