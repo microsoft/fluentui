@@ -83,7 +83,6 @@ jobs:
 
       - name: Download env variables artifact
         uses: actions/download-artifact@v3
-        id: download
         with:
           name: env-artifact
 
@@ -94,16 +93,6 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
-      - name: Delete artifact file
-        run: |
-          rm environment
-
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - name: Delete environment file
         run: |
@@ -162,7 +151,6 @@ jobs:
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
-        id: download
         with:
           name: env-artifact
 
@@ -182,18 +170,9 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
-      - name: Delete artifact file
-        run: |
-          rm environment
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
@@ -238,7 +217,6 @@ jobs:
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
-        id: download
         with:
           name: env-artifact
 
@@ -258,20 +236,8 @@ jobs:
         with:
           node-version: 14.18.1
           cache: 'yarn'
-
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
-
-      - name: Delete artifact file
-        run: |
-          rm environment
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-
-      - name: Test if environment file exists
-        run: |
-          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
