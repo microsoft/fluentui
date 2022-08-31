@@ -201,7 +201,6 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
   reactionGroup: ({ props: p }): ICSSInJSStyle => ({
     position: 'relative',
     display: 'flex',
-    mraginTop: pxToRem(2),
     float: 'left',
     zIndex: 1,
     ...(p.mine && {
