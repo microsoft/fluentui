@@ -190,16 +190,16 @@ export interface ChatMessageProps
   /** Indicates whether the message is in a failed state. */
   failed?: boolean;
 
-  /** A message can have a custom body element. */
+  /** A message can have a custom body element (only applicable to "refresh" layout). */
   body?: ShorthandValue<BoxProps>;
 
-  /** A message can have a custom bubble element. */
+  /** A message can have a custom bubble element (only applicable to "refresh" layout). */
   bubble?: ShorthandValue<BoxProps>;
 
-  /** A message can have a custom bubble inset element which sits next to the bubble. */
+  /** A message can have a custom bubble inset element which sits next to the bubble (only applicable to "refresh" layout). */
   bubbleInset?: ShorthandValue<BoxProps>;
 
-  /** Optional override for the content in the default bubble inset. */
+  /** Optional override for the content in the default bubble inset (only applicable to "refresh" layout). */
   bubbleInsetContent?: React.ReactNode;
 }
 
