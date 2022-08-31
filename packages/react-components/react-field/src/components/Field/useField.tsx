@@ -22,7 +22,7 @@ const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` :
 export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
   const {
     className,
-    fieldComponent,
+    field,
     hint,
     label,
     orientation,
@@ -36,7 +36,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
 
   const fieldProps = {
     className,
-    fieldComponent,
+    field,
     hint,
     label,
     orientation,
@@ -57,14 +57,14 @@ export type UseFieldParams<T extends FieldComponent> = {
   props: FieldProps<T> & OptionalFieldComponentProps;
 
   /**
-   * Ref to the underlying fieldComponent
+   * Ref to the underlying field component
    */
   ref: React.Ref<HTMLElement>;
 
   /**
    * The underlying input component that this field is wrapping.
    */
-  fieldComponent: T;
+  component: T;
 
   /**
    * Class names for this component, created by `getFieldClassNames`.
@@ -72,7 +72,7 @@ export type UseFieldParams<T extends FieldComponent> = {
   classNames: SlotClassNames<FieldSlots<T>>;
 
   /**
-   * How the label be connected to the fieldComponent.
+   * How the label should be connected to the field component.
    * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
    *   This is the preferred method for components that use the underlying <input> tag.
    * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
@@ -92,18 +92,18 @@ export type UseFieldParams<T extends FieldComponent> = {
  * @param params - Configuration parameters for this Field
  */
 export const useField_unstable = <T extends FieldComponent>(params: UseFieldParams<T>): FieldState<T> => {
-  const [fieldProps, componentProps] = getPartitionedFieldProps(params.props);
+  const [props, componentProps] = getPartitionedFieldProps(params.props);
 
   const baseId = useId('field-');
 
-  const { orientation = 'vertical', validationState } = fieldProps;
+  const { orientation = 'vertical', validationState } = props;
 
-  const root = resolveShorthand(fieldProps.root, {
+  const root = resolveShorthand(props.root, {
     required: true,
-    defaultProps: getNativeElementProps('div', fieldProps),
+    defaultProps: getNativeElementProps('div', props),
   });
 
-  const label = resolveShorthand(fieldProps.label, {
+  const label = resolveShorthand(props.label, {
     defaultProps: {
       id: baseId + '__label',
       required: componentProps.required,
@@ -112,19 +112,19 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     },
   });
 
-  const validationMessage = resolveShorthand(fieldProps.validationMessage, {
+  const validationMessage = resolveShorthand(props.validationMessage, {
     defaultProps: {
       id: baseId + '__validationMessage',
     },
   });
 
-  const hint = resolveShorthand(fieldProps.hint, {
+  const hint = resolveShorthand(props.hint, {
     defaultProps: {
       id: baseId + '__hint',
     },
   });
 
-  const validationMessageIcon = resolveShorthand(fieldProps.validationMessageIcon, {
+  const validationMessageIcon = resolveShorthand(props.validationMessageIcon, {
     required: !!validationState,
     defaultProps: {
       children: validationState ? validationMessageIcons[validationState] : undefined,
@@ -134,14 +134,14 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
   const { labelConnection = 'htmlFor' } = params;
   const hasError = validationState === 'error';
 
-  const fieldComponent = resolveShorthand(fieldProps.fieldComponent, {
+  const field = resolveShorthand(props.field, {
     required: true,
     defaultProps: {
       ref: params.ref,
       // Add a default ID only if required for label's htmlFor prop
-      id: label && labelConnection === 'htmlFor' ? baseId + '__fieldComponent' : undefined,
+      id: label && labelConnection === 'htmlFor' ? baseId + '__field' : undefined,
       // Add aria-labelledby only if not using the label's htmlFor
-      'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
+      'aria-labelledby': labelConnection === 'aria-labelledby' ? label?.id : undefined,
       'aria-describedby': hasError ? hint?.id : mergeAriaDescribedBy(validationMessage?.id, hint?.id),
       'aria-errormessage': hasError ? validationMessage?.id : undefined,
       'aria-invalid': hasError ? true : undefined,
@@ -150,7 +150,7 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
   });
 
   if (labelConnection === 'htmlFor' && label && !label.htmlFor) {
-    label.htmlFor = fieldComponent.id;
+    label.htmlFor = field.id;
   }
 
   const state: FieldState<FieldComponent> = {
@@ -159,14 +159,14 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     classNames: params.classNames,
     components: {
       root: 'div',
-      fieldComponent: params.fieldComponent,
+      field: params.component,
       label: Label,
       validationMessage: 'span',
       validationMessageIcon: 'span',
       hint: 'span',
     },
     root,
-    fieldComponent,
+    field,
     label,
     validationMessageIcon,
     validationMessage,

@@ -18,7 +18,7 @@ import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import type { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'fieldComponent'> & {
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'field'> & {
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
 };
@@ -26,7 +26,7 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
 // @public
 export type FieldSlots<T extends FieldComponent> = {
     root: NonNullable<Slot<'div'>>;
-    fieldComponent: SlotComponent<T>;
+    field: SlotComponent<T>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'span'>;
     validationMessageIcon?: Slot<'span'>;
@@ -60,7 +60,7 @@ export const useField_unstable: <T extends FieldComponent>(params: UseFieldParam
 export type UseFieldParams<T extends FieldComponent> = {
     props: FieldProps<T> & OptionalFieldComponentProps;
     ref: React_2.Ref<HTMLElement>;
-    fieldComponent: T;
+    component: T;
     classNames: SlotClassNames<FieldSlots<T>>;
     labelConnection?: 'htmlFor' | 'aria-labelledby';
 };
