@@ -334,7 +334,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
-  const actionsMenuPopper = usePopper({
+  const { targetRef: actionsMenuTargetRef, containerRef: actionsMenuRef } = usePopper({
     align: 'end',
     position: 'above',
     positionFixed: overflow,
@@ -361,7 +361,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       },
 
       focus: event => {
-        const target = actionsMenuPopper.targetRef.current;
+        const target = actionsMenuTargetRef.current;
         if (target) {
           target.focus();
           event.stopPropagation();
@@ -450,11 +450,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       },
     });
 
-    const content = actionMenuElement ? (
-      <Ref innerRef={actionsMenuPopper.containerRef}>{actionMenuElement}</Ref>
-    ) : (
-      actionMenuElement
-    );
+    const content = actionMenuElement ? <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref> : actionMenuElement;
 
     return inlineActionMenu || !content ? content : <PortalInner>{content}</PortalInner>;
   };
@@ -464,8 +460,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       // reference: https://github.com/microsoft/fluentui/pull/17329
 
       const toFocusItemInActionMenu =
-        actionsMenuPopper.containerRef.current?.querySelector('[tabindex="0"]') ??
-        actionsMenuPopper.containerRef.current?.querySelectorAll('[tabindex="-1"]:not([data-is-focusable="false"])')[0];
+        actionsMenuRef.current?.querySelector('[tabindex="0"]') ??
+        actionsMenuRef.current?.querySelectorAll('[tabindex="-1"]:not([data-is-focusable="false"])')[0];
 
       if (e.keyCode === keyboardKey.Enter) {
         toFocusItemInActionMenu?.focus();
@@ -619,7 +615,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
           styles: resolvedStyles.bubble,
         }),
       overrideProps: () => ({
-        ref: actionsMenuPopper.targetRef,
+        ref: actionsMenuTargetRef,
         content: (
           <>
             {actionMenuElement}
@@ -706,7 +702,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   }
 
   const element = (
-    <Ref innerRef={!isRefreshComfyLayout && actionsMenuPopper.targetRef}>
+    <Ref innerRef={!isRefreshComfyLayout && actionsMenuTargetRef}>
       {getA11Props.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11Props('root', {
