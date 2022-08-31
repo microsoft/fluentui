@@ -30,7 +30,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: context.payload.workflow_run.id,
+               run_id: ${{context.payload.workflow_run.id}},
 
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
@@ -42,14 +42,14 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: env-artifact
 
       - name: Download N* storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: northstar-artifact
           # downloads artifact to where it would be 'built'
           path: packages/fluentui/docs/dist
@@ -107,7 +107,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: context.payload.workflow_run.id,
+               run_id: ${{context.payload.workflow_run.id}},
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "screener-artifact"
@@ -118,14 +118,14 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: env-artifact
 
       - name: Download screener storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
@@ -181,7 +181,7 @@ jobs:
             let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
-               run_id: context.payload.workflow_run.id,
+               run_id: ${{context.payload.workflow_run.id}},
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "vnext-artifact"
@@ -192,14 +192,14 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: env-artifact
 
       - name: Download VNext storybook artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: screener-build.yml
-          run_id: context.payload.workflow_run.id
+          run_id: ${{context.payload.workflow_run.id}}
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
         if: ${{ env.IS_ARTIFACT_PRESENT == 'true' }}
