@@ -1,6 +1,6 @@
 # @fluentui/react-18-tests-v8
 
-**Tests for React 18 compatability in [Fluent UI React v8](https://react.fluentui.dev)**.
+**Tests for React 18 compatibility in [Fluent UI React v8](https://developer.microsoft.com/en-us/fluentui#/controls/web)**.
 
 ## Usage
 
