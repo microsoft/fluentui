@@ -22,16 +22,14 @@ The proposed folder organization can be seen below:
 |- stories/
   |- assets/
   |- {componentName}/ //story files
-|- e2e/ //cypress tests files
-  |- assets/
-  |- e2e tests
 |- src/
   |- components/
-    |- {ComponentName}/ //implementation and unit test files
+    |- {ComponentName}/ //implementation, unit and cypress test files
       |- index.ts
       |- {ComponentName}.tsx
       |- {ComponentName}.types.ts
       |- {ComponentName}.test.tsx
+      |- {ComponentName}.e2e.tsx
       |- render{ComponentName}.tsx
       |- use{ComponentName}.tsx
       |- use{ComponentName}Styles.ts
@@ -51,7 +49,11 @@ package.json
 README.md
 ```
 
-We're already following this convention when it comes to e2e so most of the work will be extracting stories out of the `src` folder and moving those to the root of the package. The asset files will also need to be moved to the appropriate `assets` subfolder. The `.npmignore` file will then be updated to ignore any asset files and files living within the documentation folder. Also, the old `common/` folder which caused confusion and unexpected linting errors will now be replaced with a more robust `testing/` subfolder within the `src` folder to house the conformance testing factory and any mock testing files to be used in multiple tests within a package.
+We will be extracting stories out of the `src` folder and moving those to the root of the package within a `stories/` subfolder. The asset files will also need to be moved to the appropriate `assets` subfolder. The `.npmignore` file will then be updated to ignore any asset files and files living within the documentation folder.
+
+Also, the old `common/` folder which caused confusion and unexpected linting errors will now be replaced with a more robust `testing/` subfolder within the `src` folder to house the conformance testing factory and any mock or utility testing files to be used in multiple tests within a package.
+
+The final change will be removing the `e2e/` subfolder and collocating all cypress tests with the implementation and jest test files. The motivation for this is because we use cypress to test components on a real browser and not as a true e2e solution. Nx also collocates those cypress files like standard jest files so having them together provides more consistency.
 
 ## Pros and Cons
 
