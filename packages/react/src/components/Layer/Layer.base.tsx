@@ -10,7 +10,6 @@ import {
   setPortalAttribute,
   setVirtualParent,
   FocusRectsProvider,
-  IFocusRectsContext,
 } from '../../Utilities';
 import {
   registerLayer,
@@ -159,18 +158,11 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     useDebugWarnings(props);
 
-    const focusRectsContext = React.useMemo<IFocusRectsContext>(
-      () => ({
-        providerRef: fabricRef,
-      }),
-      [fabricRef],
-    );
-
     return (
       <span className="ms-layer" ref={mergedRef}>
         {layerRef.current &&
           ReactDOM.createPortal(
-            <FocusRectsProvider value={focusRectsContext}>
+            <FocusRectsProvider layerRoot providerRef={fabricRef}>
               {/* eslint-disable deprecation/deprecation */}
               <Fabric
                 {...(!eventBubblingEnabled && getFilteredEvents())}

@@ -294,7 +294,7 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
@@ -302,10 +302,16 @@ export const FocusRects: React_2.FunctionComponent<{
 }>;
 
 // @public (undocumented)
-export const FocusRectsContext: React_2.Context<IFocusRectsContext>;
+export const FocusRectsContext: React_2.Context<IFocusRectsContext | undefined>;
 
 // @public (undocumented)
-export const FocusRectsProvider: React_2.Provider<IFocusRectsContext>;
+export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
+
+// @public (undocumented)
+export type FocusRectsProviderProps = {
+    providerRef: React_2.RefObject<HTMLElement>;
+    layerRoot?: boolean;
+};
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -358,7 +364,7 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
 
 export { getParent }
 
@@ -600,7 +606,10 @@ export interface IFitContentToBoundsOptions {
 
 // @public (undocumented)
 export type IFocusRectsContext = {
-    providerRef?: React_2.RefObject<HTMLElement>;
+    readonly providerRef: React_2.RefObject<HTMLElement>;
+    readonly registeredProviders: React_2.RefObject<HTMLElement>[];
+    readonly registerProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement>) => void;
 };
 
 // @public
@@ -736,7 +745,7 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
-    selectToRange(index: number, count: number, clearSelection?: boolean): void;
+    selectToRange?(index: number, count: number, clearSelection?: boolean): void;
     // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
@@ -750,7 +759,7 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     setModal?(isModal: boolean): void;
     // (undocumented)
-    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
+    setRangeSelected?(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1173,7 +1182,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element, providerElem?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement>[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;

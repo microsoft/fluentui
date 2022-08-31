@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import * as React from 'react';
 import { ColumnDefinition } from './types';
 import { useSort } from './useSort';
 
@@ -107,47 +106,27 @@ describe('useSort', () => {
     });
   });
 
-  describe('headerSortProps', () => {
-    it('should return props for column id', () => {
-      const columnDefinition: ColumnDefinition<{}>[] = [{ columnId: 1 }];
-
-      const { result } = renderHook(() => useSort(columnDefinition));
-      expect(result.current.headerSortProps(1)).toBeDefined();
-    });
-
-    it('should return onClick that toggles sort', () => {
-      const columnDefinition: ColumnDefinition<{}>[] = [{ columnId: 1 }];
+  describe('getSortDirection', () => {
+    it('should return sort direction for the sorted column', () => {
+      const columnDefinition: ColumnDefinition<{ value: number }>[] = [{ columnId: 1 }];
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.headerSortProps(1).onClick?.(({} as unknown) as React.MouseEvent<HTMLTableCellElement>);
+        result.current.setColumnSort(1, 'descending');
       });
-      expect(result.current.sortColumn).toBe(1);
-      expect(result.current.sortDirection).toBe('ascending');
+
+      expect(result.current.getSortDirection(1)).toEqual('descending');
     });
 
-    it('should return undefined sort direction for unsorted column', () => {
-      const columnDefinition: ColumnDefinition<{}>[] = [{ columnId: 1 }, { columnId: 2 }];
+    it('should return undefined for unsorted column', () => {
+      const columnDefinition: ColumnDefinition<{ value: number }>[] = [{ columnId: 1 }, { columnId: 2 }];
 
       const { result } = renderHook(() => useSort(columnDefinition));
       act(() => {
-        result.current.toggleColumnSort(1);
+        result.current.setColumnSort(1, 'descending');
       });
 
-      const headerProps = result.current.headerSortProps(2);
-      expect(headerProps.sortDirection).toBe(undefined);
-    });
-
-    it('should return sort direction for sorted column', () => {
-      const columnDefinition: ColumnDefinition<{}>[] = [{ columnId: 1 }, { columnId: 2 }];
-
-      const { result } = renderHook(() => useSort(columnDefinition));
-      act(() => {
-        result.current.toggleColumnSort(1);
-      });
-
-      const headerProps = result.current.headerSortProps(1);
-      expect(headerProps.sortDirection).toBe('ascending');
+      expect(result.current.getSortDirection(2)).toBeUndefined();
     });
   });
 });

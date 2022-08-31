@@ -1,20 +1,26 @@
 name: Screener build
 
-on: workflow_dispatch
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
 
 jobs:
   environment-upload:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir artifacts
-
       ###########################################
       # Environment variables are passed as an artifact so that the run workflow
       # can download and access them. There are two workflows used- `screener-build.yml`
       # and `screener-run.yml` so that the screener checks can also be triggered by
       # pull requests from forks. Note: This is a temporary change.
       ###########################################
-
       ###########################################
       # BROWSERSLIST_IGNORE_OLD_DATA = Prevents failures on CI when "caniuse-lite" becomes outdated
       # DEPLOYHOST = address of host for screener tests deployment
@@ -28,14 +34,13 @@ jobs:
           DEPLOYHOST='fluentuipr.z22.web.core.windows.net'
           BUILD_BUILDID=${{ github.run_id }}
           BUILD_SOURCEBRANCH=${{ github.ref }}
+          SCREENER_BUILD=1
           EOT
-
       ###########################################
       # SYSTEM_PULLREQUEST_TARGETBRANCH = target branch name
       # SYSTEM_PULLREQUEST_SOURCEBRANCH = source branch name
       # SYSTEM_PULLREQUEST_PULLREQUESTID = ID of the PR
       # SYSTEM_PULLREQUEST_SOURCECOMMITID = commit SHA of PR
-      # ISPR = true if workflow triggered by PR
       # DEPLOYBASEPATH = path for deploy URL -> pull/<pr_number> for PRs
       # DEPLOYURL= address for tests deployment, uses DEPLOYHOST and DEPLOYBASEPATH
       # BUILD_SOURCEBRANCHNAME = 'merge' for PRs
@@ -47,22 +52,17 @@ jobs:
           SYSTEM_PULLREQUEST_SOURCEBRANCH=${{ github.event.pull_request.head.ref }}
           SYSTEM_PULLREQUEST_PULLREQUESTID=${{ github.event.pull_request.id }}
           SYSTEM_PULLREQUEST_SOURCECOMMITID=${{ github.event.pull_request.head.sha }}
-          ISPR=true
-          DEPLOYBASEPATH=pull/$PR_NUMBER
-          DEPLOYURL=https://$DEPLOYHOST/pull/$PR_NUMBER
+          DEPLOYBASEPATH=pull/${{github.event.pull_request.number}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/pull/${{github.event.pull_request.number}}
           BUILD_SOURCEBRANCHNAME='merge'
           EOT
-        env:
-          DEPLOYHOST: 'fluentuipr.z22.web.core.windows.net'
-          PR_NUMBER: ${{ github.event.number }}
         if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Set env variables if there is not a PR
         run: |
           cat <<EOT >> artifacts/environment
-          ISPR=false
-          DEPLOYBASEPATH=heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
-          DEPLOYURL=https://$DEPLOYHOST/heads/$SYSTEM_PULLREQUEST_TARGETBRANCH
+          DEPLOYBASEPATH=heads/${{github.ref_name}}
+          DEPLOYURL=https://${{env.DEPLOYHOST}}/heads/${{github.ref_name}}
           BUILD_SOURCEBRANCHNAME=${{ github.ref_name }}
           EOT
         if: ${{!startsWith(github.ref, 'refs/pull/')}}
@@ -75,19 +75,28 @@ jobs:
 
   screener-react-northstar:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react-northstar
-
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Log environment variables (Linux)
-        if: runner.os == 'Linux'
+      - name: Download env variables artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
+
+      - name: Define env variables
         run: |
-          printenv | sort ;\
-          echo "SHELLOPTS $SHELLOPTS" ;\
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+
+      - name: Delete environment file
+        run: |
+          rm environment
 
       - uses: actions/setup-node@v3
         with:
@@ -96,32 +105,66 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - run: |
+          echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/docs --pr=${{startsWith(github.ref, 'refs/pull/')}})
+          if [[ $packageAffected == false ]]; then
+            echo "Should skip screener"
+            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
+            echo "Should NOT skip screener"
+          fi
+        name: Check if northstar packages were affected
+
+      - run: |
+          yarn lage info --since origin/master
+        name: Log affected packages (debug)
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
 
       - name: build FUI N* VR Test
         run: yarn workspace @fluentui/docs vr:build
         env:
           SCREENER_BUILD: 1
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: northstar-artifact
           path: packages/fluentui/docs/dist
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react
-
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Log environment variables (Linux)
-        if: runner.os == 'Linux'
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
+
+      - name: Define env variables
         run: |
-          printenv | sort ;\
-          echo "SHELLOPTS $SHELLOPTS" ;\
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+
+      - name: Delete environment file
+        run: |
+          rm environment
 
       - uses: actions/setup-node@v3
         with:
@@ -131,23 +174,87 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - run: |
+          echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests --pr=${{startsWith(github.ref, 'refs/pull/')}})
+          if [[ $packageAffected == false ]]; then
+            echo "Should skip screener"
+            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
+            echo "Should NOT skip screener"
+          fi
+        name: Check if v8 packages were affected
+
+      - run: |
+          yarn lage info --since origin/master
+        name: Log affected packages (debug)
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
+
+      - name: Log environment variables (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          printenv | sort ;\
+          echo "SHELLOPTS $SHELLOPTS" ;\
+
       - name: build vr-tests storybook
         run: yarn workspace @fluentui/vr-tests screener:build
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: screener-artifact
           path: apps/vr-tests/dist/storybook
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
   screener-react-components:
     runs-on: 'ubuntu-latest'
-
     name: Screener @fluentui/react-components
-
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: env-artifact
+
+      - name: Define env variables
+        run: |
+          input_file="environment"
+          while read line
+          do
+          echo "$line" >> $GITHUB_ENV
+          done < "$input_file"
+
+      - name: Delete environment file
+        run: |
+          rm environment
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14.18.1
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - run: |
+          echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
+          packageAffected=$(yarn --silent check:affected-package --packages @fluentui/vr-tests-react-components --pr=${{startsWith(github.ref, 'refs/pull/')}})
+          if [[ $packageAffected == false ]]; then
+            echo "Should skip screener"
+            echo "SKIP_SCREENER_BUILD=true" >> $GITHUB_ENV
+          else
+            echo "SKIP_SCREENER_BUILD=false" >> $GITHUB_ENV
+            echo "Should NOT skip screener"
+          fi
+        name: Check if v9 packages were affected
+
+      - run: |
+          yarn lage info --since origin/master
+        name: Log affected packages (debug)
+        if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
@@ -155,18 +262,12 @@ jobs:
           printenv | sort ;\
           echo "SHELLOPTS $SHELLOPTS" ;\
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 14.18.1
-          cache: 'yarn'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
       - name: build vr-tests-react-components storybook
         run: yarn workspace @fluentui/vr-tests-react-components screener:build
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}
 
       - uses: actions/upload-artifact@v3
         with:
           name: vnext-artifact
           path: apps/vr-tests-react-components/dist/storybook
+        if: ${{env.SKIP_SCREENER_BUILD == 'false'}}

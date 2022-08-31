@@ -293,7 +293,7 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size, appearance } = state;
+  const { labelPosition, size, appearance = 'primary' } = state;
   const rootStyles = useRootStyles();
   const spinnerStyles = useLoaderStyles();
   const labelStyles = useLabelStyles();
@@ -306,7 +306,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
-  if (state.spinner && appearance) {
+  if (state.spinner) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
       spinnerStyles.spinnerSVG,

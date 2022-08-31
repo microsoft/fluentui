@@ -32,6 +32,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     clearSelection,
     getIndexOfId,
     getOptionsMatchingValue,
+    hasFocus,
+    open,
     selectOption,
     selectedOptions,
     setActiveOption,
@@ -48,12 +50,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
-
-  // track focused state to conditionally render collapsed listbox
-  const [hasFocus, setHasFocus] = React.useState(false);
-  const onTriggerFocus = () => {
-    setHasFocus(true);
-  };
 
   const getSearchString = (inputValue: string): string => {
     // if there are commas in the value string, take the text after the last comma
@@ -102,8 +98,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       // reset typed value when the input loses focus while collapsed, unless freeform is true
       setValue(undefined);
     }
-
-    setHasFocus(false);
   };
 
   baseState.setOpen = (ev, newState: boolean) => {
@@ -136,7 +130,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   // resolve input and listbox slot props
   let triggerSlot: Slot<'input'>;
-  let listboxSlot: Slot<typeof Listbox>;
+  let listboxSlot: Slot<typeof Listbox> | undefined;
 
   triggerSlot = resolveShorthand(props.input, {
     required: true,
@@ -150,15 +144,18 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-  triggerSlot.onFocus = mergeCallbacks(triggerSlot.onFocus, onTriggerFocus);
 
-  listboxSlot = resolveShorthand(props.listbox, {
-    required: true,
-    defaultProps: { children: props.children },
-  });
+  // only resolve listbox slot if needed
+  listboxSlot =
+    open || hasFocus
+      ? resolveShorthand(props.listbox, {
+          required: true,
+          defaultProps: { children: props.children },
+        })
+      : undefined;
 
-  const [triggerWithPopup, listboxWithPopup] = useComboboxPopup(props, triggerSlot, listboxSlot);
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerWithPopup, listboxWithPopup);
+  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
 
   const state: ComboboxState = {
     components: {
@@ -182,7 +179,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
     }),
     ...baseState,
-    hasFocus,
     setOpen,
   };
 
