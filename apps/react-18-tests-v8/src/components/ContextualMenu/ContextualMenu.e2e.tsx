@@ -2,8 +2,8 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { ContextualMenuItemType, DefaultButton, DirectionalHint } from '@fluentui/react';
 
-export const menuTriggerSelector = '[type="button"]';
-export const menuSelector = '[role="menu"]';
+const menuTriggerSelector = '[type="button"]';
+const menuSelector = '[role="menu"]';
 
 describe('ContextualMenu in React 18', () => {
   const menuProps = {
