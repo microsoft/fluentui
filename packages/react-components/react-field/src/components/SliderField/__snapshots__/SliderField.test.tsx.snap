@@ -6,7 +6,7 @@ exports[`SliderField renders a default state 1`] = `
     class="fui-SliderField"
   >
     <div
-      class="fui-Slider fui-SliderField__fieldComponent"
+      class="fui-Slider fui-SliderField__control"
       style="--fui-Slider--direction: 90deg; --fui-Slider--progress: 0%;"
     >
       <input

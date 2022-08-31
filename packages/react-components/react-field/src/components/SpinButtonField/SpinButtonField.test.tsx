@@ -8,7 +8,7 @@ describe('SpinButtonField', () => {
   isConformant({
     Component: SpinButtonField,
     displayName: 'SpinButtonField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

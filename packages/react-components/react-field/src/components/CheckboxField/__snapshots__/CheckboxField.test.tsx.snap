@@ -6,7 +6,7 @@ exports[`CheckboxField renders a default state 1`] = `
     class="fui-CheckboxField"
   >
     <span
-      class="fui-Checkbox fui-CheckboxField__fieldComponent"
+      class="fui-Checkbox fui-CheckboxField__control"
     >
       <input
         class="fui-Checkbox__input"

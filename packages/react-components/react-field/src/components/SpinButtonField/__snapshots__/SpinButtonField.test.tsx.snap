@@ -6,7 +6,7 @@ exports[`SpinButtonField renders a default state 1`] = `
     class="fui-SpinButtonField"
   >
     <span
-      class="fui-Input fui-SpinButton fui-SpinButtonField__fieldComponent"
+      class="fui-Input fui-SpinButton fui-SpinButtonField__control"
     >
       <input
         appearance="outline"

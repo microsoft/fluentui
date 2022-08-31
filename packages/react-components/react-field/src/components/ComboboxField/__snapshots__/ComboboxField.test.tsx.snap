@@ -6,7 +6,7 @@ exports[`ComboboxField renders a default state 1`] = `
     class="fui-ComboboxField"
   >
     <div
-      class="fui-Combobox fui-ComboboxField__fieldComponent"
+      class="fui-Combobox fui-ComboboxField__control"
     >
       <input
         aria-expanded="false"

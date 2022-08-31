@@ -9,7 +9,7 @@ export type TextareaFieldProps = FieldProps<typeof Textarea>;
 export const textareaFieldClassNames = getFieldClassNames('TextareaField');
 
 export const TextareaField: ForwardRefComponent<TextareaFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, fieldComponent: Textarea, classNames: textareaFieldClassNames });
+  const state = useField_unstable({ props, ref, component: Textarea, classNames: textareaFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

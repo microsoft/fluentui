@@ -9,7 +9,7 @@ export type SliderFieldProps = FieldProps<typeof Slider>;
 export const sliderFieldClassNames = getFieldClassNames('SliderField');
 
 export const SliderField: ForwardRefComponent<SliderFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, fieldComponent: Slider, classNames: sliderFieldClassNames });
+  const state = useField_unstable({ props, ref, component: Slider, classNames: sliderFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

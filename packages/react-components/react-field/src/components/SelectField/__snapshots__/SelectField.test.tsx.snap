@@ -6,7 +6,7 @@ exports[`SelectField renders a default state 1`] = `
     class="fui-SelectField"
   >
     <span
-      class="fui-Select fui-SelectField__fieldComponent"
+      class="fui-Select fui-SelectField__control"
     >
       <select
         class="fui-Select__select"

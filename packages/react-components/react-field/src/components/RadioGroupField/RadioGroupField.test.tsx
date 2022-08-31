@@ -9,7 +9,7 @@ describe('RadioGroupField', () => {
   isConformant({
     Component: RadioGroupField,
     displayName: 'RadioGroupField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

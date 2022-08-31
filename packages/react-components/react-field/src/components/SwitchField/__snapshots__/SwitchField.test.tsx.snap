@@ -6,7 +6,7 @@ exports[`SwitchField renders a default state 1`] = `
     class="fui-SwitchField"
   >
     <div
-      class="fui-Switch fui-SwitchField__fieldComponent"
+      class="fui-Switch fui-SwitchField__control"
     >
       <input
         class="fui-Switch__input"

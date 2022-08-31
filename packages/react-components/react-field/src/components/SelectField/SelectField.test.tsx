@@ -8,7 +8,7 @@ describe('SelectField', () => {
   isConformant({
     Component: SelectField,
     displayName: 'SelectField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

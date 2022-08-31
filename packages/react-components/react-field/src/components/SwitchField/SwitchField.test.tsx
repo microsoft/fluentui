@@ -8,7 +8,7 @@ describe('SwitchField', () => {
   isConformant({
     Component: SwitchField,
     displayName: 'SwitchField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

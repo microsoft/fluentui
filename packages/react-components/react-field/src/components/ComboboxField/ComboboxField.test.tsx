@@ -8,7 +8,7 @@ describe('ComboboxField', () => {
   isConformant({
     Component: ComboboxField,
     displayName: 'ComboboxField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

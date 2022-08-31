@@ -8,7 +8,7 @@ describe('TextareaField', () => {
   isConformant({
     Component: TextareaField,
     displayName: 'TextareaField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

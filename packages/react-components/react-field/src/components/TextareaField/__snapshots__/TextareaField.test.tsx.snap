@@ -6,7 +6,7 @@ exports[`TextareaField renders a default state 1`] = `
     class="fui-TextareaField"
   >
     <span
-      class="fui-Textarea fui-TextareaField__fieldComponent"
+      class="fui-Textarea fui-TextareaField__control"
     >
       <textarea
         class="fui-Textarea__textarea"

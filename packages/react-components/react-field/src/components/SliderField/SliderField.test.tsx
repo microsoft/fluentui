@@ -8,7 +8,7 @@ describe('SliderField', () => {
   isConformant({
     Component: SliderField,
     displayName: 'SliderField',
-    primarySlot: 'fieldComponent',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {

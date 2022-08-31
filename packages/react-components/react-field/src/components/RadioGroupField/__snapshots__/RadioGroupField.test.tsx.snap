@@ -6,7 +6,7 @@ exports[`RadioGroupField renders a default state 1`] = `
     class="fui-RadioGroupField"
   >
     <div
-      class="fui-RadioGroup fui-RadioGroupField__fieldComponent"
+      class="fui-RadioGroup fui-RadioGroupField__control"
       role="radiogroup"
     >
       <span

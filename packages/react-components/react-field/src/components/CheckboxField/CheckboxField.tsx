@@ -24,13 +24,13 @@ export const CheckboxField: ForwardRefComponent<CheckboxFieldProps> = React.forw
   props = {
     ...props,
     label: props.fieldLabel,
-    fieldComponent: {
+    control: {
       label: props.label,
-      ...props.fieldComponent,
+      ...props.control,
     },
   };
 
-  const state = useField_unstable({ props, ref, fieldComponent: Checkbox, classNames: checkboxFieldClassNames });
+  const state = useField_unstable({ props, ref, component: Checkbox, classNames: checkboxFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });

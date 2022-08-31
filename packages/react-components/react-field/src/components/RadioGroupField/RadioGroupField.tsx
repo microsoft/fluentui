@@ -12,7 +12,7 @@ export const RadioGroupField: ForwardRefComponent<RadioGroupFieldProps> = React.
   const state = useField_unstable({
     props,
     ref,
-    fieldComponent: RadioGroup,
+    component: RadioGroup,
     classNames: radioGroupFieldClassNames,
     labelConnection: 'aria-labelledby',
   });

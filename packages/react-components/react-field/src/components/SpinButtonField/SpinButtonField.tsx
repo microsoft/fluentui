@@ -9,7 +9,7 @@ export type SpinButtonFieldProps = FieldProps<typeof SpinButton>;
 export const spinButtonFieldClassNames = getFieldClassNames('SpinButtonField');
 
 export const SpinButtonField: ForwardRefComponent<SpinButtonFieldProps> = React.forwardRef((props, ref) => {
-  const state = useField_unstable({ props, ref, fieldComponent: SpinButton, classNames: spinButtonFieldClassNames });
+  const state = useField_unstable({ props, ref, component: SpinButton, classNames: spinButtonFieldClassNames });
   useFieldStyles_unstable(state);
   return renderField_unstable(state);
 });
