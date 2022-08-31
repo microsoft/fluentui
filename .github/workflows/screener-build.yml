@@ -114,11 +114,6 @@ jobs:
           fi
         name: Check if northstar packages were affected
 
-      - run: |
-          yarn lage info --since origin/master
-        name: Log affected packages (debug)
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
-
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -178,11 +173,6 @@ jobs:
           fi
         name: Check if v8 packages were affected
 
-      - run: |
-          yarn lage info --since origin/master
-        name: Log affected packages (debug)
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
-
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -238,11 +228,6 @@ jobs:
             echo "Should NOT skip screener"
           fi
         name: Check if v9 packages were affected
-
-      - run: |
-          yarn lage info --since origin/master
-        name: Log affected packages (debug)
-        if: ${{startsWith(github.ref, 'refs/pull/')}}
 
       - name: Log environment variables (Linux)
         if: runner.os == 'Linux'
