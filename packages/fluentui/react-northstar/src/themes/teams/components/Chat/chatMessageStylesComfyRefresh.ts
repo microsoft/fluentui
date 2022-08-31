@@ -77,9 +77,6 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     flexDirection: p.mine ? 'row-reverse' : 'row',
     position: 'relative',
     maxWidth: '100%',
-    ...(p.fullWidth && {
-      width: '100%',
-    }),
 
     ...(!p.mine &&
       v.hasReducedHorizontalSpace && {

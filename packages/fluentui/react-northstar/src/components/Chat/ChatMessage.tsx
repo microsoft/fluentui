@@ -190,9 +190,6 @@ export interface ChatMessageProps
   /** Indicates whether the message is in a failed state. */
   failed?: boolean;
 
-  /** A message can span the full width of its container. */
-  fullWidth?: boolean;
-
   /** A message can have a custom body element. */
   body?: ShorthandValue<BoxProps>;
 
@@ -212,7 +209,6 @@ export type ChatMessageStylesProps = Pick<ChatMessageProps, 'attached' | 'badgeP
   hasReactions: boolean;
   layout: ChatMessageLayout;
   failed: boolean;
-  fullWidth: boolean;
 
   // focused, hasActionMenu and showActionMenu controls the visibility of action menu
   focused: boolean;
@@ -297,7 +293,6 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
     unstable_layout: layout = 'default',
     variables,
     failed,
-    fullWidth,
     bubble,
     body,
     bubbleInset,
@@ -396,7 +391,6 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
       showActionMenu,
       hasReactions: !!reactionGroup,
       failed,
-      fullWidth,
       layout,
     }),
     mapPropsToInlineStyles: () => ({
@@ -771,7 +765,6 @@ ChatMessage.propTypes = {
   unstable_overflow: PropTypes.bool,
   unstable_layout: PropTypes.oneOf(['default', 'refresh']),
   failed: PropTypes.bool,
-  fullWidth: PropTypes.bool,
   headerContent: PropTypes.node,
   body: customPropTypes.itemShorthand,
   bubble: customPropTypes.itemShorthand,
