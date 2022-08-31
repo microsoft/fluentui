@@ -28,7 +28,7 @@ export type FieldSlots<T extends FieldComponent> = {
    * This is the PRIMARY slot: all intrinsic HTML properties will be applied to this slot,
    * except `className` and `style`, which remain on the root slot.
    */
-  field: SlotComponent<T>;
+  control: SlotComponent<T>;
 
   /**
    * The label associated with the field.
@@ -57,7 +57,7 @@ export type FieldSlots<T extends FieldComponent> = {
 /**
  * Field Props
  */
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'field'> & {
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
   /**
    * The orientation of the label relative to the field component.
    * This only affects the label, and not the validationMessage or hint (which always appear below the field component).

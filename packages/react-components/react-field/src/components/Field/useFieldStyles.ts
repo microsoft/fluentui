@@ -5,7 +5,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const getFieldClassNames = (name: string): SlotClassNames<FieldSlots<FieldComponent>> => ({
   root: `fui-${name}`,
-  field: `fui-${name}__field`,
+  control: `fui-${name}__control`,
   label: `fui-${name}__label`,
   validationMessage: `fui-${name}__validationMessage`,
   validationMessageIcon: `fui-${name}__validationMessageIcon`,
@@ -94,11 +94,11 @@ export const useFieldStyles_unstable = <T extends FieldComponent>(state: FieldSt
     state.root.className,
   );
 
-  if (state.field) {
-    state.field.className = mergeClasses(
-      classNames.field,
+  if (state.control) {
+    state.control.className = mergeClasses(
+      classNames.control,
       horizontal && rootStyles.secondColumn,
-      state.field.className,
+      state.control.className,
     );
   }
 

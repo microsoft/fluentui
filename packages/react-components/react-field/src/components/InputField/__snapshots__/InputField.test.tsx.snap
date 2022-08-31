@@ -6,7 +6,7 @@ exports[`InputField renders a default state 1`] = `
     class="fui-InputField"
   >
     <span
-      class="fui-Input fui-InputField__fieldComponent"
+      class="fui-Input fui-InputField__control"
     >
       <input
         class="fui-Input__input"

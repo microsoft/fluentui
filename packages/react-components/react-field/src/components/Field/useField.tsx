@@ -22,7 +22,7 @@ const mergeAriaDescribedBy = (a?: string, b?: string) => (a && b ? `${a} ${b}` :
 export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent>>(props: Props) => {
   const {
     className,
-    field,
+    control,
     hint,
     label,
     orientation,
@@ -36,7 +36,7 @@ export const getPartitionedFieldProps = <Props extends FieldProps<FieldComponent
 
   const fieldProps = {
     className,
-    field,
+    control,
     hint,
     label,
     orientation,
@@ -57,7 +57,7 @@ export type UseFieldParams<T extends FieldComponent> = {
   props: FieldProps<T> & OptionalFieldComponentProps;
 
   /**
-   * Ref to the underlying field component
+   * Ref to be passed to the control slot (primary slot)
    */
   ref: React.Ref<HTMLElement>;
 
@@ -72,7 +72,7 @@ export type UseFieldParams<T extends FieldComponent> = {
   classNames: SlotClassNames<FieldSlots<T>>;
 
   /**
-   * How the label should be connected to the field component.
+   * How the label be connected to the control.
    * * htmlFor - Set the Label's htmlFor prop to the component's ID (and generate an ID if not provided).
    *   This is the preferred method for components that use the underlying <input> tag.
    * * aria-labelledby - Set the component's aria-labelledby prop to the Label's ID. Use this for components
@@ -92,7 +92,7 @@ export type UseFieldParams<T extends FieldComponent> = {
  * @param params - Configuration parameters for this Field
  */
 export const useField_unstable = <T extends FieldComponent>(params: UseFieldParams<T>): FieldState<T> => {
-  const [props, componentProps] = getPartitionedFieldProps(params.props);
+  const [props, controlProps] = getPartitionedFieldProps(params.props);
 
   const baseId = useId('field-');
 
@@ -106,8 +106,8 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
   const label = resolveShorthand(props.label, {
     defaultProps: {
       id: baseId + '__label',
-      required: componentProps.required,
-      size: typeof componentProps.size === 'string' ? componentProps.size : undefined,
+      required: controlProps.required,
+      size: typeof controlProps.size === 'string' ? controlProps.size : undefined,
       // htmlFor is set below
     },
   });
@@ -134,23 +134,23 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
   const { labelConnection = 'htmlFor' } = params;
   const hasError = validationState === 'error';
 
-  const field = resolveShorthand(props.field, {
+  const control = resolveShorthand(props.control, {
     required: true,
     defaultProps: {
       ref: params.ref,
       // Add a default ID only if required for label's htmlFor prop
-      id: label && labelConnection === 'htmlFor' ? baseId + '__field' : undefined,
+      id: label && labelConnection === 'htmlFor' ? baseId + '__control' : undefined,
       // Add aria-labelledby only if not using the label's htmlFor
-      'aria-labelledby': labelConnection === 'aria-labelledby' ? label?.id : undefined,
+      'aria-labelledby': labelConnection !== 'htmlFor' ? label?.id : undefined,
       'aria-describedby': hasError ? hint?.id : mergeAriaDescribedBy(validationMessage?.id, hint?.id),
       'aria-errormessage': hasError ? validationMessage?.id : undefined,
       'aria-invalid': hasError ? true : undefined,
-      ...componentProps,
+      ...controlProps,
     },
   });
 
   if (labelConnection === 'htmlFor' && label && !label.htmlFor) {
-    label.htmlFor = field.id;
+    label.htmlFor = control.id;
   }
 
   const state: FieldState<FieldComponent> = {
@@ -159,14 +159,14 @@ export const useField_unstable = <T extends FieldComponent>(params: UseFieldPara
     classNames: params.classNames,
     components: {
       root: 'div',
-      field: params.component,
+      control: params.component,
       label: Label,
       validationMessage: 'span',
       validationMessageIcon: 'span',
       hint: 'span',
     },
     root,
-    field,
+    control,
     label,
     validationMessageIcon,
     validationMessage,

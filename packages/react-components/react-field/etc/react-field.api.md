@@ -18,7 +18,7 @@ import type { SlotRenderFunction } from '@fluentui/react-utilities';
 import type { SlotShorthandValue } from '@fluentui/react-utilities';
 
 // @public
-export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'field'> & {
+export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
     orientation?: 'vertical' | 'horizontal';
     validationState?: 'error' | 'warning' | 'success';
 };
@@ -26,7 +26,7 @@ export type FieldProps<T extends FieldComponent> = ComponentProps<Partial<FieldS
 // @public
 export type FieldSlots<T extends FieldComponent> = {
     root: NonNullable<Slot<'div'>>;
-    field: SlotComponent<T>;
+    control: SlotComponent<T>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'span'>;
     validationMessageIcon?: Slot<'span'>;

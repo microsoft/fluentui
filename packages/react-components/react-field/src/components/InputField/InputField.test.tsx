@@ -8,7 +8,7 @@ describe('InputField', () => {
   isConformant({
     Component: InputField,
     displayName: 'InputField',
-    primarySlot: 'field',
+    primarySlot: 'control',
     testOptions: {
       'has-static-classnames': [
         {
