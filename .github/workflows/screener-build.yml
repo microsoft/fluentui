@@ -95,8 +95,13 @@ jobs:
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
 
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
+      - name: Delete artifact file
+        run: |
+          rm environment
+
+      - name: Test if environment file exists
+        run: |
+          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
 
       - uses: actions/setup-node@v3
         with:
@@ -163,11 +168,15 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
-
+      - name: Delete artifact file
+        run: |
+          rm environment
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Test if environment file exists
+        run: |
+          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
@@ -224,11 +233,15 @@ jobs:
           node-version: 14.18.1
           cache: 'yarn'
 
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
-
+      - name: Delete artifact file
+        run: |
+          rm environment
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Test if environment file exists
+        run: |
+          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
