@@ -9,23 +9,8 @@ import { useToolbarToggleButton_unstable } from './useToolbarToggleButton';
  * ToolbarToggleButton component
  */
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef((props, ref) => {
-  const { size, handleToggleButton } = useToolbarContext();
-  const { onClick: onClickOriginal } = props;
+  const { size } = useToolbarContext();
   const state = useToolbarToggleButton_unstable({ size, ...props }, ref);
-  const handleOnClick = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-  ) => {
-    if (state.disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    handleToggleButton?.(e, state.name, state.value, state.checked);
-    onClickOriginal?.(e);
-  };
-
-  state.root.onClick = handleOnClick;
 
   useToggleButtonStyles_unstable(state);
   return renderToggleButton_unstable(state);
