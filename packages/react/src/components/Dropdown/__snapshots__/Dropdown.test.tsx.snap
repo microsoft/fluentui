@@ -437,19 +437,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
-                          &:focus {
-                            background-color: #edebe9;
-                            color: #201f1e;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                            background-color: Highlight;
-                            border-color: Highlight;
-                            color: HighlightText;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
-                            -ms-high-contrast-adjust: none;
-                            forced-color-adjust: none;
-                          }
                           &.is-multi-select:hover {
                             background-color: #edebe9;
                           }
@@ -690,19 +677,6 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           color: HighlightText;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                        &:focus {
-                          background-color: #f3f2f1;
-                          color: #201f1e;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          color: HighlightText;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -1664,10 +1638,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           &:hover .ms-Button-icon {
                             color: #0078d4;
                           }
-                          &:focus {
-                            background-color: #edebe9;
-                            color: #201f1e;
-                          }
                           &:active {
                             color: #000000;
                           }
@@ -1678,15 +1648,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             width: 100%;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
-                            -ms-high-contrast-adjust: none;
-                            forced-color-adjust: none;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                            background-color: Highlight;
-                            border-color: Highlight;
-                            color: HighlightText;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
@@ -1841,10 +1802,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         &:hover .ms-Button-icon {
                           color: #0078d4;
                         }
-                        &:focus {
-                          background-color: #f3f2f1;
-                          color: #201f1e;
-                        }
                         &:active {
                           color: #000000;
                         }
@@ -1855,15 +1812,6 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           width: 100%;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
-                          -ms-high-contrast-adjust: none;
-                          forced-color-adjust: none;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
-                          background-color: Highlight;
-                          border-color: Highlight;
-                          color: HighlightText;
-                        }
-                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:focus {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
