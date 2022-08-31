@@ -40,6 +40,7 @@ The proposed folder organization can be seen below:
   |- testing/
     |- index.ts
     |- isConformant.ts
+    |- some-testing-utility.ts
     |- your-mock-test.mock.ts //mock testing files to be used in multiple tests within package
   |- index.ts
   |- {componentName}.ts
