@@ -101,7 +101,7 @@ jobs:
 
       - name: Test if environment file exists
         run: |
-          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - uses: actions/setup-node@v3
         with:
@@ -176,7 +176,7 @@ jobs:
 
       - name: Test if environment file exists
         run: |
-          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
@@ -241,7 +241,7 @@ jobs:
 
       - name: Test if environment file exists
         run: |
-          $ [ -f /etc/passwd ] && echo "File exists" || echo "File does not exist"
+          [ -f environment ] && echo "File exists" || echo "File does not exist"
 
       - run: |
           echo "Is PR build? ${{startsWith(github.ref, 'refs/pull/')}}"
