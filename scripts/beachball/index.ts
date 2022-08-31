@@ -34,6 +34,11 @@ export const config: BeachballConfig = {
       include: ['packages/file-type-icons', 'stub-packages/react-file-type-icons'],
       disallowedChangeTypes: ['major'],
     },
+    {
+      name: 'Utilities',
+      include: ['packages/utilities', 'stub-packages/utilities'],
+      disallowedChangeTypes: ['major'],
+    },
   ],
   changelog: {
     customRenderers: {
