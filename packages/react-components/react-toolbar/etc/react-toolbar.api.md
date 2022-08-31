@@ -121,8 +121,8 @@ export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pic
 
 // @public
 export type ToolbarToggleButtonState = ComponentState<Partial<ButtonSlots>> & ToggleButtonState & Required<Pick<ToggleButtonProps, 'checked'>> & {
-    name: string;
-    value: string;
+    name?: string;
+    value?: string;
 };
 
 // @public
