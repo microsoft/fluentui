@@ -113,15 +113,6 @@ const useStyles = makeStyles({
     [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
   },
 
-  interactiveNoOutline: {
-    ':hover::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-    ':active::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
-    },
-  },
-
   interactiveLink: {
     textDecorationLine: 'none',
   },
@@ -137,6 +128,14 @@ const useStyles = makeStyles({
     textAlign: 'start',
   },
 
+  filled: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    boxShadow: tokens.shadow4,
+
+    '::after': {
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    },
+  },
   filledInteractive: {
     cursor: 'pointer',
     backgroundColor: tokens.colorNeutralBackground1,
@@ -160,9 +159,14 @@ const useStyles = makeStyles({
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground1Selected,
+    },
   },
-  filled: {
-    backgroundColor: tokens.colorNeutralBackground1,
+
+  filledAlternative: {
+    backgroundColor: tokens.colorNeutralBackground2,
     boxShadow: tokens.shadow4,
 
     '::after': {
@@ -192,13 +196,18 @@ const useStyles = makeStyles({
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
+
+    ':hover': {
+      backgroundColor: tokens.colorNeutralBackground2Selected,
+    },
   },
-  filledAlternative: {
-    backgroundColor: tokens.colorNeutralBackground2,
-    boxShadow: tokens.shadow4,
+
+  outline: {
+    backgroundColor: tokens.colorTransparentBackground,
+    boxShadow: 'none',
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+      ...shorthands.borderColor(tokens.colorNeutralStroke1),
     },
   },
   outlineInteractive: {
@@ -231,13 +240,18 @@ const useStyles = makeStyles({
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
+
+    ':hover': {
+      backgroundColor: tokens.colorTransparentBackgroundSelected,
+    },
   },
-  outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+
+  subtle: {
+    backgroundColor: tokens.colorSubtleBackground,
     boxShadow: 'none',
 
     '::after': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1),
+      ...shorthands.borderColor(tokens.colorTransparentStroke),
     },
   },
   subtleInteractive: {
@@ -262,13 +276,9 @@ const useStyles = makeStyles({
     '::after': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
     },
-  },
-  subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
-    boxShadow: 'none',
 
-    '::after': {
-      ...shorthands.borderColor(tokens.colorTransparentStroke),
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
   },
 
@@ -288,13 +298,19 @@ const useStyles = makeStyles({
 });
 
 const getInteractiveStyles = (state: CardState, styles: ReturnType<typeof useStyles>) => {
+  const selectedMap = {
+    filled: styles.filledInteractiveSelected,
+    'filled-alternative': styles.filledAlternativeInteractiveSelected,
+    outline: styles.outlineInteractiveSelected,
+    subtle: styles.subtleInteractiveSelected,
+  };
   const interactiveMap = {
     filled: styles.filledInteractive,
     'filled-alternative': styles.filledAlternativeInteractive,
     outline: styles.outlineInteractive,
     subtle: styles.subtleInteractive,
   };
-  const baseClass = interactiveMap[state.appearance];
+  const baseClass = state.isCardSelected ? selectedMap[state.appearance] : interactiveMap[state.appearance];
 
   if (state.components.root === 'button') {
     return mergeClasses(baseClass, styles.interactiveButton);
@@ -331,21 +347,13 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
     subtle: styles.subtle,
   };
 
-  const selectedMap = {
-    filled: styles.filledInteractiveSelected,
-    'filled-alternative': styles.filledAlternativeInteractiveSelected,
-    outline: styles.outlineInteractiveSelected,
-    subtle: styles.subtleInteractiveSelected,
-  };
-
   state.root.className = mergeClasses(
     cardClassNames.root,
     styles.root,
     orientationMap[state.orientation],
     sizeMap[state.size],
-    state.appearance && appearanceMap[state.appearance],
+    appearanceMap[state.appearance],
     state.isInteractive && getInteractiveStyles(state, styles),
-    state.isCardSelected && selectedMap[state.appearance],
     state.root.className,
   );
 

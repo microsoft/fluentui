@@ -34,6 +34,23 @@ export type CardSlots = {
  * Card component props.
  */
 export type CardProps = ComponentProps<CardSlots> & {
+  /**
+   * Sets the appearance of the card.
+   *
+   * `filled`
+   * The card will have a shadow, border and background color.
+   *
+   * `filled-alternative`
+   * This appearance is similar to `filled` but the background color will be a little darker.
+   *
+   * `outline`
+   * This appearance is similar to `filled` but the background color will be transparent and no shadow applied.
+   *
+   * `subtle`
+   * This appearance is similar to `filled-alternative` but no border is applied.
+   *
+   * @default 'filled'
+   */
   appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
 
   /**

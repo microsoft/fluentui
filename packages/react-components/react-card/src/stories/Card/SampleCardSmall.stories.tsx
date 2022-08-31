@@ -11,7 +11,8 @@ const appLogo = ASSET_URL + '/assets/app_logo.svg';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '280px',
+    width: '480px',
+    maxWidth: '100%',
   },
 });
 
