@@ -5,9 +5,6 @@ import { isConformant } from '../../common/isConformant';
 import { CheckboxField, checkboxFieldClassNames } from './CheckboxField';
 
 describe('CheckboxField', () => {
-  // Checkbox doesn't use the Field's label, so remove it from the conformance test's expected class names
-  const { label: _ignored, ...expectedClassNames } = checkboxFieldClassNames;
-
   isConformant({
     Component: CheckboxField,
     displayName: 'CheckboxField',
@@ -17,11 +14,12 @@ describe('CheckboxField', () => {
         {
           props: {
             label: 'label',
+            fieldLabel: 'fieldLabel',
             validationState: 'error',
             validationMessage: 'validationMessage',
             hint: 'hint',
           },
-          expectedClassNames: (expectedClassNames as unknown) as Record<string, string>,
+          expectedClassNames: checkboxFieldClassNames,
         },
       ],
     },
