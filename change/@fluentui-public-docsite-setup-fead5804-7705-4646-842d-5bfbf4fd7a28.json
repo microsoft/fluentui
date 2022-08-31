@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update fabric core URL and change selector for back to top button",
+  "packageName": "@fluentui/public-docsite-setup",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -38,7 +38,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralForegroundInvertedHover: 'var(--colorNeutralForegroundInvertedHover)',
   colorNeutralForegroundInvertedPressed: 'var(--colorNeutralForegroundInvertedPressed)',
   colorNeutralForegroundInvertedSelected: 'var(--colorNeutralForegroundInvertedSelected)',
-  colorNeutralForegroundInvertedStatic: 'var(--colorNeutralForegroundInvertedStatic)',
+  colorNeutralForegroundStaticInverted: 'var(--colorNeutralForegroundStaticInverted)',
   colorNeutralForegroundInvertedLink: 'var(--colorNeutralForegroundInvertedLink)',
   colorNeutralForegroundInvertedLinkHover: 'var(--colorNeutralForegroundInvertedLinkHover)',
   colorNeutralForegroundInvertedLinkPressed: 'var(--colorNeutralForegroundInvertedLinkPressed)',

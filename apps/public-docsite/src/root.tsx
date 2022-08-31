@@ -36,7 +36,7 @@ registerIcons({
   },
 });
 
-const skipToMain = document.getElementById('uhfSkipToMain') as HTMLAnchorElement;
+const skipToMain = document.querySelector('[href="#mainContent"]') as HTMLAnchorElement;
 if (skipToMain) {
   // This link points to #mainContent by default, which would be interpreted as a route in our app.
   // Handle focusing the main content manually instead.
