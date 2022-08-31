@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Fix people picker focused styles",
+  "packageName": "@fluentui/react",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
