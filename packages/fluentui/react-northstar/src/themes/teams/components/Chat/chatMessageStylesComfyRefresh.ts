@@ -93,13 +93,8 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
       paddingRight: pxToRem(16),
       paddingTop: pxToRem(8),
       paddingBottom: p.hasReactions ? pxToRem(10) : pxToRem(8),
-
-      backgroundColor: p.mine ? `var(--chat-bubble-bg-mine, ${v.backgroundColorMine})` : v.backgroundColor,
-
-      ...(p.mine && {
-        backgroundImage: `var(--chat-bubble-bg-mine)`,
-        backgroundAttachment: 'fixed',
-      }),
+      backgroundColor: p.mine ? v.backgroundColorMine : v.backgroundColor,
+      backgroundAttachment: 'fixed',
 
       ...(p.failed && {
         backgroundImage: 'none',
@@ -168,7 +163,7 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
   }),
 
   content: ({ props: p, variables: v, theme }): ICSSInJSStyle => ({
-    color: p.mine ? `var(--chat-bubble-fg-mine, ${v.contentColor})` : v.contentColor,
+    color: v.contentColor,
     wordBreak: 'break-word',
     wordWrap: 'break-word',
     '& a': {
