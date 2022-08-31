@@ -11,6 +11,7 @@ const execAsync = promisify(exec);
  * @property {string} griffelMode
  * @property {string} mode
  * @property {boolean} verbose
+ * @property {boolean} buildDeps
  */
 
 const command = 'build';
