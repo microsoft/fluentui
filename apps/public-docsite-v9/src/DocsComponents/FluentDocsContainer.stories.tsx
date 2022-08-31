@@ -19,7 +19,7 @@ export const FluentDocsContainer: React.FC<IFluentDocsContainerProps> = ({ child
 
   return (
     <div className={context.parameters.fullScreen && 'full-screen'}>
-      {context.parameters.themeSelector === false ? (
+      {context.parameters.hideThemeSelector === true ? (
         DefaultDocs
       ) : (
         <>
