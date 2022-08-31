@@ -54,7 +54,7 @@ We will be extracting stories out of the `src` folder and moving those to the ro
 
 Also, the old `common/` folder which caused confusion and unexpected linting errors will now be replaced with a more robust `testing/` subfolder within the `src` folder to house the conformance testing factory and any mock or utility testing files to be used in multiple tests within a package.
 
-The final change will be removing the `e2e/` subfolder and collocating all cypress tests with the implementation and jest test files. The motivation for this is because we use cypress to test components on a real browser and not as a true e2e solution. Nx also collocates those cypress files like standard jest files so having them together provides more consistency.
+The final change will be removing the `e2e/` subfolder and collocating all cypress tests with the implementation and jest test files. The motivation for this is that we use cypress to test components on a real browser and not as a true e2e solution so calling it e2e is a bit misleading. Nx also collocates those cypress files with standard jest files so having them together from the get go provides more consistency.
 
 ## Pros and Cons
 
