@@ -151,7 +151,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const itemSelectors = (isSelected: boolean = false) => {
     return {
       selectors: {
-        '&:hover, &:focus': [
+        '&:hover': [
           {
             color: semanticColors.menuItemTextHovered,
             backgroundColor: !isSelected ? semanticColors.menuItemBackgroundHovered : selectedItemBackgroundColor,
