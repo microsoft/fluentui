@@ -255,7 +255,7 @@ const useTrackStyles = makeStyles({
 const useLabelStyles = makeStyles({
   // style for label
   inverted: {
-    color: tokens.colorNeutralForegroundInvertedStatic,
+    color: tokens.colorNeutralForegroundStaticInverted,
   },
 
   primary: {}, // no change
