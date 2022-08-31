@@ -94,6 +94,10 @@ jobs:
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
 
+      - name: Delete environment file
+        run: |
+          rm environment
+
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
@@ -158,6 +162,10 @@ jobs:
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
 
+      - name: Delete environment file
+        run: |
+          rm environment
+
       - uses: actions/setup-node@v3
         with:
           node-version: 14.18.1
@@ -219,6 +227,10 @@ jobs:
           do
           echo "$line" >> $GITHUB_ENV
           done < "$input_file"
+
+      - name: Delete environment file
+        run: |
+          rm environment
 
       - uses: actions/setup-node@v3
         with:
