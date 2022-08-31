@@ -21,11 +21,9 @@ export const chatMessageStylesComfyRefresh: ComponentSlotStylesPrepared<
     const borderFocusStyles = getBorderFocusStyles({
       borderRadius: 'inherit',
       variables: theme.siteVariables,
+      // Fixes the bubble focus border rendering on top of the user avatar
+      zIndex: 'initial',
     });
-
-    // Fixes the bubble focus border rendering on top of the user avatar
-    delete (borderFocusStyles[':focus-visible'][':before'] as ICSSInJSStyle).zIndex;
-    delete (borderFocusStyles[':focus-visible'][':after'] as ICSSInJSStyle).zIndex;
 
     return {
       display: 'flex',
