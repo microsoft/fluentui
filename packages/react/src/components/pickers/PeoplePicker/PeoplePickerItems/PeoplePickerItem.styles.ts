@@ -161,7 +161,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         getFocusStyle(theme, {
           inset: 2,
           borderColor: 'transparent',
-          highContrastStyle: { left: 1, top: 1, bottom: 1, right: 1, outlineColor: 'ButtonText' },
+          highContrastStyle: { inset: 2, left: 1, top: 1, bottom: 1, right: 1, outlineColor: 'ButtonText' },
           outlineColor: palette.white,
           borderRadius: PICKER_PERSONA_RADIUS,
         }),
